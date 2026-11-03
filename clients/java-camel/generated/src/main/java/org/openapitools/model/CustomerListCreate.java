@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,18 +25,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CustomerListCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListCreate {
 
   private Boolean isNca;
 
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
   private String name;
 
   private String records;
 
-  @Valid
   private List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();
 
   public CustomerListCreate() {
@@ -148,7 +146,7 @@ public class CustomerListCreate {
    * Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.
    * @return recordsV2
    */
-  @Valid 
+  
   @Schema(name = "records_v2", description = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("records_v2")
   public List<@Valid CustomerListRecordRow> getRecordsV2() {

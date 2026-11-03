@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (boostProspectingAdGroupBid.IsSet && boostProspectingAdGroupBid.Value == null)
-                throw new ArgumentNullException(nameof(boostProspectingAdGroupBid), "Property is not nullable for class PerformancePlusCampaignSettings.");
+                throw new JsonException("Property is not nullable for class PerformancePlusCampaignSettings: boost_prospecting_ad_group_bid.");
 
             if (pinnerListExclusions.IsSet && pinnerListExclusions.Value == null)
-                throw new ArgumentNullException(nameof(pinnerListExclusions), "Property is not nullable for class PerformancePlusCampaignSettings.");
+                throw new JsonException("Property is not nullable for class PerformancePlusCampaignSettings: pinner_list_exclusions.");
 
             return new PerformancePlusCampaignSettings(boostProspectingAdGroupBid, pinnerListExclusions);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="performancePlusCampaignSettings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PerformancePlusCampaignSettings performancePlusCampaignSettings, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,11 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="performancePlusCampaignSettings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PerformancePlusCampaignSettings performancePlusCampaignSettings, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (performancePlusCampaignSettings.BoostProspectingAdGroupBidOption.IsSet && performancePlusCampaignSettings.BoostProspectingAdGroupBid == null)
+                throw new JsonException("Cannot write null property PerformancePlusCampaignSettings.BoostProspectingAdGroupBid to non-nullable JSON property 'boost_prospecting_ad_group_bid'.");
+
             if (performancePlusCampaignSettings.PinnerListExclusionsOption.IsSet && performancePlusCampaignSettings.PinnerListExclusions == null)
-                throw new ArgumentNullException(nameof(performancePlusCampaignSettings.PinnerListExclusions), "Property is required for class PerformancePlusCampaignSettings.");
+                throw new JsonException("Cannot write null property PerformancePlusCampaignSettings.PinnerListExclusions to non-nullable JSON property 'pinner_list_exclusions'.");
 
             if (performancePlusCampaignSettings.BoostProspectingAdGroupBidOption.IsSet)
                 writer.WriteBoolean("boost_prospecting_ad_group_bid", performancePlusCampaignSettings.BoostProspectingAdGroupBidOption.Value!.Value);

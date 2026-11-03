@@ -51,24 +51,24 @@ class ConversionEqsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'lookbackPeriod' => [
+                'lookback_period' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'sourcePlatform' => [
+                'source_platform' => [
                 ],
-                'ingestionSource' => [
+                'ingestion_source' => [
                 ],
             ],
         );

@@ -31,8 +31,6 @@ export interface ScheduleAppTypeMultipliers {
     [key: string]: number | any;
     /**
      * 
-     * @type {TargetingSpecAppType}
-     * @memberof ScheduleAppTypeMultipliers
      */
     aPPTYPE?: TargetingSpecAppType;
 }

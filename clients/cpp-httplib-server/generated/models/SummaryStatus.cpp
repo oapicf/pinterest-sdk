@@ -6,20 +6,3 @@
 */
 #include "SummaryStatus.h"
 
-namespace models {
-
-SummaryStatus::SummaryStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

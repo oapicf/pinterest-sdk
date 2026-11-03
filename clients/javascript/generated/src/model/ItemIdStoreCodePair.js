@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ItemIdStoreCodePair model module.
  * @module model/ItemIdStoreCodePair
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ItemIdStoreCodePair {
     /**

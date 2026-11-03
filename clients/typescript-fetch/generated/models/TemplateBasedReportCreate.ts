@@ -29,20 +29,14 @@ import {
 export interface TemplateBasedReportCreate {
     /**
      * 
-     * @type {string}
-     * @memberof TemplateBasedReportCreate
      */
     message?: string;
     /**
      * 
-     * @type {BulkReportingJobStatus}
-     * @memberof TemplateBasedReportCreate
      */
     reportStatus: BulkReportingJobStatus;
     /**
      * 
-     * @type {string}
-     * @memberof TemplateBasedReportCreate
      */
     token?: string;
 }

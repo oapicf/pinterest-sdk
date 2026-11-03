@@ -17,7 +17,7 @@ import ItemAttributesRequest from './ItemAttributesRequest';
 /**
  * The CatalogsUpsertRetailItem model module.
  * @module model/CatalogsUpsertRetailItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsUpsertRetailItem {
     /**

@@ -144,8 +144,7 @@ class AdGroupUpdateRequest(BaseModel):
         _items = []
         if self.targeting_spec_operations:
             for _item_targeting_spec_operations in self.targeting_spec_operations:
-                if _item_targeting_spec_operations:
-                    _items.append(_item_targeting_spec_operations.to_dict())
+                _items.append(_item_targeting_spec_operations.to_dict() if _item_targeting_spec_operations is not None else None)
             _dict['targeting_spec_operations'] = _items
         # override the default output from pydantic by calling `to_dict()` of targeting_spec
         if self.targeting_spec:
@@ -240,7 +239,7 @@ class AdGroupUpdateRequest(BaseModel):
             "pacing_delivery_type": obj.get("pacing_delivery_type"),
             "placement_group": obj.get("placement_group"),
             "promotion_application_level": obj.get("promotion_application_level"),
-            "promotion_id": obj.get("promotion_id") if obj.get("promotion_id") is not None else '0',
+            "promotion_id": obj.get("promotion_id") if "promotion_id" in obj else '0',
             "promotion_ids": obj.get("promotion_ids"),
             "start_time": obj.get("start_time"),
             "status": obj.get("status"),

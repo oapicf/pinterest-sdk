@@ -33,14 +33,10 @@ export interface AdGroupUpdateRequestAllOf1 {
      * and 10.0. Enter 0 to remove the bid multiplier.
      * - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`.
      * - Not currently supported for <a href="/docs/api-features/pinterest-performance-plus-setup/" target="blank">Pinterest Performance+ campaigns</a>.
-     * @type {number}
-     * @memberof AdGroupUpdateRequestAllOf1
      */
     bidMultiplier?: number;
     /**
      * Ad group ID.
-     * @type {string}
-     * @memberof AdGroupUpdateRequestAllOf1
      */
     id: string;
     /**
@@ -61,8 +57,6 @@ export interface AdGroupUpdateRequestAllOf1 {
      * <li>Only one SET operation is allowed for a given field.</li>
      * <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li>
      * </ul>
-     * @type {Array<TargetingSpecOperations>}
-     * @memberof AdGroupUpdateRequestAllOf1
      */
     targetingSpecOperations?: Array<TargetingSpecOperations>;
 }

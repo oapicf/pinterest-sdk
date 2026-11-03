@@ -18,7 +18,7 @@ import InviteExceptionResponse from './InviteExceptionResponse';
 /**
  * The InviteActionResultItem model module.
  * @module model/InviteActionResultItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class InviteActionResultItem {
     /**

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 # **adGroupsAnalytics**
 ```swift
-    open class func adGroupsAnalytics(startDate: Date, endDate: Date, adGroupIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_adGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_adGroupsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [AdGroupsAnalyticsMetrics]?, _ error: Error?) -> Void)
+    open class func adGroupsAnalytics(startDate: Date, endDate: Date, adGroupIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_adGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_adGroupsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [AdGroupsAnalyticsMetrics]
 ```
 
 Get ad group analytics
@@ -47,15 +47,11 @@ let aggregateReportRows = true // Bool | Determines if report rows should be agg
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get ad group analytics
-AdGroupsAPI.adGroupsAnalytics(startDate: startDate, endDate: endDate, adGroupIds: adGroupIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsAnalytics(startDate: startDate, endDate: endDate, adGroupIds: adGroupIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -93,7 +89,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsAudienceSizing**
 ```swift
-    open class func adGroupsAudienceSizing(adAccountId: String, adGroupAudienceSizingCreate: AdGroupAudienceSizingCreate, completion: @escaping (_ data: AdGroupAudienceSizing?, _ error: Error?) -> Void)
+    open class func adGroupsAudienceSizing(adAccountId: String, adGroupAudienceSizingCreate: AdGroupAudienceSizingCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroupAudienceSizing
 ```
 
 Get audience sizing
@@ -109,15 +105,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupAudienceSizingCreate = AdGroupAudienceSizingCreate(autoTargetingEnabled: false, creativeTypes: [AdGroupAudienceSizingCreativeTypes()], keywords: [AdGroupAudienceSizingKeyword(matchType: MatchType(), value: "value_example")], placementGroup: AdgroupPlacementGroupType(), productGroupIds: ["productGroupIds_example"], targetingSpec: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()])) // AdGroupAudienceSizingCreate | 
 
 // Get audience sizing
-AdGroupsAPI.adGroupsAudienceSizing(adAccountId: adAccountId, adGroupAudienceSizingCreate: adGroupAudienceSizingCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsAudienceSizing(adAccountId: adAccountId, adGroupAudienceSizingCreate: adGroupAudienceSizingCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -145,7 +137,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsBidFloorGet**
 ```swift
-    open class func adGroupsBidFloorGet(adAccountId: String, bidFloorCreate: BidFloorCreate, completion: @escaping (_ data: BidFloor?, _ error: Error?) -> Void)
+    open class func adGroupsBidFloorGet(adAccountId: String, bidFloorCreate: BidFloorCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BidFloor
 ```
 
 Get bid floors
@@ -161,15 +153,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let bidFloorCreate = BidFloorCreate(bidFloorSpecs: [BidFloorSpec(billableEvent: ActionType(), countries: [Country()], creativeType: CreativeType(), currency: Currency(), objectiveType: BidFloorObjectiveType(), optimizationGoalMetadata: OptimizationGoalMetadata(conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata(attributionWindows: AttributionWindows(clickWindowDays: 123, engagementWindowDays: 123, viewWindowDays: 123), conversionEvent: ConversionEvent(), conversionTagId: "conversionTagId_example", cpaGoalValueInMicroCurrency: "cpaGoalValueInMicroCurrency_example", isRoasOptimized: false, reportingEvent: "reportingEvent_example"), frequencyGoalMetadata: FrequencyGoalMetadata(frequency: 123, timerange: FrequencyGoalMetadataTimerange()), scrollupGoalMetadata: ScrollupGoalMetadata(scrollupGoalValueInMicroCurrency: "scrollupGoalValueInMicroCurrency_example")))], targetingSpec: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()])) // BidFloorCreate | 
 
 // Get bid floors
-AdGroupsAPI.adGroupsBidFloorGet(adAccountId: adAccountId, bidFloorCreate: bidFloorCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsBidFloorGet(adAccountId: adAccountId, bidFloorCreate: bidFloorCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -197,7 +185,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsCreate**
 ```swift
-    open class func adGroupsCreate(adAccountId: String, adGroupCreateCreate: [AdGroupCreateCreate], completion: @escaping (_ data: AdGroupsCreate200Response?, _ error: Error?) -> Void)
+    open class func adGroupsCreate(adAccountId: String, adGroupCreateCreate: [AdGroupCreateCreate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroupsCreate200Response
 ```
 
 Create ad groups
@@ -213,15 +201,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupCreateCreate = [AdGroupCreateCreate(autoTargetingEnabled: false, bidInMicroCurrency: 123, bidMultiplier: 123, bidStrategyType: BidStrategyType(), billableEvent: ActionType(), budgetInMicroCurrency: 123, budgetType: BudgetType(), campaignId: "campaignId_example", customerSegmentId: "customerSegmentId_example", endTime: 123, extFeatures: AdgroupTrackingFeatures(enabled: [AdgroupTrackingFeatureType()]), feedProfileId: "feedProfileId_example", isCreativeOptimization: false, isLocalInventory: false, lifetimeFrequencyCap: 123, localInventoryRadiusInMiles: 123, name: "name_example", optimizationGoalMetadata: NullableOptimizationGoalMetadata(conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata(attributionWindows: AttributionWindows(clickWindowDays: 123, engagementWindowDays: 123, viewWindowDays: 123), conversionEvent: ConversionEvent(), conversionTagId: "conversionTagId_example", cpaGoalValueInMicroCurrency: "cpaGoalValueInMicroCurrency_example", isRoasOptimized: false, reportingEvent: "reportingEvent_example"), frequencyGoalMetadata: FrequencyGoalMetadata(frequency: 123, timerange: FrequencyGoalMetadataTimerange()), scrollupGoalMetadata: ScrollupGoalMetadata(scrollupGoalValueInMicroCurrency: "scrollupGoalValueInMicroCurrency_example")), pacingDeliveryType: PacingDeliveryType(), performancePlusCampaignSettings: PerformancePlusCampaignSettings(boostProspectingAdGroupBid: false, pinnerListExclusions: ["pinnerListExclusions_example"]), placementGroup: PlacementGroupType(), placementTrafficType: PlacementTrafficType(), promotionApplicationLevel: PromotionApplicationLevel(), promotionId: "promotionId_example", promotionIds: ["promotionIds_example"], startTime: 123, status: EntityStatus(), targetingSpec: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()]), targetingTemplateIds: ["targetingTemplateIds_example"], trackingUrls: AdGroupTrackingURLs(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]))] // [AdGroupCreateCreate] | 
 
 // Create ad groups
-AdGroupsAPI.adGroupsCreate(adAccountId: adAccountId, adGroupCreateCreate: adGroupCreateCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsCreate(adAccountId: adAccountId, adGroupCreateCreate: adGroupCreateCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -249,7 +233,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsDynamicTitlesDownloadCsv**
 ```swift
-    open class func adGroupsDynamicTitlesDownloadCsv(adAccountId: String, adGroupId: String, completion: @escaping (_ data: DynamicTitlesDownloadCSV?, _ error: Error?) -> Void)
+    open class func adGroupsDynamicTitlesDownloadCsv(adAccountId: String, adGroupId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DynamicTitlesDownloadCSV
 ```
 
 Get dynamic titles CSV download URL
@@ -265,15 +249,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupId = "adGroupId_example" // String | Ad group ID.
 
 // Get dynamic titles CSV download URL
-AdGroupsAPI.adGroupsDynamicTitlesDownloadCsv(adAccountId: adAccountId, adGroupId: adGroupId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsDynamicTitlesDownloadCsv(adAccountId: adAccountId, adGroupId: adGroupId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -301,7 +281,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsDynamicTitlesGetStatus**
 ```swift
-    open class func adGroupsDynamicTitlesGetStatus(adAccountId: String, adGroupId: String, completion: @escaping (_ data: DynamicTitlesGetStatus?, _ error: Error?) -> Void)
+    open class func adGroupsDynamicTitlesGetStatus(adAccountId: String, adGroupId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DynamicTitlesGetStatus
 ```
 
 Get dynamic titles status
@@ -317,15 +297,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupId = "adGroupId_example" // String | Ad group ID.
 
 // Get dynamic titles status
-AdGroupsAPI.adGroupsDynamicTitlesGetStatus(adAccountId: adAccountId, adGroupId: adGroupId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsDynamicTitlesGetStatus(adAccountId: adAccountId, adGroupId: adGroupId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -353,7 +329,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsDynamicTitlesGetUploadUrl**
 ```swift
-    open class func adGroupsDynamicTitlesGetUploadUrl(adAccountId: String, adGroupId: String, completion: @escaping (_ data: DynamicTitlesUploadURL?, _ error: Error?) -> Void)
+    open class func adGroupsDynamicTitlesGetUploadUrl(adAccountId: String, adGroupId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DynamicTitlesUploadURL
 ```
 
 Get dynamic titles upload URL
@@ -369,15 +345,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupId = "adGroupId_example" // String | Ad group ID.
 
 // Get dynamic titles upload URL
-AdGroupsAPI.adGroupsDynamicTitlesGetUploadUrl(adAccountId: adAccountId, adGroupId: adGroupId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsDynamicTitlesGetUploadUrl(adAccountId: adAccountId, adGroupId: adGroupId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -405,7 +377,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsDynamicTitlesProcessCsv**
 ```swift
-    open class func adGroupsDynamicTitlesProcessCsv(adAccountId: String, adGroupId: String, dynamicTitlesProcessCSVCreate: DynamicTitlesProcessCSVCreate, completion: @escaping (_ data: DynamicTitlesProcessCSV?, _ error: Error?) -> Void)
+    open class func adGroupsDynamicTitlesProcessCsv(adAccountId: String, adGroupId: String, dynamicTitlesProcessCSVCreate: DynamicTitlesProcessCSVCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DynamicTitlesProcessCSV
 ```
 
 Process dynamic titles CSV
@@ -422,15 +394,11 @@ let adGroupId = "adGroupId_example" // String | Ad group ID.
 let dynamicTitlesProcessCSVCreate = DynamicTitlesProcessCSVCreate(requestId: "requestId_example") // DynamicTitlesProcessCSVCreate | 
 
 // Process dynamic titles CSV
-AdGroupsAPI.adGroupsDynamicTitlesProcessCsv(adAccountId: adAccountId, adGroupId: adGroupId, dynamicTitlesProcessCSVCreate: dynamicTitlesProcessCSVCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsDynamicTitlesProcessCsv(adAccountId: adAccountId, adGroupId: adGroupId, dynamicTitlesProcessCSVCreate: dynamicTitlesProcessCSVCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -459,7 +427,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsGet**
 ```swift
-    open class func adGroupsGet(adGroupId: String, adAccountId: String, completion: @escaping (_ data: AdGroup?, _ error: Error?) -> Void)
+    open class func adGroupsGet(adGroupId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroup
 ```
 
 Get ad group
@@ -475,15 +443,11 @@ let adGroupId = "adGroupId_example" // String | Ad group ID.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get ad group
-AdGroupsAPI.adGroupsGet(adGroupId: adGroupId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsGet(adGroupId: adGroupId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -511,7 +475,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsList**
 ```swift
-    open class func adGroupsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, adGroupIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, translateInterestsToNames: Bool? = nil, completion: @escaping (_ data: AdGroupsList200Response?, _ error: Error?) -> Void)
+    open class func adGroupsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, adGroupIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, translateInterestsToNames: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroupsList200Response
 ```
 
 List ad groups
@@ -533,15 +497,11 @@ let entityStatuses = [EntityStatus()] // [EntityStatus] | Entity status (optiona
 let translateInterestsToNames = true // Bool | Return interests as text names (if value is true) rather than topic IDs. (optional) (default to false)
 
 // List ad groups
-AdGroupsAPI.adGroupsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, adGroupIds: adGroupIds, entityStatuses: entityStatuses, translateInterestsToNames: translateInterestsToNames) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, adGroupIds: adGroupIds, entityStatuses: entityStatuses, translateInterestsToNames: translateInterestsToNames)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -575,7 +535,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsTargetingAnalyticsGet**
 ```swift
-    open class func adGroupsTargetingAnalyticsGet(adAccountId: String, adGroupIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdGroupTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_adGroupsTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adGroupsTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adGroupsTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adGroupsTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, sortColumns: [String]? = nil, sortAscending: Bool? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
+    open class func adGroupsTargetingAnalyticsGet(adAccountId: String, adGroupIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdGroupTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_adGroupsTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adGroupsTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adGroupsTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adGroupsTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, sortColumns: [String]? = nil, sortAscending: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MetricsResponse
 ```
 
 Get targeting analytics for ad groups
@@ -604,15 +564,11 @@ let sortColumns = ["inner_example"] // [String] | Sort Columns. (optional)
 let sortAscending = true // Bool | Sort ascending. (optional)
 
 // Get targeting analytics for ad groups
-AdGroupsAPI.adGroupsTargetingAnalyticsGet(adAccountId: adAccountId, adGroupIds: adGroupIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, sortColumns: sortColumns, sortAscending: sortAscending) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsTargetingAnalyticsGet(adAccountId: adAccountId, adGroupIds: adGroupIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, sortColumns: sortColumns, sortAscending: sortAscending)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -653,7 +609,7 @@ Name | Type | Description  | Notes
 
 # **adGroupsUpdate**
 ```swift
-    open class func adGroupsUpdate(adAccountId: String, adGroupUpdateBatchUpdate: [AdGroupUpdateBatchUpdate], completion: @escaping (_ data: AdGroupsCreate200Response?, _ error: Error?) -> Void)
+    open class func adGroupsUpdate(adAccountId: String, adGroupUpdateBatchUpdate: [AdGroupUpdateBatchUpdate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroupsCreate200Response
 ```
 
 Update ad groups
@@ -669,15 +625,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adGroupUpdateBatchUpdate = [AdGroupUpdateBatchUpdate(autoTargetingEnabled: false, bidInMicroCurrency: 123, bidMultiplier: 123, bidStrategyType: BidStrategyType(), billableEvent: ActionType(), budgetInMicroCurrency: 123, budgetType: BudgetType(), campaignId: "campaignId_example", customerSegmentId: "customerSegmentId_example", endTime: 123, extFeatures: AdgroupTrackingFeatures(enabled: [AdgroupTrackingFeatureType()]), feedProfileId: "feedProfileId_example", id: "id_example", isCreativeOptimization: false, isLocalInventory: false, lifetimeFrequencyCap: 123, localInventoryRadiusInMiles: 123, name: "name_example", optimizationGoalMetadata: NullableOptimizationGoalMetadata(conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata(attributionWindows: AttributionWindows(clickWindowDays: 123, engagementWindowDays: 123, viewWindowDays: 123), conversionEvent: ConversionEvent(), conversionTagId: "conversionTagId_example", cpaGoalValueInMicroCurrency: "cpaGoalValueInMicroCurrency_example", isRoasOptimized: false, reportingEvent: "reportingEvent_example"), frequencyGoalMetadata: FrequencyGoalMetadata(frequency: 123, timerange: FrequencyGoalMetadataTimerange()), scrollupGoalMetadata: ScrollupGoalMetadata(scrollupGoalValueInMicroCurrency: "scrollupGoalValueInMicroCurrency_example")), pacingDeliveryType: PacingDeliveryType(), performancePlusCampaignSettings: PerformancePlusCampaignSettings(boostProspectingAdGroupBid: false, pinnerListExclusions: ["pinnerListExclusions_example"]), placementGroup: PlacementGroupType(), placementTrafficType: PlacementTrafficType(), promotionApplicationLevel: PromotionApplicationLevel(), promotionId: "promotionId_example", promotionIds: ["promotionIds_example"], startTime: 123, status: EntityStatus(), targetingSpec: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()]), targetingSpecOperations: [TargetingSpecOperations(field: "field_example", operation: "operation_example", values: [nil], value: "value_example")], targetingTemplateIds: ["targetingTemplateIds_example"], trackingUrls: AdGroupTrackingURLs(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]))] // [AdGroupUpdateBatchUpdate] | 
 
 // Update ad groups
-AdGroupsAPI.adGroupsUpdate(adAccountId: adAccountId, adGroupUpdateBatchUpdate: adGroupUpdateBatchUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.adGroupsUpdate(adAccountId: adAccountId, adGroupUpdateBatchUpdate: adGroupUpdateBatchUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -705,7 +657,7 @@ Name | Type | Description  | Notes
 
 # **getAdGroupsByPromotionIdsList**
 ```swift
-    open class func getAdGroupsByPromotionIdsList(adAccountId: String, promotionIds: [String], bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: AdGroupsList200Response?, _ error: Error?) -> Void)
+    open class func getAdGroupsByPromotionIdsList(adAccountId: String, promotionIds: [String], bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdGroupsList200Response
 ```
 
 List of ad groups using promotions IDs.
@@ -724,15 +676,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // List of ad groups using promotions IDs.
-AdGroupsAPI.getAdGroupsByPromotionIdsList(adAccountId: adAccountId, promotionIds: promotionIds, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdGroupsAPI.getAdGroupsByPromotionIdsList(adAccountId: adAccountId, promotionIds: promotionIds, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

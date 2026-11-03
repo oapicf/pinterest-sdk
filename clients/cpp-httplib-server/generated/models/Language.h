@@ -12,24 +12,634 @@
 
 namespace models {
 
-
-class Language
-{
-public:
-
-    Language();
-    virtual ~Language() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Language,
-        )
-
-private:
+enum class Language {
+    
+    AM,
+    
+    AR,
+    
+    AZ,
+    
+    BG,
+    
+    BN,
+    
+    BS,
+    
+    CA,
+    
+    CS,
+    
+    DA,
+    
+    DV,
+    
+    DZ,
+    
+    DE,
+    
+    EL,
+    
+    EN,
+    
+    ES,
+    
+    ET,
+    
+    FA,
+    
+    FI,
+    
+    FR,
+    
+    HE,
+    
+    HI,
+    
+    HR,
+    
+    HU,
+    
+    HY,
+    
+    ID,
+    
+    IN,
+    
+    IS,
+    
+    IT,
+    
+    IW,
+    
+    JA,
+    
+    KA,
+    
+    KM,
+    
+    KO,
+    
+    LO,
+    
+    LT,
+    
+    LV,
+    
+    MK,
+    
+    MN,
+    
+    MS,
+    
+    MY,
+    
+    NB,
+    
+    NE,
+    
+    NL,
+    
+    FALSE,
+    
+    PL,
+    
+    PT,
+    
+    RO,
+    
+    RU,
+    
+    SK,
+    
+    SL,
+    
+    SQ,
+    
+    SR,
+    
+    SV,
+    
+    TL,
+    
+    UK,
+    
+    VI,
+    
+    TE,
+    
+    TH,
+    
+    TR,
+    
+    XX,
+    
+    ZH
+    
 };
 
+inline void to_json(nlohmann::json& j, const Language& value)
+{
+    switch (value)
+    {
+        
+        case Language::AM: j = "AM"; break;
+        
+        case Language::AR: j = "AR"; break;
+        
+        case Language::AZ: j = "AZ"; break;
+        
+        case Language::BG: j = "BG"; break;
+        
+        case Language::BN: j = "BN"; break;
+        
+        case Language::BS: j = "BS"; break;
+        
+        case Language::CA: j = "CA"; break;
+        
+        case Language::CS: j = "CS"; break;
+        
+        case Language::DA: j = "DA"; break;
+        
+        case Language::DV: j = "DV"; break;
+        
+        case Language::DZ: j = "DZ"; break;
+        
+        case Language::DE: j = "DE"; break;
+        
+        case Language::EL: j = "EL"; break;
+        
+        case Language::EN: j = "EN"; break;
+        
+        case Language::ES: j = "ES"; break;
+        
+        case Language::ET: j = "ET"; break;
+        
+        case Language::FA: j = "FA"; break;
+        
+        case Language::FI: j = "FI"; break;
+        
+        case Language::FR: j = "FR"; break;
+        
+        case Language::HE: j = "HE"; break;
+        
+        case Language::HI: j = "HI"; break;
+        
+        case Language::HR: j = "HR"; break;
+        
+        case Language::HU: j = "HU"; break;
+        
+        case Language::HY: j = "HY"; break;
+        
+        case Language::ID: j = "ID"; break;
+        
+        case Language::IN: j = "IN"; break;
+        
+        case Language::IS: j = "IS"; break;
+        
+        case Language::IT: j = "IT"; break;
+        
+        case Language::IW: j = "IW"; break;
+        
+        case Language::JA: j = "JA"; break;
+        
+        case Language::KA: j = "KA"; break;
+        
+        case Language::KM: j = "KM"; break;
+        
+        case Language::KO: j = "KO"; break;
+        
+        case Language::LO: j = "LO"; break;
+        
+        case Language::LT: j = "LT"; break;
+        
+        case Language::LV: j = "LV"; break;
+        
+        case Language::MK: j = "MK"; break;
+        
+        case Language::MN: j = "MN"; break;
+        
+        case Language::MS: j = "MS"; break;
+        
+        case Language::MY: j = "MY"; break;
+        
+        case Language::NB: j = "NB"; break;
+        
+        case Language::NE: j = "NE"; break;
+        
+        case Language::NL: j = "NL"; break;
+        
+        case Language::FALSE: j = "false"; break;
+        
+        case Language::PL: j = "PL"; break;
+        
+        case Language::PT: j = "PT"; break;
+        
+        case Language::RO: j = "RO"; break;
+        
+        case Language::RU: j = "RU"; break;
+        
+        case Language::SK: j = "SK"; break;
+        
+        case Language::SL: j = "SL"; break;
+        
+        case Language::SQ: j = "SQ"; break;
+        
+        case Language::SR: j = "SR"; break;
+        
+        case Language::SV: j = "SV"; break;
+        
+        case Language::TL: j = "TL"; break;
+        
+        case Language::UK: j = "UK"; break;
+        
+        case Language::VI: j = "VI"; break;
+        
+        case Language::TE: j = "TE"; break;
+        
+        case Language::TH: j = "TH"; break;
+        
+        case Language::TR: j = "TR"; break;
+        
+        case Language::XX: j = "XX"; break;
+        
+        case Language::ZH: j = "ZH"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Language", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Language& value)
+{
+    
+    if (j == "AM")
+    {
+        value = Language::AM;
+        return;
+    }
+    
+    if (j == "AR")
+    {
+        value = Language::AR;
+        return;
+    }
+    
+    if (j == "AZ")
+    {
+        value = Language::AZ;
+        return;
+    }
+    
+    if (j == "BG")
+    {
+        value = Language::BG;
+        return;
+    }
+    
+    if (j == "BN")
+    {
+        value = Language::BN;
+        return;
+    }
+    
+    if (j == "BS")
+    {
+        value = Language::BS;
+        return;
+    }
+    
+    if (j == "CA")
+    {
+        value = Language::CA;
+        return;
+    }
+    
+    if (j == "CS")
+    {
+        value = Language::CS;
+        return;
+    }
+    
+    if (j == "DA")
+    {
+        value = Language::DA;
+        return;
+    }
+    
+    if (j == "DV")
+    {
+        value = Language::DV;
+        return;
+    }
+    
+    if (j == "DZ")
+    {
+        value = Language::DZ;
+        return;
+    }
+    
+    if (j == "DE")
+    {
+        value = Language::DE;
+        return;
+    }
+    
+    if (j == "EL")
+    {
+        value = Language::EL;
+        return;
+    }
+    
+    if (j == "EN")
+    {
+        value = Language::EN;
+        return;
+    }
+    
+    if (j == "ES")
+    {
+        value = Language::ES;
+        return;
+    }
+    
+    if (j == "ET")
+    {
+        value = Language::ET;
+        return;
+    }
+    
+    if (j == "FA")
+    {
+        value = Language::FA;
+        return;
+    }
+    
+    if (j == "FI")
+    {
+        value = Language::FI;
+        return;
+    }
+    
+    if (j == "FR")
+    {
+        value = Language::FR;
+        return;
+    }
+    
+    if (j == "HE")
+    {
+        value = Language::HE;
+        return;
+    }
+    
+    if (j == "HI")
+    {
+        value = Language::HI;
+        return;
+    }
+    
+    if (j == "HR")
+    {
+        value = Language::HR;
+        return;
+    }
+    
+    if (j == "HU")
+    {
+        value = Language::HU;
+        return;
+    }
+    
+    if (j == "HY")
+    {
+        value = Language::HY;
+        return;
+    }
+    
+    if (j == "ID")
+    {
+        value = Language::ID;
+        return;
+    }
+    
+    if (j == "IN")
+    {
+        value = Language::IN;
+        return;
+    }
+    
+    if (j == "IS")
+    {
+        value = Language::IS;
+        return;
+    }
+    
+    if (j == "IT")
+    {
+        value = Language::IT;
+        return;
+    }
+    
+    if (j == "IW")
+    {
+        value = Language::IW;
+        return;
+    }
+    
+    if (j == "JA")
+    {
+        value = Language::JA;
+        return;
+    }
+    
+    if (j == "KA")
+    {
+        value = Language::KA;
+        return;
+    }
+    
+    if (j == "KM")
+    {
+        value = Language::KM;
+        return;
+    }
+    
+    if (j == "KO")
+    {
+        value = Language::KO;
+        return;
+    }
+    
+    if (j == "LO")
+    {
+        value = Language::LO;
+        return;
+    }
+    
+    if (j == "LT")
+    {
+        value = Language::LT;
+        return;
+    }
+    
+    if (j == "LV")
+    {
+        value = Language::LV;
+        return;
+    }
+    
+    if (j == "MK")
+    {
+        value = Language::MK;
+        return;
+    }
+    
+    if (j == "MN")
+    {
+        value = Language::MN;
+        return;
+    }
+    
+    if (j == "MS")
+    {
+        value = Language::MS;
+        return;
+    }
+    
+    if (j == "MY")
+    {
+        value = Language::MY;
+        return;
+    }
+    
+    if (j == "NB")
+    {
+        value = Language::NB;
+        return;
+    }
+    
+    if (j == "NE")
+    {
+        value = Language::NE;
+        return;
+    }
+    
+    if (j == "NL")
+    {
+        value = Language::NL;
+        return;
+    }
+    
+    if (j == "false")
+    {
+        value = Language::FALSE;
+        return;
+    }
+    
+    if (j == "PL")
+    {
+        value = Language::PL;
+        return;
+    }
+    
+    if (j == "PT")
+    {
+        value = Language::PT;
+        return;
+    }
+    
+    if (j == "RO")
+    {
+        value = Language::RO;
+        return;
+    }
+    
+    if (j == "RU")
+    {
+        value = Language::RU;
+        return;
+    }
+    
+    if (j == "SK")
+    {
+        value = Language::SK;
+        return;
+    }
+    
+    if (j == "SL")
+    {
+        value = Language::SL;
+        return;
+    }
+    
+    if (j == "SQ")
+    {
+        value = Language::SQ;
+        return;
+    }
+    
+    if (j == "SR")
+    {
+        value = Language::SR;
+        return;
+    }
+    
+    if (j == "SV")
+    {
+        value = Language::SV;
+        return;
+    }
+    
+    if (j == "TL")
+    {
+        value = Language::TL;
+        return;
+    }
+    
+    if (j == "UK")
+    {
+        value = Language::UK;
+        return;
+    }
+    
+    if (j == "VI")
+    {
+        value = Language::VI;
+        return;
+    }
+    
+    if (j == "TE")
+    {
+        value = Language::TE;
+        return;
+    }
+    
+    if (j == "TH")
+    {
+        value = Language::TH;
+        return;
+    }
+    
+    if (j == "TR")
+    {
+        value = Language::TR;
+        return;
+    }
+    
+    if (j == "XX")
+    {
+        value = Language::XX;
+        return;
+    }
+    
+    if (j == "ZH")
+    {
+        value = Language::ZH;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Language", &j);
+}
 
 } // namespace models
 

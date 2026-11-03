@@ -6,20 +6,3 @@
 */
 #include "MediaUploadType.h"
 
-namespace models {
-
-MediaUploadType::MediaUploadType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

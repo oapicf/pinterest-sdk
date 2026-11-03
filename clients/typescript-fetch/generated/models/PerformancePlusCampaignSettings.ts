@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PerformancePlusCampaignSettings {
     /**
      * Whether to boost prospecting ad group bid.
-     * @type {boolean}
-     * @memberof PerformancePlusCampaignSettings
      */
     boostProspectingAdGroupBid?: boolean;
     /**
      * List of campaign-level exclusion pinner list IDs.
-     * @type {Array<string>}
-     * @memberof PerformancePlusCampaignSettings
      */
     pinnerListExclusions?: Array<string>;
 }

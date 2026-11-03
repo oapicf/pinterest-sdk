@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **termsRelatedList**
 ```swift
-    open class func termsRelatedList(terms: [String], completion: @escaping (_ data: RelatedTerms?, _ error: Error?) -> Void)
+    open class func termsRelatedList(terms: [String], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> RelatedTerms
 ```
 
 List related terms
@@ -25,15 +25,11 @@ import OpenAPIClient
 let terms = ["inner_example"] // [String] | List of input terms.
 
 // List related terms
-TermsAPI.termsRelatedList(terms: terms) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TermsAPI.termsRelatedList(terms: terms)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -60,7 +56,7 @@ Name | Type | Description  | Notes
 
 # **termsSuggestedList**
 ```swift
-    open class func termsSuggestedList(term: String, limit: Int? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func termsSuggestedList(term: String, limit: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String]
 ```
 
 List suggested terms
@@ -76,15 +72,11 @@ let term = "term_example" // String | Input term.
 let limit = 987 // Int | Max suggested terms to return. (optional) (default to 4)
 
 // List suggested terms
-TermsAPI.termsSuggestedList(term: term, limit: limit) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TermsAPI.termsSuggestedList(term: term, limit: limit)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

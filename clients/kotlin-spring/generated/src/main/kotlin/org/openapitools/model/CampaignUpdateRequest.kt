@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CampaignBidOptionsUpdate
 import org.openapitools.model.EntityStatus
 import org.openapitools.model.IntendedPromotionType
@@ -49,12 +46,12 @@ data class CampaignUpdateRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", required = true, description = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
-    @param:JsonProperty("ad_account_id")
+    @param:JsonProperty("ad_account_id", required = true)
     @get:JsonProperty("ad_account_id", required = true) val adAccountId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", required = true, description = "Campaign ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
@@ -64,26 +61,18 @@ data class CampaignUpdateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("intended_promotion_type")
     @get:JsonProperty("intended_promotion_type") val intendedPromotionType: IntendedPromotionType? = null,
 
     @Schema(description = "Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_ltv_optimized")
     @get:JsonProperty("is_ltv_optimized") val isLtvOptimized: kotlin.Boolean? = null,
 
     @Schema(description = "Enable Pinterest Performance+ for your campaign. To learn more, see <a href=\"https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/\">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_performance_plus")
     @get:JsonProperty("is_performance_plus") val isPerformancePlus: kotlin.Boolean? = null,
 
     @Schema(description = "Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_top_of_search")
     @get:JsonProperty("is_top_of_search") val isTopOfSearch: kotlin.Boolean? = null,
 
@@ -121,8 +110,6 @@ data class CampaignUpdateRequest(
     @get:JsonProperty("lifetime_spend_cap") val lifetimeSpendCap: kotlin.Int? = null,
 
     @Schema(example = "ACME Tools", description = "Campaign name.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
@@ -137,8 +124,6 @@ data class CampaignUpdateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 

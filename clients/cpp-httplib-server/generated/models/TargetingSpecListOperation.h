@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class TargetingSpecListOperation
-{
-public:
-
-    TargetingSpecListOperation();
-    virtual ~TargetingSpecListOperation() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingSpecListOperation,
-        )
-
-private:
+enum class TargetingSpecListOperation {
+    
+    SET,
+    
+    ADD,
+    
+    REMOVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingSpecListOperation& value)
+{
+    switch (value)
+    {
+        
+        case TargetingSpecListOperation::SET: j = "SET"; break;
+        
+        case TargetingSpecListOperation::ADD: j = "ADD"; break;
+        
+        case TargetingSpecListOperation::REMOVE: j = "REMOVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecListOperation", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingSpecListOperation& value)
+{
+    
+    if (j == "SET")
+    {
+        value = TargetingSpecListOperation::SET;
+        return;
+    }
+    
+    if (j == "ADD")
+    {
+        value = TargetingSpecListOperation::ADD;
+        return;
+    }
+    
+    if (j == "REMOVE")
+    {
+        value = TargetingSpecListOperation::REMOVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecListOperation", &j);
+}
 
 } // namespace models
 

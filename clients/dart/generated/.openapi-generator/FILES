@@ -2327,9 +2327,3 @@ lib/model/video_pin_metric_types.dart
 lib/model/website_verification_method.dart
 lib/model/workload_state.dart
 pubspec.yaml
-test/catalog_supplemental_api_test.dart
-test/conversion_deletion_requests_api_test.dart
-test/customer_segment_api_test.dart
-test/product_tags_api_test.dart
-test/schedules_api_test.dart
-test/trends_api_test.dart

@@ -24,7 +24,7 @@ import ProductAvailabilityType from './ProductAvailabilityType';
 /**
  * The CatalogsFeedUpdateRequestSchema model module.
  * @module model/CatalogsFeedUpdateRequestSchema
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsFeedUpdateRequestSchema {
     /**

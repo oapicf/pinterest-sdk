@@ -105,69 +105,177 @@ import {
 } from '../models/SsioOrderLinesGetByAdAccount200Response';
 
 export interface AdsCreditRedeemRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adsCreditRedeemCreate: AdsCreditRedeemCreate;
 }
 
 export interface AdsCreditsDiscountsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BillingInvoiceDownloadGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Unique identifier of a billing invoice.
+     */
     billingInvoiceId: string;
 }
 
 export interface BillingInvoicesGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * Field of which to sort billing invoices
+     */
     sort?: BillingInvoiceSortField;
+    /**
+     * Status of billing invoices to filter by
+     */
     status?: BillingInvoiceStatus;
+    /**
+     * Document type of billing invoices to filter by
+     */
     documentType?: BillingInvoiceDocumentType;
+    /**
+     * Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+     */
     startDueDate?: Date;
+    /**
+     * Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+     */
     endDueDate?: Date;
 }
 
 export interface BillingProfilesGetRequest {
+    /**
+     * Return active billing profiles, if false return all billing profiles.
+     */
     isActive: boolean;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface SsioAccountsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface SsioInsertionOrderCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     sSIOInsertionOrderCreate: SSIOInsertionOrderCreate;
 }
 
 export interface SsioInsertionOrderEditRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate;
 }
 
 export interface SsioInsertionOrdersStatusGetByAdAccountRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface SsioInsertionOrdersStatusGetByPinOrderIdRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * The pin order id associated with the ssio insertion order
+     */
     pinOrderId: string;
 }
 
 export interface SsioOrderLinesGetByAdAccountRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * The pin order id associated with the SSIO insertion order
+     */
     pinOrderId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
@@ -396,11 +504,11 @@ export class BillingApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDueDate'] != null) {
-            queryParameters['start_due_date'] = (requestParameters['startDueDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_due_date'] = runtime.serializeDate(requestParameters['startDueDate'] as any);
         }
 
         if (requestParameters['endDueDate'] != null) {
-            queryParameters['end_due_date'] = (requestParameters['endDueDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_due_date'] = runtime.serializeDate(requestParameters['endDueDate'] as any);
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

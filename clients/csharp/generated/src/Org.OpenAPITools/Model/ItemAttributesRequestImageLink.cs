@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemAttributesRequestImageLink" /> class.
         /// </summary>
         /// <param name="string"></param>
-        internal ItemAttributesRequestImageLink(string @string)
+        public ItemAttributesRequestImageLink(string @string)
         {
             String = @string;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemAttributesRequestImageLink" /> class.
         /// </summary>
         /// <param name="list"></param>
-        internal ItemAttributesRequestImageLink(List<string> list)
+        public ItemAttributesRequestImageLink(List<string> list)
         {
             List = list;
             OnCreated();
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributesRequestImageLink"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemAttributesRequestImageLink itemAttributesRequestImageLink, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,7 +191,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributesRequestImageLink"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemAttributesRequestImageLink itemAttributesRequestImageLink, JsonSerializerOptions jsonSerializerOptions)
         {
 

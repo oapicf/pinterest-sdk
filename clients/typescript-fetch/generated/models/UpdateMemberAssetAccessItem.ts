@@ -29,20 +29,14 @@ import {
 export interface UpdateMemberAssetAccessItem {
     /**
      * Id of the asset to update.
-     * @type {string}
-     * @memberof UpdateMemberAssetAccessItem
      */
     assetId: string;
     /**
      * Unique identifier of the member on which to perform the update
-     * @type {string}
-     * @memberof UpdateMemberAssetAccessItem
      */
     memberId: string;
     /**
      * A non-empty array of permissions to assign to the member.
-     * @type {Array<Permissions>}
-     * @memberof UpdateMemberAssetAccessItem
      */
     permissions: Array<Permissions>;
 }

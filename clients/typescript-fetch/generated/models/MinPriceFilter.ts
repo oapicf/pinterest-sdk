@@ -29,8 +29,6 @@ import {
 export interface MinPriceFilter {
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof MinPriceFilter
      */
     mINPRICE: CatalogsProductGroupPricingCriteria;
 }

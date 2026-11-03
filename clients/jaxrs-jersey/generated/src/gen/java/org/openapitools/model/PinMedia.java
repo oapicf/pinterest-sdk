@@ -52,7 +52,7 @@ import javax.validation.Valid;
   PinMedia.JSON_PROPERTY_WIDTH,
   PinMedia.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaWithImage.class, name = "image"),
   @JsonSubTypes.Type(value = PinMediaWithImages.class, name = "multiple_images"),
@@ -310,7 +310,7 @@ public class PinMedia   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }

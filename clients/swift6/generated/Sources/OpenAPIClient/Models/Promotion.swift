@@ -9,9 +9,9 @@ import Foundation
 
 public struct Promotion: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let externalIdRule = StringRule(minLength: nil, maxLength: 64, pattern: nil)
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     public static let promotionCustomIdRule = StringRule(minLength: nil, maxLength: 50, pattern: nil)
     public static let templateValuesRule = ArrayRule(minItems: 0, maxItems: 2, uniqueItems: false)
     /** The Ad Account ID that this promotion belongs to. */

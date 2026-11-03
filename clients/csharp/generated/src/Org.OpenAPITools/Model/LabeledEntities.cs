@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (entitiesLabels.IsSet && entitiesLabels.Value == null)
-                throw new ArgumentNullException(nameof(entitiesLabels), "Property is not nullable for class LabeledEntities.");
+                throw new JsonException("Property is not nullable for class LabeledEntities: entities_labels.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class LabeledEntities.");
+                throw new JsonException("Property is not nullable for class LabeledEntities: errors.");
 
             return new LabeledEntities(entitiesLabels, errors);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labeledEntities"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabeledEntities labeledEntities, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,14 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labeledEntities"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabeledEntities labeledEntities, JsonSerializerOptions jsonSerializerOptions)
         {
             if (labeledEntities.EntitiesLabelsOption.IsSet && labeledEntities.EntitiesLabels == null)
-                throw new ArgumentNullException(nameof(labeledEntities.EntitiesLabels), "Property is required for class LabeledEntities.");
+                throw new JsonException("Cannot write null property LabeledEntities.EntitiesLabels to non-nullable JSON property 'entities_labels'.");
 
             if (labeledEntities.ErrorsOption.IsSet && labeledEntities.Errors == null)
-                throw new ArgumentNullException(nameof(labeledEntities.Errors), "Property is required for class LabeledEntities.");
+                throw new JsonException("Cannot write null property LabeledEntities.Errors to non-nullable JSON property 'errors'.");
 
             if (labeledEntities.EntitiesLabelsOption.IsSet)
             {

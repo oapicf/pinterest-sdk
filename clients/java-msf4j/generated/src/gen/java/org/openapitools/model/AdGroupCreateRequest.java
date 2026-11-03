@@ -22,7 +22,7 @@ import org.openapitools.model.TargetingSpec;
 /**
  * AdGroupCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateRequest   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled;
@@ -521,7 +521,7 @@ public class AdGroupCreateRequest   {
 
   public AdGroupCreateRequest addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
     if (this.targetingTemplateIds == null) {
-      this.targetingTemplateIds = ;
+      this.targetingTemplateIds = new ArrayList<>();
     }
     this.targetingTemplateIds.add(targetingTemplateIdsItem);
     return this;

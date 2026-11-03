@@ -18,7 +18,7 @@ import AssetTypeResponse from './AssetTypeResponse';
 /**
  * The AssetIdPermissions model module.
  * @module model/AssetIdPermissions
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AssetIdPermissions {
     /**

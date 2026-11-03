@@ -6,20 +6,3 @@
 */
 #include "PlacementTrafficType.h"
 
-namespace models {
-
-PlacementTrafficType::PlacementTrafficType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

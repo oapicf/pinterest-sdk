@@ -124,3 +124,4 @@ class _$CatalogsAiContentDisclosureSerializer implements PrimitiveSerializer<Cat
   }
 }
 
+

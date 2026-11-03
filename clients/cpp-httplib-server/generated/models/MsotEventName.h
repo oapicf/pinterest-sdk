@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class MsotEventName
-{
-public:
-
-    MsotEventName();
-    virtual ~MsotEventName() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MsotEventName,
-        )
-
-private:
+enum class MsotEventName {
+    
+    ADD_TO_CART,
+    
+    CHECKOUT,
+    
+    LEAD,
+    
+    SIGNUP
+    
 };
 
+inline void to_json(nlohmann::json& j, const MsotEventName& value)
+{
+    switch (value)
+    {
+        
+        case MsotEventName::ADD_TO_CART: j = "add_to_cart"; break;
+        
+        case MsotEventName::CHECKOUT: j = "checkout"; break;
+        
+        case MsotEventName::LEAD: j = "lead"; break;
+        
+        case MsotEventName::SIGNUP: j = "signup"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MsotEventName", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MsotEventName& value)
+{
+    
+    if (j == "add_to_cart")
+    {
+        value = MsotEventName::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "checkout")
+    {
+        value = MsotEventName::CHECKOUT;
+        return;
+    }
+    
+    if (j == "lead")
+    {
+        value = MsotEventName::LEAD;
+        return;
+    }
+    
+    if (j == "signup")
+    {
+        value = MsotEventName::SIGNUP;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MsotEventName", &j);
+}
 
 } // namespace models
 

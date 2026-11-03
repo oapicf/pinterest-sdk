@@ -29,7 +29,6 @@ public class AdvancedAuctionItems  {
   * Array with item bid options
   */
   @ApiModelProperty(value = "Array with item bid options")
-  @Valid
   private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
  /**
   * Response object of item bid options

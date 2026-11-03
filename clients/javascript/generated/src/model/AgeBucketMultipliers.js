@@ -17,7 +17,7 @@ import TargetingSpecAgeBucket from './TargetingSpecAgeBucket';
 /**
  * The AgeBucketMultipliers model module.
  * @module model/AgeBucketMultipliers
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AgeBucketMultipliers {
     /**

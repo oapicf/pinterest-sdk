@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,10 +22,9 @@ import jakarta.annotation.Generated;
  * S3MultipartUploadData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class S3MultipartUploadData {
 
-  @Valid
   private List<@Valid S3FilePart> fileParts = new ArrayList<>();
 
   public S3MultipartUploadData fileParts(List<@Valid S3FilePart> fileParts) {
@@ -46,7 +44,7 @@ public class S3MultipartUploadData {
    * Array of file parts with pre-signed URLs.
    * @return fileParts
    */
-  @Valid 
+  
   @Schema(name = "file_parts", description = "Array of file parts with pre-signed URLs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("file_parts")
   public List<@Valid S3FilePart> getFileParts() {

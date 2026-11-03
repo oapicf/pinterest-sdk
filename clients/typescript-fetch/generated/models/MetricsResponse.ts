@@ -29,8 +29,6 @@ import {
 export interface MetricsResponse {
     /**
      * 
-     * @type {Array<MetricsResponseDataItems>}
-     * @memberof MetricsResponse
      */
     data?: Array<MetricsResponseDataItems>;
 }

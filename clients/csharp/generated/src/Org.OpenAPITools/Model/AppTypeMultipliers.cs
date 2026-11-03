@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aPPTYPE.IsSet && aPPTYPE.Value == null)
-                throw new ArgumentNullException(nameof(aPPTYPE), "Property is not nullable for class AppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class AppTypeMultipliers: APP_TYPE.");
 
             return new AppTypeMultipliers(aPPTYPE);
         }
@@ -159,7 +159,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AppTypeMultipliers appTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -174,9 +173,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AppTypeMultipliers appTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (appTypeMultipliers.APP_TYPEOption.IsSet && appTypeMultipliers.APP_TYPE == null)
+                throw new JsonException("Cannot write null property AppTypeMultipliers.APP_TYPE to non-nullable JSON property 'APP_TYPE'.");
+
             if (appTypeMultipliers.APP_TYPEOption.IsSet)
             {
                 var aPPTYPERawValue = TargetingSpecAppTypeValueConverter.ToJsonValue(appTypeMultipliers.APP_TYPE!.Value);

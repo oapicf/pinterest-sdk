@@ -110,3 +110,4 @@ class _$UpdateInvitesResultsResponseArraySerializer implements PrimitiveSerializ
   }
 }
 
+

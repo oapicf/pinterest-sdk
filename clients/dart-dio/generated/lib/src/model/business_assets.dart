@@ -177,3 +177,4 @@ class _$BusinessAssetsSerializer implements PrimitiveSerializer<BusinessAssets> 
   }
 }
 
+

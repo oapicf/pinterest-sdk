@@ -19,13 +19,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate   {
   
   private Boolean autoTargetingEnabled = true;
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes;
   private List<@Valid AdGroupAudienceSizingKeyword> keywords;
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
   private TargetingSpecOptimal targetingSpec;
 
@@ -48,7 +48,6 @@ public class AdGroupAudienceSizingCreate   {
   
   @ApiModelProperty(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")
   @JsonProperty("creative_types")
-  @Valid
   public List<AdGroupAudienceSizingCreativeTypes> getCreativeTypes() {
     return creativeTypes;
   }
@@ -62,7 +61,6 @@ public class AdGroupAudienceSizingCreate   {
   
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
   @JsonProperty("keywords")
-  @Valid
   public List<@Valid AdGroupAudienceSizingKeyword> getKeywords() {
     return keywords;
   }

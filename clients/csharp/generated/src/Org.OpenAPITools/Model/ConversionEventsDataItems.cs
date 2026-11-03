@@ -523,49 +523,49 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!actionSource.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsDataItems.", nameof(actionSource));
+                throw new JsonException("Property is required for class ConversionEventsDataItems: action_source.");
 
             if (!eventId.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsDataItems.", nameof(eventId));
+                throw new JsonException("Property is required for class ConversionEventsDataItems: event_id.");
 
             if (!eventName.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsDataItems.", nameof(eventName));
+                throw new JsonException("Property is required for class ConversionEventsDataItems: event_name.");
 
             if (!eventTime.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsDataItems.", nameof(eventTime));
+                throw new JsonException("Property is required for class ConversionEventsDataItems: event_time.");
 
             if (!userData.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsDataItems.", nameof(userData));
+                throw new JsonException("Property is required for class ConversionEventsDataItems: user_data.");
 
             if (actionSource.IsSet && actionSource.Value == null)
-                throw new ArgumentNullException(nameof(actionSource), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: action_source.");
 
             if (eventId.IsSet && eventId.Value == null)
-                throw new ArgumentNullException(nameof(eventId), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: event_id.");
 
             if (eventName.IsSet && eventName.Value == null)
-                throw new ArgumentNullException(nameof(eventName), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: event_name.");
 
             if (eventTime.IsSet && eventTime.Value == null)
-                throw new ArgumentNullException(nameof(eventTime), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: event_time.");
 
             if (userData.IsSet && userData.Value == null)
-                throw new ArgumentNullException(nameof(userData), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: user_data.");
 
             if (appInfo.IsSet && appInfo.Value == null)
-                throw new ArgumentNullException(nameof(appInfo), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: app_info.");
 
             if (customData.IsSet && customData.Value == null)
-                throw new ArgumentNullException(nameof(customData), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: custom_data.");
 
             if (deviceInfo.IsSet && deviceInfo.Value == null)
-                throw new ArgumentNullException(nameof(deviceInfo), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: device_info.");
 
             if (optOut.IsSet && optOut.Value == null)
-                throw new ArgumentNullException(nameof(optOut), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: opt_out.");
 
             if (wifi.IsSet && wifi.Value == null)
-                throw new ArgumentNullException(nameof(wifi), "Property is not nullable for class ConversionEventsDataItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItems: wifi.");
 
             return new ConversionEventsDataItems(actionSource.Value!, eventId.Value!, eventName.Value!, eventTime.Value!.Value!, userData.Value!, appId, appInfo, appName, appVersion, customData, deviceBrand, deviceCarrier, deviceInfo, deviceModel, deviceType, eventSourceUrl, language, optOut, osVersion, partnerName, wifi);
         }
@@ -576,7 +576,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventsDataItems conversionEventsDataItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -591,29 +590,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventsDataItems conversionEventsDataItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionEventsDataItems.ActionSource == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.ActionSource), "Property is required for class ConversionEventsDataItems.");
-
-            if (conversionEventsDataItems.EventId == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.EventId), "Property is required for class ConversionEventsDataItems.");
-
-            if (conversionEventsDataItems.EventName == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.EventName), "Property is required for class ConversionEventsDataItems.");
-
-            if (conversionEventsDataItems.UserData == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.UserData), "Property is required for class ConversionEventsDataItems.");
-
             if (conversionEventsDataItems.AppInfoOption.IsSet && conversionEventsDataItems.AppInfo == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.AppInfo), "Property is required for class ConversionEventsDataItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItems.AppInfo to non-nullable JSON property 'app_info'.");
 
             if (conversionEventsDataItems.CustomDataOption.IsSet && conversionEventsDataItems.CustomData == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.CustomData), "Property is required for class ConversionEventsDataItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItems.CustomData to non-nullable JSON property 'custom_data'.");
 
             if (conversionEventsDataItems.DeviceInfoOption.IsSet && conversionEventsDataItems.DeviceInfo == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItems.DeviceInfo), "Property is required for class ConversionEventsDataItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItems.DeviceInfo to non-nullable JSON property 'device_info'.");
+
+            if (conversionEventsDataItems.OptOutOption.IsSet && conversionEventsDataItems.OptOut == null)
+                throw new JsonException("Cannot write null property ConversionEventsDataItems.OptOut to non-nullable JSON property 'opt_out'.");
+
+            if (conversionEventsDataItems.WifiOption.IsSet && conversionEventsDataItems.Wifi == null)
+                throw new JsonException("Cannot write null property ConversionEventsDataItems.Wifi to non-nullable JSON property 'wifi'.");
 
             writer.WriteString("action_source", conversionEventsDataItems.ActionSource);
 

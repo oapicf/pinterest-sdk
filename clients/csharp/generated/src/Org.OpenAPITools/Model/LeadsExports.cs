@@ -152,7 +152,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (leadsExportId.IsSet && leadsExportId.Value == null)
-                throw new ArgumentNullException(nameof(leadsExportId), "Property is not nullable for class LeadsExports.");
+                throw new JsonException("Property is not nullable for class LeadsExports: leads_export_id.");
 
             return new LeadsExports(leadsExportId);
         }
@@ -163,7 +163,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExports"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadsExports leadsExports, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -178,11 +177,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExports"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadsExports leadsExports, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadsExports.LeadsExportIdOption.IsSet && leadsExports.LeadsExportId == null)
-                throw new ArgumentNullException(nameof(leadsExports.LeadsExportId), "Property is required for class LeadsExports.");
+                throw new JsonException("Cannot write null property LeadsExports.LeadsExportId to non-nullable JSON property 'leads_export_id'.");
 
             if (leadsExports.LeadsExportIdOption.IsSet)
                 writer.WriteString("leads_export_id", leadsExports.LeadsExportId);

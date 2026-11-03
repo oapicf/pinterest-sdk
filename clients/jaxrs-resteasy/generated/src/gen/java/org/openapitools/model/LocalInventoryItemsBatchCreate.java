@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsBatchCreate   {
   
   private List<@Valid LocalInventoryOperation> operations = new ArrayList<>();
@@ -26,8 +26,7 @@ public class LocalInventoryItemsBatchCreate   {
   @ApiModelProperty(required = true, value = "Array of inventory operations. Up to 1000 items per request.")
   @JsonProperty("operations")
   @NotNull
- @Size(min=1,max=1000)  @Valid
-  public List<@Valid LocalInventoryOperation> getOperations() {
+ @Size(min=1,max=1000)  public List<@Valid LocalInventoryOperation> getOperations() {
     return operations;
   }
   public void setOperations(List<@Valid LocalInventoryOperation> operations) {

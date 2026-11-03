@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* HTTP request method.
-* Values: GET,HEAD,POST,PUT,DELETE,CONNECT,OPTIONS,TRACE,PATCH
-*/
+ * HTTP request method.
+ * Values: GET,HEAD,POST,PUT,DELETE,CONNECT,OPTIONS,TRACE,PATCH
+ */
 enum class HttpMethod(@get:JsonValue val value: kotlin.String) {
 
     GET("GET"),
@@ -35,9 +35,8 @@ enum class HttpMethod(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): HttpMethod {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'HttpMethod'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'HttpMethod'")
         }
     }
 }
-

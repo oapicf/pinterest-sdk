@@ -64,7 +64,7 @@ public class BusinessAccessInviteApiHandler {
         CreateAssetAccessRequestBody createAssetAccessRequestBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CreateAssetAccessRequestBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter createAssetAccessRequestBody is {}", createAssetAccessRequestBody);
+        logger.debug("Parameter createAssetAccessRequestBody is (body omitted)");
 
         api.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody)
             .onSuccess(apiResponse -> {
@@ -89,7 +89,7 @@ public class BusinessAccessInviteApiHandler {
         CancelInvitesRequest cancelInvitesRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CancelInvitesRequest>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter cancelInvitesRequest is {}", cancelInvitesRequest);
+        logger.debug("Parameter cancelInvitesRequest is (body omitted)");
 
         api.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
             .onSuccess(apiResponse -> {
@@ -114,7 +114,7 @@ public class BusinessAccessInviteApiHandler {
         CreateAssetInvitesRequest createAssetInvitesRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CreateAssetInvitesRequest>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter createAssetInvitesRequest is {}", createAssetInvitesRequest);
+        logger.debug("Parameter createAssetInvitesRequest is (body omitted)");
 
         api.createAssetInvites(businessId, createAssetInvitesRequest)
             .onSuccess(apiResponse -> {
@@ -139,7 +139,7 @@ public class BusinessAccessInviteApiHandler {
         CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CreateMembershipOrPartnershipInvitesBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter createMembershipOrPartnershipInvitesBody is {}", createMembershipOrPartnershipInvitesBody);
+        logger.debug("Parameter createMembershipOrPartnershipInvitesBody is (body omitted)");
 
         api.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
             .onSuccess(apiResponse -> {
@@ -194,7 +194,7 @@ public class BusinessAccessInviteApiHandler {
         RequestParameter body = requestParameters.body();
         AuthRespondInvitesBody authRespondInvitesBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AuthRespondInvitesBody>(){}) : null;
 
-        logger.debug("Parameter authRespondInvitesBody is {}", authRespondInvitesBody);
+        logger.debug("Parameter authRespondInvitesBody is (body omitted)");
 
         api.respondBusinessAccessInvites(authRespondInvitesBody)
             .onSuccess(apiResponse -> {

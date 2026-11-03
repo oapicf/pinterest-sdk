@@ -18,7 +18,7 @@ import ItemCreateBatchRecord from './ItemCreateBatchRecord';
 /**
  * The CatalogsItemsCreateBatchRequest model module.
  * @module model/CatalogsItemsCreateBatchRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemsCreateBatchRequest {
     /**

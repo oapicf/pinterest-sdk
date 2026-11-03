@@ -34,6 +34,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -53,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Board
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Board {
   public static final String SERIALIZED_NAME_BOARD_PINS_MODIFIED_AT = "board_pins_modified_at";
   @SerializedName(SERIALIZED_NAME_BOARD_PINS_MODIFIED_AT)
@@ -113,7 +114,7 @@ public class Board {
   public static final String SERIALIZED_NAME_PRIVACY = "privacy";
   @SerializedName(SERIALIZED_NAME_PRIVACY)
   @javax.annotation.Nullable
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public Board() {
   }

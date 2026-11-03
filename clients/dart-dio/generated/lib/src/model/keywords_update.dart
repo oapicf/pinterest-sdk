@@ -110,3 +110,4 @@ class _$KeywordsUpdateSerializer implements PrimitiveSerializer<KeywordsUpdate> 
   }
 }
 
+

@@ -20,7 +20,7 @@ class AdGroupAudienceSizingCreate {
     /* Array of keyword objects. If the keywords field is missing, all keywords will be targeted. */
     List<AdGroupAudienceSizingKeyword> keywords
     /* [Placement group](/docs/redoc/#section/Placement-group). */
-    AdgroupPlacementGroupType placementGroup
+    AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL
     /* Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored. */
     List<String> productGroupIds
     

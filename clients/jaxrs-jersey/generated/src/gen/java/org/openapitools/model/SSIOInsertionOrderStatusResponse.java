@@ -31,7 +31,7 @@ import javax.validation.Valid;
   SSIOInsertionOrderStatusResponse.JSON_PROPERTY_PIN_ORDER_ID,
   SSIOInsertionOrderStatusResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOInsertionOrderStatusResponse   {
   public static final String JSON_PROPERTY_CREATION_TIME = "creation_time";
   @JsonProperty(JSON_PROPERTY_CREATION_TIME)

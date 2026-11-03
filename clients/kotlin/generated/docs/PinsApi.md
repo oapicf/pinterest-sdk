@@ -48,13 +48,13 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **pinIds** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of Pin IDs. | |
 | **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **metricTypes** | [**kotlin.collections.List&lt;MultiPinsAnalyticsMetricTypesItem&gt;**](MultiPinsAnalyticsMetricTypesItem.md)| Pin metric types to get data for. | |
 | **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to AppTypes.ALL] [enum: ALL, MOBILE, TABLET, WEB] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -121,14 +121,14 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **pinId** | **kotlin.String**| Unique identifier of a Pin. | |
 | **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **metricTypes** | [**kotlin.collections.List&lt;QuerypinanalyticsmetrictypesItems&gt;**](QuerypinanalyticsmetrictypesItems.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;. | |
 | **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to AppTypes.ALL] [enum: ALL, MOBILE, TABLET, WEB] |
 | **splitField** | **kotlin.String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to SplitField.NO_SPLIT] [enum: NO_SPLIT, APP_TYPE] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -190,9 +190,9 @@ try {
 ```
 
 ### Parameters
-| **pinCreate** | [**PinCreate**](PinCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinCreate** | [**PinCreate**](PinCreate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -254,9 +254,9 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -319,10 +319,10 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**|  | |
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**|  | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 
 ### Return type
@@ -393,6 +393,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **pinFilter** | [**PinFilter**](.md)| The filter to apply to the pins | [optional] [enum: exclude_native, exclude_repins, has_been_promoted] |
 | **pinMetrics** | **kotlin.Boolean**| Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. | [optional] [default to false] |
 | **includeProtectedPins** | **kotlin.Boolean**| Whether to include protected pins in the results | [optional] [default to false] |
@@ -403,8 +405,6 @@ try {
 | **domains** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;). | [optional] |
 | **includeProductTagObj** | **kotlin.Boolean**| Include product tag objects in the response with their associated links. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -467,10 +467,10 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**| Unique identifier of a Pin. | |
-| **pinsSaveRequestCreate** | [**PinsSaveRequestCreate**](PinsSaveRequestCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**| Unique identifier of a Pin. | |
+| **pinsSaveRequestCreate** | [**PinsSaveRequestCreate**](PinsSaveRequestCreate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -525,10 +525,10 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**|  | |
-| **pinUpdate** | [**PinUpdate**](PinUpdate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**|  | |
+| **pinUpdate** | [**PinUpdate**](PinUpdate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type

@@ -16,24 +16,22 @@ public class CatalogsProductGroupFiltersAnyOf  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
  /**
    * Get anyOf
    * @return anyOf
   **/
   @JsonProperty("any_of")
   @NotNull
-  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsProductGroupFiltersAnyOf anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }

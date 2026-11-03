@@ -29,7 +29,7 @@ import SupplementalItemsBatchResponse from '../model/SupplementalItemsBatchRespo
 /**
 * CatalogSupplemental service.
 * @module api/CatalogSupplementalApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class CatalogSupplementalApi {
 

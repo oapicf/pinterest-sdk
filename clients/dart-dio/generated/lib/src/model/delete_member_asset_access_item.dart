@@ -122,3 +122,4 @@ class _$DeleteMemberAssetAccessItemSerializer implements PrimitiveSerializer<Del
   }
 }
 
+

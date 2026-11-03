@@ -413,37 +413,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!clientTimestamp.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLog.", nameof(clientTimestamp));
+                throw new JsonException("Property is required for class IntegrationLog: client_timestamp.");
 
             if (!eventType.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLog.", nameof(eventType));
+                throw new JsonException("Property is required for class IntegrationLog: event_type.");
 
             if (!logLevel.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLog.", nameof(logLevel));
+                throw new JsonException("Property is required for class IntegrationLog: log_level.");
 
             if (clientTimestamp.IsSet && clientTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(clientTimestamp), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: client_timestamp.");
 
             if (eventType.IsSet && eventType.Value == null)
-                throw new ArgumentNullException(nameof(eventType), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: event_type.");
 
             if (logLevel.IsSet && logLevel.Value == null)
-                throw new ArgumentNullException(nameof(logLevel), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: log_level.");
 
             if (appVersionNumber.IsSet && appVersionNumber.Value == null)
-                throw new ArgumentNullException(nameof(appVersionNumber), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: app_version_number.");
 
             if (error.IsSet && error.Value == null)
-                throw new ArgumentNullException(nameof(error), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: error.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: message.");
 
             if (platformVersionNumber.IsSet && platformVersionNumber.Value == null)
-                throw new ArgumentNullException(nameof(platformVersionNumber), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: platform_version_number.");
 
             if (request.IsSet && request.Value == null)
-                throw new ArgumentNullException(nameof(request), "Property is not nullable for class IntegrationLog.");
+                throw new JsonException("Property is not nullable for class IntegrationLog: request.");
 
             return new IntegrationLog(clientTimestamp.Value!.Value!, eventType.Value!.Value!, logLevel.Value!.Value!, advertiserId, appVersionNumber, error, externalBusinessId, feedProfileId, merchantId, message, platformVersionNumber, request, tagId);
         }
@@ -454,7 +454,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLog"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLog integrationLog, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -469,23 +468,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLog"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLog integrationLog, JsonSerializerOptions jsonSerializerOptions)
         {
             if (integrationLog.AppVersionNumberOption.IsSet && integrationLog.AppVersionNumber == null)
-                throw new ArgumentNullException(nameof(integrationLog.AppVersionNumber), "Property is required for class IntegrationLog.");
+                throw new JsonException("Cannot write null property IntegrationLog.AppVersionNumber to non-nullable JSON property 'app_version_number'.");
 
             if (integrationLog.ErrorOption.IsSet && integrationLog.Error == null)
-                throw new ArgumentNullException(nameof(integrationLog.Error), "Property is required for class IntegrationLog.");
+                throw new JsonException("Cannot write null property IntegrationLog.Error to non-nullable JSON property 'error'.");
 
             if (integrationLog.MessageOption.IsSet && integrationLog.Message == null)
-                throw new ArgumentNullException(nameof(integrationLog.Message), "Property is required for class IntegrationLog.");
+                throw new JsonException("Cannot write null property IntegrationLog.Message to non-nullable JSON property 'message'.");
 
             if (integrationLog.PlatformVersionNumberOption.IsSet && integrationLog.PlatformVersionNumber == null)
-                throw new ArgumentNullException(nameof(integrationLog.PlatformVersionNumber), "Property is required for class IntegrationLog.");
+                throw new JsonException("Cannot write null property IntegrationLog.PlatformVersionNumber to non-nullable JSON property 'platform_version_number'.");
 
             if (integrationLog.RequestOption.IsSet && integrationLog.Request == null)
-                throw new ArgumentNullException(nameof(integrationLog.Request), "Property is required for class IntegrationLog.");
+                throw new JsonException("Cannot write null property IntegrationLog.Request to non-nullable JSON property 'request'.");
 
             writer.WriteNumber("client_timestamp", integrationLog.ClientTimestamp);
 

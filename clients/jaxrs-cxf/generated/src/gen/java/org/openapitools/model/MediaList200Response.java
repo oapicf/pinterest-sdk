@@ -22,8 +22,6 @@ public class MediaList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Media> items = new ArrayList<>();
  /**
    * Get bookmark

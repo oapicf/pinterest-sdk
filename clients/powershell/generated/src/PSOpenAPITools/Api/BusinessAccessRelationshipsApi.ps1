@@ -66,7 +66,7 @@ function Invoke-BrandAccountsCreate {
         if (!$BusinessHierarchyId) {
             throw "Error! The required parameter `BusinessHierarchyId` missing when calling brandAccounts_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_hierarchy_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessHierarchyId))
+        $LocalVarUri = $LocalVarUri.replace('{business_hierarchy_id}', [System.Uri]::EscapeDataString([string]$BusinessHierarchyId))
 
         if (!$BrandAccountCreate) {
             throw "Error! The required parameter `BrandAccountCreate` missing when calling brandAccounts_create."
@@ -161,11 +161,11 @@ function Invoke-BrandAccountsUpdate {
         if (!$BrandAccountId) {
             throw "Error! The required parameter `BrandAccountId` missing when calling brandAccounts_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{brand_account_id}', [System.Web.HTTPUtility]::UrlEncode($BrandAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{brand_account_id}', [System.Uri]::EscapeDataString([string]$BrandAccountId))
         if (!$BusinessHierarchyId) {
             throw "Error! The required parameter `BusinessHierarchyId` missing when calling brandAccounts_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_hierarchy_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessHierarchyId))
+        $LocalVarUri = $LocalVarUri.replace('{business_hierarchy_id}', [System.Uri]::EscapeDataString([string]$BusinessHierarchyId))
 
         if (!$BrandAccountUpdate) {
             throw "Error! The required parameter `BrandAccountUpdate` missing when calling brandAccounts_update."
@@ -254,7 +254,7 @@ function Invoke-DeleteBusinessMembership {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling deleteBusinessMembership."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$DeleteBusinessMembershipBody) {
             throw "Error! The required parameter `DeleteBusinessMembershipBody` missing when calling deleteBusinessMembership."
@@ -343,7 +343,7 @@ function Invoke-DeleteBusinessPartners {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling deleteBusinessPartners."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$DeleteBusinessPartnersDelete) {
             throw "Error! The required parameter `DeleteBusinessPartnersDelete` missing when calling deleteBusinessPartners."
@@ -559,7 +559,7 @@ function Get-BusinessMembers {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling get_businessMembers."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if ($FetchSystemUsers) {
             $LocalVarQueryParameters['fetch_system_users'] = $FetchSystemUsers
@@ -703,7 +703,7 @@ function Get-BusinessPartners {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling get_businessPartners."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if ($AssetsSummary) {
             $LocalVarQueryParameters['assets_summary'] = $AssetsSummary
@@ -820,11 +820,11 @@ function Invoke-SystemUserUpdate {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling systemUser_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
         if (!$SystemUserId) {
             throw "Error! The required parameter `SystemUserId` missing when calling systemUser_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{system_user_id}', [System.Web.HTTPUtility]::UrlEncode($SystemUserId))
+        $LocalVarUri = $LocalVarUri.replace('{system_user_id}', [System.Uri]::EscapeDataString([string]$SystemUserId))
 
         if (!$SystemUserUpdateWithRequiredBody) {
             throw "Error! The required parameter `SystemUserUpdateWithRequiredBody` missing when calling systemUser_update."
@@ -913,7 +913,7 @@ function Update-BusinessMemberships {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling update_businessMemberships."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$BusinessMembershipMember) {
             throw "Error! The required parameter `BusinessMembershipMember` missing when calling update_businessMemberships."

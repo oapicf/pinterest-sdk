@@ -40,9 +40,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **advertiserDefinedEventsCreateRequest** | [**AdvertiserDefinedEventsCreateRequest**](AdvertiserDefinedEventsCreateRequest.md)|  | |
 
 ### Return type
@@ -104,9 +104,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **eventNames** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of event names to delete | |
 
 ### Return type
@@ -230,9 +230,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **advertiserDefinedEventsCreateRequest** | [**AdvertiserDefinedEventsCreateRequest**](AdvertiserDefinedEventsCreateRequest.md)|  | |
 
 ### Return type

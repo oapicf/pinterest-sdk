@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BookClosed {
     /**
      * Are conversion metrics ready?
-     * @type {boolean}
-     * @memberof BookClosed
      */
     conversionMetricsReady: boolean;
     /**
      * Are non-conversion metrics ready?
-     * @type {boolean}
-     * @memberof BookClosed
      */
     nonConversionMetricsReady: boolean;
 }

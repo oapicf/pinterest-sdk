@@ -18,7 +18,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedsCreateRequest   {
   @JsonProperty("credentials")
@@ -71,7 +71,7 @@ public class CatalogsFeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsFeedsCreateRequest credentials(CatalogsFeedCredentials credentials) {
     this.credentials = credentials;

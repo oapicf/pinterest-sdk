@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupFiltersRequest   {
   @JsonProperty("any_of")
@@ -23,16 +23,16 @@ public class CatalogsProductGroupFiltersRequest   {
 @Size(min=1)
 @Valid
 
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @JsonProperty("all_of")
   @NotNull
 @Size(min=1)
 @Valid
 
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsProductGroupFiltersRequest anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersRequest anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -49,15 +49,15 @@ public class CatalogsProductGroupFiltersRequest   {
    * Get anyOf
    * @return anyOf
   **/
-  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsProductGroupFiltersRequest allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersRequest allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -74,11 +74,11 @@ public class CatalogsProductGroupFiltersRequest   {
    * Get allOf
    * @return allOf
   **/
-  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

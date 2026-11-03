@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Overall status of event quality score.
-* Values: NEEDS_IMPROVEMENT,FAIR,GOOD
-*/
+ * Overall status of event quality score.
+ * Values: NEEDS_IMPROVEMENT,FAIR,GOOD
+ */
 enum class OverallStatusOptions(@get:JsonValue val value: kotlin.String) {
 
     NEEDS_IMPROVEMENT("NEEDS_IMPROVEMENT"),
@@ -29,9 +29,8 @@ enum class OverallStatusOptions(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OverallStatusOptions {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OverallStatusOptions'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OverallStatusOptions'")
         }
     }
 }
-

@@ -22,7 +22,6 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
@@ -31,6 +30,7 @@ from openapi_server.models.advanced_auction_items_get_request import AdvancedAuc
 from openapi_server.models.advanced_auction_items_submit_request import AdvancedAuctionItemsSubmitRequest
 from openapi_server.models.advanced_auction_processed_items import AdvancedAuctionProcessedItems
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -57,8 +57,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def advanced_auction_items_get_post(
-    advanced_auction_items_get_request: AdvancedAuctionItemsGetRequest = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    advanced_auction_items_get_request: AdvancedAuctionItemsGetRequest = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read", "catalogs:read"]
     ),
@@ -87,8 +87,8 @@ async def advanced_auction_items_get_post(
     response_model_by_alias=True,
 )
 async def advanced_auction_items_submit_post(
-    advanced_auction_items_submit_request: AdvancedAuctionItemsSubmitRequest = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    advanced_auction_items_submit_request: AdvancedAuctionItemsSubmitRequest = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write", "catalogs:read"]
     ),

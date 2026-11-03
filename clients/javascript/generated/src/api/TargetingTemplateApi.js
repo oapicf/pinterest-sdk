@@ -23,7 +23,7 @@ import TargetingTemplateUpdateRequestReadOrUpdate from '../model/TargetingTempla
 /**
 * TargetingTemplate service.
 * @module api/TargetingTemplateApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class TargetingTemplateApi {
 

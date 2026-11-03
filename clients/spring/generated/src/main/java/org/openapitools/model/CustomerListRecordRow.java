@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -21,31 +20,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CustomerListRecordRow", description = "A single row in a multi-field customer list (v2 format).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListRecordRow {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String email;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String externalId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String hashedPhoneNumber;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String hashedPinnerId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String ipAddress;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String liverampEnvelope;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String maid;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String userAgent;
 
   public CustomerListRecordRow email(@Nullable String email) {

@@ -23,7 +23,7 @@ data class UpdateMemberAssetAccessBody(
     @field:Valid
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "List of member asset accesses to assign or update.")
-    @param:JsonProperty("accesses")
+    @param:JsonProperty("accesses", required = true)
     @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<UpdateMemberAssetAccessItem>
 ) {
 

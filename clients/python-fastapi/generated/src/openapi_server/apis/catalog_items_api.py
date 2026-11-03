@@ -22,7 +22,6 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
@@ -31,6 +30,7 @@ from openapi_server.models.catalogs_items_batch_post_request import CatalogsItem
 from openapi_server.models.catalogs_items_request import CatalogsItemsRequest
 from openapi_server.models.items_post200_response import ItemsPost200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -56,8 +56,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def items_post(
-    catalogs_items_request: CatalogsItemsRequest = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    catalogs_items_request: CatalogsItemsRequest = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -84,8 +84,8 @@ async def items_post(
     response_model_by_alias=True,
 )
 async def items_batch_post(
-    catalogs_items_batch_post_request: CatalogsItemsBatchPostRequest = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    catalogs_items_batch_post_request: CatalogsItemsBatchPostRequest = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read", "catalogs:write"]
     ),
@@ -115,8 +115,8 @@ async def items_batch_post(
     response_model_by_alias=True,
 )
 async def items_batch_get(
-    batch_id: Annotated[str, Field(strict=True, description="Id of a catalogs items batch to fetch")] = Path(..., description="Id of a catalogs items batch to fetch", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    batch_id: Annotated[str, Field(description="Id of a catalogs items batch to fetch")] = Path(..., description="Id of a catalogs items batch to fetch", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),

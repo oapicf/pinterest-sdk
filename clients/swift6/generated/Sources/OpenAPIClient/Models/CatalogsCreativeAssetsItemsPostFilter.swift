@@ -12,7 +12,7 @@ public struct CatalogsCreativeAssetsItemsPostFilter: Sendable, Codable, Hashable
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let creativeAssetsIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     public var catalogId: String?

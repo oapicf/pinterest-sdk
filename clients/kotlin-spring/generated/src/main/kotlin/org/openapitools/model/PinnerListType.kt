@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Audience type
-* Values: CUSTOMER_LIST,VISITOR,ENGAGEMENT,LOOKALIKE,ACTALIKE,PERSONA
-*/
+ * Audience type
+ * Values: CUSTOMER_LIST,VISITOR,ENGAGEMENT,LOOKALIKE,ACTALIKE,PERSONA
+ */
 enum class PinnerListType(@get:JsonValue val value: kotlin.String) {
 
     CUSTOMER_LIST("CUSTOMER_LIST"),
@@ -32,9 +32,8 @@ enum class PinnerListType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PinnerListType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinnerListType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinnerListType'")
         }
     }
 }
-

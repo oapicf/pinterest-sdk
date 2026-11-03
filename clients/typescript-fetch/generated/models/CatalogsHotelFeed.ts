@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsFeedProcessingSchedule } from './CatalogsFeedProcessingSchedule';
 import {
     CatalogsFeedProcessingScheduleFromJSON,
@@ -57,80 +57,54 @@ import {
 export interface CatalogsHotelFeed {
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-     * @type {string}
-     * @memberof CatalogsHotelFeed
      */
     catalogId: string | null;
     /**
      * 
-     * @type {CatalogsHotelFeedCatalogTypeEnum}
-     * @memberof CatalogsHotelFeed
      */
     catalogType: CatalogsHotelFeedCatalogTypeEnum;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsHotelFeed
      */
     readonly createdAt: Date;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsHotelFeed
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsHotelFeed
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * The locale used within a feed for product descriptions.
-     * @type {string}
-     * @memberof CatalogsHotelFeed
      */
     defaultLocale: string;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsHotelFeed
      */
     format: CatalogsFormat;
     /**
      * ID of the feed entity.
-     * @type {string}
-     * @memberof CatalogsHotelFeed
      */
     readonly id: string;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsHotelFeed
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-     * @type {string}
-     * @memberof CatalogsHotelFeed
      */
     name: string | null;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsHotelFeed
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsHotelFeed
      */
     status: CatalogsStatus;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsHotelFeed
      */
     readonly updatedAt: Date;
 }
@@ -140,7 +114,7 @@ export interface CatalogsHotelFeed {
  * @export
  */
 export const CatalogsHotelFeedCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelFeedCatalogTypeEnum = typeof CatalogsHotelFeedCatalogTypeEnum[keyof typeof CatalogsHotelFeedCatalogTypeEnum];
 
@@ -176,7 +150,7 @@ export function CatalogsHotelFeedFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'catalogId': json['catalog_id'],
         'catalogType': json['catalog_type'],
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'credentials': json['credentials'] === undefined ? undefined : json['credentials'] === null ? null : CatalogsFeedCredentialsFromJSON(json['credentials']),
         'defaultCurrency': json['default_currency'] === undefined ? undefined : json['default_currency'] === null ? null : NullableCurrencyFromJSON(json['default_currency']),
         'defaultLocale': json['default_locale'],
@@ -186,7 +160,7 @@ export function CatalogsHotelFeedFromJSONTyped(json: any, ignoreDiscriminator: b
         'name': json['name'],
         'preferredProcessingSchedule': json['preferred_processing_schedule'] === undefined ? undefined : json['preferred_processing_schedule'] === null ? null : CatalogsFeedProcessingScheduleFromJSON(json['preferred_processing_schedule']),
         'status': CatalogsStatusFromJSON(json['status']),
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
     };
 }
 

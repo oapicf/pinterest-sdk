@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (trends.IsSet && trends.Value == null)
-                throw new ArgumentNullException(nameof(trends), "Property is not nullable for class TrendingKeywordsResponse.");
+                throw new JsonException("Property is not nullable for class TrendingKeywordsResponse: trends.");
 
             return new TrendingKeywordsResponse(trends);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingKeywordsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendingKeywordsResponse trendingKeywordsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingKeywordsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendingKeywordsResponse trendingKeywordsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (trendingKeywordsResponse.TrendsOption.IsSet && trendingKeywordsResponse.Trends == null)
-                throw new ArgumentNullException(nameof(trendingKeywordsResponse.Trends), "Property is required for class TrendingKeywordsResponse.");
+                throw new JsonException("Cannot write null property TrendingKeywordsResponse.Trends to non-nullable JSON property 'trends'.");
 
             if (trendingKeywordsResponse.TrendsOption.IsSet)
             {

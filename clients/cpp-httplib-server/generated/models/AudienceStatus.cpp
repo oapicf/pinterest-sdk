@@ -6,20 +6,3 @@
 */
 #include "AudienceStatus.h"
 
-namespace models {
-
-AudienceStatus::AudienceStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

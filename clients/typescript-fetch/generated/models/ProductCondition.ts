@@ -20,7 +20,7 @@
 export const ProductCondition = {
     New: 'NEW',
     Used: 'USED',
-    Refurbished: 'REFURBISHED'
+    Refurbished: 'REFURBISHED',
 } as const;
 export type ProductCondition = typeof ProductCondition[keyof typeof ProductCondition];
 

@@ -17,7 +17,7 @@ import NumericFilterOperatorType from './NumericFilterOperatorType';
 /**
  * The CatalogsProductGroupUint32Criteria model module.
  * @module model/CatalogsProductGroupUint32Criteria
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupUint32Criteria {
     /**

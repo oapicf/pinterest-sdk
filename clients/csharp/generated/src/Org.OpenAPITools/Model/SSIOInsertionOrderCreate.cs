@@ -489,118 +489,118 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!acceptedTermsId.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(acceptedTermsId));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: accepted_terms_id.");
 
             if (!billingContactEmail.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billingContactEmail));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billing_contact_email.");
 
             if (!billingContactFirstname.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billingContactFirstname));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billing_contact_firstname.");
 
             if (!billingContactLastname.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billingContactLastname));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billing_contact_lastname.");
 
             if (!billtoBillingAddressId.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billtoBillingAddressId));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billto_billing_address_id.");
 
             if (!billtoBusinessAddressId.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billtoBusinessAddressId));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billto_business_address_id.");
 
             if (!billtoCompanyId.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(billtoCompanyId));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: billto_company_id.");
 
             if (!currencyInfo.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(currencyInfo));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: currency_info.");
 
             if (!mediaContactEmail.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(mediaContactEmail));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: media_contact_email.");
 
             if (!mediaContactFirstname.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(mediaContactFirstname));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: media_contact_firstname.");
 
             if (!mediaContactLastname.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(mediaContactLastname));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: media_contact_lastname.");
 
             if (!orderLineType.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(orderLineType));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: order_line_type.");
 
             if (!orderName.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(orderName));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: order_name.");
 
             if (!pmpId.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(pmpId));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: pmp_id.");
 
             if (!poNumber.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(poNumber));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: po_number.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class SSIOInsertionOrderCreate.", nameof(startDate));
+                throw new JsonException("Property is required for class SSIOInsertionOrderCreate: start_date.");
 
             if (acceptedTermsId.IsSet && acceptedTermsId.Value == null)
-                throw new ArgumentNullException(nameof(acceptedTermsId), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: accepted_terms_id.");
 
             if (billingContactEmail.IsSet && billingContactEmail.Value == null)
-                throw new ArgumentNullException(nameof(billingContactEmail), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billing_contact_email.");
 
             if (billingContactFirstname.IsSet && billingContactFirstname.Value == null)
-                throw new ArgumentNullException(nameof(billingContactFirstname), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billing_contact_firstname.");
 
             if (billingContactLastname.IsSet && billingContactLastname.Value == null)
-                throw new ArgumentNullException(nameof(billingContactLastname), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billing_contact_lastname.");
 
             if (billtoBillingAddressId.IsSet && billtoBillingAddressId.Value == null)
-                throw new ArgumentNullException(nameof(billtoBillingAddressId), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billto_billing_address_id.");
 
             if (billtoBusinessAddressId.IsSet && billtoBusinessAddressId.Value == null)
-                throw new ArgumentNullException(nameof(billtoBusinessAddressId), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billto_business_address_id.");
 
             if (billtoCompanyId.IsSet && billtoCompanyId.Value == null)
-                throw new ArgumentNullException(nameof(billtoCompanyId), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: billto_company_id.");
 
             if (currencyInfo.IsSet && currencyInfo.Value == null)
-                throw new ArgumentNullException(nameof(currencyInfo), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: currency_info.");
 
             if (mediaContactEmail.IsSet && mediaContactEmail.Value == null)
-                throw new ArgumentNullException(nameof(mediaContactEmail), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: media_contact_email.");
 
             if (mediaContactFirstname.IsSet && mediaContactFirstname.Value == null)
-                throw new ArgumentNullException(nameof(mediaContactFirstname), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: media_contact_firstname.");
 
             if (mediaContactLastname.IsSet && mediaContactLastname.Value == null)
-                throw new ArgumentNullException(nameof(mediaContactLastname), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: media_contact_lastname.");
 
             if (orderLineType.IsSet && orderLineType.Value == null)
-                throw new ArgumentNullException(nameof(orderLineType), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: order_line_type.");
 
             if (orderName.IsSet && orderName.Value == null)
-                throw new ArgumentNullException(nameof(orderName), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: order_name.");
 
             if (pmpId.IsSet && pmpId.Value == null)
-                throw new ArgumentNullException(nameof(pmpId), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: pmp_id.");
 
             if (poNumber.IsSet && poNumber.Value == null)
-                throw new ArgumentNullException(nameof(poNumber), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: po_number.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: start_date.");
 
             if (acceptedTermsTime.IsSet && acceptedTermsTime.Value == null)
-                throw new ArgumentNullException(nameof(acceptedTermsTime), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: accepted_terms_time.");
 
             if (agencyLink.IsSet && agencyLink.Value == null)
-                throw new ArgumentNullException(nameof(agencyLink), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: agency_link.");
 
             if (budgetAmount.IsSet && budgetAmount.Value == null)
-                throw new ArgumentNullException(nameof(budgetAmount), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: budget_amount.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: end_date.");
 
             if (estimatedMonthlySpend.IsSet && estimatedMonthlySpend.Value == null)
-                throw new ArgumentNullException(nameof(estimatedMonthlySpend), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: estimated_monthly_spend.");
 
             if (userEmail.IsSet && userEmail.Value == null)
-                throw new ArgumentNullException(nameof(userEmail), "Property is not nullable for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderCreate: user_email.");
 
             return new SSIOInsertionOrderCreate(acceptedTermsId.Value!, billingContactEmail.Value!, billingContactFirstname.Value!, billingContactLastname.Value!, billtoBillingAddressId.Value!, billtoBusinessAddressId.Value!, billtoCompanyId.Value!, currencyInfo.Value!.Value!, mediaContactEmail.Value!, mediaContactFirstname.Value!, mediaContactLastname.Value!, orderLineType.Value!.Value!, orderName.Value!, pmpId.Value!, poNumber.Value!, startDate.Value!, acceptedTermsTime, agencyLink, budgetAmount, endDate, estimatedMonthlySpend, userEmail);
         }
@@ -611,7 +611,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrderCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOInsertionOrderCreate sSIOInsertionOrderCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -626,59 +625,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrderCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOInsertionOrderCreate sSIOInsertionOrderCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (sSIOInsertionOrderCreate.AcceptedTermsId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.AcceptedTermsId), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BillingContactEmail == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BillingContactEmail), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BillingContactFirstname == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BillingContactFirstname), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BillingContactLastname == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BillingContactLastname), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BilltoBillingAddressId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BilltoBillingAddressId), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BilltoBusinessAddressId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BilltoBusinessAddressId), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.BilltoCompanyId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.BilltoCompanyId), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.MediaContactEmail == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.MediaContactEmail), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.MediaContactFirstname == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.MediaContactFirstname), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.MediaContactLastname == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.MediaContactLastname), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.OrderName == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.OrderName), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.PmpId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.PmpId), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.PoNumber == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.PoNumber), "Property is required for class SSIOInsertionOrderCreate.");
-
-            if (sSIOInsertionOrderCreate.StartDate == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.StartDate), "Property is required for class SSIOInsertionOrderCreate.");
+            if (sSIOInsertionOrderCreate.AcceptedTermsTimeOption.IsSet && sSIOInsertionOrderCreate.AcceptedTermsTime == null)
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.AcceptedTermsTime to non-nullable JSON property 'accepted_terms_time'.");
 
             if (sSIOInsertionOrderCreate.AgencyLinkOption.IsSet && sSIOInsertionOrderCreate.AgencyLink == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.AgencyLink), "Property is required for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.AgencyLink to non-nullable JSON property 'agency_link'.");
+
+            if (sSIOInsertionOrderCreate.BudgetAmountOption.IsSet && sSIOInsertionOrderCreate.BudgetAmount == null)
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.BudgetAmount to non-nullable JSON property 'budget_amount'.");
 
             if (sSIOInsertionOrderCreate.EndDateOption.IsSet && sSIOInsertionOrderCreate.EndDate == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.EndDate), "Property is required for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.EndDate to non-nullable JSON property 'end_date'.");
+
+            if (sSIOInsertionOrderCreate.EstimatedMonthlySpendOption.IsSet && sSIOInsertionOrderCreate.EstimatedMonthlySpend == null)
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.EstimatedMonthlySpend to non-nullable JSON property 'estimated_monthly_spend'.");
 
             if (sSIOInsertionOrderCreate.UserEmailOption.IsSet && sSIOInsertionOrderCreate.UserEmail == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderCreate.UserEmail), "Property is required for class SSIOInsertionOrderCreate.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrderCreate.UserEmail to non-nullable JSON property 'user_email'.");
 
             writer.WriteString("accepted_terms_id", sSIOInsertionOrderCreate.AcceptedTermsId);
 

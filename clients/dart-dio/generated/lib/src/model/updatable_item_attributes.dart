@@ -1289,6 +1289,7 @@ class _$UpdatableItemAttributesSerializer implements PrimitiveSerializer<Updatab
   }
 }
 
+
 /// a concrete implementation of [UpdatableItemAttributes], since [UpdatableItemAttributes] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $UpdatableItemAttributes implements UpdatableItemAttributes, Built<$UpdatableItemAttributes, $UpdatableItemAttributesBuilder> {

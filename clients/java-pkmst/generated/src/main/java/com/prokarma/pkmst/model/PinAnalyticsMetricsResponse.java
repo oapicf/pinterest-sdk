@@ -21,7 +21,7 @@ import java.util.Map;
  * PinAnalyticsMetricsResponse
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinAnalyticsMetricsResponse   {
   @JsonProperty("daily_metrics")
   
@@ -68,7 +68,7 @@ public class PinAnalyticsMetricsResponse   {
 
   public PinAnalyticsMetricsResponse putLifetimeMetricsItem(String key, Integer lifetimeMetricsItem) {
     if (this.lifetimeMetrics == null) {
-      this.lifetimeMetrics = new HashMap<>());
+      this.lifetimeMetrics = new HashMap<>();
     }
     this.lifetimeMetrics.put(key, lifetimeMetricsItem);
     return this;
@@ -94,7 +94,7 @@ public class PinAnalyticsMetricsResponse   {
 
   public PinAnalyticsMetricsResponse putSummaryMetricsItem(String key, BigDecimal summaryMetricsItem) {
     if (this.summaryMetrics == null) {
-      this.summaryMetrics = new HashMap<>());
+      this.summaryMetrics = new HashMap<>();
     }
     this.summaryMetrics.put(key, summaryMetricsItem);
     return this;

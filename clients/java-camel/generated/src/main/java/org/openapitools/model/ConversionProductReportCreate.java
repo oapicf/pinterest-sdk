@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,28 +31,24 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionProductReportCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate {
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
 
-  @Valid
   private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
-  @Valid
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
 
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   private String endDate;
 
@@ -61,14 +56,13 @@ public class ConversionProductReportCreate {
 
   private ConversionProductReportLevel level;
 
-  @Valid
   private List<@Pattern(regexp = "^[a-zA-Z0-9]+$")String> productSkuIds = new ArrayList<>();
 
   private String reportName;
 
   private String startDate;
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate() {
     super();
@@ -159,7 +153,7 @@ public class ConversionProductReportCreate {
    * List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].
    * @return campaignObjectiveTypes
    */
-  @Valid @Size(min = 1, max = 7) 
+  @Size(min = 1, max = 7) 
   @Schema(name = "campaign_objective_types", description = "List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_objective_types")
   public List<ConversionObjectiveType> getCampaignObjectiveTypes() {
@@ -207,7 +201,7 @@ public class ConversionProductReportCreate {
    * Metric and entity columns
    * @return columns
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("columns")
   public List<ConversionProductReportingColumn> getColumns() {

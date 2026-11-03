@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Filter operator for sync reporting
-* Values: LESS_THAN,GREATER_THAN
-*/
+ * Filter operator for sync reporting
+ * Values: LESS_THAN,GREATER_THAN
+ */
 enum class AdsAnalyticsFilterOperator(@get:JsonValue val value: kotlin.String) {
 
     LESS_THAN("LESS_THAN"),
@@ -28,9 +28,8 @@ enum class AdsAnalyticsFilterOperator(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdsAnalyticsFilterOperator {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsFilterOperator'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsFilterOperator'")
         }
     }
 }
-

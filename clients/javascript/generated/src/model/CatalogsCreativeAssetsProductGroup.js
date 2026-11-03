@@ -17,7 +17,7 @@ import CatalogsCreativeAssetsProductGroupFilters from './CatalogsCreativeAssetsP
 /**
  * The CatalogsCreativeAssetsProductGroup model module.
  * @module model/CatalogsCreativeAssetsProductGroup
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsProductGroup {
     /**

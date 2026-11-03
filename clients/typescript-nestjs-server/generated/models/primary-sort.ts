@@ -5,7 +5,7 @@
  */
 export const PrimarySort = {
     ById: 'BY_ID',
-    ByDate: 'BY_DATE'
+    ByDate: 'BY_DATE',
 } as const;
 export type PrimarySort = typeof PrimarySort[keyof typeof PrimarySort];
 

@@ -9,33 +9,25 @@ import 'package:built_value/serializer.dart';
 
 part 'form_factor.g.dart';
 
+/// Device form factor
 class FormFactor extends EnumClass {
 
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'desktop')
   static const FormFactor desktop = _$desktop;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'laptop')
   static const FormFactor laptop = _$laptop;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'cellphone')
   static const FormFactor cellphone = _$cellphone;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'tablet')
   static const FormFactor tablet = _$tablet;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'smartwatch')
   static const FormFactor smartwatch = _$smartwatch;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'tv')
   static const FormFactor tv = _$tv;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'vr')
   static const FormFactor vr = _$vr;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'console')
   static const FormFactor console = _$console;
-  /// Device form factor
   @BuiltValueEnumConst(wireName: r'other')
   static const FormFactor other = _$other;
 

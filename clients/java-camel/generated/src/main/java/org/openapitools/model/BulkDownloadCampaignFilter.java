@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,17 +23,15 @@ import jakarta.annotation.Generated;
  * BulkDownloadCampaignFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkDownloadCampaignFilter {
 
-  @Valid
   private List<SummaryStatus> campaignStatus = new ArrayList<>();
 
   private String endTime;
 
   private String name;
 
-  @Valid
   private List<ConversionObjectiveType> objectiveType = new ArrayList<>();
 
   private String startTime;
@@ -56,7 +53,7 @@ public class BulkDownloadCampaignFilter {
    * Get campaignStatus
    * @return campaignStatus
    */
-  @Valid 
+  
   @Schema(name = "campaign_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_status")
   public List<SummaryStatus> getCampaignStatus() {
@@ -124,7 +121,7 @@ public class BulkDownloadCampaignFilter {
    * Get objectiveType
    * @return objectiveType
    */
-  @Valid 
+  
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
   public List<ConversionObjectiveType> getObjectiveType() {

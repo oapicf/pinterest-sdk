@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationLocationExclude {
     /**
      * 
-     * @type {TargetingSpecOperationLocationExcludeFieldEnum}
-     * @memberof TargetingSpecOperationLocationExclude
      */
     field: TargetingSpecOperationLocationExcludeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationLocationExclude
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationLocationExclude
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationLocationExclude {
  * @export
  */
 export const TargetingSpecOperationLocationExcludeFieldEnum = {
-    LocationExclude: 'LOCATION_EXCLUDE'
+    LocationExclude: 'LOCATION_EXCLUDE',
 } as const;
 export type TargetingSpecOperationLocationExcludeFieldEnum = typeof TargetingSpecOperationLocationExcludeFieldEnum[keyof typeof TargetingSpecOperationLocationExcludeFieldEnum];
 

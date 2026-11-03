@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AudienceUpdateOperationType
 import org.openapitools.model.TargetingSpecOptimal
 import javax.validation.constraints.DecimalMax
@@ -30,18 +27,16 @@ data class TargetingTemplateUpdateRequestReadOrUpdate(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "643", required = true, description = "Targeting template ID")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation_type")
+    @param:JsonProperty("operation_type", required = true)
     @get:JsonProperty("operation_type", required = true) val operationType: AudienceUpdateOperationType,
 
     @field:Valid
     @Schema(description = "targeting profile attributes")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("targeting_attributes")
     @get:JsonProperty("targeting_attributes") val targetingAttributes: TargetingSpecOptimal? = null
 ) {

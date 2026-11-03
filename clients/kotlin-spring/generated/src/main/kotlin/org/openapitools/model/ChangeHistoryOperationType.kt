@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: CREATE,UPDATE,DELETE
-*/
+ * 
+ * Values: CREATE,UPDATE,DELETE
+ */
 enum class ChangeHistoryOperationType(@get:JsonValue val value: kotlin.String) {
 
     CREATE("CREATE"),
@@ -29,9 +29,8 @@ enum class ChangeHistoryOperationType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ChangeHistoryOperationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ChangeHistoryOperationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ChangeHistoryOperationType'")
         }
     }
 }
-

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ConversionLearningModeType
-{
-public:
-
-    ConversionLearningModeType();
-    virtual ~ConversionLearningModeType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionLearningModeType,
-        )
-
-private:
+enum class ConversionLearningModeType {
+    
+    NOT_ACTIVE,
+    
+    ACTIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionLearningModeType& value)
+{
+    switch (value)
+    {
+        
+        case ConversionLearningModeType::NOT_ACTIVE: j = "NOT_ACTIVE"; break;
+        
+        case ConversionLearningModeType::ACTIVE: j = "ACTIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionLearningModeType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionLearningModeType& value)
+{
+    
+    if (j == "NOT_ACTIVE")
+    {
+        value = ConversionLearningModeType::NOT_ACTIVE;
+        return;
+    }
+    
+    if (j == "ACTIVE")
+    {
+        value = ConversionLearningModeType::ACTIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionLearningModeType", &j);
+}
 
 } // namespace models
 

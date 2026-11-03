@@ -146,6 +146,7 @@ class _$CatalogsVerticalsListProductsByCatalogBasedFilterRequestSerializer imple
   }
 }
 
+
 class CatalogsVerticalsListProductsByCatalogBasedFilterRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

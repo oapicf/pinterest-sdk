@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AdPreviewSourceImage {
     /**
      * Image URL.
-     * @type {string}
-     * @memberof AdPreviewSourceImage
      */
     imageUrl: string;
     /**
      * Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
-     * @type {string}
-     * @memberof AdPreviewSourceImage
      */
     promotionId?: string;
     /**
      * Title displayed below ad.
-     * @type {string}
-     * @memberof AdPreviewSourceImage
      */
     title: string;
 }

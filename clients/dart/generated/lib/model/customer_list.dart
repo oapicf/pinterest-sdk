@@ -234,17 +234,27 @@ class CustomerList {
 
       return CustomerList(
         adAccountId: mapValueOfType<String>(json, r'ad_account_id'),
-        createdTime: num.parse('${json[r'created_time']}'),
+        createdTime: json[r'created_time'] == null
+            ? null
+            : num.parse('${json[r'created_time']}'),
         exceptions: mapValueOfType<Object>(json, r'exceptions'),
         id: mapValueOfType<String>(json, r'id')!,
         isNca: mapValueOfType<bool>(json, r'is_nca'),
         name: mapValueOfType<String>(json, r'name')!,
-        numBatches: num.parse('${json[r'num_batches']}'),
-        numRemovedUserRecords: num.parse('${json[r'num_removed_user_records']}'),
-        numUploadedUserRecords: num.parse('${json[r'num_uploaded_user_records']}'),
+        numBatches: json[r'num_batches'] == null
+            ? null
+            : num.parse('${json[r'num_batches']}'),
+        numRemovedUserRecords: json[r'num_removed_user_records'] == null
+            ? null
+            : num.parse('${json[r'num_removed_user_records']}'),
+        numUploadedUserRecords: json[r'num_uploaded_user_records'] == null
+            ? null
+            : num.parse('${json[r'num_uploaded_user_records']}'),
         status: CustomerListStatus.fromJson(json[r'status']),
         type: mapValueOfType<String>(json, r'type'),
-        updatedTime: num.parse('${json[r'updated_time']}'),
+        updatedTime: json[r'updated_time'] == null
+            ? null
+            : num.parse('${json[r'updated_time']}'),
       );
     }
     return null;

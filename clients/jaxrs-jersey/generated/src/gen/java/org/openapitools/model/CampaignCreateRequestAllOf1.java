@@ -42,7 +42,7 @@ import javax.validation.Valid;
   CampaignCreateRequestAllOf1.JSON_PROPERTY_OBJECTIVE_TYPE,
   CampaignCreateRequestAllOf1.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1   {
   public static final String JSON_PROPERTY_BID_OPTIONS = "bid_options";
   @JsonProperty(JSON_PROPERTY_BID_OPTIONS)
@@ -54,15 +54,15 @@ public class CampaignCreateRequestAllOf1   {
 
   public static final String JSON_PROPERTY_IS_AUTOMATED_CAMPAIGN = "is_automated_campaign";
   @JsonProperty(JSON_PROPERTY_IS_AUTOMATED_CAMPAIGN)
-  private Boolean isAutomatedCampaign;
+  private Boolean isAutomatedCampaign = false;
 
   public static final String JSON_PROPERTY_IS_CAMPAIGN_BUDGET_OPTIMIZATION = "is_campaign_budget_optimization";
   @JsonProperty(JSON_PROPERTY_IS_CAMPAIGN_BUDGET_OPTIMIZATION)
-  private Boolean isCampaignBudgetOptimization;
+  private Boolean isCampaignBudgetOptimization = true;
 
   public static final String JSON_PROPERTY_IS_FLEXIBLE_DAILY_BUDGETS = "is_flexible_daily_budgets";
   @JsonProperty(JSON_PROPERTY_IS_FLEXIBLE_DAILY_BUDGETS)
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isFlexibleDailyBudgets = false;
 
   public static final String JSON_PROPERTY_IS_LTV_OPTIMIZED = "is_ltv_optimized";
   @JsonProperty(JSON_PROPERTY_IS_LTV_OPTIMIZED)
@@ -82,7 +82,7 @@ public class CampaignCreateRequestAllOf1   {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1 bidOptions(CampaignBidOptionsCreate bidOptions) {
     this.bidOptions = bidOptions;

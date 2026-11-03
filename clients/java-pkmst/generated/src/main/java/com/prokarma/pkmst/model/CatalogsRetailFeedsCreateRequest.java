@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Request object for creating a retail feed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;
@@ -90,7 +90,7 @@ public class CatalogsRetailFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @JsonProperty("status")
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsRetailFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'trends_gender_filter.g.dart';
 
+/// Gender category for trends demographic distribution.
 class TrendsGenderFilter extends EnumClass {
 
-  /// Gender category for trends demographic distribution.
   @BuiltValueEnumConst(wireName: r'male')
   static const TrendsGenderFilter male = _$male;
-  /// Gender category for trends demographic distribution.
   @BuiltValueEnumConst(wireName: r'female')
   static const TrendsGenderFilter female = _$female;
-  /// Gender category for trends demographic distribution.
   @BuiltValueEnumConst(wireName: r'unknown')
   static const TrendsGenderFilter unknown = _$unknown;
 

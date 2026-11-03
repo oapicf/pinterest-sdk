@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: exclude_native,exclude_repins,has_been_promoted
-*/
+ * 
+ * Values: exclude_native,exclude_repins,has_been_promoted
+ */
 enum class PinFilter(@get:JsonValue val value: kotlin.String) {
 
     exclude_native("exclude_native"),
@@ -29,9 +29,8 @@ enum class PinFilter(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PinFilter {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinFilter'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinFilter'")
         }
     }
 }
-

@@ -9,7 +9,7 @@ import Foundation
 
 public struct OrderLine: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Ad account ID. */
     public var adAccountId: String
     /** Order line budget in micro currency. */

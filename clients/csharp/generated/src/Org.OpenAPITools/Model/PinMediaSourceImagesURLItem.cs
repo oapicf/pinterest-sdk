@@ -193,19 +193,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!url.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesURLItem.", nameof(url));
+                throw new JsonException("Property is required for class PinMediaSourceImagesURLItem: url.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURLItem: url.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURLItem: description.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURLItem: link.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURLItem: title.");
 
             return new PinMediaSourceImagesURLItem(url.Value!, description, link, title);
         }
@@ -216,7 +216,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesURLItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImagesURLItem pinMediaSourceImagesURLItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -231,20 +230,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesURLItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImagesURLItem pinMediaSourceImagesURLItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImagesURLItem.Url == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesURLItem.Url), "Property is required for class PinMediaSourceImagesURLItem.");
-
             if (pinMediaSourceImagesURLItem.DescriptionOption.IsSet && pinMediaSourceImagesURLItem.Description == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesURLItem.Description), "Property is required for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesURLItem.Description to non-nullable JSON property 'description'.");
 
             if (pinMediaSourceImagesURLItem.LinkOption.IsSet && pinMediaSourceImagesURLItem.Link == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesURLItem.Link), "Property is required for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesURLItem.Link to non-nullable JSON property 'link'.");
 
             if (pinMediaSourceImagesURLItem.TitleOption.IsSet && pinMediaSourceImagesURLItem.Title == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesURLItem.Title), "Property is required for class PinMediaSourceImagesURLItem.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesURLItem.Title to non-nullable JSON property 'title'.");
 
             writer.WriteString("url", pinMediaSourceImagesURLItem.Url);
 

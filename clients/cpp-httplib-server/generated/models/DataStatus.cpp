@@ -6,20 +6,3 @@
 */
 #include "DataStatus.h"
 
-namespace models {
-
-DataStatus::DataStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

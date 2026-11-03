@@ -111,21 +111,11 @@ func (dst *CatalogsProductGroupProductCountsVertical) UnmarshalJSON(data []byte)
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsProductGroupProductCountsVertical)")
 	}
 }
 

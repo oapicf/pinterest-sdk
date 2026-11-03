@@ -32,11 +32,11 @@ export interface CatalogsCreativeAssetsItemResponse {
 }
 export namespace CatalogsCreativeAssetsItemResponse {
     export const CatalogTypeEnum = {
-        CreativeAssets: 'CREATIVE_ASSETS'
+        CreativeAssets: 'CREATIVE_ASSETS',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
     export const ItemResponseKindEnum = {
-        CreativeAssetsItem: 'creative_assets_item'
+        CreativeAssetsItem: 'creative_assets_item',
     } as const;
     export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }

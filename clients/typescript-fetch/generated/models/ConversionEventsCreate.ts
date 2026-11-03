@@ -29,8 +29,6 @@ import {
 export interface ConversionEventsCreate {
     /**
      * A list of events (one or more) encapsulated by a data object.
-     * @type {Array<ConversionEventsDataItems>}
-     * @memberof ConversionEventsCreate
      */
     data: Array<ConversionEventsDataItems>;
 }

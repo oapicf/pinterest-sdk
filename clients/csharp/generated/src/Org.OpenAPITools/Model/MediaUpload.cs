@@ -202,22 +202,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaId.IsSet)
-                throw new ArgumentException("Property is required for class MediaUpload.", nameof(mediaId));
+                throw new JsonException("Property is required for class MediaUpload: media_id.");
 
             if (!mediaType.IsSet)
-                throw new ArgumentException("Property is required for class MediaUpload.", nameof(mediaType));
+                throw new JsonException("Property is required for class MediaUpload: media_type.");
 
             if (mediaId.IsSet && mediaId.Value == null)
-                throw new ArgumentNullException(nameof(mediaId), "Property is not nullable for class MediaUpload.");
+                throw new JsonException("Property is not nullable for class MediaUpload: media_id.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class MediaUpload.");
+                throw new JsonException("Property is not nullable for class MediaUpload: media_type.");
 
             if (uploadParameters.IsSet && uploadParameters.Value == null)
-                throw new ArgumentNullException(nameof(uploadParameters), "Property is not nullable for class MediaUpload.");
+                throw new JsonException("Property is not nullable for class MediaUpload: upload_parameters.");
 
             if (uploadUrl.IsSet && uploadUrl.Value == null)
-                throw new ArgumentNullException(nameof(uploadUrl), "Property is not nullable for class MediaUpload.");
+                throw new JsonException("Property is not nullable for class MediaUpload: upload_url.");
 
             return new MediaUpload(mediaId.Value!, mediaType.Value!.Value!, uploadParameters, uploadUrl);
         }
@@ -228,7 +228,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUpload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MediaUpload mediaUpload, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -243,17 +242,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUpload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MediaUpload mediaUpload, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (mediaUpload.MediaId == null)
-                throw new ArgumentNullException(nameof(mediaUpload.MediaId), "Property is required for class MediaUpload.");
-
             if (mediaUpload.UploadParametersOption.IsSet && mediaUpload.UploadParameters == null)
-                throw new ArgumentNullException(nameof(mediaUpload.UploadParameters), "Property is required for class MediaUpload.");
+                throw new JsonException("Cannot write null property MediaUpload.UploadParameters to non-nullable JSON property 'upload_parameters'.");
 
             if (mediaUpload.UploadUrlOption.IsSet && mediaUpload.UploadUrl == null)
-                throw new ArgumentNullException(nameof(mediaUpload.UploadUrl), "Property is required for class MediaUpload.");
+                throw new JsonException("Cannot write null property MediaUpload.UploadUrl to non-nullable JSON property 'upload_url'.");
 
             writer.WriteString("media_id", mediaUpload.MediaId);
 

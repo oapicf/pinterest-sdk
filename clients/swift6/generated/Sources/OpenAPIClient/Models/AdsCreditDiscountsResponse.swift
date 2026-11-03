@@ -9,7 +9,7 @@ import Foundation
 
 public struct AdsCreditDiscountsResponse: Sendable, Codable, Hashable {
 
-    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** True if the offer code is currently active. */
     public var active: Bool?
     /** Advertiser ID the offer was applied to. */

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* User list type
-* Values: EMAIL,IDFA,MAID,LR_ID,DLX_ID,HASHED_PINNER_ID
-*/
+ * User list type
+ * Values: EMAIL,IDFA,MAID,LR_ID,DLX_ID,HASHED_PINNER_ID
+ */
 enum class UserListType(@get:JsonValue val value: kotlin.String) {
 
     EMAIL("EMAIL"),
@@ -32,9 +32,8 @@ enum class UserListType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): UserListType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserListType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserListType'")
         }
     }
 }
-

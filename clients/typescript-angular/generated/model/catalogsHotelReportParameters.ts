@@ -19,7 +19,7 @@ export interface CatalogsHotelReportParameters {
 }
 export namespace CatalogsHotelReportParameters {
     export const CatalogTypeEnum = {
-        Hotel: 'HOTEL'
+        Hotel: 'HOTEL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

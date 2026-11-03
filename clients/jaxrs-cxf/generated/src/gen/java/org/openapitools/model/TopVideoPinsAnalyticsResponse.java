@@ -26,8 +26,6 @@ public class TopVideoPinsAnalyticsResponse  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
   @ApiModelProperty(value = "")

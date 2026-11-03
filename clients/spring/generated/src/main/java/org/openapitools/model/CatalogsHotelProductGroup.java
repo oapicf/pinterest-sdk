@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,7 +28,7 @@ import jakarta.annotation.Generated;
  * CatalogsHotelProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   private String catalogId;
@@ -69,22 +68,18 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdAt;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private CatalogsHotelProductGroupFilters filters;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
   private CatalogsHotelProductGroupType type;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedAt;
 
   public CatalogsHotelProductGroup() {
@@ -175,7 +170,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
    * @return description
    */
   
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;

@@ -16,7 +16,7 @@ export interface CatalogsRetailReportAllItemsFilter {
 }
 export namespace CatalogsRetailReportAllItemsFilter {
   export const ReportTypeEnum = {
-    AllItems: 'ALL_ITEMS'
+    AllItems: 'ALL_ITEMS',
   } as const;
   export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }

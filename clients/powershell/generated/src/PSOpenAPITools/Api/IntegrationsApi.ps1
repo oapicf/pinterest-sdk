@@ -57,7 +57,7 @@ function ConvertTo-tegrationsCommerceDel {
         if (!$ExternalBusinessId) {
             throw "Error! The required parameter `ExternalBusinessId` missing when calling integrationsCommerce_del."
         }
-        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Web.HTTPUtility]::UrlEncode($ExternalBusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Uri]::EscapeDataString([string]$ExternalBusinessId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'DELETE' `
@@ -131,7 +131,7 @@ function ConvertTo-tegrationsCommerceGet {
         if (!$ExternalBusinessId) {
             throw "Error! The required parameter `ExternalBusinessId` missing when calling integrationsCommerce_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Web.HTTPUtility]::UrlEncode($ExternalBusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Uri]::EscapeDataString([string]$ExternalBusinessId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -214,7 +214,7 @@ function ConvertTo-tegrationsCommercePatch {
         if (!$ExternalBusinessId) {
             throw "Error! The required parameter `ExternalBusinessId` missing when calling integrationsCommerce_patch."
         }
-        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Web.HTTPUtility]::UrlEncode($ExternalBusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{external_business_id}', [System.Uri]::EscapeDataString([string]$ExternalBusinessId))
 
         if (!$IntegrationMetadataUpdate) {
             throw "Error! The required parameter `IntegrationMetadataUpdate` missing when calling integrationsCommerce_patch."
@@ -452,7 +452,7 @@ function ConvertTo-tegrationsGetById {
         if (!$Id) {
             throw "Error! The required parameter `Id` missing when calling integrations_getById."
         }
-        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Web.HTTPUtility]::UrlEncode($Id))
+        $LocalVarUri = $LocalVarUri.replace('{id}', [System.Uri]::EscapeDataString([string]$Id))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `

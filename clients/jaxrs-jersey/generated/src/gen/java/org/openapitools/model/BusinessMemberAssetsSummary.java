@@ -34,7 +34,7 @@ import javax.validation.Valid;
   BusinessMemberAssetsSummary.JSON_PROPERTY_AD_ACCOUNTS,
   BusinessMemberAssetsSummary.JSON_PROPERTY_PROFILES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMemberAssetsSummary   {
   public static final String JSON_PROPERTY_AD_ACCOUNTS = "ad_accounts";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNTS)
@@ -63,7 +63,7 @@ public class BusinessMemberAssetsSummary   {
    **/
   @JsonProperty(value = "ad_accounts")
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
-  @Valid 
+  
   public List<@Valid AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
@@ -91,7 +91,7 @@ public class BusinessMemberAssetsSummary   {
    **/
   @JsonProperty(value = "profiles")
   @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
-  @Valid 
+  
   public List<@Valid AssetIdWithPermissions> getProfiles() {
     return profiles;
   }

@@ -19,7 +19,7 @@
  */
 export const BulkOutputFormat = {
     Csv: 'CSV',
-    Json: 'JSON'
+    Json: 'JSON',
 } as const;
 export type BulkOutputFormat = typeof BulkOutputFormat[keyof typeof BulkOutputFormat];
 

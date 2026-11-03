@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **oauthConversionToken**
 ```swift
-    open class func oauthConversionToken(completion: @escaping (_ data: ConversionAccessToken?, _ error: Error?) -> Void)
+    open class func oauthConversionToken(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionAccessToken
 ```
 
 Generate OAuth access token for conversion API
@@ -25,15 +25,11 @@ import OpenAPIClient
 
 
 // Generate OAuth access token for conversion API
-OauthAPI.oauthConversionToken() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await OauthAPI.oauthConversionToken()
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -57,7 +53,7 @@ This endpoint does not need any parameter.
 
 # **oauthToken**
 ```swift
-    open class func oauthToken(grantType: TokenGrantType, code: String? = nil, continuousRefresh: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, scope: String? = nil, completion: @escaping (_ data: OauthAccessToken?, _ error: Error?) -> Void)
+    open class func oauthToken(grantType: TokenGrantType, code: String? = nil, continuousRefresh: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, scope: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> OauthAccessToken
 ```
 
 Generate OAuth access token
@@ -77,15 +73,11 @@ let refreshToken = "refreshToken_example" // String |  (optional)
 let scope = "scope_example" // String |  (optional)
 
 // Generate OAuth access token
-OauthAPI.oauthToken(grantType: grantType, code: code, continuousRefresh: continuousRefresh, redirectUri: redirectUri, refreshToken: refreshToken, scope: scope) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await OauthAPI.oauthToken(grantType: grantType, code: code, continuousRefresh: continuousRefresh, redirectUri: redirectUri, refreshToken: refreshToken, scope: scope)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -117,7 +109,7 @@ Name | Type | Description  | Notes
 
 # **tokenRevoke**
 ```swift
-    open class func tokenRevoke(token: String, tokenTypeHint: TokenTypeHint? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func tokenRevoke(token: String, tokenTypeHint: TokenTypeHint? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Revoke a token
@@ -133,15 +125,10 @@ let token = "token_example" // String | The token to revoke.
 let tokenTypeHint = TokenTypeHint() // TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. (optional)
 
 // Revoke a token
-OauthAPI.tokenRevoke(token: token, tokenTypeHint: tokenTypeHint) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await OauthAPI.tokenRevoke(token: token, tokenTypeHint: tokenTypeHint)
+} catch {
+    print(error)
 }
 ```
 

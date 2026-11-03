@@ -167,13 +167,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class BoardSection.", nameof(name));
+                throw new JsonException("Property is required for class BoardSection: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardSection.");
+                throw new JsonException("Property is not nullable for class BoardSection: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BoardSection.");
+                throw new JsonException("Property is not nullable for class BoardSection: id.");
 
             return new BoardSection(name.Value!, id);
         }
@@ -184,7 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSection"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardSection boardSection, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -199,14 +198,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSection"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardSection boardSection, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (boardSection.Name == null)
-                throw new ArgumentNullException(nameof(boardSection.Name), "Property is required for class BoardSection.");
-
             if (boardSection.IdOption.IsSet && boardSection.Id == null)
-                throw new ArgumentNullException(nameof(boardSection.Id), "Property is required for class BoardSection.");
+                throw new JsonException("Cannot write null property BoardSection.Id to non-nullable JSON property 'id'.");
 
             writer.WriteString("name", boardSection.Name);
 

@@ -29,14 +29,10 @@ import {
 export interface DeleteBusinessMembershipMember {
     /**
      * 
-     * @type {BusinessRoleForMembers}
-     * @memberof DeleteBusinessMembershipMember
      */
     businessRole: BusinessRoleForMembers;
     /**
      * Unique identifier of the member
-     * @type {string}
-     * @memberof DeleteBusinessMembershipMember
      */
     memberId: string;
 }

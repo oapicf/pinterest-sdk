@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AgeBucketMultipliers
 import org.openapitools.model.AppTypeMultipliers
 import org.openapitools.model.CampaignAudienceMultipliers
@@ -49,8 +46,6 @@ data class CampaignBidOptionsCreate(
 
     @field:Valid
     @Schema(description = "Audience multipliers for bid adjustments.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("audience_multipliers")
     @get:JsonProperty("audience_multipliers") val audienceMultipliers: CampaignAudienceMultipliers? = null,
 

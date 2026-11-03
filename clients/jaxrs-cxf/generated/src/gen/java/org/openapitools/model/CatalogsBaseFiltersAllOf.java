@@ -16,24 +16,22 @@ public class CatalogsBaseFiltersAllOf  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsBaseFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> allOf = new ArrayList<>();
  /**
    * Get allOf
    * @return allOf
   **/
   @JsonProperty("all_of")
   @NotNull
- @Size(min=1)  public List<CatalogsBaseFilterKeys> getAllOf() {
+ @Size(min=1)  public List<@Valid CatalogsBaseFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsBaseFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
     this.allOf = allOf;
   }
 
-  public CatalogsBaseFiltersAllOf allOf(List<CatalogsBaseFilterKeys> allOf) {
+  public CatalogsBaseFiltersAllOf allOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }

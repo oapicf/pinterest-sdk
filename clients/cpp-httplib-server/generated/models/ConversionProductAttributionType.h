@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ConversionProductAttributionType
-{
-public:
-
-    ConversionProductAttributionType();
-    virtual ~ConversionProductAttributionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionProductAttributionType,
-        )
-
-private:
+enum class ConversionProductAttributionType {
+    
+    DEFAULT,
+    
+    BRAND_ATTRIBUTION
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionProductAttributionType& value)
+{
+    switch (value)
+    {
+        
+        case ConversionProductAttributionType::DEFAULT: j = "DEFAULT"; break;
+        
+        case ConversionProductAttributionType::BRAND_ATTRIBUTION: j = "BRAND_ATTRIBUTION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductAttributionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionProductAttributionType& value)
+{
+    
+    if (j == "DEFAULT")
+    {
+        value = ConversionProductAttributionType::DEFAULT;
+        return;
+    }
+    
+    if (j == "BRAND_ATTRIBUTION")
+    {
+        value = ConversionProductAttributionType::BRAND_ATTRIBUTION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductAttributionType", &j);
+}
 
 } // namespace models
 

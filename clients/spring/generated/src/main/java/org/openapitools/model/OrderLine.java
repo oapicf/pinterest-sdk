@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,34 +28,27 @@ import jakarta.annotation.Generated;
  * OrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OrderLine {
 
   private String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> budget = JsonNullable.<BigDecimal>undefined();
 
   private List<String> campaignIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> endTime = JsonNullable.<BigDecimal>undefined();
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> paidBudget = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<OrderLinePaidType> paidType = JsonNullable.<OrderLinePaidType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> purchaseOrderId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal startTime;
 
   private OrderLineStatus status;
@@ -109,7 +101,7 @@ public class OrderLine {
    * @return budget
    */
   @Valid 
-  @Schema(name = "budget", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "budget", description = "Order line budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("budget")
   public JsonNullable<BigDecimal> getBudget() {
     return budget;
@@ -158,7 +150,7 @@ public class OrderLine {
    * @return endTime
    */
   @Valid 
-  @Schema(name = "end_time", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_time", description = "End time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("end_time")
   public JsonNullable<BigDecimal> getEndTime() {
     return endTime;
@@ -199,7 +191,7 @@ public class OrderLine {
    * @return name
    */
   
-  @Schema(name = "name", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", description = "Order line name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -219,7 +211,7 @@ public class OrderLine {
    * @return paidBudget
    */
   @Valid 
-  @Schema(name = "paid_budget", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "paid_budget", description = "Order line paid budget in micro currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("paid_budget")
   public JsonNullable<BigDecimal> getPaidBudget() {
     return paidBudget;
@@ -239,7 +231,7 @@ public class OrderLine {
    * @return paidType
    */
   @Valid 
-  @Schema(name = "paid_type", description = "Order line paid type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "paid_type", description = "Order line paid type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("paid_type")
   public JsonNullable<OrderLinePaidType> getPaidType() {
     return paidType;
@@ -259,7 +251,7 @@ public class OrderLine {
    * @return purchaseOrderId
    */
   
-  @Schema(name = "purchase_order_id", description = "Purchase order ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "purchase_order_id", description = "Purchase order ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("purchase_order_id")
   public JsonNullable<String> getPurchaseOrderId() {
     return purchaseOrderId;

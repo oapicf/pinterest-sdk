@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create or update operation model with required body fields (no OptionalProperties).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create or update operation model with required body fields (no OptionalProperties).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpdateWithRequiredBody   {
   
   private UserListOperationType operationType;
@@ -57,7 +57,6 @@ public class CustomerListUpdateWithRequiredBody   {
   
   @ApiModelProperty(value = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.")
   @JsonProperty("records_v2")
-  @Valid
   public List<@Valid CustomerListRecordRow> getRecordsV2() {
     return recordsV2;
   }

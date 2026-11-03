@@ -19,7 +19,7 @@ import InviteDataResponse from './InviteDataResponse';
 /**
  * The InviteResponse model module.
  * @module model/InviteResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class InviteResponse {
     /**

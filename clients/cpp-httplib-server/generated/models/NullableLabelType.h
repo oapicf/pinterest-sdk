@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class NullableLabelType
-{
-public:
-
-    NullableLabelType();
-    virtual ~NullableLabelType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullableLabelType,
-        )
-
-private:
+enum class NullableLabelType {
+    
+    BRAND,
+    
+    CUSTOM
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullableLabelType& value)
+{
+    switch (value)
+    {
+        
+        case NullableLabelType::BRAND: j = "BRAND"; break;
+        
+        case NullableLabelType::CUSTOM: j = "CUSTOM"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullableLabelType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullableLabelType& value)
+{
+    
+    if (j == "BRAND")
+    {
+        value = NullableLabelType::BRAND;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = NullableLabelType::CUSTOM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullableLabelType", &j);
+}
 
 } // namespace models
 

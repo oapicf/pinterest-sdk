@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 /**
  * Resource create operation model.
@@ -42,7 +42,7 @@ public class AdGroupAudienceSizingCreate implements Serializable {
    * [Placement group](/docs/redoc/#section/Placement-group).
    */
   @JsonProperty("placement_group")
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   /**
    * Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.

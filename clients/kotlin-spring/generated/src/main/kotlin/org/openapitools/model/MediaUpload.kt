@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.MediaUploadParameters
 import org.openapitools.model.MediaUploadType
 import javax.validation.constraints.DecimalMax
@@ -31,24 +28,20 @@ data class MediaUpload(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "12345", required = true, readOnly = true, description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
-    @param:JsonProperty("media_id")
+    @param:JsonProperty("media_id", required = true)
     @get:JsonProperty("media_id", required = true) val mediaId: kotlin.String,
 
     @field:Valid
     @Schema(example = "video", required = true, description = "")
-    @param:JsonProperty("media_type")
+    @param:JsonProperty("media_type", required = true)
     @get:JsonProperty("media_type", required = true) val mediaType: MediaUploadType,
 
     @field:Valid
     @Schema(readOnly = true, description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("upload_parameters")
     @get:JsonProperty("upload_parameters") val uploadParameters: MediaUploadParameters? = null,
 
     @Schema(example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", readOnly = true, description = "The URL where you will POST your media file.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("upload_url")
     @get:JsonProperty("upload_url") val uploadUrl: kotlin.String? = null
 ) {

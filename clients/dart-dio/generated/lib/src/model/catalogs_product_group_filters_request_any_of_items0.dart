@@ -106,3 +106,4 @@ class _$CatalogsProductGroupFiltersRequestAnyOfItems0Serializer implements Primi
   }
 }
 
+

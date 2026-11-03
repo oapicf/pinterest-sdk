@@ -105,3 +105,4 @@ class _$MaxPriceFilterSerializer implements PrimitiveSerializer<MaxPriceFilter> 
   }
 }
 
+

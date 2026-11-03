@@ -22,8 +22,6 @@ public class QuizPinQuestion  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid QuizPinOption> options = new ArrayList<>();
 
   @ApiModelProperty(value = "")

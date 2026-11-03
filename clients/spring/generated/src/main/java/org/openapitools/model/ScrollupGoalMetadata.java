@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -23,10 +22,9 @@ import jakarta.annotation.Generated;
  * ScrollupGoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScrollupGoalMetadata {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> scrollupGoalValueInMicroCurrency = JsonNullable.<String>undefined();
 
   public ScrollupGoalMetadata scrollupGoalValueInMicroCurrency(String scrollupGoalValueInMicroCurrency) {
@@ -39,7 +37,7 @@ public class ScrollupGoalMetadata {
    * @return scrollupGoalValueInMicroCurrency
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "scrollup_goal_value_in_micro_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "scrollup_goal_value_in_micro_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("scrollup_goal_value_in_micro_currency")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getScrollupGoalValueInMicroCurrency() {
     return scrollupGoalValueInMicroCurrency;

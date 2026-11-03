@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateInvitesResultsResponseArray   {
   
   private List<@Valid InviteActionResultItem> items = new ArrayList<>();
@@ -25,7 +25,6 @@ public class UpdateInvitesResultsResponseArray   {
   
   @ApiModelProperty(value = "List of invite/Request action status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.")
   @JsonProperty("items")
-  @Valid
   public List<@Valid InviteActionResultItem> getItems() {
     return items;
   }

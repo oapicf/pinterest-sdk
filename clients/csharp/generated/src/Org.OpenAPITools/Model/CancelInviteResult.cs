@@ -210,16 +210,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CancelInviteResult.");
+                throw new JsonException("Property is not nullable for class CancelInviteResult: id.");
 
             if (inviteData.IsSet && inviteData.Value == null)
-                throw new ArgumentNullException(nameof(inviteData), "Property is not nullable for class CancelInviteResult.");
+                throw new JsonException("Property is not nullable for class CancelInviteResult: invite_data.");
 
             if (isReceivedInvite.IsSet && isReceivedInvite.Value == null)
-                throw new ArgumentNullException(nameof(isReceivedInvite), "Property is not nullable for class CancelInviteResult.");
+                throw new JsonException("Property is not nullable for class CancelInviteResult: is_received_invite.");
 
             if (user.IsSet && user.Value == null)
-                throw new ArgumentNullException(nameof(user), "Property is not nullable for class CancelInviteResult.");
+                throw new JsonException("Property is not nullable for class CancelInviteResult: user.");
 
             return new CancelInviteResult(id, inviteData, isReceivedInvite, user);
         }
@@ -230,7 +230,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInviteResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CancelInviteResult cancelInviteResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -245,17 +244,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInviteResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CancelInviteResult cancelInviteResult, JsonSerializerOptions jsonSerializerOptions)
         {
             if (cancelInviteResult.IdOption.IsSet && cancelInviteResult.Id == null)
-                throw new ArgumentNullException(nameof(cancelInviteResult.Id), "Property is required for class CancelInviteResult.");
+                throw new JsonException("Cannot write null property CancelInviteResult.Id to non-nullable JSON property 'id'.");
 
             if (cancelInviteResult.InviteDataOption.IsSet && cancelInviteResult.InviteData == null)
-                throw new ArgumentNullException(nameof(cancelInviteResult.InviteData), "Property is required for class CancelInviteResult.");
+                throw new JsonException("Cannot write null property CancelInviteResult.InviteData to non-nullable JSON property 'invite_data'.");
+
+            if (cancelInviteResult.IsReceivedInviteOption.IsSet && cancelInviteResult.IsReceivedInvite == null)
+                throw new JsonException("Cannot write null property CancelInviteResult.IsReceivedInvite to non-nullable JSON property 'is_received_invite'.");
 
             if (cancelInviteResult.UserOption.IsSet && cancelInviteResult.User == null)
-                throw new ArgumentNullException(nameof(cancelInviteResult.User), "Property is required for class CancelInviteResult.");
+                throw new JsonException("Cannot write null property CancelInviteResult.User to non-nullable JSON property 'user'.");
 
             if (cancelInviteResult.IdOption.IsSet)
                 writer.WriteString("id", cancelInviteResult.Id);

@@ -17,7 +17,7 @@ import Catalog from './Catalog';
 /**
  * The CatalogsList200Response model module.
  * @module model/CatalogsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsList200Response {
     /**

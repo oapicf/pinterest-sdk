@@ -57,7 +57,7 @@ function Invoke-AudienceInsightsScopeAndTypeGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audienceInsightsScopeAndType_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -138,7 +138,7 @@ function Invoke-AudienceInsightsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audienceInsights_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AudienceInsightType) {
             throw "Error! The required parameter `AudienceInsightType` missing when calling audienceInsights_get."

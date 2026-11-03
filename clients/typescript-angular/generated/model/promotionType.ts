@@ -35,7 +35,7 @@ export const PromotionType = {
     PointsOnAllPurchases: 'POINTS_ON_ALL_PURCHASES',
     Bonus: 'BONUS',
     PointsWithPurchase: 'POINTS_WITH_PURCHASE',
-    Custom: 'CUSTOM'
+    Custom: 'CUSTOM',
 } as const;
 export type PromotionType = typeof PromotionType[keyof typeof PromotionType];
 

@@ -194,22 +194,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetId.IsSet)
-                throw new ArgumentException("Property is required for class UpdatePartnerAssetAccessItem.", nameof(assetId));
+                throw new JsonException("Property is required for class UpdatePartnerAssetAccessItem: asset_id.");
 
             if (!partnerId.IsSet)
-                throw new ArgumentException("Property is required for class UpdatePartnerAssetAccessItem.", nameof(partnerId));
+                throw new JsonException("Property is required for class UpdatePartnerAssetAccessItem: partner_id.");
 
             if (!permissions.IsSet)
-                throw new ArgumentException("Property is required for class UpdatePartnerAssetAccessItem.", nameof(permissions));
+                throw new JsonException("Property is required for class UpdatePartnerAssetAccessItem: permissions.");
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class UpdatePartnerAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetAccessItem: asset_id.");
 
             if (partnerId.IsSet && partnerId.Value == null)
-                throw new ArgumentNullException(nameof(partnerId), "Property is not nullable for class UpdatePartnerAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetAccessItem: partner_id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class UpdatePartnerAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetAccessItem: permissions.");
 
             return new UpdatePartnerAssetAccessItem(assetId.Value!, partnerId.Value!, permissions.Value!);
         }
@@ -220,7 +220,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdatePartnerAssetAccessItem updatePartnerAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,18 +234,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdatePartnerAssetAccessItem updatePartnerAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (updatePartnerAssetAccessItem.AssetId == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetAccessItem.AssetId), "Property is required for class UpdatePartnerAssetAccessItem.");
-
-            if (updatePartnerAssetAccessItem.PartnerId == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetAccessItem.PartnerId), "Property is required for class UpdatePartnerAssetAccessItem.");
-
-            if (updatePartnerAssetAccessItem.Permissions == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetAccessItem.Permissions), "Property is required for class UpdatePartnerAssetAccessItem.");
-
             writer.WriteString("asset_id", updatePartnerAssetAccessItem.AssetId);
 
             writer.WriteString("partner_id", updatePartnerAssetAccessItem.PartnerId);

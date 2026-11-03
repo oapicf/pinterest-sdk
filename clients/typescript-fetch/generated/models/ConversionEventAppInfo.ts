@@ -21,57 +21,39 @@ import { mapValues } from '../runtime';
 export interface ConversionEventAppInfo {
     /**
      * App ID in Google Play Store, AppStore or other stores.
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     appId?: string;
     /**
      * Name of the app. Primarily used for Mobile Apps.
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     appName?: string;
     /**
      * App package name
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     appPackageName?: string;
     /**
      * The name of the app distributor or store from which the app was installed.
      * Some options: Samsung Galaxy Store, Google Play Store, Amazon Store, Apple App Store, F-Droid, Aptoide, Obtanium, Huawei AppGallery, Xiaomi Mi GetApps
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     appStore?: string;
     /**
      * App version. Primarily used for mobile apps
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     appVersion?: string;
     /**
      * App install time. Unix timestamp in seconds
-     * @type {number}
-     * @memberof ConversionEventAppInfo
      */
     installTime?: number;
     /**
      * User Agent request header. Primarily used for Web events
-     * @type {string}
-     * @memberof ConversionEventAppInfo
      */
     userAgent?: string;
     /**
      * Inner height of the window or viewport.
-     * @type {number}
-     * @memberof ConversionEventAppInfo
      */
     windowHeight?: number;
     /**
      * Inner width of the window or viewport.
-     * @type {number}
-     * @memberof ConversionEventAppInfo
      */
     windowWidth?: number;
 }

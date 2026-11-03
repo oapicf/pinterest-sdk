@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -33,8 +30,6 @@ data class AdsCreditRedeem(
     @get:JsonProperty("errorMessage") val errorMessage: kotlin.String? = null,
 
     @Schema(example = "false", readOnly = true, description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("success")
     @get:JsonProperty("success") val success: kotlin.Boolean? = null
 ) {

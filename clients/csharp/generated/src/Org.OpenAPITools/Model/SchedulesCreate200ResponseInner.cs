@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class SchedulesCreate200ResponseInner.", nameof(data));
+                throw new JsonException("Property is required for class SchedulesCreate200ResponseInner: data.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class SchedulesCreate200ResponseInner.");
+                throw new JsonException("Property is not nullable for class SchedulesCreate200ResponseInner: data.");
 
             return new SchedulesCreate200ResponseInner(data.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SchedulesCreate200ResponseInner schedulesCreate200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SchedulesCreate200ResponseInner schedulesCreate200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (schedulesCreate200ResponseInner.Data == null)
-                throw new ArgumentNullException(nameof(schedulesCreate200ResponseInner.Data), "Property is required for class SchedulesCreate200ResponseInner.");
-
             writer.WritePropertyName("data");
             JsonSerializer.Serialize(writer, schedulesCreate200ResponseInner.Data, jsonSerializerOptions);
         }

@@ -304,55 +304,55 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!columns.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(columns));
+                throw new JsonException("Property is required for class MMMReportCreate: columns.");
 
             if (!endDate.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(endDate));
+                throw new JsonException("Property is required for class MMMReportCreate: end_date.");
 
             if (!granularity.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(granularity));
+                throw new JsonException("Property is required for class MMMReportCreate: granularity.");
 
             if (!level.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(level));
+                throw new JsonException("Property is required for class MMMReportCreate: level.");
 
             if (!reportName.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(reportName));
+                throw new JsonException("Property is required for class MMMReportCreate: report_name.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(startDate));
+                throw new JsonException("Property is required for class MMMReportCreate: start_date.");
 
             if (!targetingTypes.IsSet)
-                throw new ArgumentException("Property is required for class MMMReportCreate.", nameof(targetingTypes));
+                throw new JsonException("Property is required for class MMMReportCreate: targeting_types.");
 
             if (columns.IsSet && columns.Value == null)
-                throw new ArgumentNullException(nameof(columns), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: columns.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: end_date.");
 
             if (granularity.IsSet && granularity.Value == null)
-                throw new ArgumentNullException(nameof(granularity), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: granularity.");
 
             if (level.IsSet && level.Value == null)
-                throw new ArgumentNullException(nameof(level), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: level.");
 
             if (reportName.IsSet && reportName.Value == null)
-                throw new ArgumentNullException(nameof(reportName), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: report_name.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: start_date.");
 
             if (targetingTypes.IsSet && targetingTypes.Value == null)
-                throw new ArgumentNullException(nameof(targetingTypes), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: targeting_types.");
 
             if (advertiserIds.IsSet && advertiserIds.Value == null)
-                throw new ArgumentNullException(nameof(advertiserIds), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: advertiser_ids.");
 
             if (countries.IsSet && countries.Value == null)
-                throw new ArgumentNullException(nameof(countries), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: countries.");
 
             if (customColumnIds.IsSet && customColumnIds.Value == null)
-                throw new ArgumentNullException(nameof(customColumnIds), "Property is not nullable for class MMMReportCreate.");
+                throw new JsonException("Property is not nullable for class MMMReportCreate: custom_column_ids.");
 
             return new MMMReportCreate(columns.Value!, endDate.Value!, granularity.Value!.Value!, level.Value!.Value!, reportName.Value!, startDate.Value!, targetingTypes.Value!, advertiserIds, countries, customColumnIds);
         }
@@ -363,7 +363,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mMMReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MMMReportCreate mMMReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -378,32 +377,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mMMReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MMMReportCreate mMMReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (mMMReportCreate.Columns == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.Columns), "Property is required for class MMMReportCreate.");
-
-            if (mMMReportCreate.EndDate == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.EndDate), "Property is required for class MMMReportCreate.");
-
-            if (mMMReportCreate.ReportName == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.ReportName), "Property is required for class MMMReportCreate.");
-
-            if (mMMReportCreate.StartDate == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.StartDate), "Property is required for class MMMReportCreate.");
-
-            if (mMMReportCreate.TargetingTypes == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.TargetingTypes), "Property is required for class MMMReportCreate.");
-
             if (mMMReportCreate.AdvertiserIdsOption.IsSet && mMMReportCreate.AdvertiserIds == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.AdvertiserIds), "Property is required for class MMMReportCreate.");
+                throw new JsonException("Cannot write null property MMMReportCreate.AdvertiserIds to non-nullable JSON property 'advertiser_ids'.");
 
             if (mMMReportCreate.CountriesOption.IsSet && mMMReportCreate.Countries == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.Countries), "Property is required for class MMMReportCreate.");
+                throw new JsonException("Cannot write null property MMMReportCreate.Countries to non-nullable JSON property 'countries'.");
 
             if (mMMReportCreate.CustomColumnIdsOption.IsSet && mMMReportCreate.CustomColumnIds == null)
-                throw new ArgumentNullException(nameof(mMMReportCreate.CustomColumnIds), "Property is required for class MMMReportCreate.");
+                throw new JsonException("Cannot write null property MMMReportCreate.CustomColumnIds to non-nullable JSON property 'custom_column_ids'.");
 
             writer.WritePropertyName("columns");
             JsonSerializer.Serialize(writer, mMMReportCreate.Columns, jsonSerializerOptions);

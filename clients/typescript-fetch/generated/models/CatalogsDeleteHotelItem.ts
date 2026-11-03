@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsDeleteHotelItem {
     /**
      * The catalog hotel id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsDeleteHotelItem
      */
     hotelId: string;
     /**
      * 
-     * @type {CatalogsDeleteHotelItemOperationEnum}
-     * @memberof CatalogsDeleteHotelItem
      */
     operation: CatalogsDeleteHotelItemOperationEnum;
 }
@@ -38,7 +34,7 @@ export interface CatalogsDeleteHotelItem {
  * @export
  */
 export const CatalogsDeleteHotelItemOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type CatalogsDeleteHotelItemOperationEnum = typeof CatalogsDeleteHotelItemOperationEnum[keyof typeof CatalogsDeleteHotelItemOperationEnum];
 

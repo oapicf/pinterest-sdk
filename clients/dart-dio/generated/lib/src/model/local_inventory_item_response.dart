@@ -239,3 +239,4 @@ class _$LocalInventoryItemResponseSerializer implements PrimitiveSerializer<Loca
   }
 }
 
+

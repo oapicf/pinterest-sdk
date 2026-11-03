@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Video Pin metric types
-* Values: IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,VIDEO_MRC_VIEW,VIDEO_10S_VIEW,QUARTILE_95_PERCENT_VIEW,VIDEO_V50_WATCH_TIME,VIDEO_START,VIDEO_AVG_WATCH_TIME,TOTAL_COMMENTS,TOTAL_REACTIONS
-*/
+ * Video Pin metric types
+ * Values: IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,VIDEO_MRC_VIEW,VIDEO_10S_VIEW,QUARTILE_95_PERCENT_VIEW,VIDEO_V50_WATCH_TIME,VIDEO_START,VIDEO_AVG_WATCH_TIME,TOTAL_COMMENTS,TOTAL_REACTIONS
+ */
 enum class VideoPinMetricTypes(@get:JsonValue val value: kotlin.String) {
 
     IMPRESSION("IMPRESSION"),
@@ -39,9 +39,8 @@ enum class VideoPinMetricTypes(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): VideoPinMetricTypes {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'VideoPinMetricTypes'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'VideoPinMetricTypes'")
         }
     }
 }
-

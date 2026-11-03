@@ -224,12 +224,12 @@ class BillingInvoice {
       json[r'bill_to_country'] = null;
     }
     if (this.billingPeriodEndDate != null) {
-      json[r'billing_period_end_date'] = _dateFormatter.format(this.billingPeriodEndDate!.toUtc());
+      json[r'billing_period_end_date'] = _dateFormatter.format(this.billingPeriodEndDate!);
     } else {
       json[r'billing_period_end_date'] = null;
     }
     if (this.billingPeriodStartDate != null) {
-      json[r'billing_period_start_date'] = _dateFormatter.format(this.billingPeriodStartDate!.toUtc());
+      json[r'billing_period_start_date'] = _dateFormatter.format(this.billingPeriodStartDate!);
     } else {
       json[r'billing_period_start_date'] = null;
     }
@@ -249,7 +249,7 @@ class BillingInvoice {
       json[r'id'] = null;
     }
     if (this.invoiceDueDate != null) {
-      json[r'invoice_due_date'] = _dateFormatter.format(this.invoiceDueDate!.toUtc());
+      json[r'invoice_due_date'] = _dateFormatter.format(this.invoiceDueDate!);
     } else {
       json[r'invoice_due_date'] = null;
     }

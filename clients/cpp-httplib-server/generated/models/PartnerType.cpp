@@ -6,20 +6,3 @@
 */
 #include "PartnerType.h"
 
-namespace models {
-
-PartnerType::PartnerType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 */
 @Path("/terms")
 @Api(description = "the terms API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TermsApi {
 
     @GET
@@ -38,7 +38,8 @@ public class TermsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response termsRelatedList(@QueryParam("terms") @NotNull  @ApiParam("List of input terms.")  List<String> terms) {
+    public Response termsRelatedList(@QueryParam("terms") @NotNull  @ApiParam("List of input terms.")  List<String> terms
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -58,7 +59,9 @@ public class TermsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response termsSuggestedList(@QueryParam("term") @NotNull  @ApiParam("Input term.")  String term,@QueryParam("limit") @Min(1) @Max(10) @DefaultValue("4")  @ApiParam("Max suggested terms to return.")  Integer limit) {
+    public Response termsSuggestedList(@QueryParam("term") @NotNull  @ApiParam("Input term.")  String term
+,@QueryParam("limit") @Min(1) @Max(10) @DefaultValue("4")  @ApiParam("Max suggested terms to return.")  Integer limit
+) {
         return Response.ok().entity("magic!").build();
     }
 }

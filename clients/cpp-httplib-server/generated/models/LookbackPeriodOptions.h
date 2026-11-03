@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class LookbackPeriodOptions
-{
-public:
-
-    LookbackPeriodOptions();
-    virtual ~LookbackPeriodOptions() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LookbackPeriodOptions,
-        )
-
-private:
+enum class LookbackPeriodOptions {
+    
+    _1D,
+    
+    _14D
+    
 };
 
+inline void to_json(nlohmann::json& j, const LookbackPeriodOptions& value)
+{
+    switch (value)
+    {
+        
+        case LookbackPeriodOptions::_1D: j = "1d"; break;
+        
+        case LookbackPeriodOptions::_14D: j = "14d"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LookbackPeriodOptions", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LookbackPeriodOptions& value)
+{
+    
+    if (j == "1d")
+    {
+        value = LookbackPeriodOptions::_1D;
+        return;
+    }
+    
+    if (j == "14d")
+    {
+        value = LookbackPeriodOptions::_14D;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LookbackPeriodOptions", &j);
+}
 
 } // namespace models
 

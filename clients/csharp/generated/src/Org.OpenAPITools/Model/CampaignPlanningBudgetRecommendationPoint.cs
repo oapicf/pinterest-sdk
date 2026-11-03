@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (estimationType.IsSet && estimationType.Value == null)
-                throw new ArgumentNullException(nameof(estimationType), "Property is not nullable for class CampaignPlanningBudgetRecommendationPoint.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendationPoint: estimation_type.");
 
             if (pointEstimate.IsSet && pointEstimate.Value == null)
-                throw new ArgumentNullException(nameof(pointEstimate), "Property is not nullable for class CampaignPlanningBudgetRecommendationPoint.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendationPoint: point_estimate.");
 
             return new CampaignPlanningBudgetRecommendationPoint(estimationType, pointEstimate);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningBudgetRecommendationPoint"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningBudgetRecommendationPoint campaignPlanningBudgetRecommendationPoint, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,11 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningBudgetRecommendationPoint"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningBudgetRecommendationPoint campaignPlanningBudgetRecommendationPoint, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningBudgetRecommendationPoint.EstimationTypeOption.IsSet && campaignPlanningBudgetRecommendationPoint.EstimationType == null)
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendationPoint.EstimationType to non-nullable JSON property 'estimation_type'.");
+
             if (campaignPlanningBudgetRecommendationPoint.PointEstimateOption.IsSet && campaignPlanningBudgetRecommendationPoint.PointEstimate == null)
-                throw new ArgumentNullException(nameof(campaignPlanningBudgetRecommendationPoint.PointEstimate), "Property is required for class CampaignPlanningBudgetRecommendationPoint.");
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendationPoint.PointEstimate to non-nullable JSON property 'point_estimate'.");
 
             if (campaignPlanningBudgetRecommendationPoint.EstimationTypeOption.IsSet)
             {

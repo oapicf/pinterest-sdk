@@ -148,3 +148,4 @@ class _$NullableOptimizationGoalMetadataSerializer implements PrimitiveSerialize
   }
 }
 
+

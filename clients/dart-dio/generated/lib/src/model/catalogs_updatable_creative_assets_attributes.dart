@@ -194,6 +194,7 @@ class _$CatalogsUpdatableCreativeAssetsAttributesSerializer implements Primitive
   }
 }
 
+
 /// a concrete implementation of [CatalogsUpdatableCreativeAssetsAttributes], since [CatalogsUpdatableCreativeAssetsAttributes] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $CatalogsUpdatableCreativeAssetsAttributes implements CatalogsUpdatableCreativeAssetsAttributes, Built<$CatalogsUpdatableCreativeAssetsAttributes, $CatalogsUpdatableCreativeAssetsAttributesBuilder> {

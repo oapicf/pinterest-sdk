@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelMainImage", description = "The main hotel image")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelMainImage {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String link;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> tag = JsonNullable.<List<String>>undefined();
 
   public CatalogsHotelMainImage link(@Nullable String link) {
@@ -62,7 +59,7 @@ public class CatalogsHotelMainImage {
   }
 
   public CatalogsHotelMainImage addTagItem(String tagItem) {
-    if (this.tag == null || !this.tag.isPresent()) {
+    if (this.tag == null || !this.tag.isPresent() || this.tag.get() == null) {
       this.tag = JsonNullable.of(new ArrayList<>());
     }
     this.tag.get().add(tagItem);
@@ -74,7 +71,7 @@ public class CatalogsHotelMainImage {
    * @return tag
    */
   
-  @Schema(name = "tag", description = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tag", description = "Tag appended to the image that identifies image category or details. There can be multiple tags associated with an image", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tag")
   public JsonNullable<List<String>> getTag() {
     return tag;

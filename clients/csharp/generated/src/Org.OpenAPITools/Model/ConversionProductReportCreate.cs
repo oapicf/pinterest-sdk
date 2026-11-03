@@ -418,67 +418,67 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!columns.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(columns));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: columns.");
 
             if (!endDate.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(endDate));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: end_date.");
 
             if (!granularity.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(granularity));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: granularity.");
 
             if (!level.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(level));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: level.");
 
             if (!reportName.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(reportName));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: report_name.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class ConversionProductReportCreate.", nameof(startDate));
+                throw new JsonException("Property is required for class ConversionProductReportCreate: start_date.");
 
             if (columns.IsSet && columns.Value == null)
-                throw new ArgumentNullException(nameof(columns), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: columns.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: end_date.");
 
             if (granularity.IsSet && granularity.Value == null)
-                throw new ArgumentNullException(nameof(granularity), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: granularity.");
 
             if (level.IsSet && level.Value == null)
-                throw new ArgumentNullException(nameof(level), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: level.");
 
             if (reportName.IsSet && reportName.Value == null)
-                throw new ArgumentNullException(nameof(reportName), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: report_name.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: start_date.");
 
             if (adGroupIds.IsSet && adGroupIds.Value == null)
-                throw new ArgumentNullException(nameof(adGroupIds), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: ad_group_ids.");
 
             if (campaignIds.IsSet && campaignIds.Value == null)
-                throw new ArgumentNullException(nameof(campaignIds), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: campaign_ids.");
 
             if (campaignObjectiveTypes.IsSet && campaignObjectiveTypes.Value == null)
-                throw new ArgumentNullException(nameof(campaignObjectiveTypes), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: campaign_objective_types.");
 
             if (clickWindowDays.IsSet && clickWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(clickWindowDays), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: click_window_days.");
 
             if (conversionProductAttributionType.IsSet && conversionProductAttributionType.Value == null)
-                throw new ArgumentNullException(nameof(conversionProductAttributionType), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: conversion_product_attribution_type.");
 
             if (conversionProductBreakdown.IsSet && conversionProductBreakdown.Value == null)
-                throw new ArgumentNullException(nameof(conversionProductBreakdown), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: conversion_product_breakdown.");
 
             if (conversionReportTime.IsSet && conversionReportTime.Value == null)
-                throw new ArgumentNullException(nameof(conversionReportTime), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: conversion_report_time.");
 
             if (productSkuIds.IsSet && productSkuIds.Value == null)
-                throw new ArgumentNullException(nameof(productSkuIds), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: product_sku_ids.");
 
             if (viewWindowDays.IsSet && viewWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(viewWindowDays), "Property is not nullable for class ConversionProductReportCreate.");
+                throw new JsonException("Property is not nullable for class ConversionProductReportCreate: view_window_days.");
 
             return new ConversionProductReportCreate(columns.Value!, endDate.Value!, granularity.Value!.Value!, level.Value!.Value!, reportName.Value!, startDate.Value!, adGroupIds, campaignIds, campaignObjectiveTypes, clickWindowDays, conversionProductAttributionType, conversionProductBreakdown, conversionReportTime, productSkuIds, viewWindowDays);
         }
@@ -489,7 +489,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionProductReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionProductReportCreate conversionProductReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -504,32 +503,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionProductReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionProductReportCreate conversionProductReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionProductReportCreate.Columns == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.Columns), "Property is required for class ConversionProductReportCreate.");
-
-            if (conversionProductReportCreate.EndDate == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.EndDate), "Property is required for class ConversionProductReportCreate.");
-
-            if (conversionProductReportCreate.ReportName == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.ReportName), "Property is required for class ConversionProductReportCreate.");
-
-            if (conversionProductReportCreate.StartDate == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.StartDate), "Property is required for class ConversionProductReportCreate.");
-
             if (conversionProductReportCreate.AdGroupIdsOption.IsSet && conversionProductReportCreate.AdGroupIds == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.AdGroupIds), "Property is required for class ConversionProductReportCreate.");
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.AdGroupIds to non-nullable JSON property 'ad_group_ids'.");
 
             if (conversionProductReportCreate.CampaignIdsOption.IsSet && conversionProductReportCreate.CampaignIds == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.CampaignIds), "Property is required for class ConversionProductReportCreate.");
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.CampaignIds to non-nullable JSON property 'campaign_ids'.");
 
             if (conversionProductReportCreate.CampaignObjectiveTypesOption.IsSet && conversionProductReportCreate.CampaignObjectiveTypes == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.CampaignObjectiveTypes), "Property is required for class ConversionProductReportCreate.");
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.CampaignObjectiveTypes to non-nullable JSON property 'campaign_objective_types'.");
+
+            if (conversionProductReportCreate.ClickWindowDaysOption.IsSet && conversionProductReportCreate.ClickWindowDays == null)
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ClickWindowDays to non-nullable JSON property 'click_window_days'.");
+
+            if (conversionProductReportCreate.ConversionProductAttributionTypeOption.IsSet && conversionProductReportCreate.ConversionProductAttributionType == null)
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ConversionProductAttributionType to non-nullable JSON property 'conversion_product_attribution_type'.");
+
+            if (conversionProductReportCreate.ConversionProductBreakdownOption.IsSet && conversionProductReportCreate.ConversionProductBreakdown == null)
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ConversionProductBreakdown to non-nullable JSON property 'conversion_product_breakdown'.");
+
+            if (conversionProductReportCreate.ConversionReportTimeOption.IsSet && conversionProductReportCreate.ConversionReportTime == null)
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ConversionReportTime to non-nullable JSON property 'conversion_report_time'.");
 
             if (conversionProductReportCreate.ProductSkuIdsOption.IsSet && conversionProductReportCreate.ProductSkuIds == null)
-                throw new ArgumentNullException(nameof(conversionProductReportCreate.ProductSkuIds), "Property is required for class ConversionProductReportCreate.");
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ProductSkuIds to non-nullable JSON property 'product_sku_ids'.");
+
+            if (conversionProductReportCreate.ViewWindowDaysOption.IsSet && conversionProductReportCreate.ViewWindowDays == null)
+                throw new JsonException("Cannot write null property ConversionProductReportCreate.ViewWindowDays to non-nullable JSON property 'view_window_days'.");
 
             writer.WritePropertyName("columns");
             JsonSerializer.Serialize(writer, conversionProductReportCreate.Columns, jsonSerializerOptions);

@@ -17,7 +17,7 @@ import BulkReportingJobStatus from './BulkReportingJobStatus';
 /**
  * The TemplateBasedReport model module.
  * @module model/TemplateBasedReport
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TemplateBasedReport {
     /**

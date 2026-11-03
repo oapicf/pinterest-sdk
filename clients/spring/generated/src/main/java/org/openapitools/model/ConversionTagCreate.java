@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -25,31 +24,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionTagCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionTagCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemDbEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemExternalIdEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemFnlnEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemGeEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemLocEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> aemPhEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> mdFrequency = JsonNullable.<BigDecimal>undefined();
 
   private String name;
@@ -75,7 +66,7 @@ public class ConversionTagCreate {
    * @return aemDbEnabled
    */
   
-  @Schema(name = "aem_db_enabled", description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_db_enabled", description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_db_enabled")
   public JsonNullable<Boolean> getAemDbEnabled() {
     return aemDbEnabled;
@@ -95,7 +86,7 @@ public class ConversionTagCreate {
    * @return aemEnabled
    */
   
-  @Schema(name = "aem_enabled", description = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_enabled", description = "Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_enabled")
   public JsonNullable<Boolean> getAemEnabled() {
     return aemEnabled;
@@ -115,7 +106,7 @@ public class ConversionTagCreate {
    * @return aemExternalIdEnabled
    */
   
-  @Schema(name = "aem_external_id_enabled", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_external_id_enabled", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_external_id_enabled")
   public JsonNullable<Boolean> getAemExternalIdEnabled() {
     return aemExternalIdEnabled;
@@ -135,7 +126,7 @@ public class ConversionTagCreate {
    * @return aemFnlnEnabled
    */
   
-  @Schema(name = "aem_fnln_enabled", description = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_fnln_enabled", description = "Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_fnln_enabled")
   public JsonNullable<Boolean> getAemFnlnEnabled() {
     return aemFnlnEnabled;
@@ -155,7 +146,7 @@ public class ConversionTagCreate {
    * @return aemGeEnabled
    */
   
-  @Schema(name = "aem_ge_enabled", description = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_ge_enabled", description = "Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_ge_enabled")
   public JsonNullable<Boolean> getAemGeEnabled() {
     return aemGeEnabled;
@@ -175,7 +166,7 @@ public class ConversionTagCreate {
    * @return aemLocEnabled
    */
   
-  @Schema(name = "aem_loc_enabled", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_loc_enabled", description = "Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_loc_enabled")
   public JsonNullable<Boolean> getAemLocEnabled() {
     return aemLocEnabled;
@@ -195,7 +186,7 @@ public class ConversionTagCreate {
    * @return aemPhEnabled
    */
   
-  @Schema(name = "aem_ph_enabled", description = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "aem_ph_enabled", description = "Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("aem_ph_enabled")
   public JsonNullable<Boolean> getAemPhEnabled() {
     return aemPhEnabled;
@@ -215,7 +206,7 @@ public class ConversionTagCreate {
    * @return mdFrequency
    */
   @Valid 
-  @Schema(name = "md_frequency", example = "0.6", description = "Metadata ingestion frequency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "md_frequency", example = "0.6", description = "Metadata ingestion frequency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("md_frequency")
   public JsonNullable<BigDecimal> getMdFrequency() {
     return mdFrequency;

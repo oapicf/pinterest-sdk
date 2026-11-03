@@ -21,7 +21,7 @@ import SearchPartnerPins200Response from '../model/SearchPartnerPins200Response'
 /**
 * Search service.
 * @module api/SearchApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class SearchApi {
 

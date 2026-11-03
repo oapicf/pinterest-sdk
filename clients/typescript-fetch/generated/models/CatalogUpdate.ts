@@ -29,14 +29,10 @@ import {
 export interface CatalogUpdate {
     /**
      * 
-     * @type {CatalogsType}
-     * @memberof CatalogUpdate
      */
     catalogType?: CatalogsType;
     /**
      * A human-friendly name associated to a catalog entity.
-     * @type {string}
-     * @memberof CatalogUpdate
      */
     name?: string;
 }

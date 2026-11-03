@@ -177,10 +177,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (cAMPAIGNID.IsSet && cAMPAIGNID.Value == null)
-                throw new ArgumentNullException(nameof(cAMPAIGNID), "Property is not nullable for class CampaignsAnalyticsMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignsAnalyticsMetrics: CAMPAIGN_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class CampaignsAnalyticsMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignsAnalyticsMetrics: DATE.");
 
             return new CampaignsAnalyticsMetrics(cAMPAIGNID, dATE);
         }
@@ -191,7 +191,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignsAnalyticsMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignsAnalyticsMetrics campaignsAnalyticsMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -206,11 +205,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignsAnalyticsMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignsAnalyticsMetrics campaignsAnalyticsMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignsAnalyticsMetrics.CAMPAIGN_IDOption.IsSet && campaignsAnalyticsMetrics.CAMPAIGN_ID == null)
-                throw new ArgumentNullException(nameof(campaignsAnalyticsMetrics.CAMPAIGN_ID), "Property is required for class CampaignsAnalyticsMetrics.");
+                throw new JsonException("Cannot write null property CampaignsAnalyticsMetrics.CAMPAIGN_ID to non-nullable JSON property 'CAMPAIGN_ID'.");
+
+            if (campaignsAnalyticsMetrics.DATEOption.IsSet && campaignsAnalyticsMetrics.DATE == null)
+                throw new JsonException("Cannot write null property CampaignsAnalyticsMetrics.DATE to non-nullable JSON property 'DATE'.");
 
             if (campaignsAnalyticsMetrics.CAMPAIGN_IDOption.IsSet)
                 writer.WriteString("CAMPAIGN_ID", campaignsAnalyticsMetrics.CAMPAIGN_ID);

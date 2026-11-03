@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("S3MultipartUploadData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class S3MultipartUploadData   {
-  private @Valid List<@Valid S3FilePart> fileParts = new ArrayList<>();
+  private List<@Valid S3FilePart> fileParts = new ArrayList<>();
 
   public S3MultipartUploadData() {
   }
@@ -38,7 +38,7 @@ public class S3MultipartUploadData   {
   
   @ApiModelProperty(value = "Array of file parts with pre-signed URLs.")
   @JsonProperty("file_parts")
-  @Valid public List<@Valid S3FilePart> getFileParts() {
+  public List<@Valid S3FilePart> getFileParts() {
     return fileParts;
   }
 

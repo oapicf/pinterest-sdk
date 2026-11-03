@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class IntendedPromotionType
-{
-public:
-
-    IntendedPromotionType();
-    virtual ~IntendedPromotionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IntendedPromotionType,
-        )
-
-private:
+enum class IntendedPromotionType {
+    
+    LEGACY,
+    
+    STANDARD_AD,
+    
+    CATALOG
+    
 };
 
+inline void to_json(nlohmann::json& j, const IntendedPromotionType& value)
+{
+    switch (value)
+    {
+        
+        case IntendedPromotionType::LEGACY: j = "LEGACY"; break;
+        
+        case IntendedPromotionType::STANDARD_AD: j = "STANDARD_AD"; break;
+        
+        case IntendedPromotionType::CATALOG: j = "CATALOG"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for IntendedPromotionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, IntendedPromotionType& value)
+{
+    
+    if (j == "LEGACY")
+    {
+        value = IntendedPromotionType::LEGACY;
+        return;
+    }
+    
+    if (j == "STANDARD_AD")
+    {
+        value = IntendedPromotionType::STANDARD_AD;
+        return;
+    }
+    
+    if (j == "CATALOG")
+    {
+        value = IntendedPromotionType::CATALOG;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for IntendedPromotionType", &j);
+}
 
 } // namespace models
 

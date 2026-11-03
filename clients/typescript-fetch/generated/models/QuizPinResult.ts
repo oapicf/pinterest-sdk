@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface QuizPinResult {
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinResult
      */
     androidDeepLink?: string;
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinResult
      */
     destinationUrl?: string;
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinResult
      */
     iosDeepLink?: string;
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinResult
      */
     organicPinId?: string;
     /**
      * 
-     * @type {number}
-     * @memberof QuizPinResult
      */
     resultId?: number;
 }

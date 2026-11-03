@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   PromotionTemplateValue.JSON_PROPERTY_PERCENT
 })
 @JsonTypeName("PromotionTemplateValue")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PromotionTemplateValue {
     public static final String JSON_PROPERTY_AMOUNT = "amount";

@@ -23,7 +23,7 @@ import org.openapitools.model.ProductAvailabilityType;
  **/
 
 @ApiModel(description = "Request object for creating a retail feed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFeedsCreateRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;
@@ -88,7 +88,7 @@ public class CatalogsRetailFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @JsonProperty("status")
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.

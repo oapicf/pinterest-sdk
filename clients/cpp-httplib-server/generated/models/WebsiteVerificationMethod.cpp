@@ -6,20 +6,3 @@
 */
 #include "WebsiteVerificationMethod.h"
 
-namespace models {
-
-WebsiteVerificationMethod::WebsiteVerificationMethod()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

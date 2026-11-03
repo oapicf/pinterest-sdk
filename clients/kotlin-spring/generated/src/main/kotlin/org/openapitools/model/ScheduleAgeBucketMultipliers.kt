@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,8 +22,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ScheduleAgeBucketMultipliers(
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("AGE_BUCKET")
     @get:JsonProperty("AGE_BUCKET") val AGE_BUCKET: ScheduleAgeBucketMultipliers.AGEBUCKET? = null
 ) : kotlin.collections.HashMap<String, kotlin.Double>() {
@@ -44,12 +39,12 @@ data class ScheduleAgeBucketMultipliers(
         _50Minus54("50-54"),
         _55Minus64("55-64"),
         _65Plus("65+");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): AGEBUCKET {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AGEBUCKET'")
             }
         }

@@ -51,10 +51,10 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
             ],
@@ -67,7 +67,7 @@ class BoardsController extends Controller
 
         $boardSectionCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardSectionCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardSectionsCreate($boardId, $boardSectionCreate, $adAccountId);
@@ -118,23 +118,23 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,'sectionId' => $sectionId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,'section_id' => $sectionId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'sectionId' => [
+                'section_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -148,7 +148,7 @@ class BoardsController extends Controller
 
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardSectionsDelete($boardId, $sectionId, $adAccountId);
@@ -199,18 +199,18 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -218,7 +218,7 @@ class BoardsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -231,11 +231,11 @@ class BoardsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->boardSectionsList($boardId, $adAccountId, $bookmark, $pageSize);
@@ -282,23 +282,23 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,'sectionId' => $sectionId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,'section_id' => $sectionId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'sectionId' => [
+                'section_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -306,7 +306,7 @@ class BoardsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -320,11 +320,11 @@ class BoardsController extends Controller
 
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->boardSectionsListPins($boardId, $sectionId, $adAccountId, $bookmark, $pageSize);
@@ -371,10 +371,10 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,'sectionId' => $sectionId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,'section_id' => $sectionId,
+                ],
             ),
             [
             ],
@@ -388,7 +388,7 @@ class BoardsController extends Controller
 
         $boardSectionUpdateWithRequiredBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardSectionUpdateWithRequiredBody::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardSectionsUpdate($boardId, $sectionId, $boardSectionUpdateWithRequiredBody, $adAccountId);
@@ -435,10 +435,10 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -450,7 +450,7 @@ class BoardsController extends Controller
 
         $boardCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardsCreate($boardCreate, $adAccountId);
@@ -501,18 +501,18 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -525,7 +525,7 @@ class BoardsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardsDelete($boardId, $adAccountId);
@@ -576,18 +576,18 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -600,7 +600,7 @@ class BoardsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardsGet($boardId, $adAccountId);
@@ -647,13 +647,13 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -663,7 +663,7 @@ class BoardsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -675,13 +675,13 @@ class BoardsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $privacy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardPrivacyFilter::class);
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->boardsList($adAccountId, $privacy, $bookmark, $pageSize);
@@ -728,32 +728,32 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
-                'boardId' => [
+                'board_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'creativeTypes' => [
+                'creative_types' => [
                     'array',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinMetrics' => [
+                'pin_metrics' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -766,15 +766,15 @@ class BoardsController extends Controller
         }
 
 
-        $creativeTypes = $request->get('creativeTypes');
+        $creativeTypes = $request->get('creative_types');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $pinMetrics = $request->boolean('pinMetrics');
+        $pinMetrics = $request->boolean('pin_metrics');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->boardsListPins($boardId, $creativeTypes, $adAccountId, $pinMetrics, $bookmark, $pageSize);
@@ -821,10 +821,10 @@ class BoardsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'boardId' => $boardId,
-                ],
                 $request->all(),
+                [
+                    'board_id' => $boardId,
+                ],
             ),
             [
             ],
@@ -837,7 +837,7 @@ class BoardsController extends Controller
 
         $boardWithUpdatePrivacyUpdate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardWithUpdatePrivacyUpdate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->boardsUpdate($boardId, $boardWithUpdatePrivacyUpdate, $adAccountId);

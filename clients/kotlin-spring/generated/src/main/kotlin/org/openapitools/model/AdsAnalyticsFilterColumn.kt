@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reporting columns for sync reporting data filter
-* Values: SPEND_IN_DOLLAR,TOTAL_IMPRESSION
-*/
+ * Reporting columns for sync reporting data filter
+ * Values: SPEND_IN_DOLLAR,TOTAL_IMPRESSION
+ */
 enum class AdsAnalyticsFilterColumn(@get:JsonValue val value: kotlin.String) {
 
     SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
@@ -28,9 +28,8 @@ enum class AdsAnalyticsFilterColumn(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdsAnalyticsFilterColumn {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsFilterColumn'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsFilterColumn'")
         }
     }
 }
-

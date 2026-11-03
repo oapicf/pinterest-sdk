@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ReportType
-{
-public:
-
-    ReportType();
-    virtual ~ReportType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ReportType,
-        )
-
-private:
+enum class ReportType {
+    
+    SYNC,
+    
+    ASYNC
+    
 };
 
+inline void to_json(nlohmann::json& j, const ReportType& value)
+{
+    switch (value)
+    {
+        
+        case ReportType::SYNC: j = "SYNC"; break;
+        
+        case ReportType::ASYNC: j = "ASYNC"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ReportType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ReportType& value)
+{
+    
+    if (j == "SYNC")
+    {
+        value = ReportType::SYNC;
+        return;
+    }
+    
+    if (j == "ASYNC")
+    {
+        value = ReportType::ASYNC;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ReportType", &j);
+}
 
 } // namespace models
 

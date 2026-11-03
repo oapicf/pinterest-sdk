@@ -29,20 +29,14 @@ import {
 export interface LabelUpdateItem {
     /**
      * Label ID.
-     * @type {string}
-     * @memberof LabelUpdateItem
      */
     id: string;
     /**
      * 
-     * @type {LabelStatus}
-     * @memberof LabelUpdateItem
      */
     status?: LabelStatus;
     /**
      * Label name. 100-character limit.
-     * @type {string}
-     * @memberof LabelUpdateItem
      */
     value?: string;
 }

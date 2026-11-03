@@ -51,19 +51,19 @@ class AudienceInsightsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'audienceInsightType' => [
+                'audience_insight_type' => [
                     'required',
                 ],
             ],
@@ -121,13 +121,13 @@ class AudienceInsightsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',

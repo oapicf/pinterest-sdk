@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Result model for local inventory operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Result model for local inventory operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryOperationResult   {
   
   private List<@Valid SupplementalItemValidationEvent> errors = new ArrayList<>();
@@ -51,7 +51,6 @@ public class LocalInventoryOperationResult   {
   
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
   @JsonProperty("errors")
-  @Valid
   public List<@Valid SupplementalItemValidationEvent> getErrors() {
     return errors;
   }
@@ -121,7 +120,6 @@ public class LocalInventoryOperationResult   {
   
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   @JsonProperty("warnings")
-  @Valid
   public List<@Valid SupplementalItemValidationEvent> getWarnings() {
     return warnings;
   }

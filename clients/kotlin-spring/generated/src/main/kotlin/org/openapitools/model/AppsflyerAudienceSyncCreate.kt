@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,18 +22,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AppsflyerAudienceSyncCreate(
 
     @Schema(required = true, description = "The container ID of the audience")
-    @param:JsonProperty("container_id")
+    @param:JsonProperty("container_id", required = true)
     @get:JsonProperty("container_id", required = true) val containerId: kotlin.String,
 
     @Schema(description = "The pre-signed URL for SHA256 hashed GAID/IDFA file")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("url_adid_sha256")
     @get:JsonProperty("url_adid_sha256") val urlAdidSha256: kotlin.String? = null,
 
     @Schema(description = "The pre-signed URL for SHA256 hashed email file")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("url_email_sha256")
     @get:JsonProperty("url_email_sha256") val urlEmailSha256: kotlin.String? = null
 ) {

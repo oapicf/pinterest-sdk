@@ -273,31 +273,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!audienceIds.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegment.", nameof(audienceIds));
+                throw new JsonException("Property is required for class CustomerSegment: audience_ids.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegment.", nameof(name));
+                throw new JsonException("Property is required for class CustomerSegment: name.");
 
             if (audienceIds.IsSet && audienceIds.Value == null)
-                throw new ArgumentNullException(nameof(audienceIds), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: audience_ids.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: name.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: ad_account_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: status.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class CustomerSegment.");
+                throw new JsonException("Property is not nullable for class CustomerSegment: updated_time.");
 
             return new CustomerSegment(audienceIds.Value!, name.Value!, adAccountId, createdTime, id, status, updatedTime);
         }
@@ -308,7 +308,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegment"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerSegment customerSegment, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -323,20 +322,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegment"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerSegment customerSegment, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerSegment.AudienceIds == null)
-                throw new ArgumentNullException(nameof(customerSegment.AudienceIds), "Property is required for class CustomerSegment.");
-
-            if (customerSegment.Name == null)
-                throw new ArgumentNullException(nameof(customerSegment.Name), "Property is required for class CustomerSegment.");
-
             if (customerSegment.AdAccountIdOption.IsSet && customerSegment.AdAccountId == null)
-                throw new ArgumentNullException(nameof(customerSegment.AdAccountId), "Property is required for class CustomerSegment.");
+                throw new JsonException("Cannot write null property CustomerSegment.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (customerSegment.CreatedTimeOption.IsSet && customerSegment.CreatedTime == null)
+                throw new JsonException("Cannot write null property CustomerSegment.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (customerSegment.IdOption.IsSet && customerSegment.Id == null)
-                throw new ArgumentNullException(nameof(customerSegment.Id), "Property is required for class CustomerSegment.");
+                throw new JsonException("Cannot write null property CustomerSegment.Id to non-nullable JSON property 'id'.");
+
+            if (customerSegment.StatusOption.IsSet && customerSegment.Status == null)
+                throw new JsonException("Cannot write null property CustomerSegment.Status to non-nullable JSON property 'status'.");
+
+            if (customerSegment.UpdatedTimeOption.IsSet && customerSegment.UpdatedTime == null)
+                throw new JsonException("Cannot write null property CustomerSegment.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             writer.WritePropertyName("audience_ids");
             JsonSerializer.Serialize(writer, customerSegment.AudienceIds, jsonSerializerOptions);

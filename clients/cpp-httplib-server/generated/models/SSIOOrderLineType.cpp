@@ -6,20 +6,3 @@
 */
 #include "SSIOOrderLineType.h"
 
-namespace models {
-
-SSIOOrderLineType::SSIOOrderLineType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

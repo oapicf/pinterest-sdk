@@ -29,20 +29,14 @@ import {
 export interface CatalogsProductGroupUint32Criteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupUint32Criteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {NumericFilterOperatorType}
-     * @memberof CatalogsProductGroupUint32Criteria
      */
     operator: NumericFilterOperatorType;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsProductGroupUint32Criteria
      */
     value: number;
 }

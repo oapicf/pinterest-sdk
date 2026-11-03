@@ -17,7 +17,7 @@ import ItemIdStoreCodePair from './ItemIdStoreCodePair';
 /**
  * The LocalInventoryItemsGetCreate model module.
  * @module model/LocalInventoryItemsGetCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalInventoryItemsGetCreate {
     /**

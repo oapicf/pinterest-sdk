@@ -45,18 +45,39 @@ import {
 } from '../models/PinterestLibError';
 
 export interface BulkDownloadCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     bulkDownloadCreate: BulkDownloadCreate;
 }
 
 export interface BulkRequestGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Bulk request ID that is from one of the entities bulk endpoints
+     */
     bulkRequestId: string;
+    /**
+     * If set to True then attach the errors/details to all the requests
+     */
     includeDetails?: boolean;
 }
 
 export interface BulkUpsertCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     bulkUpsertRequest: BulkUpsertRequest;
 }
 

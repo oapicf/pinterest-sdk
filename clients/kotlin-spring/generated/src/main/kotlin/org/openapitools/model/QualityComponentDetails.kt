@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.QualityComponentIssue
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -26,19 +23,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class QualityComponentDetails(
 
     @Schema(required = true, description = "Coverage percentage for this event type.")
-    @param:JsonProperty("coverage")
+    @param:JsonProperty("coverage", required = true)
     @get:JsonProperty("coverage", required = true) val coverage: java.math.BigDecimal,
 
     @field:Valid
     @Schema(description = "List of issues detected for this event type, if any.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("issues")
     @get:JsonProperty("issues") val issues: kotlin.collections.List<QualityComponentIssue>? = null,
 
     @Schema(description = "Overlap percentage for this event type. Only populated for external_event_id")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("overlap")
     @get:JsonProperty("overlap") val overlap: java.math.BigDecimal? = null
 ) {

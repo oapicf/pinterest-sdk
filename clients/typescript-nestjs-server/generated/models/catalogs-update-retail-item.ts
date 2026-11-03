@@ -19,7 +19,7 @@ export interface CatalogsUpdateRetailItem {
 }
 export namespace CatalogsUpdateRetailItem {
   export const OperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

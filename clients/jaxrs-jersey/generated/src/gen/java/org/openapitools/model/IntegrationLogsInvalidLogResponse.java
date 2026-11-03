@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   IntegrationLogsInvalidLogResponse.JSON_PROPERTY_REJECTED_LOGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsInvalidLogResponse   {
   public static final String JSON_PROPERTY_REJECTED_LOGS = "rejected_logs";
   @JsonProperty(JSON_PROPERTY_REJECTED_LOGS)
@@ -58,7 +58,7 @@ public class IntegrationLogsInvalidLogResponse   {
    **/
   @JsonProperty(value = "rejected_logs")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {
     return rejectedLogs;
   }

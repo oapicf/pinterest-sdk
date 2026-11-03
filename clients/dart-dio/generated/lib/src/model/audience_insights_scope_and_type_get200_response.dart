@@ -106,3 +106,4 @@ class _$AudienceInsightsScopeAndTypeGet200ResponseSerializer implements Primitiv
   }
 }
 
+

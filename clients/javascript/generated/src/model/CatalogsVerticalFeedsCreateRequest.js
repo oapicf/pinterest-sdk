@@ -27,7 +27,7 @@ import ProductAvailabilityType from './ProductAvailabilityType';
 /**
  * The CatalogsVerticalFeedsCreateRequest model module.
  * @module model/CatalogsVerticalFeedsCreateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsVerticalFeedsCreateRequest {
     /**

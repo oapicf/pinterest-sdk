@@ -164,22 +164,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!events.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEvents.", nameof(events));
+                throw new JsonException("Property is required for class ConversionEvents: events.");
 
             if (!numEventsProcessed.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEvents.", nameof(numEventsProcessed));
+                throw new JsonException("Property is required for class ConversionEvents: num_events_processed.");
 
             if (!numEventsReceived.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEvents.", nameof(numEventsReceived));
+                throw new JsonException("Property is required for class ConversionEvents: num_events_received.");
 
             if (events.IsSet && events.Value == null)
-                throw new ArgumentNullException(nameof(events), "Property is not nullable for class ConversionEvents.");
+                throw new JsonException("Property is not nullable for class ConversionEvents: events.");
 
             if (numEventsProcessed.IsSet && numEventsProcessed.Value == null)
-                throw new ArgumentNullException(nameof(numEventsProcessed), "Property is not nullable for class ConversionEvents.");
+                throw new JsonException("Property is not nullable for class ConversionEvents: num_events_processed.");
 
             if (numEventsReceived.IsSet && numEventsReceived.Value == null)
-                throw new ArgumentNullException(nameof(numEventsReceived), "Property is not nullable for class ConversionEvents.");
+                throw new JsonException("Property is not nullable for class ConversionEvents: num_events_received.");
 
             return new ConversionEvents(events.Value!, numEventsProcessed.Value!.Value!, numEventsReceived.Value!.Value!);
         }
@@ -190,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEvents"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEvents conversionEvents, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -205,12 +204,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEvents"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEvents conversionEvents, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionEvents.Events == null)
-                throw new ArgumentNullException(nameof(conversionEvents.Events), "Property is required for class ConversionEvents.");
-
             writer.WritePropertyName("events");
             JsonSerializer.Serialize(writer, conversionEvents.Events, jsonSerializerOptions);
             writer.WriteNumber("num_events_processed", conversionEvents.NumEventsProcessed);

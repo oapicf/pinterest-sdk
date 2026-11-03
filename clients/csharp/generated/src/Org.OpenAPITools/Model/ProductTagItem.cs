@@ -144,10 +144,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pinId.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagItem.", nameof(pinId));
+                throw new JsonException("Property is required for class ProductTagItem: pin_id.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class ProductTagItem.");
+                throw new JsonException("Property is not nullable for class ProductTagItem: pin_id.");
 
             return new ProductTagItem(pinId.Value!);
         }
@@ -158,7 +158,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductTagItem productTagItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -173,12 +172,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductTagItem productTagItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productTagItem.PinId == null)
-                throw new ArgumentNullException(nameof(productTagItem.PinId), "Property is required for class ProductTagItem.");
-
             writer.WriteString("pin_id", productTagItem.PinId);
         }
     }

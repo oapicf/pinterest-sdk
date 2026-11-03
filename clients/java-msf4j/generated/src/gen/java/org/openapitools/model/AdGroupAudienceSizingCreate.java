@@ -19,7 +19,7 @@ import org.openapitools.model.TargetingSpecOptimal;
  * Resource create operation model.
  */
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
@@ -31,7 +31,7 @@ public class AdGroupAudienceSizingCreate   {
   private List<@Valid AdGroupAudienceSizingKeyword> keywords = null;
 
   @JsonProperty("placement_group")
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   @JsonProperty("product_group_ids")
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = null;
@@ -64,7 +64,7 @@ public class AdGroupAudienceSizingCreate   {
 
   public AdGroupAudienceSizingCreate addCreativeTypesItem(AdGroupAudienceSizingCreativeTypes creativeTypesItem) {
     if (this.creativeTypes == null) {
-      this.creativeTypes = ;
+      this.creativeTypes = new ArrayList<>();
     }
     this.creativeTypes.add(creativeTypesItem);
     return this;
@@ -90,7 +90,7 @@ public class AdGroupAudienceSizingCreate   {
 
   public AdGroupAudienceSizingCreate addKeywordsItem(AdGroupAudienceSizingKeyword keywordsItem) {
     if (this.keywords == null) {
-      this.keywords = ;
+      this.keywords = new ArrayList<>();
     }
     this.keywords.add(keywordsItem);
     return this;
@@ -134,7 +134,7 @@ public class AdGroupAudienceSizingCreate   {
 
   public AdGroupAudienceSizingCreate addProductGroupIdsItem(String productGroupIdsItem) {
     if (this.productGroupIds == null) {
-      this.productGroupIds = ;
+      this.productGroupIds = new ArrayList<>();
     }
     this.productGroupIds.add(productGroupIdsItem);
     return this;

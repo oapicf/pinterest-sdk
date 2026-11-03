@@ -29,14 +29,10 @@ import {
 export interface CatalogsFeedProcessingSchedule {
     /**
      * A time in format HH:MM with leading 0 (zero)
-     * @type {string}
-     * @memberof CatalogsFeedProcessingSchedule
      */
     time: string;
     /**
      * The timezone considered for the processing schedule time.
-     * @type {CatalogsFeedProcessingScheduleTimezone}
-     * @memberof CatalogsFeedProcessingSchedule
      */
     timezone: CatalogsFeedProcessingScheduleTimezone | null;
 }

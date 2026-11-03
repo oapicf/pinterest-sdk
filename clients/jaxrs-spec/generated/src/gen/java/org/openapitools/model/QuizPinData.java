@@ -25,10 +25,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "This field includes all quiz data including questions, options, and results.")
 @JsonTypeName("QuizPinData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinData   {
-  private @Valid List<@Valid QuizPinQuestion> questions = new ArrayList<>();
-  private @Valid List<@Valid QuizPinResult> results = new ArrayList<>();
+  private List<@Valid QuizPinQuestion> questions = new ArrayList<>();
+  private List<@Valid QuizPinResult> results = new ArrayList<>();
   private QuizPinResult tieBreakerCustomResult;
   private TieBreakerType tieBreakerType;
 
@@ -45,7 +45,7 @@ public class QuizPinData   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("questions")
-  @Valid public List<@Valid QuizPinQuestion> getQuestions() {
+  public List<@Valid QuizPinQuestion> getQuestions() {
     return questions;
   }
 
@@ -80,7 +80,7 @@ public class QuizPinData   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("results")
-  @Valid public List<@Valid QuizPinResult> getResults() {
+  public List<@Valid QuizPinResult> getResults() {
     return results;
   }
 

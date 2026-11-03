@@ -153,10 +153,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AudiencesList200Response.", nameof(items));
+                throw new JsonException("Property is required for class AudiencesList200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AudiencesList200Response.");
+                throw new JsonException("Property is not nullable for class AudiencesList200Response: items.");
 
             return new AudiencesList200Response(items.Value!, bookmark);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audiencesList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudiencesList200Response audiencesList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audiencesList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudiencesList200Response audiencesList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (audiencesList200Response.Items == null)
-                throw new ArgumentNullException(nameof(audiencesList200Response.Items), "Property is required for class AudiencesList200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, audiencesList200Response.Items, jsonSerializerOptions);
             if (audiencesList200Response.BookmarkOption.IsSet)

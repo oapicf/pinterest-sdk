@@ -168,3 +168,4 @@ class _$CatalogsHotelGuestRatingsSerializer implements PrimitiveSerializer<Catal
   }
 }
 
+

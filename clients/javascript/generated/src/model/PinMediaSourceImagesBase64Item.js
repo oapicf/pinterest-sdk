@@ -17,7 +17,7 @@ import ContentType from './ContentType';
 /**
  * The PinMediaSourceImagesBase64Item model module.
  * @module model/PinMediaSourceImagesBase64Item
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaSourceImagesBase64Item {
     /**

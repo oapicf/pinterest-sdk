@@ -20,7 +20,7 @@
 export const ProductAvailability = {
     InStock: 'IN_STOCK',
     OutOfStock: 'OUT_OF_STOCK',
-    Preorder: 'PREORDER'
+    Preorder: 'PREORDER',
 } as const;
 export type ProductAvailability = typeof ProductAvailability[keyof typeof ProductAvailability];
 

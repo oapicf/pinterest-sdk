@@ -36,14 +36,10 @@ import {
 export interface AdBatchItem {
     /**
      * 
-     * @type {Ad}
-     * @memberof AdBatchItem
      */
     data?: Ad;
     /**
      * 
-     * @type {PinterestLibError}
-     * @memberof AdBatchItem
      */
     exceptions?: PinterestLibError;
 }

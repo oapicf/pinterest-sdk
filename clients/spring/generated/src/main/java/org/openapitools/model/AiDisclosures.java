@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AiDisclosures", description = "AI disclosure declarations the creator has made about the Pin.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AiDisclosures {
 
   private List<AiDisclosureItem> values = new ArrayList<>();
@@ -57,7 +57,7 @@ public class AiDisclosures {
    * List of AI disclosure declarations the creator has made about this Pin.
    * @return values
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "values", description = "List of AI disclosure declarations the creator has made about this Pin.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<AiDisclosureItem> getValues() {

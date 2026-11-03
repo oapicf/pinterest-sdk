@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemsUpsertBatchRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsUpsertBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs items
-     * @type {Array<ItemUpsertBatchRecord>}
-     * @memberof CatalogsItemsUpsertBatchRequest
      */
     items: Array<ItemUpsertBatchRecord>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsUpsertBatchRequestLanguageEnum}
-     * @memberof CatalogsItemsUpsertBatchRequest
      */
     language: CatalogsItemsUpsertBatchRequestLanguageEnum;
     /**
      * 
-     * @type {CatalogsItemsUpsertBatchRequestOperationEnum}
-     * @memberof CatalogsItemsUpsertBatchRequest
      */
     operation: CatalogsItemsUpsertBatchRequestOperationEnum;
 }
@@ -171,7 +163,7 @@ export const CatalogsItemsUpsertBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsUpsertBatchRequestLanguageEnum = typeof CatalogsItemsUpsertBatchRequestLanguageEnum[keyof typeof CatalogsItemsUpsertBatchRequestLanguageEnum];
 
@@ -179,7 +171,7 @@ export type CatalogsItemsUpsertBatchRequestLanguageEnum = typeof CatalogsItemsUp
  * @export
  */
 export const CatalogsItemsUpsertBatchRequestOperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
 } as const;
 export type CatalogsItemsUpsertBatchRequestOperationEnum = typeof CatalogsItemsUpsertBatchRequestOperationEnum[keyof typeof CatalogsItemsUpsertBatchRequestOperationEnum];
 

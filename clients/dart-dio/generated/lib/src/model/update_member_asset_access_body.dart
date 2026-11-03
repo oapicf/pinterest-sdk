@@ -107,3 +107,4 @@ class _$UpdateMemberAssetAccessBodySerializer implements PrimitiveSerializer<Upd
   }
 }
 
+

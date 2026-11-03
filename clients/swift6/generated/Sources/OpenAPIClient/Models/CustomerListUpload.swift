@@ -9,9 +9,9 @@ import Foundation
 
 public struct CustomerListUpload: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let customerListIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let customerListIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     /** Advertiser ID. */
     public var adAccountId: String
     /** Customer List Upload creation_time. Epoch (seconds). */

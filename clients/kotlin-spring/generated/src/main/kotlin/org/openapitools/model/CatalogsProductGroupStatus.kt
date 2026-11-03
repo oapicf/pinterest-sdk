@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ACTIVE,INACTIVE
-*/
+ * 
+ * Values: ACTIVE,INACTIVE
+ */
 enum class CatalogsProductGroupStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class CatalogsProductGroupStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsProductGroupStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsProductGroupStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsProductGroupStatus'")
         }
     }
 }
-

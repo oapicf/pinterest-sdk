@@ -5,7 +5,7 @@
  */
 export const AppsflyerPlatform = {
     Android: 'android',
-    Ios: 'ios'
+    Ios: 'ios',
 } as const;
 export type AppsflyerPlatform = typeof AppsflyerPlatform[keyof typeof AppsflyerPlatform];
 

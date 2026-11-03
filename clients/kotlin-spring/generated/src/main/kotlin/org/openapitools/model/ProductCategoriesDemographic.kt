@@ -23,12 +23,12 @@ data class ProductCategoriesDemographic(
 
     @field:Valid
     @Schema(required = true, description = "Age demographic distribution")
-    @param:JsonProperty("age")
+    @param:JsonProperty("age", required = true)
     @get:JsonProperty("age", required = true) val age: kotlin.collections.Map<kotlin.String, java.math.BigDecimal>,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("gender")
+    @param:JsonProperty("gender", required = true)
     @get:JsonProperty("gender", required = true) val gender: GenderDemographics
 ) {
 

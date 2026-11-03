@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,16 +25,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LocalStore", description = "Local store entity")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalStore implements CatalogsLocalStoresCreate200ResponseInnerData {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String addressPrimary;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String addressSecondary;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String city;
 
   private Country country;
@@ -45,18 +41,14 @@ public class LocalStore implements CatalogsLocalStoresCreate200ResponseInnerData
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float latitude;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float longitude;
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String postalCode;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String region;
 
   private String storeCode;

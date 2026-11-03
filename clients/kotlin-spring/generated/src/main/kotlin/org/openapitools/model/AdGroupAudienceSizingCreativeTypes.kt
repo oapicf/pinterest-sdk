@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA
-*/
+ * 
+ * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA
+ */
 enum class AdGroupAudienceSizingCreativeTypes(@get:JsonValue val value: kotlin.String) {
 
     REGULAR("REGULAR"),
@@ -34,9 +34,8 @@ enum class AdGroupAudienceSizingCreativeTypes(@get:JsonValue val value: kotlin.S
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdGroupAudienceSizingCreativeTypes {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupAudienceSizingCreativeTypes'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupAudienceSizingCreativeTypes'")
         }
     }
 }
-

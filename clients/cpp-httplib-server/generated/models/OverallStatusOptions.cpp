@@ -6,20 +6,3 @@
 */
 #include "OverallStatusOptions.h"
 
-namespace models {
-
-OverallStatusOptions::OverallStatusOptions()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

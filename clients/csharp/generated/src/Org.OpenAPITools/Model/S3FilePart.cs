@@ -149,16 +149,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!partNumber.IsSet)
-                throw new ArgumentException("Property is required for class S3FilePart.", nameof(partNumber));
+                throw new JsonException("Property is required for class S3FilePart: part_number.");
 
             if (!presignedUrl.IsSet)
-                throw new ArgumentException("Property is required for class S3FilePart.", nameof(presignedUrl));
+                throw new JsonException("Property is required for class S3FilePart: presigned_url.");
 
             if (partNumber.IsSet && partNumber.Value == null)
-                throw new ArgumentNullException(nameof(partNumber), "Property is not nullable for class S3FilePart.");
+                throw new JsonException("Property is not nullable for class S3FilePart: part_number.");
 
             if (presignedUrl.IsSet && presignedUrl.Value == null)
-                throw new ArgumentNullException(nameof(presignedUrl), "Property is not nullable for class S3FilePart.");
+                throw new JsonException("Property is not nullable for class S3FilePart: presigned_url.");
 
             return new S3FilePart(partNumber.Value!.Value!, presignedUrl.Value!);
         }
@@ -169,7 +169,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="s3FilePart"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, S3FilePart s3FilePart, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -184,12 +183,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="s3FilePart"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, S3FilePart s3FilePart, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (s3FilePart.PresignedUrl == null)
-                throw new ArgumentNullException(nameof(s3FilePart.PresignedUrl), "Property is required for class S3FilePart.");
-
             writer.WriteNumber("part_number", s3FilePart.PartNumber);
 
             writer.WriteString("presigned_url", s3FilePart.PresignedUrl);

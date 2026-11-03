@@ -17,7 +17,7 @@ import CreateAssetInvitesRequestItem from './CreateAssetInvitesRequestItem';
 /**
  * The CreateAssetInvitesRequest model module.
  * @module model/CreateAssetInvitesRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CreateAssetInvitesRequest {
     /**

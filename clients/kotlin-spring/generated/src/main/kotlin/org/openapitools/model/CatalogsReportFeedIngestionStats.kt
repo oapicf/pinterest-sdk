@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -34,43 +31,31 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsReportFeedIngestionStats(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("report_type")
+    @param:JsonProperty("report_type", required = true)
     @get:JsonProperty("report_type", required = true) override val reportType: CatalogsReportFeedIngestionStats.ReportType = kotlin.String.FEED_INGESTION_ISSUES,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "ID of the catalog entity.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null,
 
     @Schema(example = "112", description = "The event code that a diagnostics aggregated number references")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("code")
     @get:JsonProperty("code") val code: kotlin.Int? = null,
 
     @Schema(example = "AVAILABILITY_INVALID", description = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("code_label")
     @get:JsonProperty("code_label") val codeLabel: kotlin.String? = null,
 
     @Schema(description = "Title message describing the diagnostic issue")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("message")
     @get:JsonProperty("message") val message: kotlin.String? = null,
 
     @Schema(example = "10", description = "Number of occurrences of the issue")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("occurrences")
     @get:JsonProperty("occurrences") val occurrences: kotlin.Int? = null,
 
     @Schema(description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("severity")
     @get:JsonProperty("severity") val severity: CatalogsReportFeedIngestionStats.Severity? = null
 ) : CatalogsReportStats {
@@ -82,12 +67,12 @@ data class CatalogsReportFeedIngestionStats(
     enum class ReportType(@get:JsonValue val value: kotlin.String) {
 
         FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportType'")
             }
         }
@@ -101,12 +86,12 @@ data class CatalogsReportFeedIngestionStats(
 
         WARN("WARN"),
         ERROR("ERROR");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Severity {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Severity'")
             }
         }

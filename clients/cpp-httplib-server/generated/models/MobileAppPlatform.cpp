@@ -6,20 +6,3 @@
 */
 #include "MobileAppPlatform.h"
 
-namespace models {
-
-MobileAppPlatform::MobileAppPlatform()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

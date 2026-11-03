@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CatalogsCreateReportResponse {
     /**
      * Token to be used to get the report
-     * @type {string}
-     * @memberof CatalogsCreateReportResponse
      */
     token?: string;
 }

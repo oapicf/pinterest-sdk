@@ -20,13 +20,9 @@ public class LabelsResponse  {
   */
   @ApiModelProperty(value = "Labels that were not successfully applied.")
 
-  @Valid
-
   private List<@Valid LabelError> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-
-  @Valid
 
   private List<@Valid Label> labels = new ArrayList<>();
  /**

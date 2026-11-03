@@ -163,10 +163,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dailyMetrics.IsSet && dailyMetrics.Value == null)
-                throw new ArgumentNullException(nameof(dailyMetrics), "Property is not nullable for class AnalyticsMetricsResponse.");
+                throw new JsonException("Property is not nullable for class AnalyticsMetricsResponse: daily_metrics.");
 
             if (summaryMetrics.IsSet && summaryMetrics.Value == null)
-                throw new ArgumentNullException(nameof(summaryMetrics), "Property is not nullable for class AnalyticsMetricsResponse.");
+                throw new JsonException("Property is not nullable for class AnalyticsMetricsResponse: summary_metrics.");
 
             return new AnalyticsMetricsResponse(dailyMetrics, summaryMetrics);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="analyticsMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AnalyticsMetricsResponse analyticsMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,14 +191,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="analyticsMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AnalyticsMetricsResponse analyticsMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (analyticsMetricsResponse.DailyMetricsOption.IsSet && analyticsMetricsResponse.DailyMetrics == null)
-                throw new ArgumentNullException(nameof(analyticsMetricsResponse.DailyMetrics), "Property is required for class AnalyticsMetricsResponse.");
+                throw new JsonException("Cannot write null property AnalyticsMetricsResponse.DailyMetrics to non-nullable JSON property 'daily_metrics'.");
 
             if (analyticsMetricsResponse.SummaryMetricsOption.IsSet && analyticsMetricsResponse.SummaryMetrics == null)
-                throw new ArgumentNullException(nameof(analyticsMetricsResponse.SummaryMetrics), "Property is required for class AnalyticsMetricsResponse.");
+                throw new JsonException("Cannot write null property AnalyticsMetricsResponse.SummaryMetrics to non-nullable JSON property 'summary_metrics'.");
 
             if (analyticsMetricsResponse.DailyMetricsOption.IsSet)
             {

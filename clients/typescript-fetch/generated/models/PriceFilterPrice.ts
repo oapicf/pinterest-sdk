@@ -36,26 +36,18 @@ import {
 export interface PriceFilterPrice {
     /**
      * 
-     * @type {NonNullableCatalogsCurrency}
-     * @memberof PriceFilterPrice
      */
     currency: NonNullableCatalogsCurrency;
     /**
      * 
-     * @type {boolean}
-     * @memberof PriceFilterPrice
      */
     negated?: boolean;
     /**
      * 
-     * @type {NumericFilterOperatorType}
-     * @memberof PriceFilterPrice
      */
     operator: NumericFilterOperatorType;
     /**
      * 
-     * @type {number}
-     * @memberof PriceFilterPrice
      */
     value: number;
 }

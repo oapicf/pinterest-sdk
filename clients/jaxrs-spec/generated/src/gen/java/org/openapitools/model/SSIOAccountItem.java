@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Salesforce account item with billing and terms information.")
 @JsonTypeName("SSIOAccountItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccountItem   {
-  private @Valid List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
+  private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
   private String id;
   private String ioTerms;
   private String ioTermsId;
@@ -48,7 +48,7 @@ public class SSIOAccountItem   {
   
   @ApiModelProperty(value = "Address information that is associated with this account.")
   @JsonProperty("addresses")
-  @Valid public List<@Valid SSIOAccountAddress> getAddresses() {
+  public List<@Valid SSIOAccountAddress> getAddresses() {
     return addresses;
   }
 

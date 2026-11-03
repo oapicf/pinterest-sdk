@@ -153,13 +153,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupMultipleStringListCriteria.", nameof(values));
+                throw new JsonException("Property is required for class CatalogsProductGroupMultipleStringListCriteria: values.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class CatalogsProductGroupMultipleStringListCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupMultipleStringListCriteria: values.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class CatalogsProductGroupMultipleStringListCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupMultipleStringListCriteria: negated.");
 
             return new CatalogsProductGroupMultipleStringListCriteria(values.Value!, negated);
         }
@@ -170,7 +170,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupMultipleStringListCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -185,11 +184,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupMultipleStringListCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupMultipleStringListCriteria catalogsProductGroupMultipleStringListCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupMultipleStringListCriteria.Values == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupMultipleStringListCriteria.Values), "Property is required for class CatalogsProductGroupMultipleStringListCriteria.");
+            if (catalogsProductGroupMultipleStringListCriteria.NegatedOption.IsSet && catalogsProductGroupMultipleStringListCriteria.Negated == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupMultipleStringListCriteria.Negated to non-nullable JSON property 'negated'.");
 
             writer.WritePropertyName("values");
             JsonSerializer.Serialize(writer, catalogsProductGroupMultipleStringListCriteria.Values, jsonSerializerOptions);

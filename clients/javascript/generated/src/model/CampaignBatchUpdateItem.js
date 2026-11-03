@@ -23,7 +23,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The CampaignBatchUpdateItem model module.
  * @module model/CampaignBatchUpdateItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignBatchUpdateItem {
     /**

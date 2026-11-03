@@ -164,3 +164,4 @@ class _$RetailLocalInventoryItemAttributesSerializer implements PrimitiveSeriali
   }
 }
 
+

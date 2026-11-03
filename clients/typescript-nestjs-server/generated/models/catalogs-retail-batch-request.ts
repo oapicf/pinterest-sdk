@@ -23,7 +23,7 @@ export interface CatalogsRetailBatchRequest {
 }
 export namespace CatalogsRetailBatchRequest {
   export const CatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
   export const LanguageEnum = {
@@ -133,7 +133,7 @@ export namespace CatalogsRetailBatchRequest {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
   } as const;
   export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
 }

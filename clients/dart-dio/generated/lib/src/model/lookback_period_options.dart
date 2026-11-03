@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'lookback_period_options.g.dart';
 
+/// Days in lookback window in the GET Conversion EQS response.
 class LookbackPeriodOptions extends EnumClass {
 
-  /// Days in lookback window in the GET Conversion EQS response.
   @BuiltValueEnumConst(wireName: r'1d')
   static const LookbackPeriodOptions n1d = _$n1d;
-  /// Days in lookback window in the GET Conversion EQS response.
   @BuiltValueEnumConst(wireName: r'14d')
   static const LookbackPeriodOptions n14d = _$n14d;
 

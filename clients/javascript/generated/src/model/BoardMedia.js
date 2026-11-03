@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BoardMedia model module.
  * @module model/BoardMedia
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BoardMedia {
     /**

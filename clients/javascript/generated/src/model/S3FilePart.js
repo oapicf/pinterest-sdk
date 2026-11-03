@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The S3FilePart model module.
  * @module model/S3FilePart
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class S3FilePart {
     /**

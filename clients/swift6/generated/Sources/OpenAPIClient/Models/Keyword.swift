@@ -9,8 +9,8 @@ import Foundation
 
 public struct Keyword: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var archived: Bool?
     /** **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group. */
     public var bid: Int?

@@ -80,8 +80,7 @@ class TrendsEditorial(BaseModel):
         _items = []
         if self.related_keywords:
             for _item_related_keywords in self.related_keywords:
-                if _item_related_keywords:
-                    _items.append(_item_related_keywords.to_dict())
+                _items.append(_item_related_keywords.to_dict() if _item_related_keywords is not None else None)
             _dict['related_keywords'] = _items
         return _dict
 

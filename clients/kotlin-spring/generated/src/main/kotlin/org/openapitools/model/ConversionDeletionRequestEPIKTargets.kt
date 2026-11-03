@@ -21,7 +21,7 @@ data class ConversionDeletionRequestEPIKTargets(
 
     @get:Size(min=1)
     @Schema(required = true, description = "Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie).")
-    @param:JsonProperty("epiks")
+    @param:JsonProperty("epiks", required = true)
     @get:JsonProperty("epiks", required = true) val epiks: kotlin.collections.List<kotlin.String>
 ) {
 

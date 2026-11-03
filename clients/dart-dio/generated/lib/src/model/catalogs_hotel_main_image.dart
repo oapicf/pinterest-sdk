@@ -129,3 +129,4 @@ class _$CatalogsHotelMainImageSerializer implements PrimitiveSerializer<Catalogs
   }
 }
 
+

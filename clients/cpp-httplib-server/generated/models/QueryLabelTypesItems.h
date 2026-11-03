@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class QueryLabelTypesItems
-{
-public:
-
-    QueryLabelTypesItems();
-    virtual ~QueryLabelTypesItems() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(QueryLabelTypesItems,
-        )
-
-private:
+enum class QueryLabelTypesItems {
+    
+    BRAND,
+    
+    CUSTOM
+    
 };
 
+inline void to_json(nlohmann::json& j, const QueryLabelTypesItems& value)
+{
+    switch (value)
+    {
+        
+        case QueryLabelTypesItems::BRAND: j = "BRAND"; break;
+        
+        case QueryLabelTypesItems::CUSTOM: j = "CUSTOM"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for QueryLabelTypesItems", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, QueryLabelTypesItems& value)
+{
+    
+    if (j == "BRAND")
+    {
+        value = QueryLabelTypesItems::BRAND;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = QueryLabelTypesItems::CUSTOM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for QueryLabelTypesItems", &j);
+}
 
 } // namespace models
 

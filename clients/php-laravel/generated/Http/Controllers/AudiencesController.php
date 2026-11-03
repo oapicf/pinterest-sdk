@@ -51,10 +51,10 @@ class AudiencesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,18 +116,18 @@ class AudiencesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'audienceId' => $audienceId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'audience_id' => $audienceId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'audienceId' => [
+                'audience_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -187,13 +187,13 @@ class AudiencesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -202,16 +202,16 @@ class AudiencesController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'ownershipType' => [
+                'ownership_type' => [
                 ],
-                'excludeNca' => [
+                'exclude_nca' => [
                     'boolean',
                 ],
             ],
@@ -224,13 +224,13 @@ class AudiencesController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
         $ownershipType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceOwnershipType::class);
 
-        $excludeNca = $request->boolean('excludeNca');
+        $excludeNca = $request->boolean('exclude_nca');
 
 
         $apiResult = $this->api->audiencesList($adAccountId, $bookmark, $pageSize, $order, $ownershipType, $excludeNca);
@@ -277,10 +277,10 @@ class AudiencesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'audienceId' => $audienceId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'audience_id' => $audienceId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

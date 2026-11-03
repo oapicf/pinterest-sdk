@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request body for bulk adding product tags to a pin.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Request body for bulk adding product tags to a pin.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkAddRequest   {
   
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
@@ -26,8 +26,7 @@ public class ProductTagsBulkAddRequest   {
   @ApiModelProperty(required = true, value = "List of product tags to add. Maximum 24 items allowed.")
   @JsonProperty("product_tags")
   @NotNull
- @Size(min=1,max=24)  @Valid
-  public List<@Valid ProductTagItem> getProductTags() {
+ @Size(min=1,max=24)  public List<@Valid ProductTagItem> getProductTags() {
     return productTags;
   }
   public void setProductTags(List<@Valid ProductTagItem> productTags) {

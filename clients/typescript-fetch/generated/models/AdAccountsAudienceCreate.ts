@@ -36,32 +36,22 @@ import {
 export interface AdAccountsAudienceCreate {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof AdAccountsAudienceCreate
      */
     adAccountId?: string;
     /**
      * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-     * @type {AudienceType}
-     * @memberof AdAccountsAudienceCreate
      */
     audienceType?: AudienceType;
     /**
      * Audience description.
-     * @type {string}
-     * @memberof AdAccountsAudienceCreate
      */
     description?: string | null;
     /**
      * Audience name.
-     * @type {string}
-     * @memberof AdAccountsAudienceCreate
      */
     name?: string;
     /**
      * 
-     * @type {AdAccountsAudienceRule}
-     * @memberof AdAccountsAudienceCreate
      */
     rule?: AdAccountsAudienceRule;
 }

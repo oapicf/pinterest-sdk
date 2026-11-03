@@ -6,20 +6,3 @@
 */
 #include "AttributionMatchType.h"
 
-namespace models {
-
-AttributionMatchType::AttributionMatchType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

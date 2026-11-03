@@ -14,7 +14,7 @@ public struct BrandAccountProfileImage: Sendable, Codable, Hashable {
         case imageSlashJpeg = "image/jpeg"
         case imageSlashPng = "image/png"
     }
-    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/[a-zA-Z0-9+\/=]+/")
+    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "[a-zA-Z0-9+/=]+")
     public var contentType: ContentType
     public var data: String
 

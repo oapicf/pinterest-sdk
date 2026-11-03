@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class FrequencyGoalMetadataTimerange
-{
-public:
-
-    FrequencyGoalMetadataTimerange();
-    virtual ~FrequencyGoalMetadataTimerange() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FrequencyGoalMetadataTimerange,
-        )
-
-private:
+enum class FrequencyGoalMetadataTimerange {
+    
+    THIRTY_DAY,
+    
+    DAY,
+    
+    SEVEN_DAY,
+    
+    TWENTY_MINUTE,
+    
+    TEN_MINUTE,
+    
+    TWENTY_FOUR_HOUR
+    
 };
 
+inline void to_json(nlohmann::json& j, const FrequencyGoalMetadataTimerange& value)
+{
+    switch (value)
+    {
+        
+        case FrequencyGoalMetadataTimerange::THIRTY_DAY: j = "THIRTY_DAY"; break;
+        
+        case FrequencyGoalMetadataTimerange::DAY: j = "DAY"; break;
+        
+        case FrequencyGoalMetadataTimerange::SEVEN_DAY: j = "SEVEN_DAY"; break;
+        
+        case FrequencyGoalMetadataTimerange::TWENTY_MINUTE: j = "TWENTY_MINUTE"; break;
+        
+        case FrequencyGoalMetadataTimerange::TEN_MINUTE: j = "TEN_MINUTE"; break;
+        
+        case FrequencyGoalMetadataTimerange::TWENTY_FOUR_HOUR: j = "TWENTY_FOUR_HOUR"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for FrequencyGoalMetadataTimerange", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, FrequencyGoalMetadataTimerange& value)
+{
+    
+    if (j == "THIRTY_DAY")
+    {
+        value = FrequencyGoalMetadataTimerange::THIRTY_DAY;
+        return;
+    }
+    
+    if (j == "DAY")
+    {
+        value = FrequencyGoalMetadataTimerange::DAY;
+        return;
+    }
+    
+    if (j == "SEVEN_DAY")
+    {
+        value = FrequencyGoalMetadataTimerange::SEVEN_DAY;
+        return;
+    }
+    
+    if (j == "TWENTY_MINUTE")
+    {
+        value = FrequencyGoalMetadataTimerange::TWENTY_MINUTE;
+        return;
+    }
+    
+    if (j == "TEN_MINUTE")
+    {
+        value = FrequencyGoalMetadataTimerange::TEN_MINUTE;
+        return;
+    }
+    
+    if (j == "TWENTY_FOUR_HOUR")
+    {
+        value = FrequencyGoalMetadataTimerange::TWENTY_FOUR_HOUR;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for FrequencyGoalMetadataTimerange", &j);
+}
 
 } // namespace models
 

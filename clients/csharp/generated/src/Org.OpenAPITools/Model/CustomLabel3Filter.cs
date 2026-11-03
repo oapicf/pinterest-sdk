@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cUSTOMLABEL3.IsSet)
-                throw new ArgumentException("Property is required for class CustomLabel3Filter.", nameof(cUSTOMLABEL3));
+                throw new JsonException("Property is required for class CustomLabel3Filter: CUSTOM_LABEL_3.");
 
             if (cUSTOMLABEL3.IsSet && cUSTOMLABEL3.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL3), "Property is not nullable for class CustomLabel3Filter.");
+                throw new JsonException("Property is not nullable for class CustomLabel3Filter: CUSTOM_LABEL_3.");
 
             return new CustomLabel3Filter(cUSTOMLABEL3.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customLabel3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomLabel3Filter customLabel3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customLabel3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomLabel3Filter customLabel3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customLabel3Filter.CUSTOMLABEL3 == null)
-                throw new ArgumentNullException(nameof(customLabel3Filter.CUSTOMLABEL3), "Property is required for class CustomLabel3Filter.");
-
             writer.WritePropertyName("CUSTOM_LABEL_3");
             JsonSerializer.Serialize(writer, customLabel3Filter.CUSTOMLABEL3, jsonSerializerOptions);
         }

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CartingRetailer {
     /**
      * Unique identifier for the retailer
-     * @type {string}
-     * @memberof CartingRetailer
      */
     retailerId: string;
     /**
      * Name of the retailer
-     * @type {string}
-     * @memberof CartingRetailer
      */
     retailerName: string;
 }

@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   FrequencyMultipliers.JSON_PROPERTY_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T
 })
 @JsonTypeName("FrequencyMultipliers")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class FrequencyMultipliers extends HashMap<String, Double> {
     public static final String JSON_PROPERTY_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T = "IMPRESSION_COUNT";

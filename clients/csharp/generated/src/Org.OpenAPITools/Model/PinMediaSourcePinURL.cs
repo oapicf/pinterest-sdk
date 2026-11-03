@@ -196,7 +196,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourcePinURL.SourceTypeEnum?>(PinMediaSourcePinURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourcePinURL.SourceTypeEnum? sourceTypeValue = PinMediaSourcePinURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourcePinURL.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "is_affiliate_link":
                             isAffiliateLink = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
@@ -208,13 +213,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourcePinURL.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourcePinURL: source_type.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourcePinURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourcePinURL: source_type.");
 
             if (isAffiliateLink.IsSet && isAffiliateLink.Value == null)
-                throw new ArgumentNullException(nameof(isAffiliateLink), "Property is not nullable for class PinMediaSourcePinURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourcePinURL: is_affiliate_link.");
 
             return new PinMediaSourcePinURL(sourceType.Value!.Value!, isAffiliateLink);
         }
@@ -225,7 +230,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourcePinURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourcePinURL pinMediaSourcePinURL, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -240,9 +244,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourcePinURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourcePinURL pinMediaSourcePinURL, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (pinMediaSourcePinURL.IsAffiliateLinkOption.IsSet && pinMediaSourcePinURL.IsAffiliateLink == null)
+                throw new JsonException("Cannot write null property PinMediaSourcePinURL.IsAffiliateLink to non-nullable JSON property 'is_affiliate_link'.");
+
             var sourceTypeRawValue = PinMediaSourcePinURL.SourceTypeEnumToJsonValue(pinMediaSourcePinURL.SourceType);
             writer.WriteString("source_type", sourceTypeRawValue);
             if (pinMediaSourcePinURL.IsAffiliateLinkOption.IsSet)

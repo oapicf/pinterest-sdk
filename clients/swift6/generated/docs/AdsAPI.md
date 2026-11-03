@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 # **adPreviewsCreate**
 ```swift
-    open class func adPreviewsCreate(adAccountId: String, adPreviewRequest: AdPreviewRequest, completion: @escaping (_ data: AdPreviewURLResponse?, _ error: Error?) -> Void)
+    open class func adPreviewsCreate(adAccountId: String, adPreviewRequest: AdPreviewRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdPreviewURLResponse
 ```
 
 Create ad preview with pin or image
@@ -34,15 +34,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adPreviewRequest = AdPreviewRequest(imageUrl: "imageUrl_example", promotionId: "promotionId_example", title: "title_example", creativeType: AdShoppingPreviewCreativeType(), pinId: "pinId_example", catalogProductGroupId: "catalogProductGroupId_example", customizableCtaType: CustomizableCTAType(), heroImageTitle: "heroImageTitle_example", heroImageUrl: "heroImageUrl_example", heroPinId: "heroPinId_example", imageTag: "imageTag_example", itemId: "itemId_example", preferredMediaType: BasePreferredMediaType(), showPromotion: false, videoTag: "videoTag_example") // AdPreviewRequest | 
 
 // Create ad preview with pin or image
-AdsAPI.adPreviewsCreate(adAccountId: adAccountId, adPreviewRequest: adPreviewRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adPreviewsCreate(adAccountId: adAccountId, adPreviewRequest: adPreviewRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -70,7 +66,7 @@ Name | Type | Description  | Notes
 
 # **adTargetingAnalyticsGet**
 ```swift
-    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ConversionAttributionWindowDays? = nil, engagementWindowDays: ConversionAttributionWindowDays? = nil, viewWindowDays: ConversionAttributionWindowDays? = nil, conversionReportTime: ConversionReportTimeType? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, sortColumns: [String]? = nil, sortAscending: Bool? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
+    open class func adTargetingAnalyticsGet(adAccountId: String, adIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAdTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ConversionAttributionWindowDays? = nil, engagementWindowDays: ConversionAttributionWindowDays? = nil, viewWindowDays: ConversionAttributionWindowDays? = nil, conversionReportTime: ConversionReportTimeType? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, sortColumns: [String]? = nil, sortAscending: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MetricsResponse
 ```
 
 Get targeting analytics for ads
@@ -99,15 +95,11 @@ let sortColumns = ["inner_example"] // [String] | Sort Columns. (optional)
 let sortAscending = true // Bool | Sort ascending. (optional)
 
 // Get targeting analytics for ads
-AdsAPI.adTargetingAnalyticsGet(adAccountId: adAccountId, adIds: adIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, sortColumns: sortColumns, sortAscending: sortAscending) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adTargetingAnalyticsGet(adAccountId: adAccountId, adIds: adIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone, sortColumns: sortColumns, sortAscending: sortAscending)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -148,7 +140,7 @@ Name | Type | Description  | Notes
 
 # **adsAnalytics**
 ```swift
-    open class func adsAnalytics(startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, pinIds: [String]? = nil, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, campaignIds: [String]? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [AdsAnalytics]?, _ error: Error?) -> Void)
+    open class func adsAnalytics(startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, pinIds: [String]? = nil, adIds: [String]? = nil, clickWindowDays: ClickWindowDays_adsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adsAnalytics? = nil, viewWindowDays: ViewWindowDays_adsAnalytics? = nil, conversionReportTime: ConversionReportTime_adsAnalytics? = nil, campaignIds: [String]? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [AdsAnalytics]
 ```
 
 Get ad analytics
@@ -175,15 +167,11 @@ let campaignIds = ["inner_example"] // [String] | List of Campaign Ids to use to
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get ad analytics
-AdsAPI.adsAnalytics(startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, pinIds: pinIds, adIds: adIds, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, campaignIds: campaignIds, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adsAnalytics(startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, pinIds: pinIds, adIds: adIds, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, campaignIds: campaignIds, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -222,7 +210,7 @@ Name | Type | Description  | Notes
 
 # **adsCreate**
 ```swift
-    open class func adsCreate(adAccountId: String, adCreate: [AdCreate], completion: @escaping (_ data: AdBatchWriteResponseModel?, _ error: Error?) -> Void)
+    open class func adsCreate(adAccountId: String, adCreate: [AdCreate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdBatchWriteResponseModel
 ```
 
 Create ads
@@ -238,15 +226,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adCreate = [AdCreate(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", collectionItemsDestinationUrlTemplate: "collectionItemsDestinationUrlTemplate_example", collectionsHeaderType: AdCollectionsHeaderType(), creativeType: CreativeType(), customizableCtaType: CustomizableCTAType(), destinationUrl: "destinationUrl_example", disclosureType: DisclosureType(), disclosureUrl: "disclosureUrl_example", gridClickType: GridClickType(), iosDeepLink: "iosDeepLink_example", isCarting: false, isCollageAcceptedTerms: false, isCollageSingleDestination: false, isPinDeleted: false, isRemovable: false, leadFormId: "leadFormId_example", name: "name_example", pinId: "pinId_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(options: [QuizPinOption(id: 123, text: "text_example")], questionId: 123, questionText: "questionText_example")], results: [QuizPinResult(androidDeepLink: "androidDeepLink_example", destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", organicPinId: "organicPinId_example", resultId: 123)], tieBreakerCustomResult: nil, tieBreakerType: TieBreakerType()), status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]), viewTrackingUrl: "viewTrackingUrl_example")] // [AdCreate] | 
 
 // Create ads
-AdsAPI.adsCreate(adAccountId: adAccountId, adCreate: adCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adsCreate(adAccountId: adAccountId, adCreate: adCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -274,7 +258,7 @@ Name | Type | Description  | Notes
 
 # **adsGet**
 ```swift
-    open class func adsGet(adId: String, adAccountId: String, completion: @escaping (_ data: Ad?, _ error: Error?) -> Void)
+    open class func adsGet(adId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Ad
 ```
 
 Get ad
@@ -290,15 +274,11 @@ let adId = "adId_example" // String | The ID of this ad.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get ad
-AdsAPI.adsGet(adId: adId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adsGet(adId: adId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -326,7 +306,7 @@ Name | Type | Description  | Notes
 
 # **adsList**
 ```swift
-    open class func adsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, adGroupIds: [String]? = nil, adIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, completion: @escaping (_ data: AdsList200Response?, _ error: Error?) -> Void)
+    open class func adsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, adGroupIds: [String]? = nil, adIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdsList200Response
 ```
 
 List ads
@@ -348,15 +328,11 @@ let adIds = ["inner_example"] // [String] | List of Ad Ids to use to filter the 
 let entityStatuses = [EntityStatus()] // [EntityStatus] | Entity status (optional)
 
 // List ads
-AdsAPI.adsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, adGroupIds: adGroupIds, adIds: adIds, entityStatuses: entityStatuses) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, adGroupIds: adGroupIds, adIds: adIds, entityStatuses: entityStatuses)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -390,7 +366,7 @@ Name | Type | Description  | Notes
 
 # **adsUpdate**
 ```swift
-    open class func adsUpdate(adAccountId: String, adBatchUpdate: [AdBatchUpdate], completion: @escaping (_ data: AdBatchWriteResponseModel?, _ error: Error?) -> Void)
+    open class func adsUpdate(adAccountId: String, adBatchUpdate: [AdBatchUpdate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdBatchWriteResponseModel
 ```
 
 Update ads
@@ -406,15 +382,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adBatchUpdate = [AdBatchUpdate(adGroupId: "adGroupId_example", androidDeepLink: "androidDeepLink_example", carouselAndroidDeepLinks: ["carouselAndroidDeepLinks_example"], carouselDestinationUrls: ["carouselDestinationUrls_example"], carouselIosDeepLinks: ["carouselIosDeepLinks_example"], clickTrackingUrl: "clickTrackingUrl_example", collectionItemsDestinationUrlTemplate: "collectionItemsDestinationUrlTemplate_example", collectionsHeaderType: AdCollectionsHeaderType(), creativeType: CreativeType(), customizableCtaType: CustomizableCTAType(), destinationUrl: "destinationUrl_example", disclosureType: DisclosureType(), disclosureUrl: "disclosureUrl_example", gridClickType: GridClickType(), id: "id_example", iosDeepLink: "iosDeepLink_example", isCarting: false, isCollageAcceptedTerms: false, isCollageSingleDestination: false, isPinDeleted: false, isRemovable: false, leadFormId: "leadFormId_example", name: "name_example", pinId: "pinId_example", quizPinData: QuizPinData(questions: [QuizPinQuestion(options: [QuizPinOption(id: 123, text: "text_example")], questionId: 123, questionText: "questionText_example")], results: [QuizPinResult(androidDeepLink: "androidDeepLink_example", destinationUrl: "destinationUrl_example", iosDeepLink: "iosDeepLink_example", organicPinId: "organicPinId_example", resultId: 123)], tieBreakerCustomResult: nil, tieBreakerType: TieBreakerType()), status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]), viewTrackingUrl: "viewTrackingUrl_example")] // [AdBatchUpdate] | 
 
 // Update ads
-AdsAPI.adsUpdate(adAccountId: adAccountId, adBatchUpdate: adBatchUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.adsUpdate(adAccountId: adAccountId, adBatchUpdate: adBatchUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -442,7 +414,7 @@ Name | Type | Description  | Notes
 
 # **campaignAdPreviewCreate**
 ```swift
-    open class func campaignAdPreviewCreate(adAccountId: String, campaignAdPreviewCreate: [CampaignAdPreviewCreate], completion: @escaping (_ data: [CampaignAdPreviewCreate200ResponseInner]?, _ error: Error?) -> Void)
+    open class func campaignAdPreviewCreate(adAccountId: String, campaignAdPreviewCreate: [CampaignAdPreviewCreate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CampaignAdPreviewCreate200ResponseInner]
 ```
 
 Create ad preview records for one or more ad groups
@@ -458,15 +430,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let campaignAdPreviewCreate = [CampaignAdPreviewCreate(adGroupId: "adGroupId_example")] // [CampaignAdPreviewCreate] | 
 
 // Create ad preview records for one or more ad groups
-AdsAPI.campaignAdPreviewCreate(adAccountId: adAccountId, campaignAdPreviewCreate: campaignAdPreviewCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.campaignAdPreviewCreate(adAccountId: adAccountId, campaignAdPreviewCreate: campaignAdPreviewCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -494,7 +462,7 @@ Name | Type | Description  | Notes
 
 # **campaignAdPreviewDelete**
 ```swift
-    open class func campaignAdPreviewDelete(adGroupIds: [String], adAccountId: String, completion: @escaping (_ data: [CampaignAdPreviewDelete200ResponseInner]?, _ error: Error?) -> Void)
+    open class func campaignAdPreviewDelete(adGroupIds: [String], adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CampaignAdPreviewDelete200ResponseInner]?
 ```
 
 Delete ad preview records for one or more ad groups
@@ -510,15 +478,11 @@ let adGroupIds = ["inner_example"] // [String] | List of Ad group Ids to use to 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Delete ad preview records for one or more ad groups
-AdsAPI.campaignAdPreviewDelete(adGroupIds: adGroupIds, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.campaignAdPreviewDelete(adGroupIds: adGroupIds, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -546,7 +510,7 @@ Name | Type | Description  | Notes
 
 # **campaignAdPreviewRead**
 ```swift
-    open class func campaignAdPreviewRead(adGroupIds: [String], adAccountId: String, completion: @escaping (_ data: [CampaignAdPreview]?, _ error: Error?) -> Void)
+    open class func campaignAdPreviewRead(adGroupIds: [String], adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CampaignAdPreview]
 ```
 
 Fetch ad preview records for one or more ad groups
@@ -562,15 +526,11 @@ let adGroupIds = ["inner_example"] // [String] | List of Ad group Ids to use to 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Fetch ad preview records for one or more ad groups
-AdsAPI.campaignAdPreviewRead(adGroupIds: adGroupIds, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdsAPI.campaignAdPreviewRead(adGroupIds: adGroupIds, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

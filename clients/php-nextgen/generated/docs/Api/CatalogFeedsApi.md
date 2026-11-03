@@ -110,7 +110,7 @@ $apiInstance = new OpenAPI\Client\Api\CatalogFeedsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$catalogs_feed_create_request_schema = new \OpenAPI\Client\Model\CatalogsVerticalFeedsCreateRequest(); // \OpenAPI\Client\Model\CatalogsFeedCreateRequestSchema
+$catalogs_feed_create_request_schema = new \OpenAPI\Client\Model\CatalogsRetailFeedsCreateRequest(); // \OpenAPI\Client\Model\CatalogsFeedCreateRequestSchema
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {
@@ -437,7 +437,7 @@ $apiInstance = new OpenAPI\Client\Api\CatalogFeedsApi(
     $config
 );
 $feed_id = 'feed_id_example'; // string | Unique identifier of a feed.
-$catalogs_feed_update_request_schema = new \OpenAPI\Client\Model\CatalogsVerticalFeedsUpdateRequest(); // \OpenAPI\Client\Model\CatalogsFeedUpdateRequestSchema
+$catalogs_feed_update_request_schema = new \OpenAPI\Client\Model\CatalogsRetailFeedsUpdateRequest(); // \OpenAPI\Client\Model\CatalogsFeedUpdateRequestSchema
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {

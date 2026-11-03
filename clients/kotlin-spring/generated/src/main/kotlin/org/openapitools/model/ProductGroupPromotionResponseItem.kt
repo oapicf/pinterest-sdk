@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.Exception
 import org.openapitools.model.ProductGroupPromotion
 import javax.validation.constraints.DecimalMax
@@ -20,22 +17,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  * @param exceptions 
  */
 data class ProductGroupPromotionResponseItem(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("data")
     @get:JsonProperty("data") val `data`: ProductGroupPromotion? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("exceptions")
     @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<Exception>? = null
 ) {

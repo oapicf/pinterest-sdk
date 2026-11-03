@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!audienceIds.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegmentCreate.", nameof(audienceIds));
+                throw new JsonException("Property is required for class CustomerSegmentCreate: audience_ids.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegmentCreate.", nameof(name));
+                throw new JsonException("Property is required for class CustomerSegmentCreate: name.");
 
             if (audienceIds.IsSet && audienceIds.Value == null)
-                throw new ArgumentNullException(nameof(audienceIds), "Property is not nullable for class CustomerSegmentCreate.");
+                throw new JsonException("Property is not nullable for class CustomerSegmentCreate: audience_ids.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CustomerSegmentCreate.");
+                throw new JsonException("Property is not nullable for class CustomerSegmentCreate: name.");
 
             return new CustomerSegmentCreate(audienceIds.Value!, name.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegmentCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerSegmentCreate customerSegmentCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegmentCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerSegmentCreate customerSegmentCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerSegmentCreate.AudienceIds == null)
-                throw new ArgumentNullException(nameof(customerSegmentCreate.AudienceIds), "Property is required for class CustomerSegmentCreate.");
-
-            if (customerSegmentCreate.Name == null)
-                throw new ArgumentNullException(nameof(customerSegmentCreate.Name), "Property is required for class CustomerSegmentCreate.");
-
             writer.WritePropertyName("audience_ids");
             JsonSerializer.Serialize(writer, customerSegmentCreate.AudienceIds, jsonSerializerOptions);
             writer.WriteString("name", customerSegmentCreate.Name);

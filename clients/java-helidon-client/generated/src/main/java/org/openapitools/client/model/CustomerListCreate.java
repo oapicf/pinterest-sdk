@@ -39,7 +39,7 @@ public class CustomerListCreate  {
  /**
    * Type of customer list (e.g., EMAIL, IDFA, MAID).
   **/
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
  /**
    * Customer list name.

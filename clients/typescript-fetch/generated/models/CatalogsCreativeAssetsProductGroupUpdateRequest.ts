@@ -29,26 +29,18 @@ import {
 export interface CatalogsCreativeAssetsProductGroupUpdateRequest {
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsProductGroupUpdateRequest
      */
     catalogType?: CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroupUpdateRequest
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductGroupFilters}
-     * @memberof CatalogsCreativeAssetsProductGroupUpdateRequest
      */
     filters?: CatalogsCreativeAssetsProductGroupFilters;
     /**
      * Name of catalog product group
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroupUpdateRequest
      */
     name?: string;
 }
@@ -58,7 +50,7 @@ export interface CatalogsCreativeAssetsProductGroupUpdateRequest {
  * @export
  */
 export const CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum = typeof CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum];
 

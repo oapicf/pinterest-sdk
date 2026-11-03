@@ -118,6 +118,7 @@ class _$LocalInventoryOperationResultSerializer implements PrimitiveSerializer<L
   }
 }
 
+
 /// a concrete implementation of [LocalInventoryOperationResult], since [LocalInventoryOperationResult] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $LocalInventoryOperationResult implements LocalInventoryOperationResult, Built<$LocalInventoryOperationResult, $LocalInventoryOperationResultBuilder> {

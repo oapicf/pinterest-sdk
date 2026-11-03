@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **audiencesCreate**
 ```swift
-    open class func audiencesCreate(adAccountId: String, adAccountsAudienceCreate: AdAccountsAudienceCreate, completion: @escaping (_ data: AdAccountsAudience?, _ error: Error?) -> Void)
+    open class func audiencesCreate(adAccountId: String, adAccountsAudienceCreate: AdAccountsAudienceCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsAudience
 ```
 
 Create audience
@@ -28,15 +28,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adAccountsAudienceCreate = AdAccountsAudienceCreate(adAccountId: "adAccountId_example", audienceType: AudienceType(), description: "description_example", name: "name_example", rule: AdAccountsAudienceRule(adAccountId: "adAccountId_example", adId: ["adId_example"], campaignId: ["campaignId_example"], country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", engagerType: 123, event: "event_example", eventData: EventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), eventSource: 123, ingestionSource: 123, objectiveType: [AudienceObjectiveType()], percentage: 123, pinId: ["pinId_example"], prefill: false, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example")) // AdAccountsAudienceCreate | 
 
 // Create audience
-AudiencesAPI.audiencesCreate(adAccountId: adAccountId, adAccountsAudienceCreate: adAccountsAudienceCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudiencesAPI.audiencesCreate(adAccountId: adAccountId, adAccountsAudienceCreate: adAccountsAudienceCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -64,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **audiencesGet**
 ```swift
-    open class func audiencesGet(audienceId: String, adAccountId: String, completion: @escaping (_ data: AdAccountsAudience?, _ error: Error?) -> Void)
+    open class func audiencesGet(audienceId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsAudience
 ```
 
 Get audience
@@ -80,15 +76,11 @@ let audienceId = "audienceId_example" // String | Audience ID.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get audience
-AudiencesAPI.audiencesGet(audienceId: audienceId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudiencesAPI.audiencesGet(audienceId: audienceId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **audiencesList**
 ```swift
-    open class func audiencesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, ownershipType: AudienceOwnershipType? = nil, excludeNca: Bool? = nil, completion: @escaping (_ data: AudiencesList200Response?, _ error: Error?) -> Void)
+    open class func audiencesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, ownershipType: AudienceOwnershipType? = nil, excludeNca: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AudiencesList200Response
 ```
 
 List audiences
@@ -136,15 +128,11 @@ let ownershipType = AudienceOwnershipType() // AudienceOwnershipType |  (optiona
 let excludeNca = true // Bool | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional) (default to false)
 
 // List audiences
-AudiencesAPI.audiencesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, ownershipType: ownershipType, excludeNca: excludeNca) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudiencesAPI.audiencesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, ownershipType: ownershipType, excludeNca: excludeNca)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -176,7 +164,7 @@ Name | Type | Description  | Notes
 
 # **audiencesUpdate**
 ```swift
-    open class func audiencesUpdate(audienceId: String, adAccountId: String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, completion: @escaping (_ data: AdAccountsAudience?, _ error: Error?) -> Void)
+    open class func audiencesUpdate(audienceId: String, adAccountId: String, adAccountsAudienceUpdate: AdAccountsAudienceUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsAudience
 ```
 
 Update audience
@@ -193,15 +181,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adAccountsAudienceUpdate = AdAccountsAudienceUpdate(adAccountId: "adAccountId_example", audienceType: AudienceType(), description: "description_example", name: "name_example", operationType: AudienceUpdateOperationType(), rule: AdAccountsAudienceRule(adAccountId: "adAccountId_example", adId: ["adId_example"], campaignId: ["campaignId_example"], country: "country_example", customerListId: "customerListId_example", engagementDomain: ["engagementDomain_example"], engagementType: "engagementType_example", engagerType: 123, event: "event_example", eventData: EventData(currency: Currency(), leadType: "leadType_example", lineItems: LineItem(productBrand: "productBrand_example", productCategory: "productCategory_example", productId: 123, productName: "productName_example", productPrice: "productPrice_example", productQuantity: 123, productVariant: "productVariant_example", productVariantId: "productVariantId_example"), orderId: "orderId_example", orderQuantity: 123, pageName: "pageName_example", promoCode: "promoCode_example", property: "property_example", searchQuery: "searchQuery_example", value: "value_example", videoTitle: "videoTitle_example"), eventSource: 123, ingestionSource: 123, objectiveType: [AudienceObjectiveType()], percentage: 123, pinId: ["pinId_example"], prefill: false, retentionDays: 123, seedId: ["seedId_example"], url: ["url_example"], visitorSourceId: "visitorSourceId_example")) // AdAccountsAudienceUpdate | 
 
 // Update audience
-AudiencesAPI.audiencesUpdate(audienceId: audienceId, adAccountId: adAccountId, adAccountsAudienceUpdate: adAccountsAudienceUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudiencesAPI.audiencesUpdate(audienceId: audienceId, adAccountId: adAccountId, adAccountsAudienceUpdate: adAccountsAudienceUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

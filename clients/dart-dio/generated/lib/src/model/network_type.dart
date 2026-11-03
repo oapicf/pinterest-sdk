@@ -9,30 +9,23 @@ import 'package:built_value/serializer.dart';
 
 part 'network_type.g.dart';
 
+/// Type of network connection.
 class NetworkType extends EnumClass {
 
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'wifi')
   static const NetworkType wifi = _$wifi;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'cellular_2g')
   static const NetworkType cellular2g = _$cellular2g;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'cellular_3g')
   static const NetworkType cellular3g = _$cellular3g;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'cellular_4g')
   static const NetworkType cellular4g = _$cellular4g;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'cellular_5g')
   static const NetworkType cellular5g = _$cellular5g;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'cellular_6g')
   static const NetworkType cellular6g = _$cellular6g;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'ethernet')
   static const NetworkType ethernet = _$ethernet;
-  /// Type of network connection.
   @BuiltValueEnumConst(wireName: r'unknown')
   static const NetworkType unknown = _$unknown;
 

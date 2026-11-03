@@ -29,8 +29,6 @@ import {
 export interface ConversionDeletionRequestCreate {
     /**
      * Object containing the targets of the conversion deletion request. Users can be identified with user_emails, epiks, or both within the same request.
-     * @type {ConversionDeletionRequestTargets}
-     * @memberof ConversionDeletionRequestCreate
      */
     deletionTargets: ConversionDeletionRequestTargets;
 }

@@ -63,7 +63,7 @@ export const CatalogsLocale = {
     UkUa: 'uk-UA',
     ViVn: 'vi-VN',
     ZhCn: 'zh-CN',
-    ZhTw: 'zh-TW'
+    ZhTw: 'zh-TW',
 } as const;
 export type CatalogsLocale = typeof CatalogsLocale[keyof typeof CatalogsLocale];
 

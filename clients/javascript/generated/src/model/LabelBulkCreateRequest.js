@@ -17,7 +17,7 @@ import LabelCreateItem from './LabelCreateItem';
 /**
  * The LabelBulkCreateRequest model module.
  * @module model/LabelBulkCreateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelBulkCreateRequest {
     /**

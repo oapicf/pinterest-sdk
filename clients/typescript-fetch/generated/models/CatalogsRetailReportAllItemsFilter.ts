@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsRetailReportAllItemsFilter {
     /**
      * Unique identifier of a catalog. If not given, oldest catalog will be used
-     * @type {string}
-     * @memberof CatalogsRetailReportAllItemsFilter
      */
     catalogId?: string;
     /**
      * Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.
-     * @type {string}
-     * @memberof CatalogsRetailReportAllItemsFilter
      */
     productGroupId?: string;
     /**
      * 
-     * @type {CatalogsRetailReportAllItemsFilterReportTypeEnum}
-     * @memberof CatalogsRetailReportAllItemsFilter
      */
     reportType: CatalogsRetailReportAllItemsFilterReportTypeEnum;
 }
@@ -44,7 +38,7 @@ export interface CatalogsRetailReportAllItemsFilter {
  * @export
  */
 export const CatalogsRetailReportAllItemsFilterReportTypeEnum = {
-    AllItems: 'ALL_ITEMS'
+    AllItems: 'ALL_ITEMS',
 } as const;
 export type CatalogsRetailReportAllItemsFilterReportTypeEnum = typeof CatalogsRetailReportAllItemsFilterReportTypeEnum[keyof typeof CatalogsRetailReportAllItemsFilterReportTypeEnum];
 

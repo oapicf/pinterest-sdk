@@ -22,7 +22,7 @@ import OptimizationGoalMetadata from './OptimizationGoalMetadata';
 /**
  * The BidFloorSpec model module.
  * @module model/BidFloorSpec
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BidFloorSpec {
     /**

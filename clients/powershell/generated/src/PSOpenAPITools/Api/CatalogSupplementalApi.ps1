@@ -72,7 +72,7 @@ function Get-alogsLocalInventoryItemsBatchOperate {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalInventoryItemsBatch_operate."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -171,7 +171,7 @@ function Get-alogsLocalInventoryItemsPost {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalInventoryItems_post."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -270,7 +270,7 @@ function Get-alogsLocalStoresCreate {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalStores_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -366,7 +366,7 @@ function Get-alogsLocalStoresDelete {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalStores_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if (!$Ids) {
             throw "Error! The required parameter `Ids` missing when calling catalogsLocalStores_delete."
@@ -473,7 +473,7 @@ function Get-alogsLocalStoresList {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalStores_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if ($Ids) {
             $LocalVarQueryParameters['ids'] = $Ids
@@ -578,7 +578,7 @@ function Get-alogsLocalStoresUpdate {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsLocalStores_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -674,11 +674,11 @@ function Get-alogsSupplementalItemsBatchGet {
         if (!$CatalogId) {
             throw "Error! The required parameter `CatalogId` missing when calling catalogsSupplementalItemsBatch_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Web.HTTPUtility]::UrlEncode($CatalogId))
+        $LocalVarUri = $LocalVarUri.replace('{catalog_id}', [System.Uri]::EscapeDataString([string]$CatalogId))
         if (!$BatchId) {
             throw "Error! The required parameter `BatchId` missing when calling catalogsSupplementalItemsBatch_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{batch_id}', [System.Web.HTTPUtility]::UrlEncode($BatchId))
+        $LocalVarUri = $LocalVarUri.replace('{batch_id}', [System.Uri]::EscapeDataString([string]$BatchId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

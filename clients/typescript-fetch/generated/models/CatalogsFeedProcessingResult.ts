@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsFeedProductCounts } from './CatalogsFeedProductCounts';
 import {
     CatalogsFeedProductCountsFromJSON,
@@ -57,50 +57,34 @@ import {
 export interface CatalogsFeedProcessingResult {
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsFeedProcessingResult
      */
     readonly createdAt: Date;
     /**
      * ID of the feed processing result.
-     * @type {string}
-     * @memberof CatalogsFeedProcessingResult
      */
     id: string;
     /**
      * 
-     * @type {CatalogsFeedIngestionDetails}
-     * @memberof CatalogsFeedProcessingResult
      */
     ingestionDetails: CatalogsFeedIngestionDetails;
     /**
      * 
-     * @type {CatalogsFeedProductCounts}
-     * @memberof CatalogsFeedProcessingResult
      */
     productCounts: CatalogsFeedProductCounts | null;
     /**
      * 
-     * @type {CatalogsFeedProcessingStatus}
-     * @memberof CatalogsFeedProcessingResult
      */
     status: CatalogsFeedProcessingStatus;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsFeedProcessingResult
      */
     readonly updatedAt: Date;
     /**
      * 
-     * @type {CatalogsFeedValidationDetails}
-     * @memberof CatalogsFeedProcessingResult
      */
     validationDetails: CatalogsFeedValidationDetails;
     /**
      * 
-     * @type {CatalogsFeedVideoCounts}
-     * @memberof CatalogsFeedProcessingResult
      */
     videoCounts?: CatalogsFeedVideoCounts;
 }
@@ -131,12 +115,12 @@ export function CatalogsFeedProcessingResultFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'id': json['id'],
         'ingestionDetails': CatalogsFeedIngestionDetailsFromJSON(json['ingestion_details']),
         'productCounts': CatalogsFeedProductCountsFromJSON(json['product_counts']),
         'status': CatalogsFeedProcessingStatusFromJSON(json['status']),
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
         'validationDetails': CatalogsFeedValidationDetailsFromJSON(json['validation_details']),
         'videoCounts': json['video_counts'] == null ? undefined : CatalogsFeedVideoCountsFromJSON(json['video_counts']),
     };

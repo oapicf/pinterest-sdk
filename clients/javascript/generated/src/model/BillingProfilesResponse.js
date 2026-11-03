@@ -20,7 +20,7 @@ import BillingType from './BillingType';
 /**
  * The BillingProfilesResponse model module.
  * @module model/BillingProfilesResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BillingProfilesResponse {
     /**

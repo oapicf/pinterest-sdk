@@ -12,24 +12,3894 @@
 
 namespace models {
 
-
-class CatalogsFeedProcessingScheduleTimezone
-{
-public:
-
-    CatalogsFeedProcessingScheduleTimezone();
-    virtual ~CatalogsFeedProcessingScheduleTimezone() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsFeedProcessingScheduleTimezone,
-        )
-
-private:
+enum class CatalogsFeedProcessingScheduleTimezone {
+    
+    AFRICA_ABIDJAN,
+    
+    AFRICA_ACCRA,
+    
+    AFRICA_ALGIERS,
+    
+    AFRICA_BISSAU,
+    
+    AFRICA_CAIRO,
+    
+    AFRICA_CASABLANCA,
+    
+    AFRICA_CEUTA,
+    
+    AFRICA_EL_AAIUN,
+    
+    AFRICA_JOHANNESBURG,
+    
+    AFRICA_JUBA,
+    
+    AFRICA_KHARTOUM,
+    
+    AFRICA_LAGOS,
+    
+    AFRICA_MAPUTO,
+    
+    AFRICA_MONROVIA,
+    
+    AFRICA_NAIROBI,
+    
+    AFRICA_NDJAMENA,
+    
+    AFRICA_SAO_TOME,
+    
+    AFRICA_TRIPOLI,
+    
+    AFRICA_TUNIS,
+    
+    AFRICA_WINDHOEK,
+    
+    AMERICA_ADAK,
+    
+    AMERICA_ANCHORAGE,
+    
+    AMERICA_ARAGUAINA,
+    
+    AMERICA_ARGENTINA_BUENOS_AIRES,
+    
+    AMERICA_ARGENTINA_CATAMARCA,
+    
+    AMERICA_ARGENTINA_CORDOBA,
+    
+    AMERICA_ARGENTINA_JUJUY,
+    
+    AMERICA_ARGENTINA_LA_RIOJA,
+    
+    AMERICA_ARGENTINA_MENDOZA,
+    
+    AMERICA_ARGENTINA_RIO_GALLEGOS,
+    
+    AMERICA_ARGENTINA_SALTA,
+    
+    AMERICA_ARGENTINA_SAN_JUAN,
+    
+    AMERICA_ARGENTINA_SAN_LUIS,
+    
+    AMERICA_ARGENTINA_TUCUMAN,
+    
+    AMERICA_ARGENTINA_USHUAIA,
+    
+    AMERICA_ASUNCION,
+    
+    AMERICA_ATIKOKAN,
+    
+    AMERICA_BAHIA,
+    
+    AMERICA_BAHIA_BANDERAS,
+    
+    AMERICA_BARBADOS,
+    
+    AMERICA_BELEM,
+    
+    AMERICA_BELIZE,
+    
+    AMERICA_BLANC_SABLON,
+    
+    AMERICA_BOA_VISTA,
+    
+    AMERICA_BOGOTA,
+    
+    AMERICA_BOISE,
+    
+    AMERICA_CAMBRIDGE_BAY,
+    
+    AMERICA_CAMPO_GRANDE,
+    
+    AMERICA_CANCUN,
+    
+    AMERICA_CARACAS,
+    
+    AMERICA_CAYENNE,
+    
+    AMERICA_CHICAGO,
+    
+    AMERICA_CHIHUAHUA,
+    
+    AMERICA_COSTA_RICA,
+    
+    AMERICA_CRESTON,
+    
+    AMERICA_CUIABA,
+    
+    AMERICA_CURACAO,
+    
+    AMERICA_DANMARKSHAVN,
+    
+    AMERICA_DAWSON,
+    
+    AMERICA_DAWSON_CREEK,
+    
+    AMERICA_DENVER,
+    
+    AMERICA_DETROIT,
+    
+    AMERICA_EDMONTON,
+    
+    AMERICA_EIRUNEPE,
+    
+    AMERICA_EL_SALVADOR,
+    
+    AMERICA_FORT_NELSON,
+    
+    AMERICA_FORTALEZA,
+    
+    AMERICA_GLACE_BAY,
+    
+    AMERICA_GOOSE_BAY,
+    
+    AMERICA_GRAND_TURK,
+    
+    AMERICA_GUATEMALA,
+    
+    AMERICA_GUAYAQUIL,
+    
+    AMERICA_GUYANA,
+    
+    AMERICA_HALIFAX,
+    
+    AMERICA_HAVANA,
+    
+    AMERICA_HERMOSILLO,
+    
+    AMERICA_INDIANA_INDIANAPOLIS,
+    
+    AMERICA_INDIANA_KNOX,
+    
+    AMERICA_INDIANA_MARENGO,
+    
+    AMERICA_INDIANA_PETERSBURG,
+    
+    AMERICA_INDIANA_TELL_CITY,
+    
+    AMERICA_INDIANA_VEVAY,
+    
+    AMERICA_INDIANA_VINCENNES,
+    
+    AMERICA_INDIANA_WINAMAC,
+    
+    AMERICA_INUVIK,
+    
+    AMERICA_IQALUIT,
+    
+    AMERICA_JAMAICA,
+    
+    AMERICA_JUNEAU,
+    
+    AMERICA_KENTUCKY_LOUISVILLE,
+    
+    AMERICA_KENTUCKY_MONTICELLO,
+    
+    AMERICA_LA_PAZ,
+    
+    AMERICA_LIMA,
+    
+    AMERICA_LOS_ANGELES,
+    
+    AMERICA_MACEIO,
+    
+    AMERICA_MANAGUA,
+    
+    AMERICA_MANAUS,
+    
+    AMERICA_MARTINIQUE,
+    
+    AMERICA_MATAMOROS,
+    
+    AMERICA_MAZATLAN,
+    
+    AMERICA_MENOMINEE,
+    
+    AMERICA_MERIDA,
+    
+    AMERICA_METLAKATLA,
+    
+    AMERICA_MEXICO_CITY,
+    
+    AMERICA_MIQUELON,
+    
+    AMERICA_MONCTON,
+    
+    AMERICA_MONTERREY,
+    
+    AMERICA_MONTEVIDEO,
+    
+    AMERICA_NASSAU,
+    
+    AMERICA_NEW_YORK,
+    
+    AMERICA_NIPIGON,
+    
+    AMERICA_NOME,
+    
+    AMERICA_NORONHA,
+    
+    AMERICA_NORTH_DAKOTA_BEULAH,
+    
+    AMERICA_NORTH_DAKOTA_CENTER,
+    
+    AMERICA_NORTH_DAKOTA_NEW_SALEM,
+    
+    AMERICA_NUUK,
+    
+    AMERICA_OJINAGA,
+    
+    AMERICA_PANAMA,
+    
+    AMERICA_PANGNIRTUNG,
+    
+    AMERICA_PARAMARIBO,
+    
+    AMERICA_PHOENIX,
+    
+    AMERICA_PORT_AU_PRINCE,
+    
+    AMERICA_PORT_OF_SPAIN,
+    
+    AMERICA_PORTO_VELHO,
+    
+    AMERICA_PUERTO_RICO,
+    
+    AMERICA_PUNTA_ARENAS,
+    
+    AMERICA_RAINY_RIVER,
+    
+    AMERICA_RANKIN_INLET,
+    
+    AMERICA_RECIFE,
+    
+    AMERICA_REGINA,
+    
+    AMERICA_RESOLUTE,
+    
+    AMERICA_RIO_BRANCO,
+    
+    AMERICA_SANTAREM,
+    
+    AMERICA_SANTIAGO,
+    
+    AMERICA_SANTO_DOMINGO,
+    
+    AMERICA_SAO_PAULO,
+    
+    AMERICA_SCORESBYSUND,
+    
+    AMERICA_SITKA,
+    
+    AMERICA_ST_JOHNS,
+    
+    AMERICA_SWIFT_CURRENT,
+    
+    AMERICA_TEGUCIGALPA,
+    
+    AMERICA_THULE,
+    
+    AMERICA_THUNDER_BAY,
+    
+    AMERICA_TIJUANA,
+    
+    AMERICA_TORONTO,
+    
+    AMERICA_VANCOUVER,
+    
+    AMERICA_WHITEHORSE,
+    
+    AMERICA_WINNIPEG,
+    
+    AMERICA_YAKUTAT,
+    
+    AMERICA_YELLOWKNIFE,
+    
+    ANTARCTICA_CASEY,
+    
+    ANTARCTICA_DAVIS,
+    
+    ANTARCTICA_DUMONTDURVILLE,
+    
+    ANTARCTICA_MACQUARIE,
+    
+    ANTARCTICA_MAWSON,
+    
+    ANTARCTICA_PALMER,
+    
+    ANTARCTICA_ROTHERA,
+    
+    ANTARCTICA_SYOWA,
+    
+    ANTARCTICA_TROLL,
+    
+    ANTARCTICA_VOSTOK,
+    
+    ASIA_ALMATY,
+    
+    ASIA_AMMAN,
+    
+    ASIA_ANADYR,
+    
+    ASIA_AQTAU,
+    
+    ASIA_AQTOBE,
+    
+    ASIA_ASHGABAT,
+    
+    ASIA_ATYRAU,
+    
+    ASIA_BAGHDAD,
+    
+    ASIA_BAKU,
+    
+    ASIA_BANGKOK,
+    
+    ASIA_BARNAUL,
+    
+    ASIA_BEIRUT,
+    
+    ASIA_BISHKEK,
+    
+    ASIA_BRUNEI,
+    
+    ASIA_CHITA,
+    
+    ASIA_CHOIBALSAN,
+    
+    ASIA_COLOMBO,
+    
+    ASIA_DAMASCUS,
+    
+    ASIA_DHAKA,
+    
+    ASIA_DILI,
+    
+    ASIA_DUBAI,
+    
+    ASIA_DUSHANBE,
+    
+    ASIA_FAMAGUSTA,
+    
+    ASIA_GAZA,
+    
+    ASIA_HEBRON,
+    
+    ASIA_HO_CHI_MINH,
+    
+    ASIA_HONG_KONG,
+    
+    ASIA_HOVD,
+    
+    ASIA_IRKUTSK,
+    
+    ASIA_JAKARTA,
+    
+    ASIA_JAYAPURA,
+    
+    ASIA_JERUSALEM,
+    
+    ASIA_KABUL,
+    
+    ASIA_KAMCHATKA,
+    
+    ASIA_KARACHI,
+    
+    ASIA_KATHMANDU,
+    
+    ASIA_KHANDYGA,
+    
+    ASIA_KOLKATA,
+    
+    ASIA_KRASNOYARSK,
+    
+    ASIA_KUALA_LUMPUR,
+    
+    ASIA_KUCHING,
+    
+    ASIA_MACAU,
+    
+    ASIA_MAGADAN,
+    
+    ASIA_MAKASSAR,
+    
+    ASIA_MANILA,
+    
+    ASIA_NICOSIA,
+    
+    ASIA_NOVOKUZNETSK,
+    
+    ASIA_NOVOSIBIRSK,
+    
+    ASIA_OMSK,
+    
+    ASIA_ORAL,
+    
+    ASIA_PONTIANAK,
+    
+    ASIA_PYONGYANG,
+    
+    ASIA_QATAR,
+    
+    ASIA_QOSTANAY,
+    
+    ASIA_QYZYLORDA,
+    
+    ASIA_RIYADH,
+    
+    ASIA_SAKHALIN,
+    
+    ASIA_SAMARKAND,
+    
+    ASIA_SEOUL,
+    
+    ASIA_SHANGHAI,
+    
+    ASIA_SINGAPORE,
+    
+    ASIA_SREDNEKOLYMSK,
+    
+    ASIA_TAIPEI,
+    
+    ASIA_TASHKENT,
+    
+    ASIA_TBILISI,
+    
+    ASIA_TEHRAN,
+    
+    ASIA_THIMPHU,
+    
+    ASIA_TOKYO,
+    
+    ASIA_TOMSK,
+    
+    ASIA_ULAANBAATAR,
+    
+    ASIA_URUMQI,
+    
+    ASIA_UST_NERA,
+    
+    ASIA_VLADIVOSTOK,
+    
+    ASIA_YAKUTSK,
+    
+    ASIA_YANGON,
+    
+    ASIA_YEKATERINBURG,
+    
+    ASIA_YEREVAN,
+    
+    ATLANTIC_AZORES,
+    
+    ATLANTIC_BERMUDA,
+    
+    ATLANTIC_CANARY,
+    
+    ATLANTIC_CAPE_VERDE,
+    
+    ATLANTIC_FAROE,
+    
+    ATLANTIC_MADEIRA,
+    
+    ATLANTIC_REYKJAVIK,
+    
+    ATLANTIC_SOUTH_GEORGIA,
+    
+    ATLANTIC_STANLEY,
+    
+    AUSTRALIA_ADELAIDE,
+    
+    AUSTRALIA_BRISBANE,
+    
+    AUSTRALIA_BROKEN_HILL,
+    
+    AUSTRALIA_CURRIE,
+    
+    AUSTRALIA_DARWIN,
+    
+    AUSTRALIA_EUCLA,
+    
+    AUSTRALIA_HOBART,
+    
+    AUSTRALIA_LINDEMAN,
+    
+    AUSTRALIA_LORD_HOWE,
+    
+    AUSTRALIA_MELBOURNE,
+    
+    AUSTRALIA_PERTH,
+    
+    AUSTRALIA_SYDNEY,
+    
+    CET,
+    
+    CST6CDT,
+    
+    EET,
+    
+    EST,
+    
+    EST5EDT,
+    
+    ETC_GMT,
+    
+    ETC_GMT_1,
+    
+    ETC_GMT_10,
+    
+    ETC_GMT_11,
+    
+    ETC_GMT_122,
+    
+    ETC_GMT_2,
+    
+    ETC_GMT_3,
+    
+    ETC_GMT_4,
+    
+    ETC_GMT_5,
+    
+    ETC_GMT_6,
+    
+    ETC_GMT_7,
+    
+    ETC_GMT_8,
+    
+    ETC_GMT_9,
+    
+    ETC_GMT_12,
+    
+    ETC_GMT_102,
+    
+    ETC_GMT_112,
+    
+    ETC_GMT_122,
+    
+    ETC_GMT_13,
+    
+    ETC_GMT_14,
+    
+    ETC_GMT_22,
+    
+    ETC_GMT_32,
+    
+    ETC_GMT_42,
+    
+    ETC_GMT_52,
+    
+    ETC_GMT_62,
+    
+    ETC_GMT_72,
+    
+    ETC_GMT_82,
+    
+    ETC_GMT_92,
+    
+    ETC_UTC,
+    
+    EUROPE_AMSTERDAM,
+    
+    EUROPE_ANDORRA,
+    
+    EUROPE_ASTRAKHAN,
+    
+    EUROPE_ATHENS,
+    
+    EUROPE_BELGRADE,
+    
+    EUROPE_BERLIN,
+    
+    EUROPE_BRUSSELS,
+    
+    EUROPE_BUCHAREST,
+    
+    EUROPE_BUDAPEST,
+    
+    EUROPE_CHISINAU,
+    
+    EUROPE_COPENHAGEN,
+    
+    EUROPE_DUBLIN,
+    
+    EUROPE_GIBRALTAR,
+    
+    EUROPE_HELSINKI,
+    
+    EUROPE_ISTANBUL,
+    
+    EUROPE_KALININGRAD,
+    
+    EUROPE_KIEV,
+    
+    EUROPE_KIROV,
+    
+    EUROPE_LISBON,
+    
+    EUROPE_LONDON,
+    
+    EUROPE_LUXEMBOURG,
+    
+    EUROPE_MADRID,
+    
+    EUROPE_MALTA,
+    
+    EUROPE_MINSK,
+    
+    EUROPE_MONACO,
+    
+    EUROPE_MOSCOW,
+    
+    EUROPE_OSLO,
+    
+    EUROPE_PARIS,
+    
+    EUROPE_PRAGUE,
+    
+    EUROPE_RIGA,
+    
+    EUROPE_ROME,
+    
+    EUROPE_SAMARA,
+    
+    EUROPE_SARATOV,
+    
+    EUROPE_SIMFEROPOL,
+    
+    EUROPE_SOFIA,
+    
+    EUROPE_STOCKHOLM,
+    
+    EUROPE_TALLINN,
+    
+    EUROPE_TIRANE,
+    
+    EUROPE_ULYANOVSK,
+    
+    EUROPE_UZHGOROD,
+    
+    EUROPE_VIENNA,
+    
+    EUROPE_VILNIUS,
+    
+    EUROPE_VOLGOGRAD,
+    
+    EUROPE_WARSAW,
+    
+    EUROPE_ZAPOROZHYE,
+    
+    EUROPE_ZURICH,
+    
+    HST,
+    
+    INDIAN_CHAGOS,
+    
+    INDIAN_CHRISTMAS,
+    
+    INDIAN_COCOS,
+    
+    INDIAN_KERGUELEN,
+    
+    INDIAN_MAHE,
+    
+    INDIAN_MALDIVES,
+    
+    INDIAN_MAURITIUS,
+    
+    INDIAN_REUNION,
+    
+    MET,
+    
+    MST,
+    
+    MST7MDT,
+    
+    PST8PDT,
+    
+    PACIFIC_APIA,
+    
+    PACIFIC_AUCKLAND,
+    
+    PACIFIC_BOUGAINVILLE,
+    
+    PACIFIC_CHATHAM,
+    
+    PACIFIC_CHUUK,
+    
+    PACIFIC_EASTER,
+    
+    PACIFIC_EFATE,
+    
+    PACIFIC_ENDERBURY,
+    
+    PACIFIC_FAKAOFO,
+    
+    PACIFIC_FIJI,
+    
+    PACIFIC_FUNAFUTI,
+    
+    PACIFIC_GALAPAGOS,
+    
+    PACIFIC_GAMBIER,
+    
+    PACIFIC_GUADALCANAL,
+    
+    PACIFIC_GUAM,
+    
+    PACIFIC_HONOLULU,
+    
+    PACIFIC_KIRITIMATI,
+    
+    PACIFIC_KOSRAE,
+    
+    PACIFIC_KWAJALEIN,
+    
+    PACIFIC_MAJURO,
+    
+    PACIFIC_MARQUESAS,
+    
+    PACIFIC_NAURU,
+    
+    PACIFIC_NIUE,
+    
+    PACIFIC_NORFOLK,
+    
+    PACIFIC_NOUMEA,
+    
+    PACIFIC_PAGO_PAGO,
+    
+    PACIFIC_PALAU,
+    
+    PACIFIC_PITCAIRN,
+    
+    PACIFIC_POHNPEI,
+    
+    PACIFIC_PORT_MORESBY,
+    
+    PACIFIC_RAROTONGA,
+    
+    PACIFIC_TAHITI,
+    
+    PACIFIC_TARAWA,
+    
+    PACIFIC_TONGATAPU,
+    
+    PACIFIC_WAKE,
+    
+    PACIFIC_WALLIS,
+    
+    WET
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsFeedProcessingScheduleTimezone& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_ABIDJAN: j = "Africa/Abidjan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_ACCRA: j = "Africa/Accra"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_ALGIERS: j = "Africa/Algiers"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_BISSAU: j = "Africa/Bissau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_CAIRO: j = "Africa/Cairo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_CASABLANCA: j = "Africa/Casablanca"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_CEUTA: j = "Africa/Ceuta"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_EL_AAIUN: j = "Africa/El_Aaiun"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_JOHANNESBURG: j = "Africa/Johannesburg"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_JUBA: j = "Africa/Juba"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_KHARTOUM: j = "Africa/Khartoum"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_LAGOS: j = "Africa/Lagos"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_MAPUTO: j = "Africa/Maputo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_MONROVIA: j = "Africa/Monrovia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_NAIROBI: j = "Africa/Nairobi"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_NDJAMENA: j = "Africa/Ndjamena"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_SAO_TOME: j = "Africa/Sao_Tome"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_TRIPOLI: j = "Africa/Tripoli"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_TUNIS: j = "Africa/Tunis"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AFRICA_WINDHOEK: j = "Africa/Windhoek"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ADAK: j = "America/Adak"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ANCHORAGE: j = "America/Anchorage"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARAGUAINA: j = "America/Araguaina"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_BUENOS_AIRES: j = "America/Argentina/Buenos_Aires"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_CATAMARCA: j = "America/Argentina/Catamarca"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_CORDOBA: j = "America/Argentina/Cordoba"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_JUJUY: j = "America/Argentina/Jujuy"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_LA_RIOJA: j = "America/Argentina/La_Rioja"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_MENDOZA: j = "America/Argentina/Mendoza"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_RIO_GALLEGOS: j = "America/Argentina/Rio_Gallegos"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SALTA: j = "America/Argentina/Salta"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SAN_JUAN: j = "America/Argentina/San_Juan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SAN_LUIS: j = "America/Argentina/San_Luis"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_TUCUMAN: j = "America/Argentina/Tucuman"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_USHUAIA: j = "America/Argentina/Ushuaia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ASUNCION: j = "America/Asuncion"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ATIKOKAN: j = "America/Atikokan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BAHIA: j = "America/Bahia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BAHIA_BANDERAS: j = "America/Bahia_Banderas"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BARBADOS: j = "America/Barbados"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BELEM: j = "America/Belem"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BELIZE: j = "America/Belize"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BLANC_SABLON: j = "America/Blanc-Sablon"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BOA_VISTA: j = "America/Boa_Vista"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BOGOTA: j = "America/Bogota"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_BOISE: j = "America/Boise"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CAMBRIDGE_BAY: j = "America/Cambridge_Bay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CAMPO_GRANDE: j = "America/Campo_Grande"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CANCUN: j = "America/Cancun"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CARACAS: j = "America/Caracas"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CAYENNE: j = "America/Cayenne"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CHICAGO: j = "America/Chicago"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CHIHUAHUA: j = "America/Chihuahua"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_COSTA_RICA: j = "America/Costa_Rica"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CRESTON: j = "America/Creston"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CUIABA: j = "America/Cuiaba"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_CURACAO: j = "America/Curacao"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_DANMARKSHAVN: j = "America/Danmarkshavn"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_DAWSON: j = "America/Dawson"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_DAWSON_CREEK: j = "America/Dawson_Creek"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_DENVER: j = "America/Denver"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_DETROIT: j = "America/Detroit"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_EDMONTON: j = "America/Edmonton"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_EIRUNEPE: j = "America/Eirunepe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_EL_SALVADOR: j = "America/El_Salvador"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_FORT_NELSON: j = "America/Fort_Nelson"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_FORTALEZA: j = "America/Fortaleza"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GLACE_BAY: j = "America/Glace_Bay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GOOSE_BAY: j = "America/Goose_Bay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GRAND_TURK: j = "America/Grand_Turk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GUATEMALA: j = "America/Guatemala"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GUAYAQUIL: j = "America/Guayaquil"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_GUYANA: j = "America/Guyana"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_HALIFAX: j = "America/Halifax"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_HAVANA: j = "America/Havana"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_HERMOSILLO: j = "America/Hermosillo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_INDIANAPOLIS: j = "America/Indiana/Indianapolis"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_KNOX: j = "America/Indiana/Knox"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_MARENGO: j = "America/Indiana/Marengo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_PETERSBURG: j = "America/Indiana/Petersburg"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_TELL_CITY: j = "America/Indiana/Tell_City"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_VEVAY: j = "America/Indiana/Vevay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_VINCENNES: j = "America/Indiana/Vincennes"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_WINAMAC: j = "America/Indiana/Winamac"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_INUVIK: j = "America/Inuvik"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_IQALUIT: j = "America/Iqaluit"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_JAMAICA: j = "America/Jamaica"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_JUNEAU: j = "America/Juneau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_KENTUCKY_LOUISVILLE: j = "America/Kentucky/Louisville"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_KENTUCKY_MONTICELLO: j = "America/Kentucky/Monticello"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_LA_PAZ: j = "America/La_Paz"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_LIMA: j = "America/Lima"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_LOS_ANGELES: j = "America/Los_Angeles"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MACEIO: j = "America/Maceio"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MANAGUA: j = "America/Managua"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MANAUS: j = "America/Manaus"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MARTINIQUE: j = "America/Martinique"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MATAMOROS: j = "America/Matamoros"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MAZATLAN: j = "America/Mazatlan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MENOMINEE: j = "America/Menominee"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MERIDA: j = "America/Merida"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_METLAKATLA: j = "America/Metlakatla"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MEXICO_CITY: j = "America/Mexico_City"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MIQUELON: j = "America/Miquelon"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MONCTON: j = "America/Moncton"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MONTERREY: j = "America/Monterrey"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_MONTEVIDEO: j = "America/Montevideo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NASSAU: j = "America/Nassau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NEW_YORK: j = "America/New_York"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NIPIGON: j = "America/Nipigon"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NOME: j = "America/Nome"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NORONHA: j = "America/Noronha"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_BEULAH: j = "America/North_Dakota/Beulah"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_CENTER: j = "America/North_Dakota/Center"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_NEW_SALEM: j = "America/North_Dakota/New_Salem"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_NUUK: j = "America/Nuuk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_OJINAGA: j = "America/Ojinaga"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PANAMA: j = "America/Panama"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PANGNIRTUNG: j = "America/Pangnirtung"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PARAMARIBO: j = "America/Paramaribo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PHOENIX: j = "America/Phoenix"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PORT_AU_PRINCE: j = "America/Port-au-Prince"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PORT_OF_SPAIN: j = "America/Port_of_Spain"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PORTO_VELHO: j = "America/Porto_Velho"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PUERTO_RICO: j = "America/Puerto_Rico"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_PUNTA_ARENAS: j = "America/Punta_Arenas"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_RAINY_RIVER: j = "America/Rainy_River"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_RANKIN_INLET: j = "America/Rankin_Inlet"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_RECIFE: j = "America/Recife"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_REGINA: j = "America/Regina"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_RESOLUTE: j = "America/Resolute"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_RIO_BRANCO: j = "America/Rio_Branco"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTAREM: j = "America/Santarem"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTIAGO: j = "America/Santiago"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTO_DOMINGO: j = "America/Santo_Domingo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SAO_PAULO: j = "America/Sao_Paulo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SCORESBYSUND: j = "America/Scoresbysund"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SITKA: j = "America/Sitka"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_ST_JOHNS: j = "America/St_Johns"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_SWIFT_CURRENT: j = "America/Swift_Current"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_TEGUCIGALPA: j = "America/Tegucigalpa"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_THULE: j = "America/Thule"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_THUNDER_BAY: j = "America/Thunder_Bay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_TIJUANA: j = "America/Tijuana"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_TORONTO: j = "America/Toronto"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_VANCOUVER: j = "America/Vancouver"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_WHITEHORSE: j = "America/Whitehorse"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_WINNIPEG: j = "America/Winnipeg"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_YAKUTAT: j = "America/Yakutat"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AMERICA_YELLOWKNIFE: j = "America/Yellowknife"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_CASEY: j = "Antarctica/Casey"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_DAVIS: j = "Antarctica/Davis"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_DUMONTDURVILLE: j = "Antarctica/DumontDUrville"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_MACQUARIE: j = "Antarctica/Macquarie"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_MAWSON: j = "Antarctica/Mawson"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_PALMER: j = "Antarctica/Palmer"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_ROTHERA: j = "Antarctica/Rothera"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_SYOWA: j = "Antarctica/Syowa"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_TROLL: j = "Antarctica/Troll"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_VOSTOK: j = "Antarctica/Vostok"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ALMATY: j = "Asia/Almaty"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_AMMAN: j = "Asia/Amman"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ANADYR: j = "Asia/Anadyr"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_AQTAU: j = "Asia/Aqtau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_AQTOBE: j = "Asia/Aqtobe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ASHGABAT: j = "Asia/Ashgabat"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ATYRAU: j = "Asia/Atyrau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BAGHDAD: j = "Asia/Baghdad"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BAKU: j = "Asia/Baku"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BANGKOK: j = "Asia/Bangkok"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BARNAUL: j = "Asia/Barnaul"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BEIRUT: j = "Asia/Beirut"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BISHKEK: j = "Asia/Bishkek"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_BRUNEI: j = "Asia/Brunei"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_CHITA: j = "Asia/Chita"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_CHOIBALSAN: j = "Asia/Choibalsan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_COLOMBO: j = "Asia/Colombo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_DAMASCUS: j = "Asia/Damascus"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_DHAKA: j = "Asia/Dhaka"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_DILI: j = "Asia/Dili"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_DUBAI: j = "Asia/Dubai"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_DUSHANBE: j = "Asia/Dushanbe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_FAMAGUSTA: j = "Asia/Famagusta"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_GAZA: j = "Asia/Gaza"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_HEBRON: j = "Asia/Hebron"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_HO_CHI_MINH: j = "Asia/Ho_Chi_Minh"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_HONG_KONG: j = "Asia/Hong_Kong"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_HOVD: j = "Asia/Hovd"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_IRKUTSK: j = "Asia/Irkutsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_JAKARTA: j = "Asia/Jakarta"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_JAYAPURA: j = "Asia/Jayapura"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_JERUSALEM: j = "Asia/Jerusalem"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KABUL: j = "Asia/Kabul"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KAMCHATKA: j = "Asia/Kamchatka"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KARACHI: j = "Asia/Karachi"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KATHMANDU: j = "Asia/Kathmandu"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KHANDYGA: j = "Asia/Khandyga"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KOLKATA: j = "Asia/Kolkata"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KRASNOYARSK: j = "Asia/Krasnoyarsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KUALA_LUMPUR: j = "Asia/Kuala_Lumpur"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_KUCHING: j = "Asia/Kuching"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_MACAU: j = "Asia/Macau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_MAGADAN: j = "Asia/Magadan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_MAKASSAR: j = "Asia/Makassar"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_MANILA: j = "Asia/Manila"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_NICOSIA: j = "Asia/Nicosia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_NOVOKUZNETSK: j = "Asia/Novokuznetsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_NOVOSIBIRSK: j = "Asia/Novosibirsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_OMSK: j = "Asia/Omsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ORAL: j = "Asia/Oral"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_PONTIANAK: j = "Asia/Pontianak"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_PYONGYANG: j = "Asia/Pyongyang"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_QATAR: j = "Asia/Qatar"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_QOSTANAY: j = "Asia/Qostanay"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_QYZYLORDA: j = "Asia/Qyzylorda"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_RIYADH: j = "Asia/Riyadh"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SAKHALIN: j = "Asia/Sakhalin"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SAMARKAND: j = "Asia/Samarkand"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SEOUL: j = "Asia/Seoul"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SHANGHAI: j = "Asia/Shanghai"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SINGAPORE: j = "Asia/Singapore"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_SREDNEKOLYMSK: j = "Asia/Srednekolymsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TAIPEI: j = "Asia/Taipei"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TASHKENT: j = "Asia/Tashkent"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TBILISI: j = "Asia/Tbilisi"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TEHRAN: j = "Asia/Tehran"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_THIMPHU: j = "Asia/Thimphu"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TOKYO: j = "Asia/Tokyo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_TOMSK: j = "Asia/Tomsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_ULAANBAATAR: j = "Asia/Ulaanbaatar"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_URUMQI: j = "Asia/Urumqi"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_UST_NERA: j = "Asia/Ust-Nera"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_VLADIVOSTOK: j = "Asia/Vladivostok"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_YAKUTSK: j = "Asia/Yakutsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_YANGON: j = "Asia/Yangon"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_YEKATERINBURG: j = "Asia/Yekaterinburg"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ASIA_YEREVAN: j = "Asia/Yerevan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_AZORES: j = "Atlantic/Azores"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_BERMUDA: j = "Atlantic/Bermuda"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_CANARY: j = "Atlantic/Canary"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_CAPE_VERDE: j = "Atlantic/Cape_Verde"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_FAROE: j = "Atlantic/Faroe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_MADEIRA: j = "Atlantic/Madeira"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_REYKJAVIK: j = "Atlantic/Reykjavik"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_SOUTH_GEORGIA: j = "Atlantic/South_Georgia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ATLANTIC_STANLEY: j = "Atlantic/Stanley"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_ADELAIDE: j = "Australia/Adelaide"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_BRISBANE: j = "Australia/Brisbane"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_BROKEN_HILL: j = "Australia/Broken_Hill"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_CURRIE: j = "Australia/Currie"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_DARWIN: j = "Australia/Darwin"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_EUCLA: j = "Australia/Eucla"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_HOBART: j = "Australia/Hobart"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_LINDEMAN: j = "Australia/Lindeman"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_LORD_HOWE: j = "Australia/Lord_Howe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_MELBOURNE: j = "Australia/Melbourne"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_PERTH: j = "Australia/Perth"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_SYDNEY: j = "Australia/Sydney"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::CET: j = "CET"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::CST6CDT: j = "CST6CDT"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EET: j = "EET"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EST: j = "EST"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EST5EDT: j = "EST5EDT"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT: j = "Etc/GMT"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_1: j = "Etc/GMT+1"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_10: j = "Etc/GMT+10"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_11: j = "Etc/GMT+11"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_122: j = "Etc/GMT+12"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_2: j = "Etc/GMT+2"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_3: j = "Etc/GMT+3"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_4: j = "Etc/GMT+4"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_5: j = "Etc/GMT+5"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_6: j = "Etc/GMT+6"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_7: j = "Etc/GMT+7"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_8: j = "Etc/GMT+8"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_9: j = "Etc/GMT+9"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_12: j = "Etc/GMT-1"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_102: j = "Etc/GMT-10"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_112: j = "Etc/GMT-11"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_122: j = "Etc/GMT-12"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_13: j = "Etc/GMT-13"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_14: j = "Etc/GMT-14"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_22: j = "Etc/GMT-2"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_32: j = "Etc/GMT-3"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_42: j = "Etc/GMT-4"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_52: j = "Etc/GMT-5"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_62: j = "Etc/GMT-6"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_72: j = "Etc/GMT-7"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_82: j = "Etc/GMT-8"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_GMT_92: j = "Etc/GMT-9"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::ETC_UTC: j = "Etc/UTC"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_AMSTERDAM: j = "Europe/Amsterdam"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ANDORRA: j = "Europe/Andorra"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ASTRAKHAN: j = "Europe/Astrakhan"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ATHENS: j = "Europe/Athens"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_BELGRADE: j = "Europe/Belgrade"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_BERLIN: j = "Europe/Berlin"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_BRUSSELS: j = "Europe/Brussels"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_BUCHAREST: j = "Europe/Bucharest"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_BUDAPEST: j = "Europe/Budapest"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_CHISINAU: j = "Europe/Chisinau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_COPENHAGEN: j = "Europe/Copenhagen"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_DUBLIN: j = "Europe/Dublin"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_GIBRALTAR: j = "Europe/Gibraltar"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_HELSINKI: j = "Europe/Helsinki"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ISTANBUL: j = "Europe/Istanbul"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_KALININGRAD: j = "Europe/Kaliningrad"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_KIEV: j = "Europe/Kiev"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_KIROV: j = "Europe/Kirov"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_LISBON: j = "Europe/Lisbon"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_LONDON: j = "Europe/London"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_LUXEMBOURG: j = "Europe/Luxembourg"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_MADRID: j = "Europe/Madrid"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_MALTA: j = "Europe/Malta"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_MINSK: j = "Europe/Minsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_MONACO: j = "Europe/Monaco"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_MOSCOW: j = "Europe/Moscow"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_OSLO: j = "Europe/Oslo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_PARIS: j = "Europe/Paris"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_PRAGUE: j = "Europe/Prague"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_RIGA: j = "Europe/Riga"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ROME: j = "Europe/Rome"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_SAMARA: j = "Europe/Samara"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_SARATOV: j = "Europe/Saratov"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_SIMFEROPOL: j = "Europe/Simferopol"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_SOFIA: j = "Europe/Sofia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_STOCKHOLM: j = "Europe/Stockholm"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_TALLINN: j = "Europe/Tallinn"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_TIRANE: j = "Europe/Tirane"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ULYANOVSK: j = "Europe/Ulyanovsk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_UZHGOROD: j = "Europe/Uzhgorod"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_VIENNA: j = "Europe/Vienna"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_VILNIUS: j = "Europe/Vilnius"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_VOLGOGRAD: j = "Europe/Volgograd"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_WARSAW: j = "Europe/Warsaw"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ZAPOROZHYE: j = "Europe/Zaporozhye"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::EUROPE_ZURICH: j = "Europe/Zurich"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::HST: j = "HST"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_CHAGOS: j = "Indian/Chagos"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_CHRISTMAS: j = "Indian/Christmas"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_COCOS: j = "Indian/Cocos"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_KERGUELEN: j = "Indian/Kerguelen"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_MAHE: j = "Indian/Mahe"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_MALDIVES: j = "Indian/Maldives"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_MAURITIUS: j = "Indian/Mauritius"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::INDIAN_REUNION: j = "Indian/Reunion"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::MET: j = "MET"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::MST: j = "MST"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::MST7MDT: j = "MST7MDT"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PST8PDT: j = "PST8PDT"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_APIA: j = "Pacific/Apia"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_AUCKLAND: j = "Pacific/Auckland"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_BOUGAINVILLE: j = "Pacific/Bougainville"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_CHATHAM: j = "Pacific/Chatham"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_CHUUK: j = "Pacific/Chuuk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_EASTER: j = "Pacific/Easter"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_EFATE: j = "Pacific/Efate"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_ENDERBURY: j = "Pacific/Enderbury"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_FAKAOFO: j = "Pacific/Fakaofo"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_FIJI: j = "Pacific/Fiji"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_FUNAFUTI: j = "Pacific/Funafuti"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_GALAPAGOS: j = "Pacific/Galapagos"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_GAMBIER: j = "Pacific/Gambier"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_GUADALCANAL: j = "Pacific/Guadalcanal"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_GUAM: j = "Pacific/Guam"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_HONOLULU: j = "Pacific/Honolulu"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_KIRITIMATI: j = "Pacific/Kiritimati"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_KOSRAE: j = "Pacific/Kosrae"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_KWAJALEIN: j = "Pacific/Kwajalein"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_MAJURO: j = "Pacific/Majuro"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_MARQUESAS: j = "Pacific/Marquesas"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_NAURU: j = "Pacific/Nauru"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_NIUE: j = "Pacific/Niue"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_NORFOLK: j = "Pacific/Norfolk"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_NOUMEA: j = "Pacific/Noumea"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_PAGO_PAGO: j = "Pacific/Pago_Pago"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_PALAU: j = "Pacific/Palau"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_PITCAIRN: j = "Pacific/Pitcairn"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_POHNPEI: j = "Pacific/Pohnpei"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_PORT_MORESBY: j = "Pacific/Port_Moresby"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_RAROTONGA: j = "Pacific/Rarotonga"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_TAHITI: j = "Pacific/Tahiti"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_TARAWA: j = "Pacific/Tarawa"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_TONGATAPU: j = "Pacific/Tongatapu"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_WAKE: j = "Pacific/Wake"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::PACIFIC_WALLIS: j = "Pacific/Wallis"; break;
+        
+        case CatalogsFeedProcessingScheduleTimezone::WET: j = "WET"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFeedProcessingScheduleTimezone", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsFeedProcessingScheduleTimezone& value)
+{
+    
+    if (j == "Africa/Abidjan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_ABIDJAN;
+        return;
+    }
+    
+    if (j == "Africa/Accra")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_ACCRA;
+        return;
+    }
+    
+    if (j == "Africa/Algiers")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_ALGIERS;
+        return;
+    }
+    
+    if (j == "Africa/Bissau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_BISSAU;
+        return;
+    }
+    
+    if (j == "Africa/Cairo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_CAIRO;
+        return;
+    }
+    
+    if (j == "Africa/Casablanca")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_CASABLANCA;
+        return;
+    }
+    
+    if (j == "Africa/Ceuta")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_CEUTA;
+        return;
+    }
+    
+    if (j == "Africa/El_Aaiun")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_EL_AAIUN;
+        return;
+    }
+    
+    if (j == "Africa/Johannesburg")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_JOHANNESBURG;
+        return;
+    }
+    
+    if (j == "Africa/Juba")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_JUBA;
+        return;
+    }
+    
+    if (j == "Africa/Khartoum")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_KHARTOUM;
+        return;
+    }
+    
+    if (j == "Africa/Lagos")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_LAGOS;
+        return;
+    }
+    
+    if (j == "Africa/Maputo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_MAPUTO;
+        return;
+    }
+    
+    if (j == "Africa/Monrovia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_MONROVIA;
+        return;
+    }
+    
+    if (j == "Africa/Nairobi")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_NAIROBI;
+        return;
+    }
+    
+    if (j == "Africa/Ndjamena")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_NDJAMENA;
+        return;
+    }
+    
+    if (j == "Africa/Sao_Tome")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_SAO_TOME;
+        return;
+    }
+    
+    if (j == "Africa/Tripoli")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_TRIPOLI;
+        return;
+    }
+    
+    if (j == "Africa/Tunis")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_TUNIS;
+        return;
+    }
+    
+    if (j == "Africa/Windhoek")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AFRICA_WINDHOEK;
+        return;
+    }
+    
+    if (j == "America/Adak")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ADAK;
+        return;
+    }
+    
+    if (j == "America/Anchorage")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ANCHORAGE;
+        return;
+    }
+    
+    if (j == "America/Araguaina")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARAGUAINA;
+        return;
+    }
+    
+    if (j == "America/Argentina/Buenos_Aires")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_BUENOS_AIRES;
+        return;
+    }
+    
+    if (j == "America/Argentina/Catamarca")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_CATAMARCA;
+        return;
+    }
+    
+    if (j == "America/Argentina/Cordoba")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_CORDOBA;
+        return;
+    }
+    
+    if (j == "America/Argentina/Jujuy")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_JUJUY;
+        return;
+    }
+    
+    if (j == "America/Argentina/La_Rioja")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_LA_RIOJA;
+        return;
+    }
+    
+    if (j == "America/Argentina/Mendoza")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_MENDOZA;
+        return;
+    }
+    
+    if (j == "America/Argentina/Rio_Gallegos")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_RIO_GALLEGOS;
+        return;
+    }
+    
+    if (j == "America/Argentina/Salta")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SALTA;
+        return;
+    }
+    
+    if (j == "America/Argentina/San_Juan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SAN_JUAN;
+        return;
+    }
+    
+    if (j == "America/Argentina/San_Luis")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_SAN_LUIS;
+        return;
+    }
+    
+    if (j == "America/Argentina/Tucuman")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_TUCUMAN;
+        return;
+    }
+    
+    if (j == "America/Argentina/Ushuaia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ARGENTINA_USHUAIA;
+        return;
+    }
+    
+    if (j == "America/Asuncion")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ASUNCION;
+        return;
+    }
+    
+    if (j == "America/Atikokan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ATIKOKAN;
+        return;
+    }
+    
+    if (j == "America/Bahia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BAHIA;
+        return;
+    }
+    
+    if (j == "America/Bahia_Banderas")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BAHIA_BANDERAS;
+        return;
+    }
+    
+    if (j == "America/Barbados")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BARBADOS;
+        return;
+    }
+    
+    if (j == "America/Belem")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BELEM;
+        return;
+    }
+    
+    if (j == "America/Belize")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BELIZE;
+        return;
+    }
+    
+    if (j == "America/Blanc-Sablon")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BLANC_SABLON;
+        return;
+    }
+    
+    if (j == "America/Boa_Vista")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BOA_VISTA;
+        return;
+    }
+    
+    if (j == "America/Bogota")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BOGOTA;
+        return;
+    }
+    
+    if (j == "America/Boise")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_BOISE;
+        return;
+    }
+    
+    if (j == "America/Cambridge_Bay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CAMBRIDGE_BAY;
+        return;
+    }
+    
+    if (j == "America/Campo_Grande")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CAMPO_GRANDE;
+        return;
+    }
+    
+    if (j == "America/Cancun")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CANCUN;
+        return;
+    }
+    
+    if (j == "America/Caracas")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CARACAS;
+        return;
+    }
+    
+    if (j == "America/Cayenne")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CAYENNE;
+        return;
+    }
+    
+    if (j == "America/Chicago")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CHICAGO;
+        return;
+    }
+    
+    if (j == "America/Chihuahua")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CHIHUAHUA;
+        return;
+    }
+    
+    if (j == "America/Costa_Rica")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_COSTA_RICA;
+        return;
+    }
+    
+    if (j == "America/Creston")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CRESTON;
+        return;
+    }
+    
+    if (j == "America/Cuiaba")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CUIABA;
+        return;
+    }
+    
+    if (j == "America/Curacao")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_CURACAO;
+        return;
+    }
+    
+    if (j == "America/Danmarkshavn")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_DANMARKSHAVN;
+        return;
+    }
+    
+    if (j == "America/Dawson")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_DAWSON;
+        return;
+    }
+    
+    if (j == "America/Dawson_Creek")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_DAWSON_CREEK;
+        return;
+    }
+    
+    if (j == "America/Denver")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_DENVER;
+        return;
+    }
+    
+    if (j == "America/Detroit")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_DETROIT;
+        return;
+    }
+    
+    if (j == "America/Edmonton")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_EDMONTON;
+        return;
+    }
+    
+    if (j == "America/Eirunepe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_EIRUNEPE;
+        return;
+    }
+    
+    if (j == "America/El_Salvador")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_EL_SALVADOR;
+        return;
+    }
+    
+    if (j == "America/Fort_Nelson")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_FORT_NELSON;
+        return;
+    }
+    
+    if (j == "America/Fortaleza")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_FORTALEZA;
+        return;
+    }
+    
+    if (j == "America/Glace_Bay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GLACE_BAY;
+        return;
+    }
+    
+    if (j == "America/Goose_Bay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GOOSE_BAY;
+        return;
+    }
+    
+    if (j == "America/Grand_Turk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GRAND_TURK;
+        return;
+    }
+    
+    if (j == "America/Guatemala")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GUATEMALA;
+        return;
+    }
+    
+    if (j == "America/Guayaquil")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GUAYAQUIL;
+        return;
+    }
+    
+    if (j == "America/Guyana")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_GUYANA;
+        return;
+    }
+    
+    if (j == "America/Halifax")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_HALIFAX;
+        return;
+    }
+    
+    if (j == "America/Havana")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_HAVANA;
+        return;
+    }
+    
+    if (j == "America/Hermosillo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_HERMOSILLO;
+        return;
+    }
+    
+    if (j == "America/Indiana/Indianapolis")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_INDIANAPOLIS;
+        return;
+    }
+    
+    if (j == "America/Indiana/Knox")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_KNOX;
+        return;
+    }
+    
+    if (j == "America/Indiana/Marengo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_MARENGO;
+        return;
+    }
+    
+    if (j == "America/Indiana/Petersburg")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_PETERSBURG;
+        return;
+    }
+    
+    if (j == "America/Indiana/Tell_City")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_TELL_CITY;
+        return;
+    }
+    
+    if (j == "America/Indiana/Vevay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_VEVAY;
+        return;
+    }
+    
+    if (j == "America/Indiana/Vincennes")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_VINCENNES;
+        return;
+    }
+    
+    if (j == "America/Indiana/Winamac")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INDIANA_WINAMAC;
+        return;
+    }
+    
+    if (j == "America/Inuvik")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_INUVIK;
+        return;
+    }
+    
+    if (j == "America/Iqaluit")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_IQALUIT;
+        return;
+    }
+    
+    if (j == "America/Jamaica")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_JAMAICA;
+        return;
+    }
+    
+    if (j == "America/Juneau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_JUNEAU;
+        return;
+    }
+    
+    if (j == "America/Kentucky/Louisville")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_KENTUCKY_LOUISVILLE;
+        return;
+    }
+    
+    if (j == "America/Kentucky/Monticello")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_KENTUCKY_MONTICELLO;
+        return;
+    }
+    
+    if (j == "America/La_Paz")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_LA_PAZ;
+        return;
+    }
+    
+    if (j == "America/Lima")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_LIMA;
+        return;
+    }
+    
+    if (j == "America/Los_Angeles")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_LOS_ANGELES;
+        return;
+    }
+    
+    if (j == "America/Maceio")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MACEIO;
+        return;
+    }
+    
+    if (j == "America/Managua")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MANAGUA;
+        return;
+    }
+    
+    if (j == "America/Manaus")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MANAUS;
+        return;
+    }
+    
+    if (j == "America/Martinique")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MARTINIQUE;
+        return;
+    }
+    
+    if (j == "America/Matamoros")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MATAMOROS;
+        return;
+    }
+    
+    if (j == "America/Mazatlan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MAZATLAN;
+        return;
+    }
+    
+    if (j == "America/Menominee")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MENOMINEE;
+        return;
+    }
+    
+    if (j == "America/Merida")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MERIDA;
+        return;
+    }
+    
+    if (j == "America/Metlakatla")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_METLAKATLA;
+        return;
+    }
+    
+    if (j == "America/Mexico_City")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MEXICO_CITY;
+        return;
+    }
+    
+    if (j == "America/Miquelon")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MIQUELON;
+        return;
+    }
+    
+    if (j == "America/Moncton")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MONCTON;
+        return;
+    }
+    
+    if (j == "America/Monterrey")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MONTERREY;
+        return;
+    }
+    
+    if (j == "America/Montevideo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_MONTEVIDEO;
+        return;
+    }
+    
+    if (j == "America/Nassau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NASSAU;
+        return;
+    }
+    
+    if (j == "America/New_York")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NEW_YORK;
+        return;
+    }
+    
+    if (j == "America/Nipigon")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NIPIGON;
+        return;
+    }
+    
+    if (j == "America/Nome")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NOME;
+        return;
+    }
+    
+    if (j == "America/Noronha")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NORONHA;
+        return;
+    }
+    
+    if (j == "America/North_Dakota/Beulah")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_BEULAH;
+        return;
+    }
+    
+    if (j == "America/North_Dakota/Center")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_CENTER;
+        return;
+    }
+    
+    if (j == "America/North_Dakota/New_Salem")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NORTH_DAKOTA_NEW_SALEM;
+        return;
+    }
+    
+    if (j == "America/Nuuk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_NUUK;
+        return;
+    }
+    
+    if (j == "America/Ojinaga")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_OJINAGA;
+        return;
+    }
+    
+    if (j == "America/Panama")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PANAMA;
+        return;
+    }
+    
+    if (j == "America/Pangnirtung")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PANGNIRTUNG;
+        return;
+    }
+    
+    if (j == "America/Paramaribo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PARAMARIBO;
+        return;
+    }
+    
+    if (j == "America/Phoenix")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PHOENIX;
+        return;
+    }
+    
+    if (j == "America/Port-au-Prince")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PORT_AU_PRINCE;
+        return;
+    }
+    
+    if (j == "America/Port_of_Spain")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PORT_OF_SPAIN;
+        return;
+    }
+    
+    if (j == "America/Porto_Velho")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PORTO_VELHO;
+        return;
+    }
+    
+    if (j == "America/Puerto_Rico")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PUERTO_RICO;
+        return;
+    }
+    
+    if (j == "America/Punta_Arenas")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_PUNTA_ARENAS;
+        return;
+    }
+    
+    if (j == "America/Rainy_River")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_RAINY_RIVER;
+        return;
+    }
+    
+    if (j == "America/Rankin_Inlet")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_RANKIN_INLET;
+        return;
+    }
+    
+    if (j == "America/Recife")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_RECIFE;
+        return;
+    }
+    
+    if (j == "America/Regina")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_REGINA;
+        return;
+    }
+    
+    if (j == "America/Resolute")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_RESOLUTE;
+        return;
+    }
+    
+    if (j == "America/Rio_Branco")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_RIO_BRANCO;
+        return;
+    }
+    
+    if (j == "America/Santarem")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTAREM;
+        return;
+    }
+    
+    if (j == "America/Santiago")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTIAGO;
+        return;
+    }
+    
+    if (j == "America/Santo_Domingo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SANTO_DOMINGO;
+        return;
+    }
+    
+    if (j == "America/Sao_Paulo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SAO_PAULO;
+        return;
+    }
+    
+    if (j == "America/Scoresbysund")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SCORESBYSUND;
+        return;
+    }
+    
+    if (j == "America/Sitka")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SITKA;
+        return;
+    }
+    
+    if (j == "America/St_Johns")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_ST_JOHNS;
+        return;
+    }
+    
+    if (j == "America/Swift_Current")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_SWIFT_CURRENT;
+        return;
+    }
+    
+    if (j == "America/Tegucigalpa")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_TEGUCIGALPA;
+        return;
+    }
+    
+    if (j == "America/Thule")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_THULE;
+        return;
+    }
+    
+    if (j == "America/Thunder_Bay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_THUNDER_BAY;
+        return;
+    }
+    
+    if (j == "America/Tijuana")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_TIJUANA;
+        return;
+    }
+    
+    if (j == "America/Toronto")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_TORONTO;
+        return;
+    }
+    
+    if (j == "America/Vancouver")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_VANCOUVER;
+        return;
+    }
+    
+    if (j == "America/Whitehorse")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_WHITEHORSE;
+        return;
+    }
+    
+    if (j == "America/Winnipeg")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_WINNIPEG;
+        return;
+    }
+    
+    if (j == "America/Yakutat")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_YAKUTAT;
+        return;
+    }
+    
+    if (j == "America/Yellowknife")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AMERICA_YELLOWKNIFE;
+        return;
+    }
+    
+    if (j == "Antarctica/Casey")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_CASEY;
+        return;
+    }
+    
+    if (j == "Antarctica/Davis")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_DAVIS;
+        return;
+    }
+    
+    if (j == "Antarctica/DumontDUrville")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_DUMONTDURVILLE;
+        return;
+    }
+    
+    if (j == "Antarctica/Macquarie")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_MACQUARIE;
+        return;
+    }
+    
+    if (j == "Antarctica/Mawson")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_MAWSON;
+        return;
+    }
+    
+    if (j == "Antarctica/Palmer")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_PALMER;
+        return;
+    }
+    
+    if (j == "Antarctica/Rothera")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_ROTHERA;
+        return;
+    }
+    
+    if (j == "Antarctica/Syowa")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_SYOWA;
+        return;
+    }
+    
+    if (j == "Antarctica/Troll")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_TROLL;
+        return;
+    }
+    
+    if (j == "Antarctica/Vostok")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ANTARCTICA_VOSTOK;
+        return;
+    }
+    
+    if (j == "Asia/Almaty")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ALMATY;
+        return;
+    }
+    
+    if (j == "Asia/Amman")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_AMMAN;
+        return;
+    }
+    
+    if (j == "Asia/Anadyr")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ANADYR;
+        return;
+    }
+    
+    if (j == "Asia/Aqtau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_AQTAU;
+        return;
+    }
+    
+    if (j == "Asia/Aqtobe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_AQTOBE;
+        return;
+    }
+    
+    if (j == "Asia/Ashgabat")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ASHGABAT;
+        return;
+    }
+    
+    if (j == "Asia/Atyrau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ATYRAU;
+        return;
+    }
+    
+    if (j == "Asia/Baghdad")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BAGHDAD;
+        return;
+    }
+    
+    if (j == "Asia/Baku")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BAKU;
+        return;
+    }
+    
+    if (j == "Asia/Bangkok")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BANGKOK;
+        return;
+    }
+    
+    if (j == "Asia/Barnaul")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BARNAUL;
+        return;
+    }
+    
+    if (j == "Asia/Beirut")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BEIRUT;
+        return;
+    }
+    
+    if (j == "Asia/Bishkek")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BISHKEK;
+        return;
+    }
+    
+    if (j == "Asia/Brunei")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_BRUNEI;
+        return;
+    }
+    
+    if (j == "Asia/Chita")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_CHITA;
+        return;
+    }
+    
+    if (j == "Asia/Choibalsan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_CHOIBALSAN;
+        return;
+    }
+    
+    if (j == "Asia/Colombo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_COLOMBO;
+        return;
+    }
+    
+    if (j == "Asia/Damascus")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_DAMASCUS;
+        return;
+    }
+    
+    if (j == "Asia/Dhaka")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_DHAKA;
+        return;
+    }
+    
+    if (j == "Asia/Dili")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_DILI;
+        return;
+    }
+    
+    if (j == "Asia/Dubai")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_DUBAI;
+        return;
+    }
+    
+    if (j == "Asia/Dushanbe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_DUSHANBE;
+        return;
+    }
+    
+    if (j == "Asia/Famagusta")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_FAMAGUSTA;
+        return;
+    }
+    
+    if (j == "Asia/Gaza")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_GAZA;
+        return;
+    }
+    
+    if (j == "Asia/Hebron")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_HEBRON;
+        return;
+    }
+    
+    if (j == "Asia/Ho_Chi_Minh")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_HO_CHI_MINH;
+        return;
+    }
+    
+    if (j == "Asia/Hong_Kong")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_HONG_KONG;
+        return;
+    }
+    
+    if (j == "Asia/Hovd")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_HOVD;
+        return;
+    }
+    
+    if (j == "Asia/Irkutsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_IRKUTSK;
+        return;
+    }
+    
+    if (j == "Asia/Jakarta")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_JAKARTA;
+        return;
+    }
+    
+    if (j == "Asia/Jayapura")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_JAYAPURA;
+        return;
+    }
+    
+    if (j == "Asia/Jerusalem")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_JERUSALEM;
+        return;
+    }
+    
+    if (j == "Asia/Kabul")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KABUL;
+        return;
+    }
+    
+    if (j == "Asia/Kamchatka")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KAMCHATKA;
+        return;
+    }
+    
+    if (j == "Asia/Karachi")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KARACHI;
+        return;
+    }
+    
+    if (j == "Asia/Kathmandu")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KATHMANDU;
+        return;
+    }
+    
+    if (j == "Asia/Khandyga")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KHANDYGA;
+        return;
+    }
+    
+    if (j == "Asia/Kolkata")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KOLKATA;
+        return;
+    }
+    
+    if (j == "Asia/Krasnoyarsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KRASNOYARSK;
+        return;
+    }
+    
+    if (j == "Asia/Kuala_Lumpur")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KUALA_LUMPUR;
+        return;
+    }
+    
+    if (j == "Asia/Kuching")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_KUCHING;
+        return;
+    }
+    
+    if (j == "Asia/Macau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_MACAU;
+        return;
+    }
+    
+    if (j == "Asia/Magadan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_MAGADAN;
+        return;
+    }
+    
+    if (j == "Asia/Makassar")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_MAKASSAR;
+        return;
+    }
+    
+    if (j == "Asia/Manila")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_MANILA;
+        return;
+    }
+    
+    if (j == "Asia/Nicosia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_NICOSIA;
+        return;
+    }
+    
+    if (j == "Asia/Novokuznetsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_NOVOKUZNETSK;
+        return;
+    }
+    
+    if (j == "Asia/Novosibirsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_NOVOSIBIRSK;
+        return;
+    }
+    
+    if (j == "Asia/Omsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_OMSK;
+        return;
+    }
+    
+    if (j == "Asia/Oral")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ORAL;
+        return;
+    }
+    
+    if (j == "Asia/Pontianak")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_PONTIANAK;
+        return;
+    }
+    
+    if (j == "Asia/Pyongyang")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_PYONGYANG;
+        return;
+    }
+    
+    if (j == "Asia/Qatar")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_QATAR;
+        return;
+    }
+    
+    if (j == "Asia/Qostanay")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_QOSTANAY;
+        return;
+    }
+    
+    if (j == "Asia/Qyzylorda")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_QYZYLORDA;
+        return;
+    }
+    
+    if (j == "Asia/Riyadh")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_RIYADH;
+        return;
+    }
+    
+    if (j == "Asia/Sakhalin")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SAKHALIN;
+        return;
+    }
+    
+    if (j == "Asia/Samarkand")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SAMARKAND;
+        return;
+    }
+    
+    if (j == "Asia/Seoul")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SEOUL;
+        return;
+    }
+    
+    if (j == "Asia/Shanghai")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SHANGHAI;
+        return;
+    }
+    
+    if (j == "Asia/Singapore")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SINGAPORE;
+        return;
+    }
+    
+    if (j == "Asia/Srednekolymsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_SREDNEKOLYMSK;
+        return;
+    }
+    
+    if (j == "Asia/Taipei")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TAIPEI;
+        return;
+    }
+    
+    if (j == "Asia/Tashkent")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TASHKENT;
+        return;
+    }
+    
+    if (j == "Asia/Tbilisi")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TBILISI;
+        return;
+    }
+    
+    if (j == "Asia/Tehran")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TEHRAN;
+        return;
+    }
+    
+    if (j == "Asia/Thimphu")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_THIMPHU;
+        return;
+    }
+    
+    if (j == "Asia/Tokyo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TOKYO;
+        return;
+    }
+    
+    if (j == "Asia/Tomsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_TOMSK;
+        return;
+    }
+    
+    if (j == "Asia/Ulaanbaatar")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_ULAANBAATAR;
+        return;
+    }
+    
+    if (j == "Asia/Urumqi")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_URUMQI;
+        return;
+    }
+    
+    if (j == "Asia/Ust-Nera")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_UST_NERA;
+        return;
+    }
+    
+    if (j == "Asia/Vladivostok")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_VLADIVOSTOK;
+        return;
+    }
+    
+    if (j == "Asia/Yakutsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_YAKUTSK;
+        return;
+    }
+    
+    if (j == "Asia/Yangon")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_YANGON;
+        return;
+    }
+    
+    if (j == "Asia/Yekaterinburg")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_YEKATERINBURG;
+        return;
+    }
+    
+    if (j == "Asia/Yerevan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ASIA_YEREVAN;
+        return;
+    }
+    
+    if (j == "Atlantic/Azores")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_AZORES;
+        return;
+    }
+    
+    if (j == "Atlantic/Bermuda")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_BERMUDA;
+        return;
+    }
+    
+    if (j == "Atlantic/Canary")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_CANARY;
+        return;
+    }
+    
+    if (j == "Atlantic/Cape_Verde")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_CAPE_VERDE;
+        return;
+    }
+    
+    if (j == "Atlantic/Faroe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_FAROE;
+        return;
+    }
+    
+    if (j == "Atlantic/Madeira")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_MADEIRA;
+        return;
+    }
+    
+    if (j == "Atlantic/Reykjavik")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_REYKJAVIK;
+        return;
+    }
+    
+    if (j == "Atlantic/South_Georgia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_SOUTH_GEORGIA;
+        return;
+    }
+    
+    if (j == "Atlantic/Stanley")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ATLANTIC_STANLEY;
+        return;
+    }
+    
+    if (j == "Australia/Adelaide")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_ADELAIDE;
+        return;
+    }
+    
+    if (j == "Australia/Brisbane")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_BRISBANE;
+        return;
+    }
+    
+    if (j == "Australia/Broken_Hill")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_BROKEN_HILL;
+        return;
+    }
+    
+    if (j == "Australia/Currie")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_CURRIE;
+        return;
+    }
+    
+    if (j == "Australia/Darwin")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_DARWIN;
+        return;
+    }
+    
+    if (j == "Australia/Eucla")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_EUCLA;
+        return;
+    }
+    
+    if (j == "Australia/Hobart")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_HOBART;
+        return;
+    }
+    
+    if (j == "Australia/Lindeman")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_LINDEMAN;
+        return;
+    }
+    
+    if (j == "Australia/Lord_Howe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_LORD_HOWE;
+        return;
+    }
+    
+    if (j == "Australia/Melbourne")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_MELBOURNE;
+        return;
+    }
+    
+    if (j == "Australia/Perth")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_PERTH;
+        return;
+    }
+    
+    if (j == "Australia/Sydney")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::AUSTRALIA_SYDNEY;
+        return;
+    }
+    
+    if (j == "CET")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::CET;
+        return;
+    }
+    
+    if (j == "CST6CDT")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::CST6CDT;
+        return;
+    }
+    
+    if (j == "EET")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EET;
+        return;
+    }
+    
+    if (j == "EST")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EST;
+        return;
+    }
+    
+    if (j == "EST5EDT")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EST5EDT;
+        return;
+    }
+    
+    if (j == "Etc/GMT")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT;
+        return;
+    }
+    
+    if (j == "Etc/GMT+1")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_1;
+        return;
+    }
+    
+    if (j == "Etc/GMT+10")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_10;
+        return;
+    }
+    
+    if (j == "Etc/GMT+11")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_11;
+        return;
+    }
+    
+    if (j == "Etc/GMT+12")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_122;
+        return;
+    }
+    
+    if (j == "Etc/GMT+2")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_2;
+        return;
+    }
+    
+    if (j == "Etc/GMT+3")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_3;
+        return;
+    }
+    
+    if (j == "Etc/GMT+4")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_4;
+        return;
+    }
+    
+    if (j == "Etc/GMT+5")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_5;
+        return;
+    }
+    
+    if (j == "Etc/GMT+6")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_6;
+        return;
+    }
+    
+    if (j == "Etc/GMT+7")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_7;
+        return;
+    }
+    
+    if (j == "Etc/GMT+8")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_8;
+        return;
+    }
+    
+    if (j == "Etc/GMT+9")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_9;
+        return;
+    }
+    
+    if (j == "Etc/GMT-1")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_12;
+        return;
+    }
+    
+    if (j == "Etc/GMT-10")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_102;
+        return;
+    }
+    
+    if (j == "Etc/GMT-11")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_112;
+        return;
+    }
+    
+    if (j == "Etc/GMT-12")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_122;
+        return;
+    }
+    
+    if (j == "Etc/GMT-13")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_13;
+        return;
+    }
+    
+    if (j == "Etc/GMT-14")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_14;
+        return;
+    }
+    
+    if (j == "Etc/GMT-2")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_22;
+        return;
+    }
+    
+    if (j == "Etc/GMT-3")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_32;
+        return;
+    }
+    
+    if (j == "Etc/GMT-4")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_42;
+        return;
+    }
+    
+    if (j == "Etc/GMT-5")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_52;
+        return;
+    }
+    
+    if (j == "Etc/GMT-6")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_62;
+        return;
+    }
+    
+    if (j == "Etc/GMT-7")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_72;
+        return;
+    }
+    
+    if (j == "Etc/GMT-8")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_82;
+        return;
+    }
+    
+    if (j == "Etc/GMT-9")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_GMT_92;
+        return;
+    }
+    
+    if (j == "Etc/UTC")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::ETC_UTC;
+        return;
+    }
+    
+    if (j == "Europe/Amsterdam")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_AMSTERDAM;
+        return;
+    }
+    
+    if (j == "Europe/Andorra")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ANDORRA;
+        return;
+    }
+    
+    if (j == "Europe/Astrakhan")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ASTRAKHAN;
+        return;
+    }
+    
+    if (j == "Europe/Athens")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ATHENS;
+        return;
+    }
+    
+    if (j == "Europe/Belgrade")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_BELGRADE;
+        return;
+    }
+    
+    if (j == "Europe/Berlin")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_BERLIN;
+        return;
+    }
+    
+    if (j == "Europe/Brussels")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_BRUSSELS;
+        return;
+    }
+    
+    if (j == "Europe/Bucharest")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_BUCHAREST;
+        return;
+    }
+    
+    if (j == "Europe/Budapest")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_BUDAPEST;
+        return;
+    }
+    
+    if (j == "Europe/Chisinau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_CHISINAU;
+        return;
+    }
+    
+    if (j == "Europe/Copenhagen")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_COPENHAGEN;
+        return;
+    }
+    
+    if (j == "Europe/Dublin")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_DUBLIN;
+        return;
+    }
+    
+    if (j == "Europe/Gibraltar")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_GIBRALTAR;
+        return;
+    }
+    
+    if (j == "Europe/Helsinki")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_HELSINKI;
+        return;
+    }
+    
+    if (j == "Europe/Istanbul")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ISTANBUL;
+        return;
+    }
+    
+    if (j == "Europe/Kaliningrad")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_KALININGRAD;
+        return;
+    }
+    
+    if (j == "Europe/Kiev")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_KIEV;
+        return;
+    }
+    
+    if (j == "Europe/Kirov")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_KIROV;
+        return;
+    }
+    
+    if (j == "Europe/Lisbon")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_LISBON;
+        return;
+    }
+    
+    if (j == "Europe/London")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_LONDON;
+        return;
+    }
+    
+    if (j == "Europe/Luxembourg")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_LUXEMBOURG;
+        return;
+    }
+    
+    if (j == "Europe/Madrid")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_MADRID;
+        return;
+    }
+    
+    if (j == "Europe/Malta")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_MALTA;
+        return;
+    }
+    
+    if (j == "Europe/Minsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_MINSK;
+        return;
+    }
+    
+    if (j == "Europe/Monaco")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_MONACO;
+        return;
+    }
+    
+    if (j == "Europe/Moscow")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_MOSCOW;
+        return;
+    }
+    
+    if (j == "Europe/Oslo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_OSLO;
+        return;
+    }
+    
+    if (j == "Europe/Paris")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_PARIS;
+        return;
+    }
+    
+    if (j == "Europe/Prague")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_PRAGUE;
+        return;
+    }
+    
+    if (j == "Europe/Riga")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_RIGA;
+        return;
+    }
+    
+    if (j == "Europe/Rome")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ROME;
+        return;
+    }
+    
+    if (j == "Europe/Samara")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_SAMARA;
+        return;
+    }
+    
+    if (j == "Europe/Saratov")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_SARATOV;
+        return;
+    }
+    
+    if (j == "Europe/Simferopol")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_SIMFEROPOL;
+        return;
+    }
+    
+    if (j == "Europe/Sofia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_SOFIA;
+        return;
+    }
+    
+    if (j == "Europe/Stockholm")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_STOCKHOLM;
+        return;
+    }
+    
+    if (j == "Europe/Tallinn")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_TALLINN;
+        return;
+    }
+    
+    if (j == "Europe/Tirane")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_TIRANE;
+        return;
+    }
+    
+    if (j == "Europe/Ulyanovsk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ULYANOVSK;
+        return;
+    }
+    
+    if (j == "Europe/Uzhgorod")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_UZHGOROD;
+        return;
+    }
+    
+    if (j == "Europe/Vienna")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_VIENNA;
+        return;
+    }
+    
+    if (j == "Europe/Vilnius")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_VILNIUS;
+        return;
+    }
+    
+    if (j == "Europe/Volgograd")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_VOLGOGRAD;
+        return;
+    }
+    
+    if (j == "Europe/Warsaw")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_WARSAW;
+        return;
+    }
+    
+    if (j == "Europe/Zaporozhye")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ZAPOROZHYE;
+        return;
+    }
+    
+    if (j == "Europe/Zurich")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::EUROPE_ZURICH;
+        return;
+    }
+    
+    if (j == "HST")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::HST;
+        return;
+    }
+    
+    if (j == "Indian/Chagos")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_CHAGOS;
+        return;
+    }
+    
+    if (j == "Indian/Christmas")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_CHRISTMAS;
+        return;
+    }
+    
+    if (j == "Indian/Cocos")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_COCOS;
+        return;
+    }
+    
+    if (j == "Indian/Kerguelen")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_KERGUELEN;
+        return;
+    }
+    
+    if (j == "Indian/Mahe")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_MAHE;
+        return;
+    }
+    
+    if (j == "Indian/Maldives")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_MALDIVES;
+        return;
+    }
+    
+    if (j == "Indian/Mauritius")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_MAURITIUS;
+        return;
+    }
+    
+    if (j == "Indian/Reunion")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::INDIAN_REUNION;
+        return;
+    }
+    
+    if (j == "MET")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::MET;
+        return;
+    }
+    
+    if (j == "MST")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::MST;
+        return;
+    }
+    
+    if (j == "MST7MDT")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::MST7MDT;
+        return;
+    }
+    
+    if (j == "PST8PDT")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PST8PDT;
+        return;
+    }
+    
+    if (j == "Pacific/Apia")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_APIA;
+        return;
+    }
+    
+    if (j == "Pacific/Auckland")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_AUCKLAND;
+        return;
+    }
+    
+    if (j == "Pacific/Bougainville")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_BOUGAINVILLE;
+        return;
+    }
+    
+    if (j == "Pacific/Chatham")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_CHATHAM;
+        return;
+    }
+    
+    if (j == "Pacific/Chuuk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_CHUUK;
+        return;
+    }
+    
+    if (j == "Pacific/Easter")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_EASTER;
+        return;
+    }
+    
+    if (j == "Pacific/Efate")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_EFATE;
+        return;
+    }
+    
+    if (j == "Pacific/Enderbury")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_ENDERBURY;
+        return;
+    }
+    
+    if (j == "Pacific/Fakaofo")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_FAKAOFO;
+        return;
+    }
+    
+    if (j == "Pacific/Fiji")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_FIJI;
+        return;
+    }
+    
+    if (j == "Pacific/Funafuti")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_FUNAFUTI;
+        return;
+    }
+    
+    if (j == "Pacific/Galapagos")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_GALAPAGOS;
+        return;
+    }
+    
+    if (j == "Pacific/Gambier")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_GAMBIER;
+        return;
+    }
+    
+    if (j == "Pacific/Guadalcanal")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_GUADALCANAL;
+        return;
+    }
+    
+    if (j == "Pacific/Guam")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_GUAM;
+        return;
+    }
+    
+    if (j == "Pacific/Honolulu")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_HONOLULU;
+        return;
+    }
+    
+    if (j == "Pacific/Kiritimati")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_KIRITIMATI;
+        return;
+    }
+    
+    if (j == "Pacific/Kosrae")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_KOSRAE;
+        return;
+    }
+    
+    if (j == "Pacific/Kwajalein")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_KWAJALEIN;
+        return;
+    }
+    
+    if (j == "Pacific/Majuro")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_MAJURO;
+        return;
+    }
+    
+    if (j == "Pacific/Marquesas")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_MARQUESAS;
+        return;
+    }
+    
+    if (j == "Pacific/Nauru")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_NAURU;
+        return;
+    }
+    
+    if (j == "Pacific/Niue")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_NIUE;
+        return;
+    }
+    
+    if (j == "Pacific/Norfolk")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_NORFOLK;
+        return;
+    }
+    
+    if (j == "Pacific/Noumea")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_NOUMEA;
+        return;
+    }
+    
+    if (j == "Pacific/Pago_Pago")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_PAGO_PAGO;
+        return;
+    }
+    
+    if (j == "Pacific/Palau")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_PALAU;
+        return;
+    }
+    
+    if (j == "Pacific/Pitcairn")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_PITCAIRN;
+        return;
+    }
+    
+    if (j == "Pacific/Pohnpei")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_POHNPEI;
+        return;
+    }
+    
+    if (j == "Pacific/Port_Moresby")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_PORT_MORESBY;
+        return;
+    }
+    
+    if (j == "Pacific/Rarotonga")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_RAROTONGA;
+        return;
+    }
+    
+    if (j == "Pacific/Tahiti")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_TAHITI;
+        return;
+    }
+    
+    if (j == "Pacific/Tarawa")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_TARAWA;
+        return;
+    }
+    
+    if (j == "Pacific/Tongatapu")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_TONGATAPU;
+        return;
+    }
+    
+    if (j == "Pacific/Wake")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_WAKE;
+        return;
+    }
+    
+    if (j == "Pacific/Wallis")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::PACIFIC_WALLIS;
+        return;
+    }
+    
+    if (j == "WET")
+    {
+        value = CatalogsFeedProcessingScheduleTimezone::WET;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFeedProcessingScheduleTimezone", &j);
+}
 
 } // namespace models
 

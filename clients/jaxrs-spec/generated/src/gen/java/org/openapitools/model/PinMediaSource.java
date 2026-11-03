@@ -45,7 +45,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Pin media source that can be an image, video, or a mix of both passed in as a request.")
 @JsonTypeName("PinMediaSource")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSource   {
   private ContentType contentType;
   private String data;
@@ -105,7 +105,7 @@ public class PinMediaSource   {
   private String coverImageUrl;
   private String mediaId;
   private Integer index;
-  private @Valid List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
+  private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
   private Boolean isAffiliateLink = false;
 
   public PinMediaSource() {
@@ -355,7 +355,7 @@ public class PinMediaSource   {
   
   @ApiModelProperty(required = true, value = "Array with image objects.")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesURLItem> getItems() {
+  @NotNull  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesURLItem> getItems() {
     return items;
   }
 

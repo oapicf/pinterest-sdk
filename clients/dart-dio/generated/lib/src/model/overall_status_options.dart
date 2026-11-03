@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'overall_status_options.g.dart';
 
+/// Overall status of event quality score.
 class OverallStatusOptions extends EnumClass {
 
-  /// Overall status of event quality score.
   @BuiltValueEnumConst(wireName: r'NEEDS_IMPROVEMENT')
   static const OverallStatusOptions NEEDS_IMPROVEMENT = _$NEEDS_IMPROVEMENT;
-  /// Overall status of event quality score.
   @BuiltValueEnumConst(wireName: r'FAIR')
   static const OverallStatusOptions FAIR = _$FAIR;
-  /// Overall status of event quality score.
   @BuiltValueEnumConst(wireName: r'GOOD')
   static const OverallStatusOptions GOOD = _$GOOD;
 

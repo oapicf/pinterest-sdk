@@ -9,10 +9,10 @@ import Foundation
 
 public struct LeadSubscriptionPostParams: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let userAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The Ad Account ID that this lead form belongs to. */
     public var adAccountId: String?
     /** API version. */

@@ -186,13 +186,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (exclusionWindow.IsSet && exclusionWindow.Value == null)
-                throw new ArgumentNullException(nameof(exclusionWindow), "Property is not nullable for class TargetingSpecShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecShoppingRetargeting: exclusion_window.");
 
             if (lookbackWindow.IsSet && lookbackWindow.Value == null)
-                throw new ArgumentNullException(nameof(lookbackWindow), "Property is not nullable for class TargetingSpecShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecShoppingRetargeting: lookback_window.");
 
             if (tagTypes.IsSet && tagTypes.Value == null)
-                throw new ArgumentNullException(nameof(tagTypes), "Property is not nullable for class TargetingSpecShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecShoppingRetargeting: tag_types.");
 
             return new TargetingSpecShoppingRetargeting(exclusionWindow, lookbackWindow, tagTypes);
         }
@@ -203,7 +203,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecShoppingRetargeting"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -218,11 +217,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecShoppingRetargeting"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecShoppingRetargeting targetingSpecShoppingRetargeting, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (targetingSpecShoppingRetargeting.ExclusionWindowOption.IsSet && targetingSpecShoppingRetargeting.ExclusionWindow == null)
+                throw new JsonException("Cannot write null property TargetingSpecShoppingRetargeting.ExclusionWindow to non-nullable JSON property 'exclusion_window'.");
+
+            if (targetingSpecShoppingRetargeting.LookbackWindowOption.IsSet && targetingSpecShoppingRetargeting.LookbackWindow == null)
+                throw new JsonException("Cannot write null property TargetingSpecShoppingRetargeting.LookbackWindow to non-nullable JSON property 'lookback_window'.");
+
             if (targetingSpecShoppingRetargeting.TagTypesOption.IsSet && targetingSpecShoppingRetargeting.TagTypes == null)
-                throw new ArgumentNullException(nameof(targetingSpecShoppingRetargeting.TagTypes), "Property is required for class TargetingSpecShoppingRetargeting.");
+                throw new JsonException("Cannot write null property TargetingSpecShoppingRetargeting.TagTypes to non-nullable JSON property 'tag_types'.");
 
             if (targetingSpecShoppingRetargeting.ExclusionWindowOption.IsSet)
                 writer.WriteNumber("exclusion_window", targetingSpecShoppingRetargeting.ExclusionWindowOption.Value!.Value);

@@ -26,10 +26,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("TargetingTemplateCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplateCreate   {
   private Boolean autoTargetingEnabled = true;
-  private @Valid List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
+  private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
   private String name;
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
   private TargetingSpecOptimal targetingAttributes;
@@ -77,7 +77,7 @@ public class TargetingTemplateCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("keywords")
-  @Valid public List<@Valid TargetingTemplateKeyword> getKeywords() {
+  public List<@Valid TargetingTemplateKeyword> getKeywords() {
     return keywords;
   }
 

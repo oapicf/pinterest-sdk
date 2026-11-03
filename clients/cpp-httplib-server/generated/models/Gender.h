@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class Gender
-{
-public:
-
-    Gender();
-    virtual ~Gender() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Gender,
-        )
-
-private:
+enum class Gender {
+    
+    FEMALE,
+    
+    MALE,
+    
+    UNISEX
+    
 };
 
+inline void to_json(nlohmann::json& j, const Gender& value)
+{
+    switch (value)
+    {
+        
+        case Gender::FEMALE: j = "FEMALE"; break;
+        
+        case Gender::MALE: j = "MALE"; break;
+        
+        case Gender::UNISEX: j = "UNISEX"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Gender", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Gender& value)
+{
+    
+    if (j == "FEMALE")
+    {
+        value = Gender::FEMALE;
+        return;
+    }
+    
+    if (j == "MALE")
+    {
+        value = Gender::MALE;
+        return;
+    }
+    
+    if (j == "UNISEX")
+    {
+        value = Gender::UNISEX;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Gender", &j);
+}
 
 } // namespace models
 

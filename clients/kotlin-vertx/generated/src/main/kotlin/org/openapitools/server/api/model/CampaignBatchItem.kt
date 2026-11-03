@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Item in a batch campaign response.
- * @param &#x60;data&#x60; Campaign data on success.
+ * @param `data` Campaign data on success.
  * @param exceptions Exceptions on failure.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -22,13 +22,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Information of the published editorial article.")
 @JsonTypeName("TrendsEditorial")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsEditorial   {
   private String boardUrl;
   private String description;
-  private @Valid List<String> interests = new ArrayList<>();
-  private @Valid List<String> pinsUrl = new ArrayList<>();
-  private @Valid List<@Valid KeywordInfo> relatedKeywords = new ArrayList<>();
+  private List<String> interests = new ArrayList<>();
+  private List<String> pinsUrl = new ArrayList<>();
+  private List<@Valid KeywordInfo> relatedKeywords = new ArrayList<>();
   private String title;
 
   public TrendsEditorial() {
@@ -174,7 +174,7 @@ public class TrendsEditorial   {
   
   @ApiModelProperty(required = true, value = "List of keywords related to the editorial article")
   @JsonProperty(required = true, value = "related_keywords")
-  @NotNull @Valid public List<@Valid KeywordInfo> getRelatedKeywords() {
+  @NotNull public List<@Valid KeywordInfo> getRelatedKeywords() {
     return relatedKeywords;
   }
 

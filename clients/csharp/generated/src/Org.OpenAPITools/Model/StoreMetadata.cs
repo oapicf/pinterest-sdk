@@ -238,28 +238,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class StoreMetadata.", nameof(storeCode));
+                throw new JsonException("Property is required for class StoreMetadata: store_code.");
 
             if (!storeId.IsSet)
-                throw new ArgumentException("Property is required for class StoreMetadata.", nameof(storeId));
+                throw new JsonException("Property is required for class StoreMetadata: store_id.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: store_code.");
 
             if (storeId.IsSet && storeId.Value == null)
-                throw new ArgumentNullException(nameof(storeId), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: store_id.");
 
             if (geohash.IsSet && geohash.Value == null)
-                throw new ArgumentNullException(nameof(geohash), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: geohash.");
 
             if (latitude.IsSet && latitude.Value == null)
-                throw new ArgumentNullException(nameof(latitude), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: latitude.");
 
             if (longitude.IsSet && longitude.Value == null)
-                throw new ArgumentNullException(nameof(longitude), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: longitude.");
 
             if (storeName.IsSet && storeName.Value == null)
-                throw new ArgumentNullException(nameof(storeName), "Property is not nullable for class StoreMetadata.");
+                throw new JsonException("Property is not nullable for class StoreMetadata: store_name.");
 
             return new StoreMetadata(storeCode.Value!, storeId.Value!, geohash, latitude, longitude, storeName);
         }
@@ -270,7 +270,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="storeMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, StoreMetadata storeMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -285,20 +284,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="storeMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, StoreMetadata storeMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (storeMetadata.StoreCode == null)
-                throw new ArgumentNullException(nameof(storeMetadata.StoreCode), "Property is required for class StoreMetadata.");
-
-            if (storeMetadata.StoreId == null)
-                throw new ArgumentNullException(nameof(storeMetadata.StoreId), "Property is required for class StoreMetadata.");
-
             if (storeMetadata.GeohashOption.IsSet && storeMetadata.Geohash == null)
-                throw new ArgumentNullException(nameof(storeMetadata.Geohash), "Property is required for class StoreMetadata.");
+                throw new JsonException("Cannot write null property StoreMetadata.Geohash to non-nullable JSON property 'geohash'.");
+
+            if (storeMetadata.LatitudeOption.IsSet && storeMetadata.Latitude == null)
+                throw new JsonException("Cannot write null property StoreMetadata.Latitude to non-nullable JSON property 'latitude'.");
+
+            if (storeMetadata.LongitudeOption.IsSet && storeMetadata.Longitude == null)
+                throw new JsonException("Cannot write null property StoreMetadata.Longitude to non-nullable JSON property 'longitude'.");
 
             if (storeMetadata.StoreNameOption.IsSet && storeMetadata.StoreName == null)
-                throw new ArgumentNullException(nameof(storeMetadata.StoreName), "Property is required for class StoreMetadata.");
+                throw new JsonException("Cannot write null property StoreMetadata.StoreName to non-nullable JSON property 'store_name'.");
 
             writer.WriteString("store_code", storeMetadata.StoreCode);
 

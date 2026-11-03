@@ -21,7 +21,7 @@ import ScheduleType from './ScheduleType';
 /**
  * The ScheduleBatchUpdate model module.
  * @module model/ScheduleBatchUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScheduleBatchUpdate {
     /**

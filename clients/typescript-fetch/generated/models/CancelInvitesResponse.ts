@@ -29,8 +29,6 @@ import {
 export interface CancelInvitesResponse {
     /**
      * 
-     * @type {Array<CancelInviteResultItem>}
-     * @memberof CancelInvitesResponse
      */
     items?: Array<CancelInviteResultItem>;
 }

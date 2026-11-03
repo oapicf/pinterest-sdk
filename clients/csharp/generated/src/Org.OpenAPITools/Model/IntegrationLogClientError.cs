@@ -339,31 +339,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (cause.IsSet && cause.Value == null)
-                throw new ArgumentNullException(nameof(cause), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: cause.");
 
             if (columnNumber.IsSet && columnNumber.Value == null)
-                throw new ArgumentNullException(nameof(columnNumber), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: column_number.");
 
             if (fileName.IsSet && fileName.Value == null)
-                throw new ArgumentNullException(nameof(fileName), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: file_name.");
 
             if (lineNumber.IsSet && lineNumber.Value == null)
-                throw new ArgumentNullException(nameof(lineNumber), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: line_number.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: message.");
 
             if (messageDetail.IsSet && messageDetail.Value == null)
-                throw new ArgumentNullException(nameof(messageDetail), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: message_detail.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: name.");
 
             if (number.IsSet && number.Value == null)
-                throw new ArgumentNullException(nameof(number), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: number.");
 
             if (stackTrace.IsSet && stackTrace.Value == null)
-                throw new ArgumentNullException(nameof(stackTrace), "Property is not nullable for class IntegrationLogClientError.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientError: stack_trace.");
 
             return new IntegrationLogClientError(cause, columnNumber, fileName, lineNumber, message, messageDetail, name, number, stackTrace);
         }
@@ -374,7 +374,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogClientError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogClientError integrationLogClientError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -389,26 +388,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogClientError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogClientError integrationLogClientError, JsonSerializerOptions jsonSerializerOptions)
         {
             if (integrationLogClientError.CauseOption.IsSet && integrationLogClientError.Cause == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.Cause), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.Cause to non-nullable JSON property 'cause'.");
+
+            if (integrationLogClientError.ColumnNumberOption.IsSet && integrationLogClientError.ColumnNumber == null)
+                throw new JsonException("Cannot write null property IntegrationLogClientError.ColumnNumber to non-nullable JSON property 'column_number'.");
 
             if (integrationLogClientError.FileNameOption.IsSet && integrationLogClientError.FileName == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.FileName), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.FileName to non-nullable JSON property 'file_name'.");
+
+            if (integrationLogClientError.LineNumberOption.IsSet && integrationLogClientError.LineNumber == null)
+                throw new JsonException("Cannot write null property IntegrationLogClientError.LineNumber to non-nullable JSON property 'line_number'.");
 
             if (integrationLogClientError.MessageOption.IsSet && integrationLogClientError.Message == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.Message), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.Message to non-nullable JSON property 'message'.");
 
             if (integrationLogClientError.MessageDetailOption.IsSet && integrationLogClientError.MessageDetail == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.MessageDetail), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.MessageDetail to non-nullable JSON property 'message_detail'.");
 
             if (integrationLogClientError.NameOption.IsSet && integrationLogClientError.Name == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.Name), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.Name to non-nullable JSON property 'name'.");
+
+            if (integrationLogClientError.NumberOption.IsSet && integrationLogClientError.Number == null)
+                throw new JsonException("Cannot write null property IntegrationLogClientError.Number to non-nullable JSON property 'number'.");
 
             if (integrationLogClientError.StackTraceOption.IsSet && integrationLogClientError.StackTrace == null)
-                throw new ArgumentNullException(nameof(integrationLogClientError.StackTrace), "Property is required for class IntegrationLogClientError.");
+                throw new JsonException("Cannot write null property IntegrationLogClientError.StackTrace to non-nullable JSON property 'stack_trace'.");
 
             if (integrationLogClientError.CauseOption.IsSet)
                 writer.WriteString("cause", integrationLogClientError.Cause);

@@ -129,3 +129,4 @@ class _$ProductGroupPromotionResponseItemSerializer implements PrimitiveSerializ
   }
 }
 
+

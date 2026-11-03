@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Delivery estimates response for a campaign.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Delivery estimates response for a campaign.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignDeliveryEstimatesResponse   {
   
   private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
@@ -28,8 +28,7 @@ public class CampaignDeliveryEstimatesResponse   {
   
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
   @JsonProperty("curves")
- @Size(max=20)  @Valid
-  public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
+ @Size(max=20)  public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
     return curves;
   }
   public void setCurves(List<@Valid CampaignPlanningCurveEstimate> curves) {

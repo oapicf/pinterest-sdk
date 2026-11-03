@@ -1,10 +1,11 @@
 # ConversionDeletionRequestTargets
 
-## Properties
+This model is an `anyOf` wrapper: a value is at least one of the member types listed below.
+It is never instantiated directly — use one of the concrete types.
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**user_emails** | **string[]** | Array of plain text user emails. |
-**epiks** | **string[]** | Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie). |
+## anyOf
+
+- [**\OpenAPI\Client\Model\ConversionDeletionRequestUserEmailTargets**](ConversionDeletionRequestUserEmailTargets.md)
+- [**\OpenAPI\Client\Model\ConversionDeletionRequestEPIKTargets**](ConversionDeletionRequestEPIKTargets.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

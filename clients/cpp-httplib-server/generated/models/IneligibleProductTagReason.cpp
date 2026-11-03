@@ -6,20 +6,3 @@
 */
 #include "IneligibleProductTagReason.h"
 
-namespace models {
-
-IneligibleProductTagReason::IneligibleProductTagReason()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

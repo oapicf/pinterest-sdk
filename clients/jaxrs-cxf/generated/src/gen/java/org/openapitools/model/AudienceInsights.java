@@ -29,8 +29,6 @@ public class AudienceInsights  {
   */
   @ApiModelProperty(value = "Category interest distribution")
 
-  @Valid
-
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
  /**

@@ -275,7 +275,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<LocalInventoryOperation.OperationEnum?>(LocalInventoryOperation.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                LocalInventoryOperation.OperationEnum? operationValue = LocalInventoryOperation.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<LocalInventoryOperation.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -284,10 +289,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryOperation.", nameof(operation));
+                throw new JsonException("Property is required for class LocalInventoryOperation: operation.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class LocalInventoryOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperation: operation.");
 
             if (localInventoryCreateOperation != null)
                 return new LocalInventoryOperation(localInventoryCreateOperation);
@@ -310,7 +315,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryOperation localInventoryOperation, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -349,7 +353,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryOperation localInventoryOperation, JsonSerializerOptions jsonSerializerOptions)
         {
 

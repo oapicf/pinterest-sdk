@@ -26,13 +26,13 @@ data class CatalogsProductGroupFiltersRequest(
     @field:Valid
     @get:Size(min=1)
     @Schema(required = true, description = "")
-    @param:JsonProperty("any_of")
+    @param:JsonProperty("any_of", required = true)
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>,
 
     @field:Valid
     @get:Size(min=1)
     @Schema(required = true, description = "")
-    @param:JsonProperty("all_of")
+    @param:JsonProperty("all_of", required = true)
     @get:JsonProperty("all_of", required = true) val allOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
 ) {
 

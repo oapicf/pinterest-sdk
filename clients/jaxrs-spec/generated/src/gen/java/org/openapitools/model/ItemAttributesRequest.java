@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ItemAttributesRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemAttributesRequest   {
   private String adImage0Link;
   private String adImage0Tag;
@@ -73,10 +73,10 @@ public class ItemAttributesRequest   {
   private String adVideo1Tag;
   private String adVideo2Link;
   private String adVideo2Tag;
-  private @Valid List<String> additionalImageLink;
+  private List<String> additionalImageLink;
   private Boolean adult;
   private String ageGroup;
-  private @Valid List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private String androidDeepLink;
   private String availability;
   private BigDecimal averageReviewRating;
@@ -133,8 +133,8 @@ public class ItemAttributesRequest   {
   private String title;
   private String unitPricingBaseMeasure;
   private String unitPricingMeasure;
-  private @Valid List<String> variantNames;
-  private @Valid List<String> variantValues;
+  private List<String> variantNames;
+  private List<String> variantValues;
   private String videoLink;
 
   public ItemAttributesRequest() {
@@ -1167,7 +1167,7 @@ public class ItemAttributesRequest   {
   
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.")
   @JsonProperty("ai_disclosures")
-  @Valid public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }
 

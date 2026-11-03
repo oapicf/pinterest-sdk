@@ -53,8 +53,6 @@ public class ConversionEventsDataItemsCustomData  {
   */
   @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
 
-  @Valid
-
   private List<@Valid ConversionEventsDataItemsCustomDataContentsItems> contents = new ArrayList<>();
 
  /**

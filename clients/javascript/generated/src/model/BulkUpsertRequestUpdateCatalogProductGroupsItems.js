@@ -21,7 +21,7 @@ import Country from './Country';
 /**
  * The BulkUpsertRequestUpdateCatalogProductGroupsItems model module.
  * @module model/BulkUpsertRequestUpdateCatalogProductGroupsItems
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BulkUpsertRequestUpdateCatalogProductGroupsItems {
     /**

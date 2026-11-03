@@ -57,7 +57,7 @@ public interface SchedulesApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public List<SchedulesCreate200ResponseInner> schedulesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid List<@Valid ScheduleCreate> scheduleCreate);
+    public List<SchedulesCreate200ResponseInner> schedulesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, List<@Valid ScheduleCreate> scheduleCreate);
 
     /**
      * Get Schedules
@@ -98,5 +98,5 @@ public interface SchedulesApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public List<SchedulesCreate200ResponseInner> schedulesUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate);
+    public List<SchedulesCreate200ResponseInner> schedulesUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate);
 }

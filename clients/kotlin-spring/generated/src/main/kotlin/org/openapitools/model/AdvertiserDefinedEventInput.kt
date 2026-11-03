@@ -25,11 +25,11 @@ data class AdvertiserDefinedEventInput(
 
     @field:Valid
     @Schema(example = "SIGNUP", required = true, description = "Pinterest standard event type to map this custom event to for campaign optimization and reporting")
-    @param:JsonProperty("mapped_conversion_type")
+    @param:JsonProperty("mapped_conversion_type", required = true)
     @get:JsonProperty("mapped_conversion_type", required = true) val mappedConversionType: AdvertiserDefinedEventMappingType,
 
     @Schema(example = "newsletter_signup", required = true, description = "Raw string name of the event")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
 

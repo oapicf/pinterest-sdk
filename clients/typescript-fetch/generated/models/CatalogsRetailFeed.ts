@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsFeedProcessingSchedule } from './CatalogsFeedProcessingSchedule';
 import {
     CatalogsFeedProcessingScheduleFromJSON,
@@ -71,86 +71,58 @@ import {
 export interface CatalogsRetailFeed {
     /**
      * 
-     * @type {CatalogsRetailFeedCatalogTypeEnum}
-     * @memberof CatalogsRetailFeed
      */
     catalogType: CatalogsRetailFeedCatalogTypeEnum;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsRetailFeed
      */
     readonly createdAt: Date;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsRetailFeed
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {ProductAvailabilityType}
-     * @memberof CatalogsRetailFeed
      */
     defaultAvailability?: ProductAvailabilityType | null;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsRetailFeed
      */
     defaultCountry: Country;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsRetailFeed
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * The locale used within a feed for product descriptions.
-     * @type {string}
-     * @memberof CatalogsRetailFeed
      */
     defaultLocale: string;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsRetailFeed
      */
     format: CatalogsFormat;
     /**
      * ID of the feed entity.
-     * @type {string}
-     * @memberof CatalogsRetailFeed
      */
     readonly id: string;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsRetailFeed
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-     * @type {string}
-     * @memberof CatalogsRetailFeed
      */
     name: string | null;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsRetailFeed
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsRetailFeed
      */
     status: CatalogsStatus;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsRetailFeed
      */
     readonly updatedAt: Date;
 }
@@ -160,7 +132,7 @@ export interface CatalogsRetailFeed {
  * @export
  */
 export const CatalogsRetailFeedCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailFeedCatalogTypeEnum = typeof CatalogsRetailFeedCatalogTypeEnum[keyof typeof CatalogsRetailFeedCatalogTypeEnum];
 
@@ -195,7 +167,7 @@ export function CatalogsRetailFeedFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'catalogType': json['catalog_type'],
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'credentials': json['credentials'] === undefined ? undefined : json['credentials'] === null ? null : CatalogsFeedCredentialsFromJSON(json['credentials']),
         'defaultAvailability': json['default_availability'] === undefined ? undefined : json['default_availability'] === null ? null : ProductAvailabilityTypeFromJSON(json['default_availability']),
         'defaultCountry': CountryFromJSON(json['default_country']),
@@ -207,7 +179,7 @@ export function CatalogsRetailFeedFromJSONTyped(json: any, ignoreDiscriminator: 
         'name': json['name'],
         'preferredProcessingSchedule': json['preferred_processing_schedule'] === undefined ? undefined : json['preferred_processing_schedule'] === null ? null : CatalogsFeedProcessingScheduleFromJSON(json['preferred_processing_schedule']),
         'status': CatalogsStatusFromJSON(json['status']),
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
     };
 }
 

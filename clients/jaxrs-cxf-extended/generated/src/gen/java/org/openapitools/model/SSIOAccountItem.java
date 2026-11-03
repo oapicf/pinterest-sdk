@@ -23,7 +23,6 @@ public class SSIOAccountItem  {
   * Address information that is associated with this account.
   */
   @ApiModelProperty(value = "Address information that is associated with this account.")
-  @Valid
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
  /**

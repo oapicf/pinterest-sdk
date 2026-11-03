@@ -240,7 +240,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum?>(CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "filters":
                             filters = new Option<CatalogsCreativeAssetsProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -258,28 +263,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest: catalog_id.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest: catalog_type.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest: filters.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest: catalog_id.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest: catalog_type.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest: filters.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupCreateRequest: name.");
 
             return new CatalogsCreativeAssetsProductGroupCreateRequest(catalogId.Value!, catalogType.Value!.Value!, filters.Value!, name.Value!, description);
         }
@@ -290,7 +295,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupCreateRequest catalogsCreativeAssetsProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -305,18 +309,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupCreateRequest catalogsCreativeAssetsProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsProductGroupCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupCreateRequest.CatalogId), "Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.");
-
-            if (catalogsCreativeAssetsProductGroupCreateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupCreateRequest.Filters), "Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.");
-
-            if (catalogsCreativeAssetsProductGroupCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupCreateRequest.Name), "Property is required for class CatalogsCreativeAssetsProductGroupCreateRequest.");
-
             writer.WriteString("catalog_id", catalogsCreativeAssetsProductGroupCreateRequest.CatalogId);
 
             var catalogTypeRawValue = CatalogsCreativeAssetsProductGroupCreateRequest.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsProductGroupCreateRequest.CatalogType);

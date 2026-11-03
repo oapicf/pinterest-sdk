@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'billing_profile_card_type.g.dart';
 
+/// Type of the credit card.
 class BillingProfileCardType extends EnumClass {
 
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'UNKNOWN')
   static const BillingProfileCardType UNKNOWN = _$UNKNOWN;
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'VISA')
   static const BillingProfileCardType VISA = _$VISA;
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'MASTERCARD')
   static const BillingProfileCardType MASTERCARD = _$MASTERCARD;
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'AMERICAN_EXPRESS')
   static const BillingProfileCardType AMERICAN_EXPRESS = _$AMERICAN_EXPRESS;
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'DISCOVER')
   static const BillingProfileCardType DISCOVER = _$DISCOVER;
-  /// Type of the credit card.
   @BuiltValueEnumConst(wireName: r'ELO')
   static const BillingProfileCardType ELO = _$ELO;
 

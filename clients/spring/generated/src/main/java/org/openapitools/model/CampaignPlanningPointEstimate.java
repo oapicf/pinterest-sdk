@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignPlanningPointEstimate", description = "A JSON object that represents a single estimation point. An estimation point contains the expected budget used and the estimated result, Y, along with an expected range based for the budget.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningPointEstimate {
 
   private Integer budget;
@@ -78,8 +78,8 @@ public class CampaignPlanningPointEstimate {
    * Y value as a decimal.
    * @return doubleY
    */
-  @NotNull 
-  @Schema(name = "double_y", example = "10.68", description = "Y value as a decimal.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "double_y", example = "10.68", description = "Y value as a decimal.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("double_y")
   public JsonNullable<Double> getDoubleY() {
     return doubleY;
@@ -99,8 +99,8 @@ public class CampaignPlanningPointEstimate {
    * The maximum Y value of the point.
    * @return maxY
    */
-  @NotNull 
-  @Schema(name = "max_y", example = "2000", description = "The maximum Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "max_y", example = "2000", description = "The maximum Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("max_y")
   public JsonNullable<Integer> getMaxY() {
     return maxY;
@@ -120,8 +120,8 @@ public class CampaignPlanningPointEstimate {
    * The minimum Y value of the point.
    * @return minY
    */
-  @NotNull 
-  @Schema(name = "min_y", example = "1000", description = "The minimum Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "min_y", example = "1000", description = "The minimum Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("min_y")
   public JsonNullable<Integer> getMinY() {
     return minY;
@@ -141,8 +141,8 @@ public class CampaignPlanningPointEstimate {
    * The expected Y value of the point.
    * @return y
    */
-  @NotNull 
-  @Schema(name = "y", example = "1500", description = "The expected Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "y", example = "1500", description = "The expected Y value of the point.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("y")
   public JsonNullable<Integer> getY() {
     return y;

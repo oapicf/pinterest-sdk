@@ -160,7 +160,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (exportStatus.IsSet && exportStatus.Value == null)
-                throw new ArgumentNullException(nameof(exportStatus), "Property is not nullable for class LeadsExportResponseData.");
+                throw new JsonException("Property is not nullable for class LeadsExportResponseData: export_status.");
 
             return new LeadsExportResponseData(downloadUrl, exportStatus);
         }
@@ -171,7 +171,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExportResponseData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadsExportResponseData leadsExportResponseData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -186,9 +185,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExportResponseData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadsExportResponseData leadsExportResponseData, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (leadsExportResponseData.ExportStatusOption.IsSet && leadsExportResponseData.ExportStatus == null)
+                throw new JsonException("Cannot write null property LeadsExportResponseData.ExportStatus to non-nullable JSON property 'export_status'.");
+
             if (leadsExportResponseData.DownloadUrlOption.IsSet)
                 if (leadsExportResponseData.DownloadUrlOption.Value != null)
                     writer.WriteString("download_url", leadsExportResponseData.DownloadUrl);

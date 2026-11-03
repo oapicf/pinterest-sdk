@@ -17,7 +17,7 @@ import Currency from './Currency';
 /**
  * The PromotionTemplateValue model module.
  * @module model/PromotionTemplateValue
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PromotionTemplateValue {
     /**

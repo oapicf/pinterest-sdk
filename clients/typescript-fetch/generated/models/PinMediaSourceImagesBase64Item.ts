@@ -29,32 +29,22 @@ import {
 export interface PinMediaSourceImagesBase64Item {
     /**
      * 
-     * @type {ContentType}
-     * @memberof PinMediaSourceImagesBase64Item
      */
     contentType: ContentType;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesBase64Item
      */
     data: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesBase64Item
      */
     description?: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesBase64Item
      */
     link?: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesBase64Item
      */
     title?: string;
 }

@@ -1753,12 +1753,22 @@ namespace Org.OpenAPITools.Model
                         case "language":
                             string? languageRawValue = utf8JsonReader.GetString();
                             if (languageRawValue != null)
-                                language = new Option<CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum?>(CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue));
+                            {
+                                CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum? languageValue = CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue);
+                                if (languageValue == null)
+                                    throw new JsonException();
+                                language = new Option<CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum?>(languageValue);
+                            }
                             break;
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnum?>(CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnum? operationValue = CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsItemsDeleteDiscontinuedBatchRequest.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -1767,28 +1777,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest.", nameof(country));
+                throw new JsonException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest: country.");
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest.", nameof(items));
+                throw new JsonException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest: items.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest.", nameof(language));
+                throw new JsonException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest: language.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest: operation.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest: country.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest: items.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest: language.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsDeleteDiscontinuedBatchRequest: operation.");
 
             return new CatalogsItemsDeleteDiscontinuedBatchRequest(country.Value!.Value!, items.Value!, language.Value!.Value!, operation.Value!.Value!);
         }
@@ -1799,7 +1809,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsDeleteDiscontinuedBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1814,12 +1823,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsDeleteDiscontinuedBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemsDeleteDiscontinuedBatchRequest catalogsItemsDeleteDiscontinuedBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsItemsDeleteDiscontinuedBatchRequest.Items == null)
-                throw new ArgumentNullException(nameof(catalogsItemsDeleteDiscontinuedBatchRequest.Items), "Property is required for class CatalogsItemsDeleteDiscontinuedBatchRequest.");
-
             var countryRawValue = CountryValueConverter.ToJsonValue(catalogsItemsDeleteDiscontinuedBatchRequest.Country);
             writer.WriteString("country", countryRawValue);
 

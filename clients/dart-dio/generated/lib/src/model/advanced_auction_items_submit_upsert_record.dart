@@ -216,6 +216,7 @@ class _$AdvancedAuctionItemsSubmitUpsertRecordSerializer implements PrimitiveSer
   }
 }
 
+
 class AdvancedAuctionItemsSubmitUpsertRecordOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPSERT')

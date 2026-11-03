@@ -24,16 +24,12 @@ public class AudienceDemographics  {
   */
   @ApiModelProperty(value = "Ages distribution.")
 
-  @Valid
-
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
  /**
   * Country area distribution.
   */
   @ApiModelProperty(value = "Country area distribution.")
-
-  @Valid
 
   private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
@@ -42,8 +38,6 @@ public class AudienceDemographics  {
   */
   @ApiModelProperty(value = "Device usage distribution.")
 
-  @Valid
-
   private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
  /**
@@ -51,16 +45,12 @@ public class AudienceDemographics  {
   */
   @ApiModelProperty(value = "Gender distribution.")
 
-  @Valid
-
   private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
  /**
   * Geographic metro area distribution.
   */
   @ApiModelProperty(value = "Geographic metro area distribution.")
-
-  @Valid
 
   private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
  /**

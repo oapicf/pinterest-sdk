@@ -66,7 +66,7 @@ function Invoke-AdvertiserDefinedEventsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling advertiserDefinedEvents_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdvertiserDefinedEventsCreateRequest) {
             throw "Error! The required parameter `AdvertiserDefinedEventsCreateRequest` missing when calling advertiserDefinedEvents_create."
@@ -153,7 +153,7 @@ function Invoke-AdvertiserDefinedEventsDelete {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling advertiserDefinedEvents_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$EventNames) {
             throw "Error! The required parameter `EventNames` missing when calling advertiserDefinedEvents_delete."
@@ -233,7 +233,7 @@ function Invoke-AdvertiserDefinedEventsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling advertiserDefinedEvents_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -317,7 +317,7 @@ function Invoke-AdvertiserDefinedEventsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling advertiserDefinedEvents_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdvertiserDefinedEventsCreateRequest) {
             throw "Error! The required parameter `AdvertiserDefinedEventsCreateRequest` missing when calling advertiserDefinedEvents_update."

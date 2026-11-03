@@ -13,7 +13,7 @@ public struct CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest: Sen
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Catalog ID pertaining to the product group. */
     public var catalogId: String
     public var catalogType: CatalogType

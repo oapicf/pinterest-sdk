@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PromotionsResponse  {
   
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid PromotionArrayElement> promotions = new ArrayList<>();
  /**
   * Get promotions

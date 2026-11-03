@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'ai_disclosure_item.g.dart';
 
+/// AI disclosure declaration the creator has made about the Pin.
 class AiDisclosureItem extends EnumClass {
 
-  /// AI disclosure declaration the creator has made about the Pin.
   @BuiltValueEnumConst(wireName: r'AI_MODIFIED')
   static const AiDisclosureItem AI_MODIFIED = _$AI_MODIFIED;
-  /// AI disclosure declaration the creator has made about the Pin.
   @BuiltValueEnumConst(wireName: r'SYNTHETIC_PERFORMER')
   static const AiDisclosureItem SYNTHETIC_PERFORMER = _$SYNTHETIC_PERFORMER;
 

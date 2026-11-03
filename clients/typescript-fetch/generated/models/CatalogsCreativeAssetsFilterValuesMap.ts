@@ -29,80 +29,54 @@ import {
 export interface CatalogsCreativeAssetsFilterValuesMap {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     customLabel0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     customLabel1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     customLabel2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     customLabel3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     customLabel4?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory4?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory5?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     googleProductCategory6?: Array<string>;
     /**
      * 
-     * @type {Array<MediaType>}
-     * @memberof CatalogsCreativeAssetsFilterValuesMap
      */
     mediaType?: Array<MediaType>;
 }

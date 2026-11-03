@@ -79,8 +79,7 @@ class CampaignDeliveryEstimatesResponse(BaseModel):
         _items = []
         if self.curves:
             for _item_curves in self.curves:
-                if _item_curves:
-                    _items.append(_item_curves.to_dict())
+                _items.append(_item_curves.to_dict() if _item_curves is not None else None)
             _dict['curves'] = _items
         # override the default output from pydantic by calling `to_dict()` of derived_metrics
         if self.derived_metrics:

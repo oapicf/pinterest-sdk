@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "KeywordsCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsCreate {
 
-  @Valid
   private List<@Valid KeywordCreateItem> keywords = new ArrayList<>();
 
   private String parentId;
@@ -60,7 +59,7 @@ public class KeywordsCreate {
    * Keywords
    * @return keywords
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "keywords", description = "Keywords", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid KeywordCreateItem> getKeywords() {

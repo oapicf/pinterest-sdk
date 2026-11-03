@@ -10,7 +10,7 @@ import Foundation
 /** Resource create or update operation model with required body fields (no OptionalProperties). */
 public struct AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody: Sendable, Codable, Hashable {
 
-    public static let audienceIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let audienceIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of an audience */
     public var audienceId: String
     public var operationType: OperationType

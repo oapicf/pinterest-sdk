@@ -6,20 +6,3 @@
 */
 #include "NullableEntityStatus.h"
 
-namespace models {
-
-NullableEntityStatus::NullableEntityStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

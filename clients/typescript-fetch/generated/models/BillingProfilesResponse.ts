@@ -50,38 +50,26 @@ import {
 export interface BillingProfilesResponse {
     /**
      * Advertiser ID of the billing.
-     * @type {string}
-     * @memberof BillingProfilesResponse
      */
     advertiserId?: string;
     /**
      * Billing type of the advertiser
-     * @type {BillingType}
-     * @memberof BillingProfilesResponse
      */
     billingType?: BillingType;
     /**
      * Type of the card.
-     * @type {BillingProfileCardType}
-     * @memberof BillingProfilesResponse
      */
     cardType?: BillingProfileCardType;
     /**
      * Billing ID.
-     * @type {string}
-     * @memberof BillingProfilesResponse
      */
     id?: string;
     /**
      * Brand of the payment method.
-     * @type {BillingProfilePaymentMethodBrand}
-     * @memberof BillingProfilesResponse
      */
     paymentMethodBrand?: BillingProfilePaymentMethodBrand;
     /**
      * Status of the billing.
-     * @type {BillingProfileStatus}
-     * @memberof BillingProfilesResponse
      */
     status?: BillingProfileStatus;
 }

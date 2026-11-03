@@ -109,6 +109,7 @@ class _$ScheduleAgeBucketMultipliersSerializer implements PrimitiveSerializer<Sc
   }
 }
 
+
 class ScheduleAgeBucketMultipliersAGE_BUCKETEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'18-24')

@@ -246,7 +246,7 @@ export const CatalogsItemValidationIssue = {
     TitleMissing: 'TITLE_MISSING',
     TooManyAdditionalImageLinks: 'TOO_MANY_ADDITIONAL_IMAGE_LINKS',
     UtmSourceAutoCorrected: 'UTM_SOURCE_AUTO_CORRECTED',
-    WeightUnitInvalid: 'WEIGHT_UNIT_INVALID'
+    WeightUnitInvalid: 'WEIGHT_UNIT_INVALID',
 } as const;
 export type CatalogsItemValidationIssue = typeof CatalogsItemValidationIssue[keyof typeof CatalogsItemValidationIssue];
 

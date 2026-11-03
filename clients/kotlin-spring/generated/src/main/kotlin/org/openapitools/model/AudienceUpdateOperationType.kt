@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Audience operation type (update or remove).
-* Values: UPDATE,REMOVE
-*/
+ * Audience operation type (update or remove).
+ * Values: UPDATE,REMOVE
+ */
 enum class AudienceUpdateOperationType(@get:JsonValue val value: kotlin.String) {
 
     UPDATE("UPDATE"),
@@ -28,9 +28,8 @@ enum class AudienceUpdateOperationType(@get:JsonValue val value: kotlin.String) 
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AudienceUpdateOperationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceUpdateOperationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceUpdateOperationType'")
         }
     }
 }
-

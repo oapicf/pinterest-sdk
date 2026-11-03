@@ -46,14 +46,10 @@ import {
 export interface CatalogsProductGroupFiltersRequest {
     /**
      * 
-     * @type {Array<CatalogsProductGroupFilterKeys>}
-     * @memberof CatalogsProductGroupFiltersRequest
      */
     anyOf: Array<CatalogsProductGroupFilterKeys>;
     /**
      * 
-     * @type {Array<CatalogsProductGroupFilterKeys>}
-     * @memberof CatalogsProductGroupFiltersRequest
      */
     allOf: Array<CatalogsProductGroupFilterKeys>;
 }

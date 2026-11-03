@@ -21,7 +21,7 @@ export interface DeliveryMetricsResponseItemsItems {
 export namespace DeliveryMetricsResponseItemsItems {
   export const CategoryEnum = {
     Ads: 'ADS',
-    Organic: 'ORGANIC'
+    Organic: 'ORGANIC',
   } as const;
   export type CategoryEnum = typeof CategoryEnum[keyof typeof CategoryEnum];
 }

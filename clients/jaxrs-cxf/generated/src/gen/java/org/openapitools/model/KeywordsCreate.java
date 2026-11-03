@@ -24,8 +24,6 @@ public class KeywordsCreate  {
   */
   @ApiModelProperty(required = true, value = "Keywords")
 
-  @Valid
-
   private List<@Valid KeywordCreateItem> keywords = new ArrayList<>();
 
  /**

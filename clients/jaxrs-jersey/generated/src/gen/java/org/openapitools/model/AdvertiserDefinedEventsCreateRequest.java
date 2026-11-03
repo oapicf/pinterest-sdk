@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   AdvertiserDefinedEventsCreateRequest.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvertiserDefinedEventsCreateRequest   {
   public static final String JSON_PROPERTY_ITEMS = "items";
   @JsonProperty(JSON_PROPERTY_ITEMS)
@@ -58,7 +58,7 @@ public class AdvertiserDefinedEventsCreateRequest   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "List of advertiser defined events to create or update")
-  @NotNull @Valid  @Size(min=1)
+  @NotNull  @Size(min=1)
   public List<@Valid AdvertiserDefinedEventInput> getItems() {
     return items;
   }

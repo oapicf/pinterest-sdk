@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AuthRespondInvitesBody", description = "An object with a list of all the invites the user would like to respond to and the action to take.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInvitesBody {
 
   private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
@@ -57,7 +57,7 @@ public class AuthRespondInvitesBody {
    * Get invites
    * @return invites
    */
-  @NotNull @Valid @Size(min = 1, max = 100) 
+  @NotNull @Size(min = 1, max = 100) 
   @Schema(name = "invites", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("invites")
   public List<@Valid AuthRespondInvitesBodyItem> getInvites() {

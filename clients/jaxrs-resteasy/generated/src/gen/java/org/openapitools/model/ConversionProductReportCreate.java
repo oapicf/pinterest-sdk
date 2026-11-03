@@ -22,24 +22,24 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate   {
   
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
   private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
-  private ConversionProductAttributionType conversionProductAttributionType;
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
   private String endDate;
   private ConversionProductReportGranularity granularity;
   private ConversionProductReportLevel level;
   private List<@Pattern(regexp = "^[a-zA-Z0-9]+$")String> productSkuIds = new ArrayList<>();
   private String reportName;
   private String startDate;
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   /**
    *   List of ad group ids.   Only support ad_group_ids field when level of the report is AD_GROUP.
@@ -73,8 +73,7 @@ public class ConversionProductReportCreate   {
   
   @ApiModelProperty(value = "List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].")
   @JsonProperty("campaign_objective_types")
- @Size(min=1,max=7)  @Valid
-  public List<ConversionObjectiveType> getCampaignObjectiveTypes() {
+ @Size(min=1,max=7)  public List<ConversionObjectiveType> getCampaignObjectiveTypes() {
     return campaignObjectiveTypes;
   }
   public void setCampaignObjectiveTypes(List<ConversionObjectiveType> campaignObjectiveTypes) {
@@ -102,7 +101,6 @@ public class ConversionProductReportCreate   {
   @ApiModelProperty(required = true, value = "Metric and entity columns")
   @JsonProperty("columns")
   @NotNull
-  @Valid
   public List<ConversionProductReportingColumn> getColumns() {
     return columns;
   }

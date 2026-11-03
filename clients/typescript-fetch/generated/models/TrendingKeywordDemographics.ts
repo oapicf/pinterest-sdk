@@ -41,14 +41,10 @@ import {
 export interface TrendingKeywordDemographics {
     /**
      * 
-     * @type {TrendsAgeDistribution}
-     * @memberof TrendingKeywordDemographics
      */
     ageDistribution?: TrendsAgeDistribution | null;
     /**
      * 
-     * @type {TrendsGenderDistribution}
-     * @memberof TrendingKeywordDemographics
      */
     genderDistribution?: TrendsGenderDistribution | null;
 }

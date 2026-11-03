@@ -51,19 +51,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'adGroupIds' => [
+                'ad_group_ids' => [
                     'required',
                     'min:1',
                     'max:250',
@@ -76,24 +76,24 @@ class AdGroupsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'aggregateReportRows' => [
+                'aggregate_report_rows' => [
                     'boolean',
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -102,11 +102,11 @@ class AdGroupsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $adGroupIds = $request->get('adGroupIds');
+        $adGroupIds = $request->get('ad_group_ids');
 
         $columns = $request->get('columns');
 
@@ -121,7 +121,7 @@ class AdGroupsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        $aggregateReportRows = $request->boolean('aggregateReportRows');
+        $aggregateReportRows = $request->boolean('aggregate_report_rows');
 
         $reportingTimezone = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ReportingTimeZone::class);
 
@@ -171,10 +171,10 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -236,10 +236,10 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -301,10 +301,10 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -362,19 +362,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'adGroupId' => $adGroupId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'ad_group_id' => $adGroupId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupId' => [
+                'ad_group_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -434,19 +434,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'adGroupId' => $adGroupId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'ad_group_id' => $adGroupId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupId' => [
+                'ad_group_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -506,19 +506,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'adGroupId' => $adGroupId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'ad_group_id' => $adGroupId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupId' => [
+                'ad_group_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -578,10 +578,10 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'adGroupId' => $adGroupId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'ad_group_id' => $adGroupId,
+                ],
             ),
             [
             ],
@@ -644,19 +644,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adGroupId' => $adGroupId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_group_id' => $adGroupId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adGroupId' => [
+                'ad_group_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -716,13 +716,13 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -731,27 +731,27 @@ class AdGroupsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'campaignIds' => [
+                'campaign_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'adGroupIds' => [
+                'ad_group_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'entityStatuses' => [
+                'entity_statuses' => [
                     'array',
                 ],
-                'translateInterestsToNames' => [
+                'translate_interests_to_names' => [
                     'boolean',
                 ],
             ],
@@ -764,17 +764,17 @@ class AdGroupsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $campaignIds = $request->get('campaignIds');
+        $campaignIds = $request->get('campaign_ids');
 
-        $adGroupIds = $request->get('adGroupIds');
+        $adGroupIds = $request->get('ad_group_ids');
 
-        $entityStatuses = $request->get('entityStatuses');
+        $entityStatuses = $request->get('entity_statuses');
 
-        $translateInterestsToNames = $request->boolean('translateInterestsToNames');
+        $translateInterestsToNames = $request->boolean('translate_interests_to_names');
 
 
         $apiResult = $this->api->adGroupsList($adAccountId, $bookmark, $pageSize, $order, $campaignIds, $adGroupIds, $entityStatuses, $translateInterestsToNames);
@@ -821,31 +821,31 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupIds' => [
+                'ad_group_ids' => [
                     'required',
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'targetingTypes' => [
+                'targeting_types' => [
                     'required',
                     'min:1',
                     'max:14',
@@ -858,26 +858,26 @@ class AdGroupsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'attributionTypes' => [
+                'attribution_types' => [
                     'max:2',
                     'array',
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
-                'sortColumns' => [
+                'sort_columns' => [
                     'min:1',
                     'max:2',
                     'array',
                 ],
-                'sortAscending' => [
+                'sort_ascending' => [
                     'boolean',
                 ],
             ],
@@ -888,13 +888,13 @@ class AdGroupsController extends Controller
         }
 
 
-        $adGroupIds = $request->get('adGroupIds');
+        $adGroupIds = $request->get('ad_group_ids');
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $targetingTypes = $request->get('targetingTypes');
+        $targetingTypes = $request->get('targeting_types');
 
         $columns = $request->get('columns');
 
@@ -908,13 +908,13 @@ class AdGroupsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        $attributionTypes = $request->get('attributionTypes');
+        $attributionTypes = $request->get('attribution_types');
 
         $reportingTimezone = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ReportingTimeZone::class);
 
-        $sortColumns = $request->get('sortColumns');
+        $sortColumns = $request->get('sort_columns');
 
-        $sortAscending = $request->boolean('sortAscending');
+        $sortAscending = $request->boolean('sort_ascending');
 
 
         $apiResult = $this->api->adGroupsTargetingAnalyticsGet($adAccountId, $adGroupIds, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes, $reportingTimezone, $sortColumns, $sortAscending);
@@ -961,10 +961,10 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -1022,19 +1022,19 @@ class AdGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'promotionIds' => [
+                'promotion_ids' => [
                     'required',
                     'min:1',
                     'max:50',
@@ -1043,7 +1043,7 @@ class AdGroupsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -1058,11 +1058,11 @@ class AdGroupsController extends Controller
         }
 
 
-        $promotionIds = $request->get('promotionIds');
+        $promotionIds = $request->get('promotion_ids');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 

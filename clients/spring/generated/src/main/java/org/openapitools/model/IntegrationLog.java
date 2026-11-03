@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,43 +28,33 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLog {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> advertiserId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appVersionNumber;
 
   private Integer clientTimestamp;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntegrationLogClientError error;
 
   private IntegrationLogEventType eventType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2048) String> externalBusinessId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> feedProfileId = JsonNullable.<String>undefined();
 
   private IntegrationLogLevel logLevel;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> merchantId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String platformVersionNumber;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntegrationLogClientRequest request;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 128) String> tagId = JsonNullable.<String>undefined();
 
   public IntegrationLog() {
@@ -91,7 +80,7 @@ public class IntegrationLog {
    * @return advertiserId
    */
   @Size(max = 128) 
-  @Schema(name = "advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("advertiser_id")
   public JsonNullable<@Size(max = 128) String> getAdvertiserId() {
     return advertiserId;
@@ -195,7 +184,7 @@ public class IntegrationLog {
    * @return externalBusinessId
    */
   @Size(max = 2048) 
-  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("external_business_id")
   public JsonNullable<@Size(max = 2048) String> getExternalBusinessId() {
     return externalBusinessId;
@@ -215,7 +204,7 @@ public class IntegrationLog {
    * @return feedProfileId
    */
   @Size(max = 128) 
-  @Schema(name = "feed_profile_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "feed_profile_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("feed_profile_id")
   public JsonNullable<@Size(max = 128) String> getFeedProfileId() {
     return feedProfileId;
@@ -256,7 +245,7 @@ public class IntegrationLog {
    * @return merchantId
    */
   @Size(max = 128) 
-  @Schema(name = "merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("merchant_id")
   public JsonNullable<@Size(max = 128) String> getMerchantId() {
     return merchantId;
@@ -339,7 +328,7 @@ public class IntegrationLog {
    * @return tagId
    */
   @Size(max = 128) 
-  @Schema(name = "tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tag_id")
   public JsonNullable<@Size(max = 128) String> getTagId() {
     return tagId;

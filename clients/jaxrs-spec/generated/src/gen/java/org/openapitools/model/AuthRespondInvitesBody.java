@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
 @JsonTypeName("AuthRespondInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInvitesBody   {
-  private @Valid List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
+  private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
 
   public AuthRespondInvitesBody() {
   }
@@ -46,7 +46,7 @@ public class AuthRespondInvitesBody   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "invites")
-  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
+  @NotNull  @Size(min=1,max=100)public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
 

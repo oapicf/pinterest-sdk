@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **countryKeywordsMetricsGet**
 ```swift
-    open class func countryKeywordsMetricsGet(adAccountId: String, countryCode: String, keywords: [String], completion: @escaping (_ data: KeywordsMetricsArrayResponse?, _ error: Error?) -> Void)
+    open class func countryKeywordsMetricsGet(adAccountId: String, countryCode: String, keywords: [String], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> KeywordsMetricsArrayResponse
 ```
 
 Get country's keyword metrics
@@ -30,15 +30,11 @@ let countryCode = "countryCode_example" // String | Two letter country code (ISO
 let keywords = ["inner_example"] // [String] | Comma-separated keywords
 
 // Get country's keyword metrics
-KeywordsAPI.countryKeywordsMetricsGet(adAccountId: adAccountId, countryCode: countryCode, keywords: keywords) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await KeywordsAPI.countryKeywordsMetricsGet(adAccountId: adAccountId, countryCode: countryCode, keywords: keywords)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -67,7 +63,7 @@ Name | Type | Description  | Notes
 
 # **keywordsCreate**
 ```swift
-    open class func keywordsCreate(adAccountId: String, keywordsCreate: KeywordsCreate, completion: @escaping (_ data: Keywords?, _ error: Error?) -> Void)
+    open class func keywordsCreate(adAccountId: String, keywordsCreate: KeywordsCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Keywords
 ```
 
 Create keywords
@@ -83,15 +79,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let keywordsCreate = KeywordsCreate(keywords: [KeywordCreateItem(bid: 123, matchType: MatchType(), value: "value_example")], parentId: "parentId_example") // KeywordsCreate | 
 
 // Create keywords
-KeywordsAPI.keywordsCreate(adAccountId: adAccountId, keywordsCreate: keywordsCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await KeywordsAPI.keywordsCreate(adAccountId: adAccountId, keywordsCreate: keywordsCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -119,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **keywordsGet**
 ```swift
-    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, adGroupIds: [String]? = nil, matchTypes: [MatchType]? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: KeywordsGet200Response?, _ error: Error?) -> Void)
+    open class func keywordsGet(adAccountId: String, campaignId: String? = nil, adGroupId: String? = nil, adGroupIds: [String]? = nil, matchTypes: [MatchType]? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> KeywordsGet200Response
 ```
 
 Get keywords
@@ -140,15 +132,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get keywords
-KeywordsAPI.keywordsGet(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, adGroupIds: adGroupIds, matchTypes: matchTypes, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await KeywordsAPI.keywordsGet(adAccountId: adAccountId, campaignId: campaignId, adGroupId: adGroupId, adGroupIds: adGroupIds, matchTypes: matchTypes, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -181,7 +169,7 @@ Name | Type | Description  | Notes
 
 # **keywordsUpdate**
 ```swift
-    open class func keywordsUpdate(adAccountId: String, keywordsUpdate: KeywordsUpdate, completion: @escaping (_ data: Keywords?, _ error: Error?) -> Void)
+    open class func keywordsUpdate(adAccountId: String, keywordsUpdate: KeywordsUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Keywords
 ```
 
 Update keywords
@@ -197,15 +185,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let keywordsUpdate = KeywordsUpdate(keywords: [KeywordUpdateItem(archived: false, bid: 123, id: "id_example")]) // KeywordsUpdate | 
 
 // Update keywords
-KeywordsAPI.keywordsUpdate(adAccountId: adAccountId, keywordsUpdate: keywordsUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await KeywordsAPI.keywordsUpdate(adAccountId: adAccountId, keywordsUpdate: keywordsUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -233,7 +217,7 @@ Name | Type | Description  | Notes
 
 # **trendingKeywordsList**
 ```swift
-    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [TrendsL1Interest]? = nil, genders: [TrendsGenderFilter]? = nil, ages: [TrendsAgeBucket]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, includeDemographics: Bool? = nil, completion: @escaping (_ data: TrendingKeywordsResponse?, _ error: Error?) -> Void)
+    open class func trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests: [TrendsL1Interest]? = nil, genders: [TrendsGenderFilter]? = nil, ages: [TrendsAgeBucket]? = nil, includeKeywords: [String]? = nil, normalizeAgainstGroup: Bool? = nil, limit: Int? = nil, includeDemographics: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TrendingKeywordsResponse
 ```
 
 List trending keywords
@@ -256,15 +240,11 @@ let limit = 987 // Int | The maximum number of trending keywords that will be re
 let includeDemographics = true // Bool | Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data. (optional) (default to false)
 
 // List trending keywords
-KeywordsAPI.trendingKeywordsList(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit, includeDemographics: includeDemographics) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await KeywordsAPI.trendingKeywordsList(region: region, trendType: trendType, interests: interests, genders: genders, ages: ages, includeKeywords: includeKeywords, normalizeAgainstGroup: normalizeAgainstGroup, limit: limit, includeDemographics: includeDemographics)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CampaignDeliveryEstimatesCampaign  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid AdGroupDeliveryEstimates> adGroups = new ArrayList<>();
 
  /**

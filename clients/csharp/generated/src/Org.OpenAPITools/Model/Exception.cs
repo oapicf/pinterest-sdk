@@ -155,13 +155,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!message.IsSet)
-                throw new ArgumentException("Property is required for class Exception.", nameof(message));
+                throw new JsonException("Property is required for class Exception: message.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class Exception.");
+                throw new JsonException("Property is not nullable for class Exception: message.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class Exception.");
+                throw new JsonException("Property is not nullable for class Exception: code.");
 
             return new Exception(message.Value!, code);
         }
@@ -172,7 +172,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="exception"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Exception exception, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -187,11 +186,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="exception"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Exception exception, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (exception.Message == null)
-                throw new ArgumentNullException(nameof(exception.Message), "Property is required for class Exception.");
+            if (exception.CodeOption.IsSet && exception.Code == null)
+                throw new JsonException("Cannot write null property Exception.Code to non-nullable JSON property 'code'.");
 
             writer.WriteString("message", exception.Message);
 

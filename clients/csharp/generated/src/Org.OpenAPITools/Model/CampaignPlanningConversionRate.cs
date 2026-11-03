@@ -161,22 +161,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributionWindows.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningConversionRate.", nameof(attributionWindows));
+                throw new JsonException("Property is required for class CampaignPlanningConversionRate: attribution_windows.");
 
             if (!conversionEvent.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningConversionRate.", nameof(conversionEvent));
+                throw new JsonException("Property is required for class CampaignPlanningConversionRate: conversion_event.");
 
             if (!conversionRate.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningConversionRate.", nameof(conversionRate));
+                throw new JsonException("Property is required for class CampaignPlanningConversionRate: conversion_rate.");
 
             if (attributionWindows.IsSet && attributionWindows.Value == null)
-                throw new ArgumentNullException(nameof(attributionWindows), "Property is not nullable for class CampaignPlanningConversionRate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionRate: attribution_windows.");
 
             if (conversionEvent.IsSet && conversionEvent.Value == null)
-                throw new ArgumentNullException(nameof(conversionEvent), "Property is not nullable for class CampaignPlanningConversionRate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionRate: conversion_event.");
 
             if (conversionRate.IsSet && conversionRate.Value == null)
-                throw new ArgumentNullException(nameof(conversionRate), "Property is not nullable for class CampaignPlanningConversionRate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionRate: conversion_rate.");
 
             return new CampaignPlanningConversionRate(attributionWindows.Value!, conversionEvent.Value!.Value!, conversionRate.Value!.Value!);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConversionRate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningConversionRate campaignPlanningConversionRate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,12 +201,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConversionRate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningConversionRate campaignPlanningConversionRate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignPlanningConversionRate.AttributionWindows == null)
-                throw new ArgumentNullException(nameof(campaignPlanningConversionRate.AttributionWindows), "Property is required for class CampaignPlanningConversionRate.");
-
             writer.WritePropertyName("attribution_windows");
             JsonSerializer.Serialize(writer, campaignPlanningConversionRate.AttributionWindows, jsonSerializerOptions);
             var conversionEventRawValue = CampaignPlanningConversionEventValueConverter.ToJsonValue(campaignPlanningConversionRate.ConversionEvent);

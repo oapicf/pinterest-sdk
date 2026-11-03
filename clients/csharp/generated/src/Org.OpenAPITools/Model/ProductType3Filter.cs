@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pRODUCTTYPE3.IsSet)
-                throw new ArgumentException("Property is required for class ProductType3Filter.", nameof(pRODUCTTYPE3));
+                throw new JsonException("Property is required for class ProductType3Filter: PRODUCT_TYPE_3.");
 
             if (pRODUCTTYPE3.IsSet && pRODUCTTYPE3.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE3), "Property is not nullable for class ProductType3Filter.");
+                throw new JsonException("Property is not nullable for class ProductType3Filter: PRODUCT_TYPE_3.");
 
             return new ProductType3Filter(pRODUCTTYPE3.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productType3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductType3Filter productType3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productType3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductType3Filter productType3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productType3Filter.PRODUCTTYPE3 == null)
-                throw new ArgumentNullException(nameof(productType3Filter.PRODUCTTYPE3), "Property is required for class ProductType3Filter.");
-
             writer.WritePropertyName("PRODUCT_TYPE_3");
             JsonSerializer.Serialize(writer, productType3Filter.PRODUCTTYPE3, jsonSerializerOptions);
         }

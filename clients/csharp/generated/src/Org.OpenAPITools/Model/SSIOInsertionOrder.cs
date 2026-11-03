@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (pinOrderId.IsSet && pinOrderId.Value == null)
-                throw new ArgumentNullException(nameof(pinOrderId), "Property is not nullable for class SSIOInsertionOrder.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrder: pin_order_id.");
 
             return new SSIOInsertionOrder(pinOrderId);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrder"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOInsertionOrder sSIOInsertionOrder, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrder"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOInsertionOrder sSIOInsertionOrder, JsonSerializerOptions jsonSerializerOptions)
         {
             if (sSIOInsertionOrder.PinOrderIdOption.IsSet && sSIOInsertionOrder.PinOrderId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrder.PinOrderId), "Property is required for class SSIOInsertionOrder.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrder.PinOrderId to non-nullable JSON property 'pin_order_id'.");
 
             if (sSIOInsertionOrder.PinOrderIdOption.IsSet)
                 writer.WriteString("pin_order_id", sSIOInsertionOrder.PinOrderId);

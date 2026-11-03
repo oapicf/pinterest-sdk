@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,42 +27,33 @@ import jakarta.annotation.Generated;
  * Promotion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Promotion {
 
   private String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable DiscountStatus discountStatus;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer endTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String externalId;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String platformType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String promotionCode;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String promotionCustomId;
 
   private String promotionTitle;
 
   private PromotionType promotionType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer startTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid PromotionTemplateValue> templateValues = new ArrayList<>();
 
   public Promotion() {
@@ -349,7 +339,7 @@ public class Promotion {
    * List of values to be inserted in the promotion type-specific template.
    * @return templateValues
    */
-  @Valid @Size(min = 0, max = 2) 
+  @Size(min = 0, max = 2) 
   @Schema(name = "template_values", description = "List of values to be inserted in the promotion type-specific template.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("template_values")
   public List<@Valid PromotionTemplateValue> getTemplateValues() {

@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.IneligibleProductTagsErrorDetails
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -26,17 +23,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ProductTagsError(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("code")
+    @param:JsonProperty("code", required = true)
     @get:JsonProperty("code", required = true) val code: kotlin.Int,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("message")
+    @param:JsonProperty("message", required = true)
     @get:JsonProperty("message", required = true) val message: kotlin.String,
 
     @field:Valid
     @Schema(description = "Details about which product tags failed eligibility check.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("details")
     @get:JsonProperty("details") val details: IneligibleProductTagsErrorDetails? = null
 ) {

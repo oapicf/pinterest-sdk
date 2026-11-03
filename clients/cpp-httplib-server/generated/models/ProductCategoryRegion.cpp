@@ -6,20 +6,3 @@
 */
 #include "ProductCategoryRegion.h"
 
-namespace models {
-
-ProductCategoryRegion::ProductCategoryRegion()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

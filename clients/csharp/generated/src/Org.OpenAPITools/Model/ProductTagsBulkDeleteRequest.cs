@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!productTags.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagsBulkDeleteRequest.", nameof(productTags));
+                throw new JsonException("Property is required for class ProductTagsBulkDeleteRequest: product_tags.");
 
             if (productTags.IsSet && productTags.Value == null)
-                throw new ArgumentNullException(nameof(productTags), "Property is not nullable for class ProductTagsBulkDeleteRequest.");
+                throw new JsonException("Property is not nullable for class ProductTagsBulkDeleteRequest: product_tags.");
 
             return new ProductTagsBulkDeleteRequest(productTags.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsBulkDeleteRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductTagsBulkDeleteRequest productTagsBulkDeleteRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsBulkDeleteRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductTagsBulkDeleteRequest productTagsBulkDeleteRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productTagsBulkDeleteRequest.ProductTags == null)
-                throw new ArgumentNullException(nameof(productTagsBulkDeleteRequest.ProductTags), "Property is required for class ProductTagsBulkDeleteRequest.");
-
             writer.WritePropertyName("product_tags");
             JsonSerializer.Serialize(writer, productTagsBulkDeleteRequest.ProductTags, jsonSerializerOptions);
         }

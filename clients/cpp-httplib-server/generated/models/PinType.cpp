@@ -6,20 +6,3 @@
 */
 #include "PinType.h"
 
-namespace models {
-
-PinType::PinType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

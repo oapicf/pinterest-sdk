@@ -72,11 +72,11 @@ function Invoke-LabelsApply {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling labels_apply."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$LabelId) {
             throw "Error! The required parameter `LabelId` missing when calling labels_apply."
         }
-        $LocalVarUri = $LocalVarUri.replace('{label_id}', [System.Web.HTTPUtility]::UrlEncode($LabelId))
+        $LocalVarUri = $LocalVarUri.replace('{label_id}', [System.Uri]::EscapeDataString([string]$LabelId))
 
         if (!$LabeledEntitiesCreate) {
             throw "Error! The required parameter `LabeledEntitiesCreate` missing when calling labels_apply."
@@ -165,7 +165,7 @@ function Invoke-LabelsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling labels_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LabelCreateRequest) {
             throw "Error! The required parameter `LabelCreateRequest` missing when calling labels_create."
@@ -281,7 +281,7 @@ function Invoke-LabelsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling labels_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($CampaignIds) {
             $LocalVarQueryParameters['campaign_ids'] = $CampaignIds
@@ -394,11 +394,11 @@ function Invoke-LabelsRemove {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling labels_remove."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$LabelId) {
             throw "Error! The required parameter `LabelId` missing when calling labels_remove."
         }
-        $LocalVarUri = $LocalVarUri.replace('{label_id}', [System.Web.HTTPUtility]::UrlEncode($LabelId))
+        $LocalVarUri = $LocalVarUri.replace('{label_id}', [System.Uri]::EscapeDataString([string]$LabelId))
 
         if (!$LabeledEntitiesCreate) {
             throw "Error! The required parameter `LabeledEntitiesCreate` missing when calling labels_remove."
@@ -487,7 +487,7 @@ function Invoke-LabelsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling labels_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LabelUpdateRequest) {
             throw "Error! The required parameter `LabelUpdateRequest` missing when calling labels_update."

@@ -29,38 +29,26 @@ import {
 export interface SummaryPin {
     /**
      * 
-     * @type {string}
-     * @memberof SummaryPin
      */
     altText?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof SummaryPin
      */
     description?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof SummaryPin
      */
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof SummaryPin
      */
     link?: string | null;
     /**
      * 
-     * @type {PinMedia}
-     * @memberof SummaryPin
      */
     readonly media?: PinMedia;
     /**
      * 
-     * @type {string}
-     * @memberof SummaryPin
      */
     title?: string | null;
 }

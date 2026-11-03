@@ -23,8 +23,6 @@ export interface ScheduleAudienceMultipliers {
     [key: string]: number | any;
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleAudienceMultipliers
      */
     aUDIENCEID?: string;
 }

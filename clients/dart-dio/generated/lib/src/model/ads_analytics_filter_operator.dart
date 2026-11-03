@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'ads_analytics_filter_operator.g.dart';
 
+/// Filter operator for sync reporting
 class AdsAnalyticsFilterOperator extends EnumClass {
 
-  /// Filter operator for sync reporting
   @BuiltValueEnumConst(wireName: r'LESS_THAN')
   static const AdsAnalyticsFilterOperator LESS_THAN = _$LESS_THAN;
-  /// Filter operator for sync reporting
   @BuiltValueEnumConst(wireName: r'GREATER_THAN')
   static const AdsAnalyticsFilterOperator GREATER_THAN = _$GREATER_THAN;
 

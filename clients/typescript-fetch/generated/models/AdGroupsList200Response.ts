@@ -29,14 +29,10 @@ import {
 export interface AdGroupsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof AdGroupsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<AdGroup>}
-     * @memberof AdGroupsList200Response
      */
     items: Array<AdGroup>;
 }

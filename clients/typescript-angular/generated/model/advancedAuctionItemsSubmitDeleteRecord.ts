@@ -30,7 +30,7 @@ export interface AdvancedAuctionItemsSubmitDeleteRecord {
 }
 export namespace AdvancedAuctionItemsSubmitDeleteRecord {
     export const OperationEnum = {
-        Delete: 'DELETE'
+        Delete: 'DELETE',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

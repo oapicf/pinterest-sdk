@@ -23,7 +23,7 @@ export const Granularity = {
     Day: 'DAY',
     Hour: 'HOUR',
     Week: 'WEEK',
-    Month: 'MONTH'
+    Month: 'MONTH',
 } as const;
 export type Granularity = typeof Granularity[keyof typeof Granularity];
 

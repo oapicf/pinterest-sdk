@@ -44,7 +44,7 @@ import javax.validation.Valid;
   BulkCampaignDeliveryEstimatesItem.JSON_PROPERTY_ESTIMATE_ID,
   BulkCampaignDeliveryEstimatesItem.JSON_PROPERTY_MAX_POTENTIAL_SPEND
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem   {
   public static final String JSON_PROPERTY_ADGROUP_AUDIENCE_SIZES = "adgroup_audience_sizes";
   @JsonProperty(JSON_PROPERTY_ADGROUP_AUDIENCE_SIZES)
@@ -97,7 +97,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
    **/
   @JsonProperty(value = "adgroup_audience_sizes")
   @ApiModelProperty(value = "Range audience sizes for each ad group, in the same order as the ad groups in the request.")
-  @Valid 
+  
   public List<@Valid CampaignPlanningAdGroupAudienceSize> getAdgroupAudienceSizes() {
     return adgroupAudienceSizes;
   }
@@ -145,7 +145,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
    **/
   @JsonProperty(value = "conversion_rates")
   @ApiModelProperty(value = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.")
-  @Valid 
+  
   public List<@Valid CampaignPlanningConversionRate> getConversionRates() {
     return conversionRates;
   }
@@ -173,7 +173,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
    **/
   @JsonProperty(value = "curves")
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
-  @Valid  @Size(max=20)
+   @Size(max=20)
   public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
     return curves;
   }
@@ -221,7 +221,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Errors encountered during estimation for this campaign.")
-  @Valid 
+  
   public List<@Valid CampaignPlanningResponseError> getErrors() {
     return errors;
   }

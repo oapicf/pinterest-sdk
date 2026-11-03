@@ -30,7 +30,6 @@ public class CatalogsItemsUpsertBatchRequest  {
   * Array with catalogs items
   */
   @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @Valid
   private List<@Valid ItemUpsertBatchRecord> items = new ArrayList<>();
 
 public enum LanguageEnum {

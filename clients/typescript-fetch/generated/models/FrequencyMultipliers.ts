@@ -27,8 +27,6 @@ export interface FrequencyMultipliers {
     [key: string]: number | any;
     /**
      * Impression count identifier.
-     * @type {string}
-     * @memberof FrequencyMultipliers
      */
     iMPRESSIONCOUNT?: string;
 }

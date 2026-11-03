@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class UserListType
-{
-public:
-
-    UserListType();
-    virtual ~UserListType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(UserListType,
-        )
-
-private:
+enum class UserListType {
+    
+    EMAIL,
+    
+    IDFA,
+    
+    MAID,
+    
+    LR_ID,
+    
+    DLX_ID,
+    
+    HASHED_PINNER_ID
+    
 };
 
+inline void to_json(nlohmann::json& j, const UserListType& value)
+{
+    switch (value)
+    {
+        
+        case UserListType::EMAIL: j = "EMAIL"; break;
+        
+        case UserListType::IDFA: j = "IDFA"; break;
+        
+        case UserListType::MAID: j = "MAID"; break;
+        
+        case UserListType::LR_ID: j = "LR_ID"; break;
+        
+        case UserListType::DLX_ID: j = "DLX_ID"; break;
+        
+        case UserListType::HASHED_PINNER_ID: j = "HASHED_PINNER_ID"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for UserListType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, UserListType& value)
+{
+    
+    if (j == "EMAIL")
+    {
+        value = UserListType::EMAIL;
+        return;
+    }
+    
+    if (j == "IDFA")
+    {
+        value = UserListType::IDFA;
+        return;
+    }
+    
+    if (j == "MAID")
+    {
+        value = UserListType::MAID;
+        return;
+    }
+    
+    if (j == "LR_ID")
+    {
+        value = UserListType::LR_ID;
+        return;
+    }
+    
+    if (j == "DLX_ID")
+    {
+        value = UserListType::DLX_ID;
+        return;
+    }
+    
+    if (j == "HASHED_PINNER_ID")
+    {
+        value = UserListType::HASHED_PINNER_ID;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for UserListType", &j);
+}
 
 } // namespace models
 

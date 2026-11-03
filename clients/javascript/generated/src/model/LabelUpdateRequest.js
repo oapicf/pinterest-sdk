@@ -17,7 +17,7 @@ import LabelUpdateItem from './LabelUpdateItem';
 /**
  * The LabelUpdateRequest model module.
  * @module model/LabelUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelUpdateRequest {
     /**

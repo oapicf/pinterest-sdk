@@ -17,7 +17,7 @@ import BulkReportingJobStatus from './BulkReportingJobStatus';
 /**
  * The ConversionProductReport model module.
  * @module model/ConversionProductReport
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ConversionProductReport {
     /**

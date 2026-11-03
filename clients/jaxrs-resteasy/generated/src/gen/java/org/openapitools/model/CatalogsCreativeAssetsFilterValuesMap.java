@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsFilterValuesMap   {
   
   private List<String> customLabel0 = new ArrayList<>();
@@ -180,7 +180,6 @@ public class CatalogsCreativeAssetsFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_type")
-  @Valid
   public List<MediaType> getMediaType() {
     return mediaType;
   }

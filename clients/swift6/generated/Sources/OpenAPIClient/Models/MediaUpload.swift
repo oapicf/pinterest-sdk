@@ -10,7 +10,7 @@ import Foundation
 /** Media upload that has been registered but not uploaded/processed yet. */
 public struct MediaUpload: Sendable, Codable, Hashable {
 
-    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier for this media upload. Used to track status and for attaching during Pin creation. */
     public var mediaId: String
     public var mediaType: MediaUploadType

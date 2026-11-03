@@ -42,7 +42,7 @@ import io.helidon.webserver.http.HttpService;
 
 @io.helidon.common.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen",
                              trigger = "tag = 'AdGroups'",
-                             version = "7.24.0")
+                             version = "7.26.0")
 public interface AdGroupsService extends HttpService {
 
     /**

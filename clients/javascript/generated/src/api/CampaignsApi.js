@@ -35,7 +35,7 @@ import ReportingTimeZone from '../model/ReportingTimeZone';
 /**
 * Campaigns service.
 * @module api/CampaignsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class CampaignsApi {
 

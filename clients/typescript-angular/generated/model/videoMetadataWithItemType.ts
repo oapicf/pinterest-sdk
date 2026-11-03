@@ -38,7 +38,7 @@ export interface VideoMetadataWithItemType {
 }
 export namespace VideoMetadataWithItemType {
     export const ItemTypeEnum = {
-        Video: 'video'
+        Video: 'video',
     } as const;
     export type ItemTypeEnum = typeof ItemTypeEnum[keyof typeof ItemTypeEnum];
 }

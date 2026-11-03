@@ -17,7 +17,7 @@ export const IngestionSourceOptions = {
     Mmp: 'MMP',
     FileUpload: 'FILE_UPLOAD',
     ConversionsApi: 'CONVERSIONS_API',
-    Native: 'NATIVE'
+    Native: 'NATIVE',
 } as const;
 export type IngestionSourceOptions = typeof IngestionSourceOptions[keyof typeof IngestionSourceOptions];
 

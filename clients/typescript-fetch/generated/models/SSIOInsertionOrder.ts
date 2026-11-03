@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SSIOInsertionOrder {
     /**
      * Salesforce order id
-     * @type {string}
-     * @memberof SSIOInsertionOrder
      */
     readonly pinOrderId?: string;
 }

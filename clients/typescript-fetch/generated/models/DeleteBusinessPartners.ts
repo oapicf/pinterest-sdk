@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface DeleteBusinessPartners {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof DeleteBusinessPartners
      */
     readonly deletedPartners?: Array<string>;
 }

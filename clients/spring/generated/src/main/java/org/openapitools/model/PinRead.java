@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,64 +29,46 @@ import jakarta.annotation.Generated;
  * PinRead
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinRead {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AiDisclosures aiDisclosures;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String boardId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BoardOwner boardOwner;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime createdAt;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CreativeType> creativeType = JsonNullable.<CreativeType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> dominantColor = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean hasBeenPromoted;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isOwner;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isProduct;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isStandard;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PinMedia media;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> parentPinId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> pinMetrics = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> altText = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   public PinRead() {
@@ -174,7 +155,7 @@ public class PinRead {
    * @return boardSectionId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("board_section_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardSectionId() {
     return boardSectionId;
@@ -215,7 +196,7 @@ public class PinRead {
    * @return creativeType
    */
   @Valid 
-  @Schema(name = "creative_type", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "creative_type", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("creative_type")
   public JsonNullable<CreativeType> getCreativeType() {
     return creativeType;
@@ -235,7 +216,7 @@ public class PinRead {
    * @return dominantColor
    */
   
-  @Schema(name = "dominant_color", description = "Dominant pin color. Hex number, e.g. `#6E7874`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "dominant_color", description = "Dominant pin color. Hex number, e.g. `#6E7874`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("dominant_color")
   public JsonNullable<String> getDominantColor() {
     return dominantColor;
@@ -381,7 +362,7 @@ public class PinRead {
    * @return parentPinId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "parent_pin_id", description = "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "parent_pin_id", description = "The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("parent_pin_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getParentPinId() {
     return parentPinId;
@@ -401,7 +382,7 @@ public class PinRead {
    * @return pinMetrics
    */
   
-  @Schema(name = "pin_metrics", accessMode = Schema.AccessMode.READ_ONLY, example = "{90d={pin_click=7, impression=2, clickthrough=3}, lifetime_metrics={pin_click=7, impression=2, clickthrough=3, reaction=10, comment=2}}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pin_metrics", accessMode = Schema.AccessMode.READ_ONLY, example = "{90d={pin_click=7, impression=2, clickthrough=3}, lifetime_metrics={pin_click=7, impression=2, clickthrough=3, reaction=10, comment=2}}", description = "Pin metrics with associated time intervals if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("pin_metrics")
   public JsonNullable<Object> getPinMetrics() {
     return pinMetrics;
@@ -421,7 +402,7 @@ public class PinRead {
    * @return altText
    */
   
-  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("alt_text")
   public JsonNullable<String> getAltText() {
     return altText;
@@ -441,7 +422,7 @@ public class PinRead {
    * @return description
    */
   
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -461,7 +442,7 @@ public class PinRead {
    * @return link
    */
   
-  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("link")
   public JsonNullable<String> getLink() {
     return link;
@@ -481,7 +462,7 @@ public class PinRead {
    * @return title
    */
   
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("title")
   public JsonNullable<String> getTitle() {
     return title;

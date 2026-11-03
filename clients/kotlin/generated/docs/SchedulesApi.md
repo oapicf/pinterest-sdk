@@ -39,9 +39,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
 | **scheduleCreate** | [**kotlin.collections.List&lt;ScheduleCreate&gt;**](ScheduleCreate.md)|  | |
 
 ### Return type
@@ -100,14 +100,14 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**|  | |
 | **entityIds** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of Entity IDs, must be associated with the Ad Accound ID provided in the path. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 | **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 | **scheduleStatuses** | [**kotlin.collections.List&lt;ScheduleStatus&gt;**](ScheduleStatus.md)| Filter schedules by status (one or more) | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **scheduleType** | [**ScheduleType**](.md)| Filter schedules by a type | [optional] [enum: CAMPAIGN_BUDGET_CHANGE, CAMPAIGN_BID_MULTIPLIERS] |
 
 ### Return type
@@ -161,9 +161,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
 | **scheduleBatchUpdate** | [**kotlin.collections.List&lt;ScheduleBatchUpdate&gt;**](ScheduleBatchUpdate.md)|  | |
 
 ### Return type

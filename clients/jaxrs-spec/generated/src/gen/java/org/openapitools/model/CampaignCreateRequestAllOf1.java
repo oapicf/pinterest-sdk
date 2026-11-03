@@ -21,18 +21,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CampaignCreateRequestAllOf1")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1   {
   private CampaignBidOptionsCreate bidOptions;
   private IntendedPromotionType intendedPromotionType;
-  private Boolean isAutomatedCampaign;
-  private Boolean isCampaignBudgetOptimization;
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isAutomatedCampaign = false;
+  private Boolean isCampaignBudgetOptimization = true;
+  private Boolean isFlexibleDailyBudgets = false;
   private Boolean isLtvOptimized;
   private Boolean isPerformancePlus = false;
   private Boolean isTopOfSearch = false;
   private ObjectiveType objectiveType;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1() {
   }

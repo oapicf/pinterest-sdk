@@ -48,7 +48,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   BulkUpsertRequestUpdate.JSON_PROPERTY_SCHEDULES
 })
 @JsonTypeName("BulkUpsertRequestUpdate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BulkUpsertRequestUpdate {
     public static final String JSON_PROPERTY_AD_GROUPS = "ad_groups";
@@ -61,7 +61,7 @@ public class BulkUpsertRequestUpdate {
     private List<@Valid CampaignUpdateRequest> campaigns = null;
 
     public static final String JSON_PROPERTY_CATALOG_PRODUCT_GROUPS = "catalog_product_groups";
-    private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
+    private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
 
     public static final String JSON_PROPERTY_KEYWORDS = "keywords";
     private List<@Valid KeywordUpdateGenerated> keywords = null;
@@ -171,7 +171,7 @@ public class BulkUpsertRequestUpdate {
         this.campaigns = campaigns;
     }
 
-    public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+    public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
         this.catalogProductGroups = catalogProductGroups;
         return this;
     }
@@ -192,13 +192,13 @@ public class BulkUpsertRequestUpdate {
     @Schema(name = "catalog_product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_CATALOG_PRODUCT_GROUPS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+    public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
         return catalogProductGroups;
     }
 
     @JsonProperty(JSON_PROPERTY_CATALOG_PRODUCT_GROUPS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+    public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
         this.catalogProductGroups = catalogProductGroups;
     }
 

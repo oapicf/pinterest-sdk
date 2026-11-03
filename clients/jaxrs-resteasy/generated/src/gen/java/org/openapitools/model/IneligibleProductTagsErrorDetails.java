@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Details about ineligible product tags in the request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Details about ineligible product tags in the request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IneligibleProductTagsErrorDetails   {
   
   private List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();
@@ -26,7 +26,6 @@ public class IneligibleProductTagsErrorDetails   {
   @ApiModelProperty(required = true, value = "List of product tags that failed eligibility check.")
   @JsonProperty("product_tags")
   @NotNull
-  @Valid
   public List<@Valid IneligibleProductTagErrorItem> getProductTags() {
     return productTags;
   }

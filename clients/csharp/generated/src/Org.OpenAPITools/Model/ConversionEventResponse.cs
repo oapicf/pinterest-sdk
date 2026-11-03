@@ -248,19 +248,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class ConversionEventResponse.");
+                throw new JsonException("Property is not nullable for class ConversionEventResponse: ad_account_id.");
 
             if (conversionEvent.IsSet && conversionEvent.Value == null)
-                throw new ArgumentNullException(nameof(conversionEvent), "Property is not nullable for class ConversionEventResponse.");
+                throw new JsonException("Property is not nullable for class ConversionEventResponse: conversion_event.");
 
             if (conversionTagId.IsSet && conversionTagId.Value == null)
-                throw new ArgumentNullException(nameof(conversionTagId), "Property is not nullable for class ConversionEventResponse.");
+                throw new JsonException("Property is not nullable for class ConversionEventResponse: conversion_tag_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class ConversionEventResponse.");
+                throw new JsonException("Property is not nullable for class ConversionEventResponse: created_time.");
 
             if (reportingConversionEvent.IsSet && reportingConversionEvent.Value == null)
-                throw new ArgumentNullException(nameof(reportingConversionEvent), "Property is not nullable for class ConversionEventResponse.");
+                throw new JsonException("Property is not nullable for class ConversionEventResponse: reporting_conversion_event.");
 
             return new ConversionEventResponse(adAccountId, conversionEvent, conversionTagId, createdTime, reportingConversionEvent);
         }
@@ -271,7 +271,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventResponse conversionEventResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -286,17 +285,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventResponse conversionEventResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionEventResponse.AdAccountIdOption.IsSet && conversionEventResponse.AdAccountId == null)
-                throw new ArgumentNullException(nameof(conversionEventResponse.AdAccountId), "Property is required for class ConversionEventResponse.");
+                throw new JsonException("Cannot write null property ConversionEventResponse.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (conversionEventResponse.ConversionEventOption.IsSet && conversionEventResponse.ConversionEvent == null)
+                throw new JsonException("Cannot write null property ConversionEventResponse.ConversionEvent to non-nullable JSON property 'conversion_event'.");
 
             if (conversionEventResponse.ConversionTagIdOption.IsSet && conversionEventResponse.ConversionTagId == null)
-                throw new ArgumentNullException(nameof(conversionEventResponse.ConversionTagId), "Property is required for class ConversionEventResponse.");
+                throw new JsonException("Cannot write null property ConversionEventResponse.ConversionTagId to non-nullable JSON property 'conversion_tag_id'.");
+
+            if (conversionEventResponse.CreatedTimeOption.IsSet && conversionEventResponse.CreatedTime == null)
+                throw new JsonException("Cannot write null property ConversionEventResponse.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (conversionEventResponse.ReportingConversionEventOption.IsSet && conversionEventResponse.ReportingConversionEvent == null)
-                throw new ArgumentNullException(nameof(conversionEventResponse.ReportingConversionEvent), "Property is required for class ConversionEventResponse.");
+                throw new JsonException("Cannot write null property ConversionEventResponse.ReportingConversionEvent to non-nullable JSON property 'reporting_conversion_event'.");
 
             if (conversionEventResponse.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", conversionEventResponse.AdAccountId);

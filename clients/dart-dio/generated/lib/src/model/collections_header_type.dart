@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'collections_header_type.g.dart';
 
+/// Collections ad header type
 class CollectionsHeaderType extends EnumClass {
 
-  /// Collections ad header type
   @BuiltValueEnumConst(wireName: r'SHOP_THIS_COLLECTION')
   static const CollectionsHeaderType SHOP_THIS_COLLECTION = _$SHOP_THIS_COLLECTION;
-  /// Collections ad header type
   @BuiltValueEnumConst(wireName: r'EXPLORE_THIS_COLLECTION')
   static const CollectionsHeaderType EXPLORE_THIS_COLLECTION = _$EXPLORE_THIS_COLLECTION;
-  /// Collections ad header type
   @BuiltValueEnumConst(wireName: r'NO_HEADER')
   static const CollectionsHeaderType NO_HEADER = _$NO_HEADER;
-  /// Collections ad header type
   @BuiltValueEnumConst(wireName: r'ON_SALE')
   static const CollectionsHeaderType ON_SALE = _$ON_SALE;
-  /// Collections ad header type
   @BuiltValueEnumConst(wireName: r'GET_DEAL')
   static const CollectionsHeaderType GET_DEAL = _$GET_DEAL;
 

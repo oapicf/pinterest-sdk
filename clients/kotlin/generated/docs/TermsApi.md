@@ -92,9 +92,9 @@ try {
 ```
 
 ### Parameters
-| **term** | **kotlin.String**| Input term. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **term** | **kotlin.String**| Input term. | |
 | **limit** | **kotlin.Int**| Max suggested terms to return. | [optional] [default to 4] |
 
 ### Return type

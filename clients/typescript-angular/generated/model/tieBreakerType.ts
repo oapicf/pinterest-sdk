@@ -14,7 +14,7 @@
  */
 export const TieBreakerType = {
     Random: 'RANDOM',
-    Custom: 'CUSTOM'
+    Custom: 'CUSTOM',
 } as const;
 export type TieBreakerType = typeof TieBreakerType[keyof typeof TieBreakerType];
 

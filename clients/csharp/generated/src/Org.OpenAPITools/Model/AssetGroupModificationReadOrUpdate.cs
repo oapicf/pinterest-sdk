@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetGroupsToUpdate.IsSet && assetGroupsToUpdate.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupsToUpdate), "Property is not nullable for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class AssetGroupModificationReadOrUpdate: asset_groups_to_update.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class AssetGroupModificationReadOrUpdate: exceptions.");
 
             if (updatedAssetGroups.IsSet && updatedAssetGroups.Value == null)
-                throw new ArgumentNullException(nameof(updatedAssetGroups), "Property is not nullable for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class AssetGroupModificationReadOrUpdate: updated_asset_groups.");
 
             return new AssetGroupModificationReadOrUpdate(assetGroupsToUpdate, exceptions, updatedAssetGroups);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupModificationReadOrUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,17 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupModificationReadOrUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (assetGroupModificationReadOrUpdate.AssetGroupsToUpdateOption.IsSet && assetGroupModificationReadOrUpdate.AssetGroupsToUpdate == null)
-                throw new ArgumentNullException(nameof(assetGroupModificationReadOrUpdate.AssetGroupsToUpdate), "Property is required for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Cannot write null property AssetGroupModificationReadOrUpdate.AssetGroupsToUpdate to non-nullable JSON property 'asset_groups_to_update'.");
 
             if (assetGroupModificationReadOrUpdate.ExceptionsOption.IsSet && assetGroupModificationReadOrUpdate.Exceptions == null)
-                throw new ArgumentNullException(nameof(assetGroupModificationReadOrUpdate.Exceptions), "Property is required for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Cannot write null property AssetGroupModificationReadOrUpdate.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (assetGroupModificationReadOrUpdate.UpdatedAssetGroupsOption.IsSet && assetGroupModificationReadOrUpdate.UpdatedAssetGroups == null)
-                throw new ArgumentNullException(nameof(assetGroupModificationReadOrUpdate.UpdatedAssetGroups), "Property is required for class AssetGroupModificationReadOrUpdate.");
+                throw new JsonException("Cannot write null property AssetGroupModificationReadOrUpdate.UpdatedAssetGroups to non-nullable JSON property 'updated_asset_groups'.");
 
             if (assetGroupModificationReadOrUpdate.AssetGroupsToUpdateOption.IsSet)
             {

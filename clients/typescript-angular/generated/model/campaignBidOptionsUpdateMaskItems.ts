@@ -18,7 +18,7 @@ export const CampaignBidOptionsUpdateMaskItems = {
     Placement: 'PLACEMENT',
     Gender: 'GENDER',
     AgeBucket: 'AGE_BUCKET',
-    Frequency: 'FREQUENCY'
+    Frequency: 'FREQUENCY',
 } as const;
 export type CampaignBidOptionsUpdateMaskItems = typeof CampaignBidOptionsUpdateMaskItems[keyof typeof CampaignBidOptionsUpdateMaskItems];
 

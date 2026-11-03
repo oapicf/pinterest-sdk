@@ -228,22 +228,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!webhookUrl.IsSet)
-                throw new ArgumentException("Property is required for class LeadSubscriptionPostParamsCreate.", nameof(webhookUrl));
+                throw new JsonException("Property is required for class LeadSubscriptionPostParamsCreate: webhook_url.");
 
             if (webhookUrl.IsSet && webhookUrl.Value == null)
-                throw new ArgumentNullException(nameof(webhookUrl), "Property is not nullable for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParamsCreate: webhook_url.");
 
             if (leadFormId.IsSet && leadFormId.Value == null)
-                throw new ArgumentNullException(nameof(leadFormId), "Property is not nullable for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParamsCreate: lead_form_id.");
 
             if (partnerAccessToken.IsSet && partnerAccessToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerAccessToken), "Property is not nullable for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParamsCreate: partner_access_token.");
 
             if (partnerMetadata.IsSet && partnerMetadata.Value == null)
-                throw new ArgumentNullException(nameof(partnerMetadata), "Property is not nullable for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParamsCreate: partner_metadata.");
 
             if (partnerRefreshToken.IsSet && partnerRefreshToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerRefreshToken), "Property is not nullable for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParamsCreate: partner_refresh_token.");
 
             return new LeadSubscriptionPostParamsCreate(webhookUrl.Value!, leadFormId, partnerAccessToken, partnerMetadata, partnerRefreshToken);
         }
@@ -254,7 +254,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionPostParamsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,23 +268,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionPostParamsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadSubscriptionPostParamsCreate.WebhookUrl == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParamsCreate.WebhookUrl), "Property is required for class LeadSubscriptionPostParamsCreate.");
-
             if (leadSubscriptionPostParamsCreate.LeadFormIdOption.IsSet && leadSubscriptionPostParamsCreate.LeadFormId == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParamsCreate.LeadFormId), "Property is required for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParamsCreate.LeadFormId to non-nullable JSON property 'lead_form_id'.");
 
             if (leadSubscriptionPostParamsCreate.PartnerAccessTokenOption.IsSet && leadSubscriptionPostParamsCreate.PartnerAccessToken == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParamsCreate.PartnerAccessToken), "Property is required for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParamsCreate.PartnerAccessToken to non-nullable JSON property 'partner_access_token'.");
 
             if (leadSubscriptionPostParamsCreate.PartnerMetadataOption.IsSet && leadSubscriptionPostParamsCreate.PartnerMetadata == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParamsCreate.PartnerMetadata), "Property is required for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParamsCreate.PartnerMetadata to non-nullable JSON property 'partner_metadata'.");
 
             if (leadSubscriptionPostParamsCreate.PartnerRefreshTokenOption.IsSet && leadSubscriptionPostParamsCreate.PartnerRefreshToken == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParamsCreate.PartnerRefreshToken), "Property is required for class LeadSubscriptionPostParamsCreate.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParamsCreate.PartnerRefreshToken to non-nullable JSON property 'partner_refresh_token'.");
 
             writer.WriteString("webhook_url", leadSubscriptionPostParamsCreate.WebhookUrl);
 

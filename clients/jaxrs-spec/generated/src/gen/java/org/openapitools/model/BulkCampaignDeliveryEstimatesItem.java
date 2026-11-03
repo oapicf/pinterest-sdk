@@ -26,14 +26,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Delivery estimate result for a single campaign within a bulk request.")
 @JsonTypeName("BulkCampaignDeliveryEstimatesItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem   {
-  private @Valid List<@Valid CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();
+  private List<@Valid CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();
   private Float conversionRate;
-  private @Valid List<@Valid CampaignPlanningConversionRate> conversionRates = new ArrayList<>();
-  private @Valid List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
+  private List<@Valid CampaignPlanningConversionRate> conversionRates = new ArrayList<>();
+  private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
   private CampaignDeliveryEstimatesDerivedMetrics derivedMetrics;
-  private @Valid List<@Valid CampaignPlanningResponseError> errors = new ArrayList<>();
+  private List<@Valid CampaignPlanningResponseError> errors = new ArrayList<>();
   private String estimateId;
   private Integer maxPotentialSpend;
 
@@ -51,7 +51,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Range audience sizes for each ad group, in the same order as the ad groups in the request.")
   @JsonProperty("adgroup_audience_sizes")
-  @Valid public List<@Valid CampaignPlanningAdGroupAudienceSize> getAdgroupAudienceSizes() {
+  public List<@Valid CampaignPlanningAdGroupAudienceSize> getAdgroupAudienceSizes() {
     return adgroupAudienceSizes;
   }
 
@@ -107,7 +107,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.")
   @JsonProperty("conversion_rates")
-  @Valid public List<@Valid CampaignPlanningConversionRate> getConversionRates() {
+  public List<@Valid CampaignPlanningConversionRate> getConversionRates() {
     return conversionRates;
   }
 
@@ -143,7 +143,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
   @JsonProperty("curves")
-  @Valid  @Size(max=20)public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
+   @Size(max=20)public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
     return curves;
   }
 
@@ -198,7 +198,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Errors encountered during estimation for this campaign.")
   @JsonProperty("errors")
-  @Valid public List<@Valid CampaignPlanningResponseError> getErrors() {
+  public List<@Valid CampaignPlanningResponseError> getErrors() {
     return errors;
   }
 

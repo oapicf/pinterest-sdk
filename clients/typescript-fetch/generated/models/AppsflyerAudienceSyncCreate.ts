@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AppsflyerAudienceSyncCreate {
     /**
      * The container ID of the audience
-     * @type {string}
-     * @memberof AppsflyerAudienceSyncCreate
      */
     containerId: string;
     /**
      * The pre-signed URL for SHA256 hashed GAID/IDFA file
-     * @type {string}
-     * @memberof AppsflyerAudienceSyncCreate
      */
     urlAdidSha256?: string;
     /**
      * The pre-signed URL for SHA256 hashed email file
-     * @type {string}
-     * @memberof AppsflyerAudienceSyncCreate
      */
     urlEmailSha256?: string;
 }

@@ -50,14 +50,10 @@ import {
 export interface CampaignCreateRequestAllOf1 {
     /**
      * 
-     * @type {CampaignBidOptionsCreate}
-     * @memberof CampaignCreateRequestAllOf1
      */
     bidOptions?: CampaignBidOptionsCreate | null;
     /**
      * 
-     * @type {IntendedPromotionType}
-     * @memberof CampaignCreateRequestAllOf1
      */
     intendedPromotionType?: IntendedPromotionType;
     /**
@@ -69,35 +65,25 @@ export interface CampaignCreateRequestAllOf1 {
      * - WEB\_CONVERSION
      * - SALES
      * - CATALOG\_SALES
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isAutomatedCampaign?: boolean | null;
     /**
      * Note: This field is immutable unless the campaign is in draft status.
      * Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome.
      * When using campaign budgets with a lifetime spend cap, the end time must be provided.
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isCampaignBudgetOptimization?: boolean | null;
     /**
      * Determine if a campaign has setup for flexible daily budgets, also known as "Pinterest Performance+ budgets".
      * Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isFlexibleDailyBudgets?: boolean | null;
     /**
      * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isLtvOptimized?: boolean;
     /**
      * Enable Pinterest Performance+ for your campaign. To learn more, see <a href="https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/">Pinterest Performance+ Setup</a>.
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isPerformancePlus?: boolean;
     /**
@@ -113,20 +99,14 @@ export interface CampaignCreateRequestAllOf1 {
      * You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.
      * 
      * You cannot change your `true` or `false` selection of this campaign if you <a href="https://developer.pinterest.com/docs/api/v5/campaigns-update" target="blank">update it</a>.
-     * @type {boolean}
-     * @memberof CampaignCreateRequestAllOf1
      */
     isTopOfSearch?: boolean;
     /**
      * 
-     * @type {ObjectiveType}
-     * @memberof CampaignCreateRequestAllOf1
      */
     objectiveType: ObjectiveType;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof CampaignCreateRequestAllOf1
      */
     status?: EntityStatus;
 }

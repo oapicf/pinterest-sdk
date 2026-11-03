@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Status of a leads export job
-* Values: IN_PROGRESS,FINISHED,FAILED
-*/
+ * Status of a leads export job
+ * Values: IN_PROGRESS,FINISHED,FAILED
+ */
 enum class LeadsExportStatus(@get:JsonValue val value: kotlin.String) {
 
     IN_PROGRESS("IN_PROGRESS"),
@@ -29,9 +29,8 @@ enum class LeadsExportStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LeadsExportStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadsExportStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadsExportStatus'")
         }
     }
 }
-

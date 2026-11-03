@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
 @JsonTypeName("BusinessMemberAssetsSummary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMemberAssetsSummary   {
-  private @Valid List<@Valid AssetIdWithPermissions> adAccounts = new ArrayList<>();
-  private @Valid List<@Valid AssetIdWithPermissions> profiles = new ArrayList<>();
+  private List<@Valid AssetIdWithPermissions> adAccounts = new ArrayList<>();
+  private List<@Valid AssetIdWithPermissions> profiles = new ArrayList<>();
 
   public BusinessMemberAssetsSummary() {
   }
@@ -41,7 +41,7 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
   @JsonProperty("ad_accounts")
-  @Valid public List<@Valid AssetIdWithPermissions> getAdAccounts() {
+  public List<@Valid AssetIdWithPermissions> getAdAccounts() {
     return adAccounts;
   }
 
@@ -77,7 +77,7 @@ public class BusinessMemberAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
   @JsonProperty("profiles")
-  @Valid public List<@Valid AssetIdWithPermissions> getProfiles() {
+  public List<@Valid AssetIdWithPermissions> getProfiles() {
     return profiles;
   }
 

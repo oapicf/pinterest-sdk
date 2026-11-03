@@ -29,8 +29,6 @@ import {
 export interface IntegrationLogsInvalidLogResponse {
     /**
      * 
-     * @type {Array<IntegrationLogsInvalidLogResponseRejectedLogsItems>}
-     * @memberof IntegrationLogsInvalidLogResponse
      */
     rejectedLogs?: Array<IntegrationLogsInvalidLogResponseRejectedLogsItems>;
 }

@@ -17,7 +17,7 @@ import SSIOInsertionOrderStatus from './SSIOInsertionOrderStatus';
 /**
  * The SSIOInsertionOrderStatusResponse model module.
  * @module model/SSIOInsertionOrderStatusResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SSIOInsertionOrderStatusResponse {
     /**

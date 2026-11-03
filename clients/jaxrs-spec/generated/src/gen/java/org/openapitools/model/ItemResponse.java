@@ -47,7 +47,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).")
 @JsonTypeName("ItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemResponse   {
   private CatalogsCreativeAssetsAttributes attributes;
   public enum CatalogTypeEnum {
@@ -147,10 +147,10 @@ public class ItemResponse   {
 }
 
   private ItemResponseKindEnum itemResponseKind;
-  private @Valid List<@Valid Pin> pins;
+  private List<@Valid Pin> pins;
   private String hotelId;
   private String creativeAssetsId;
-  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse() {
   }
@@ -255,7 +255,7 @@ public class ItemResponse   {
   
   @ApiModelProperty(value = "The pins mapped to the item")
   @JsonProperty("pins")
-  @Valid  @Size(max=11)public List<@Valid Pin> getPins() {
+   @Size(max=11)public List<@Valid Pin> getPins() {
     return pins;
   }
 
@@ -331,7 +331,7 @@ public class ItemResponse   {
   
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
   @JsonProperty(required = true, value = "errors")
-  @NotNull @Valid public List<@Valid ItemValidationEvent> getErrors() {
+  @NotNull public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 

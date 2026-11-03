@@ -189,3 +189,4 @@ class _$BulkDownloadCampaignFilterSerializer implements PrimitiveSerializer<Bulk
   }
 }
 
+

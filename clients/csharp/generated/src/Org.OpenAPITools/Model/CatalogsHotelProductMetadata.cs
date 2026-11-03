@@ -135,10 +135,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!hotelId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductMetadata.", nameof(hotelId));
+                throw new JsonException("Property is required for class CatalogsHotelProductMetadata: hotel_id.");
 
             if (hotelId.IsSet && hotelId.Value == null)
-                throw new ArgumentNullException(nameof(hotelId), "Property is not nullable for class CatalogsHotelProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductMetadata: hotel_id.");
 
             return new CatalogsHotelProductMetadata(hotelId.Value!);
         }
@@ -149,7 +149,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelProductMetadata catalogsHotelProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -164,12 +163,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelProductMetadata catalogsHotelProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelProductMetadata.HotelId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProductMetadata.HotelId), "Property is required for class CatalogsHotelProductMetadata.");
-
             writer.WriteString("hotel_id", catalogsHotelProductMetadata.HotelId);
         }
     }

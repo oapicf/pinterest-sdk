@@ -6,20 +6,3 @@
 */
 #include "AdGroupSummaryStatus.h"
 
-namespace models {
-
-AdGroupSummaryStatus::AdGroupSummaryStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

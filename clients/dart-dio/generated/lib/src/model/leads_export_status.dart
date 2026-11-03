@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'leads_export_status.g.dart';
 
+/// Status of a leads export job
 class LeadsExportStatus extends EnumClass {
 
-  /// Status of a leads export job
   @BuiltValueEnumConst(wireName: r'IN_PROGRESS')
   static const LeadsExportStatus IN_PROGRESS = _$IN_PROGRESS;
-  /// Status of a leads export job
   @BuiltValueEnumConst(wireName: r'FINISHED')
   static const LeadsExportStatus FINISHED = _$FINISHED;
-  /// Status of a leads export job
   @BuiltValueEnumConst(wireName: r'FAILED')
   static const LeadsExportStatus FAILED = _$FAILED;
 

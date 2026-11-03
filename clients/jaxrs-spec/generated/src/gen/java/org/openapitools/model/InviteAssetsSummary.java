@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
 @JsonTypeName("InviteAssetsSummary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary   {
-  private @Valid List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
-  private @Valid List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
+  private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
 
   public InviteAssetsSummary() {
   }
@@ -41,7 +41,7 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
   @JsonProperty("ad_accounts")
-  @Valid public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
+  public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
     return adAccounts;
   }
 
@@ -77,7 +77,7 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
   @JsonProperty("profiles")
-  @Valid public List<@Valid InviteAssetsSummaryItem> getProfiles() {
+  public List<@Valid InviteAssetsSummaryItem> getProfiles() {
     return profiles;
   }
 

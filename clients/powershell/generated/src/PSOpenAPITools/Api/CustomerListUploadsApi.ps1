@@ -72,11 +72,11 @@ function Invoke-CustomerListUploadsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerListUploads_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$CustomerListId) {
             throw "Error! The required parameter `CustomerListId` missing when calling customerListUploads_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Uri]::EscapeDataString([string]$CustomerListId))
 
         if (!$CustomerListUploadCreateRequest) {
             throw "Error! The required parameter `CustomerListUploadCreateRequest` missing when calling customerListUploads_create."
@@ -168,15 +168,15 @@ function Invoke-CustomerListUploadsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerListUploads_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$CustomerListId) {
             throw "Error! The required parameter `CustomerListId` missing when calling customerListUploads_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Uri]::EscapeDataString([string]$CustomerListId))
         if (!$CustomerListUploadId) {
             throw "Error! The required parameter `CustomerListUploadId` missing when calling customerListUploads_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_upload_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListUploadId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_upload_id}', [System.Uri]::EscapeDataString([string]$CustomerListUploadId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -262,15 +262,15 @@ function Invoke-CustomerListUploadsRun {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerListUploads_run."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$CustomerListId) {
             throw "Error! The required parameter `CustomerListId` missing when calling customerListUploads_run."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Uri]::EscapeDataString([string]$CustomerListId))
         if (!$CustomerListUploadId) {
             throw "Error! The required parameter `CustomerListUploadId` missing when calling customerListUploads_run."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_upload_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListUploadId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_upload_id}', [System.Uri]::EscapeDataString([string]$CustomerListUploadId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'POST' `

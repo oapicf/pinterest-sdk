@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: GREATER_THAN,GREATER_THAN_OR_EQUALS,LESS_THAN,LESS_THAN_OR_EQUALS
-*/
+ * 
+ * Values: GREATER_THAN,GREATER_THAN_OR_EQUALS,LESS_THAN,LESS_THAN_OR_EQUALS
+ */
 enum class NumericFilterOperatorType(@get:JsonValue val value: kotlin.String) {
 
     GREATER_THAN("GREATER_THAN"),
@@ -30,9 +30,8 @@ enum class NumericFilterOperatorType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NumericFilterOperatorType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NumericFilterOperatorType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NumericFilterOperatorType'")
         }
     }
 }
-

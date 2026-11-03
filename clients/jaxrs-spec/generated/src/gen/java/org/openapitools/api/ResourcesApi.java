@@ -24,7 +24,7 @@ import javax.validation.Valid;
 */
 @Path("/resources")
 @Api(description = "the resources API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ResourcesApi {
 
     @GET
@@ -71,7 +71,8 @@ public class ResourcesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response deliveryMetricsGet(@QueryParam("report_type")  @ApiParam("Report type.")  ReportType reportType) {
+    public Response deliveryMetricsGet(@QueryParam("report_type")  @ApiParam("Report type.")  ReportType reportType
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -93,7 +94,8 @@ public class ResourcesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response interestTargetingOptionsGet(@PathParam("interest_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an interest.") String interestId) {
+    public Response interestTargetingOptionsGet(@PathParam("interest_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an interest.") String interestId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -133,7 +135,8 @@ public class ResourcesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response metricsReadyStateGet(@QueryParam("date") @NotNull @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  @ApiParam("Analytics reports request date (UTC). Format: YYYY-MM-DD")  String date) {
+    public Response metricsReadyStateGet(@QueryParam("date") @NotNull @Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")  @ApiParam("Analytics reports request date (UTC). Format: YYYY-MM-DD")  String date
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -155,7 +158,12 @@ public class ResourcesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response targetingOptionsGet(@PathParam("targeting_type") @ApiParam("Public targeting type") PublicTargetingType targetingType,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("client_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Client ID")  String clientId,@QueryParam("oauth_signature")  @ApiParam("Oauth signature")  String oauthSignature,@QueryParam("timestamp") @Pattern(regexp="\\d+")  @ApiParam("Timestamp.")  String timestamp) {
+    public Response targetingOptionsGet(@PathParam("targeting_type") @ApiParam("Public targeting type") PublicTargetingType targetingType
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("client_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Client ID")  String clientId
+,@QueryParam("oauth_signature")  @ApiParam("Oauth signature")  String oauthSignature
+,@QueryParam("timestamp") @Pattern(regexp="\\d+")  @ApiParam("Timestamp.")  String timestamp
+) {
         return Response.ok().entity("magic!").build();
     }
 }

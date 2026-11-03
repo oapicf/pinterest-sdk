@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!keywords.IsSet)
-                throw new ArgumentException("Property is required for class KeywordsCreate.", nameof(keywords));
+                throw new JsonException("Property is required for class KeywordsCreate: keywords.");
 
             if (!parentId.IsSet)
-                throw new ArgumentException("Property is required for class KeywordsCreate.", nameof(parentId));
+                throw new JsonException("Property is required for class KeywordsCreate: parent_id.");
 
             if (keywords.IsSet && keywords.Value == null)
-                throw new ArgumentNullException(nameof(keywords), "Property is not nullable for class KeywordsCreate.");
+                throw new JsonException("Property is not nullable for class KeywordsCreate: keywords.");
 
             if (parentId.IsSet && parentId.Value == null)
-                throw new ArgumentNullException(nameof(parentId), "Property is not nullable for class KeywordsCreate.");
+                throw new JsonException("Property is not nullable for class KeywordsCreate: parent_id.");
 
             return new KeywordsCreate(keywords.Value!, parentId.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordsCreate keywordsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordsCreate keywordsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keywordsCreate.Keywords == null)
-                throw new ArgumentNullException(nameof(keywordsCreate.Keywords), "Property is required for class KeywordsCreate.");
-
-            if (keywordsCreate.ParentId == null)
-                throw new ArgumentNullException(nameof(keywordsCreate.ParentId), "Property is required for class KeywordsCreate.");
-
             writer.WritePropertyName("keywords");
             JsonSerializer.Serialize(writer, keywordsCreate.Keywords, jsonSerializerOptions);
             writer.WriteString("parent_id", keywordsCreate.ParentId);

@@ -17,7 +17,7 @@ import KeywordMetricsResponse from './KeywordMetricsResponse';
 /**
  * The KeywordsMetricsArrayResponse model module.
  * @module model/KeywordsMetricsArrayResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordsMetricsArrayResponse {
     /**

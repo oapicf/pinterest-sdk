@@ -15,7 +15,7 @@ import org.openapitools.model.CustomizableCTAType;
  * Ad preview from a catalog product group (shopping).
  */
 @ApiModel(description = "Ad preview from a catalog product group (shopping).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdPreviewShopping   {
   @JsonProperty("catalog_product_group_id")
   private String catalogProductGroupId;

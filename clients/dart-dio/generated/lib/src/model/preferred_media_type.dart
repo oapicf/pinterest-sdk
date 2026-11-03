@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'preferred_media_type.g.dart';
 
+/// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
 class PreferredMediaType extends EnumClass {
 
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
   @BuiltValueEnumConst(wireName: r'VIDEO')
   static const PreferredMediaType VIDEO = _$VIDEO;
-  /// Select whether to promote the image or video pin by default for items in the promoted product group. If selecting IMAGE, image will be promoted for all ads in the product group, and when selecting VIDEO, video will be promoted when present, otherwise fall back to image. This is applicable for standard shopping ads only.
   @BuiltValueEnumConst(wireName: r'IMAGE')
   static const PreferredMediaType IMAGE = _$IMAGE;
 

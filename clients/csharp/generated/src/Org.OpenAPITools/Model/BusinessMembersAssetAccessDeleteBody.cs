@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!accesses.IsSet)
-                throw new ArgumentException("Property is required for class BusinessMembersAssetAccessDeleteBody.", nameof(accesses));
+                throw new JsonException("Property is required for class BusinessMembersAssetAccessDeleteBody: accesses.");
 
             if (accesses.IsSet && accesses.Value == null)
-                throw new ArgumentNullException(nameof(accesses), "Property is not nullable for class BusinessMembersAssetAccessDeleteBody.");
+                throw new JsonException("Property is not nullable for class BusinessMembersAssetAccessDeleteBody: accesses.");
 
             return new BusinessMembersAssetAccessDeleteBody(accesses.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMembersAssetAccessDeleteBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMembersAssetAccessDeleteBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessMembersAssetAccessDeleteBody.Accesses == null)
-                throw new ArgumentNullException(nameof(businessMembersAssetAccessDeleteBody.Accesses), "Property is required for class BusinessMembersAssetAccessDeleteBody.");
-
             writer.WritePropertyName("accesses");
             JsonSerializer.Serialize(writer, businessMembersAssetAccessDeleteBody.Accesses, jsonSerializerOptions);
         }

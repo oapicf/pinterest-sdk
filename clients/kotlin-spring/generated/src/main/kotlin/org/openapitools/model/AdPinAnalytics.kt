@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,13 +22,11 @@ data class AdPinAnalytics(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "The ID of the pin that the metric belongs to.")
-    @param:JsonProperty("PIN_ID")
+    @param:JsonProperty("PIN_ID", required = true)
     @get:JsonProperty("PIN_ID", required = true) val PIN_ID: kotlin.String,
 
     @field:Valid
     @Schema(description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("DATE")
     @get:JsonProperty("DATE") val DATE: java.time.LocalDate? = null
 ) {

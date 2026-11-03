@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsFeedProcessingStatus } from './CatalogsFeedProcessingStatus';
 import {
     CatalogsFeedProcessingStatusFromJSON,
@@ -29,26 +29,18 @@ import {
 export interface CatalogsFeedIngestion {
     /**
      * Timestamp of the feed ingestion.
-     * @type {Date}
-     * @memberof CatalogsFeedIngestion
      */
     createdAt: Date;
     /**
      * Catalog Feed id pertaining to the feed ingestion.
-     * @type {string}
-     * @memberof CatalogsFeedIngestion
      */
     feedId: string;
     /**
      * Unique identifier of a feed ingestion.
-     * @type {string}
-     * @memberof CatalogsFeedIngestion
      */
     id: string;
     /**
      * Status of the feed ingestion.
-     * @type {CatalogsFeedProcessingStatus}
-     * @memberof CatalogsFeedIngestion
      */
     status: CatalogsFeedProcessingStatus;
 }
@@ -76,7 +68,7 @@ export function CatalogsFeedIngestionFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'feedId': json['feed_id'],
         'id': json['id'],
         'status': CatalogsFeedProcessingStatusFromJSON(json['status']),
@@ -94,7 +86,7 @@ export function CatalogsFeedIngestionToJSONTyped(value?: CatalogsFeedIngestion |
 
     return {
         
-        'created_at': value['createdAt'].toISOString(),
+        'created_at': value['createdAt'] == null ? value['createdAt'] : serializeDateTime(value['createdAt']),
         'feed_id': value['feedId'],
         'id': value['id'],
         'status': CatalogsFeedProcessingStatusToJSON(value['status']),

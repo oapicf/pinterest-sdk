@@ -139,3 +139,4 @@ class _$CatalogsFeedIngestionDetailsSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

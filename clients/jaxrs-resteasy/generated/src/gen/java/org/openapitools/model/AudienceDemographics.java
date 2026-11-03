@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Audience demographics")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Audience demographics")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceDemographics   {
   
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
@@ -29,7 +29,6 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Ages distribution.")
   @JsonProperty("ages")
-  @Valid
   public List<@Valid AudienceDemographicValue> getAges() {
     return ages;
   }
@@ -43,7 +42,6 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Country area distribution.")
   @JsonProperty("countries")
-  @Valid
   public List<@Valid AudienceDemographicValue> getCountries() {
     return countries;
   }
@@ -57,7 +55,6 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Device usage distribution.")
   @JsonProperty("devices")
-  @Valid
   public List<@Valid AudienceDemographicValue> getDevices() {
     return devices;
   }
@@ -71,7 +68,6 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Gender distribution.")
   @JsonProperty("genders")
-  @Valid
   public List<@Valid AudienceDemographicValue> getGenders() {
     return genders;
   }
@@ -85,7 +81,6 @@ public class AudienceDemographics   {
   
   @ApiModelProperty(value = "Geographic metro area distribution.")
   @JsonProperty("metros")
-  @Valid
   public List<@Valid AudienceDemographicValue> getMetros() {
     return metros;
   }

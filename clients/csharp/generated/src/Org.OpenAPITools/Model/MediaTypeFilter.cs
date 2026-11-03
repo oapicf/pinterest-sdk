@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mEDIATYPE.IsSet)
-                throw new ArgumentException("Property is required for class MediaTypeFilter.", nameof(mEDIATYPE));
+                throw new JsonException("Property is required for class MediaTypeFilter: MEDIA_TYPE.");
 
             if (mEDIATYPE.IsSet && mEDIATYPE.Value == null)
-                throw new ArgumentNullException(nameof(mEDIATYPE), "Property is not nullable for class MediaTypeFilter.");
+                throw new JsonException("Property is not nullable for class MediaTypeFilter: MEDIA_TYPE.");
 
             return new MediaTypeFilter(mEDIATYPE.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaTypeFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MediaTypeFilter mediaTypeFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaTypeFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MediaTypeFilter mediaTypeFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (mediaTypeFilter.MEDIA_TYPE == null)
-                throw new ArgumentNullException(nameof(mediaTypeFilter.MEDIA_TYPE), "Property is required for class MediaTypeFilter.");
-
             writer.WritePropertyName("MEDIA_TYPE");
             JsonSerializer.Serialize(writer, mediaTypeFilter.MEDIA_TYPE, jsonSerializerOptions);
         }

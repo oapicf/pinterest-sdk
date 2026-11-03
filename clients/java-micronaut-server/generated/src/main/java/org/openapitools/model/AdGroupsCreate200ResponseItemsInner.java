@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroupsCreate200ResponseItemsInner.JSON_PROPERTY_EXCEPTIONS
 })
 @JsonTypeName("ad_groups_create_200_response_items_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupsCreate200ResponseItemsInner {
     public static final String JSON_PROPERTY_DATA = "data";

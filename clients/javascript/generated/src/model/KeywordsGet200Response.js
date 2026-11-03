@@ -17,7 +17,7 @@ import Keyword from './Keyword';
 /**
  * The KeywordsGet200Response model module.
  * @module model/KeywordsGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordsGet200Response {
     /**

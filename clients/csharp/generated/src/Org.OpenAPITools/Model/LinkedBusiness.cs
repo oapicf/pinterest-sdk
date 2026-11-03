@@ -230,19 +230,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (imageLargeUrl.IsSet && imageLargeUrl.Value == null)
-                throw new ArgumentNullException(nameof(imageLargeUrl), "Property is not nullable for class LinkedBusiness.");
+                throw new JsonException("Property is not nullable for class LinkedBusiness: image_large_url.");
 
             if (imageMediumUrl.IsSet && imageMediumUrl.Value == null)
-                throw new ArgumentNullException(nameof(imageMediumUrl), "Property is not nullable for class LinkedBusiness.");
+                throw new JsonException("Property is not nullable for class LinkedBusiness: image_medium_url.");
 
             if (imageSmallUrl.IsSet && imageSmallUrl.Value == null)
-                throw new ArgumentNullException(nameof(imageSmallUrl), "Property is not nullable for class LinkedBusiness.");
+                throw new JsonException("Property is not nullable for class LinkedBusiness: image_small_url.");
 
             if (imageXlargeUrl.IsSet && imageXlargeUrl.Value == null)
-                throw new ArgumentNullException(nameof(imageXlargeUrl), "Property is not nullable for class LinkedBusiness.");
+                throw new JsonException("Property is not nullable for class LinkedBusiness: image_xlarge_url.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class LinkedBusiness.");
+                throw new JsonException("Property is not nullable for class LinkedBusiness: username.");
 
             return new LinkedBusiness(imageLargeUrl, imageMediumUrl, imageSmallUrl, imageXlargeUrl, username);
         }
@@ -253,7 +253,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="linkedBusiness"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LinkedBusiness linkedBusiness, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -268,23 +267,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="linkedBusiness"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LinkedBusiness linkedBusiness, JsonSerializerOptions jsonSerializerOptions)
         {
             if (linkedBusiness.ImageLargeUrlOption.IsSet && linkedBusiness.ImageLargeUrl == null)
-                throw new ArgumentNullException(nameof(linkedBusiness.ImageLargeUrl), "Property is required for class LinkedBusiness.");
+                throw new JsonException("Cannot write null property LinkedBusiness.ImageLargeUrl to non-nullable JSON property 'image_large_url'.");
 
             if (linkedBusiness.ImageMediumUrlOption.IsSet && linkedBusiness.ImageMediumUrl == null)
-                throw new ArgumentNullException(nameof(linkedBusiness.ImageMediumUrl), "Property is required for class LinkedBusiness.");
+                throw new JsonException("Cannot write null property LinkedBusiness.ImageMediumUrl to non-nullable JSON property 'image_medium_url'.");
 
             if (linkedBusiness.ImageSmallUrlOption.IsSet && linkedBusiness.ImageSmallUrl == null)
-                throw new ArgumentNullException(nameof(linkedBusiness.ImageSmallUrl), "Property is required for class LinkedBusiness.");
+                throw new JsonException("Cannot write null property LinkedBusiness.ImageSmallUrl to non-nullable JSON property 'image_small_url'.");
 
             if (linkedBusiness.ImageXlargeUrlOption.IsSet && linkedBusiness.ImageXlargeUrl == null)
-                throw new ArgumentNullException(nameof(linkedBusiness.ImageXlargeUrl), "Property is required for class LinkedBusiness.");
+                throw new JsonException("Cannot write null property LinkedBusiness.ImageXlargeUrl to non-nullable JSON property 'image_xlarge_url'.");
 
             if (linkedBusiness.UsernameOption.IsSet && linkedBusiness.Username == null)
-                throw new ArgumentNullException(nameof(linkedBusiness.Username), "Property is required for class LinkedBusiness.");
+                throw new JsonException("Cannot write null property LinkedBusiness.Username to non-nullable JSON property 'username'.");
 
             if (linkedBusiness.ImageLargeUrlOption.IsSet)
                 writer.WriteString("image_large_url", linkedBusiness.ImageLargeUrl);

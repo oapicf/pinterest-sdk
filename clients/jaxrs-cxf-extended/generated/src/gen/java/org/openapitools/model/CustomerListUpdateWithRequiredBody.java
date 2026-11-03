@@ -39,7 +39,6 @@ public class CustomerListUpdateWithRequiredBody  {
   * Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.
   */
   @ApiModelProperty(value = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.")
-  @Valid
   private List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();
  /**
   * Customer list update operation type (add or remove). Only valid in update request body.

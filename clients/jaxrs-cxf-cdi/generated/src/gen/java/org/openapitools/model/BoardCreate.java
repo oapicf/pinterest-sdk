@@ -26,7 +26,7 @@ public class BoardCreate   {
 
   private String name;
 
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   /**
    **/

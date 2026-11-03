@@ -92,7 +92,7 @@ public class CatalogProductGroupsApiHandler {
         CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsProductGroupsCreateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsProductGroupsCreateRequestSchema is {}", catalogsProductGroupsCreateRequestSchema);
+        logger.debug("Parameter catalogsProductGroupsCreateRequestSchema is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema, adAccountId)
@@ -117,7 +117,7 @@ public class CatalogProductGroupsApiHandler {
         List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CatalogsProductGroupsCreateManyRequestItems>>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsProductGroupsCreateManyRequestItems is {}", catalogsProductGroupsCreateManyRequestItems);
+        logger.debug("Parameter catalogsProductGroupsCreateManyRequestItems is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId)
@@ -272,7 +272,7 @@ public class CatalogProductGroupsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter productGroupId is {}", productGroupId);
-        logger.debug("Parameter catalogsProductGroupsUpdateRequestSchema is {}", catalogsProductGroupsUpdateRequestSchema);
+        logger.debug("Parameter catalogsProductGroupsUpdateRequestSchema is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId)
@@ -300,7 +300,7 @@ public class CatalogProductGroupsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
         Boolean pinMetrics = requestParameters.queryParameter("pin_metrics") != null ? requestParameters.queryParameter("pin_metrics").getBoolean() : false;
 
-        logger.debug("Parameter catalogsListProductsByFilterRequest is {}", catalogsListProductsByFilterRequest);
+        logger.debug("Parameter catalogsListProductsByFilterRequest is (body omitted)");
         logger.debug("Parameter bookmark is {}", bookmark);
         logger.debug("Parameter pageSize is {}", pageSize);
         logger.debug("Parameter adAccountId is {}", adAccountId);

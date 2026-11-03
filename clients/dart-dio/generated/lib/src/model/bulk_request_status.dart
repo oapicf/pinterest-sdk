@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'bulk_request_status.g.dart';
 
+/// Bulk request status
 class BulkRequestStatus extends EnumClass {
 
-  /// Bulk request status
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const BulkRequestStatus RUNNING = _$RUNNING;
-  /// Bulk request status
   @BuiltValueEnumConst(wireName: r'SUCCEEDED')
   static const BulkRequestStatus SUCCEEDED = _$SUCCEEDED;
-  /// Bulk request status
   @BuiltValueEnumConst(wireName: r'FAILED')
   static const BulkRequestStatus FAILED = _$FAILED;
 

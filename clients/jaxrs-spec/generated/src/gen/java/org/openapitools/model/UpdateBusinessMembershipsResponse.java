@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UpdateBusinessMembershipsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateBusinessMembershipsResponse   {
-  private @Valid List<@Valid BusinessMembershipMember> items = new ArrayList<>();
+  private List<@Valid BusinessMembershipMember> items = new ArrayList<>();
 
   public UpdateBusinessMembershipsResponse() {
   }
@@ -38,7 +38,7 @@ public class UpdateBusinessMembershipsResponse   {
   
   @ApiModelProperty(value = "List of members with updated business access role.")
   @JsonProperty("items")
-  @Valid public List<@Valid BusinessMembershipMember> getItems() {
+  public List<@Valid BusinessMembershipMember> getItems() {
     return items;
   }
 

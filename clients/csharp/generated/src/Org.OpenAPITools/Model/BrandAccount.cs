@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!brandAccountId.IsSet)
-                throw new ArgumentException("Property is required for class BrandAccount.", nameof(brandAccountId));
+                throw new JsonException("Property is required for class BrandAccount: brand_account_id.");
 
             if (brandAccountId.IsSet && brandAccountId.Value == null)
-                throw new ArgumentNullException(nameof(brandAccountId), "Property is not nullable for class BrandAccount.");
+                throw new JsonException("Property is not nullable for class BrandAccount: brand_account_id.");
 
             return new BrandAccount(brandAccountId.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BrandAccount brandAccount, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BrandAccount brandAccount, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (brandAccount.BrandAccountId == null)
-                throw new ArgumentNullException(nameof(brandAccount.BrandAccountId), "Property is required for class BrandAccount.");
-
             writer.WriteString("brand_account_id", brandAccount.BrandAccountId);
         }
     }

@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ItemIdStoreCodePair(
 
     @Schema(example = "item_id_1", required = true, description = "Catalog item id in the merchant namespace")
-    @param:JsonProperty("item_id")
+    @param:JsonProperty("item_id", required = true)
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @Schema(example = "store_1", required = true, description = "Store code for the local inventory item")
-    @param:JsonProperty("store_code")
+    @param:JsonProperty("store_code", required = true)
     @get:JsonProperty("store_code", required = true) val storeCode: kotlin.String
 ) {
 

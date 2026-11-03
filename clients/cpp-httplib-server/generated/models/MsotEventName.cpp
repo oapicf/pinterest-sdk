@@ -6,20 +6,3 @@
 */
 #include "MsotEventName.h"
 
-namespace models {
-
-MsotEventName::MsotEventName()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

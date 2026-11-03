@@ -25,9 +25,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Audience interests and demographics.")
 @JsonTypeName("AudienceInsights")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsights   {
-  private @Valid List<@Valid AudienceCategory> categories = new ArrayList<>();
+  private List<@Valid AudienceCategory> categories = new ArrayList<>();
   private String date;
   private AudienceDemographics demographics;
   private Integer size;
@@ -48,7 +48,7 @@ public class AudienceInsights   {
   
   @ApiModelProperty(value = "Category interest distribution")
   @JsonProperty("categories")
-  @Valid public List<@Valid AudienceCategory> getCategories() {
+  public List<@Valid AudienceCategory> getCategories() {
     return categories;
   }
 

@@ -184,10 +184,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (scope.IsSet && scope.Value == null)
-                throw new ArgumentNullException(nameof(scope), "Property is not nullable for class AudienceDefinition.");
+                throw new JsonException("Property is not nullable for class AudienceDefinition: scope.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class AudienceDefinition.");
+                throw new JsonException("Property is not nullable for class AudienceDefinition: type.");
 
             return new AudienceDefinition(date, scope, type);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceDefinition"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceDefinition audienceDefinition, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,14 +212,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceDefinition"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceDefinition audienceDefinition, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audienceDefinition.ScopeOption.IsSet && audienceDefinition.Scope == null)
-                throw new ArgumentNullException(nameof(audienceDefinition.Scope), "Property is required for class AudienceDefinition.");
+                throw new JsonException("Cannot write null property AudienceDefinition.Scope to non-nullable JSON property 'scope'.");
 
             if (audienceDefinition.TypeOption.IsSet && audienceDefinition.Type == null)
-                throw new ArgumentNullException(nameof(audienceDefinition.Type), "Property is required for class AudienceDefinition.");
+                throw new JsonException("Cannot write null property AudienceDefinition.Type to non-nullable JSON property 'type'.");
 
             if (audienceDefinition.DateOption.IsSet)
                 if (audienceDefinition.DateOption.Value != null)

@@ -17,7 +17,7 @@ import DeleteMemberAccessResult from './DeleteMemberAccessResult';
 /**
  * The DeleteMemberAccessResultsResponseArray model module.
  * @module model/DeleteMemberAccessResultsResponseArray
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class DeleteMemberAccessResultsResponseArray {
     /**

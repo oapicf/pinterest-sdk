@@ -189,10 +189,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!statusCode.IsSet)
-                throw new ArgumentException("Property is required for class PinterestLibStatus204.", nameof(statusCode));
+                throw new JsonException("Property is required for class PinterestLibStatus204: statusCode.");
 
             if (statusCode.IsSet && statusCode.Value == null)
-                throw new ArgumentNullException(nameof(statusCode), "Property is not nullable for class PinterestLibStatus204.");
+                throw new JsonException("Property is not nullable for class PinterestLibStatus204: statusCode.");
 
             return new PinterestLibStatus204(statusCode.Value!.Value!);
         }
@@ -203,7 +203,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestLibStatus204"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinterestLibStatus204 pinterestLibStatus204, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -218,7 +217,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestLibStatus204"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinterestLibStatus204 pinterestLibStatus204, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("statusCode", PinterestLibStatus204.StatusCodeEnumToJsonValue(pinterestLibStatus204.StatusCode));

@@ -18,7 +18,7 @@ import NullableLabelType from './NullableLabelType';
 /**
  * The Label model module.
  * @module model/Label
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Label {
     /**

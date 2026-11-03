@@ -107,3 +107,4 @@ class _$AiDisclosuresSerializer implements PrimitiveSerializer<AiDisclosures> {
   }
 }
 
+

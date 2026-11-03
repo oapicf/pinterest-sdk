@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_planning_conversion_attribution_window_days.g.dart';
 
+/// Conversion attribution window in days.
 class CampaignPlanningConversionAttributionWindowDays extends EnumClass {
 
-  /// Conversion attribution window in days.
   @BuiltValueEnumConst(wireName: r'DAYS_0')
   static const CampaignPlanningConversionAttributionWindowDays DAYS_0 = _$DAYS_0;
-  /// Conversion attribution window in days.
   @BuiltValueEnumConst(wireName: r'DAYS_1')
   static const CampaignPlanningConversionAttributionWindowDays DAYS_1 = _$DAYS_1;
-  /// Conversion attribution window in days.
   @BuiltValueEnumConst(wireName: r'DAYS_7')
   static const CampaignPlanningConversionAttributionWindowDays DAYS_7 = _$DAYS_7;
-  /// Conversion attribution window in days.
   @BuiltValueEnumConst(wireName: r'DAYS_30')
   static const CampaignPlanningConversionAttributionWindowDays DAYS_30 = _$DAYS_30;
-  /// Conversion attribution window in days.
   @BuiltValueEnumConst(wireName: r'DAYS_60')
   static const CampaignPlanningConversionAttributionWindowDays DAYS_60 = _$DAYS_60;
 

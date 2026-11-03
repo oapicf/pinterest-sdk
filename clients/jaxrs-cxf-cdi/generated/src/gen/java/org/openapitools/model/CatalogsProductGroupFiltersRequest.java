@@ -24,13 +24,13 @@ import java.util.Objects;
 @ApiModel(description = "Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 public class CatalogsProductGroupFiltersRequest   {
   
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   /**
    **/
-  public CatalogsProductGroupFiltersRequest anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersRequest anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -39,10 +39,10 @@ public class CatalogsProductGroupFiltersRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("any_of")
   @NotNull
- @Size(min=1)  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+ @Size(min=1)  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
@@ -57,7 +57,7 @@ public class CatalogsProductGroupFiltersRequest   {
 
   /**
    **/
-  public CatalogsProductGroupFiltersRequest allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersRequest allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -66,10 +66,10 @@ public class CatalogsProductGroupFiltersRequest   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("all_of")
   @NotNull
- @Size(min=1)  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+ @Size(min=1)  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface BulkUpsertResponse {
     /**
      * 
-     * @type {string}
-     * @memberof BulkUpsertResponse
      */
     requestId?: string;
 }

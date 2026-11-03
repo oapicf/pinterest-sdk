@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* List of ingestion sources for a conversion event.
-* Values: TAG,MMP,FILE_UPLOAD,CONVERSIONS_API,NATIVE
-*/
+ * List of ingestion sources for a conversion event.
+ * Values: TAG,MMP,FILE_UPLOAD,CONVERSIONS_API,NATIVE
+ */
 enum class IngestionSourceOptions(@get:JsonValue val value: kotlin.String) {
 
     TAG("TAG"),
@@ -31,9 +31,8 @@ enum class IngestionSourceOptions(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): IngestionSourceOptions {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IngestionSourceOptions'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IngestionSourceOptions'")
         }
     }
 }
-

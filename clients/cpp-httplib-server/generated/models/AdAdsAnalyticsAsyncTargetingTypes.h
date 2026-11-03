@@ -12,24 +12,194 @@
 
 namespace models {
 
-
-class AdAdsAnalyticsAsyncTargetingTypes
-{
-public:
-
-    AdAdsAnalyticsAsyncTargetingTypes();
-    virtual ~AdAdsAnalyticsAsyncTargetingTypes() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdAdsAnalyticsAsyncTargetingTypes,
-        )
-
-private:
+enum class AdAdsAnalyticsAsyncTargetingTypes {
+    
+    KEYWORD,
+    
+    APPTYPE,
+    
+    GENDER,
+    
+    LOCATION,
+    
+    PLACEMENT,
+    
+    COUNTRY,
+    
+    TARGETED_INTEREST,
+    
+    PINNER_INTEREST,
+    
+    AUDIENCE_INCLUDE,
+    
+    GEO,
+    
+    AGE_BUCKET,
+    
+    REGION,
+    
+    MEDIA_TYPE,
+    
+    AGE_BUCKET_AND_GENDER,
+    
+    AUDIENCE_MULTIPLIER,
+    
+    CREATIVE_ENHANCEMENTS,
+    
+    LOCAL_ADS_STORE_CODE
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdAdsAnalyticsAsyncTargetingTypes& value)
+{
+    switch (value)
+    {
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::KEYWORD: j = "KEYWORD"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::APPTYPE: j = "APPTYPE"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::GENDER: j = "GENDER"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::LOCATION: j = "LOCATION"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::PLACEMENT: j = "PLACEMENT"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::COUNTRY: j = "COUNTRY"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::TARGETED_INTEREST: j = "TARGETED_INTEREST"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::PINNER_INTEREST: j = "PINNER_INTEREST"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::AUDIENCE_INCLUDE: j = "AUDIENCE_INCLUDE"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::GEO: j = "GEO"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::AGE_BUCKET: j = "AGE_BUCKET"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::REGION: j = "REGION"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::MEDIA_TYPE: j = "MEDIA_TYPE"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::AGE_BUCKET_AND_GENDER: j = "AGE_BUCKET_AND_GENDER"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::AUDIENCE_MULTIPLIER: j = "AUDIENCE_MULTIPLIER"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::CREATIVE_ENHANCEMENTS: j = "CREATIVE_ENHANCEMENTS"; break;
+        
+        case AdAdsAnalyticsAsyncTargetingTypes::LOCAL_ADS_STORE_CODE: j = "LOCAL_ADS_STORE_CODE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdAdsAnalyticsAsyncTargetingTypes", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdAdsAnalyticsAsyncTargetingTypes& value)
+{
+    
+    if (j == "KEYWORD")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::KEYWORD;
+        return;
+    }
+    
+    if (j == "APPTYPE")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::APPTYPE;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::GENDER;
+        return;
+    }
+    
+    if (j == "LOCATION")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::LOCATION;
+        return;
+    }
+    
+    if (j == "PLACEMENT")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::PLACEMENT;
+        return;
+    }
+    
+    if (j == "COUNTRY")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::COUNTRY;
+        return;
+    }
+    
+    if (j == "TARGETED_INTEREST")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::TARGETED_INTEREST;
+        return;
+    }
+    
+    if (j == "PINNER_INTEREST")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::PINNER_INTEREST;
+        return;
+    }
+    
+    if (j == "AUDIENCE_INCLUDE")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::AUDIENCE_INCLUDE;
+        return;
+    }
+    
+    if (j == "GEO")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::GEO;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::AGE_BUCKET;
+        return;
+    }
+    
+    if (j == "REGION")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::REGION;
+        return;
+    }
+    
+    if (j == "MEDIA_TYPE")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::MEDIA_TYPE;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET_AND_GENDER")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::AGE_BUCKET_AND_GENDER;
+        return;
+    }
+    
+    if (j == "AUDIENCE_MULTIPLIER")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::AUDIENCE_MULTIPLIER;
+        return;
+    }
+    
+    if (j == "CREATIVE_ENHANCEMENTS")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::CREATIVE_ENHANCEMENTS;
+        return;
+    }
+    
+    if (j == "LOCAL_ADS_STORE_CODE")
+    {
+        value = AdAdsAnalyticsAsyncTargetingTypes::LOCAL_ADS_STORE_CODE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdAdsAnalyticsAsyncTargetingTypes", &j);
+}
 
 } // namespace models
 

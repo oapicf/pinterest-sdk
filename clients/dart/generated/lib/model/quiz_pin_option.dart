@@ -77,7 +77,9 @@ class QuizPinOption {
       }());
 
       return QuizPinOption(
-        id: num.parse('${json[r'id']}'),
+        id: json[r'id'] == null
+            ? null
+            : num.parse('${json[r'id']}'),
         text: mapValueOfType<String>(json, r'text'),
       );
     }

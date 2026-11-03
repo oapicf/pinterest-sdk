@@ -220,19 +220,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (audienceVerification.IsSet && audienceVerification.Value == null)
-                throw new ArgumentNullException(nameof(audienceVerification), "Property is not nullable for class AdGroupTrackingURLs.");
+                throw new JsonException("Property is not nullable for class AdGroupTrackingURLs: audience_verification.");
 
             if (buyableButton.IsSet && buyableButton.Value == null)
-                throw new ArgumentNullException(nameof(buyableButton), "Property is not nullable for class AdGroupTrackingURLs.");
+                throw new JsonException("Property is not nullable for class AdGroupTrackingURLs: buyable_button.");
 
             if (click.IsSet && click.Value == null)
-                throw new ArgumentNullException(nameof(click), "Property is not nullable for class AdGroupTrackingURLs.");
+                throw new JsonException("Property is not nullable for class AdGroupTrackingURLs: click.");
 
             if (engagement.IsSet && engagement.Value == null)
-                throw new ArgumentNullException(nameof(engagement), "Property is not nullable for class AdGroupTrackingURLs.");
+                throw new JsonException("Property is not nullable for class AdGroupTrackingURLs: engagement.");
 
             if (impression.IsSet && impression.Value == null)
-                throw new ArgumentNullException(nameof(impression), "Property is not nullable for class AdGroupTrackingURLs.");
+                throw new JsonException("Property is not nullable for class AdGroupTrackingURLs: impression.");
 
             return new AdGroupTrackingURLs(audienceVerification, buyableButton, click, engagement, impression);
         }
@@ -243,7 +243,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupTrackingURLs"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupTrackingURLs adGroupTrackingURLs, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,23 +257,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupTrackingURLs"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupTrackingURLs adGroupTrackingURLs, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adGroupTrackingURLs.AudienceVerificationOption.IsSet && adGroupTrackingURLs.AudienceVerification == null)
-                throw new ArgumentNullException(nameof(adGroupTrackingURLs.AudienceVerification), "Property is required for class AdGroupTrackingURLs.");
+                throw new JsonException("Cannot write null property AdGroupTrackingURLs.AudienceVerification to non-nullable JSON property 'audience_verification'.");
 
             if (adGroupTrackingURLs.BuyableButtonOption.IsSet && adGroupTrackingURLs.BuyableButton == null)
-                throw new ArgumentNullException(nameof(adGroupTrackingURLs.BuyableButton), "Property is required for class AdGroupTrackingURLs.");
+                throw new JsonException("Cannot write null property AdGroupTrackingURLs.BuyableButton to non-nullable JSON property 'buyable_button'.");
 
             if (adGroupTrackingURLs.ClickOption.IsSet && adGroupTrackingURLs.Click == null)
-                throw new ArgumentNullException(nameof(adGroupTrackingURLs.Click), "Property is required for class AdGroupTrackingURLs.");
+                throw new JsonException("Cannot write null property AdGroupTrackingURLs.Click to non-nullable JSON property 'click'.");
 
             if (adGroupTrackingURLs.EngagementOption.IsSet && adGroupTrackingURLs.Engagement == null)
-                throw new ArgumentNullException(nameof(adGroupTrackingURLs.Engagement), "Property is required for class AdGroupTrackingURLs.");
+                throw new JsonException("Cannot write null property AdGroupTrackingURLs.Engagement to non-nullable JSON property 'engagement'.");
 
             if (adGroupTrackingURLs.ImpressionOption.IsSet && adGroupTrackingURLs.Impression == null)
-                throw new ArgumentNullException(nameof(adGroupTrackingURLs.Impression), "Property is required for class AdGroupTrackingURLs.");
+                throw new JsonException("Cannot write null property AdGroupTrackingURLs.Impression to non-nullable JSON property 'impression'.");
 
             if (adGroupTrackingURLs.AudienceVerificationOption.IsSet)
             {

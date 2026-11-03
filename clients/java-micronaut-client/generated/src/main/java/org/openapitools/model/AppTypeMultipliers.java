@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   AppTypeMultipliers.JSON_PROPERTY_A_P_P_T_Y_P_E
 })
 @JsonTypeName("AppTypeMultipliers")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AppTypeMultipliers extends HashMap<String, Double> {
     public static final String JSON_PROPERTY_A_P_P_T_Y_P_E = "APP_TYPE";

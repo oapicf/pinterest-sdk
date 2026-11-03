@@ -17,7 +17,7 @@ import AdsCreditDiscountType from './AdsCreditDiscountType';
 /**
  * The AdsCreditDiscountsResponse model module.
  * @module model/AdsCreditDiscountsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdsCreditDiscountsResponse {
     /**

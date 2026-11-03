@@ -22,7 +22,7 @@ data class CampaignAdPreviewDelete200ResponseInner(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: CampaignAdPreviewDelete200ResponseInnerStatus
 ) {
 

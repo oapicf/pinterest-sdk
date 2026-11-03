@@ -36,14 +36,10 @@ import {
 export interface CatalogsFeedValidationDetails {
     /**
      * 
-     * @type {CatalogsFeedValidationErrors}
-     * @memberof CatalogsFeedValidationDetails
      */
     errors: CatalogsFeedValidationErrors;
     /**
      * 
-     * @type {CatalogsFeedValidationWarnings}
-     * @memberof CatalogsFeedValidationDetails
      */
     warnings: CatalogsFeedValidationWarnings;
 }

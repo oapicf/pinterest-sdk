@@ -46,8 +46,6 @@ public class CustomerListUpload  {
   */
   @ApiModelProperty(example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", value = "Error counts by error code")
 
-  @Valid
-
   private List<@Valid ErrorDetail> errorCounts;
 
  /**

@@ -9,10 +9,10 @@ import Foundation
 
 public struct Pin: Sendable, Codable, Hashable {
 
-    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
     public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
     public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)

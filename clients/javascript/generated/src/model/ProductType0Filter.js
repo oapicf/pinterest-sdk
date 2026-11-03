@@ -17,7 +17,7 @@ import CatalogsProductGroupMultipleStringListCriteria from './CatalogsProductGro
 /**
  * The ProductType0Filter model module.
  * @module model/ProductType0Filter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductType0Filter {
     /**

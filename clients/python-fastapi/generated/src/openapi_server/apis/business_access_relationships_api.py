@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.brand_account import BrandAccount
@@ -40,6 +39,7 @@ from openapi_server.models.partner_type import PartnerType
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.system_user_update_with_required_body import SystemUserUpdateWithRequiredBody
 from openapi_server.models.update_business_memberships_response import UpdateBusinessMembershipsResponse
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -66,8 +66,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def brand_accounts_create(
-    business_hierarchy_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="business hierarchy node id")] = Path(..., description="business hierarchy node id", regex=r"^\d+$", min_length=1, max_length=20),
-    brand_account_create: BrandAccountCreate = Body(None, description=""),
+    business_hierarchy_id: Annotated[str, Field(min_length=1, max_length=20, description="business hierarchy node id")] = Path(..., description="business hierarchy node id", regex=r"^\d+$", min_length=1, max_length=20),
+    brand_account_create: BrandAccountCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -95,9 +95,9 @@ async def brand_accounts_create(
     response_model_by_alias=True,
 )
 async def brand_accounts_update(
-    brand_account_id: StrictStr = Path(..., description=""),
-    business_hierarchy_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="business hierarchy node id")] = Path(..., description="business hierarchy node id", regex=r"^\d+$", min_length=1, max_length=20),
-    brand_account_update: BrandAccountUpdate = Body(None, description=""),
+    brand_account_id: str = Path(..., description=""),
+    business_hierarchy_id: Annotated[str, Field(min_length=1, max_length=20, description="business hierarchy node id")] = Path(..., description="business hierarchy node id", regex=r"^\d+$", min_length=1, max_length=20),
+    brand_account_update: BrandAccountUpdate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -124,9 +124,9 @@ async def brand_accounts_update(
     response_model_by_alias=True,
 )
 async def get_business_employers(
-    assets_summary: Annotated[Optional[StrictBool], Field(description="Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(True, description="Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    assets_summary: Annotated[Optional[bool], Field(description="Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(True, description="Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read"]
     ),
@@ -153,14 +153,14 @@ async def get_business_employers(
     response_model_by_alias=True,
 )
 async def get_business_members(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    fetch_system_users: Annotated[Optional[StrictBool], Field(description="Fetches system users if True. Fetches regular user employees if False.")] = Query(False, description="Fetches system users if True. Fetches regular user employees if False.", alias="fetch_system_users"),
-    assets_summary: Annotated[Optional[StrictBool], Field(description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(False, description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    fetch_system_users: Annotated[Optional[bool], Field(description="Fetches system users if True. Fetches regular user employees if False.")] = Query(False, description="Fetches system users if True. Fetches regular user employees if False.", alias="fetch_system_users"),
+    assets_summary: Annotated[Optional[bool], Field(description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(False, description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
     business_roles: Annotated[Optional[List[MemberBusinessRole]], Field(description="A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")] = Query(None, description="A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.", alias="business_roles"),
-    member_ids: Annotated[Optional[Annotated[str, Field(strict=True, max_length=500)]], Field(description="A list of business members ids separated by comma.")] = Query(None, description="A list of business members ids separated by comma.", alias="member_ids", max_length=500),
-    start_index: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="An index to start fetching the results from. Only the results starting from this index will be returned.")] = Query(0, description="An index to start fetching the results from. Only the results starting from this index will be returned.", alias="start_index", ge=0),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    member_ids: Annotated[Optional[Annotated[str, Field(max_length=500)]], Field(description="A list of business members ids separated by comma.")] = Query(None, description="A list of business members ids separated by comma.", alias="member_ids", max_length=500),
+    start_index: Annotated[Optional[Annotated[int, Field(ge=0)]], Field(description="An index to start fetching the results from. Only the results starting from this index will be returned.")] = Query(0, description="An index to start fetching the results from. Only the results starting from this index will be returned.", alias="start_index", ge=0),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read"]
     ),
@@ -182,8 +182,8 @@ async def get_business_members(
     response_model_by_alias=True,
 )
 async def delete_business_membership(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Business id")] = Path(..., description="Business id", regex=r"^\d+$", min_length=1, max_length=20),
-    delete_business_membership_body: DeleteBusinessMembershipBody = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Business id")] = Path(..., description="Business id", regex=r"^\d+$", min_length=1, max_length=20),
+    delete_business_membership_body: DeleteBusinessMembershipBody = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -210,8 +210,8 @@ async def delete_business_membership(
     response_model_by_alias=True,
 )
 async def update_business_memberships(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Business id")] = Path(..., description="Business id", regex=r"^\d+$", min_length=1, max_length=20),
-    business_membership_member: Annotated[List[BusinessMembershipMember], Field(min_length=1)] = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Business id")] = Path(..., description="Business id", regex=r"^\d+$", min_length=1, max_length=20),
+    business_membership_member: Annotated[List[BusinessMembershipMember], Field(min_length=1)] = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:write"]
     ),
@@ -238,14 +238,14 @@ async def update_business_memberships(
     response_model_by_alias=True,
 )
 async def get_business_partners(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    assets_summary: Annotated[Optional[StrictBool], Field(description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(False, description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    assets_summary: Annotated[Optional[bool], Field(description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")] = Query(False, description="Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", alias="assets_summary"),
     partner_type: Annotated[Optional[PartnerType], Field(description="Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.")] = Query(None, description="Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.", alias="partner_type"),
-    partner_ids: Annotated[Optional[Annotated[str, Field(strict=True, max_length=500)]], Field(description="A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.")] = Query(None, description="A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.", alias="partner_ids", max_length=500),
-    start_index: Annotated[Optional[Annotated[int, Field(strict=True, ge=0)]], Field(description="An index to start fetching the results from. Only the results starting from this index will be returned.")] = Query(0, description="An index to start fetching the results from. Only the results starting from this index will be returned.", alias="start_index", ge=0),
-    sort_ascending: Annotated[Optional[StrictBool], Field(description="Sort ascending.")] = Query(None, description="Sort ascending.", alias="sort_ascending"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    partner_ids: Annotated[Optional[Annotated[str, Field(max_length=500)]], Field(description="A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.")] = Query(None, description="A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.", alias="partner_ids", max_length=500),
+    start_index: Annotated[Optional[Annotated[int, Field(ge=0)]], Field(description="An index to start fetching the results from. Only the results starting from this index will be returned.")] = Query(0, description="An index to start fetching the results from. Only the results starting from this index will be returned.", alias="start_index", ge=0),
+    sort_ascending: Annotated[Optional[bool], Field(description="Sort ascending.")] = Query(None, description="Sort ascending.", alias="sort_ascending"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read"]
     ),
@@ -268,8 +268,8 @@ async def get_business_partners(
     response_model_by_alias=True,
 )
 async def delete_business_partners(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    delete_business_partners_delete: DeleteBusinessPartnersDelete = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    delete_business_partners_delete: DeleteBusinessPartnersDelete = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:write"]
     ),
@@ -296,9 +296,9 @@ async def delete_business_partners(
     response_model_by_alias=True,
 )
 async def system_user_update(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    system_user_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of a system user.")] = Path(..., description="Unique identifier of a system user.", regex=r"^\d+$", min_length=1, max_length=20),
-    system_user_update_with_required_body: SystemUserUpdateWithRequiredBody = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    system_user_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of a system user.")] = Path(..., description="Unique identifier of a system user.", regex=r"^\d+$", min_length=1, max_length=20),
+    system_user_update_with_required_body: SystemUserUpdateWithRequiredBody = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),

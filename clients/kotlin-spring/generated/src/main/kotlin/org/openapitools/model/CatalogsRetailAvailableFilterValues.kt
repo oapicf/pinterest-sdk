@@ -27,12 +27,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsRetailAvailableFilterValues(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailAvailableFilterValues.CatalogType = kotlin.String.RETAIL,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filter_values")
+    @param:JsonProperty("filter_values", required = true)
     @get:JsonProperty("filter_values", required = true) val filterValues: CatalogsRetailFilterValuesMap
 ) : CatalogsAvailableFilterValues {
 
@@ -43,12 +43,12 @@ data class CatalogsRetailAvailableFilterValues(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         RETAIL("RETAIL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

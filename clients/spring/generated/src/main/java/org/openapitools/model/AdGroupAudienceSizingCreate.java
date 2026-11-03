@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,25 +30,19 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupAudienceSizingCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean autoTargetingEnabled = true;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<AdGroupAudienceSizingCreativeTypes>> creativeTypes = JsonNullable.<List<AdGroupAudienceSizingCreativeTypes>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid AdGroupAudienceSizingKeyword>> keywords = JsonNullable.<List<@Valid AdGroupAudienceSizingKeyword>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> productGroupIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingSpecOptimal targetingSpec;
 
   public AdGroupAudienceSizingCreate autoTargetingEnabled(Boolean autoTargetingEnabled) {
@@ -79,7 +72,7 @@ public class AdGroupAudienceSizingCreate {
   }
 
   public AdGroupAudienceSizingCreate addCreativeTypesItem(AdGroupAudienceSizingCreativeTypes creativeTypesItem) {
-    if (this.creativeTypes == null || !this.creativeTypes.isPresent()) {
+    if (this.creativeTypes == null || !this.creativeTypes.isPresent() || this.creativeTypes.get() == null) {
       this.creativeTypes = JsonNullable.of(new ArrayList<>());
     }
     this.creativeTypes.get().add(creativeTypesItem);
@@ -90,8 +83,8 @@ public class AdGroupAudienceSizingCreate {
    * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
    */
-  @Valid 
-  @Schema(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("creative_types")
   public JsonNullable<List<AdGroupAudienceSizingCreativeTypes>> getCreativeTypes() {
     return creativeTypes;
@@ -107,7 +100,7 @@ public class AdGroupAudienceSizingCreate {
   }
 
   public AdGroupAudienceSizingCreate addKeywordsItem(AdGroupAudienceSizingKeyword keywordsItem) {
-    if (this.keywords == null || !this.keywords.isPresent()) {
+    if (this.keywords == null || !this.keywords.isPresent() || this.keywords.get() == null) {
       this.keywords = JsonNullable.of(new ArrayList<>());
     }
     this.keywords.get().add(keywordsItem);
@@ -118,8 +111,8 @@ public class AdGroupAudienceSizingCreate {
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
    */
-  @Valid 
-  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("keywords")
   public JsonNullable<List<@Valid AdGroupAudienceSizingKeyword>> getKeywords() {
     return keywords;
@@ -129,7 +122,7 @@ public class AdGroupAudienceSizingCreate {
     this.keywords = keywords;
   }
 
-  public AdGroupAudienceSizingCreate placementGroup(@Nullable AdgroupPlacementGroupType placementGroup) {
+  public AdGroupAudienceSizingCreate placementGroup(AdgroupPlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -141,12 +134,12 @@ public class AdGroupAudienceSizingCreate {
   @Valid 
   @Schema(name = "placement_group", description = "[Placement group](/docs/redoc/#section/Placement-group).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
-  public @Nullable AdgroupPlacementGroupType getPlacementGroup() {
+  public AdgroupPlacementGroupType getPlacementGroup() {
     return placementGroup;
   }
 
   @JsonProperty("placement_group")
-  public void setPlacementGroup(@Nullable AdgroupPlacementGroupType placementGroup) {
+  public void setPlacementGroup(AdgroupPlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
@@ -156,7 +149,7 @@ public class AdGroupAudienceSizingCreate {
   }
 
   public AdGroupAudienceSizingCreate addProductGroupIdsItem(String productGroupIdsItem) {
-    if (this.productGroupIds == null || !this.productGroupIds.isPresent()) {
+    if (this.productGroupIds == null || !this.productGroupIds.isPresent() || this.productGroupIds.get() == null) {
       this.productGroupIds = JsonNullable.of(new ArrayList<>());
     }
     this.productGroupIds.get().add(productGroupIdsItem);
@@ -168,7 +161,7 @@ public class AdGroupAudienceSizingCreate {
    * @return productGroupIds
    */
   
-  @Schema(name = "product_group_ids", description = "Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_group_ids", description = "Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("product_group_ids")
   public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getProductGroupIds() {
     return productGroupIds;

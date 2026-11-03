@@ -6,20 +6,3 @@
 */
 #include "OptimizationType.h"
 
-namespace models {
-
-OptimizationType::OptimizationType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

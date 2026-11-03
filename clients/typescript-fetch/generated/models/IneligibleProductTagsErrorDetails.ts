@@ -29,8 +29,6 @@ import {
 export interface IneligibleProductTagsErrorDetails {
     /**
      * List of product tags that failed eligibility check.
-     * @type {Array<IneligibleProductTagErrorItem>}
-     * @memberof IneligibleProductTagsErrorDetails
      */
     productTags: Array<IneligibleProductTagErrorItem>;
 }

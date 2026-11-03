@@ -653,28 +653,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdUpdateRequest.", nameof(id));
+                throw new JsonException("Property is required for class AdUpdateRequest: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: ad_group_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: creative_type.");
 
             if (isCarting.IsSet && isCarting.Value == null)
-                throw new ArgumentNullException(nameof(isCarting), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: is_carting.");
 
             if (isPinDeleted.IsSet && isPinDeleted.Value == null)
-                throw new ArgumentNullException(nameof(isPinDeleted), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: is_pin_deleted.");
 
             if (isRemovable.IsSet && isRemovable.Value == null)
-                throw new ArgumentNullException(nameof(isRemovable), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: is_removable.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class AdUpdateRequest.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequest: status.");
 
             return new AdUpdateRequest(id.Value!, pinId, adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl);
         }
@@ -685,7 +685,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdUpdateRequest adUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -700,14 +699,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdUpdateRequest adUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adUpdateRequest.Id == null)
-                throw new ArgumentNullException(nameof(adUpdateRequest.Id), "Property is required for class AdUpdateRequest.");
-
             if (adUpdateRequest.AdGroupIdOption.IsSet && adUpdateRequest.AdGroupId == null)
-                throw new ArgumentNullException(nameof(adUpdateRequest.AdGroupId), "Property is required for class AdUpdateRequest.");
+                throw new JsonException("Cannot write null property AdUpdateRequest.AdGroupId to non-nullable JSON property 'ad_group_id'.");
+
+            if (adUpdateRequest.CreativeTypeOption.IsSet && adUpdateRequest.CreativeType == null)
+                throw new JsonException("Cannot write null property AdUpdateRequest.CreativeType to non-nullable JSON property 'creative_type'.");
+
+            if (adUpdateRequest.IsCartingOption.IsSet && adUpdateRequest.IsCarting == null)
+                throw new JsonException("Cannot write null property AdUpdateRequest.IsCarting to non-nullable JSON property 'is_carting'.");
+
+            if (adUpdateRequest.IsPinDeletedOption.IsSet && adUpdateRequest.IsPinDeleted == null)
+                throw new JsonException("Cannot write null property AdUpdateRequest.IsPinDeleted to non-nullable JSON property 'is_pin_deleted'.");
+
+            if (adUpdateRequest.IsRemovableOption.IsSet && adUpdateRequest.IsRemovable == null)
+                throw new JsonException("Cannot write null property AdUpdateRequest.IsRemovable to non-nullable JSON property 'is_removable'.");
+
+            if (adUpdateRequest.StatusOption.IsSet && adUpdateRequest.Status == null)
+                throw new JsonException("Cannot write null property AdUpdateRequest.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("id", adUpdateRequest.Id);
 

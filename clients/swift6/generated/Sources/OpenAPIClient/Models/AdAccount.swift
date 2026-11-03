@@ -9,7 +9,7 @@ import Foundation
 
 public struct AdAccount: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
     public var country: Country?
     /**  Creation time. Unix timestamp in seconds. */

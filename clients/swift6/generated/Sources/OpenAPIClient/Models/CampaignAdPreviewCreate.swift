@@ -10,7 +10,7 @@ import Foundation
 /** Resource create operation model. */
 public struct CampaignAdPreviewCreate: Sendable, Codable, Hashable {
 
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     /** Ad group ID to create a preview record for. */
     public var adGroupId: String
 

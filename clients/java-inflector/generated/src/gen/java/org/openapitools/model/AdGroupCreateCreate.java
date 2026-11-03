@@ -32,7 +32,7 @@ import org.openapitools.model.TargetingSpecOptimal;
  **/
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateCreate   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled;
@@ -53,7 +53,7 @@ public class AdGroupCreateCreate   {
   private Integer budgetInMicroCurrency;
 
   @JsonProperty("budget_type")
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @JsonProperty("campaign_id")
   private String campaignId;
@@ -89,7 +89,7 @@ public class AdGroupCreateCreate   {
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
 
   @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   @JsonProperty("performance_plus_campaign_settings")
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;

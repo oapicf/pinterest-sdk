@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
  * TargetingSpecOperationMinimumAge
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOperationMinimumAge implements TargetingSpecOperations {
 
   /**
@@ -165,8 +165,8 @@ public class TargetingSpecOperationMinimumAge implements TargetingSpecOperations
    * Get value
    * @return value
    */
-  @NotNull @Pattern(regexp = "^\\d+\\+?$") 
-  @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Pattern(regexp = "^\\d+\\+?$") 
+  @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("value")
   public JsonNullable<@Pattern(regexp = "^\\d+\\+?$") String> getValue() {
     return value;

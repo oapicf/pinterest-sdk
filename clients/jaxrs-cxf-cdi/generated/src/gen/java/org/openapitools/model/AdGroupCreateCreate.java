@@ -48,7 +48,7 @@ public class AdGroupCreateCreate   {
 
   private Integer budgetInMicroCurrency;
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   private String campaignId;
 
@@ -72,7 +72,7 @@ public class AdGroupCreateCreate   {
 
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;
 

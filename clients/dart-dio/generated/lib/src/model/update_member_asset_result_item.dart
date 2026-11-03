@@ -108,3 +108,4 @@ class _$UpdateMemberAssetResultItemSerializer implements PrimitiveSerializer<Upd
   }
 }
 
+

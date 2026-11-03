@@ -252,3 +252,4 @@ class _$CatalogsFeedsUpdateRequestSerializer implements PrimitiveSerializer<Cata
   }
 }
 
+

@@ -204,28 +204,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!createdAt.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestion.", nameof(createdAt));
+                throw new JsonException("Property is required for class CatalogsFeedIngestion: created_at.");
 
             if (!feedId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestion.", nameof(feedId));
+                throw new JsonException("Property is required for class CatalogsFeedIngestion: feed_id.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestion.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsFeedIngestion: id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestion.", nameof(status));
+                throw new JsonException("Property is required for class CatalogsFeedIngestion: status.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class CatalogsFeedIngestion.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestion: created_at.");
 
             if (feedId.IsSet && feedId.Value == null)
-                throw new ArgumentNullException(nameof(feedId), "Property is not nullable for class CatalogsFeedIngestion.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestion: feed_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsFeedIngestion.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestion: id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsFeedIngestion.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestion: status.");
 
             return new CatalogsFeedIngestion(createdAt.Value!.Value!, feedId.Value!, id.Value!, status.Value!.Value!);
         }
@@ -236,7 +236,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedIngestion catalogsFeedIngestion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -251,15 +250,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedIngestion catalogsFeedIngestion, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedIngestion.FeedId == null)
-                throw new ArgumentNullException(nameof(catalogsFeedIngestion.FeedId), "Property is required for class CatalogsFeedIngestion.");
-
-            if (catalogsFeedIngestion.Id == null)
-                throw new ArgumentNullException(nameof(catalogsFeedIngestion.Id), "Property is required for class CatalogsFeedIngestion.");
-
             writer.WriteString("created_at", catalogsFeedIngestion.CreatedAt.ToString(CreatedAtFormat));
 
             writer.WriteString("feed_id", catalogsFeedIngestion.FeedId);

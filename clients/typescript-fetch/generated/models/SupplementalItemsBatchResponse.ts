@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { SupplementalOperationResult } from './SupplementalOperationResult';
 import {
     SupplementalOperationResultFromJSON,
@@ -36,32 +36,22 @@ import {
 export interface SupplementalItemsBatchResponse {
     /**
      * Id of the batch operation
-     * @type {string}
-     * @memberof SupplementalItemsBatchResponse
      */
     readonly batchId: string;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-     * @type {Date}
-     * @memberof SupplementalItemsBatchResponse
      */
     readonly completedTime?: Date;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-     * @type {Date}
-     * @memberof SupplementalItemsBatchResponse
      */
     readonly createdTime: Date;
     /**
      * Array of operation results
-     * @type {Array<SupplementalOperationResult>}
-     * @memberof SupplementalItemsBatchResponse
      */
     readonly operationResults: Array<SupplementalOperationResult>;
     /**
      * Status of the batch: PROCESSING, COMPLETED, FAILED
-     * @type {SupplementalItemBatchOperationStatus}
-     * @memberof SupplementalItemsBatchResponse
      */
     readonly status: SupplementalItemBatchOperationStatus;
 }
@@ -90,8 +80,8 @@ export function SupplementalItemsBatchResponseFromJSONTyped(json: any, ignoreDis
     return {
         
         'batchId': json['batch_id'],
-        'completedTime': json['completed_time'] == null ? undefined : (new Date(json['completed_time'])),
-        'createdTime': (new Date(json['created_time'])),
+        'completedTime': json['completed_time'] == null ? undefined : (parseDateTime(json['completed_time'])),
+        'createdTime': (json['created_time'] == null ? json['created_time'] : parseDateTime(json['created_time'])),
         'operationResults': ((json['operation_results'] as Array<any>).map(SupplementalOperationResultFromJSON)),
         'status': SupplementalItemBatchOperationStatusFromJSON(json['status']),
     };

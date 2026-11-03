@@ -400,55 +400,55 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class Promotion.", nameof(adAccountId));
+                throw new JsonException("Property is required for class Promotion: ad_account_id.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Promotion.", nameof(id));
+                throw new JsonException("Property is required for class Promotion: id.");
 
             if (!promotionTitle.IsSet)
-                throw new ArgumentException("Property is required for class Promotion.", nameof(promotionTitle));
+                throw new JsonException("Property is required for class Promotion: promotion_title.");
 
             if (!promotionType.IsSet)
-                throw new ArgumentException("Property is required for class Promotion.", nameof(promotionType));
+                throw new JsonException("Property is required for class Promotion: promotion_type.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: ad_account_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: id.");
 
             if (promotionTitle.IsSet && promotionTitle.Value == null)
-                throw new ArgumentNullException(nameof(promotionTitle), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: promotion_title.");
 
             if (promotionType.IsSet && promotionType.Value == null)
-                throw new ArgumentNullException(nameof(promotionType), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: promotion_type.");
 
             if (discountStatus.IsSet && discountStatus.Value == null)
-                throw new ArgumentNullException(nameof(discountStatus), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: discount_status.");
 
             if (endTime.IsSet && endTime.Value == null)
-                throw new ArgumentNullException(nameof(endTime), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: end_time.");
 
             if (externalId.IsSet && externalId.Value == null)
-                throw new ArgumentNullException(nameof(externalId), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: external_id.");
 
             if (platformType.IsSet && platformType.Value == null)
-                throw new ArgumentNullException(nameof(platformType), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: platform_type.");
 
             if (promotionCode.IsSet && promotionCode.Value == null)
-                throw new ArgumentNullException(nameof(promotionCode), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: promotion_code.");
 
             if (promotionCustomId.IsSet && promotionCustomId.Value == null)
-                throw new ArgumentNullException(nameof(promotionCustomId), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: promotion_custom_id.");
 
             if (startTime.IsSet && startTime.Value == null)
-                throw new ArgumentNullException(nameof(startTime), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: start_time.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: status.");
 
             if (templateValues.IsSet && templateValues.Value == null)
-                throw new ArgumentNullException(nameof(templateValues), "Property is not nullable for class Promotion.");
+                throw new JsonException("Property is not nullable for class Promotion: template_values.");
 
             return new Promotion(adAccountId.Value!, id.Value!, promotionTitle.Value!, promotionType.Value!.Value!, discountStatus, endTime, externalId, platformType, promotionCode, promotionCustomId, startTime, status, templateValues);
         }
@@ -459,7 +459,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Promotion promotion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -474,32 +473,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Promotion promotion, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (promotion.AdAccountId == null)
-                throw new ArgumentNullException(nameof(promotion.AdAccountId), "Property is required for class Promotion.");
+            if (promotion.DiscountStatusOption.IsSet && promotion.DiscountStatus == null)
+                throw new JsonException("Cannot write null property Promotion.DiscountStatus to non-nullable JSON property 'discount_status'.");
 
-            if (promotion.Id == null)
-                throw new ArgumentNullException(nameof(promotion.Id), "Property is required for class Promotion.");
-
-            if (promotion.PromotionTitle == null)
-                throw new ArgumentNullException(nameof(promotion.PromotionTitle), "Property is required for class Promotion.");
+            if (promotion.EndTimeOption.IsSet && promotion.EndTime == null)
+                throw new JsonException("Cannot write null property Promotion.EndTime to non-nullable JSON property 'end_time'.");
 
             if (promotion.ExternalIdOption.IsSet && promotion.ExternalId == null)
-                throw new ArgumentNullException(nameof(promotion.ExternalId), "Property is required for class Promotion.");
+                throw new JsonException("Cannot write null property Promotion.ExternalId to non-nullable JSON property 'external_id'.");
 
             if (promotion.PlatformTypeOption.IsSet && promotion.PlatformType == null)
-                throw new ArgumentNullException(nameof(promotion.PlatformType), "Property is required for class Promotion.");
+                throw new JsonException("Cannot write null property Promotion.PlatformType to non-nullable JSON property 'platform_type'.");
 
             if (promotion.PromotionCodeOption.IsSet && promotion.PromotionCode == null)
-                throw new ArgumentNullException(nameof(promotion.PromotionCode), "Property is required for class Promotion.");
+                throw new JsonException("Cannot write null property Promotion.PromotionCode to non-nullable JSON property 'promotion_code'.");
 
             if (promotion.PromotionCustomIdOption.IsSet && promotion.PromotionCustomId == null)
-                throw new ArgumentNullException(nameof(promotion.PromotionCustomId), "Property is required for class Promotion.");
+                throw new JsonException("Cannot write null property Promotion.PromotionCustomId to non-nullable JSON property 'promotion_custom_id'.");
+
+            if (promotion.StartTimeOption.IsSet && promotion.StartTime == null)
+                throw new JsonException("Cannot write null property Promotion.StartTime to non-nullable JSON property 'start_time'.");
+
+            if (promotion.StatusOption.IsSet && promotion.Status == null)
+                throw new JsonException("Cannot write null property Promotion.Status to non-nullable JSON property 'status'.");
 
             if (promotion.TemplateValuesOption.IsSet && promotion.TemplateValues == null)
-                throw new ArgumentNullException(nameof(promotion.TemplateValues), "Property is required for class Promotion.");
+                throw new JsonException("Cannot write null property Promotion.TemplateValues to non-nullable JSON property 'template_values'.");
 
             writer.WriteString("ad_account_id", promotion.AdAccountId);
 

@@ -6,20 +6,3 @@
 */
 #include "IntegrationLogEventType.h"
 
-namespace models {
-
-IntegrationLogEventType::IntegrationLogEventType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

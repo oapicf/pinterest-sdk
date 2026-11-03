@@ -29,27 +29,19 @@ import {
 export interface CatalogsProductGroupUpdateRequest {
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupUpdateRequest
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsProductGroupFiltersRequest}
-     * @memberof CatalogsProductGroupUpdateRequest
      */
     filters?: CatalogsProductGroupFiltersRequest;
     /**
      * boolean indicator of whether the product group is being featured or not
-     * @type {boolean}
-     * @memberof CatalogsProductGroupUpdateRequest
      * @deprecated
      */
     isFeatured?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupUpdateRequest
      */
     name?: string;
 }

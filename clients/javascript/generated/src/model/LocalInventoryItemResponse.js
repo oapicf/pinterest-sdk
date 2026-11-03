@@ -18,7 +18,7 @@ import StoreMetadata from './StoreMetadata';
 /**
  * The LocalInventoryItemResponse model module.
  * @module model/LocalInventoryItemResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalInventoryItemResponse {
     /**

@@ -18,7 +18,7 @@ import PinMediaSource from './PinMediaSource';
 /**
  * The PinCreate model module.
  * @module model/PinCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinCreate {
     /**

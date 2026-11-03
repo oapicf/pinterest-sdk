@@ -208,16 +208,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (addressId.IsSet && addressId.Value == null)
-                throw new ArgumentNullException(nameof(addressId), "Property is not nullable for class SSIOAccountAddress.");
+                throw new JsonException("Property is not nullable for class SSIOAccountAddress: address_id.");
 
             if (display.IsSet && display.Value == null)
-                throw new ArgumentNullException(nameof(display), "Property is not nullable for class SSIOAccountAddress.");
+                throw new JsonException("Property is not nullable for class SSIOAccountAddress: display.");
 
             if (orderLegalEntity.IsSet && orderLegalEntity.Value == null)
-                throw new ArgumentNullException(nameof(orderLegalEntity), "Property is not nullable for class SSIOAccountAddress.");
+                throw new JsonException("Property is not nullable for class SSIOAccountAddress: order_legal_entity.");
 
             if (purpose.IsSet && purpose.Value == null)
-                throw new ArgumentNullException(nameof(purpose), "Property is not nullable for class SSIOAccountAddress.");
+                throw new JsonException("Property is not nullable for class SSIOAccountAddress: purpose.");
 
             return new SSIOAccountAddress(addressId, display, orderLegalEntity, purpose);
         }
@@ -228,7 +228,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOAccountAddress"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOAccountAddress sSIOAccountAddress, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -243,20 +242,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOAccountAddress"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOAccountAddress sSIOAccountAddress, JsonSerializerOptions jsonSerializerOptions)
         {
             if (sSIOAccountAddress.AddressIdOption.IsSet && sSIOAccountAddress.AddressId == null)
-                throw new ArgumentNullException(nameof(sSIOAccountAddress.AddressId), "Property is required for class SSIOAccountAddress.");
+                throw new JsonException("Cannot write null property SSIOAccountAddress.AddressId to non-nullable JSON property 'address_id'.");
 
             if (sSIOAccountAddress.DisplayOption.IsSet && sSIOAccountAddress.Display == null)
-                throw new ArgumentNullException(nameof(sSIOAccountAddress.Display), "Property is required for class SSIOAccountAddress.");
+                throw new JsonException("Cannot write null property SSIOAccountAddress.Display to non-nullable JSON property 'display'.");
 
             if (sSIOAccountAddress.OrderLegalEntityOption.IsSet && sSIOAccountAddress.OrderLegalEntity == null)
-                throw new ArgumentNullException(nameof(sSIOAccountAddress.OrderLegalEntity), "Property is required for class SSIOAccountAddress.");
+                throw new JsonException("Cannot write null property SSIOAccountAddress.OrderLegalEntity to non-nullable JSON property 'order_legal_entity'.");
 
             if (sSIOAccountAddress.PurposeOption.IsSet && sSIOAccountAddress.Purpose == null)
-                throw new ArgumentNullException(nameof(sSIOAccountAddress.Purpose), "Property is required for class SSIOAccountAddress.");
+                throw new JsonException("Cannot write null property SSIOAccountAddress.Purpose to non-nullable JSON property 'purpose'.");
 
             if (sSIOAccountAddress.AddressIdOption.IsSet)
                 writer.WriteString("address_id", sSIOAccountAddress.AddressId);

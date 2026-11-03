@@ -9,7 +9,7 @@ import Foundation
 
 public struct CancelInviteResult: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var id: String?
     public var inviteData: InviteDataResponse?
     public var isReceivedInvite: Bool?

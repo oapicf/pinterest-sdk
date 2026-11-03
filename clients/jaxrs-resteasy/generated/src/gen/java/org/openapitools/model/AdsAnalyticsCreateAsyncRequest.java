@@ -31,7 +31,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
@@ -44,27 +44,27 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
   private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
   private List<ReportingColumnAsync> columns = new ArrayList<>();
   private Boolean combineTargetingTypes = false;
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
   private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
   private String endDate;
   private Integer endHour;
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
   private Granularity granularity;
   private MetricsReportingLevel level;
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
   private ReportingTimeZone reportingTimezone;
   private String startDate;
   private Integer startHour;
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   /**
    * List of ad group ids
@@ -85,8 +85,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of values for filtering")
   @JsonProperty("ad_group_statuses")
- @Size(min=1,max=6)  @Valid
-  public List<AdGroupSummaryStatus> getAdGroupStatuses() {
+ @Size(min=1,max=6)  public List<AdGroupSummaryStatus> getAdGroupStatuses() {
     return adGroupStatuses;
   }
   public void setAdGroupStatuses(List<AdGroupSummaryStatus> adGroupStatuses) {
@@ -112,8 +111,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of values for filtering. This parameter is not supported for Product Item level reports.")
   @JsonProperty("ad_statuses")
- @Size(min=1,max=6)  @Valid
-  public List<PinPromotionSummaryStatus> getAdStatuses() {
+ @Size(min=1,max=6)  public List<PinPromotionSummaryStatus> getAdStatuses() {
     return adStatuses;
   }
   public void setAdStatuses(List<PinPromotionSummaryStatus> adStatuses) {
@@ -126,7 +124,6 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of attribution types for the conversion report.")
   @JsonProperty("attribution_types")
-  @Valid
   public List<ConversionReportAttributionType> getAttributionTypes() {
     return attributionTypes;
   }
@@ -179,8 +176,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.")
   @JsonProperty("campaign_objective_types")
- @Size(min=1,max=7)  @Valid
-  public List<CampaignObjectiveType> getCampaignObjectiveTypes() {
+ @Size(min=1,max=7)  public List<CampaignObjectiveType> getCampaignObjectiveTypes() {
     return campaignObjectiveTypes;
   }
   public void setCampaignObjectiveTypes(List<CampaignObjectiveType> campaignObjectiveTypes) {
@@ -193,8 +189,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of status values for filtering")
   @JsonProperty("campaign_statuses")
- @Size(min=1,max=6)  @Valid
-  public List<CampaignSummaryStatus> getCampaignStatuses() {
+ @Size(min=1,max=6)  public List<CampaignSummaryStatus> getCampaignStatuses() {
     return campaignStatuses;
   }
   public void setCampaignStatuses(List<CampaignSummaryStatus> campaignStatuses) {
@@ -221,7 +216,6 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.")
   @JsonProperty("columns")
-  @Valid
   public List<ReportingColumnAsync> getColumns() {
     return columns;
   }
@@ -262,7 +256,6 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
   @JsonProperty("custom_conversion_event_metrics")
-  @Valid
   public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
     return customConversionEventMetrics;
   }
@@ -348,8 +341,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of metrics filters")
   @JsonProperty("metrics_filters")
- @Size(min=1)  @Valid
-  public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
+ @Size(min=1)  public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
     return metricsFilters;
   }
   public void setMetricsFilters(List<@Valid AdsAnalyticsMetricsFilter> metricsFilters) {
@@ -388,8 +380,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of values for filtering")
   @JsonProperty("product_group_statuses")
- @Size(min=1,max=6)  @Valid
-  public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
+ @Size(min=1,max=6)  public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
     return productGroupStatuses;
   }
   public void setProductGroupStatuses(List<ProductGroupSummaryStatus> productGroupStatuses) {
@@ -471,8 +462,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
   @JsonProperty("targeting_types")
- @Size(min=1,max=5)  @Valid
-  public List<AdAdsAnalyticsAsyncTargetingTypes> getTargetingTypes() {
+ @Size(min=1,max=5)  public List<AdAdsAnalyticsAsyncTargetingTypes> getTargetingTypes() {
     return targetingTypes;
   }
   public void setTargetingTypes(List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes) {

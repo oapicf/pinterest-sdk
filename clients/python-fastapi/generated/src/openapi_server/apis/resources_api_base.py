@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.ad_account_countries_get200_response import AdAccountCountriesGet200Response
@@ -44,7 +44,7 @@ class BaseResourcesApi:
 
     async def metrics_ready_state_get(
         self,
-        var_date: Annotated[str, Field(strict=True, description="Analytics reports request date (UTC). Format: YYYY-MM-DD")],
+        var_date: Annotated[str, Field(description="Analytics reports request date (UTC). Format: YYYY-MM-DD")],
     ) -> BookClosed:
         """Learn whether conversion or non-conversion metrics are finalized and ready to query."""
         ...
@@ -52,7 +52,7 @@ class BaseResourcesApi:
 
     async def interest_targeting_options_get(
         self,
-        interest_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an interest.")],
+        interest_id: Annotated[str, Field(max_length=18, description="Unique identifier of an interest.")],
     ) -> SingleInterestTargetingOption:
         """Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875) for a spreadsheet listing interests and their IDs."""
         ...
@@ -61,10 +61,10 @@ class BaseResourcesApi:
     async def targeting_options_get(
         self,
         targeting_type: Annotated[PublicTargetingType, Field(description="Public targeting type")],
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
-        client_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Client ID")],
-        oauth_signature: Annotated[Optional[StrictStr], Field(description="Oauth signature")],
-        timestamp: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Timestamp.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        client_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Client ID")],
+        oauth_signature: Annotated[Optional[str], Field(description="Oauth signature")],
+        timestamp: Annotated[Optional[str], Field(description="Timestamp.")],
     ) -> List[object]:
         """    You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      &#x60;&#x60;&#x60;     [{\&quot;36313\&quot;: \&quot;Australia: Moreton Bay - North\&quot;, \&quot;124735\&quot;: \&quot;Canada: North Battleford\&quot;, \&quot;36109\&quot;: \&quot;Australia: Murray\&quot;, \&quot;36108\&quot;: \&quot;Australia: Mid North Coast\&quot;, \&quot;36101\&quot;: \&quot;Australia: Capital Region\&quot;, \&quot;811\&quot;: \&quot;U.S.: Reno\&quot;, \&quot;36103\&quot;: \&quot;Australia: Central West\&quot;, \&quot;36102\&quot;: \&quot;Australia: Central Coast\&quot;, \&quot;36105\&quot;: \&quot;Australia: Far West and Orana\&quot;, \&quot;36104\&quot;: \&quot;Australia: Coffs Harbour - Grafton\&quot;, \&quot;36107\&quot;: \&quot;Australia: Illawarra\&quot;, \&quot;36106\&quot;: \&quot;Australia: Hunter Valley Exc Newcastle\&quot;, \&quot;554017\&quot;: \&quot;New Zealand: Wanganui\&quot;, \&quot;554016\&quot;: \&quot;New Zealand: Marlborough\&quot;, \&quot;554015\&quot;: \&quot;New Zealand: Gisborne\&quot;, \&quot;554014\&quot;: \&quot;New Zealand: Tararua\&quot;, \&quot;554013\&quot;: \&quot;New Zealand: Invercargill\&quot;, \&quot;GR\&quot;: \&quot;Greece\&quot;, \&quot;554011\&quot;: \&quot;New Zealand: Whangarei\&quot;, \&quot;554010\&quot;: \&quot;New Zealand: Far North\&quot;, \&quot;717\&quot;: \&quot;U.S.: Quincy-Hannibal-Keokuk\&quot;, \&quot;716\&quot;: \&quot;U.S.: Baton Rouge\&quot;,...}]     &#x60;&#x60;&#x60;"""
         ...

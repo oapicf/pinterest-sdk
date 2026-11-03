@@ -25,16 +25,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LabelBulkUpdateRequest(
 
     @Schema(required = true, description = "Label ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(required = true, description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-    @param:JsonProperty("parent_id")
+    @param:JsonProperty("parent_id", required = true)
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: LabelStatusBulkUpdate
 ) {
 

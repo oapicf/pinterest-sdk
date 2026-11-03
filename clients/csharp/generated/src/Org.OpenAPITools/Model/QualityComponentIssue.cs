@@ -162,22 +162,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class QualityComponentIssue.", nameof(id));
+                throw new JsonException("Property is required for class QualityComponentIssue: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class QualityComponentIssue.", nameof(name));
+                throw new JsonException("Property is required for class QualityComponentIssue: name.");
 
             if (!reason.IsSet)
-                throw new ArgumentException("Property is required for class QualityComponentIssue.", nameof(reason));
+                throw new JsonException("Property is required for class QualityComponentIssue: reason.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class QualityComponentIssue.");
+                throw new JsonException("Property is not nullable for class QualityComponentIssue: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class QualityComponentIssue.");
+                throw new JsonException("Property is not nullable for class QualityComponentIssue: name.");
 
             if (reason.IsSet && reason.Value == null)
-                throw new ArgumentNullException(nameof(reason), "Property is not nullable for class QualityComponentIssue.");
+                throw new JsonException("Property is not nullable for class QualityComponentIssue: reason.");
 
             return new QualityComponentIssue(id.Value!, name.Value!, reason.Value!);
         }
@@ -188,7 +188,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponentIssue"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QualityComponentIssue qualityComponentIssue, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -203,18 +202,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponentIssue"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QualityComponentIssue qualityComponentIssue, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (qualityComponentIssue.Id == null)
-                throw new ArgumentNullException(nameof(qualityComponentIssue.Id), "Property is required for class QualityComponentIssue.");
-
-            if (qualityComponentIssue.Name == null)
-                throw new ArgumentNullException(nameof(qualityComponentIssue.Name), "Property is required for class QualityComponentIssue.");
-
-            if (qualityComponentIssue.Reason == null)
-                throw new ArgumentNullException(nameof(qualityComponentIssue.Reason), "Property is required for class QualityComponentIssue.");
-
             writer.WriteString("id", qualityComponentIssue.Id);
 
             writer.WriteString("name", qualityComponentIssue.Name);

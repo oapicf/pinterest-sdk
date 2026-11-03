@@ -23,10 +23,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Metrics for a specific event type within a quality component.")
 @JsonTypeName("QualityComponentDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponentDetails   {
   private BigDecimal coverage;
-  private @Valid List<@Valid QualityComponentIssue> issues = new ArrayList<>();
+  private List<@Valid QualityComponentIssue> issues = new ArrayList<>();
   private BigDecimal overlap;
 
   public QualityComponentDetails() {
@@ -70,7 +70,7 @@ public class QualityComponentDetails   {
   
   @ApiModelProperty(value = "List of issues detected for this event type, if any.")
   @JsonProperty("issues")
-  @Valid public List<@Valid QualityComponentIssue> getIssues() {
+  public List<@Valid QualityComponentIssue> getIssues() {
     return issues;
   }
 

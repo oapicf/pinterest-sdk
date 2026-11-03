@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class NullableEntityStatus
-{
-public:
-
-    NullableEntityStatus();
-    virtual ~NullableEntityStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullableEntityStatus,
-        )
-
-private:
+enum class NullableEntityStatus {
+    
+    ACTIVE,
+    
+    PAUSED,
+    
+    ARCHIVED,
+    
+    DRAFT,
+    
+    DELETED_DRAFT
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullableEntityStatus& value)
+{
+    switch (value)
+    {
+        
+        case NullableEntityStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case NullableEntityStatus::PAUSED: j = "PAUSED"; break;
+        
+        case NullableEntityStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case NullableEntityStatus::DRAFT: j = "DRAFT"; break;
+        
+        case NullableEntityStatus::DELETED_DRAFT: j = "DELETED_DRAFT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullableEntityStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullableEntityStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = NullableEntityStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = NullableEntityStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = NullableEntityStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "DRAFT")
+    {
+        value = NullableEntityStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "DELETED_DRAFT")
+    {
+        value = NullableEntityStatus::DELETED_DRAFT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullableEntityStatus", &j);
+}
 
 } // namespace models
 

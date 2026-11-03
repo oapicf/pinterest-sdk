@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BatchOperationStatus
-{
-public:
-
-    BatchOperationStatus();
-    virtual ~BatchOperationStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BatchOperationStatus,
-        )
-
-private:
+enum class BatchOperationStatus {
+    
+    PROCESSING,
+    
+    COMPLETED,
+    
+    FAILED
+    
 };
 
+inline void to_json(nlohmann::json& j, const BatchOperationStatus& value)
+{
+    switch (value)
+    {
+        
+        case BatchOperationStatus::PROCESSING: j = "PROCESSING"; break;
+        
+        case BatchOperationStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case BatchOperationStatus::FAILED: j = "FAILED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BatchOperationStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BatchOperationStatus& value)
+{
+    
+    if (j == "PROCESSING")
+    {
+        value = BatchOperationStatus::PROCESSING;
+        return;
+    }
+    
+    if (j == "COMPLETED")
+    {
+        value = BatchOperationStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = BatchOperationStatus::FAILED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BatchOperationStatus", &j);
+}
 
 } // namespace models
 

@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * ImageDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ImageDetails {
 
   private JsonNullable<Integer> height = JsonNullable.<Integer>undefined();
@@ -49,7 +49,7 @@ public class ImageDetails {
    * Get height
    * @return height
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("height")
   public JsonNullable<Integer> getHeight() {
@@ -89,7 +89,7 @@ public class ImageDetails {
    * Get width
    * @return width
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("width")
   public JsonNullable<Integer> getWidth() {

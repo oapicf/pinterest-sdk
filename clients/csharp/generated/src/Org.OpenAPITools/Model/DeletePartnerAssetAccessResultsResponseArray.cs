@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class DeletePartnerAssetAccessResultsResponseArray.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResultsResponseArray: items.");
 
             return new DeletePartnerAssetAccessResultsResponseArray(items);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeletePartnerAssetAccessResultsResponseArray deletePartnerAssetAccessResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             if (deletePartnerAssetAccessResultsResponseArray.ItemsOption.IsSet && deletePartnerAssetAccessResultsResponseArray.Items == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessResultsResponseArray.Items), "Property is required for class DeletePartnerAssetAccessResultsResponseArray.");
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResultsResponseArray.Items to non-nullable JSON property 'items'.");
 
             if (deletePartnerAssetAccessResultsResponseArray.ItemsOption.IsSet)
             {

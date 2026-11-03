@@ -176,16 +176,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!interest.IsSet)
-                throw new ArgumentException("Property is required for class FeaturedTrend.", nameof(interest));
+                throw new JsonException("Property is required for class FeaturedTrend: interest.");
 
             if (interest.IsSet && interest.Value == null)
-                throw new ArgumentNullException(nameof(interest), "Property is not nullable for class FeaturedTrend.");
+                throw new JsonException("Property is not nullable for class FeaturedTrend: interest.");
 
             if (market.IsSet && market.Value == null)
-                throw new ArgumentNullException(nameof(market), "Property is not nullable for class FeaturedTrend.");
+                throw new JsonException("Property is not nullable for class FeaturedTrend: market.");
 
             if (trends.IsSet && trends.Value == null)
-                throw new ArgumentNullException(nameof(trends), "Property is not nullable for class FeaturedTrend.");
+                throw new JsonException("Property is not nullable for class FeaturedTrend: trends.");
 
             return new FeaturedTrend(interest.Value!.Value!, market, trends);
         }
@@ -196,7 +196,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="featuredTrend"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, FeaturedTrend featuredTrend, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -211,11 +210,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="featuredTrend"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, FeaturedTrend featuredTrend, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (featuredTrend.MarketOption.IsSet && featuredTrend.Market == null)
+                throw new JsonException("Cannot write null property FeaturedTrend.Market to non-nullable JSON property 'market'.");
+
             if (featuredTrend.TrendsOption.IsSet && featuredTrend.Trends == null)
-                throw new ArgumentNullException(nameof(featuredTrend.Trends), "Property is required for class FeaturedTrend.");
+                throw new JsonException("Cannot write null property FeaturedTrend.Trends to non-nullable JSON property 'trends'.");
 
             var interestRawValue = InterestsEnumValueConverter.ToJsonValue(featuredTrend.Interest);
             writer.WriteString("interest", interestRawValue);

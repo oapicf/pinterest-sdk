@@ -18,7 +18,7 @@ import PartnerMetadata from './PartnerMetadata';
 /**
  * The LeadSubscriptionPostParamsCreate model module.
  * @module model/LeadSubscriptionPostParamsCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LeadSubscriptionPostParamsCreate {
     /**

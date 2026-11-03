@@ -23,7 +23,6 @@ public class ConversionEvents  {
   * Specific messages for each event received. The order will match the order in which the events were received in the request.
   */
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
-  @Valid
   private List<@Valid ConversionApiResponseEventsItems> events = new ArrayList<>();
 
  /**

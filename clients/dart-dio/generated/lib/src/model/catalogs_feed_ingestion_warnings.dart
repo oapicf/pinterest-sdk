@@ -1808,3 +1808,4 @@ class _$CatalogsFeedIngestionWarningsSerializer implements PrimitiveSerializer<C
   }
 }
 
+

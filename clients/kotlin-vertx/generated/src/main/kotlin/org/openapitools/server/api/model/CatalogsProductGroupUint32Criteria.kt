@@ -19,8 +19,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
- * @param &#x60;operator&#x60; 
- * @param &#x60;value&#x60; 
+ * @param `operator` 
+ * @param `value` 
  * @param negated 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

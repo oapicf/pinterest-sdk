@@ -198,16 +198,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupUpdateRequestAllOf1.", nameof(id));
+                throw new JsonException("Property is required for class AdGroupUpdateRequestAllOf1: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdGroupUpdateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupUpdateRequestAllOf1: id.");
 
             if (bidMultiplier.IsSet && bidMultiplier.Value == null)
-                throw new ArgumentNullException(nameof(bidMultiplier), "Property is not nullable for class AdGroupUpdateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupUpdateRequestAllOf1: bid_multiplier.");
 
             if (targetingSpecOperations.IsSet && targetingSpecOperations.Value == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperations), "Property is not nullable for class AdGroupUpdateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupUpdateRequestAllOf1: targeting_spec_operations.");
 
             return new AdGroupUpdateRequestAllOf1(id.Value!, bidMultiplier, targetingSpecOperations);
         }
@@ -218,7 +218,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupUpdateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupUpdateRequestAllOf1 adGroupUpdateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -233,14 +232,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupUpdateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupUpdateRequestAllOf1 adGroupUpdateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adGroupUpdateRequestAllOf1.Id == null)
-                throw new ArgumentNullException(nameof(adGroupUpdateRequestAllOf1.Id), "Property is required for class AdGroupUpdateRequestAllOf1.");
+            if (adGroupUpdateRequestAllOf1.BidMultiplierOption.IsSet && adGroupUpdateRequestAllOf1.BidMultiplier == null)
+                throw new JsonException("Cannot write null property AdGroupUpdateRequestAllOf1.BidMultiplier to non-nullable JSON property 'bid_multiplier'.");
 
             if (adGroupUpdateRequestAllOf1.TargetingSpecOperationsOption.IsSet && adGroupUpdateRequestAllOf1.TargetingSpecOperations == null)
-                throw new ArgumentNullException(nameof(adGroupUpdateRequestAllOf1.TargetingSpecOperations), "Property is required for class AdGroupUpdateRequestAllOf1.");
+                throw new JsonException("Cannot write null property AdGroupUpdateRequestAllOf1.TargetingSpecOperations to non-nullable JSON property 'targeting_spec_operations'.");
 
             writer.WriteString("id", adGroupUpdateRequestAllOf1.Id);
 

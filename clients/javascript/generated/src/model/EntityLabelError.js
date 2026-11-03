@@ -17,7 +17,7 @@ import EntityLabel from './EntityLabel';
 /**
  * The EntityLabelError model module.
  * @module model/EntityLabelError
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class EntityLabelError {
     /**

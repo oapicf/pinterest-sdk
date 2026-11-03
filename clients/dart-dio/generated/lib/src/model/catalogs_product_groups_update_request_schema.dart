@@ -80,6 +80,7 @@ class _$CatalogsProductGroupsUpdateRequestSchemaSerializer implements PrimitiveS
   }
 }
 
+
 class CatalogsProductGroupsUpdateRequestSchemaCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

@@ -173,10 +173,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class AdvancedAuctionProcessedItems.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionProcessedItems: catalog_id.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdvancedAuctionProcessedItems.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionProcessedItems: items.");
 
             return new AdvancedAuctionProcessedItems(catalogId, items);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionProcessedItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionProcessedItems advancedAuctionProcessedItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,14 +201,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionProcessedItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionProcessedItems advancedAuctionProcessedItems, JsonSerializerOptions jsonSerializerOptions)
         {
             if (advancedAuctionProcessedItems.CatalogIdOption.IsSet && advancedAuctionProcessedItems.CatalogId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionProcessedItems.CatalogId), "Property is required for class AdvancedAuctionProcessedItems.");
+                throw new JsonException("Cannot write null property AdvancedAuctionProcessedItems.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             if (advancedAuctionProcessedItems.ItemsOption.IsSet && advancedAuctionProcessedItems.Items == null)
-                throw new ArgumentNullException(nameof(advancedAuctionProcessedItems.Items), "Property is required for class AdvancedAuctionProcessedItems.");
+                throw new JsonException("Cannot write null property AdvancedAuctionProcessedItems.Items to non-nullable JSON property 'items'.");
 
             if (advancedAuctionProcessedItems.CatalogIdOption.IsSet)
                 writer.WriteString("catalog_id", advancedAuctionProcessedItems.CatalogId);

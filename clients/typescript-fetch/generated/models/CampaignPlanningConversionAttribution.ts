@@ -29,20 +29,14 @@ import {
 export interface CampaignPlanningConversionAttribution {
     /**
      * Number of days to use as the conversion attribution window for a pin click action.
-     * @type {CampaignPlanningConversionAttributionWindowDays}
-     * @memberof CampaignPlanningConversionAttribution
      */
     clickWindowDays?: CampaignPlanningConversionAttributionWindowDays;
     /**
      * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes.
-     * @type {CampaignPlanningConversionAttributionWindowDays}
-     * @memberof CampaignPlanningConversionAttribution
      */
     engagementWindowDays?: CampaignPlanningConversionAttributionWindowDays;
     /**
      * Number of days to use as the conversion attribution window for a view action.
-     * @type {CampaignPlanningConversionAttributionWindowDays}
-     * @memberof CampaignPlanningConversionAttribution
      */
     viewWindowDays?: CampaignPlanningConversionAttributionWindowDays;
 }

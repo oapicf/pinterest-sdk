@@ -6,20 +6,3 @@
 */
 #include "ProductGroupType.h"
 
-namespace models {
-
-ProductGroupType::ProductGroupType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

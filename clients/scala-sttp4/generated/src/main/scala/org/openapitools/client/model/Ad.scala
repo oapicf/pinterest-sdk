@@ -11,15 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.AdCollectionsHeaderType._
-import org.openapitools.client.model.AdDisapprovalReasons._
-import org.openapitools.client.model.AdReviewStatus._
-import org.openapitools.client.model.CreativeType._
-import org.openapitools.client.model.CustomizableCTAType._
-import org.openapitools.client.model.DisclosureType._
-import org.openapitools.client.model.EntityStatus._
-import org.openapitools.client.model.GridClickType._
-import org.openapitools.client.model.PinPromotionSummaryStatus._
 
 case class Ad(
   /* The ID of the advertiser that this ad belongs to. */

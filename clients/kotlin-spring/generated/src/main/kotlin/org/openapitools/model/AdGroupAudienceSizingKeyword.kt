@@ -19,17 +19,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param matchType 
- * @param &#x60;value&#x60; Keyword value (120 chars max).
+ * @param `value` Keyword value (120 chars max).
  */
 data class AdGroupAudienceSizingKeyword(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("match_type")
+    @param:JsonProperty("match_type", required = true)
     @get:JsonProperty("match_type", required = true) val matchType: MatchType,
 
     @Schema(required = true, description = "Keyword value (120 chars max).")
-    @param:JsonProperty("value")
+    @param:JsonProperty("value", required = true)
     @get:JsonProperty("value", required = true) val `value`: kotlin.String
 ) {
 

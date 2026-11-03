@@ -21,13 +21,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestUpdate   {
   
   private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
   private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
   private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
   private List<@Valid KeywordUpdateGenerated> keywords = new ArrayList<>();
   private List<@Valid LabelBulkUpdateRequest> labels = new ArrayList<>();
   private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
@@ -74,10 +74,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("catalog_product_groups")
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 

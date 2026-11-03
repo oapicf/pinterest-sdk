@@ -105,3 +105,4 @@ class _$CurrencyFilterSerializer implements PrimitiveSerializer<CurrencyFilter> 
   }
 }
 
+

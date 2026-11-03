@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class IneligibleProductTagReason
-{
-public:
-
-    IneligibleProductTagReason();
-    virtual ~IneligibleProductTagReason() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IneligibleProductTagReason,
-        )
-
-private:
+enum class IneligibleProductTagReason {
+    
+    PIN_MISSING,
+    
+    PIN_IS_PRIVATE,
+    
+    PRODUCT_METADATA_MISSING,
+    
+    PIN_NOT_FROM_VERIFIED_DOMAIN,
+    
+    PIN_NOT_FROM_SAME_USER_AS_HERO_PIN
+    
 };
 
+inline void to_json(nlohmann::json& j, const IneligibleProductTagReason& value)
+{
+    switch (value)
+    {
+        
+        case IneligibleProductTagReason::PIN_MISSING: j = "PIN_MISSING"; break;
+        
+        case IneligibleProductTagReason::PIN_IS_PRIVATE: j = "PIN_IS_PRIVATE"; break;
+        
+        case IneligibleProductTagReason::PRODUCT_METADATA_MISSING: j = "PRODUCT_METADATA_MISSING"; break;
+        
+        case IneligibleProductTagReason::PIN_NOT_FROM_VERIFIED_DOMAIN: j = "PIN_NOT_FROM_VERIFIED_DOMAIN"; break;
+        
+        case IneligibleProductTagReason::PIN_NOT_FROM_SAME_USER_AS_HERO_PIN: j = "PIN_NOT_FROM_SAME_USER_AS_HERO_PIN"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for IneligibleProductTagReason", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, IneligibleProductTagReason& value)
+{
+    
+    if (j == "PIN_MISSING")
+    {
+        value = IneligibleProductTagReason::PIN_MISSING;
+        return;
+    }
+    
+    if (j == "PIN_IS_PRIVATE")
+    {
+        value = IneligibleProductTagReason::PIN_IS_PRIVATE;
+        return;
+    }
+    
+    if (j == "PRODUCT_METADATA_MISSING")
+    {
+        value = IneligibleProductTagReason::PRODUCT_METADATA_MISSING;
+        return;
+    }
+    
+    if (j == "PIN_NOT_FROM_VERIFIED_DOMAIN")
+    {
+        value = IneligibleProductTagReason::PIN_NOT_FROM_VERIFIED_DOMAIN;
+        return;
+    }
+    
+    if (j == "PIN_NOT_FROM_SAME_USER_AS_HERO_PIN")
+    {
+        value = IneligibleProductTagReason::PIN_NOT_FROM_SAME_USER_AS_HERO_PIN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for IneligibleProductTagReason", &j);
+}
 
 } // namespace models
 

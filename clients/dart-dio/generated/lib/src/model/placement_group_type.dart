@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'placement_group_type.g.dart';
 
+/// Campaign placement group type
 class PlacementGroupType extends EnumClass {
 
-  /// Campaign placement group type
   @BuiltValueEnumConst(wireName: r'ALL')
   static const PlacementGroupType ALL = _$ALL;
-  /// Campaign placement group type
   @BuiltValueEnumConst(wireName: r'SEARCH')
   static const PlacementGroupType SEARCH = _$SEARCH;
-  /// Campaign placement group type
   @BuiltValueEnumConst(wireName: r'BROWSE')
   static const PlacementGroupType BROWSE = _$BROWSE;
-  /// Campaign placement group type
   @BuiltValueEnumConst(wireName: r'OTHER')
   static const PlacementGroupType OTHER = _$OTHER;
 

@@ -2797,37 +2797,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: ai_disclosures.");
 
             if (androidDeepLink.IsSet && androidDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(androidDeepLink), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: android_deep_link.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: availability.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: description.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: id.");
 
             if (imageLink.IsSet && imageLink.Value == null)
-                throw new ArgumentNullException(nameof(imageLink), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: image_link.");
 
             if (iosDeepLink.IsSet && iosDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(iosDeepLink), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: ios_deep_link.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: link.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: price.");
 
             if (savePinDisabled.IsSet && savePinDisabled.Value == null)
-                throw new ArgumentNullException(nameof(savePinDisabled), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: save_pin_disabled.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class ItemAttributesRequest.");
+                throw new JsonException("Property is not nullable for class ItemAttributesRequest: title.");
 
             return new ItemAttributesRequest(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, additionalImageLink, adult, ageGroup, aiDisclosures, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, imageLink, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, savePinDisabled, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, videoLink);
         }
@@ -2838,7 +2838,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemAttributesRequest itemAttributesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -2853,38 +2852,40 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemAttributesRequest itemAttributesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemAttributesRequest.AiDisclosuresOption.IsSet && itemAttributesRequest.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.AiDisclosures), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (itemAttributesRequest.AndroidDeepLinkOption.IsSet && itemAttributesRequest.AndroidDeepLink == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.AndroidDeepLink), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.AndroidDeepLink to non-nullable JSON property 'android_deep_link'.");
 
             if (itemAttributesRequest.AvailabilityOption.IsSet && itemAttributesRequest.Availability == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Availability), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Availability to non-nullable JSON property 'availability'.");
 
             if (itemAttributesRequest.DescriptionOption.IsSet && itemAttributesRequest.Description == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Description), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Description to non-nullable JSON property 'description'.");
 
             if (itemAttributesRequest.IdOption.IsSet && itemAttributesRequest.Id == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Id), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Id to non-nullable JSON property 'id'.");
 
             if (itemAttributesRequest.ImageLinkOption.IsSet && itemAttributesRequest.ImageLink == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.ImageLink), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.ImageLink to non-nullable JSON property 'image_link'.");
 
             if (itemAttributesRequest.IosDeepLinkOption.IsSet && itemAttributesRequest.IosDeepLink == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.IosDeepLink), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.IosDeepLink to non-nullable JSON property 'ios_deep_link'.");
 
             if (itemAttributesRequest.LinkOption.IsSet && itemAttributesRequest.Link == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Link), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Link to non-nullable JSON property 'link'.");
 
             if (itemAttributesRequest.PriceOption.IsSet && itemAttributesRequest.Price == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Price), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Price to non-nullable JSON property 'price'.");
+
+            if (itemAttributesRequest.SavePinDisabledOption.IsSet && itemAttributesRequest.SavePinDisabled == null)
+                throw new JsonException("Cannot write null property ItemAttributesRequest.SavePinDisabled to non-nullable JSON property 'save_pin_disabled'.");
 
             if (itemAttributesRequest.TitleOption.IsSet && itemAttributesRequest.Title == null)
-                throw new ArgumentNullException(nameof(itemAttributesRequest.Title), "Property is required for class ItemAttributesRequest.");
+                throw new JsonException("Cannot write null property ItemAttributesRequest.Title to non-nullable JSON property 'title'.");
 
             if (itemAttributesRequest.AdImage0LinkOption.IsSet)
                 if (itemAttributesRequest.AdImage0LinkOption.Value != null)

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: COMPLETED,FAILED,PROCESSING
-*/
+ * 
+ * Values: COMPLETED,FAILED,PROCESSING
+ */
 enum class CatalogsFeedProcessingStatus(@get:JsonValue val value: kotlin.String) {
 
     COMPLETED("COMPLETED"),
@@ -29,9 +29,8 @@ enum class CatalogsFeedProcessingStatus(@get:JsonValue val value: kotlin.String)
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsFeedProcessingStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsFeedProcessingStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsFeedProcessingStatus'")
         }
     }
 }
-

@@ -17,7 +17,7 @@ import AdAccountsAudience from './AdAccountsAudience';
 /**
  * The AudiencesList200Response model module.
  * @module model/AudiencesList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AudiencesList200Response {
     /**

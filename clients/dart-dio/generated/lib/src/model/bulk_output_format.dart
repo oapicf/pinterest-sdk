@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'bulk_output_format.g.dart';
 
+/// Bulk file output format
 class BulkOutputFormat extends EnumClass {
 
-  /// Bulk file output format
   @BuiltValueEnumConst(wireName: r'CSV')
   static const BulkOutputFormat CSV = _$CSV;
-  /// Bulk file output format
   @BuiltValueEnumConst(wireName: r'JSON')
   static const BulkOutputFormat JSON = _$JSON;
 

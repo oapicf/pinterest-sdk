@@ -4446,622 +4446,622 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aDIMAGE0LINKDUPLICATED.IsSet && aDIMAGE0LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_LINK_DUPLICATED.");
 
             if (aDIMAGE0LINKLENGTHTOOLONG.IsSet && aDIMAGE0LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE0LINKREQUIRED.IsSet && aDIMAGE0LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_LINK_REQUIRED.");
 
             if (aDIMAGE0LINKWARNING.IsSet && aDIMAGE0LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_LINK_WARNING.");
 
             if (aDIMAGE0TAGDUPLICATED.IsSet && aDIMAGE0TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_TAG_DUPLICATED.");
 
             if (aDIMAGE0TAGLENGTHTOOLONG.IsSet && aDIMAGE0TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE0TAGREQUIRED.IsSet && aDIMAGE0TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE0TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_0_TAG_REQUIRED.");
 
             if (aDIMAGE10LINKDUPLICATED.IsSet && aDIMAGE10LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_LINK_DUPLICATED.");
 
             if (aDIMAGE10LINKLENGTHTOOLONG.IsSet && aDIMAGE10LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE10LINKREQUIRED.IsSet && aDIMAGE10LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_LINK_REQUIRED.");
 
             if (aDIMAGE10LINKWARNING.IsSet && aDIMAGE10LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_LINK_WARNING.");
 
             if (aDIMAGE10TAGDUPLICATED.IsSet && aDIMAGE10TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_TAG_DUPLICATED.");
 
             if (aDIMAGE10TAGLENGTHTOOLONG.IsSet && aDIMAGE10TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE10TAGREQUIRED.IsSet && aDIMAGE10TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE10TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_10_TAG_REQUIRED.");
 
             if (aDIMAGE11LINKDUPLICATED.IsSet && aDIMAGE11LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_LINK_DUPLICATED.");
 
             if (aDIMAGE11LINKLENGTHTOOLONG.IsSet && aDIMAGE11LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE11LINKREQUIRED.IsSet && aDIMAGE11LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_LINK_REQUIRED.");
 
             if (aDIMAGE11LINKWARNING.IsSet && aDIMAGE11LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_LINK_WARNING.");
 
             if (aDIMAGE11TAGDUPLICATED.IsSet && aDIMAGE11TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_TAG_DUPLICATED.");
 
             if (aDIMAGE11TAGLENGTHTOOLONG.IsSet && aDIMAGE11TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE11TAGREQUIRED.IsSet && aDIMAGE11TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE11TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_11_TAG_REQUIRED.");
 
             if (aDIMAGE12LINKDUPLICATED.IsSet && aDIMAGE12LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_LINK_DUPLICATED.");
 
             if (aDIMAGE12LINKLENGTHTOOLONG.IsSet && aDIMAGE12LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE12LINKREQUIRED.IsSet && aDIMAGE12LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_LINK_REQUIRED.");
 
             if (aDIMAGE12LINKWARNING.IsSet && aDIMAGE12LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_LINK_WARNING.");
 
             if (aDIMAGE12TAGDUPLICATED.IsSet && aDIMAGE12TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_TAG_DUPLICATED.");
 
             if (aDIMAGE12TAGLENGTHTOOLONG.IsSet && aDIMAGE12TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE12TAGREQUIRED.IsSet && aDIMAGE12TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE12TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_12_TAG_REQUIRED.");
 
             if (aDIMAGE13LINKDUPLICATED.IsSet && aDIMAGE13LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_LINK_DUPLICATED.");
 
             if (aDIMAGE13LINKLENGTHTOOLONG.IsSet && aDIMAGE13LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE13LINKREQUIRED.IsSet && aDIMAGE13LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_LINK_REQUIRED.");
 
             if (aDIMAGE13LINKWARNING.IsSet && aDIMAGE13LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_LINK_WARNING.");
 
             if (aDIMAGE13TAGDUPLICATED.IsSet && aDIMAGE13TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_TAG_DUPLICATED.");
 
             if (aDIMAGE13TAGLENGTHTOOLONG.IsSet && aDIMAGE13TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE13TAGREQUIRED.IsSet && aDIMAGE13TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE13TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_13_TAG_REQUIRED.");
 
             if (aDIMAGE14LINKDUPLICATED.IsSet && aDIMAGE14LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_LINK_DUPLICATED.");
 
             if (aDIMAGE14LINKLENGTHTOOLONG.IsSet && aDIMAGE14LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE14LINKREQUIRED.IsSet && aDIMAGE14LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_LINK_REQUIRED.");
 
             if (aDIMAGE14LINKWARNING.IsSet && aDIMAGE14LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_LINK_WARNING.");
 
             if (aDIMAGE14TAGDUPLICATED.IsSet && aDIMAGE14TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_TAG_DUPLICATED.");
 
             if (aDIMAGE14TAGLENGTHTOOLONG.IsSet && aDIMAGE14TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE14TAGREQUIRED.IsSet && aDIMAGE14TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE14TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_14_TAG_REQUIRED.");
 
             if (aDIMAGE15LINKDUPLICATED.IsSet && aDIMAGE15LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_LINK_DUPLICATED.");
 
             if (aDIMAGE15LINKLENGTHTOOLONG.IsSet && aDIMAGE15LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE15LINKREQUIRED.IsSet && aDIMAGE15LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_LINK_REQUIRED.");
 
             if (aDIMAGE15LINKWARNING.IsSet && aDIMAGE15LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_LINK_WARNING.");
 
             if (aDIMAGE15TAGDUPLICATED.IsSet && aDIMAGE15TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_TAG_DUPLICATED.");
 
             if (aDIMAGE15TAGLENGTHTOOLONG.IsSet && aDIMAGE15TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE15TAGREQUIRED.IsSet && aDIMAGE15TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE15TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_15_TAG_REQUIRED.");
 
             if (aDIMAGE16LINKDUPLICATED.IsSet && aDIMAGE16LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_LINK_DUPLICATED.");
 
             if (aDIMAGE16LINKLENGTHTOOLONG.IsSet && aDIMAGE16LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE16LINKREQUIRED.IsSet && aDIMAGE16LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_LINK_REQUIRED.");
 
             if (aDIMAGE16LINKWARNING.IsSet && aDIMAGE16LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_LINK_WARNING.");
 
             if (aDIMAGE16TAGDUPLICATED.IsSet && aDIMAGE16TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_TAG_DUPLICATED.");
 
             if (aDIMAGE16TAGLENGTHTOOLONG.IsSet && aDIMAGE16TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE16TAGREQUIRED.IsSet && aDIMAGE16TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE16TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_16_TAG_REQUIRED.");
 
             if (aDIMAGE17LINKDUPLICATED.IsSet && aDIMAGE17LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_LINK_DUPLICATED.");
 
             if (aDIMAGE17LINKLENGTHTOOLONG.IsSet && aDIMAGE17LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE17LINKREQUIRED.IsSet && aDIMAGE17LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_LINK_REQUIRED.");
 
             if (aDIMAGE17LINKWARNING.IsSet && aDIMAGE17LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_LINK_WARNING.");
 
             if (aDIMAGE17TAGDUPLICATED.IsSet && aDIMAGE17TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_TAG_DUPLICATED.");
 
             if (aDIMAGE17TAGLENGTHTOOLONG.IsSet && aDIMAGE17TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE17TAGREQUIRED.IsSet && aDIMAGE17TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE17TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_17_TAG_REQUIRED.");
 
             if (aDIMAGE18LINKDUPLICATED.IsSet && aDIMAGE18LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_LINK_DUPLICATED.");
 
             if (aDIMAGE18LINKLENGTHTOOLONG.IsSet && aDIMAGE18LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE18LINKREQUIRED.IsSet && aDIMAGE18LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_LINK_REQUIRED.");
 
             if (aDIMAGE18LINKWARNING.IsSet && aDIMAGE18LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_LINK_WARNING.");
 
             if (aDIMAGE18TAGDUPLICATED.IsSet && aDIMAGE18TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_TAG_DUPLICATED.");
 
             if (aDIMAGE18TAGLENGTHTOOLONG.IsSet && aDIMAGE18TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE18TAGREQUIRED.IsSet && aDIMAGE18TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE18TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_18_TAG_REQUIRED.");
 
             if (aDIMAGE19LINKDUPLICATED.IsSet && aDIMAGE19LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_LINK_DUPLICATED.");
 
             if (aDIMAGE19LINKLENGTHTOOLONG.IsSet && aDIMAGE19LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE19LINKREQUIRED.IsSet && aDIMAGE19LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_LINK_REQUIRED.");
 
             if (aDIMAGE19LINKWARNING.IsSet && aDIMAGE19LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_LINK_WARNING.");
 
             if (aDIMAGE19TAGDUPLICATED.IsSet && aDIMAGE19TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_TAG_DUPLICATED.");
 
             if (aDIMAGE19TAGLENGTHTOOLONG.IsSet && aDIMAGE19TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE19TAGREQUIRED.IsSet && aDIMAGE19TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE19TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_19_TAG_REQUIRED.");
 
             if (aDIMAGE1LINKDUPLICATED.IsSet && aDIMAGE1LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_LINK_DUPLICATED.");
 
             if (aDIMAGE1LINKLENGTHTOOLONG.IsSet && aDIMAGE1LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE1LINKREQUIRED.IsSet && aDIMAGE1LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_LINK_REQUIRED.");
 
             if (aDIMAGE1LINKWARNING.IsSet && aDIMAGE1LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_LINK_WARNING.");
 
             if (aDIMAGE1TAGDUPLICATED.IsSet && aDIMAGE1TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_TAG_DUPLICATED.");
 
             if (aDIMAGE1TAGLENGTHTOOLONG.IsSet && aDIMAGE1TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE1TAGREQUIRED.IsSet && aDIMAGE1TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE1TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_1_TAG_REQUIRED.");
 
             if (aDIMAGE2LINKDUPLICATED.IsSet && aDIMAGE2LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_LINK_DUPLICATED.");
 
             if (aDIMAGE2LINKLENGTHTOOLONG.IsSet && aDIMAGE2LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE2LINKREQUIRED.IsSet && aDIMAGE2LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_LINK_REQUIRED.");
 
             if (aDIMAGE2LINKWARNING.IsSet && aDIMAGE2LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_LINK_WARNING.");
 
             if (aDIMAGE2TAGDUPLICATED.IsSet && aDIMAGE2TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_TAG_DUPLICATED.");
 
             if (aDIMAGE2TAGLENGTHTOOLONG.IsSet && aDIMAGE2TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE2TAGREQUIRED.IsSet && aDIMAGE2TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE2TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_2_TAG_REQUIRED.");
 
             if (aDIMAGE3LINKDUPLICATED.IsSet && aDIMAGE3LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_LINK_DUPLICATED.");
 
             if (aDIMAGE3LINKLENGTHTOOLONG.IsSet && aDIMAGE3LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE3LINKREQUIRED.IsSet && aDIMAGE3LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_LINK_REQUIRED.");
 
             if (aDIMAGE3LINKWARNING.IsSet && aDIMAGE3LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_LINK_WARNING.");
 
             if (aDIMAGE3TAGDUPLICATED.IsSet && aDIMAGE3TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_TAG_DUPLICATED.");
 
             if (aDIMAGE3TAGLENGTHTOOLONG.IsSet && aDIMAGE3TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE3TAGREQUIRED.IsSet && aDIMAGE3TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE3TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_3_TAG_REQUIRED.");
 
             if (aDIMAGE4LINKDUPLICATED.IsSet && aDIMAGE4LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_LINK_DUPLICATED.");
 
             if (aDIMAGE4LINKLENGTHTOOLONG.IsSet && aDIMAGE4LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE4LINKREQUIRED.IsSet && aDIMAGE4LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_LINK_REQUIRED.");
 
             if (aDIMAGE4LINKWARNING.IsSet && aDIMAGE4LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_LINK_WARNING.");
 
             if (aDIMAGE4TAGDUPLICATED.IsSet && aDIMAGE4TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_TAG_DUPLICATED.");
 
             if (aDIMAGE4TAGLENGTHTOOLONG.IsSet && aDIMAGE4TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE4TAGREQUIRED.IsSet && aDIMAGE4TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE4TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_4_TAG_REQUIRED.");
 
             if (aDIMAGE5LINKDUPLICATED.IsSet && aDIMAGE5LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_LINK_DUPLICATED.");
 
             if (aDIMAGE5LINKLENGTHTOOLONG.IsSet && aDIMAGE5LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE5LINKREQUIRED.IsSet && aDIMAGE5LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_LINK_REQUIRED.");
 
             if (aDIMAGE5LINKWARNING.IsSet && aDIMAGE5LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_LINK_WARNING.");
 
             if (aDIMAGE5TAGDUPLICATED.IsSet && aDIMAGE5TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_TAG_DUPLICATED.");
 
             if (aDIMAGE5TAGLENGTHTOOLONG.IsSet && aDIMAGE5TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE5TAGREQUIRED.IsSet && aDIMAGE5TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE5TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_5_TAG_REQUIRED.");
 
             if (aDIMAGE6LINKDUPLICATED.IsSet && aDIMAGE6LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_LINK_DUPLICATED.");
 
             if (aDIMAGE6LINKLENGTHTOOLONG.IsSet && aDIMAGE6LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE6LINKREQUIRED.IsSet && aDIMAGE6LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_LINK_REQUIRED.");
 
             if (aDIMAGE6LINKWARNING.IsSet && aDIMAGE6LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_LINK_WARNING.");
 
             if (aDIMAGE6TAGDUPLICATED.IsSet && aDIMAGE6TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_TAG_DUPLICATED.");
 
             if (aDIMAGE6TAGLENGTHTOOLONG.IsSet && aDIMAGE6TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE6TAGREQUIRED.IsSet && aDIMAGE6TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE6TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_6_TAG_REQUIRED.");
 
             if (aDIMAGE7LINKDUPLICATED.IsSet && aDIMAGE7LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_LINK_DUPLICATED.");
 
             if (aDIMAGE7LINKLENGTHTOOLONG.IsSet && aDIMAGE7LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE7LINKREQUIRED.IsSet && aDIMAGE7LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_LINK_REQUIRED.");
 
             if (aDIMAGE7LINKWARNING.IsSet && aDIMAGE7LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_LINK_WARNING.");
 
             if (aDIMAGE7TAGDUPLICATED.IsSet && aDIMAGE7TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_TAG_DUPLICATED.");
 
             if (aDIMAGE7TAGLENGTHTOOLONG.IsSet && aDIMAGE7TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE7TAGREQUIRED.IsSet && aDIMAGE7TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE7TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_7_TAG_REQUIRED.");
 
             if (aDIMAGE8LINKDUPLICATED.IsSet && aDIMAGE8LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_LINK_DUPLICATED.");
 
             if (aDIMAGE8LINKLENGTHTOOLONG.IsSet && aDIMAGE8LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE8LINKREQUIRED.IsSet && aDIMAGE8LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_LINK_REQUIRED.");
 
             if (aDIMAGE8LINKWARNING.IsSet && aDIMAGE8LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_LINK_WARNING.");
 
             if (aDIMAGE8TAGDUPLICATED.IsSet && aDIMAGE8TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_TAG_DUPLICATED.");
 
             if (aDIMAGE8TAGLENGTHTOOLONG.IsSet && aDIMAGE8TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE8TAGREQUIRED.IsSet && aDIMAGE8TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE8TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_8_TAG_REQUIRED.");
 
             if (aDIMAGE9LINKDUPLICATED.IsSet && aDIMAGE9LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_LINK_DUPLICATED.");
 
             if (aDIMAGE9LINKLENGTHTOOLONG.IsSet && aDIMAGE9LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_LINK_LENGTH_TOO_LONG.");
 
             if (aDIMAGE9LINKREQUIRED.IsSet && aDIMAGE9LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_LINK_REQUIRED.");
 
             if (aDIMAGE9LINKWARNING.IsSet && aDIMAGE9LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_LINK_WARNING.");
 
             if (aDIMAGE9TAGDUPLICATED.IsSet && aDIMAGE9TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_TAG_DUPLICATED.");
 
             if (aDIMAGE9TAGLENGTHTOOLONG.IsSet && aDIMAGE9TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_TAG_LENGTH_TOO_LONG.");
 
             if (aDIMAGE9TAGREQUIRED.IsSet && aDIMAGE9TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGE9TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_IMAGE_9_TAG_REQUIRED.");
 
             if (aDLINKFORMATWARNING.IsSet && aDLINKFORMATWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDLINKFORMATWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_LINK_FORMAT_WARNING.");
 
             if (aDLINKSAMEASLINK.IsSet && aDLINKSAMEASLINK.Value == null)
-                throw new ArgumentNullException(nameof(aDLINKSAMEASLINK), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_LINK_SAME_AS_LINK.");
 
             if (aDVIDEO0LINKDUPLICATED.IsSet && aDVIDEO0LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_LINK_DUPLICATED.");
 
             if (aDVIDEO0LINKLENGTHTOOLONG.IsSet && aDVIDEO0LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_LINK_LENGTH_TOO_LONG.");
 
             if (aDVIDEO0LINKREQUIRED.IsSet && aDVIDEO0LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_LINK_REQUIRED.");
 
             if (aDVIDEO0LINKWARNING.IsSet && aDVIDEO0LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_LINK_WARNING.");
 
             if (aDVIDEO0TAGDUPLICATED.IsSet && aDVIDEO0TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_TAG_DUPLICATED.");
 
             if (aDVIDEO0TAGLENGTHTOOLONG.IsSet && aDVIDEO0TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_TAG_LENGTH_TOO_LONG.");
 
             if (aDVIDEO0TAGREQUIRED.IsSet && aDVIDEO0TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO0TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_0_TAG_REQUIRED.");
 
             if (aDVIDEO1LINKDUPLICATED.IsSet && aDVIDEO1LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_LINK_DUPLICATED.");
 
             if (aDVIDEO1LINKLENGTHTOOLONG.IsSet && aDVIDEO1LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_LINK_LENGTH_TOO_LONG.");
 
             if (aDVIDEO1LINKREQUIRED.IsSet && aDVIDEO1LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_LINK_REQUIRED.");
 
             if (aDVIDEO1LINKWARNING.IsSet && aDVIDEO1LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_LINK_WARNING.");
 
             if (aDVIDEO1TAGDUPLICATED.IsSet && aDVIDEO1TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_TAG_DUPLICATED.");
 
             if (aDVIDEO1TAGLENGTHTOOLONG.IsSet && aDVIDEO1TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_TAG_LENGTH_TOO_LONG.");
 
             if (aDVIDEO1TAGREQUIRED.IsSet && aDVIDEO1TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO1TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_1_TAG_REQUIRED.");
 
             if (aDVIDEO2LINKDUPLICATED.IsSet && aDVIDEO2LINKDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2LINKDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_LINK_DUPLICATED.");
 
             if (aDVIDEO2LINKLENGTHTOOLONG.IsSet && aDVIDEO2LINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2LINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_LINK_LENGTH_TOO_LONG.");
 
             if (aDVIDEO2LINKREQUIRED.IsSet && aDVIDEO2LINKREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2LINKREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_LINK_REQUIRED.");
 
             if (aDVIDEO2LINKWARNING.IsSet && aDVIDEO2LINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2LINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_LINK_WARNING.");
 
             if (aDVIDEO2TAGDUPLICATED.IsSet && aDVIDEO2TAGDUPLICATED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2TAGDUPLICATED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_TAG_DUPLICATED.");
 
             if (aDVIDEO2TAGLENGTHTOOLONG.IsSet && aDVIDEO2TAGLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2TAGLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_TAG_LENGTH_TOO_LONG.");
 
             if (aDVIDEO2TAGREQUIRED.IsSet && aDVIDEO2TAGREQUIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEO2TAGREQUIRED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AD_VIDEO_2_TAG_REQUIRED.");
 
             if (aDDITIONALIMAGELINKLENGTHTOOLONG.IsSet && aDDITIONALIMAGELINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGELINKLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG.");
 
             if (aDDITIONALIMAGELINKWARNING.IsSet && aDDITIONALIMAGELINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGELINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ADDITIONAL_IMAGE_LINK_WARNING.");
 
             if (aDWORDSFORMATWARNING.IsSet && aDWORDSFORMATWARNING.Value == null)
-                throw new ArgumentNullException(nameof(aDWORDSFORMATWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ADWORDS_FORMAT_WARNING.");
 
             if (aDWORDSSAMEASLINK.IsSet && aDWORDSSAMEASLINK.Value == null)
-                throw new ArgumentNullException(nameof(aDWORDSSAMEASLINK), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ADWORDS_SAME_AS_LINK.");
 
             if (aGEGROUPINVALID.IsSet && aGEGROUPINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aGEGROUPINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AGE_GROUP_INVALID.");
 
             if (aNDROIDDEEPLINKINVALID.IsSet && aNDROIDDEEPLINKINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aNDROIDDEEPLINKINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ANDROID_DEEP_LINK_INVALID.");
 
             if (aVAILABILITYDATEINVALID.IsSet && aVAILABILITYDATEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aVAILABILITYDATEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: AVAILABILITY_DATE_INVALID.");
 
             if (cOUNTRYDOESNOTMAPTOCURRENCY.IsSet && cOUNTRYDOESNOTMAPTOCURRENCY.Value == null)
-                throw new ArgumentNullException(nameof(cOUNTRYDOESNOTMAPTOCURRENCY), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: COUNTRY_DOES_NOT_MAP_TO_CURRENCY.");
 
             if (cUSTOMLABELLENGTHTOOLONG.IsSet && cUSTOMLABELLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABELLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: CUSTOM_LABEL_LENGTH_TOO_LONG.");
 
             if (dESCRIPTIONLENGTHTOOLONG.IsSet && dESCRIPTIONLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(dESCRIPTIONLENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: DESCRIPTION_LENGTH_TOO_LONG.");
 
             if (eXPIRATIONDATEINVALID.IsSet && eXPIRATIONDATEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(eXPIRATIONDATEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: EXPIRATION_DATE_INVALID.");
 
             if (gENDERINVALID.IsSet && gENDERINVALID.Value == null)
-                throw new ArgumentNullException(nameof(gENDERINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: GENDER_INVALID.");
 
             if (gTININVALID.IsSet && gTININVALID.Value == null)
-                throw new ArgumentNullException(nameof(gTININVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: GTIN_INVALID.");
 
             if (iMAGELINKWARNING.IsSet && iMAGELINKWARNING.Value == null)
-                throw new ArgumentNullException(nameof(iMAGELINKWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: IMAGE_LINK_WARNING.");
 
             if (iOSDEEPLINKINVALID.IsSet && iOSDEEPLINKINVALID.Value == null)
-                throw new ArgumentNullException(nameof(iOSDEEPLINKINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: IOS_DEEP_LINK_INVALID.");
 
             if (iSBUNDLEINVALID.IsSet && iSBUNDLEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(iSBUNDLEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: IS_BUNDLE_INVALID.");
 
             if (iTEMADDITIONALIMAGEDOWNLOADFAILURE.IsSet && iTEMADDITIONALIMAGEDOWNLOADFAILURE.Value == null)
-                throw new ArgumentNullException(nameof(iTEMADDITIONALIMAGEDOWNLOADFAILURE), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE.");
 
             if (lINKFORMATWARNING.IsSet && lINKFORMATWARNING.Value == null)
-                throw new ArgumentNullException(nameof(lINKFORMATWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: LINK_FORMAT_WARNING.");
 
             if (mINADPRICEINVALID.IsSet && mINADPRICEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(mINADPRICEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: MIN_AD_PRICE_INVALID.");
 
             if (mPNINVALID.IsSet && mPNINVALID.Value == null)
-                throw new ArgumentNullException(nameof(mPNINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: MPN_INVALID.");
 
             if (mULTIPACKINVALID.IsSet && mULTIPACKINVALID.Value == null)
-                throw new ArgumentNullException(nameof(mULTIPACKINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: MULTIPACK_INVALID.");
 
             if (oPTIONALCONDITIONINVALID.IsSet && oPTIONALCONDITIONINVALID.Value == null)
-                throw new ArgumentNullException(nameof(oPTIONALCONDITIONINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: OPTIONAL_CONDITION_INVALID.");
 
             if (oPTIONALCONDITIONMISSING.IsSet && oPTIONALCONDITIONMISSING.Value == null)
-                throw new ArgumentNullException(nameof(oPTIONALCONDITIONMISSING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: OPTIONAL_CONDITION_MISSING.");
 
             if (oPTIONALPRODUCTCATEGORYINVALID.IsSet && oPTIONALPRODUCTCATEGORYINVALID.Value == null)
-                throw new ArgumentNullException(nameof(oPTIONALPRODUCTCATEGORYINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: OPTIONAL_PRODUCT_CATEGORY_INVALID.");
 
             if (oPTIONALPRODUCTCATEGORYMISSING.IsSet && oPTIONALPRODUCTCATEGORYMISSING.Value == null)
-                throw new ArgumentNullException(nameof(oPTIONALPRODUCTCATEGORYMISSING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: OPTIONAL_PRODUCT_CATEGORY_MISSING.");
 
             if (pRODUCTCATEGORYDEPTHWARNING.IsSet && pRODUCTCATEGORYDEPTHWARNING.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTCATEGORYDEPTHWARNING), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: PRODUCT_CATEGORY_DEPTH_WARNING.");
 
             if (pRODUCTTYPELENGTHTOOLONG.IsSet && pRODUCTTYPELENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPELENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: PRODUCT_TYPE_LENGTH_TOO_LONG.");
 
             if (sALEDATEINVALID.IsSet && sALEDATEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sALEDATEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SALE_DATE_INVALID.");
 
             if (sALESPRICEINVALID.IsSet && sALESPRICEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sALESPRICEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SALES_PRICE_INVALID.");
 
             if (sALESPRICETOOHIGH.IsSet && sALESPRICETOOHIGH.Value == null)
-                throw new ArgumentNullException(nameof(sALESPRICETOOHIGH), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SALES_PRICE_TOO_HIGH.");
 
             if (sALESPRICETOOLOW.IsSet && sALESPRICETOOLOW.Value == null)
-                throw new ArgumentNullException(nameof(sALESPRICETOOLOW), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SALES_PRICE_TOO_LOW.");
 
             if (sHIPPINGHEIGHTINVALID.IsSet && sHIPPINGHEIGHTINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sHIPPINGHEIGHTINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SHIPPING_HEIGHT_INVALID.");
 
             if (sHIPPINGINVALID.IsSet && sHIPPINGINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sHIPPINGINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SHIPPING_INVALID.");
 
             if (sHIPPINGWEIGHTINVALID.IsSet && sHIPPINGWEIGHTINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sHIPPINGWEIGHTINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SHIPPING_WEIGHT_INVALID.");
 
             if (sHIPPINGWIDTHINVALID.IsSet && sHIPPINGWIDTHINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sHIPPINGWIDTHINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SHIPPING_WIDTH_INVALID.");
 
             if (sIZESYSTEMINVALID.IsSet && sIZESYSTEMINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sIZESYSTEMINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SIZE_SYSTEM_INVALID.");
 
             if (sIZETYPEINVALID.IsSet && sIZETYPEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(sIZETYPEINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: SIZE_TYPE_INVALID.");
 
             if (tAXINVALID.IsSet && tAXINVALID.Value == null)
-                throw new ArgumentNullException(nameof(tAXINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: TAX_INVALID.");
 
             if (tITLELENGTHTOOLONG.IsSet && tITLELENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(tITLELENGTHTOOLONG), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: TITLE_LENGTH_TOO_LONG.");
 
             if (tOOMANYADDITIONALIMAGELINKS.IsSet && tOOMANYADDITIONALIMAGELINKS.Value == null)
-                throw new ArgumentNullException(nameof(tOOMANYADDITIONALIMAGELINKS), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: TOO_MANY_ADDITIONAL_IMAGE_LINKS.");
 
             if (uTMSOURCEAUTOCORRECTED.IsSet && uTMSOURCEAUTOCORRECTED.Value == null)
-                throw new ArgumentNullException(nameof(uTMSOURCEAUTOCORRECTED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: UTM_SOURCE_AUTO_CORRECTED.");
 
             if (vIDEOREQUIREDWHENADVIDEOPROVIDED.IsSet && vIDEOREQUIREDWHENADVIDEOPROVIDED.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOREQUIREDWHENADVIDEOPROVIDED), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED.");
 
             if (wEIGHTUNITINVALID.IsSet && wEIGHTUNITINVALID.Value == null)
-                throw new ArgumentNullException(nameof(wEIGHTUNITINVALID), "Property is not nullable for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationWarnings: WEIGHT_UNIT_INVALID.");
 
             return new CatalogsItemValidationWarnings(aDIMAGE0LINKDUPLICATED, aDIMAGE0LINKLENGTHTOOLONG, aDIMAGE0LINKREQUIRED, aDIMAGE0LINKWARNING, aDIMAGE0TAGDUPLICATED, aDIMAGE0TAGLENGTHTOOLONG, aDIMAGE0TAGREQUIRED, aDIMAGE10LINKDUPLICATED, aDIMAGE10LINKLENGTHTOOLONG, aDIMAGE10LINKREQUIRED, aDIMAGE10LINKWARNING, aDIMAGE10TAGDUPLICATED, aDIMAGE10TAGLENGTHTOOLONG, aDIMAGE10TAGREQUIRED, aDIMAGE11LINKDUPLICATED, aDIMAGE11LINKLENGTHTOOLONG, aDIMAGE11LINKREQUIRED, aDIMAGE11LINKWARNING, aDIMAGE11TAGDUPLICATED, aDIMAGE11TAGLENGTHTOOLONG, aDIMAGE11TAGREQUIRED, aDIMAGE12LINKDUPLICATED, aDIMAGE12LINKLENGTHTOOLONG, aDIMAGE12LINKREQUIRED, aDIMAGE12LINKWARNING, aDIMAGE12TAGDUPLICATED, aDIMAGE12TAGLENGTHTOOLONG, aDIMAGE12TAGREQUIRED, aDIMAGE13LINKDUPLICATED, aDIMAGE13LINKLENGTHTOOLONG, aDIMAGE13LINKREQUIRED, aDIMAGE13LINKWARNING, aDIMAGE13TAGDUPLICATED, aDIMAGE13TAGLENGTHTOOLONG, aDIMAGE13TAGREQUIRED, aDIMAGE14LINKDUPLICATED, aDIMAGE14LINKLENGTHTOOLONG, aDIMAGE14LINKREQUIRED, aDIMAGE14LINKWARNING, aDIMAGE14TAGDUPLICATED, aDIMAGE14TAGLENGTHTOOLONG, aDIMAGE14TAGREQUIRED, aDIMAGE15LINKDUPLICATED, aDIMAGE15LINKLENGTHTOOLONG, aDIMAGE15LINKREQUIRED, aDIMAGE15LINKWARNING, aDIMAGE15TAGDUPLICATED, aDIMAGE15TAGLENGTHTOOLONG, aDIMAGE15TAGREQUIRED, aDIMAGE16LINKDUPLICATED, aDIMAGE16LINKLENGTHTOOLONG, aDIMAGE16LINKREQUIRED, aDIMAGE16LINKWARNING, aDIMAGE16TAGDUPLICATED, aDIMAGE16TAGLENGTHTOOLONG, aDIMAGE16TAGREQUIRED, aDIMAGE17LINKDUPLICATED, aDIMAGE17LINKLENGTHTOOLONG, aDIMAGE17LINKREQUIRED, aDIMAGE17LINKWARNING, aDIMAGE17TAGDUPLICATED, aDIMAGE17TAGLENGTHTOOLONG, aDIMAGE17TAGREQUIRED, aDIMAGE18LINKDUPLICATED, aDIMAGE18LINKLENGTHTOOLONG, aDIMAGE18LINKREQUIRED, aDIMAGE18LINKWARNING, aDIMAGE18TAGDUPLICATED, aDIMAGE18TAGLENGTHTOOLONG, aDIMAGE18TAGREQUIRED, aDIMAGE19LINKDUPLICATED, aDIMAGE19LINKLENGTHTOOLONG, aDIMAGE19LINKREQUIRED, aDIMAGE19LINKWARNING, aDIMAGE19TAGDUPLICATED, aDIMAGE19TAGLENGTHTOOLONG, aDIMAGE19TAGREQUIRED, aDIMAGE1LINKDUPLICATED, aDIMAGE1LINKLENGTHTOOLONG, aDIMAGE1LINKREQUIRED, aDIMAGE1LINKWARNING, aDIMAGE1TAGDUPLICATED, aDIMAGE1TAGLENGTHTOOLONG, aDIMAGE1TAGREQUIRED, aDIMAGE2LINKDUPLICATED, aDIMAGE2LINKLENGTHTOOLONG, aDIMAGE2LINKREQUIRED, aDIMAGE2LINKWARNING, aDIMAGE2TAGDUPLICATED, aDIMAGE2TAGLENGTHTOOLONG, aDIMAGE2TAGREQUIRED, aDIMAGE3LINKDUPLICATED, aDIMAGE3LINKLENGTHTOOLONG, aDIMAGE3LINKREQUIRED, aDIMAGE3LINKWARNING, aDIMAGE3TAGDUPLICATED, aDIMAGE3TAGLENGTHTOOLONG, aDIMAGE3TAGREQUIRED, aDIMAGE4LINKDUPLICATED, aDIMAGE4LINKLENGTHTOOLONG, aDIMAGE4LINKREQUIRED, aDIMAGE4LINKWARNING, aDIMAGE4TAGDUPLICATED, aDIMAGE4TAGLENGTHTOOLONG, aDIMAGE4TAGREQUIRED, aDIMAGE5LINKDUPLICATED, aDIMAGE5LINKLENGTHTOOLONG, aDIMAGE5LINKREQUIRED, aDIMAGE5LINKWARNING, aDIMAGE5TAGDUPLICATED, aDIMAGE5TAGLENGTHTOOLONG, aDIMAGE5TAGREQUIRED, aDIMAGE6LINKDUPLICATED, aDIMAGE6LINKLENGTHTOOLONG, aDIMAGE6LINKREQUIRED, aDIMAGE6LINKWARNING, aDIMAGE6TAGDUPLICATED, aDIMAGE6TAGLENGTHTOOLONG, aDIMAGE6TAGREQUIRED, aDIMAGE7LINKDUPLICATED, aDIMAGE7LINKLENGTHTOOLONG, aDIMAGE7LINKREQUIRED, aDIMAGE7LINKWARNING, aDIMAGE7TAGDUPLICATED, aDIMAGE7TAGLENGTHTOOLONG, aDIMAGE7TAGREQUIRED, aDIMAGE8LINKDUPLICATED, aDIMAGE8LINKLENGTHTOOLONG, aDIMAGE8LINKREQUIRED, aDIMAGE8LINKWARNING, aDIMAGE8TAGDUPLICATED, aDIMAGE8TAGLENGTHTOOLONG, aDIMAGE8TAGREQUIRED, aDIMAGE9LINKDUPLICATED, aDIMAGE9LINKLENGTHTOOLONG, aDIMAGE9LINKREQUIRED, aDIMAGE9LINKWARNING, aDIMAGE9TAGDUPLICATED, aDIMAGE9TAGLENGTHTOOLONG, aDIMAGE9TAGREQUIRED, aDLINKFORMATWARNING, aDLINKSAMEASLINK, aDVIDEO0LINKDUPLICATED, aDVIDEO0LINKLENGTHTOOLONG, aDVIDEO0LINKREQUIRED, aDVIDEO0LINKWARNING, aDVIDEO0TAGDUPLICATED, aDVIDEO0TAGLENGTHTOOLONG, aDVIDEO0TAGREQUIRED, aDVIDEO1LINKDUPLICATED, aDVIDEO1LINKLENGTHTOOLONG, aDVIDEO1LINKREQUIRED, aDVIDEO1LINKWARNING, aDVIDEO1TAGDUPLICATED, aDVIDEO1TAGLENGTHTOOLONG, aDVIDEO1TAGREQUIRED, aDVIDEO2LINKDUPLICATED, aDVIDEO2LINKLENGTHTOOLONG, aDVIDEO2LINKREQUIRED, aDVIDEO2LINKWARNING, aDVIDEO2TAGDUPLICATED, aDVIDEO2TAGLENGTHTOOLONG, aDVIDEO2TAGREQUIRED, aDDITIONALIMAGELINKLENGTHTOOLONG, aDDITIONALIMAGELINKWARNING, aDWORDSFORMATWARNING, aDWORDSSAMEASLINK, aGEGROUPINVALID, aNDROIDDEEPLINKINVALID, aVAILABILITYDATEINVALID, cOUNTRYDOESNOTMAPTOCURRENCY, cUSTOMLABELLENGTHTOOLONG, dESCRIPTIONLENGTHTOOLONG, eXPIRATIONDATEINVALID, gENDERINVALID, gTININVALID, iMAGELINKWARNING, iOSDEEPLINKINVALID, iSBUNDLEINVALID, iTEMADDITIONALIMAGEDOWNLOADFAILURE, lINKFORMATWARNING, mINADPRICEINVALID, mPNINVALID, mULTIPACKINVALID, oPTIONALCONDITIONINVALID, oPTIONALCONDITIONMISSING, oPTIONALPRODUCTCATEGORYINVALID, oPTIONALPRODUCTCATEGORYMISSING, pRODUCTCATEGORYDEPTHWARNING, pRODUCTTYPELENGTHTOOLONG, sALEDATEINVALID, sALESPRICEINVALID, sALESPRICETOOHIGH, sALESPRICETOOLOW, sHIPPINGHEIGHTINVALID, sHIPPINGINVALID, sHIPPINGWEIGHTINVALID, sHIPPINGWIDTHINVALID, sIZESYSTEMINVALID, sIZETYPEINVALID, tAXINVALID, tITLELENGTHTOOLONG, tOOMANYADDITIONALIMAGELINKS, uTMSOURCEAUTOCORRECTED, vIDEOREQUIREDWHENADVIDEOPROVIDED, wEIGHTUNITINVALID);
         }
@@ -5072,7 +5072,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationWarnings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemValidationWarnings catalogsItemValidationWarnings, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -5087,626 +5086,625 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationWarnings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemValidationWarnings catalogsItemValidationWarnings, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsItemValidationWarnings.ADIMAGE0LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_0_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_0_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_0_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0LINKWARNING to non-nullable JSON property 'AD_IMAGE_0_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_0_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_0_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE0TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE0TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE0TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_0_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_10_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_10_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_10_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10LINKWARNING to non-nullable JSON property 'AD_IMAGE_10_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_10_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_10_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE10TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE10TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE10TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE10TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_10_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_11_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_11_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_11_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11LINKWARNING to non-nullable JSON property 'AD_IMAGE_11_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_11_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_11_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE11TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE11TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE11TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE11TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_11_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_12_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_12_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_12_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12LINKWARNING to non-nullable JSON property 'AD_IMAGE_12_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_12_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_12_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE12TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE12TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE12TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE12TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_12_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_13_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_13_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_13_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13LINKWARNING to non-nullable JSON property 'AD_IMAGE_13_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_13_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_13_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE13TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE13TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE13TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE13TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_13_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_14_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_14_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_14_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14LINKWARNING to non-nullable JSON property 'AD_IMAGE_14_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_14_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_14_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE14TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE14TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE14TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE14TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_14_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_15_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_15_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_15_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15LINKWARNING to non-nullable JSON property 'AD_IMAGE_15_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_15_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_15_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE15TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE15TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE15TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE15TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_15_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_16_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_16_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_16_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16LINKWARNING to non-nullable JSON property 'AD_IMAGE_16_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_16_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_16_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE16TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE16TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE16TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE16TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_16_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_17_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_17_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_17_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17LINKWARNING to non-nullable JSON property 'AD_IMAGE_17_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_17_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_17_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE17TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE17TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE17TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE17TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_17_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_18_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_18_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_18_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18LINKWARNING to non-nullable JSON property 'AD_IMAGE_18_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_18_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_18_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE18TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE18TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE18TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE18TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_18_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_19_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_19_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_19_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19LINKWARNING to non-nullable JSON property 'AD_IMAGE_19_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_19_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_19_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE19TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE19TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE19TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE19TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_19_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_1_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_1_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_1_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1LINKWARNING to non-nullable JSON property 'AD_IMAGE_1_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_1_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_1_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE1TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE1TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE1TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE1TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_1_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_2_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_2_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_2_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2LINKWARNING to non-nullable JSON property 'AD_IMAGE_2_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_2_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_2_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE2TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE2TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE2TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE2TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_2_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_3_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_3_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_3_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3LINKWARNING to non-nullable JSON property 'AD_IMAGE_3_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_3_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_3_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE3TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE3TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE3TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE3TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_3_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_4_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_4_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_4_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4LINKWARNING to non-nullable JSON property 'AD_IMAGE_4_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_4_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_4_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE4TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE4TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE4TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE4TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_4_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_5_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_5_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_5_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5LINKWARNING to non-nullable JSON property 'AD_IMAGE_5_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_5_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_5_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE5TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE5TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE5TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE5TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_5_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_6_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_6_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_6_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6LINKWARNING to non-nullable JSON property 'AD_IMAGE_6_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_6_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_6_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE6TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE6TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE6TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE6TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_6_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_7_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_7_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_7_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7LINKWARNING to non-nullable JSON property 'AD_IMAGE_7_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_7_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_7_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE7TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE7TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE7TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE7TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_7_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_8_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_8_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_8_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8LINKWARNING to non-nullable JSON property 'AD_IMAGE_8_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_8_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_8_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE8TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE8TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE8TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE8TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_8_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9LINKDUPLICATED to non-nullable JSON property 'AD_IMAGE_9_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9LINKLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_9_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9LINKREQUIRED to non-nullable JSON property 'AD_IMAGE_9_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9LINKWARNING to non-nullable JSON property 'AD_IMAGE_9_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9TAGDUPLICATED to non-nullable JSON property 'AD_IMAGE_9_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9TAGLENGTHTOOLONG to non-nullable JSON property 'AD_IMAGE_9_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE9TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADIMAGE9TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADIMAGE9TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADIMAGE9TAGREQUIRED to non-nullable JSON property 'AD_IMAGE_9_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.AD_LINK_FORMAT_WARNINGOption.IsSet && catalogsItemValidationWarnings.AD_LINK_FORMAT_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.AD_LINK_FORMAT_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.AD_LINK_FORMAT_WARNING to non-nullable JSON property 'AD_LINK_FORMAT_WARNING'.");
 
             if (catalogsItemValidationWarnings.AD_LINK_SAME_AS_LINKOption.IsSet && catalogsItemValidationWarnings.AD_LINK_SAME_AS_LINK == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.AD_LINK_SAME_AS_LINK), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.AD_LINK_SAME_AS_LINK to non-nullable JSON property 'AD_LINK_SAME_AS_LINK'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0LINKDUPLICATED to non-nullable JSON property 'AD_VIDEO_0_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0LINKLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_0_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0LINKREQUIRED to non-nullable JSON property 'AD_VIDEO_0_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0LINKWARNING to non-nullable JSON property 'AD_VIDEO_0_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0TAGDUPLICATED to non-nullable JSON property 'AD_VIDEO_0_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0TAGLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_0_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO0TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO0TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO0TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO0TAGREQUIRED to non-nullable JSON property 'AD_VIDEO_0_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1LINKDUPLICATED to non-nullable JSON property 'AD_VIDEO_1_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1LINKLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_1_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1LINKREQUIRED to non-nullable JSON property 'AD_VIDEO_1_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1LINKWARNING to non-nullable JSON property 'AD_VIDEO_1_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1TAGDUPLICATED to non-nullable JSON property 'AD_VIDEO_1_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1TAGLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_1_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO1TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO1TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO1TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO1TAGREQUIRED to non-nullable JSON property 'AD_VIDEO_1_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2LINKDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2LINKDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2LINKDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2LINKDUPLICATED to non-nullable JSON property 'AD_VIDEO_2_LINK_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2LINKLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2LINKLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2LINKLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2LINKLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_2_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2LINKREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2LINKREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2LINKREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2LINKREQUIRED to non-nullable JSON property 'AD_VIDEO_2_LINK_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2LINKWARNINGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2LINKWARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2LINKWARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2LINKWARNING to non-nullable JSON property 'AD_VIDEO_2_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2TAGDUPLICATEDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2TAGDUPLICATED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2TAGDUPLICATED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2TAGDUPLICATED to non-nullable JSON property 'AD_VIDEO_2_TAG_DUPLICATED'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2TAGLENGTHTOOLONGOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2TAGLENGTHTOOLONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2TAGLENGTHTOOLONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2TAGLENGTHTOOLONG to non-nullable JSON property 'AD_VIDEO_2_TAG_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADVIDEO2TAGREQUIREDOption.IsSet && catalogsItemValidationWarnings.ADVIDEO2TAGREQUIRED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADVIDEO2TAGREQUIRED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADVIDEO2TAGREQUIRED to non-nullable JSON property 'AD_VIDEO_2_TAG_REQUIRED'.");
 
             if (catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONGOption.IsSet && catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG to non-nullable JSON property 'ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_WARNINGOption.IsSet && catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADDITIONAL_IMAGE_LINK_WARNING to non-nullable JSON property 'ADDITIONAL_IMAGE_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADWORDS_FORMAT_WARNINGOption.IsSet && catalogsItemValidationWarnings.ADWORDS_FORMAT_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADWORDS_FORMAT_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADWORDS_FORMAT_WARNING to non-nullable JSON property 'ADWORDS_FORMAT_WARNING'.");
 
             if (catalogsItemValidationWarnings.ADWORDS_SAME_AS_LINKOption.IsSet && catalogsItemValidationWarnings.ADWORDS_SAME_AS_LINK == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ADWORDS_SAME_AS_LINK), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ADWORDS_SAME_AS_LINK to non-nullable JSON property 'ADWORDS_SAME_AS_LINK'.");
 
             if (catalogsItemValidationWarnings.AGE_GROUP_INVALIDOption.IsSet && catalogsItemValidationWarnings.AGE_GROUP_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.AGE_GROUP_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.AGE_GROUP_INVALID to non-nullable JSON property 'AGE_GROUP_INVALID'.");
 
             if (catalogsItemValidationWarnings.ANDROID_DEEP_LINK_INVALIDOption.IsSet && catalogsItemValidationWarnings.ANDROID_DEEP_LINK_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ANDROID_DEEP_LINK_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ANDROID_DEEP_LINK_INVALID to non-nullable JSON property 'ANDROID_DEEP_LINK_INVALID'.");
 
             if (catalogsItemValidationWarnings.AVAILABILITY_DATE_INVALIDOption.IsSet && catalogsItemValidationWarnings.AVAILABILITY_DATE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.AVAILABILITY_DATE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.AVAILABILITY_DATE_INVALID to non-nullable JSON property 'AVAILABILITY_DATE_INVALID'.");
 
             if (catalogsItemValidationWarnings.COUNTRY_DOES_NOT_MAP_TO_CURRENCYOption.IsSet && catalogsItemValidationWarnings.COUNTRY_DOES_NOT_MAP_TO_CURRENCY == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.COUNTRY_DOES_NOT_MAP_TO_CURRENCY), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.COUNTRY_DOES_NOT_MAP_TO_CURRENCY to non-nullable JSON property 'COUNTRY_DOES_NOT_MAP_TO_CURRENCY'.");
 
             if (catalogsItemValidationWarnings.CUSTOM_LABEL_LENGTH_TOO_LONGOption.IsSet && catalogsItemValidationWarnings.CUSTOM_LABEL_LENGTH_TOO_LONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.CUSTOM_LABEL_LENGTH_TOO_LONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.CUSTOM_LABEL_LENGTH_TOO_LONG to non-nullable JSON property 'CUSTOM_LABEL_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.DESCRIPTION_LENGTH_TOO_LONGOption.IsSet && catalogsItemValidationWarnings.DESCRIPTION_LENGTH_TOO_LONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.DESCRIPTION_LENGTH_TOO_LONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.DESCRIPTION_LENGTH_TOO_LONG to non-nullable JSON property 'DESCRIPTION_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.EXPIRATION_DATE_INVALIDOption.IsSet && catalogsItemValidationWarnings.EXPIRATION_DATE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.EXPIRATION_DATE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.EXPIRATION_DATE_INVALID to non-nullable JSON property 'EXPIRATION_DATE_INVALID'.");
 
             if (catalogsItemValidationWarnings.GENDER_INVALIDOption.IsSet && catalogsItemValidationWarnings.GENDER_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.GENDER_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.GENDER_INVALID to non-nullable JSON property 'GENDER_INVALID'.");
 
             if (catalogsItemValidationWarnings.GTIN_INVALIDOption.IsSet && catalogsItemValidationWarnings.GTIN_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.GTIN_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.GTIN_INVALID to non-nullable JSON property 'GTIN_INVALID'.");
 
             if (catalogsItemValidationWarnings.IMAGE_LINK_WARNINGOption.IsSet && catalogsItemValidationWarnings.IMAGE_LINK_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.IMAGE_LINK_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.IMAGE_LINK_WARNING to non-nullable JSON property 'IMAGE_LINK_WARNING'.");
 
             if (catalogsItemValidationWarnings.IOS_DEEP_LINK_INVALIDOption.IsSet && catalogsItemValidationWarnings.IOS_DEEP_LINK_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.IOS_DEEP_LINK_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.IOS_DEEP_LINK_INVALID to non-nullable JSON property 'IOS_DEEP_LINK_INVALID'.");
 
             if (catalogsItemValidationWarnings.IS_BUNDLE_INVALIDOption.IsSet && catalogsItemValidationWarnings.IS_BUNDLE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.IS_BUNDLE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.IS_BUNDLE_INVALID to non-nullable JSON property 'IS_BUNDLE_INVALID'.");
 
             if (catalogsItemValidationWarnings.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILUREOption.IsSet && catalogsItemValidationWarnings.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE to non-nullable JSON property 'ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE'.");
 
             if (catalogsItemValidationWarnings.LINK_FORMAT_WARNINGOption.IsSet && catalogsItemValidationWarnings.LINK_FORMAT_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.LINK_FORMAT_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.LINK_FORMAT_WARNING to non-nullable JSON property 'LINK_FORMAT_WARNING'.");
 
             if (catalogsItemValidationWarnings.MIN_AD_PRICE_INVALIDOption.IsSet && catalogsItemValidationWarnings.MIN_AD_PRICE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.MIN_AD_PRICE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.MIN_AD_PRICE_INVALID to non-nullable JSON property 'MIN_AD_PRICE_INVALID'.");
 
             if (catalogsItemValidationWarnings.MPN_INVALIDOption.IsSet && catalogsItemValidationWarnings.MPN_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.MPN_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.MPN_INVALID to non-nullable JSON property 'MPN_INVALID'.");
 
             if (catalogsItemValidationWarnings.MULTIPACK_INVALIDOption.IsSet && catalogsItemValidationWarnings.MULTIPACK_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.MULTIPACK_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.MULTIPACK_INVALID to non-nullable JSON property 'MULTIPACK_INVALID'.");
 
             if (catalogsItemValidationWarnings.OPTIONAL_CONDITION_INVALIDOption.IsSet && catalogsItemValidationWarnings.OPTIONAL_CONDITION_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.OPTIONAL_CONDITION_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.OPTIONAL_CONDITION_INVALID to non-nullable JSON property 'OPTIONAL_CONDITION_INVALID'.");
 
             if (catalogsItemValidationWarnings.OPTIONAL_CONDITION_MISSINGOption.IsSet && catalogsItemValidationWarnings.OPTIONAL_CONDITION_MISSING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.OPTIONAL_CONDITION_MISSING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.OPTIONAL_CONDITION_MISSING to non-nullable JSON property 'OPTIONAL_CONDITION_MISSING'.");
 
             if (catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_INVALIDOption.IsSet && catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_INVALID to non-nullable JSON property 'OPTIONAL_PRODUCT_CATEGORY_INVALID'.");
 
             if (catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_MISSINGOption.IsSet && catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_MISSING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_MISSING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.OPTIONAL_PRODUCT_CATEGORY_MISSING to non-nullable JSON property 'OPTIONAL_PRODUCT_CATEGORY_MISSING'.");
 
             if (catalogsItemValidationWarnings.PRODUCT_CATEGORY_DEPTH_WARNINGOption.IsSet && catalogsItemValidationWarnings.PRODUCT_CATEGORY_DEPTH_WARNING == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.PRODUCT_CATEGORY_DEPTH_WARNING), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.PRODUCT_CATEGORY_DEPTH_WARNING to non-nullable JSON property 'PRODUCT_CATEGORY_DEPTH_WARNING'.");
 
             if (catalogsItemValidationWarnings.PRODUCT_TYPE_LENGTH_TOO_LONGOption.IsSet && catalogsItemValidationWarnings.PRODUCT_TYPE_LENGTH_TOO_LONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.PRODUCT_TYPE_LENGTH_TOO_LONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.PRODUCT_TYPE_LENGTH_TOO_LONG to non-nullable JSON property 'PRODUCT_TYPE_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.SALE_DATE_INVALIDOption.IsSet && catalogsItemValidationWarnings.SALE_DATE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SALE_DATE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SALE_DATE_INVALID to non-nullable JSON property 'SALE_DATE_INVALID'.");
 
             if (catalogsItemValidationWarnings.SALES_PRICE_INVALIDOption.IsSet && catalogsItemValidationWarnings.SALES_PRICE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SALES_PRICE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SALES_PRICE_INVALID to non-nullable JSON property 'SALES_PRICE_INVALID'.");
 
             if (catalogsItemValidationWarnings.SALES_PRICE_TOO_HIGHOption.IsSet && catalogsItemValidationWarnings.SALES_PRICE_TOO_HIGH == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SALES_PRICE_TOO_HIGH), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SALES_PRICE_TOO_HIGH to non-nullable JSON property 'SALES_PRICE_TOO_HIGH'.");
 
             if (catalogsItemValidationWarnings.SALES_PRICE_TOO_LOWOption.IsSet && catalogsItemValidationWarnings.SALES_PRICE_TOO_LOW == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SALES_PRICE_TOO_LOW), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SALES_PRICE_TOO_LOW to non-nullable JSON property 'SALES_PRICE_TOO_LOW'.");
 
             if (catalogsItemValidationWarnings.SHIPPING_HEIGHT_INVALIDOption.IsSet && catalogsItemValidationWarnings.SHIPPING_HEIGHT_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SHIPPING_HEIGHT_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SHIPPING_HEIGHT_INVALID to non-nullable JSON property 'SHIPPING_HEIGHT_INVALID'.");
 
             if (catalogsItemValidationWarnings.SHIPPING_INVALIDOption.IsSet && catalogsItemValidationWarnings.SHIPPING_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SHIPPING_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SHIPPING_INVALID to non-nullable JSON property 'SHIPPING_INVALID'.");
 
             if (catalogsItemValidationWarnings.SHIPPING_WEIGHT_INVALIDOption.IsSet && catalogsItemValidationWarnings.SHIPPING_WEIGHT_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SHIPPING_WEIGHT_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SHIPPING_WEIGHT_INVALID to non-nullable JSON property 'SHIPPING_WEIGHT_INVALID'.");
 
             if (catalogsItemValidationWarnings.SHIPPING_WIDTH_INVALIDOption.IsSet && catalogsItemValidationWarnings.SHIPPING_WIDTH_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SHIPPING_WIDTH_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SHIPPING_WIDTH_INVALID to non-nullable JSON property 'SHIPPING_WIDTH_INVALID'.");
 
             if (catalogsItemValidationWarnings.SIZE_SYSTEM_INVALIDOption.IsSet && catalogsItemValidationWarnings.SIZE_SYSTEM_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SIZE_SYSTEM_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SIZE_SYSTEM_INVALID to non-nullable JSON property 'SIZE_SYSTEM_INVALID'.");
 
             if (catalogsItemValidationWarnings.SIZE_TYPE_INVALIDOption.IsSet && catalogsItemValidationWarnings.SIZE_TYPE_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.SIZE_TYPE_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.SIZE_TYPE_INVALID to non-nullable JSON property 'SIZE_TYPE_INVALID'.");
 
             if (catalogsItemValidationWarnings.TAX_INVALIDOption.IsSet && catalogsItemValidationWarnings.TAX_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.TAX_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.TAX_INVALID to non-nullable JSON property 'TAX_INVALID'.");
 
             if (catalogsItemValidationWarnings.TITLE_LENGTH_TOO_LONGOption.IsSet && catalogsItemValidationWarnings.TITLE_LENGTH_TOO_LONG == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.TITLE_LENGTH_TOO_LONG), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.TITLE_LENGTH_TOO_LONG to non-nullable JSON property 'TITLE_LENGTH_TOO_LONG'.");
 
             if (catalogsItemValidationWarnings.TOO_MANY_ADDITIONAL_IMAGE_LINKSOption.IsSet && catalogsItemValidationWarnings.TOO_MANY_ADDITIONAL_IMAGE_LINKS == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.TOO_MANY_ADDITIONAL_IMAGE_LINKS), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.TOO_MANY_ADDITIONAL_IMAGE_LINKS to non-nullable JSON property 'TOO_MANY_ADDITIONAL_IMAGE_LINKS'.");
 
             if (catalogsItemValidationWarnings.UTM_SOURCE_AUTO_CORRECTEDOption.IsSet && catalogsItemValidationWarnings.UTM_SOURCE_AUTO_CORRECTED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.UTM_SOURCE_AUTO_CORRECTED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.UTM_SOURCE_AUTO_CORRECTED to non-nullable JSON property 'UTM_SOURCE_AUTO_CORRECTED'.");
 
             if (catalogsItemValidationWarnings.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDEDOption.IsSet && catalogsItemValidationWarnings.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED to non-nullable JSON property 'VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED'.");
 
             if (catalogsItemValidationWarnings.WEIGHT_UNIT_INVALIDOption.IsSet && catalogsItemValidationWarnings.WEIGHT_UNIT_INVALID == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationWarnings.WEIGHT_UNIT_INVALID), "Property is required for class CatalogsItemValidationWarnings.");
+                throw new JsonException("Cannot write null property CatalogsItemValidationWarnings.WEIGHT_UNIT_INVALID to non-nullable JSON property 'WEIGHT_UNIT_INVALID'.");
 
             if (catalogsItemValidationWarnings.ADIMAGE0LINKDUPLICATEDOption.IsSet)
             {

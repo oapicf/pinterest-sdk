@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,79 +27,55 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionEventDeviceInfo", description = "Object containing information about the device where event occurred.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventDeviceInfo {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer batteryLevel;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String brand;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String carrier;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer cpuCores;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer externalStorageFreeSpace;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer externalStorageSize;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable FormFactor formFactor;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String kernelVersion;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> languages = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String locale;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String model;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable NetworkType networkType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable OsFamily osFamily;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osName;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osReleaseName;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String osVersion;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenDensity;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenHeight;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer screenWidth;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer storageFreeSpace;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer storageSize;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String timezone;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String timezoneAbbr;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String type;
 
   public ConversionEventDeviceInfo batteryLevel(@Nullable Integer batteryLevel) {

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class LabelType
-{
-public:
-
-    LabelType();
-    virtual ~LabelType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LabelType,
-        )
-
-private:
+enum class LabelType {
+    
+    BRAND,
+    
+    CUSTOM
+    
 };
 
+inline void to_json(nlohmann::json& j, const LabelType& value)
+{
+    switch (value)
+    {
+        
+        case LabelType::BRAND: j = "BRAND"; break;
+        
+        case LabelType::CUSTOM: j = "CUSTOM"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LabelType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LabelType& value)
+{
+    
+    if (j == "BRAND")
+    {
+        value = LabelType::BRAND;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = LabelType::CUSTOM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LabelType", &j);
+}
 
 } // namespace models
 

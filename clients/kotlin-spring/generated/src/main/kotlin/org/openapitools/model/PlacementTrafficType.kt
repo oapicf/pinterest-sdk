@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
-* Values: ALL,TWO_COLUMN_FEED,FULLSCREEN_FEED
-*/
+ * A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
+ * Values: ALL,TWO_COLUMN_FEED,FULLSCREEN_FEED
+ */
 enum class PlacementTrafficType(@get:JsonValue val value: kotlin.String) {
 
     ALL("ALL"),
@@ -29,9 +29,8 @@ enum class PlacementTrafficType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PlacementTrafficType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementTrafficType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementTrafficType'")
         }
     }
 }
-

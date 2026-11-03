@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,52 +25,37 @@ import jakarta.annotation.Generated;
  * CatalogsCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsAttributes {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel1 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel2 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel3 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String description;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> googleProductCategory = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String link;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String title;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> visibility = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageLink;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String videoLink;
 
   public CatalogsCreativeAssetsAttributes androidDeepLink(String androidDeepLink) {
@@ -84,7 +68,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return androidDeepLink
    */
   
-  @Schema(name = "android_deep_link", description = "Link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "android_deep_link", description = "Link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("android_deep_link")
   public JsonNullable<String> getAndroidDeepLink() {
     return androidDeepLink;
@@ -104,7 +88,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return customLabel0
    */
   
-  @Schema(name = "custom_label_0", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_0", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_0")
   public JsonNullable<String> getCustomLabel0() {
     return customLabel0;
@@ -124,7 +108,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return customLabel1
    */
   
-  @Schema(name = "custom_label_1", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_1", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_1")
   public JsonNullable<String> getCustomLabel1() {
     return customLabel1;
@@ -144,7 +128,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return customLabel2
    */
   
-  @Schema(name = "custom_label_2", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_2", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_2")
   public JsonNullable<String> getCustomLabel2() {
     return customLabel2;
@@ -164,7 +148,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return customLabel3
    */
   
-  @Schema(name = "custom_label_3", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_3", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_3")
   public JsonNullable<String> getCustomLabel3() {
     return customLabel3;
@@ -184,7 +168,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return customLabel4
    */
   
-  @Schema(name = "custom_label_4", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_4", description = "Custom grouping of creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_4")
   public JsonNullable<String> getCustomLabel4() {
     return customLabel4;
@@ -225,7 +209,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return googleProductCategory
    */
   
-  @Schema(name = "google_product_category", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "google_product_category", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("google_product_category")
   public JsonNullable<String> getGoogleProductCategory() {
     return googleProductCategory;
@@ -245,7 +229,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return iosDeepLink
    */
   
-  @Schema(name = "ios_deep_link", description = "IOS deep link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ios_deep_link", description = "IOS deep link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ios_deep_link")
   public JsonNullable<String> getIosDeepLink() {
     return iosDeepLink;
@@ -307,7 +291,7 @@ public class CatalogsCreativeAssetsAttributes {
    * @return visibility
    */
   
-  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "visibility", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("visibility")
   public JsonNullable<String> getVisibility() {
     return visibility;
@@ -334,7 +318,7 @@ public class CatalogsCreativeAssetsAttributes {
    * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
    * @return aiDisclosures
    */
-  @Valid 
+  
   @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ai_disclosures")
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {

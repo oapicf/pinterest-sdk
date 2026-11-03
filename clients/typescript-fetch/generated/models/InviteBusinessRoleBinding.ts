@@ -36,38 +36,26 @@ import {
 export interface InviteBusinessRoleBinding {
     /**
      * Unique identifier for the business that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
      */
     createdByBusinessId?: string;
     /**
      * Unique identifier for the user that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
      */
     createdByUserId?: string;
     /**
      * Unique identifier of the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
      */
     id?: string;
     /**
      * 
-     * @type {InviteDataResponse}
-     * @memberof InviteBusinessRoleBinding
      */
     inviteData?: InviteDataResponse;
     /**
      * Indicates whether the invite/request was received.
-     * @type {boolean}
-     * @memberof InviteBusinessRoleBinding
      */
     isReceivedInvite?: boolean;
     /**
      * Metadata for the member/partner that was sent the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteBusinessRoleBinding
      */
     user?: BusinessAccessUserSummary;
 }

@@ -123,3 +123,4 @@ class _$CatalogsCreativeAssetsProductMetadataSerializer implements PrimitiveSeri
   }
 }
 
+

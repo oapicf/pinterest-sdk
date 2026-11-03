@@ -31,7 +31,7 @@ export const LeadFormQuestionType = {
     StateProvince: 'STATE_PROVINCE',
     Address: 'ADDRESS',
     DateOfBirth: 'DATE_OF_BIRTH',
-    Age: 'AGE'
+    Age: 'AGE',
 } as const;
 export type LeadFormQuestionType = typeof LeadFormQuestionType[keyof typeof LeadFormQuestionType];
 

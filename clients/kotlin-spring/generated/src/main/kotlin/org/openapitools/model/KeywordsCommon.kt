@@ -19,18 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param matchType 
- * @param &#x60;value&#x60; Keyword value (120 chars max).
+ * @param `value` Keyword value (120 chars max).
  * @param bid </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 data class KeywordsCommon(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("match_type")
+    @param:JsonProperty("match_type", required = true)
     @get:JsonProperty("match_type", required = true) val matchType: MatchTypeResponse?,
 
     @Schema(required = true, description = "Keyword value (120 chars max).")
-    @param:JsonProperty("value")
+    @param:JsonProperty("value", required = true)
     @get:JsonProperty("value", required = true) val `value`: kotlin.String,
 
     @Schema(description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")

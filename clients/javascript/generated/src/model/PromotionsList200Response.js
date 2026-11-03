@@ -17,7 +17,7 @@ import Promotion from './Promotion';
 /**
  * The PromotionsList200Response model module.
  * @module model/PromotionsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PromotionsList200Response {
     /**

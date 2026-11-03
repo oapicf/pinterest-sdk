@@ -29,54 +29,38 @@ import {
 export interface PinMediaWithVideo {
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaWithVideo
      */
     coverImageUrl?: string;
     /**
      * Duration (in miliseconds). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof PinMediaWithVideo
      */
     duration?: number | null;
     /**
      * Height (in pixels). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof PinMediaWithVideo
      */
     height?: number | null;
     /**
      * 
-     * @type {ImageSize}
-     * @memberof PinMediaWithVideo
      */
     images?: ImageSize;
     /**
      * 
-     * @type {PinMediaWithVideoMediaTypeEnum}
-     * @memberof PinMediaWithVideo
      */
     mediaType: PinMediaWithVideoMediaTypeEnum;
     /**
      * Video url (720p).
      * 
      * **Note:** This field is limited and not available to all apps.
-     * @type {string}
-     * @memberof PinMediaWithVideo
      */
     videoUrl?: string | null;
     /**
      * Video url (HLS).
      * 
      * **Note:** This field is limited and not available to all apps.
-     * @type {string}
-     * @memberof PinMediaWithVideo
      */
     videoUrlHls?: string | null;
     /**
      * Width (in pixels). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof PinMediaWithVideo
      */
     width?: number | null;
 }
@@ -86,7 +70,7 @@ export interface PinMediaWithVideo {
  * @export
  */
 export const PinMediaWithVideoMediaTypeEnum = {
-    Video: 'video'
+    Video: 'video',
 } as const;
 export type PinMediaWithVideoMediaTypeEnum = typeof PinMediaWithVideoMediaTypeEnum[keyof typeof PinMediaWithVideoMediaTypeEnum];
 

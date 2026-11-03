@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ErrorDetail
 import org.openapitools.model.RecordCounts
 import org.openapitools.model.UserListOperationType
@@ -38,36 +35,36 @@ data class CustomerListUpload(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "9876543210", required = true, description = "Advertiser ID.")
-    @param:JsonProperty("ad_account_id")
+    @param:JsonProperty("ad_account_id", required = true)
     @get:JsonProperty("ad_account_id", required = true) val adAccountId: kotlin.String,
 
     @Schema(example = "1728606435", required = true, description = "Customer List Upload creation_time. Epoch (seconds).")
-    @param:JsonProperty("creation_time")
+    @param:JsonProperty("creation_time", required = true)
     @get:JsonProperty("creation_time", required = true) val creationTime: kotlin.Int,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "59854745824", required = true, description = "ID of the customer list associated with this upload.")
-    @param:JsonProperty("customer_list_id")
+    @param:JsonProperty("customer_list_id", required = true)
     @get:JsonProperty("customer_list_id", required = true) val customerListId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(example = "1234567890", required = true, description = "Customer List Upload ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) val operation: UserListOperationType,
 
     @field:Valid
     @Schema(example = "RUNNING", required = true, description = "")
-    @param:JsonProperty("state")
+    @param:JsonProperty("state", required = true)
     @get:JsonProperty("state", required = true) val state: WorkloadState,
 
     @Schema(example = "1728606435", required = true, description = "Customer List Upload updated_time. Epoch (seconds).")
-    @param:JsonProperty("updated_time")
+    @param:JsonProperty("updated_time", required = true)
     @get:JsonProperty("updated_time", required = true) val updatedTime: kotlin.Int,
 
     @field:Valid
@@ -77,8 +74,6 @@ data class CustomerListUpload(
 
     @field:Valid
     @Schema(description = "Record processing counts")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("record_counts")
     @get:JsonProperty("record_counts") val recordCounts: RecordCounts? = null
 ) {

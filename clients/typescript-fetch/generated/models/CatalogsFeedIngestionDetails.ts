@@ -43,20 +43,14 @@ import {
 export interface CatalogsFeedIngestionDetails {
     /**
      * 
-     * @type {CatalogsFeedIngestionErrors}
-     * @memberof CatalogsFeedIngestionDetails
      */
     errors: CatalogsFeedIngestionErrors;
     /**
      * 
-     * @type {CatalogsFeedIngestionInfo}
-     * @memberof CatalogsFeedIngestionDetails
      */
     info: CatalogsFeedIngestionInfo;
     /**
      * 
-     * @type {CatalogsFeedIngestionWarnings}
-     * @memberof CatalogsFeedIngestionDetails
      */
     warnings: CatalogsFeedIngestionWarnings;
 }

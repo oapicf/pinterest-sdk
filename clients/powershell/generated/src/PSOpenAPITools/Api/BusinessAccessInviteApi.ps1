@@ -66,7 +66,7 @@ function Invoke-AssetAccessRequestsCreate {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling assetAccessRequests_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$CreateAssetAccessRequestBody) {
             throw "Error! The required parameter `CreateAssetAccessRequestBody` missing when calling assetAccessRequests_create."
@@ -155,7 +155,7 @@ function Stop-InvitesOrRequests {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling cancelInvitesOrRequests."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$CancelInvitesRequest) {
             throw "Error! The required parameter `CancelInvitesRequest` missing when calling cancelInvitesOrRequests."
@@ -244,7 +244,7 @@ function New-AssetInvites {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling createAssetInvites."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$CreateAssetInvitesRequest) {
             throw "Error! The required parameter `CreateAssetInvitesRequest` missing when calling createAssetInvites."
@@ -333,7 +333,7 @@ function New-MembershipOrPartnershipInvites {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling createMembershipOrPartnershipInvites."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$CreateMembershipOrPartnershipInvitesBody) {
             throw "Error! The required parameter `CreateMembershipOrPartnershipInvitesBody` missing when calling createMembershipOrPartnershipInvites."
@@ -443,7 +443,7 @@ function Get-Invites {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling get_invites."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if ($IsMember) {
             $LocalVarQueryParameters['is_member'] = $IsMember

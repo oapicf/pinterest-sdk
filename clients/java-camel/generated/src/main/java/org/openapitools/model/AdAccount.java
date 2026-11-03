@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,7 +28,7 @@ import jakarta.annotation.Generated;
  * AdAccount
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccount {
 
   private Country country;
@@ -44,7 +43,6 @@ public class AdAccount {
 
   private AdAccountOwner owner;
 
-  @Valid
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
   private String timeZone;
@@ -199,7 +197,7 @@ public class AdAccount {
    * Get permissions
    * @return permissions
    */
-  @Valid 
+  
   @Schema(name = "permissions", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("permissions")
   public List<BusinessAccessRole> getPermissions() {

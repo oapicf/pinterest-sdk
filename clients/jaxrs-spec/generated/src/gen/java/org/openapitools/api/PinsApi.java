@@ -35,7 +35,7 @@ import javax.validation.Valid;
 */
 @Path("/pins")
 @Api(description = "the pins API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApi {
 
     @GET
@@ -58,7 +58,13 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response multiPinsAnalytics(@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for.")  List<MultiPinsAnalyticsMetricTypesItem> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response multiPinsAnalytics(@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for.")  List<MultiPinsAnalyticsMetricTypesItem> metricTypes
+,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -82,7 +88,14 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsAnalytics(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.")  List<QuerypinanalyticsmetrictypesItems> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsAnalytics(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.")  List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes
+,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes
+,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -111,7 +124,9 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsCreate(@Valid @NotNull PinCreate pinCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsCreate(@Valid @NotNull PinCreate pinCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -140,7 +155,9 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsDelete(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsDelete(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -164,7 +181,10 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsGet(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
+    public Response pinsGet(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -187,7 +207,18 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsList(@QueryParam("pin_filter")  @ApiParam("The filter to apply to the pins")  PinFilter pinFilter,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics,@QueryParam("include_protected_pins") @DefaultValue("false")  @ApiParam("Whether to include protected pins in the results")  Boolean includeProtectedPins,@QueryParam("pin_type")  @ApiParam("The type of pins to return, currently only enabled for private pins")  PinType pinType,@QueryParam("creative_types")  @ApiParam("Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  List<CreativeType> creativeTypes,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("domain")  @ApiParam("Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins).")  String domain,@QueryParam("domains") @Size(min=1,max=100)  @ApiParam("Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;).")  List<String> domains,@QueryParam("include_product_tag_obj")  @ApiParam("Include product tag objects in the response with their associated links.")  Boolean includeProductTagObj,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response pinsList(@QueryParam("pin_filter")  @ApiParam("The filter to apply to the pins")  PinFilter pinFilter
+,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics
+,@QueryParam("include_protected_pins") @DefaultValue("false")  @ApiParam("Whether to include protected pins in the results")  Boolean includeProtectedPins
+,@QueryParam("pin_type")  @ApiParam("The type of pins to return, currently only enabled for private pins")  PinType pinType
+,@QueryParam("creative_types")  @ApiParam("Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")  List<CreativeType> creativeTypes
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("domain")  @ApiParam("Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins).")  String domain
+,@QueryParam("domains") @Size(min=1,max=100)  @ApiParam("Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;).")  List<String> domains
+,@QueryParam("include_product_tag_obj")  @ApiParam("Include product tag objects in the response with their associated links.")  Boolean includeProductTagObj
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -211,7 +242,10 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsSave(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId,@Valid @NotNull PinsSaveRequestCreate pinsSaveRequestCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsSave(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId
+,@Valid @NotNull PinsSaveRequestCreate pinsSaveRequestCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -240,7 +274,10 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pinsUpdate(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId,@Valid @NotNull PinUpdate pinUpdate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsUpdate(@PathParam("pin_id") @Pattern(regexp="^\\d+$") String pinId
+,@Valid @NotNull PinUpdate pinUpdate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -263,7 +300,9 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productTagsBulkAdd(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId,@Valid @NotNull ProductTagsBulkAddRequest productTagsBulkAddRequest) {
+    public Response productTagsBulkAdd(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId
+,@Valid @NotNull ProductTagsBulkAddRequest productTagsBulkAddRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -287,7 +326,9 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productTagsBulkDelete(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId,@Valid @NotNull ProductTagsBulkDeleteRequest productTagsBulkDeleteRequest) {
+    public Response productTagsBulkDelete(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId
+,@Valid @NotNull ProductTagsBulkDeleteRequest productTagsBulkDeleteRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -308,7 +349,8 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productTagsList(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId) {
+    public Response productTagsList(@PathParam("pin_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of the hero pin that will receive product tags.") String pinId
+) {
         return Response.ok().entity("magic!").build();
     }
 }

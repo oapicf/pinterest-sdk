@@ -38,7 +38,7 @@ import javax.validation.Valid;
   TrendsEditorial.JSON_PROPERTY_RELATED_KEYWORDS,
   TrendsEditorial.JSON_PROPERTY_TITLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsEditorial   {
   public static final String JSON_PROPERTY_BOARD_URL = "board_url";
   @JsonProperty(JSON_PROPERTY_BOARD_URL)
@@ -179,7 +179,7 @@ public class TrendsEditorial   {
    **/
   @JsonProperty(value = "related_keywords")
   @ApiModelProperty(required = true, value = "List of keywords related to the editorial article")
-  @NotNull @Valid 
+  @NotNull 
   public List<@Valid KeywordInfo> getRelatedKeywords() {
     return relatedKeywords;
   }

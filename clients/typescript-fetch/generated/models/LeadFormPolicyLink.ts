@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface LeadFormPolicyLink {
     /**
      * Policy label for an additional policy link.
-     * @type {string}
-     * @memberof LeadFormPolicyLink
      */
     label?: string;
     /**
      * Policy link for an additional policy link.
-     * @type {string}
-     * @memberof LeadFormPolicyLink
      */
     link?: string;
 }

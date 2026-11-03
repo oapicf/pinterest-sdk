@@ -22,7 +22,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The CampaignCreateItem model module.
  * @module model/CampaignCreateItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignCreateItem {
     /**

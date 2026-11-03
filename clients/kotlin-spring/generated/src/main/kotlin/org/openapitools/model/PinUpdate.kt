@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AiDisclosuresUpdate
 import org.openapitools.model.CarouselSlot
 import javax.validation.constraints.DecimalMax
@@ -33,8 +30,6 @@ data class PinUpdate(
 
     @field:Valid
     @Schema(description = "AI disclosure declarations the creator has made about this Pin.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: AiDisclosuresUpdate? = null,
 
@@ -45,8 +40,6 @@ data class PinUpdate(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "The board to which this Pin belongs.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("board_id")
     @get:JsonProperty("board_id") val boardId: kotlin.String? = null,
 
@@ -57,8 +50,6 @@ data class PinUpdate(
 
     @field:Valid
     @Schema(description = "Carousel Pin slots data.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("carousel_slots")
     @get:JsonProperty("carousel_slots") val carouselSlots: kotlin.collections.List<CarouselSlot>? = null,
 

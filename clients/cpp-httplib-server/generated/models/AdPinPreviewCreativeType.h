@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class AdPinPreviewCreativeType
-{
-public:
-
-    AdPinPreviewCreativeType();
-    virtual ~AdPinPreviewCreativeType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdPinPreviewCreativeType,
-        )
-
-private:
+enum class AdPinPreviewCreativeType {
+    
+    SHOPPING,
+    
+    COLLECTION,
+    
+    MAX_VIDEO,
+    
+    MAX_WIDTH_VIDEO_COLLECTION,
+    
+    MAX_WIDTH_REGULAR_COLLECTION
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdPinPreviewCreativeType& value)
+{
+    switch (value)
+    {
+        
+        case AdPinPreviewCreativeType::SHOPPING: j = "SHOPPING"; break;
+        
+        case AdPinPreviewCreativeType::COLLECTION: j = "COLLECTION"; break;
+        
+        case AdPinPreviewCreativeType::MAX_VIDEO: j = "MAX_VIDEO"; break;
+        
+        case AdPinPreviewCreativeType::MAX_WIDTH_VIDEO_COLLECTION: j = "MAX_WIDTH_VIDEO_COLLECTION"; break;
+        
+        case AdPinPreviewCreativeType::MAX_WIDTH_REGULAR_COLLECTION: j = "MAX_WIDTH_REGULAR_COLLECTION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdPinPreviewCreativeType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdPinPreviewCreativeType& value)
+{
+    
+    if (j == "SHOPPING")
+    {
+        value = AdPinPreviewCreativeType::SHOPPING;
+        return;
+    }
+    
+    if (j == "COLLECTION")
+    {
+        value = AdPinPreviewCreativeType::COLLECTION;
+        return;
+    }
+    
+    if (j == "MAX_VIDEO")
+    {
+        value = AdPinPreviewCreativeType::MAX_VIDEO;
+        return;
+    }
+    
+    if (j == "MAX_WIDTH_VIDEO_COLLECTION")
+    {
+        value = AdPinPreviewCreativeType::MAX_WIDTH_VIDEO_COLLECTION;
+        return;
+    }
+    
+    if (j == "MAX_WIDTH_REGULAR_COLLECTION")
+    {
+        value = AdPinPreviewCreativeType::MAX_WIDTH_REGULAR_COLLECTION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdPinPreviewCreativeType", &j);
+}
 
 } // namespace models
 

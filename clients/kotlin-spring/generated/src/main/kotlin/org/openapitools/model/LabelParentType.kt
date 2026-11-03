@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Label parent entity type.
-* Values: CAMPAIGN
-*/
+ * Label parent entity type.
+ * Values: CAMPAIGN
+ */
 enum class LabelParentType(@get:JsonValue val value: kotlin.String) {
 
     CAMPAIGN("CAMPAIGN");
@@ -27,9 +27,8 @@ enum class LabelParentType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LabelParentType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelParentType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelParentType'")
         }
     }
 }
-

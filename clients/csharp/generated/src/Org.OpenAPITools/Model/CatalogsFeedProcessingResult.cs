@@ -255,46 +255,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!createdAt.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(createdAt));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: created_at.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: id.");
 
             if (!ingestionDetails.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(ingestionDetails));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: ingestion_details.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(status));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: status.");
 
             if (!updatedAt.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(updatedAt));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: updated_at.");
 
             if (!validationDetails.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(validationDetails));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: validation_details.");
 
             if (!productCounts.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingResult.", nameof(productCounts));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingResult: product_counts.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: created_at.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: id.");
 
             if (ingestionDetails.IsSet && ingestionDetails.Value == null)
-                throw new ArgumentNullException(nameof(ingestionDetails), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: ingestion_details.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: status.");
 
             if (updatedAt.IsSet && updatedAt.Value == null)
-                throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: updated_at.");
 
             if (validationDetails.IsSet && validationDetails.Value == null)
-                throw new ArgumentNullException(nameof(validationDetails), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: validation_details.");
 
             if (videoCounts.IsSet && videoCounts.Value == null)
-                throw new ArgumentNullException(nameof(videoCounts), "Property is not nullable for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingResult: video_counts.");
 
             return new CatalogsFeedProcessingResult(createdAt.Value!.Value!, id.Value!, ingestionDetails.Value!, status.Value!.Value!, updatedAt.Value!.Value!, validationDetails.Value!, productCounts.Value!, videoCounts);
         }
@@ -305,7 +305,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProcessingResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedProcessingResult catalogsFeedProcessingResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -320,20 +319,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProcessingResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedProcessingResult catalogsFeedProcessingResult, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedProcessingResult.Id == null)
-                throw new ArgumentNullException(nameof(catalogsFeedProcessingResult.Id), "Property is required for class CatalogsFeedProcessingResult.");
-
-            if (catalogsFeedProcessingResult.IngestionDetails == null)
-                throw new ArgumentNullException(nameof(catalogsFeedProcessingResult.IngestionDetails), "Property is required for class CatalogsFeedProcessingResult.");
-
-            if (catalogsFeedProcessingResult.ValidationDetails == null)
-                throw new ArgumentNullException(nameof(catalogsFeedProcessingResult.ValidationDetails), "Property is required for class CatalogsFeedProcessingResult.");
-
             if (catalogsFeedProcessingResult.VideoCountsOption.IsSet && catalogsFeedProcessingResult.VideoCounts == null)
-                throw new ArgumentNullException(nameof(catalogsFeedProcessingResult.VideoCounts), "Property is required for class CatalogsFeedProcessingResult.");
+                throw new JsonException("Cannot write null property CatalogsFeedProcessingResult.VideoCounts to non-nullable JSON property 'video_counts'.");
 
             writer.WriteString("created_at", catalogsFeedProcessingResult.CreatedAt.ToString(CreatedAtFormat));
 

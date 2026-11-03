@@ -6,20 +6,3 @@
 */
 #include "OperationType.h"
 
-namespace models {
-
-OperationType::OperationType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

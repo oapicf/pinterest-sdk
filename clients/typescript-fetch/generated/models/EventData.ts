@@ -54,68 +54,46 @@ import {
 export interface EventData {
     /**
      * Currency. For example, 'USD'.
-     * @type {Currency}
-     * @memberof EventData
      */
     currency?: Currency;
     /**
      * Promotion code. For example, 'Newsletter'.
-     * @type {string}
-     * @memberof EventData
      */
     leadType?: string;
     /**
      * 
-     * @type {LineItem}
-     * @memberof EventData
      */
     lineItems?: LineItem;
     /**
      * Order ID. For example, 'X-151481'.
-     * @type {string}
-     * @memberof EventData
      */
     orderId?: string;
     /**
      * Order quantity. For example, 1.
-     * @type {number}
-     * @memberof EventData
      */
     orderQuantity?: number;
     /**
      * Page name. For example, 'Our Favorite Pins on Pinterest'.
-     * @type {string}
-     * @memberof EventData
      */
     pageName?: string;
     /**
      * Promotion code. For example, 'WINTER10'.
-     * @type {string}
-     * @memberof EventData
      */
     promoCode?: string;
     /**
      * Property. For example, 'Athleta'.
-     * @type {string}
-     * @memberof EventData
      */
     property?: string;
     /**
      * Search query string. For example, 'boots'.
-     * @type {string}
-     * @memberof EventData
      */
     searchQuery?: string;
     /**
      * Product value. For example, '199.98'.
-     * @type {string}
-     * @memberof EventData
      */
     value?: string;
     /**
      * Video title. For example, 'How to style your Parker Boots'.
-     * @type {string}
-     * @memberof EventData
      */
     videoTitle?: string;
 }

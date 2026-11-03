@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.UpdatableItemAttributes
 import org.openapitools.model.UpdateMaskFieldType
 import javax.validation.constraints.DecimalMax
@@ -28,14 +25,10 @@ data class ItemUpdateBatchRecord(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("attributes")
     @get:JsonProperty("attributes") val attributes: UpdatableItemAttributes? = null,
 
     @Schema(example = "DS0294-M", description = "The catalog item id in the merchant namespace")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("item_id")
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 

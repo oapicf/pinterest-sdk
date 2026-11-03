@@ -6,20 +6,3 @@
 */
 #include "OrderLinePaidType.h"
 
-namespace models {
-
-OrderLinePaidType::OrderLinePaidType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

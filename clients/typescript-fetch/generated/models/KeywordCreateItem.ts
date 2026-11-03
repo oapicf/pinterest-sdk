@@ -29,20 +29,14 @@ import {
 export interface KeywordCreateItem {
     /**
      * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-     * @type {number}
-     * @memberof KeywordCreateItem
      */
     bid?: number | null;
     /**
      * Keyword [match type](/docs/api-features/targeting-overview/)
-     * @type {MatchType}
-     * @memberof KeywordCreateItem
      */
     matchType: MatchType | null;
     /**
      * Keyword value (120 chars max).
-     * @type {string}
-     * @memberof KeywordCreateItem
      */
     value: string;
 }

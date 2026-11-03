@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -30,18 +27,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsHotelItemsPostFilter(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsHotelItemsPostFilter.CatalogType = kotlin.String.HOTEL,
 
     @get:Size(min=1,max=1000) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("hotel_ids")
+    @param:JsonProperty("hotel_ids", required = true)
     @get:JsonProperty("hotel_ids", required = true) val hotelIds: kotlin.collections.List<kotlin.String>,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
 ) : CatalogsItemsPostFilters {
@@ -53,12 +48,12 @@ data class CatalogsHotelItemsPostFilter(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         HOTEL("HOTEL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

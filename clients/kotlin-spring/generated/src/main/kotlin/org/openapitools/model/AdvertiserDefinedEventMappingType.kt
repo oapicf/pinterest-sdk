@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Pinterest standard event types that a custom event can be mapped to. Restricted to event types that are valid ads optimization goals.
-* Values: SIGNUP,ADD_TO_CART,LEAD,CHECKOUT,SUBSCRIBE,ADD_TO_WISHLIST,ADD_PAYMENT_INFO,INITIATE_CHECKOUT,CONTACT,CUSTOMIZE_PRODUCT,FIND_LOCATION,SCHEDULE,SUBMIT_APPLICATION,START_TRIAL,PAGE_VISIT,VIEW_CATEGORY,VIEW_CONTENT,SEARCH,WATCH_VIDEO
-*/
+ * Pinterest standard event types that a custom event can be mapped to. Restricted to event types that are valid ads optimization goals.
+ * Values: SIGNUP,ADD_TO_CART,LEAD,CHECKOUT,SUBSCRIBE,ADD_TO_WISHLIST,ADD_PAYMENT_INFO,INITIATE_CHECKOUT,CONTACT,CUSTOMIZE_PRODUCT,FIND_LOCATION,SCHEDULE,SUBMIT_APPLICATION,START_TRIAL,PAGE_VISIT,VIEW_CATEGORY,VIEW_CONTENT,SEARCH,WATCH_VIDEO
+ */
 enum class AdvertiserDefinedEventMappingType(@get:JsonValue val value: kotlin.String) {
 
     SIGNUP("SIGNUP"),
@@ -45,9 +45,8 @@ enum class AdvertiserDefinedEventMappingType(@get:JsonValue val value: kotlin.St
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdvertiserDefinedEventMappingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdvertiserDefinedEventMappingType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdvertiserDefinedEventMappingType'")
         }
     }
 }
-

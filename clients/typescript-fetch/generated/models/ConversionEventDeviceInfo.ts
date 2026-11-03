@@ -43,44 +43,30 @@ import {
 export interface ConversionEventDeviceInfo {
     /**
      * Battery charge level percentage
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     batteryLevel?: number;
     /**
      * Device brand
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     brand?: string;
     /**
      * User device's mobile carrier.
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     carrier?: string;
     /**
      * Number of CPU cores
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     cpuCores?: number;
     /**
      * External storage size in GB
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     externalStorageFreeSpace?: number;
     /**
      * External storage size in GB
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     externalStorageSize?: number;
     /**
      * Device form factor
-     * @type {FormFactor}
-     * @memberof ConversionEventDeviceInfo
      */
     formFactor?: FormFactor;
     /**
@@ -88,47 +74,33 @@ export interface ConversionEventDeviceInfo {
      * Linux: 6.15. Obtain by running: uname -r
      * MacOS: 24.3.0. Obtain by running: sysctl kern.version
      * Android: 6.6. Obtain from OS.uname().release
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     kernelVersion?: string;
     /**
      * List of user installed languages. ISO 639-1 format
-     * @type {Array<string>}
-     * @memberof ConversionEventDeviceInfo
      */
     languages?: Array<string>;
     /**
      * Device locale BCP-47 format
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     locale?: string;
     /**
      * Device model name
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     model?: string;
     /**
      * Network type: 4G, 5G, ethernet, wifi
      * In Android: NetworkCapabilities.getNetworkCapabilities()
-     * @type {NetworkType}
-     * @memberof ConversionEventDeviceInfo
      */
     networkType?: NetworkType;
     /**
      * OS Family
-     * @type {OsFamily}
-     * @memberof ConversionEventDeviceInfo
      */
     osFamily?: OsFamily;
     /**
      * Short name of the OS.
      * This value if specific to os family. Examples:
      * Windows: 10, 11; Android: 16; iOS: 18; MacOS: 15; Linux: Debian, Ubuntu, Arch
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     osName?: string;
     /**
@@ -137,8 +109,6 @@ export interface ConversionEventDeviceInfo {
      * Android: Baklava
      * MacOS: Sequoia
      * Ubuntu Linux: Plucky Puffin
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     osReleaseName?: string;
     /**
@@ -148,56 +118,38 @@ export interface ConversionEventDeviceInfo {
      * MacOS: 15.5
      * Windows: 24H2
      * Ubuntu Linux: 25.04
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     osVersion?: string;
     /**
      * Screen density, PPI
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     screenDensity?: number;
     /**
      * Screen height in pixels
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     screenHeight?: number;
     /**
      * Screen width in pixels
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     screenWidth?: number;
     /**
      * Internal storage size in GB
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     storageFreeSpace?: number;
     /**
      * Internal storage size in GB
-     * @type {number}
-     * @memberof ConversionEventDeviceInfo
      */
     storageSize?: number;
     /**
      * Device timezone
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     timezone?: string;
     /**
      * Timezone abbreviation
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     timezoneAbbr?: string;
     /**
      * Device type
-     * @type {string}
-     * @memberof ConversionEventDeviceInfo
      */
     type?: string;
 }

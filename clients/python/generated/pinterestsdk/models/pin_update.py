@@ -107,8 +107,7 @@ class PinUpdate(BaseModel):
         _items = []
         if self.carousel_slots:
             for _item_carousel_slots in self.carousel_slots:
-                if _item_carousel_slots:
-                    _items.append(_item_carousel_slots.to_dict())
+                _items.append(_item_carousel_slots.to_dict() if _item_carousel_slots is not None else None)
             _dict['carousel_slots'] = _items
         # set to None if alt_text (nullable) is None
         # and model_fields_set contains the field

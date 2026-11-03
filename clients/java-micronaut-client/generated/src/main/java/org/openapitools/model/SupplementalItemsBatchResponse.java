@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   SupplementalItemsBatchResponse.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("SupplementalItemsBatchResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class SupplementalItemsBatchResponse {
     public static final String JSON_PROPERTY_BATCH_ID = "batch_id";
@@ -51,12 +51,12 @@ public class SupplementalItemsBatchResponse {
     private OffsetDateTime createdTime;
 
     public static final String JSON_PROPERTY_OPERATION_RESULTS = "operation_results";
-    private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+    private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
     public static final String JSON_PROPERTY_STATUS = "status";
     private SupplementalItemBatchOperationStatus status;
 
-    public SupplementalItemsBatchResponse(String batchId, OffsetDateTime createdTime, List<SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
+    public SupplementalItemsBatchResponse(String batchId, OffsetDateTime createdTime, List<@Valid SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
         this.batchId = batchId;
         this.createdTime = createdTime;
         this.operationResults = operationResults;
@@ -105,7 +105,7 @@ public class SupplementalItemsBatchResponse {
     @NotNull
     @JsonProperty(JSON_PROPERTY_OPERATION_RESULTS)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<SupplementalOperationResult> getOperationResults() {
+    public List<@Valid SupplementalOperationResult> getOperationResults() {
         return operationResults;
     }
 

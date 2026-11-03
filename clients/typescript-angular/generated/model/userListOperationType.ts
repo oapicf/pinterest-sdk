@@ -14,7 +14,7 @@
  */
 export const UserListOperationType = {
     Add: 'ADD',
-    Remove: 'REMOVE'
+    Remove: 'REMOVE',
 } as const;
 export type UserListOperationType = typeof UserListOperationType[keyof typeof UserListOperationType];
 

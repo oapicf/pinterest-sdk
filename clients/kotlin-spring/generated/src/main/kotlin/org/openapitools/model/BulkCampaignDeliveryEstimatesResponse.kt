@@ -16,13 +16,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * Bulk campaign delivery estimates response.
- * @param &#x60;data&#x60; Per-campaign delivery estimate results, in the same order as the request.
+ * @param `data` Per-campaign delivery estimate results, in the same order as the request.
  */
 data class BulkCampaignDeliveryEstimatesResponse(
 
     @field:Valid
     @Schema(required = true, description = "Per-campaign delivery estimate results, in the same order as the request.")
-    @param:JsonProperty("data")
+    @param:JsonProperty("data", required = true)
     @get:JsonProperty("data", required = true) val `data`: kotlin.collections.List<BulkCampaignDeliveryEstimatesItem>
 ) {
 

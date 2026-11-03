@@ -23,12 +23,12 @@ data class LabelBulkCreateRequest(
 
     @field:Valid
     @Schema(required = true, description = "Labels that you are applying to the campaign.")
-    @param:JsonProperty("labels")
+    @param:JsonProperty("labels", required = true)
     @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelCreateItem>,
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(required = true, description = "Unique identifier of the asset you are labelling. Currently, you can only label campaigns.")
-    @param:JsonProperty("parent_id")
+    @param:JsonProperty("parent_id", required = true)
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
 ) {
 

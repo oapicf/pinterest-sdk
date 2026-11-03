@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface LabeledEntitiesCreate {
     /**
      * Entity IDs to apply label to.
-     * @type {Array<string>}
-     * @memberof LabeledEntitiesCreate
      */
     entityIds: Array<string>;
 }

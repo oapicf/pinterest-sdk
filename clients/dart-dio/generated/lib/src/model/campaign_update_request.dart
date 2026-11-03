@@ -485,3 +485,4 @@ class _$CampaignUpdateRequestSerializer implements PrimitiveSerializer<CampaignU
   }
 }
 
+

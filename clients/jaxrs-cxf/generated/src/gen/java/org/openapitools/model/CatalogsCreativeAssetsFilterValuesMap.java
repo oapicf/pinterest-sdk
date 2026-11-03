@@ -69,8 +69,6 @@ public class CatalogsCreativeAssetsFilterValuesMap  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<MediaType> mediaType = new ArrayList<>();
  /**
    * Get customLabel0

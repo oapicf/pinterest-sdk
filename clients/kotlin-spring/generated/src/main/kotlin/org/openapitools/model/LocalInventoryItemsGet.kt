@@ -22,7 +22,7 @@ data class LocalInventoryItemsGet(
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Array of local inventory items")
-    @param:JsonProperty("items")
+    @param:JsonProperty("items", required = true)
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<LocalInventoryItemResponse>
 ) {
 

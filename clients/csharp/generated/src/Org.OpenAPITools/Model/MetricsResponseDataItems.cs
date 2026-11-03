@@ -162,22 +162,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!metrics.IsSet)
-                throw new ArgumentException("Property is required for class MetricsResponseDataItems.", nameof(metrics));
+                throw new JsonException("Property is required for class MetricsResponseDataItems: metrics.");
 
             if (!targetingType.IsSet)
-                throw new ArgumentException("Property is required for class MetricsResponseDataItems.", nameof(targetingType));
+                throw new JsonException("Property is required for class MetricsResponseDataItems: targeting_type.");
 
             if (!targetingValue.IsSet)
-                throw new ArgumentException("Property is required for class MetricsResponseDataItems.", nameof(targetingValue));
+                throw new JsonException("Property is required for class MetricsResponseDataItems: targeting_value.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class MetricsResponseDataItems.");
+                throw new JsonException("Property is not nullable for class MetricsResponseDataItems: metrics.");
 
             if (targetingType.IsSet && targetingType.Value == null)
-                throw new ArgumentNullException(nameof(targetingType), "Property is not nullable for class MetricsResponseDataItems.");
+                throw new JsonException("Property is not nullable for class MetricsResponseDataItems: targeting_type.");
 
             if (targetingValue.IsSet && targetingValue.Value == null)
-                throw new ArgumentNullException(nameof(targetingValue), "Property is not nullable for class MetricsResponseDataItems.");
+                throw new JsonException("Property is not nullable for class MetricsResponseDataItems: targeting_value.");
 
             return new MetricsResponseDataItems(metrics.Value!, targetingType.Value!, targetingValue.Value!);
         }
@@ -188,7 +188,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="metricsResponseDataItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MetricsResponseDataItems metricsResponseDataItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -203,18 +202,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="metricsResponseDataItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MetricsResponseDataItems metricsResponseDataItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (metricsResponseDataItems.Metrics == null)
-                throw new ArgumentNullException(nameof(metricsResponseDataItems.Metrics), "Property is required for class MetricsResponseDataItems.");
-
-            if (metricsResponseDataItems.TargetingType == null)
-                throw new ArgumentNullException(nameof(metricsResponseDataItems.TargetingType), "Property is required for class MetricsResponseDataItems.");
-
-            if (metricsResponseDataItems.TargetingValue == null)
-                throw new ArgumentNullException(nameof(metricsResponseDataItems.TargetingValue), "Property is required for class MetricsResponseDataItems.");
-
             writer.WritePropertyName("metrics");
             JsonSerializer.Serialize(writer, metricsResponseDataItems.Metrics, jsonSerializerOptions);
             writer.WriteString("targeting_type", metricsResponseDataItems.TargetingType);

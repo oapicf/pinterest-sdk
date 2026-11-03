@@ -122,3 +122,4 @@ class _$CartingRetailerSerializer implements PrimitiveSerializer<CartingRetailer
   }
 }
 
+

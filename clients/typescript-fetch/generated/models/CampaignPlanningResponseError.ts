@@ -29,14 +29,10 @@ import {
 export interface CampaignPlanningResponseError {
     /**
      * 
-     * @type {CampaignPlanningResponseErrorCode}
-     * @memberof CampaignPlanningResponseError
      */
     code?: CampaignPlanningResponseErrorCode;
     /**
      * Human-readable error message.
-     * @type {string}
-     * @memberof CampaignPlanningResponseError
      */
     message?: string;
 }

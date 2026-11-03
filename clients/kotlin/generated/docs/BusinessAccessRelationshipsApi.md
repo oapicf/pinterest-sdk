@@ -45,9 +45,9 @@ try {
 ```
 
 ### Parameters
-| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
 | **brandAccountCreate** | [**BrandAccountCreate**](BrandAccountCreate.md)|  | |
 
 ### Return type
@@ -102,10 +102,10 @@ try {
 ```
 
 ### Parameters
-| **brandAccountId** | **kotlin.String**|  | |
-| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **brandAccountId** | **kotlin.String**|  | |
+| **businessHierarchyId** | **kotlin.String**| business hierarchy node id | |
 | **brandAccountUpdate** | [**BrandAccountUpdate**](BrandAccountUpdate.md)|  | |
 
 ### Return type
@@ -159,9 +159,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Business id | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Business id | |
 | **deleteBusinessMembershipBody** | [**DeleteBusinessMembershipBody**](DeleteBusinessMembershipBody.md)|  | |
 
 ### Return type
@@ -215,9 +215,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **deleteBusinessPartnersDelete** | [**DeleteBusinessPartnersDelete**](DeleteBusinessPartnersDelete.md)|  | |
 
 ### Return type
@@ -272,10 +272,10 @@ try {
 ```
 
 ### Parameters
-| **assetsSummary** | **kotlin.Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true] |
-| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **assetsSummary** | **kotlin.Boolean**| Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to true] |
+| **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -335,6 +335,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **fetchSystemUsers** | **kotlin.Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **assetsSummary** | **kotlin.Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
@@ -342,8 +344,6 @@ try {
 | **memberIds** | **kotlin.String**| A list of business members ids separated by comma. | [optional] |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -403,6 +403,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetsSummary** | **kotlin.Boolean**| Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are | [optional] [default to false] |
 | **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL] |
@@ -410,8 +412,6 @@ try {
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **sortAscending** | **kotlin.Boolean**| Sort ascending. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -465,10 +465,10 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
-| **systemUserId** | **kotlin.String**| Unique identifier of a system user. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
+| **systemUserId** | **kotlin.String**| Unique identifier of a system user. | |
 | **systemUserUpdateWithRequiredBody** | [**SystemUserUpdateWithRequiredBody**](SystemUserUpdateWithRequiredBody.md)|  | |
 
 ### Return type
@@ -522,9 +522,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Business id | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Business id | |
 | **businessMembershipMember** | [**kotlin.collections.List&lt;BusinessMembershipMember&gt;**](BusinessMembershipMember.md)|  | |
 
 ### Return type

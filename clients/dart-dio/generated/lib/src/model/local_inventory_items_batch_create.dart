@@ -107,3 +107,4 @@ class _$LocalInventoryItemsBatchCreateSerializer implements PrimitiveSerializer<
   }
 }
 
+

@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * CampaignCreateRequestAllOf1
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CampaignCreateRequestAllOf1   {
   @JsonProperty("bid_options")
@@ -29,15 +29,15 @@ public class CampaignCreateRequestAllOf1   {
 
   @JsonProperty("is_automated_campaign")
   
-  private Boolean isAutomatedCampaign;
+  private Boolean isAutomatedCampaign = false;
 
   @JsonProperty("is_campaign_budget_optimization")
   
-  private Boolean isCampaignBudgetOptimization;
+  private Boolean isCampaignBudgetOptimization = true;
 
   @JsonProperty("is_flexible_daily_budgets")
   
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isFlexibleDailyBudgets = false;
 
   @JsonProperty("is_ltv_optimized")
   
@@ -60,7 +60,7 @@ public class CampaignCreateRequestAllOf1   {
   @JsonProperty("status")
   @Valid
 
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1 bidOptions(CampaignBidOptionsCreate bidOptions) {
     this.bidOptions = bidOptions;

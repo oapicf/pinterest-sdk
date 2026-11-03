@@ -36,26 +36,18 @@ import {
 export interface BusinessMemberAssetsGetResponse {
     /**
      * 
-     * @type {string}
-     * @memberof BusinessMemberAssetsGetResponse
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<AssetIdPermissions>}
-     * @memberof BusinessMemberAssetsGetResponse
      */
     items: Array<AssetIdPermissions>;
     /**
      * Total number of assets matching the query
-     * @type {number}
-     * @memberof BusinessMemberAssetsGetResponse
      */
     totalDataCount: number;
     /**
      * Breakdown of asset counts by entity status (ad accounts only)
-     * @type {TotalCountByEntityStatus}
-     * @memberof BusinessMemberAssetsGetResponse
      */
     totalDataCountByStatus?: TotalCountByEntityStatus;
 }

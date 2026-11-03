@@ -19,7 +19,7 @@
  */
 export const BoardUpdatePrivacy = {
     Public: 'PUBLIC',
-    Secret: 'SECRET'
+    Secret: 'SECRET',
 } as const;
 export type BoardUpdatePrivacy = typeof BoardUpdatePrivacy[keyof typeof BoardUpdatePrivacy];
 

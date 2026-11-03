@@ -24,7 +24,6 @@ public class CampaignDeliveryEstimatesResponse  {
   * Estimated curves. Each curve will pertain to a single estimation type.
   */
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
-  @Valid
   private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
 
   @ApiModelProperty(value = "")

@@ -126,3 +126,4 @@ class _$TopPinsAnalyticsResponseDateAvailabilitySerializer implements PrimitiveS
   }
 }
 
+

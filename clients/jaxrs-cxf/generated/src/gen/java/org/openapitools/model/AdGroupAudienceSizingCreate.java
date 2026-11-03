@@ -37,16 +37,12 @@ public class AdGroupAudienceSizingCreate  {
   */
   @ApiModelProperty(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")
 
-  @Valid
-
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes;
 
  /**
   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
   */
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
-
-  @Valid
 
   private List<@Valid AdGroupAudienceSizingKeyword> keywords;
 
@@ -57,7 +53,7 @@ public class AdGroupAudienceSizingCreate  {
 
   @Valid
 
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
  /**
   * Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.

@@ -12,7 +12,7 @@ import org.openapitools.vertxweb.server.model.WebsiteVerificationMethod;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserWebsiteCreate   {
   
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
   private String website;
 
   public UserWebsiteCreate () {

@@ -245,6 +245,7 @@ class _$PinMediaWithVideoSerializer implements PrimitiveSerializer<PinMediaWithV
   }
 }
 
+
 class PinMediaWithVideoMediaTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'video')

@@ -10,7 +10,7 @@ import Foundation
 /** A user&#39;s username or email OR a partner id that caused the error. */
 public struct InviteResponse: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var assetsSummary: InviteAssetsSummary?
     /** The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
     public var businessRoles: [String]?

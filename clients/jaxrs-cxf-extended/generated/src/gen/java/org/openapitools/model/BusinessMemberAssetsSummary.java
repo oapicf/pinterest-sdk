@@ -23,14 +23,12 @@ public class BusinessMemberAssetsSummary  {
   * List of ad account IDs and respective permission levels.
   */
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
-  @Valid
   private List<@Valid AssetIdWithPermissions> adAccounts = new ArrayList<>();
 
  /**
   * List of profile IDs and respective permission levels.
   */
   @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
-  @Valid
   private List<@Valid AssetIdWithPermissions> profiles = new ArrayList<>();
  /**
   * List of ad account IDs and respective permission levels.

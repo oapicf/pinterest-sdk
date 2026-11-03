@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface ConversionTagCreate {
     /**
      * Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemDbEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemExternalIdEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemFnlnEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemGeEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemLocEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagCreate
      */
     aemPhEnabled?: boolean | null;
     /**
      * Metadata ingestion frequency.
-     * @type {number}
-     * @memberof ConversionTagCreate
      */
     mdFrequency?: number | null;
     /**
      * Conversion tag name.
-     * @type {string}
-     * @memberof ConversionTagCreate
      */
     name: string;
 }

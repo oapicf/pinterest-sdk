@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **multiPinsAnalytics**
 ```swift
-    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [MultiPinsAnalyticsMetricTypesItem], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: [String: PinAnalyticsMetricsResponse]]?, _ error: Error?) -> Void)
+    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [MultiPinsAnalyticsMetricTypesItem], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String: [String: PinAnalyticsMetricsResponse]]
 ```
 
 Get multiple Pin analytics
@@ -36,15 +36,11 @@ let appTypes = "appTypes_example" // String | Apps or devices to get data for, d
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get multiple Pin analytics
-PinsAPI.multiPinsAnalytics(pinIds: pinIds, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.multiPinsAnalytics(pinIds: pinIds, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -76,7 +72,7 @@ Name | Type | Description  | Notes
 
 # **pinsAnalytics**
 ```swift
-    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [QuerypinanalyticsmetrictypesItems], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: PinAnalyticsMetricsResponse]?, _ error: Error?) -> Void)
+    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [QuerypinanalyticsmetrictypesItems], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String: PinAnalyticsMetricsResponse]
 ```
 
 Get Pin analytics
@@ -97,15 +93,11 @@ let splitField = "splitField_example" // String | How to split the data into gro
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get Pin analytics
-PinsAPI.pinsAnalytics(pinId: pinId, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, splitField: splitField, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsAnalytics(pinId: pinId, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, splitField: splitField, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -138,7 +130,7 @@ Name | Type | Description  | Notes
 
 # **pinsCreate**
 ```swift
-    open class func pinsCreate(pinCreate: PinCreate, adAccountId: String? = nil, completion: @escaping (_ data: Pin?, _ error: Error?) -> Void)
+    open class func pinsCreate(pinCreate: PinCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Pin
 ```
 
 Create Pin
@@ -154,15 +146,11 @@ let pinCreate = PinCreate(aiDisclosures: AiDisclosures(values: [AiDisclosureItem
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create Pin
-PinsAPI.pinsCreate(pinCreate: pinCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsCreate(pinCreate: pinCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -190,7 +178,7 @@ Name | Type | Description  | Notes
 
 # **pinsDelete**
 ```swift
-    open class func pinsDelete(pinId: String, adAccountId: String? = nil, completion: @escaping (_ data: Pin?, _ error: Error?) -> Void)
+    open class func pinsDelete(pinId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Pin?
 ```
 
 Delete Pin
@@ -206,15 +194,11 @@ let pinId = "pinId_example" // String |
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete Pin
-PinsAPI.pinsDelete(pinId: pinId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsDelete(pinId: pinId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -242,7 +226,7 @@ Name | Type | Description  | Notes
 
 # **pinsGet**
 ```swift
-    open class func pinsGet(pinId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil, completion: @escaping (_ data: Pin?, _ error: Error?) -> Void)
+    open class func pinsGet(pinId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Pin
 ```
 
 Get Pin
@@ -259,15 +243,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let pinMetrics = true // Bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 // Get Pin
-PinsAPI.pinsGet(pinId: pinId, adAccountId: adAccountId, pinMetrics: pinMetrics) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsGet(pinId: pinId, adAccountId: adAccountId, pinMetrics: pinMetrics)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -296,7 +276,7 @@ Name | Type | Description  | Notes
 
 # **pinsList**
 ```swift
-    open class func pinsList(pinFilter: PinFilter? = nil, pinMetrics: Bool? = nil, includeProtectedPins: Bool? = nil, pinType: PinType? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, domain: String? = nil, domains: [String]? = nil, includeProductTagObj: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: PinsList200Response?, _ error: Error?) -> Void)
+    open class func pinsList(pinFilter: PinFilter? = nil, pinMetrics: Bool? = nil, includeProtectedPins: Bool? = nil, pinType: PinType? = nil, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, domain: String? = nil, domains: [String]? = nil, includeProductTagObj: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PinsList200Response
 ```
 
 List Pins
@@ -321,15 +301,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List Pins
-PinsAPI.pinsList(pinFilter: pinFilter, pinMetrics: pinMetrics, includeProtectedPins: includeProtectedPins, pinType: pinType, creativeTypes: creativeTypes, adAccountId: adAccountId, domain: domain, domains: domains, includeProductTagObj: includeProductTagObj, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsList(pinFilter: pinFilter, pinMetrics: pinMetrics, includeProtectedPins: includeProtectedPins, pinType: pinType, creativeTypes: creativeTypes, adAccountId: adAccountId, domain: domain, domains: domains, includeProductTagObj: includeProductTagObj, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -366,7 +342,7 @@ Name | Type | Description  | Notes
 
 # **pinsSave**
 ```swift
-    open class func pinsSave(pinId: String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: String? = nil, completion: @escaping (_ data: Pin?, _ error: Error?) -> Void)
+    open class func pinsSave(pinId: String, pinsSaveRequestCreate: PinsSaveRequestCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Pin
 ```
 
 Save Pin
@@ -383,15 +359,11 @@ let pinsSaveRequestCreate = PinsSaveRequestCreate(boardId: "boardId_example", bo
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Save Pin
-PinsAPI.pinsSave(pinId: pinId, pinsSaveRequestCreate: pinsSaveRequestCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsSave(pinId: pinId, pinsSaveRequestCreate: pinsSaveRequestCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -420,7 +392,7 @@ Name | Type | Description  | Notes
 
 # **pinsUpdate**
 ```swift
-    open class func pinsUpdate(pinId: String, pinUpdate: PinUpdate, adAccountId: String? = nil, completion: @escaping (_ data: Pin?, _ error: Error?) -> Void)
+    open class func pinsUpdate(pinId: String, pinUpdate: PinUpdate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Pin
 ```
 
 Update Pin
@@ -437,15 +409,11 @@ let pinUpdate = PinUpdate(aiDisclosures: AiDisclosuresUpdate(values: [AiDisclosu
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update Pin
-PinsAPI.pinsUpdate(pinId: pinId, pinUpdate: pinUpdate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PinsAPI.pinsUpdate(pinId: pinId, pinUpdate: pinUpdate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (iNSTOCK.IsSet && iNSTOCK.Value == null)
-                throw new ArgumentNullException(nameof(iNSTOCK), "Property is not nullable for class CatalogsFeedIngestionInfo.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionInfo: IN_STOCK.");
 
             if (oUTOFSTOCK.IsSet && oUTOFSTOCK.Value == null)
-                throw new ArgumentNullException(nameof(oUTOFSTOCK), "Property is not nullable for class CatalogsFeedIngestionInfo.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionInfo: OUT_OF_STOCK.");
 
             if (pREORDER.IsSet && pREORDER.Value == null)
-                throw new ArgumentNullException(nameof(pREORDER), "Property is not nullable for class CatalogsFeedIngestionInfo.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionInfo: PREORDER.");
 
             return new CatalogsFeedIngestionInfo(iNSTOCK, oUTOFSTOCK, pREORDER);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedIngestionInfo catalogsFeedIngestionInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,9 +214,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedIngestionInfo catalogsFeedIngestionInfo, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedIngestionInfo.IN_STOCKOption.IsSet && catalogsFeedIngestionInfo.IN_STOCK == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionInfo.IN_STOCK to non-nullable JSON property 'IN_STOCK'.");
+
+            if (catalogsFeedIngestionInfo.OUT_OF_STOCKOption.IsSet && catalogsFeedIngestionInfo.OUT_OF_STOCK == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionInfo.OUT_OF_STOCK to non-nullable JSON property 'OUT_OF_STOCK'.");
+
+            if (catalogsFeedIngestionInfo.PREORDEROption.IsSet && catalogsFeedIngestionInfo.PREORDER == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionInfo.PREORDER to non-nullable JSON property 'PREORDER'.");
+
             if (catalogsFeedIngestionInfo.IN_STOCKOption.IsSet)
                 writer.WriteNumber("IN_STOCK", catalogsFeedIngestionInfo.IN_STOCKOption.Value!.Value);
 

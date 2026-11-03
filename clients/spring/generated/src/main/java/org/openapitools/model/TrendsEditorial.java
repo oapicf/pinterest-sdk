@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TrendsEditorial", description = "Information of the published editorial article.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsEditorial {
 
   private String boardUrl;
@@ -172,7 +172,7 @@ public class TrendsEditorial {
    * List of keywords related to the editorial article
    * @return relatedKeywords
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "related_keywords", description = "List of keywords related to the editorial article", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("related_keywords")
   public List<@Valid KeywordInfo> getRelatedKeywords() {

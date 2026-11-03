@@ -21,7 +21,7 @@ data class ConversionDeletionRequestUserEmailTargets(
 
     @get:Size(min=1)
     @Schema(required = true, description = "Array of plain text user emails.")
-    @param:JsonProperty("user_emails")
+    @param:JsonProperty("user_emails", required = true)
     @get:JsonProperty("user_emails", required = true) val userEmails: kotlin.collections.List<kotlin.String>
 ) {
 

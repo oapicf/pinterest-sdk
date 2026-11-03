@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("OrderLineMutationResult")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OrderLineMutationResult   {
-  private @Valid List<@Valid OrderLineMutationError> errors = new ArrayList<>();
-  private @Valid List<@Valid OrderLine> orderLine = new ArrayList<>();
+  private List<@Valid OrderLineMutationError> errors = new ArrayList<>();
+  private List<@Valid OrderLine> orderLine = new ArrayList<>();
 
   public OrderLineMutationResult() {
   }
@@ -40,7 +40,7 @@ public class OrderLineMutationResult   {
   
   @ApiModelProperty(value = "Error list if update(s) fail.")
   @JsonProperty("errors")
-  @Valid public List<@Valid OrderLineMutationError> getErrors() {
+  public List<@Valid OrderLineMutationError> getErrors() {
     return errors;
   }
 
@@ -76,7 +76,7 @@ public class OrderLineMutationResult   {
   
   @ApiModelProperty(value = "Order Line object array.")
   @JsonProperty("order_line")
-  @Valid public List<@Valid OrderLine> getOrderLine() {
+  public List<@Valid OrderLine> getOrderLine() {
     return orderLine;
   }
 

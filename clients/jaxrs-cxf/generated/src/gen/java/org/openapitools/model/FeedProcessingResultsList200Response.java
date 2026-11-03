@@ -22,8 +22,6 @@ public class FeedProcessingResultsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid CatalogsFeedProcessingResult> items = new ArrayList<>();
  /**
    * Get bookmark

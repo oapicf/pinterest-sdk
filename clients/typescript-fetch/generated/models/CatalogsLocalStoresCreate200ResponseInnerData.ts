@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsLocalStoresCreate200ResponseInnerDataOneOf } from './CatalogsLocalStoresCreate200ResponseInnerDataOneOf';
 import {
     instanceOfCatalogsLocalStoresCreate200ResponseInnerDataOneOf,

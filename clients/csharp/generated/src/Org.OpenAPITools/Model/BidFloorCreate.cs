@@ -155,13 +155,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!bidFloorSpecs.IsSet)
-                throw new ArgumentException("Property is required for class BidFloorCreate.", nameof(bidFloorSpecs));
+                throw new JsonException("Property is required for class BidFloorCreate: bid_floor_specs.");
 
             if (bidFloorSpecs.IsSet && bidFloorSpecs.Value == null)
-                throw new ArgumentNullException(nameof(bidFloorSpecs), "Property is not nullable for class BidFloorCreate.");
+                throw new JsonException("Property is not nullable for class BidFloorCreate: bid_floor_specs.");
 
             if (targetingSpec.IsSet && targetingSpec.Value == null)
-                throw new ArgumentNullException(nameof(targetingSpec), "Property is not nullable for class BidFloorCreate.");
+                throw new JsonException("Property is not nullable for class BidFloorCreate: targeting_spec.");
 
             return new BidFloorCreate(bidFloorSpecs.Value!, targetingSpec);
         }
@@ -172,7 +172,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidFloorCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidFloorCreate bidFloorCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -187,14 +186,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidFloorCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidFloorCreate bidFloorCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (bidFloorCreate.BidFloorSpecs == null)
-                throw new ArgumentNullException(nameof(bidFloorCreate.BidFloorSpecs), "Property is required for class BidFloorCreate.");
-
             if (bidFloorCreate.TargetingSpecOption.IsSet && bidFloorCreate.TargetingSpec == null)
-                throw new ArgumentNullException(nameof(bidFloorCreate.TargetingSpec), "Property is required for class BidFloorCreate.");
+                throw new JsonException("Cannot write null property BidFloorCreate.TargetingSpec to non-nullable JSON property 'targeting_spec'.");
 
             writer.WritePropertyName("bid_floor_specs");
             JsonSerializer.Serialize(writer, bidFloorCreate.BidFloorSpecs, jsonSerializerOptions);

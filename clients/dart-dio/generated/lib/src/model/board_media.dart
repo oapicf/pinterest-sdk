@@ -129,3 +129,4 @@ class _$BoardMediaSerializer implements PrimitiveSerializer<BoardMedia> {
   }
 }
 
+

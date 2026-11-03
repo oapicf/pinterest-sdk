@@ -51,10 +51,10 @@ class ConversionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -112,19 +112,19 @@ class ConversionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'eventNames' => [
+                'event_names' => [
                     'required',
                     'array',
                 ],
@@ -136,7 +136,7 @@ class ConversionsController extends Controller
         }
 
 
-        $eventNames = $request->get('eventNames');
+        $eventNames = $request->get('event_names');
 
 
         $apiResult = $this->api->advertiserDefinedEventsDelete($adAccountId, $eventNames);
@@ -183,13 +183,13 @@ class ConversionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -248,10 +248,10 @@ class ConversionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

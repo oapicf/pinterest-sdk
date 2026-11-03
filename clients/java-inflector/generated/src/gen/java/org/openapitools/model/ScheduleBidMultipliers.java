@@ -21,7 +21,7 @@ import org.openapitools.model.BidOptionsPlacementMultipliers;
  **/
 
 @ApiModel(description = "The value of the bid changes. This must be provided when the schedule type is CAMPAIGN_BID_MULTIPLIERS.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleBidMultipliers   {
   @JsonProperty("age_bucket_multipliers")
   private BidOptionsAgeBucketMultipliers ageBucketMultipliers;

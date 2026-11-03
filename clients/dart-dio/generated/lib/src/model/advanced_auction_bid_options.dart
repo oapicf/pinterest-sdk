@@ -148,3 +148,4 @@ class _$AdvancedAuctionBidOptionsSerializer implements PrimitiveSerializer<Advan
   }
 }
 
+

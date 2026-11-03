@@ -141,6 +141,7 @@ class _$TargetingSpecOperationAppTypeSerializer implements PrimitiveSerializer<T
   }
 }
 
+
 class TargetingSpecOperationAppTypeFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'APPTYPE')

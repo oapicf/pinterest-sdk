@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 public class Board implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -77,7 +77,7 @@ public class Board implements Serializable {
    *     Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting &#x60;is_ads_only&#x60;     to &#x60;true&#x60;, the &#x60;privacy&#x60; settng automatically becomes &#x60;PROTECTED&#x60;. 
    */
   @JsonProperty("privacy")
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   /**
    * Date and time of last board pins modified.

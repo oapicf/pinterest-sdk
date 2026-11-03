@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -35,96 +34,67 @@ import jakarta.annotation.Generated;
  * AccountTemplate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AccountTemplate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> adAccountIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^ADE_[A-Z_]+-[a-zA-Z0-9 _-]*$")String> adeColumns = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> attributionType = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal clickWindowDays;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ReportingColumn> columns = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionReportTimeType conversionReportTimeType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CreationSource creationSource;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> customColumnIds = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String displayMetadata;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal engagementWindowDays;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> filtersJson = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Granularity granularity;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<IngestionSource>> ingestionSources = JsonNullable.<List<IngestionSource>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isDefault;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isDeleted = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isOwnedByUser;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isScheduled;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal reportEndRelativeDaysInPast;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable DataOutputFormat reportFormat;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable MetricsReportingLevel reportLevel;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal reportStartRelativeDaysInPast;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ReportingTimeZone reportingTimeZone;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> sortBy = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String type;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal updatedTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String userId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal viewWindowDays;
 
   public AccountTemplate() {
@@ -227,7 +197,7 @@ public class AccountTemplate {
    * @return attributionType
    */
   
-  @Schema(name = "attribution_type", example = "ADVERTISER_LEVEL", description = "Attribution type for Brand/Category/SKU reports", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "attribution_type", example = "ADVERTISER_LEVEL", description = "Attribution type for Brand/Category/SKU reports", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("attribution_type")
   public JsonNullable<Object> getAttributionType() {
     return attributionType;
@@ -275,7 +245,7 @@ public class AccountTemplate {
    * A list of columns to be included in the report
    * @return columns
    */
-  @Valid 
+  
   @Schema(name = "columns", description = "A list of columns to be included in the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("columns")
   public List<ReportingColumn> getColumns() {
@@ -335,7 +305,7 @@ public class AccountTemplate {
   }
 
   public AccountTemplate addCustomColumnIdsItem(String customColumnIdsItem) {
-    if (this.customColumnIds == null || !this.customColumnIds.isPresent()) {
+    if (this.customColumnIds == null || !this.customColumnIds.isPresent() || this.customColumnIds.get() == null) {
       this.customColumnIds = JsonNullable.of(new ArrayList<>());
     }
     this.customColumnIds.get().add(customColumnIdsItem);
@@ -347,7 +317,7 @@ public class AccountTemplate {
    * @return customColumnIds
    */
   
-  @Schema(name = "custom_column_ids", description = "A list of custom column IDs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_column_ids", description = "A list of custom column IDs", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_column_ids")
   public JsonNullable<List<String>> getCustomColumnIds() {
     return customColumnIds;
@@ -409,7 +379,7 @@ public class AccountTemplate {
    * @return filtersJson
    */
   
-  @Schema(name = "filters_json", description = "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:\\ \"field\": The column name\\ \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]\\ \"value\": A single value or a list of values", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "filters_json", description = "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:\\ \"field\": The column name\\ \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]\\ \"value\": A single value or a list of values", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("filters_json")
   public JsonNullable<String> getFiltersJson() {
     return filtersJson;
@@ -467,7 +437,7 @@ public class AccountTemplate {
   }
 
   public AccountTemplate addIngestionSourcesItem(IngestionSource ingestionSourcesItem) {
-    if (this.ingestionSources == null || !this.ingestionSources.isPresent()) {
+    if (this.ingestionSources == null || !this.ingestionSources.isPresent() || this.ingestionSources.get() == null) {
       this.ingestionSources = JsonNullable.of(new ArrayList<>());
     }
     this.ingestionSources.get().add(ingestionSourcesItem);
@@ -478,8 +448,8 @@ public class AccountTemplate {
    * The filter on the conversion ingestion source method for conversion metrics
    * @return ingestionSources
    */
-  @Valid 
-  @Schema(name = "ingestion_sources", description = "The filter on the conversion ingestion source method for conversion metrics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "ingestion_sources", description = "The filter on the conversion ingestion source method for conversion metrics", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ingestion_sources")
   public JsonNullable<List<IngestionSource>> getIngestionSources() {
     return ingestionSources;
@@ -520,7 +490,7 @@ public class AccountTemplate {
    * @return isDeleted
    */
   
-  @Schema(name = "is_deleted", description = "A boolean that indicates if the template has been deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_deleted", description = "A boolean that indicates if the template has been deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_deleted")
   public JsonNullable<Boolean> getIsDeleted() {
     return isDeleted;
@@ -582,7 +552,7 @@ public class AccountTemplate {
    * @return name
    */
   
-  @Schema(name = "name", description = "Template Name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", description = "Template Name", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -707,7 +677,7 @@ public class AccountTemplate {
    * @return sortBy
    */
   
-  @Schema(name = "sort_by", description = "Unified metric sort configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "sort_by", description = "Unified metric sort configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("sort_by")
   public JsonNullable<Object> getSortBy() {
     return sortBy;

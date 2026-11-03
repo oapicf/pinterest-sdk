@@ -153,10 +153,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class BusinessPartnerAssetAccessGet200Response.", nameof(items));
+                throw new JsonException("Property is required for class BusinessPartnerAssetAccessGet200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class BusinessPartnerAssetAccessGet200Response.");
+                throw new JsonException("Property is not nullable for class BusinessPartnerAssetAccessGet200Response: items.");
 
             return new BusinessPartnerAssetAccessGet200Response(items.Value!, bookmark);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessPartnerAssetAccessGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessPartnerAssetAccessGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessPartnerAssetAccessGet200Response.Items == null)
-                throw new ArgumentNullException(nameof(businessPartnerAssetAccessGet200Response.Items), "Property is required for class BusinessPartnerAssetAccessGet200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, businessPartnerAssetAccessGet200Response.Items, jsonSerializerOptions);
             if (businessPartnerAssetAccessGet200Response.BookmarkOption.IsSet)

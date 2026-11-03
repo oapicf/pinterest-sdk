@@ -17,7 +17,7 @@ import AssetIdWithPermissions from './AssetIdWithPermissions';
 /**
  * The BusinessMemberAssetsSummary model module.
  * @module model/BusinessMemberAssetsSummary
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BusinessMemberAssetsSummary {
     /**

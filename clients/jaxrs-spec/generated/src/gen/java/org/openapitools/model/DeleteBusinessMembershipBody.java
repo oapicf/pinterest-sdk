@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "List of members with role to delete.")
 @JsonTypeName("DeleteBusinessMembershipBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembershipBody   {
-  private @Valid List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();
+  private List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();
 
   public DeleteBusinessMembershipBody() {
   }
@@ -46,7 +46,7 @@ public class DeleteBusinessMembershipBody   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "members")
-  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid DeleteBusinessMembershipMember> getMembers() {
+  @NotNull  @Size(min=1,max=50)public List<@Valid DeleteBusinessMembershipMember> getMembers() {
     return members;
   }
 

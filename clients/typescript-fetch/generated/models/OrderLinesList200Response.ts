@@ -29,14 +29,10 @@ import {
 export interface OrderLinesList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof OrderLinesList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<OrderLine>}
-     * @memberof OrderLinesList200Response
      */
     items: Array<OrderLine>;
 }

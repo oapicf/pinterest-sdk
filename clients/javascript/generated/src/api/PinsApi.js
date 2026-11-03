@@ -29,7 +29,7 @@ import QuerypinanalyticsmetrictypesItems from '../model/Querypinanalyticsmetrict
 /**
 * Pins service.
 * @module api/PinsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class PinsApi {
 

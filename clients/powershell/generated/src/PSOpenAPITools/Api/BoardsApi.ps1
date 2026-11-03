@@ -72,7 +72,7 @@ function Invoke-BoardSectionsCreate {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boardSections_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -168,11 +168,11 @@ function Invoke-BoardSectionsDelete {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boardSections_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
         if (!$SectionId) {
             throw "Error! The required parameter `SectionId` missing when calling boardSections_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Web.HTTPUtility]::UrlEncode($SectionId))
+        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Uri]::EscapeDataString([string]$SectionId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -268,7 +268,7 @@ function Invoke-BoardSectionsList {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boardSections_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -379,11 +379,11 @@ function Invoke-BoardSectionsListPins {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boardSections_listPins."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
         if (!$SectionId) {
             throw "Error! The required parameter `SectionId` missing when calling boardSections_listPins."
         }
-        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Web.HTTPUtility]::UrlEncode($SectionId))
+        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Uri]::EscapeDataString([string]$SectionId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -491,11 +491,11 @@ function Invoke-BoardSectionsUpdate {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boardSections_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
         if (!$SectionId) {
             throw "Error! The required parameter `SectionId` missing when calling boardSections_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Web.HTTPUtility]::UrlEncode($SectionId))
+        $LocalVarUri = $LocalVarUri.replace('{section_id}', [System.Uri]::EscapeDataString([string]$SectionId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -675,7 +675,7 @@ function Invoke-BoardsDelete {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boards_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -759,7 +759,7 @@ function Invoke-BoardsGet {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boards_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -973,7 +973,7 @@ function Invoke-BoardsListPins {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boards_listPins."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($CreativeTypes) {
             $LocalVarQueryParameters['creative_types'] = $CreativeTypes
@@ -1083,7 +1083,7 @@ function Invoke-BoardsUpdate {
         if (!$BoardId) {
             throw "Error! The required parameter `BoardId` missing when calling boards_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Web.HTTPUtility]::UrlEncode($BoardId))
+        $LocalVarUri = $LocalVarUri.replace('{board_id}', [System.Uri]::EscapeDataString([string]$BoardId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

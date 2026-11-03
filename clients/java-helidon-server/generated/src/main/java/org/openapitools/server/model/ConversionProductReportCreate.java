@@ -25,18 +25,18 @@ public class ConversionProductReportCreate   {
     private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
     private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
     private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
-    private ConversionAttributionWindowDays clickWindowDays;
+    private ConversionAttributionWindowDays clickWindowDays = 30;
     private List<ConversionProductReportingColumn> columns = new ArrayList<>();
-    private ConversionProductAttributionType conversionProductAttributionType;
-    private ConversionProductReportBreakdownType conversionProductBreakdown;
-    private ConversionReportTimeType conversionReportTime;
+    private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
+    private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
+    private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
     private String endDate;
     private ConversionProductReportGranularity granularity;
     private ConversionProductReportLevel level;
     private List<@Pattern(regexp = "^[a-zA-Z0-9]+$")String> productSkuIds = new ArrayList<>();
     private String reportName;
     private String startDate;
-    private ConversionAttributionWindowDays viewWindowDays;
+    private ConversionAttributionWindowDays viewWindowDays = 30;
 
     /**
      * Default constructor.

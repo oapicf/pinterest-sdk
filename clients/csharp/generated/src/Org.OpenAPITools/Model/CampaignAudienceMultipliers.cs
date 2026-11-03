@@ -158,7 +158,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aUDIENCEID.IsSet && aUDIENCEID.Value == null)
-                throw new ArgumentNullException(nameof(aUDIENCEID), "Property is not nullable for class CampaignAudienceMultipliers.");
+                throw new JsonException("Property is not nullable for class CampaignAudienceMultipliers: AUDIENCE_ID.");
 
             return new CampaignAudienceMultipliers(aUDIENCEID);
         }
@@ -169,7 +169,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAudienceMultipliers campaignAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -184,11 +183,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAudienceMultipliers campaignAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignAudienceMultipliers.AUDIENCE_IDOption.IsSet && campaignAudienceMultipliers.AUDIENCE_ID == null)
-                throw new ArgumentNullException(nameof(campaignAudienceMultipliers.AUDIENCE_ID), "Property is required for class CampaignAudienceMultipliers.");
+                throw new JsonException("Cannot write null property CampaignAudienceMultipliers.AUDIENCE_ID to non-nullable JSON property 'AUDIENCE_ID'.");
 
             if (campaignAudienceMultipliers.AUDIENCE_IDOption.IsSet)
                 writer.WriteString("AUDIENCE_ID", campaignAudienceMultipliers.AUDIENCE_ID);

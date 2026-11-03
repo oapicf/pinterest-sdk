@@ -17,7 +17,7 @@ export interface TargetingSpecOperationGeo {
 }
 export namespace TargetingSpecOperationGeo {
     export const FieldEnum = {
-        Geo: 'GEO'
+        Geo: 'GEO',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

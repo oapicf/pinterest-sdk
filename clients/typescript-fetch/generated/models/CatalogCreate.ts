@@ -29,14 +29,10 @@ import {
 export interface CatalogCreate {
     /**
      * 
-     * @type {CatalogsType}
-     * @memberof CatalogCreate
      */
     catalogType: CatalogsType;
     /**
      * A human-friendly name associated to a catalog entity.
-     * @type {string}
-     * @memberof CatalogCreate
      */
     name: string;
 }

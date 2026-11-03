@@ -128,3 +128,4 @@ class _$FollowUserSerializer implements PrimitiveSerializer<FollowUser> {
   }
 }
 
+

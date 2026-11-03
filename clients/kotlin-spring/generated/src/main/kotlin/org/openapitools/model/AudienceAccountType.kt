@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Account type filter for audience sharing.
-* Values: AD_ACCOUNT,BUSINESS_ACCOUNT
-*/
+ * Account type filter for audience sharing.
+ * Values: AD_ACCOUNT,BUSINESS_ACCOUNT
+ */
 enum class AudienceAccountType(@get:JsonValue val value: kotlin.String) {
 
     AD_ACCOUNT("AD_ACCOUNT"),
@@ -28,9 +28,8 @@ enum class AudienceAccountType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AudienceAccountType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceAccountType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceAccountType'")
         }
     }
 }
-

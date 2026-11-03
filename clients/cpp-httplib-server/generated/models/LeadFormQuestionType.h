@@ -12,24 +12,164 @@
 
 namespace models {
 
-
-class LeadFormQuestionType
-{
-public:
-
-    LeadFormQuestionType();
-    virtual ~LeadFormQuestionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LeadFormQuestionType,
-        )
-
-private:
+enum class LeadFormQuestionType {
+    
+    CUSTOM,
+    
+    FULL_NAME,
+    
+    FIRST_NAME,
+    
+    LAST_NAME,
+    
+    EMAIL,
+    
+    PHONE_NUMBER,
+    
+    ZIP_CODE,
+    
+    GENDER,
+    
+    CITY,
+    
+    COUNTRY,
+    
+    STATE_PROVINCE,
+    
+    ADDRESS,
+    
+    DATE_OF_BIRTH,
+    
+    AGE
+    
 };
 
+inline void to_json(nlohmann::json& j, const LeadFormQuestionType& value)
+{
+    switch (value)
+    {
+        
+        case LeadFormQuestionType::CUSTOM: j = "CUSTOM"; break;
+        
+        case LeadFormQuestionType::FULL_NAME: j = "FULL_NAME"; break;
+        
+        case LeadFormQuestionType::FIRST_NAME: j = "FIRST_NAME"; break;
+        
+        case LeadFormQuestionType::LAST_NAME: j = "LAST_NAME"; break;
+        
+        case LeadFormQuestionType::EMAIL: j = "EMAIL"; break;
+        
+        case LeadFormQuestionType::PHONE_NUMBER: j = "PHONE_NUMBER"; break;
+        
+        case LeadFormQuestionType::ZIP_CODE: j = "ZIP_CODE"; break;
+        
+        case LeadFormQuestionType::GENDER: j = "GENDER"; break;
+        
+        case LeadFormQuestionType::CITY: j = "CITY"; break;
+        
+        case LeadFormQuestionType::COUNTRY: j = "COUNTRY"; break;
+        
+        case LeadFormQuestionType::STATE_PROVINCE: j = "STATE_PROVINCE"; break;
+        
+        case LeadFormQuestionType::ADDRESS: j = "ADDRESS"; break;
+        
+        case LeadFormQuestionType::DATE_OF_BIRTH: j = "DATE_OF_BIRTH"; break;
+        
+        case LeadFormQuestionType::AGE: j = "AGE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormQuestionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LeadFormQuestionType& value)
+{
+    
+    if (j == "CUSTOM")
+    {
+        value = LeadFormQuestionType::CUSTOM;
+        return;
+    }
+    
+    if (j == "FULL_NAME")
+    {
+        value = LeadFormQuestionType::FULL_NAME;
+        return;
+    }
+    
+    if (j == "FIRST_NAME")
+    {
+        value = LeadFormQuestionType::FIRST_NAME;
+        return;
+    }
+    
+    if (j == "LAST_NAME")
+    {
+        value = LeadFormQuestionType::LAST_NAME;
+        return;
+    }
+    
+    if (j == "EMAIL")
+    {
+        value = LeadFormQuestionType::EMAIL;
+        return;
+    }
+    
+    if (j == "PHONE_NUMBER")
+    {
+        value = LeadFormQuestionType::PHONE_NUMBER;
+        return;
+    }
+    
+    if (j == "ZIP_CODE")
+    {
+        value = LeadFormQuestionType::ZIP_CODE;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = LeadFormQuestionType::GENDER;
+        return;
+    }
+    
+    if (j == "CITY")
+    {
+        value = LeadFormQuestionType::CITY;
+        return;
+    }
+    
+    if (j == "COUNTRY")
+    {
+        value = LeadFormQuestionType::COUNTRY;
+        return;
+    }
+    
+    if (j == "STATE_PROVINCE")
+    {
+        value = LeadFormQuestionType::STATE_PROVINCE;
+        return;
+    }
+    
+    if (j == "ADDRESS")
+    {
+        value = LeadFormQuestionType::ADDRESS;
+        return;
+    }
+    
+    if (j == "DATE_OF_BIRTH")
+    {
+        value = LeadFormQuestionType::DATE_OF_BIRTH;
+        return;
+    }
+    
+    if (j == "AGE")
+    {
+        value = LeadFormQuestionType::AGE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormQuestionType", &j);
+}
 
 } // namespace models
 

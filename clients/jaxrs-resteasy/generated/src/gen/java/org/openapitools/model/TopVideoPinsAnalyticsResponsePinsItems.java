@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Array with metrics, status, and pin id for the requested metric")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Array with metrics, status, and pin id for the requested metric")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TopVideoPinsAnalyticsResponsePinsItems   {
   
   private Map<String, DataStatus> dataStatus = new HashMap<>();
@@ -26,7 +26,6 @@ public class TopVideoPinsAnalyticsResponsePinsItems   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data_status")
-  @Valid
   public Map<String, DataStatus> getDataStatus() {
     return dataStatus;
   }
@@ -39,7 +38,6 @@ public class TopVideoPinsAnalyticsResponsePinsItems   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("metrics")
-  @Valid
   public Map<String, BigDecimal> getMetrics() {
     return metrics;
   }

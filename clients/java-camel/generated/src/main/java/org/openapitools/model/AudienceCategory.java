@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -24,7 +23,7 @@ import jakarta.annotation.Generated;
  * AudienceCategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceCategory {
 
   private String id;
@@ -37,7 +36,6 @@ public class AudienceCategory {
 
   private BigDecimal ratio;
 
-  @Valid
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory id(String id) {
@@ -157,7 +155,7 @@ public class AudienceCategory {
    * Subcategory interest distribution
    * @return subcategories
    */
-  @Valid 
+  
   @Schema(name = "subcategories", description = "Subcategory interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("subcategories")
   public List<@Valid AudienceSubcategory> getSubcategories() {

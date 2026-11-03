@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'website_verification_method.g.dart';
 
+/// Method used to verify website ownership.
 class WebsiteVerificationMethod extends EnumClass {
 
-  /// Method used to verify website ownership.
   @BuiltValueEnumConst(wireName: r'FILENAME')
   static const WebsiteVerificationMethod FILENAME = _$FILENAME;
-  /// Method used to verify website ownership.
   @BuiltValueEnumConst(wireName: r'METATAG')
   static const WebsiteVerificationMethod METATAG = _$METATAG;
-  /// Method used to verify website ownership.
   @BuiltValueEnumConst(wireName: r'DNSTXT')
   static const WebsiteVerificationMethod DNSTXT = _$DNSTXT;
 

@@ -10,7 +10,7 @@ import Foundation
 /** Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields. */
 public struct CatalogsFeedsCreateRequest: Sendable, Codable, Hashable {
 
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     public var credentials: CatalogsFeedCredentials?
     public var defaultAvailability: ProductAvailabilityType?
     public var defaultCountry: Country?

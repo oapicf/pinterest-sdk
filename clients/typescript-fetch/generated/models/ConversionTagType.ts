@@ -45,7 +45,7 @@ export const ConversionTagType = {
     FindLocation: 'FIND_LOCATION',
     CustomizeProduct: 'CUSTOMIZE_PRODUCT',
     SubmitApplication: 'SUBMIT_APPLICATION',
-    StartTrial: 'START_TRIAL'
+    StartTrial: 'START_TRIAL',
 } as const;
 export type ConversionTagType = typeof ConversionTagType[keyof typeof ConversionTagType];
 

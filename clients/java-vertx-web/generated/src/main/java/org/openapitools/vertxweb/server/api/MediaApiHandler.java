@@ -50,7 +50,7 @@ public class MediaApiHandler {
         RequestParameter body = requestParameters.body();
         MediaUploadCreate mediaUploadCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MediaUploadCreate>(){}) : null;
 
-        logger.debug("Parameter mediaUploadCreate is {}", mediaUploadCreate);
+        logger.debug("Parameter mediaUploadCreate is (body omitted)");
 
         api.mediaCreate(mediaUploadCreate)
             .onSuccess(apiResponse -> {

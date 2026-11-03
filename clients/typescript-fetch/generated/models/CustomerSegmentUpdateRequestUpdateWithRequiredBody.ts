@@ -29,20 +29,14 @@ import {
 export interface CustomerSegmentUpdateRequestUpdateWithRequiredBody {
     /**
      * Audience IDs to update the customer segment to. Only applicable for UPDATE operations.
-     * @type {Array<string>}
-     * @memberof CustomerSegmentUpdateRequestUpdateWithRequiredBody
      */
     audienceIds?: Array<string>;
     /**
      * Customer segment ID.
-     * @type {string}
-     * @memberof CustomerSegmentUpdateRequestUpdateWithRequiredBody
      */
     id: string;
     /**
      * 
-     * @type {AudienceUpdateOperationType}
-     * @memberof CustomerSegmentUpdateRequestUpdateWithRequiredBody
      */
     operationType: AudienceUpdateOperationType;
 }

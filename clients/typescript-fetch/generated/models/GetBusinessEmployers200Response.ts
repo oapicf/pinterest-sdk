@@ -29,14 +29,10 @@ import {
 export interface GetBusinessEmployers200Response {
     /**
      * 
-     * @type {string}
-     * @memberof GetBusinessEmployers200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<UserBusinessRoleBinding>}
-     * @memberof GetBusinessEmployers200Response
      */
     items: Array<UserBusinessRoleBinding>;
 }

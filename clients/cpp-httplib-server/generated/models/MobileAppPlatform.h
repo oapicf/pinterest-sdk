@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class MobileAppPlatform
-{
-public:
-
-    MobileAppPlatform();
-    virtual ~MobileAppPlatform() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MobileAppPlatform,
-        )
-
-private:
+enum class MobileAppPlatform {
+    
+    IOS,
+    
+    ANDROID
+    
 };
 
+inline void to_json(nlohmann::json& j, const MobileAppPlatform& value)
+{
+    switch (value)
+    {
+        
+        case MobileAppPlatform::IOS: j = "IOS"; break;
+        
+        case MobileAppPlatform::ANDROID: j = "ANDROID"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MobileAppPlatform", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MobileAppPlatform& value)
+{
+    
+    if (j == "IOS")
+    {
+        value = MobileAppPlatform::IOS;
+        return;
+    }
+    
+    if (j == "ANDROID")
+    {
+        value = MobileAppPlatform::ANDROID;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MobileAppPlatform", &j);
+}
 
 } // namespace models
 

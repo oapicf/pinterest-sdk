@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!customerListUpload.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUploadCreateResponse.", nameof(customerListUpload));
+                throw new JsonException("Property is required for class CustomerListUploadCreateResponse: customer_list_upload.");
 
             if (!s3MultipartUploadData.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUploadCreateResponse.", nameof(s3MultipartUploadData));
+                throw new JsonException("Property is required for class CustomerListUploadCreateResponse: s3_multipart_upload_data.");
 
             if (customerListUpload.IsSet && customerListUpload.Value == null)
-                throw new ArgumentNullException(nameof(customerListUpload), "Property is not nullable for class CustomerListUploadCreateResponse.");
+                throw new JsonException("Property is not nullable for class CustomerListUploadCreateResponse: customer_list_upload.");
 
             if (s3MultipartUploadData.IsSet && s3MultipartUploadData.Value == null)
-                throw new ArgumentNullException(nameof(s3MultipartUploadData), "Property is not nullable for class CustomerListUploadCreateResponse.");
+                throw new JsonException("Property is not nullable for class CustomerListUploadCreateResponse: s3_multipart_upload_data.");
 
             return new CustomerListUploadCreateResponse(customerListUpload.Value!, s3MultipartUploadData.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUploadCreateResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListUploadCreateResponse customerListUploadCreateResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUploadCreateResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListUploadCreateResponse customerListUploadCreateResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerListUploadCreateResponse.CustomerListUpload == null)
-                throw new ArgumentNullException(nameof(customerListUploadCreateResponse.CustomerListUpload), "Property is required for class CustomerListUploadCreateResponse.");
-
-            if (customerListUploadCreateResponse.S3MultipartUploadData == null)
-                throw new ArgumentNullException(nameof(customerListUploadCreateResponse.S3MultipartUploadData), "Property is required for class CustomerListUploadCreateResponse.");
-
             writer.WritePropertyName("customer_list_upload");
             JsonSerializer.Serialize(writer, customerListUploadCreateResponse.CustomerListUpload, jsonSerializerOptions);
             writer.WritePropertyName("s3_multipart_upload_data");

@@ -212,7 +212,12 @@ namespace Org.OpenAPITools.Model
                         case "content_type":
                             string? contentTypeRawValue = utf8JsonReader.GetString();
                             if (contentTypeRawValue != null)
-                                contentType = new Option<BrandAccountProfileImage.ContentTypeEnum?>(BrandAccountProfileImage.ContentTypeEnumFromStringOrDefault(contentTypeRawValue));
+                            {
+                                BrandAccountProfileImage.ContentTypeEnum? contentTypeValue = BrandAccountProfileImage.ContentTypeEnumFromStringOrDefault(contentTypeRawValue);
+                                if (contentTypeValue == null)
+                                    throw new JsonException();
+                                contentType = new Option<BrandAccountProfileImage.ContentTypeEnum?>(contentTypeValue);
+                            }
                             break;
                         case "data":
                             data = new Option<string?>(utf8JsonReader.GetString()!);
@@ -224,16 +229,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!contentType.IsSet)
-                throw new ArgumentException("Property is required for class BrandAccountProfileImage.", nameof(contentType));
+                throw new JsonException("Property is required for class BrandAccountProfileImage: content_type.");
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class BrandAccountProfileImage.", nameof(data));
+                throw new JsonException("Property is required for class BrandAccountProfileImage: data.");
 
             if (contentType.IsSet && contentType.Value == null)
-                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class BrandAccountProfileImage.");
+                throw new JsonException("Property is not nullable for class BrandAccountProfileImage: content_type.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class BrandAccountProfileImage.");
+                throw new JsonException("Property is not nullable for class BrandAccountProfileImage: data.");
 
             return new BrandAccountProfileImage(contentType.Value!.Value!, data.Value!);
         }
@@ -244,7 +249,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountProfileImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BrandAccountProfileImage brandAccountProfileImage, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -259,12 +263,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountProfileImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BrandAccountProfileImage brandAccountProfileImage, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (brandAccountProfileImage.Data == null)
-                throw new ArgumentNullException(nameof(brandAccountProfileImage.Data), "Property is required for class BrandAccountProfileImage.");
-
             var contentTypeRawValue = BrandAccountProfileImage.ContentTypeEnumToJsonValue(brandAccountProfileImage.ContentType);
             writer.WriteString("content_type", contentTypeRawValue);
             writer.WriteString("data", brandAccountProfileImage.Data);

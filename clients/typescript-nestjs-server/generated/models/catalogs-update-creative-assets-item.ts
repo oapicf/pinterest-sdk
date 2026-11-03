@@ -14,7 +14,7 @@ export interface CatalogsUpdateCreativeAssetsItem {
 }
 export namespace CatalogsUpdateCreativeAssetsItem {
   export const OperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

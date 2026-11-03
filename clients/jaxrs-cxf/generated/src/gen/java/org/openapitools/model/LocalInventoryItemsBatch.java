@@ -49,9 +49,7 @@ public class LocalInventoryItemsBatch  {
   */
   @ApiModelProperty(required = true, value = "Array of operation results")
 
-  @Valid
-
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
  /**
   * Status of the batch: PROCESSING, COMPLETED, FAILED
@@ -99,7 +97,7 @@ public class LocalInventoryItemsBatch  {
   **/
   @JsonProperty("operation_results")
   @NotNull
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 

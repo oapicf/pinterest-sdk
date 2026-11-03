@@ -9,8 +9,8 @@ import Foundation
 
 public struct BulkDownloadCampaignFilter: Sendable, Codable, Hashable {
 
-    public static let endTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let endTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let startTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var campaignStatus: [SummaryStatus]?
     /** Unix UTC timestamp. */
     public var endTime: String?

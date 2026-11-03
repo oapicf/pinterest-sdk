@@ -29,14 +29,10 @@ import {
 export interface UserWebsiteCreate {
     /**
      * Method used to verify website ownership.
-     * @type {WebsiteVerificationMethod}
-     * @memberof UserWebsiteCreate
      */
     verificationMethod?: WebsiteVerificationMethod;
     /**
      * Website with path or domain only
-     * @type {string}
-     * @memberof UserWebsiteCreate
      */
     website?: string;
 }

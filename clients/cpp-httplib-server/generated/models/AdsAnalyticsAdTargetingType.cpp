@@ -6,20 +6,3 @@
 */
 #include "AdsAnalyticsAdTargetingType.h"
 
-namespace models {
-
-AdsAnalyticsAdTargetingType::AdsAnalyticsAdTargetingType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

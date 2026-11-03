@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'ads_analytics_filter_column.g.dart';
 
+/// Reporting columns for sync reporting data filter
 class AdsAnalyticsFilterColumn extends EnumClass {
 
-  /// Reporting columns for sync reporting data filter
   @BuiltValueEnumConst(wireName: r'SPEND_IN_DOLLAR')
   static const AdsAnalyticsFilterColumn SPEND_IN_DOLLAR = _$SPEND_IN_DOLLAR;
-  /// Reporting columns for sync reporting data filter
   @BuiltValueEnumConst(wireName: r'TOTAL_IMPRESSION')
   static const AdsAnalyticsFilterColumn TOTAL_IMPRESSION = _$TOTAL_IMPRESSION;
 

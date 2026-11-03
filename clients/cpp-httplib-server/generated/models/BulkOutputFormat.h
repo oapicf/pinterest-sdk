@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class BulkOutputFormat
-{
-public:
-
-    BulkOutputFormat();
-    virtual ~BulkOutputFormat() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BulkOutputFormat,
-        )
-
-private:
+enum class BulkOutputFormat {
+    
+    CSV,
+    
+    JSON
+    
 };
 
+inline void to_json(nlohmann::json& j, const BulkOutputFormat& value)
+{
+    switch (value)
+    {
+        
+        case BulkOutputFormat::CSV: j = "CSV"; break;
+        
+        case BulkOutputFormat::JSON: j = "JSON"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BulkOutputFormat", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BulkOutputFormat& value)
+{
+    
+    if (j == "CSV")
+    {
+        value = BulkOutputFormat::CSV;
+        return;
+    }
+    
+    if (j == "JSON")
+    {
+        value = BulkOutputFormat::JSON;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BulkOutputFormat", &j);
+}
 
 } // namespace models
 

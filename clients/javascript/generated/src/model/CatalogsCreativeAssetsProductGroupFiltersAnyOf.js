@@ -17,7 +17,7 @@ import CatalogsCreativeAssetsProductGroupFilterKeys from './CatalogsCreativeAsse
 /**
  * The CatalogsCreativeAssetsProductGroupFiltersAnyOf model module.
  * @module model/CatalogsCreativeAssetsProductGroupFiltersAnyOf
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsProductGroupFiltersAnyOf {
     /**

@@ -23,12 +23,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item processing record")
 @JsonTypeName("ItemProcessingRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemProcessingRecord   {
-  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
   private String itemId;
   private ItemProcessingStatus status;
-  private @Valid List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
+  private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   public ItemProcessingRecord() {
   }
@@ -44,7 +44,7 @@ public class ItemProcessingRecord   {
   
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
   @JsonProperty("errors")
-  @Valid public List<@Valid ItemValidationEvent> getErrors() {
+  public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 
@@ -119,7 +119,7 @@ public class ItemProcessingRecord   {
   
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
   @JsonProperty("warnings")
-  @Valid public List<@Valid ItemValidationEvent> getWarnings() {
+  public List<@Valid ItemValidationEvent> getWarnings() {
     return warnings;
   }
 

@@ -22,20 +22,14 @@ import { mapValues } from '../runtime';
 export interface SchedulePlacementMultipliers {
     /**
      * Browse (home-feed and related surfaces)
-     * @type {number}
-     * @memberof SchedulePlacementMultipliers
      */
     browse?: number;
     /**
      * Related-Pins placement
-     * @type {number}
-     * @memberof SchedulePlacementMultipliers
      */
     relatedPins?: number;
     /**
      * Search placement
-     * @type {number}
-     * @memberof SchedulePlacementMultipliers
      */
     search?: number;
 }

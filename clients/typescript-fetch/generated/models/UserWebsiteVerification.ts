@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface UserWebsiteVerification {
     /**
      * DNS TXT record to check against for the website to be claimed
-     * @type {string}
-     * @memberof UserWebsiteVerification
      */
     dnsTxtRecord?: string;
     /**
      * A full html file to upload to the website in order for it to be claimed
-     * @type {string}
-     * @memberof UserWebsiteVerification
      */
     fileContent?: string;
     /**
      * File expected to find on the website being claimed
-     * @type {string}
-     * @memberof UserWebsiteVerification
      */
     filename?: string;
     /**
      * Metatag the verification process searchs for the website to be claimed
-     * @type {string}
-     * @memberof UserWebsiteVerification
      */
     metatag?: string;
     /**
      * Code to check against the user claiming the website
-     * @type {string}
-     * @memberof UserWebsiteVerification
      */
     verificationCode?: string;
 }

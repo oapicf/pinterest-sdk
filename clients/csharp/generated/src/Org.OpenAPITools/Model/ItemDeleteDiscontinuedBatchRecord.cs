@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class ItemDeleteDiscontinuedBatchRecord.");
+                throw new JsonException("Property is not nullable for class ItemDeleteDiscontinuedBatchRecord: item_id.");
 
             return new ItemDeleteDiscontinuedBatchRecord(itemId);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemDeleteDiscontinuedBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemDeleteDiscontinuedBatchRecord itemDeleteDiscontinuedBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemDeleteDiscontinuedBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemDeleteDiscontinuedBatchRecord itemDeleteDiscontinuedBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemDeleteDiscontinuedBatchRecord.ItemIdOption.IsSet && itemDeleteDiscontinuedBatchRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(itemDeleteDiscontinuedBatchRecord.ItemId), "Property is required for class ItemDeleteDiscontinuedBatchRecord.");
+                throw new JsonException("Cannot write null property ItemDeleteDiscontinuedBatchRecord.ItemId to non-nullable JSON property 'item_id'.");
 
             if (itemDeleteDiscontinuedBatchRecord.ItemIdOption.IsSet)
                 writer.WriteString("item_id", itemDeleteDiscontinuedBatchRecord.ItemId);

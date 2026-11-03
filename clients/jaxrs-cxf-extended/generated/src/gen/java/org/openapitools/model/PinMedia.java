@@ -111,7 +111,6 @@ public enum MediaTypeEnum {
   private Integer width;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid PinMediaMetadata> items = new ArrayList<>();
  /**
   * Get images

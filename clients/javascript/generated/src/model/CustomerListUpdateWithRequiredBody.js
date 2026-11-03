@@ -18,7 +18,7 @@ import UserListOperationType from './UserListOperationType';
 /**
  * The CustomerListUpdateWithRequiredBody model module.
  * @module model/CustomerListUpdateWithRequiredBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomerListUpdateWithRequiredBody {
     /**

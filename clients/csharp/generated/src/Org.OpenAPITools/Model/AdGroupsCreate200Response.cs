@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupsCreate200Response.", nameof(items));
+                throw new JsonException("Property is required for class AdGroupsCreate200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdGroupsCreate200Response.");
+                throw new JsonException("Property is not nullable for class AdGroupsCreate200Response: items.");
 
             return new AdGroupsCreate200Response(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsCreate200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupsCreate200Response adGroupsCreate200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsCreate200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupsCreate200Response adGroupsCreate200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adGroupsCreate200Response.Items == null)
-                throw new ArgumentNullException(nameof(adGroupsCreate200Response.Items), "Property is required for class AdGroupsCreate200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, adGroupsCreate200Response.Items, jsonSerializerOptions);
         }

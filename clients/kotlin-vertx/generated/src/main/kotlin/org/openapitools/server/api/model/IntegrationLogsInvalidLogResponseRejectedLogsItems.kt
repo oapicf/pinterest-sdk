@@ -18,9 +18,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
- * @param &#x60;field&#x60; The field name containing an invalid value.
+ * @param `field` The field name containing an invalid value.
  * @param reason The reason the value is invalid.
- * @param &#x60;value&#x60; The value that is invalid.
+ * @param `value` The value that is invalid.
  * @param logIndex Index of the log in the batch.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

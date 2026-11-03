@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **adPinsAnalytics**
 ```swift
-    open class func adPinsAnalytics(campaignId: String, pinIds: [String], startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adPinsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adPinsAnalytics? = nil, viewWindowDays: ViewWindowDays_adPinsAnalytics? = nil, conversionReportTime: ConversionReportTime_adPinsAnalytics? = nil, completion: @escaping (_ data: [AdPinAnalytics]?, _ error: Error?) -> Void)
+    open class func adPinsAnalytics(campaignId: String, pinIds: [String], startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adPinsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adPinsAnalytics? = nil, viewWindowDays: ViewWindowDays_adPinsAnalytics? = nil, conversionReportTime: ConversionReportTime_adPinsAnalytics? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [AdPinAnalytics]
 ```
 
 Get pins analytics
@@ -41,15 +41,11 @@ let viewWindowDays = 987 // Double | Number of days to use as the conversion att
 let conversionReportTime = "conversionReportTime_example" // String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional) (default to .timeOfAdAction)
 
 // Get pins analytics
-CampaignsAPI.adPinsAnalytics(campaignId: campaignId, pinIds: pinIds, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.adPinsAnalytics(campaignId: campaignId, pinIds: pinIds, startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -86,7 +82,7 @@ Name | Type | Description  | Notes
 
 # **campaignTargetingAnalyticsGet**
 ```swift
-    open class func campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
+    open class func campaignTargetingAnalyticsGet(adAccountId: String, campaignIds: [String], startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsCampaignTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_campaignTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_campaignTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_campaignTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_campaignTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MetricsResponse
 ```
 
 Get targeting analytics for campaigns
@@ -113,15 +109,11 @@ let attributionTypes = [ConversionReportAttributionType()] // [ConversionReportA
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get targeting analytics for campaigns
-CampaignsAPI.campaignTargetingAnalyticsGet(adAccountId: adAccountId, campaignIds: campaignIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignTargetingAnalyticsGet(adAccountId: adAccountId, campaignIds: campaignIds, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -160,7 +152,7 @@ Name | Type | Description  | Notes
 
 # **campaignsAnalytics**
 ```swift
-    open class func campaignsAnalytics(startDate: Date, endDate: Date, campaignIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [CampaignsAnalyticsMetrics]?, _ error: Error?) -> Void)
+    open class func campaignsAnalytics(startDate: Date, endDate: Date, campaignIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_campaignsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_campaignsAnalytics? = nil, viewWindowDays: ViewWindowDays_campaignsAnalytics? = nil, conversionReportTime: ConversionReportTime_campaignsAnalytics? = nil, aggregateReportRows: Bool? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CampaignsAnalyticsMetrics]
 ```
 
 Get campaign analytics
@@ -186,15 +178,11 @@ let aggregateReportRows = true // Bool | Determines if report rows should be agg
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get campaign analytics
-CampaignsAPI.campaignsAnalytics(startDate: startDate, endDate: endDate, campaignIds: campaignIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignsAnalytics(startDate: startDate, endDate: endDate, campaignIds: campaignIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, aggregateReportRows: aggregateReportRows, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -232,7 +220,7 @@ Name | Type | Description  | Notes
 
 # **campaignsCreate**
 ```swift
-    open class func campaignsCreate(adAccountId: String, campaignCreateItem: [CampaignCreateItem], completion: @escaping (_ data: CampaignBatchWriteResponseModel?, _ error: Error?) -> Void)
+    open class func campaignsCreate(adAccountId: String, campaignCreateItem: [CampaignCreateItem], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CampaignBatchWriteResponseModel
 ```
 
 Create campaigns
@@ -248,15 +236,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let campaignCreateItem = [CampaignCreateItem(adAccountId: "adAccountId_example", appId: "appId_example", appPlatform: MobileAppPlatform(), bidOptions: CampaignBidOptions(ageBucketMultipliers: AgeBucketMultipliers(AGE_BUCKET: TargetingSpecAgeBucket()), appTypeMultipliers: AppTypeMultipliers(APP_TYPE: TargetingSpecAppType()), audienceMultipliers: CampaignAudienceMultipliers(AUDIENCE_ID: "AUDIENCE_ID_example"), freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow(), frequencyMultipliers: FrequencyMultipliers(IMPRESSION_COUNT: "IMPRESSION_COUNT_example"), genderMultipliers: GenderMultipliers(GENDER: TargetingSpecGender()), placementMultipliers: PlacementMultipliers(PLACEMENT: PlacementType())), dailySpendCap: 123, defaultAdGroupBudgetInMicroCurrency: 123, endTime: 123, intendedPromotionType: IntendedPromotionType(), isAutomatedCampaign: true, isCampaignBudgetOptimization: true, isFlexibleDailyBudgets: true, isLtvOptimized: true, isPerformancePlus: true, isTopOfSearch: true, lifetimeSpendCap: 123, name: "name_example", objectiveType: ConversionObjectiveType(), orderLineId: "orderLineId_example", startTime: 123, status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]))] // [CampaignCreateItem] | 
 
 // Create campaigns
-CampaignsAPI.campaignsCreate(adAccountId: adAccountId, campaignCreateItem: campaignCreateItem) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignsCreate(adAccountId: adAccountId, campaignCreateItem: campaignCreateItem)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -284,7 +268,7 @@ Name | Type | Description  | Notes
 
 # **campaignsGet**
 ```swift
-    open class func campaignsGet(campaignId: String, adAccountId: String, completion: @escaping (_ data: Campaign?, _ error: Error?) -> Void)
+    open class func campaignsGet(campaignId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Campaign
 ```
 
 Get campaign
@@ -300,15 +284,11 @@ let campaignId = "campaignId_example" // String | Campaign ID, must be associate
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get campaign
-CampaignsAPI.campaignsGet(campaignId: campaignId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignsGet(campaignId: campaignId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -336,7 +316,7 @@ Name | Type | Description  | Notes
 
 # **campaignsList**
 ```swift
-    open class func campaignsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, completion: @escaping (_ data: CampaignsList200Response?, _ error: Error?) -> Void)
+    open class func campaignsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, campaignIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CampaignsList200Response
 ```
 
 List campaigns
@@ -356,15 +336,11 @@ let campaignIds = ["inner_example"] // [String] | List of Campaign Ids to use to
 let entityStatuses = [EntityStatus()] // [EntityStatus] | Entity status (optional)
 
 // List campaigns
-CampaignsAPI.campaignsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, entityStatuses: entityStatuses) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, campaignIds: campaignIds, entityStatuses: entityStatuses)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -396,7 +372,7 @@ Name | Type | Description  | Notes
 
 # **campaignsUpdate**
 ```swift
-    open class func campaignsUpdate(adAccountId: String, campaignBatchUpdateItem: [CampaignBatchUpdateItem], completion: @escaping (_ data: CampaignBatchWriteResponseModel?, _ error: Error?) -> Void)
+    open class func campaignsUpdate(adAccountId: String, campaignBatchUpdateItem: [CampaignBatchUpdateItem], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CampaignBatchWriteResponseModel
 ```
 
 Update campaigns
@@ -412,15 +388,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let campaignBatchUpdateItem = [CampaignBatchUpdateItem(adAccountId: "adAccountId_example", appId: "appId_example", appPlatform: MobileAppPlatform(), bidOptions: CampaignBidOptionsUpdate(ageBucketMultipliers: AgeBucketMultipliers(AGE_BUCKET: TargetingSpecAgeBucket()), appTypeMultipliers: AppTypeMultipliers(APP_TYPE: TargetingSpecAppType()), audienceMultipliers: CampaignAudienceMultipliers(AUDIENCE_ID: "AUDIENCE_ID_example"), freqBidMultiplierTimeWindow: FreqBidMultiplierTimeWindow(), frequencyMultipliers: FrequencyMultipliers(IMPRESSION_COUNT: "IMPRESSION_COUNT_example"), genderMultipliers: GenderMultipliers(GENDER: TargetingSpecGender()), placementMultipliers: PlacementMultipliers(PLACEMENT: PlacementType()), updateMask: [CampaignBidOptionsUpdateMaskItems()]), dailySpendCap: 123, defaultAdGroupBudgetInMicroCurrency: 123, endTime: 123, id: "id_example", intendedPromotionType: IntendedPromotionType(), isAutomatedCampaign: true, isCampaignBudgetOptimization: true, isFlexibleDailyBudgets: true, isLtvOptimized: true, isPerformancePlus: true, isTopOfSearch: true, lifetimeSpendCap: 123, name: "name_example", objectiveType: ConversionObjectiveType(), orderLineId: "orderLineId_example", performancePlusCampaignSettings: PerformancePlusCampaignSettings(boostProspectingAdGroupBid: false, pinnerListExclusions: ["pinnerListExclusions_example"]), startTime: 123, status: EntityStatus(), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"]))] // [CampaignBatchUpdateItem] | 
 
 // Update campaigns
-CampaignsAPI.campaignsUpdate(adAccountId: adAccountId, campaignBatchUpdateItem: campaignBatchUpdateItem) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.campaignsUpdate(adAccountId: adAccountId, campaignBatchUpdateItem: campaignBatchUpdateItem)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -448,7 +420,7 @@ Name | Type | Description  | Notes
 
 # **getCampaignDeliveryEstimates**
 ```swift
-    open class func getCampaignDeliveryEstimates(adAccountId: String, campaignDeliveryEstimatesCampaign: [CampaignDeliveryEstimatesCampaign], completion: @escaping (_ data: CampaignDeliveryEstimatesResponse?, _ error: Error?) -> Void)
+    open class func getCampaignDeliveryEstimates(adAccountId: String, campaignDeliveryEstimatesCampaign: [CampaignDeliveryEstimatesCampaign], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CampaignDeliveryEstimatesResponse
 ```
 
 Get campaign delivery estimates
@@ -464,15 +436,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let campaignDeliveryEstimatesCampaign = [CampaignDeliveryEstimatesCampaign(adGroups: [AdGroupDeliveryEstimates(autoTargetingEnabled: false, creativeTypes: [AdGroupAudienceSizingCreativeTypes()], keywords: [AdGroupDeliveryEstimatesKeywordsItems(matchType: NullalbleMatchType(), value: "value_example")], monthlyFrequencyCap: 123, optimizationGoalMetadata: OptimizationGoalMetadata(conversionTagV3GoalMetadata: ConversionTagV3GoalMetadata(attributionWindows: AttributionWindows(clickWindowDays: 123, engagementWindowDays: 123, viewWindowDays: 123), conversionEvent: ConversionEvent(), conversionTagId: "conversionTagId_example", cpaGoalValueInMicroCurrency: "cpaGoalValueInMicroCurrency_example", isRoasOptimized: false, reportingEvent: "reportingEvent_example"), frequencyGoalMetadata: FrequencyGoalMetadata(frequency: 123, timerange: FrequencyGoalMetadataTimerange()), scrollupGoalMetadata: ScrollupGoalMetadata(scrollupGoalValueInMicroCurrency: "scrollupGoalValueInMicroCurrency_example")), optimizationType: OptimizationType(), placementGroup: PlacementGroupType(), productGroupIds: ["productGroupIds_example"], targetingSpec: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()]))], budgetDurationType: BudgetDurationType(), dailySpendCap: 123, endDate: "endDate_example", lifetimeSpendCap: 123, objectiveType: DeliveryEstimateObjectiveType(), startDate: "startDate_example")] // [CampaignDeliveryEstimatesCampaign] | 
 
 // Get campaign delivery estimates
-CampaignsAPI.getCampaignDeliveryEstimates(adAccountId: adAccountId, campaignDeliveryEstimatesCampaign: campaignDeliveryEstimatesCampaign) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CampaignsAPI.getCampaignDeliveryEstimates(adAccountId: adAccountId, campaignDeliveryEstimatesCampaign: campaignDeliveryEstimatesCampaign)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

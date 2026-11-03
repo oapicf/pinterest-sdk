@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BidStrategyType
-{
-public:
-
-    BidStrategyType();
-    virtual ~BidStrategyType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BidStrategyType,
-        )
-
-private:
+enum class BidStrategyType {
+    
+    AUTOMATIC_BID,
+    
+    MAX_BID,
+    
+    TARGET_AVG
+    
 };
 
+inline void to_json(nlohmann::json& j, const BidStrategyType& value)
+{
+    switch (value)
+    {
+        
+        case BidStrategyType::AUTOMATIC_BID: j = "AUTOMATIC_BID"; break;
+        
+        case BidStrategyType::MAX_BID: j = "MAX_BID"; break;
+        
+        case BidStrategyType::TARGET_AVG: j = "TARGET_AVG"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BidStrategyType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BidStrategyType& value)
+{
+    
+    if (j == "AUTOMATIC_BID")
+    {
+        value = BidStrategyType::AUTOMATIC_BID;
+        return;
+    }
+    
+    if (j == "MAX_BID")
+    {
+        value = BidStrategyType::MAX_BID;
+        return;
+    }
+    
+    if (j == "TARGET_AVG")
+    {
+        value = BidStrategyType::TARGET_AVG;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BidStrategyType", &j);
+}
 
 } // namespace models
 

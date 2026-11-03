@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (female.IsSet && female.Value == null)
-                throw new ArgumentNullException(nameof(female), "Property is not nullable for class BidOptionsGenderMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsGenderMultipliers: female.");
 
             if (male.IsSet && male.Value == null)
-                throw new ArgumentNullException(nameof(male), "Property is not nullable for class BidOptionsGenderMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsGenderMultipliers: male.");
 
             return new BidOptionsGenderMultipliers(female, male);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsGenderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidOptionsGenderMultipliers bidOptionsGenderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,9 +188,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsGenderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidOptionsGenderMultipliers bidOptionsGenderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (bidOptionsGenderMultipliers.FemaleOption.IsSet && bidOptionsGenderMultipliers.Female == null)
+                throw new JsonException("Cannot write null property BidOptionsGenderMultipliers.Female to non-nullable JSON property 'female'.");
+
+            if (bidOptionsGenderMultipliers.MaleOption.IsSet && bidOptionsGenderMultipliers.Male == null)
+                throw new JsonException("Cannot write null property BidOptionsGenderMultipliers.Male to non-nullable JSON property 'male'.");
+
             if (bidOptionsGenderMultipliers.FemaleOption.IsSet)
                 writer.WriteNumber("female", bidOptionsGenderMultipliers.FemaleOption.Value!.Value);
 

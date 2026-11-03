@@ -6,20 +6,3 @@
 */
 #include "AgeTrendsBucket.h"
 
-namespace models {
-
-AgeTrendsBucket::AgeTrendsBucket()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

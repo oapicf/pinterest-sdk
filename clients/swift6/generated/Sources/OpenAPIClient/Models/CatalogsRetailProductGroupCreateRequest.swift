@@ -13,7 +13,7 @@ public struct CatalogsRetailProductGroupCreateRequest: Sendable, Codable, Hashab
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Catalog ID pertaining to the product group. */
     public var catalogId: String
     /** Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one. */

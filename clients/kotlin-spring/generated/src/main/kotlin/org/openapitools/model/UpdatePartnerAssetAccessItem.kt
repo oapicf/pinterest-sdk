@@ -25,19 +25,19 @@ data class UpdatePartnerAssetAccessItem(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Unique identifier of the business asset.")
-    @param:JsonProperty("asset_id")
+    @param:JsonProperty("asset_id", required = true)
     @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Unique identifier of a business partner to update asset access to.")
-    @param:JsonProperty("partner_id")
+    @param:JsonProperty("partner_id", required = true)
     @get:JsonProperty("partner_id", required = true) val partnerId: kotlin.String,
 
     @field:Valid
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "A non-empty array of permissions to assign to the partner.")
-    @param:JsonProperty("permissions")
+    @param:JsonProperty("permissions", required = true)
     @get:JsonProperty("permissions", required = true) val permissions: kotlin.collections.List<Permissions>
 ) {
 

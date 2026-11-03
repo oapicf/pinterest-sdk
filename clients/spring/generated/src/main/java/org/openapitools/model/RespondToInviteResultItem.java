@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -25,13 +24,11 @@ import jakarta.annotation.Generated;
  * RespondToInviteResultItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RespondToInviteResultItem {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<InviteExceptionResponse> exception = JsonNullable.<InviteExceptionResponse>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BaseInviteDataResponse> invite = JsonNullable.<BaseInviteDataResponse>undefined();
 
   public RespondToInviteResultItem exception(InviteExceptionResponse exception) {
@@ -44,7 +41,7 @@ public class RespondToInviteResultItem {
    * @return exception
    */
   @Valid 
-  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("exception")
   public JsonNullable<InviteExceptionResponse> getException() {
     return exception;
@@ -64,7 +61,7 @@ public class RespondToInviteResultItem {
    * @return invite
    */
   @Valid 
-  @Schema(name = "invite", description = "An invite object for the invite/request that was successfully accepted/declined. Will only be provided if the an invite/request is successfully created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "invite", description = "An invite object for the invite/request that was successfully accepted/declined. Will only be provided if the an invite/request is successfully created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("invite")
   public JsonNullable<BaseInviteDataResponse> getInvite() {
     return invite;

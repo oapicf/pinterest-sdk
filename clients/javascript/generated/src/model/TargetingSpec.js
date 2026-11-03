@@ -20,7 +20,7 @@ import TargetingSpecShoppingRetargeting from './TargetingSpecShoppingRetargeting
 /**
  * The TargetingSpec model module.
  * @module model/TargetingSpec
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpec {
     /**

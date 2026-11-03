@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,31 +30,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSchema {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsFormat format;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String location;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsStatus status;
 
   public CatalogsFeedsUpdateRequest credentials(CatalogsFeedCredentials credentials) {
@@ -68,7 +59,7 @@ public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSche
    * @return credentials
    */
   @Valid 
-  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("credentials")
   public JsonNullable<CatalogsFeedCredentials> getCredentials() {
     return credentials;
@@ -88,7 +79,7 @@ public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSche
    * @return defaultAvailability
    */
   @Valid 
-  @Schema(name = "default_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "default_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("default_availability")
   public JsonNullable<ProductAvailabilityType> getDefaultAvailability() {
     return defaultAvailability;
@@ -108,7 +99,7 @@ public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSche
    * @return defaultCurrency
    */
   @Valid 
-  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("default_currency")
   public JsonNullable<NullableCurrency> getDefaultCurrency() {
     return defaultCurrency;
@@ -191,7 +182,7 @@ public class CatalogsFeedsUpdateRequest implements CatalogsFeedUpdateRequestSche
    * @return preferredProcessingSchedule
    */
   @Valid 
-  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("preferred_processing_schedule")
   public JsonNullable<CatalogsFeedProcessingSchedule> getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;

@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (promotions.IsSet && promotions.Value == null)
-                throw new ArgumentNullException(nameof(promotions), "Property is not nullable for class PromotionsResponse.");
+                throw new JsonException("Property is not nullable for class PromotionsResponse: promotions.");
 
             return new PromotionsResponse(promotions);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PromotionsResponse promotionsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PromotionsResponse promotionsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (promotionsResponse.PromotionsOption.IsSet && promotionsResponse.Promotions == null)
-                throw new ArgumentNullException(nameof(promotionsResponse.Promotions), "Property is required for class PromotionsResponse.");
+                throw new JsonException("Cannot write null property PromotionsResponse.Promotions to non-nullable JSON property 'promotions'.");
 
             if (promotionsResponse.PromotionsOption.IsSet)
             {

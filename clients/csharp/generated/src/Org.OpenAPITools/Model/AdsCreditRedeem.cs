@@ -186,7 +186,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (success.IsSet && success.Value == null)
-                throw new ArgumentNullException(nameof(success), "Property is not nullable for class AdsCreditRedeem.");
+                throw new JsonException("Property is not nullable for class AdsCreditRedeem: success.");
 
             return new AdsCreditRedeem(errorCode, errorMessage, success);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditRedeem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsCreditRedeem adsCreditRedeem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,9 +211,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditRedeem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsCreditRedeem adsCreditRedeem, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adsCreditRedeem.SuccessOption.IsSet && adsCreditRedeem.Success == null)
+                throw new JsonException("Cannot write null property AdsCreditRedeem.Success to non-nullable JSON property 'success'.");
+
             if (adsCreditRedeem.ErrorCodeOption.IsSet)
                 if (adsCreditRedeem.ErrorCodeOption.Value != null)
                     writer.WriteNumber("errorCode", adsCreditRedeem.ErrorCodeOption.Value!.Value);

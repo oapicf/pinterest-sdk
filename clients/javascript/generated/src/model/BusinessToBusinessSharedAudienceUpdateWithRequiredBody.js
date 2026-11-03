@@ -17,7 +17,7 @@ import OperationType from './OperationType';
 /**
  * The BusinessToBusinessSharedAudienceUpdateWithRequiredBody model module.
  * @module model/BusinessToBusinessSharedAudienceUpdateWithRequiredBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BusinessToBusinessSharedAudienceUpdateWithRequiredBody {
     /**

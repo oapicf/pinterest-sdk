@@ -125,3 +125,4 @@ class _$CatalogsLocalStoresList200ResponseSerializer implements PrimitiveSeriali
   }
 }
 
+

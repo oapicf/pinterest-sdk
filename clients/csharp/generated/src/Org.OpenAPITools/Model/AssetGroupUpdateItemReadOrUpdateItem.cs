@@ -240,25 +240,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetGroupId.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupUpdateItemReadOrUpdateItem.", nameof(assetGroupId));
+                throw new JsonException("Property is required for class AssetGroupUpdateItemReadOrUpdateItem: asset_group_id.");
 
             if (assetGroupId.IsSet && assetGroupId.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupId), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: asset_group_id.");
 
             if (assetGroupTypes.IsSet && assetGroupTypes.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupTypes), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: asset_group_types.");
 
             if (assetsToAdd.IsSet && assetsToAdd.Value == null)
-                throw new ArgumentNullException(nameof(assetsToAdd), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: assets_to_add.");
 
             if (assetsToRemove.IsSet && assetsToRemove.Value == null)
-                throw new ArgumentNullException(nameof(assetsToRemove), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: assets_to_remove.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: description.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Property is not nullable for class AssetGroupUpdateItemReadOrUpdateItem: name.");
 
             return new AssetGroupUpdateItemReadOrUpdateItem(assetGroupId.Value!, assetGroupTypes, assetsToAdd, assetsToRemove, description, name);
         }
@@ -269,7 +269,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupUpdateItemReadOrUpdateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupUpdateItemReadOrUpdateItem assetGroupUpdateItemReadOrUpdateItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -284,26 +283,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupUpdateItemReadOrUpdateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupUpdateItemReadOrUpdateItem assetGroupUpdateItemReadOrUpdateItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (assetGroupUpdateItemReadOrUpdateItem.AssetGroupId == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.AssetGroupId), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
-
             if (assetGroupUpdateItemReadOrUpdateItem.AssetGroupTypesOption.IsSet && assetGroupUpdateItemReadOrUpdateItem.AssetGroupTypes == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.AssetGroupTypes), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Cannot write null property AssetGroupUpdateItemReadOrUpdateItem.AssetGroupTypes to non-nullable JSON property 'asset_group_types'.");
 
             if (assetGroupUpdateItemReadOrUpdateItem.AssetsToAddOption.IsSet && assetGroupUpdateItemReadOrUpdateItem.AssetsToAdd == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.AssetsToAdd), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Cannot write null property AssetGroupUpdateItemReadOrUpdateItem.AssetsToAdd to non-nullable JSON property 'assets_to_add'.");
 
             if (assetGroupUpdateItemReadOrUpdateItem.AssetsToRemoveOption.IsSet && assetGroupUpdateItemReadOrUpdateItem.AssetsToRemove == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.AssetsToRemove), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Cannot write null property AssetGroupUpdateItemReadOrUpdateItem.AssetsToRemove to non-nullable JSON property 'assets_to_remove'.");
 
             if (assetGroupUpdateItemReadOrUpdateItem.DescriptionOption.IsSet && assetGroupUpdateItemReadOrUpdateItem.Description == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.Description), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Cannot write null property AssetGroupUpdateItemReadOrUpdateItem.Description to non-nullable JSON property 'description'.");
 
             if (assetGroupUpdateItemReadOrUpdateItem.NameOption.IsSet && assetGroupUpdateItemReadOrUpdateItem.Name == null)
-                throw new ArgumentNullException(nameof(assetGroupUpdateItemReadOrUpdateItem.Name), "Property is required for class AssetGroupUpdateItemReadOrUpdateItem.");
+                throw new JsonException("Cannot write null property AssetGroupUpdateItemReadOrUpdateItem.Name to non-nullable JSON property 'name'.");
 
             writer.WriteString("asset_group_id", assetGroupUpdateItemReadOrUpdateItem.AssetGroupId);
 

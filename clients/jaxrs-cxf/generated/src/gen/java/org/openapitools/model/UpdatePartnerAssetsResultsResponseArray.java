@@ -19,8 +19,6 @@ public class UpdatePartnerAssetsResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of assigned/updated partner asset access.")
 
-  @Valid
-
   private List<@Valid UpdatePartnerAssetsResult> items = new ArrayList<>();
  /**
    * List of assigned/updated partner asset access.

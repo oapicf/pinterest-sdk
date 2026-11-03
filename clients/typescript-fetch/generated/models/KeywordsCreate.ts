@@ -29,14 +29,10 @@ import {
 export interface KeywordsCreate {
     /**
      * Keywords
-     * @type {Array<KeywordCreateItem>}
-     * @memberof KeywordsCreate
      */
     keywords: Array<KeywordCreateItem>;
     /**
      * Keyword data
-     * @type {string}
-     * @memberof KeywordsCreate
      */
     parentId: string;
 }

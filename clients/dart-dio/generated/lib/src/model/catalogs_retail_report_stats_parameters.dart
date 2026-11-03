@@ -123,6 +123,7 @@ class _$CatalogsRetailReportStatsParametersSerializer implements PrimitiveSerial
   }
 }
 
+
 class CatalogsRetailReportStatsParametersCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

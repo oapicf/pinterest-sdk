@@ -22,8 +22,6 @@ public class ConversionDeletionRequestList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ConversionDeletionRequest> items = new ArrayList<>();
  /**
    * Get bookmark

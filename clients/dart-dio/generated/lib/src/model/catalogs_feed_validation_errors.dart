@@ -748,3 +748,4 @@ class _$CatalogsFeedValidationErrorsSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

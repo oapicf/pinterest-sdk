@@ -110,3 +110,4 @@ class _$UpdatePartnerAssetsResultsResponseArraySerializer implements PrimitiveSe
   }
 }
 
+

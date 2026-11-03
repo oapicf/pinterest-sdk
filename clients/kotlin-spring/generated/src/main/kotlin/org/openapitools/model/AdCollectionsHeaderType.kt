@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Collections ad header type for ads
-* Values: SHOP_THIS_COLLECTION,EXPLORE_THIS_COLLECTION,NO_HEADER
-*/
+ * Collections ad header type for ads
+ * Values: SHOP_THIS_COLLECTION,EXPLORE_THIS_COLLECTION,NO_HEADER
+ */
 enum class AdCollectionsHeaderType(@get:JsonValue val value: kotlin.String) {
 
     SHOP_THIS_COLLECTION("SHOP_THIS_COLLECTION"),
@@ -29,9 +29,8 @@ enum class AdCollectionsHeaderType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdCollectionsHeaderType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdCollectionsHeaderType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdCollectionsHeaderType'")
         }
     }
 }
-

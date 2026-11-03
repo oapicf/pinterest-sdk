@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
-* Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REGISTER_NOW,FIND_A_DEALER,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT,BUY_ONLINE_PICKUP_IN_STORE,SHOP_ON_ADVERTISER,SHOP_THE_COLLECTION,GET_IT_NOW,TAKE_A_PEEK,TAKE_A_CLOSER_LOOK
-*/
+ * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are SHOP_NOW, BOOK_NOW, ON_SALE, GET_DEAL, BUY_ONLINE_PICKUP_IN_STORE
+ * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REGISTER_NOW,FIND_A_DEALER,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT,BUY_ONLINE_PICKUP_IN_STORE,SHOP_ON_ADVERTISER,SHOP_THE_COLLECTION,GET_IT_NOW,TAKE_A_PEEK,TAKE_A_CLOSER_LOOK
+ */
 enum class ProductGroupPromotionCustomizableCTAType(@get:JsonValue val value: kotlin.String) {
 
     GET_OFFER("GET_OFFER"),
@@ -59,9 +59,8 @@ enum class ProductGroupPromotionCustomizableCTAType(@get:JsonValue val value: ko
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ProductGroupPromotionCustomizableCTAType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductGroupPromotionCustomizableCTAType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductGroupPromotionCustomizableCTAType'")
         }
     }
 }
-

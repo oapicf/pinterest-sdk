@@ -559,64 +559,64 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: ad_account_id.");
 
             if (adId.IsSet && adId.Value == null)
-                throw new ArgumentNullException(nameof(adId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: ad_id.");
 
             if (campaignId.IsSet && campaignId.Value == null)
-                throw new ArgumentNullException(nameof(campaignId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: campaign_id.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: country.");
 
             if (customerListId.IsSet && customerListId.Value == null)
-                throw new ArgumentNullException(nameof(customerListId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: customer_list_id.");
 
             if (engagementDomain.IsSet && engagementDomain.Value == null)
-                throw new ArgumentNullException(nameof(engagementDomain), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: engagement_domain.");
 
             if (engagementType.IsSet && engagementType.Value == null)
-                throw new ArgumentNullException(nameof(engagementType), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: engagement_type.");
 
             if (engagerType.IsSet && engagerType.Value == null)
-                throw new ArgumentNullException(nameof(engagerType), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: engager_type.");
 
             if (varEvent.IsSet && varEvent.Value == null)
-                throw new ArgumentNullException(nameof(varEvent), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: event.");
 
             if (eventData.IsSet && eventData.Value == null)
-                throw new ArgumentNullException(nameof(eventData), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: event_data.");
 
             if (eventSource.IsSet && eventSource.Value == null)
-                throw new ArgumentNullException(nameof(eventSource), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: event_source.");
 
             if (ingestionSource.IsSet && ingestionSource.Value == null)
-                throw new ArgumentNullException(nameof(ingestionSource), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: ingestion_source.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: objective_type.");
 
             if (percentage.IsSet && percentage.Value == null)
-                throw new ArgumentNullException(nameof(percentage), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: percentage.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: pin_id.");
 
             if (prefill.IsSet && prefill.Value == null)
-                throw new ArgumentNullException(nameof(prefill), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: prefill.");
 
             if (retentionDays.IsSet && retentionDays.Value == null)
-                throw new ArgumentNullException(nameof(retentionDays), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: retention_days.");
 
             if (seedId.IsSet && seedId.Value == null)
-                throw new ArgumentNullException(nameof(seedId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: seed_id.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: url.");
 
             if (visitorSourceId.IsSet && visitorSourceId.Value == null)
-                throw new ArgumentNullException(nameof(visitorSourceId), "Property is not nullable for class AdAccountsAudienceRule.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceRule: visitor_source_id.");
 
             return new AdAccountsAudienceRule(adAccountId, adId, campaignId, country, customerListId, engagementDomain, engagementType, engagerType, varEvent, eventData, eventSource, ingestionSource, objectiveType, percentage, pinId, prefill, retentionDays, seedId, url, visitorSourceId);
         }
@@ -627,7 +627,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceRule"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountsAudienceRule adAccountsAudienceRule, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -642,56 +641,67 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceRule"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountsAudienceRule adAccountsAudienceRule, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adAccountsAudienceRule.AdAccountIdOption.IsSet && adAccountsAudienceRule.AdAccountId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.AdAccountId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (adAccountsAudienceRule.AdIdOption.IsSet && adAccountsAudienceRule.AdId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.AdId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.AdId to non-nullable JSON property 'ad_id'.");
 
             if (adAccountsAudienceRule.CampaignIdOption.IsSet && adAccountsAudienceRule.CampaignId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.CampaignId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.CampaignId to non-nullable JSON property 'campaign_id'.");
 
             if (adAccountsAudienceRule.CountryOption.IsSet && adAccountsAudienceRule.Country == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.Country), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.Country to non-nullable JSON property 'country'.");
 
             if (adAccountsAudienceRule.CustomerListIdOption.IsSet && adAccountsAudienceRule.CustomerListId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.CustomerListId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.CustomerListId to non-nullable JSON property 'customer_list_id'.");
 
             if (adAccountsAudienceRule.EngagementDomainOption.IsSet && adAccountsAudienceRule.EngagementDomain == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.EngagementDomain), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.EngagementDomain to non-nullable JSON property 'engagement_domain'.");
 
             if (adAccountsAudienceRule.EngagementTypeOption.IsSet && adAccountsAudienceRule.EngagementType == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.EngagementType), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.EngagementType to non-nullable JSON property 'engagement_type'.");
+
+            if (adAccountsAudienceRule.EngagerTypeOption.IsSet && adAccountsAudienceRule.EngagerType == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.EngagerType to non-nullable JSON property 'engager_type'.");
 
             if (adAccountsAudienceRule.EventOption.IsSet && adAccountsAudienceRule.Event == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.Event), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.Event to non-nullable JSON property 'event'.");
 
             if (adAccountsAudienceRule.EventDataOption.IsSet && adAccountsAudienceRule.EventData == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.EventData), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.EventData to non-nullable JSON property 'event_data'.");
 
             if (adAccountsAudienceRule.EventSourceOption.IsSet && adAccountsAudienceRule.EventSource == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.EventSource), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.EventSource to non-nullable JSON property 'event_source'.");
 
             if (adAccountsAudienceRule.IngestionSourceOption.IsSet && adAccountsAudienceRule.IngestionSource == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.IngestionSource), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.IngestionSource to non-nullable JSON property 'ingestion_source'.");
 
             if (adAccountsAudienceRule.ObjectiveTypeOption.IsSet && adAccountsAudienceRule.ObjectiveType == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.ObjectiveType), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.ObjectiveType to non-nullable JSON property 'objective_type'.");
+
+            if (adAccountsAudienceRule.PercentageOption.IsSet && adAccountsAudienceRule.Percentage == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.Percentage to non-nullable JSON property 'percentage'.");
 
             if (adAccountsAudienceRule.PinIdOption.IsSet && adAccountsAudienceRule.PinId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.PinId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.PinId to non-nullable JSON property 'pin_id'.");
+
+            if (adAccountsAudienceRule.PrefillOption.IsSet && adAccountsAudienceRule.Prefill == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.Prefill to non-nullable JSON property 'prefill'.");
+
+            if (adAccountsAudienceRule.RetentionDaysOption.IsSet && adAccountsAudienceRule.RetentionDays == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.RetentionDays to non-nullable JSON property 'retention_days'.");
 
             if (adAccountsAudienceRule.SeedIdOption.IsSet && adAccountsAudienceRule.SeedId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.SeedId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.SeedId to non-nullable JSON property 'seed_id'.");
 
             if (adAccountsAudienceRule.UrlOption.IsSet && adAccountsAudienceRule.Url == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.Url), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.Url to non-nullable JSON property 'url'.");
 
             if (adAccountsAudienceRule.VisitorSourceIdOption.IsSet && adAccountsAudienceRule.VisitorSourceId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceRule.VisitorSourceId), "Property is required for class AdAccountsAudienceRule.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceRule.VisitorSourceId to non-nullable JSON property 'visitor_source_id'.");
 
             if (adAccountsAudienceRule.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", adAccountsAudienceRule.AdAccountId);

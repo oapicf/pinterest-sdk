@@ -24,12 +24,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Response model for supplemental items batch operation")
 @JsonTypeName("SupplementalItemsBatchResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SupplementalItemsBatchResponse   {
   private String batchId;
   private Date completedTime;
   private Date createdTime;
-  private @Valid List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
   private SupplementalItemBatchOperationStatus status;
 
   public SupplementalItemsBatchResponse() {
@@ -111,7 +111,7 @@ public class SupplementalItemsBatchResponse   {
   /**
    * Array of operation results
    **/
-  public SupplementalItemsBatchResponse operationResults(List<SupplementalOperationResult> operationResults) {
+  public SupplementalItemsBatchResponse operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -119,12 +119,12 @@ public class SupplementalItemsBatchResponse   {
   
   @ApiModelProperty(required = true, value = "Array of operation results")
   @JsonProperty(required = true, value = "operation_results")
-  @Valid public List<@Valid SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
   @JsonProperty(required = true, value = "operation_results")
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

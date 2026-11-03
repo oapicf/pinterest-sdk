@@ -370,40 +370,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class PromotionBatchUpdate.", nameof(id));
+                throw new JsonException("Property is required for class PromotionBatchUpdate: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: id.");
 
             if (discountStatus.IsSet && discountStatus.Value == null)
-                throw new ArgumentNullException(nameof(discountStatus), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: discount_status.");
 
             if (endTime.IsSet && endTime.Value == null)
-                throw new ArgumentNullException(nameof(endTime), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: end_time.");
 
             if (externalId.IsSet && externalId.Value == null)
-                throw new ArgumentNullException(nameof(externalId), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: external_id.");
 
             if (platformType.IsSet && platformType.Value == null)
-                throw new ArgumentNullException(nameof(platformType), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: platform_type.");
 
             if (promotionCode.IsSet && promotionCode.Value == null)
-                throw new ArgumentNullException(nameof(promotionCode), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: promotion_code.");
 
             if (promotionCustomId.IsSet && promotionCustomId.Value == null)
-                throw new ArgumentNullException(nameof(promotionCustomId), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: promotion_custom_id.");
 
             if (promotionTitle.IsSet && promotionTitle.Value == null)
-                throw new ArgumentNullException(nameof(promotionTitle), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: promotion_title.");
 
             if (promotionType.IsSet && promotionType.Value == null)
-                throw new ArgumentNullException(nameof(promotionType), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: promotion_type.");
 
             if (startTime.IsSet && startTime.Value == null)
-                throw new ArgumentNullException(nameof(startTime), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: start_time.");
 
             if (templateValues.IsSet && templateValues.Value == null)
-                throw new ArgumentNullException(nameof(templateValues), "Property is not nullable for class PromotionBatchUpdate.");
+                throw new JsonException("Property is not nullable for class PromotionBatchUpdate: template_values.");
 
             return new PromotionBatchUpdate(id.Value!, discountStatus, endTime, externalId, platformType, promotionCode, promotionCustomId, promotionTitle, promotionType, startTime, templateValues);
         }
@@ -414,7 +414,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PromotionBatchUpdate promotionBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -429,29 +428,37 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PromotionBatchUpdate promotionBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (promotionBatchUpdate.Id == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.Id), "Property is required for class PromotionBatchUpdate.");
+            if (promotionBatchUpdate.DiscountStatusOption.IsSet && promotionBatchUpdate.DiscountStatus == null)
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.DiscountStatus to non-nullable JSON property 'discount_status'.");
+
+            if (promotionBatchUpdate.EndTimeOption.IsSet && promotionBatchUpdate.EndTime == null)
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.EndTime to non-nullable JSON property 'end_time'.");
 
             if (promotionBatchUpdate.ExternalIdOption.IsSet && promotionBatchUpdate.ExternalId == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.ExternalId), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.ExternalId to non-nullable JSON property 'external_id'.");
 
             if (promotionBatchUpdate.PlatformTypeOption.IsSet && promotionBatchUpdate.PlatformType == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.PlatformType), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.PlatformType to non-nullable JSON property 'platform_type'.");
 
             if (promotionBatchUpdate.PromotionCodeOption.IsSet && promotionBatchUpdate.PromotionCode == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.PromotionCode), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.PromotionCode to non-nullable JSON property 'promotion_code'.");
 
             if (promotionBatchUpdate.PromotionCustomIdOption.IsSet && promotionBatchUpdate.PromotionCustomId == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.PromotionCustomId), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.PromotionCustomId to non-nullable JSON property 'promotion_custom_id'.");
 
             if (promotionBatchUpdate.PromotionTitleOption.IsSet && promotionBatchUpdate.PromotionTitle == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.PromotionTitle), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.PromotionTitle to non-nullable JSON property 'promotion_title'.");
+
+            if (promotionBatchUpdate.PromotionTypeOption.IsSet && promotionBatchUpdate.PromotionType == null)
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.PromotionType to non-nullable JSON property 'promotion_type'.");
+
+            if (promotionBatchUpdate.StartTimeOption.IsSet && promotionBatchUpdate.StartTime == null)
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.StartTime to non-nullable JSON property 'start_time'.");
 
             if (promotionBatchUpdate.TemplateValuesOption.IsSet && promotionBatchUpdate.TemplateValues == null)
-                throw new ArgumentNullException(nameof(promotionBatchUpdate.TemplateValues), "Property is required for class PromotionBatchUpdate.");
+                throw new JsonException("Cannot write null property PromotionBatchUpdate.TemplateValues to non-nullable JSON property 'template_values'.");
 
             writer.WriteString("id", promotionBatchUpdate.Id);
 

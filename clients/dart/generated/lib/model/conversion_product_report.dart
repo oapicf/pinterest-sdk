@@ -132,7 +132,9 @@ class ConversionProductReport {
       return ConversionProductReport(
         message: mapValueOfType<String>(json, r'message'),
         reportStatus: BulkReportingJobStatus.fromJson(json[r'report_status']),
-        size: num.parse('${json[r'size']}'),
+        size: json[r'size'] == null
+            ? null
+            : num.parse('${json[r'size']}'),
         token: mapValueOfType<String>(json, r'token'),
         url: mapValueOfType<String>(json, r'url'),
       );

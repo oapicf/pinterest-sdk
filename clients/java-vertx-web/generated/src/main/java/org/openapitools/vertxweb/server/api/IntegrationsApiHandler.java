@@ -104,7 +104,7 @@ public class IntegrationsApiHandler {
         IntegrationMetadataUpdate integrationMetadataUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationMetadataUpdate>(){}) : null;
 
         logger.debug("Parameter externalBusinessId is {}", externalBusinessId);
-        logger.debug("Parameter integrationMetadataUpdate is {}", integrationMetadataUpdate);
+        logger.debug("Parameter integrationMetadataUpdate is (body omitted)");
 
         api.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
             .onSuccess(apiResponse -> {
@@ -127,7 +127,7 @@ public class IntegrationsApiHandler {
         RequestParameter body = requestParameters.body();
         IntegrationMetadataCreate integrationMetadataCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationMetadataCreate>(){}) : null;
 
-        logger.debug("Parameter integrationMetadataCreate is {}", integrationMetadataCreate);
+        logger.debug("Parameter integrationMetadataCreate is (body omitted)");
 
         api.integrationsCommercePost(integrationMetadataCreate)
             .onSuccess(apiResponse -> {
@@ -196,7 +196,7 @@ public class IntegrationsApiHandler {
         RequestParameter body = requestParameters.body();
         IntegrationLogsRequestCreate integrationLogsRequestCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<IntegrationLogsRequestCreate>(){}) : null;
 
-        logger.debug("Parameter integrationLogsRequestCreate is {}", integrationLogsRequestCreate);
+        logger.debug("Parameter integrationLogsRequestCreate is (body omitted)");
 
         api.integrationsLogsPost(integrationLogsRequestCreate)
             .onSuccess(apiResponse -> {

@@ -21,7 +21,7 @@ export interface CatalogsDeleteCreativeAssetsItem {
 }
 export namespace CatalogsDeleteCreativeAssetsItem {
     export const OperationEnum = {
-        Delete: 'DELETE'
+        Delete: 'DELETE',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

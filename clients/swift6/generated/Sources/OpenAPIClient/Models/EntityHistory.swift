@@ -9,8 +9,8 @@ import Foundation
 
 public struct EntityHistory: Sendable, Codable, Hashable {
 
-    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let userIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let userIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** A Unix timestamp representing the time of the change in seconds */
     public var changeTimestamp: Int?
     /** Properties associated with a particular change to an entity's data */

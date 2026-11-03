@@ -35,7 +35,7 @@ public class AdGroupCreateCreate   {
   private BidStrategyType bidStrategyType;
   private ActionType billableEvent;
   private Integer budgetInMicroCurrency;
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
   private String campaignId;
   private String customerSegmentId;
   private Integer endTime;
@@ -47,7 +47,7 @@ public class AdGroupCreateCreate   {
   private BigDecimal localInventoryRadiusInMiles;
   private String name;
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;
   private PlacementGroupType placementGroup;
   private PlacementTrafficType placementTrafficType;

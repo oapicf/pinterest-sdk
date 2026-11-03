@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class LabelError.");
+                throw new JsonException("Property is not nullable for class LabelError: data.");
 
             if (errorMessages.IsSet && errorMessages.Value == null)
-                throw new ArgumentNullException(nameof(errorMessages), "Property is not nullable for class LabelError.");
+                throw new JsonException("Property is not nullable for class LabelError: error_messages.");
 
             return new LabelError(data, errorMessages);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelError labelError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelError labelError, JsonSerializerOptions jsonSerializerOptions)
         {
             if (labelError.DataOption.IsSet && labelError.Data == null)
-                throw new ArgumentNullException(nameof(labelError.Data), "Property is required for class LabelError.");
+                throw new JsonException("Cannot write null property LabelError.Data to non-nullable JSON property 'data'.");
 
             if (labelError.ErrorMessagesOption.IsSet && labelError.ErrorMessages == null)
-                throw new ArgumentNullException(nameof(labelError.ErrorMessages), "Property is required for class LabelError.");
+                throw new JsonException("Cannot write null property LabelError.ErrorMessages to non-nullable JSON property 'error_messages'.");
 
             if (labelError.DataOption.IsSet)
             {

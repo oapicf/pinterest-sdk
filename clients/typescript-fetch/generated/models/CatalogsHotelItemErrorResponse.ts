@@ -29,26 +29,18 @@ import {
 export interface CatalogsHotelItemErrorResponse {
     /**
      * 
-     * @type {CatalogsHotelItemErrorResponseCatalogTypeEnum}
-     * @memberof CatalogsHotelItemErrorResponse
      */
     catalogType: CatalogsHotelItemErrorResponseCatalogTypeEnum;
     /**
      * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
-     * @memberof CatalogsHotelItemErrorResponse
      */
     errors: Array<ItemValidationEvent>;
     /**
      * The catalog hotel id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsHotelItemErrorResponse
      */
     hotelId?: string;
     /**
      * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
-     * @type {CatalogsHotelItemErrorResponseItemResponseKindEnum}
-     * @memberof CatalogsHotelItemErrorResponse
      */
     itemResponseKind: CatalogsHotelItemErrorResponseItemResponseKindEnum;
 }
@@ -58,7 +50,7 @@ export interface CatalogsHotelItemErrorResponse {
  * @export
  */
 export const CatalogsHotelItemErrorResponseCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelItemErrorResponseCatalogTypeEnum = typeof CatalogsHotelItemErrorResponseCatalogTypeEnum[keyof typeof CatalogsHotelItemErrorResponseCatalogTypeEnum];
 
@@ -66,7 +58,7 @@ export type CatalogsHotelItemErrorResponseCatalogTypeEnum = typeof CatalogsHotel
  * @export
  */
 export const CatalogsHotelItemErrorResponseItemResponseKindEnum = {
-    HotelItemError: 'hotel_item_error'
+    HotelItemError: 'hotel_item_error',
 } as const;
 export type CatalogsHotelItemErrorResponseItemResponseKindEnum = typeof CatalogsHotelItemErrorResponseItemResponseKindEnum[keyof typeof CatalogsHotelItemErrorResponseItemResponseKindEnum];
 

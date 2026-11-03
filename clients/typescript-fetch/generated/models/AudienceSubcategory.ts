@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface AudienceSubcategory {
     /**
      * 
-     * @type {string}
-     * @memberof AudienceSubcategory
      */
     id?: string;
     /**
      * 
-     * @type {number}
-     * @memberof AudienceSubcategory
      */
     index?: number;
     /**
      * 
-     * @type {string}
-     * @memberof AudienceSubcategory
      */
     key?: string;
     /**
      * 
-     * @type {string}
-     * @memberof AudienceSubcategory
      */
     name?: string;
     /**
      * 
-     * @type {number}
-     * @memberof AudienceSubcategory
      */
     ratio?: number;
 }

@@ -19,11 +19,11 @@ import java.util.Objects;
 
 public class CatalogsBaseFiltersAnyOf   {
   
-  private List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
   /**
    **/
-  public CatalogsBaseFiltersAnyOf anyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public CatalogsBaseFiltersAnyOf anyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -32,10 +32,10 @@ public class CatalogsBaseFiltersAnyOf   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("any_of")
   @NotNull
- @Size(min=1)  public List<CatalogsBaseFilterKeys> getAnyOf() {
+ @Size(min=1)  public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
     return anyOf;
   }
-  public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

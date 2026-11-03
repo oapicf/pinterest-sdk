@@ -57,140 +57,94 @@ import {
 export interface AdCreateRequest {
     /**
      * ID of the ad group that contains the ad.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     adGroupId: string;
     /**
      * Deep link URL for Android devices.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     androidDeepLink?: string | null;
     /**
      * Comma-separated deep links for the carousel pin on Android.
-     * @type {Array<string>}
-     * @memberof AdCreateRequest
      */
     carouselAndroidDeepLinks?: Array<string> | null;
     /**
      * Comma-separated destination URLs for the carousel pin to promote.
-     * @type {Array<string>}
-     * @memberof AdCreateRequest
      */
     carouselDestinationUrls?: Array<string> | null;
     /**
      * Comma-separated deep links for the carousel pin on iOS.
-     * @type {Array<string>}
-     * @memberof AdCreateRequest
      */
     carouselIosDeepLinks?: Array<string> | null;
     /**
      * Tracking url for the ad clicks.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     clickTrackingUrl?: string | null;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof AdCreateRequest
      */
     creativeType: CreativeType;
     /**
      * 
-     * @type {CustomizableCTAType}
-     * @memberof AdCreateRequest
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Destination URL.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     destinationUrl?: string | null;
     /**
      * 
-     * @type {DisclosureType}
-     * @memberof AdCreateRequest
      */
     disclosureType?: DisclosureType | null;
     /**
      * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     disclosureUrl?: string | null;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof AdCreateRequest
      */
     gridClickType?: GridClickType | null;
     /**
      * Deep link URL for iOS devices.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     iosDeepLink?: string | null;
     /**
      * Is the ad a carting/WTB ad?
-     * @type {boolean}
-     * @memberof AdCreateRequest
      */
     isCarting?: boolean;
     /**
      * Is original pin deleted?
-     * @type {boolean}
-     * @memberof AdCreateRequest
      */
     isPinDeleted?: boolean;
     /**
      * Is pin repinnable?
-     * @type {boolean}
-     * @memberof AdCreateRequest
      */
     isRemovable?: boolean;
     /**
      * Lead form ID for lead ad generation.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     leadFormId?: string | null;
     /**
      * Name of the ad - 255 chars max.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     name?: string | null;
     /**
      * Pin ID.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     pinId: string;
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     * @type {object}
-     * @memberof AdCreateRequest
      */
     quizPinData?: object | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof AdCreateRequest
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {object}
-     * @memberof AdCreateRequest
      */
     trackingUrls?: object | null;
     /**
      * Tracking URL for ad impressions.
-     * @type {string}
-     * @memberof AdCreateRequest
      */
     viewTrackingUrl?: string | null;
 }

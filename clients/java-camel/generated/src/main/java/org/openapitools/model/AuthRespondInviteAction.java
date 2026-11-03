@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.HashMap;
@@ -23,12 +22,11 @@ import jakarta.annotation.Generated;
  * AuthRespondInviteAction
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInviteAction {
 
   private Boolean acceptInvite;
 
-  @Valid
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
 
   public AuthRespondInviteAction() {
@@ -79,7 +77,7 @@ public class AuthRespondInviteAction {
    * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
    * @return assetIdToPermissions
    */
-  @Valid 
+  
   @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id_to_permissions")
   public Map<String, List<Permissions>> getAssetIdToPermissions() {

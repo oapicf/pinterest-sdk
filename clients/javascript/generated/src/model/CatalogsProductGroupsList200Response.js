@@ -17,7 +17,7 @@ import CatalogsVerticalProductGroup from './CatalogsVerticalProductGroup';
 /**
  * The CatalogsProductGroupsList200Response model module.
  * @module model/CatalogsProductGroupsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupsList200Response {
     /**

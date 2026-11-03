@@ -2350,9 +2350,3 @@ src/main/java/com/github/oapicf/pinterestsdk/model/VideoMetadataWithItemType.jav
 src/main/java/com/github/oapicf/pinterestsdk/model/VideoPinMetricTypes.java
 src/main/java/com/github/oapicf/pinterestsdk/model/WebsiteVerificationMethod.java
 src/main/java/com/github/oapicf/pinterestsdk/model/WorkloadState.java
-src/test/java/com/github/oapicf/pinterestsdk/api/CatalogSupplementalApiTest.java
-src/test/java/com/github/oapicf/pinterestsdk/api/ConversionDeletionRequestsApiTest.java
-src/test/java/com/github/oapicf/pinterestsdk/api/CustomerSegmentApiTest.java
-src/test/java/com/github/oapicf/pinterestsdk/api/ProductTagsApiTest.java
-src/test/java/com/github/oapicf/pinterestsdk/api/SchedulesApiTest.java
-src/test/java/com/github/oapicf/pinterestsdk/api/TrendsApiTest.java

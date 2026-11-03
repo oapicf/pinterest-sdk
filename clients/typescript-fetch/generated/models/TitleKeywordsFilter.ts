@@ -29,8 +29,6 @@ import {
 export interface TitleKeywordsFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof TitleKeywordsFilter
      */
     tITLEKEYWORDS: CatalogsProductGroupMultipleStringCriteria;
 }

@@ -33,7 +33,7 @@ import javax.validation.Valid;
   BulkJobData.JSON_PROPERTY_STATUS,
   BulkJobData.JSON_PROPERTY_WORKLOAD_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkJobData   {
   public static final String JSON_PROPERTY_RESULT_URL = "result_url";
   @JsonProperty(JSON_PROPERTY_RESULT_URL)

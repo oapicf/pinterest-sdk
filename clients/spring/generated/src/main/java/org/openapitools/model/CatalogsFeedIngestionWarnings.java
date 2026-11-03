@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -20,265 +19,179 @@ import jakarta.annotation.Generated;
  * CatalogsFeedIngestionWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionWarnings {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_400;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_403;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_404;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_405;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_410;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_429;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_500;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_502;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_503;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_504;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_507;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_508;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_520;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_521;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_522;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_HTTP_STATUS_525;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_INVALID_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SITE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SITE_TIMEOUT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SSL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_EMPTY_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_TOO_MANY_PIXELS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_TYPE_MISMATCH;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_400;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_403;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_404;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_405;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_410;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_429;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_500;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_502;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_503;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_504;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_507;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_508;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_520;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_521;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_522;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_HTTP_STATUS_525;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_INVALID_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SITE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SITE_TIMEOUT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SSL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_LENGTH_TOO_SHORT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_EMPTY_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_TOO_MANY_PIXELS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_TYPE_MISMATCH;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_DOWNLOAD_VIDEO_TOO_SHORT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_FILE_NOT_ACCESSIBLE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_FILE_NOT_FOUND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_INVALID_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_LEVEL_INTERNAL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_MALFORMED_URL;
 
   public CatalogsFeedIngestionWarnings AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR(@Nullable Integer AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR) {

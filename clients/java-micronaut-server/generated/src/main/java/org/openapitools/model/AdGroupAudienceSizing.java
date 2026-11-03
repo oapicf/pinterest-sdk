@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroupAudienceSizing.JSON_PROPERTY_AUDIENCE_SIZE_UPPER_BOUND
 })
 @JsonTypeName("AdGroupAudienceSizing")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupAudienceSizing {
     public static final String JSON_PROPERTY_AUDIENCE_SIZE_LOWER_BOUND = "audience_size_lower_bound";

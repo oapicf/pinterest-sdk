@@ -17,7 +17,7 @@ import NullableCatalogsItemFieldType from './NullableCatalogsItemFieldType';
 /**
  * The CatalogsItemValidationDetails model module.
  * @module model/CatalogsItemValidationDetails
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemValidationDetails {
     /**

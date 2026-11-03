@@ -6,20 +6,3 @@
 */
 #include "PinterestLibPaginationOrder.h"
 
-namespace models {
-
-PinterestLibPaginationOrder::PinterestLibPaginationOrder()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

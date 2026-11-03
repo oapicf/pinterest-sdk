@@ -21,8 +21,6 @@ public class IntegrationLogsInvalidLogResponse  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
  /**
    * Get rejectedLogs

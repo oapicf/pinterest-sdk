@@ -28,11 +28,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "The value of the scheduled adjustment.")
 @JsonTypeName("Schedule_delta_value")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleDeltaValue   {
   private BidOptionsAgeBucketMultipliers ageBucketMultipliers;
   private BidOptionsAppTypeMultipliers appTypeMultipliers;
-  private @Valid List<@Valid BidOptionsAudienceMultipliers> audienceMultipliers = new ArrayList<>();
+  private List<@Valid BidOptionsAudienceMultipliers> audienceMultipliers = new ArrayList<>();
   private BidOptionsGenderMultipliers genderMultipliers;
   private BidOptionsPlacementMultipliers placementMultipliers;
 
@@ -87,7 +87,7 @@ public class ScheduleDeltaValue   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("audience_multipliers")
-  @Valid public List<@Valid BidOptionsAudienceMultipliers> getAudienceMultipliers() {
+  public List<@Valid BidOptionsAudienceMultipliers> getAudienceMultipliers() {
     return audienceMultipliers;
   }
 

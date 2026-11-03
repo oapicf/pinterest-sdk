@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   CustomLabel1Filter.JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L1
 })
 @JsonTypeName("CustomLabel1Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CustomLabel1Filter {
     public static final String JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L1 = "CUSTOM_LABEL_1";

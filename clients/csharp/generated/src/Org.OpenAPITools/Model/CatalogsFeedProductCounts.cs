@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (ingested.IsSet && ingested.Value == null)
-                throw new ArgumentNullException(nameof(ingested), "Property is not nullable for class CatalogsFeedProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProductCounts: ingested.");
 
             if (original.IsSet && original.Value == null)
-                throw new ArgumentNullException(nameof(original), "Property is not nullable for class CatalogsFeedProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProductCounts: original.");
 
             return new CatalogsFeedProductCounts(ingested, original);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedProductCounts catalogsFeedProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,9 +190,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedProductCounts catalogsFeedProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedProductCounts.IngestedOption.IsSet && catalogsFeedProductCounts.Ingested == null)
+                throw new JsonException("Cannot write null property CatalogsFeedProductCounts.Ingested to non-nullable JSON property 'ingested'.");
+
+            if (catalogsFeedProductCounts.OriginalOption.IsSet && catalogsFeedProductCounts.Original == null)
+                throw new JsonException("Cannot write null property CatalogsFeedProductCounts.Original to non-nullable JSON property 'original'.");
+
             if (catalogsFeedProductCounts.IngestedOption.IsSet)
                 writer.WriteNumber("ingested", catalogsFeedProductCounts.IngestedOption.Value!.Value);
 

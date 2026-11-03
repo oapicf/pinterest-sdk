@@ -195,7 +195,12 @@ namespace Org.OpenAPITools.Model
                         case "media_type":
                             string? mediaTypeRawValue = utf8JsonReader.GetString();
                             if (mediaTypeRawValue != null)
-                                mediaType = new Option<PinMediaWithImageAndVideo.MediaTypeEnum?>(PinMediaWithImageAndVideo.MediaTypeEnumFromStringOrDefault(mediaTypeRawValue));
+                            {
+                                PinMediaWithImageAndVideo.MediaTypeEnum? mediaTypeValue = PinMediaWithImageAndVideo.MediaTypeEnumFromStringOrDefault(mediaTypeRawValue);
+                                if (mediaTypeValue == null)
+                                    throw new JsonException();
+                                mediaType = new Option<PinMediaWithImageAndVideo.MediaTypeEnum?>(mediaTypeValue);
+                            }
                             break;
                         case "items":
                             items = new Option<List<PinMediaMetadata>?>(JsonSerializer.Deserialize<List<PinMediaMetadata>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -207,13 +212,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaWithImageAndVideo.", nameof(mediaType));
+                throw new JsonException("Property is required for class PinMediaWithImageAndVideo: media_type.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class PinMediaWithImageAndVideo.");
+                throw new JsonException("Property is not nullable for class PinMediaWithImageAndVideo: media_type.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class PinMediaWithImageAndVideo.");
+                throw new JsonException("Property is not nullable for class PinMediaWithImageAndVideo: items.");
 
             return new PinMediaWithImageAndVideo(mediaType.Value!.Value!, items);
         }
@@ -224,7 +229,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaWithImageAndVideo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaWithImageAndVideo pinMediaWithImageAndVideo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -239,11 +243,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaWithImageAndVideo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaWithImageAndVideo pinMediaWithImageAndVideo, JsonSerializerOptions jsonSerializerOptions)
         {
             if (pinMediaWithImageAndVideo.ItemsOption.IsSet && pinMediaWithImageAndVideo.Items == null)
-                throw new ArgumentNullException(nameof(pinMediaWithImageAndVideo.Items), "Property is required for class PinMediaWithImageAndVideo.");
+                throw new JsonException("Cannot write null property PinMediaWithImageAndVideo.Items to non-nullable JSON property 'items'.");
 
             var mediaTypeRawValue = PinMediaWithImageAndVideo.MediaTypeEnumToJsonValue(pinMediaWithImageAndVideo.MediaType);
             writer.WriteString("media_type", mediaTypeRawValue);

@@ -6,20 +6,3 @@
 */
 #include "CampaignObjectiveType.h"
 
-namespace models {
-
-CampaignObjectiveType::CampaignObjectiveType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

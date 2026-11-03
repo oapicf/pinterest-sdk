@@ -125,3 +125,4 @@ class _$CampaignsList200ResponseSerializer implements PrimitiveSerializer<Campai
   }
 }
 
+

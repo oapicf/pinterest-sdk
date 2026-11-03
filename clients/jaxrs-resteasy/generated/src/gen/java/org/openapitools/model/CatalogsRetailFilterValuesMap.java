@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="A map of filter attributes to their available values.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFilterValuesMap   {
   
   private List<String> adImageTags = new ArrayList<>();
@@ -74,7 +74,6 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("availability")
-  @Valid
   public List<ProductAvailability> getAvailability() {
     return availability;
   }
@@ -99,7 +98,6 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("condition")
-  @Valid
   public List<ProductCondition> getCondition() {
     return condition;
   }
@@ -172,7 +170,6 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("gender")
-  @Valid
   public List<Gender> getGender() {
     return gender;
   }
@@ -269,7 +266,6 @@ public class CatalogsRetailFilterValuesMap   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("media_type")
-  @Valid
   public List<MediaType> getMediaType() {
     return mediaType;
   }

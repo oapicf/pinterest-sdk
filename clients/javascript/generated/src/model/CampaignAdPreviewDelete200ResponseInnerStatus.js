@@ -18,7 +18,7 @@ import PinterestLibStatus204 from './PinterestLibStatus204';
 /**
  * The CampaignAdPreviewDelete200ResponseInnerStatus model module.
  * @module model/CampaignAdPreviewDelete200ResponseInnerStatus
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignAdPreviewDelete200ResponseInnerStatus {
     /**

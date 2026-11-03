@@ -122,7 +122,7 @@ public struct CatalogsCreativeAssetsBatchRequest: Sendable, Codable, Hashable {
         case xx = "XX"
         case zh = "ZH"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     public var catalogId: String?

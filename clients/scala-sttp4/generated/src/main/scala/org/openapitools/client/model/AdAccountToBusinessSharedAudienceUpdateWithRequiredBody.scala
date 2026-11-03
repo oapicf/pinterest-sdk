@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.OperationType._
 
   /**
    * Resource create or update operation model with required body fields (no OptionalProperties).

@@ -573,37 +573,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AggregatedPinComment.", nameof(id));
+                throw new JsonException("Property is required for class AggregatedPinComment: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: id.");
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: ai_disclosures.");
 
             if (boardId.IsSet && boardId.Value == null)
-                throw new ArgumentNullException(nameof(boardId), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: board_id.");
 
             if (boardOwner.IsSet && boardOwner.Value == null)
-                throw new ArgumentNullException(nameof(boardOwner), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: board_owner.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: created_at.");
 
             if (hasBeenPromoted.IsSet && hasBeenPromoted.Value == null)
-                throw new ArgumentNullException(nameof(hasBeenPromoted), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: has_been_promoted.");
 
             if (isOwner.IsSet && isOwner.Value == null)
-                throw new ArgumentNullException(nameof(isOwner), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: is_owner.");
 
             if (isProduct.IsSet && isProduct.Value == null)
-                throw new ArgumentNullException(nameof(isProduct), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: is_product.");
 
             if (isStandard.IsSet && isStandard.Value == null)
-                throw new ArgumentNullException(nameof(isStandard), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: is_standard.");
 
             if (media.IsSet && media.Value == null)
-                throw new ArgumentNullException(nameof(media), "Property is not nullable for class AggregatedPinComment.");
+                throw new JsonException("Property is not nullable for class AggregatedPinComment: media.");
 
             return new AggregatedPinComment(id.Value!, aiDisclosures, altText, boardId, boardOwner, boardSectionId, createdAt, creativeType, description, dominantColor, hasBeenPromoted, isOwner, isProduct, isStandard, link, media, parentPinId, pinMetrics, title);
         }
@@ -614,7 +614,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aggregatedPinComment"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AggregatedPinComment aggregatedPinComment, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -629,23 +628,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aggregatedPinComment"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AggregatedPinComment aggregatedPinComment, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (aggregatedPinComment.Id == null)
-                throw new ArgumentNullException(nameof(aggregatedPinComment.Id), "Property is required for class AggregatedPinComment.");
-
             if (aggregatedPinComment.AiDisclosuresOption.IsSet && aggregatedPinComment.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(aggregatedPinComment.AiDisclosures), "Property is required for class AggregatedPinComment.");
+                throw new JsonException("Cannot write null property AggregatedPinComment.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (aggregatedPinComment.BoardIdOption.IsSet && aggregatedPinComment.BoardId == null)
-                throw new ArgumentNullException(nameof(aggregatedPinComment.BoardId), "Property is required for class AggregatedPinComment.");
+                throw new JsonException("Cannot write null property AggregatedPinComment.BoardId to non-nullable JSON property 'board_id'.");
 
             if (aggregatedPinComment.BoardOwnerOption.IsSet && aggregatedPinComment.BoardOwner == null)
-                throw new ArgumentNullException(nameof(aggregatedPinComment.BoardOwner), "Property is required for class AggregatedPinComment.");
+                throw new JsonException("Cannot write null property AggregatedPinComment.BoardOwner to non-nullable JSON property 'board_owner'.");
+
+            if (aggregatedPinComment.CreatedAtOption.IsSet && aggregatedPinComment.CreatedAt == null)
+                throw new JsonException("Cannot write null property AggregatedPinComment.CreatedAt to non-nullable JSON property 'created_at'.");
+
+            if (aggregatedPinComment.HasBeenPromotedOption.IsSet && aggregatedPinComment.HasBeenPromoted == null)
+                throw new JsonException("Cannot write null property AggregatedPinComment.HasBeenPromoted to non-nullable JSON property 'has_been_promoted'.");
+
+            if (aggregatedPinComment.IsOwnerOption.IsSet && aggregatedPinComment.IsOwner == null)
+                throw new JsonException("Cannot write null property AggregatedPinComment.IsOwner to non-nullable JSON property 'is_owner'.");
+
+            if (aggregatedPinComment.IsProductOption.IsSet && aggregatedPinComment.IsProduct == null)
+                throw new JsonException("Cannot write null property AggregatedPinComment.IsProduct to non-nullable JSON property 'is_product'.");
+
+            if (aggregatedPinComment.IsStandardOption.IsSet && aggregatedPinComment.IsStandard == null)
+                throw new JsonException("Cannot write null property AggregatedPinComment.IsStandard to non-nullable JSON property 'is_standard'.");
 
             if (aggregatedPinComment.MediaOption.IsSet && aggregatedPinComment.Media == null)
-                throw new ArgumentNullException(nameof(aggregatedPinComment.Media), "Property is required for class AggregatedPinComment.");
+                throw new JsonException("Cannot write null property AggregatedPinComment.Media to non-nullable JSON property 'media'.");
 
             writer.WriteString("id", aggregatedPinComment.Id);
 

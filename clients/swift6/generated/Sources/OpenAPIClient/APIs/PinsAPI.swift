@@ -60,14 +60,15 @@ open class PinsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "pin_ids": (wrappedValue: pinIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "app_types": (wrappedValue: appTypes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "metric_types": (wrappedValue: metricTypes.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: false),
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -144,14 +145,15 @@ open class PinsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "app_types": (wrappedValue: appTypes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "metric_types": (wrappedValue: metricTypes.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: false),
             "split_field": (wrappedValue: splitField?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: false),
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -197,9 +199,10 @@ open class PinsAPI {
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pinCreate, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
@@ -248,9 +251,10 @@ open class PinsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -301,10 +305,11 @@ open class PinsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "pin_metrics": (wrappedValue: pinMetrics?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -368,7 +373,7 @@ open class PinsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "pin_filter": (wrappedValue: pinFilter?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "pin_metrics": (wrappedValue: pinMetrics?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "include_protected_pins": (wrappedValue: includeProtectedPins?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -380,7 +385,8 @@ open class PinsAPI {
             "include_product_tag_obj": (wrappedValue: includeProductTagObj?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -428,9 +434,10 @@ open class PinsAPI {
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pinsSaveRequestCreate, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",
@@ -481,9 +488,10 @@ open class PinsAPI {
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: pinUpdate, codableHelper: apiConfiguration.codableHelper)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_account_id": (wrappedValue: adAccountId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             "Content-Type": "application/json",

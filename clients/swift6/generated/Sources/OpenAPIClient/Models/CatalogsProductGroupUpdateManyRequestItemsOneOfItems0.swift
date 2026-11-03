@@ -9,7 +9,7 @@ import Foundation
 
 public struct CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var description: String?
     public var filters: CatalogsProductGroupFiltersRequest?
     /** boolean indicator of whether the product group is being featured or not */

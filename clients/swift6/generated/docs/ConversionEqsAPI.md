@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **conversionEqsList**
 ```swift
-    open class func conversionEqsList(lookbackPeriod: LookbackPeriodOptions, adAccountId: String, sourcePlatform: SourcePlatformOptions? = nil, ingestionSource: IngestionSourceOptions? = nil, completion: @escaping (_ data: [EventQualityScore]?, _ error: Error?) -> Void)
+    open class func conversionEqsList(lookbackPeriod: LookbackPeriodOptions, adAccountId: String, sourcePlatform: SourcePlatformOptions? = nil, ingestionSource: IngestionSourceOptions? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [EventQualityScore]
 ```
 
 Get event quality score (EQS)
@@ -27,15 +27,11 @@ let sourcePlatform = SourcePlatformOptions() // SourcePlatformOptions | Source p
 let ingestionSource = IngestionSourceOptions() // IngestionSourceOptions | Ingestion source of event. (optional)
 
 // Get event quality score (EQS)
-ConversionEqsAPI.conversionEqsList(lookbackPeriod: lookbackPeriod, adAccountId: adAccountId, sourcePlatform: sourcePlatform, ingestionSource: ingestionSource) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionEqsAPI.conversionEqsList(lookbackPeriod: lookbackPeriod, adAccountId: adAccountId, sourcePlatform: sourcePlatform, ingestionSource: ingestionSource)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

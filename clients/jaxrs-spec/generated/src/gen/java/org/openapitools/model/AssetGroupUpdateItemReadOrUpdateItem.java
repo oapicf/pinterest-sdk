@@ -20,12 +20,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AssetGroupUpdateItemReadOrUpdateItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupUpdateItemReadOrUpdateItem   {
   private String assetGroupId;
-  private @Valid List<AssetGroupType> assetGroupTypes = new ArrayList<>();
-  private @Valid List<String> assetsToAdd = new ArrayList<>();
-  private @Valid List<String> assetsToRemove = new ArrayList<>();
+  private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
+  private List<String> assetsToAdd = new ArrayList<>();
+  private List<String> assetsToRemove = new ArrayList<>();
   private String description;
   private String name;
 

@@ -23,7 +23,7 @@ data class CreateAssetInvitesRequest(
     @field:Valid
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("invites")
+    @param:JsonProperty("invites", required = true)
     @get:JsonProperty("invites", required = true) val invites: kotlin.collections.List<CreateAssetInvitesRequestItem>
 ) {
 

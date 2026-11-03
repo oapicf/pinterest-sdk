@@ -22,7 +22,7 @@ export const CollectionsHeaderType = {
     ExploreThisCollection: 'EXPLORE_THIS_COLLECTION',
     NoHeader: 'NO_HEADER',
     OnSale: 'ON_SALE',
-    GetDeal: 'GET_DEAL'
+    GetDeal: 'GET_DEAL',
 } as const;
 export type CollectionsHeaderType = typeof CollectionsHeaderType[keyof typeof CollectionsHeaderType];
 

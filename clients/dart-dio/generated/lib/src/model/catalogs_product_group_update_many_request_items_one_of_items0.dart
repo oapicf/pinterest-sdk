@@ -171,3 +171,4 @@ class _$CatalogsProductGroupUpdateManyRequestItemsOneOfItems0Serializer implemen
   }
 }
 
+

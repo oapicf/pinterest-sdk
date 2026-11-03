@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AssetGroupModification")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupModification   {
-  private @Valid List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
-  private @Valid List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
+  private List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
+  private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   public AssetGroupModification() {
   }
@@ -40,7 +40,7 @@ public class AssetGroupModification   {
   
   @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
   @JsonProperty("exceptions")
-  @Valid public List<@Valid AssetGroupUpdateError> getExceptions() {
+  public List<@Valid AssetGroupUpdateError> getExceptions() {
     return exceptions;
   }
 
@@ -76,7 +76,7 @@ public class AssetGroupModification   {
   
   @ApiModelProperty(value = "A list of successfully edited asset groups.")
   @JsonProperty("updated_asset_groups")
-  @Valid public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
+  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
     return updatedAssetGroups;
   }
 

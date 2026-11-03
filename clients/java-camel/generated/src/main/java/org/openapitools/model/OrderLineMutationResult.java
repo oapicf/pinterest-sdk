@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,13 +23,11 @@ import jakarta.annotation.Generated;
  * OrderLineMutationResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OrderLineMutationResult {
 
-  @Valid
   private List<@Valid OrderLineMutationError> errors = new ArrayList<>();
 
-  @Valid
   private List<@Valid OrderLine> orderLine = new ArrayList<>();
 
   public OrderLineMutationResult errors(List<@Valid OrderLineMutationError> errors) {
@@ -50,7 +47,7 @@ public class OrderLineMutationResult {
    * Error list if update(s) fail.
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", description = "Error list if update(s) fail.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
   public List<@Valid OrderLineMutationError> getErrors() {
@@ -78,7 +75,7 @@ public class OrderLineMutationResult {
    * Order Line object array.
    * @return orderLine
    */
-  @Valid 
+  
   @Schema(name = "order_line", description = "Order Line object array.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_line")
   public List<@Valid OrderLine> getOrderLine() {

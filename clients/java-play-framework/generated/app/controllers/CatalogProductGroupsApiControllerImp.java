@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogProductGroupsApiControllerImp extends CatalogProductGroupsApiControllerImpInterface {
     @Override
     public CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, Boolean pinMetrics, String bookmark,  @Min(1) @Max(250)Integer pageSize) throws Exception {
@@ -34,7 +34,7 @@ public class CatalogProductGroupsApiControllerImp extends CatalogProductGroupsAp
     }
 
     @Override
-    public List<String> catalogsProductGroupsCreateMany(Http.Request request, List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public List<String> catalogsProductGroupsCreateMany(Http.Request request, List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         //Do your magic!!!
         return new ArrayList<String>();
     }

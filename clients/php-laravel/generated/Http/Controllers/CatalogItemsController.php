@@ -51,18 +51,18 @@ class CatalogItemsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'batchId' => $batchId,
-                ],
                 $request->all(),
+                [
+                    'batch_id' => $batchId,
+                ],
             ),
             [
-                'batchId' => [
+                'batch_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -75,7 +75,7 @@ class CatalogItemsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->itemsBatchGet($batchId, $adAccountId);
@@ -122,10 +122,10 @@ class CatalogItemsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -137,7 +137,7 @@ class CatalogItemsController extends Controller
 
         $catalogsItemsBatchPostRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsItemsBatchPostRequest::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->itemsBatchPost($catalogsItemsBatchPostRequest, $adAccountId);
@@ -184,10 +184,10 @@ class CatalogItemsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -199,7 +199,7 @@ class CatalogItemsController extends Controller
 
         $catalogsItemsRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsItemsRequest::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->itemsPost($catalogsItemsRequest, $adAccountId);

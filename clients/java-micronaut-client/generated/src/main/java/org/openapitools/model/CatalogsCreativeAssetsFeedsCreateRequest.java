@@ -46,7 +46,7 @@ import javax.annotation.Generated;
   CatalogsCreativeAssetsFeedsCreateRequest.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CatalogsCreativeAssetsFeedsCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsCreativeAssetsFeedsCreateRequest {
     public static final String JSON_PROPERTY_CATALOG_ID = "catalog_id";
@@ -112,7 +112,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
     public static final String JSON_PROPERTY_STATUS = "status";
-    private CatalogsStatus status;
+    private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
     public CatalogsCreativeAssetsFeedsCreateRequest(CatalogTypeEnum catalogType, Country defaultCountry, CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat _format, String location, String name) {
         this.catalogType = catalogType;

@@ -301,6 +301,18 @@ open class CatalogReportsApi(basePath: kotlin.String = defaultBasePath, client: 
                 if (pageSize != null) {
                     put("page_size", listOf(pageSize.toString()))
                 }
+                // form style, explode: one query parameter per entry, keyed by the property name, appended after the declared ones; null is left out, a collection repeats the key
+                (parameters as? kotlin.collections.Map<*, *>)?.forEach { (key, value) ->
+                    val values = when (value) {
+                        is kotlin.collections.Iterable<*> -> value.toList()
+                        is kotlin.Array<*> -> value.toList()
+                        else -> listOf(value)
+                    }.filterNotNull().map { parameterToString(it) }
+                    if (key != null && values.isNotEmpty()) {
+                        val name = key.toString()
+                        put(name, getOrElse(name) { emptyList() } + values)
+                    }
+                }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"

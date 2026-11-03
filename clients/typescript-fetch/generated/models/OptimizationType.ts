@@ -22,7 +22,7 @@ export const OptimizationType = {
     Impression: 'IMPRESSION',
     WebConversion: 'WEB_CONVERSION',
     Roas: 'ROAS',
-    OutboundClick: 'OUTBOUND_CLICK'
+    OutboundClick: 'OUTBOUND_CLICK',
 } as const;
 export type OptimizationType = typeof OptimizationType[keyof typeof OptimizationType];
 

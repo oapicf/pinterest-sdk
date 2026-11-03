@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (browse.IsSet && browse.Value == null)
-                throw new ArgumentNullException(nameof(browse), "Property is not nullable for class ScheduleBidOptionsPlacementMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidOptionsPlacementMultipliers: browse.");
 
             if (relatedPins.IsSet && relatedPins.Value == null)
-                throw new ArgumentNullException(nameof(relatedPins), "Property is not nullable for class ScheduleBidOptionsPlacementMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidOptionsPlacementMultipliers: related_pins.");
 
             if (search.IsSet && search.Value == null)
-                throw new ArgumentNullException(nameof(search), "Property is not nullable for class ScheduleBidOptionsPlacementMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidOptionsPlacementMultipliers: search.");
 
             return new ScheduleBidOptionsPlacementMultipliers(browse, relatedPins, search);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptionsPlacementMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleBidOptionsPlacementMultipliers scheduleBidOptionsPlacementMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,9 +214,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptionsPlacementMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleBidOptionsPlacementMultipliers scheduleBidOptionsPlacementMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (scheduleBidOptionsPlacementMultipliers.BrowseOption.IsSet && scheduleBidOptionsPlacementMultipliers.Browse == null)
+                throw new JsonException("Cannot write null property ScheduleBidOptionsPlacementMultipliers.Browse to non-nullable JSON property 'browse'.");
+
+            if (scheduleBidOptionsPlacementMultipliers.RelatedPinsOption.IsSet && scheduleBidOptionsPlacementMultipliers.RelatedPins == null)
+                throw new JsonException("Cannot write null property ScheduleBidOptionsPlacementMultipliers.RelatedPins to non-nullable JSON property 'related_pins'.");
+
+            if (scheduleBidOptionsPlacementMultipliers.SearchOption.IsSet && scheduleBidOptionsPlacementMultipliers.Search == null)
+                throw new JsonException("Cannot write null property ScheduleBidOptionsPlacementMultipliers.Search to non-nullable JSON property 'search'.");
+
             if (scheduleBidOptionsPlacementMultipliers.BrowseOption.IsSet)
                 writer.WriteNumber("browse", scheduleBidOptionsPlacementMultipliers.BrowseOption.Value!.Value);
 

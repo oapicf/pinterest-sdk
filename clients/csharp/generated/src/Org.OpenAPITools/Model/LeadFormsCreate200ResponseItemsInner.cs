@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class LeadFormsCreate200ResponseItemsInner.");
+                throw new JsonException("Property is not nullable for class LeadFormsCreate200ResponseItemsInner: data.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class LeadFormsCreate200ResponseItemsInner.");
+                throw new JsonException("Property is not nullable for class LeadFormsCreate200ResponseItemsInner: exceptions.");
 
             return new LeadFormsCreate200ResponseItemsInner(data, exceptions);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormsCreate200ResponseItemsInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormsCreate200ResponseItemsInner leadFormsCreate200ResponseItemsInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormsCreate200ResponseItemsInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormsCreate200ResponseItemsInner leadFormsCreate200ResponseItemsInner, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadFormsCreate200ResponseItemsInner.DataOption.IsSet && leadFormsCreate200ResponseItemsInner.Data == null)
-                throw new ArgumentNullException(nameof(leadFormsCreate200ResponseItemsInner.Data), "Property is required for class LeadFormsCreate200ResponseItemsInner.");
+                throw new JsonException("Cannot write null property LeadFormsCreate200ResponseItemsInner.Data to non-nullable JSON property 'data'.");
 
             if (leadFormsCreate200ResponseItemsInner.ExceptionsOption.IsSet && leadFormsCreate200ResponseItemsInner.Exceptions == null)
-                throw new ArgumentNullException(nameof(leadFormsCreate200ResponseItemsInner.Exceptions), "Property is required for class LeadFormsCreate200ResponseItemsInner.");
+                throw new JsonException("Cannot write null property LeadFormsCreate200ResponseItemsInner.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (leadFormsCreate200ResponseItemsInner.DataOption.IsSet)
             {

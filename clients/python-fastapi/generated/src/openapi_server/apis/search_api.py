@@ -22,14 +22,14 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.boards_list200_response import BoardsList200Response
 from openapi_server.models.pins_list200_response import PinsList200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.search_partner_pins200_response import SearchPartnerPins200Response
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -55,10 +55,10 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def search_user_boards_get(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    query: Annotated[Optional[StrictStr], Field(description="Search query. Can contain pin description keywords or comma-separated pin IDs.")] = Query(None, description="Search query. Can contain pin description keywords or comma-separated pin IDs.", alias="query"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    query: Annotated[Optional[str], Field(description="Search query. Can contain pin description keywords or comma-separated pin IDs.")] = Query(None, description="Search query. Can contain pin description keywords or comma-separated pin IDs.", alias="query"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:read_secret"]
     ),
@@ -88,11 +88,11 @@ async def search_user_boards_get(
     response_model_by_alias=True,
 )
 async def search_partner_pins(
-    term: Annotated[StrictStr, Field(description="Search term to look up pins.")] = Query(None, description="Search term to look up pins.", alias="term"),
-    country_code: Annotated[StrictStr, Field(description="Two letter country code (ISO 3166-1 alpha-2)")] = Query(None, description="Two letter country code (ISO 3166-1 alpha-2)", alias="country_code"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    locale: Annotated[Optional[StrictStr], Field(description="Search locale.")] = Query(None, description="Search locale.", alias="locale"),
-    limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Max search result size")] = Query(10, description="Max search result size", alias="limit", ge=1, le=50),
+    term: Annotated[str, Field(description="Search term to look up pins.")] = Query(..., description="Search term to look up pins.", alias="term"),
+    country_code: Annotated[str, Field(description="Two letter country code (ISO 3166-1 alpha-2)")] = Query(..., description="Two letter country code (ISO 3166-1 alpha-2)", alias="country_code"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    locale: Annotated[Optional[str], Field(description="Search locale.")] = Query(None, description="Search locale.", alias="locale"),
+    limit: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="Max search result size")] = Query(10, description="Max search result size", alias="limit", ge=1, le=50),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -119,9 +119,9 @@ async def search_partner_pins(
     response_model_by_alias=True,
 )
 async def search_user_pins_list(
-    query: Annotated[StrictStr, Field(description="Search query. Can contain pin description keywords or comma-separated pin IDs.")] = Query(None, description="Search query. Can contain pin description keywords or comma-separated pin IDs.", alias="query"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    query: Annotated[str, Field(description="Search query. Can contain pin description keywords or comma-separated pin IDs.")] = Query(..., description="Search query. Can contain pin description keywords or comma-separated pin IDs.", alias="query"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:read_secret", "pins:read", "pins:read_secret"]
     ),

@@ -31,8 +31,6 @@ public class AdvancedAuctionItemsGetRequest  {
   */
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
 
-  @Valid
-
   private List<@Valid AdvancedAuctionKey> items = new ArrayList<>();
  /**
    * Catalog id pertaining to the retail item

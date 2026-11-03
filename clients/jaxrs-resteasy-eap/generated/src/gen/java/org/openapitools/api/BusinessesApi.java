@@ -77,7 +77,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface BusinessesApi  {
 
     @POST
@@ -661,7 +661,7 @@ public interface BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response updateBusinessMemberships( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid BusinessMembershipMember> businessMembershipMember,@Context SecurityContext securityContext);
+    public Response updateBusinessMemberships( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid BusinessMembershipMember> businessMembershipMember,@Context SecurityContext securityContext);
     @PATCH
     @Path("/{business_id}/audiences/ad_accounts/shared")
     @Consumes({ "application/json" })

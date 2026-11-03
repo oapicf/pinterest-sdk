@@ -17,7 +17,7 @@ import AdBatchItem from './AdBatchItem';
 /**
  * The AdBatchWriteResponseModel model module.
  * @module model/AdBatchWriteResponseModel
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdBatchWriteResponseModel {
     /**

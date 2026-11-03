@@ -125,3 +125,4 @@ class _$BusinessAssetsGet200ResponseSerializer implements PrimitiveSerializer<Bu
   }
 }
 
+

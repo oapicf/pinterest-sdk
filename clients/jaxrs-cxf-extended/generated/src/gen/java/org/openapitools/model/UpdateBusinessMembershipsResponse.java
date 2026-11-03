@@ -18,7 +18,6 @@ public class UpdateBusinessMembershipsResponse  {
   * List of members with updated business access role.
   */
   @ApiModelProperty(value = "List of members with updated business access role.")
-  @Valid
   private List<@Valid BusinessMembershipMember> items = new ArrayList<>();
  /**
   * List of members with updated business access role.

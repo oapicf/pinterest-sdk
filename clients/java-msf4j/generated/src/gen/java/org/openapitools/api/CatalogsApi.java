@@ -69,7 +69,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the catalogs API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsApi  {
    private final CatalogsApiService delegate = CatalogsApiServiceFactory.getCatalogsApi();
 
@@ -449,7 +449,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = String.class, responseContainer = "List"),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = String.class, responseContainer = "List") })
-    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "" ,required=true) List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems
+    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "" ,required=true) List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems
 ,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id") String adAccountId
 )
     throws NotFoundException {

@@ -170,13 +170,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pINID.IsSet)
-                throw new ArgumentException("Property is required for class AdPinAnalytics.", nameof(pINID));
+                throw new JsonException("Property is required for class AdPinAnalytics: PIN_ID.");
 
             if (pINID.IsSet && pINID.Value == null)
-                throw new ArgumentNullException(nameof(pINID), "Property is not nullable for class AdPinAnalytics.");
+                throw new JsonException("Property is not nullable for class AdPinAnalytics: PIN_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class AdPinAnalytics.");
+                throw new JsonException("Property is not nullable for class AdPinAnalytics: DATE.");
 
             return new AdPinAnalytics(pINID.Value!, dATE);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPinAnalytics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdPinAnalytics adPinAnalytics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,11 +201,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPinAnalytics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdPinAnalytics adPinAnalytics, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adPinAnalytics.PIN_ID == null)
-                throw new ArgumentNullException(nameof(adPinAnalytics.PIN_ID), "Property is required for class AdPinAnalytics.");
+            if (adPinAnalytics.DATEOption.IsSet && adPinAnalytics.DATE == null)
+                throw new JsonException("Cannot write null property AdPinAnalytics.DATE to non-nullable JSON property 'DATE'.");
 
             writer.WriteString("PIN_ID", adPinAnalytics.PIN_ID);
 

@@ -148,3 +148,4 @@ class _$CatalogBindingSerializer implements PrimitiveSerializer<CatalogBinding> 
   }
 }
 
+

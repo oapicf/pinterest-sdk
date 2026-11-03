@@ -40,16 +40,40 @@ import {
 } from '../models/TokenTypeHint';
 
 export interface OauthTokenRequest {
+    /**
+     * 
+     */
     grantType: TokenGrantType;
+    /**
+     * 
+     */
     code?: string;
+    /**
+     *   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+     */
     continuousRefresh?: string;
+    /**
+     * 
+     */
     redirectUri?: string;
+    /**
+     * 
+     */
     refreshToken?: string;
+    /**
+     * 
+     */
     scope?: string;
 }
 
 export interface TokenRevokeRequest {
+    /**
+     * The token to revoke.
+     */
     token: string;
+    /**
+     * The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+     */
     tokenTypeHint?: TokenTypeHint;
 }
 

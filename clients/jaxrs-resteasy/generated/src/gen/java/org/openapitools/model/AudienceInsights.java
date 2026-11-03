@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Audience interests and demographics.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsights   {
   
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
@@ -34,7 +34,6 @@ public class AudienceInsights   {
   
   @ApiModelProperty(value = "Category interest distribution")
   @JsonProperty("categories")
-  @Valid
   public List<@Valid AudienceCategory> getCategories() {
     return categories;
   }

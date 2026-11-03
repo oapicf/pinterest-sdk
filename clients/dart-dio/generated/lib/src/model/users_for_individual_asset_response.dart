@@ -149,3 +149,4 @@ class _$UsersForIndividualAssetResponseSerializer implements PrimitiveSerializer
   }
 }
 
+

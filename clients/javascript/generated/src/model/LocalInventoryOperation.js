@@ -21,7 +21,7 @@ import RetailLocalInventoryItemAttributes from './RetailLocalInventoryItemAttrib
 /**
  * The LocalInventoryOperation model module.
  * @module model/LocalInventoryOperation
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalInventoryOperation {
     /**

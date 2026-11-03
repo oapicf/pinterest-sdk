@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class FilterOperatorType
-{
-public:
-
-    FilterOperatorType();
-    virtual ~FilterOperatorType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FilterOperatorType,
-        )
-
-private:
+enum class FilterOperatorType {
+    
+    IS,
+    
+    CONTAINS
+    
 };
 
+inline void to_json(nlohmann::json& j, const FilterOperatorType& value)
+{
+    switch (value)
+    {
+        
+        case FilterOperatorType::IS: j = "IS"; break;
+        
+        case FilterOperatorType::CONTAINS: j = "CONTAINS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for FilterOperatorType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, FilterOperatorType& value)
+{
+    
+    if (j == "IS")
+    {
+        value = FilterOperatorType::IS;
+        return;
+    }
+    
+    if (j == "CONTAINS")
+    {
+        value = FilterOperatorType::CONTAINS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for FilterOperatorType", &j);
+}
 
 } // namespace models
 

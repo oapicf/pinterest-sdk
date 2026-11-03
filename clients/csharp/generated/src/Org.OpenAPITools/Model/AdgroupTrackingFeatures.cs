@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (enabled.IsSet && enabled.Value == null)
-                throw new ArgumentNullException(nameof(enabled), "Property is not nullable for class AdgroupTrackingFeatures.");
+                throw new JsonException("Property is not nullable for class AdgroupTrackingFeatures: enabled.");
 
             return new AdgroupTrackingFeatures(enabled);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adgroupTrackingFeatures"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdgroupTrackingFeatures adgroupTrackingFeatures, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adgroupTrackingFeatures"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdgroupTrackingFeatures adgroupTrackingFeatures, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adgroupTrackingFeatures.EnabledOption.IsSet && adgroupTrackingFeatures.Enabled == null)
-                throw new ArgumentNullException(nameof(adgroupTrackingFeatures.Enabled), "Property is required for class AdgroupTrackingFeatures.");
+                throw new JsonException("Cannot write null property AdgroupTrackingFeatures.Enabled to non-nullable JSON property 'enabled'.");
 
             if (adgroupTrackingFeatures.EnabledOption.IsSet)
             {

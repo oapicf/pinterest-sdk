@@ -18,7 +18,7 @@ import org.openapitools.model.TargetingStrategy;
 /**
  * TargetingSpecOptimal
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOptimal   {
   @JsonProperty("AGE_BUCKET")
   private List<TargetingSpecAgeBucket> AGE_BUCKET = null;
@@ -72,7 +72,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addAGEBUCKETItem(TargetingSpecAgeBucket AGE_BUCKETItem) {
     if (this.AGE_BUCKET == null) {
-      this.AGE_BUCKET = ;
+      this.AGE_BUCKET = new ArrayList<>();
     }
     this.AGE_BUCKET.add(AGE_BUCKETItem);
     return this;
@@ -98,7 +98,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addAPPTYPEItem(TargetingSpecAppType APPTYPEItem) {
     if (this.APPTYPE == null) {
-      this.APPTYPE = ;
+      this.APPTYPE = new ArrayList<>();
     }
     this.APPTYPE.add(APPTYPEItem);
     return this;
@@ -124,7 +124,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addAUDIENCEEXCLUDEItem(String AUDIENCE_EXCLUDEItem) {
     if (this.AUDIENCE_EXCLUDE == null) {
-      this.AUDIENCE_EXCLUDE = ;
+      this.AUDIENCE_EXCLUDE = new ArrayList<>();
     }
     this.AUDIENCE_EXCLUDE.add(AUDIENCE_EXCLUDEItem);
     return this;
@@ -150,7 +150,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addAUDIENCEINCLUDEItem(String AUDIENCE_INCLUDEItem) {
     if (this.AUDIENCE_INCLUDE == null) {
-      this.AUDIENCE_INCLUDE = ;
+      this.AUDIENCE_INCLUDE = new ArrayList<>();
     }
     this.AUDIENCE_INCLUDE.add(AUDIENCE_INCLUDEItem);
     return this;
@@ -176,7 +176,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addGENDERItem(TargetingSpecGender GENDERItem) {
     if (this.GENDER == null) {
-      this.GENDER = ;
+      this.GENDER = new ArrayList<>();
     }
     this.GENDER.add(GENDERItem);
     return this;
@@ -202,7 +202,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addGEOItem(String GEOItem) {
     if (this.GEO == null) {
-      this.GEO = ;
+      this.GEO = new ArrayList<>();
     }
     this.GEO.add(GEOItem);
     return this;
@@ -280,7 +280,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addLOCALEItem(String LOCALEItem) {
     if (this.LOCALE == null) {
-      this.LOCALE = ;
+      this.LOCALE = new ArrayList<>();
     }
     this.LOCALE.add(LOCALEItem);
     return this;
@@ -306,7 +306,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addLOCATIONItem(String LOCATIONItem) {
     if (this.LOCATION == null) {
-      this.LOCATION = ;
+      this.LOCATION = new ArrayList<>();
     }
     this.LOCATION.add(LOCATIONItem);
     return this;
@@ -394,7 +394,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addSHOPPINGRETARGETINGItem(TargetingSpecShoppingRetargeting SHOPPING_RETARGETINGItem) {
     if (this.SHOPPING_RETARGETING == null) {
-      this.SHOPPING_RETARGETING = ;
+      this.SHOPPING_RETARGETING = new ArrayList<>();
     }
     this.SHOPPING_RETARGETING.add(SHOPPING_RETARGETINGItem);
     return this;
@@ -420,7 +420,7 @@ public class TargetingSpecOptimal   {
 
   public TargetingSpecOptimal addTARGETINGSTRATEGYItem(TargetingStrategy TARGETING_STRATEGYItem) {
     if (this.TARGETING_STRATEGY == null) {
-      this.TARGETING_STRATEGY = ;
+      this.TARGETING_STRATEGY = new ArrayList<>();
     }
     this.TARGETING_STRATEGY.add(TARGETING_STRATEGYItem);
     return this;

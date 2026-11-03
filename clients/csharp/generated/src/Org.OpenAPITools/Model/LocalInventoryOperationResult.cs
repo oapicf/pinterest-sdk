@@ -258,7 +258,12 @@ namespace Org.OpenAPITools.Model
                         case "supplemental_type":
                             string? supplementalTypeRawValue = utf8JsonReader.GetString();
                             if (supplementalTypeRawValue != null)
-                                supplementalType = new Option<LocalInventoryOperationResult.SupplementalTypeEnum?>(LocalInventoryOperationResult.SupplementalTypeEnumFromStringOrDefault(supplementalTypeRawValue));
+                            {
+                                LocalInventoryOperationResult.SupplementalTypeEnum? supplementalTypeValue = LocalInventoryOperationResult.SupplementalTypeEnumFromStringOrDefault(supplementalTypeRawValue);
+                                if (supplementalTypeValue == null)
+                                    throw new JsonException();
+                                supplementalType = new Option<LocalInventoryOperationResult.SupplementalTypeEnum?>(supplementalTypeValue);
+                            }
                             break;
                         case "errors":
                             errors = new Option<List<SupplementalItemValidationEvent>?>(JsonSerializer.Deserialize<List<SupplementalItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -273,34 +278,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryOperationResult.", nameof(itemId));
+                throw new JsonException("Property is required for class LocalInventoryOperationResult: item_id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryOperationResult.", nameof(status));
+                throw new JsonException("Property is required for class LocalInventoryOperationResult: status.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryOperationResult.", nameof(storeCode));
+                throw new JsonException("Property is required for class LocalInventoryOperationResult: store_code.");
 
             if (!supplementalType.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryOperationResult.", nameof(supplementalType));
+                throw new JsonException("Property is required for class LocalInventoryOperationResult: supplemental_type.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: item_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: status.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: store_code.");
 
             if (supplementalType.IsSet && supplementalType.Value == null)
-                throw new ArgumentNullException(nameof(supplementalType), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: supplemental_type.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: errors.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class LocalInventoryOperationResult.");
+                throw new JsonException("Property is not nullable for class LocalInventoryOperationResult: warnings.");
 
             return new LocalInventoryOperationResult(itemId.Value!, status.Value!.Value!, storeCode.Value!, supplementalType.Value!.Value!, errors, warnings);
         }
@@ -311,7 +316,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryOperationResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryOperationResult localInventoryOperationResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -326,20 +330,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryOperationResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryOperationResult localInventoryOperationResult, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryOperationResult.ItemId == null)
-                throw new ArgumentNullException(nameof(localInventoryOperationResult.ItemId), "Property is required for class LocalInventoryOperationResult.");
-
-            if (localInventoryOperationResult.StoreCode == null)
-                throw new ArgumentNullException(nameof(localInventoryOperationResult.StoreCode), "Property is required for class LocalInventoryOperationResult.");
-
             if (localInventoryOperationResult.ErrorsOption.IsSet && localInventoryOperationResult.Errors == null)
-                throw new ArgumentNullException(nameof(localInventoryOperationResult.Errors), "Property is required for class LocalInventoryOperationResult.");
+                throw new JsonException("Cannot write null property LocalInventoryOperationResult.Errors to non-nullable JSON property 'errors'.");
 
             if (localInventoryOperationResult.WarningsOption.IsSet && localInventoryOperationResult.Warnings == null)
-                throw new ArgumentNullException(nameof(localInventoryOperationResult.Warnings), "Property is required for class LocalInventoryOperationResult.");
+                throw new JsonException("Cannot write null property LocalInventoryOperationResult.Warnings to non-nullable JSON property 'warnings'.");
 
             writer.WriteString("item_id", localInventoryOperationResult.ItemId);
 

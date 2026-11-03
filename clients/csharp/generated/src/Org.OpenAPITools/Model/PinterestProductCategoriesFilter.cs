@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pINTERESTPRODUCTCATEGORIES.IsSet)
-                throw new ArgumentException("Property is required for class PinterestProductCategoriesFilter.", nameof(pINTERESTPRODUCTCATEGORIES));
+                throw new JsonException("Property is required for class PinterestProductCategoriesFilter: PINTEREST_PRODUCT_CATEGORIES.");
 
             if (pINTERESTPRODUCTCATEGORIES.IsSet && pINTERESTPRODUCTCATEGORIES.Value == null)
-                throw new ArgumentNullException(nameof(pINTERESTPRODUCTCATEGORIES), "Property is not nullable for class PinterestProductCategoriesFilter.");
+                throw new JsonException("Property is not nullable for class PinterestProductCategoriesFilter: PINTEREST_PRODUCT_CATEGORIES.");
 
             return new PinterestProductCategoriesFilter(pINTERESTPRODUCTCATEGORIES.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestProductCategoriesFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinterestProductCategoriesFilter pinterestProductCategoriesFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestProductCategoriesFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinterestProductCategoriesFilter pinterestProductCategoriesFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinterestProductCategoriesFilter.PINTEREST_PRODUCT_CATEGORIES == null)
-                throw new ArgumentNullException(nameof(pinterestProductCategoriesFilter.PINTEREST_PRODUCT_CATEGORIES), "Property is required for class PinterestProductCategoriesFilter.");
-
             writer.WritePropertyName("PINTEREST_PRODUCT_CATEGORIES");
             JsonSerializer.Serialize(writer, pinterestProductCategoriesFilter.PINTEREST_PRODUCT_CATEGORIES, jsonSerializerOptions);
         }

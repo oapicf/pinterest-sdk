@@ -31,8 +31,6 @@ export interface TrendsAgeDistribution {
     [key: string]: number | any;
     /**
      * 
-     * @type {TrendsAgeBucket}
-     * @memberof TrendsAgeDistribution
      */
     ageDistribution?: TrendsAgeBucket;
 }

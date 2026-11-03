@@ -40,11 +40,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing an item bid option operation")
 @JsonTypeName("AdvancedAuctionItemsSubmitRecord")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitRecord   {
   private AdvancedAuctionBidOptions bidOptions;
   private Country country;
-  private @Valid List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
+  private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
   private String itemId;
   private Language language;
   public enum OperationEnum {
@@ -95,7 +95,7 @@ public class AdvancedAuctionItemsSubmitRecord   {
 }
 
   private OperationEnum operation;
-  private @Valid List<UpdateMaskBidOptionField> updateMask;
+  private List<UpdateMaskBidOptionField> updateMask;
 
   public AdvancedAuctionItemsSubmitRecord() {
   }
@@ -166,7 +166,7 @@ public class AdvancedAuctionItemsSubmitRecord   {
   
   @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
   @JsonProperty("errors")
-  @Valid public List<@Valid AdvancedAuctionOperationError> getErrors() {
+  public List<@Valid AdvancedAuctionOperationError> getErrors() {
     return errors;
   }
 

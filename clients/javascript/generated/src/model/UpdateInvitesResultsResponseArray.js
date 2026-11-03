@@ -17,7 +17,7 @@ import InviteActionResultItem from './InviteActionResultItem';
 /**
  * The UpdateInvitesResultsResponseArray model module.
  * @module model/UpdateInvitesResultsResponseArray
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdateInvitesResultsResponseArray {
     /**

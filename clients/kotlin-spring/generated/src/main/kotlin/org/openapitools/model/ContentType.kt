@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: imageSlashJpeg,imageSlashPng
-*/
+ * 
+ * Values: imageSlashJpeg,imageSlashPng
+ */
 enum class ContentType(@get:JsonValue val value: kotlin.String) {
 
     imageSlashJpeg("image/jpeg"),
@@ -28,9 +28,8 @@ enum class ContentType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ContentType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ContentType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ContentType'")
         }
     }
 }
-

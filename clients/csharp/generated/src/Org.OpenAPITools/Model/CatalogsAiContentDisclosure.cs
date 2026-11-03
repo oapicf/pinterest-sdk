@@ -156,16 +156,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!disclosure.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsAiContentDisclosure.", nameof(disclosure));
+                throw new JsonException("Property is required for class CatalogsAiContentDisclosure: disclosure.");
 
             if (!url.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsAiContentDisclosure.", nameof(url));
+                throw new JsonException("Property is required for class CatalogsAiContentDisclosure: url.");
 
             if (disclosure.IsSet && disclosure.Value == null)
-                throw new ArgumentNullException(nameof(disclosure), "Property is not nullable for class CatalogsAiContentDisclosure.");
+                throw new JsonException("Property is not nullable for class CatalogsAiContentDisclosure: disclosure.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class CatalogsAiContentDisclosure.");
+                throw new JsonException("Property is not nullable for class CatalogsAiContentDisclosure: url.");
 
             return new CatalogsAiContentDisclosure(disclosure.Value!, url.Value!);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsAiContentDisclosure"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsAiContentDisclosure catalogsAiContentDisclosure, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,15 +190,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsAiContentDisclosure"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsAiContentDisclosure catalogsAiContentDisclosure, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsAiContentDisclosure.Disclosure == null)
-                throw new ArgumentNullException(nameof(catalogsAiContentDisclosure.Disclosure), "Property is required for class CatalogsAiContentDisclosure.");
-
-            if (catalogsAiContentDisclosure.Url == null)
-                throw new ArgumentNullException(nameof(catalogsAiContentDisclosure.Url), "Property is required for class CatalogsAiContentDisclosure.");
-
             writer.WritePropertyName("disclosure");
             JsonSerializer.Serialize(writer, catalogsAiContentDisclosure.Disclosure, jsonSerializerOptions);
             writer.WriteString("url", catalogsAiContentDisclosure.Url);

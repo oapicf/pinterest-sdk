@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelItemsPostFilter {
     /**
      * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-     * @type {string}
-     * @memberof CatalogsHotelItemsPostFilter
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsHotelItemsPostFilterCatalogTypeEnum}
-     * @memberof CatalogsHotelItemsPostFilter
      */
     catalogType: CatalogsHotelItemsPostFilterCatalogTypeEnum;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelItemsPostFilter
      */
     hotelIds: Array<string>;
 }
@@ -44,7 +38,7 @@ export interface CatalogsHotelItemsPostFilter {
  * @export
  */
 export const CatalogsHotelItemsPostFilterCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelItemsPostFilterCatalogTypeEnum = typeof CatalogsHotelItemsPostFilterCatalogTypeEnum[keyof typeof CatalogsHotelItemsPostFilterCatalogTypeEnum];
 

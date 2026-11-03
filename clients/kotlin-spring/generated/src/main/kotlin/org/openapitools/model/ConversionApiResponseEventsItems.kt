@@ -26,7 +26,7 @@ data class ConversionApiResponseEventsItems(
 
     @field:Valid
     @Schema(example = "processed", required = true, description = "Whether the event was processed successfully.")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: EventProcessingStatus,
 
     @Schema(example = "", description = "Error message containing more information about why the event failed to be processed.")

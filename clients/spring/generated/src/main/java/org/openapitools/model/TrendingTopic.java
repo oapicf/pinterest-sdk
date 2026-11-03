@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -28,14 +27,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TrendingTopic", description = "Individual trending topic within an interest category")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingTopic {
 
   private String description;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer percentGrowthMom;
 
   private List<@Valid TrendingPin> pins = new ArrayList<>();
@@ -145,7 +143,7 @@ public class TrendingTopic {
    * Array of pin images related to this trend (up to 6)
    * @return pins
    */
-  @NotNull @Valid @Size(max = 6) 
+  @NotNull @Size(max = 6) 
   @Schema(name = "pins", description = "Array of pin images related to this trend (up to 6)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("pins")
   public List<@Valid TrendingPin> getPins() {
@@ -232,7 +230,7 @@ public class TrendingTopic {
    * Time series data showing trend values over time, with dates as keys and values as numeric
    * @return timeSeries
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "time_series", description = "Time series data showing trend values over time, with dates as keys and values as numeric", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("time_series")
   public Map<String, BigDecimal> getTimeSeries() {

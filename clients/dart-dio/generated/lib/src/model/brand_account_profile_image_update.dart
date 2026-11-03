@@ -128,6 +128,7 @@ class _$BrandAccountProfileImageUpdateSerializer implements PrimitiveSerializer<
   }
 }
 
+
 class BrandAccountProfileImageUpdateContentTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'image/jpeg')

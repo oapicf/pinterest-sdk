@@ -176,25 +176,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!errors.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationIssues.", nameof(errors));
+                throw new JsonException("Property is required for class CatalogsItemValidationIssues: errors.");
 
             if (!itemNumber.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationIssues.", nameof(itemNumber));
+                throw new JsonException("Property is required for class CatalogsItemValidationIssues: item_number.");
 
             if (!warnings.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationIssues.", nameof(warnings));
+                throw new JsonException("Property is required for class CatalogsItemValidationIssues: warnings.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationIssues.", nameof(itemId));
+                throw new JsonException("Property is required for class CatalogsItemValidationIssues: item_id.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class CatalogsItemValidationIssues.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationIssues: errors.");
 
             if (itemNumber.IsSet && itemNumber.Value == null)
-                throw new ArgumentNullException(nameof(itemNumber), "Property is not nullable for class CatalogsItemValidationIssues.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationIssues: item_number.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class CatalogsItemValidationIssues.");
+                throw new JsonException("Property is not nullable for class CatalogsItemValidationIssues: warnings.");
 
             return new CatalogsItemValidationIssues(errors.Value!, itemNumber.Value!.Value!, warnings.Value!, itemId.Value!);
         }
@@ -205,7 +205,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationIssues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemValidationIssues catalogsItemValidationIssues, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -220,15 +219,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationIssues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemValidationIssues catalogsItemValidationIssues, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsItemValidationIssues.Errors == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationIssues.Errors), "Property is required for class CatalogsItemValidationIssues.");
-
-            if (catalogsItemValidationIssues.Warnings == null)
-                throw new ArgumentNullException(nameof(catalogsItemValidationIssues.Warnings), "Property is required for class CatalogsItemValidationIssues.");
-
             writer.WritePropertyName("errors");
             JsonSerializer.Serialize(writer, catalogsItemValidationIssues.Errors, jsonSerializerOptions);
             writer.WriteNumber("item_number", catalogsItemValidationIssues.ItemNumber);

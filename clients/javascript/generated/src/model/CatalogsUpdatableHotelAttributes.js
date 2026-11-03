@@ -18,7 +18,7 @@ import CatalogsHotelGuestRatings from './CatalogsHotelGuestRatings';
 /**
  * The CatalogsUpdatableHotelAttributes model module.
  * @module model/CatalogsUpdatableHotelAttributes
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsUpdatableHotelAttributes {
     /**

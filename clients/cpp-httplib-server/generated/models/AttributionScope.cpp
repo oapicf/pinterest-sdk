@@ -6,20 +6,3 @@
 */
 #include "AttributionScope.h"
 
-namespace models {
-
-AttributionScope::AttributionScope()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

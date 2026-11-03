@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CarouselSlot {
     /**
      * Carousel Pin slot description.
-     * @type {string}
-     * @memberof CarouselSlot
      */
     description?: string;
     /**
      * Carousel Pin slot link.
-     * @type {string}
-     * @memberof CarouselSlot
      */
     link?: string;
     /**
      * Carousel Pin slot title.
-     * @type {string}
-     * @memberof CarouselSlot
      */
     title?: string;
 }

@@ -104,7 +104,6 @@ public enum ItemResponseKindEnum {
   * The pins mapped to the item
   */
   @ApiModelProperty(value = "The pins mapped to the item")
-  @Valid
   private List<@Valid Pin> pins;
  /**
   * Get attributes

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,16 +27,13 @@ import jakarta.annotation.Generated;
  * VideoMetadataWithItemType
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class VideoMetadataWithItemType implements PinMediaMetadata {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String coverImageUrl;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> duration = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> height = JsonNullable.<Integer>undefined();
 
   /**
@@ -75,13 +71,10 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
 
   private ItemTypeEnum itemType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> videoUrl = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> videoUrlHls = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> width = JsonNullable.<Integer>undefined();
 
   public VideoMetadataWithItemType() {
@@ -126,7 +119,7 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
    * @return duration
    */
   @Valid 
-  @Schema(name = "duration", description = "Duration (in miliseconds). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "duration", description = "Duration (in miliseconds). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("duration")
   public JsonNullable<BigDecimal> getDuration() {
     return duration;
@@ -146,7 +139,7 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
    * @return height
    */
   
-  @Schema(name = "height", description = "Height (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "height", description = "Height (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("height")
   public JsonNullable<Integer> getHeight() {
     return height;
@@ -187,7 +180,7 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
    * @return videoUrl
    */
   
-  @Schema(name = "video_url", description = "Video url (720p).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "video_url", description = "Video url (720p).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("video_url")
   public JsonNullable<String> getVideoUrl() {
     return videoUrl;
@@ -207,7 +200,7 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
    * @return videoUrlHls
    */
   
-  @Schema(name = "video_url_hls", description = "Video url (HLS).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "video_url_hls", description = "Video url (HLS).  **Note:** This field is limited and not available to all apps.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("video_url_hls")
   public JsonNullable<String> getVideoUrlHls() {
     return videoUrlHls;
@@ -227,7 +220,7 @@ public class VideoMetadataWithItemType implements PinMediaMetadata {
    * @return width
    */
   
-  @Schema(name = "width", description = "Width (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "width", description = "Width (in pixels). Field maybe null after creation due to video processing time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("width")
   public JsonNullable<Integer> getWidth() {
     return width;

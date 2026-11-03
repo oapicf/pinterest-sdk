@@ -43,52 +43,36 @@ import {
 export interface LeadFormCreate {
     /**
      * A message for people who complete the form to let them know what happens next.
-     * @type {string}
-     * @memberof LeadFormCreate
      */
     completionMessage: string | null;
     /**
      * Additional disclosure language to be included in the lead form.
-     * @type {string}
-     * @memberof LeadFormCreate
      */
     disclosureLanguage?: string | null;
     /**
      * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
      * 
      * By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO
-     * @type {boolean}
-     * @memberof LeadFormCreate
      */
     hasAcceptedTerms: boolean;
     /**
      * Internal name of the lead form.
-     * @type {string}
-     * @memberof LeadFormCreate
      */
     name: string | null;
     /**
      * List of additional policy links to be displayed on the lead form.
-     * @type {Array<LeadFormPolicyLink>}
-     * @memberof LeadFormCreate
      */
     policyLinks?: Array<LeadFormPolicyLink>;
     /**
      * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-     * @type {string}
-     * @memberof LeadFormCreate
      */
     privacyPolicyLink: string | null;
     /**
      * List of questions to be displayed on the lead form.
-     * @type {Array<LeadFormQuestion>}
-     * @memberof LeadFormCreate
      */
     questions: Array<LeadFormQuestion>;
     /**
      * 
-     * @type {LeadFormStatus}
-     * @memberof LeadFormCreate
      */
     status?: LeadFormStatus;
 }

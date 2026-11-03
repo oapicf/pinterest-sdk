@@ -10,7 +10,7 @@ import Foundation
 /** Single instance of a business member to be removed from the business. */
 public struct DeleteBusinessMembershipMember: Sendable, Codable, Hashable {
 
-    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
     public var businessRole: BusinessRoleForMembers
     /** Unique identifier of the member */
     public var memberId: String

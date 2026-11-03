@@ -35,7 +35,7 @@ import javax.validation.Valid;
   TopVideoPinsAnalyticsResponsePinsItems.JSON_PROPERTY_METRICS,
   TopVideoPinsAnalyticsResponsePinsItems.JSON_PROPERTY_PIN_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TopVideoPinsAnalyticsResponsePinsItems   {
   public static final String JSON_PROPERTY_DATA_STATUS = "data_status";
   @JsonProperty(JSON_PROPERTY_DATA_STATUS)
@@ -96,7 +96,7 @@ public class TopVideoPinsAnalyticsResponsePinsItems   {
    **/
   @JsonProperty(value = "metrics")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public Map<String, BigDecimal> getMetrics() {
     return metrics;
   }

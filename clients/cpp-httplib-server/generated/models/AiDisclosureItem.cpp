@@ -6,20 +6,3 @@
 */
 #include "AiDisclosureItem.h"
 
-namespace models {
-
-AiDisclosureItem::AiDisclosureItem()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

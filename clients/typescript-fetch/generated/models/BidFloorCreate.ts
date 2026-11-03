@@ -36,14 +36,10 @@ import {
 export interface BidFloorCreate {
     /**
      * List of bid floor specifications.
-     * @type {Array<BidFloorSpec>}
-     * @memberof BidFloorCreate
      */
     bidFloorSpecs: Array<BidFloorSpec>;
     /**
      * Ad group targeting specification defining the ad group target audience.
-     * @type {TargetingSpecOptimal}
-     * @memberof BidFloorCreate
      */
     targetingSpec?: TargetingSpecOptimal;
 }

@@ -17,7 +17,7 @@ import AdPinPreviewCreativeType from './AdPinPreviewCreativeType';
 /**
  * The AdPreviewSourcePinId model module.
  * @module model/AdPreviewSourcePinId
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdPreviewSourcePinId {
     /**

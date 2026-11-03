@@ -1223,13 +1223,7 @@ src/main/resources/application-dev-config.yml
 src/main/resources/application-dev.yml
 src/main/resources/application-local.yml
 src/main/resources/bootstrap.yml
-src/test/java/com/prokarma/pkmst/controller/CatalogSupplementalApiTest.java
-src/test/java/com/prokarma/pkmst/controller/ConversionDeletionRequestsApiTest.java
-src/test/java/com/prokarma/pkmst/controller/CustomerSegmentApiTest.java
 src/test/java/com/prokarma/pkmst/controller/PkmstIT.java
-src/test/java/com/prokarma/pkmst/controller/ProductTagsApiTest.java
-src/test/java/com/prokarma/pkmst/controller/SchedulesApiTest.java
-src/test/java/com/prokarma/pkmst/controller/TrendsApiTest.java
 src/test/java/com/prokarma/pkmst/cucumber/PkmstSteps.java
 src/test/java/com/prokarma/pkmst/cucumber/PkmstTest.java
 src/test/java/com/prokarma/pkmst/cucumber/Pkmstpackage-info.java

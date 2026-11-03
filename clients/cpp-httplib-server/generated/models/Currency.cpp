@@ -6,20 +6,3 @@
 */
 #include "Currency.h"
 
-namespace models {
-
-Currency::Currency()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

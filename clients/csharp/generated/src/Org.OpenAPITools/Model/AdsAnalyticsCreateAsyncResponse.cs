@@ -180,10 +180,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class AdsAnalyticsCreateAsyncResponse.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncResponse: report_status.");
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class AdsAnalyticsCreateAsyncResponse.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncResponse: token.");
 
             return new AdsAnalyticsCreateAsyncResponse(message, reportStatus, token);
         }
@@ -194,7 +194,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsCreateAsyncResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -209,11 +208,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsCreateAsyncResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsAnalyticsCreateAsyncResponse adsAnalyticsCreateAsyncResponse, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adsAnalyticsCreateAsyncResponse.ReportStatusOption.IsSet && adsAnalyticsCreateAsyncResponse.ReportStatus == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncResponse.ReportStatus to non-nullable JSON property 'report_status'.");
+
             if (adsAnalyticsCreateAsyncResponse.TokenOption.IsSet && adsAnalyticsCreateAsyncResponse.Token == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncResponse.Token), "Property is required for class AdsAnalyticsCreateAsyncResponse.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncResponse.Token to non-nullable JSON property 'token'.");
 
             if (adsAnalyticsCreateAsyncResponse.MessageOption.IsSet)
                 if (adsAnalyticsCreateAsyncResponse.MessageOption.Value != null)

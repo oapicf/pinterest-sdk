@@ -226,16 +226,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetsResult: asset_id.");
 
             if (assetType.IsSet && assetType.Value == null)
-                throw new ArgumentNullException(nameof(assetType), "Property is not nullable for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetsResult: asset_type.");
 
             if (partnerId.IsSet && partnerId.Value == null)
-                throw new ArgumentNullException(nameof(partnerId), "Property is not nullable for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetsResult: partner_id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetsResult: permissions.");
 
             return new UpdatePartnerAssetsResult(assetId, assetType, partnerId, permissions);
         }
@@ -246,7 +246,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetsResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdatePartnerAssetsResult updatePartnerAssetsResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -261,17 +260,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetsResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdatePartnerAssetsResult updatePartnerAssetsResult, JsonSerializerOptions jsonSerializerOptions)
         {
             if (updatePartnerAssetsResult.AssetIdOption.IsSet && updatePartnerAssetsResult.AssetId == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetsResult.AssetId), "Property is required for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Cannot write null property UpdatePartnerAssetsResult.AssetId to non-nullable JSON property 'asset_id'.");
+
+            if (updatePartnerAssetsResult.AssetTypeOption.IsSet && updatePartnerAssetsResult.AssetType == null)
+                throw new JsonException("Cannot write null property UpdatePartnerAssetsResult.AssetType to non-nullable JSON property 'asset_type'.");
 
             if (updatePartnerAssetsResult.PartnerIdOption.IsSet && updatePartnerAssetsResult.PartnerId == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetsResult.PartnerId), "Property is required for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Cannot write null property UpdatePartnerAssetsResult.PartnerId to non-nullable JSON property 'partner_id'.");
 
             if (updatePartnerAssetsResult.PermissionsOption.IsSet && updatePartnerAssetsResult.Permissions == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetsResult.Permissions), "Property is required for class UpdatePartnerAssetsResult.");
+                throw new JsonException("Cannot write null property UpdatePartnerAssetsResult.Permissions to non-nullable JSON property 'permissions'.");
 
             if (updatePartnerAssetsResult.AssetIdOption.IsSet)
                 writer.WriteString("asset_id", updatePartnerAssetsResult.AssetId);

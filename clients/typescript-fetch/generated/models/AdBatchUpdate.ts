@@ -78,170 +78,114 @@ import {
 export interface AdBatchUpdate {
     /**
      * ID of the ad group that contains the ad.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     adGroupId?: string;
     /**
      * Deep link URL for Android devices.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     androidDeepLink?: string | null;
     /**
      * Comma-separated deep links for the carousel pin on Android.
-     * @type {Array<string>}
-     * @memberof AdBatchUpdate
      */
     carouselAndroidDeepLinks?: Array<string> | null;
     /**
      * Comma-separated destination URLs for the carousel pin to promote.
-     * @type {Array<string>}
-     * @memberof AdBatchUpdate
      */
     carouselDestinationUrls?: Array<string> | null;
     /**
      * Comma-separated deep links for the carousel pin on iOS.
-     * @type {Array<string>}
-     * @memberof AdBatchUpdate
      */
     carouselIosDeepLinks?: Array<string> | null;
     /**
      * Tracking url for the ad clicks.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     clickTrackingUrl?: string | null;
     /**
      * Destination URL template for all items within a collections drawer.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     collectionItemsDestinationUrlTemplate?: string | null;
     /**
      * 
-     * @type {AdCollectionsHeaderType}
-     * @memberof AdBatchUpdate
      */
     collectionsHeaderType?: AdCollectionsHeaderType | null;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof AdBatchUpdate
      */
     creativeType?: CreativeType;
     /**
      * 
-     * @type {CustomizableCTAType}
-     * @memberof AdBatchUpdate
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Destination URL.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     destinationUrl?: string | null;
     /**
      * 
-     * @type {DisclosureType}
-     * @memberof AdBatchUpdate
      */
     disclosureType?: DisclosureType | null;
     /**
      * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     disclosureUrl?: string | null;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof AdBatchUpdate
      */
     gridClickType?: GridClickType | null;
     /**
      * The ID of this ad.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     id: string;
     /**
      * Deep link URL for iOS devices.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     iosDeepLink?: string | null;
     /**
      * Is the ad a carting/WTB ad?
-     * @type {boolean}
-     * @memberof AdBatchUpdate
      */
     isCarting?: boolean;
     /**
      * Whether the advertiser has accepted the terms and conditions for collage ad.
-     * @type {boolean}
-     * @memberof AdBatchUpdate
      */
     isCollageAcceptedTerms?: boolean;
     /**
      * Whether the collage ad has a single destination url override.
-     * @type {boolean}
-     * @memberof AdBatchUpdate
      */
     isCollageSingleDestination?: boolean;
     /**
      * Is original pin deleted?
-     * @type {boolean}
-     * @memberof AdBatchUpdate
      */
     isPinDeleted?: boolean;
     /**
      * Is pin repinnable?
-     * @type {boolean}
-     * @memberof AdBatchUpdate
      */
     isRemovable?: boolean;
     /**
      * Lead form ID for lead ad generation.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     leadFormId?: string | null;
     /**
      * Name of the ad - 255 chars max.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     name?: string | null;
     /**
      * Pin ID. This field may only be updated for draft ads.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     pinId?: string;
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     * @type {QuizPinData}
-     * @memberof AdBatchUpdate
      */
     quizPinData?: QuizPinData | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof AdBatchUpdate
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof AdBatchUpdate
      */
     trackingUrls?: TrackingUrls | null;
     /**
      * Tracking URL for ad impressions.
-     * @type {string}
-     * @memberof AdBatchUpdate
      */
     viewTrackingUrl?: string | null;
 }

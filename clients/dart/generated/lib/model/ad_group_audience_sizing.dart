@@ -79,8 +79,12 @@ class AdGroupAudienceSizing {
       }());
 
       return AdGroupAudienceSizing(
-        audienceSizeLowerBound: num.parse('${json[r'audience_size_lower_bound']}'),
-        audienceSizeUpperBound: num.parse('${json[r'audience_size_upper_bound']}'),
+        audienceSizeLowerBound: json[r'audience_size_lower_bound'] == null
+            ? null
+            : num.parse('${json[r'audience_size_lower_bound']}'),
+        audienceSizeUpperBound: json[r'audience_size_upper_bound'] == null
+            ? null
+            : num.parse('${json[r'audience_size_upper_bound']}'),
       );
     }
     return null;

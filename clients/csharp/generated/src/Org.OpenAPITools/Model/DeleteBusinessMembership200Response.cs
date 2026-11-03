@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (deletedMembers.IsSet && deletedMembers.Value == null)
-                throw new ArgumentNullException(nameof(deletedMembers), "Property is not nullable for class DeleteBusinessMembership200Response.");
+                throw new JsonException("Property is not nullable for class DeleteBusinessMembership200Response: deleted_members.");
 
             return new DeleteBusinessMembership200Response(deletedMembers);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessMembership200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteBusinessMembership200Response deleteBusinessMembership200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessMembership200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteBusinessMembership200Response deleteBusinessMembership200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             if (deleteBusinessMembership200Response.DeletedMembersOption.IsSet && deleteBusinessMembership200Response.DeletedMembers == null)
-                throw new ArgumentNullException(nameof(deleteBusinessMembership200Response.DeletedMembers), "Property is required for class DeleteBusinessMembership200Response.");
+                throw new JsonException("Cannot write null property DeleteBusinessMembership200Response.DeletedMembers to non-nullable JSON property 'deleted_members'.");
 
             if (deleteBusinessMembership200Response.DeletedMembersOption.IsSet)
             {

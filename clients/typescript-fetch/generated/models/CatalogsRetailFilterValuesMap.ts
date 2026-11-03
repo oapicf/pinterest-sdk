@@ -50,146 +50,98 @@ import {
 export interface CatalogsRetailFilterValuesMap {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     adImageTags?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     adVideoTags?: Array<string>;
     /**
      * 
-     * @type {Array<ProductAvailability>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     availability?: Array<ProductAvailability>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     brand?: Array<string>;
     /**
      * 
-     * @type {Array<ProductCondition>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     condition?: Array<ProductCondition>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     customLabel0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     customLabel1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     customLabel2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     customLabel3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     customLabel4?: Array<string>;
     /**
      * 
-     * @type {Array<Gender>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     gender?: Array<Gender>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory4?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory5?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     googleProductCategory6?: Array<string>;
     /**
      * 
-     * @type {Array<MediaType>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     mediaType?: Array<MediaType>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     productType0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     productType1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     productType2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     productType3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailFilterValuesMap
      */
     productType4?: Array<string>;
 }

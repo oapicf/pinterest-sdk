@@ -17,7 +17,7 @@ import ConversionEventResponse from './ConversionEventResponse';
 /**
  * The PageVisitConversionTagsGet200Response model module.
  * @module model/PageVisitConversionTagsGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PageVisitConversionTagsGet200Response {
     /**

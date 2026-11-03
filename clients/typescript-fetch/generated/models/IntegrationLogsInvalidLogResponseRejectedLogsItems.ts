@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface IntegrationLogsInvalidLogResponseRejectedLogsItems {
     /**
      * The field name containing an invalid value.
-     * @type {string}
-     * @memberof IntegrationLogsInvalidLogResponseRejectedLogsItems
      */
     field: string;
     /**
      * Index of the log in the batch.
-     * @type {number}
-     * @memberof IntegrationLogsInvalidLogResponseRejectedLogsItems
      */
     logIndex?: number;
     /**
      * The reason the value is invalid.
-     * @type {string}
-     * @memberof IntegrationLogsInvalidLogResponseRejectedLogsItems
      */
     reason: string;
     /**
      * The value that is invalid.
-     * @type {string}
-     * @memberof IntegrationLogsInvalidLogResponseRejectedLogsItems
      */
     value: string;
 }

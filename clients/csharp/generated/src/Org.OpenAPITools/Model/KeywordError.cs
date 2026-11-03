@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class KeywordError.");
+                throw new JsonException("Property is not nullable for class KeywordError: data.");
 
             if (errorMessages.IsSet && errorMessages.Value == null)
-                throw new ArgumentNullException(nameof(errorMessages), "Property is not nullable for class KeywordError.");
+                throw new JsonException("Property is not nullable for class KeywordError: error_messages.");
 
             return new KeywordError(data, errorMessages);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordError keywordError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordError keywordError, JsonSerializerOptions jsonSerializerOptions)
         {
             if (keywordError.DataOption.IsSet && keywordError.Data == null)
-                throw new ArgumentNullException(nameof(keywordError.Data), "Property is required for class KeywordError.");
+                throw new JsonException("Cannot write null property KeywordError.Data to non-nullable JSON property 'data'.");
 
             if (keywordError.ErrorMessagesOption.IsSet && keywordError.ErrorMessages == null)
-                throw new ArgumentNullException(nameof(keywordError.ErrorMessages), "Property is required for class KeywordError.");
+                throw new JsonException("Cannot write null property KeywordError.ErrorMessages to non-nullable JSON property 'error_messages'.");
 
             if (keywordError.DataOption.IsSet)
             {

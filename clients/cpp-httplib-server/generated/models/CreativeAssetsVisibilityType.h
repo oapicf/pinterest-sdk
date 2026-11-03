@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class CreativeAssetsVisibilityType
-{
-public:
-
-    CreativeAssetsVisibilityType();
-    virtual ~CreativeAssetsVisibilityType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreativeAssetsVisibilityType,
-        )
-
-private:
+enum class CreativeAssetsVisibilityType {
+    
+    VISIBLE,
+    
+    HIDDEN
+    
 };
 
+inline void to_json(nlohmann::json& j, const CreativeAssetsVisibilityType& value)
+{
+    switch (value)
+    {
+        
+        case CreativeAssetsVisibilityType::VISIBLE: j = "VISIBLE"; break;
+        
+        case CreativeAssetsVisibilityType::HIDDEN: j = "HIDDEN"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CreativeAssetsVisibilityType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CreativeAssetsVisibilityType& value)
+{
+    
+    if (j == "VISIBLE")
+    {
+        value = CreativeAssetsVisibilityType::VISIBLE;
+        return;
+    }
+    
+    if (j == "HIDDEN")
+    {
+        value = CreativeAssetsVisibilityType::HIDDEN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CreativeAssetsVisibilityType", &j);
+}
 
 } // namespace models
 

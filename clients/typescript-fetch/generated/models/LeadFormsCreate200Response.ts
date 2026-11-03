@@ -29,8 +29,6 @@ import {
 export interface LeadFormsCreate200Response {
     /**
      * 
-     * @type {Array<LeadFormsCreate200ResponseItemsInner>}
-     * @memberof LeadFormsCreate200Response
      */
     items: Array<LeadFormsCreate200ResponseItemsInner>;
 }

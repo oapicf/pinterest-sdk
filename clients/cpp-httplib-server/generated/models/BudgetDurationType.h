@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BudgetDurationType
-{
-public:
-
-    BudgetDurationType();
-    virtual ~BudgetDurationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BudgetDurationType,
-        )
-
-private:
+enum class BudgetDurationType {
+    
+    FIXED_DAILY,
+    
+    FLEXIBLE_DAILY,
+    
+    LIFETIME
+    
 };
 
+inline void to_json(nlohmann::json& j, const BudgetDurationType& value)
+{
+    switch (value)
+    {
+        
+        case BudgetDurationType::FIXED_DAILY: j = "FIXED_DAILY"; break;
+        
+        case BudgetDurationType::FLEXIBLE_DAILY: j = "FLEXIBLE_DAILY"; break;
+        
+        case BudgetDurationType::LIFETIME: j = "LIFETIME"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BudgetDurationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BudgetDurationType& value)
+{
+    
+    if (j == "FIXED_DAILY")
+    {
+        value = BudgetDurationType::FIXED_DAILY;
+        return;
+    }
+    
+    if (j == "FLEXIBLE_DAILY")
+    {
+        value = BudgetDurationType::FLEXIBLE_DAILY;
+        return;
+    }
+    
+    if (j == "LIFETIME")
+    {
+        value = BudgetDurationType::LIFETIME;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BudgetDurationType", &j);
+}
 
 } // namespace models
 

@@ -17,7 +17,7 @@ import AdGroup from './AdGroup';
 /**
  * The AdGroupsList200Response model module.
  * @module model/AdGroupsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupsList200Response {
     /**

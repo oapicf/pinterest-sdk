@@ -155,6 +155,7 @@ class _$CatalogsVerticalProductGroupSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+
 class CatalogsVerticalProductGroupCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

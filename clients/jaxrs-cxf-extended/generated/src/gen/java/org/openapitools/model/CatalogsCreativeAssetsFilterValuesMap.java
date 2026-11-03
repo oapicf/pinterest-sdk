@@ -56,7 +56,6 @@ public class CatalogsCreativeAssetsFilterValuesMap  {
   private List<String> googleProductCategory6 = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<MediaType> mediaType = new ArrayList<>();
  /**
   * Get customLabel0

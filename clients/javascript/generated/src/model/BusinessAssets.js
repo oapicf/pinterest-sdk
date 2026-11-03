@@ -20,7 +20,7 @@ import CatalogBinding from './CatalogBinding';
 /**
  * The BusinessAssets model module.
  * @module model/BusinessAssets
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BusinessAssets {
     /**

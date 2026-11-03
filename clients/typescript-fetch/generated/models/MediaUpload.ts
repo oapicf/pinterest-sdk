@@ -37,26 +37,18 @@ export interface MediaUpload {
     /**
      * Unique identifier for this media upload. Used to track status
      * and for attaching during Pin creation.
-     * @type {string}
-     * @memberof MediaUpload
      */
     readonly mediaId: string;
     /**
      * 
-     * @type {MediaUploadType}
-     * @memberof MediaUpload
      */
     mediaType: MediaUploadType;
     /**
      * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
-     * @type {MediaUploadParameters}
-     * @memberof MediaUpload
      */
     readonly uploadParameters?: MediaUploadParameters;
     /**
      * The URL where you will POST your media file.
-     * @type {string}
-     * @memberof MediaUpload
      */
     readonly uploadUrl?: string;
 }

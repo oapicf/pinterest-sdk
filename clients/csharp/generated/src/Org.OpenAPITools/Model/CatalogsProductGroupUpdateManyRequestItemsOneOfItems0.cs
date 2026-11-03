@@ -226,19 +226,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: id.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: filters.");
 
             if (isFeatured.IsSet && isFeatured.Value == null)
-                throw new ArgumentNullException(nameof(isFeatured), "Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: is_featured.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0: name.");
 
             return new CatalogsProductGroupUpdateManyRequestItemsOneOfItems0(id.Value!, description, filters, isFeatured, name);
         }
@@ -249,7 +249,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUpdateManyRequestItemsOneOfItems0"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 catalogsProductGroupUpdateManyRequestItemsOneOfItems0, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -264,17 +263,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUpdateManyRequestItemsOneOfItems0"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 catalogsProductGroupUpdateManyRequestItemsOneOfItems0, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Id == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Id), "Property is required for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
-
             if (catalogsProductGroupUpdateManyRequestItemsOneOfItems0.FiltersOption.IsSet && catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Filters), "Property is required for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.Filters to non-nullable JSON property 'filters'.");
+
+            if (catalogsProductGroupUpdateManyRequestItemsOneOfItems0.IsFeaturedOption.IsSet && catalogsProductGroupUpdateManyRequestItemsOneOfItems0.IsFeatured == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.IsFeatured to non-nullable JSON property 'is_featured'.");
 
             if (catalogsProductGroupUpdateManyRequestItemsOneOfItems0.NameOption.IsSet && catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Name == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Name), "Property is required for class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.");
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateManyRequestItemsOneOfItems0.Name to non-nullable JSON property 'name'.");
 
             writer.WriteString("id", catalogsProductGroupUpdateManyRequestItemsOneOfItems0.Id);
 

@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dnsTxtRecord.IsSet && dnsTxtRecord.Value == null)
-                throw new ArgumentNullException(nameof(dnsTxtRecord), "Property is not nullable for class UserWebsiteVerification.");
+                throw new JsonException("Property is not nullable for class UserWebsiteVerification: dns_txt_record.");
 
             if (fileContent.IsSet && fileContent.Value == null)
-                throw new ArgumentNullException(nameof(fileContent), "Property is not nullable for class UserWebsiteVerification.");
+                throw new JsonException("Property is not nullable for class UserWebsiteVerification: file_content.");
 
             if (filename.IsSet && filename.Value == null)
-                throw new ArgumentNullException(nameof(filename), "Property is not nullable for class UserWebsiteVerification.");
+                throw new JsonException("Property is not nullable for class UserWebsiteVerification: filename.");
 
             if (metatag.IsSet && metatag.Value == null)
-                throw new ArgumentNullException(nameof(metatag), "Property is not nullable for class UserWebsiteVerification.");
+                throw new JsonException("Property is not nullable for class UserWebsiteVerification: metatag.");
 
             if (verificationCode.IsSet && verificationCode.Value == null)
-                throw new ArgumentNullException(nameof(verificationCode), "Property is not nullable for class UserWebsiteVerification.");
+                throw new JsonException("Property is not nullable for class UserWebsiteVerification: verification_code.");
 
             return new UserWebsiteVerification(dnsTxtRecord, fileContent, filename, metatag, verificationCode);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsiteVerification"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserWebsiteVerification userWebsiteVerification, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,23 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsiteVerification"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserWebsiteVerification userWebsiteVerification, JsonSerializerOptions jsonSerializerOptions)
         {
             if (userWebsiteVerification.DnsTxtRecordOption.IsSet && userWebsiteVerification.DnsTxtRecord == null)
-                throw new ArgumentNullException(nameof(userWebsiteVerification.DnsTxtRecord), "Property is required for class UserWebsiteVerification.");
+                throw new JsonException("Cannot write null property UserWebsiteVerification.DnsTxtRecord to non-nullable JSON property 'dns_txt_record'.");
 
             if (userWebsiteVerification.FileContentOption.IsSet && userWebsiteVerification.FileContent == null)
-                throw new ArgumentNullException(nameof(userWebsiteVerification.FileContent), "Property is required for class UserWebsiteVerification.");
+                throw new JsonException("Cannot write null property UserWebsiteVerification.FileContent to non-nullable JSON property 'file_content'.");
 
             if (userWebsiteVerification.FilenameOption.IsSet && userWebsiteVerification.Filename == null)
-                throw new ArgumentNullException(nameof(userWebsiteVerification.Filename), "Property is required for class UserWebsiteVerification.");
+                throw new JsonException("Cannot write null property UserWebsiteVerification.Filename to non-nullable JSON property 'filename'.");
 
             if (userWebsiteVerification.MetatagOption.IsSet && userWebsiteVerification.Metatag == null)
-                throw new ArgumentNullException(nameof(userWebsiteVerification.Metatag), "Property is required for class UserWebsiteVerification.");
+                throw new JsonException("Cannot write null property UserWebsiteVerification.Metatag to non-nullable JSON property 'metatag'.");
 
             if (userWebsiteVerification.VerificationCodeOption.IsSet && userWebsiteVerification.VerificationCode == null)
-                throw new ArgumentNullException(nameof(userWebsiteVerification.VerificationCode), "Property is required for class UserWebsiteVerification.");
+                throw new JsonException("Cannot write null property UserWebsiteVerification.VerificationCode to non-nullable JSON property 'verification_code'.");
 
             if (userWebsiteVerification.DnsTxtRecordOption.IsSet)
                 writer.WriteString("dns_txt_record", userWebsiteVerification.DnsTxtRecord);

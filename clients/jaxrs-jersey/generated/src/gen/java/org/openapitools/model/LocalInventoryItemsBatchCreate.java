@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   LocalInventoryItemsBatchCreate.JSON_PROPERTY_OPERATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsBatchCreate   {
   public static final String JSON_PROPERTY_OPERATIONS = "operations";
   @JsonProperty(JSON_PROPERTY_OPERATIONS)
@@ -58,7 +58,7 @@ public class LocalInventoryItemsBatchCreate   {
    **/
   @JsonProperty(value = "operations")
   @ApiModelProperty(required = true, value = "Array of inventory operations. Up to 1000 items per request.")
-  @NotNull @Valid  @Size(min=1,max=1000)
+  @NotNull  @Size(min=1,max=1000)
   public List<@Valid LocalInventoryOperation> getOperations() {
     return operations;
   }

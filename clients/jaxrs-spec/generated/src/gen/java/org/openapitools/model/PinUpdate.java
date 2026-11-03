@@ -24,13 +24,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create or update operation model.")
 @JsonTypeName("PinUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinUpdate   {
   private AiDisclosuresUpdate aiDisclosures;
   private String altText;
   private String boardId;
   private String boardSectionId;
-  private @Valid List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
+  private List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
   private String description;
   private String link;
   private String title;
@@ -128,7 +128,7 @@ public class PinUpdate   {
   
   @ApiModelProperty(value = "Carousel Pin slots data.")
   @JsonProperty("carousel_slots")
-  @Valid public List<@Valid CarouselSlot> getCarouselSlots() {
+  public List<@Valid CarouselSlot> getCarouselSlots() {
     return carouselSlots;
   }
 

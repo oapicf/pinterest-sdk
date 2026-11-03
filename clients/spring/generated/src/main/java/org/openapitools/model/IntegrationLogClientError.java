@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -21,34 +20,25 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogClientError {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String cause;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer columnNumber;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String fileName;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lineNumber;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String messageDetail;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer number;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String stackTrace;
 
   public IntegrationLogClientError cause(@Nullable String cause) {

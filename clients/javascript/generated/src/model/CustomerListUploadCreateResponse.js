@@ -18,7 +18,7 @@ import S3MultipartUploadData from './S3MultipartUploadData';
 /**
  * The CustomerListUploadCreateResponse model module.
  * @module model/CustomerListUploadCreateResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomerListUploadCreateResponse {
     /**

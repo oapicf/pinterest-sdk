@@ -91,8 +91,7 @@ class SupplementalItemsBatchResponse(BaseModel):
         _items = []
         if self.operation_results:
             for _item_operation_results in self.operation_results:
-                if _item_operation_results:
-                    _items.append(_item_operation_results.to_dict())
+                _items.append(_item_operation_results.to_dict() if _item_operation_results is not None else None)
             _dict['operation_results'] = _items
         return _dict
 

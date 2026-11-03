@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -24,57 +23,41 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRecord", description = "Integration record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationRecord {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> additionalId1 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedAdvertiserId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedLbaId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedMerchantId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> connectedTagId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedUserId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> externalBusinessId = JsonNullable.<String>undefined();
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerAccessToken = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> partnerAccessTokenExpiry = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerMetadata = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerPrimaryEmail = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerRefreshToken = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> partnerRefreshTokenExpiry = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> scopes = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedTime;
 
   public IntegrationRecord() {
@@ -98,7 +81,7 @@ public class IntegrationRecord {
    * @return additionalId1
    */
   
-  @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("additional_id_1")
   public JsonNullable<String> getAdditionalId1() {
     return additionalId1;
@@ -118,7 +101,7 @@ public class IntegrationRecord {
    * @return connectedAdvertiserId
    */
   
-  @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("connected_advertiser_id")
   public JsonNullable<String> getConnectedAdvertiserId() {
     return connectedAdvertiserId;
@@ -138,7 +121,7 @@ public class IntegrationRecord {
    * @return connectedLbaId
    */
   
-  @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("connected_lba_id")
   public JsonNullable<String> getConnectedLbaId() {
     return connectedLbaId;
@@ -158,7 +141,7 @@ public class IntegrationRecord {
    * @return connectedMerchantId
    */
   
-  @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("connected_merchant_id")
   public JsonNullable<String> getConnectedMerchantId() {
     return connectedMerchantId;
@@ -178,7 +161,7 @@ public class IntegrationRecord {
    * @return connectedTagId
    */
   
-  @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("connected_tag_id")
   public JsonNullable<String> getConnectedTagId() {
     return connectedTagId;
@@ -240,7 +223,7 @@ public class IntegrationRecord {
    * @return externalBusinessId
    */
   
-  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("external_business_id")
   public JsonNullable<String> getExternalBusinessId() {
     return externalBusinessId;
@@ -281,7 +264,7 @@ public class IntegrationRecord {
    * @return partnerAccessToken
    */
   
-  @Schema(name = "partner_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_access_token")
   public JsonNullable<String> getPartnerAccessToken() {
     return partnerAccessToken;
@@ -301,7 +284,7 @@ public class IntegrationRecord {
    * @return partnerAccessTokenExpiry
    */
   
-  @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_access_token_expiry")
   public JsonNullable<Integer> getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
@@ -321,7 +304,7 @@ public class IntegrationRecord {
    * @return partnerMetadata
    */
   
-  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_metadata")
   public JsonNullable<String> getPartnerMetadata() {
     return partnerMetadata;
@@ -341,7 +324,7 @@ public class IntegrationRecord {
    * @return partnerPrimaryEmail
    */
   
-  @Schema(name = "partner_primary_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_primary_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_primary_email")
   public JsonNullable<String> getPartnerPrimaryEmail() {
     return partnerPrimaryEmail;
@@ -361,7 +344,7 @@ public class IntegrationRecord {
    * @return partnerRefreshToken
    */
   
-  @Schema(name = "partner_refresh_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_refresh_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_refresh_token")
   public JsonNullable<String> getPartnerRefreshToken() {
     return partnerRefreshToken;
@@ -381,7 +364,7 @@ public class IntegrationRecord {
    * @return partnerRefreshTokenExpiry
    */
   
-  @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_refresh_token_expiry")
   public JsonNullable<Integer> getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
@@ -401,7 +384,7 @@ public class IntegrationRecord {
    * @return scopes
    */
   
-  @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("scopes")
   public JsonNullable<String> getScopes() {
     return scopes;

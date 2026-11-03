@@ -17,7 +17,7 @@ import AuthRespondInviteAction from './AuthRespondInviteAction';
 /**
  * The AuthRespondInvitesBodyItem model module.
  * @module model/AuthRespondInvitesBodyItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AuthRespondInvitesBodyItem {
     /**

@@ -21,7 +21,7 @@ export const StandardPinMetricTypes = {
     TotalComments: 'TOTAL_COMMENTS',
     TotalReactions: 'TOTAL_REACTIONS',
     UserFollow: 'USER_FOLLOW',
-    ProfileVisit: 'PROFILE_VISIT'
+    ProfileVisit: 'PROFILE_VISIT',
 } as const;
 export type StandardPinMetricTypes = typeof StandardPinMetricTypes[keyof typeof StandardPinMetricTypes];
 

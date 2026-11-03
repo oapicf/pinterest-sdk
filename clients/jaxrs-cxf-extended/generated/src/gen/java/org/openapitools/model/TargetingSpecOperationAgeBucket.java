@@ -81,7 +81,6 @@ public enum OperationEnum {
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<TargetingSpecAgeBucket> values = new ArrayList<>();
  /**
   * Get field

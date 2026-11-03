@@ -32,17 +32,17 @@ import javax.annotation.Generated;
   CatalogsProductGroupFiltersRequestAnyOfItems0.JSON_PROPERTY_ANY_OF
 })
 @JsonTypeName("CatalogsProductGroupFiltersRequestAnyOfItems0")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsProductGroupFiltersRequestAnyOfItems0 {
     public static final String JSON_PROPERTY_ANY_OF = "any_of";
-    private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-    public CatalogsProductGroupFiltersRequestAnyOfItems0(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public CatalogsProductGroupFiltersRequestAnyOfItems0(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
-    public CatalogsProductGroupFiltersRequestAnyOfItems0 anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public CatalogsProductGroupFiltersRequestAnyOfItems0 anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
         return this;
     }
@@ -60,13 +60,13 @@ public class CatalogsProductGroupFiltersRequestAnyOfItems0 {
     @Size(min=1)
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 

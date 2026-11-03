@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class BillingInvoiceDocumentType
-{
-public:
-
-    BillingInvoiceDocumentType();
-    virtual ~BillingInvoiceDocumentType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingInvoiceDocumentType,
-        )
-
-private:
+enum class BillingInvoiceDocumentType {
+    
+    INVOICE,
+    
+    CREDIT_MEMO
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingInvoiceDocumentType& value)
+{
+    switch (value)
+    {
+        
+        case BillingInvoiceDocumentType::INVOICE: j = "INVOICE"; break;
+        
+        case BillingInvoiceDocumentType::CREDIT_MEMO: j = "CREDIT_MEMO"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceDocumentType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingInvoiceDocumentType& value)
+{
+    
+    if (j == "INVOICE")
+    {
+        value = BillingInvoiceDocumentType::INVOICE;
+        return;
+    }
+    
+    if (j == "CREDIT_MEMO")
+    {
+        value = BillingInvoiceDocumentType::CREDIT_MEMO;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceDocumentType", &j);
+}
 
 } // namespace models
 

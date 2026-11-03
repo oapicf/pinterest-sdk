@@ -255,3 +255,4 @@ class _$CampaignBidOptionsUpdateSerializer implements PrimitiveSerializer<Campai
   }
 }
 
+

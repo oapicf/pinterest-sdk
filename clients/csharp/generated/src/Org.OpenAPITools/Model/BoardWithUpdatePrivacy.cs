@@ -399,43 +399,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class BoardWithUpdatePrivacy.", nameof(id));
+                throw new JsonException("Property is required for class BoardWithUpdatePrivacy: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class BoardWithUpdatePrivacy.", nameof(name));
+                throw new JsonException("Property is required for class BoardWithUpdatePrivacy: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: name.");
 
             if (boardPinsModifiedAt.IsSet && boardPinsModifiedAt.Value == null)
-                throw new ArgumentNullException(nameof(boardPinsModifiedAt), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: board_pins_modified_at.");
 
             if (collaboratorCount.IsSet && collaboratorCount.Value == null)
-                throw new ArgumentNullException(nameof(collaboratorCount), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: collaborator_count.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: created_at.");
 
             if (followerCount.IsSet && followerCount.Value == null)
-                throw new ArgumentNullException(nameof(followerCount), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: follower_count.");
 
             if (isAdsOnly.IsSet && isAdsOnly.Value == null)
-                throw new ArgumentNullException(nameof(isAdsOnly), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: is_ads_only.");
 
             if (media.IsSet && media.Value == null)
-                throw new ArgumentNullException(nameof(media), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: media.");
 
             if (owner.IsSet && owner.Value == null)
-                throw new ArgumentNullException(nameof(owner), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: owner.");
 
             if (pinCount.IsSet && pinCount.Value == null)
-                throw new ArgumentNullException(nameof(pinCount), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: pin_count.");
 
             if (privacy.IsSet && privacy.Value == null)
-                throw new ArgumentNullException(nameof(privacy), "Property is not nullable for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacy: privacy.");
 
             return new BoardWithUpdatePrivacy(id.Value!, name.Value!, boardPinsModifiedAt, collaboratorCount, createdAt, description, followerCount, isAdsOnly, media, owner, pinCount, privacy);
         }
@@ -446,7 +446,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardWithUpdatePrivacy"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardWithUpdatePrivacy boardWithUpdatePrivacy, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -461,20 +460,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardWithUpdatePrivacy"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardWithUpdatePrivacy boardWithUpdatePrivacy, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (boardWithUpdatePrivacy.Id == null)
-                throw new ArgumentNullException(nameof(boardWithUpdatePrivacy.Id), "Property is required for class BoardWithUpdatePrivacy.");
+            if (boardWithUpdatePrivacy.BoardPinsModifiedAtOption.IsSet && boardWithUpdatePrivacy.BoardPinsModifiedAt == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.BoardPinsModifiedAt to non-nullable JSON property 'board_pins_modified_at'.");
 
-            if (boardWithUpdatePrivacy.Name == null)
-                throw new ArgumentNullException(nameof(boardWithUpdatePrivacy.Name), "Property is required for class BoardWithUpdatePrivacy.");
+            if (boardWithUpdatePrivacy.CollaboratorCountOption.IsSet && boardWithUpdatePrivacy.CollaboratorCount == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.CollaboratorCount to non-nullable JSON property 'collaborator_count'.");
+
+            if (boardWithUpdatePrivacy.CreatedAtOption.IsSet && boardWithUpdatePrivacy.CreatedAt == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.CreatedAt to non-nullable JSON property 'created_at'.");
+
+            if (boardWithUpdatePrivacy.FollowerCountOption.IsSet && boardWithUpdatePrivacy.FollowerCount == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.FollowerCount to non-nullable JSON property 'follower_count'.");
+
+            if (boardWithUpdatePrivacy.IsAdsOnlyOption.IsSet && boardWithUpdatePrivacy.IsAdsOnly == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.IsAdsOnly to non-nullable JSON property 'is_ads_only'.");
 
             if (boardWithUpdatePrivacy.MediaOption.IsSet && boardWithUpdatePrivacy.Media == null)
-                throw new ArgumentNullException(nameof(boardWithUpdatePrivacy.Media), "Property is required for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.Media to non-nullable JSON property 'media'.");
 
             if (boardWithUpdatePrivacy.OwnerOption.IsSet && boardWithUpdatePrivacy.Owner == null)
-                throw new ArgumentNullException(nameof(boardWithUpdatePrivacy.Owner), "Property is required for class BoardWithUpdatePrivacy.");
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.Owner to non-nullable JSON property 'owner'.");
+
+            if (boardWithUpdatePrivacy.PinCountOption.IsSet && boardWithUpdatePrivacy.PinCount == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.PinCount to non-nullable JSON property 'pin_count'.");
+
+            if (boardWithUpdatePrivacy.PrivacyOption.IsSet && boardWithUpdatePrivacy.Privacy == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacy.Privacy to non-nullable JSON property 'privacy'.");
 
             writer.WriteString("id", boardWithUpdatePrivacy.Id);
 

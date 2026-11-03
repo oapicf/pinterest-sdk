@@ -31,8 +31,6 @@ export interface TrendsGenderDistribution {
     [key: string]: number | any;
     /**
      * 
-     * @type {TrendsGender}
-     * @memberof TrendsGenderDistribution
      */
     genderDistribution?: TrendsGender;
 }

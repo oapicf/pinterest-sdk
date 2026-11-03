@@ -30,7 +30,7 @@ import SharedAudiencesForBusinessList200Response from '../model/SharedAudiencesF
 /**
 * AudienceSharing service.
 * @module api/AudienceSharingApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class AudienceSharingApi {
 

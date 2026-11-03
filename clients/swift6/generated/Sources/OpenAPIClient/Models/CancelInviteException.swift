@@ -10,7 +10,7 @@ import Foundation
 /** An exception object if there is an error performing the cancellation. It will only be provided if there is an error. */
 public struct CancelInviteException: Sendable, Codable, Hashable {
 
-    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var inviteId: String?
     public var message: String?
 

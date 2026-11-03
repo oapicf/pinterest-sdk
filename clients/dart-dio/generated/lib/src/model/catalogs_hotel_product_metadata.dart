@@ -105,3 +105,4 @@ class _$CatalogsHotelProductMetadataSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

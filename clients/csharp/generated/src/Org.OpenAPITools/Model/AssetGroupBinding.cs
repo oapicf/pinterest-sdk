@@ -293,58 +293,58 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountsIds.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(adAccountsIds));
+                throw new JsonException("Property is required for class AssetGroupBinding: ad_accounts_ids.");
 
             if (!assetGroupTypes.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(assetGroupTypes));
+                throw new JsonException("Property is required for class AssetGroupBinding: asset_group_types.");
 
             if (!catalogsIds.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(catalogsIds));
+                throw new JsonException("Property is required for class AssetGroupBinding: catalogs_ids.");
 
             if (!createdBy.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(createdBy));
+                throw new JsonException("Property is required for class AssetGroupBinding: created_by.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(id));
+                throw new JsonException("Property is required for class AssetGroupBinding: id.");
 
             if (!owner.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(owner));
+                throw new JsonException("Property is required for class AssetGroupBinding: owner.");
 
             if (!profilesIds.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(profilesIds));
+                throw new JsonException("Property is required for class AssetGroupBinding: profiles_ids.");
 
             if (!assetGroupDescription.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(assetGroupDescription));
+                throw new JsonException("Property is required for class AssetGroupBinding: asset_group_description.");
 
             if (!assetGroupName.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(assetGroupName));
+                throw new JsonException("Property is required for class AssetGroupBinding: asset_group_name.");
 
             if (!createdTime.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(createdTime));
+                throw new JsonException("Property is required for class AssetGroupBinding: created_time.");
 
             if (!updatedTime.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupBinding.", nameof(updatedTime));
+                throw new JsonException("Property is required for class AssetGroupBinding: updated_time.");
 
             if (adAccountsIds.IsSet && adAccountsIds.Value == null)
-                throw new ArgumentNullException(nameof(adAccountsIds), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: ad_accounts_ids.");
 
             if (assetGroupTypes.IsSet && assetGroupTypes.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupTypes), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: asset_group_types.");
 
             if (catalogsIds.IsSet && catalogsIds.Value == null)
-                throw new ArgumentNullException(nameof(catalogsIds), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: catalogs_ids.");
 
             if (createdBy.IsSet && createdBy.Value == null)
-                throw new ArgumentNullException(nameof(createdBy), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: created_by.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: id.");
 
             if (owner.IsSet && owner.Value == null)
-                throw new ArgumentNullException(nameof(owner), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: owner.");
 
             if (profilesIds.IsSet && profilesIds.Value == null)
-                throw new ArgumentNullException(nameof(profilesIds), "Property is not nullable for class AssetGroupBinding.");
+                throw new JsonException("Property is not nullable for class AssetGroupBinding: profiles_ids.");
 
             return new AssetGroupBinding(adAccountsIds.Value!, assetGroupTypes.Value!, catalogsIds.Value!, createdBy.Value!, id.Value!, owner.Value!, profilesIds.Value!, assetGroupDescription.Value!, assetGroupName.Value!, createdTime.Value!, updatedTime.Value!);
         }
@@ -355,7 +355,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupBinding assetGroupBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -370,30 +369,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupBinding assetGroupBinding, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (assetGroupBinding.AdAccountsIds == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.AdAccountsIds), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.AssetGroupTypes == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.AssetGroupTypes), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.CatalogsIds == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.CatalogsIds), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.CreatedBy == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.CreatedBy), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.Id == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.Id), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.Owner == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.Owner), "Property is required for class AssetGroupBinding.");
-
-            if (assetGroupBinding.ProfilesIds == null)
-                throw new ArgumentNullException(nameof(assetGroupBinding.ProfilesIds), "Property is required for class AssetGroupBinding.");
-
             writer.WritePropertyName("ad_accounts_ids");
             JsonSerializer.Serialize(writer, assetGroupBinding.AdAccountsIds, jsonSerializerOptions);
             writer.WritePropertyName("asset_group_types");

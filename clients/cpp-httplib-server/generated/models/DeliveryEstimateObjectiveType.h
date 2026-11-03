@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class DeliveryEstimateObjectiveType
-{
-public:
-
-    DeliveryEstimateObjectiveType();
-    virtual ~DeliveryEstimateObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(DeliveryEstimateObjectiveType,
-        )
-
-private:
+enum class DeliveryEstimateObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    CATALOG_SALES,
+    
+    WEB_CONVERSION
+    
 };
 
+inline void to_json(nlohmann::json& j, const DeliveryEstimateObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case DeliveryEstimateObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case DeliveryEstimateObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case DeliveryEstimateObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case DeliveryEstimateObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for DeliveryEstimateObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, DeliveryEstimateObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = DeliveryEstimateObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = DeliveryEstimateObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = DeliveryEstimateObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = DeliveryEstimateObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for DeliveryEstimateObjectiveType", &j);
+}
 
 } // namespace models
 

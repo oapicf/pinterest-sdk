@@ -32,7 +32,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   TrendingKeywordsResponse.JSON_PROPERTY_TRENDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingKeywordsResponse   {
   public static final String JSON_PROPERTY_TRENDS = "trends";
   @JsonProperty(JSON_PROPERTY_TRENDS)
@@ -57,7 +57,7 @@ public class TrendingKeywordsResponse   {
    **/
   @JsonProperty(value = "trends")
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.")
-  @Valid 
+  
   public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }

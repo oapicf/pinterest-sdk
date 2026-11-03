@@ -140,8 +140,6 @@ PIN_URL(String.valueOf("pin_url"));
   */
   @ApiModelProperty(required = true, value = "Array with image objects.")
 
-  @Valid
-
   private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
 
  /**

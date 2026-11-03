@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface DynamicTitlesGetStatus {
     /**
      * The count of generated titles.
-     * @type {number}
-     * @memberof DynamicTitlesGetStatus
      */
     generatedCount?: number;
     /**
      * Whether dynamic titles have been generated and are ready to be reviewed for the ad group.
-     * @type {boolean}
-     * @memberof DynamicTitlesGetStatus
      */
     isReady?: boolean;
     /**
      * The count of advertiser reviewed titles.
-     * @type {number}
-     * @memberof DynamicTitlesGetStatus
      */
     reviewedCount?: number;
 }

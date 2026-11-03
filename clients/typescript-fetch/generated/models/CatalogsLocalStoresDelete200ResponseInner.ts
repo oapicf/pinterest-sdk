@@ -29,14 +29,10 @@ import {
 export interface CatalogsLocalStoresDelete200ResponseInner {
     /**
      * The ID of the local store.
-     * @type {string}
-     * @memberof CatalogsLocalStoresDelete200ResponseInner
      */
     id: string;
     /**
      * 
-     * @type {CampaignAdPreviewDelete200ResponseInnerStatus}
-     * @memberof CatalogsLocalStoresDelete200ResponseInner
      */
     status: CampaignAdPreviewDelete200ResponseInnerStatus;
 }

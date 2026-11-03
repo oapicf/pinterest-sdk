@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'nullalble_match_type.g.dart';
 
+/// Keyword match type allowing null
 class NullalbleMatchType extends EnumClass {
 
-  /// Keyword match type allowing null
   @BuiltValueEnumConst(wireName: r'BROAD')
   static const NullalbleMatchType BROAD = _$BROAD;
-  /// Keyword match type allowing null
   @BuiltValueEnumConst(wireName: r'PHRASE')
   static const NullalbleMatchType PHRASE = _$PHRASE;
-  /// Keyword match type allowing null
   @BuiltValueEnumConst(wireName: r'EXACT')
   static const NullalbleMatchType EXACT = _$EXACT;
-  /// Keyword match type allowing null
   @BuiltValueEnumConst(wireName: r'EXACT_NEGATIVE')
   static const NullalbleMatchType EXACT_NEGATIVE = _$EXACT_NEGATIVE;
-  /// Keyword match type allowing null
   @BuiltValueEnumConst(wireName: r'PHRASE_NEGATIVE')
   static const NullalbleMatchType PHRASE_NEGATIVE = _$PHRASE_NEGATIVE;
 

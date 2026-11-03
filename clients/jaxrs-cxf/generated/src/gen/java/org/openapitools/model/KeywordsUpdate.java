@@ -24,8 +24,6 @@ public class KeywordsUpdate  {
   */
   @ApiModelProperty(value = "Keywords")
 
-  @Valid
-
   private List<@Valid KeywordUpdateItem> keywords = new ArrayList<>();
  /**
    * Keywords

@@ -59,7 +59,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface CatalogsApiService {
       Response catalogsAvailableFilterValues(String catalogId,String feedId,Country country,CatalogsLocale language,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
@@ -83,7 +83,7 @@ public interface CatalogsApiService {
       throws NotFoundException;
       Response catalogsProductGroupsCreate(CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
-      Response catalogsProductGroupsCreateMany(List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,String adAccountId,SecurityContext securityContext)
+      Response catalogsProductGroupsCreateMany(List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
       Response catalogsProductGroupsDelete(String productGroupId,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;

@@ -22,24 +22,24 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate   {
   
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
   private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
-  private ConversionProductAttributionType conversionProductAttributionType;
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
   private String endDate;
   private ConversionProductReportGranularity granularity;
   private ConversionProductReportLevel level;
   private List<@Pattern(regexp = "^[a-zA-Z0-9]+$")String> productSkuIds = new ArrayList<>();
   private String reportName;
   private String startDate;
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   /**
    *   List of ad group ids.   Only support ad_group_ids field when level of the report is AD_GROUP.

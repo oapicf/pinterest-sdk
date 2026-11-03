@@ -19,7 +19,7 @@ import ObjectiveType from './ObjectiveType';
 /**
  * The CampaignUpdateRequestAllOf2 model module.
  * @module model/CampaignUpdateRequestAllOf2
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignUpdateRequestAllOf2 {
     /**

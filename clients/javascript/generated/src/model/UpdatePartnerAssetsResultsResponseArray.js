@@ -17,7 +17,7 @@ import UpdatePartnerAssetsResult from './UpdatePartnerAssetsResult';
 /**
  * The UpdatePartnerAssetsResultsResponseArray model module.
  * @module model/UpdatePartnerAssetsResultsResponseArray
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdatePartnerAssetsResultsResponseArray {
     /**

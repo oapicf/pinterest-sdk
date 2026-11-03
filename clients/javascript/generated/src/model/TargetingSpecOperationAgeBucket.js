@@ -17,7 +17,7 @@ import TargetingSpecAgeBucket from './TargetingSpecAgeBucket';
 /**
  * The TargetingSpecOperationAgeBucket model module.
  * @module model/TargetingSpecOperationAgeBucket
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOperationAgeBucket {
     /**

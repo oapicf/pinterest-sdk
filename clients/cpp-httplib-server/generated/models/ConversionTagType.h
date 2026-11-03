@@ -12,24 +12,304 @@
 
 namespace models {
 
-
-class ConversionTagType
-{
-public:
-
-    ConversionTagType();
-    virtual ~ConversionTagType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionTagType,
-        )
-
-private:
+enum class ConversionTagType {
+    
+    PAGE_LOAD,
+    
+    UNKNOWN,
+    
+    INITIALIZED,
+    
+    PAGE_VISIT,
+    
+    SIGNUP,
+    
+    CHECKOUT,
+    
+    CUSTOM,
+    
+    VIEW_CATEGORY,
+    
+    SEARCH,
+    
+    ADD_TO_CART,
+    
+    WATCH_VIDEO,
+    
+    LEAD,
+    
+    APP_INSTALL,
+    
+    WEB_SESSION,
+    
+    EXTERNAL_MEASUREMENT,
+    
+    ADD_PAYMENT_INFO,
+    
+    ADD_TO_WISHLIST,
+    
+    INITIATE_CHECKOUT,
+    
+    SUBSCRIBE,
+    
+    VIEW_CONTENT,
+    
+    ADVERTISER_DEFINED_EVENT,
+    
+    APP_OPEN,
+    
+    CONTACT,
+    
+    SCHEDULE,
+    
+    FIND_LOCATION,
+    
+    CUSTOMIZE_PRODUCT,
+    
+    SUBMIT_APPLICATION,
+    
+    START_TRIAL
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionTagType& value)
+{
+    switch (value)
+    {
+        
+        case ConversionTagType::PAGE_LOAD: j = "PAGE_LOAD"; break;
+        
+        case ConversionTagType::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case ConversionTagType::INITIALIZED: j = "INITIALIZED"; break;
+        
+        case ConversionTagType::PAGE_VISIT: j = "PAGE_VISIT"; break;
+        
+        case ConversionTagType::SIGNUP: j = "SIGNUP"; break;
+        
+        case ConversionTagType::CHECKOUT: j = "CHECKOUT"; break;
+        
+        case ConversionTagType::CUSTOM: j = "CUSTOM"; break;
+        
+        case ConversionTagType::VIEW_CATEGORY: j = "VIEW_CATEGORY"; break;
+        
+        case ConversionTagType::SEARCH: j = "SEARCH"; break;
+        
+        case ConversionTagType::ADD_TO_CART: j = "ADD_TO_CART"; break;
+        
+        case ConversionTagType::WATCH_VIDEO: j = "WATCH_VIDEO"; break;
+        
+        case ConversionTagType::LEAD: j = "LEAD"; break;
+        
+        case ConversionTagType::APP_INSTALL: j = "APP_INSTALL"; break;
+        
+        case ConversionTagType::WEB_SESSION: j = "WEB_SESSION"; break;
+        
+        case ConversionTagType::EXTERNAL_MEASUREMENT: j = "EXTERNAL_MEASUREMENT"; break;
+        
+        case ConversionTagType::ADD_PAYMENT_INFO: j = "ADD_PAYMENT_INFO"; break;
+        
+        case ConversionTagType::ADD_TO_WISHLIST: j = "ADD_TO_WISHLIST"; break;
+        
+        case ConversionTagType::INITIATE_CHECKOUT: j = "INITIATE_CHECKOUT"; break;
+        
+        case ConversionTagType::SUBSCRIBE: j = "SUBSCRIBE"; break;
+        
+        case ConversionTagType::VIEW_CONTENT: j = "VIEW_CONTENT"; break;
+        
+        case ConversionTagType::ADVERTISER_DEFINED_EVENT: j = "ADVERTISER_DEFINED_EVENT"; break;
+        
+        case ConversionTagType::APP_OPEN: j = "APP_OPEN"; break;
+        
+        case ConversionTagType::CONTACT: j = "CONTACT"; break;
+        
+        case ConversionTagType::SCHEDULE: j = "SCHEDULE"; break;
+        
+        case ConversionTagType::FIND_LOCATION: j = "FIND_LOCATION"; break;
+        
+        case ConversionTagType::CUSTOMIZE_PRODUCT: j = "CUSTOMIZE_PRODUCT"; break;
+        
+        case ConversionTagType::SUBMIT_APPLICATION: j = "SUBMIT_APPLICATION"; break;
+        
+        case ConversionTagType::START_TRIAL: j = "START_TRIAL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionTagType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionTagType& value)
+{
+    
+    if (j == "PAGE_LOAD")
+    {
+        value = ConversionTagType::PAGE_LOAD;
+        return;
+    }
+    
+    if (j == "UNKNOWN")
+    {
+        value = ConversionTagType::UNKNOWN;
+        return;
+    }
+    
+    if (j == "INITIALIZED")
+    {
+        value = ConversionTagType::INITIALIZED;
+        return;
+    }
+    
+    if (j == "PAGE_VISIT")
+    {
+        value = ConversionTagType::PAGE_VISIT;
+        return;
+    }
+    
+    if (j == "SIGNUP")
+    {
+        value = ConversionTagType::SIGNUP;
+        return;
+    }
+    
+    if (j == "CHECKOUT")
+    {
+        value = ConversionTagType::CHECKOUT;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = ConversionTagType::CUSTOM;
+        return;
+    }
+    
+    if (j == "VIEW_CATEGORY")
+    {
+        value = ConversionTagType::VIEW_CATEGORY;
+        return;
+    }
+    
+    if (j == "SEARCH")
+    {
+        value = ConversionTagType::SEARCH;
+        return;
+    }
+    
+    if (j == "ADD_TO_CART")
+    {
+        value = ConversionTagType::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "WATCH_VIDEO")
+    {
+        value = ConversionTagType::WATCH_VIDEO;
+        return;
+    }
+    
+    if (j == "LEAD")
+    {
+        value = ConversionTagType::LEAD;
+        return;
+    }
+    
+    if (j == "APP_INSTALL")
+    {
+        value = ConversionTagType::APP_INSTALL;
+        return;
+    }
+    
+    if (j == "WEB_SESSION")
+    {
+        value = ConversionTagType::WEB_SESSION;
+        return;
+    }
+    
+    if (j == "EXTERNAL_MEASUREMENT")
+    {
+        value = ConversionTagType::EXTERNAL_MEASUREMENT;
+        return;
+    }
+    
+    if (j == "ADD_PAYMENT_INFO")
+    {
+        value = ConversionTagType::ADD_PAYMENT_INFO;
+        return;
+    }
+    
+    if (j == "ADD_TO_WISHLIST")
+    {
+        value = ConversionTagType::ADD_TO_WISHLIST;
+        return;
+    }
+    
+    if (j == "INITIATE_CHECKOUT")
+    {
+        value = ConversionTagType::INITIATE_CHECKOUT;
+        return;
+    }
+    
+    if (j == "SUBSCRIBE")
+    {
+        value = ConversionTagType::SUBSCRIBE;
+        return;
+    }
+    
+    if (j == "VIEW_CONTENT")
+    {
+        value = ConversionTagType::VIEW_CONTENT;
+        return;
+    }
+    
+    if (j == "ADVERTISER_DEFINED_EVENT")
+    {
+        value = ConversionTagType::ADVERTISER_DEFINED_EVENT;
+        return;
+    }
+    
+    if (j == "APP_OPEN")
+    {
+        value = ConversionTagType::APP_OPEN;
+        return;
+    }
+    
+    if (j == "CONTACT")
+    {
+        value = ConversionTagType::CONTACT;
+        return;
+    }
+    
+    if (j == "SCHEDULE")
+    {
+        value = ConversionTagType::SCHEDULE;
+        return;
+    }
+    
+    if (j == "FIND_LOCATION")
+    {
+        value = ConversionTagType::FIND_LOCATION;
+        return;
+    }
+    
+    if (j == "CUSTOMIZE_PRODUCT")
+    {
+        value = ConversionTagType::CUSTOMIZE_PRODUCT;
+        return;
+    }
+    
+    if (j == "SUBMIT_APPLICATION")
+    {
+        value = ConversionTagType::SUBMIT_APPLICATION;
+        return;
+    }
+    
+    if (j == "START_TRIAL")
+    {
+        value = ConversionTagType::START_TRIAL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionTagType", &j);
+}
 
 } // namespace models
 

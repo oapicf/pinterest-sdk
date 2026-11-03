@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class AdGroupsCreate200ResponseItemsInner.");
+                throw new JsonException("Property is not nullable for class AdGroupsCreate200ResponseItemsInner: data.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class AdGroupsCreate200ResponseItemsInner.");
+                throw new JsonException("Property is not nullable for class AdGroupsCreate200ResponseItemsInner: exceptions.");
 
             return new AdGroupsCreate200ResponseItemsInner(data, exceptions);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsCreate200ResponseItemsInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupsCreate200ResponseItemsInner adGroupsCreate200ResponseItemsInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsCreate200ResponseItemsInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupsCreate200ResponseItemsInner adGroupsCreate200ResponseItemsInner, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adGroupsCreate200ResponseItemsInner.DataOption.IsSet && adGroupsCreate200ResponseItemsInner.Data == null)
-                throw new ArgumentNullException(nameof(adGroupsCreate200ResponseItemsInner.Data), "Property is required for class AdGroupsCreate200ResponseItemsInner.");
+                throw new JsonException("Cannot write null property AdGroupsCreate200ResponseItemsInner.Data to non-nullable JSON property 'data'.");
 
             if (adGroupsCreate200ResponseItemsInner.ExceptionsOption.IsSet && adGroupsCreate200ResponseItemsInner.Exceptions == null)
-                throw new ArgumentNullException(nameof(adGroupsCreate200ResponseItemsInner.Exceptions), "Property is required for class AdGroupsCreate200ResponseItemsInner.");
+                throw new JsonException("Cannot write null property AdGroupsCreate200ResponseItemsInner.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (adGroupsCreate200ResponseItemsInner.DataOption.IsSet)
             {

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to `DIRECT_TO_DESTINATION` by default for direct links supported ads. `grid_click_type` values provided will be ignored.
-* Values: CLOSEUP,DIRECT_TO_DESTINATION
-*/
+ * Where a user is taken after clicking on an ad in grid.  **Note:**  This parameter is read-only and is set to `DIRECT_TO_DESTINATION` by default for direct links supported ads. `grid_click_type` values provided will be ignored.
+ * Values: CLOSEUP,DIRECT_TO_DESTINATION
+ */
 enum class GridClickType(@get:JsonValue val value: kotlin.String) {
 
     CLOSEUP("CLOSEUP"),
@@ -28,9 +28,8 @@ enum class GridClickType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): GridClickType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'GridClickType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'GridClickType'")
         }
     }
 }
-

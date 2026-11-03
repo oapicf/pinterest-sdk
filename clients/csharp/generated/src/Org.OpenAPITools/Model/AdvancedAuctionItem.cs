@@ -174,28 +174,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!bidOptions.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItem.", nameof(bidOptions));
+                throw new JsonException("Property is required for class AdvancedAuctionItem: bid_options.");
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItem.", nameof(country));
+                throw new JsonException("Property is required for class AdvancedAuctionItem: country.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItem.", nameof(itemId));
+                throw new JsonException("Property is required for class AdvancedAuctionItem: item_id.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItem.", nameof(language));
+                throw new JsonException("Property is required for class AdvancedAuctionItem: language.");
 
             if (bidOptions.IsSet && bidOptions.Value == null)
-                throw new ArgumentNullException(nameof(bidOptions), "Property is not nullable for class AdvancedAuctionItem.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItem: bid_options.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdvancedAuctionItem.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItem: country.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class AdvancedAuctionItem.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItem: item_id.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class AdvancedAuctionItem.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItem: language.");
 
             return new AdvancedAuctionItem(bidOptions.Value!, country.Value!.Value!, itemId.Value!, language.Value!.Value!);
         }
@@ -206,7 +206,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionItem advancedAuctionItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -221,15 +220,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionItem advancedAuctionItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advancedAuctionItem.BidOptions == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItem.BidOptions), "Property is required for class AdvancedAuctionItem.");
-
-            if (advancedAuctionItem.ItemId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItem.ItemId), "Property is required for class AdvancedAuctionItem.");
-
             writer.WritePropertyName("bid_options");
             JsonSerializer.Serialize(writer, advancedAuctionItem.BidOptions, jsonSerializerOptions);
             var countryRawValue = CountryValueConverter.ToJsonValue(advancedAuctionItem.Country);

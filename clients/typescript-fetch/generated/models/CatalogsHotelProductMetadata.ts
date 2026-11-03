@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelProductMetadata {
     /**
      * The user-created unique ID that represents the hotel item.
-     * @type {string}
-     * @memberof CatalogsHotelProductMetadata
      */
     hotelId: string;
 }

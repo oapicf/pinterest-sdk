@@ -43,20 +43,14 @@ import {
 export interface AssetGroupModificationReadOrUpdate {
     /**
      * A list of asset groups and the data that will be used to update them.
-     * @type {Array<AssetGroupUpdateItemReadOrUpdateItem>}
-     * @memberof AssetGroupModificationReadOrUpdate
      */
     assetGroupsToUpdate?: Array<AssetGroupUpdateItemReadOrUpdateItem>;
     /**
      * A list of errors associated with the asset groups. Will be returned if there is an error.
-     * @type {Array<AssetGroupUpdateError>}
-     * @memberof AssetGroupModificationReadOrUpdate
      */
     readonly exceptions?: Array<AssetGroupUpdateError>;
     /**
      * A list of successfully edited asset groups.
-     * @type {Array<AssetGroupBinding>}
-     * @memberof AssetGroupModificationReadOrUpdate
      */
     readonly updatedAssetGroups?: Array<AssetGroupBinding>;
 }

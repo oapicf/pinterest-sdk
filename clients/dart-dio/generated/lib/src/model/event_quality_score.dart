@@ -177,3 +177,4 @@ class _$EventQualityScoreSerializer implements PrimitiveSerializer<EventQualityS
   }
 }
 
+

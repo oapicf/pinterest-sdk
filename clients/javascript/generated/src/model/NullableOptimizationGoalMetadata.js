@@ -19,7 +19,7 @@ import ScrollupGoalMetadata from './ScrollupGoalMetadata';
 /**
  * The NullableOptimizationGoalMetadata model module.
  * @module model/NullableOptimizationGoalMetadata
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class NullableOptimizationGoalMetadata {
     /**

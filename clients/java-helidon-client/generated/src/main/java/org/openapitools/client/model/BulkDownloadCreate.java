@@ -44,7 +44,7 @@ public class BulkDownloadCreate  {
   **/
   private List<BulkEntityType> entityTypes = null;
 
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
  /**
    * Unix UTC timestamp to retrieve all entities that have changed since this time.

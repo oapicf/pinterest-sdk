@@ -24,12 +24,12 @@ data class CustomerListUploadCreateResponse(
 
     @field:Valid
     @Schema(required = true, description = "The Customer List Upload created.")
-    @param:JsonProperty("customer_list_upload")
+    @param:JsonProperty("customer_list_upload", required = true)
     @get:JsonProperty("customer_list_upload", required = true) val customerListUpload: CustomerListUpload,
 
     @field:Valid
     @Schema(required = true, description = "Pre-signed upload URLs corresponding to each part of the upload.")
-    @param:JsonProperty("s3_multipart_upload_data")
+    @param:JsonProperty("s3_multipart_upload_data", required = true)
     @get:JsonProperty("s3_multipart_upload_data", required = true) val s3MultipartUploadData: S3MultipartUploadData
 ) {
 

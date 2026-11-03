@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* An internal role type used on business access, EMPLOYEE, ADMIN.
-* Values: UNKNOWN,OWNER,ADMIN,ANALYST,SOS_READER,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,RESTRICTED_OWNER,PROFILE_MANAGER,PROFILE_PUBLISHER,RESOURCE_PINNER_LIST_OWNER,RESOURCE_PINNER_LIST_READER,BIZ_PINNER_LIST_SHARER,RESOURCE_CONVERSION_TAGS_READER
-*/
+ * An internal role type used on business access, EMPLOYEE, ADMIN.
+ * Values: UNKNOWN,OWNER,ADMIN,ANALYST,SOS_READER,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,RESTRICTED_OWNER,PROFILE_MANAGER,PROFILE_PUBLISHER,RESOURCE_PINNER_LIST_OWNER,RESOURCE_PINNER_LIST_READER,BIZ_PINNER_LIST_SHARER,RESOURCE_CONVERSION_TAGS_READER
+ */
 enum class Role(@get:JsonValue val value: kotlin.String) {
 
     UNKNOWN("UNKNOWN"),
@@ -45,9 +45,8 @@ enum class Role(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): Role {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Role'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Role'")
         }
     }
 }
-

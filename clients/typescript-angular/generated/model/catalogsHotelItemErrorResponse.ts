@@ -30,11 +30,11 @@ export interface CatalogsHotelItemErrorResponse {
 }
 export namespace CatalogsHotelItemErrorResponse {
     export const CatalogTypeEnum = {
-        Hotel: 'HOTEL'
+        Hotel: 'HOTEL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
     export const ItemResponseKindEnum = {
-        HotelItemError: 'hotel_item_error'
+        HotelItemError: 'hotel_item_error',
     } as const;
     export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }

@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class AgeRange
-{
-public:
-
-    AgeRange();
-    virtual ~AgeRange() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AgeRange,
-        )
-
-private:
+enum class AgeRange {
+    
+    _18_24,
+    
+    _25_34,
+    
+    _35_44,
+    
+    _45_49,
+    
+    _50_54,
+    
+    _55_64,
+    
+    _65_
+    
 };
 
+inline void to_json(nlohmann::json& j, const AgeRange& value)
+{
+    switch (value)
+    {
+        
+        case AgeRange::_18_24: j = "18-24"; break;
+        
+        case AgeRange::_25_34: j = "25-34"; break;
+        
+        case AgeRange::_35_44: j = "35-44"; break;
+        
+        case AgeRange::_45_49: j = "45-49"; break;
+        
+        case AgeRange::_50_54: j = "50-54"; break;
+        
+        case AgeRange::_55_64: j = "55-64"; break;
+        
+        case AgeRange::_65_: j = "65+"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AgeRange", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AgeRange& value)
+{
+    
+    if (j == "18-24")
+    {
+        value = AgeRange::_18_24;
+        return;
+    }
+    
+    if (j == "25-34")
+    {
+        value = AgeRange::_25_34;
+        return;
+    }
+    
+    if (j == "35-44")
+    {
+        value = AgeRange::_35_44;
+        return;
+    }
+    
+    if (j == "45-49")
+    {
+        value = AgeRange::_45_49;
+        return;
+    }
+    
+    if (j == "50-54")
+    {
+        value = AgeRange::_50_54;
+        return;
+    }
+    
+    if (j == "55-64")
+    {
+        value = AgeRange::_55_64;
+        return;
+    }
+    
+    if (j == "65+")
+    {
+        value = AgeRange::_65_;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AgeRange", &j);
+}
 
 } // namespace models
 

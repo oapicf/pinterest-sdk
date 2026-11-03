@@ -30,8 +30,6 @@ public class PinMediaSourceImagesURL  {
   */
   @ApiModelProperty(required = true, value = "Array with image objects.")
 
-  @Valid
-
   private List<@Valid PinMediaSourceImagesURLItem> items = new ArrayList<>();
 
 public enum SourceTypeEnum {

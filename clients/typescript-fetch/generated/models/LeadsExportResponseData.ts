@@ -29,14 +29,10 @@ import {
 export interface LeadsExportResponseData {
     /**
      * 
-     * @type {string}
-     * @memberof LeadsExportResponseData
      */
     downloadUrl?: string | null;
     /**
      * 
-     * @type {LeadsExportStatus}
-     * @memberof LeadsExportResponseData
      */
     exportStatus?: LeadsExportStatus;
 }

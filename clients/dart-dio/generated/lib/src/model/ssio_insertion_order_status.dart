@@ -86,6 +86,7 @@ class _$SSIOInsertionOrderStatusSerializer implements PrimitiveSerializer<SSIOIn
   }
 }
 
+
 /// a concrete implementation of [SSIOInsertionOrderStatus], since [SSIOInsertionOrderStatus] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $SSIOInsertionOrderStatus implements SSIOInsertionOrderStatus, Built<$SSIOInsertionOrderStatus, $SSIOInsertionOrderStatusBuilder> {

@@ -29,14 +29,10 @@ import {
 export interface IntegrationsGetList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationsGetList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<IntegrationRecord>}
-     * @memberof IntegrationsGetList200Response
      */
     items: Array<IntegrationRecord>;
 }

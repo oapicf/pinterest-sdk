@@ -6,20 +6,3 @@
 */
 #include "DiscountStatus.h"
 
-namespace models {
-
-DiscountStatus::DiscountStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

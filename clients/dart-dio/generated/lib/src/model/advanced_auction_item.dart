@@ -158,3 +158,4 @@ class _$AdvancedAuctionItemSerializer implements PrimitiveSerializer<AdvancedAuc
   }
 }
 
+

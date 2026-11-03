@@ -50,32 +50,22 @@ import {
 export interface TargetingSpec {
     /**
      * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
-     * @type {Array<TargetingSpecAgeBucket>}
-     * @memberof TargetingSpec
      */
     aGEBUCKET?: Array<TargetingSpecAgeBucket> | null;
     /**
      * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-     * @type {Array<TargetingSpecAppType>}
-     * @memberof TargetingSpec
      */
     aPPTYPE?: Array<TargetingSpecAppType> | null;
     /**
      * Excluded customer list IDs. Used to drive new customer acquisition goals. For example: ["2542620905475"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     aUDIENCEEXCLUDE?: Array<string> | null;
     /**
      * Targeted customer list IDs. For example: ["2542620905473"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     aUDIENCEINCLUDE?: Array<string> | null;
     /**
      * Targeted genders. Values: ["unknown","male","female"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-     * @type {Array<TargetingSpecGender>}
-     * @memberof TargetingSpec
      */
     gENDER?: Array<TargetingSpecGender> | null;
     /**
@@ -83,62 +73,42 @@ export interface TargetingSpec {
      * <code>"geo": {</code><br /> <code>"region_codes": ["US-CA"]</code><br /> <code>}</code><br /><br />
      * <code>"geo": {</code><br /> <code>"postal_codes": ["94103"]</code><br /> <code>}</code><br /><br />
      * For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href="/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones" target="_blank">get a current, complete list of codes</a>.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     gEO?: Array<string> | null;
     /**
      * Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     gEOEXCLUDE?: Array<string>;
     /**
      * Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     iNTEREST?: Array<string>;
     /**
      * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     lOCALE?: Array<string> | null;
     /**
      * Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>"location": {</code><br /> <code>"country_codes": ["US", "CA"],</code><br /> <code>"metro_codes": ["501", "602"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href="/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones" target="_blank">get a current, complete list of codes</a>.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     lOCATION?: Array<string> | null;
     /**
      * Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.
-     * @type {Array<string>}
-     * @memberof TargetingSpec
      */
     lOCATIONEXCLUDE?: Array<string>;
     /**
      * Maximum age to target (inclusive). Values: "18", "19", ..., "65", "65+". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-     * @type {string}
-     * @memberof TargetingSpec
      */
     mAXIMUMAGE?: string;
     /**
      * Minimum age to target (inclusive). Values: "18", "19", ..., "65". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-     * @type {string}
-     * @memberof TargetingSpec
      */
     mINIMUMAGE?: string;
     /**
      * Array of object: lookback_window	[Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-     * @type {Array<TargetingSpecShoppingRetargeting>}
-     * @memberof TargetingSpec
      */
     sHOPPINGRETARGETING?: Array<TargetingSpecShoppingRetargeting> | null;
     /**
      * 
-     * @type {Array<TargetingSpecTARGETINGSTRATEGYEnum>}
-     * @memberof TargetingSpec
      */
     tARGETINGSTRATEGY?: Array<TargetingSpecTARGETINGSTRATEGYEnum> | null;
 }
@@ -150,7 +120,7 @@ export interface TargetingSpec {
 export const TargetingSpecTARGETINGSTRATEGYEnum = {
     ChooseYourOwn: 'CHOOSE_YOUR_OWN',
     FindNewCustomers: 'FIND_NEW_CUSTOMERS',
-    ReconnectWithUsers: 'RECONNECT_WITH_USERS'
+    ReconnectWithUsers: 'RECONNECT_WITH_USERS',
 } as const;
 export type TargetingSpecTARGETINGSTRATEGYEnum = typeof TargetingSpecTARGETINGSTRATEGYEnum[keyof typeof TargetingSpecTARGETINGSTRATEGYEnum];
 

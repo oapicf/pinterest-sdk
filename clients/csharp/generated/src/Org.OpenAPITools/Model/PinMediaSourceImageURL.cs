@@ -208,7 +208,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourceImageURL.SourceTypeEnum?>(PinMediaSourceImageURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourceImageURL.SourceTypeEnum? sourceTypeValue = PinMediaSourceImageURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourceImageURL.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "url":
                             url = new Option<string?>(utf8JsonReader.GetString()!);
@@ -223,19 +228,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImageURL.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourceImageURL: source_type.");
 
             if (!url.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImageURL.", nameof(url));
+                throw new JsonException("Property is required for class PinMediaSourceImageURL: url.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourceImageURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageURL: source_type.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class PinMediaSourceImageURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageURL: url.");
 
             if (isStandard.IsSet && isStandard.Value == null)
-                throw new ArgumentNullException(nameof(isStandard), "Property is not nullable for class PinMediaSourceImageURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageURL: is_standard.");
 
             return new PinMediaSourceImageURL(sourceType.Value!.Value!, url.Value!, isStandard);
         }
@@ -246,7 +251,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImageURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImageURL pinMediaSourceImageURL, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -261,11 +265,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImageURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImageURL pinMediaSourceImageURL, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImageURL.Url == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImageURL.Url), "Property is required for class PinMediaSourceImageURL.");
+            if (pinMediaSourceImageURL.IsStandardOption.IsSet && pinMediaSourceImageURL.IsStandard == null)
+                throw new JsonException("Cannot write null property PinMediaSourceImageURL.IsStandard to non-nullable JSON property 'is_standard'.");
 
             var sourceTypeRawValue = PinMediaSourceImageURL.SourceTypeEnumToJsonValue(pinMediaSourceImageURL.SourceType);
             writer.WriteString("source_type", sourceTypeRawValue);

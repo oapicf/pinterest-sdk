@@ -20,7 +20,6 @@ public class CatalogsLocalStoresList200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid LocalStore> items = new ArrayList<>();
  /**
   * Get bookmark

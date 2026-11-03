@@ -37,7 +37,7 @@ import javax.annotation.Generated;
   BusinessMemberAssetsGetResponse.JSON_PROPERTY_TOTAL_DATA_COUNT_BY_STATUS
 })
 @JsonTypeName("BusinessMemberAssetsGetResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BusinessMemberAssetsGetResponse {
     public static final String JSON_PROPERTY_BOOKMARK = "bookmark";

@@ -29,75 +29,51 @@ import {
 export interface Account {
     /**
      * Profile about description.
-     * @type {string}
-     * @memberof Account
      */
     about?: string;
     /**
      * Type of account
-     * @type {UserAccountType}
-     * @memberof Account
      */
     accountType?: UserAccountType;
     /**
      *   User account board count.
      *   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
-     * @type {number}
-     * @memberof Account
      */
     readonly boardCount?: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof Account
      */
     businessName?: string | null;
     /**
      * User account follower count.
-     * @type {number}
-     * @memberof Account
      */
     readonly followerCount?: number | null;
     /**
      * User account following count.
-     * @type {number}
-     * @memberof Account
      */
     readonly followingCount?: number | null;
     /**
      * User account ID.
-     * @type {string}
-     * @memberof Account
      */
     id?: string;
     /**
      * User account monthly views.
-     * @type {number}
-     * @memberof Account
      */
     readonly monthlyViews?: number | null;
     /**
      * User account pin count. This includes both created and saved pins.
-     * @type {number}
-     * @memberof Account
      */
     readonly pinCount?: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof Account
      */
     profileImage?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Account
      */
     username?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Account
      */
     websiteUrl?: string;
 }

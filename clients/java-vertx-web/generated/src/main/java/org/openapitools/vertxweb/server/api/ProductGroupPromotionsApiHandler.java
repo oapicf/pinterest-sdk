@@ -63,7 +63,7 @@ public class ProductGroupPromotionsApiHandler {
         ProductGroupPromotionsCreate productGroupPromotionsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter productGroupPromotionsCreate is {}", productGroupPromotionsCreate);
+        logger.debug("Parameter productGroupPromotionsCreate is (body omitted)");
 
         api.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate)
             .onSuccess(apiResponse -> {
@@ -146,7 +146,7 @@ public class ProductGroupPromotionsApiHandler {
         ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductGroupPromotionsUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter productGroupPromotionsUpdateWithRequiredBody is {}", productGroupPromotionsUpdateWithRequiredBody);
+        logger.debug("Parameter productGroupPromotionsUpdateWithRequiredBody is (body omitted)");
 
         api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {

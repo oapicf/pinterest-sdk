@@ -51,10 +51,10 @@ class SchedulesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -118,19 +118,19 @@ class SchedulesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'entityIds' => [
+                'entity_ids' => [
                     'required',
                     'min:1',
                     'array',
@@ -138,17 +138,17 @@ class SchedulesController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'scheduleStatuses' => [
+                'schedule_statuses' => [
                     'array',
                 ],
-                'scheduleType' => [
+                'schedule_type' => [
                 ],
             ],
         );
@@ -158,15 +158,15 @@ class SchedulesController extends Controller
         }
 
 
-        $entityIds = $request->get('entityIds');
+        $entityIds = $request->get('entity_ids');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $scheduleStatuses = $request->get('scheduleStatuses');
+        $scheduleStatuses = $request->get('schedule_statuses');
 
         $scheduleType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ScheduleType::class);
 
@@ -215,10 +215,10 @@ class SchedulesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

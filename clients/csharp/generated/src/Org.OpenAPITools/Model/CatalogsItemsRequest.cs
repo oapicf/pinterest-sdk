@@ -1690,7 +1690,12 @@ namespace Org.OpenAPITools.Model
                         case "language":
                             string? languageRawValue = utf8JsonReader.GetString();
                             if (languageRawValue != null)
-                                language = new Option<CatalogsItemsRequest.LanguageEnum?>(CatalogsItemsRequest.LanguageEnumFromStringOrDefault(languageRawValue));
+                            {
+                                CatalogsItemsRequest.LanguageEnum? languageValue = CatalogsItemsRequest.LanguageEnumFromStringOrDefault(languageRawValue);
+                                if (languageValue == null)
+                                    throw new JsonException();
+                                language = new Option<CatalogsItemsRequest.LanguageEnum?>(languageValue);
+                            }
                             break;
                         default:
                             break;
@@ -1699,22 +1704,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsRequest.", nameof(country));
+                throw new JsonException("Property is required for class CatalogsItemsRequest: country.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsItemsRequest: filters.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsRequest.", nameof(language));
+                throw new JsonException("Property is required for class CatalogsItemsRequest: language.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsItemsRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsRequest: country.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsItemsRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsRequest: filters.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class CatalogsItemsRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsRequest: language.");
 
             return new CatalogsItemsRequest(country.Value!.Value!, filters.Value!, language.Value!.Value!);
         }
@@ -1725,7 +1730,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemsRequest catalogsItemsRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1740,12 +1744,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemsRequest catalogsItemsRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsItemsRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsItemsRequest.Filters), "Property is required for class CatalogsItemsRequest.");
-
             var countryRawValue = CountryValueConverter.ToJsonValue(catalogsItemsRequest.Country);
             writer.WriteString("country", countryRawValue);
 

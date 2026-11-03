@@ -56,7 +56,7 @@ import javax.validation.Valid;
   PinMediaSource.JSON_PROPERTY_ITEMS,
   PinMediaSource.JSON_PROPERTY_IS_AFFILIATE_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "image_base64"),
   @JsonSubTypes.Type(value = PinMediaSourceImageURL.class, name = "image_url"),
@@ -393,7 +393,7 @@ public class PinMediaSource   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with image objects.")
-  @NotNull @Valid  @Size(min=2,max=5)
+  @NotNull  @Size(min=2,max=5)
   public List<@Valid PinMediaSourceImagesURLItem> getItems() {
     return items;
   }

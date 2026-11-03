@@ -137,7 +137,7 @@ public interface AdGroupsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public AdGroupsCreate200Response adGroupsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid List<@Valid AdGroupCreateCreate> adGroupCreateCreate);
+    public AdGroupsCreate200Response adGroupsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, List<@Valid AdGroupCreateCreate> adGroupCreateCreate);
 
     /**
      * Get dynamic titles CSV download URL
@@ -300,7 +300,7 @@ public interface AdGroupsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public AdGroupsCreate200Response adGroupsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate);
+    public AdGroupsCreate200Response adGroupsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate);
 
     /**
      * List of ad groups using promotions IDs.

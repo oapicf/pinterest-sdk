@@ -36,14 +36,10 @@ import {
 export interface InviteActionResultItem {
     /**
      * 
-     * @type {InviteExceptionResponse}
-     * @memberof InviteActionResultItem
      */
     exception?: InviteExceptionResponse | null;
     /**
      * 
-     * @type {InviteBusinessRoleBinding}
-     * @memberof InviteActionResultItem
      */
     invite?: InviteBusinessRoleBinding | null;
 }

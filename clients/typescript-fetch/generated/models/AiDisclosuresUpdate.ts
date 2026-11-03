@@ -29,8 +29,6 @@ import {
 export interface AiDisclosuresUpdate {
     /**
      * List of AI disclosure declarations the creator has made about this Pin.
-     * @type {Array<AiDisclosureItem>}
-     * @memberof AiDisclosuresUpdate
      */
     values?: Array<AiDisclosureItem>;
 }

@@ -246,19 +246,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResult: asset_id.");
 
             if (assetType.IsSet && assetType.Value == null)
-                throw new ArgumentNullException(nameof(assetType), "Property is not nullable for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResult: asset_type.");
 
             if (isSharedPartner.IsSet && isSharedPartner.Value == null)
-                throw new ArgumentNullException(nameof(isSharedPartner), "Property is not nullable for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResult: is_shared_partner.");
 
             if (partnerId.IsSet && partnerId.Value == null)
-                throw new ArgumentNullException(nameof(partnerId), "Property is not nullable for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResult: partner_id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessResult: permissions.");
 
             return new DeletePartnerAssetAccessResult(assetId, assetType, isSharedPartner, partnerId, permissions);
         }
@@ -269,7 +269,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeletePartnerAssetAccessResult deletePartnerAssetAccessResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -284,20 +283,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeletePartnerAssetAccessResult deletePartnerAssetAccessResult, JsonSerializerOptions jsonSerializerOptions)
         {
             if (deletePartnerAssetAccessResult.AssetIdOption.IsSet && deletePartnerAssetAccessResult.AssetId == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessResult.AssetId), "Property is required for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResult.AssetId to non-nullable JSON property 'asset_id'.");
 
             if (deletePartnerAssetAccessResult.AssetTypeOption.IsSet && deletePartnerAssetAccessResult.AssetType == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessResult.AssetType), "Property is required for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResult.AssetType to non-nullable JSON property 'asset_type'.");
+
+            if (deletePartnerAssetAccessResult.IsSharedPartnerOption.IsSet && deletePartnerAssetAccessResult.IsSharedPartner == null)
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResult.IsSharedPartner to non-nullable JSON property 'is_shared_partner'.");
 
             if (deletePartnerAssetAccessResult.PartnerIdOption.IsSet && deletePartnerAssetAccessResult.PartnerId == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessResult.PartnerId), "Property is required for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResult.PartnerId to non-nullable JSON property 'partner_id'.");
 
             if (deletePartnerAssetAccessResult.PermissionsOption.IsSet && deletePartnerAssetAccessResult.Permissions == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessResult.Permissions), "Property is required for class DeletePartnerAssetAccessResult.");
+                throw new JsonException("Cannot write null property DeletePartnerAssetAccessResult.Permissions to non-nullable JSON property 'permissions'.");
 
             if (deletePartnerAssetAccessResult.AssetIdOption.IsSet)
                 writer.WriteString("asset_id", deletePartnerAssetAccessResult.AssetId);

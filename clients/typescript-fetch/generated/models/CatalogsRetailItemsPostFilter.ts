@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsRetailItemsPostFilter {
     /**
      * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-     * @type {string}
-     * @memberof CatalogsRetailItemsPostFilter
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsRetailItemsPostFilterCatalogTypeEnum}
-     * @memberof CatalogsRetailItemsPostFilter
      */
     catalogType: CatalogsRetailItemsPostFilterCatalogTypeEnum;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsRetailItemsPostFilter
      */
     itemIds: Array<string>;
 }
@@ -44,7 +38,7 @@ export interface CatalogsRetailItemsPostFilter {
  * @export
  */
 export const CatalogsRetailItemsPostFilterCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailItemsPostFilterCatalogTypeEnum = typeof CatalogsRetailItemsPostFilterCatalogTypeEnum[keyof typeof CatalogsRetailItemsPostFilterCatalogTypeEnum];
 

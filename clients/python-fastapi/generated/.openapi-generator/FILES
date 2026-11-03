@@ -1222,9 +1222,3 @@ src/openapi_server/models/website_verification_method.py
 src/openapi_server/models/workload_state.py
 src/openapi_server/security_api.py
 tests/conftest.py
-tests/test_catalog_supplemental_api.py
-tests/test_conversion_deletion_requests_api.py
-tests/test_customer_segment_api.py
-tests/test_product_tags_api.py
-tests/test_schedules_api.py
-tests/test_trends_api.py

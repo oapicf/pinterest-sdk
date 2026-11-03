@@ -22,20 +22,17 @@ import jakarta.annotation.Generated;
  * AssetGroupBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupBinding {
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
 
   private JsonNullable<String> assetGroupDescription = JsonNullable.<String>undefined();
 
   private JsonNullable<String> assetGroupName = JsonNullable.<String>undefined();
 
-  @Valid
   private List<String> assetGroupTypes = new ArrayList<>();
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
 
   private BusinessAccessUserSummary createdBy;
@@ -46,7 +43,6 @@ public class AssetGroupBinding {
 
   private BusinessAccessUserSummary owner;
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
 
   private JsonNullable<Integer> updatedTime = JsonNullable.<Integer>undefined();
@@ -109,7 +105,7 @@ public class AssetGroupBinding {
    * Asset group description
    * @return assetGroupDescription
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "asset_group_description", example = "Asset group that has ad accounts used in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_description")
   public JsonNullable<String> getAssetGroupDescription() {
@@ -129,7 +125,7 @@ public class AssetGroupBinding {
    * Asset Group name
    * @return assetGroupName
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_name")
   public JsonNullable<String> getAssetGroupName() {
@@ -225,7 +221,7 @@ public class AssetGroupBinding {
    * The creation time of the asset group
    * @return createdTime
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "created_time", example = "1646767577816", description = "The creation time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_time")
   public JsonNullable<Integer> getCreatedTime() {
@@ -313,7 +309,7 @@ public class AssetGroupBinding {
    * The last update time of the asset group
    * @return updatedTime
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "updated_time", example = "1646767577816", description = "The last update time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("updated_time")
   public JsonNullable<Integer> getUpdatedTime() {

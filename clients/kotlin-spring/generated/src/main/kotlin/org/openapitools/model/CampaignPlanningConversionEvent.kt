@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Conversion event for which a conversion rate estimate is computed.
-* Values: SIGNUP,CHECKOUT,ADD_TO_CART,LEAD
-*/
+ * Conversion event for which a conversion rate estimate is computed.
+ * Values: SIGNUP,CHECKOUT,ADD_TO_CART,LEAD
+ */
 enum class CampaignPlanningConversionEvent(@get:JsonValue val value: kotlin.String) {
 
     SIGNUP("SIGNUP"),
@@ -30,9 +30,8 @@ enum class CampaignPlanningConversionEvent(@get:JsonValue val value: kotlin.Stri
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningConversionEvent {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConversionEvent'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConversionEvent'")
         }
     }
 }
-

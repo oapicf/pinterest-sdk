@@ -6,20 +6,3 @@
 */
 #include "TrendsGenderFilter.h"
 
-namespace models {
-
-TrendsGenderFilter::TrendsGenderFilter()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

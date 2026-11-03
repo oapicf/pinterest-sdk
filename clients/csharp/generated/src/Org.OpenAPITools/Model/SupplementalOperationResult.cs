@@ -258,7 +258,12 @@ namespace Org.OpenAPITools.Model
                         case "supplemental_type":
                             string? supplementalTypeRawValue = utf8JsonReader.GetString();
                             if (supplementalTypeRawValue != null)
-                                supplementalType = new Option<SupplementalOperationResult.SupplementalTypeEnum?>(SupplementalOperationResult.SupplementalTypeEnumFromStringOrDefault(supplementalTypeRawValue));
+                            {
+                                SupplementalOperationResult.SupplementalTypeEnum? supplementalTypeValue = SupplementalOperationResult.SupplementalTypeEnumFromStringOrDefault(supplementalTypeRawValue);
+                                if (supplementalTypeValue == null)
+                                    throw new JsonException();
+                                supplementalType = new Option<SupplementalOperationResult.SupplementalTypeEnum?>(supplementalTypeValue);
+                            }
                             break;
                         case "errors":
                             errors = new Option<List<SupplementalItemValidationEvent>?>(JsonSerializer.Deserialize<List<SupplementalItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -273,34 +278,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalOperationResult.", nameof(itemId));
+                throw new JsonException("Property is required for class SupplementalOperationResult: item_id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalOperationResult.", nameof(status));
+                throw new JsonException("Property is required for class SupplementalOperationResult: status.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalOperationResult.", nameof(storeCode));
+                throw new JsonException("Property is required for class SupplementalOperationResult: store_code.");
 
             if (!supplementalType.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalOperationResult.", nameof(supplementalType));
+                throw new JsonException("Property is required for class SupplementalOperationResult: supplemental_type.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: item_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: status.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: store_code.");
 
             if (supplementalType.IsSet && supplementalType.Value == null)
-                throw new ArgumentNullException(nameof(supplementalType), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: supplemental_type.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: errors.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class SupplementalOperationResult.");
+                throw new JsonException("Property is not nullable for class SupplementalOperationResult: warnings.");
 
             return new SupplementalOperationResult(itemId.Value!, status.Value!.Value!, storeCode.Value!, supplementalType.Value!.Value!, errors, warnings);
         }
@@ -311,7 +316,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="supplementalOperationResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SupplementalOperationResult supplementalOperationResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -326,20 +330,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="supplementalOperationResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SupplementalOperationResult supplementalOperationResult, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (supplementalOperationResult.ItemId == null)
-                throw new ArgumentNullException(nameof(supplementalOperationResult.ItemId), "Property is required for class SupplementalOperationResult.");
-
-            if (supplementalOperationResult.StoreCode == null)
-                throw new ArgumentNullException(nameof(supplementalOperationResult.StoreCode), "Property is required for class SupplementalOperationResult.");
-
             if (supplementalOperationResult.ErrorsOption.IsSet && supplementalOperationResult.Errors == null)
-                throw new ArgumentNullException(nameof(supplementalOperationResult.Errors), "Property is required for class SupplementalOperationResult.");
+                throw new JsonException("Cannot write null property SupplementalOperationResult.Errors to non-nullable JSON property 'errors'.");
 
             if (supplementalOperationResult.WarningsOption.IsSet && supplementalOperationResult.Warnings == null)
-                throw new ArgumentNullException(nameof(supplementalOperationResult.Warnings), "Property is required for class SupplementalOperationResult.");
+                throw new JsonException("Cannot write null property SupplementalOperationResult.Warnings to non-nullable JSON property 'warnings'.");
 
             writer.WriteString("item_id", supplementalOperationResult.ItemId);
 

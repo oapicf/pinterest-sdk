@@ -35,7 +35,7 @@ public class BulkUpsertRequestUpdate   {
 
   private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
 
   private List<@Valid KeywordUpdateGenerated> keywords = new ArrayList<>();
 
@@ -125,7 +125,7 @@ public class BulkUpsertRequestUpdate   {
 
   /**
    **/
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -133,10 +133,10 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("catalog_product_groups")
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 

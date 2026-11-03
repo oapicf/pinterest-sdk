@@ -45,7 +45,7 @@ export const ProductGroupPromotionCustomizableCTAType = {
     ShopTheCollection: 'SHOP_THE_COLLECTION',
     GetItNow: 'GET_IT_NOW',
     TakeAPeek: 'TAKE_A_PEEK',
-    TakeACloserLook: 'TAKE_A_CLOSER_LOOK'
+    TakeACloserLook: 'TAKE_A_CLOSER_LOOK',
 } as const;
 export type ProductGroupPromotionCustomizableCTAType = typeof ProductGroupPromotionCustomizableCTAType[keyof typeof ProductGroupPromotionCustomizableCTAType];
 

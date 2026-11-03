@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -34,7 +33,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelFeed", description = "Catalogs Hotel Feed object")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelFeed implements CatalogsFeed {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> catalogId = JsonNullable.<String>undefined();
@@ -127,7 +126,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
+  /* @Present */ @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("catalog_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getCatalogId() {
@@ -307,7 +306,7 @@ public class CatalogsHotelFeed implements CatalogsFeed {
    * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
    * @return name
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("name")
   public JsonNullable<String> getName() {

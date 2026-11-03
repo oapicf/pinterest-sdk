@@ -51,10 +51,10 @@ class CustomerSegmentController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,13 +116,13 @@ class CustomerSegmentController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -131,17 +131,17 @@ class CustomerSegmentController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'includeSizing' => [
+                'include_sizing' => [
                     'boolean',
                 ],
-                'searchQuery' => [
+                'search_query' => [
                     'string',
                 ],
             ],
@@ -154,13 +154,13 @@ class CustomerSegmentController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $includeSizing = $request->boolean('includeSizing');
+        $includeSizing = $request->boolean('include_sizing');
 
-        $searchQuery = $request->string('searchQuery')->value();
+        $searchQuery = $request->string('search_query')->value();
 
 
         $apiResult = $this->api->customerSegmentList($adAccountId, $bookmark, $pageSize, $order, $includeSizing, $searchQuery);
@@ -207,10 +207,10 @@ class CustomerSegmentController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Specify the entity type to get summary information
-* Values: ADVERTISER,CAMPAIGN,AD_GROUP,AD
-*/
+ * Specify the entity type to get summary information
+ * Values: ADVERTISER,CAMPAIGN,AD_GROUP,AD
+ */
 enum class AdAccountEntityType(@get:JsonValue val value: kotlin.String) {
 
     ADVERTISER("ADVERTISER"),
@@ -30,9 +30,8 @@ enum class AdAccountEntityType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdAccountEntityType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdAccountEntityType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdAccountEntityType'")
         }
     }
 }
-

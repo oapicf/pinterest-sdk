@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mAXPRICE.IsSet)
-                throw new ArgumentException("Property is required for class MaxPriceFilter.", nameof(mAXPRICE));
+                throw new JsonException("Property is required for class MaxPriceFilter: MAX_PRICE.");
 
             if (mAXPRICE.IsSet && mAXPRICE.Value == null)
-                throw new ArgumentNullException(nameof(mAXPRICE), "Property is not nullable for class MaxPriceFilter.");
+                throw new JsonException("Property is not nullable for class MaxPriceFilter: MAX_PRICE.");
 
             return new MaxPriceFilter(mAXPRICE.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="maxPriceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MaxPriceFilter maxPriceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="maxPriceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MaxPriceFilter maxPriceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (maxPriceFilter.MAX_PRICE == null)
-                throw new ArgumentNullException(nameof(maxPriceFilter.MAX_PRICE), "Property is required for class MaxPriceFilter.");
-
             writer.WritePropertyName("MAX_PRICE");
             JsonSerializer.Serialize(writer, maxPriceFilter.MAX_PRICE, jsonSerializerOptions);
         }

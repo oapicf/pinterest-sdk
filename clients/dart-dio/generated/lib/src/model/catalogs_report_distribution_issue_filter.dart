@@ -126,6 +126,7 @@ class _$CatalogsReportDistributionIssueFilterSerializer implements PrimitiveSeri
   }
 }
 
+
 class CatalogsReportDistributionIssueFilterReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')

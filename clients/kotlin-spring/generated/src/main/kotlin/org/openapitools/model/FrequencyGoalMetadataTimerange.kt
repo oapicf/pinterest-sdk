@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: THIRTY_DAY,DAY,SEVEN_DAY,TWENTY_MINUTE,TEN_MINUTE,TWENTY_FOUR_HOUR
-*/
+ * 
+ * Values: THIRTY_DAY,DAY,SEVEN_DAY,TWENTY_MINUTE,TEN_MINUTE,TWENTY_FOUR_HOUR
+ */
 enum class FrequencyGoalMetadataTimerange(@get:JsonValue val value: kotlin.String) {
 
     THIRTY_DAY("THIRTY_DAY"),
@@ -32,9 +32,8 @@ enum class FrequencyGoalMetadataTimerange(@get:JsonValue val value: kotlin.Strin
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): FrequencyGoalMetadataTimerange {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FrequencyGoalMetadataTimerange'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FrequencyGoalMetadataTimerange'")
         }
     }
 }
-

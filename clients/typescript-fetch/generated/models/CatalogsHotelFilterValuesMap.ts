@@ -21,38 +21,26 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelFilterValuesMap {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     brand?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     customLabel0?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     customLabel1?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     customLabel2?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     customLabel3?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsHotelFilterValuesMap
      */
     customLabel4?: Array<string>;
 }

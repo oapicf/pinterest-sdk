@@ -77,8 +77,7 @@ class RelatedTerms(BaseModel):
         _items = []
         if self.related_terms_list:
             for _item_related_terms_list in self.related_terms_list:
-                if _item_related_terms_list:
-                    _items.append(_item_related_terms_list.to_dict())
+                _items.append(_item_related_terms_list.to_dict() if _item_related_terms_list is not None else None)
             _dict['related_terms_list'] = _items
         return _dict
 

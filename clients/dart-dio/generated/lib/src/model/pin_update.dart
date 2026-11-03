@@ -247,3 +247,4 @@ class _$PinUpdateSerializer implements PrimitiveSerializer<PinUpdate> {
   }
 }
 
+

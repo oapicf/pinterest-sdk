@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!tITLEKEYWORDS.IsSet)
-                throw new ArgumentException("Property is required for class TitleKeywordsFilter.", nameof(tITLEKEYWORDS));
+                throw new JsonException("Property is required for class TitleKeywordsFilter: TITLE_KEYWORDS.");
 
             if (tITLEKEYWORDS.IsSet && tITLEKEYWORDS.Value == null)
-                throw new ArgumentNullException(nameof(tITLEKEYWORDS), "Property is not nullable for class TitleKeywordsFilter.");
+                throw new JsonException("Property is not nullable for class TitleKeywordsFilter: TITLE_KEYWORDS.");
 
             return new TitleKeywordsFilter(tITLEKEYWORDS.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="titleKeywordsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TitleKeywordsFilter titleKeywordsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="titleKeywordsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TitleKeywordsFilter titleKeywordsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (titleKeywordsFilter.TITLE_KEYWORDS == null)
-                throw new ArgumentNullException(nameof(titleKeywordsFilter.TITLE_KEYWORDS), "Property is required for class TitleKeywordsFilter.");
-
             writer.WritePropertyName("TITLE_KEYWORDS");
             JsonSerializer.Serialize(writer, titleKeywordsFilter.TITLE_KEYWORDS, jsonSerializerOptions);
         }

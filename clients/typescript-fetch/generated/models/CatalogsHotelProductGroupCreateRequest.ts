@@ -29,32 +29,22 @@ import {
 export interface CatalogsHotelProductGroupCreateRequest {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsHotelProductGroupCreateRequest
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsHotelProductGroupCreateRequestCatalogTypeEnum}
-     * @memberof CatalogsHotelProductGroupCreateRequest
      */
     catalogType: CatalogsHotelProductGroupCreateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsHotelProductGroupCreateRequest
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsHotelProductGroupFilters}
-     * @memberof CatalogsHotelProductGroupCreateRequest
      */
     filters: CatalogsHotelProductGroupFilters;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsHotelProductGroupCreateRequest
      */
     name: string;
 }
@@ -64,7 +54,7 @@ export interface CatalogsHotelProductGroupCreateRequest {
  * @export
  */
 export const CatalogsHotelProductGroupCreateRequestCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelProductGroupCreateRequestCatalogTypeEnum = typeof CatalogsHotelProductGroupCreateRequestCatalogTypeEnum[keyof typeof CatalogsHotelProductGroupCreateRequestCatalogTypeEnum];
 

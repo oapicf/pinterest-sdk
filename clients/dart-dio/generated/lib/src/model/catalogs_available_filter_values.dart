@@ -141,6 +141,7 @@ class _$CatalogsAvailableFilterValuesSerializer implements PrimitiveSerializer<C
   }
 }
 
+
 class CatalogsAvailableFilterValuesCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

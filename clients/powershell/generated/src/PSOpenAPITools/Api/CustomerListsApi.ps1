@@ -66,7 +66,7 @@ function Invoke-CustomerListsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerLists_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$CustomerListCreate) {
             throw "Error! The required parameter `CustomerListCreate` missing when calling customerLists_create."
@@ -152,11 +152,11 @@ function Invoke-CustomerListsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerLists_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$CustomerListId) {
             throw "Error! The required parameter `CustomerListId` missing when calling customerLists_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Uri]::EscapeDataString([string]$CustomerListId))
 
 
 
@@ -255,7 +255,7 @@ function Invoke-CustomerListsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerLists_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -360,11 +360,11 @@ function Invoke-CustomerListsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerLists_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$CustomerListId) {
             throw "Error! The required parameter `CustomerListId` missing when calling customerLists_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Web.HTTPUtility]::UrlEncode($CustomerListId))
+        $LocalVarUri = $LocalVarUri.replace('{customer_list_id}', [System.Uri]::EscapeDataString([string]$CustomerListId))
 
         if (!$CustomerListUpdateWithRequiredBody) {
             throw "Error! The required parameter `CustomerListUpdateWithRequiredBody` missing when calling customerLists_update."

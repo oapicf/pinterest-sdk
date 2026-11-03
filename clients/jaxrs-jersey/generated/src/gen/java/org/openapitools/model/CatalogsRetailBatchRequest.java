@@ -39,7 +39,7 @@ import javax.validation.Valid;
   CatalogsRetailBatchRequest.JSON_PROPERTY_ITEMS,
   CatalogsRetailBatchRequest.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailBatchRequest   {
   public static final String JSON_PROPERTY_CATALOG_ID = "catalog_id";
   @JsonProperty(JSON_PROPERTY_CATALOG_ID)
@@ -418,7 +418,7 @@ public class CatalogsRetailBatchRequest   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @NotNull @Valid  @Size(min=1,max=1000)
+  @NotNull  @Size(min=1,max=1000)
   public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }

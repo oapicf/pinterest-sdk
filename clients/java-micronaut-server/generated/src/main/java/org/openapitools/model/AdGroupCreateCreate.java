@@ -77,7 +77,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroupCreateCreate.JSON_PROPERTY_TRACKING_URLS
 })
 @JsonTypeName("AdGroupCreateCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupCreateCreate {
     public static final String JSON_PROPERTY_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
@@ -99,7 +99,7 @@ public class AdGroupCreateCreate {
     private Integer budgetInMicroCurrency;
 
     public static final String JSON_PROPERTY_BUDGET_TYPE = "budget_type";
-    private BudgetType budgetType;
+    private BudgetType budgetType = BudgetType.DAILY;
 
     public static final String JSON_PROPERTY_CAMPAIGN_ID = "campaign_id";
     private String campaignId;
@@ -135,7 +135,7 @@ public class AdGroupCreateCreate {
     private NullableOptimizationGoalMetadata optimizationGoalMetadata;
 
     public static final String JSON_PROPERTY_PACING_DELIVERY_TYPE = "pacing_delivery_type";
-    private PacingDeliveryType pacingDeliveryType;
+    private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
     public static final String JSON_PROPERTY_PERFORMANCE_PLUS_CAMPAIGN_SETTINGS = "performance_plus_campaign_settings";
     private PerformancePlusCampaignSettings performancePlusCampaignSettings;

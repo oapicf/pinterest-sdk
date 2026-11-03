@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class NonDraftEntityStatus
-{
-public:
-
-    NonDraftEntityStatus();
-    virtual ~NonDraftEntityStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NonDraftEntityStatus,
-        )
-
-private:
+enum class NonDraftEntityStatus {
+    
+    ACTIVE,
+    
+    PAUSED,
+    
+    ARCHIVED
+    
 };
 
+inline void to_json(nlohmann::json& j, const NonDraftEntityStatus& value)
+{
+    switch (value)
+    {
+        
+        case NonDraftEntityStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case NonDraftEntityStatus::PAUSED: j = "PAUSED"; break;
+        
+        case NonDraftEntityStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NonDraftEntityStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NonDraftEntityStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = NonDraftEntityStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = NonDraftEntityStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = NonDraftEntityStatus::ARCHIVED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NonDraftEntityStatus", &j);
+}
 
 } // namespace models
 

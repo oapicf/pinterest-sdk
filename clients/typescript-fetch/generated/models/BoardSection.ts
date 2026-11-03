@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BoardSection {
     /**
      * 
-     * @type {string}
-     * @memberof BoardSection
      */
     id?: string;
     /**
      * 
-     * @type {string}
-     * @memberof BoardSection
      */
     name: string;
 }

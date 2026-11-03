@@ -296,28 +296,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (productBrand.IsSet && productBrand.Value == null)
-                throw new ArgumentNullException(nameof(productBrand), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_brand.");
 
             if (productCategory.IsSet && productCategory.Value == null)
-                throw new ArgumentNullException(nameof(productCategory), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_category.");
 
             if (productId.IsSet && productId.Value == null)
-                throw new ArgumentNullException(nameof(productId), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_id.");
 
             if (productName.IsSet && productName.Value == null)
-                throw new ArgumentNullException(nameof(productName), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_name.");
 
             if (productPrice.IsSet && productPrice.Value == null)
-                throw new ArgumentNullException(nameof(productPrice), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_price.");
 
             if (productQuantity.IsSet && productQuantity.Value == null)
-                throw new ArgumentNullException(nameof(productQuantity), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_quantity.");
 
             if (productVariant.IsSet && productVariant.Value == null)
-                throw new ArgumentNullException(nameof(productVariant), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_variant.");
 
             if (productVariantId.IsSet && productVariantId.Value == null)
-                throw new ArgumentNullException(nameof(productVariantId), "Property is not nullable for class LineItem.");
+                throw new JsonException("Property is not nullable for class LineItem: product_variant_id.");
 
             return new LineItem(productBrand, productCategory, productId, productName, productPrice, productQuantity, productVariant, productVariantId);
         }
@@ -328,7 +328,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="lineItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LineItem lineItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -343,26 +342,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="lineItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LineItem lineItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (lineItem.ProductBrandOption.IsSet && lineItem.ProductBrand == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductBrand), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductBrand to non-nullable JSON property 'product_brand'.");
 
             if (lineItem.ProductCategoryOption.IsSet && lineItem.ProductCategory == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductCategory), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductCategory to non-nullable JSON property 'product_category'.");
+
+            if (lineItem.ProductIdOption.IsSet && lineItem.ProductId == null)
+                throw new JsonException("Cannot write null property LineItem.ProductId to non-nullable JSON property 'product_id'.");
 
             if (lineItem.ProductNameOption.IsSet && lineItem.ProductName == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductName), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductName to non-nullable JSON property 'product_name'.");
 
             if (lineItem.ProductPriceOption.IsSet && lineItem.ProductPrice == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductPrice), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductPrice to non-nullable JSON property 'product_price'.");
+
+            if (lineItem.ProductQuantityOption.IsSet && lineItem.ProductQuantity == null)
+                throw new JsonException("Cannot write null property LineItem.ProductQuantity to non-nullable JSON property 'product_quantity'.");
 
             if (lineItem.ProductVariantOption.IsSet && lineItem.ProductVariant == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductVariant), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductVariant to non-nullable JSON property 'product_variant'.");
 
             if (lineItem.ProductVariantIdOption.IsSet && lineItem.ProductVariantId == null)
-                throw new ArgumentNullException(nameof(lineItem.ProductVariantId), "Property is required for class LineItem.");
+                throw new JsonException("Cannot write null property LineItem.ProductVariantId to non-nullable JSON property 'product_variant_id'.");
 
             if (lineItem.ProductBrandOption.IsSet)
                 writer.WriteString("product_brand", lineItem.ProductBrand);

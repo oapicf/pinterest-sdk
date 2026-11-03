@@ -6,20 +6,3 @@
 */
 #include "ItemAvailability.h"
 
-namespace models {
-
-ItemAvailability::ItemAvailability()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

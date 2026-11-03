@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,7 +28,7 @@ import jakarta.annotation.Generated;
  * CatalogsRetailProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup {
 
   private String catalogId;
@@ -219,7 +218,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * id of the catalogs feed belonging to this catalog product group
    * @return feedId
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
+  /* @Present */ @Pattern(regexp = "^\\d+$") 
   @Schema(name = "feed_id", example = "2680059592705", description = "id of the catalogs feed belonging to this catalog product group", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("feed_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getFeedId() {

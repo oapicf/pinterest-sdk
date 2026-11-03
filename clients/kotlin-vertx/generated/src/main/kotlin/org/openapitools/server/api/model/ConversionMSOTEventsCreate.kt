@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
  * @param totalEventTouchpoints Total number of ad events including other non-Pinterest ad platforms.
  * @param totalEvents Deprecated: use `total_events_fractional` instead to avoid rounding errors. Total number of conversion events that are reported in one API call.  If you are sending one API request for one attributed conversion event then this value should be 1. If you are sending multiple attributed conversion events in one API request then this value should be the total number of attributed conversion events in the request.
  * @param totalEventsFractional Total number of conversion events that are reported in one API call. Use this field instead of `total_events` to send precise fractional values.  If you are sending one API request for one attributed conversion event with full credit, this value should be 1.0. For partial attribution, send the exact fractional value (e.g., 0.5 for half credit).
- * @param &#x60;value&#x60; Order value of the conversion event. Required if `event_name` is `add_to_cart` or `checkout`.
+ * @param `value` Order value of the conversion event. Required if `event_name` is `add_to_cart` or `checkout`.
  * @param viewWindow View window used for attribution (for example, `1d`, `7d`, `30d`).
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

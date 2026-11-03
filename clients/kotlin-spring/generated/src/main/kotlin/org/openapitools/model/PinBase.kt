@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AiDisclosures
 import org.openapitools.model.BoardOwner
 import org.openapitools.model.CreativeType
@@ -44,27 +41,21 @@ data class PinBase(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(description = "AI disclosure declarations the creator has made about this Pin.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: AiDisclosures? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "The board to which this Pin belongs.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("board_id")
     @get:JsonProperty("board_id") val boardId: kotlin.String? = null,
 
     @field:Valid
     @Schema(readOnly = true, description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("board_owner")
     @get:JsonProperty("board_owner") val boardOwner: BoardOwner? = null,
 
@@ -74,8 +65,6 @@ data class PinBase(
     @get:JsonProperty("board_section_id") val boardSectionId: kotlin.String? = null,
 
     @Schema(readOnly = true, description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_at")
     @get:JsonProperty("created_at") val createdAt: java.time.OffsetDateTime? = null,
 
@@ -89,33 +78,23 @@ data class PinBase(
     @get:JsonProperty("dominant_color") val dominantColor: kotlin.String? = null,
 
     @Schema(readOnly = true, description = "Whether the Pin has been promoted or not.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("has_been_promoted")
     @get:JsonProperty("has_been_promoted") val hasBeenPromoted: kotlin.Boolean? = null,
 
     @Schema(readOnly = true, description = "Whether the \"operation user_account\" is the Pin owner.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_owner")
     @get:JsonProperty("is_owner") val isOwner: kotlin.Boolean? = null,
 
     @Schema(readOnly = true, description = "Whether the Pin is a product Pin.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_product")
     @get:JsonProperty("is_product") val isProduct: kotlin.Boolean? = null,
 
     @Schema(readOnly = true, description = "Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_standard")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = null,
 
     @field:Valid
     @Schema(readOnly = true, description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("media")
     @get:JsonProperty("media") val media: PinMedia? = null,
 

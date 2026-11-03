@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdvertiserDefinedEventsCreate200Response  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid AdvertiserDefinedEventProcessingRecord> items = new ArrayList<>();
  /**
   * Get items

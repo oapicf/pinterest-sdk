@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class IntegrationLogLevel
-{
-public:
-
-    IntegrationLogLevel();
-    virtual ~IntegrationLogLevel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IntegrationLogLevel,
-        )
-
-private:
+enum class IntegrationLogLevel {
+    
+    INFO,
+    
+    WARN,
+    
+    ERROR
+    
 };
 
+inline void to_json(nlohmann::json& j, const IntegrationLogLevel& value)
+{
+    switch (value)
+    {
+        
+        case IntegrationLogLevel::INFO: j = "INFO"; break;
+        
+        case IntegrationLogLevel::WARN: j = "WARN"; break;
+        
+        case IntegrationLogLevel::ERROR: j = "ERROR"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for IntegrationLogLevel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, IntegrationLogLevel& value)
+{
+    
+    if (j == "INFO")
+    {
+        value = IntegrationLogLevel::INFO;
+        return;
+    }
+    
+    if (j == "WARN")
+    {
+        value = IntegrationLogLevel::WARN;
+        return;
+    }
+    
+    if (j == "ERROR")
+    {
+        value = IntegrationLogLevel::ERROR;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for IntegrationLogLevel", &j);
+}
 
 } // namespace models
 

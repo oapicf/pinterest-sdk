@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class AmazonConnectResponse.");
+                throw new JsonException("Property is not nullable for class AmazonConnectResponse: message.");
 
             return new AmazonConnectResponse(message);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="amazonConnectResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AmazonConnectResponse amazonConnectResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="amazonConnectResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AmazonConnectResponse amazonConnectResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (amazonConnectResponse.MessageOption.IsSet && amazonConnectResponse.Message == null)
-                throw new ArgumentNullException(nameof(amazonConnectResponse.Message), "Property is required for class AmazonConnectResponse.");
+                throw new JsonException("Cannot write null property AmazonConnectResponse.Message to non-nullable JSON property 'message'.");
 
             if (amazonConnectResponse.MessageOption.IsSet)
                 writer.WriteString("message", amazonConnectResponse.Message);

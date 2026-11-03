@@ -17,7 +17,7 @@ import CampaignPlanningConversionAttributionWindowDays from './CampaignPlanningC
 /**
  * The CampaignPlanningConversionAttribution model module.
  * @module model/CampaignPlanningConversionAttribution
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignPlanningConversionAttribution {
     /**

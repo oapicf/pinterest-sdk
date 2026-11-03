@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BrandAccountProfileImageUpdate {
     /**
      * 
-     * @type {BrandAccountProfileImageUpdateContentTypeEnum}
-     * @memberof BrandAccountProfileImageUpdate
      */
     contentType?: BrandAccountProfileImageUpdateContentTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof BrandAccountProfileImageUpdate
      */
     data?: string;
 }
@@ -39,7 +35,7 @@ export interface BrandAccountProfileImageUpdate {
  */
 export const BrandAccountProfileImageUpdateContentTypeEnum = {
     ImageJpeg: 'image/jpeg',
-    ImagePng: 'image/png'
+    ImagePng: 'image/png',
 } as const;
 export type BrandAccountProfileImageUpdateContentTypeEnum = typeof BrandAccountProfileImageUpdateContentTypeEnum[keyof typeof BrandAccountProfileImageUpdateContentTypeEnum];
 

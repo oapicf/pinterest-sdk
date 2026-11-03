@@ -85,6 +85,7 @@ class _$CatalogsFeedUpdateRequestSchemaSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsFeedUpdateRequestSchemaCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

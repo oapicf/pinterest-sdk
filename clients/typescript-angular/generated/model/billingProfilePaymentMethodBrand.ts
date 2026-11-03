@@ -21,7 +21,7 @@ export const BillingProfilePaymentMethodBrand = {
     Sofort: 'SOFORT',
     DinersClub: 'DINERS_CLUB',
     Elo: 'ELO',
-    CarteBancaire: 'CARTE_BANCAIRE'
+    CarteBancaire: 'CARTE_BANCAIRE',
 } as const;
 export type BillingProfilePaymentMethodBrand = typeof BillingProfilePaymentMethodBrand[keyof typeof BillingProfilePaymentMethodBrand];
 

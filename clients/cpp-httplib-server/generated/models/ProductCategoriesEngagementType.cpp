@@ -6,20 +6,3 @@
 */
 #include "ProductCategoriesEngagementType.h"
 
-namespace models {
-
-ProductCategoriesEngagementType::ProductCategoriesEngagementType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

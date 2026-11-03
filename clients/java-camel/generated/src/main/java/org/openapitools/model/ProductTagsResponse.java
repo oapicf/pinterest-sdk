@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductTagsResponse", description = "Response containing a list of product tags for a pin.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsResponse {
 
-  @Valid
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
 
   public ProductTagsResponse() {
@@ -57,7 +56,7 @@ public class ProductTagsResponse {
    * List of product tags on the pin.
    * @return productTags
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_tags", description = "List of product tags on the pin.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_tags")
   public List<@Valid ProductTagItem> getProductTags() {

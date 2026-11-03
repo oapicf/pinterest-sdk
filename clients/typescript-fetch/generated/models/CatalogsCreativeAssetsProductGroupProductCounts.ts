@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface CatalogsCreativeAssetsProductGroupProductCounts {
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroupProductCounts
      */
     appLinks: number;
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsProductGroupProductCounts
      */
     catalogType: CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroupProductCounts
      */
     images: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroupProductCounts
      */
     total: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroupProductCounts
      */
     videos: number;
 }
@@ -56,7 +46,7 @@ export interface CatalogsCreativeAssetsProductGroupProductCounts {
  * @export
  */
 export const CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum = typeof CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsProductGroupProductCountsCatalogTypeEnum];
 

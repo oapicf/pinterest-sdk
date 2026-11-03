@@ -20,7 +20,7 @@ import javax.validation.Valid;
 /**
  * Request for creation of entities in bulk.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BulkUpsertRequestUpdate   {
   @JsonProperty("ad_groups")
@@ -41,7 +41,7 @@ public class BulkUpsertRequestUpdate   {
   @JsonProperty("catalog_product_groups")
   @Valid
 
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
 
   @JsonProperty("keywords")
   @Valid
@@ -138,7 +138,7 @@ public class BulkUpsertRequestUpdate   {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -155,11 +155,11 @@ public class BulkUpsertRequestUpdate   {
    * Get catalogProductGroups
    * @return catalogProductGroups
   **/
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 

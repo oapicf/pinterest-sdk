@@ -22,7 +22,7 @@ data class PinterestProductCategoriesFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PINTEREST_PRODUCT_CATEGORIES")
+    @param:JsonProperty("PINTEREST_PRODUCT_CATEGORIES", required = true)
     @get:JsonProperty("PINTEREST_PRODUCT_CATEGORIES", required = true) val PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria
 ) {
 

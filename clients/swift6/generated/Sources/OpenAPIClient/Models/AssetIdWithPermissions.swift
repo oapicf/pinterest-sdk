@@ -10,7 +10,7 @@ import Foundation
 /** Asset ID with permission levels. */
 public struct AssetIdWithPermissions: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: 1, maxLength: 20, pattern: "^\\d+$")
     /** Unique identifier of a business asset. */
     public var id: String?
     /** Permission levels member or partner has on an asset. */

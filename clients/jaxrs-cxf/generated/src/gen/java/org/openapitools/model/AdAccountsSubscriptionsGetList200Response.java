@@ -22,8 +22,6 @@ public class AdAccountsSubscriptionsGetList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid LeadSubscription> items = new ArrayList<>();
  /**
    * Get bookmark

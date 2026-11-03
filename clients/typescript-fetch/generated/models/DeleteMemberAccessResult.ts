@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface DeleteMemberAccessResult {
     /**
      * Unique identifier of the business asset.
-     * @type {string}
-     * @memberof DeleteMemberAccessResult
      */
     assetId?: string;
     /**
      * Unique identifier of the business member.
-     * @type {string}
-     * @memberof DeleteMemberAccessResult
      */
     memberId?: string;
 }

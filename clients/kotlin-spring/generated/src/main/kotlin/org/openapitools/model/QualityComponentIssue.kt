@@ -22,15 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class QualityComponentIssue(
 
     @Schema(required = true, description = "Unique identifier for the issue check.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(required = true, description = "Human-readable name of the issue.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(required = true, description = "Detailed reason for the issue.")
-    @param:JsonProperty("reason")
+    @param:JsonProperty("reason", required = true)
     @get:JsonProperty("reason", required = true) val reason: kotlin.String
 ) {
 

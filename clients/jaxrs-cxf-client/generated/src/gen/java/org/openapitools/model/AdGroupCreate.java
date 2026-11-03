@@ -264,11 +264,11 @@ public class AdGroupCreate  {
 
   @ApiModelProperty(value = "")
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @ApiModelProperty(value = "")
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
  /**
    * Advertiser ID.
    * @return adAccountId

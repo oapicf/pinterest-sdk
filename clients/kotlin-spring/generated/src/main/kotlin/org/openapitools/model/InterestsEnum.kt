@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ALL,ANIMALS,ARCHITECTURE,ART,BEAUTY,DIY_AND_CRAFTS,EDUCATION,EVENT_PLANNING,FASHION,FOOD_AND_DRINKS,GARDENING,HEALTH,HOME_DECOR,PARENTING,TRAVEL,WEDDING
-*/
+ * 
+ * Values: ALL,ANIMALS,ARCHITECTURE,ART,BEAUTY,DIY_AND_CRAFTS,EDUCATION,EVENT_PLANNING,FASHION,FOOD_AND_DRINKS,GARDENING,HEALTH,HOME_DECOR,PARENTING,TRAVEL,WEDDING
+ */
 enum class InterestsEnum(@get:JsonValue val value: kotlin.String) {
 
     ALL("ALL"),
@@ -42,9 +42,8 @@ enum class InterestsEnum(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): InterestsEnum {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InterestsEnum'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InterestsEnum'")
         }
     }
 }
-

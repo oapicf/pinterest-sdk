@@ -22,7 +22,7 @@ export const CampaignPlanningEstimationType = {
     LifetimeReach: 'LIFETIME_REACH',
     Cpm: 'CPM',
     Cpc: 'CPC',
-    Cpa: 'CPA'
+    Cpa: 'CPA',
 } as const;
 export type CampaignPlanningEstimationType = typeof CampaignPlanningEstimationType[keyof typeof CampaignPlanningEstimationType];
 

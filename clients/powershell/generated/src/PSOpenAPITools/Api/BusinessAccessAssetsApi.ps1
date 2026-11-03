@@ -66,7 +66,7 @@ function Invoke-AssetGroupCreate {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling assetGroup_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$AssetGroupInputCreate) {
             throw "Error! The required parameter `AssetGroupInputCreate` missing when calling assetGroup_create."
@@ -155,7 +155,7 @@ function Invoke-AssetGroupDelete {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling assetGroup_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$AssetGroupDeletionDelete) {
             throw "Error! The required parameter `AssetGroupDeletionDelete` missing when calling assetGroup_delete."
@@ -244,7 +244,7 @@ function Invoke-AssetGroupUpdate {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling assetGroup_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$AssetGroupModificationReadOrUpdate) {
             throw "Error! The required parameter `AssetGroupModificationReadOrUpdate` missing when calling assetGroup_update."
@@ -354,11 +354,11 @@ function Invoke-BusinessAssetMembersGet {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessAssetMembers_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
         if (!$AssetId) {
             throw "Error! The required parameter `AssetId` missing when calling businessAssetMembers_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{asset_id}', [System.Web.HTTPUtility]::UrlEncode($AssetId))
+        $LocalVarUri = $LocalVarUri.replace('{asset_id}', [System.Uri]::EscapeDataString([string]$AssetId))
 
         if ($StartIndex) {
             $LocalVarQueryParameters['start_index'] = $StartIndex
@@ -472,11 +472,11 @@ function Invoke-BusinessAssetPartnersGet {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessAssetPartners_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
         if (!$AssetId) {
             throw "Error! The required parameter `AssetId` missing when calling businessAssetPartners_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{asset_id}', [System.Web.HTTPUtility]::UrlEncode($AssetId))
+        $LocalVarUri = $LocalVarUri.replace('{asset_id}', [System.Uri]::EscapeDataString([string]$AssetId))
 
         if ($StartIndex) {
             $LocalVarQueryParameters['start_index'] = $StartIndex
@@ -605,7 +605,7 @@ function Invoke-BusinessAssetsGet {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessAssets_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if ($Permissions) {
             $LocalVarQueryParameters['permissions'] = $Permissions
@@ -774,11 +774,11 @@ function Invoke-BusinessMemberAssetsGet {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessMemberAssets_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
         if (!$MemberId) {
             throw "Error! The required parameter `MemberId` missing when calling businessMemberAssets_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{member_id}', [System.Web.HTTPUtility]::UrlEncode($MemberId))
+        $LocalVarUri = $LocalVarUri.replace('{member_id}', [System.Uri]::EscapeDataString([string]$MemberId))
 
         if ($AssetType) {
             $LocalVarQueryParameters['asset_type'] = $AssetType
@@ -901,7 +901,7 @@ function Invoke-BusinessMembersAssetAccessDelete {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessMembersAssetAccess_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$BusinessMembersAssetAccessDeleteBody) {
             throw "Error! The required parameter `BusinessMembersAssetAccessDeleteBody` missing when calling businessMembersAssetAccess_delete."
@@ -990,7 +990,7 @@ function Invoke-BusinessMembersAssetAccessUpdate {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessMembersAssetAccess_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$UpdateMemberAssetAccessBody) {
             throw "Error! The required parameter `UpdateMemberAssetAccessBody` missing when calling businessMembersAssetAccess_update."
@@ -1132,11 +1132,11 @@ function Invoke-BusinessPartnerAssetAccessGet {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessPartnerAssetAccess_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
         if (!$PartnerId) {
             throw "Error! The required parameter `PartnerId` missing when calling businessPartnerAssetAccess_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{partner_id}', [System.Web.HTTPUtility]::UrlEncode($PartnerId))
+        $LocalVarUri = $LocalVarUri.replace('{partner_id}', [System.Uri]::EscapeDataString([string]$PartnerId))
 
         if ($PartnerType) {
             $LocalVarQueryParameters['partner_type'] = $PartnerType
@@ -1255,7 +1255,7 @@ function Invoke-DeletePartnerAssetAccessHandlerImpl {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling deletePartnerAssetAccessHandlerImpl."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$DeletePartnerAssetAccessBody) {
             throw "Error! The required parameter `DeletePartnerAssetAccessBody` missing when calling deletePartnerAssetAccessHandlerImpl."
@@ -1344,7 +1344,7 @@ function Update-PartnerAssetAccessHandlerImpl {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling updatePartnerAssetAccessHandlerImpl."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$UpdatePartnerAssetAccessBody) {
             throw "Error! The required parameter `UpdatePartnerAssetAccessBody` missing when calling updatePartnerAssetAccessHandlerImpl."

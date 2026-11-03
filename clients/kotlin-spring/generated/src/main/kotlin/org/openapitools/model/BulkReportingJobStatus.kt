@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Possible status for a bulk reporting job
-* Values: DOES_NOT_EXIST,FINISHED,IN_PROGRESS,EXPIRED,FAILED,CANCELLED
-*/
+ * Possible status for a bulk reporting job
+ * Values: DOES_NOT_EXIST,FINISHED,IN_PROGRESS,EXPIRED,FAILED,CANCELLED
+ */
 enum class BulkReportingJobStatus(@get:JsonValue val value: kotlin.String) {
 
     DOES_NOT_EXIST("DOES_NOT_EXIST"),
@@ -32,9 +32,8 @@ enum class BulkReportingJobStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BulkReportingJobStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkReportingJobStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkReportingJobStatus'")
         }
     }
 }
-

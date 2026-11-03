@@ -17,7 +17,7 @@ export const AssetSearchBy = {
     Id: 'ID',
     NameOrId: 'NAME_OR_ID',
     OwnerName: 'OWNER_NAME',
-    NameOrOwner: 'NAME_OR_OWNER'
+    NameOrOwner: 'NAME_OR_OWNER',
 } as const;
 export type AssetSearchBy = typeof AssetSearchBy[keyof typeof AssetSearchBy];
 

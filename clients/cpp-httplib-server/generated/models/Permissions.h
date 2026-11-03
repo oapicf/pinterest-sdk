@@ -12,24 +12,144 @@
 
 namespace models {
 
-
-class Permissions
-{
-public:
-
-    Permissions();
-    virtual ~Permissions() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Permissions,
-        )
-
-private:
+enum class Permissions {
+    
+    ADMIN,
+    
+    ANALYST,
+    
+    FINANCE_MANAGER,
+    
+    FINANCE_EDIT,
+    
+    FINANCE_VIEW,
+    
+    AUDIENCE_MANAGER,
+    
+    CAMPAIGN_MANAGER,
+    
+    CATALOGS_MANAGER,
+    
+    CATALOGS_VIEWER,
+    
+    PROFILE_PUBLISHER,
+    
+    CONSUMER_USER,
+    
+    BIZ_PINNER_LIST_SHARER
+    
 };
 
+inline void to_json(nlohmann::json& j, const Permissions& value)
+{
+    switch (value)
+    {
+        
+        case Permissions::ADMIN: j = "ADMIN"; break;
+        
+        case Permissions::ANALYST: j = "ANALYST"; break;
+        
+        case Permissions::FINANCE_MANAGER: j = "FINANCE_MANAGER"; break;
+        
+        case Permissions::FINANCE_EDIT: j = "FINANCE_EDIT"; break;
+        
+        case Permissions::FINANCE_VIEW: j = "FINANCE_VIEW"; break;
+        
+        case Permissions::AUDIENCE_MANAGER: j = "AUDIENCE_MANAGER"; break;
+        
+        case Permissions::CAMPAIGN_MANAGER: j = "CAMPAIGN_MANAGER"; break;
+        
+        case Permissions::CATALOGS_MANAGER: j = "CATALOGS_MANAGER"; break;
+        
+        case Permissions::CATALOGS_VIEWER: j = "CATALOGS_VIEWER"; break;
+        
+        case Permissions::PROFILE_PUBLISHER: j = "PROFILE_PUBLISHER"; break;
+        
+        case Permissions::CONSUMER_USER: j = "CONSUMER_USER"; break;
+        
+        case Permissions::BIZ_PINNER_LIST_SHARER: j = "BIZ_PINNER_LIST_SHARER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Permissions", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Permissions& value)
+{
+    
+    if (j == "ADMIN")
+    {
+        value = Permissions::ADMIN;
+        return;
+    }
+    
+    if (j == "ANALYST")
+    {
+        value = Permissions::ANALYST;
+        return;
+    }
+    
+    if (j == "FINANCE_MANAGER")
+    {
+        value = Permissions::FINANCE_MANAGER;
+        return;
+    }
+    
+    if (j == "FINANCE_EDIT")
+    {
+        value = Permissions::FINANCE_EDIT;
+        return;
+    }
+    
+    if (j == "FINANCE_VIEW")
+    {
+        value = Permissions::FINANCE_VIEW;
+        return;
+    }
+    
+    if (j == "AUDIENCE_MANAGER")
+    {
+        value = Permissions::AUDIENCE_MANAGER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_MANAGER")
+    {
+        value = Permissions::CAMPAIGN_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_MANAGER")
+    {
+        value = Permissions::CATALOGS_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_VIEWER")
+    {
+        value = Permissions::CATALOGS_VIEWER;
+        return;
+    }
+    
+    if (j == "PROFILE_PUBLISHER")
+    {
+        value = Permissions::PROFILE_PUBLISHER;
+        return;
+    }
+    
+    if (j == "CONSUMER_USER")
+    {
+        value = Permissions::CONSUMER_USER;
+        return;
+    }
+    
+    if (j == "BIZ_PINNER_LIST_SHARER")
+    {
+        value = Permissions::BIZ_PINNER_LIST_SHARER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Permissions", &j);
+}
 
 } // namespace models
 

@@ -12,24 +12,154 @@
 
 namespace models {
 
-
-class VideoPinMetricTypes
-{
-public:
-
-    VideoPinMetricTypes();
-    virtual ~VideoPinMetricTypes() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(VideoPinMetricTypes,
-        )
-
-private:
+enum class VideoPinMetricTypes {
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    PIN_CLICK,
+    
+    SAVE,
+    
+    SAVE_RATE,
+    
+    VIDEO_MRC_VIEW,
+    
+    VIDEO_10S_VIEW,
+    
+    QUARTILE_95_PERCENT_VIEW,
+    
+    VIDEO_V50_WATCH_TIME,
+    
+    VIDEO_START,
+    
+    VIDEO_AVG_WATCH_TIME,
+    
+    TOTAL_COMMENTS,
+    
+    TOTAL_REACTIONS
+    
 };
 
+inline void to_json(nlohmann::json& j, const VideoPinMetricTypes& value)
+{
+    switch (value)
+    {
+        
+        case VideoPinMetricTypes::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case VideoPinMetricTypes::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case VideoPinMetricTypes::PIN_CLICK: j = "PIN_CLICK"; break;
+        
+        case VideoPinMetricTypes::SAVE: j = "SAVE"; break;
+        
+        case VideoPinMetricTypes::SAVE_RATE: j = "SAVE_RATE"; break;
+        
+        case VideoPinMetricTypes::VIDEO_MRC_VIEW: j = "VIDEO_MRC_VIEW"; break;
+        
+        case VideoPinMetricTypes::VIDEO_10S_VIEW: j = "VIDEO_10S_VIEW"; break;
+        
+        case VideoPinMetricTypes::QUARTILE_95_PERCENT_VIEW: j = "QUARTILE_95_PERCENT_VIEW"; break;
+        
+        case VideoPinMetricTypes::VIDEO_V50_WATCH_TIME: j = "VIDEO_V50_WATCH_TIME"; break;
+        
+        case VideoPinMetricTypes::VIDEO_START: j = "VIDEO_START"; break;
+        
+        case VideoPinMetricTypes::VIDEO_AVG_WATCH_TIME: j = "VIDEO_AVG_WATCH_TIME"; break;
+        
+        case VideoPinMetricTypes::TOTAL_COMMENTS: j = "TOTAL_COMMENTS"; break;
+        
+        case VideoPinMetricTypes::TOTAL_REACTIONS: j = "TOTAL_REACTIONS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for VideoPinMetricTypes", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, VideoPinMetricTypes& value)
+{
+    
+    if (j == "IMPRESSION")
+    {
+        value = VideoPinMetricTypes::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = VideoPinMetricTypes::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "PIN_CLICK")
+    {
+        value = VideoPinMetricTypes::PIN_CLICK;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = VideoPinMetricTypes::SAVE;
+        return;
+    }
+    
+    if (j == "SAVE_RATE")
+    {
+        value = VideoPinMetricTypes::SAVE_RATE;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEW")
+    {
+        value = VideoPinMetricTypes::VIDEO_MRC_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_10S_VIEW")
+    {
+        value = VideoPinMetricTypes::VIDEO_10S_VIEW;
+        return;
+    }
+    
+    if (j == "QUARTILE_95_PERCENT_VIEW")
+    {
+        value = VideoPinMetricTypes::QUARTILE_95_PERCENT_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_V50_WATCH_TIME")
+    {
+        value = VideoPinMetricTypes::VIDEO_V50_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "VIDEO_START")
+    {
+        value = VideoPinMetricTypes::VIDEO_START;
+        return;
+    }
+    
+    if (j == "VIDEO_AVG_WATCH_TIME")
+    {
+        value = VideoPinMetricTypes::VIDEO_AVG_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "TOTAL_COMMENTS")
+    {
+        value = VideoPinMetricTypes::TOTAL_COMMENTS;
+        return;
+    }
+    
+    if (j == "TOTAL_REACTIONS")
+    {
+        value = VideoPinMetricTypes::TOTAL_REACTIONS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for VideoPinMetricTypes", &j);
+}
 
 } // namespace models
 

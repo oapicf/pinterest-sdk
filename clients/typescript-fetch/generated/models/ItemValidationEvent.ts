@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ItemValidationEvent {
     /**
      * The attribute that the item validation event references
-     * @type {string}
-     * @memberof ItemValidationEvent
      */
     attribute?: string;
     /**
      * The event code that the item validation event references
-     * @type {number}
-     * @memberof ItemValidationEvent
      */
     code?: number;
     /**
      * Title message describing the item validation event
-     * @type {string}
-     * @memberof ItemValidationEvent
      */
     message?: string;
 }

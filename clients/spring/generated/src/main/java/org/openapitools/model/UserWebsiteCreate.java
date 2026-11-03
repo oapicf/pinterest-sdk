@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -23,16 +22,14 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "UserWebsiteCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UserWebsiteCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String website;
 
-  public UserWebsiteCreate verificationMethod(@Nullable WebsiteVerificationMethod verificationMethod) {
+  public UserWebsiteCreate verificationMethod(WebsiteVerificationMethod verificationMethod) {
     this.verificationMethod = verificationMethod;
     return this;
   }
@@ -44,12 +41,12 @@ public class UserWebsiteCreate {
   @Valid 
   @Schema(name = "verification_method", description = "Method used to verify website ownership.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verification_method")
-  public @Nullable WebsiteVerificationMethod getVerificationMethod() {
+  public WebsiteVerificationMethod getVerificationMethod() {
     return verificationMethod;
   }
 
   @JsonProperty("verification_method")
-  public void setVerificationMethod(@Nullable WebsiteVerificationMethod verificationMethod) {
+  public void setVerificationMethod(WebsiteVerificationMethod verificationMethod) {
     this.verificationMethod = verificationMethod;
   }
 

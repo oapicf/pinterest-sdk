@@ -99,212 +99,142 @@ import {
 export interface CatalogsProductGroupFilterKeys {
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     mINPRICE: CatalogsProductGroupPricingCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     mAXPRICE: CatalogsProductGroupPricingCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupCurrencyCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cURRENCY: CatalogsProductGroupCurrencyCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     iTEMID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     aVAILABILITY: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     bRAND: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cONDITION: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     iTEMGROUPID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleGenderCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gENDER: CatalogsProductGroupMultipleGenderCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleMediaTypesCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     mEDIATYPE: CatalogsProductGroupMultipleMediaTypesCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTTYPE4: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTTYPE3: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTTYPE2: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTTYPE1: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTTYPE0: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMNUMBER0: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMNUMBER1: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMNUMBER2: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMNUMBER3: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     cUSTOMNUMBER4: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     tITLEKEYWORDS: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultiplePinterestProductCategoryCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pINTERESTPRODUCTCATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsProductGroupFilterKeys
      */
     pRODUCTGROUP: CatalogsProductGroupMultipleStringCriteria;
 }

@@ -140,6 +140,7 @@ class _$CatalogsUpdateHotelItemSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+
 class CatalogsUpdateHotelItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPDATE')

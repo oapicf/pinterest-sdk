@@ -47,8 +47,7 @@ public class LocalInventoryItemsBatch  {
   * Array of operation results
   */
   @ApiModelProperty(required = true, value = "Array of operation results")
-  @Valid
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
  /**
   * Status of the batch: PROCESSING, COMPLETED, FAILED
@@ -142,7 +141,7 @@ public class LocalInventoryItemsBatch  {
   */
   @JsonProperty("operation_results")
   @NotNull
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
@@ -150,7 +149,7 @@ public class LocalInventoryItemsBatch  {
    * Sets the <code>operationResults</code> property.
    * <br><em>N.B. <code>operationResults</code> is <b>read only</b>; client code should not call this method</em>.
    */
- public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+ public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 
@@ -158,7 +157,7 @@ public class LocalInventoryItemsBatch  {
    * Sets the <code>operationResults</code> property.
    * <br><em>N.B. <code>operationResults</code> is <b>read only</b>; client code should not call this method</em>.
    */
-  public LocalInventoryItemsBatch operationResults(List<SupplementalOperationResult> operationResults) {
+  public LocalInventoryItemsBatch operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }

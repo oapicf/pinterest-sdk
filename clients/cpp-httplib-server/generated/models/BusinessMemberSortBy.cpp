@@ -6,20 +6,3 @@
 */
 #include "BusinessMemberSortBy.h"
 
-namespace models {
-
-BusinessMemberSortBy::BusinessMemberSortBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

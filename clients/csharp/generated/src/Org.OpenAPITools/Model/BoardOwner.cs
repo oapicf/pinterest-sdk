@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class BoardOwner.");
+                throw new JsonException("Property is not nullable for class BoardOwner: username.");
 
             return new BoardOwner(username);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardOwner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardOwner boardOwner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardOwner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardOwner boardOwner, JsonSerializerOptions jsonSerializerOptions)
         {
             if (boardOwner.UsernameOption.IsSet && boardOwner.Username == null)
-                throw new ArgumentNullException(nameof(boardOwner.Username), "Property is required for class BoardOwner.");
+                throw new JsonException("Cannot write null property BoardOwner.Username to non-nullable JSON property 'username'.");
 
             if (boardOwner.UsernameOption.IsSet)
                 writer.WriteString("username", boardOwner.Username);

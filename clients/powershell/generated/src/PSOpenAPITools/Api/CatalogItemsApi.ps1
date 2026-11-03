@@ -63,7 +63,7 @@ function Invoke-ItemsBatchGet {
         if (!$BatchId) {
             throw "Error! The required parameter `BatchId` missing when calling itemsBatch_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{batch_id}', [System.Web.HTTPUtility]::UrlEncode($BatchId))
+        $LocalVarUri = $LocalVarUri.replace('{batch_id}', [System.Uri]::EscapeDataString([string]$BatchId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

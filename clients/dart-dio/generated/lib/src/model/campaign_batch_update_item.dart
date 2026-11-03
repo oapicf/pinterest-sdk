@@ -554,3 +554,4 @@ class _$CampaignBatchUpdateItemSerializer implements PrimitiveSerializer<Campaig
   }
 }
 
+

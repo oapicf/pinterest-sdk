@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
-* Values: ACTIVE,INACTIVE
-*/
+ * Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
+ * Values: ACTIVE,INACTIVE
+ */
 enum class CatalogsStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class CatalogsStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsStatus'")
         }
     }
 }
-

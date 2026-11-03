@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CampaignPlanningConversionEvent
-{
-public:
-
-    CampaignPlanningConversionEvent();
-    virtual ~CampaignPlanningConversionEvent() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningConversionEvent,
-        )
-
-private:
+enum class CampaignPlanningConversionEvent {
+    
+    SIGNUP,
+    
+    CHECKOUT,
+    
+    ADD_TO_CART,
+    
+    LEAD
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningConversionEvent& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningConversionEvent::SIGNUP: j = "SIGNUP"; break;
+        
+        case CampaignPlanningConversionEvent::CHECKOUT: j = "CHECKOUT"; break;
+        
+        case CampaignPlanningConversionEvent::ADD_TO_CART: j = "ADD_TO_CART"; break;
+        
+        case CampaignPlanningConversionEvent::LEAD: j = "LEAD"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConversionEvent", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningConversionEvent& value)
+{
+    
+    if (j == "SIGNUP")
+    {
+        value = CampaignPlanningConversionEvent::SIGNUP;
+        return;
+    }
+    
+    if (j == "CHECKOUT")
+    {
+        value = CampaignPlanningConversionEvent::CHECKOUT;
+        return;
+    }
+    
+    if (j == "ADD_TO_CART")
+    {
+        value = CampaignPlanningConversionEvent::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "LEAD")
+    {
+        value = CampaignPlanningConversionEvent::LEAD;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConversionEvent", &j);
+}
 
 } // namespace models
 

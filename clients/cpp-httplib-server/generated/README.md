@@ -132,15 +132,15 @@ auto parsedModel = models::AccountTemplate::fromJson(nlohmann::json::parse(jsonS
 #### models::ActionType
 
 ```cpp
-// Create a model
-auto model = models::ActionType();
+// Select an enum value
+auto model = models::ActionType::CLICKTHROUGH;
 
-// Serialize to JSON
-nlohmann::json json = models::ActionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ActionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ActionType>();
 ```
 #### models::Ad
 
@@ -266,15 +266,15 @@ auto parsedModel = models::AdAccountCreate::fromJson(nlohmann::json::parse(jsonS
 #### models::AdAccountEntityType
 
 ```cpp
-// Create a model
-auto model = models::AdAccountEntityType();
+// Select an enum value
+auto model = models::AdAccountEntityType::ADVERTISER;
 
-// Serialize to JSON
-nlohmann::json json = models::AdAccountEntityType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdAccountEntityType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdAccountEntityType>();
 ```
 #### models::AdAccountOwner
 
@@ -516,15 +516,15 @@ auto parsedModel = models::AdAccountsSubscriptionsGetList200Response::fromJson(n
 #### models::AdAdsAnalyticsAsyncTargetingTypes
 
 ```cpp
-// Create a model
-auto model = models::AdAdsAnalyticsAsyncTargetingTypes();
+// Select an enum value
+auto model = models::AdAdsAnalyticsAsyncTargetingTypes::KEYWORD;
 
-// Serialize to JSON
-nlohmann::json json = models::AdAdsAnalyticsAsyncTargetingTypes::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdAdsAnalyticsAsyncTargetingTypes::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdAdsAnalyticsAsyncTargetingTypes>();
 ```
 #### models::AdBatchItem
 
@@ -599,15 +599,15 @@ auto parsedModel = models::AdBatchWriteResponseModel::fromJson(nlohmann::json::p
 #### models::AdCollectionsHeaderType
 
 ```cpp
-// Create a model
-auto model = models::AdCollectionsHeaderType();
+// Select an enum value
+auto model = models::AdCollectionsHeaderType::SHOP_THIS_COLLECTION;
 
-// Serialize to JSON
-nlohmann::json json = models::AdCollectionsHeaderType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdCollectionsHeaderType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdCollectionsHeaderType>();
 ```
 #### models::AdCreate
 
@@ -688,15 +688,15 @@ auto parsedModel = models::AdCreateRequest::fromJson(nlohmann::json::parse(jsonS
 #### models::AdDisapprovalReasons
 
 ```cpp
-// Create a model
-auto model = models::AdDisapprovalReasons();
+// Select an enum value
+auto model = models::AdDisapprovalReasons::HASHTAGS;
 
-// Serialize to JSON
-nlohmann::json json = models::AdDisapprovalReasons::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdDisapprovalReasons::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdDisapprovalReasons>();
 ```
 #### models::AdGroup
 
@@ -752,15 +752,15 @@ auto parsedModel = models::AdGroupAudienceSizingCreate::fromJson(nlohmann::json:
 #### models::AdGroupAudienceSizingCreativeTypes
 
 ```cpp
-// Create a model
-auto model = models::AdGroupAudienceSizingCreativeTypes();
+// Select an enum value
+auto model = models::AdGroupAudienceSizingCreativeTypes::REGULAR;
 
-// Serialize to JSON
-nlohmann::json json = models::AdGroupAudienceSizingCreativeTypes::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdGroupAudienceSizingCreativeTypes::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdGroupAudienceSizingCreativeTypes>();
 ```
 #### models::AdGroupAudienceSizingKeyword
 
@@ -977,15 +977,15 @@ auto parsedModel = models::AdGroupDeliveryEstimatesKeywordsItems::fromJson(nlohm
 #### models::AdGroupSummaryStatus
 
 ```cpp
-// Create a model
-auto model = models::AdGroupSummaryStatus();
+// Select an enum value
+auto model = models::AdGroupSummaryStatus::RUNNING;
 
-// Serialize to JSON
-nlohmann::json json = models::AdGroupSummaryStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdGroupSummaryStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdGroupSummaryStatus>();
 ```
 #### models::AdGroupTrackingURLs
 
@@ -1227,15 +1227,15 @@ auto parsedModel = models::AdPinAnalytics::fromJson(nlohmann::json::parse(jsonSt
 #### models::AdPinPreviewCreativeType
 
 ```cpp
-// Create a model
-auto model = models::AdPinPreviewCreativeType();
+// Select an enum value
+auto model = models::AdPinPreviewCreativeType::SHOPPING;
 
-// Serialize to JSON
-nlohmann::json json = models::AdPinPreviewCreativeType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdPinPreviewCreativeType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdPinPreviewCreativeType>();
 ```
 #### models::AdPreviewRequest
 
@@ -1337,28 +1337,28 @@ auto parsedModel = models::AdPreviewURLResponse::fromJson(nlohmann::json::parse(
 #### models::AdReviewStatus
 
 ```cpp
-// Create a model
-auto model = models::AdReviewStatus();
+// Select an enum value
+auto model = models::AdReviewStatus::OTHER;
 
-// Serialize to JSON
-nlohmann::json json = models::AdReviewStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdReviewStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdReviewStatus>();
 ```
 #### models::AdShoppingPreviewCreativeType
 
 ```cpp
-// Create a model
-auto model = models::AdShoppingPreviewCreativeType();
+// Select an enum value
+auto model = models::AdShoppingPreviewCreativeType::SHOPPING;
 
-// Serialize to JSON
-nlohmann::json json = models::AdShoppingPreviewCreativeType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdShoppingPreviewCreativeType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdShoppingPreviewCreativeType>();
 ```
 #### models::AdUpdateRequest
 
@@ -1415,41 +1415,41 @@ auto parsedModel = models::AdUpdateRequest::fromJson(nlohmann::json::parse(jsonS
 #### models::AdeColumnType
 
 ```cpp
-// Create a model
-auto model = models::AdeColumnType();
+// Select an enum value
+auto model = models::AdeColumnType::ADE_COST_PER_ACTION;
 
-// Serialize to JSON
-nlohmann::json json = models::AdeColumnType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdeColumnType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdeColumnType>();
 ```
 #### models::AdgroupPlacementGroupType
 
 ```cpp
-// Create a model
-auto model = models::AdgroupPlacementGroupType();
+// Select an enum value
+auto model = models::AdgroupPlacementGroupType::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::AdgroupPlacementGroupType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdgroupPlacementGroupType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdgroupPlacementGroupType>();
 ```
 #### models::AdgroupTrackingFeatureType
 
 ```cpp
-// Create a model
-auto model = models::AdgroupTrackingFeatureType();
+// Select an enum value
+auto model = models::AdgroupTrackingFeatureType::TRENDS;
 
-// Serialize to JSON
-nlohmann::json json = models::AdgroupTrackingFeatureType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdgroupTrackingFeatureType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdgroupTrackingFeatureType>();
 ```
 #### models::AdgroupTrackingFeatures
 
@@ -1483,54 +1483,54 @@ auto parsedModel = models::AdsAnalytics::fromJson(nlohmann::json::parse(jsonStri
 #### models::AdsAnalyticsAccountTargetingType
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsAccountTargetingType();
+// Select an enum value
+auto model = models::AdsAnalyticsAccountTargetingType::KEYWORD;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsAccountTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsAccountTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsAccountTargetingType>();
 ```
 #### models::AdsAnalyticsAdGroupTargetingType
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsAdGroupTargetingType();
+// Select an enum value
+auto model = models::AdsAnalyticsAdGroupTargetingType::KEYWORD;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsAdGroupTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsAdGroupTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsAdGroupTargetingType>();
 ```
 #### models::AdsAnalyticsAdTargetingType
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsAdTargetingType();
+// Select an enum value
+auto model = models::AdsAnalyticsAdTargetingType::KEYWORD;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsAdTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsAdTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsAdTargetingType>();
 ```
 #### models::AdsAnalyticsCampaignTargetingType
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsCampaignTargetingType();
+// Select an enum value
+auto model = models::AdsAnalyticsCampaignTargetingType::KEYWORD;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsCampaignTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsCampaignTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsCampaignTargetingType>();
 ```
 #### models::AdsAnalyticsCreateAsyncRequest
 
@@ -1595,28 +1595,28 @@ auto parsedModel = models::AdsAnalyticsCreateAsyncResponse::fromJson(nlohmann::j
 #### models::AdsAnalyticsFilterColumn
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsFilterColumn();
+// Select an enum value
+auto model = models::AdsAnalyticsFilterColumn::SPEND_IN_DOLLAR;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsFilterColumn::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsFilterColumn::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsFilterColumn>();
 ```
 #### models::AdsAnalyticsFilterOperator
 
 ```cpp
-// Create a model
-auto model = models::AdsAnalyticsFilterOperator();
+// Select an enum value
+auto model = models::AdsAnalyticsFilterOperator::LESS_THAN;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsAnalyticsFilterOperator::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsAnalyticsFilterOperator::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsAnalyticsFilterOperator>();
 ```
 #### models::AdsAnalyticsGetAsyncResponse
 
@@ -1653,15 +1653,15 @@ auto parsedModel = models::AdsAnalyticsMetricsFilter::fromJson(nlohmann::json::p
 #### models::AdsCreditDiscountType
 
 ```cpp
-// Create a model
-auto model = models::AdsCreditDiscountType();
+// Select an enum value
+auto model = models::AdsCreditDiscountType::COUPON;
 
-// Serialize to JSON
-nlohmann::json json = models::AdsCreditDiscountType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdsCreditDiscountType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdsCreditDiscountType>();
 ```
 #### models::AdsCreditDiscountsResponse
 
@@ -1959,15 +1959,15 @@ auto parsedModel = models::AdvertiserDefinedEventInput::fromJson(nlohmann::json:
 #### models::AdvertiserDefinedEventMappingType
 
 ```cpp
-// Create a model
-auto model = models::AdvertiserDefinedEventMappingType();
+// Select an enum value
+auto model = models::AdvertiserDefinedEventMappingType::SIGNUP;
 
-// Serialize to JSON
-nlohmann::json json = models::AdvertiserDefinedEventMappingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AdvertiserDefinedEventMappingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AdvertiserDefinedEventMappingType>();
 ```
 #### models::AdvertiserDefinedEventProcessingRecord
 
@@ -2072,15 +2072,15 @@ auto parsedModel = models::AgeBucketMultipliers::fromJson(nlohmann::json::parse(
 #### models::AgeTrendsBucket
 
 ```cpp
-// Create a model
-auto model = models::AgeTrendsBucket();
+// Select an enum value
+auto model = models::AgeTrendsBucket::_18_24;
 
-// Serialize to JSON
-nlohmann::json json = models::AgeTrendsBucket::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AgeTrendsBucket::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AgeTrendsBucket>();
 ```
 #### models::AggregatedPinComment
 
@@ -2117,15 +2117,15 @@ auto parsedModel = models::AggregatedPinComment::fromJson(nlohmann::json::parse(
 #### models::AiDisclosureItem
 
 ```cpp
-// Create a model
-auto model = models::AiDisclosureItem();
+// Select an enum value
+auto model = models::AiDisclosureItem::AI_MODIFIED;
 
-// Serialize to JSON
-nlohmann::json json = models::AiDisclosureItem::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AiDisclosureItem::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AiDisclosureItem>();
 ```
 #### models::AiDisclosures
 
@@ -2284,15 +2284,15 @@ auto parsedModel = models::AppsflyerAudienceSyncCreate::fromJson(nlohmann::json:
 #### models::AppsflyerPlatform
 
 ```cpp
-// Create a model
-auto model = models::AppsflyerPlatform();
+// Select an enum value
+auto model = models::AppsflyerPlatform::ANDROID;
 
-// Serialize to JSON
-nlohmann::json json = models::AppsflyerPlatform::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AppsflyerPlatform::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AppsflyerPlatform>();
 ```
 #### models::AssetAccessRequestError
 
@@ -2443,15 +2443,15 @@ auto parsedModel = models::AssetGroupModificationReadOrUpdate::fromJson(nlohmann
 #### models::AssetGroupType
 
 ```cpp
-// Create a model
-auto model = models::AssetGroupType();
+// Select an enum value
+auto model = models::AssetGroupType::BRAND;
 
-// Serialize to JSON
-nlohmann::json json = models::AssetGroupType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AssetGroupType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AssetGroupType>();
 ```
 #### models::AssetGroupUpdateError
 
@@ -2523,106 +2523,106 @@ auto parsedModel = models::AssetIdWithPermissions::fromJson(nlohmann::json::pars
 #### models::AssetPermissionType
 
 ```cpp
-// Create a model
-auto model = models::AssetPermissionType();
+// Select an enum value
+auto model = models::AssetPermissionType::AGGREGATED_PERMISSION;
 
-// Serialize to JSON
-nlohmann::json json = models::AssetPermissionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AssetPermissionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AssetPermissionType>();
 ```
 #### models::AssetSearchBy
 
 ```cpp
-// Create a model
-auto model = models::AssetSearchBy();
+// Select an enum value
+auto model = models::AssetSearchBy::NAME;
 
-// Serialize to JSON
-nlohmann::json json = models::AssetSearchBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AssetSearchBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AssetSearchBy>();
 ```
 #### models::AssetSortBy
 
 ```cpp
-// Create a model
-auto model = models::AssetSortBy();
+// Select an enum value
+auto model = models::AssetSortBy::NAME;
 
-// Serialize to JSON
-nlohmann::json json = models::AssetSortBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AssetSortBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AssetSortBy>();
 ```
 #### models::AssetTypeResponse
 
 ```cpp
-// Create a model
-auto model = models::AssetTypeResponse();
+// Select an enum value
+auto model = models::AssetTypeResponse::AD_ACCOUNT;
 
-// Serialize to JSON
-nlohmann::json json = models::AssetTypeResponse::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AssetTypeResponse::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AssetTypeResponse>();
 ```
 #### models::AttributionActionType
 
 ```cpp
-// Create a model
-auto model = models::AttributionActionType();
+// Select an enum value
+auto model = models::AttributionActionType::VIEW;
 
-// Serialize to JSON
-nlohmann::json json = models::AttributionActionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AttributionActionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AttributionActionType>();
 ```
 #### models::AttributionMatchType
 
 ```cpp
-// Create a model
-auto model = models::AttributionMatchType();
+// Select an enum value
+auto model = models::AttributionMatchType::P;
 
-// Serialize to JSON
-nlohmann::json json = models::AttributionMatchType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AttributionMatchType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AttributionMatchType>();
 ```
 #### models::AttributionModel
 
 ```cpp
-// Create a model
-auto model = models::AttributionModel();
+// Select an enum value
+auto model = models::AttributionModel::FIRST_TOUCH;
 
-// Serialize to JSON
-nlohmann::json json = models::AttributionModel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AttributionModel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AttributionModel>();
 ```
 #### models::AttributionScope
 
 ```cpp
-// Create a model
-auto model = models::AttributionScope();
+// Select an enum value
+auto model = models::AttributionScope::VIEW;
 
-// Serialize to JSON
-nlohmann::json json = models::AttributionScope::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AttributionScope::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AttributionScope>();
 ```
 #### models::AttributionWindows
 
@@ -2669,15 +2669,15 @@ auto parsedModel = models::Audience::fromJson(nlohmann::json::parse(jsonString))
 #### models::AudienceAccountType
 
 ```cpp
-// Create a model
-auto model = models::AudienceAccountType();
+// Select an enum value
+auto model = models::AudienceAccountType::AD_ACCOUNT;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceAccountType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceAccountType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceAccountType>();
 ```
 #### models::AudienceCategory
 
@@ -2751,15 +2751,15 @@ auto parsedModel = models::AudienceDemographics::fromJson(nlohmann::json::parse(
 #### models::AudienceInsightType
 
 ```cpp
-// Create a model
-auto model = models::AudienceInsightType();
+// Select an enum value
+auto model = models::AudienceInsightType::YOUR_TOTAL_AUDIENCE;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceInsightType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceInsightType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceInsightType>();
 ```
 #### models::AudienceInsights
 
@@ -2797,28 +2797,28 @@ auto parsedModel = models::AudienceInsightsScopeAndTypeGet200Response::fromJson(
 #### models::AudienceObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::AudienceObjectiveType();
+// Select an enum value
+auto model = models::AudienceObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceObjectiveType>();
 ```
 #### models::AudienceOwnershipType
 
 ```cpp
-// Create a model
-auto model = models::AudienceOwnershipType();
+// Select an enum value
+auto model = models::AudienceOwnershipType::OWNED;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceOwnershipType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceOwnershipType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceOwnershipType>();
 ```
 #### models::Rule
 
@@ -2856,15 +2856,15 @@ auto parsedModel = models::Rule::fromJson(nlohmann::json::parse(jsonString));
 #### models::AudienceStatus
 
 ```cpp
-// Create a model
-auto model = models::AudienceStatus();
+// Select an enum value
+auto model = models::AudienceStatus::INITIALIZING;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceStatus>();
 ```
 #### models::AudienceSubcategory
 
@@ -2887,28 +2887,28 @@ auto parsedModel = models::AudienceSubcategory::fromJson(nlohmann::json::parse(j
 #### models::AudienceType
 
 ```cpp
-// Create a model
-auto model = models::AudienceType();
+// Select an enum value
+auto model = models::AudienceType::CUSTOMER_LIST;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceType>();
 ```
 #### models::AudienceUpdateOperationType
 
 ```cpp
-// Create a model
-auto model = models::AudienceUpdateOperationType();
+// Select an enum value
+auto model = models::AudienceUpdateOperationType::UPDATE;
 
-// Serialize to JSON
-nlohmann::json json = models::AudienceUpdateOperationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AudienceUpdateOperationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AudienceUpdateOperationType>();
 ```
 #### models::AudiencesList200Response
 
@@ -3020,28 +3020,28 @@ auto parsedModel = models::BaseInviteDataResponse::fromJson(nlohmann::json::pars
 #### models::BasePreferredMediaType
 
 ```cpp
-// Create a model
-auto model = models::BasePreferredMediaType();
+// Select an enum value
+auto model = models::BasePreferredMediaType::VIDEO;
 
-// Serialize to JSON
-nlohmann::json json = models::BasePreferredMediaType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BasePreferredMediaType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BasePreferredMediaType>();
 ```
 #### models::BatchOperationStatus
 
 ```cpp
-// Create a model
-auto model = models::BatchOperationStatus();
+// Select an enum value
+auto model = models::BatchOperationStatus::PROCESSING;
 
-// Serialize to JSON
-nlohmann::json json = models::BatchOperationStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BatchOperationStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BatchOperationStatus>();
 ```
 #### models::BidFloor
 
@@ -3076,15 +3076,15 @@ auto parsedModel = models::BidFloorCreate::fromJson(nlohmann::json::parse(jsonSt
 #### models::BidFloorObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::BidFloorObjectiveType();
+// Select an enum value
+auto model = models::BidFloorObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::BidFloorObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BidFloorObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BidFloorObjectiveType>();
 ```
 #### models::BidFloorSpec
 
@@ -3193,15 +3193,15 @@ auto parsedModel = models::BidOptionsPlacementMultipliers::fromJson(nlohmann::js
 #### models::BidStrategyType
 
 ```cpp
-// Create a model
-auto model = models::BidStrategyType();
+// Select an enum value
+auto model = models::BidStrategyType::AUTOMATIC_BID;
 
-// Serialize to JSON
-nlohmann::json json = models::BidStrategyType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BidStrategyType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BidStrategyType>();
 ```
 #### models::BillingInvoice
 
@@ -3234,15 +3234,15 @@ auto parsedModel = models::BillingInvoice::fromJson(nlohmann::json::parse(jsonSt
 #### models::BillingInvoiceDocumentType
 
 ```cpp
-// Create a model
-auto model = models::BillingInvoiceDocumentType();
+// Select an enum value
+auto model = models::BillingInvoiceDocumentType::INVOICE;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingInvoiceDocumentType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingInvoiceDocumentType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingInvoiceDocumentType>();
 ```
 #### models::BillingInvoiceDownloadResponse
 
@@ -3262,28 +3262,28 @@ auto parsedModel = models::BillingInvoiceDownloadResponse::fromJson(nlohmann::js
 #### models::BillingInvoiceSortField
 
 ```cpp
-// Create a model
-auto model = models::BillingInvoiceSortField();
+// Select an enum value
+auto model = models::BillingInvoiceSortField::DUE_DATE;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingInvoiceSortField::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingInvoiceSortField::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingInvoiceSortField>();
 ```
 #### models::BillingInvoiceStatus
 
 ```cpp
-// Create a model
-auto model = models::BillingInvoiceStatus();
+// Select an enum value
+auto model = models::BillingInvoiceStatus::OPEN;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingInvoiceStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingInvoiceStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingInvoiceStatus>();
 ```
 #### models::BillingInvoicesGet200Response
 
@@ -3303,41 +3303,41 @@ auto parsedModel = models::BillingInvoicesGet200Response::fromJson(nlohmann::jso
 #### models::BillingProfileCardType
 
 ```cpp
-// Create a model
-auto model = models::BillingProfileCardType();
+// Select an enum value
+auto model = models::BillingProfileCardType::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingProfileCardType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingProfileCardType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingProfileCardType>();
 ```
 #### models::BillingProfilePaymentMethodBrand
 
 ```cpp
-// Create a model
-auto model = models::BillingProfilePaymentMethodBrand();
+// Select an enum value
+auto model = models::BillingProfilePaymentMethodBrand::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingProfilePaymentMethodBrand::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingProfilePaymentMethodBrand::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingProfilePaymentMethodBrand>();
 ```
 #### models::BillingProfileStatus
 
 ```cpp
-// Create a model
-auto model = models::BillingProfileStatus();
+// Select an enum value
+auto model = models::BillingProfileStatus::UNSPECIFIED;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingProfileStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingProfileStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingProfileStatus>();
 ```
 #### models::BillingProfilesGet200Response
 
@@ -3376,15 +3376,15 @@ auto parsedModel = models::BillingProfilesResponse::fromJson(nlohmann::json::par
 #### models::BillingType
 
 ```cpp
-// Create a model
-auto model = models::BillingType();
+// Select an enum value
+auto model = models::BillingType::CREDIT_CARD;
 
-// Serialize to JSON
-nlohmann::json json = models::BillingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BillingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BillingType>();
 ```
 #### models::Board
 
@@ -3473,28 +3473,28 @@ auto parsedModel = models::BoardOwnerContainingTheUsername::fromJson(nlohmann::j
 #### models::BoardPrivacy
 
 ```cpp
-// Create a model
-auto model = models::BoardPrivacy();
+// Select an enum value
+auto model = models::BoardPrivacy::PUBLIC;
 
-// Serialize to JSON
-nlohmann::json json = models::BoardPrivacy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BoardPrivacy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BoardPrivacy>();
 ```
 #### models::BoardPrivacyFilter
 
 ```cpp
-// Create a model
-auto model = models::BoardPrivacyFilter();
+// Select an enum value
+auto model = models::BoardPrivacyFilter::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::BoardPrivacyFilter::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BoardPrivacyFilter::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BoardPrivacyFilter>();
 ```
 #### models::BoardSection
 
@@ -3574,15 +3574,15 @@ auto parsedModel = models::BoardSectionsListPins200Response::fromJson(nlohmann::
 #### models::BoardUpdatePrivacy
 
 ```cpp
-// Create a model
-auto model = models::BoardUpdatePrivacy();
+// Select an enum value
+auto model = models::BoardUpdatePrivacy::PUBLIC;
 
-// Serialize to JSON
-nlohmann::json json = models::BoardUpdatePrivacy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BoardUpdatePrivacy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BoardUpdatePrivacy>();
 ```
 #### models::BoardWithUpdatePrivacy
 
@@ -3773,28 +3773,28 @@ auto parsedModel = models::Brand::fromJson(nlohmann::json::parse(jsonString));
 #### models::BudgetDurationType
 
 ```cpp
-// Create a model
-auto model = models::BudgetDurationType();
+// Select an enum value
+auto model = models::BudgetDurationType::FIXED_DAILY;
 
-// Serialize to JSON
-nlohmann::json json = models::BudgetDurationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BudgetDurationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BudgetDurationType>();
 ```
 #### models::BudgetType
 
 ```cpp
-// Create a model
-auto model = models::BudgetType();
+// Select an enum value
+auto model = models::BudgetType::DAILY;
 
-// Serialize to JSON
-nlohmann::json json = models::BudgetType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BudgetType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BudgetType>();
 ```
 #### models::BulkCampaignDeliveryEstimatesItem
 
@@ -3884,15 +3884,15 @@ auto parsedModel = models::BulkDownloadCreate::fromJson(nlohmann::json::parse(js
 #### models::BulkEntityType
 
 ```cpp
-// Create a model
-auto model = models::BulkEntityType();
+// Select an enum value
+auto model = models::BulkEntityType::CAMPAIGN;
 
-// Serialize to JSON
-nlohmann::json json = models::BulkEntityType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BulkEntityType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BulkEntityType>();
 ```
 #### models::BulkJobData
 
@@ -3913,41 +3913,41 @@ auto parsedModel = models::BulkJobData::fromJson(nlohmann::json::parse(jsonStrin
 #### models::BulkOutputFormat
 
 ```cpp
-// Create a model
-auto model = models::BulkOutputFormat();
+// Select an enum value
+auto model = models::BulkOutputFormat::CSV;
 
-// Serialize to JSON
-nlohmann::json json = models::BulkOutputFormat::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BulkOutputFormat::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BulkOutputFormat>();
 ```
 #### models::BulkReportingJobStatus
 
 ```cpp
-// Create a model
-auto model = models::BulkReportingJobStatus();
+// Select an enum value
+auto model = models::BulkReportingJobStatus::DOES_NOT_EXIST;
 
-// Serialize to JSON
-nlohmann::json json = models::BulkReportingJobStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BulkReportingJobStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BulkReportingJobStatus>();
 ```
 #### models::BulkRequestStatus
 
 ```cpp
-// Create a model
-auto model = models::BulkRequestStatus();
+// Select an enum value
+auto model = models::BulkRequestStatus::RUNNING;
 
-// Serialize to JSON
-nlohmann::json json = models::BulkRequestStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BulkRequestStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BulkRequestStatus>();
 ```
 #### models::BulkUpsertRequest
 
@@ -4065,15 +4065,15 @@ auto parsedModel = models::BulkUpsertResponse::fromJson(nlohmann::json::parse(js
 #### models::BusinessAccessRole
 
 ```cpp
-// Create a model
-auto model = models::BusinessAccessRole();
+// Select an enum value
+auto model = models::BusinessAccessRole::OWNER;
 
-// Serialize to JSON
-nlohmann::json json = models::BusinessAccessRole::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BusinessAccessRole::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BusinessAccessRole>();
 ```
 #### models::BusinessAccessUserSummary
 
@@ -4200,15 +4200,15 @@ auto parsedModel = models::BusinessMemberAssetsSummary::fromJson(nlohmann::json:
 #### models::BusinessMemberSortBy
 
 ```cpp
-// Create a model
-auto model = models::BusinessMemberSortBy();
+// Select an enum value
+auto model = models::BusinessMemberSortBy::FULL_NAME;
 
-// Serialize to JSON
-nlohmann::json json = models::BusinessMemberSortBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BusinessMemberSortBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BusinessMemberSortBy>();
 ```
 #### models::BusinessMembersAssetAccessDeleteBody
 
@@ -4257,41 +4257,41 @@ auto parsedModel = models::BusinessPartnerAssetAccessGet200Response::fromJson(nl
 #### models::BusinessRoleForInvite
 
 ```cpp
-// Create a model
-auto model = models::BusinessRoleForInvite();
+// Select an enum value
+auto model = models::BusinessRoleForInvite::EMPLOYEE;
 
-// Serialize to JSON
-nlohmann::json json = models::BusinessRoleForInvite::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BusinessRoleForInvite::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BusinessRoleForInvite>();
 ```
 #### models::BusinessRoleForMembers
 
 ```cpp
-// Create a model
-auto model = models::BusinessRoleForMembers();
+// Select an enum value
+auto model = models::BusinessRoleForMembers::EMPLOYEE;
 
-// Serialize to JSON
-nlohmann::json json = models::BusinessRoleForMembers::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BusinessRoleForMembers::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BusinessRoleForMembers>();
 ```
 #### models::BusinessSearchBy
 
 ```cpp
-// Create a model
-auto model = models::BusinessSearchBy();
+// Select an enum value
+auto model = models::BusinessSearchBy::FULL_NAME;
 
-// Serialize to JSON
-nlohmann::json json = models::BusinessSearchBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::BusinessSearchBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::BusinessSearchBy>();
 ```
 #### models::BusinessToAdAccountSharedAudience
 
@@ -4699,15 +4699,15 @@ auto parsedModel = models::CampaignBidOptionsUpdate::fromJson(nlohmann::json::pa
 #### models::CampaignBidOptionsUpdateMaskItems
 
 ```cpp
-// Create a model
-auto model = models::CampaignBidOptionsUpdateMaskItems();
+// Select an enum value
+auto model = models::CampaignBidOptionsUpdateMaskItems::AUDIENCE;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignBidOptionsUpdateMaskItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignBidOptionsUpdateMaskItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignBidOptionsUpdateMaskItems>();
 ```
 #### models::CampaignCreateItem
 
@@ -4877,15 +4877,15 @@ auto parsedModel = models::CampaignDeliveryEstimatesResponse::fromJson(nlohmann:
 #### models::CampaignObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::CampaignObjectiveType();
+// Select an enum value
+auto model = models::CampaignObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignObjectiveType>();
 ```
 #### models::CampaignPlanningAdGroupAudienceSize
 
@@ -4953,28 +4953,28 @@ auto parsedModel = models::CampaignPlanningConfidenceLevelAlert::fromJson(nlohma
 #### models::CampaignPlanningConfidenceLevelAlertReason
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningConfidenceLevelAlertReason();
+// Select an enum value
+auto model = models::CampaignPlanningConfidenceLevelAlertReason::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningConfidenceLevelAlertReason::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningConfidenceLevelAlertReason::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningConfidenceLevelAlertReason>();
 ```
 #### models::CampaignPlanningConfidenceLevelAlertSeverity
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningConfidenceLevelAlertSeverity();
+// Select an enum value
+auto model = models::CampaignPlanningConfidenceLevelAlertSeverity::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningConfidenceLevelAlertSeverity::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningConfidenceLevelAlertSeverity::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningConfidenceLevelAlertSeverity>();
 ```
 #### models::CampaignPlanningConversionAttribution
 
@@ -4995,28 +4995,28 @@ auto parsedModel = models::CampaignPlanningConversionAttribution::fromJson(nlohm
 #### models::CampaignPlanningConversionAttributionWindowDays
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningConversionAttributionWindowDays();
+// Select an enum value
+auto model = models::CampaignPlanningConversionAttributionWindowDays::DAYS_0;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningConversionAttributionWindowDays::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningConversionAttributionWindowDays::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningConversionAttributionWindowDays>();
 ```
 #### models::CampaignPlanningConversionEvent
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningConversionEvent();
+// Select an enum value
+auto model = models::CampaignPlanningConversionEvent::SIGNUP;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningConversionEvent::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningConversionEvent::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningConversionEvent>();
 ```
 #### models::CampaignPlanningConversionRate
 
@@ -5052,15 +5052,15 @@ auto parsedModel = models::CampaignPlanningCurveEstimate::fromJson(nlohmann::jso
 #### models::CampaignPlanningEstimationType
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningEstimationType();
+// Select an enum value
+auto model = models::CampaignPlanningEstimationType::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningEstimationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningEstimationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningEstimationType>();
 ```
 #### models::CampaignPlanningExperimentBudgetRecommendation
 
@@ -5115,28 +5115,28 @@ auto parsedModel = models::CampaignPlanningResponseError::fromJson(nlohmann::jso
 #### models::CampaignPlanningResponseErrorCode
 
 ```cpp
-// Create a model
-auto model = models::CampaignPlanningResponseErrorCode();
+// Select an enum value
+auto model = models::CampaignPlanningResponseErrorCode::SERVER_ERROR;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignPlanningResponseErrorCode::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignPlanningResponseErrorCode::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignPlanningResponseErrorCode>();
 ```
 #### models::CampaignSummaryStatus
 
 ```cpp
-// Create a model
-auto model = models::CampaignSummaryStatus();
+// Select an enum value
+auto model = models::CampaignSummaryStatus::RUNNING;
 
-// Serialize to JSON
-nlohmann::json json = models::CampaignSummaryStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CampaignSummaryStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CampaignSummaryStatus>();
 ```
 #### models::CampaignUpdateRequest
 
@@ -5442,15 +5442,15 @@ auto parsedModel = models::CatalogsAiContentDisclosure::fromJson(nlohmann::json:
 #### models::CatalogsAiContentDisclosureLabel
 
 ```cpp
-// Create a model
-auto model = models::CatalogsAiContentDisclosureLabel();
+// Select an enum value
+auto model = models::CatalogsAiContentDisclosureLabel::AI_MODIFIED;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsAiContentDisclosureLabel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsAiContentDisclosureLabel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsAiContentDisclosureLabel>();
 ```
 #### models::CatalogsAvailableFilterValues
 
@@ -6366,28 +6366,28 @@ auto parsedModel = models::CatalogsProcessingSchedule::fromJson(nlohmann::json::
 #### models::CatalogsFeedProcessingScheduleTimezone
 
 ```cpp
-// Create a model
-auto model = models::CatalogsFeedProcessingScheduleTimezone();
+// Select an enum value
+auto model = models::CatalogsFeedProcessingScheduleTimezone::AFRICA_ABIDJAN;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsFeedProcessingScheduleTimezone::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsFeedProcessingScheduleTimezone::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsFeedProcessingScheduleTimezone>();
 ```
 #### models::CatalogsFeedProcessingStatus
 
 ```cpp
-// Create a model
-auto model = models::CatalogsFeedProcessingStatus();
+// Select an enum value
+auto model = models::CatalogsFeedProcessingStatus::COMPLETED;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsFeedProcessingStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsFeedProcessingStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsFeedProcessingStatus>();
 ```
 #### models::CatalogsFeedProductCounts
 
@@ -6787,15 +6787,15 @@ auto parsedModel = models::LegacyRetailOnly::fromJson(nlohmann::json::parse(json
 #### models::CatalogsFormat
 
 ```cpp
-// Create a model
-auto model = models::CatalogsFormat();
+// Select an enum value
+auto model = models::CatalogsFormat::TSV;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsFormat::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsFormat::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsFormat>();
 ```
 #### models::CatalogsHotelAddress
 
@@ -7240,15 +7240,15 @@ auto parsedModel = models::CatalogsHotelProductGroupProductCounts::fromJson(nloh
 #### models::HotelProductGroupType
 
 ```cpp
-// Create a model
-auto model = models::HotelProductGroupType();
+// Select an enum value
+auto model = models::HotelProductGroupType::MERCHANT_CREATED;
 
-// Serialize to JSON
-nlohmann::json json = models::HotelProductGroupType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::HotelProductGroupType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::HotelProductGroupType>();
 ```
 #### models::HotelProductGroupsUpdateRequest
 
@@ -7399,15 +7399,15 @@ auto parsedModel = models::CatalogsItemValidationErrors::fromJson(nlohmann::json
 #### models::CatalogsItemValidationIssue
 
 ```cpp
-// Create a model
-auto model = models::CatalogsItemValidationIssue();
+// Select an enum value
+auto model = models::CatalogsItemValidationIssue::AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsItemValidationIssue::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsItemValidationIssue::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsItemValidationIssue>();
 ```
 #### models::CatalogsItemValidationIssues
 
@@ -8029,15 +8029,15 @@ auto parsedModel = models::CatalogsLocalStoresUpdate200ResponseInnerDataOneOf::f
 #### models::CatalogsLocale
 
 ```cpp
-// Create a model
-auto model = models::CatalogsLocale();
+// Select an enum value
+auto model = models::CatalogsLocale::AF_ZA;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsLocale::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsLocale::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsLocale>();
 ```
 #### models::CatalogsProduct
 
@@ -8383,28 +8383,28 @@ auto parsedModel = models::CatalogsProductGroupProductCountsVertical::fromJson(n
 #### models::CatalogsProductGroupStatus
 
 ```cpp
-// Create a model
-auto model = models::CatalogsProductGroupStatus();
+// Select an enum value
+auto model = models::CatalogsProductGroupStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsProductGroupStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsProductGroupStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsProductGroupStatus>();
 ```
 #### models::ProductGroupType
 
 ```cpp
-// Create a model
-auto model = models::ProductGroupType();
+// Select an enum value
+auto model = models::ProductGroupType::MERCHANT_CREATED;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductGroupType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductGroupType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductGroupType>();
 ```
 #### models::CatalogsProductGroupUint32Criteria
 
@@ -9139,28 +9139,28 @@ auto parsedModel = models::CatalogsRetailReportStatsParametersReport::fromJson(n
 #### models::CatalogsStatus
 
 ```cpp
-// Create a model
-auto model = models::CatalogsStatus();
+// Select an enum value
+auto model = models::CatalogsStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsStatus>();
 ```
 #### models::CatalogsType
 
 ```cpp
-// Create a model
-auto model = models::CatalogsType();
+// Select an enum value
+auto model = models::CatalogsType::RETAIL;
 
-// Serialize to JSON
-nlohmann::json json = models::CatalogsType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CatalogsType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CatalogsType>();
 ```
 #### models::CatalogsUpdatableCreativeAssetsAttributes
 
@@ -9466,41 +9466,41 @@ auto parsedModel = models::CatalogBasedProductGroup::fromJson(nlohmann::json::pa
 #### models::ChangeHistoryDataType
 
 ```cpp
-// Create a model
-auto model = models::ChangeHistoryDataType();
+// Select an enum value
+auto model = models::ChangeHistoryDataType::STRING;
 
-// Serialize to JSON
-nlohmann::json json = models::ChangeHistoryDataType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ChangeHistoryDataType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ChangeHistoryDataType>();
 ```
 #### models::ChangeHistoryOperationType
 
 ```cpp
-// Create a model
-auto model = models::ChangeHistoryOperationType();
+// Select an enum value
+auto model = models::ChangeHistoryOperationType::CREATE;
 
-// Serialize to JSON
-nlohmann::json json = models::ChangeHistoryOperationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ChangeHistoryOperationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ChangeHistoryOperationType>();
 ```
 #### models::CollectionsHeaderType
 
 ```cpp
-// Create a model
-auto model = models::CollectionsHeaderType();
+// Select an enum value
+auto model = models::CollectionsHeaderType::SHOP_THIS_COLLECTION;
 
-// Serialize to JSON
-nlohmann::json json = models::CollectionsHeaderType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CollectionsHeaderType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CollectionsHeaderType>();
 ```
 #### models::Condition
 
@@ -9519,15 +9519,15 @@ auto parsedModel = models::Condition::fromJson(nlohmann::json::parse(jsonString)
 #### models::ContentType
 
 ```cpp
-// Create a model
-auto model = models::ContentType();
+// Select an enum value
+auto model = models::ContentType::IMAGE_JPEG;
 
-// Serialize to JSON
-nlohmann::json json = models::ContentType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ContentType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ContentType>();
 ```
 #### models::ConversionAccessTokenResponse
 
@@ -9563,15 +9563,15 @@ auto parsedModel = models::ConversionApiResponseEventsItems::fromJson(nlohmann::
 #### models::ConversionAttributionWindowDays
 
 ```cpp
-// Create a model
-auto model = models::ConversionAttributionWindowDays();
+// Select an enum value
+auto model = models::ConversionAttributionWindowDays::_0;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionAttributionWindowDays::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionAttributionWindowDays::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionAttributionWindowDays>();
 ```
 #### models::ConversionDeletionRequest
 
@@ -9636,15 +9636,15 @@ auto parsedModel = models::ConversionDeletionRequestList200Response::fromJson(nl
 #### models::ConversionDeletionRequestStatus
 
 ```cpp
-// Create a model
-auto model = models::ConversionDeletionRequestStatus();
+// Select an enum value
+auto model = models::ConversionDeletionRequestStatus::PENDING;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionDeletionRequestStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionDeletionRequestStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionDeletionRequestStatus>();
 ```
 #### models::ConversionDeletionRequestTargets
 
@@ -9678,15 +9678,15 @@ auto parsedModel = models::ConversionDeletionRequestUserEmailTargets::fromJson(n
 #### models::ConversionEvent
 
 ```cpp
-// Create a model
-auto model = models::ConversionEvent();
+// Select an enum value
+auto model = models::ConversionEvent::PAGE_VISIT;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionEvent::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionEvent::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionEvent>();
 ```
 #### models::ConversionEventAppInfo
 
@@ -9750,15 +9750,15 @@ auto parsedModel = models::ConversionEventDeviceInfo::fromJson(nlohmann::json::p
 #### models::ConversionEventIngestionSource
 
 ```cpp
-// Create a model
-auto model = models::ConversionEventIngestionSource();
+// Select an enum value
+auto model = models::ConversionEventIngestionSource::TAG;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionEventIngestionSource::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionEventIngestionSource::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionEventIngestionSource>();
 ```
 #### models::ConversionEventResponse
 
@@ -9939,15 +9939,15 @@ auto parsedModel = models::ConversionHealthSelectionItem::fromJson(nlohmann::jso
 #### models::ConversionLearningModeType
 
 ```cpp
-// Create a model
-auto model = models::ConversionLearningModeType();
+// Select an enum value
+auto model = models::ConversionLearningModeType::NOT_ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionLearningModeType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionLearningModeType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionLearningModeType>();
 ```
 #### models::ConversionMSOTEventsCreate
 
@@ -9981,28 +9981,28 @@ auto parsedModel = models::ConversionMSOTEventsCreate::fromJson(nlohmann::json::
 #### models::ConversionObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::ConversionObjectiveType();
+// Select an enum value
+auto model = models::ConversionObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionObjectiveType>();
 ```
 #### models::ConversionProductAttributionType
 
 ```cpp
-// Create a model
-auto model = models::ConversionProductAttributionType();
+// Select an enum value
+auto model = models::ConversionProductAttributionType::DEFAULT;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionProductAttributionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionProductAttributionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionProductAttributionType>();
 ```
 #### models::ConversionProductReport
 
@@ -10025,15 +10025,15 @@ auto parsedModel = models::ConversionProductReport::fromJson(nlohmann::json::par
 #### models::ConversionProductReportBreakdownType
 
 ```cpp
-// Create a model
-auto model = models::ConversionProductReportBreakdownType();
+// Select an enum value
+auto model = models::ConversionProductReportBreakdownType::PRODUCT_BRAND;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionProductReportBreakdownType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionProductReportBreakdownType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionProductReportBreakdownType>();
 ```
 #### models::ConversionProductReportCreate
 
@@ -10066,67 +10066,67 @@ auto parsedModel = models::ConversionProductReportCreate::fromJson(nlohmann::jso
 #### models::ConversionProductReportGranularity
 
 ```cpp
-// Create a model
-auto model = models::ConversionProductReportGranularity();
+// Select an enum value
+auto model = models::ConversionProductReportGranularity::TOTAL;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionProductReportGranularity::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionProductReportGranularity::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionProductReportGranularity>();
 ```
 #### models::ConversionProductReportLevel
 
 ```cpp
-// Create a model
-auto model = models::ConversionProductReportLevel();
+// Select an enum value
+auto model = models::ConversionProductReportLevel::ADVERTISER;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionProductReportLevel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionProductReportLevel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionProductReportLevel>();
 ```
 #### models::ConversionProductReportingColumn
 
 ```cpp
-// Create a model
-auto model = models::ConversionProductReportingColumn();
+// Select an enum value
+auto model = models::ConversionProductReportingColumn::CAMPAIGN_NAME;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionProductReportingColumn::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionProductReportingColumn::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionProductReportingColumn>();
 ```
 #### models::ConversionReportAttributionType
 
 ```cpp
-// Create a model
-auto model = models::ConversionReportAttributionType();
+// Select an enum value
+auto model = models::ConversionReportAttributionType::INDIVIDUAL;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionReportAttributionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionReportAttributionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionReportAttributionType>();
 ```
 #### models::ConversionReportTimeType
 
 ```cpp
-// Create a model
-auto model = models::ConversionReportTimeType();
+// Select an enum value
+auto model = models::ConversionReportTimeType::TIME_OF_AD_ACTION;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionReportTimeType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionReportTimeType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionReportTimeType>();
 ```
 #### models::ConversionTag
 
@@ -10232,28 +10232,28 @@ auto parsedModel = models::ConversionTagResponse::fromJson(nlohmann::json::parse
 #### models::ConversionTagType
 
 ```cpp
-// Create a model
-auto model = models::ConversionTagType();
+// Select an enum value
+auto model = models::ConversionTagType::PAGE_LOAD;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionTagType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionTagType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionTagType>();
 ```
 #### models::ConversionTagTypeOptimal
 
 ```cpp
-// Create a model
-auto model = models::ConversionTagTypeOptimal();
+// Select an enum value
+auto model = models::ConversionTagTypeOptimal::PAGE_LOAD;
 
-// Serialize to JSON
-nlohmann::json json = models::ConversionTagTypeOptimal::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ConversionTagTypeOptimal::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ConversionTagTypeOptimal>();
 ```
 #### models::ConversionTagV3GoalMetadata
 
@@ -10291,15 +10291,15 @@ auto parsedModel = models::ConversionTagsList200Response::fromJson(nlohmann::jso
 #### models::Country
 
 ```cpp
-// Create a model
-auto model = models::Country();
+// Select an enum value
+auto model = models::Country::AD;
 
-// Serialize to JSON
-nlohmann::json json = models::Country::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Country::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Country>();
 ```
 #### models::Country
 
@@ -10423,15 +10423,15 @@ auto parsedModel = models::CreateMembershipOrPartnershipInvitesBody::fromJson(nl
 #### models::CreationSource
 
 ```cpp
-// Create a model
-auto model = models::CreationSource();
+// Select an enum value
+auto model = models::CreationSource::ADS_API;
 
-// Serialize to JSON
-nlohmann::json json = models::CreationSource::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CreationSource::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CreationSource>();
 ```
 #### models::CreativeAssetsId
 
@@ -10467,41 +10467,41 @@ auto parsedModel = models::CreativeAssetsProcessingRecord::fromJson(nlohmann::js
 #### models::CreativeAssetsVisibilityType
 
 ```cpp
-// Create a model
-auto model = models::CreativeAssetsVisibilityType();
+// Select an enum value
+auto model = models::CreativeAssetsVisibilityType::VISIBLE;
 
-// Serialize to JSON
-nlohmann::json json = models::CreativeAssetsVisibilityType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CreativeAssetsVisibilityType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CreativeAssetsVisibilityType>();
 ```
 #### models::CreativeTypeEnumUsedAds
 
 ```cpp
-// Create a model
-auto model = models::CreativeTypeEnumUsedAds();
+// Select an enum value
+auto model = models::CreativeTypeEnumUsedAds::REGULAR;
 
-// Serialize to JSON
-nlohmann::json json = models::CreativeTypeEnumUsedAds::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CreativeTypeEnumUsedAds::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CreativeTypeEnumUsedAds>();
 ```
 #### models::Currency
 
 ```cpp
-// Create a model
-auto model = models::Currency();
+// Select an enum value
+auto model = models::Currency::UNK;
 
-// Serialize to JSON
-nlohmann::json json = models::Currency::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Currency::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Currency>();
 ```
 #### models::Currency
 
@@ -10739,15 +10739,15 @@ auto parsedModel = models::CustomerListRecordRow::fromJson(nlohmann::json::parse
 #### models::CustomerListStatus
 
 ```cpp
-// Create a model
-auto model = models::CustomerListStatus();
+// Select an enum value
+auto model = models::CustomerListStatus::PROCESSING;
 
-// Serialize to JSON
-nlohmann::json json = models::CustomerListStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CustomerListStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CustomerListStatus>();
 ```
 #### models::CustomerListUpdateWithRequiredBody
 
@@ -10901,41 +10901,41 @@ auto parsedModel = models::CustomerSegmentUpdateRequestUpdateWithRequiredBody::f
 #### models::CustomizableCTAType
 
 ```cpp
-// Create a model
-auto model = models::CustomizableCTAType();
+// Select an enum value
+auto model = models::CustomizableCTAType::GET_OFFER;
 
-// Serialize to JSON
-nlohmann::json json = models::CustomizableCTAType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::CustomizableCTAType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::CustomizableCTAType>();
 ```
 #### models::DataOutputFormat
 
 ```cpp
-// Create a model
-auto model = models::DataOutputFormat();
+// Select an enum value
+auto model = models::DataOutputFormat::JSON;
 
-// Serialize to JSON
-nlohmann::json json = models::DataOutputFormat::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::DataOutputFormat::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::DataOutputFormat>();
 ```
 #### models::DataStatus
 
 ```cpp
-// Create a model
-auto model = models::DataStatus();
+// Select an enum value
+auto model = models::DataStatus::PROCESSING;
 
-// Serialize to JSON
-nlohmann::json json = models::DataStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::DataStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::DataStatus>();
 ```
 #### models::DeleteBusinessMembership200Response
 
@@ -11118,15 +11118,15 @@ auto parsedModel = models::DeletePartnerAssetAccessResultsResponseArray::fromJso
 #### models::DeliveryEstimateObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::DeliveryEstimateObjectiveType();
+// Select an enum value
+auto model = models::DeliveryEstimateObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::DeliveryEstimateObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::DeliveryEstimateObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::DeliveryEstimateObjectiveType>();
 ```
 #### models::DeliveryMetricsGet200Response
 
@@ -11178,28 +11178,28 @@ auto parsedModel = models::DetailedError::fromJson(nlohmann::json::parse(jsonStr
 #### models::DisclosureType
 
 ```cpp
-// Create a model
-auto model = models::DisclosureType();
+// Select an enum value
+auto model = models::DisclosureType::NO_DISCLOSURE;
 
-// Serialize to JSON
-nlohmann::json json = models::DisclosureType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::DisclosureType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::DisclosureType>();
 ```
 #### models::DiscountStatus
 
 ```cpp
-// Create a model
-auto model = models::DiscountStatus();
+// Select an enum value
+auto model = models::DiscountStatus::OTHER;
 
-// Serialize to JSON
-nlohmann::json json = models::DiscountStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::DiscountStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::DiscountStatus>();
 ```
 #### models::DynamicTitlesDownloadCsv
 
@@ -11294,15 +11294,15 @@ auto parsedModel = models::DynamicTitlesUploadUrl::fromJson(nlohmann::json::pars
 #### models::EnhancedMatchStatusType
 
 ```cpp
-// Create a model
-auto model = models::EnhancedMatchStatusType();
+// Select an enum value
+auto model = models::EnhancedMatchStatusType::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::EnhancedMatchStatusType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::EnhancedMatchStatusType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::EnhancedMatchStatusType>();
 ```
 #### models::EntityDataChangeHistory
 
@@ -11377,28 +11377,28 @@ auto parsedModel = models::EntityLabelError::fromJson(nlohmann::json::parse(json
 #### models::EntityLabelStatus
 
 ```cpp
-// Create a model
-auto model = models::EntityLabelStatus();
+// Select an enum value
+auto model = models::EntityLabelStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::EntityLabelStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::EntityLabelStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::EntityLabelStatus>();
 ```
 #### models::EntityStatus
 
 ```cpp
-// Create a model
-auto model = models::EntityStatus();
+// Select an enum value
+auto model = models::EntityStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::EntityStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::EntityStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::EntityStatus>();
 ```
 #### models::ErrorDetail
 
@@ -11443,15 +11443,15 @@ auto parsedModel = models::EventData::fromJson(nlohmann::json::parse(jsonString)
 #### models::EventProcessingStatus
 
 ```cpp
-// Create a model
-auto model = models::EventProcessingStatus();
+// Select an enum value
+auto model = models::EventProcessingStatus::FAILED;
 
-// Serialize to JSON
-nlohmann::json json = models::EventProcessingStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::EventProcessingStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::EventProcessingStatus>();
 ```
 #### models::EventQualityScore
 
@@ -11535,15 +11535,15 @@ auto parsedModel = models::FeedsList200Response::fromJson(nlohmann::json::parse(
 #### models::FilterOperatorType
 
 ```cpp
-// Create a model
-auto model = models::FilterOperatorType();
+// Select an enum value
+auto model = models::FilterOperatorType::IS;
 
-// Serialize to JSON
-nlohmann::json json = models::FilterOperatorType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::FilterOperatorType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::FilterOperatorType>();
 ```
 #### models::FollowFollowingUser
 
@@ -11592,28 +11592,28 @@ auto parsedModel = models::FollowersList200Response::fromJson(nlohmann::json::pa
 #### models::FormFactor
 
 ```cpp
-// Create a model
-auto model = models::FormFactor();
+// Select an enum value
+auto model = models::FormFactor::DESKTOP;
 
-// Serialize to JSON
-nlohmann::json json = models::FormFactor::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::FormFactor::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::FormFactor>();
 ```
 #### models::FreqBidMultiplierTimeWindow
 
 ```cpp
-// Create a model
-auto model = models::FreqBidMultiplierTimeWindow();
+// Select an enum value
+auto model = models::FreqBidMultiplierTimeWindow::WEEK;
 
-// Serialize to JSON
-nlohmann::json json = models::FreqBidMultiplierTimeWindow::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::FreqBidMultiplierTimeWindow::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::FreqBidMultiplierTimeWindow>();
 ```
 #### models::FrequencyGoalMetadata
 
@@ -11633,15 +11633,15 @@ auto parsedModel = models::FrequencyGoalMetadata::fromJson(nlohmann::json::parse
 #### models::FrequencyGoalMetadataTimerange
 
 ```cpp
-// Create a model
-auto model = models::FrequencyGoalMetadataTimerange();
+// Select an enum value
+auto model = models::FrequencyGoalMetadataTimerange::THIRTY_DAY;
 
-// Serialize to JSON
-nlohmann::json json = models::FrequencyGoalMetadataTimerange::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::FrequencyGoalMetadataTimerange::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::FrequencyGoalMetadataTimerange>();
 ```
 #### models::FrequencyMultipliers
 
@@ -11660,28 +11660,28 @@ auto parsedModel = models::FrequencyMultipliers::fromJson(nlohmann::json::parse(
 #### models::Gender
 
 ```cpp
-// Create a model
-auto model = models::Gender();
+// Select an enum value
+auto model = models::Gender::FEMALE;
 
-// Serialize to JSON
-nlohmann::json json = models::Gender::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Gender::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Gender>();
 ```
 #### models::GenderBucket
 
 ```cpp
-// Create a model
-auto model = models::GenderBucket();
+// Select an enum value
+auto model = models::GenderBucket::MALE;
 
-// Serialize to JSON
-nlohmann::json json = models::GenderBucket::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::GenderBucket::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::GenderBucket>();
 ```
 #### models::GenderDemographics
 
@@ -11903,28 +11903,28 @@ auto parsedModel = models::GoogleProductCategory6::fromJson(nlohmann::json::pars
 #### models::Granularity
 
 ```cpp
-// Create a model
-auto model = models::Granularity();
+// Select an enum value
+auto model = models::Granularity::TOTAL;
 
-// Serialize to JSON
-nlohmann::json json = models::Granularity::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Granularity::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Granularity>();
 ```
 #### models::GridClickType
 
 ```cpp
-// Create a model
-auto model = models::GridClickType();
+// Select an enum value
+auto model = models::GridClickType::CLOSEUP;
 
-// Serialize to JSON
-nlohmann::json json = models::GridClickType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::GridClickType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::GridClickType>();
 ```
 #### models::HotelId
 
@@ -11960,15 +11960,15 @@ auto parsedModel = models::HotelProcessingRecord::fromJson(nlohmann::json::parse
 #### models::HttpMethod
 
 ```cpp
-// Create a model
-auto model = models::HttpMethod();
+// Select an enum value
+auto model = models::HttpMethod::GET;
 
-// Serialize to JSON
-nlohmann::json json = models::HttpMethod::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::HttpMethod::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::HttpMethod>();
 ```
 #### models::ImageDetailsContainingTheUrlAndDimensions
 
@@ -12039,15 +12039,15 @@ auto parsedModel = models::IneligibleProductTagErrorItem::fromJson(nlohmann::jso
 #### models::IneligibleProductTagReason
 
 ```cpp
-// Create a model
-auto model = models::IneligibleProductTagReason();
+// Select an enum value
+auto model = models::IneligibleProductTagReason::PIN_MISSING;
 
-// Serialize to JSON
-nlohmann::json json = models::IneligibleProductTagReason::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IneligibleProductTagReason::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IneligibleProductTagReason>();
 ```
 #### models::IneligibleProductTagsErrorDetails
 
@@ -12066,28 +12066,28 @@ auto parsedModel = models::IneligibleProductTagsErrorDetails::fromJson(nlohmann:
 #### models::IngestionSource
 
 ```cpp
-// Create a model
-auto model = models::IngestionSource();
+// Select an enum value
+auto model = models::IngestionSource::TAG;
 
-// Serialize to JSON
-nlohmann::json json = models::IngestionSource::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IngestionSource::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IngestionSource>();
 ```
 #### models::IngestionSourceOptions
 
 ```cpp
-// Create a model
-auto model = models::IngestionSourceOptions();
+// Select an enum value
+auto model = models::IngestionSourceOptions::TAG;
 
-// Serialize to JSON
-nlohmann::json json = models::IngestionSourceOptions::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IngestionSourceOptions::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IngestionSourceOptions>();
 ```
 #### models::InnerProductCategoriesMetricsHighlights
 
@@ -12173,28 +12173,28 @@ auto parsedModel = models::IntegrationLogClientRequest::fromJson(nlohmann::json:
 #### models::IntegrationLogEventType
 
 ```cpp
-// Create a model
-auto model = models::IntegrationLogEventType();
+// Select an enum value
+auto model = models::IntegrationLogEventType::APP;
 
-// Serialize to JSON
-nlohmann::json json = models::IntegrationLogEventType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IntegrationLogEventType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IntegrationLogEventType>();
 ```
 #### models::IntegrationLogLevel
 
 ```cpp
-// Create a model
-auto model = models::IntegrationLogLevel();
+// Select an enum value
+auto model = models::IntegrationLogLevel::INFO;
 
-// Serialize to JSON
-nlohmann::json json = models::IntegrationLogLevel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IntegrationLogLevel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IntegrationLogLevel>();
 ```
 #### models::IntegrationLogsInvalidLogResponse
 
@@ -12381,15 +12381,15 @@ auto parsedModel = models::IntegrationsGetList200Response::fromJson(nlohmann::js
 #### models::IntendedPromotionType
 
 ```cpp
-// Create a model
-auto model = models::IntendedPromotionType();
+// Select an enum value
+auto model = models::IntendedPromotionType::LEGACY;
 
-// Serialize to JSON
-nlohmann::json json = models::IntendedPromotionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::IntendedPromotionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::IntendedPromotionType>();
 ```
 #### models::Interest
 
@@ -12411,15 +12411,15 @@ auto parsedModel = models::Interest::fromJson(nlohmann::json::parse(jsonString))
 #### models::InterestsEnum
 
 ```cpp
-// Create a model
-auto model = models::InterestsEnum();
+// Select an enum value
+auto model = models::InterestsEnum::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::InterestsEnum::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::InterestsEnum::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::InterestsEnum>();
 ```
 #### models::InviteActionResultItem
 
@@ -12523,15 +12523,15 @@ auto parsedModel = models::InviteExceptionResponse::fromJson(nlohmann::json::par
 #### models::InviteFilterStatus
 
 ```cpp
-// Create a model
-auto model = models::InviteFilterStatus();
+// Select an enum value
+auto model = models::InviteFilterStatus::PENDING;
 
-// Serialize to JSON
-nlohmann::json json = models::InviteFilterStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::InviteFilterStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::InviteFilterStatus>();
 ```
 #### models::InviteResponse
 
@@ -12558,28 +12558,28 @@ auto parsedModel = models::InviteResponse::fromJson(nlohmann::json::parse(jsonSt
 #### models::InviteStatus
 
 ```cpp
-// Create a model
-auto model = models::InviteStatus();
+// Select an enum value
+auto model = models::InviteStatus::PENDING;
 
-// Serialize to JSON
-nlohmann::json json = models::InviteStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::InviteStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::InviteStatus>();
 ```
 #### models::InviteType
 
 ```cpp
-// Create a model
-auto model = models::InviteType();
+// Select an enum value
+auto model = models::InviteType::MEMBER_INVITE;
 
-// Serialize to JSON
-nlohmann::json json = models::InviteType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::InviteType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::InviteType>();
 ```
 #### models::ItemAttributes
 
@@ -12735,15 +12735,15 @@ auto parsedModel = models::ItemAttributesRequestImageLink::fromJson(nlohmann::js
 #### models::ItemAvailability
 
 ```cpp
-// Create a model
-auto model = models::ItemAvailability();
+// Select an enum value
+auto model = models::ItemAvailability::IN_STOCK;
 
-// Serialize to JSON
-nlohmann::json json = models::ItemAvailability::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ItemAvailability::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ItemAvailability>();
 ```
 #### models::ItemCreateBatchRecord
 
@@ -12851,15 +12851,15 @@ auto parsedModel = models::ItemProcessingRecord::fromJson(nlohmann::json::parse(
 #### models::ItemProcessingStatus
 
 ```cpp
-// Create a model
-auto model = models::ItemProcessingStatus();
+// Select an enum value
+auto model = models::ItemProcessingStatus::SUCCESS;
 
-// Serialize to JSON
-nlohmann::json json = models::ItemProcessingStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ItemProcessingStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ItemProcessingStatus>();
 ```
 #### models::ItemResponse
 
@@ -13302,54 +13302,54 @@ auto parsedModel = models::LabelErrorData::fromJson(nlohmann::json::parse(jsonSt
 #### models::LabelParentType
 
 ```cpp
-// Create a model
-auto model = models::LabelParentType();
+// Select an enum value
+auto model = models::LabelParentType::CAMPAIGN;
 
-// Serialize to JSON
-nlohmann::json json = models::LabelParentType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LabelParentType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LabelParentType>();
 ```
 #### models::LabelStatus
 
 ```cpp
-// Create a model
-auto model = models::LabelStatus();
+// Select an enum value
+auto model = models::LabelStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::LabelStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LabelStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LabelStatus>();
 ```
 #### models::LabelStatusBulkUpdate
 
 ```cpp
-// Create a model
-auto model = models::LabelStatusBulkUpdate();
+// Select an enum value
+auto model = models::LabelStatusBulkUpdate::ARCHIVED;
 
-// Serialize to JSON
-nlohmann::json json = models::LabelStatusBulkUpdate::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LabelStatusBulkUpdate::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LabelStatusBulkUpdate>();
 ```
 #### models::LabelType
 
 ```cpp
-// Create a model
-auto model = models::LabelType();
+// Select an enum value
+auto model = models::LabelType::BRAND;
 
-// Serialize to JSON
-nlohmann::json json = models::LabelType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LabelType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LabelType>();
 ```
 #### models::LabelUpdateItem
 
@@ -13443,15 +13443,15 @@ auto parsedModel = models::LabelsResponse::fromJson(nlohmann::json::parse(jsonSt
 #### models::Language
 
 ```cpp
-// Create a model
-auto model = models::Language();
+// Select an enum value
+auto model = models::Language::AM;
 
-// Serialize to JSON
-nlohmann::json json = models::Language::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Language::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Language>();
 ```
 #### models::LeadForm
 
@@ -13556,41 +13556,41 @@ auto parsedModel = models::LeadFormQuestion::fromJson(nlohmann::json::parse(json
 #### models::LeadFormQuestionFieldType
 
 ```cpp
-// Create a model
-auto model = models::LeadFormQuestionFieldType();
+// Select an enum value
+auto model = models::LeadFormQuestionFieldType::TEXT_FIELD;
 
-// Serialize to JSON
-nlohmann::json json = models::LeadFormQuestionFieldType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LeadFormQuestionFieldType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LeadFormQuestionFieldType>();
 ```
 #### models::LeadFormQuestionType
 
 ```cpp
-// Create a model
-auto model = models::LeadFormQuestionType();
+// Select an enum value
+auto model = models::LeadFormQuestionType::CUSTOM;
 
-// Serialize to JSON
-nlohmann::json json = models::LeadFormQuestionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LeadFormQuestionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LeadFormQuestionType>();
 ```
 #### models::LeadFormStatus
 
 ```cpp
-// Create a model
-auto model = models::LeadFormStatus();
+// Select an enum value
+auto model = models::LeadFormStatus::DRAFT;
 
-// Serialize to JSON
-nlohmann::json json = models::LeadFormStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LeadFormStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LeadFormStatus>();
 ```
 #### models::LeadFormTest
 
@@ -13780,15 +13780,15 @@ auto parsedModel = models::LeadsExportResponseData::fromJson(nlohmann::json::par
 #### models::LeadsExportStatus
 
 ```cpp
-// Create a model
-auto model = models::LeadsExportStatus();
+// Select an enum value
+auto model = models::LeadsExportStatus::IN_PROGRESS;
 
-// Serialize to JSON
-nlohmann::json json = models::LeadsExportStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LeadsExportStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LeadsExportStatus>();
 ```
 #### models::LeadsExports
 
@@ -14133,15 +14133,15 @@ auto parsedModel = models::LocalStoreCreate::fromJson(nlohmann::json::parse(json
 #### models::LookbackPeriodOptions
 
 ```cpp
-// Create a model
-auto model = models::LookbackPeriodOptions();
+// Select an enum value
+auto model = models::LookbackPeriodOptions::_1D;
 
-// Serialize to JSON
-nlohmann::json json = models::LookbackPeriodOptions::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::LookbackPeriodOptions::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::LookbackPeriodOptions>();
 ```
 #### models::MMMReport
 
@@ -14188,80 +14188,80 @@ auto parsedModel = models::MMMReportCreate::fromJson(nlohmann::json::parse(jsonS
 #### models::MMMReportGranularity
 
 ```cpp
-// Create a model
-auto model = models::MMMReportGranularity();
+// Select an enum value
+auto model = models::MMMReportGranularity::DAY;
 
-// Serialize to JSON
-nlohmann::json json = models::MMMReportGranularity::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MMMReportGranularity::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MMMReportGranularity>();
 ```
 #### models::MMMReportLevel
 
 ```cpp
-// Create a model
-auto model = models::MMMReportLevel();
+// Select an enum value
+auto model = models::MMMReportLevel::CAMPAIGN_TARGETING;
 
-// Serialize to JSON
-nlohmann::json json = models::MMMReportLevel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MMMReportLevel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MMMReportLevel>();
 ```
 #### models::MMMReportingColumn
 
 ```cpp
-// Create a model
-auto model = models::MMMReportingColumn();
+// Select an enum value
+auto model = models::MMMReportingColumn::SPEND_IN_DOLLAR;
 
-// Serialize to JSON
-nlohmann::json json = models::MMMReportingColumn::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MMMReportingColumn::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MMMReportingColumn>();
 ```
 #### models::MMMReportingTargetingType
 
 ```cpp
-// Create a model
-auto model = models::MMMReportingTargetingType();
+// Select an enum value
+auto model = models::MMMReportingTargetingType::APPTYPE;
 
-// Serialize to JSON
-nlohmann::json json = models::MMMReportingTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MMMReportingTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MMMReportingTargetingType>();
 ```
 #### models::MatchType
 
 ```cpp
-// Create a model
-auto model = models::MatchType();
+// Select an enum value
+auto model = models::MatchType::BROAD;
 
-// Serialize to JSON
-nlohmann::json json = models::MatchType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MatchType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MatchType>();
 ```
 #### models::MatchTypeResponse
 
 ```cpp
-// Create a model
-auto model = models::MatchTypeResponse();
+// Select an enum value
+auto model = models::MatchTypeResponse::BROAD;
 
-// Serialize to JSON
-nlohmann::json json = models::MatchTypeResponse::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MatchTypeResponse::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MatchTypeResponse>();
 ```
 #### models::MaxPrice
 
@@ -14311,15 +14311,15 @@ auto parsedModel = models::MediaList200Response::fromJson(nlohmann::json::parse(
 #### models::MediaType
 
 ```cpp
-// Create a model
-auto model = models::MediaType();
+// Select an enum value
+auto model = models::MediaType::IMAGE;
 
-// Serialize to JSON
-nlohmann::json json = models::MediaType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MediaType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MediaType>();
 ```
 #### models::MediaType
 
@@ -14390,67 +14390,67 @@ auto parsedModel = models::MediaUploadParameters::fromJson(nlohmann::json::parse
 #### models::MediaUploadStatus
 
 ```cpp
-// Create a model
-auto model = models::MediaUploadStatus();
+// Select an enum value
+auto model = models::MediaUploadStatus::REGISTERED;
 
-// Serialize to JSON
-nlohmann::json json = models::MediaUploadStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MediaUploadStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MediaUploadStatus>();
 ```
 #### models::MediaUploadType
 
 ```cpp
-// Create a model
-auto model = models::MediaUploadType();
+// Select an enum value
+auto model = models::MediaUploadType::VIDEO;
 
-// Serialize to JSON
-nlohmann::json json = models::MediaUploadType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MediaUploadType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MediaUploadType>();
 ```
 #### models::MemberBusinessRole
 
 ```cpp
-// Create a model
-auto model = models::MemberBusinessRole();
+// Select an enum value
+auto model = models::MemberBusinessRole::EMPLOYEE;
 
-// Serialize to JSON
-nlohmann::json json = models::MemberBusinessRole::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MemberBusinessRole::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MemberBusinessRole>();
 ```
 #### models::MetricsReportingLevel
 
 ```cpp
-// Create a model
-auto model = models::MetricsReportingLevel();
+// Select an enum value
+auto model = models::MetricsReportingLevel::ADVERTISER;
 
-// Serialize to JSON
-nlohmann::json json = models::MetricsReportingLevel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MetricsReportingLevel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MetricsReportingLevel>();
 ```
 #### models::MetricsReportingTemplateType
 
 ```cpp
-// Create a model
-auto model = models::MetricsReportingTemplateType();
+// Select an enum value
+auto model = models::MetricsReportingTemplateType::UNSPECIFIED;
 
-// Serialize to JSON
-nlohmann::json json = models::MetricsReportingTemplateType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MetricsReportingTemplateType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MetricsReportingTemplateType>();
 ```
 #### models::MetricsResponse
 
@@ -14499,80 +14499,80 @@ auto parsedModel = models::MinPrice::fromJson(nlohmann::json::parse(jsonString))
 #### models::MobileAppPlatform
 
 ```cpp
-// Create a model
-auto model = models::MobileAppPlatform();
+// Select an enum value
+auto model = models::MobileAppPlatform::IOS;
 
-// Serialize to JSON
-nlohmann::json json = models::MobileAppPlatform::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MobileAppPlatform::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MobileAppPlatform>();
 ```
 #### models::MsotEventName
 
 ```cpp
-// Create a model
-auto model = models::MsotEventName();
+// Select an enum value
+auto model = models::MsotEventName::ADD_TO_CART;
 
-// Serialize to JSON
-nlohmann::json json = models::MsotEventName::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MsotEventName::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MsotEventName>();
 ```
 #### models::MultiPinsAnalyticsMetricTypesItem
 
 ```cpp
-// Create a model
-auto model = models::MultiPinsAnalyticsMetricTypesItem();
+// Select an enum value
+auto model = models::MultiPinsAnalyticsMetricTypesItem::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::MultiPinsAnalyticsMetricTypesItem::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::MultiPinsAnalyticsMetricTypesItem::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::MultiPinsAnalyticsMetricTypesItem>();
 ```
 #### models::NetworkType
 
 ```cpp
-// Create a model
-auto model = models::NetworkType();
+// Select an enum value
+auto model = models::NetworkType::WIFI;
 
-// Serialize to JSON
-nlohmann::json json = models::NetworkType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NetworkType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NetworkType>();
 ```
 #### models::NonDraftEntityStatus
 
 ```cpp
-// Create a model
-auto model = models::NonDraftEntityStatus();
+// Select an enum value
+auto model = models::NonDraftEntityStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::NonDraftEntityStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NonDraftEntityStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NonDraftEntityStatus>();
 ```
 #### models::NonNullableCatalogsCurrency
 
 ```cpp
-// Create a model
-auto model = models::NonNullableCatalogsCurrency();
+// Select an enum value
+auto model = models::NonNullableCatalogsCurrency::AED;
 
-// Serialize to JSON
-nlohmann::json json = models::NonNullableCatalogsCurrency::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NonNullableCatalogsCurrency::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NonNullableCatalogsCurrency>();
 ```
 #### models::NotificationPostRequest
 
@@ -14606,67 +14606,67 @@ auto parsedModel = models::NotificationResponse::fromJson(nlohmann::json::parse(
 #### models::NullableCatalogsItemFieldType
 
 ```cpp
-// Create a model
-auto model = models::NullableCatalogsItemFieldType();
+// Select an enum value
+auto model = models::NullableCatalogsItemFieldType::ITEM_ID;
 
-// Serialize to JSON
-nlohmann::json json = models::NullableCatalogsItemFieldType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullableCatalogsItemFieldType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullableCatalogsItemFieldType>();
 ```
 #### models::NullableCurrency
 
 ```cpp
-// Create a model
-auto model = models::NullableCurrency();
+// Select an enum value
+auto model = models::NullableCurrency::AED;
 
-// Serialize to JSON
-nlohmann::json json = models::NullableCurrency::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullableCurrency::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullableCurrency>();
 ```
 #### models::NullableEntityStatus
 
 ```cpp
-// Create a model
-auto model = models::NullableEntityStatus();
+// Select an enum value
+auto model = models::NullableEntityStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::NullableEntityStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullableEntityStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullableEntityStatus>();
 ```
 #### models::NullableLabelStatus
 
 ```cpp
-// Create a model
-auto model = models::NullableLabelStatus();
+// Select an enum value
+auto model = models::NullableLabelStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::NullableLabelStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullableLabelStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullableLabelStatus>();
 ```
 #### models::NullableLabelType
 
 ```cpp
-// Create a model
-auto model = models::NullableLabelType();
+// Select an enum value
+auto model = models::NullableLabelType::BRAND;
 
-// Serialize to JSON
-nlohmann::json json = models::NullableLabelType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullableLabelType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullableLabelType>();
 ```
 #### models::NullableOptimizationGoalMetadata
 
@@ -14687,41 +14687,41 @@ auto parsedModel = models::NullableOptimizationGoalMetadata::fromJson(nlohmann::
 #### models::NullablePartnerType
 
 ```cpp
-// Create a model
-auto model = models::NullablePartnerType();
+// Select an enum value
+auto model = models::NullablePartnerType::INTERNAL;
 
-// Serialize to JSON
-nlohmann::json json = models::NullablePartnerType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullablePartnerType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullablePartnerType>();
 ```
 #### models::NullalbleMatchType
 
 ```cpp
-// Create a model
-auto model = models::NullalbleMatchType();
+// Select an enum value
+auto model = models::NullalbleMatchType::BROAD;
 
-// Serialize to JSON
-nlohmann::json json = models::NullalbleMatchType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NullalbleMatchType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NullalbleMatchType>();
 ```
 #### models::NumericFilterOperatorType
 
 ```cpp
-// Create a model
-auto model = models::NumericFilterOperatorType();
+// Select an enum value
+auto model = models::NumericFilterOperatorType::GREATER_THAN;
 
-// Serialize to JSON
-nlohmann::json json = models::NumericFilterOperatorType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::NumericFilterOperatorType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::NumericFilterOperatorType>();
 ```
 #### models::OAuthAccessTokenRequest
 
@@ -14747,28 +14747,28 @@ auto parsedModel = models::OAuthAccessTokenRequest::fromJson(nlohmann::json::par
 #### models::ObjectiveType
 
 ```cpp
-// Create a model
-auto model = models::ObjectiveType();
+// Select an enum value
+auto model = models::ObjectiveType::AWARENESS;
 
-// Serialize to JSON
-nlohmann::json json = models::ObjectiveType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ObjectiveType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ObjectiveType>();
 ```
 #### models::OperationType
 
 ```cpp
-// Create a model
-auto model = models::OperationType();
+// Select an enum value
+auto model = models::OperationType::SHARE;
 
-// Serialize to JSON
-nlohmann::json json = models::OperationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OperationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OperationType>();
 ```
 #### models::OptimizationGoalMetadata
 
@@ -14789,28 +14789,28 @@ auto parsedModel = models::OptimizationGoalMetadata::fromJson(nlohmann::json::pa
 #### models::OptimizationType
 
 ```cpp
-// Create a model
-auto model = models::OptimizationType();
+// Select an enum value
+auto model = models::OptimizationType::CLICKTHROUGH;
 
-// Serialize to JSON
-nlohmann::json json = models::OptimizationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OptimizationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OptimizationType>();
 ```
 #### models::Order
 
 ```cpp
-// Create a model
-auto model = models::Order();
+// Select an enum value
+auto model = models::Order::ASCENDING;
 
-// Serialize to JSON
-nlohmann::json json = models::Order::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Order::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Order>();
 ```
 #### models::OrderLine
 
@@ -14884,28 +14884,28 @@ auto parsedModel = models::OrderLineMutationResult::fromJson(nlohmann::json::par
 #### models::OrderLinePaidType
 
 ```cpp
-// Create a model
-auto model = models::OrderLinePaidType();
+// Select an enum value
+auto model = models::OrderLinePaidType::PAID;
 
-// Serialize to JSON
-nlohmann::json json = models::OrderLinePaidType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OrderLinePaidType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OrderLinePaidType>();
 ```
 #### models::OrderLineStatus
 
 ```cpp
-// Create a model
-auto model = models::OrderLineStatus();
+// Select an enum value
+auto model = models::OrderLineStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::OrderLineStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OrderLineStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OrderLineStatus>();
 ```
 #### models::OrderLinesList200Response
 
@@ -14925,41 +14925,41 @@ auto parsedModel = models::OrderLinesList200Response::fromJson(nlohmann::json::p
 #### models::OsFamily
 
 ```cpp
-// Create a model
-auto model = models::OsFamily();
+// Select an enum value
+auto model = models::OsFamily::IOS;
 
-// Serialize to JSON
-nlohmann::json json = models::OsFamily::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OsFamily::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OsFamily>();
 ```
 #### models::OverallStatusOptions
 
 ```cpp
-// Create a model
-auto model = models::OverallStatusOptions();
+// Select an enum value
+auto model = models::OverallStatusOptions::NEEDS_IMPROVEMENT;
 
-// Serialize to JSON
-nlohmann::json json = models::OverallStatusOptions::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::OverallStatusOptions::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::OverallStatusOptions>();
 ```
 #### models::PacingDeliveryType
 
 ```cpp
-// Create a model
-auto model = models::PacingDeliveryType();
+// Select an enum value
+auto model = models::PacingDeliveryType::STANDARD;
 
-// Serialize to JSON
-nlohmann::json json = models::PacingDeliveryType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PacingDeliveryType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PacingDeliveryType>();
 ```
 #### models::PageVisitConversionTagsGet200Response
 
@@ -14993,15 +14993,15 @@ auto parsedModel = models::PartnerMetadata::fromJson(nlohmann::json::parse(jsonS
 #### models::PartnerType
 
 ```cpp
-// Create a model
-auto model = models::PartnerType();
+// Select an enum value
+auto model = models::PartnerType::INTERNAL;
 
-// Serialize to JSON
-nlohmann::json json = models::PartnerType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PartnerType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PartnerType>();
 ```
 #### models::PerformancePlusCampaignSettings
 
@@ -15021,28 +15021,28 @@ auto parsedModel = models::PerformancePlusCampaignSettings::fromJson(nlohmann::j
 #### models::Permissions
 
 ```cpp
-// Create a model
-auto model = models::Permissions();
+// Select an enum value
+auto model = models::Permissions::ADMIN;
 
-// Serialize to JSON
-nlohmann::json json = models::Permissions::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Permissions::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Permissions>();
 ```
 #### models::PermissionsWithOwner
 
 ```cpp
-// Create a model
-auto model = models::PermissionsWithOwner();
+// Select an enum value
+auto model = models::PermissionsWithOwner::ADMIN;
 
-// Serialize to JSON
-nlohmann::json json = models::PermissionsWithOwner::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PermissionsWithOwner::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PermissionsWithOwner>();
 ```
 #### models::Pin
 
@@ -15148,15 +15148,15 @@ auto parsedModel = models::PinCreate::fromJson(nlohmann::json::parse(jsonString)
 #### models::PinFilter
 
 ```cpp
-// Create a model
-auto model = models::PinFilter();
+// Select an enum value
+auto model = models::PinFilter::EXCLUDE_NATIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::PinFilter::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PinFilter::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PinFilter>();
 ```
 #### models::PinMediaResponseObject
 
@@ -15449,15 +15449,15 @@ auto parsedModel = models::ObjectContainingVideosDefinitions::fromJson(nlohmann:
 #### models::PinPromotionSummaryStatus
 
 ```cpp
-// Create a model
-auto model = models::PinPromotionSummaryStatus();
+// Select an enum value
+auto model = models::PinPromotionSummaryStatus::APPROVED;
 
-// Serialize to JSON
-nlohmann::json json = models::PinPromotionSummaryStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PinPromotionSummaryStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PinPromotionSummaryStatus>();
 ```
 #### models::PinRead
 
@@ -15479,15 +15479,15 @@ auto parsedModel = models::PinRead::fromJson(nlohmann::json::parse(jsonString));
 #### models::PinType
 
 ```cpp
-// Create a model
-auto model = models::PinType();
+// Select an enum value
+auto model = models::PinType::PRIVATE;
 
-// Serialize to JSON
-nlohmann::json json = models::PinType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PinType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PinType>();
 ```
 #### models::PinUpdate
 
@@ -15513,15 +15513,15 @@ auto parsedModel = models::PinUpdate::fromJson(nlohmann::json::parse(jsonString)
 #### models::PinnerListType
 
 ```cpp
-// Create a model
-auto model = models::PinnerListType();
+// Select an enum value
+auto model = models::PinnerListType::CUSTOMER_LIST;
 
-// Serialize to JSON
-nlohmann::json json = models::PinnerListType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PinnerListType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PinnerListType>();
 ```
 #### models::PinsList200Response
 
@@ -15586,15 +15586,15 @@ auto parsedModel = models::GenericError::fromJson(nlohmann::json::parse(jsonStri
 #### models::PinterestLibPaginationOrder
 
 ```cpp
-// Create a model
-auto model = models::PinterestLibPaginationOrder();
+// Select an enum value
+auto model = models::PinterestLibPaginationOrder::ASCENDING;
 
-// Serialize to JSON
-nlohmann::json json = models::PinterestLibPaginationOrder::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PinterestLibPaginationOrder::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PinterestLibPaginationOrder>();
 ```
 #### models::SuccessfullyDeleted
 
@@ -15627,15 +15627,15 @@ auto parsedModel = models::PinterestProductCategories::fromJson(nlohmann::json::
 #### models::PlacementGroupType
 
 ```cpp
-// Create a model
-auto model = models::PlacementGroupType();
+// Select an enum value
+auto model = models::PlacementGroupType::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::PlacementGroupType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PlacementGroupType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PlacementGroupType>();
 ```
 #### models::PlacementMultipliers
 
@@ -15654,28 +15654,28 @@ auto parsedModel = models::PlacementMultipliers::fromJson(nlohmann::json::parse(
 #### models::PlacementTrafficType
 
 ```cpp
-// Create a model
-auto model = models::PlacementTrafficType();
+// Select an enum value
+auto model = models::PlacementTrafficType::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::PlacementTrafficType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PlacementTrafficType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PlacementTrafficType>();
 ```
 #### models::PlacementType
 
 ```cpp
-// Create a model
-auto model = models::PlacementType();
+// Select an enum value
+auto model = models::PlacementType::SEARCH;
 
-// Serialize to JSON
-nlohmann::json json = models::PlacementType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PlacementType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PlacementType>();
 ```
 #### models::PredictedTimeSeries
 
@@ -15694,15 +15694,15 @@ auto parsedModel = models::PredictedTimeSeries::fromJson(nlohmann::json::parse(j
 #### models::PreferredMediaType
 
 ```cpp
-// Create a model
-auto model = models::PreferredMediaType();
+// Select an enum value
+auto model = models::PreferredMediaType::VIDEO;
 
-// Serialize to JSON
-nlohmann::json json = models::PreferredMediaType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PreferredMediaType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PreferredMediaType>();
 ```
 #### models::Price
 
@@ -15738,41 +15738,41 @@ auto parsedModel = models::CatalogsProductGroupPricingCurrencyCriteria::fromJson
 #### models::PrimarySort
 
 ```cpp
-// Create a model
-auto model = models::PrimarySort();
+// Select an enum value
+auto model = models::PrimarySort::BY_ID;
 
-// Serialize to JSON
-nlohmann::json json = models::PrimarySort::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PrimarySort::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PrimarySort>();
 ```
 #### models::ProductAvailability
 
 ```cpp
-// Create a model
-auto model = models::ProductAvailability();
+// Select an enum value
+auto model = models::ProductAvailability::IN_STOCK;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductAvailability::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductAvailability::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductAvailability>();
 ```
 #### models::ProductAvailabilityType
 
 ```cpp
-// Create a model
-auto model = models::ProductAvailabilityType();
+// Select an enum value
+auto model = models::ProductAvailabilityType::IN_STOCK;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductAvailabilityType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductAvailabilityType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductAvailabilityType>();
 ```
 #### models::ProductCategoriesDemographic
 
@@ -15792,15 +15792,15 @@ auto parsedModel = models::ProductCategoriesDemographic::fromJson(nlohmann::json
 #### models::ProductCategoriesEngagementType
 
 ```cpp
-// Create a model
-auto model = models::ProductCategoriesEngagementType();
+// Select an enum value
+auto model = models::ProductCategoriesEngagementType::ENGAGEMENT;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductCategoriesEngagementType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductCategoriesEngagementType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductCategoriesEngagementType>();
 ```
 #### models::ProductCategoriesMetricsHighlights
 
@@ -15821,15 +15821,15 @@ auto parsedModel = models::ProductCategoriesMetricsHighlights::fromJson(nlohmann
 #### models::ProductCategoryDetailLookbackWindow
 
 ```cpp
-// Create a model
-auto model = models::ProductCategoryDetailLookbackWindow();
+// Select an enum value
+auto model = models::ProductCategoryDetailLookbackWindow::_90;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductCategoryDetailLookbackWindow::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductCategoryDetailLookbackWindow::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductCategoryDetailLookbackWindow>();
 ```
 #### models::ProductCategoryDetails
 
@@ -15854,41 +15854,41 @@ auto parsedModel = models::ProductCategoryDetails::fromJson(nlohmann::json::pars
 #### models::ProductCategoryEnum
 
 ```cpp
-// Create a model
-auto model = models::ProductCategoryEnum();
+// Select an enum value
+auto model = models::ProductCategoryEnum::ACCENT_TABLES;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductCategoryEnum::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductCategoryEnum::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductCategoryEnum>();
 ```
 #### models::ProductCategoryRegion
 
 ```cpp
-// Create a model
-auto model = models::ProductCategoryRegion();
+// Select an enum value
+auto model = models::ProductCategoryRegion::US;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductCategoryRegion::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductCategoryRegion::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductCategoryRegion>();
 ```
 #### models::ProductCondition
 
 ```cpp
-// Create a model
-auto model = models::ProductCondition();
+// Select an enum value
+auto model = models::ProductCondition::NEW;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductCondition::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductCondition::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductCondition>();
 ```
 #### models::ProductGroupAnalyticsItems
 
@@ -15961,15 +15961,15 @@ auto parsedModel = models::ProductGroupPromotionCreateRequest::fromJson(nlohmann
 #### models::ProductGroupPromotionCustomizableCTAType
 
 ```cpp
-// Create a model
-auto model = models::ProductGroupPromotionCustomizableCTAType();
+// Select an enum value
+auto model = models::ProductGroupPromotionCustomizableCTAType::GET_OFFER;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductGroupPromotionCustomizableCTAType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductGroupPromotionCustomizableCTAType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductGroupPromotionCustomizableCTAType>();
 ```
 #### models::ProductGroupPromotionResponseItem
 
@@ -16077,15 +16077,15 @@ auto parsedModel = models::ProductGroup::fromJson(nlohmann::json::parse(jsonStri
 #### models::ProductGroupSummaryStatus
 
 ```cpp
-// Create a model
-auto model = models::ProductGroupSummaryStatus();
+// Select an enum value
+auto model = models::ProductGroupSummaryStatus::RUNNING;
 
-// Serialize to JSON
-nlohmann::json json = models::ProductGroupSummaryStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ProductGroupSummaryStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ProductGroupSummaryStatus>();
 ```
 #### models::ProductTagItem
 
@@ -16273,15 +16273,15 @@ auto parsedModel = models::Promotion::fromJson(nlohmann::json::parse(jsonString)
 #### models::PromotionApplicationLevel
 
 ```cpp
-// Create a model
-auto model = models::PromotionApplicationLevel();
+// Select an enum value
+auto model = models::PromotionApplicationLevel::NONE;
 
-// Serialize to JSON
-nlohmann::json json = models::PromotionApplicationLevel::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PromotionApplicationLevel::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PromotionApplicationLevel>();
 ```
 #### models::PromotionArrayElement
 
@@ -16365,15 +16365,15 @@ auto parsedModel = models::PromotionTemplateValue::fromJson(nlohmann::json::pars
 #### models::PromotionType
 
 ```cpp
-// Create a model
-auto model = models::PromotionType();
+// Select an enum value
+auto model = models::PromotionType::VARIABLE;
 
-// Serialize to JSON
-nlohmann::json json = models::PromotionType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PromotionType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PromotionType>();
 ```
 #### models::PromotionsList200Response
 
@@ -16407,15 +16407,15 @@ auto parsedModel = models::PromotionsResponse::fromJson(nlohmann::json::parse(js
 #### models::PublicTargetingType
 
 ```cpp
-// Create a model
-auto model = models::PublicTargetingType();
+// Select an enum value
+auto model = models::PublicTargetingType::APPTYPE;
 
-// Serialize to JSON
-nlohmann::json json = models::PublicTargetingType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::PublicTargetingType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::PublicTargetingType>();
 ```
 #### models::QualityComponentDetails
 
@@ -16476,67 +16476,67 @@ auto parsedModel = models::QualityComponents::fromJson(nlohmann::json::parse(jso
 #### models::QueryLabelEntityStatusesItems
 
 ```cpp
-// Create a model
-auto model = models::QueryLabelEntityStatusesItems();
+// Select an enum value
+auto model = models::QueryLabelEntityStatusesItems::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::QueryLabelEntityStatusesItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::QueryLabelEntityStatusesItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::QueryLabelEntityStatusesItems>();
 ```
 #### models::QueryLabelTypesItems
 
 ```cpp
-// Create a model
-auto model = models::QueryLabelTypesItems();
+// Select an enum value
+auto model = models::QueryLabelTypesItems::BRAND;
 
-// Serialize to JSON
-nlohmann::json json = models::QueryLabelTypesItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::QueryLabelTypesItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::QueryLabelTypesItems>();
 ```
 #### models::QuerymetrictypesItems
 
 ```cpp
-// Create a model
-auto model = models::QuerymetrictypesItems();
+// Select an enum value
+auto model = models::QuerymetrictypesItems::ENGAGEMENT;
 
-// Serialize to JSON
-nlohmann::json json = models::QuerymetrictypesItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::QuerymetrictypesItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::QuerymetrictypesItems>();
 ```
 #### models::QuerypinanalyticsmetrictypesItems
 
 ```cpp
-// Create a model
-auto model = models::QuerypinanalyticsmetrictypesItems();
+// Select an enum value
+auto model = models::QuerypinanalyticsmetrictypesItems::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::QuerypinanalyticsmetrictypesItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::QuerypinanalyticsmetrictypesItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::QuerypinanalyticsmetrictypesItems>();
 ```
 #### models::QueryvideopinmetrictypesItems
 
 ```cpp
-// Create a model
-auto model = models::QueryvideopinmetrictypesItems();
+// Select an enum value
+auto model = models::QueryvideopinmetrictypesItems::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::QueryvideopinmetrictypesItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::QueryvideopinmetrictypesItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::QueryvideopinmetrictypesItems>();
 ```
 #### models::QuizPinData
 
@@ -16654,67 +16654,67 @@ auto parsedModel = models::RelatedTermsRelatedTermsListItems::fromJson(nlohmann:
 #### models::ReportType
 
 ```cpp
-// Create a model
-auto model = models::ReportType();
+// Select an enum value
+auto model = models::ReportType::SYNC;
 
-// Serialize to JSON
-nlohmann::json json = models::ReportType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ReportType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ReportType>();
 ```
 #### models::ReportingColumn
 
 ```cpp
-// Create a model
-auto model = models::ReportingColumn();
+// Select an enum value
+auto model = models::ReportingColumn::SPEND_IN_MICRO_DOLLAR;
 
-// Serialize to JSON
-nlohmann::json json = models::ReportingColumn::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ReportingColumn::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ReportingColumn>();
 ```
 #### models::ReportingColumnAsync
 
 ```cpp
-// Create a model
-auto model = models::ReportingColumnAsync();
+// Select an enum value
+auto model = models::ReportingColumnAsync::SPEND_IN_MICRO_DOLLAR;
 
-// Serialize to JSON
-nlohmann::json json = models::ReportingColumnAsync::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ReportingColumnAsync::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ReportingColumnAsync>();
 ```
 #### models::ReportingColumnSync
 
 ```cpp
-// Create a model
-auto model = models::ReportingColumnSync();
+// Select an enum value
+auto model = models::ReportingColumnSync::SPEND_IN_MICRO_DOLLAR;
 
-// Serialize to JSON
-nlohmann::json json = models::ReportingColumnSync::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ReportingColumnSync::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ReportingColumnSync>();
 ```
 #### models::ReportingTimeZone
 
 ```cpp
-// Create a model
-auto model = models::ReportingTimeZone();
+// Select an enum value
+auto model = models::ReportingTimeZone::PINTEREST_TIME_ZONE;
 
-// Serialize to JSON
-nlohmann::json json = models::ReportingTimeZone::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ReportingTimeZone::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ReportingTimeZone>();
 ```
 #### models::ReportsStats200Response
 
@@ -16797,15 +16797,15 @@ auto parsedModel = models::RetailLocalInventoryItemAttributesOptional::fromJson(
 #### models::Role
 
 ```cpp
-// Create a model
-auto model = models::Role();
+// Select an enum value
+auto model = models::Role::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::Role::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Role::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Role>();
 ```
 #### models::S3FilePart
 
@@ -17057,15 +17057,15 @@ auto parsedModel = models::SSIOOrderLine::fromJson(nlohmann::json::parse(jsonStr
 #### models::SSIOOrderLineType
 
 ```cpp
-// Create a model
-auto model = models::SSIOOrderLineType();
+// Select an enum value
+auto model = models::SSIOOrderLineType::BUDGET;
 
-// Serialize to JSON
-nlohmann::json json = models::SSIOOrderLineType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::SSIOOrderLineType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::SSIOOrderLineType>();
 ```
 #### models::Schedule
 
@@ -17093,15 +17093,15 @@ auto parsedModel = models::Schedule::fromJson(nlohmann::json::parse(jsonString))
 #### models::ScheduleAction
 
 ```cpp
-// Create a model
-auto model = models::ScheduleAction();
+// Select an enum value
+auto model = models::ScheduleAction::INCREASE_BY_VALUE;
 
-// Serialize to JSON
-nlohmann::json json = models::ScheduleAction::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ScheduleAction::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ScheduleAction>();
 ```
 #### models::ScheduleAgeBucketMultipliers
 
@@ -17399,28 +17399,28 @@ auto parsedModel = models::SchedulePlacementMultipliers::fromJson(nlohmann::json
 #### models::ScheduleStatus
 
 ```cpp
-// Create a model
-auto model = models::ScheduleStatus();
+// Select an enum value
+auto model = models::ScheduleStatus::DRAFT;
 
-// Serialize to JSON
-nlohmann::json json = models::ScheduleStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ScheduleStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ScheduleStatus>();
 ```
 #### models::ScheduleType
 
 ```cpp
-// Create a model
-auto model = models::ScheduleType();
+// Select an enum value
+auto model = models::ScheduleType::CAMPAIGN_BUDGET_CHANGE;
 
-// Serialize to JSON
-nlohmann::json json = models::ScheduleType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::ScheduleType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::ScheduleType>();
 ```
 #### models::ScheduleUpdateRequest
 
@@ -17697,15 +17697,15 @@ auto parsedModel = models::SingleInterestTargetingOptionData::fromJson(nlohmann:
 #### models::SourcePlatformOptions
 
 ```cpp
-// Create a model
-auto model = models::SourcePlatformOptions();
+// Select an enum value
+auto model = models::SourcePlatformOptions::WEB;
 
-// Serialize to JSON
-nlohmann::json json = models::SourcePlatformOptions::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::SourcePlatformOptions::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::SourcePlatformOptions>();
 ```
 #### models::SsioInsertionOrdersStatusGetByAdAccount200Response
 
@@ -17740,15 +17740,15 @@ auto parsedModel = models::SsioOrderLinesGetByAdAccount200Response::fromJson(nlo
 #### models::StandardPinMetricTypes
 
 ```cpp
-// Create a model
-auto model = models::StandardPinMetricTypes();
+// Select an enum value
+auto model = models::StandardPinMetricTypes::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::StandardPinMetricTypes::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::StandardPinMetricTypes::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::StandardPinMetricTypes>();
 ```
 #### models::StoreMetadata
 
@@ -17791,41 +17791,41 @@ auto parsedModel = models::SummaryPin::fromJson(nlohmann::json::parse(jsonString
 #### models::SummaryStatus
 
 ```cpp
-// Create a model
-auto model = models::SummaryStatus();
+// Select an enum value
+auto model = models::SummaryStatus::RUNNING;
 
-// Serialize to JSON
-nlohmann::json json = models::SummaryStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::SummaryStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::SummaryStatus>();
 ```
 #### models::SupplementalItemBatchOperationStatus
 
 ```cpp
-// Create a model
-auto model = models::SupplementalItemBatchOperationStatus();
+// Select an enum value
+auto model = models::SupplementalItemBatchOperationStatus::PROCESSING;
 
-// Serialize to JSON
-nlohmann::json json = models::SupplementalItemBatchOperationStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::SupplementalItemBatchOperationStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::SupplementalItemBatchOperationStatus>();
 ```
 #### models::SupplementalItemProcessingStatus
 
 ```cpp
-// Create a model
-auto model = models::SupplementalItemProcessingStatus();
+// Select an enum value
+auto model = models::SupplementalItemProcessingStatus::SUCCESS;
 
-// Serialize to JSON
-nlohmann::json json = models::SupplementalItemProcessingStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::SupplementalItemProcessingStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::SupplementalItemProcessingStatus>();
 ```
 #### models::SupplementalItemValidationEvent
 
@@ -17897,15 +17897,15 @@ auto parsedModel = models::SystemUserUpdateWithRequiredBody::fromJson(nlohmann::
 #### models::TargetingAdvertiserCountry
 
 ```cpp
-// Create a model
-auto model = models::TargetingAdvertiserCountry();
+// Select an enum value
+auto model = models::TargetingAdvertiserCountry::US;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingAdvertiserCountry::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingAdvertiserCountry::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingAdvertiserCountry>();
 ```
 #### models::TargetingSpec
 
@@ -17938,54 +17938,54 @@ auto parsedModel = models::TargetingSpec::fromJson(nlohmann::json::parse(jsonStr
 #### models::TargetingSpecAgeBucket
 
 ```cpp
-// Create a model
-auto model = models::TargetingSpecAgeBucket();
+// Select an enum value
+auto model = models::TargetingSpecAgeBucket::_18_24;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingSpecAgeBucket::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingSpecAgeBucket::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingSpecAgeBucket>();
 ```
 #### models::TargetingSpecAppType
 
 ```cpp
-// Create a model
-auto model = models::TargetingSpecAppType();
+// Select an enum value
+auto model = models::TargetingSpecAppType::ANDROID_MOBILE;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingSpecAppType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingSpecAppType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingSpecAppType>();
 ```
 #### models::TargetingSpecGender
 
 ```cpp
-// Create a model
-auto model = models::TargetingSpecGender();
+// Select an enum value
+auto model = models::TargetingSpecGender::UNKNOWN;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingSpecGender::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingSpecGender::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingSpecGender>();
 ```
 #### models::TargetingSpecListOperation
 
 ```cpp
-// Create a model
-auto model = models::TargetingSpecListOperation();
+// Select an enum value
+auto model = models::TargetingSpecListOperation::SET;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingSpecListOperation::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingSpecListOperation::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingSpecListOperation>();
 ```
 #### models::TargetingSpecOperationAgeBucket
 
@@ -18275,28 +18275,28 @@ auto parsedModel = models::TargetingSpecShoppingRetargeting::fromJson(nlohmann::
 #### models::TargetingSpecTargetingStrategyItems
 
 ```cpp
-// Create a model
-auto model = models::TargetingSpecTargetingStrategyItems();
+// Select an enum value
+auto model = models::TargetingSpecTargetingStrategyItems::CHOOSE_YOUR_OWN;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingSpecTargetingStrategyItems::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingSpecTargetingStrategyItems::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingSpecTargetingStrategyItems>();
 ```
 #### models::TargetingStrategy
 
 ```cpp
-// Create a model
-auto model = models::TargetingStrategy();
+// Select an enum value
+auto model = models::TargetingStrategy::CHOOSE_YOUR_OWN;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingStrategy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingStrategy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingStrategy>();
 ```
 #### models::TargetingTemplate
 
@@ -18406,15 +18406,15 @@ auto parsedModel = models::TargetingTemplateList200Response::fromJson(nlohmann::
 #### models::TargetingTemplateStatus
 
 ```cpp
-// Create a model
-auto model = models::TargetingTemplateStatus();
+// Select an enum value
+auto model = models::TargetingTemplateStatus::ACTIVE;
 
-// Serialize to JSON
-nlohmann::json json = models::TargetingTemplateStatus::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TargetingTemplateStatus::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TargetingTemplateStatus>();
 ```
 #### models::TargetingTemplateUpdateRequestReadOrUpdate
 
@@ -18500,15 +18500,15 @@ auto parsedModel = models::TermsOfService::fromJson(nlohmann::json::parse(jsonSt
 #### models::TieBreakerType
 
 ```cpp
-// Create a model
-auto model = models::TieBreakerType();
+// Select an enum value
+auto model = models::TieBreakerType::RANDOM;
 
-// Serialize to JSON
-nlohmann::json json = models::TieBreakerType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TieBreakerType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TieBreakerType>();
 ```
 #### models::TimeSeries
 
@@ -18541,28 +18541,28 @@ auto parsedModel = models::TitleKeywords::fromJson(nlohmann::json::parse(jsonStr
 #### models::TokenGrantType
 
 ```cpp
-// Create a model
-auto model = models::TokenGrantType();
+// Select an enum value
+auto model = models::TokenGrantType::AUTHORIZATION_CODE;
 
-// Serialize to JSON
-nlohmann::json json = models::TokenGrantType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TokenGrantType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TokenGrantType>();
 ```
 #### models::TokenTypeHint
 
 ```cpp
-// Create a model
-auto model = models::TokenTypeHint();
+// Select an enum value
+auto model = models::TokenTypeHint::ACCESS_TOKEN;
 
-// Serialize to JSON
-nlohmann::json json = models::TokenTypeHint::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TokenTypeHint::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TokenTypeHint>();
 ```
 #### models::TopPinsAnalyticsResponse
 
@@ -18614,15 +18614,15 @@ auto parsedModel = models::TopPinsAnalyticsResponsePinsItems::fromJson(nlohmann:
 #### models::TopPinsSortBy
 
 ```cpp
-// Create a model
-auto model = models::TopPinsSortBy();
+// Select an enum value
+auto model = models::TopPinsSortBy::ENGAGEMENT;
 
-// Serialize to JSON
-nlohmann::json json = models::TopPinsSortBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TopPinsSortBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TopPinsSortBy>();
 ```
 #### models::TopVideoPinsAnalyticsResponse
 
@@ -18674,15 +18674,15 @@ auto parsedModel = models::TopVideoPinsAnalyticsResponsePinsItems::fromJson(nloh
 #### models::TopVideoPinsSortBy
 
 ```cpp
-// Create a model
-auto model = models::TopVideoPinsSortBy();
+// Select an enum value
+auto model = models::TopVideoPinsSortBy::SAVE;
 
-// Serialize to JSON
-nlohmann::json json = models::TopVideoPinsSortBy::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TopVideoPinsSortBy::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TopVideoPinsSortBy>();
 ```
 #### models::TotalCountByEntityStatus
 
@@ -18721,15 +18721,15 @@ auto parsedModel = models::TrackingUrls::fromJson(nlohmann::json::parse(jsonStri
 #### models::TrendType
 
 ```cpp
-// Create a model
-auto model = models::TrendType();
+// Select an enum value
+auto model = models::TrendType::GROWING;
 
-// Serialize to JSON
-nlohmann::json json = models::TrendType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TrendType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TrendType>();
 ```
 #### models::TrendingKeyword
 
@@ -18843,15 +18843,15 @@ auto parsedModel = models::TrendingTopic::fromJson(nlohmann::json::parse(jsonStr
 #### models::AgeRange
 
 ```cpp
-// Create a model
-auto model = models::AgeRange();
+// Select an enum value
+auto model = models::AgeRange::_18_24;
 
-// Serialize to JSON
-nlohmann::json json = models::AgeRange::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AgeRange::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AgeRange>();
 ```
 #### models::TrendsAgeDistribution
 
@@ -18889,15 +18889,15 @@ auto parsedModel = models::TrendsEditorial::fromJson(nlohmann::json::parse(jsonS
 #### models::Gender
 
 ```cpp
-// Create a model
-auto model = models::Gender();
+// Select an enum value
+auto model = models::Gender::MALE;
 
-// Serialize to JSON
-nlohmann::json json = models::Gender::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Gender::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Gender>();
 ```
 #### models::TrendsGenderDistribution
 
@@ -18916,41 +18916,41 @@ auto parsedModel = models::TrendsGenderDistribution::fromJson(nlohmann::json::pa
 #### models::TrendsGenderFilter
 
 ```cpp
-// Create a model
-auto model = models::TrendsGenderFilter();
+// Select an enum value
+auto model = models::TrendsGenderFilter::MALE;
 
-// Serialize to JSON
-nlohmann::json json = models::TrendsGenderFilter::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::TrendsGenderFilter::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::TrendsGenderFilter>();
 ```
 #### models::Interest
 
 ```cpp
-// Create a model
-auto model = models::Interest();
+// Select an enum value
+auto model = models::Interest::ANIMALS;
 
-// Serialize to JSON
-nlohmann::json json = models::Interest::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Interest::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Interest>();
 ```
 #### models::Region
 
 ```cpp
-// Create a model
-auto model = models::Region();
+// Select an enum value
+auto model = models::Region::US;
 
-// Serialize to JSON
-nlohmann::json json = models::Region::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::Region::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::Region>();
 ```
 #### models::UpdatableItemAttributes
 
@@ -19112,28 +19112,28 @@ auto parsedModel = models::UpdateInvitesResultsResponseArray::fromJson(nlohmann:
 #### models::UpdateMaskBidOptionField
 
 ```cpp
-// Create a model
-auto model = models::UpdateMaskBidOptionField();
+// Select an enum value
+auto model = models::UpdateMaskBidOptionField::BID;
 
-// Serialize to JSON
-nlohmann::json json = models::UpdateMaskBidOptionField::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::UpdateMaskBidOptionField::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::UpdateMaskBidOptionField>();
 ```
 #### models::UpdateMaskFieldType
 
 ```cpp
-// Create a model
-auto model = models::UpdateMaskFieldType();
+// Select an enum value
+auto model = models::UpdateMaskFieldType::AD_LINK;
 
-// Serialize to JSON
-nlohmann::json json = models::UpdateMaskFieldType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::UpdateMaskFieldType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::UpdateMaskFieldType>();
 ```
 #### models::UpdateMemberAssetAccessBody
 
@@ -19272,15 +19272,15 @@ auto parsedModel = models::UserAccountFollowedInterests200Response::fromJson(nlo
 #### models::AccountType
 
 ```cpp
-// Create a model
-auto model = models::AccountType();
+// Select an enum value
+auto model = models::AccountType::PINNER;
 
-// Serialize to JSON
-nlohmann::json json = models::AccountType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::AccountType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::AccountType>();
 ```
 #### models::UserBusinessRoleBinding
 
@@ -19306,15 +19306,15 @@ auto parsedModel = models::UserBusinessRoleBinding::fromJson(nlohmann::json::par
 #### models::UserFollowingFeedType
 
 ```cpp
-// Create a model
-auto model = models::UserFollowingFeedType();
+// Select an enum value
+auto model = models::UserFollowingFeedType::ALL;
 
-// Serialize to JSON
-nlohmann::json json = models::UserFollowingFeedType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::UserFollowingFeedType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::UserFollowingFeedType>();
 ```
 #### models::UserFollowingGet200Response
 
@@ -19334,28 +19334,28 @@ auto parsedModel = models::UserFollowingGet200Response::fromJson(nlohmann::json:
 #### models::UserListOperationType
 
 ```cpp
-// Create a model
-auto model = models::UserListOperationType();
+// Select an enum value
+auto model = models::UserListOperationType::ADD;
 
-// Serialize to JSON
-nlohmann::json json = models::UserListOperationType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::UserListOperationType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::UserListOperationType>();
 ```
 #### models::UserListType
 
 ```cpp
-// Create a model
-auto model = models::UserListType();
+// Select an enum value
+auto model = models::UserListType::EMAIL;
 
-// Serialize to JSON
-nlohmann::json json = models::UserListType::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::UserListType::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::UserListType>();
 ```
 #### models::UserSingleAssetBinding
 
@@ -19455,15 +19455,15 @@ auto parsedModel = models::UsersForIndividualAssetResponse::fromJson(nlohmann::j
 #### models::VerticalProductCategory
 
 ```cpp
-// Create a model
-auto model = models::VerticalProductCategory();
+// Select an enum value
+auto model = models::VerticalProductCategory::FASHION;
 
-// Serialize to JSON
-nlohmann::json json = models::VerticalProductCategory::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::VerticalProductCategory::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::VerticalProductCategory>();
 ```
 #### models::VideoMetadataWithRequiredItemTypeDiscriminator
 
@@ -19488,41 +19488,41 @@ auto parsedModel = models::VideoMetadataWithRequiredItemTypeDiscriminator::fromJ
 #### models::VideoPinMetricTypes
 
 ```cpp
-// Create a model
-auto model = models::VideoPinMetricTypes();
+// Select an enum value
+auto model = models::VideoPinMetricTypes::IMPRESSION;
 
-// Serialize to JSON
-nlohmann::json json = models::VideoPinMetricTypes::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::VideoPinMetricTypes::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::VideoPinMetricTypes>();
 ```
 #### models::WebsiteVerificationMethod
 
 ```cpp
-// Create a model
-auto model = models::WebsiteVerificationMethod();
+// Select an enum value
+auto model = models::WebsiteVerificationMethod::FILENAME;
 
-// Serialize to JSON
-nlohmann::json json = models::WebsiteVerificationMethod::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::WebsiteVerificationMethod::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::WebsiteVerificationMethod>();
 ```
 #### models::WorkloadState
 
 ```cpp
-// Create a model
-auto model = models::WorkloadState();
+// Select an enum value
+auto model = models::WorkloadState::NOT_STARTED;
 
-// Serialize to JSON
-nlohmann::json json = models::WorkloadState::toJson(model);
+// Serialize to JSON via the generated to_json free function
+nlohmann::json json = model;
 std::string jsonString = json.dump();
 
-// Deserialize from JSON
-auto parsedModel = models::WorkloadState::fromJson(nlohmann::json::parse(jsonString));
+// Deserialize from JSON via the generated from_json free function
+auto parsedModel = nlohmann::json::parse(jsonString).get<models::WorkloadState>();
 ```
 
 ## Implementing API Handlers

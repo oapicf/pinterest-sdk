@@ -10,7 +10,7 @@ import Foundation
 /** Request containing OTP and Amazon storefront info called by Amazon */
 public struct AmazonConnectRequest: Sendable, Codable, Hashable {
 
-    public static let pinterestUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let pinterestUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The Amazon storefront id */
     public var amazonStorefrontId: String?
     /** The Amazon storefront name */

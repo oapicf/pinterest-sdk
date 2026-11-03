@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ScheduleUpdateRequestAllOf1 {
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleUpdateRequestAllOf1
      */
     entityId?: string;
     /**
      * Entity type
-     * @type {string}
-     * @memberof ScheduleUpdateRequestAllOf1
      */
     entityType?: string;
     /**
      * Schedule ID.
-     * @type {string}
-     * @memberof ScheduleUpdateRequestAllOf1
      */
     id: string;
 }

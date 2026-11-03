@@ -76,8 +76,7 @@ class UpdateMemberAssetAccessBody(BaseModel):
         _items = []
         if self.accesses:
             for _item_accesses in self.accesses:
-                if _item_accesses:
-                    _items.append(_item_accesses.to_dict())
+                _items.append(_item_accesses.to_dict() if _item_accesses is not None else None)
             _dict['accesses'] = _items
         return _dict
 

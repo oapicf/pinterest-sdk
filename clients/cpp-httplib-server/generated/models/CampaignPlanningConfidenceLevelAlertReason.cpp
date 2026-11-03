@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningConfidenceLevelAlertReason.h"
 
-namespace models {
-
-CampaignPlanningConfidenceLevelAlertReason::CampaignPlanningConfidenceLevelAlertReason()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

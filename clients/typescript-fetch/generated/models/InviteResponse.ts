@@ -43,56 +43,38 @@ import {
 export interface InviteResponse {
     /**
      * 
-     * @type {InviteAssetsSummary}
-     * @memberof InviteResponse
      */
     assetsSummary?: InviteAssetsSummary | null;
     /**
      * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     * @type {Array<string>}
-     * @memberof InviteResponse
      */
     businessRoles?: Array<string>;
     /**
      * Metadata for the business that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
      */
     createdByBusiness?: BusinessAccessUserSummary;
     /**
      * Metadata for the user that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
      */
     createdByUser?: BusinessAccessUserSummary;
     /**
      * The time the invite/request was created. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteResponse
      */
     createdTime?: number;
     /**
      * Unique identifier of the invite/request.
-     * @type {string}
-     * @memberof InviteResponse
      */
     id?: string;
     /**
      * 
-     * @type {InviteDataResponse}
-     * @memberof InviteResponse
      */
     inviteData?: InviteDataResponse;
     /**
      * Indicates whether the invite/request was received.
-     * @type {boolean}
-     * @memberof InviteResponse
      */
     isReceivedInvite?: boolean;
     /**
      * Metadata for the member/partner that was sent the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
      */
     user?: BusinessAccessUserSummary;
 }

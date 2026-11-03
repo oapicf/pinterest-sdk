@@ -9,7 +9,7 @@ import Foundation
 
 public struct UserBusinessRoleBinding: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Ad accounts and profiles the business member/partner has access to. */
     public var assetsSummary: BusinessMemberAssetsSummary?
     /** The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */

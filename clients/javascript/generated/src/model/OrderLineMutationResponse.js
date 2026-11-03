@@ -17,7 +17,7 @@ import OrderLineMutationResult from './OrderLineMutationResult';
 /**
  * The OrderLineMutationResponse model module.
  * @module model/OrderLineMutationResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class OrderLineMutationResponse {
     /**

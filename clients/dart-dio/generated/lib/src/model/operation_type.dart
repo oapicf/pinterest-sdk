@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'operation_type.g.dart';
 
+/// Operation type to share a specific audience or revoke access to a previously shared audience
 class OperationType extends EnumClass {
 
-  /// Operation type to share a specific audience or revoke access to a previously shared audience
   @BuiltValueEnumConst(wireName: r'SHARE')
   static const OperationType SHARE = _$SHARE;
-  /// Operation type to share a specific audience or revoke access to a previously shared audience
   @BuiltValueEnumConst(wireName: r'REVOKE')
   static const OperationType REVOKE = _$REVOKE;
 

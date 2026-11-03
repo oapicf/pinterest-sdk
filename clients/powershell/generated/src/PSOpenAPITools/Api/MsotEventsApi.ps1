@@ -66,7 +66,7 @@ function Invoke-MsotEventsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling msotEvents_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ConversionMSOTEventsCreate) {
             throw "Error! The required parameter `ConversionMSOTEventsCreate` missing when calling msotEvents_create."

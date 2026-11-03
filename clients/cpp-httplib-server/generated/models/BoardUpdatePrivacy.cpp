@@ -6,20 +6,3 @@
 */
 #include "BoardUpdatePrivacy.h"
 
-namespace models {
-
-BoardUpdatePrivacy::BoardUpdatePrivacy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

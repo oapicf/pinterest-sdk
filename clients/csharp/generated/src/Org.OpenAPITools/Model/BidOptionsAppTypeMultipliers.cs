@@ -240,22 +240,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (androidMobile.IsSet && androidMobile.Value == null)
-                throw new ArgumentNullException(nameof(androidMobile), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: android_mobile.");
 
             if (androidTablet.IsSet && androidTablet.Value == null)
-                throw new ArgumentNullException(nameof(androidTablet), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: android_tablet.");
 
             if (ipad.IsSet && ipad.Value == null)
-                throw new ArgumentNullException(nameof(ipad), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: ipad.");
 
             if (iphone.IsSet && iphone.Value == null)
-                throw new ArgumentNullException(nameof(iphone), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: iphone.");
 
             if (web.IsSet && web.Value == null)
-                throw new ArgumentNullException(nameof(web), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: web.");
 
             if (webMobile.IsSet && webMobile.Value == null)
-                throw new ArgumentNullException(nameof(webMobile), "Property is not nullable for class BidOptionsAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAppTypeMultipliers: web_mobile.");
 
             return new BidOptionsAppTypeMultipliers(androidMobile, androidTablet, ipad, iphone, web, webMobile);
         }
@@ -266,7 +266,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAppTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidOptionsAppTypeMultipliers bidOptionsAppTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -281,9 +280,26 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAppTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidOptionsAppTypeMultipliers bidOptionsAppTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (bidOptionsAppTypeMultipliers.AndroidMobileOption.IsSet && bidOptionsAppTypeMultipliers.AndroidMobile == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.AndroidMobile to non-nullable JSON property 'android_mobile'.");
+
+            if (bidOptionsAppTypeMultipliers.AndroidTabletOption.IsSet && bidOptionsAppTypeMultipliers.AndroidTablet == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.AndroidTablet to non-nullable JSON property 'android_tablet'.");
+
+            if (bidOptionsAppTypeMultipliers.IpadOption.IsSet && bidOptionsAppTypeMultipliers.Ipad == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.Ipad to non-nullable JSON property 'ipad'.");
+
+            if (bidOptionsAppTypeMultipliers.IphoneOption.IsSet && bidOptionsAppTypeMultipliers.Iphone == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.Iphone to non-nullable JSON property 'iphone'.");
+
+            if (bidOptionsAppTypeMultipliers.WebOption.IsSet && bidOptionsAppTypeMultipliers.Web == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.Web to non-nullable JSON property 'web'.");
+
+            if (bidOptionsAppTypeMultipliers.WebMobileOption.IsSet && bidOptionsAppTypeMultipliers.WebMobile == null)
+                throw new JsonException("Cannot write null property BidOptionsAppTypeMultipliers.WebMobile to non-nullable JSON property 'web_mobile'.");
+
             if (bidOptionsAppTypeMultipliers.AndroidMobileOption.IsSet)
                 writer.WriteNumber("android_mobile", bidOptionsAppTypeMultipliers.AndroidMobileOption.Value!.Value);
 

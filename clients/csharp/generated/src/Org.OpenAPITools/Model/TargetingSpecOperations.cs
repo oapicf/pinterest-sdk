@@ -485,7 +485,12 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperations.FieldEnum?>(TargetingSpecOperations.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperations.FieldEnum? fieldValue = TargetingSpecOperations.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperations.FieldEnum?>(fieldValue);
+                            }
                             break;
                         default:
                             break;
@@ -494,10 +499,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperations.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperations: field.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperations.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperations: field.");
 
             if (targetingSpecOperationAgeBucket != null)
                 return new TargetingSpecOperations(targetingSpecOperationAgeBucket);
@@ -550,7 +555,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperations"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperations targetingSpecOperations, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -649,7 +653,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperations"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperations targetingSpecOperations, JsonSerializerOptions jsonSerializerOptions)
         {
 

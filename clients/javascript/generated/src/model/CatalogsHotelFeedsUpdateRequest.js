@@ -21,7 +21,7 @@ import NullableCurrency from './NullableCurrency';
 /**
  * The CatalogsHotelFeedsUpdateRequest model module.
  * @module model/CatalogsHotelFeedsUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelFeedsUpdateRequest {
     /**

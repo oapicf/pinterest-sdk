@@ -190,7 +190,9 @@ class OrderLine {
             : num.parse('${json[r'paid_budget']}'),
         paidType: OrderLinePaidType.fromJson(json[r'paid_type']),
         purchaseOrderId: mapValueOfType<String>(json, r'purchase_order_id'),
-        startTime: num.parse('${json[r'start_time']}'),
+        startTime: json[r'start_time'] == null
+            ? null
+            : num.parse('${json[r'start_time']}'),
         status: OrderLineStatus.fromJson(json[r'status'])!,
         type: mapValueOfType<String>(json, r'type')!,
       );

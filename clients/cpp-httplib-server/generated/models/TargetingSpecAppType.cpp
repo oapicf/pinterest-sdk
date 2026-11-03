@@ -6,20 +6,3 @@
 */
 #include "TargetingSpecAppType.h"
 
-namespace models {
-
-TargetingSpecAppType::TargetingSpecAppType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

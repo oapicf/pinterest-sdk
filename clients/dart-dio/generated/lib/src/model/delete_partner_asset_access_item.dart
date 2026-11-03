@@ -145,12 +145,12 @@ class _$DeletePartnerAssetAccessItemSerializer implements PrimitiveSerializer<De
   }
 }
 
+
+/// If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset. If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
 class DeletePartnerAssetAccessItemPartnerTypeEnum extends EnumClass {
 
-  /// If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset. If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
   @BuiltValueEnumConst(wireName: r'INTERNAL')
   static const DeletePartnerAssetAccessItemPartnerTypeEnum INTERNAL = _$deletePartnerAssetAccessItemPartnerTypeEnum_INTERNAL;
-  /// If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset. If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
   @BuiltValueEnumConst(wireName: r'EXTERNAL')
   static const DeletePartnerAssetAccessItemPartnerTypeEnum EXTERNAL = _$deletePartnerAssetAccessItemPartnerTypeEnum_EXTERNAL;
 

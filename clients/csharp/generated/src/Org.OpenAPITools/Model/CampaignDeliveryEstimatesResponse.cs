@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (curves.IsSet && curves.Value == null)
-                throw new ArgumentNullException(nameof(curves), "Property is not nullable for class CampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesResponse: curves.");
 
             if (derivedMetrics.IsSet && derivedMetrics.Value == null)
-                throw new ArgumentNullException(nameof(derivedMetrics), "Property is not nullable for class CampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesResponse: derived_metrics.");
 
             if (maxPotentialSpend.IsSet && maxPotentialSpend.Value == null)
-                throw new ArgumentNullException(nameof(maxPotentialSpend), "Property is not nullable for class CampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesResponse: max_potential_spend.");
 
             return new CampaignDeliveryEstimatesResponse(curves, derivedMetrics, maxPotentialSpend);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignDeliveryEstimatesResponse campaignDeliveryEstimatesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,14 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignDeliveryEstimatesResponse campaignDeliveryEstimatesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignDeliveryEstimatesResponse.CurvesOption.IsSet && campaignDeliveryEstimatesResponse.Curves == null)
-                throw new ArgumentNullException(nameof(campaignDeliveryEstimatesResponse.Curves), "Property is required for class CampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesResponse.Curves to non-nullable JSON property 'curves'.");
 
             if (campaignDeliveryEstimatesResponse.DerivedMetricsOption.IsSet && campaignDeliveryEstimatesResponse.DerivedMetrics == null)
-                throw new ArgumentNullException(nameof(campaignDeliveryEstimatesResponse.DerivedMetrics), "Property is required for class CampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesResponse.DerivedMetrics to non-nullable JSON property 'derived_metrics'.");
+
+            if (campaignDeliveryEstimatesResponse.MaxPotentialSpendOption.IsSet && campaignDeliveryEstimatesResponse.MaxPotentialSpend == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesResponse.MaxPotentialSpend to non-nullable JSON property 'max_potential_spend'.");
 
             if (campaignDeliveryEstimatesResponse.CurvesOption.IsSet)
             {

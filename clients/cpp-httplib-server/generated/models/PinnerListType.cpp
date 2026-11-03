@@ -6,20 +6,3 @@
 */
 #include "PinnerListType.h"
 
-namespace models {
-
-PinnerListType::PinnerListType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

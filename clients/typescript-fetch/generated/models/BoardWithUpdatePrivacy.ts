@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { BoardOwner } from './BoardOwner';
 import {
     BoardOwnerFromJSON,
@@ -43,50 +43,34 @@ import {
 export interface BoardWithUpdatePrivacy {
     /**
      * Date and time of last board pins modified.
-     * @type {Date}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly boardPinsModifiedAt?: Date;
     /**
      * Count of collaborators on the board.
-     * @type {number}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly collaboratorCount?: number;
     /**
      * Date and time of board creation.
-     * @type {Date}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly createdAt?: Date;
     /**
      * 
-     * @type {string}
-     * @memberof BoardWithUpdatePrivacy
      */
     description?: string | null;
     /**
      * Board follower count.
-     * @type {number}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly followerCount?: number;
     /**
      * 
-     * @type {string}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly id: string;
     /**
      * If set to `true`, the board will be ad-only and can store ad-only Pins.
-     * @type {boolean}
-     * @memberof BoardWithUpdatePrivacy
      */
     isAdsOnly?: boolean;
     /**
      * Board media.
-     * @type {BoardMedia}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly media?: BoardMedia;
     /**
@@ -94,26 +78,18 @@ export interface BoardWithUpdatePrivacy {
      * 
      *     **Note:** If you create an ad-only board by setting `is_ads_only`
      *     to `true`, the board name automatically becomes "Ad-only Pins".
-     * @type {string}
-     * @memberof BoardWithUpdatePrivacy
      */
     name: string;
     /**
      * 
-     * @type {BoardOwner}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly owner?: BoardOwner;
     /**
      * Count of Pins on the board.
-     * @type {number}
-     * @memberof BoardWithUpdatePrivacy
      */
     readonly pinCount?: number;
     /**
      * 
-     * @type {BoardUpdatePrivacy}
-     * @memberof BoardWithUpdatePrivacy
      */
     privacy?: BoardUpdatePrivacy;
 }
@@ -139,9 +115,9 @@ export function BoardWithUpdatePrivacyFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (new Date(json['board_pins_modified_at'])),
+        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (parseDateTime(json['board_pins_modified_at'])),
         'collaboratorCount': json['collaborator_count'] == null ? undefined : json['collaborator_count'],
-        'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
+        'createdAt': json['created_at'] == null ? undefined : (parseDateTime(json['created_at'])),
         'description': json['description'] === undefined ? undefined : json['description'] === null ? null : json['description'],
         'followerCount': json['follower_count'] == null ? undefined : json['follower_count'],
         'id': json['id'],

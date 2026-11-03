@@ -29,26 +29,18 @@ import {
 export interface PinMediaSourceImageBase64 {
     /**
      * 
-     * @type {ContentType}
-     * @memberof PinMediaSourceImageBase64
      */
     contentType: ContentType;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImageBase64
      */
     data: string;
     /**
      * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-     * @type {boolean}
-     * @memberof PinMediaSourceImageBase64
      */
     isStandard?: boolean;
     /**
      * The source type of the media.
-     * @type {PinMediaSourceImageBase64SourceTypeEnum}
-     * @memberof PinMediaSourceImageBase64
      */
     sourceType: PinMediaSourceImageBase64SourceTypeEnum;
 }
@@ -58,7 +50,7 @@ export interface PinMediaSourceImageBase64 {
  * @export
  */
 export const PinMediaSourceImageBase64SourceTypeEnum = {
-    ImageBase64: 'image_base64'
+    ImageBase64: 'image_base64',
 } as const;
 export type PinMediaSourceImageBase64SourceTypeEnum = typeof PinMediaSourceImageBase64SourceTypeEnum[keyof typeof PinMediaSourceImageBase64SourceTypeEnum];
 

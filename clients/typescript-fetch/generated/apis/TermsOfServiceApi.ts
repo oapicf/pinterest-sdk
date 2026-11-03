@@ -25,8 +25,17 @@ import {
 } from '../models/TermsOfService';
 
 export interface TermsOfServiceGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Return HTML in TOS text.
+     */
     includeHtml?: boolean;
+    /**
+     * Request type.
+     */
     tosType?: string;
 }
 

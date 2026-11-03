@@ -42,7 +42,7 @@ import javax.validation.Valid;
   AdGroupAudienceSizingCreate.JSON_PROPERTY_PRODUCT_GROUP_IDS,
   AdGroupAudienceSizingCreate.JSON_PROPERTY_TARGETING_SPEC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate   {
   public static final String JSON_PROPERTY_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @JsonProperty(JSON_PROPERTY_AUTO_TARGETING_ENABLED)
@@ -58,7 +58,7 @@ public class AdGroupAudienceSizingCreate   {
 
   public static final String JSON_PROPERTY_PLACEMENT_GROUP = "placement_group";
   @JsonProperty(JSON_PROPERTY_PLACEMENT_GROUP)
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   public static final String JSON_PROPERTY_PRODUCT_GROUP_IDS = "product_group_ids";
   @JsonProperty(JSON_PROPERTY_PRODUCT_GROUP_IDS)
@@ -135,7 +135,7 @@ public class AdGroupAudienceSizingCreate   {
    **/
   @JsonProperty(value = "keywords")
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
-  @Valid 
+  
   public List<@Valid AdGroupAudienceSizingKeyword> getKeywords() {
     return keywords;
   }

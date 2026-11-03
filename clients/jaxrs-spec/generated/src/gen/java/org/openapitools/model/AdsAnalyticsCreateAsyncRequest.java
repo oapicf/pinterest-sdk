@@ -36,39 +36,39 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest   {
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
-  private @Valid List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
-  private @Valid List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
-  private @Valid List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
+  private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
+  private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
+  private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
   private String campaignBrandLabel;
   private String campaignCustomLabel;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
-  private @Valid List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
-  private @Valid List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays;
-  private @Valid List<ReportingColumnAsync> columns = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
+  private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
+  private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
+  private ConversionAttributionWindowDays clickWindowDays = 30;
+  private List<ReportingColumnAsync> columns = new ArrayList<>();
   private Boolean combineTargetingTypes = false;
-  private ConversionReportTimeType conversionReportTime;
-  private @Valid List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
+  private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
   private String endDate;
   private Integer endHour;
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
   private Granularity granularity;
   private MetricsReportingLevel level;
-  private @Valid List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
-  private PrimarySort primarySort;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
-  private @Valid List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
-  private DataOutputFormat reportFormat;
+  private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
+  private PrimarySort primarySort = PrimarySort.BY_ID;
+  private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
+  private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
   private ReportingTimeZone reportingTimezone;
   private String startDate;
   private Integer startHour;
-  private @Valid List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays viewWindowDays;
+  private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest() {
   }
@@ -519,7 +519,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
   @JsonProperty("custom_conversion_event_metrics")
-  @Valid public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
+  public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
     return customConversionEventMetrics;
   }
 
@@ -657,7 +657,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   
   @ApiModelProperty(value = "List of metrics filters")
   @JsonProperty("metrics_filters")
-  @Valid  @Size(min=1)public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
+   @Size(min=1)public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
     return metricsFilters;
   }
 

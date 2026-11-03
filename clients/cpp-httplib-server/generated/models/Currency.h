@@ -12,24 +12,294 @@
 
 namespace models {
 
-
-class Currency
-{
-public:
-
-    Currency();
-    virtual ~Currency() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Currency,
-        )
-
-private:
+enum class Currency {
+    
+    UNK,
+    
+    USD,
+    
+    GBP,
+    
+    CAD,
+    
+    EUR,
+    
+    AUD,
+    
+    NZD,
+    
+    SEK,
+    
+    ILS,
+    
+    CHF,
+    
+    HKD,
+    
+    JPY,
+    
+    SGD,
+    
+    KRW,
+    
+    NOK,
+    
+    DKK,
+    
+    PLN,
+    
+    RON,
+    
+    HUF,
+    
+    CZK,
+    
+    BRL,
+    
+    MXN,
+    
+    ARS,
+    
+    CLP,
+    
+    COP,
+    
+    INR,
+    
+    TRY
+    
 };
 
+inline void to_json(nlohmann::json& j, const Currency& value)
+{
+    switch (value)
+    {
+        
+        case Currency::UNK: j = "UNK"; break;
+        
+        case Currency::USD: j = "USD"; break;
+        
+        case Currency::GBP: j = "GBP"; break;
+        
+        case Currency::CAD: j = "CAD"; break;
+        
+        case Currency::EUR: j = "EUR"; break;
+        
+        case Currency::AUD: j = "AUD"; break;
+        
+        case Currency::NZD: j = "NZD"; break;
+        
+        case Currency::SEK: j = "SEK"; break;
+        
+        case Currency::ILS: j = "ILS"; break;
+        
+        case Currency::CHF: j = "CHF"; break;
+        
+        case Currency::HKD: j = "HKD"; break;
+        
+        case Currency::JPY: j = "JPY"; break;
+        
+        case Currency::SGD: j = "SGD"; break;
+        
+        case Currency::KRW: j = "KRW"; break;
+        
+        case Currency::NOK: j = "NOK"; break;
+        
+        case Currency::DKK: j = "DKK"; break;
+        
+        case Currency::PLN: j = "PLN"; break;
+        
+        case Currency::RON: j = "RON"; break;
+        
+        case Currency::HUF: j = "HUF"; break;
+        
+        case Currency::CZK: j = "CZK"; break;
+        
+        case Currency::BRL: j = "BRL"; break;
+        
+        case Currency::MXN: j = "MXN"; break;
+        
+        case Currency::ARS: j = "ARS"; break;
+        
+        case Currency::CLP: j = "CLP"; break;
+        
+        case Currency::COP: j = "COP"; break;
+        
+        case Currency::INR: j = "INR"; break;
+        
+        case Currency::TRY: j = "TRY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Currency", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Currency& value)
+{
+    
+    if (j == "UNK")
+    {
+        value = Currency::UNK;
+        return;
+    }
+    
+    if (j == "USD")
+    {
+        value = Currency::USD;
+        return;
+    }
+    
+    if (j == "GBP")
+    {
+        value = Currency::GBP;
+        return;
+    }
+    
+    if (j == "CAD")
+    {
+        value = Currency::CAD;
+        return;
+    }
+    
+    if (j == "EUR")
+    {
+        value = Currency::EUR;
+        return;
+    }
+    
+    if (j == "AUD")
+    {
+        value = Currency::AUD;
+        return;
+    }
+    
+    if (j == "NZD")
+    {
+        value = Currency::NZD;
+        return;
+    }
+    
+    if (j == "SEK")
+    {
+        value = Currency::SEK;
+        return;
+    }
+    
+    if (j == "ILS")
+    {
+        value = Currency::ILS;
+        return;
+    }
+    
+    if (j == "CHF")
+    {
+        value = Currency::CHF;
+        return;
+    }
+    
+    if (j == "HKD")
+    {
+        value = Currency::HKD;
+        return;
+    }
+    
+    if (j == "JPY")
+    {
+        value = Currency::JPY;
+        return;
+    }
+    
+    if (j == "SGD")
+    {
+        value = Currency::SGD;
+        return;
+    }
+    
+    if (j == "KRW")
+    {
+        value = Currency::KRW;
+        return;
+    }
+    
+    if (j == "NOK")
+    {
+        value = Currency::NOK;
+        return;
+    }
+    
+    if (j == "DKK")
+    {
+        value = Currency::DKK;
+        return;
+    }
+    
+    if (j == "PLN")
+    {
+        value = Currency::PLN;
+        return;
+    }
+    
+    if (j == "RON")
+    {
+        value = Currency::RON;
+        return;
+    }
+    
+    if (j == "HUF")
+    {
+        value = Currency::HUF;
+        return;
+    }
+    
+    if (j == "CZK")
+    {
+        value = Currency::CZK;
+        return;
+    }
+    
+    if (j == "BRL")
+    {
+        value = Currency::BRL;
+        return;
+    }
+    
+    if (j == "MXN")
+    {
+        value = Currency::MXN;
+        return;
+    }
+    
+    if (j == "ARS")
+    {
+        value = Currency::ARS;
+        return;
+    }
+    
+    if (j == "CLP")
+    {
+        value = Currency::CLP;
+        return;
+    }
+    
+    if (j == "COP")
+    {
+        value = Currency::COP;
+        return;
+    }
+    
+    if (j == "INR")
+    {
+        value = Currency::INR;
+        return;
+    }
+    
+    if (j == "TRY")
+    {
+        value = Currency::TRY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Currency", &j);
+}
 
 } // namespace models
 

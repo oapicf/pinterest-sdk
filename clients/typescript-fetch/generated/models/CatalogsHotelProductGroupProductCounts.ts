@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelProductGroupProductCounts {
     /**
      * 
-     * @type {CatalogsHotelProductGroupProductCountsCatalogTypeEnum}
-     * @memberof CatalogsHotelProductGroupProductCounts
      */
     catalogType: CatalogsHotelProductGroupProductCountsCatalogTypeEnum;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsHotelProductGroupProductCounts
      */
     total: number;
 }
@@ -38,7 +34,7 @@ export interface CatalogsHotelProductGroupProductCounts {
  * @export
  */
 export const CatalogsHotelProductGroupProductCountsCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelProductGroupProductCountsCatalogTypeEnum = typeof CatalogsHotelProductGroupProductCountsCatalogTypeEnum[keyof typeof CatalogsHotelProductGroupProductCountsCatalogTypeEnum];
 

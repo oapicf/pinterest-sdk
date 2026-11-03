@@ -56,7 +56,7 @@ public class PromotionsApiHandler {
         List<PromotionCreate> promotionCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<PromotionCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter promotionCreate is {}", promotionCreate);
+        logger.debug("Parameter promotionCreate is (body omitted)");
 
         api.promotionsCreate(adAccountId, promotionCreate)
             .onSuccess(apiResponse -> {
@@ -157,7 +157,7 @@ public class PromotionsApiHandler {
         List<PromotionBatchUpdate> promotionBatchUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<PromotionBatchUpdate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter promotionBatchUpdate is {}", promotionBatchUpdate);
+        logger.debug("Parameter promotionBatchUpdate is (body omitted)");
 
         api.promotionsUpdate(adAccountId, promotionBatchUpdate)
             .onSuccess(apiResponse -> {

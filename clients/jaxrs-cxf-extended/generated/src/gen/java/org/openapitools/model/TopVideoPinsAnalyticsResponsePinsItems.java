@@ -20,11 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TopVideoPinsAnalyticsResponsePinsItems  {
   
   @ApiModelProperty(value = "")
-  @Valid
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
  /**

@@ -16,11 +16,11 @@ export interface TargetingSpecOperationMaximumAge {
 }
 export namespace TargetingSpecOperationMaximumAge {
     export const FieldEnum = {
-        MaximumAge: 'MAXIMUM_AGE'
+        MaximumAge: 'MAXIMUM_AGE',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
     export const OperationEnum = {
-        Set: 'SET'
+        Set: 'SET',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

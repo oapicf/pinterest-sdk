@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'billing_invoice_status.g.dart';
 
+/// The status of a billing invoice.
 class BillingInvoiceStatus extends EnumClass {
 
-  /// The status of a billing invoice.
   @BuiltValueEnumConst(wireName: r'OPEN')
   static const BillingInvoiceStatus OPEN = _$OPEN;
-  /// The status of a billing invoice.
   @BuiltValueEnumConst(wireName: r'CLOSED')
   static const BillingInvoiceStatus CLOSED = _$CLOSED;
 

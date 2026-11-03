@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
- * @param &#x60;1200x&#x60; 
- * @param &#x60;150x150&#x60; 
- * @param &#x60;400x300&#x60; 
- * @param &#x60;600x&#x60; 
+ * @param `1200x` 
+ * @param `150x150` 
+ * @param `400x300` 
+ * @param `600x` 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

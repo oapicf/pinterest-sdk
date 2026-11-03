@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class OrderLinePaidType
-{
-public:
-
-    OrderLinePaidType();
-    virtual ~OrderLinePaidType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OrderLinePaidType,
-        )
-
-private:
+enum class OrderLinePaidType {
+    
+    PAID,
+    
+    BONUS,
+    
+    MAKE_GOOD,
+    
+    TEST
+    
 };
 
+inline void to_json(nlohmann::json& j, const OrderLinePaidType& value)
+{
+    switch (value)
+    {
+        
+        case OrderLinePaidType::PAID: j = "PAID"; break;
+        
+        case OrderLinePaidType::BONUS: j = "BONUS"; break;
+        
+        case OrderLinePaidType::MAKE_GOOD: j = "MAKE_GOOD"; break;
+        
+        case OrderLinePaidType::TEST: j = "TEST"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OrderLinePaidType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OrderLinePaidType& value)
+{
+    
+    if (j == "PAID")
+    {
+        value = OrderLinePaidType::PAID;
+        return;
+    }
+    
+    if (j == "BONUS")
+    {
+        value = OrderLinePaidType::BONUS;
+        return;
+    }
+    
+    if (j == "MAKE_GOOD")
+    {
+        value = OrderLinePaidType::MAKE_GOOD;
+        return;
+    }
+    
+    if (j == "TEST")
+    {
+        value = OrderLinePaidType::TEST;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OrderLinePaidType", &j);
+}
 
 } // namespace models
 

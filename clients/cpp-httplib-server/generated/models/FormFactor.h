@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class FormFactor
-{
-public:
-
-    FormFactor();
-    virtual ~FormFactor() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FormFactor,
-        )
-
-private:
+enum class FormFactor {
+    
+    DESKTOP,
+    
+    LAPTOP,
+    
+    CELLPHONE,
+    
+    TABLET,
+    
+    SMARTWATCH,
+    
+    TV,
+    
+    VR,
+    
+    CONSOLE,
+    
+    OTHER
+    
 };
 
+inline void to_json(nlohmann::json& j, const FormFactor& value)
+{
+    switch (value)
+    {
+        
+        case FormFactor::DESKTOP: j = "desktop"; break;
+        
+        case FormFactor::LAPTOP: j = "laptop"; break;
+        
+        case FormFactor::CELLPHONE: j = "cellphone"; break;
+        
+        case FormFactor::TABLET: j = "tablet"; break;
+        
+        case FormFactor::SMARTWATCH: j = "smartwatch"; break;
+        
+        case FormFactor::TV: j = "tv"; break;
+        
+        case FormFactor::VR: j = "vr"; break;
+        
+        case FormFactor::CONSOLE: j = "console"; break;
+        
+        case FormFactor::OTHER: j = "other"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for FormFactor", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, FormFactor& value)
+{
+    
+    if (j == "desktop")
+    {
+        value = FormFactor::DESKTOP;
+        return;
+    }
+    
+    if (j == "laptop")
+    {
+        value = FormFactor::LAPTOP;
+        return;
+    }
+    
+    if (j == "cellphone")
+    {
+        value = FormFactor::CELLPHONE;
+        return;
+    }
+    
+    if (j == "tablet")
+    {
+        value = FormFactor::TABLET;
+        return;
+    }
+    
+    if (j == "smartwatch")
+    {
+        value = FormFactor::SMARTWATCH;
+        return;
+    }
+    
+    if (j == "tv")
+    {
+        value = FormFactor::TV;
+        return;
+    }
+    
+    if (j == "vr")
+    {
+        value = FormFactor::VR;
+        return;
+    }
+    
+    if (j == "console")
+    {
+        value = FormFactor::CONSOLE;
+        return;
+    }
+    
+    if (j == "other")
+    {
+        value = FormFactor::OTHER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for FormFactor", &j);
+}
 
 } // namespace models
 

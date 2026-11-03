@@ -19,8 +19,6 @@ public class DeletePartnerAssetAccessResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of terminated partner asset accesses.")
 
-  @Valid
-
   private List<@Valid DeletePartnerAssetAccessResult> items = new ArrayList<>();
  /**
    * List of terminated partner asset accesses.

@@ -147,16 +147,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogCreate.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogCreate: catalog_type.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogCreate.", nameof(name));
+                throw new JsonException("Property is required for class CatalogCreate: name.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogCreate.");
+                throw new JsonException("Property is not nullable for class CatalogCreate: catalog_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogCreate.");
+                throw new JsonException("Property is not nullable for class CatalogCreate: name.");
 
             return new CatalogCreate(catalogType.Value!.Value!, name.Value!);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogCreate catalogCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogCreate catalogCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogCreate.Name == null)
-                throw new ArgumentNullException(nameof(catalogCreate.Name), "Property is required for class CatalogCreate.");
-
             var catalogTypeRawValue = CatalogsTypeValueConverter.ToJsonValue(catalogCreate.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
 

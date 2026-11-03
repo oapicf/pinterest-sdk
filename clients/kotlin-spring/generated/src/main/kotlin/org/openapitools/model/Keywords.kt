@@ -24,12 +24,12 @@ data class Keywords(
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Keyword error")
-    @param:JsonProperty("errors")
+    @param:JsonProperty("errors", required = true)
     @get:JsonProperty("errors", required = true) val errors: kotlin.collections.List<KeywordError>,
 
     @field:Valid
     @Schema(required = true, description = "Keywords")
-    @param:JsonProperty("keywords")
+    @param:JsonProperty("keywords", required = true)
     @get:JsonProperty("keywords", required = true) val keywords: kotlin.collections.List<Keyword>
 ) {
 

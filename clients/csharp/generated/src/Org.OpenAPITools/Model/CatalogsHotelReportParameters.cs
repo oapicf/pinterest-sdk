@@ -188,7 +188,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelReportParameters.CatalogTypeEnum?>(CatalogsHotelReportParameters.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelReportParameters.CatalogTypeEnum? catalogTypeValue = CatalogsHotelReportParameters.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelReportParameters.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "report":
                             report = new Option<CatalogsHotelReportParametersReport?>(JsonSerializer.Deserialize<CatalogsHotelReportParametersReport>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -200,16 +205,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelReportParameters.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelReportParameters: catalog_type.");
 
             if (!report.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelReportParameters.", nameof(report));
+                throw new JsonException("Property is required for class CatalogsHotelReportParameters: report.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelReportParameters.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelReportParameters: catalog_type.");
 
             if (report.IsSet && report.Value == null)
-                throw new ArgumentNullException(nameof(report), "Property is not nullable for class CatalogsHotelReportParameters.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelReportParameters: report.");
 
             return new CatalogsHotelReportParameters(catalogType.Value!.Value!, report.Value!);
         }
@@ -220,7 +225,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelReportParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelReportParameters catalogsHotelReportParameters, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,12 +239,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelReportParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelReportParameters catalogsHotelReportParameters, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelReportParameters.Report == null)
-                throw new ArgumentNullException(nameof(catalogsHotelReportParameters.Report), "Property is required for class CatalogsHotelReportParameters.");
-
             var catalogTypeRawValue = CatalogsHotelReportParameters.CatalogTypeEnumToJsonValue(catalogsHotelReportParameters.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WritePropertyName("report");

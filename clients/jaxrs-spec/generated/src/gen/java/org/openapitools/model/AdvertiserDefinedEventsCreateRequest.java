@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request body for creating or updating advertiser defined events")
 @JsonTypeName("AdvertiserDefinedEventsCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvertiserDefinedEventsCreateRequest   {
-  private @Valid List<@Valid AdvertiserDefinedEventInput> items = new ArrayList<>();
+  private List<@Valid AdvertiserDefinedEventInput> items = new ArrayList<>();
 
   public AdvertiserDefinedEventsCreateRequest() {
   }
@@ -47,7 +47,7 @@ public class AdvertiserDefinedEventsCreateRequest   {
   
   @ApiModelProperty(required = true, value = "List of advertiser defined events to create or update")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid  @Size(min=1)public List<@Valid AdvertiserDefinedEventInput> getItems() {
+  @NotNull  @Size(min=1)public List<@Valid AdvertiserDefinedEventInput> getItems() {
     return items;
   }
 

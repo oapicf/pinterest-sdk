@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdPinAnalytics {
     /**
      * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
-     * @type {Date}
-     * @memberof AdPinAnalytics
      */
     dATE?: Date;
     /**
      * The ID of the pin that the metric belongs to.
-     * @type {string}
-     * @memberof AdPinAnalytics
      */
     pINID: string;
 }
@@ -51,7 +47,7 @@ export function AdPinAnalyticsFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'dATE': json['DATE'] == null ? undefined : (new Date(json['DATE'])),
+        'dATE': json['DATE'] == null ? undefined : (parseDate(json['DATE'])),
         'pINID': json['PIN_ID'],
     };
 }
@@ -67,7 +63,7 @@ export function AdPinAnalyticsToJSONTyped(value?: AdPinAnalytics | null, ignoreD
 
     return {
         
-        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
+        'DATE': value['dATE'] == null ? value['dATE'] : serializeDate(value['dATE']),
         'PIN_ID': value['pINID'],
     };
 }

@@ -17,7 +17,7 @@ import LeadsExportStatus from './LeadsExportStatus';
 /**
  * The LeadsExportResponseData model module.
  * @module model/LeadsExportResponseData
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LeadsExportResponseData {
     /**

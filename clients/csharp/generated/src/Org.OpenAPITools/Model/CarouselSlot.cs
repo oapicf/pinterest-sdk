@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class CarouselSlot.");
+                throw new JsonException("Property is not nullable for class CarouselSlot: description.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class CarouselSlot.");
+                throw new JsonException("Property is not nullable for class CarouselSlot: link.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class CarouselSlot.");
+                throw new JsonException("Property is not nullable for class CarouselSlot: title.");
 
             return new CarouselSlot(description, link, title);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="carouselSlot"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CarouselSlot carouselSlot, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,17 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="carouselSlot"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CarouselSlot carouselSlot, JsonSerializerOptions jsonSerializerOptions)
         {
             if (carouselSlot.DescriptionOption.IsSet && carouselSlot.Description == null)
-                throw new ArgumentNullException(nameof(carouselSlot.Description), "Property is required for class CarouselSlot.");
+                throw new JsonException("Cannot write null property CarouselSlot.Description to non-nullable JSON property 'description'.");
 
             if (carouselSlot.LinkOption.IsSet && carouselSlot.Link == null)
-                throw new ArgumentNullException(nameof(carouselSlot.Link), "Property is required for class CarouselSlot.");
+                throw new JsonException("Cannot write null property CarouselSlot.Link to non-nullable JSON property 'link'.");
 
             if (carouselSlot.TitleOption.IsSet && carouselSlot.Title == null)
-                throw new ArgumentNullException(nameof(carouselSlot.Title), "Property is required for class CarouselSlot.");
+                throw new JsonException("Cannot write null property CarouselSlot.Title to non-nullable JSON property 'title'.");
 
             if (carouselSlot.DescriptionOption.IsSet)
                 writer.WriteString("description", carouselSlot.Description);

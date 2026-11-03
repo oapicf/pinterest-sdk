@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface UserWebsite {
     /**
      * Status of the verification process
-     * @type {string}
-     * @memberof UserWebsite
      */
     readonly status?: string;
     /**
      * UTC timestamp when the verification happened - sometimes missing
-     * @type {string}
-     * @memberof UserWebsite
      */
     readonly verifiedAt?: string;
     /**
      * Website with path or domain only
-     * @type {string}
-     * @memberof UserWebsite
      */
     website?: string;
 }

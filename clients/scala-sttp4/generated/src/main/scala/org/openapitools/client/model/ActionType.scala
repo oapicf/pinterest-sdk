@@ -18,9 +18,9 @@ package org.openapitools.client.model
 sealed trait ActionType
 
 object ActionType {
-  case object CLICKTHROUGH extends ActionType
-  case object IMPRESSION extends ActionType
-  case object VIDEOV50MRC extends ActionType
+  case object CLICKTHROUGH extends ActionType { override def toString: String = "CLICKTHROUGH" }
+  case object IMPRESSION extends ActionType { override def toString: String = "IMPRESSION" }
+  case object VIDEOV50MRC extends ActionType { override def toString: String = "VIDEO_V_50_MRC" }
 
   import org.json4s._
 

@@ -173,16 +173,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterOperatorTypeCriteria.", nameof(values));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterOperatorTypeCriteria: values.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria: values.");
 
             if (filterOperatorType.IsSet && filterOperatorType.Value == null)
-                throw new ArgumentNullException(nameof(filterOperatorType), "Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria: filter_operator_type.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterOperatorTypeCriteria: negated.");
 
             return new CatalogsProductGroupFilterOperatorTypeCriteria(values.Value!, filterOperatorType, negated);
         }
@@ -193,7 +193,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFilterOperatorTypeCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupFilterOperatorTypeCriteria catalogsProductGroupFilterOperatorTypeCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -208,11 +207,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFilterOperatorTypeCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupFilterOperatorTypeCriteria catalogsProductGroupFilterOperatorTypeCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupFilterOperatorTypeCriteria.Values == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterOperatorTypeCriteria.Values), "Property is required for class CatalogsProductGroupFilterOperatorTypeCriteria.");
+            if (catalogsProductGroupFilterOperatorTypeCriteria.FilterOperatorTypeOption.IsSet && catalogsProductGroupFilterOperatorTypeCriteria.FilterOperatorType == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupFilterOperatorTypeCriteria.FilterOperatorType to non-nullable JSON property 'filter_operator_type'.");
+
+            if (catalogsProductGroupFilterOperatorTypeCriteria.NegatedOption.IsSet && catalogsProductGroupFilterOperatorTypeCriteria.Negated == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupFilterOperatorTypeCriteria.Negated to non-nullable JSON property 'negated'.");
 
             writer.WritePropertyName("values");
             JsonSerializer.Serialize(writer, catalogsProductGroupFilterOperatorTypeCriteria.Values, jsonSerializerOptions);

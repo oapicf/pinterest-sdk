@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,32 +27,25 @@ import jakarta.annotation.Generated;
  * ConversionTag
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionTag {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String codeSnippet;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionTagConfigs configs;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<EnhancedMatchStatusType> enhancedMatchStatus = JsonNullable.<EnhancedMatchStatusType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> lastFiredTimeMs = JsonNullable.<BigDecimal>undefined();
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String version;
 
   private String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
   public ConversionTag() {
@@ -120,7 +112,7 @@ public class ConversionTag {
    * @return enhancedMatchStatus
    */
   @Valid 
-  @Schema(name = "enhanced_match_status", accessMode = Schema.AccessMode.READ_ONLY, example = "VALIDATION_COMPLETE", description = "The enhanced match status of the tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "enhanced_match_status", accessMode = Schema.AccessMode.READ_ONLY, example = "VALIDATION_COMPLETE", description = "The enhanced match status of the tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("enhanced_match_status")
   public JsonNullable<EnhancedMatchStatusType> getEnhancedMatchStatus() {
     return enhancedMatchStatus;
@@ -161,7 +153,7 @@ public class ConversionTag {
    * @return lastFiredTimeMs
    */
   @Valid 
-  @Schema(name = "last_fired_time_ms", accessMode = Schema.AccessMode.READ_ONLY, example = "1599030000000", description = "Time for the last event fired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "last_fired_time_ms", accessMode = Schema.AccessMode.READ_ONLY, example = "1599030000000", description = "Time for the last event fired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("last_fired_time_ms")
   public JsonNullable<BigDecimal> getLastFiredTimeMs() {
     return lastFiredTimeMs;

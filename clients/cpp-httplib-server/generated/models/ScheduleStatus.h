@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class ScheduleStatus
-{
-public:
-
-    ScheduleStatus();
-    virtual ~ScheduleStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ScheduleStatus,
-        )
-
-private:
+enum class ScheduleStatus {
+    
+    DRAFT,
+    
+    CREATED,
+    
+    SCHEDULED,
+    
+    ACTIVE,
+    
+    COMPLETED,
+    
+    FAILED,
+    
+    CANCELED
+    
 };
 
+inline void to_json(nlohmann::json& j, const ScheduleStatus& value)
+{
+    switch (value)
+    {
+        
+        case ScheduleStatus::DRAFT: j = "DRAFT"; break;
+        
+        case ScheduleStatus::CREATED: j = "CREATED"; break;
+        
+        case ScheduleStatus::SCHEDULED: j = "SCHEDULED"; break;
+        
+        case ScheduleStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case ScheduleStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case ScheduleStatus::FAILED: j = "FAILED"; break;
+        
+        case ScheduleStatus::CANCELED: j = "CANCELED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ScheduleStatus& value)
+{
+    
+    if (j == "DRAFT")
+    {
+        value = ScheduleStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "CREATED")
+    {
+        value = ScheduleStatus::CREATED;
+        return;
+    }
+    
+    if (j == "SCHEDULED")
+    {
+        value = ScheduleStatus::SCHEDULED;
+        return;
+    }
+    
+    if (j == "ACTIVE")
+    {
+        value = ScheduleStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "COMPLETED")
+    {
+        value = ScheduleStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = ScheduleStatus::FAILED;
+        return;
+    }
+    
+    if (j == "CANCELED")
+    {
+        value = ScheduleStatus::CANCELED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleStatus", &j);
+}
 
 } // namespace models
 

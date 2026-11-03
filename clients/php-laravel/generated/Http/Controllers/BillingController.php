@@ -51,10 +51,10 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,13 +116,13 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -131,7 +131,7 @@ class BillingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -146,7 +146,7 @@ class BillingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->adsCreditsDiscountsGet($adAccountId, $bookmark, $pageSize);
@@ -193,19 +193,19 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'billingInvoiceId' => $billingInvoiceId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'billing_invoice_id' => $billingInvoiceId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'billingInvoiceId' => [
+                'billing_invoice_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -265,13 +265,13 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -280,7 +280,7 @@ class BillingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -291,11 +291,11 @@ class BillingController extends Controller
                 ],
                 'status' => [
                 ],
-                'documentType' => [
+                'document_type' => [
                 ],
-                'startDueDate' => [
+                'start_due_date' => [
                 ],
-                'endDueDate' => [
+                'end_due_date' => [
                 ],
             ],
         );
@@ -307,7 +307,7 @@ class BillingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
@@ -317,9 +317,9 @@ class BillingController extends Controller
 
         $documentType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BillingInvoiceDocumentType::class);
 
-        $startDueDate = $request->date('startDueDate');
+        $startDueDate = $request->date('start_due_date');
 
-        $endDueDate = $request->date('endDueDate');
+        $endDueDate = $request->date('end_due_date');
 
 
         $apiResult = $this->api->billingInvoicesGet($adAccountId, $bookmark, $pageSize, $order, $sort, $status, $documentType, $startDueDate, $endDueDate);
@@ -366,17 +366,17 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'isActive' => [
+                'is_active' => [
                     'required',
                     'boolean',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -385,7 +385,7 @@ class BillingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -397,12 +397,12 @@ class BillingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $isActive = $request->boolean('isActive');
+        $isActive = $request->boolean('is_active');
 
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->billingProfilesGet($isActive, $adAccountId, $bookmark, $pageSize);
@@ -449,13 +449,13 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -514,10 +514,10 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -579,10 +579,10 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -640,13 +640,13 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -655,7 +655,7 @@ class BillingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -670,7 +670,7 @@ class BillingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->ssioInsertionOrdersStatusGetByAdAccount($adAccountId, $bookmark, $pageSize);
@@ -717,19 +717,19 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'pinOrderId' => $pinOrderId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'pin_order_id' => $pinOrderId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinOrderId' => [
+                'pin_order_id' => [
                     'required',
                     'string',
                 ],
@@ -787,25 +787,25 @@ class BillingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinOrderId' => [
+                'pin_order_id' => [
                     'string',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -818,11 +818,11 @@ class BillingController extends Controller
         }
 
 
-        $pinOrderId = $request->string('pinOrderId')->value();
+        $pinOrderId = $request->string('pin_order_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->ssioOrderLinesGetByAdAccount($adAccountId, $pinOrderId, $bookmark, $pageSize);

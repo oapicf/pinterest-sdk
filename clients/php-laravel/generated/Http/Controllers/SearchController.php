@@ -51,17 +51,17 @@ class SearchController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'term' => [
                     'required',
                     'string',
                 ],
-                'countryCode' => [
+                'country_code' => [
                     'required',
                     'string',
                 ],
@@ -85,7 +85,7 @@ class SearchController extends Controller
 
         $term = $request->string('term')->value();
 
-        $countryCode = $request->string('countryCode')->value();
+        $countryCode = $request->string('country_code')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
@@ -138,13 +138,13 @@ class SearchController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -155,7 +155,7 @@ class SearchController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -167,13 +167,13 @@ class SearchController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $query = $request->string('query')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->searchUserBoardsGet($adAccountId, $query, $bookmark, $pageSize);
@@ -220,17 +220,17 @@ class SearchController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'query' => [
                     'required',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -247,7 +247,7 @@ class SearchController extends Controller
 
         $query = $request->string('query')->value();
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 

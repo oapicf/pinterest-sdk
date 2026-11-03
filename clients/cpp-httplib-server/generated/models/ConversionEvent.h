@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class ConversionEvent
-{
-public:
-
-    ConversionEvent();
-    virtual ~ConversionEvent() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionEvent,
-        )
-
-private:
+enum class ConversionEvent {
+    
+    PAGE_VISIT,
+    
+    SIGNUP,
+    
+    CHECKOUT,
+    
+    CUSTOM,
+    
+    VIEW_CATEGORY,
+    
+    SEARCH,
+    
+    ADD_TO_CART,
+    
+    WATCH_VIDEO,
+    
+    LEAD,
+    
+    APP_INSTALL
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionEvent& value)
+{
+    switch (value)
+    {
+        
+        case ConversionEvent::PAGE_VISIT: j = "PAGE_VISIT"; break;
+        
+        case ConversionEvent::SIGNUP: j = "SIGNUP"; break;
+        
+        case ConversionEvent::CHECKOUT: j = "CHECKOUT"; break;
+        
+        case ConversionEvent::CUSTOM: j = "CUSTOM"; break;
+        
+        case ConversionEvent::VIEW_CATEGORY: j = "VIEW_CATEGORY"; break;
+        
+        case ConversionEvent::SEARCH: j = "SEARCH"; break;
+        
+        case ConversionEvent::ADD_TO_CART: j = "ADD_TO_CART"; break;
+        
+        case ConversionEvent::WATCH_VIDEO: j = "WATCH_VIDEO"; break;
+        
+        case ConversionEvent::LEAD: j = "LEAD"; break;
+        
+        case ConversionEvent::APP_INSTALL: j = "APP_INSTALL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionEvent", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionEvent& value)
+{
+    
+    if (j == "PAGE_VISIT")
+    {
+        value = ConversionEvent::PAGE_VISIT;
+        return;
+    }
+    
+    if (j == "SIGNUP")
+    {
+        value = ConversionEvent::SIGNUP;
+        return;
+    }
+    
+    if (j == "CHECKOUT")
+    {
+        value = ConversionEvent::CHECKOUT;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = ConversionEvent::CUSTOM;
+        return;
+    }
+    
+    if (j == "VIEW_CATEGORY")
+    {
+        value = ConversionEvent::VIEW_CATEGORY;
+        return;
+    }
+    
+    if (j == "SEARCH")
+    {
+        value = ConversionEvent::SEARCH;
+        return;
+    }
+    
+    if (j == "ADD_TO_CART")
+    {
+        value = ConversionEvent::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "WATCH_VIDEO")
+    {
+        value = ConversionEvent::WATCH_VIDEO;
+        return;
+    }
+    
+    if (j == "LEAD")
+    {
+        value = ConversionEvent::LEAD;
+        return;
+    }
+    
+    if (j == "APP_INSTALL")
+    {
+        value = ConversionEvent::APP_INSTALL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionEvent", &j);
+}
 
 } // namespace models
 

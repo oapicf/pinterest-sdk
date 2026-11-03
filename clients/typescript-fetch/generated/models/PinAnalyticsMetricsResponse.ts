@@ -29,20 +29,14 @@ import {
 export interface PinAnalyticsMetricsResponse {
     /**
      * Array with the requested daily metric records
-     * @type {Array<PinAnalyticsDailyMetrics>}
-     * @memberof PinAnalyticsMetricsResponse
      */
     dailyMetrics?: Array<PinAnalyticsDailyMetrics>;
     /**
      * The lifetime metric name and value.
-     * @type {{ [key: string]: number; }}
-     * @memberof PinAnalyticsMetricsResponse
      */
     lifetimeMetrics?: { [key: string]: number; };
     /**
      * The metric name and value over the requested period for each requested metric
-     * @type {{ [key: string]: number; }}
-     * @memberof PinAnalyticsMetricsResponse
      */
     summaryMetrics?: { [key: string]: number; };
 }

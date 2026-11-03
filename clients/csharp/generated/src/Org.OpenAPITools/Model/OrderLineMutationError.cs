@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class OrderLineMutationError.");
+                throw new JsonException("Property is not nullable for class OrderLineMutationError: data.");
 
             if (errorMessages.IsSet && errorMessages.Value == null)
-                throw new ArgumentNullException(nameof(errorMessages), "Property is not nullable for class OrderLineMutationError.");
+                throw new JsonException("Property is not nullable for class OrderLineMutationError: error_messages.");
 
             return new OrderLineMutationError(data, errorMessages);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLineMutationError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, OrderLineMutationError orderLineMutationError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,14 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLineMutationError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, OrderLineMutationError orderLineMutationError, JsonSerializerOptions jsonSerializerOptions)
         {
             if (orderLineMutationError.DataOption.IsSet && orderLineMutationError.Data == null)
-                throw new ArgumentNullException(nameof(orderLineMutationError.Data), "Property is required for class OrderLineMutationError.");
+                throw new JsonException("Cannot write null property OrderLineMutationError.Data to non-nullable JSON property 'data'.");
 
             if (orderLineMutationError.ErrorMessagesOption.IsSet && orderLineMutationError.ErrorMessages == null)
-                throw new ArgumentNullException(nameof(orderLineMutationError.ErrorMessages), "Property is required for class OrderLineMutationError.");
+                throw new JsonException("Cannot write null property OrderLineMutationError.ErrorMessages to non-nullable JSON property 'error_messages'.");
 
             if (orderLineMutationError.DataOption.IsSet)
             {

@@ -15,7 +15,7 @@ export interface CatalogsCreativeAssetsProductGroupUpdateRequest {
 }
 export namespace CatalogsCreativeAssetsProductGroupUpdateRequest {
   export const CatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

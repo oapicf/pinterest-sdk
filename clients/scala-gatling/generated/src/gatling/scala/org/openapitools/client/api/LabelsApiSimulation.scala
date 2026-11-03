@@ -108,12 +108,12 @@ class LabelsApiSimulation extends Simulation {
         .feed(labels/listPATHFeeder)
         .exec(http("labelsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/labels")
-        .queryParam("entity_statuses","${entity_statuses}")
-        .queryParam("campaign_ids","${campaign_ids}")
-        .queryParam("label_ids","${label_ids}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("label_types","${label_types}")
         .queryParam("page_size","${page_size}")
+        .queryParam("label_ids","${label_ids}")
+        .queryParam("entity_statuses","${entity_statuses}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("campaign_ids","${campaign_ids}")
 )
 
     // Run scnlabelsList with warm up and reach a constant rate for entire duration

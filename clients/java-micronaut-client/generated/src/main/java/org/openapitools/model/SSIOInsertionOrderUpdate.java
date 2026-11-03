@@ -43,7 +43,7 @@ import javax.annotation.Generated;
   SSIOInsertionOrderUpdate.JSON_PROPERTY_USER_EMAIL
 })
 @JsonTypeName("SSIOInsertionOrderUpdate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class SSIOInsertionOrderUpdate {
     public static final String JSON_PROPERTY_ADS_MANAGER_ORDER_LINE_ID = "ads_manager_order_line_id";

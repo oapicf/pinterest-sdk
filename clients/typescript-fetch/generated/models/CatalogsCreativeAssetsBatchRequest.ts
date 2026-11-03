@@ -36,32 +36,22 @@ import {
 export interface CatalogsCreativeAssetsBatchRequest {
     /**
      * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsBatchRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsBatchRequestCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsBatchRequest
      */
     catalogType: CatalogsCreativeAssetsBatchRequestCatalogTypeEnum;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsCreativeAssetsBatchRequest
      */
     country: Country;
     /**
      * Array with creative assets item operations
-     * @type {Array<CatalogsCreativeAssetsBatchItem>}
-     * @memberof CatalogsCreativeAssetsBatchRequest
      */
     items: Array<CatalogsCreativeAssetsBatchItem>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsCreativeAssetsBatchRequestLanguageEnum}
-     * @memberof CatalogsCreativeAssetsBatchRequest
      */
     language: CatalogsCreativeAssetsBatchRequestLanguageEnum;
 }
@@ -71,7 +61,7 @@ export interface CatalogsCreativeAssetsBatchRequest {
  * @export
  */
 export const CatalogsCreativeAssetsBatchRequestCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsBatchRequestCatalogTypeEnum = typeof CatalogsCreativeAssetsBatchRequestCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsBatchRequestCatalogTypeEnum];
 
@@ -185,7 +175,7 @@ export const CatalogsCreativeAssetsBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsCreativeAssetsBatchRequestLanguageEnum = typeof CatalogsCreativeAssetsBatchRequestLanguageEnum[keyof typeof CatalogsCreativeAssetsBatchRequestLanguageEnum];
 

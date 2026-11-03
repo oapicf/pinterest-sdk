@@ -14,7 +14,7 @@ import org.openapitools.model.ImageSize;
  * Pin with video.
  */
 @ApiModel(description = "Pin with video.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaWithVideo   {
   @JsonProperty("cover_image_url")
   private String coverImageUrl;

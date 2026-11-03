@@ -160,16 +160,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!offerCodeHash.IsSet)
-                throw new ArgumentException("Property is required for class AdsCreditRedeemCreate.", nameof(offerCodeHash));
+                throw new JsonException("Property is required for class AdsCreditRedeemCreate: offerCodeHash.");
 
             if (!validateOnly.IsSet)
-                throw new ArgumentException("Property is required for class AdsCreditRedeemCreate.", nameof(validateOnly));
+                throw new JsonException("Property is required for class AdsCreditRedeemCreate: validateOnly.");
 
             if (offerCodeHash.IsSet && offerCodeHash.Value == null)
-                throw new ArgumentNullException(nameof(offerCodeHash), "Property is not nullable for class AdsCreditRedeemCreate.");
+                throw new JsonException("Property is not nullable for class AdsCreditRedeemCreate: offerCodeHash.");
 
             if (validateOnly.IsSet && validateOnly.Value == null)
-                throw new ArgumentNullException(nameof(validateOnly), "Property is not nullable for class AdsCreditRedeemCreate.");
+                throw new JsonException("Property is not nullable for class AdsCreditRedeemCreate: validateOnly.");
 
             return new AdsCreditRedeemCreate(offerCodeHash.Value!, validateOnly.Value!.Value!);
         }
@@ -180,7 +180,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditRedeemCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsCreditRedeemCreate adsCreditRedeemCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -195,12 +194,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditRedeemCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsCreditRedeemCreate adsCreditRedeemCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adsCreditRedeemCreate.OfferCodeHash == null)
-                throw new ArgumentNullException(nameof(adsCreditRedeemCreate.OfferCodeHash), "Property is required for class AdsCreditRedeemCreate.");
-
             writer.WriteString("offerCodeHash", adsCreditRedeemCreate.OfferCodeHash);
 
             writer.WriteBoolean("validateOnly", adsCreditRedeemCreate.ValidateOnly);

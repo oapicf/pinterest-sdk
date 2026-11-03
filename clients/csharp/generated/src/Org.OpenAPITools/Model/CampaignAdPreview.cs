@@ -331,58 +331,58 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(adAccountId));
+                throw new JsonException("Property is required for class CampaignAdPreview: ad_account_id.");
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(adGroupId));
+                throw new JsonException("Property is required for class CampaignAdPreview: ad_group_id.");
 
             if (!expiresAt.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(expiresAt));
+                throw new JsonException("Property is required for class CampaignAdPreview: expires_at.");
 
             if (!isActive.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(isActive));
+                throw new JsonException("Property is required for class CampaignAdPreview: is_active.");
 
             if (!url.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(url));
+                throw new JsonException("Property is required for class CampaignAdPreview: url.");
 
             if (!userId.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(userId));
+                throw new JsonException("Property is required for class CampaignAdPreview: user_id.");
 
             if (!uuid.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreview.", nameof(uuid));
+                throw new JsonException("Property is required for class CampaignAdPreview: uuid.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: ad_account_id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: ad_group_id.");
 
             if (expiresAt.IsSet && expiresAt.Value == null)
-                throw new ArgumentNullException(nameof(expiresAt), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: expires_at.");
 
             if (isActive.IsSet && isActive.Value == null)
-                throw new ArgumentNullException(nameof(isActive), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: is_active.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: url.");
 
             if (userId.IsSet && userId.Value == null)
-                throw new ArgumentNullException(nameof(userId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: user_id.");
 
             if (uuid.IsSet && uuid.Value == null)
-                throw new ArgumentNullException(nameof(uuid), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: uuid.");
 
             if (clientId.IsSet && clientId.Value == null)
-                throw new ArgumentNullException(nameof(clientId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: client_id.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: pin_id.");
 
             if (pinPromotionId.IsSet && pinPromotionId.Value == null)
-                throw new ArgumentNullException(nameof(pinPromotionId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: pin_promotion_id.");
 
             if (promotedProductGroupId.IsSet && promotedProductGroupId.Value == null)
-                throw new ArgumentNullException(nameof(promotedProductGroupId), "Property is not nullable for class CampaignAdPreview.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreview: promoted_product_group_id.");
 
             return new CampaignAdPreview(adAccountId.Value!, adGroupId.Value!, expiresAt.Value!.Value!, isActive.Value!.Value!, url.Value!, userId.Value!.Value!, uuid.Value!, clientId, pinId, pinPromotionId, promotedProductGroupId);
         }
@@ -393,7 +393,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreview"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreview campaignAdPreview, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -408,20 +407,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreview"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreview campaignAdPreview, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignAdPreview.AdAccountId == null)
-                throw new ArgumentNullException(nameof(campaignAdPreview.AdAccountId), "Property is required for class CampaignAdPreview.");
+            if (campaignAdPreview.ClientIdOption.IsSet && campaignAdPreview.ClientId == null)
+                throw new JsonException("Cannot write null property CampaignAdPreview.ClientId to non-nullable JSON property 'client_id'.");
 
-            if (campaignAdPreview.AdGroupId == null)
-                throw new ArgumentNullException(nameof(campaignAdPreview.AdGroupId), "Property is required for class CampaignAdPreview.");
+            if (campaignAdPreview.PinIdOption.IsSet && campaignAdPreview.PinId == null)
+                throw new JsonException("Cannot write null property CampaignAdPreview.PinId to non-nullable JSON property 'pin_id'.");
 
-            if (campaignAdPreview.Url == null)
-                throw new ArgumentNullException(nameof(campaignAdPreview.Url), "Property is required for class CampaignAdPreview.");
+            if (campaignAdPreview.PinPromotionIdOption.IsSet && campaignAdPreview.PinPromotionId == null)
+                throw new JsonException("Cannot write null property CampaignAdPreview.PinPromotionId to non-nullable JSON property 'pin_promotion_id'.");
 
-            if (campaignAdPreview.Uuid == null)
-                throw new ArgumentNullException(nameof(campaignAdPreview.Uuid), "Property is required for class CampaignAdPreview.");
+            if (campaignAdPreview.PromotedProductGroupIdOption.IsSet && campaignAdPreview.PromotedProductGroupId == null)
+                throw new JsonException("Cannot write null property CampaignAdPreview.PromotedProductGroupId to non-nullable JSON property 'promoted_product_group_id'.");
 
             writer.WriteString("ad_account_id", campaignAdPreview.AdAccountId);
 

@@ -80,7 +80,7 @@ public class BusinessAccessAssetsApiHandler {
         AssetGroupInputCreate assetGroupInputCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupInputCreate>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter assetGroupInputCreate is {}", assetGroupInputCreate);
+        logger.debug("Parameter assetGroupInputCreate is (body omitted)");
 
         api.assetGroupCreate(businessId, assetGroupInputCreate)
             .onSuccess(apiResponse -> {
@@ -105,7 +105,7 @@ public class BusinessAccessAssetsApiHandler {
         AssetGroupDeletionDelete assetGroupDeletionDelete = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupDeletionDelete>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter assetGroupDeletionDelete is {}", assetGroupDeletionDelete);
+        logger.debug("Parameter assetGroupDeletionDelete is (body omitted)");
 
         api.assetGroupDelete(businessId, assetGroupDeletionDelete)
             .onSuccess(apiResponse -> {
@@ -130,7 +130,7 @@ public class BusinessAccessAssetsApiHandler {
         AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AssetGroupModificationReadOrUpdate>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter assetGroupModificationReadOrUpdate is {}", assetGroupModificationReadOrUpdate);
+        logger.debug("Parameter assetGroupModificationReadOrUpdate is (body omitted)");
 
         api.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
             .onSuccess(apiResponse -> {
@@ -297,7 +297,7 @@ public class BusinessAccessAssetsApiHandler {
         BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessMembersAssetAccessDeleteBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessMembersAssetAccessDeleteBody is {}", businessMembersAssetAccessDeleteBody);
+        logger.debug("Parameter businessMembersAssetAccessDeleteBody is (body omitted)");
 
         api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
             .onSuccess(apiResponse -> {
@@ -322,7 +322,7 @@ public class BusinessAccessAssetsApiHandler {
         UpdateMemberAssetAccessBody updateMemberAssetAccessBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UpdateMemberAssetAccessBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter updateMemberAssetAccessBody is {}", updateMemberAssetAccessBody);
+        logger.debug("Parameter updateMemberAssetAccessBody is (body omitted)");
 
         api.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody)
             .onSuccess(apiResponse -> {
@@ -389,7 +389,7 @@ public class BusinessAccessAssetsApiHandler {
         DeletePartnerAssetAccessBody deletePartnerAssetAccessBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<DeletePartnerAssetAccessBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter deletePartnerAssetAccessBody is {}", deletePartnerAssetAccessBody);
+        logger.debug("Parameter deletePartnerAssetAccessBody is (body omitted)");
 
         api.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
             .onSuccess(apiResponse -> {
@@ -414,7 +414,7 @@ public class BusinessAccessAssetsApiHandler {
         UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UpdatePartnerAssetAccessBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter updatePartnerAssetAccessBody is {}", updatePartnerAssetAccessBody);
+        logger.debug("Parameter updatePartnerAssetAccessBody is (body omitted)");
 
         api.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody)
             .onSuccess(apiResponse -> {

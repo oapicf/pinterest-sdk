@@ -178,19 +178,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.", nameof(id));
+                throw new JsonException("Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody: id.");
 
             if (!operationType.IsSet)
-                throw new ArgumentException("Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.", nameof(operationType));
+                throw new JsonException("Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody: operation_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody: id.");
 
             if (operationType.IsSet && operationType.Value == null)
-                throw new ArgumentNullException(nameof(operationType), "Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody: operation_type.");
 
             if (audienceIds.IsSet && audienceIds.Value == null)
-                throw new ArgumentNullException(nameof(audienceIds), "Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerSegmentUpdateRequestUpdateWithRequiredBody: audience_ids.");
 
             return new CustomerSegmentUpdateRequestUpdateWithRequiredBody(id.Value!, operationType.Value!.Value!, audienceIds);
         }
@@ -201,7 +201,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegmentUpdateRequestUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -216,14 +215,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerSegmentUpdateRequestUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerSegmentUpdateRequestUpdateWithRequiredBody.Id == null)
-                throw new ArgumentNullException(nameof(customerSegmentUpdateRequestUpdateWithRequiredBody.Id), "Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.");
-
             if (customerSegmentUpdateRequestUpdateWithRequiredBody.AudienceIdsOption.IsSet && customerSegmentUpdateRequestUpdateWithRequiredBody.AudienceIds == null)
-                throw new ArgumentNullException(nameof(customerSegmentUpdateRequestUpdateWithRequiredBody.AudienceIds), "Property is required for class CustomerSegmentUpdateRequestUpdateWithRequiredBody.");
+                throw new JsonException("Cannot write null property CustomerSegmentUpdateRequestUpdateWithRequiredBody.AudienceIds to non-nullable JSON property 'audience_ids'.");
 
             writer.WriteString("id", customerSegmentUpdateRequestUpdateWithRequiredBody.Id);
 

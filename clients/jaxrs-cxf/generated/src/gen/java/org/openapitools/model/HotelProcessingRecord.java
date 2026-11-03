@@ -27,8 +27,6 @@ public class HotelProcessingRecord  {
   */
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
 
-  @Valid
-
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
  /**
@@ -48,8 +46,6 @@ public class HotelProcessingRecord  {
   * Array with the validation warnings for the item processing record
   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-
-  @Valid
 
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
  /**

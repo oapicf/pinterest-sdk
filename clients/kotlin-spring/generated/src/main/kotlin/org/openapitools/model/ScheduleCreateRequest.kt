@@ -35,43 +35,43 @@ data class ScheduleCreateRequest(
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("entity_id")
+    @param:JsonProperty("entity_id", required = true)
     @get:JsonProperty("entity_id", required = true) val entityId: kotlin.String,
 
     @Schema(required = true, description = "Entity type")
-    @param:JsonProperty("entity_type")
+    @param:JsonProperty("entity_type", required = true)
     @get:JsonProperty("entity_type", required = true) val entityType: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("delta_value")
+    @param:JsonProperty("delta_value", required = true)
     @get:JsonProperty("delta_value", required = true) val deltaValue: ScheduleCommonDeltaValue,
 
     @Schema(required = true, description = "Schedule end time. Unix timestamp in seconds.")
-    @param:JsonProperty("end_timestamp")
+    @param:JsonProperty("end_timestamp", required = true)
     @get:JsonProperty("end_timestamp", required = true) val endTimestamp: kotlin.Int,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("schedule_action")
+    @param:JsonProperty("schedule_action", required = true)
     @get:JsonProperty("schedule_action", required = true) val scheduleAction: ScheduleAction,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("schedule_status")
+    @param:JsonProperty("schedule_status", required = true)
     @get:JsonProperty("schedule_status", required = true) val scheduleStatus: ScheduleStatus,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("schedule_type")
+    @param:JsonProperty("schedule_type", required = true)
     @get:JsonProperty("schedule_type", required = true) val scheduleType: ScheduleType,
 
     @Schema(required = true, description = "Schedule start time. Unix timestamp in seconds.")
-    @param:JsonProperty("start_timestamp")
+    @param:JsonProperty("start_timestamp", required = true)
     @get:JsonProperty("start_timestamp", required = true) val startTimestamp: kotlin.Int
 ) {
 

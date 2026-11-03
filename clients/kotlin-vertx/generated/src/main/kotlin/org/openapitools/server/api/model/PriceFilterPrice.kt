@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
  * @param currency 
- * @param &#x60;operator&#x60; 
- * @param &#x60;value&#x60; 
+ * @param `operator` 
+ * @param `value` 
  * @param negated 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

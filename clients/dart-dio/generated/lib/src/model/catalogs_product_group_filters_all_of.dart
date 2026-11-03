@@ -106,3 +106,4 @@ class _$CatalogsProductGroupFiltersAllOfSerializer implements PrimitiveSerialize
   }
 }
 
+

@@ -6,20 +6,3 @@
 */
 #include "AssetPermissionType.h"
 
-namespace models {
-
-AssetPermissionType::AssetPermissionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

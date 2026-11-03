@@ -9,8 +9,8 @@ import Foundation
 
 public struct TargetingTemplate: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the advertiser that this targeting template belongs to. */
     public var adAccountId: String?
     /** Enable auto-targeting for ad group. Also known as [\"expanded targeting\"](https://help.pinterest.com/en/business/article/expanded-targeting). */

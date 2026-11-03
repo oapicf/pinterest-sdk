@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
  * @param matchType Keyword [match type](/docs/api-features/targeting-overview/)
- * @param &#x60;value&#x60; Keyword value (120 chars max).
+ * @param `value` Keyword value (120 chars max).
  * @param bid **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

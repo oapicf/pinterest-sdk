@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class MatchTypeResponse
-{
-public:
-
-    MatchTypeResponse();
-    virtual ~MatchTypeResponse() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MatchTypeResponse,
-        )
-
-private:
+enum class MatchTypeResponse {
+    
+    BROAD,
+    
+    PHRASE,
+    
+    EXACT,
+    
+    EXACT_NEGATIVE,
+    
+    PHRASE_NEGATIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const MatchTypeResponse& value)
+{
+    switch (value)
+    {
+        
+        case MatchTypeResponse::BROAD: j = "BROAD"; break;
+        
+        case MatchTypeResponse::PHRASE: j = "PHRASE"; break;
+        
+        case MatchTypeResponse::EXACT: j = "EXACT"; break;
+        
+        case MatchTypeResponse::EXACT_NEGATIVE: j = "EXACT_NEGATIVE"; break;
+        
+        case MatchTypeResponse::PHRASE_NEGATIVE: j = "PHRASE_NEGATIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MatchTypeResponse", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MatchTypeResponse& value)
+{
+    
+    if (j == "BROAD")
+    {
+        value = MatchTypeResponse::BROAD;
+        return;
+    }
+    
+    if (j == "PHRASE")
+    {
+        value = MatchTypeResponse::PHRASE;
+        return;
+    }
+    
+    if (j == "EXACT")
+    {
+        value = MatchTypeResponse::EXACT;
+        return;
+    }
+    
+    if (j == "EXACT_NEGATIVE")
+    {
+        value = MatchTypeResponse::EXACT_NEGATIVE;
+        return;
+    }
+    
+    if (j == "PHRASE_NEGATIVE")
+    {
+        value = MatchTypeResponse::PHRASE_NEGATIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MatchTypeResponse", &j);
+}
 
 } // namespace models
 

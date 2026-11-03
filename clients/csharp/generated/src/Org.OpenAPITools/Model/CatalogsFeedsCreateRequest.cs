@@ -311,31 +311,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!format.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedsCreateRequest.", nameof(format));
+                throw new JsonException("Property is required for class CatalogsFeedsCreateRequest: format.");
 
             if (!location.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedsCreateRequest.", nameof(location));
+                throw new JsonException("Property is required for class CatalogsFeedsCreateRequest: location.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedsCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsFeedsCreateRequest: name.");
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: format.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: location.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: name.");
 
             if (defaultCountry.IsSet && defaultCountry.Value == null)
-                throw new ArgumentNullException(nameof(defaultCountry), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: default_country.");
 
             if (defaultLocale.IsSet && defaultLocale.Value == null)
-                throw new ArgumentNullException(nameof(defaultLocale), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: default_locale.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsCreateRequest: status.");
 
             return new CatalogsFeedsCreateRequest(format.Value!.Value!, location.Value!, name.Value!, credentials, defaultAvailability, defaultCountry, defaultCurrency, defaultLocale, preferredProcessingSchedule, status);
         }
@@ -346,7 +346,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedsCreateRequest catalogsFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -361,17 +360,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedsCreateRequest catalogsFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedsCreateRequest.Location == null)
-                throw new ArgumentNullException(nameof(catalogsFeedsCreateRequest.Location), "Property is required for class CatalogsFeedsCreateRequest.");
-
-            if (catalogsFeedsCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsFeedsCreateRequest.Name), "Property is required for class CatalogsFeedsCreateRequest.");
+            if (catalogsFeedsCreateRequest.DefaultCountryOption.IsSet && catalogsFeedsCreateRequest.DefaultCountry == null)
+                throw new JsonException("Cannot write null property CatalogsFeedsCreateRequest.DefaultCountry to non-nullable JSON property 'default_country'.");
 
             if (catalogsFeedsCreateRequest.DefaultLocaleOption.IsSet && catalogsFeedsCreateRequest.DefaultLocale == null)
-                throw new ArgumentNullException(nameof(catalogsFeedsCreateRequest.DefaultLocale), "Property is required for class CatalogsFeedsCreateRequest.");
+                throw new JsonException("Cannot write null property CatalogsFeedsCreateRequest.DefaultLocale to non-nullable JSON property 'default_locale'.");
+
+            if (catalogsFeedsCreateRequest.StatusOption.IsSet && catalogsFeedsCreateRequest.Status == null)
+                throw new JsonException("Cannot write null property CatalogsFeedsCreateRequest.Status to non-nullable JSON property 'status'.");
 
             var formatRawValue = CatalogsFormatValueConverter.ToJsonValue(catalogsFeedsCreateRequest.Format);
             writer.WriteString("format", formatRawValue);

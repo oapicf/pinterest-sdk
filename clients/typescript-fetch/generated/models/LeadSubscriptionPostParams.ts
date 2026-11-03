@@ -29,74 +29,50 @@ import {
 export interface LeadSubscriptionPostParams {
     /**
      * The Ad Account ID that this lead form belongs to.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     adAccountId?: string;
     /**
      * API version.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     apiVersion?: string;
     /**
      * Subscription creation time. Unix timestamp in milliseconds.
-     * @type {number}
-     * @memberof LeadSubscriptionPostParams
      */
     createdTime?: number;
     /**
      * Lead data encryption algorithm.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     cryptographicAlgorithm?: string | null;
     /**
      * Base64 encoded key for client to decrypt lead data.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     cryptographicKey?: string | null;
     /**
      * Subscription ID.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     id?: string;
     /**
      * Lead form ID.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     leadFormId?: string | null;
     /**
      * User account used to subscribe lead data.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     userAccountId?: string;
     /**
      * Standard HTTPS webhook URL.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     webhookUrl?: string;
     /**
      * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     partnerAccessToken?: string;
     /**
      * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
-     * @type {PartnerMetadata}
-     * @memberof LeadSubscriptionPostParams
      */
     partnerMetadata?: PartnerMetadata;
     /**
      * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParams
      */
     partnerRefreshToken?: string;
 }

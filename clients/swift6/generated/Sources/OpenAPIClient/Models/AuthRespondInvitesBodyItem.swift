@@ -9,7 +9,7 @@ import Foundation
 
 public struct AuthRespondInvitesBodyItem: Sendable, Codable, Hashable {
 
-    public static let inviteIdRule = StringRule(minLength: 1, maxLength: 25, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: 1, maxLength: 25, pattern: "^\\d+$")
     public var action: AuthRespondInviteAction
     /** Unique identifier of an invite. */
     public var inviteId: String

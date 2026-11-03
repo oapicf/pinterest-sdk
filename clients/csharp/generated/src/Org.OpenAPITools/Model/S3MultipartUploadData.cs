@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (fileParts.IsSet && fileParts.Value == null)
-                throw new ArgumentNullException(nameof(fileParts), "Property is not nullable for class S3MultipartUploadData.");
+                throw new JsonException("Property is not nullable for class S3MultipartUploadData: file_parts.");
 
             return new S3MultipartUploadData(fileParts);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="s3MultipartUploadData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, S3MultipartUploadData s3MultipartUploadData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="s3MultipartUploadData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, S3MultipartUploadData s3MultipartUploadData, JsonSerializerOptions jsonSerializerOptions)
         {
             if (s3MultipartUploadData.FilePartsOption.IsSet && s3MultipartUploadData.FileParts == null)
-                throw new ArgumentNullException(nameof(s3MultipartUploadData.FileParts), "Property is required for class S3MultipartUploadData.");
+                throw new JsonException("Cannot write null property S3MultipartUploadData.FileParts to non-nullable JSON property 'file_parts'.");
 
             if (s3MultipartUploadData.FilePartsOption.IsSet)
             {

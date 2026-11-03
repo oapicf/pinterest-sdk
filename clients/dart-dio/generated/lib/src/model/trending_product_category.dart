@@ -196,3 +196,4 @@ class _$TrendingProductCategorySerializer implements PrimitiveSerializer<Trendin
   }
 }
 
+

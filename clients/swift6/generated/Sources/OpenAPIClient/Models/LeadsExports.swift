@@ -9,7 +9,7 @@ import Foundation
 
 public struct LeadsExports: Sendable, Codable, Hashable {
 
-    public static let leadsExportIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let leadsExportIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** ID for the leads export job. */
     public var leadsExportId: String?
 

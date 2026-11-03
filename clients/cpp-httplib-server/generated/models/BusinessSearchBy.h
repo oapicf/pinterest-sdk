@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class BusinessSearchBy
-{
-public:
-
-    BusinessSearchBy();
-    virtual ~BusinessSearchBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BusinessSearchBy,
-        )
-
-private:
+enum class BusinessSearchBy {
+    
+    FULL_NAME,
+    
+    USERNAME,
+    
+    BUSINESS_ID,
+    
+    EMAIL
+    
 };
 
+inline void to_json(nlohmann::json& j, const BusinessSearchBy& value)
+{
+    switch (value)
+    {
+        
+        case BusinessSearchBy::FULL_NAME: j = "FULL_NAME"; break;
+        
+        case BusinessSearchBy::USERNAME: j = "USERNAME"; break;
+        
+        case BusinessSearchBy::BUSINESS_ID: j = "BUSINESS_ID"; break;
+        
+        case BusinessSearchBy::EMAIL: j = "EMAIL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BusinessSearchBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BusinessSearchBy& value)
+{
+    
+    if (j == "FULL_NAME")
+    {
+        value = BusinessSearchBy::FULL_NAME;
+        return;
+    }
+    
+    if (j == "USERNAME")
+    {
+        value = BusinessSearchBy::USERNAME;
+        return;
+    }
+    
+    if (j == "BUSINESS_ID")
+    {
+        value = BusinessSearchBy::BUSINESS_ID;
+        return;
+    }
+    
+    if (j == "EMAIL")
+    {
+        value = BusinessSearchBy::EMAIL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BusinessSearchBy", &j);
+}
 
 } // namespace models
 

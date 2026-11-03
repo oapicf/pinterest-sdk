@@ -41,7 +41,7 @@ import org.openapitools.model.ReportingTimeZone;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   
   private List<String> adGroupIds = new ArrayList<>();
@@ -54,27 +54,27 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<String> campaignIds = new ArrayList<>();
   private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
   private List<ReportingColumnAsync> columns = new ArrayList<>();
   private Boolean combineTargetingTypes = false;
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
   private List<CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
   private String endDate;
   private Integer endHour;
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
   private Granularity granularity;
   private MetricsReportingLevel level;
   private List<AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
   private List<String> productGroupIds = new ArrayList<>();
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
   private List<String> productItemIds = new ArrayList<>();
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
   private ReportingTimeZone reportingTimezone;
   private String startDate;
   private Integer startHour;
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   /**
    * List of ad group ids

@@ -35,7 +35,7 @@ export const DataStatus = {
     BeforeDemographicFiltersStartDate: 'BEFORE_DEMOGRAPHIC_FILTERS_START_DATE',
     AudienceSegmentSmallerThanThreshold: 'AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD',
     AudienceTotalSmallerThanThreshold: 'AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD',
-    BeforeProductGroupFilterStartDate: 'BEFORE_PRODUCT_GROUP_FILTER_START_DATE'
+    BeforeProductGroupFilterStartDate: 'BEFORE_PRODUCT_GROUP_FILTER_START_DATE',
 } as const;
 export type DataStatus = typeof DataStatus[keyof typeof DataStatus];
 

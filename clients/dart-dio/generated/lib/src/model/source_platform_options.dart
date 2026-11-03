@@ -9,33 +9,25 @@ import 'package:built_value/serializer.dart';
 
 part 'source_platform_options.g.dart';
 
+/// List of source platforms for a conversion event.
 class SourcePlatformOptions extends EnumClass {
 
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'WEB')
   static const SourcePlatformOptions WEB = _$WEB;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'MOBILE')
   static const SourcePlatformOptions MOBILE = _$MOBILE;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'MOBILE_ANDROID')
   static const SourcePlatformOptions MOBILE_ANDROID = _$MOBILE_ANDROID;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'MOBILE_IOS')
   static const SourcePlatformOptions MOBILE_IOS = _$MOBILE_IOS;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'OFFLINE')
   static const SourcePlatformOptions OFFLINE = _$OFFLINE;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'PINTEREST_WEB')
   static const SourcePlatformOptions PINTEREST_WEB = _$PINTEREST_WEB;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'PINTEREST_ANDROID')
   static const SourcePlatformOptions PINTEREST_ANDROID = _$PINTEREST_ANDROID;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'PINTEREST_IOS')
   static const SourcePlatformOptions PINTEREST_IOS = _$PINTEREST_IOS;
-  /// List of source platforms for a conversion event.
   @BuiltValueEnumConst(wireName: r'POINT_OF_SALE')
   static const SourcePlatformOptions POINT_OF_SALE = _$POINT_OF_SALE;
 

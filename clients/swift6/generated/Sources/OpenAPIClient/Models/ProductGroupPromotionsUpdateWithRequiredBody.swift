@@ -10,7 +10,7 @@ import Foundation
 /** Resource create or update operation model with required body fields (no OptionalProperties). */
 public struct ProductGroupPromotionsUpdateWithRequiredBody: Sendable, Codable, Hashable {
 
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
     /** ID of the ad group the product group promotion belongs to. */
     public var adGroupId: String
     /** List of product group promotions to create or update. */

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'update_mask_bid_option_field.g.dart';
 
+/// bid option field to apply operation updates to
 class UpdateMaskBidOptionField extends EnumClass {
 
-  /// bid option field to apply operation updates to
   @BuiltValueEnumConst(wireName: r'BID')
   static const UpdateMaskBidOptionField BID = _$BID;
-  /// bid option field to apply operation updates to
   @BuiltValueEnumConst(wireName: r'APP_TYPE_BID_MULTIPLIER_SET')
   static const UpdateMaskBidOptionField APP_TYPE_BID_MULTIPLIER_SET = _$APP_TYPE_BID_MULTIPLIER_SET;
-  /// bid option field to apply operation updates to
   @BuiltValueEnumConst(wireName: r'PLACEMENT_BID_MULTIPLIER_SET')
   static const UpdateMaskBidOptionField PLACEMENT_BID_MULTIPLIER_SET = _$PLACEMENT_BID_MULTIPLIER_SET;
 

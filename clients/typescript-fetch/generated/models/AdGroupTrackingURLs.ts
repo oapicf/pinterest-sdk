@@ -23,32 +23,22 @@ import { mapValues } from '../runtime';
 export interface AdGroupTrackingURLs {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AdGroupTrackingURLs
      */
     audienceVerification?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AdGroupTrackingURLs
      */
     buyableButton?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AdGroupTrackingURLs
      */
     click?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AdGroupTrackingURLs
      */
     engagement?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AdGroupTrackingURLs
      */
     impression?: Array<string>;
 }

@@ -16,11 +16,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object holding a group of filters for a hotel product group")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Object holding a group of filters for a hotel product group")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFilters   {
   
-  private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
-  private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
   /**
    **/
@@ -28,10 +28,10 @@ public class CatalogsHotelProductGroupFilters   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("any_of")
   @NotNull
-  public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
-  public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
@@ -41,10 +41,10 @@ public class CatalogsHotelProductGroupFilters   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("all_of")
   @NotNull
-  public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

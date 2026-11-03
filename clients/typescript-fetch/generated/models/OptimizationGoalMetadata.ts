@@ -43,20 +43,14 @@ import {
 export interface OptimizationGoalMetadata {
     /**
      * 
-     * @type {ConversionTagV3GoalMetadata}
-     * @memberof OptimizationGoalMetadata
      */
     conversionTagV3GoalMetadata?: ConversionTagV3GoalMetadata;
     /**
      * 
-     * @type {FrequencyGoalMetadata}
-     * @memberof OptimizationGoalMetadata
      */
     frequencyGoalMetadata?: FrequencyGoalMetadata;
     /**
      * 
-     * @type {ScrollupGoalMetadata}
-     * @memberof OptimizationGoalMetadata
      */
     scrollupGoalMetadata?: ScrollupGoalMetadata;
 }

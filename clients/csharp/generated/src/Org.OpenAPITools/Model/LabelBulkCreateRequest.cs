@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!labels.IsSet)
-                throw new ArgumentException("Property is required for class LabelBulkCreateRequest.", nameof(labels));
+                throw new JsonException("Property is required for class LabelBulkCreateRequest: labels.");
 
             if (!parentId.IsSet)
-                throw new ArgumentException("Property is required for class LabelBulkCreateRequest.", nameof(parentId));
+                throw new JsonException("Property is required for class LabelBulkCreateRequest: parent_id.");
 
             if (labels.IsSet && labels.Value == null)
-                throw new ArgumentNullException(nameof(labels), "Property is not nullable for class LabelBulkCreateRequest.");
+                throw new JsonException("Property is not nullable for class LabelBulkCreateRequest: labels.");
 
             if (parentId.IsSet && parentId.Value == null)
-                throw new ArgumentNullException(nameof(parentId), "Property is not nullable for class LabelBulkCreateRequest.");
+                throw new JsonException("Property is not nullable for class LabelBulkCreateRequest: parent_id.");
 
             return new LabelBulkCreateRequest(labels.Value!, parentId.Value!);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelBulkCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelBulkCreateRequest labelBulkCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,15 +192,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelBulkCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelBulkCreateRequest labelBulkCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (labelBulkCreateRequest.Labels == null)
-                throw new ArgumentNullException(nameof(labelBulkCreateRequest.Labels), "Property is required for class LabelBulkCreateRequest.");
-
-            if (labelBulkCreateRequest.ParentId == null)
-                throw new ArgumentNullException(nameof(labelBulkCreateRequest.ParentId), "Property is required for class LabelBulkCreateRequest.");
-
             writer.WritePropertyName("labels");
             JsonSerializer.Serialize(writer, labelBulkCreateRequest.Labels, jsonSerializerOptions);
             writer.WriteString("parent_id", labelBulkCreateRequest.ParentId);

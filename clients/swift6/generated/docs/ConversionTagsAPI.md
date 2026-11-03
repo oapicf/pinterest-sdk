@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **conversionTagsCreate**
 ```swift
-    open class func conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate, completion: @escaping (_ data: ConversionTag?, _ error: Error?) -> Void)
+    open class func conversionTagsCreate(adAccountId: String, conversionTagCreate: ConversionTagCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionTag
 ```
 
 Create conversion tag
@@ -29,15 +29,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let conversionTagCreate = ConversionTagCreate(aemDbEnabled: false, aemEnabled: false, aemExternalIdEnabled: false, aemFnlnEnabled: false, aemGeEnabled: false, aemLocEnabled: false, aemPhEnabled: false, mdFrequency: 123, name: "name_example") // ConversionTagCreate | 
 
 // Create conversion tag
-ConversionTagsAPI.conversionTagsCreate(adAccountId: adAccountId, conversionTagCreate: conversionTagCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionTagsAPI.conversionTagsCreate(adAccountId: adAccountId, conversionTagCreate: conversionTagCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **conversionTagsGet**
 ```swift
-    open class func conversionTagsGet(adAccountId: String, conversionTagId: String, completion: @escaping (_ data: ConversionTag?, _ error: Error?) -> Void)
+    open class func conversionTagsGet(adAccountId: String, conversionTagId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionTag
 ```
 
 Get conversion tag
@@ -81,15 +77,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let conversionTagId = "conversionTagId_example" // String | Id of the conversion tag.
 
 // Get conversion tag
-ConversionTagsAPI.conversionTagsGet(adAccountId: adAccountId, conversionTagId: conversionTagId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionTagsAPI.conversionTagsGet(adAccountId: adAccountId, conversionTagId: conversionTagId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -117,7 +109,7 @@ Name | Type | Description  | Notes
 
 # **conversionTagsList**
 ```swift
-    open class func conversionTagsList(adAccountId: String, filterDeleted: Bool? = nil, completion: @escaping (_ data: ConversionTagsList200Response?, _ error: Error?) -> Void)
+    open class func conversionTagsList(adAccountId: String, filterDeleted: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionTagsList200Response
 ```
 
 List conversion tags
@@ -133,15 +125,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let filterDeleted = true // Bool | Filter by deleted status (optional) (default to false)
 
 // List conversion tags
-ConversionTagsAPI.conversionTagsList(adAccountId: adAccountId, filterDeleted: filterDeleted) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionTagsAPI.conversionTagsList(adAccountId: adAccountId, filterDeleted: filterDeleted)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -169,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **ocpmEligibleConversionTagsGet**
 ```swift
-    open class func ocpmEligibleConversionTagsGet(adAccountId: String, completion: @escaping (_ data: [String: [ConversionEventResponse]]?, _ error: Error?) -> Void)
+    open class func ocpmEligibleConversionTagsGet(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String: [ConversionEventResponse]]
 ```
 
 Get Ocpm eligible conversion tags
@@ -184,15 +172,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get Ocpm eligible conversion tags
-ConversionTagsAPI.ocpmEligibleConversionTagsGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionTagsAPI.ocpmEligibleConversionTagsGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -219,7 +203,7 @@ Name | Type | Description  | Notes
 
 # **pageVisitConversionTagsGet**
 ```swift
-    open class func pageVisitConversionTagsGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: PageVisitConversionTagsGet200Response?, _ error: Error?) -> Void)
+    open class func pageVisitConversionTagsGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PageVisitConversionTagsGet200Response
 ```
 
 Get page visit conversion tags
@@ -237,15 +221,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // Get page visit conversion tags
-ConversionTagsAPI.pageVisitConversionTagsGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionTagsAPI.pageVisitConversionTagsGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

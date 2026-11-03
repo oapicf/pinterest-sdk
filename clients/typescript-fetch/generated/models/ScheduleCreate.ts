@@ -57,56 +57,38 @@ import {
 export interface ScheduleCreate {
     /**
      * 
-     * @type {ScheduleDeltaValue}
-     * @memberof ScheduleCreate
      */
     deltaValue?: ScheduleDeltaValue;
     /**
      * Schedule end time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleCreate
      */
     endTimestamp?: number;
     /**
      * entity ID.
-     * @type {string}
-     * @memberof ScheduleCreate
      */
     entityId: string;
     /**
      * Specify the entity_type to get summary information
-     * @type {AdAccountEntityType}
-     * @memberof ScheduleCreate
      */
     entityType?: AdAccountEntityType;
     /**
      * Schedule name.
-     * @type {string}
-     * @memberof ScheduleCreate
      */
     name?: string;
     /**
      * The schedule action.
-     * @type {ScheduleAction}
-     * @memberof ScheduleCreate
      */
     scheduleAction?: ScheduleAction;
     /**
      * Schedule status.
-     * @type {ScheduleStatus}
-     * @memberof ScheduleCreate
      */
     scheduleStatus?: ScheduleStatus;
     /**
      * The schedule type.
-     * @type {ScheduleType}
-     * @memberof ScheduleCreate
      */
     scheduleType?: ScheduleType;
     /**
      * Schedule start time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleCreate
      */
     startTimestamp?: number;
 }

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetRequests.IsSet)
-                throw new ArgumentException("Property is required for class CreateAssetAccessRequestBody.", nameof(assetRequests));
+                throw new JsonException("Property is required for class CreateAssetAccessRequestBody: asset_requests.");
 
             if (assetRequests.IsSet && assetRequests.Value == null)
-                throw new ArgumentNullException(nameof(assetRequests), "Property is not nullable for class CreateAssetAccessRequestBody.");
+                throw new JsonException("Property is not nullable for class CreateAssetAccessRequestBody: asset_requests.");
 
             return new CreateAssetAccessRequestBody(assetRequests.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateAssetAccessRequestBody createAssetAccessRequestBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateAssetAccessRequestBody createAssetAccessRequestBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (createAssetAccessRequestBody.AssetRequests == null)
-                throw new ArgumentNullException(nameof(createAssetAccessRequestBody.AssetRequests), "Property is required for class CreateAssetAccessRequestBody.");
-
             writer.WritePropertyName("asset_requests");
             JsonSerializer.Serialize(writer, createAssetAccessRequestBody.AssetRequests, jsonSerializerOptions);
         }

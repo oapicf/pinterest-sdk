@@ -290,7 +290,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelItemsBatch.CatalogTypeEnum?>(CatalogsHotelItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelItemsBatch.CatalogTypeEnum? catalogTypeValue = CatalogsHotelItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelItemsBatch.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "batch_id":
                             batchId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -314,22 +319,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelItemsBatch.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelItemsBatch: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsBatch: catalog_type.");
 
             if (batchId.IsSet && batchId.Value == null)
-                throw new ArgumentNullException(nameof(batchId), "Property is not nullable for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsBatch: batch_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsBatch: created_time.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsBatch: items.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsBatch: status.");
 
             return new CatalogsHotelItemsBatch(catalogType.Value!.Value!, batchId, completedTime, createdTime, items, status);
         }
@@ -340,7 +345,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelItemsBatch catalogsHotelItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -355,14 +359,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelItemsBatch catalogsHotelItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsHotelItemsBatch.BatchIdOption.IsSet && catalogsHotelItemsBatch.BatchId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelItemsBatch.BatchId), "Property is required for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Cannot write null property CatalogsHotelItemsBatch.BatchId to non-nullable JSON property 'batch_id'.");
+
+            if (catalogsHotelItemsBatch.CreatedTimeOption.IsSet && catalogsHotelItemsBatch.CreatedTime == null)
+                throw new JsonException("Cannot write null property CatalogsHotelItemsBatch.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (catalogsHotelItemsBatch.ItemsOption.IsSet && catalogsHotelItemsBatch.Items == null)
-                throw new ArgumentNullException(nameof(catalogsHotelItemsBatch.Items), "Property is required for class CatalogsHotelItemsBatch.");
+                throw new JsonException("Cannot write null property CatalogsHotelItemsBatch.Items to non-nullable JSON property 'items'.");
+
+            if (catalogsHotelItemsBatch.StatusOption.IsSet && catalogsHotelItemsBatch.Status == null)
+                throw new JsonException("Cannot write null property CatalogsHotelItemsBatch.Status to non-nullable JSON property 'status'.");
 
             var catalogTypeRawValue = CatalogsHotelItemsBatch.CatalogTypeEnumToJsonValue(catalogsHotelItemsBatch.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

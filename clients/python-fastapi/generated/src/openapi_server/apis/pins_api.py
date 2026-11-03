@@ -22,9 +22,8 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from datetime import date
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.creative_type import CreativeType
@@ -39,6 +38,7 @@ from openapi_server.models.pins_list200_response import PinsList200Response
 from openapi_server.models.pins_save_request_create import PinsSaveRequestCreate
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.querypinanalyticsmetrictypes_items import QuerypinanalyticsmetrictypesItems
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -65,16 +65,16 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
 )
 async def pins_list(
     pin_filter: Annotated[Optional[PinFilter], Field(description="The filter to apply to the pins")] = Query(None, description="The filter to apply to the pins", alias="pin_filter"),
-    pin_metrics: Annotated[Optional[StrictBool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
-    include_protected_pins: Annotated[Optional[StrictBool], Field(description="Whether to include protected pins in the results")] = Query(False, description="Whether to include protected pins in the results", alias="include_protected_pins"),
+    pin_metrics: Annotated[Optional[bool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
+    include_protected_pins: Annotated[Optional[bool], Field(description="Whether to include protected pins in the results")] = Query(False, description="Whether to include protected pins in the results", alias="include_protected_pins"),
     pin_type: Annotated[Optional[PinType], Field(description="The type of pins to return, currently only enabled for private pins")] = Query(None, description="The type of pins to return, currently only enabled for private pins", alias="pin_type"),
     creative_types: Annotated[Optional[List[CreativeType]], Field(description="Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")] = Query(None, description="Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", alias="creative_types"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    domain: Annotated[Optional[StrictStr], Field(description="Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins).")] = Query(None, description="Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins).", alias="domain"),
-    domains: Annotated[Optional[Annotated[List[StrictStr], Field(min_length=1, max_length=100)]], Field(description="Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. `?domains=instagram.com,jcpenney.com`).")] = Query(None, description="Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;).", alias="domains"),
-    include_product_tag_obj: Annotated[Optional[StrictBool], Field(description="Include product tag objects in the response with their associated links.")] = Query(None, description="Include product tag objects in the response with their associated links.", alias="include_product_tag_obj"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    domain: Annotated[Optional[str], Field(description="Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins).")] = Query(None, description="Only return pins with links that match the exact domain. Domain should not include &#39;www.&#39; prefix. For example, &#39;pinterest.com&#39; is a valid domain, but &#39;www.pinterest.com&#39; is not (will not match any pins).", alias="domain"),
+    domains: Annotated[Optional[Annotated[List[str], Field(min_length=1, max_length=100)]], Field(description="Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. `?domains=instagram.com,jcpenney.com`).")] = Query(None, description="Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. &#x60;?domains&#x3D;instagram.com,jcpenney.com&#x60;).", alias="domains"),
+    include_product_tag_obj: Annotated[Optional[bool], Field(description="Include product tag objects in the response with their associated links.")] = Query(None, description="Include product tag objects in the response with their associated links.", alias="include_product_tag_obj"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -105,8 +105,8 @@ async def pins_list(
     response_model_by_alias=True,
 )
 async def pins_create(
-    pin_create: PinCreate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_create: PinCreate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write", "pins:read", "pins:write"]
     ),
@@ -136,12 +136,12 @@ async def pins_create(
     response_model_by_alias=True,
 )
 async def multi_pins_analytics(
-    pin_ids: Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=100, description="List of Pin IDs.")] = Query(None, description="List of Pin IDs.", alias="pin_ids"),
-    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
-    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
-    metric_types: Annotated[List[MultiPinsAnalyticsMetricTypesItem], Field(description="Pin metric types to get data for.")] = Query(None, description="Pin metric types to get data for.", alias="metric_types"),
-    app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_ids: Annotated[List[str], Field(min_length=1, max_length=100, description="List of Pin IDs.")] = Query(..., description="List of Pin IDs.", alias="pin_ids"),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(..., description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(..., description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    metric_types: Annotated[List[MultiPinsAnalyticsMetricTypesItem], Field(description="Pin metric types to get data for.")] = Query(..., description="Pin metric types to get data for.", alias="metric_types"),
+    app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -171,9 +171,9 @@ async def multi_pins_analytics(
     response_model_by_alias=True,
 )
 async def pins_get(
-    pin_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    pin_metrics: Annotated[Optional[StrictBool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
+    pin_id: str = Path(..., description="", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_metrics: Annotated[Optional[bool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -204,8 +204,8 @@ async def pins_get(
     response_model_by_alias=True,
 )
 async def pins_delete(
-    pin_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_id: str = Path(..., description="", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write", "pins:read", "pins:write"]
     ),
@@ -235,9 +235,9 @@ async def pins_delete(
     response_model_by_alias=True,
 )
 async def pins_update(
-    pin_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    pin_update: PinUpdate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_id: str = Path(..., description="", regex=r"^\d+$"),
+    pin_update: PinUpdate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write", "pins:read", "pins:write"]
     ),
@@ -267,13 +267,13 @@ async def pins_update(
     response_model_by_alias=True,
 )
 async def pins_analytics(
-    pin_id: Annotated[StrictStr, Field(description="Unique identifier of a Pin.")] = Path(..., description="Unique identifier of a Pin."),
-    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
-    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
-    metric_types: Annotated[List[QuerypinanalyticsmetrictypesItems], Field(description="Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`.")] = Query(None, description="Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.", alias="metric_types"),
-    app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
-    split_field: Annotated[Optional[StrictStr], Field(description="How to split the data into groups. Not including this param means data won't be split.")] = Query('NO_SPLIT', description="How to split the data into groups. Not including this param means data won&#39;t be split.", alias="split_field"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_id: Annotated[str, Field(description="Unique identifier of a Pin.")] = Path(..., description="Unique identifier of a Pin."),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(..., description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(..., description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    metric_types: Annotated[List[QuerypinanalyticsmetrictypesItems], Field(description="Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`.")] = Query(..., description="Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &#x60;2023-03-20&#x60;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &#x60;NO_SPLIT&#x60;.", alias="metric_types"),
+    app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
+    split_field: Annotated[Optional[str], Field(description="How to split the data into groups. Not including this param means data won't be split.")] = Query('NO_SPLIT', description="How to split the data into groups. Not including this param means data won&#39;t be split.", alias="split_field"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -303,9 +303,9 @@ async def pins_analytics(
     response_model_by_alias=True,
 )
 async def pins_save(
-    pin_id: Annotated[StrictStr, Field(description="Unique identifier of a Pin.")] = Path(..., description="Unique identifier of a Pin."),
-    pins_save_request_create: PinsSaveRequestCreate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_id: Annotated[str, Field(description="Unique identifier of a Pin.")] = Path(..., description="Unique identifier of a Pin."),
+    pins_save_request_create: PinsSaveRequestCreate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write", "pins:read", "pins:write"]
     ),

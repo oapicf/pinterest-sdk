@@ -262,7 +262,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<AdvancedAuctionItemsSubmitUpsertRecord.OperationEnum?>(AdvancedAuctionItemsSubmitUpsertRecord.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                AdvancedAuctionItemsSubmitUpsertRecord.OperationEnum? operationValue = AdvancedAuctionItemsSubmitUpsertRecord.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<AdvancedAuctionItemsSubmitUpsertRecord.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "errors":
                             errors = new Option<List<AdvancedAuctionOperationError>?>(JsonSerializer.Deserialize<List<AdvancedAuctionOperationError>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -277,40 +282,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!bidOptions.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(bidOptions));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: bid_options.");
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(country));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: country.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(itemId));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: item_id.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(language));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: language.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(operation));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: operation.");
 
             if (!updateMask.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.", nameof(updateMask));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitUpsertRecord: update_mask.");
 
             if (bidOptions.IsSet && bidOptions.Value == null)
-                throw new ArgumentNullException(nameof(bidOptions), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: bid_options.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: country.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: item_id.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: language.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: operation.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitUpsertRecord: errors.");
 
             return new AdvancedAuctionItemsSubmitUpsertRecord(bidOptions.Value!, country.Value!.Value!, itemId.Value!, language.Value!.Value!, operation.Value!.Value!, errors, updateMask.Value!);
         }
@@ -321,7 +326,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsSubmitUpsertRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionItemsSubmitUpsertRecord advancedAuctionItemsSubmitUpsertRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -336,17 +340,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsSubmitUpsertRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionItemsSubmitUpsertRecord advancedAuctionItemsSubmitUpsertRecord, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advancedAuctionItemsSubmitUpsertRecord.BidOptions == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsSubmitUpsertRecord.BidOptions), "Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.");
-
-            if (advancedAuctionItemsSubmitUpsertRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsSubmitUpsertRecord.ItemId), "Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.");
-
             if (advancedAuctionItemsSubmitUpsertRecord.ErrorsOption.IsSet && advancedAuctionItemsSubmitUpsertRecord.Errors == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsSubmitUpsertRecord.Errors), "Property is required for class AdvancedAuctionItemsSubmitUpsertRecord.");
+                throw new JsonException("Cannot write null property AdvancedAuctionItemsSubmitUpsertRecord.Errors to non-nullable JSON property 'errors'.");
 
             writer.WritePropertyName("bid_options");
             JsonSerializer.Serialize(writer, advancedAuctionItemsSubmitUpsertRecord.BidOptions, jsonSerializerOptions);

@@ -6,20 +6,3 @@
 */
 #include "BulkRequestStatus.h"
 
-namespace models {
-
-BulkRequestStatus::BulkRequestStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

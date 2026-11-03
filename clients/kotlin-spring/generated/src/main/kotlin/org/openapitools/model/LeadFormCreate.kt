@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.LeadFormPolicyLink
 import org.openapitools.model.LeadFormQuestion
 import org.openapitools.model.LeadFormStatus
@@ -35,25 +32,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LeadFormCreate(
 
     @Schema(example = "Thank you for submitting. We will contact you soon.", required = true, description = "A message for people who complete the form to let them know what happens next.")
-    @param:JsonProperty("completion_message")
+    @param:JsonProperty("completion_message", required = true)
     @get:JsonProperty("completion_message", required = true) val completionMessage: kotlin.String?,
 
     @Schema(example = "false", required = true, description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO")
-    @param:JsonProperty("has_accepted_terms")
+    @param:JsonProperty("has_accepted_terms", required = true)
     @get:JsonProperty("has_accepted_terms", required = true) val hasAcceptedTerms: kotlin.Boolean,
 
     @Schema(example = "Lead Form 3/14/2023", required = true, description = "Internal name of the lead form.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String?,
 
     @Schema(example = "https://www.advertisername.com/privacy-policy", required = true, description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-    @param:JsonProperty("privacy_policy_link")
+    @param:JsonProperty("privacy_policy_link", required = true)
     @get:JsonProperty("privacy_policy_link", required = true) val privacyPolicyLink: kotlin.String?,
 
     @field:Valid
     @get:Size(min=0,max=10) 
     @Schema(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", required = true, description = "List of questions to be displayed on the lead form.")
-    @param:JsonProperty("questions")
+    @param:JsonProperty("questions", required = true)
     @get:JsonProperty("questions", required = true) val questions: kotlin.collections.List<LeadFormQuestion>,
 
     @Schema(example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.")
@@ -63,15 +60,11 @@ data class LeadFormCreate(
     @field:Valid
     @get:Size(min=0,max=3) 
     @Schema(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("policy_links")
     @get:JsonProperty("policy_links") val policyLinks: kotlin.collections.List<LeadFormPolicyLink>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: LeadFormStatus? = null
 ) {

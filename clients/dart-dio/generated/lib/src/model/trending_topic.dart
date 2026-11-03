@@ -229,3 +229,4 @@ class _$TrendingTopicSerializer implements PrimitiveSerializer<TrendingTopic> {
   }
 }
 
+

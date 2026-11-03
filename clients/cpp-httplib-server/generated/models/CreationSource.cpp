@@ -6,20 +6,3 @@
 */
 #include "CreationSource.h"
 
-namespace models {
-
-CreationSource::CreationSource()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

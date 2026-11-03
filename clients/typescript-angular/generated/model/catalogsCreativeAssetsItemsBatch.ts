@@ -36,7 +36,7 @@ export interface CatalogsCreativeAssetsItemsBatch {
 }
 export namespace CatalogsCreativeAssetsItemsBatch {
     export const CatalogTypeEnum = {
-        CreativeAssets: 'CREATIVE_ASSETS'
+        CreativeAssets: 'CREATIVE_ASSETS',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

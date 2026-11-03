@@ -240,19 +240,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdAccountCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountCreate: country.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class AdAccountCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountCreate: currency.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdAccountCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountCreate: name.");
 
             if (ownerUserId.IsSet && ownerUserId.Value == null)
-                throw new ArgumentNullException(nameof(ownerUserId), "Property is not nullable for class AdAccountCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountCreate: owner_user_id.");
 
             if (varTimeZone.IsSet && varTimeZone.Value == null)
-                throw new ArgumentNullException(nameof(varTimeZone), "Property is not nullable for class AdAccountCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountCreate: time_zone.");
 
             return new AdAccountCreate(country, currency, name, ownerUserId, varTimeZone);
         }
@@ -263,7 +263,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountCreate adAccountCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -278,17 +277,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountCreate adAccountCreate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adAccountCreate.CountryOption.IsSet && adAccountCreate.Country == null)
+                throw new JsonException("Cannot write null property AdAccountCreate.Country to non-nullable JSON property 'country'.");
+
+            if (adAccountCreate.CurrencyOption.IsSet && adAccountCreate.Currency == null)
+                throw new JsonException("Cannot write null property AdAccountCreate.Currency to non-nullable JSON property 'currency'.");
+
             if (adAccountCreate.NameOption.IsSet && adAccountCreate.Name == null)
-                throw new ArgumentNullException(nameof(adAccountCreate.Name), "Property is required for class AdAccountCreate.");
+                throw new JsonException("Cannot write null property AdAccountCreate.Name to non-nullable JSON property 'name'.");
 
             if (adAccountCreate.OwnerUserIdOption.IsSet && adAccountCreate.OwnerUserId == null)
-                throw new ArgumentNullException(nameof(adAccountCreate.OwnerUserId), "Property is required for class AdAccountCreate.");
+                throw new JsonException("Cannot write null property AdAccountCreate.OwnerUserId to non-nullable JSON property 'owner_user_id'.");
 
             if (adAccountCreate.VarTimeZoneOption.IsSet && adAccountCreate.VarTimeZone == null)
-                throw new ArgumentNullException(nameof(adAccountCreate.VarTimeZone), "Property is required for class AdAccountCreate.");
+                throw new JsonException("Cannot write null property AdAccountCreate.VarTimeZone to non-nullable JSON property 'time_zone'.");
 
             if (adAccountCreate.CountryOption.IsSet)
             {

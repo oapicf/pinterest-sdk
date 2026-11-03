@@ -29,8 +29,6 @@ import {
 export interface AvailabilityFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof AvailabilityFilter
      */
     aVAILABILITY: CatalogsProductGroupMultipleStringCriteria;
 }

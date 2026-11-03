@@ -17,7 +17,7 @@ import ConversionTag from './ConversionTag';
 /**
  * The ConversionTagsList200Response model module.
  * @module model/ConversionTagsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ConversionTagsList200Response {
     /**

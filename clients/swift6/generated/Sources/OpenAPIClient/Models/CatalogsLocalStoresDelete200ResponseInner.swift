@@ -9,7 +9,7 @@ import Foundation
 
 public struct CatalogsLocalStoresDelete200ResponseInner: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the local store. */
     public var id: String
     public var status: CampaignAdPreviewDelete200ResponseInnerStatus

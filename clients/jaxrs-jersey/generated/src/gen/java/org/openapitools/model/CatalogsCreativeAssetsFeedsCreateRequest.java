@@ -47,7 +47,7 @@ import javax.validation.Valid;
   CatalogsCreativeAssetsFeedsCreateRequest.JSON_PROPERTY_PREFERRED_PROCESSING_SCHEDULE,
   CatalogsCreativeAssetsFeedsCreateRequest.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest   {
   public static final String JSON_PROPERTY_CATALOG_ID = "catalog_id";
   @JsonProperty(JSON_PROPERTY_CATALOG_ID)
@@ -124,7 +124,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsCreativeAssetsFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;

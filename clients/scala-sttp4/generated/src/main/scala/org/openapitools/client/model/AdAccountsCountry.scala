@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.Country._
 
 case class AdAccountsCountry(
   code: Country,

@@ -22,11 +22,10 @@ import jakarta.annotation.Generated;
  * CatalogsHotelProductGroupFiltersAnyOf
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFiltersAnyOf {
 
-  @Valid
-  private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   public CatalogsHotelProductGroupFiltersAnyOf() {
     super();
@@ -35,11 +34,11 @@ public class CatalogsHotelProductGroupFiltersAnyOf {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsHotelProductGroupFiltersAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public CatalogsHotelProductGroupFiltersAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsHotelProductGroupFiltersAnyOf anyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public CatalogsHotelProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -56,14 +55,14 @@ public class CatalogsHotelProductGroupFiltersAnyOf {
    * Get anyOf
    * @return anyOf
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("any_of")
-  public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

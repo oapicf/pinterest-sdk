@@ -29,14 +29,10 @@ import {
 export interface AdvertiserDefinedEventInput {
     /**
      * Pinterest standard event type to map this custom event to for campaign optimization and reporting
-     * @type {AdvertiserDefinedEventMappingType}
-     * @memberof AdvertiserDefinedEventInput
      */
     mappedConversionType: AdvertiserDefinedEventMappingType;
     /**
      * Raw string name of the event
-     * @type {string}
-     * @memberof AdvertiserDefinedEventInput
      */
     name: string;
 }

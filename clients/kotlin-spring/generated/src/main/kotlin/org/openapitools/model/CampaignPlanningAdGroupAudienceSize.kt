@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,15 +22,11 @@ data class CampaignPlanningAdGroupAudienceSize(
 
     @get:Min(value=0)
     @Schema(example = "1000000", description = "Lower bound of the audience size estimate.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("count_lower")
     @get:JsonProperty("count_lower") val countLower: kotlin.Int? = null,
 
     @get:Min(value=0)
     @Schema(example = "2000000", description = "Upper bound of the audience size estimate.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("count_upper")
     @get:JsonProperty("count_upper") val countUpper: kotlin.Int? = null
 ) {

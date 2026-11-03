@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.NumericFilterOperatorType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -21,26 +18,24 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param &#x60;operator&#x60; 
- * @param &#x60;value&#x60; 
+ * @param `operator` 
+ * @param `value` 
  * @param negated 
  */
 data class CatalogsProductGroupUint32Criteria(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("operator")
+    @param:JsonProperty("operator", required = true)
     @get:JsonProperty("operator", required = true) val `operator`: NumericFilterOperatorType,
 
     @get:Min(value=0)
     @get:Max(value=4294967295)
     @Schema(required = true, description = "")
-    @param:JsonProperty("value")
+    @param:JsonProperty("value", required = true)
     @get:JsonProperty("value", required = true) val `value`: kotlin.Int,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("negated")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = null
 ) {

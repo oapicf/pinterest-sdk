@@ -217,7 +217,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourceImagesURL.SourceTypeEnum?>(PinMediaSourceImagesURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourceImagesURL.SourceTypeEnum? sourceTypeValue = PinMediaSourceImagesURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourceImagesURL.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "index":
                             index = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
@@ -229,19 +234,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesURL.", nameof(items));
+                throw new JsonException("Property is required for class PinMediaSourceImagesURL: items.");
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesURL.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourceImagesURL: source_type.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class PinMediaSourceImagesURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURL: items.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourceImagesURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURL: source_type.");
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class PinMediaSourceImagesURL.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesURL: index.");
 
             return new PinMediaSourceImagesURL(items.Value!, sourceType.Value!.Value!, index);
         }
@@ -252,7 +257,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImagesURL pinMediaSourceImagesURL, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -267,11 +271,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImagesURL pinMediaSourceImagesURL, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImagesURL.Items == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesURL.Items), "Property is required for class PinMediaSourceImagesURL.");
+            if (pinMediaSourceImagesURL.IndexOption.IsSet && pinMediaSourceImagesURL.Index == null)
+                throw new JsonException("Cannot write null property PinMediaSourceImagesURL.Index to non-nullable JSON property 'index'.");
 
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, pinMediaSourceImagesURL.Items, jsonSerializerOptions);

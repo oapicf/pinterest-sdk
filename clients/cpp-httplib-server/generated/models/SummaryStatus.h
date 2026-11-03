@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class SummaryStatus
-{
-public:
-
-    SummaryStatus();
-    virtual ~SummaryStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(SummaryStatus,
-        )
-
-private:
+enum class SummaryStatus {
+    
+    RUNNING,
+    
+    PAUSED,
+    
+    NOT_STARTED,
+    
+    COMPLETED,
+    
+    ADVERTISER_DISABLED,
+    
+    ARCHIVED,
+    
+    DRAFT,
+    
+    DELETED_DRAFT
+    
 };
 
+inline void to_json(nlohmann::json& j, const SummaryStatus& value)
+{
+    switch (value)
+    {
+        
+        case SummaryStatus::RUNNING: j = "RUNNING"; break;
+        
+        case SummaryStatus::PAUSED: j = "PAUSED"; break;
+        
+        case SummaryStatus::NOT_STARTED: j = "NOT_STARTED"; break;
+        
+        case SummaryStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case SummaryStatus::ADVERTISER_DISABLED: j = "ADVERTISER_DISABLED"; break;
+        
+        case SummaryStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case SummaryStatus::DRAFT: j = "DRAFT"; break;
+        
+        case SummaryStatus::DELETED_DRAFT: j = "DELETED_DRAFT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for SummaryStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, SummaryStatus& value)
+{
+    
+    if (j == "RUNNING")
+    {
+        value = SummaryStatus::RUNNING;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = SummaryStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "NOT_STARTED")
+    {
+        value = SummaryStatus::NOT_STARTED;
+        return;
+    }
+    
+    if (j == "COMPLETED")
+    {
+        value = SummaryStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "ADVERTISER_DISABLED")
+    {
+        value = SummaryStatus::ADVERTISER_DISABLED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = SummaryStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "DRAFT")
+    {
+        value = SummaryStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "DELETED_DRAFT")
+    {
+        value = SummaryStatus::DELETED_DRAFT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for SummaryStatus", &j);
+}
 
 } // namespace models
 

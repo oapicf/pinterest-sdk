@@ -17,7 +17,7 @@ import OperationType from './OperationType';
 /**
  * The AdAccountToBusinessSharedAudienceUpdateWithRequiredBody model module.
  * @module model/AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccountToBusinessSharedAudienceUpdateWithRequiredBody {
     /**

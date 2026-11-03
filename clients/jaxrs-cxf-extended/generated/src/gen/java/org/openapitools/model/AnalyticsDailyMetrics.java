@@ -27,7 +27,6 @@ public class AnalyticsDailyMetrics  {
   private String date;
 
   @ApiModelProperty(value = "")
-  @Valid
   private Map<String, BigDecimal> metrics = new HashMap<>();
  /**
   * Get dataStatus

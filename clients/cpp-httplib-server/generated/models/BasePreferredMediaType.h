@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class BasePreferredMediaType
-{
-public:
-
-    BasePreferredMediaType();
-    virtual ~BasePreferredMediaType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BasePreferredMediaType,
-        )
-
-private:
+enum class BasePreferredMediaType {
+    
+    VIDEO,
+    
+    IMAGE
+    
 };
 
+inline void to_json(nlohmann::json& j, const BasePreferredMediaType& value)
+{
+    switch (value)
+    {
+        
+        case BasePreferredMediaType::VIDEO: j = "VIDEO"; break;
+        
+        case BasePreferredMediaType::IMAGE: j = "IMAGE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BasePreferredMediaType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BasePreferredMediaType& value)
+{
+    
+    if (j == "VIDEO")
+    {
+        value = BasePreferredMediaType::VIDEO;
+        return;
+    }
+    
+    if (j == "IMAGE")
+    {
+        value = BasePreferredMediaType::IMAGE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BasePreferredMediaType", &j);
+}
 
 } // namespace models
 

@@ -18,7 +18,7 @@ export const BillingProfileCardType = {
     Mastercard: 'MASTERCARD',
     AmericanExpress: 'AMERICAN_EXPRESS',
     Discover: 'DISCOVER',
-    Elo: 'ELO'
+    Elo: 'ELO',
 } as const;
 export type BillingProfileCardType = typeof BillingProfileCardType[keyof typeof BillingProfileCardType];
 

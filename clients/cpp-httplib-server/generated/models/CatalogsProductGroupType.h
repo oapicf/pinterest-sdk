@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class ProductGroupType
-{
-public:
-
-    ProductGroupType();
-    virtual ~ProductGroupType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductGroupType,
-        )
-
-private:
+enum class ProductGroupType {
+    
+    MERCHANT_CREATED,
+    
+    ALL_PRODUCTS,
+    
+    BEST_DEALS,
+    
+    PINNER_FAVORITES,
+    
+    TOP_SELLERS,
+    
+    BACK_IN_STOCK,
+    
+    NEW_ARRIVALS,
+    
+    SHOPIFY_COLLECTIONS,
+    
+    I2PC,
+    
+    CATALOG_EXPANSION
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductGroupType& value)
+{
+    switch (value)
+    {
+        
+        case ProductGroupType::MERCHANT_CREATED: j = "MERCHANT_CREATED"; break;
+        
+        case ProductGroupType::ALL_PRODUCTS: j = "ALL_PRODUCTS"; break;
+        
+        case ProductGroupType::BEST_DEALS: j = "BEST_DEALS"; break;
+        
+        case ProductGroupType::PINNER_FAVORITES: j = "PINNER_FAVORITES"; break;
+        
+        case ProductGroupType::TOP_SELLERS: j = "TOP_SELLERS"; break;
+        
+        case ProductGroupType::BACK_IN_STOCK: j = "BACK_IN_STOCK"; break;
+        
+        case ProductGroupType::NEW_ARRIVALS: j = "NEW_ARRIVALS"; break;
+        
+        case ProductGroupType::SHOPIFY_COLLECTIONS: j = "SHOPIFY_COLLECTIONS"; break;
+        
+        case ProductGroupType::I2PC: j = "I2PC"; break;
+        
+        case ProductGroupType::CATALOG_EXPANSION: j = "CATALOG_EXPANSION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductGroupType& value)
+{
+    
+    if (j == "MERCHANT_CREATED")
+    {
+        value = ProductGroupType::MERCHANT_CREATED;
+        return;
+    }
+    
+    if (j == "ALL_PRODUCTS")
+    {
+        value = ProductGroupType::ALL_PRODUCTS;
+        return;
+    }
+    
+    if (j == "BEST_DEALS")
+    {
+        value = ProductGroupType::BEST_DEALS;
+        return;
+    }
+    
+    if (j == "PINNER_FAVORITES")
+    {
+        value = ProductGroupType::PINNER_FAVORITES;
+        return;
+    }
+    
+    if (j == "TOP_SELLERS")
+    {
+        value = ProductGroupType::TOP_SELLERS;
+        return;
+    }
+    
+    if (j == "BACK_IN_STOCK")
+    {
+        value = ProductGroupType::BACK_IN_STOCK;
+        return;
+    }
+    
+    if (j == "NEW_ARRIVALS")
+    {
+        value = ProductGroupType::NEW_ARRIVALS;
+        return;
+    }
+    
+    if (j == "SHOPIFY_COLLECTIONS")
+    {
+        value = ProductGroupType::SHOPIFY_COLLECTIONS;
+        return;
+    }
+    
+    if (j == "I2PC")
+    {
+        value = ProductGroupType::I2PC;
+        return;
+    }
+    
+    if (j == "CATALOG_EXPANSION")
+    {
+        value = ProductGroupType::CATALOG_EXPANSION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupType", &j);
+}
 
 } // namespace models
 

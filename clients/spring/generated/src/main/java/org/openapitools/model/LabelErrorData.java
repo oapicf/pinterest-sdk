@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,19 +25,15 @@ import jakarta.annotation.Generated;
  * LabelErrorData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelErrorData {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableLabelType> labelType = JsonNullable.<NullableLabelType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableLabelStatus> status = JsonNullable.<NullableLabelStatus>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String value;
 
   public LabelErrorData id(@Nullable String id) {
@@ -72,7 +67,7 @@ public class LabelErrorData {
    * @return labelType
    */
   @Valid 
-  @Schema(name = "label_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "label_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("label_type")
   public JsonNullable<NullableLabelType> getLabelType() {
     return labelType;
@@ -92,7 +87,7 @@ public class LabelErrorData {
    * @return status
    */
   @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("status")
   public JsonNullable<NullableLabelStatus> getStatus() {
     return status;

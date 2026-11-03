@@ -164,3 +164,4 @@ class _$InterestSerializer implements PrimitiveSerializer<Interest> {
   }
 }
 
+

@@ -123,7 +123,6 @@ public enum ItemResponseKindEnum {
   * The pins mapped to the item
   */
   @ApiModelProperty(value = "The pins mapped to the item")
-  @Valid
   private List<@Valid Pin> pins;
 
  /**
@@ -142,7 +141,6 @@ public enum ItemResponseKindEnum {
   * Array with the errors for the item id requested
   */
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
-  @Valid
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**
   * Get attributes

@@ -140,6 +140,7 @@ class _$CatalogsUpsertCreativeAssetsItemSerializer implements PrimitiveSerialize
   }
 }
 
+
 class CatalogsUpsertCreativeAssetsItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPSERT')

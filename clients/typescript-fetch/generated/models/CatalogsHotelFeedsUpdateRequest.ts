@@ -57,50 +57,34 @@ import {
 export interface CatalogsHotelFeedsUpdateRequest {
     /**
      * 
-     * @type {CatalogsHotelFeedsUpdateRequestCatalogTypeEnum}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     catalogType: CatalogsHotelFeedsUpdateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     format?: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     location?: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsHotelFeedsUpdateRequest
      */
     status?: CatalogsStatus;
 }
@@ -110,7 +94,7 @@ export interface CatalogsHotelFeedsUpdateRequest {
  * @export
  */
 export const CatalogsHotelFeedsUpdateRequestCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelFeedsUpdateRequestCatalogTypeEnum = typeof CatalogsHotelFeedsUpdateRequestCatalogTypeEnum[keyof typeof CatalogsHotelFeedsUpdateRequestCatalogTypeEnum];
 

@@ -49,7 +49,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Controller
 @Tag(name = "Pins", description = "The Pins API")
 public class PinsController {
@@ -180,7 +180,7 @@ public class PinsController {
         @PathVariable(value="pin_id") @NotNull String pinId, 
         @QueryValue(value="start_date") @NotNull @Format("yyyy-MM-dd") LocalDate startDate, 
         @QueryValue(value="end_date") @NotNull @Format("yyyy-MM-dd") LocalDate endDate, 
-        @QueryValue(value="metric_types") @NotNull List<QuerypinanalyticsmetrictypesItems> metricTypes, 
+        @QueryValue(value="metric_types") @NotNull List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes, 
         @QueryValue(value="app_types", defaultValue="ALL") @Nullable String appTypes, 
         @QueryValue(value="split_field", defaultValue="NO_SPLIT") @Nullable String splitField, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId

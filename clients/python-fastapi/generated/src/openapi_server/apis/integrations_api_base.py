@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Optional
 from typing_extensions import Annotated
 from openapi_server.models.integration_logs_invalid_log_response import IntegrationLogsInvalidLogResponse
@@ -24,8 +24,8 @@ class BaseIntegrationsApi:
         BaseIntegrationsApi.subclasses = BaseIntegrationsApi.subclasses + (cls,)
     async def integrations_get_list(
         self,
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> IntegrationsGetList200Response:
         """Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager."""
         ...
@@ -41,7 +41,7 @@ class BaseIntegrationsApi:
 
     async def integrations_commerce_get(
         self,
-        external_business_id: Annotated[StrictStr, Field(description="External business ID for the integration.")],
+        external_business_id: Annotated[str, Field(description="External business ID for the integration.")],
     ) -> IntegrationMetadata:
         """Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager."""
         ...
@@ -49,7 +49,7 @@ class BaseIntegrationsApi:
 
     async def integrations_commerce_del(
         self,
-        external_business_id: Annotated[StrictStr, Field(description="External business ID for the integration.")],
+        external_business_id: Annotated[str, Field(description="External business ID for the integration.")],
     ) -> IntegrationMetadata:
         """Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager."""
         ...
@@ -57,7 +57,7 @@ class BaseIntegrationsApi:
 
     async def integrations_commerce_patch(
         self,
-        external_business_id: Annotated[StrictStr, Field(description="External business ID for the integration.")],
+        external_business_id: Annotated[str, Field(description="External business ID for the integration.")],
         integration_metadata_update: IntegrationMetadataUpdate,
     ) -> IntegrationMetadata:
         """Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager."""
@@ -74,7 +74,7 @@ class BaseIntegrationsApi:
 
     async def integrations_get_by_id(
         self,
-        id: Annotated[str, Field(strict=True, description="Integration record ID.")],
+        id: Annotated[str, Field(description="Integration record ID.")],
     ) -> IntegrationRecord:
         """Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager."""
         ...

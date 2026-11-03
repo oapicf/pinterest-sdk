@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (reachEstimate.IsSet && reachEstimate.Value == null)
-                throw new ArgumentNullException(nameof(reachEstimate), "Property is not nullable for class TargetingTemplateAudienceSizing.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateAudienceSizing: reach_estimate.");
 
             return new TargetingTemplateAudienceSizing(reachEstimate);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateAudienceSizing"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingTemplateAudienceSizing targetingTemplateAudienceSizing, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateAudienceSizing"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingTemplateAudienceSizing targetingTemplateAudienceSizing, JsonSerializerOptions jsonSerializerOptions)
         {
             if (targetingTemplateAudienceSizing.ReachEstimateOption.IsSet && targetingTemplateAudienceSizing.ReachEstimate == null)
-                throw new ArgumentNullException(nameof(targetingTemplateAudienceSizing.ReachEstimate), "Property is required for class TargetingTemplateAudienceSizing.");
+                throw new JsonException("Cannot write null property TargetingTemplateAudienceSizing.ReachEstimate to non-nullable JSON property 'reach_estimate'.");
 
             if (targetingTemplateAudienceSizing.ReachEstimateOption.IsSet)
             {

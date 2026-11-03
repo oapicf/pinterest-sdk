@@ -6,20 +6,3 @@
 */
 #include "ChangeHistoryDataType.h"
 
-namespace models {
-
-ChangeHistoryDataType::ChangeHistoryDataType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

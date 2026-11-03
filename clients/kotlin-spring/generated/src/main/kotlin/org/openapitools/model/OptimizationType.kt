@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Optimization type for ad group delivery estimates. Supported types vary by objective.
-* Values: CLICKTHROUGH,IMPRESSION,WEB_CONVERSION,ROAS,OUTBOUND_CLICK
-*/
+ * Optimization type for ad group delivery estimates. Supported types vary by objective.
+ * Values: CLICKTHROUGH,IMPRESSION,WEB_CONVERSION,ROAS,OUTBOUND_CLICK
+ */
 enum class OptimizationType(@get:JsonValue val value: kotlin.String) {
 
     CLICKTHROUGH("CLICKTHROUGH"),
@@ -31,9 +31,8 @@ enum class OptimizationType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OptimizationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OptimizationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OptimizationType'")
         }
     }
 }
-

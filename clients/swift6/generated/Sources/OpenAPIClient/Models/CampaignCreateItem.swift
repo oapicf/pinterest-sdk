@@ -10,8 +10,8 @@ import Foundation
 /** Single campaign create item with create-specific defaults. */
 public struct CampaignCreateItem: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Setting this field does nothing. The ad account ID gets set from the path parameter. */
     @available(*, deprecated, message: "This property is deprecated.")
     public var adAccountId: String?

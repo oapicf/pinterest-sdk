@@ -15,29 +15,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsHotelProductGroupFiltersAllOf  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
   * Get allOf
   * @return allOf
   */
   @JsonProperty("all_of")
   @NotNull
-  public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
   /**
    * Sets the <code>allOf</code> property.
    */
- public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+ public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 
   /**
    * Sets the <code>allOf</code> property.
    */
-  public CatalogsHotelProductGroupFiltersAllOf allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFiltersAllOf allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }

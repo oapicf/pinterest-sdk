@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Conversion events.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Conversion events.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEvents   {
   
   private List<@Valid ConversionApiResponseEventsItems> events = new ArrayList<>();
@@ -28,7 +28,6 @@ public class ConversionEvents   {
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
   @JsonProperty("events")
   @NotNull
-  @Valid
   public List<@Valid ConversionApiResponseEventsItems> getEvents() {
     return events;
   }

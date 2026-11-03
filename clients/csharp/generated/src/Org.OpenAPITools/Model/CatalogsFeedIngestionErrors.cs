@@ -309,31 +309,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aCCOUNTFLAGGED.IsSet && aCCOUNTFLAGGED.Value == null)
-                throw new ArgumentNullException(nameof(aCCOUNTFLAGGED), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: ACCOUNT_FLAGGED.");
 
             if (fETCHGOOGLESHEETNOTSHARED.IsSet && fETCHGOOGLESHEETNOTSHARED.Value == null)
-                throw new ArgumentNullException(nameof(fETCHGOOGLESHEETNOTSHARED), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: FETCH_GOOGLE_SHEET_NOT_SHARED.");
 
             if (iMAGEFILENOTACCESSIBLE.IsSet && iMAGEFILENOTACCESSIBLE.Value == null)
-                throw new ArgumentNullException(nameof(iMAGEFILENOTACCESSIBLE), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: IMAGE_FILE_NOT_ACCESSIBLE.");
 
             if (iMAGEFILENOTFOUND.IsSet && iMAGEFILENOTFOUND.Value == null)
-                throw new ArgumentNullException(nameof(iMAGEFILENOTFOUND), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: IMAGE_FILE_NOT_FOUND.");
 
             if (iMAGEINVALIDFILE.IsSet && iMAGEINVALIDFILE.Value == null)
-                throw new ArgumentNullException(nameof(iMAGEINVALIDFILE), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: IMAGE_INVALID_FILE.");
 
             if (iMAGELEVELINTERNALERROR.IsSet && iMAGELEVELINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(iMAGELEVELINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: IMAGE_LEVEL_INTERNAL_ERROR.");
 
             if (iMAGEMALFORMEDURL.IsSet && iMAGEMALFORMEDURL.Value == null)
-                throw new ArgumentNullException(nameof(iMAGEMALFORMEDURL), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: IMAGE_MALFORMED_URL.");
 
             if (lARGEPRODUCTCOUNTDECREASE.IsSet && lARGEPRODUCTCOUNTDECREASE.Value == null)
-                throw new ArgumentNullException(nameof(lARGEPRODUCTCOUNTDECREASE), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: LARGE_PRODUCT_COUNT_DECREASE.");
 
             if (lINELEVELINTERNALERROR.IsSet && lINELEVELINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(lINELEVELINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionErrors: LINE_LEVEL_INTERNAL_ERROR.");
 
             return new CatalogsFeedIngestionErrors(aCCOUNTFLAGGED, fETCHGOOGLESHEETNOTSHARED, iMAGEFILENOTACCESSIBLE, iMAGEFILENOTFOUND, iMAGEINVALIDFILE, iMAGELEVELINTERNALERROR, iMAGEMALFORMEDURL, lARGEPRODUCTCOUNTDECREASE, lINELEVELINTERNALERROR);
         }
@@ -344,7 +344,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionErrors"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedIngestionErrors catalogsFeedIngestionErrors, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -359,9 +358,35 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionErrors"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedIngestionErrors catalogsFeedIngestionErrors, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedIngestionErrors.ACCOUNT_FLAGGEDOption.IsSet && catalogsFeedIngestionErrors.ACCOUNT_FLAGGED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.ACCOUNT_FLAGGED to non-nullable JSON property 'ACCOUNT_FLAGGED'.");
+
+            if (catalogsFeedIngestionErrors.FETCH_GOOGLE_SHEET_NOT_SHAREDOption.IsSet && catalogsFeedIngestionErrors.FETCH_GOOGLE_SHEET_NOT_SHARED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.FETCH_GOOGLE_SHEET_NOT_SHARED to non-nullable JSON property 'FETCH_GOOGLE_SHEET_NOT_SHARED'.");
+
+            if (catalogsFeedIngestionErrors.IMAGE_FILE_NOT_ACCESSIBLEOption.IsSet && catalogsFeedIngestionErrors.IMAGE_FILE_NOT_ACCESSIBLE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.IMAGE_FILE_NOT_ACCESSIBLE to non-nullable JSON property 'IMAGE_FILE_NOT_ACCESSIBLE'.");
+
+            if (catalogsFeedIngestionErrors.IMAGE_FILE_NOT_FOUNDOption.IsSet && catalogsFeedIngestionErrors.IMAGE_FILE_NOT_FOUND == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.IMAGE_FILE_NOT_FOUND to non-nullable JSON property 'IMAGE_FILE_NOT_FOUND'.");
+
+            if (catalogsFeedIngestionErrors.IMAGE_INVALID_FILEOption.IsSet && catalogsFeedIngestionErrors.IMAGE_INVALID_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.IMAGE_INVALID_FILE to non-nullable JSON property 'IMAGE_INVALID_FILE'.");
+
+            if (catalogsFeedIngestionErrors.IMAGE_LEVEL_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionErrors.IMAGE_LEVEL_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.IMAGE_LEVEL_INTERNAL_ERROR to non-nullable JSON property 'IMAGE_LEVEL_INTERNAL_ERROR'.");
+
+            if (catalogsFeedIngestionErrors.IMAGE_MALFORMED_URLOption.IsSet && catalogsFeedIngestionErrors.IMAGE_MALFORMED_URL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.IMAGE_MALFORMED_URL to non-nullable JSON property 'IMAGE_MALFORMED_URL'.");
+
+            if (catalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASEOption.IsSet && catalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.LARGE_PRODUCT_COUNT_DECREASE to non-nullable JSON property 'LARGE_PRODUCT_COUNT_DECREASE'.");
+
+            if (catalogsFeedIngestionErrors.LINE_LEVEL_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionErrors.LINE_LEVEL_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionErrors.LINE_LEVEL_INTERNAL_ERROR to non-nullable JSON property 'LINE_LEVEL_INTERNAL_ERROR'.");
+
             if (catalogsFeedIngestionErrors.ACCOUNT_FLAGGEDOption.IsSet)
                 writer.WriteNumber("ACCOUNT_FLAGGED", catalogsFeedIngestionErrors.ACCOUNT_FLAGGEDOption.Value!.Value);
 

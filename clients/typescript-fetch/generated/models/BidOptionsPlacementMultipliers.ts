@@ -23,20 +23,14 @@ import { mapValues } from '../runtime';
 export interface BidOptionsPlacementMultipliers {
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsPlacementMultipliers
      */
     browse?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsPlacementMultipliers
      */
     relatedPins?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsPlacementMultipliers
      */
     search?: number;
 }

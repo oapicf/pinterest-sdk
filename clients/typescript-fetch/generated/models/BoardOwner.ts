@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface BoardOwner {
     /**
      * 
-     * @type {string}
-     * @memberof BoardOwner
      */
     readonly username?: string;
 }

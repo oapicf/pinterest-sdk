@@ -69,7 +69,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the catalogs API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsApi  {
 
     @Inject CatalogsApiService service;
@@ -240,7 +240,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response catalogsLocalStoresCreate( @Pattern(regexp="^\\d+$") @Size(max=19) @PathParam("catalog_id") String catalogId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid LocalStoreCreate> localStoreCreate, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsLocalStoresCreate( @Pattern(regexp="^\\d+$") @Size(max=19) @PathParam("catalog_id") String catalogId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid LocalStoreCreate> localStoreCreate, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.catalogsLocalStoresCreate(catalogId,localStoreCreate,adAccountId,securityContext);
     }
@@ -323,7 +323,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response catalogsLocalStoresUpdate( @Pattern(regexp="^\\d+$") @Size(max=19) @PathParam("catalog_id") String catalogId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsLocalStoresUpdate( @Pattern(regexp="^\\d+$") @Size(max=19) @PathParam("catalog_id") String catalogId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.catalogsLocalStoresUpdate(catalogId,localStoreBatchUpdate,adAccountId,securityContext);
     }
@@ -413,7 +413,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "" ,required=true) @NotNull @Valid List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "" ,required=true) @NotNull List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, @Pattern(regexp="^\\d+$") @Size(max=18) @QueryParam("ad_account_id") String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems,adAccountId,securityContext);
     }

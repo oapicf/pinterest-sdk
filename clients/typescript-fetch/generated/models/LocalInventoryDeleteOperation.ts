@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface LocalInventoryDeleteOperation {
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryDeleteOperation
      */
     itemId: string;
     /**
      * 
-     * @type {LocalInventoryDeleteOperationOperationEnum}
-     * @memberof LocalInventoryDeleteOperation
      */
     operation: LocalInventoryDeleteOperationOperationEnum;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof LocalInventoryDeleteOperation
      */
     storeCode: string;
 }
@@ -44,7 +38,7 @@ export interface LocalInventoryDeleteOperation {
  * @export
  */
 export const LocalInventoryDeleteOperationOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type LocalInventoryDeleteOperationOperationEnum = typeof LocalInventoryDeleteOperationOperationEnum[keyof typeof LocalInventoryDeleteOperationOperationEnum];
 

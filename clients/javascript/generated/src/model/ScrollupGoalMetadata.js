@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ScrollupGoalMetadata model module.
  * @module model/ScrollupGoalMetadata
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScrollupGoalMetadata {
     /**

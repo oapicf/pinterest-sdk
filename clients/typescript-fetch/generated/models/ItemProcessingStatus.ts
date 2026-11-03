@@ -20,7 +20,7 @@
 export const ItemProcessingStatus = {
     Success: 'SUCCESS',
     Failure: 'FAILURE',
-    Processing: 'PROCESSING'
+    Processing: 'PROCESSING',
 } as const;
 export type ItemProcessingStatus = typeof ItemProcessingStatus[keyof typeof ItemProcessingStatus];
 

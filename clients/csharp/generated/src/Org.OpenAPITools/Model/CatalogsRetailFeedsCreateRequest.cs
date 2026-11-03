@@ -353,7 +353,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailFeedsCreateRequest.CatalogTypeEnum?>(CatalogsRetailFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailFeedsCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsRetailFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailFeedsCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "default_country":
                             defaultCountry = new Option<Country?>(JsonSerializer.Deserialize<Country?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -395,46 +400,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: catalog_type.");
 
             if (!defaultCountry.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(defaultCountry));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: default_country.");
 
             if (!defaultLocale.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(defaultLocale));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: default_locale.");
 
             if (!format.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(format));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: format.");
 
             if (!location.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(location));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: location.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeedsCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsRetailFeedsCreateRequest: name.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: catalog_type.");
 
             if (defaultCountry.IsSet && defaultCountry.Value == null)
-                throw new ArgumentNullException(nameof(defaultCountry), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: default_country.");
 
             if (defaultLocale.IsSet && defaultLocale.Value == null)
-                throw new ArgumentNullException(nameof(defaultLocale), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: default_locale.");
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: format.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: location.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: catalog_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeedsCreateRequest: status.");
 
             return new CatalogsRetailFeedsCreateRequest(catalogType.Value!.Value!, defaultCountry.Value!.Value!, defaultLocale.Value!, format.Value!.Value!, location.Value!, name.Value!, catalogId, credentials, defaultAvailability, defaultCurrency, preferredProcessingSchedule, status);
         }
@@ -445,7 +450,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailFeedsCreateRequest catalogsRetailFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -460,20 +464,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailFeedsCreateRequest catalogsRetailFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailFeedsCreateRequest.DefaultLocale == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeedsCreateRequest.DefaultLocale), "Property is required for class CatalogsRetailFeedsCreateRequest.");
-
-            if (catalogsRetailFeedsCreateRequest.Location == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeedsCreateRequest.Location), "Property is required for class CatalogsRetailFeedsCreateRequest.");
-
-            if (catalogsRetailFeedsCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeedsCreateRequest.Name), "Property is required for class CatalogsRetailFeedsCreateRequest.");
-
             if (catalogsRetailFeedsCreateRequest.CatalogIdOption.IsSet && catalogsRetailFeedsCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeedsCreateRequest.CatalogId), "Property is required for class CatalogsRetailFeedsCreateRequest.");
+                throw new JsonException("Cannot write null property CatalogsRetailFeedsCreateRequest.CatalogId to non-nullable JSON property 'catalog_id'.");
+
+            if (catalogsRetailFeedsCreateRequest.StatusOption.IsSet && catalogsRetailFeedsCreateRequest.Status == null)
+                throw new JsonException("Cannot write null property CatalogsRetailFeedsCreateRequest.Status to non-nullable JSON property 'status'.");
 
             var catalogTypeRawValue = CatalogsRetailFeedsCreateRequest.CatalogTypeEnumToJsonValue(catalogsRetailFeedsCreateRequest.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

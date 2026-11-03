@@ -162,22 +162,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!female.IsSet)
-                throw new ArgumentException("Property is required for class GenderDemographics.", nameof(female));
+                throw new JsonException("Property is required for class GenderDemographics: female.");
 
             if (!male.IsSet)
-                throw new ArgumentException("Property is required for class GenderDemographics.", nameof(male));
+                throw new JsonException("Property is required for class GenderDemographics: male.");
 
             if (!unspecified.IsSet)
-                throw new ArgumentException("Property is required for class GenderDemographics.", nameof(unspecified));
+                throw new JsonException("Property is required for class GenderDemographics: unspecified.");
 
             if (female.IsSet && female.Value == null)
-                throw new ArgumentNullException(nameof(female), "Property is not nullable for class GenderDemographics.");
+                throw new JsonException("Property is not nullable for class GenderDemographics: female.");
 
             if (male.IsSet && male.Value == null)
-                throw new ArgumentNullException(nameof(male), "Property is not nullable for class GenderDemographics.");
+                throw new JsonException("Property is not nullable for class GenderDemographics: male.");
 
             if (unspecified.IsSet && unspecified.Value == null)
-                throw new ArgumentNullException(nameof(unspecified), "Property is not nullable for class GenderDemographics.");
+                throw new JsonException("Property is not nullable for class GenderDemographics: unspecified.");
 
             return new GenderDemographics(female.Value!.Value!, male.Value!.Value!, unspecified.Value!.Value!);
         }
@@ -188,7 +188,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="genderDemographics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, GenderDemographics genderDemographics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -203,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="genderDemographics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, GenderDemographics genderDemographics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("female", genderDemographics.Female);

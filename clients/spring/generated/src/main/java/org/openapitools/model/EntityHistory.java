@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,28 +25,21 @@ import jakarta.annotation.Generated;
  * EntityHistory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class EntityHistory {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer changeTimestamp;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid EntityDataChangeHistory> dataChanges = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String entityId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String entityName;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String ldap;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ChangeHistoryOperationType operation;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String userId;
 
   public EntityHistory changeTimestamp(@Nullable Integer changeTimestamp) {
@@ -88,7 +80,7 @@ public class EntityHistory {
    * Properties associated with a particular change to an entity's data
    * @return dataChanges
    */
-  @Valid 
+  
   @Schema(name = "data_changes", description = "Properties associated with a particular change to an entity's data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data_changes")
   public List<@Valid EntityDataChangeHistory> getDataChanges() {

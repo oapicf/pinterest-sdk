@@ -29,20 +29,14 @@ import {
 export interface AdsAnalyticsCreateAsyncResponse {
     /**
      * 
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncResponse
      */
     message?: string | null;
     /**
      * 
-     * @type {BulkReportingJobStatus}
-     * @memberof AdsAnalyticsCreateAsyncResponse
      */
     reportStatus?: BulkReportingJobStatus;
     /**
      * 
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncResponse
      */
     token?: string;
 }

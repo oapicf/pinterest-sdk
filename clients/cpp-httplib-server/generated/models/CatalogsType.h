@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class CatalogsType
-{
-public:
-
-    CatalogsType();
-    virtual ~CatalogsType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsType,
-        )
-
-private:
+enum class CatalogsType {
+    
+    RETAIL,
+    
+    HOTEL,
+    
+    CREATIVE_ASSETS
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsType& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsType::RETAIL: j = "RETAIL"; break;
+        
+        case CatalogsType::HOTEL: j = "HOTEL"; break;
+        
+        case CatalogsType::CREATIVE_ASSETS: j = "CREATIVE_ASSETS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsType& value)
+{
+    
+    if (j == "RETAIL")
+    {
+        value = CatalogsType::RETAIL;
+        return;
+    }
+    
+    if (j == "HOTEL")
+    {
+        value = CatalogsType::HOTEL;
+        return;
+    }
+    
+    if (j == "CREATIVE_ASSETS")
+    {
+        value = CatalogsType::CREATIVE_ASSETS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsType", &j);
+}
 
 } // namespace models
 

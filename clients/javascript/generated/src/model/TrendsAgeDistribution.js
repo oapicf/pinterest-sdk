@@ -17,7 +17,7 @@ import TrendsAgeBucket from './TrendsAgeBucket';
 /**
  * The TrendsAgeDistribution model module.
  * @module model/TrendsAgeDistribution
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TrendsAgeDistribution {
     /**

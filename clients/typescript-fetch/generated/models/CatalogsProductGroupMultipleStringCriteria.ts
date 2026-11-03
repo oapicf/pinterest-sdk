@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsProductGroupMultipleStringCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupMultipleStringCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsProductGroupMultipleStringCriteria
      */
     values: Array<string>;
 }

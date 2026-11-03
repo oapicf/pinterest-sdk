@@ -1,10 +1,11 @@
 # CatalogsHotelProductGroupFilters
 
-## Properties
+This model is an `anyOf` wrapper: a value is at least one of the member types listed below.
+It is never instantiated directly — use one of the concrete types.
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**any_of** | [**\OpenAPI\Client\Model\CatalogsHotelProductGroupFilterKeys[]**](CatalogsHotelProductGroupFilterKeys.md) |  |
-**all_of** | [**\OpenAPI\Client\Model\CatalogsHotelProductGroupFilterKeys[]**](CatalogsHotelProductGroupFilterKeys.md) |  |
+## anyOf
+
+- [**\OpenAPI\Client\Model\CatalogsHotelProductGroupFiltersAnyOf**](CatalogsHotelProductGroupFiltersAnyOf.md)
+- [**\OpenAPI\Client\Model\CatalogsHotelProductGroupFiltersAllOf**](CatalogsHotelProductGroupFiltersAllOf.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

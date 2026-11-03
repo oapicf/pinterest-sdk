@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aCTIVE.IsSet && aCTIVE.Value == null)
-                throw new ArgumentNullException(nameof(aCTIVE), "Property is not nullable for class TotalCountByEntityStatus.");
+                throw new JsonException("Property is not nullable for class TotalCountByEntityStatus: ACTIVE.");
 
             if (aRCHIVED.IsSet && aRCHIVED.Value == null)
-                throw new ArgumentNullException(nameof(aRCHIVED), "Property is not nullable for class TotalCountByEntityStatus.");
+                throw new JsonException("Property is not nullable for class TotalCountByEntityStatus: ARCHIVED.");
 
             if (pAUSED.IsSet && pAUSED.Value == null)
-                throw new ArgumentNullException(nameof(pAUSED), "Property is not nullable for class TotalCountByEntityStatus.");
+                throw new JsonException("Property is not nullable for class TotalCountByEntityStatus: PAUSED.");
 
             return new TotalCountByEntityStatus(aCTIVE, aRCHIVED, pAUSED);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="totalCountByEntityStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TotalCountByEntityStatus totalCountByEntityStatus, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,9 +214,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="totalCountByEntityStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TotalCountByEntityStatus totalCountByEntityStatus, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (totalCountByEntityStatus.ACTIVEOption.IsSet && totalCountByEntityStatus.ACTIVE == null)
+                throw new JsonException("Cannot write null property TotalCountByEntityStatus.ACTIVE to non-nullable JSON property 'ACTIVE'.");
+
+            if (totalCountByEntityStatus.ARCHIVEDOption.IsSet && totalCountByEntityStatus.ARCHIVED == null)
+                throw new JsonException("Cannot write null property TotalCountByEntityStatus.ARCHIVED to non-nullable JSON property 'ARCHIVED'.");
+
+            if (totalCountByEntityStatus.PAUSEDOption.IsSet && totalCountByEntityStatus.PAUSED == null)
+                throw new JsonException("Cannot write null property TotalCountByEntityStatus.PAUSED to non-nullable JSON property 'PAUSED'.");
+
             if (totalCountByEntityStatus.ACTIVEOption.IsSet)
                 writer.WriteNumber("ACTIVE", totalCountByEntityStatus.ACTIVEOption.Value!.Value);
 

@@ -29,14 +29,10 @@ import {
 export interface FeedsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof FeedsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<CatalogsFeed>}
-     * @memberof FeedsList200Response
      */
     items: Array<CatalogsFeed>;
 }

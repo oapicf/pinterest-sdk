@@ -66,7 +66,7 @@ function Invoke-AudiencesCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audiences_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdAccountsAudienceCreate) {
             throw "Error! The required parameter `AdAccountsAudienceCreate` missing when calling audiences_create."
@@ -152,11 +152,11 @@ function Invoke-AudiencesGet {
         if (!$AudienceId) {
             throw "Error! The required parameter `AudienceId` missing when calling audiences_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{audience_id}', [System.Web.HTTPUtility]::UrlEncode($AudienceId))
+        $LocalVarUri = $LocalVarUri.replace('{audience_id}', [System.Uri]::EscapeDataString([string]$AudienceId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audiences_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -261,7 +261,7 @@ function Invoke-AudiencesList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audiences_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -371,11 +371,11 @@ function Invoke-AudiencesUpdate {
         if (!$AudienceId) {
             throw "Error! The required parameter `AudienceId` missing when calling audiences_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{audience_id}', [System.Web.HTTPUtility]::UrlEncode($AudienceId))
+        $LocalVarUri = $LocalVarUri.replace('{audience_id}', [System.Uri]::EscapeDataString([string]$AudienceId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling audiences_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdAccountsAudienceUpdate) {
             throw "Error! The required parameter `AdAccountsAudienceUpdate` missing when calling audiences_update."

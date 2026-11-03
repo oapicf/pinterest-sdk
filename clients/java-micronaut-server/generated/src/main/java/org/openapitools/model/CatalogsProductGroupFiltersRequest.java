@@ -37,21 +37,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsProductGroupFiltersRequest.JSON_PROPERTY_ALL_OF
 })
 @JsonTypeName("CatalogsProductGroupFiltersRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsProductGroupFiltersRequest {
     public static final String JSON_PROPERTY_ANY_OF = "any_of";
-    private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ALL_OF = "all_of";
-    private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-    public CatalogsProductGroupFiltersRequest(List<CatalogsProductGroupFilterKeys> anyOf, List<CatalogsProductGroupFilterKeys> allOf) {
+    public CatalogsProductGroupFiltersRequest(List<@Valid CatalogsProductGroupFilterKeys> anyOf, List<@Valid CatalogsProductGroupFilterKeys> allOf) {
         this.anyOf = anyOf;
         this.allOf = allOf;
     }
 
-    public CatalogsProductGroupFiltersRequest anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public CatalogsProductGroupFiltersRequest anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
         return this;
     }
@@ -70,17 +70,17 @@ public class CatalogsProductGroupFiltersRequest {
     @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
-    public CatalogsProductGroupFiltersRequest allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+    public CatalogsProductGroupFiltersRequest allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
         return this;
     }
@@ -99,13 +99,13 @@ public class CatalogsProductGroupFiltersRequest {
     @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

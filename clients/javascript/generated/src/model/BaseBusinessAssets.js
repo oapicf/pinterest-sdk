@@ -18,7 +18,7 @@ import AssetTypeResponse from './AssetTypeResponse';
 /**
  * The BaseBusinessAssets model module.
  * @module model/BaseBusinessAssets
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BaseBusinessAssets {
     /**

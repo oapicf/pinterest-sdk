@@ -24,8 +24,6 @@ public class LocalInventoryItemsGetCreate  {
   */
   @ApiModelProperty(required = true, value = "Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.")
 
-  @Valid
-
   private List<@Valid ItemIdStoreCodePair> itemFilters = new ArrayList<>();
  /**
    * Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.

@@ -52,8 +52,6 @@ public class TrendsEditorial  {
   */
   @ApiModelProperty(required = true, value = "List of keywords related to the editorial article")
 
-  @Valid
-
   private List<@Valid KeywordInfo> relatedKeywords = new ArrayList<>();
 
  /**

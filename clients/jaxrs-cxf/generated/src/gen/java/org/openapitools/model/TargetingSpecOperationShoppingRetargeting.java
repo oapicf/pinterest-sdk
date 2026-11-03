@@ -90,8 +90,6 @@ SET(String.valueOf("SET"));
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid TargetingSpecShoppingRetargeting> values = new ArrayList<>();
  /**
    * Get field

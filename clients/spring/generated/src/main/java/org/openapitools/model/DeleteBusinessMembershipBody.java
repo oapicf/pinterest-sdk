@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "DeleteBusinessMembershipBody", description = "List of members with role to delete.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembershipBody {
 
   private List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();
@@ -57,7 +57,7 @@ public class DeleteBusinessMembershipBody {
    * Get members
    * @return members
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "members", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("members")
   public List<@Valid DeleteBusinessMembershipMember> getMembers() {

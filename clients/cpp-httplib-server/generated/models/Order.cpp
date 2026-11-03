@@ -6,20 +6,3 @@
 */
 #include "Order.h"
 
-namespace models {
-
-Order::Order()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

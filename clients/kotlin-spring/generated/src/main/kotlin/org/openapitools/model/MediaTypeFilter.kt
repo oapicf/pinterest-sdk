@@ -22,7 +22,7 @@ data class MediaTypeFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MEDIA_TYPE")
+    @param:JsonProperty("MEDIA_TYPE", required = true)
     @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
 ) {
 

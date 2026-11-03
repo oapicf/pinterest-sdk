@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PinsSaveRequestCreate {
     /**
      * Unique identifier of the board to which the pin will be saved.
-     * @type {string}
-     * @memberof PinsSaveRequestCreate
      */
     boardId?: string | null;
     /**
      * Unique identifier of the board section to which the pin will be saved.
-     * @type {string}
-     * @memberof PinsSaveRequestCreate
      */
     boardSectionId?: string | null;
 }

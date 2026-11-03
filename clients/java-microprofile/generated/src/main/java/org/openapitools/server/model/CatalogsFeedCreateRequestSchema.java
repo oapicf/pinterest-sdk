@@ -75,7 +75,7 @@ public class CatalogsFeedCreateRequestSchema  {
   protected CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @JsonbProperty("status")
-  protected CatalogsStatus status;
+  protected CatalogsStatus status = CatalogsStatus.ACTIVE;
 
 
   /**

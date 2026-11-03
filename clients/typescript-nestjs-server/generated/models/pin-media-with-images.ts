@@ -10,7 +10,7 @@ export interface PinMediaWithImages {
 }
 export namespace PinMediaWithImages {
   export const MediaTypeEnum = {
-    MultipleImages: 'multiple_images'
+    MultipleImages: 'multiple_images',
   } as const;
   export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
 }

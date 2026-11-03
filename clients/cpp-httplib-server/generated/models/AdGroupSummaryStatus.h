@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class AdGroupSummaryStatus
-{
-public:
-
-    AdGroupSummaryStatus();
-    virtual ~AdGroupSummaryStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdGroupSummaryStatus,
-        )
-
-private:
+enum class AdGroupSummaryStatus {
+    
+    RUNNING,
+    
+    PAUSED,
+    
+    NOT_STARTED,
+    
+    COMPLETED,
+    
+    ADVERTISER_DISABLED,
+    
+    ARCHIVED,
+    
+    DRAFT,
+    
+    DELETED_DRAFT
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdGroupSummaryStatus& value)
+{
+    switch (value)
+    {
+        
+        case AdGroupSummaryStatus::RUNNING: j = "RUNNING"; break;
+        
+        case AdGroupSummaryStatus::PAUSED: j = "PAUSED"; break;
+        
+        case AdGroupSummaryStatus::NOT_STARTED: j = "NOT_STARTED"; break;
+        
+        case AdGroupSummaryStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case AdGroupSummaryStatus::ADVERTISER_DISABLED: j = "ADVERTISER_DISABLED"; break;
+        
+        case AdGroupSummaryStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case AdGroupSummaryStatus::DRAFT: j = "DRAFT"; break;
+        
+        case AdGroupSummaryStatus::DELETED_DRAFT: j = "DELETED_DRAFT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdGroupSummaryStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdGroupSummaryStatus& value)
+{
+    
+    if (j == "RUNNING")
+    {
+        value = AdGroupSummaryStatus::RUNNING;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = AdGroupSummaryStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "NOT_STARTED")
+    {
+        value = AdGroupSummaryStatus::NOT_STARTED;
+        return;
+    }
+    
+    if (j == "COMPLETED")
+    {
+        value = AdGroupSummaryStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "ADVERTISER_DISABLED")
+    {
+        value = AdGroupSummaryStatus::ADVERTISER_DISABLED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = AdGroupSummaryStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "DRAFT")
+    {
+        value = AdGroupSummaryStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "DELETED_DRAFT")
+    {
+        value = AdGroupSummaryStatus::DELETED_DRAFT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdGroupSummaryStatus", &j);
+}
 
 } // namespace models
 

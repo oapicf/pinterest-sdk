@@ -6,20 +6,3 @@
 */
 #include "PromotionApplicationLevel.h"
 
-namespace models {
-
-PromotionApplicationLevel::PromotionApplicationLevel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

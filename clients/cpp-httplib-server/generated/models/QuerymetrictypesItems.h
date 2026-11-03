@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class QuerymetrictypesItems
-{
-public:
-
-    QuerymetrictypesItems();
-    virtual ~QuerymetrictypesItems() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(QuerymetrictypesItems,
-        )
-
-private:
+enum class QuerymetrictypesItems {
+    
+    ENGAGEMENT,
+    
+    ENGAGEMENT_RATE,
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    OUTBOUND_CLICK_RATE,
+    
+    PIN_CLICK,
+    
+    PIN_CLICK_RATE,
+    
+    SAVE,
+    
+    SAVE_RATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const QuerymetrictypesItems& value)
+{
+    switch (value)
+    {
+        
+        case QuerymetrictypesItems::ENGAGEMENT: j = "ENGAGEMENT"; break;
+        
+        case QuerymetrictypesItems::ENGAGEMENT_RATE: j = "ENGAGEMENT_RATE"; break;
+        
+        case QuerymetrictypesItems::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case QuerymetrictypesItems::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case QuerymetrictypesItems::OUTBOUND_CLICK_RATE: j = "OUTBOUND_CLICK_RATE"; break;
+        
+        case QuerymetrictypesItems::PIN_CLICK: j = "PIN_CLICK"; break;
+        
+        case QuerymetrictypesItems::PIN_CLICK_RATE: j = "PIN_CLICK_RATE"; break;
+        
+        case QuerymetrictypesItems::SAVE: j = "SAVE"; break;
+        
+        case QuerymetrictypesItems::SAVE_RATE: j = "SAVE_RATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for QuerymetrictypesItems", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, QuerymetrictypesItems& value)
+{
+    
+    if (j == "ENGAGEMENT")
+    {
+        value = QuerymetrictypesItems::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT_RATE")
+    {
+        value = QuerymetrictypesItems::ENGAGEMENT_RATE;
+        return;
+    }
+    
+    if (j == "IMPRESSION")
+    {
+        value = QuerymetrictypesItems::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = QuerymetrictypesItems::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK_RATE")
+    {
+        value = QuerymetrictypesItems::OUTBOUND_CLICK_RATE;
+        return;
+    }
+    
+    if (j == "PIN_CLICK")
+    {
+        value = QuerymetrictypesItems::PIN_CLICK;
+        return;
+    }
+    
+    if (j == "PIN_CLICK_RATE")
+    {
+        value = QuerymetrictypesItems::PIN_CLICK_RATE;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = QuerymetrictypesItems::SAVE;
+        return;
+    }
+    
+    if (j == "SAVE_RATE")
+    {
+        value = QuerymetrictypesItems::SAVE_RATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for QuerymetrictypesItems", &j);
+}
 
 } // namespace models
 

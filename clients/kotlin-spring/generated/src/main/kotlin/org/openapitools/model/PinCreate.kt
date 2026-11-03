@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AiDisclosures
 import org.openapitools.model.PinMediaSource
 import javax.validation.constraints.DecimalMax
@@ -36,8 +33,6 @@ data class PinCreate(
 
     @field:Valid
     @Schema(description = "AI disclosure declarations the creator has made about this Pin.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: AiDisclosures? = null,
 
@@ -48,8 +43,6 @@ data class PinCreate(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "The board to which this Pin belongs.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("board_id")
     @get:JsonProperty("board_id") val boardId: kotlin.String? = null,
 
@@ -74,8 +67,6 @@ data class PinCreate(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("media_source")
     @get:JsonProperty("media_source") val mediaSource: PinMediaSource? = null,
 

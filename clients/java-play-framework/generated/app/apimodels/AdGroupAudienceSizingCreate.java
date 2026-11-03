@@ -17,7 +17,7 @@ import javax.validation.Valid;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdGroupAudienceSizingCreate   {
   @JsonProperty("auto_targeting_enabled")
@@ -37,7 +37,7 @@ public class AdGroupAudienceSizingCreate   {
   @JsonProperty("placement_group")
   @Valid
 
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   @JsonProperty("product_group_ids")
   

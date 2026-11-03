@@ -154,10 +154,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!partnerIds.IsSet)
-                throw new ArgumentException("Property is required for class DeleteBusinessPartnersDelete.", nameof(partnerIds));
+                throw new JsonException("Property is required for class DeleteBusinessPartnersDelete: partner_ids.");
 
             if (partnerIds.IsSet && partnerIds.Value == null)
-                throw new ArgumentNullException(nameof(partnerIds), "Property is not nullable for class DeleteBusinessPartnersDelete.");
+                throw new JsonException("Property is not nullable for class DeleteBusinessPartnersDelete: partner_ids.");
 
             return new DeleteBusinessPartnersDelete(partnerIds.Value!, partnerType);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessPartnersDelete"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,12 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessPartnersDelete"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (deleteBusinessPartnersDelete.PartnerIds == null)
-                throw new ArgumentNullException(nameof(deleteBusinessPartnersDelete.PartnerIds), "Property is required for class DeleteBusinessPartnersDelete.");
-
             writer.WritePropertyName("partner_ids");
             JsonSerializer.Serialize(writer, deleteBusinessPartnersDelete.PartnerIds, jsonSerializerOptions);
             if (deleteBusinessPartnersDelete.PartnerTypeOption.IsSet)

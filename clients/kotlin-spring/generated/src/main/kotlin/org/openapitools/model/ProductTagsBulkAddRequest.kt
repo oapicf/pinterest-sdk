@@ -23,7 +23,7 @@ data class ProductTagsBulkAddRequest(
     @field:Valid
     @get:Size(min=1,max=24) 
     @Schema(required = true, description = "List of product tags to add. Maximum 24 items allowed.")
-    @param:JsonProperty("product_tags")
+    @param:JsonProperty("product_tags", required = true)
     @get:JsonProperty("product_tags", required = true) val productTags: kotlin.collections.List<ProductTagItem>
 ) {
 

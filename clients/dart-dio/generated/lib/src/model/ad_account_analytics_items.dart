@@ -124,3 +124,4 @@ class _$AdAccountAnalyticsItemsSerializer implements PrimitiveSerializer<AdAccou
   }
 }
 
+

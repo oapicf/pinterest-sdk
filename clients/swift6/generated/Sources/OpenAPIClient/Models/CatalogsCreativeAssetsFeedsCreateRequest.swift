@@ -13,8 +13,8 @@ public struct CatalogsCreativeAssetsFeedsCreateRequest: Sendable, Codable, Hasha
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case creativeAssets = "CREATIVE_ASSETS"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     public var catalogId: String?
     public var catalogType: CatalogType

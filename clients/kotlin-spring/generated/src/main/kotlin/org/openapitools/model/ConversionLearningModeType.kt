@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* oCPM learn mode.
-* Values: NOT_ACTIVE,ACTIVE
-*/
+ * oCPM learn mode.
+ * Values: NOT_ACTIVE,ACTIVE
+ */
 enum class ConversionLearningModeType(@get:JsonValue val value: kotlin.String) {
 
     NOT_ACTIVE("NOT_ACTIVE"),
@@ -28,9 +28,8 @@ enum class ConversionLearningModeType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionLearningModeType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionLearningModeType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionLearningModeType'")
         }
     }
 }
-

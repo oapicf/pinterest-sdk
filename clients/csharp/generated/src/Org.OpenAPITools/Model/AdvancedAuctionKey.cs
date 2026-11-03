@@ -161,22 +161,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionKey.", nameof(country));
+                throw new JsonException("Property is required for class AdvancedAuctionKey: country.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionKey.", nameof(itemId));
+                throw new JsonException("Property is required for class AdvancedAuctionKey: item_id.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionKey.", nameof(language));
+                throw new JsonException("Property is required for class AdvancedAuctionKey: language.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdvancedAuctionKey.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionKey: country.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class AdvancedAuctionKey.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionKey: item_id.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class AdvancedAuctionKey.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionKey: language.");
 
             return new AdvancedAuctionKey(country.Value!.Value!, itemId.Value!, language.Value!.Value!);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionKey"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionKey advancedAuctionKey, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,12 +201,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionKey"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionKey advancedAuctionKey, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advancedAuctionKey.ItemId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionKey.ItemId), "Property is required for class AdvancedAuctionKey.");
-
             var countryRawValue = CountryValueConverter.ToJsonValue(advancedAuctionKey.Country);
             writer.WriteString("country", countryRawValue);
 

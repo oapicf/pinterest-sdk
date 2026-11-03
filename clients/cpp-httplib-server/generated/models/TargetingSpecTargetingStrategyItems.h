@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class TargetingSpecTargetingStrategyItems
-{
-public:
-
-    TargetingSpecTargetingStrategyItems();
-    virtual ~TargetingSpecTargetingStrategyItems() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingSpecTargetingStrategyItems,
-        )
-
-private:
+enum class TargetingSpecTargetingStrategyItems {
+    
+    CHOOSE_YOUR_OWN,
+    
+    FIND_NEW_CUSTOMERS,
+    
+    RECONNECT_WITH_USERS
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingSpecTargetingStrategyItems& value)
+{
+    switch (value)
+    {
+        
+        case TargetingSpecTargetingStrategyItems::CHOOSE_YOUR_OWN: j = "CHOOSE_YOUR_OWN"; break;
+        
+        case TargetingSpecTargetingStrategyItems::FIND_NEW_CUSTOMERS: j = "FIND_NEW_CUSTOMERS"; break;
+        
+        case TargetingSpecTargetingStrategyItems::RECONNECT_WITH_USERS: j = "RECONNECT_WITH_USERS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecTargetingStrategyItems", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingSpecTargetingStrategyItems& value)
+{
+    
+    if (j == "CHOOSE_YOUR_OWN")
+    {
+        value = TargetingSpecTargetingStrategyItems::CHOOSE_YOUR_OWN;
+        return;
+    }
+    
+    if (j == "FIND_NEW_CUSTOMERS")
+    {
+        value = TargetingSpecTargetingStrategyItems::FIND_NEW_CUSTOMERS;
+        return;
+    }
+    
+    if (j == "RECONNECT_WITH_USERS")
+    {
+        value = TargetingSpecTargetingStrategyItems::RECONNECT_WITH_USERS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecTargetingStrategyItems", &j);
+}
 
 } // namespace models
 

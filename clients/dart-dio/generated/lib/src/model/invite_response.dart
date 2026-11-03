@@ -270,3 +270,4 @@ class _$InviteResponseSerializer implements PrimitiveSerializer<InviteResponse> 
   }
 }
 
+

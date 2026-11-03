@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AudienceInsightsScopeAndTypeGet200Response.", nameof(items));
+                throw new JsonException("Property is required for class AudienceInsightsScopeAndTypeGet200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AudienceInsightsScopeAndTypeGet200Response.");
+                throw new JsonException("Property is not nullable for class AudienceInsightsScopeAndTypeGet200Response: items.");
 
             return new AudienceInsightsScopeAndTypeGet200Response(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceInsightsScopeAndTypeGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceInsightsScopeAndTypeGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (audienceInsightsScopeAndTypeGet200Response.Items == null)
-                throw new ArgumentNullException(nameof(audienceInsightsScopeAndTypeGet200Response.Items), "Property is required for class AudienceInsightsScopeAndTypeGet200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, audienceInsightsScopeAndTypeGet200Response.Items, jsonSerializerOptions);
         }

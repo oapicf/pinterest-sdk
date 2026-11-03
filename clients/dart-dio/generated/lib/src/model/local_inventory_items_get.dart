@@ -107,3 +107,4 @@ class _$LocalInventoryItemsGetSerializer implements PrimitiveSerializer<LocalInv
   }
 }
 
+

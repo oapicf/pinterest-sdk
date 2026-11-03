@@ -128,3 +128,4 @@ class _$AdvancedAuctionOperationErrorSerializer implements PrimitiveSerializer<A
   }
 }
 
+

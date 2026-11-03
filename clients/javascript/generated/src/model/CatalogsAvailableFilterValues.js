@@ -20,7 +20,7 @@ import CatalogsRetailAvailableFilterValues from './CatalogsRetailAvailableFilter
 /**
  * The CatalogsAvailableFilterValues model module.
  * @module model/CatalogsAvailableFilterValues
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsAvailableFilterValues {
     /**

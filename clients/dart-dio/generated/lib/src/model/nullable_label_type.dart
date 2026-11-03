@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'nullable_label_type.g.dart';
 
+/// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
 class NullableLabelType extends EnumClass {
 
-  /// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
   @BuiltValueEnumConst(wireName: r'BRAND')
   static const NullableLabelType BRAND = _$BRAND;
-  /// Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
   @BuiltValueEnumConst(wireName: r'CUSTOM')
   static const NullableLabelType CUSTOM = _$CUSTOM;
 

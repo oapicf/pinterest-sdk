@@ -17,7 +17,7 @@ import LabelStatusBulkUpdate from './LabelStatusBulkUpdate';
 /**
  * The LabelBulkUpdateRequest model module.
  * @module model/LabelBulkUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelBulkUpdateRequest {
     /**

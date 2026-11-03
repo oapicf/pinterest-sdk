@@ -25,8 +25,6 @@ public class SSIOAccount  {
   */
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
 
-  @Valid
-
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
  /**
@@ -55,8 +53,6 @@ public class SSIOAccount  {
   private String error;
 
   @ApiModelProperty(value = "")
-
-  @Valid
 
   private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
  /**

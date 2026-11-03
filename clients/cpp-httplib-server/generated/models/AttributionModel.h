@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AttributionModel
-{
-public:
-
-    AttributionModel();
-    virtual ~AttributionModel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AttributionModel,
-        )
-
-private:
+enum class AttributionModel {
+    
+    FIRST_TOUCH,
+    
+    LAST_TOUCH,
+    
+    MULTI_TOUCH,
+    
+    MMM
+    
 };
 
+inline void to_json(nlohmann::json& j, const AttributionModel& value)
+{
+    switch (value)
+    {
+        
+        case AttributionModel::FIRST_TOUCH: j = "first_touch"; break;
+        
+        case AttributionModel::LAST_TOUCH: j = "last_touch"; break;
+        
+        case AttributionModel::MULTI_TOUCH: j = "multi_touch"; break;
+        
+        case AttributionModel::MMM: j = "mmm"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AttributionModel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AttributionModel& value)
+{
+    
+    if (j == "first_touch")
+    {
+        value = AttributionModel::FIRST_TOUCH;
+        return;
+    }
+    
+    if (j == "last_touch")
+    {
+        value = AttributionModel::LAST_TOUCH;
+        return;
+    }
+    
+    if (j == "multi_touch")
+    {
+        value = AttributionModel::MULTI_TOUCH;
+        return;
+    }
+    
+    if (j == "mmm")
+    {
+        value = AttributionModel::MMM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AttributionModel", &j);
+}
 
 } // namespace models
 

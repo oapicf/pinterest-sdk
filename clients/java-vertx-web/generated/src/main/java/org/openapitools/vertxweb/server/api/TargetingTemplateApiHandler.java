@@ -53,7 +53,7 @@ public class TargetingTemplateApiHandler {
         TargetingTemplateCreate targetingTemplateCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<TargetingTemplateCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter targetingTemplateCreate is {}", targetingTemplateCreate);
+        logger.debug("Parameter targetingTemplateCreate is (body omitted)");
 
         api.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
             .onSuccess(apiResponse -> {
@@ -110,7 +110,7 @@ public class TargetingTemplateApiHandler {
         TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<TargetingTemplateUpdateRequestReadOrUpdate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter targetingTemplateUpdateRequestReadOrUpdate is {}", targetingTemplateUpdateRequestReadOrUpdate);
+        logger.debug("Parameter targetingTemplateUpdateRequestReadOrUpdate is (body omitted)");
 
         api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
             .onSuccess(apiResponse -> {

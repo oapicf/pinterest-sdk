@@ -293,25 +293,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (hasPrediction.IsSet && hasPrediction.Value == null)
-                throw new ArgumentNullException(nameof(hasPrediction), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: has_prediction.");
 
             if (keyword.IsSet && keyword.Value == null)
-                throw new ArgumentNullException(nameof(keyword), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: keyword.");
 
             if (pctGrowthMom.IsSet && pctGrowthMom.Value == null)
-                throw new ArgumentNullException(nameof(pctGrowthMom), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: pct_growth_mom.");
 
             if (pctGrowthWow.IsSet && pctGrowthWow.Value == null)
-                throw new ArgumentNullException(nameof(pctGrowthWow), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: pct_growth_wow.");
 
             if (pctGrowthYoy.IsSet && pctGrowthYoy.Value == null)
-                throw new ArgumentNullException(nameof(pctGrowthYoy), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: pct_growth_yoy.");
 
             if (predictedTimeSeries.IsSet && predictedTimeSeries.Value == null)
-                throw new ArgumentNullException(nameof(predictedTimeSeries), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: predicted_time_series.");
 
             if (timeSeries.IsSet && timeSeries.Value == null)
-                throw new ArgumentNullException(nameof(timeSeries), "Property is not nullable for class TrendingKeyword.");
+                throw new JsonException("Property is not nullable for class TrendingKeyword: time_series.");
 
             return new TrendingKeyword(demographics, hasPrediction, keyword, pctGrowthMom, pctGrowthWow, pctGrowthYoy, predictedTimeSeries, timeSeries);
         }
@@ -322,7 +322,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendingKeyword trendingKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -337,17 +336,28 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendingKeyword trendingKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (trendingKeyword.HasPredictionOption.IsSet && trendingKeyword.HasPrediction == null)
+                throw new JsonException("Cannot write null property TrendingKeyword.HasPrediction to non-nullable JSON property 'has_prediction'.");
+
             if (trendingKeyword.KeywordOption.IsSet && trendingKeyword.Keyword == null)
-                throw new ArgumentNullException(nameof(trendingKeyword.Keyword), "Property is required for class TrendingKeyword.");
+                throw new JsonException("Cannot write null property TrendingKeyword.Keyword to non-nullable JSON property 'keyword'.");
+
+            if (trendingKeyword.PctGrowthMomOption.IsSet && trendingKeyword.PctGrowthMom == null)
+                throw new JsonException("Cannot write null property TrendingKeyword.PctGrowthMom to non-nullable JSON property 'pct_growth_mom'.");
+
+            if (trendingKeyword.PctGrowthWowOption.IsSet && trendingKeyword.PctGrowthWow == null)
+                throw new JsonException("Cannot write null property TrendingKeyword.PctGrowthWow to non-nullable JSON property 'pct_growth_wow'.");
+
+            if (trendingKeyword.PctGrowthYoyOption.IsSet && trendingKeyword.PctGrowthYoy == null)
+                throw new JsonException("Cannot write null property TrendingKeyword.PctGrowthYoy to non-nullable JSON property 'pct_growth_yoy'.");
 
             if (trendingKeyword.PredictedTimeSeriesOption.IsSet && trendingKeyword.PredictedTimeSeries == null)
-                throw new ArgumentNullException(nameof(trendingKeyword.PredictedTimeSeries), "Property is required for class TrendingKeyword.");
+                throw new JsonException("Cannot write null property TrendingKeyword.PredictedTimeSeries to non-nullable JSON property 'predicted_time_series'.");
 
             if (trendingKeyword.TimeSeriesOption.IsSet && trendingKeyword.TimeSeries == null)
-                throw new ArgumentNullException(nameof(trendingKeyword.TimeSeries), "Property is required for class TrendingKeyword.");
+                throw new JsonException("Cannot write null property TrendingKeyword.TimeSeries to non-nullable JSON property 'time_series'.");
 
             if (trendingKeyword.DemographicsOption.IsSet)
                 if (trendingKeyword.DemographicsOption.Value != null)

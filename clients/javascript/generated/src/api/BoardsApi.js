@@ -30,7 +30,7 @@ import PinterestLibError from '../model/PinterestLibError';
 /**
 * Boards service.
 * @module api/BoardsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class BoardsApi {
 

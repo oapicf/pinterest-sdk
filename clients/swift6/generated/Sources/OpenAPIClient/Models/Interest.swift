@@ -9,7 +9,7 @@ import Foundation
 
 public struct Interest: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var canonicalUrl: String?
     public var id: String?
     public var key: String?

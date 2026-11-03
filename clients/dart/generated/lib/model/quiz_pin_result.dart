@@ -129,7 +129,9 @@ class QuizPinResult {
         destinationUrl: mapValueOfType<String>(json, r'destination_url'),
         iosDeepLink: mapValueOfType<String>(json, r'ios_deep_link'),
         organicPinId: mapValueOfType<String>(json, r'organic_pin_id'),
-        resultId: num.parse('${json[r'result_id']}'),
+        resultId: json[r'result_id'] == null
+            ? null
+            : num.parse('${json[r'result_id']}'),
       );
     }
     return null;

@@ -17,7 +17,7 @@ import UsersForIndividualAssetResponse from './UsersForIndividualAssetResponse';
 /**
  * The UpdateMemberAssetResultItem model module.
  * @module model/UpdateMemberAssetResultItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdateMemberAssetResultItem {
     /**

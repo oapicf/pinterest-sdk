@@ -611,208 +611,208 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mINPRICE.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(mINPRICE));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: MIN_PRICE.");
 
             if (!mAXPRICE.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(mAXPRICE));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: MAX_PRICE.");
 
             if (!cURRENCY.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cURRENCY));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CURRENCY.");
 
             if (!iTEMID.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(iTEMID));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: ITEM_ID.");
 
             if (!aVAILABILITY.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(aVAILABILITY));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: AVAILABILITY.");
 
             if (!bRAND.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(bRAND));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: BRAND.");
 
             if (!cONDITION.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cONDITION));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CONDITION.");
 
             if (!cUSTOMLABEL0.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMLABEL0));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_0.");
 
             if (!cUSTOMLABEL1.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMLABEL1));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_1.");
 
             if (!cUSTOMLABEL2.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMLABEL2));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_2.");
 
             if (!cUSTOMLABEL3.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMLABEL3));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_3.");
 
             if (!cUSTOMLABEL4.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMLABEL4));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_4.");
 
             if (!iTEMGROUPID.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(iTEMGROUPID));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: ITEM_GROUP_ID.");
 
             if (!gENDER.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gENDER));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GENDER.");
 
             if (!mEDIATYPE.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(mEDIATYPE));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: MEDIA_TYPE.");
 
             if (!pRODUCTTYPE4.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pRODUCTTYPE4));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_4.");
 
             if (!pRODUCTTYPE3.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pRODUCTTYPE3));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_3.");
 
             if (!pRODUCTTYPE2.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pRODUCTTYPE2));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_2.");
 
             if (!pRODUCTTYPE1.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pRODUCTTYPE1));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_1.");
 
             if (!pRODUCTTYPE0.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pRODUCTTYPE0));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_0.");
 
             if (!gOOGLEPRODUCTCATEGORY6.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY6));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_6.");
 
             if (!gOOGLEPRODUCTCATEGORY5.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY5));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_5.");
 
             if (!gOOGLEPRODUCTCATEGORY4.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY4));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_4.");
 
             if (!gOOGLEPRODUCTCATEGORY3.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY3));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_3.");
 
             if (!gOOGLEPRODUCTCATEGORY2.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY2));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_2.");
 
             if (!gOOGLEPRODUCTCATEGORY1.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY1));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_1.");
 
             if (!gOOGLEPRODUCTCATEGORY0.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(gOOGLEPRODUCTCATEGORY0));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_0.");
 
             if (!cUSTOMNUMBER0.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMNUMBER0));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_0.");
 
             if (!cUSTOMNUMBER1.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMNUMBER1));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_1.");
 
             if (!cUSTOMNUMBER2.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMNUMBER2));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_2.");
 
             if (!cUSTOMNUMBER3.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMNUMBER3));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_3.");
 
             if (!cUSTOMNUMBER4.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(cUSTOMNUMBER4));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_4.");
 
             if (!tITLEKEYWORDS.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(tITLEKEYWORDS));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: TITLE_KEYWORDS.");
 
             if (!pINTERESTPRODUCTCATEGORIES.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFilterKeys.", nameof(pINTERESTPRODUCTCATEGORIES));
+                throw new JsonException("Property is required for class CatalogsProductGroupFilterKeys: PINTEREST_PRODUCT_CATEGORIES.");
 
             if (mINPRICE.IsSet && mINPRICE.Value == null)
-                throw new ArgumentNullException(nameof(mINPRICE), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: MIN_PRICE.");
 
             if (mAXPRICE.IsSet && mAXPRICE.Value == null)
-                throw new ArgumentNullException(nameof(mAXPRICE), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: MAX_PRICE.");
 
             if (cURRENCY.IsSet && cURRENCY.Value == null)
-                throw new ArgumentNullException(nameof(cURRENCY), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CURRENCY.");
 
             if (iTEMID.IsSet && iTEMID.Value == null)
-                throw new ArgumentNullException(nameof(iTEMID), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: ITEM_ID.");
 
             if (aVAILABILITY.IsSet && aVAILABILITY.Value == null)
-                throw new ArgumentNullException(nameof(aVAILABILITY), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: AVAILABILITY.");
 
             if (bRAND.IsSet && bRAND.Value == null)
-                throw new ArgumentNullException(nameof(bRAND), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: BRAND.");
 
             if (cONDITION.IsSet && cONDITION.Value == null)
-                throw new ArgumentNullException(nameof(cONDITION), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CONDITION.");
 
             if (cUSTOMLABEL0.IsSet && cUSTOMLABEL0.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL0), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_0.");
 
             if (cUSTOMLABEL1.IsSet && cUSTOMLABEL1.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL1), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_1.");
 
             if (cUSTOMLABEL2.IsSet && cUSTOMLABEL2.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL2), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_2.");
 
             if (cUSTOMLABEL3.IsSet && cUSTOMLABEL3.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL3), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_3.");
 
             if (cUSTOMLABEL4.IsSet && cUSTOMLABEL4.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMLABEL4), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_LABEL_4.");
 
             if (iTEMGROUPID.IsSet && iTEMGROUPID.Value == null)
-                throw new ArgumentNullException(nameof(iTEMGROUPID), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: ITEM_GROUP_ID.");
 
             if (gENDER.IsSet && gENDER.Value == null)
-                throw new ArgumentNullException(nameof(gENDER), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GENDER.");
 
             if (mEDIATYPE.IsSet && mEDIATYPE.Value == null)
-                throw new ArgumentNullException(nameof(mEDIATYPE), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: MEDIA_TYPE.");
 
             if (pRODUCTTYPE4.IsSet && pRODUCTTYPE4.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE4), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_4.");
 
             if (pRODUCTTYPE3.IsSet && pRODUCTTYPE3.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE3), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_3.");
 
             if (pRODUCTTYPE2.IsSet && pRODUCTTYPE2.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE2), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_2.");
 
             if (pRODUCTTYPE1.IsSet && pRODUCTTYPE1.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE1), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_1.");
 
             if (pRODUCTTYPE0.IsSet && pRODUCTTYPE0.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTTYPE0), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PRODUCT_TYPE_0.");
 
             if (gOOGLEPRODUCTCATEGORY6.IsSet && gOOGLEPRODUCTCATEGORY6.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY6), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_6.");
 
             if (gOOGLEPRODUCTCATEGORY5.IsSet && gOOGLEPRODUCTCATEGORY5.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY5), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_5.");
 
             if (gOOGLEPRODUCTCATEGORY4.IsSet && gOOGLEPRODUCTCATEGORY4.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY4), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_4.");
 
             if (gOOGLEPRODUCTCATEGORY3.IsSet && gOOGLEPRODUCTCATEGORY3.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY3), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_3.");
 
             if (gOOGLEPRODUCTCATEGORY2.IsSet && gOOGLEPRODUCTCATEGORY2.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY2), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_2.");
 
             if (gOOGLEPRODUCTCATEGORY1.IsSet && gOOGLEPRODUCTCATEGORY1.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY1), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_1.");
 
             if (gOOGLEPRODUCTCATEGORY0.IsSet && gOOGLEPRODUCTCATEGORY0.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY0), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: GOOGLE_PRODUCT_CATEGORY_0.");
 
             if (cUSTOMNUMBER0.IsSet && cUSTOMNUMBER0.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER0), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_0.");
 
             if (cUSTOMNUMBER1.IsSet && cUSTOMNUMBER1.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER1), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_1.");
 
             if (cUSTOMNUMBER2.IsSet && cUSTOMNUMBER2.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER2), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_2.");
 
             if (cUSTOMNUMBER3.IsSet && cUSTOMNUMBER3.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER3), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_3.");
 
             if (cUSTOMNUMBER4.IsSet && cUSTOMNUMBER4.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER4), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: CUSTOM_NUMBER_4.");
 
             if (tITLEKEYWORDS.IsSet && tITLEKEYWORDS.Value == null)
-                throw new ArgumentNullException(nameof(tITLEKEYWORDS), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: TITLE_KEYWORDS.");
 
             if (pINTERESTPRODUCTCATEGORIES.IsSet && pINTERESTPRODUCTCATEGORIES.Value == null)
-                throw new ArgumentNullException(nameof(pINTERESTPRODUCTCATEGORIES), "Property is not nullable for class CatalogsProductGroupFilterKeys.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFilterKeys: PINTEREST_PRODUCT_CATEGORIES.");
 
             Option<CatalogsBaseFilterKeys?> catalogsBaseFilterKeysParsedValue = catalogsBaseFilterKeys == null
                 ? default
@@ -830,7 +830,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFilterKeys"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupFilterKeys catalogsProductGroupFilterKeys, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -857,111 +856,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFilterKeys"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupFilterKeys catalogsProductGroupFilterKeys, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupFilterKeys.MIN_PRICE == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.MIN_PRICE), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.MAX_PRICE == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.MAX_PRICE), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CURRENCY == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CURRENCY), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.ITEM_ID == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.ITEM_ID), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.AVAILABILITY == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.AVAILABILITY), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.BRAND == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.BRAND), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CONDITION == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CONDITION), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMLABEL0 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMLABEL0), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMLABEL1 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMLABEL1), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMLABEL2 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMLABEL2), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMLABEL3 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMLABEL3), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMLABEL4 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMLABEL4), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.ITEM_GROUP_ID == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.ITEM_GROUP_ID), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GENDER == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GENDER), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.MEDIA_TYPE == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.MEDIA_TYPE), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PRODUCTTYPE4 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PRODUCTTYPE4), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PRODUCTTYPE3 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PRODUCTTYPE3), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PRODUCTTYPE2 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PRODUCTTYPE2), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PRODUCTTYPE1 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PRODUCTTYPE1), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PRODUCTTYPE0 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PRODUCTTYPE0), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY6 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY6), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY5 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY5), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY4 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY4), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY3 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY3), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY2 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY2), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY1 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY1), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY0 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.GOOGLEPRODUCTCATEGORY0), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMNUMBER0 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMNUMBER0), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMNUMBER1 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMNUMBER1), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMNUMBER2 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMNUMBER2), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMNUMBER3 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMNUMBER3), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.CUSTOMNUMBER4 == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.CUSTOMNUMBER4), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.TITLE_KEYWORDS == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.TITLE_KEYWORDS), "Property is required for class CatalogsProductGroupFilterKeys.");
-
-            if (catalogsProductGroupFilterKeys.PINTEREST_PRODUCT_CATEGORIES == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFilterKeys.PINTEREST_PRODUCT_CATEGORIES), "Property is required for class CatalogsProductGroupFilterKeys.");
-
             writer.WritePropertyName("MIN_PRICE");
             JsonSerializer.Serialize(writer, catalogsProductGroupFilterKeys.MIN_PRICE, jsonSerializerOptions);
             writer.WritePropertyName("MAX_PRICE");

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 # **boardSectionsCreate**
 ```swift
-    open class func boardSectionsCreate(boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: String? = nil, completion: @escaping (_ data: BoardSection?, _ error: Error?) -> Void)
+    open class func boardSectionsCreate(boardId: String, boardSectionCreate: BoardSectionCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardSection
 ```
 
 Create board section
@@ -36,15 +36,11 @@ let boardSectionCreate = BoardSectionCreate(id: "id_example", name: "name_exampl
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create board section
-BoardsAPI.boardSectionsCreate(boardId: boardId, boardSectionCreate: boardSectionCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardSectionsCreate(boardId: boardId, boardSectionCreate: boardSectionCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -73,7 +69,7 @@ Name | Type | Description  | Notes
 
 # **boardSectionsDelete**
 ```swift
-    open class func boardSectionsDelete(boardId: String, sectionId: String, adAccountId: String? = nil, completion: @escaping (_ data: BoardSection?, _ error: Error?) -> Void)
+    open class func boardSectionsDelete(boardId: String, sectionId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardSection?
 ```
 
 Delete board section
@@ -90,15 +86,11 @@ let sectionId = "sectionId_example" // String | Unique identifier of a board sec
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete board section
-BoardsAPI.boardSectionsDelete(boardId: boardId, sectionId: sectionId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardSectionsDelete(boardId: boardId, sectionId: sectionId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -127,7 +119,7 @@ Name | Type | Description  | Notes
 
 # **boardSectionsList**
 ```swift
-    open class func boardSectionsList(boardId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardSectionsList200Response?, _ error: Error?) -> Void)
+    open class func boardSectionsList(boardId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardSectionsList200Response
 ```
 
 List board sections
@@ -145,15 +137,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List board sections
-BoardsAPI.boardSectionsList(boardId: boardId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardSectionsList(boardId: boardId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -183,7 +171,7 @@ Name | Type | Description  | Notes
 
 # **boardSectionsListPins**
 ```swift
-    open class func boardSectionsListPins(boardId: String, sectionId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsListPins200Response?, _ error: Error?) -> Void)
+    open class func boardSectionsListPins(boardId: String, sectionId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardsListPins200Response
 ```
 
 List Pins on board section
@@ -202,15 +190,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List Pins on board section
-BoardsAPI.boardSectionsListPins(boardId: boardId, sectionId: sectionId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardSectionsListPins(boardId: boardId, sectionId: sectionId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -241,7 +225,7 @@ Name | Type | Description  | Notes
 
 # **boardSectionsUpdate**
 ```swift
-    open class func boardSectionsUpdate(boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: String? = nil, completion: @escaping (_ data: BoardSection?, _ error: Error?) -> Void)
+    open class func boardSectionsUpdate(boardId: String, sectionId: String, boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardSection
 ```
 
 Update board section
@@ -259,15 +243,11 @@ let boardSectionUpdateWithRequiredBody = BoardSectionUpdateWithRequiredBody(id: 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update board section
-BoardsAPI.boardSectionsUpdate(boardId: boardId, sectionId: sectionId, boardSectionUpdateWithRequiredBody: boardSectionUpdateWithRequiredBody, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardSectionsUpdate(boardId: boardId, sectionId: sectionId, boardSectionUpdateWithRequiredBody: boardSectionUpdateWithRequiredBody, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -297,7 +277,7 @@ Name | Type | Description  | Notes
 
 # **boardsCreate**
 ```swift
-    open class func boardsCreate(boardCreate: BoardCreate, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
+    open class func boardsCreate(boardCreate: BoardCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Board
 ```
 
 Create board
@@ -313,15 +293,11 @@ let boardCreate = BoardCreate(description: "description_example", isAdsOnly: tru
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create board
-BoardsAPI.boardsCreate(boardCreate: boardCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsCreate(boardCreate: boardCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -349,7 +325,7 @@ Name | Type | Description  | Notes
 
 # **boardsDelete**
 ```swift
-    open class func boardsDelete(boardId: String, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
+    open class func boardsDelete(boardId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Board?
 ```
 
 Delete board
@@ -365,15 +341,11 @@ let boardId = "boardId_example" // String |
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete board
-BoardsAPI.boardsDelete(boardId: boardId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsDelete(boardId: boardId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -401,7 +373,7 @@ Name | Type | Description  | Notes
 
 # **boardsGet**
 ```swift
-    open class func boardsGet(boardId: String, adAccountId: String? = nil, completion: @escaping (_ data: Board?, _ error: Error?) -> Void)
+    open class func boardsGet(boardId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Board
 ```
 
 Get board
@@ -417,15 +389,11 @@ let boardId = "boardId_example" // String |
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get board
-BoardsAPI.boardsGet(boardId: boardId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsGet(boardId: boardId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -453,7 +421,7 @@ Name | Type | Description  | Notes
 
 # **boardsList**
 ```swift
-    open class func boardsList(adAccountId: String? = nil, privacy: BoardPrivacyFilter? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsList200Response?, _ error: Error?) -> Void)
+    open class func boardsList(adAccountId: String? = nil, privacy: BoardPrivacyFilter? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardsList200Response
 ```
 
 List boards
@@ -471,15 +439,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List boards
-BoardsAPI.boardsList(adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsList(adAccountId: adAccountId, privacy: privacy, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -509,7 +473,7 @@ Name | Type | Description  | Notes
 
 # **boardsListPins**
 ```swift
-    open class func boardsListPins(boardId: String, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsListPins200Response?, _ error: Error?) -> Void)
+    open class func boardsListPins(boardId: String, creativeTypes: [CreativeType]? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardsListPins200Response
 ```
 
 List Pins on board
@@ -529,15 +493,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List Pins on board
-BoardsAPI.boardsListPins(boardId: boardId, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsListPins(boardId: boardId, creativeTypes: creativeTypes, adAccountId: adAccountId, pinMetrics: pinMetrics, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -569,7 +529,7 @@ Name | Type | Description  | Notes
 
 # **boardsUpdate**
 ```swift
-    open class func boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String? = nil, completion: @escaping (_ data: BoardWithUpdatePrivacy?, _ error: Error?) -> Void)
+    open class func boardsUpdate(boardId: String, boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardWithUpdatePrivacy
 ```
 
 Update board
@@ -586,15 +546,11 @@ let boardWithUpdatePrivacyUpdate = BoardWithUpdatePrivacyUpdate(description: "de
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update board
-BoardsAPI.boardsUpdate(boardId: boardId, boardWithUpdatePrivacyUpdate: boardWithUpdatePrivacyUpdate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BoardsAPI.boardsUpdate(boardId: boardId, boardWithUpdatePrivacyUpdate: boardWithUpdatePrivacyUpdate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

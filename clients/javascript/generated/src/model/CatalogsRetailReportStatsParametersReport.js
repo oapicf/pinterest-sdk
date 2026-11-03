@@ -18,7 +18,7 @@ import CatalogsReportFeedIngestionFilter from './CatalogsReportFeedIngestionFilt
 /**
  * The CatalogsRetailReportStatsParametersReport model module.
  * @module model/CatalogsRetailReportStatsParametersReport
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailReportStatsParametersReport {
     /**

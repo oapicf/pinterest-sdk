@@ -9,7 +9,7 @@ import Foundation
 
 public struct SharedAudienceAccount: Sendable, Codable, Hashable {
 
-    public static let accountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let accountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Account ID (ad account or business ID). */
     public var accountId: String
     /** Account name. */

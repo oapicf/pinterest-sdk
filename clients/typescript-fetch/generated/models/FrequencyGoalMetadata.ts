@@ -29,14 +29,10 @@ import {
 export interface FrequencyGoalMetadata {
     /**
      * 
-     * @type {number}
-     * @memberof FrequencyGoalMetadata
      */
     frequency?: number;
     /**
      * 
-     * @type {FrequencyGoalMetadataTimerange}
-     * @memberof FrequencyGoalMetadata
      */
     timerange?: FrequencyGoalMetadataTimerange;
 }

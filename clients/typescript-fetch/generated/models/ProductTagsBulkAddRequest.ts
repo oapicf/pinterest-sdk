@@ -29,8 +29,6 @@ import {
 export interface ProductTagsBulkAddRequest {
     /**
      * List of product tags to add. Maximum 24 items allowed.
-     * @type {Array<ProductTagItem>}
-     * @memberof ProductTagsBulkAddRequest
      */
     productTags: Array<ProductTagItem>;
 }

@@ -10,7 +10,7 @@ import Foundation
 /** An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated. */
 public struct InviteBusinessRoleBinding: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier for the business that created the invite/request. */
     public var createdByBusinessId: String?
     /** Unique identifier for the user that created the invite/request. */

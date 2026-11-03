@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.auth_respond_invites_body import AuthRespondInvitesBody
@@ -40,6 +39,7 @@ from openapi_server.models.invite_type import InviteType
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.respond_to_invites_response_array import RespondToInvitesResponseArray
 from openapi_server.models.update_invites_results_response_array import UpdateInvitesResultsResponseArray
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -65,7 +65,7 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def respond_business_access_invites(
-    auth_respond_invites_body: AuthRespondInvitesBody = Body(None, description=""),
+    auth_respond_invites_body: AuthRespondInvitesBody = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -92,12 +92,12 @@ async def respond_business_access_invites(
     response_model_by_alias=True,
 )
 async def get_invites(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    is_member: Annotated[Optional[StrictBool], Field(description="A boolean field to indicate whether the invite is to create a partnership or a membership.")] = Query(True, description="A boolean field to indicate whether the invite is to create a partnership or a membership.", alias="is_member"),
+    business_id: Annotated[str, Field(min_length=1, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    is_member: Annotated[Optional[bool], Field(description="A boolean field to indicate whether the invite is to create a partnership or a membership.")] = Query(True, description="A boolean field to indicate whether the invite is to create a partnership or a membership.", alias="is_member"),
     invite_status: Annotated[Optional[Annotated[List[InviteFilterStatus], Field(min_length=1)]], Field(description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")] = Query(None, description="A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", alias="invite_status"),
     invite_type: Annotated[Optional[InviteType], Field(description="Invite type to filter invites by. Only invites of the specified type will be returned.")] = Query(None, description="Invite type to filter invites by. Only invites of the specified type will be returned.", alias="invite_type"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read"]
     ),
@@ -125,8 +125,8 @@ async def get_invites(
     response_model_by_alias=True,
 )
 async def create_membership_or_partnership_invites(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    create_membership_or_partnership_invites_body: CreateMembershipOrPartnershipInvitesBody = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    create_membership_or_partnership_invites_body: CreateMembershipOrPartnershipInvitesBody = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:write"]
     ),
@@ -148,8 +148,8 @@ async def create_membership_or_partnership_invites(
     response_model_by_alias=True,
 )
 async def cancel_invites_or_requests(
-    business_id: Annotated[str, Field(min_length=1, strict=True, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
-    cancel_invites_request: CancelInvitesRequest = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1),
+    cancel_invites_request: CancelInvitesRequest = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:write"]
     ),
@@ -177,8 +177,8 @@ async def cancel_invites_or_requests(
     response_model_by_alias=True,
 )
 async def create_asset_invites(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    create_asset_invites_request: CreateAssetInvitesRequest = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    create_asset_invites_request: CreateAssetInvitesRequest = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),
@@ -206,8 +206,8 @@ async def create_asset_invites(
     response_model_by_alias=True,
 )
 async def asset_access_requests_create(
-    business_id: Annotated[str, Field(min_length=1, strict=True, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
-    create_asset_access_request_body: CreateAssetAccessRequestBody = Body(None, description=""),
+    business_id: Annotated[str, Field(min_length=1, max_length=20, description="Unique identifier of the requesting business.")] = Path(..., description="Unique identifier of the requesting business.", regex=r"^\d+$", min_length=1, max_length=20),
+    create_asset_access_request_body: CreateAssetAccessRequestBody = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["biz_access:read", "biz_access:write"]
     ),

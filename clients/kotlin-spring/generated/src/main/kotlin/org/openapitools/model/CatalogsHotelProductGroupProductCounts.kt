@@ -26,12 +26,12 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsHotelProductGroupProductCounts(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsHotelProductGroupProductCounts.CatalogType = kotlin.String.HOTEL,
 
     @get:DecimalMin(value="0")
     @Schema(required = true, description = "")
-    @param:JsonProperty("total")
+    @param:JsonProperty("total", required = true)
     @get:JsonProperty("total", required = true) val total: java.math.BigDecimal
 ) : CatalogsProductGroupProductCountsVertical {
 
@@ -42,12 +42,12 @@ data class CatalogsHotelProductGroupProductCounts(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         HOTEL("HOTEL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

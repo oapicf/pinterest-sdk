@@ -43,7 +43,7 @@ export const MMMReportingColumn = {
     AdsCreditSpendInDollar: 'ADS_CREDIT_SPEND_IN_DOLLAR',
     AdvertiserPaidSpendInDollar: 'ADVERTISER_PAID_SPEND_IN_DOLLAR',
     AdvertiserPaidEcpcInDollar: 'ADVERTISER_PAID_ECPC_IN_DOLLAR',
-    AdvertiserPaidEcpmInDollar: 'ADVERTISER_PAID_ECPM_IN_DOLLAR'
+    AdvertiserPaidEcpmInDollar: 'ADVERTISER_PAID_ECPM_IN_DOLLAR',
 } as const;
 export type MMMReportingColumn = typeof MMMReportingColumn[keyof typeof MMMReportingColumn];
 

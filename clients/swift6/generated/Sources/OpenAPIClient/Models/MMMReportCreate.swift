@@ -11,15 +11,15 @@ import Foundation
 public struct MMMReportCreate: Sendable, Codable, Hashable {
 
     public static let customColumnIdsRule = ArrayRule(minItems: nil, maxItems: 20, uniqueItems: false)
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     public static let targetingTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
     /** Advertiser IDs for multi-advertiser report */
     public var advertiserIds: [String]?
     /** Metric and entity columns */
     public var columns: [MMMReportingColumn]
     /** A List of countries for filtering */
-    public var countries: [TargetingAdvertiserCountry]?
+    public var countries: [TargetingAdvertiserCountry?]?
     /** List of custom column IDs */
     public var customColumnIds: [String]?
     /** Metric report end date (UTC). Format: YYYY-MM-DD */
@@ -35,7 +35,7 @@ public struct MMMReportCreate: Sendable, Codable, Hashable {
     /** List of targeting types */
     public var targetingTypes: [MMMReportingTargetingType]
 
-    public init(advertiserIds: [String]? = nil, columns: [MMMReportingColumn], countries: [TargetingAdvertiserCountry]? = nil, customColumnIds: [String]? = nil, endDate: String, granularity: MMMReportGranularity, level: MMMReportLevel, reportName: String, startDate: String, targetingTypes: [MMMReportingTargetingType]) {
+    public init(advertiserIds: [String]? = nil, columns: [MMMReportingColumn], countries: [TargetingAdvertiserCountry?]? = nil, customColumnIds: [String]? = nil, endDate: String, granularity: MMMReportGranularity, level: MMMReportLevel, reportName: String, startDate: String, targetingTypes: [MMMReportingTargetingType]) {
         self.advertiserIds = advertiserIds
         self.columns = columns
         self.countries = countries

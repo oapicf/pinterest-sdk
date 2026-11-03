@@ -12,24 +12,134 @@
 
 namespace models {
 
-
-class PermissionsWithOwner
-{
-public:
-
-    PermissionsWithOwner();
-    virtual ~PermissionsWithOwner() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PermissionsWithOwner,
-        )
-
-private:
+enum class PermissionsWithOwner {
+    
+    ADMIN,
+    
+    ANALYST,
+    
+    FINANCE_MANAGER,
+    
+    FINANCE_EDIT,
+    
+    FINANCE_VIEW,
+    
+    AUDIENCE_MANAGER,
+    
+    CAMPAIGN_MANAGER,
+    
+    CATALOGS_MANAGER,
+    
+    CATALOGS_VIEWER,
+    
+    PROFILE_PUBLISHER,
+    
+    OWNER
+    
 };
 
+inline void to_json(nlohmann::json& j, const PermissionsWithOwner& value)
+{
+    switch (value)
+    {
+        
+        case PermissionsWithOwner::ADMIN: j = "ADMIN"; break;
+        
+        case PermissionsWithOwner::ANALYST: j = "ANALYST"; break;
+        
+        case PermissionsWithOwner::FINANCE_MANAGER: j = "FINANCE_MANAGER"; break;
+        
+        case PermissionsWithOwner::FINANCE_EDIT: j = "FINANCE_EDIT"; break;
+        
+        case PermissionsWithOwner::FINANCE_VIEW: j = "FINANCE_VIEW"; break;
+        
+        case PermissionsWithOwner::AUDIENCE_MANAGER: j = "AUDIENCE_MANAGER"; break;
+        
+        case PermissionsWithOwner::CAMPAIGN_MANAGER: j = "CAMPAIGN_MANAGER"; break;
+        
+        case PermissionsWithOwner::CATALOGS_MANAGER: j = "CATALOGS_MANAGER"; break;
+        
+        case PermissionsWithOwner::CATALOGS_VIEWER: j = "CATALOGS_VIEWER"; break;
+        
+        case PermissionsWithOwner::PROFILE_PUBLISHER: j = "PROFILE_PUBLISHER"; break;
+        
+        case PermissionsWithOwner::OWNER: j = "OWNER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PermissionsWithOwner", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PermissionsWithOwner& value)
+{
+    
+    if (j == "ADMIN")
+    {
+        value = PermissionsWithOwner::ADMIN;
+        return;
+    }
+    
+    if (j == "ANALYST")
+    {
+        value = PermissionsWithOwner::ANALYST;
+        return;
+    }
+    
+    if (j == "FINANCE_MANAGER")
+    {
+        value = PermissionsWithOwner::FINANCE_MANAGER;
+        return;
+    }
+    
+    if (j == "FINANCE_EDIT")
+    {
+        value = PermissionsWithOwner::FINANCE_EDIT;
+        return;
+    }
+    
+    if (j == "FINANCE_VIEW")
+    {
+        value = PermissionsWithOwner::FINANCE_VIEW;
+        return;
+    }
+    
+    if (j == "AUDIENCE_MANAGER")
+    {
+        value = PermissionsWithOwner::AUDIENCE_MANAGER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_MANAGER")
+    {
+        value = PermissionsWithOwner::CAMPAIGN_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_MANAGER")
+    {
+        value = PermissionsWithOwner::CATALOGS_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_VIEWER")
+    {
+        value = PermissionsWithOwner::CATALOGS_VIEWER;
+        return;
+    }
+    
+    if (j == "PROFILE_PUBLISHER")
+    {
+        value = PermissionsWithOwner::PROFILE_PUBLISHER;
+        return;
+    }
+    
+    if (j == "OWNER")
+    {
+        value = PermissionsWithOwner::OWNER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PermissionsWithOwner", &j);
+}
 
 } // namespace models
 

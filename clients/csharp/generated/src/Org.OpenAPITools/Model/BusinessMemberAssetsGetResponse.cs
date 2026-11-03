@@ -188,19 +188,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class BusinessMemberAssetsGetResponse.", nameof(items));
+                throw new JsonException("Property is required for class BusinessMemberAssetsGetResponse: items.");
 
             if (!totalDataCount.IsSet)
-                throw new ArgumentException("Property is required for class BusinessMemberAssetsGetResponse.", nameof(totalDataCount));
+                throw new JsonException("Property is required for class BusinessMemberAssetsGetResponse: total_data_count.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class BusinessMemberAssetsGetResponse.");
+                throw new JsonException("Property is not nullable for class BusinessMemberAssetsGetResponse: items.");
 
             if (totalDataCount.IsSet && totalDataCount.Value == null)
-                throw new ArgumentNullException(nameof(totalDataCount), "Property is not nullable for class BusinessMemberAssetsGetResponse.");
+                throw new JsonException("Property is not nullable for class BusinessMemberAssetsGetResponse: total_data_count.");
 
             if (totalDataCountByStatus.IsSet && totalDataCountByStatus.Value == null)
-                throw new ArgumentNullException(nameof(totalDataCountByStatus), "Property is not nullable for class BusinessMemberAssetsGetResponse.");
+                throw new JsonException("Property is not nullable for class BusinessMemberAssetsGetResponse: total_data_count_by_status.");
 
             return new BusinessMemberAssetsGetResponse(items.Value!, totalDataCount.Value!.Value!, bookmark, totalDataCountByStatus);
         }
@@ -211,7 +211,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMemberAssetsGetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessMemberAssetsGetResponse businessMemberAssetsGetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -226,14 +225,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMemberAssetsGetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessMemberAssetsGetResponse businessMemberAssetsGetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessMemberAssetsGetResponse.Items == null)
-                throw new ArgumentNullException(nameof(businessMemberAssetsGetResponse.Items), "Property is required for class BusinessMemberAssetsGetResponse.");
-
             if (businessMemberAssetsGetResponse.TotalDataCountByStatusOption.IsSet && businessMemberAssetsGetResponse.TotalDataCountByStatus == null)
-                throw new ArgumentNullException(nameof(businessMemberAssetsGetResponse.TotalDataCountByStatus), "Property is required for class BusinessMemberAssetsGetResponse.");
+                throw new JsonException("Cannot write null property BusinessMemberAssetsGetResponse.TotalDataCountByStatus to non-nullable JSON property 'total_data_count_by_status'.");
 
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, businessMemberAssetsGetResponse.Items, jsonSerializerOptions);

@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BusinessMembersAssetAccessDeleteBody", description = "An object with a list of member asset accesses to delete.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMembersAssetAccessDeleteBody {
 
-  @Valid
   private List<@Valid DeleteMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public BusinessMembersAssetAccessDeleteBody() {
@@ -57,7 +56,7 @@ public class BusinessMembersAssetAccessDeleteBody {
    * List of members asset access to be deleted
    * @return accesses
    */
-  @NotNull @Valid @Size(min = 1, max = 100) 
+  @NotNull @Size(min = 1, max = 100) 
   @Schema(name = "accesses", description = "List of members asset access to be deleted", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accesses")
   public List<@Valid DeleteMemberAssetAccessItem> getAccesses() {

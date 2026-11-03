@@ -43,32 +43,22 @@ import {
 export interface BusinessAssets {
     /**
      * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
-     * @type {AssetGroupBinding}
-     * @memberof BusinessAssets
      */
     assetGroupInfo?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof BusinessAssets
      */
     assetId?: string;
     /**
      * 
-     * @type {AssetTypeResponse}
-     * @memberof BusinessAssets
      */
     assetType?: AssetTypeResponse;
     /**
      * Permission levels the requesting business has on an asset.
-     * @type {Array<string>}
-     * @memberof BusinessAssets
      */
     permissions?: Array<string>;
     /**
      * An object containing all the information specific to the provided catalog. This field will be populated only if asset_type equals 'CATALOG'.
-     * @type {CatalogBinding}
-     * @memberof BusinessAssets
      */
     catalogInfo?: CatalogBinding;
 }

@@ -538,19 +538,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (gEOEXCLUDE.IsSet && gEOEXCLUDE.Value == null)
-                throw new ArgumentNullException(nameof(gEOEXCLUDE), "Property is not nullable for class TargetingSpec.");
+                throw new JsonException("Property is not nullable for class TargetingSpec: GEO_EXCLUDE.");
 
             if (iNTEREST.IsSet && iNTEREST.Value == null)
-                throw new ArgumentNullException(nameof(iNTEREST), "Property is not nullable for class TargetingSpec.");
+                throw new JsonException("Property is not nullable for class TargetingSpec: INTEREST.");
 
             if (lOCATIONEXCLUDE.IsSet && lOCATIONEXCLUDE.Value == null)
-                throw new ArgumentNullException(nameof(lOCATIONEXCLUDE), "Property is not nullable for class TargetingSpec.");
+                throw new JsonException("Property is not nullable for class TargetingSpec: LOCATION_EXCLUDE.");
 
             if (mAXIMUMAGE.IsSet && mAXIMUMAGE.Value == null)
-                throw new ArgumentNullException(nameof(mAXIMUMAGE), "Property is not nullable for class TargetingSpec.");
+                throw new JsonException("Property is not nullable for class TargetingSpec: MAXIMUM_AGE.");
 
             if (mINIMUMAGE.IsSet && mINIMUMAGE.Value == null)
-                throw new ArgumentNullException(nameof(mINIMUMAGE), "Property is not nullable for class TargetingSpec.");
+                throw new JsonException("Property is not nullable for class TargetingSpec: MINIMUM_AGE.");
 
             return new TargetingSpec(aGEBUCKET, aPPTYPE, aUDIENCEEXCLUDE, aUDIENCEINCLUDE, gENDER, gEO, gEOEXCLUDE, iNTEREST, lOCALE, lOCATION, lOCATIONEXCLUDE, mAXIMUMAGE, mINIMUMAGE, sHOPPINGRETARGETING, tARGETINGSTRATEGY);
         }
@@ -561,7 +561,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpec"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpec targetingSpec, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -576,23 +575,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpec"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpec targetingSpec, JsonSerializerOptions jsonSerializerOptions)
         {
             if (targetingSpec.GEO_EXCLUDEOption.IsSet && targetingSpec.GEO_EXCLUDE == null)
-                throw new ArgumentNullException(nameof(targetingSpec.GEO_EXCLUDE), "Property is required for class TargetingSpec.");
+                throw new JsonException("Cannot write null property TargetingSpec.GEO_EXCLUDE to non-nullable JSON property 'GEO_EXCLUDE'.");
 
             if (targetingSpec.INTERESTOption.IsSet && targetingSpec.INTEREST == null)
-                throw new ArgumentNullException(nameof(targetingSpec.INTEREST), "Property is required for class TargetingSpec.");
+                throw new JsonException("Cannot write null property TargetingSpec.INTEREST to non-nullable JSON property 'INTEREST'.");
 
             if (targetingSpec.LOCATION_EXCLUDEOption.IsSet && targetingSpec.LOCATION_EXCLUDE == null)
-                throw new ArgumentNullException(nameof(targetingSpec.LOCATION_EXCLUDE), "Property is required for class TargetingSpec.");
+                throw new JsonException("Cannot write null property TargetingSpec.LOCATION_EXCLUDE to non-nullable JSON property 'LOCATION_EXCLUDE'.");
 
             if (targetingSpec.MAXIMUM_AGEOption.IsSet && targetingSpec.MAXIMUM_AGE == null)
-                throw new ArgumentNullException(nameof(targetingSpec.MAXIMUM_AGE), "Property is required for class TargetingSpec.");
+                throw new JsonException("Cannot write null property TargetingSpec.MAXIMUM_AGE to non-nullable JSON property 'MAXIMUM_AGE'.");
 
             if (targetingSpec.MINIMUM_AGEOption.IsSet && targetingSpec.MINIMUM_AGE == null)
-                throw new ArgumentNullException(nameof(targetingSpec.MINIMUM_AGE), "Property is required for class TargetingSpec.");
+                throw new JsonException("Cannot write null property TargetingSpec.MINIMUM_AGE to non-nullable JSON property 'MINIMUM_AGE'.");
 
             if (targetingSpec.AGE_BUCKETOption.IsSet)
                 if (targetingSpec.AGE_BUCKETOption.Value != null)

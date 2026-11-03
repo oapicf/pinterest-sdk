@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class UserListOperationType
-{
-public:
-
-    UserListOperationType();
-    virtual ~UserListOperationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(UserListOperationType,
-        )
-
-private:
+enum class UserListOperationType {
+    
+    ADD,
+    
+    REMOVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const UserListOperationType& value)
+{
+    switch (value)
+    {
+        
+        case UserListOperationType::ADD: j = "ADD"; break;
+        
+        case UserListOperationType::REMOVE: j = "REMOVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for UserListOperationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, UserListOperationType& value)
+{
+    
+    if (j == "ADD")
+    {
+        value = UserListOperationType::ADD;
+        return;
+    }
+    
+    if (j == "REMOVE")
+    {
+        value = UserListOperationType::REMOVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for UserListOperationType", &j);
+}
 
 } // namespace models
 

@@ -21,7 +21,7 @@ import org.openapitools.model.ScheduleUpdateRequest;
  * Request for creation of entities in bulk.
  */
 @ApiModel(description = "Request for creation of entities in bulk.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestUpdate   {
   @JsonProperty("ad_groups")
   private List<@Valid AdGroupUpdateRequest> adGroups = null;
@@ -33,7 +33,7 @@ public class BulkUpsertRequestUpdate   {
   private List<@Valid CampaignUpdateRequest> campaigns = null;
 
   @JsonProperty("catalog_product_groups")
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = null;
 
   @JsonProperty("keywords")
   private List<@Valid KeywordUpdateGenerated> keywords = null;
@@ -125,7 +125,7 @@ public class BulkUpsertRequestUpdate   {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -143,11 +143,11 @@ public class BulkUpsertRequestUpdate   {
    * @return catalogProductGroups
   **/
   @ApiModelProperty(value = "")
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 

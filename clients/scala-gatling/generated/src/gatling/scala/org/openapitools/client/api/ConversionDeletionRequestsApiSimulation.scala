@@ -120,8 +120,8 @@ class ConversionDeletionRequestsApiSimulation extends Simulation {
         .feed(conversion_deletion_request/listPATHFeeder)
         .exec(http("conversionDeletionRequestList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/conversion_deletion_requests")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("order","${order}")
 )
 

@@ -38,12 +38,12 @@ export interface CatalogsReportFeedIngestionStats {
 }
 export namespace CatalogsReportFeedIngestionStats {
     export const ReportTypeEnum = {
-        FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+        FeedIngestionIssues: 'FEED_INGESTION_ISSUES',
     } as const;
     export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
     export const SeverityEnum = {
         Warn: 'WARN',
-        Error: 'ERROR'
+        Error: 'ERROR',
     } as const;
     export type SeverityEnum = typeof SeverityEnum[keyof typeof SeverityEnum];
 }

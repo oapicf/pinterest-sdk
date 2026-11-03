@@ -30,7 +30,7 @@ import javax.validation.Valid;
   AdPinAnalytics.JSON_PROPERTY_D_A_T_E,
   AdPinAnalytics.JSON_PROPERTY_P_I_N_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdPinAnalytics   {
   public static final String JSON_PROPERTY_D_A_T_E = "DATE";
   @JsonProperty(JSON_PROPERTY_D_A_T_E)

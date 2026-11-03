@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
-* Values: P,D,NA
-*/
+ * Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
+ * Values: P,D,NA
+ */
 enum class AttributionMatchType(@get:JsonValue val value: kotlin.String) {
 
     P("P"),
@@ -29,9 +29,8 @@ enum class AttributionMatchType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AttributionMatchType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionMatchType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionMatchType'")
         }
     }
 }
-

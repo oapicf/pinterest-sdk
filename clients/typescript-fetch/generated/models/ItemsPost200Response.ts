@@ -29,8 +29,6 @@ import {
 export interface ItemsPost200Response {
     /**
      * 
-     * @type {Array<ItemResponse>}
-     * @memberof ItemsPost200Response
      */
     items: Array<ItemResponse>;
 }

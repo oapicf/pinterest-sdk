@@ -56,7 +56,7 @@ public class BulkDownloadCreate  {
   protected List<BulkEntityType> entityTypes = null;
 
   @JsonbProperty("output_format")
-  protected BulkOutputFormat outputFormat;
+  protected BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
  /**
   * Unix UTC timestamp to retrieve all entities that have changed since this time.

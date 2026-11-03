@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Conversion product attribution level
-* Values: DEFAULT,BRAND_ATTRIBUTION
-*/
+ * Conversion product attribution level
+ * Values: DEFAULT,BRAND_ATTRIBUTION
+ */
 enum class ConversionProductAttributionType(@get:JsonValue val value: kotlin.String) {
 
     DEFAULT("DEFAULT"),
@@ -28,9 +28,8 @@ enum class ConversionProductAttributionType(@get:JsonValue val value: kotlin.Str
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionProductAttributionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductAttributionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductAttributionType'")
         }
     }
 }
-

@@ -29,8 +29,6 @@ import {
 export interface DeletePartnerAssetAccessBody {
     /**
      * List of partner asset accesses to delete.
-     * @type {Array<DeletePartnerAssetAccessItem>}
-     * @memberof DeletePartnerAssetAccessBody
      */
     accesses: Array<DeletePartnerAssetAccessItem>;
 }

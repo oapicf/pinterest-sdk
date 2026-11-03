@@ -26,17 +26,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CreateAssetInvitesRequestItem(
 
     @Schema(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.")
-    @param:JsonProperty("asset_id_to_permissions")
+    @param:JsonProperty("asset_id_to_permissions", required = true)
     @get:JsonProperty("asset_id_to_permissions", required = true) val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1234567890123", required = true, description = "Unique identifier of an invite.")
-    @param:JsonProperty("invite_id")
+    @param:JsonProperty("invite_id", required = true)
     @get:JsonProperty("invite_id", required = true) val inviteId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("invite_type")
+    @param:JsonProperty("invite_type", required = true)
     @get:JsonProperty("invite_type", required = true) val inviteType: InviteType
 ) {
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Disclosure label for AI-generated or AI-modified content in a catalog item asset.
-* Values: ai_modified,synthetic_performer
-*/
+ * Disclosure label for AI-generated or AI-modified content in a catalog item asset.
+ * Values: ai_modified,synthetic_performer
+ */
 enum class CatalogsAiContentDisclosureLabel(@get:JsonValue val value: kotlin.String) {
 
     ai_modified("ai_modified"),
@@ -28,9 +28,8 @@ enum class CatalogsAiContentDisclosureLabel(@get:JsonValue val value: kotlin.Str
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsAiContentDisclosureLabel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsAiContentDisclosureLabel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsAiContentDisclosureLabel'")
         }
     }
 }
-

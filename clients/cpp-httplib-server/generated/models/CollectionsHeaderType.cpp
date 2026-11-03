@@ -6,20 +6,3 @@
 */
 #include "CollectionsHeaderType.h"
 
-namespace models {
-
-CollectionsHeaderType::CollectionsHeaderType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

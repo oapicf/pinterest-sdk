@@ -9,7 +9,7 @@ import Foundation
 
 public struct SingleInterestTargetingOption: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var childInterests: [String]
     public var id: String
     public var level: Int

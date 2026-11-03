@@ -125,3 +125,4 @@ class _$CatalogsProductGroupMultipleMediaTypesCriteriaSerializer implements Prim
   }
 }
 
+

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CancelInvitesRequest {
     /**
      * A list of invite/request ids to cancel.
-     * @type {Array<string>}
-     * @memberof CancelInvitesRequest
      */
     inviteIds: Array<string>;
 }

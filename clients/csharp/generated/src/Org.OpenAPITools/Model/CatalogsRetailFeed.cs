@@ -371,7 +371,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailFeed.CatalogTypeEnum?>(CatalogsRetailFeed.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailFeed.CatalogTypeEnum? catalogTypeValue = CatalogsRetailFeed.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailFeed.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "created_at":
                             createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
@@ -419,61 +424,61 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: catalog_type.");
 
             if (!createdAt.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(createdAt));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: created_at.");
 
             if (!defaultCountry.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(defaultCountry));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: default_country.");
 
             if (!defaultLocale.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(defaultLocale));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: default_locale.");
 
             if (!format.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(format));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: format.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: id.");
 
             if (!location.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(location));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: location.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(status));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: status.");
 
             if (!updatedAt.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(updatedAt));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: updated_at.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailFeed.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsRetailFeed: name.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: catalog_type.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: created_at.");
 
             if (defaultCountry.IsSet && defaultCountry.Value == null)
-                throw new ArgumentNullException(nameof(defaultCountry), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: default_country.");
 
             if (defaultLocale.IsSet && defaultLocale.Value == null)
-                throw new ArgumentNullException(nameof(defaultLocale), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: default_locale.");
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: format.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: id.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: location.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: status.");
 
             if (updatedAt.IsSet && updatedAt.Value == null)
-                throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class CatalogsRetailFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFeed: updated_at.");
 
             return new CatalogsRetailFeed(catalogType.Value!.Value!, createdAt.Value!.Value!, defaultCountry.Value!.Value!, defaultLocale.Value!, format.Value!.Value!, id.Value!, location.Value!, status.Value!.Value!, updatedAt.Value!.Value!, credentials, defaultAvailability, defaultCurrency, name.Value!, preferredProcessingSchedule);
         }
@@ -484,7 +489,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFeed"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailFeed catalogsRetailFeed, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -499,18 +503,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFeed"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailFeed catalogsRetailFeed, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailFeed.DefaultLocale == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeed.DefaultLocale), "Property is required for class CatalogsRetailFeed.");
-
-            if (catalogsRetailFeed.Id == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeed.Id), "Property is required for class CatalogsRetailFeed.");
-
-            if (catalogsRetailFeed.Location == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFeed.Location), "Property is required for class CatalogsRetailFeed.");
-
             var catalogTypeRawValue = CatalogsRetailFeed.CatalogTypeEnumToJsonValue(catalogsRetailFeed.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WriteString("created_at", catalogsRetailFeed.CreatedAt.ToString(CreatedAtFormat));

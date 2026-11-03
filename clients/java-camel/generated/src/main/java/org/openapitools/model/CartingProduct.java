@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import jakarta.annotation.Generated;
  * CartingProduct
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CartingProduct {
 
   private String cartingProductId;
@@ -32,7 +31,6 @@ public class CartingProduct {
 
   private Boolean displayProductPrice;
 
-  @Valid
   private List<@Valid CartingRetailer> preferredRetailers = new ArrayList<>();
 
   private Boolean randomizePreferredRetailers;
@@ -125,7 +123,7 @@ public class CartingProduct {
    * A sorted array of preferred retailers for the carting product
    * @return preferredRetailers
    */
-  @Valid 
+  
   @Schema(name = "preferred_retailers", description = "A sorted array of preferred retailers for the carting product", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_retailers")
   public List<@Valid CartingRetailer> getPreferredRetailers() {

@@ -10,7 +10,7 @@ import Foundation
 /** Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random). */
 public struct CatalogsFeedProcessingSchedule: Sendable, Codable, Hashable {
 
-    public static let timeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/")
+    public static let timeRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
     /** A time in format HH:MM with leading 0 (zero) */
     public var time: String
     /** The timezone considered for the processing schedule time. */

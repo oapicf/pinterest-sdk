@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 import org.openapitools.server.model.PinterestLibError;
 import io.helidon.http.Status;
+import jakarta.validation.Valid;
 import io.helidon.webserver.http.ServerRequest;
 import io.helidon.webserver.http.ServerResponse;
 

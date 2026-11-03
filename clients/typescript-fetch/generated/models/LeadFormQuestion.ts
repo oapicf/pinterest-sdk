@@ -36,26 +36,18 @@ import {
 export interface LeadFormQuestion {
     /**
      * 
-     * @type {LeadFormQuestionFieldType}
-     * @memberof LeadFormQuestion
      */
     customQuestionFieldType?: LeadFormQuestionFieldType | null;
     /**
      * Question label for a custom question.
-     * @type {string}
-     * @memberof LeadFormQuestion
      */
     customQuestionLabel?: string | null;
     /**
      * Question options for a custom question.
-     * @type {Array<string>}
-     * @memberof LeadFormQuestion
      */
     customQuestionOptions?: Array<string> | null;
     /**
      * 
-     * @type {LeadFormQuestionType}
-     * @memberof LeadFormQuestion
      */
     questionType?: LeadFormQuestionType;
 }

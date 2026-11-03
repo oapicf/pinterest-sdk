@@ -8,7 +8,7 @@ export const WorkloadState = {
     Running: 'RUNNING',
     Paused: 'PAUSED',
     Succeeded: 'SUCCEEDED',
-    Failed: 'FAILED'
+    Failed: 'FAILED',
 } as const;
 export type WorkloadState = typeof WorkloadState[keyof typeof WorkloadState];
 

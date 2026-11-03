@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class CampaignPlanningResponseError.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningResponseError: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class CampaignPlanningResponseError.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningResponseError: message.");
 
             return new CampaignPlanningResponseError(code, message);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningResponseError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningResponseError campaignPlanningResponseError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,11 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningResponseError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningResponseError campaignPlanningResponseError, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningResponseError.CodeOption.IsSet && campaignPlanningResponseError.Code == null)
+                throw new JsonException("Cannot write null property CampaignPlanningResponseError.Code to non-nullable JSON property 'code'.");
+
             if (campaignPlanningResponseError.MessageOption.IsSet && campaignPlanningResponseError.Message == null)
-                throw new ArgumentNullException(nameof(campaignPlanningResponseError.Message), "Property is required for class CampaignPlanningResponseError.");
+                throw new JsonException("Cannot write null property CampaignPlanningResponseError.Message to non-nullable JSON property 'message'.");
 
             if (campaignPlanningResponseError.CodeOption.IsSet)
             {

@@ -78,50 +78,34 @@ import {
 export interface CampaignBidOptionsUpdate {
     /**
      * Age bucket multipliers for bid adjustments.
-     * @type {AgeBucketMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     ageBucketMultipliers?: AgeBucketMultipliers | null;
     /**
      * App type multipliers for bid adjustments.
-     * @type {AppTypeMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     appTypeMultipliers?: AppTypeMultipliers | null;
     /**
      * Audience multipliers for bid adjustments.
-     * @type {CampaignAudienceMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     audienceMultipliers?: CampaignAudienceMultipliers;
     /**
      * The time window for frequency bid multipliers.
-     * @type {FreqBidMultiplierTimeWindow}
-     * @memberof CampaignBidOptionsUpdate
      */
     freqBidMultiplierTimeWindow?: FreqBidMultiplierTimeWindow | null;
     /**
      * Frequency multipliers for bid adjustments.
-     * @type {FrequencyMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     frequencyMultipliers?: FrequencyMultipliers | null;
     /**
      * Gender multipliers for bid adjustments.
-     * @type {GenderMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     genderMultipliers?: GenderMultipliers | null;
     /**
      * Placement multipliers for bid adjustments.
-     * @type {PlacementMultipliers}
-     * @memberof CampaignBidOptionsUpdate
      */
     placementMultipliers?: PlacementMultipliers | null;
     /**
      * List of fields to update. Only the fields in the list will be updated.
-     * @type {Array<CampaignBidOptionsUpdateMaskItems>}
-     * @memberof CampaignBidOptionsUpdate
      */
     updateMask: Array<CampaignBidOptionsUpdateMaskItems>;
 }

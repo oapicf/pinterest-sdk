@@ -6,20 +6,3 @@
 */
 #include "Role.h"
 
-namespace models {
-
-Role::Role()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

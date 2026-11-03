@@ -106,3 +106,4 @@ class _$DeliveryMetricsGet200ResponseSerializer implements PrimitiveSerializer<D
   }
 }
 
+

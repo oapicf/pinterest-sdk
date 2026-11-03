@@ -60,7 +60,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-03T06:15:11.297068727Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface CatalogsApiService {
       public Response catalogsAvailableFilterValues(String catalogId, String feedId, Country country, CatalogsLocale language, String adAccountId, SecurityContext securityContext);
       public Response catalogsCreate(CatalogCreate catalogCreate, String adAccountId, SecurityContext securityContext);
@@ -73,7 +73,7 @@ public interface CatalogsApiService {
       public Response catalogsLocalStoresUpdate(String catalogId, List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, String adAccountId, SecurityContext securityContext);
       public Response catalogsProductGroupPinsList(String productGroupId, String adAccountId, Boolean pinMetrics, String bookmark, Integer pageSize, SecurityContext securityContext);
       public Response catalogsProductGroupsCreate(CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema, String adAccountId, SecurityContext securityContext);
-      public Response catalogsProductGroupsCreateMany(List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, String adAccountId, SecurityContext securityContext);
+      public Response catalogsProductGroupsCreateMany(List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, String adAccountId, SecurityContext securityContext);
       public Response catalogsProductGroupsDelete(String productGroupId, String adAccountId, SecurityContext securityContext);
       public Response catalogsProductGroupsDeleteMany(List<Integer> id, String adAccountId, SecurityContext securityContext);
       public Response catalogsProductGroupsGet(String productGroupId, String adAccountId, SecurityContext securityContext);

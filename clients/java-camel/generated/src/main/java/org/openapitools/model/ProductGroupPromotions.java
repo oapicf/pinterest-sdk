@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductGroupPromotions", description = "Wrapper model for ProductGroupPromotion.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotions {
 
-  @Valid
   private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
 
   public ProductGroupPromotions items(List<@Valid ProductGroupPromotionResponseItem> items) {
@@ -47,7 +45,7 @@ public class ProductGroupPromotions {
    * Response-only: created or updated product group promotions, or exceptions.
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", accessMode = Schema.AccessMode.READ_ONLY, description = "Response-only: created or updated product group promotions, or exceptions.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
   public List<@Valid ProductGroupPromotionResponseItem> getItems() {

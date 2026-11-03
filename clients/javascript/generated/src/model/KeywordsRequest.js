@@ -17,7 +17,7 @@ import KeywordsCommon from './KeywordsCommon';
 /**
  * The KeywordsRequest model module.
  * @module model/KeywordsRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordsRequest {
     /**

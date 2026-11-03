@@ -50,7 +50,7 @@ public class LeadsExportApiHandler {
         LeadsExportsCreate leadsExportsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LeadsExportsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter leadsExportsCreate is {}", leadsExportsCreate);
+        logger.debug("Parameter leadsExportsCreate is (body omitted)");
 
         api.leadsExportCreate(adAccountId, leadsExportsCreate)
             .onSuccess(apiResponse -> {

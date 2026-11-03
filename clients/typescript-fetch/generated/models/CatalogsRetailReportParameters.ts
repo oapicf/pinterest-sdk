@@ -29,14 +29,10 @@ import {
 export interface CatalogsRetailReportParameters {
     /**
      * 
-     * @type {CatalogsRetailReportParametersCatalogTypeEnum}
-     * @memberof CatalogsRetailReportParameters
      */
     catalogType: CatalogsRetailReportParametersCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsRetailReportParametersReport}
-     * @memberof CatalogsRetailReportParameters
      */
     report: CatalogsRetailReportParametersReport;
 }
@@ -46,7 +42,7 @@ export interface CatalogsRetailReportParameters {
  * @export
  */
 export const CatalogsRetailReportParametersCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailReportParametersCatalogTypeEnum = typeof CatalogsRetailReportParametersCatalogTypeEnum[keyof typeof CatalogsRetailReportParametersCatalogTypeEnum];
 

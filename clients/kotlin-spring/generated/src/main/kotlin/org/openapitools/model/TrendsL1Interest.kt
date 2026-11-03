@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* L1 interest categories for filtering trends.
-* Values: animals,architecture,art,beauty,childrens_fashion,design,diy_and_crafts,education,electronics,entertainment,event_planning,finance,food_and_drinks,gardening,health,home_decor,mens_fashion,parenting,quotes,sport,travel,vehicles,wedding,womens_fashion
-*/
+ * L1 interest categories for filtering trends.
+ * Values: animals,architecture,art,beauty,childrens_fashion,design,diy_and_crafts,education,electronics,entertainment,event_planning,finance,food_and_drinks,gardening,health,home_decor,mens_fashion,parenting,quotes,sport,travel,vehicles,wedding,womens_fashion
+ */
 enum class TrendsL1Interest(@get:JsonValue val value: kotlin.String) {
 
     animals("animals"),
@@ -50,9 +50,8 @@ enum class TrendsL1Interest(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TrendsL1Interest {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsL1Interest'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsL1Interest'")
         }
     }
 }
-

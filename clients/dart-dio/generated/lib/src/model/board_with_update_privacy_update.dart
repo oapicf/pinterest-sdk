@@ -148,3 +148,4 @@ class _$BoardWithUpdatePrivacyUpdateSerializer implements PrimitiveSerializer<Bo
   }
 }
 
+

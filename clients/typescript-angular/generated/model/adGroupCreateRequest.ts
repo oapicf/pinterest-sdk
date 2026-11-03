@@ -99,7 +99,7 @@ export namespace AdGroupCreateRequest {
     export const PromotionApplicationLevelEnum = {
         None: 'NONE',
         Item: 'ITEM',
-        AdGroup: 'AD_GROUP'
+        AdGroup: 'AD_GROUP',
     } as const;
     export type PromotionApplicationLevelEnum = typeof PromotionApplicationLevelEnum[keyof typeof PromotionApplicationLevelEnum];
 }

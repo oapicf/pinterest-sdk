@@ -20,16 +20,12 @@ public class AssetGroupModification  {
   */
   @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
 
-  @Valid
-
   private List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
 
  /**
   * A list of successfully edited asset groups.
   */
   @ApiModelProperty(value = "A list of successfully edited asset groups.")
-
-  @Valid
 
   private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
  /**

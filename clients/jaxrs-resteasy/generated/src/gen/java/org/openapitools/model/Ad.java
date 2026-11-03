@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Ad   {
   
   private String adAccountId;
@@ -185,7 +185,6 @@ public class Ad   {
   
   @ApiModelProperty(value = "Array of carting/WTB products for the ad.")
   @JsonProperty("carting_products")
-  @Valid
   public List<@Valid CartingProduct> getCartingProducts() {
     return cartingProducts;
   }
@@ -477,7 +476,6 @@ public class Ad   {
   @ApiModelProperty(required = true, value = "Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".")
   @JsonProperty("rejected_reasons")
   @NotNull
-  @Valid
   public List<AdDisapprovalReasons> getRejectedReasons() {
     return rejectedReasons;
   }

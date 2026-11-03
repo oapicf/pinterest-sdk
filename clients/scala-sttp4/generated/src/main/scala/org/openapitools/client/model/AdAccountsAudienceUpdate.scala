@@ -11,8 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.AudienceType._
-import org.openapitools.client.model.AudienceUpdateOperationType._
 
   /**
    * Resource create or update operation model.

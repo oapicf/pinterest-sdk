@@ -220,19 +220,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (ageBucketMultipliers.IsSet && ageBucketMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(ageBucketMultipliers), "Property is not nullable for class ScheduleBidMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidMultipliers: age_bucket_multipliers.");
 
             if (appTypeMultipliers.IsSet && appTypeMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(appTypeMultipliers), "Property is not nullable for class ScheduleBidMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidMultipliers: app_type_multipliers.");
 
             if (audienceMultipliers.IsSet && audienceMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(audienceMultipliers), "Property is not nullable for class ScheduleBidMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidMultipliers: audience_multipliers.");
 
             if (genderMultipliers.IsSet && genderMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(genderMultipliers), "Property is not nullable for class ScheduleBidMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidMultipliers: gender_multipliers.");
 
             if (placementMultipliers.IsSet && placementMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(placementMultipliers), "Property is not nullable for class ScheduleBidMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidMultipliers: placement_multipliers.");
 
             return new ScheduleBidMultipliers(ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, genderMultipliers, placementMultipliers);
         }
@@ -243,7 +243,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleBidMultipliers scheduleBidMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,23 +257,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleBidMultipliers scheduleBidMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             if (scheduleBidMultipliers.AgeBucketMultipliersOption.IsSet && scheduleBidMultipliers.AgeBucketMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidMultipliers.AgeBucketMultipliers), "Property is required for class ScheduleBidMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleBidMultipliers.AgeBucketMultipliers to non-nullable JSON property 'age_bucket_multipliers'.");
 
             if (scheduleBidMultipliers.AppTypeMultipliersOption.IsSet && scheduleBidMultipliers.AppTypeMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidMultipliers.AppTypeMultipliers), "Property is required for class ScheduleBidMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleBidMultipliers.AppTypeMultipliers to non-nullable JSON property 'app_type_multipliers'.");
 
             if (scheduleBidMultipliers.AudienceMultipliersOption.IsSet && scheduleBidMultipliers.AudienceMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidMultipliers.AudienceMultipliers), "Property is required for class ScheduleBidMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleBidMultipliers.AudienceMultipliers to non-nullable JSON property 'audience_multipliers'.");
 
             if (scheduleBidMultipliers.GenderMultipliersOption.IsSet && scheduleBidMultipliers.GenderMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidMultipliers.GenderMultipliers), "Property is required for class ScheduleBidMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleBidMultipliers.GenderMultipliers to non-nullable JSON property 'gender_multipliers'.");
 
             if (scheduleBidMultipliers.PlacementMultipliersOption.IsSet && scheduleBidMultipliers.PlacementMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidMultipliers.PlacementMultipliers), "Property is required for class ScheduleBidMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleBidMultipliers.PlacementMultipliers to non-nullable JSON property 'placement_multipliers'.");
 
             if (scheduleBidMultipliers.AgeBucketMultipliersOption.IsSet)
             {

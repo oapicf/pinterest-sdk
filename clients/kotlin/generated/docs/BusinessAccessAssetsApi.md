@@ -48,9 +48,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetGroupInputCreate** | [**AssetGroupInputCreate**](AssetGroupInputCreate.md)|  | |
 
 ### Return type
@@ -104,9 +104,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetGroupDeletionDelete** | [**AssetGroupDeletionDelete**](AssetGroupDeletionDelete.md)|  | |
 
 ### Return type
@@ -160,9 +160,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetGroupModificationReadOrUpdate** | [**AssetGroupModificationReadOrUpdate**](AssetGroupModificationReadOrUpdate.md)|  | |
 
 ### Return type
@@ -220,13 +220,13 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetId** | **kotlin.String**| Unique identifier of a business asset. | |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **fetchSystemUsers** | **kotlin.Boolean**| Fetches system users if True. Fetches regular user employees if False. | [optional] [default to false] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -283,12 +283,12 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **assetId** | **kotlin.String**| Unique identifier of a business asset. | |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -348,6 +348,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **permissions** | [**kotlin.collections.List&lt;PermissionsWithOwner&gt;**](PermissionsWithOwner.md)| A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [optional] |
 | **childAssetId** | **kotlin.String**| A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [optional] |
@@ -355,8 +357,6 @@ try {
 | **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AssetType.AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER] |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -420,6 +420,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **memberId** | **kotlin.String**| The member id to fetch assets for. | |
 | **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AssetType.AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP, CATALOG, CONSUMER, CONVERSION_TAG] |
@@ -431,8 +433,6 @@ try {
 | **assetPermissionType** | [**AssetPermissionType**](.md)| The type of asset permission to filter by | [optional] [enum: AGGREGATED_PERMISSION, DIRECT_PERMISSION] |
 | **adAccountStatuses** | [**kotlin.collections.List&lt;NonDraftEntityStatus&gt;**](NonDraftEntityStatus.md)| A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -486,9 +486,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **businessMembersAssetAccessDeleteBody** | [**BusinessMembersAssetAccessDeleteBody**](BusinessMembersAssetAccessDeleteBody.md)|  | |
 
 ### Return type
@@ -542,9 +542,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **updateMemberAssetAccessBody** | [**UpdateMemberAssetAccessBody**](UpdateMemberAssetAccessBody.md)|  | |
 
 ### Return type
@@ -607,6 +607,8 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **partnerId** | **kotlin.String**| The partner id to be bound to the Business | |
 | **partnerType** | **kotlin.String**| Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [default to PartnerType.INTERNAL] [enum: INTERNAL, EXTERNAL] |
@@ -617,8 +619,6 @@ try {
 | **searchBy** | [**AssetSearchBy**](.md)| The field to search member assets by | [optional] [enum: NAME, ID, NAME_OR_ID, OWNER_NAME, NAME_OR_OWNER] |
 | **searchValue** | **kotlin.String**| The value to search for | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -672,9 +672,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **deletePartnerAssetAccessBody** | [**DeletePartnerAssetAccessBody**](DeletePartnerAssetAccessBody.md)|  | |
 
 ### Return type
@@ -728,9 +728,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **updatePartnerAssetAccessBody** | [**UpdatePartnerAssetAccessBody**](UpdatePartnerAssetAccessBody.md)|  | |
 
 ### Return type

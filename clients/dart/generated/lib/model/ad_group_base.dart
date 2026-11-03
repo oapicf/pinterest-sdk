@@ -465,7 +465,9 @@ class AdGroupBase {
         isCreativeOptimization: mapValueOfType<bool>(json, r'is_creative_optimization'),
         isLocalInventory: mapValueOfType<bool>(json, r'is_local_inventory'),
         lifetimeFrequencyCap: mapValueOfType<int>(json, r'lifetime_frequency_cap'),
-        localInventoryRadiusInMiles: num.parse('${json[r'local_inventory_radius_in_miles']}'),
+        localInventoryRadiusInMiles: json[r'local_inventory_radius_in_miles'] == null
+            ? null
+            : num.parse('${json[r'local_inventory_radius_in_miles']}'),
         name: mapValueOfType<String>(json, r'name')!,
         optimizationGoalMetadata: NullableOptimizationGoalMetadata.fromJson(json[r'optimization_goal_metadata']),
         performancePlusCampaignSettings: PerformancePlusCampaignSettings.fromJson(json[r'performance_plus_campaign_settings']),

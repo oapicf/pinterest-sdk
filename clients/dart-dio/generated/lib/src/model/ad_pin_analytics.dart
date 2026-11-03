@@ -126,3 +126,4 @@ class _$AdPinAnalyticsSerializer implements PrimitiveSerializer<AdPinAnalytics> 
   }
 }
 
+

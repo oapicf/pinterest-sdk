@@ -251,22 +251,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: id.");
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: index.");
 
             if (key.IsSet && key.Value == null)
-                throw new ArgumentNullException(nameof(key), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: key.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: name.");
 
             if (ratio.IsSet && ratio.Value == null)
-                throw new ArgumentNullException(nameof(ratio), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: ratio.");
 
             if (subcategories.IsSet && subcategories.Value == null)
-                throw new ArgumentNullException(nameof(subcategories), "Property is not nullable for class AudienceCategory.");
+                throw new JsonException("Property is not nullable for class AudienceCategory: subcategories.");
 
             return new AudienceCategory(id, index, key, name, ratio, subcategories);
         }
@@ -277,7 +277,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceCategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceCategory audienceCategory, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -292,20 +291,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceCategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceCategory audienceCategory, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audienceCategory.IdOption.IsSet && audienceCategory.Id == null)
-                throw new ArgumentNullException(nameof(audienceCategory.Id), "Property is required for class AudienceCategory.");
+                throw new JsonException("Cannot write null property AudienceCategory.Id to non-nullable JSON property 'id'.");
+
+            if (audienceCategory.IndexOption.IsSet && audienceCategory.Index == null)
+                throw new JsonException("Cannot write null property AudienceCategory.Index to non-nullable JSON property 'index'.");
 
             if (audienceCategory.KeyOption.IsSet && audienceCategory.Key == null)
-                throw new ArgumentNullException(nameof(audienceCategory.Key), "Property is required for class AudienceCategory.");
+                throw new JsonException("Cannot write null property AudienceCategory.Key to non-nullable JSON property 'key'.");
 
             if (audienceCategory.NameOption.IsSet && audienceCategory.Name == null)
-                throw new ArgumentNullException(nameof(audienceCategory.Name), "Property is required for class AudienceCategory.");
+                throw new JsonException("Cannot write null property AudienceCategory.Name to non-nullable JSON property 'name'.");
+
+            if (audienceCategory.RatioOption.IsSet && audienceCategory.Ratio == null)
+                throw new JsonException("Cannot write null property AudienceCategory.Ratio to non-nullable JSON property 'ratio'.");
 
             if (audienceCategory.SubcategoriesOption.IsSet && audienceCategory.Subcategories == null)
-                throw new ArgumentNullException(nameof(audienceCategory.Subcategories), "Property is required for class AudienceCategory.");
+                throw new JsonException("Cannot write null property AudienceCategory.Subcategories to non-nullable JSON property 'subcategories'.");
 
             if (audienceCategory.IdOption.IsSet)
                 writer.WriteString("id", audienceCategory.Id);

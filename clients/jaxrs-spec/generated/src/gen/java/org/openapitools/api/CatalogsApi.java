@@ -60,7 +60,7 @@ import javax.validation.Valid;
 */
 @Path("/catalogs")
 @Api(description = "the catalogs API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsApi {
 
     @GET
@@ -79,7 +79,12 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsAvailableFilterValues(@QueryParam("catalog_id") @NotNull @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id.")  String catalogId,@QueryParam("feed_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given feed_id. If not given, all feeds are considered.")  String feedId,@QueryParam("country")  @ApiParam("Country for the Catalogs Items")  Country country,@QueryParam("language")  @ApiParam("Language for the Catalogs Items")  CatalogsLocale language,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsAvailableFilterValues(@QueryParam("catalog_id") @NotNull @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id.")  String catalogId
+,@QueryParam("feed_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given feed_id. If not given, all feeds are considered.")  String feedId
+,@QueryParam("country")  @ApiParam("Country for the Catalogs Items")  Country country
+,@QueryParam("language")  @ApiParam("Language for the Catalogs Items")  CatalogsLocale language
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -100,7 +105,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsCreate(@Valid @NotNull CatalogCreate catalogCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsCreate(@Valid @NotNull CatalogCreate catalogCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -119,7 +126,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsList(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response catalogsList(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -141,7 +151,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalInventoryItemsBatchOperate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@Valid @NotNull LocalInventoryItemsBatchCreate localInventoryItemsBatchCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsLocalInventoryItemsBatchOperate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@Valid @NotNull LocalInventoryItemsBatchCreate localInventoryItemsBatchCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -163,7 +176,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalInventoryItemsPost(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@Valid @NotNull LocalInventoryItemsGetCreate localInventoryItemsGetCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsLocalInventoryItemsPost(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@Valid @NotNull LocalInventoryItemsGetCreate localInventoryItemsGetCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -185,7 +201,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresCreate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@Valid @NotNull List<@Valid LocalStoreCreate> localStoreCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsLocalStoresCreate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@NotNull List<@Valid LocalStoreCreate> localStoreCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -206,7 +225,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresDelete(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@QueryParam("ids") @NotNull  @ApiParam("List of local store IDs to filter by.")  List<@Pattern(regexp = "^\\d+$")String> ids,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsLocalStoresDelete(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@QueryParam("ids") @NotNull  @ApiParam("List of local store IDs to filter by.")  List<@Pattern(regexp = "^\\d+$")String> ids
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -226,7 +248,12 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresList(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@QueryParam("ids")  @ApiParam("List of local store IDs to filter by.")  List<@Pattern(regexp = "^\\d+$")String> ids,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response catalogsLocalStoresList(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@QueryParam("ids")  @ApiParam("List of local store IDs to filter by.")  List<@Pattern(regexp = "^\\d+$")String> ids
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -247,7 +274,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresUpdate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@Valid @NotNull List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsLocalStoresUpdate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@NotNull List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -273,7 +303,12 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupPinsList(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response catalogsProductGroupPinsList(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -295,7 +330,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsCreate(@Valid @NotNull CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsCreate(@Valid @NotNull CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -316,7 +353,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsCreateMany(@Valid @NotNull List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsCreateMany(@NotNull List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -337,7 +376,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsDelete(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsDelete(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -357,7 +398,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsDeleteMany(@QueryParam("id") @NotNull @Size(min=1,max=1000)  @ApiParam("Comma-separated list of product group ids")  List<Integer> id,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsDeleteMany(@QueryParam("id") @NotNull @Size(min=1,max=1000)  @ApiParam("Comma-separated list of product group ids")  List<Integer> id
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -377,7 +420,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsGet(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsGet(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -397,7 +442,13 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsList(@QueryParam("id") @Size(min=1,max=1000)  @ApiParam("Comma-separated list of product group ids")  List<Integer> id,@QueryParam("feed_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given feed_id. If not given, all feeds are considered.")  String feedId,@QueryParam("catalog_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id. If not given, all catalogs are considered.")  String catalogId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response catalogsProductGroupsList(@QueryParam("id") @Size(min=1,max=1000)  @ApiParam("Comma-separated list of product group ids")  List<Integer> id
+,@QueryParam("feed_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given feed_id. If not given, all feeds are considered.")  String feedId
+,@QueryParam("catalog_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id. If not given, all catalogs are considered.")  String catalogId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -417,7 +468,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsProductCountsGet(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsProductCountsGet(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -438,7 +491,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsUpdate(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId,@Valid @NotNull CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsProductGroupsUpdate(@PathParam("product_group_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a product group") String productGroupId
+,@Valid @NotNull CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -458,7 +514,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsSupplementalItemsBatchGet(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId,@PathParam("batch_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of an items batch operation.") String batchId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response catalogsSupplementalItemsBatchGet(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) @ApiParam("Unique identifier of a catalog.") String catalogId
+,@PathParam("batch_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of an items batch operation.") String batchId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -478,7 +537,11 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedProcessingResultsList(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response feedProcessingResultsList(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -504,7 +567,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsCreate(@Valid @NotNull CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response feedsCreate(@Valid @NotNull CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -529,7 +594,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsDelete(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response feedsDelete(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -551,7 +618,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsGet(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response feedsGet(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -571,7 +640,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsIngest(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response feedsIngest(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -593,7 +664,11 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsList(@QueryParam("catalog_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id. If not given, all catalogs are considered.")  String catalogId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response feedsList(@QueryParam("catalog_id") @Pattern(regexp="^\\d+$")  @ApiParam("Filter entities for a given catalog_id. If not given, all catalogs are considered.")  String catalogId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -618,7 +693,10 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response feedsUpdate(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId,@Valid @NotNull CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response feedsUpdate(@PathParam("feed_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed.") String feedId
+,@Valid @NotNull CatalogsFeedUpdateRequestSchema catalogsFeedUpdateRequestSchema
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -640,7 +718,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response itemsBatchGet(@PathParam("batch_id") @Pattern(regexp="^\\d+$") @ApiParam("Id of a catalogs items batch to fetch") String batchId,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response itemsBatchGet(@PathParam("batch_id") @Pattern(regexp="^\\d+$") @ApiParam("Id of a catalogs items batch to fetch") String batchId
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -665,7 +745,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response itemsBatchPost(@Valid @NotNull CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response itemsBatchPost(@Valid @NotNull CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -685,7 +767,13 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response itemsIssuesList(@PathParam("processing_result_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).") String processingResultId,@QueryParam("item_numbers")  @ApiParam("Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.")  List<Integer> itemNumbers,@QueryParam("item_validation_issue")  @ApiParam("Filter item validation issues that have a given type of item validation issue.")  CatalogsItemValidationIssue itemValidationIssue,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response itemsIssuesList(@PathParam("processing_result_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).") String processingResultId
+,@QueryParam("item_numbers")  @ApiParam("Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.")  List<Integer> itemNumbers
+,@QueryParam("item_validation_issue")  @ApiParam("Filter item validation issues that have a given type of item validation issue.")  CatalogsItemValidationIssue itemValidationIssue
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -706,7 +794,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response itemsPost(@Valid @NotNull CatalogsItemsRequest catalogsItemsRequest,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response itemsPost(@Valid @NotNull CatalogsItemsRequest catalogsItemsRequest
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -729,7 +819,12 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productsByProductGroupFilterList(@Valid @NotNull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics) {
+    public Response productsByProductGroupFilterList(@Valid @NotNull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("pin_metrics") @DefaultValue("false")  @ApiParam("Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")  Boolean pinMetrics
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -751,7 +846,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response reportsCreate(@Valid @NotNull CatalogsReportParameters catalogsReportParameters,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response reportsCreate(@Valid @NotNull CatalogsReportParameters catalogsReportParameters
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -771,7 +868,9 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response reportsGet(@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response reportsGet(@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -791,7 +890,11 @@ public class CatalogsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response reportsStats(@QueryParam("parameters") @NotNull  @ApiParam("Contains the parameters for report identification.")  CatalogsReportStatsParameters parameters,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response reportsStats(@QueryParam("parameters") @NotNull  @ApiParam("Contains the parameters for report identification.")  CatalogsReportStatsParameters parameters
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 }

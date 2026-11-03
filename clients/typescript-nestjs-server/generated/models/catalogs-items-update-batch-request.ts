@@ -125,11 +125,11 @@ export namespace CatalogsItemsUpdateBatchRequest {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
   } as const;
   export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
   export const OperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

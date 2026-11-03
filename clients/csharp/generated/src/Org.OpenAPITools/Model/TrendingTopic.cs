@@ -239,49 +239,49 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!description.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(description));
+                throw new JsonException("Property is required for class TrendingTopic: description.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(id));
+                throw new JsonException("Property is required for class TrendingTopic: id.");
 
             if (!pins.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(pins));
+                throw new JsonException("Property is required for class TrendingTopic: pins.");
 
             if (!relatedInterests.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(relatedInterests));
+                throw new JsonException("Property is required for class TrendingTopic: related_interests.");
 
             if (!relatedSearches.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(relatedSearches));
+                throw new JsonException("Property is required for class TrendingTopic: related_searches.");
 
             if (!timeSeries.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(timeSeries));
+                throw new JsonException("Property is required for class TrendingTopic: time_series.");
 
             if (!title.IsSet)
-                throw new ArgumentException("Property is required for class TrendingTopic.", nameof(title));
+                throw new JsonException("Property is required for class TrendingTopic: title.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: description.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: id.");
 
             if (pins.IsSet && pins.Value == null)
-                throw new ArgumentNullException(nameof(pins), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: pins.");
 
             if (relatedInterests.IsSet && relatedInterests.Value == null)
-                throw new ArgumentNullException(nameof(relatedInterests), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: related_interests.");
 
             if (relatedSearches.IsSet && relatedSearches.Value == null)
-                throw new ArgumentNullException(nameof(relatedSearches), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: related_searches.");
 
             if (timeSeries.IsSet && timeSeries.Value == null)
-                throw new ArgumentNullException(nameof(timeSeries), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: time_series.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: title.");
 
             if (percentGrowthMom.IsSet && percentGrowthMom.Value == null)
-                throw new ArgumentNullException(nameof(percentGrowthMom), "Property is not nullable for class TrendingTopic.");
+                throw new JsonException("Property is not nullable for class TrendingTopic: percent_growth_mom.");
 
             return new TrendingTopic(description.Value!, id.Value!, pins.Value!, relatedInterests.Value!, relatedSearches.Value!, timeSeries.Value!, title.Value!, percentGrowthMom);
         }
@@ -292,7 +292,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingTopic"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendingTopic trendingTopic, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -307,29 +306,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingTopic"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendingTopic trendingTopic, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (trendingTopic.Description == null)
-                throw new ArgumentNullException(nameof(trendingTopic.Description), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.Id == null)
-                throw new ArgumentNullException(nameof(trendingTopic.Id), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.Pins == null)
-                throw new ArgumentNullException(nameof(trendingTopic.Pins), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.RelatedInterests == null)
-                throw new ArgumentNullException(nameof(trendingTopic.RelatedInterests), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.RelatedSearches == null)
-                throw new ArgumentNullException(nameof(trendingTopic.RelatedSearches), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.TimeSeries == null)
-                throw new ArgumentNullException(nameof(trendingTopic.TimeSeries), "Property is required for class TrendingTopic.");
-
-            if (trendingTopic.Title == null)
-                throw new ArgumentNullException(nameof(trendingTopic.Title), "Property is required for class TrendingTopic.");
+            if (trendingTopic.PercentGrowthMomOption.IsSet && trendingTopic.PercentGrowthMom == null)
+                throw new JsonException("Cannot write null property TrendingTopic.PercentGrowthMom to non-nullable JSON property 'percent_growth_mom'.");
 
             writer.WriteString("description", trendingTopic.Description);
 

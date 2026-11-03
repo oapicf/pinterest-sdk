@@ -206,7 +206,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsReportDistributionIssueFilter.ReportTypeEnum?>(CatalogsReportDistributionIssueFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsReportDistributionIssueFilter.ReportTypeEnum? reportTypeValue = CatalogsReportDistributionIssueFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsReportDistributionIssueFilter.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -218,13 +223,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!reportType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsReportDistributionIssueFilter.", nameof(reportType));
+                throw new JsonException("Property is required for class CatalogsReportDistributionIssueFilter: report_type.");
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsReportDistributionIssueFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionIssueFilter: report_type.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsReportDistributionIssueFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionIssueFilter: catalog_id.");
 
             return new CatalogsReportDistributionIssueFilter(reportType.Value!.Value!, catalogId);
         }
@@ -235,7 +240,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportDistributionIssueFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -250,11 +254,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportDistributionIssueFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsReportDistributionIssueFilter catalogsReportDistributionIssueFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsReportDistributionIssueFilter.CatalogIdOption.IsSet && catalogsReportDistributionIssueFilter.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsReportDistributionIssueFilter.CatalogId), "Property is required for class CatalogsReportDistributionIssueFilter.");
+                throw new JsonException("Cannot write null property CatalogsReportDistributionIssueFilter.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             var reportTypeRawValue = CatalogsReportDistributionIssueFilter.ReportTypeEnumToJsonValue(catalogsReportDistributionIssueFilter.ReportType);
             writer.WriteString("report_type", reportTypeRawValue);

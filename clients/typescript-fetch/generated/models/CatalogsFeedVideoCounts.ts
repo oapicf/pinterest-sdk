@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedVideoCounts {
     /**
      * The number of videos successfully ingested from the feed file.
-     * @type {number}
-     * @memberof CatalogsFeedVideoCounts
      */
     ingestedVideos?: number;
     /**
      * The number of videos that were not ingested from the feed file.
-     * @type {number}
-     * @memberof CatalogsFeedVideoCounts
      */
     notIngestedVideos?: number;
     /**
      * The number of videos in the feed file.
-     * @type {number}
-     * @memberof CatalogsFeedVideoCounts
      */
     totalVideos?: number;
 }

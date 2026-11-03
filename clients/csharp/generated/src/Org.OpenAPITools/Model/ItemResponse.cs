@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsRetailItemResponse"></param>
-        public ItemResponse(CatalogsRetailItemResponse catalogsRetailItemResponse)
+        internal ItemResponse(CatalogsRetailItemResponse catalogsRetailItemResponse)
         {
             CatalogsRetailItemResponse = catalogsRetailItemResponse;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsHotelItemResponse"></param>
-        public ItemResponse(CatalogsHotelItemResponse catalogsHotelItemResponse)
+        internal ItemResponse(CatalogsHotelItemResponse catalogsHotelItemResponse)
         {
             CatalogsHotelItemResponse = catalogsHotelItemResponse;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsItemResponse"></param>
-        public ItemResponse(CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse)
+        internal ItemResponse(CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse)
         {
             CatalogsCreativeAssetsItemResponse = catalogsCreativeAssetsItemResponse;
             OnCreated();
@@ -65,7 +65,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsRetailItemErrorResponse"></param>
-        public ItemResponse(CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse)
+        internal ItemResponse(CatalogsRetailItemErrorResponse catalogsRetailItemErrorResponse)
         {
             CatalogsRetailItemErrorResponse = catalogsRetailItemErrorResponse;
             OnCreated();
@@ -75,7 +75,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsHotelItemErrorResponse"></param>
-        public ItemResponse(CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse)
+        internal ItemResponse(CatalogsHotelItemErrorResponse catalogsHotelItemErrorResponse)
         {
             CatalogsHotelItemErrorResponse = catalogsHotelItemErrorResponse;
             OnCreated();
@@ -85,7 +85,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="ItemResponse" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsItemErrorResponse"></param>
-        public ItemResponse(CatalogsCreativeAssetsItemErrorResponse catalogsCreativeAssetsItemErrorResponse)
+        internal ItemResponse(CatalogsCreativeAssetsItemErrorResponse catalogsCreativeAssetsItemErrorResponse)
         {
             CatalogsCreativeAssetsItemErrorResponse = catalogsCreativeAssetsItemErrorResponse;
             OnCreated();
@@ -318,7 +318,12 @@ namespace Org.OpenAPITools.Model
                         case "item_response_kind":
                             string? itemResponseKindRawValue = utf8JsonReader.GetString();
                             if (itemResponseKindRawValue != null)
-                                itemResponseKind = new Option<ItemResponse.ItemResponseKindEnum?>(ItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue));
+                            {
+                                ItemResponse.ItemResponseKindEnum? itemResponseKindValue = ItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue);
+                                if (itemResponseKindValue == null)
+                                    throw new JsonException();
+                                itemResponseKind = new Option<ItemResponse.ItemResponseKindEnum?>(itemResponseKindValue);
+                            }
                             break;
                         default:
                             break;
@@ -327,10 +332,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemResponseKind.IsSet)
-                throw new ArgumentException("Property is required for class ItemResponse.", nameof(itemResponseKind));
+                throw new JsonException("Property is required for class ItemResponse: item_response_kind.");
 
             if (itemResponseKind.IsSet && itemResponseKind.Value == null)
-                throw new ArgumentNullException(nameof(itemResponseKind), "Property is not nullable for class ItemResponse.");
+                throw new JsonException("Property is not nullable for class ItemResponse: item_response_kind.");
 
             if (catalogsCreativeAssetsItemResponse != null)
                 return new ItemResponse(catalogsCreativeAssetsItemResponse);
@@ -359,7 +364,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemResponse itemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -410,7 +414,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemResponse itemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
 

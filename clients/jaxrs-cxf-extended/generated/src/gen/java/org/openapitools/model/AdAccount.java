@@ -51,7 +51,6 @@ public class AdAccount  {
   private AdAccountOwner owner;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
  /**

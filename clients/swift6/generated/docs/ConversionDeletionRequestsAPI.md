@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **conversionDeletionRequestCreate**
 ```swift
-    open class func conversionDeletionRequestCreate(adAccountId: String, conversionDeletionRequestCreate: ConversionDeletionRequestCreate, completion: @escaping (_ data: ConversionDeletionRequest?, _ error: Error?) -> Void)
+    open class func conversionDeletionRequestCreate(adAccountId: String, conversionDeletionRequestCreate: ConversionDeletionRequestCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionDeletionRequest
 ```
 
 Create a conversion deletion request
@@ -28,15 +28,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let conversionDeletionRequestCreate = ConversionDeletionRequestCreate(deletionTargets: ConversionDeletionRequestTargets(userEmails: ["userEmails_example"], epiks: ["epiks_example"])) // ConversionDeletionRequestCreate | 
 
 // Create a conversion deletion request
-ConversionDeletionRequestsAPI.conversionDeletionRequestCreate(adAccountId: adAccountId, conversionDeletionRequestCreate: conversionDeletionRequestCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionDeletionRequestsAPI.conversionDeletionRequestCreate(adAccountId: adAccountId, conversionDeletionRequestCreate: conversionDeletionRequestCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -64,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **conversionDeletionRequestDelete**
 ```swift
-    open class func conversionDeletionRequestDelete(requestId: String, adAccountId: String, completion: @escaping (_ data: ConversionDeletionRequest?, _ error: Error?) -> Void)
+    open class func conversionDeletionRequestDelete(requestId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionDeletionRequest?
 ```
 
 Delete a conversion deletion request
@@ -80,15 +76,11 @@ let requestId = "requestId_example" // String | Unique identifier of the convers
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Delete a conversion deletion request
-ConversionDeletionRequestsAPI.conversionDeletionRequestDelete(requestId: requestId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionDeletionRequestsAPI.conversionDeletionRequestDelete(requestId: requestId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **conversionDeletionRequestGet**
 ```swift
-    open class func conversionDeletionRequestGet(requestId: String, adAccountId: String, completion: @escaping (_ data: ConversionDeletionRequest?, _ error: Error?) -> Void)
+    open class func conversionDeletionRequestGet(requestId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionDeletionRequest
 ```
 
 Get a single conversion deletion request
@@ -132,15 +124,11 @@ let requestId = "requestId_example" // String | Unique identifier of the convers
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get a single conversion deletion request
-ConversionDeletionRequestsAPI.conversionDeletionRequestGet(requestId: requestId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionDeletionRequestsAPI.conversionDeletionRequestGet(requestId: requestId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -168,7 +156,7 @@ Name | Type | Description  | Notes
 
 # **conversionDeletionRequestList**
 ```swift
-    open class func conversionDeletionRequestList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: ConversionDeletionRequestList200Response?, _ error: Error?) -> Void)
+    open class func conversionDeletionRequestList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionDeletionRequestList200Response
 ```
 
 List conversion deletion requests
@@ -186,15 +174,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // List conversion deletion requests
-ConversionDeletionRequestsAPI.conversionDeletionRequestList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionDeletionRequestsAPI.conversionDeletionRequestList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

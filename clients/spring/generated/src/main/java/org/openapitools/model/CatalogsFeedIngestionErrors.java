@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -20,34 +19,25 @@ import jakarta.annotation.Generated;
  * CatalogsFeedIngestionErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionErrors {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ACCOUNT_FLAGGED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_GOOGLE_SHEET_NOT_SHARED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_FILE_NOT_FOUND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_INVALID_FILE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_MALFORMED_URL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LARGE_PRODUCT_COUNT_DECREASE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINE_LEVEL_INTERNAL_ERROR;
 
   public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(@Nullable Integer ACCOUNT_FLAGGED) {

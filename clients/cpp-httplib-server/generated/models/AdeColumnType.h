@@ -12,24 +12,564 @@
 
 namespace models {
 
-
-class AdeColumnType
-{
-public:
-
-    AdeColumnType();
-    virtual ~AdeColumnType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdeColumnType,
-        )
-
-private:
+enum class AdeColumnType {
+    
+    ADE_COST_PER_ACTION,
+    
+    ADE_ROAS,
+    
+    ADE_TOTAL_CONVERSIONS,
+    
+    ADE_TOTAL_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_CLICK,
+    
+    ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_VIEW,
+    
+    ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_CONVERSION_RATE,
+    
+    ADE_WEB_COST_PER_ACTION,
+    
+    ADE_WEB_ROAS,
+    
+    ADE_TOTAL_WEB_CONVERSIONS,
+    
+    ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_WEB_CLICK,
+    
+    ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_WEB_VIEW,
+    
+    ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_INAPP_COST_PER_ACTION,
+    
+    ADE_INAPP_ROAS,
+    
+    ADE_TOTAL_INAPP_CONVERSIONS,
+    
+    ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_INAPP_CLICK,
+    
+    ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_INAPP_VIEW,
+    
+    ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_OFFLINE_COST_PER_ACTION,
+    
+    ADE_OFFLINE_ROAS,
+    
+    ADE_TOTAL_OFFLINE_CONVERSIONS,
+    
+    ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_OFFLINE_CLICK,
+    
+    ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_OFFLINE_VIEW,
+    
+    ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR,
+    
+    ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY,
+    
+    ADE_TOTAL_CONVERSION_PRODUCT_VALUE,
+    
+    ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS,
+    
+    ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD,
+    
+    ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD,
+    
+    ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY,
+    
+    ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE,
+    
+    ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS,
+    
+    ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD,
+    
+    ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD,
+    
+    ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY,
+    
+    ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE,
+    
+    ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS,
+    
+    ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD,
+    
+    ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD,
+    
+    ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY,
+    
+    ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE,
+    
+    ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS,
+    
+    ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD,
+    
+    ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdeColumnType& value)
+{
+    switch (value)
+    {
+        
+        case AdeColumnType::ADE_COST_PER_ACTION: j = "ADE_COST_PER_ACTION"; break;
+        
+        case AdeColumnType::ADE_ROAS: j = "ADE_ROAS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSIONS: j = "ADE_TOTAL_CONVERSIONS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR: j = "ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CLICK: j = "ADE_TOTAL_CLICK"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_VIEW: j = "ADE_TOTAL_VIEW"; break;
+        
+        case AdeColumnType::ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_RATE: j = "ADE_TOTAL_CONVERSION_RATE"; break;
+        
+        case AdeColumnType::ADE_WEB_COST_PER_ACTION: j = "ADE_WEB_COST_PER_ACTION"; break;
+        
+        case AdeColumnType::ADE_WEB_ROAS: j = "ADE_WEB_ROAS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSIONS: j = "ADE_TOTAL_WEB_CONVERSIONS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CLICK: j = "ADE_TOTAL_WEB_CLICK"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_VIEW: j = "ADE_TOTAL_WEB_VIEW"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_INAPP_COST_PER_ACTION: j = "ADE_INAPP_COST_PER_ACTION"; break;
+        
+        case AdeColumnType::ADE_INAPP_ROAS: j = "ADE_INAPP_ROAS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSIONS: j = "ADE_TOTAL_INAPP_CONVERSIONS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CLICK: j = "ADE_TOTAL_INAPP_CLICK"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_VIEW: j = "ADE_TOTAL_INAPP_VIEW"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_OFFLINE_COST_PER_ACTION: j = "ADE_OFFLINE_COST_PER_ACTION"; break;
+        
+        case AdeColumnType::ADE_OFFLINE_ROAS: j = "ADE_OFFLINE_ROAS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSIONS: j = "ADE_TOTAL_OFFLINE_CONVERSIONS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CLICK: j = "ADE_TOTAL_OFFLINE_CLICK"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_VIEW: j = "ADE_TOTAL_OFFLINE_VIEW"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR: j = "ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY: j = "ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE: j = "ADE_TOTAL_CONVERSION_PRODUCT_VALUE"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS: j = "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD: j = "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD: j = "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY: j = "ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE: j = "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS: j = "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD: j = "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD: j = "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY: j = "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE: j = "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS: j = "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD: j = "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD: j = "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY: j = "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE: j = "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS: j = "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD: j = "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD"; break;
+        
+        case AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD: j = "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdeColumnType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdeColumnType& value)
+{
+    
+    if (j == "ADE_COST_PER_ACTION")
+    {
+        value = AdeColumnType::ADE_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "ADE_ROAS")
+    {
+        value = AdeColumnType::ADE_ROAS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSIONS")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSIONS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_AVERAGE_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CLICK")
+    {
+        value = AdeColumnType::ADE_TOTAL_CLICK;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_CLICK_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_VIEW")
+    {
+        value = AdeColumnType::ADE_TOTAL_VIEW;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_VIEW_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_RATE")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "ADE_WEB_COST_PER_ACTION")
+    {
+        value = AdeColumnType::ADE_WEB_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "ADE_WEB_ROAS")
+    {
+        value = AdeColumnType::ADE_WEB_ROAS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSIONS")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSIONS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CLICK")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CLICK;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CLICK_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_VIEW")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_VIEW;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_VIEW_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_INAPP_COST_PER_ACTION")
+    {
+        value = AdeColumnType::ADE_INAPP_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "ADE_INAPP_ROAS")
+    {
+        value = AdeColumnType::ADE_INAPP_ROAS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSIONS")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSIONS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CLICK")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CLICK;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CLICK_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_VIEW")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_VIEW;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_VIEW_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_OFFLINE_COST_PER_ACTION")
+    {
+        value = AdeColumnType::ADE_OFFLINE_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "ADE_OFFLINE_ROAS")
+    {
+        value = AdeColumnType::ADE_OFFLINE_ROAS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSIONS")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSIONS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CLICK")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CLICK;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CLICK_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_VIEW")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_VIEW;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_VIEW_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_QUANTITY;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_PRODUCT_VALUE")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_QUANTITY;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_WEB_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_QUANTITY;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_INAPP_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_QUANTITY;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD;
+        return;
+    }
+    
+    if (j == "ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD")
+    {
+        value = AdeColumnType::ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdeColumnType", &j);
+}
 
 } // namespace models
 

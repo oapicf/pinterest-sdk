@@ -21,7 +21,7 @@ import javax.validation.Valid;
 */
 @Path("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts")
 @Api(description = "the business_access API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessAccessApi {
 
     @POST
@@ -42,7 +42,9 @@ public class BusinessAccessApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response brandAccountsCreate(@PathParam("business_hierarchy_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("business hierarchy node id") String businessHierarchyId,@Valid @NotNull BrandAccountCreate brandAccountCreate) {
+    public Response brandAccountsCreate(@PathParam("business_hierarchy_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("business hierarchy node id") String businessHierarchyId
+,@Valid @NotNull BrandAccountCreate brandAccountCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -65,7 +67,10 @@ public class BusinessAccessApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response brandAccountsUpdate(@PathParam("brand_account_id") String brandAccountId,@PathParam("business_hierarchy_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("business hierarchy node id") String businessHierarchyId,@Valid @NotNull BrandAccountUpdate brandAccountUpdate) {
+    public Response brandAccountsUpdate(@PathParam("brand_account_id") String brandAccountId
+,@PathParam("business_hierarchy_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("business hierarchy node id") String businessHierarchyId
+,@Valid @NotNull BrandAccountUpdate brandAccountUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 }

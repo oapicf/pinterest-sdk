@@ -17,7 +17,7 @@ import QuizPinOption from './QuizPinOption';
 /**
  * The QuizPinQuestion model module.
  * @module model/QuizPinQuestion
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class QuizPinQuestion {
     /**

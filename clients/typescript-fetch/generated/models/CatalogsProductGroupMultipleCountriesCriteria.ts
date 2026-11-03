@@ -29,14 +29,10 @@ import {
 export interface CatalogsProductGroupMultipleCountriesCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupMultipleCountriesCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<Country>}
-     * @memberof CatalogsProductGroupMultipleCountriesCriteria
      */
     values: Array<Country>;
 }

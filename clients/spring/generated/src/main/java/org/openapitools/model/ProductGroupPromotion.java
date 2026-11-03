@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,82 +29,57 @@ import jakarta.annotation.Generated;
  * ProductGroupPromotion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotion {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adGroupId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer bidInMicroCurrency;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogProductGroupId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogProductGroupName;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CollectionsHeaderType> collectionsHeaderType = JsonNullable.<CollectionsHeaderType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> collectionsHeroDestinationUrl = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> collectionsHeroPinId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CreativeType creativeType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ProductGroupPromotionCustomizableCTAType customizableCtaType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String definition;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean included;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isGenerateBackground = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isImageAutoResizing = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isMdl;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String parentId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PreferredMediaType> preferredMediaType = JsonNullable.<PreferredMediaType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String relativeDefinition;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> selectedImageTag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> selectedVideoTag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> slideshowCollectionsDescription = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> slideshowCollectionsTitle = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String trackingUrl;
 
   public ProductGroupPromotion adGroupId(@Nullable String adGroupId) {
@@ -202,7 +176,7 @@ public class ProductGroupPromotion {
    * @return collectionsHeaderType
    */
   @Valid 
-  @Schema(name = "collections_header_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "collections_header_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("collections_header_type")
   public JsonNullable<CollectionsHeaderType> getCollectionsHeaderType() {
     return collectionsHeaderType;
@@ -222,7 +196,7 @@ public class ProductGroupPromotion {
    * @return collectionsHeroDestinationUrl
    */
   
-  @Schema(name = "collections_hero_destination_url", example = "http://www.pinterest.com", description = "Collections Hero Destination Url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "collections_hero_destination_url", example = "http://www.pinterest.com", description = "Collections Hero Destination Url", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("collections_hero_destination_url")
   public JsonNullable<String> getCollectionsHeroDestinationUrl() {
     return collectionsHeroDestinationUrl;
@@ -242,7 +216,7 @@ public class ProductGroupPromotion {
    * @return collectionsHeroPinId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "collections_hero_pin_id", example = "123123", description = "Hero Pin ID if this PG is promoted as a Collection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "collections_hero_pin_id", example = "123123", description = "Hero Pin ID if this PG is promoted as a Collection", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("collections_hero_pin_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getCollectionsHeroPinId() {
     return collectionsHeroPinId;
@@ -325,7 +299,7 @@ public class ProductGroupPromotion {
    * @return gridClickType
    */
   @Valid 
-  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("grid_click_type")
   public JsonNullable<GridClickType> getGridClickType() {
     return gridClickType;
@@ -387,7 +361,7 @@ public class ProductGroupPromotion {
    * @return isGenerateBackground
    */
   
-  @Schema(name = "is_generate_background", example = "true", description = "Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_generate_background", example = "true", description = "Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_generate_background")
   public JsonNullable<Boolean> getIsGenerateBackground() {
     return isGenerateBackground;
@@ -407,7 +381,7 @@ public class ProductGroupPromotion {
    * @return isImageAutoResizing
    */
   
-  @Schema(name = "is_image_auto_resizing", example = "true", description = "Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_image_auto_resizing", example = "true", description = "Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_image_auto_resizing")
   public JsonNullable<Boolean> getIsImageAutoResizing() {
     return isImageAutoResizing;
@@ -469,7 +443,7 @@ public class ProductGroupPromotion {
    * @return preferredMediaType
    */
   @Valid 
-  @Schema(name = "preferred_media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "preferred_media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("preferred_media_type")
   public JsonNullable<PreferredMediaType> getPreferredMediaType() {
     return preferredMediaType;
@@ -510,7 +484,7 @@ public class ProductGroupPromotion {
    * @return selectedImageTag
    */
   
-  @Schema(name = "selected_image_tag", example = "holiday_sale", description = "The ad image tag selected for the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "selected_image_tag", example = "holiday_sale", description = "The ad image tag selected for the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("selected_image_tag")
   public JsonNullable<String> getSelectedImageTag() {
     return selectedImageTag;
@@ -530,7 +504,7 @@ public class ProductGroupPromotion {
    * @return selectedVideoTag
    */
   
-  @Schema(name = "selected_video_tag", example = "holiday_sale", description = "The ad video tag selected for the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "selected_video_tag", example = "holiday_sale", description = "The ad video tag selected for the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("selected_video_tag")
   public JsonNullable<String> getSelectedVideoTag() {
     return selectedVideoTag;
@@ -550,7 +524,7 @@ public class ProductGroupPromotion {
    * @return slideshowCollectionsDescription
    */
   
-  @Schema(name = "slideshow_collections_description", example = "slideshow description", description = "Slideshow Collections Description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "slideshow_collections_description", example = "slideshow description", description = "Slideshow Collections Description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("slideshow_collections_description")
   public JsonNullable<String> getSlideshowCollectionsDescription() {
     return slideshowCollectionsDescription;
@@ -570,7 +544,7 @@ public class ProductGroupPromotion {
    * @return slideshowCollectionsTitle
    */
   
-  @Schema(name = "slideshow_collections_title", example = "slideshow title", description = "Slideshow Collections Title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "slideshow_collections_title", example = "slideshow title", description = "Slideshow Collections Title", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("slideshow_collections_title")
   public JsonNullable<String> getSlideshowCollectionsTitle() {
     return slideshowCollectionsTitle;

@@ -76,8 +76,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   */
   @ApiModelProperty(required = true, value = "Array with creative assets item operations")
 
-  @Valid
-
   private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
 public enum LanguageEnum {

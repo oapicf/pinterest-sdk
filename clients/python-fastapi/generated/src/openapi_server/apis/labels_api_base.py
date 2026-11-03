@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.label_create_request import LabelCreateRequest
@@ -24,13 +24,13 @@ class BaseLabelsApi:
         BaseLabelsApi.subclasses = BaseLabelsApi.subclasses + (cls,)
     async def labels_list(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        campaign_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(strict=True, max_length=18)]], Field(min_length=1, max_length=250)]], Field(description="List of Campaign Ids to use to filter the results.")],
-        label_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(strict=True, max_length=18)]], Field(min_length=1, max_length=250)]], Field(description="List of Label Ids to use to filter the results.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        campaign_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(max_length=18)]], Field(min_length=1, max_length=250)]], Field(description="List of Campaign Ids to use to filter the results.")],
+        label_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(max_length=18)]], Field(min_length=1, max_length=250)]], Field(description="List of Label Ids to use to filter the results.")],
         entity_statuses: Annotated[Optional[List[QueryLabelEntityStatusesItems]], Field(description="Label entity status")],
         label_types: Annotated[Optional[List[QueryLabelTypesItems]], Field(description="Label type.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> LabelsList200Response:
         """[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id."""
         ...
@@ -38,7 +38,7 @@ class BaseLabelsApi:
 
     async def labels_create(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         label_create_request: LabelCreateRequest,
     ) -> LabelsResponse:
         """[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign."""
@@ -47,7 +47,7 @@ class BaseLabelsApi:
 
     async def labels_update(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         label_update_request: LabelUpdateRequest,
     ) -> LabelsResponse:
         """[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels."""
@@ -56,8 +56,8 @@ class BaseLabelsApi:
 
     async def labels_apply(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18)],
-        label_id: Annotated[StrictStr, Field(description="Label ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18)],
+        label_id: Annotated[str, Field(description="Label ID.")],
         labeled_entities_create: LabeledEntitiesCreate,
     ) -> LabeledEntities:
         """  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign."""
@@ -66,8 +66,8 @@ class BaseLabelsApi:
 
     async def labels_remove(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18)],
-        label_id: Annotated[StrictStr, Field(description="Label ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18)],
+        label_id: Annotated[str, Field(description="Label ID.")],
         labeled_entities_create: LabeledEntitiesCreate,
     ) -> LabeledEntities:
         """  [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities."""

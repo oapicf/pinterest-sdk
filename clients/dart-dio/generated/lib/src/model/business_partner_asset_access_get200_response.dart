@@ -125,3 +125,4 @@ class _$BusinessPartnerAssetAccessGet200ResponseSerializer implements PrimitiveS
   }
 }
 
+

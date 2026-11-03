@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* bid option field to apply operation updates to
-* Values: BID,APP_TYPE_BID_MULTIPLIER_SET,PLACEMENT_BID_MULTIPLIER_SET
-*/
+ * bid option field to apply operation updates to
+ * Values: BID,APP_TYPE_BID_MULTIPLIER_SET,PLACEMENT_BID_MULTIPLIER_SET
+ */
 enum class UpdateMaskBidOptionField(@get:JsonValue val value: kotlin.String) {
 
     BID("BID"),
@@ -29,9 +29,8 @@ enum class UpdateMaskBidOptionField(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): UpdateMaskBidOptionField {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UpdateMaskBidOptionField'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UpdateMaskBidOptionField'")
         }
     }
 }
-

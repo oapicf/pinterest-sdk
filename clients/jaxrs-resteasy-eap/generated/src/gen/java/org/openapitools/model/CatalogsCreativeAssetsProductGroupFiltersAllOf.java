@@ -14,10 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
   
-  private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   /**
    **/
@@ -25,10 +25,10 @@ public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("all_of")
   @NotNull
-  public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
-  public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

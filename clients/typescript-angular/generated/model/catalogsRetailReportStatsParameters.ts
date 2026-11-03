@@ -19,7 +19,7 @@ export interface CatalogsRetailReportStatsParameters {
 }
 export namespace CatalogsRetailReportStatsParameters {
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL'
+        Retail: 'RETAIL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

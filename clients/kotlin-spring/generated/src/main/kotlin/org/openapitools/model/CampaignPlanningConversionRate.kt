@@ -27,16 +27,16 @@ data class CampaignPlanningConversionRate(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("attribution_windows")
+    @param:JsonProperty("attribution_windows", required = true)
     @get:JsonProperty("attribution_windows", required = true) val attributionWindows: CampaignPlanningConversionAttribution,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("conversion_event")
+    @param:JsonProperty("conversion_event", required = true)
     @get:JsonProperty("conversion_event", required = true) val conversionEvent: CampaignPlanningConversionEvent,
 
     @Schema(example = "2.32600002288818", required = true, description = "Conversion rate estimate. Used to translate impressions into conversions for oCPM ads.")
-    @param:JsonProperty("conversion_rate")
+    @param:JsonProperty("conversion_rate", required = true)
     @get:JsonProperty("conversion_rate", required = true) val conversionRate: kotlin.Float
 ) {
 

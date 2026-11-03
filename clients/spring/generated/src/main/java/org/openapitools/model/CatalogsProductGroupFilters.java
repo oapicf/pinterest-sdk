@@ -26,12 +26,12 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupFilters", description = "Object holding a group of filters for a catalog product group")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFilters {
 
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsProductGroupFilters() {
     super();
@@ -40,12 +40,12 @@ public class CatalogsProductGroupFilters {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupFilters(List<CatalogsProductGroupFilterKeys> anyOf, List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFilters(List<@Valid CatalogsProductGroupFilterKeys> anyOf, List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.anyOf = anyOf;
     this.allOf = allOf;
   }
 
-  public CatalogsProductGroupFilters anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFilters anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -62,19 +62,19 @@ public class CatalogsProductGroupFilters {
    * Get anyOf
    * @return anyOf
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("any_of")
-  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   @JsonProperty("any_of")
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsProductGroupFilters allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFilters allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -91,15 +91,15 @@ public class CatalogsProductGroupFilters {
    * Get allOf
    * @return allOf
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("all_of")
-  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
   @JsonProperty("all_of")
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.IneligibleProductTagsErrorDetails;
@@ -22,12 +21,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductTagsError", description = "Error response for requests containing ineligible product tags.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsError {
 
   private Integer code;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IneligibleProductTagsErrorDetails details;
 
   private String message;

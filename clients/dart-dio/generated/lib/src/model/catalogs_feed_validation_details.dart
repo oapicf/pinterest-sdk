@@ -122,3 +122,4 @@ class _$CatalogsFeedValidationDetailsSerializer implements PrimitiveSerializer<C
   }
 }
 
+

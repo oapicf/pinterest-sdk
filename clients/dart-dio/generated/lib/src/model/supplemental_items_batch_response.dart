@@ -180,3 +180,4 @@ class _$SupplementalItemsBatchResponseSerializer implements PrimitiveSerializer<
   }
 }
 
+

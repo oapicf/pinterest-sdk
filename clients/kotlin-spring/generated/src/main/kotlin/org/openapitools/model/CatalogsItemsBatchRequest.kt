@@ -14,9 +14,6 @@ import org.openapitools.model.CatalogsItemsUpdateBatchRequest
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest
 import org.openapitools.model.Country
 import org.openapitools.model.ItemDeleteBatchRecord
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email

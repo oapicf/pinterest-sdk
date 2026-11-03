@@ -22,7 +22,7 @@ export const InviteStatus = {
     Accepted: 'ACCEPTED',
     Declined: 'DECLINED',
     Cancelled: 'CANCELLED',
-    Expired: 'EXPIRED'
+    Expired: 'EXPIRED',
 } as const;
 export type InviteStatus = typeof InviteStatus[keyof typeof InviteStatus];
 

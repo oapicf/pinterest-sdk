@@ -27,18 +27,18 @@ data class ConversionDeletionRequest(
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Timestamp when the conversion deletion request was succesfully created.")
-    @param:JsonProperty("created_time")
+    @param:JsonProperty("created_time", required = true)
     @get:JsonProperty("created_time", required = true) val createdTime: java.time.LocalDate,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(required = true, description = "Unique identifier of the conversion deletion request")
-    @param:JsonProperty("request_id")
+    @param:JsonProperty("request_id", required = true)
     @get:JsonProperty("request_id", required = true) val requestId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Represents the status of the conversion deletion request. \"PENDING\" or \"SUBMITTED\". \"PENDING\" meaning the Advertiser can cancel the request. The advertiser has a 7 day time window after the conversion deletion request was submitted to cancel it. \"SUBMITTED\" meaning that the Data Deletion process has begun and can no longer be canceled.")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: ConversionDeletionRequestStatus,
 
     @field:Valid

@@ -29,32 +29,22 @@ import {
 export interface EntityDataChangeHistory {
     /**
      * A string identifier representing the changed field on the entity
-     * @type {string}
-     * @memberof EntityDataChangeHistory
      */
     changedFieldId?: string;
     /**
      * The human readable name of the changed field on the entity
-     * @type {string}
-     * @memberof EntityDataChangeHistory
      */
     changedFieldName?: string;
     /**
      * Specifies the type of the field's data values
-     * @type {ChangeHistoryDataType}
-     * @memberof EntityDataChangeHistory
      */
     dataType?: ChangeHistoryDataType;
     /**
      * A string representation of the value of the changed field, after the change
-     * @type {string}
-     * @memberof EntityDataChangeHistory
      */
     newDataValue?: string;
     /**
      * A string representation of the value of the changed field, before the change
-     * @type {string}
-     * @memberof EntityDataChangeHistory
      */
     oldDataValue?: string;
 }

@@ -160,6 +160,7 @@ class _$CatalogsItemsDeleteDiscontinuedBatchRequestSerializer implements Primiti
   }
 }
 
+
 class CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE_DISCONTINUED')

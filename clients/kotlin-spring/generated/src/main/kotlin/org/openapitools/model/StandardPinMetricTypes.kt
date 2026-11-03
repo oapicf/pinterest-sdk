@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Standard Pin metric types
-* Values: IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,TOTAL_COMMENTS,TOTAL_REACTIONS,USER_FOLLOW,PROFILE_VISIT
-*/
+ * Standard Pin metric types
+ * Values: IMPRESSION,OUTBOUND_CLICK,PIN_CLICK,SAVE,SAVE_RATE,TOTAL_COMMENTS,TOTAL_REACTIONS,USER_FOLLOW,PROFILE_VISIT
+ */
 enum class StandardPinMetricTypes(@get:JsonValue val value: kotlin.String) {
 
     IMPRESSION("IMPRESSION"),
@@ -35,9 +35,8 @@ enum class StandardPinMetricTypes(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): StandardPinMetricTypes {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'StandardPinMetricTypes'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'StandardPinMetricTypes'")
         }
     }
 }
-

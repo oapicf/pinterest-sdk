@@ -80,7 +80,7 @@ public enum CatalogTypeEnum {
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.

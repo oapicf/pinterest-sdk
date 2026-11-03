@@ -32,7 +32,6 @@ public class TargetingTemplateCreate  {
   private Boolean autoTargetingEnabled = true;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
 
  /**

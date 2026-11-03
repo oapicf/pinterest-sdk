@@ -19,14 +19,12 @@ public class Keywords  {
   * Keyword error
   */
   @ApiModelProperty(required = true, value = "Keyword error")
-  @Valid
   private List<@Valid KeywordError> errors = new ArrayList<>();
 
  /**
   * Keywords
   */
   @ApiModelProperty(required = true, value = "Keywords")
-  @Valid
   private List<@Valid Keyword> keywords = new ArrayList<>();
  /**
   * Keyword error

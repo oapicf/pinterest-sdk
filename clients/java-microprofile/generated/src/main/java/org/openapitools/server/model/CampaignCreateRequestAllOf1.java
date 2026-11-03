@@ -45,19 +45,19 @@ public class CampaignCreateRequestAllOf1  {
   * Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES
   */
   @JsonbProperty("is_automated_campaign")
-  protected Boolean isAutomatedCampaign;
+  protected Boolean isAutomatedCampaign = false;
 
  /**
   * Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.
   */
   @JsonbProperty("is_campaign_budget_optimization")
-  protected Boolean isCampaignBudgetOptimization;
+  protected Boolean isCampaignBudgetOptimization = true;
 
  /**
   * Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
   */
   @JsonbProperty("is_flexible_daily_budgets")
-  protected Boolean isFlexibleDailyBudgets;
+  protected Boolean isFlexibleDailyBudgets = false;
 
  /**
   * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
@@ -81,7 +81,7 @@ public class CampaignCreateRequestAllOf1  {
   protected ObjectiveType objectiveType;
 
   @JsonbProperty("status")
-  protected EntityStatus status;
+  protected EntityStatus status = EntityStatus.ACTIVE;
 
 
   /**

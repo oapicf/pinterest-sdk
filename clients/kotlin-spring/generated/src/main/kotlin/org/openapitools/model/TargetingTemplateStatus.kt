@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Indicate targeting template is active or Deleted
-* Values: ACTIVE,DELETED
-*/
+ * Indicate targeting template is active or Deleted
+ * Values: ACTIVE,DELETED
+ */
 enum class TargetingTemplateStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class TargetingTemplateStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TargetingTemplateStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingTemplateStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingTemplateStatus'")
         }
     }
 }
-

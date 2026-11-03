@@ -265,7 +265,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailProductGroupProductCounts.CatalogTypeEnum?>(CatalogsRetailProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailProductGroupProductCounts.CatalogTypeEnum? catalogTypeValue = CatalogsRetailProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailProductGroupProductCounts.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "in_stock":
                             inStock = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
@@ -289,37 +294,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupProductCounts.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupProductCounts: catalog_type.");
 
             if (!inStock.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupProductCounts.", nameof(inStock));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupProductCounts: in_stock.");
 
             if (!outOfStock.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupProductCounts.", nameof(outOfStock));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupProductCounts: out_of_stock.");
 
             if (!preorder.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupProductCounts.", nameof(preorder));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupProductCounts: preorder.");
 
             if (!total.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupProductCounts.", nameof(total));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupProductCounts: total.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: catalog_type.");
 
             if (inStock.IsSet && inStock.Value == null)
-                throw new ArgumentNullException(nameof(inStock), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: in_stock.");
 
             if (outOfStock.IsSet && outOfStock.Value == null)
-                throw new ArgumentNullException(nameof(outOfStock), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: out_of_stock.");
 
             if (preorder.IsSet && preorder.Value == null)
-                throw new ArgumentNullException(nameof(preorder), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: preorder.");
 
             if (total.IsSet && total.Value == null)
-                throw new ArgumentNullException(nameof(total), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: total.");
 
             if (videos.IsSet && videos.Value == null)
-                throw new ArgumentNullException(nameof(videos), "Property is not nullable for class CatalogsRetailProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupProductCounts: videos.");
 
             return new CatalogsRetailProductGroupProductCounts(catalogType.Value!.Value!, inStock.Value!.Value!, outOfStock.Value!.Value!, preorder.Value!.Value!, total.Value!.Value!, videos);
         }
@@ -330,7 +335,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailProductGroupProductCounts catalogsRetailProductGroupProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -345,9 +349,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailProductGroupProductCounts catalogsRetailProductGroupProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsRetailProductGroupProductCounts.VideosOption.IsSet && catalogsRetailProductGroupProductCounts.Videos == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupProductCounts.Videos to non-nullable JSON property 'videos'.");
+
             var catalogTypeRawValue = CatalogsRetailProductGroupProductCounts.CatalogTypeEnumToJsonValue(catalogsRetailProductGroupProductCounts.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WriteNumber("in_stock", catalogsRetailProductGroupProductCounts.InStock);

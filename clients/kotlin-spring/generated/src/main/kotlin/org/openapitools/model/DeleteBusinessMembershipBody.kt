@@ -23,7 +23,7 @@ data class DeleteBusinessMembershipBody(
     @field:Valid
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("members")
+    @param:JsonProperty("members", required = true)
     @get:JsonProperty("members", required = true) val members: kotlin.collections.List<DeleteBusinessMembershipMember>
 ) {
 

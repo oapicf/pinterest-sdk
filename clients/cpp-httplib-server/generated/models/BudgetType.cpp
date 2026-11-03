@@ -6,20 +6,3 @@
 */
 #include "BudgetType.h"
 
-namespace models {
-
-BudgetType::BudgetType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

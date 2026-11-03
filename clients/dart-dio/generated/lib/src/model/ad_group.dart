@@ -706,3 +706,4 @@ class _$AdGroupSerializer implements PrimitiveSerializer<AdGroup> {
   }
 }
 
+

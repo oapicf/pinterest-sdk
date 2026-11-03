@@ -17,7 +17,7 @@ import OrderLine from './OrderLine';
 /**
  * The OrderLineMutationError model module.
  * @module model/OrderLineMutationError
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class OrderLineMutationError {
     /**

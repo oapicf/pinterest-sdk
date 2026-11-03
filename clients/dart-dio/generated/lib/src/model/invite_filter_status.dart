@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'invite_filter_status.g.dart';
 
+/// Invite statuses used for filters.
 class InviteFilterStatus extends EnumClass {
 
-  /// Invite statuses used for filters.
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const InviteFilterStatus PENDING = _$PENDING;
-  /// Invite statuses used for filters.
   @BuiltValueEnumConst(wireName: r'EXPIRED')
   static const InviteFilterStatus EXPIRED = _$EXPIRED;
 

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface QuizPinOption {
     /**
      * 
-     * @type {number}
-     * @memberof QuizPinOption
      */
     id?: number;
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinOption
      */
     text?: string;
 }

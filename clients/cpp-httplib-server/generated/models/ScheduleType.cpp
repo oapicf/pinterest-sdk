@@ -6,20 +6,3 @@
 */
 #include "ScheduleType.h"
 
-namespace models {
-
-ScheduleType::ScheduleType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

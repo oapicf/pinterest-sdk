@@ -185,6 +185,7 @@ class _$CatalogsHotelItemResponseSerializer implements PrimitiveSerializer<Catal
   }
 }
 
+
 class CatalogsHotelItemResponseCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')
@@ -198,9 +199,9 @@ class CatalogsHotelItemResponseCatalogTypeEnum extends EnumClass {
   static CatalogsHotelItemResponseCatalogTypeEnum valueOf(String name) => _$catalogsHotelItemResponseCatalogTypeEnumValueOf(name);
 }
 
+/// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 class CatalogsHotelItemResponseItemResponseKindEnum extends EnumClass {
 
-  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
   @BuiltValueEnumConst(wireName: r'hotel_item')
   static const CatalogsHotelItemResponseItemResponseKindEnum hotelItem = _$catalogsHotelItemResponseItemResponseKindEnum_hotelItem;
 

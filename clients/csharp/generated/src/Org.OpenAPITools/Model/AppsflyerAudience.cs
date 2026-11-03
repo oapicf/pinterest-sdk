@@ -162,22 +162,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!containerId.IsSet)
-                throw new ArgumentException("Property is required for class AppsflyerAudience.", nameof(containerId));
+                throw new JsonException("Property is required for class AppsflyerAudience: container_id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class AppsflyerAudience.", nameof(name));
+                throw new JsonException("Property is required for class AppsflyerAudience: name.");
 
             if (!platform.IsSet)
-                throw new ArgumentException("Property is required for class AppsflyerAudience.", nameof(platform));
+                throw new JsonException("Property is required for class AppsflyerAudience: platform.");
 
             if (containerId.IsSet && containerId.Value == null)
-                throw new ArgumentNullException(nameof(containerId), "Property is not nullable for class AppsflyerAudience.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudience: container_id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AppsflyerAudience.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudience: name.");
 
             if (platform.IsSet && platform.Value == null)
-                throw new ArgumentNullException(nameof(platform), "Property is not nullable for class AppsflyerAudience.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudience: platform.");
 
             return new AppsflyerAudience(containerId.Value!, name.Value!, platform.Value!.Value!);
         }
@@ -188,7 +188,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appsflyerAudience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AppsflyerAudience appsflyerAudience, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -203,15 +202,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appsflyerAudience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AppsflyerAudience appsflyerAudience, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (appsflyerAudience.ContainerId == null)
-                throw new ArgumentNullException(nameof(appsflyerAudience.ContainerId), "Property is required for class AppsflyerAudience.");
-
-            if (appsflyerAudience.Name == null)
-                throw new ArgumentNullException(nameof(appsflyerAudience.Name), "Property is required for class AppsflyerAudience.");
-
             writer.WriteString("container_id", appsflyerAudience.ContainerId);
 
             writer.WriteString("name", appsflyerAudience.Name);

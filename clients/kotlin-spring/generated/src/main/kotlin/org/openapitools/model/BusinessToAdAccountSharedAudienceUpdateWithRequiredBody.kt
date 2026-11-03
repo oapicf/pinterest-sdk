@@ -26,16 +26,16 @@ data class BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2542621871096", required = true, description = "Unique identifier of an audience")
-    @param:JsonProperty("audience_id")
+    @param:JsonProperty("audience_id", required = true)
     @get:JsonProperty("audience_id", required = true) val audienceId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation_type")
+    @param:JsonProperty("operation_type", required = true)
     @get:JsonProperty("operation_type", required = true) val operationType: OperationType,
 
     @Schema(required = true, description = "Ad account IDs to share with or revoke from (request) / that received the audience (response).")
-    @param:JsonProperty("recipient_account_ids")
+    @param:JsonProperty("recipient_account_ids", required = true)
     @get:JsonProperty("recipient_account_ids", required = true) val recipientAccountIds: kotlin.collections.List<kotlin.String>
 ) {
 

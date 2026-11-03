@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class EnhancedMatchStatusType
-{
-public:
-
-    EnhancedMatchStatusType();
-    virtual ~EnhancedMatchStatusType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(EnhancedMatchStatusType,
-        )
-
-private:
+enum class EnhancedMatchStatusType {
+    
+    UNKNOWN,
+    
+    NOT_VALIDATED,
+    
+    VALIDATING_IN_PROGRESS,
+    
+    VALIDATION_COMPLETE
+    
 };
 
+inline void to_json(nlohmann::json& j, const EnhancedMatchStatusType& value)
+{
+    switch (value)
+    {
+        
+        case EnhancedMatchStatusType::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case EnhancedMatchStatusType::NOT_VALIDATED: j = "NOT_VALIDATED"; break;
+        
+        case EnhancedMatchStatusType::VALIDATING_IN_PROGRESS: j = "VALIDATING_IN_PROGRESS"; break;
+        
+        case EnhancedMatchStatusType::VALIDATION_COMPLETE: j = "VALIDATION_COMPLETE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for EnhancedMatchStatusType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, EnhancedMatchStatusType& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = EnhancedMatchStatusType::UNKNOWN;
+        return;
+    }
+    
+    if (j == "NOT_VALIDATED")
+    {
+        value = EnhancedMatchStatusType::NOT_VALIDATED;
+        return;
+    }
+    
+    if (j == "VALIDATING_IN_PROGRESS")
+    {
+        value = EnhancedMatchStatusType::VALIDATING_IN_PROGRESS;
+        return;
+    }
+    
+    if (j == "VALIDATION_COMPLETE")
+    {
+        value = EnhancedMatchStatusType::VALIDATION_COMPLETE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for EnhancedMatchStatusType", &j);
+}
 
 } // namespace models
 

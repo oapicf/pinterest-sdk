@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdsAnalytics {
     /**
      * 
-     * @type {string}
-     * @memberof AdsAnalytics
      */
     aDID: string;
     /**
      * 
-     * @type {Date}
-     * @memberof AdsAnalytics
      */
     dATE?: Date;
 }
@@ -52,7 +48,7 @@ export function AdsAnalyticsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'aDID': json['AD_ID'],
-        'dATE': json['DATE'] == null ? undefined : (new Date(json['DATE'])),
+        'dATE': json['DATE'] == null ? undefined : (parseDate(json['DATE'])),
     };
 }
 
@@ -68,7 +64,7 @@ export function AdsAnalyticsToJSONTyped(value?: AdsAnalytics | null, ignoreDiscr
     return {
         
         'AD_ID': value['aDID'],
-        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
+        'DATE': value['dATE'] == null ? value['dATE'] : serializeDate(value['dATE']),
     };
 }
 

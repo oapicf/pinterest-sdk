@@ -21,38 +21,26 @@ import { mapValues } from '../runtime';
 export interface StoreMetadata {
     /**
      * Geohash of the store location
-     * @type {string}
-     * @memberof StoreMetadata
      */
     geohash?: string;
     /**
      * Geographic latitude coordinate of the store
-     * @type {number}
-     * @memberof StoreMetadata
      */
     latitude?: number;
     /**
      * Geographic longitude coordinate of the store
-     * @type {number}
-     * @memberof StoreMetadata
      */
     longitude?: number;
     /**
      * Merchant provided store code
-     * @type {string}
-     * @memberof StoreMetadata
      */
     storeCode: string;
     /**
      * Internal store code
-     * @type {string}
-     * @memberof StoreMetadata
      */
     storeId: string;
     /**
      * Store name
-     * @type {string}
-     * @memberof StoreMetadata
      */
     storeName?: string;
 }

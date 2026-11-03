@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,13 +28,11 @@ import jakarta.annotation.Generated;
  * ImageMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ImageMetadata implements PinMediaMetadata {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ImageSize images;
 
   /**
@@ -73,10 +70,8 @@ public class ImageMetadata implements PinMediaMetadata {
 
   private ItemTypeEnum itemType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   public ImageMetadata() {
@@ -100,7 +95,7 @@ public class ImageMetadata implements PinMediaMetadata {
    * @return description
    */
   
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -162,7 +157,7 @@ public class ImageMetadata implements PinMediaMetadata {
    * @return link
    */
   
-  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("link")
   public JsonNullable<String> getLink() {
     return link;
@@ -182,7 +177,7 @@ public class ImageMetadata implements PinMediaMetadata {
    * @return title
    */
   
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("title")
   public JsonNullable<String> getTitle() {
     return title;

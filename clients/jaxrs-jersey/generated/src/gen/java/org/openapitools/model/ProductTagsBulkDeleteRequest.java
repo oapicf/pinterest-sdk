@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   ProductTagsBulkDeleteRequest.JSON_PROPERTY_PRODUCT_TAGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkDeleteRequest   {
   public static final String JSON_PROPERTY_PRODUCT_TAGS = "product_tags";
   @JsonProperty(JSON_PROPERTY_PRODUCT_TAGS)
@@ -58,7 +58,7 @@ public class ProductTagsBulkDeleteRequest   {
    **/
   @JsonProperty(value = "product_tags")
   @ApiModelProperty(required = true, value = "List of product tags to delete.")
-  @NotNull @Valid  @Size(min=1,max=24)
+  @NotNull  @Size(min=1,max=24)
   public List<@Valid ProductTagItem> getProductTags() {
     return productTags;
   }

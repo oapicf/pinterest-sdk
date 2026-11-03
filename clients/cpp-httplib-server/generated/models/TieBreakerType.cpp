@@ -6,20 +6,3 @@
 */
 #include "TieBreakerType.h"
 
-namespace models {
-
-TieBreakerType::TieBreakerType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

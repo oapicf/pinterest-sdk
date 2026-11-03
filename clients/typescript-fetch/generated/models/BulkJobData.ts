@@ -29,20 +29,14 @@ import {
 export interface BulkJobData {
     /**
      * Presigned s3 file url for the bulk request result.
-     * @type {string}
-     * @memberof BulkJobData
      */
     resultUrl?: string;
     /**
      * 
-     * @type {BulkRequestStatus}
-     * @memberof BulkJobData
      */
     status: BulkRequestStatus;
     /**
      * Bulk Workload Id.
-     * @type {number}
-     * @memberof BulkJobData
      */
     workloadId?: number;
 }

@@ -6,20 +6,3 @@
 */
 #include "BillingType.h"
 
-namespace models {
-
-BillingType::BillingType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

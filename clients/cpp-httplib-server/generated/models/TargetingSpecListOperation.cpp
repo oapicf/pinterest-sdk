@@ -6,20 +6,3 @@
 */
 #include "TargetingSpecListOperation.h"
 
-namespace models {
-
-TargetingSpecListOperation::TargetingSpecListOperation()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

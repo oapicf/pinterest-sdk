@@ -180,7 +180,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class AdsAnalyticsGetAsyncResponse.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsGetAsyncResponse: report_status.");
 
             return new AdsAnalyticsGetAsyncResponse(reportStatus, size, url);
         }
@@ -191,7 +191,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsGetAsyncResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -206,9 +205,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsGetAsyncResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsAnalyticsGetAsyncResponse adsAnalyticsGetAsyncResponse, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adsAnalyticsGetAsyncResponse.ReportStatusOption.IsSet && adsAnalyticsGetAsyncResponse.ReportStatus == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsGetAsyncResponse.ReportStatus to non-nullable JSON property 'report_status'.");
+
             if (adsAnalyticsGetAsyncResponse.ReportStatusOption.IsSet)
             {
                 var reportStatusRawValue = BulkReportingJobStatusValueConverter.ToJsonValue(adsAnalyticsGetAsyncResponse.ReportStatus!.Value);

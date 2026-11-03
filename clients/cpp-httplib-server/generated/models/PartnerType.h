@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class PartnerType
-{
-public:
-
-    PartnerType();
-    virtual ~PartnerType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PartnerType,
-        )
-
-private:
+enum class PartnerType {
+    
+    INTERNAL,
+    
+    EXTERNAL
+    
 };
 
+inline void to_json(nlohmann::json& j, const PartnerType& value)
+{
+    switch (value)
+    {
+        
+        case PartnerType::INTERNAL: j = "INTERNAL"; break;
+        
+        case PartnerType::EXTERNAL: j = "EXTERNAL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PartnerType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PartnerType& value)
+{
+    
+    if (j == "INTERNAL")
+    {
+        value = PartnerType::INTERNAL;
+        return;
+    }
+    
+    if (j == "EXTERNAL")
+    {
+        value = PartnerType::EXTERNAL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PartnerType", &j);
+}
 
 } // namespace models
 

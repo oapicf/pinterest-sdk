@@ -41,7 +41,7 @@ public class Board   {
 
   private Integer pinCount;
 
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   /**
    * Date and time of last board pins modified.

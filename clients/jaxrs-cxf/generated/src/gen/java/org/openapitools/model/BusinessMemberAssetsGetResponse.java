@@ -27,8 +27,6 @@ public class BusinessMemberAssetsGetResponse  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid AssetIdPermissions> items = new ArrayList<>();
 
  /**

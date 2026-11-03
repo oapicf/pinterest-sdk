@@ -250,58 +250,58 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!entityId.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(entityId));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: entity_id.");
 
             if (!entityType.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(entityType));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: entity_type.");
 
             if (!deltaValue.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(deltaValue));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: delta_value.");
 
             if (!endTimestamp.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(endTimestamp));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: end_timestamp.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: name.");
 
             if (!scheduleAction.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(scheduleAction));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: schedule_action.");
 
             if (!scheduleStatus.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(scheduleStatus));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: schedule_status.");
 
             if (!scheduleType.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(scheduleType));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: schedule_type.");
 
             if (!startTimestamp.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequest.", nameof(startTimestamp));
+                throw new JsonException("Property is required for class ScheduleCreateRequest: start_timestamp.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: entity_id.");
 
             if (entityType.IsSet && entityType.Value == null)
-                throw new ArgumentNullException(nameof(entityType), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: entity_type.");
 
             if (deltaValue.IsSet && deltaValue.Value == null)
-                throw new ArgumentNullException(nameof(deltaValue), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: delta_value.");
 
             if (endTimestamp.IsSet && endTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(endTimestamp), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: end_timestamp.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: name.");
 
             if (scheduleAction.IsSet && scheduleAction.Value == null)
-                throw new ArgumentNullException(nameof(scheduleAction), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: schedule_action.");
 
             if (scheduleStatus.IsSet && scheduleStatus.Value == null)
-                throw new ArgumentNullException(nameof(scheduleStatus), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: schedule_status.");
 
             if (scheduleType.IsSet && scheduleType.Value == null)
-                throw new ArgumentNullException(nameof(scheduleType), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: schedule_type.");
 
             if (startTimestamp.IsSet && startTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(startTimestamp), "Property is not nullable for class ScheduleCreateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequest: start_timestamp.");
 
             return new ScheduleCreateRequest(entityId.Value!, entityType.Value!, deltaValue.Value!, endTimestamp.Value!.Value!, name.Value!, scheduleAction.Value!.Value!, scheduleStatus.Value!.Value!, scheduleType.Value!.Value!, startTimestamp.Value!.Value!);
         }
@@ -312,7 +312,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleCreateRequest scheduleCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -327,21 +326,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleCreateRequest scheduleCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (scheduleCreateRequest.EntityId == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequest.EntityId), "Property is required for class ScheduleCreateRequest.");
-
-            if (scheduleCreateRequest.EntityType == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequest.EntityType), "Property is required for class ScheduleCreateRequest.");
-
-            if (scheduleCreateRequest.DeltaValue == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequest.DeltaValue), "Property is required for class ScheduleCreateRequest.");
-
-            if (scheduleCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequest.Name), "Property is required for class ScheduleCreateRequest.");
-
             writer.WriteString("entity_id", scheduleCreateRequest.EntityId);
 
             writer.WriteString("entity_type", scheduleCreateRequest.EntityType);

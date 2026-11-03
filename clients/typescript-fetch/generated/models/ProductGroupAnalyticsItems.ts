@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface ProductGroupAnalyticsItems {
     /**
      * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
-     * @type {Date}
-     * @memberof ProductGroupAnalyticsItems
      */
     dATE?: Date;
     /**
      * The ID of the product group that this metrics belongs to.
-     * @type {string}
-     * @memberof ProductGroupAnalyticsItems
      */
     pRODUCTGROUPID: string;
 }
@@ -51,7 +47,7 @@ export function ProductGroupAnalyticsItemsFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'dATE': json['DATE'] == null ? undefined : (new Date(json['DATE'])),
+        'dATE': json['DATE'] == null ? undefined : (parseDate(json['DATE'])),
         'pRODUCTGROUPID': json['PRODUCT_GROUP_ID'],
     };
 }
@@ -67,7 +63,7 @@ export function ProductGroupAnalyticsItemsToJSONTyped(value?: ProductGroupAnalyt
 
     return {
         
-        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
+        'DATE': value['dATE'] == null ? value['dATE'] : serializeDate(value['dATE']),
         'PRODUCT_GROUP_ID': value['pRODUCTGROUPID'],
     };
 }

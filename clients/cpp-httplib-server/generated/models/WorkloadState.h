@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class WorkloadState
-{
-public:
-
-    WorkloadState();
-    virtual ~WorkloadState() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(WorkloadState,
-        )
-
-private:
+enum class WorkloadState {
+    
+    NOT_STARTED,
+    
+    RUNNING,
+    
+    PAUSED,
+    
+    SUCCEEDED,
+    
+    FAILED
+    
 };
 
+inline void to_json(nlohmann::json& j, const WorkloadState& value)
+{
+    switch (value)
+    {
+        
+        case WorkloadState::NOT_STARTED: j = "NOT_STARTED"; break;
+        
+        case WorkloadState::RUNNING: j = "RUNNING"; break;
+        
+        case WorkloadState::PAUSED: j = "PAUSED"; break;
+        
+        case WorkloadState::SUCCEEDED: j = "SUCCEEDED"; break;
+        
+        case WorkloadState::FAILED: j = "FAILED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for WorkloadState", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, WorkloadState& value)
+{
+    
+    if (j == "NOT_STARTED")
+    {
+        value = WorkloadState::NOT_STARTED;
+        return;
+    }
+    
+    if (j == "RUNNING")
+    {
+        value = WorkloadState::RUNNING;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = WorkloadState::PAUSED;
+        return;
+    }
+    
+    if (j == "SUCCEEDED")
+    {
+        value = WorkloadState::SUCCEEDED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = WorkloadState::FAILED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for WorkloadState", &j);
+}
 
 } // namespace models
 

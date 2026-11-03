@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import jakarta.annotation.Generated;
  * ConversionEventsUserDataProperties
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsUserDataProperties {
 
   private JsonNullable<String> clickId = JsonNullable.<String>undefined();
@@ -33,42 +32,30 @@ public class ConversionEventsUserDataProperties {
 
   private String clientUserAgent;
 
-  @Valid
   private List<String> country = new ArrayList<>();
 
-  @Valid
   private List<String> ct = new ArrayList<>();
 
-  @Valid
   private List<String> db = new ArrayList<>();
 
-  @Valid
   private List<String> em = new ArrayList<>();
 
-  @Valid
   private List<String> externalId = new ArrayList<>();
 
-  @Valid
   private List<String> fn = new ArrayList<>();
 
-  @Valid
   private List<String> ge = new ArrayList<>();
 
-  @Valid
   private List<String> hashedMaids = new ArrayList<>();
 
-  @Valid
   private List<String> ln = new ArrayList<>();
 
   private JsonNullable<String> partnerId = JsonNullable.<String>undefined();
 
-  @Valid
   private List<String> ph = new ArrayList<>();
 
-  @Valid
   private List<String> st = new ArrayList<>();
 
-  @Valid
   private List<String> zp = new ArrayList<>();
 
   public ConversionEventsUserDataProperties clickId(String clickId) {

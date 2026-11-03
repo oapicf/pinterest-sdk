@@ -25,11 +25,20 @@ import {
 } from '../models/RelatedTerms';
 
 export interface TermsRelatedListRequest {
+    /**
+     * List of input terms.
+     */
     terms: Array<string>;
 }
 
 export interface TermsSuggestedListRequest {
+    /**
+     * Input term.
+     */
     term: string;
+    /**
+     * Max suggested terms to return.
+     */
     limit?: number;
 }
 

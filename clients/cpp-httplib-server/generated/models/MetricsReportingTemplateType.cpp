@@ -6,20 +6,3 @@
 */
 #include "MetricsReportingTemplateType.h"
 
-namespace models {
-
-MetricsReportingTemplateType::MetricsReportingTemplateType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

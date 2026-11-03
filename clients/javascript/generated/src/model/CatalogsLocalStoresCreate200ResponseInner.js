@@ -17,7 +17,7 @@ import CatalogsLocalStoresCreate200ResponseInnerData from './CatalogsLocalStores
 /**
  * The CatalogsLocalStoresCreate200ResponseInner model module.
  * @module model/CatalogsLocalStoresCreate200ResponseInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsLocalStoresCreate200ResponseInner {
     /**

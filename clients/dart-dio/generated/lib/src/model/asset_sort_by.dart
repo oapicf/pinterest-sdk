@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'asset_sort_by.g.dart';
 
+/// The field to sort member assets by
 class AssetSortBy extends EnumClass {
 
-  /// The field to sort member assets by
   @BuiltValueEnumConst(wireName: r'NAME')
   static const AssetSortBy NAME = _$NAME;
-  /// The field to sort member assets by
   @BuiltValueEnumConst(wireName: r'ID')
   static const AssetSortBy ID = _$ID;
-  /// The field to sort member assets by
   @BuiltValueEnumConst(wireName: r'PERMISSIONS')
   static const AssetSortBy PERMISSIONS = _$PERMISSIONS;
 

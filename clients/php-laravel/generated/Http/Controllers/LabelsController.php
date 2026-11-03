@@ -51,10 +51,10 @@ class LabelsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'labelId' => $labelId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'label_id' => $labelId,
+                ],
             ),
             [
             ],
@@ -117,10 +117,10 @@ class LabelsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -178,38 +178,38 @@ class LabelsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'campaignIds' => [
+                'campaign_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'labelIds' => [
+                'label_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'entityStatuses' => [
+                'entity_statuses' => [
                     'array',
                 ],
-                'labelTypes' => [
+                'label_types' => [
                     'array',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -222,17 +222,17 @@ class LabelsController extends Controller
         }
 
 
-        $campaignIds = $request->get('campaignIds');
+        $campaignIds = $request->get('campaign_ids');
 
-        $labelIds = $request->get('labelIds');
+        $labelIds = $request->get('label_ids');
 
-        $entityStatuses = $request->get('entityStatuses');
+        $entityStatuses = $request->get('entity_statuses');
 
-        $labelTypes = $request->get('labelTypes');
+        $labelTypes = $request->get('label_types');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->labelsList($adAccountId, $campaignIds, $labelIds, $entityStatuses, $labelTypes, $bookmark, $pageSize);
@@ -279,10 +279,10 @@ class LabelsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'labelId' => $labelId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'label_id' => $labelId,
+                ],
             ),
             [
             ],
@@ -345,10 +345,10 @@ class LabelsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

@@ -29,8 +29,6 @@ import {
 export interface CatalogsBaseFiltersAllOf {
     /**
      * 
-     * @type {Array<CatalogsBaseFilterKeys>}
-     * @memberof CatalogsBaseFiltersAllOf
      */
     allOf: Array<CatalogsBaseFilterKeys>;
 }

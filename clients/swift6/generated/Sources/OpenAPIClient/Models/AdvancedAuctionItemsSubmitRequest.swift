@@ -10,7 +10,7 @@ import Foundation
 /** Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items */
 public struct AdvancedAuctionItemsSubmitRequest: Sendable, Codable, Hashable {
 
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let itemsRule = ArrayRule(minItems: 1, maxItems: 10000, uniqueItems: false)
     /** Catalog id pertaining to all items */
     public var catalogId: String

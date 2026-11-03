@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface BusinessAccessUserSummary {
     /**
      * Email of the business member/partner.
-     * @type {string}
-     * @memberof BusinessAccessUserSummary
      */
     email?: string | null;
     /**
      * Unique identifier of the business member/partner.
-     * @type {string}
-     * @memberof BusinessAccessUserSummary
      */
     id?: string | null;
     /**
      * Username of the business member/partner.
-     * @type {string}
-     * @memberof BusinessAccessUserSummary
      */
     username?: string | null;
 }

@@ -15,7 +15,7 @@ import org.openapitools.model.FrequencyGoalMetadataTimerange;
  **/
 
 @ApiModel(description = "Frequency target can only be between 2 and 20")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FrequencyGoalMetadata   {
   @JsonProperty("frequency")
   private Integer frequency;

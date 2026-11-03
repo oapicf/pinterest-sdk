@@ -250,31 +250,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!hasPrediction.IsSet)
-                throw new ArgumentException("Property is required for class ProductCategoryDetails.", nameof(hasPrediction));
+                throw new JsonException("Property is required for class ProductCategoryDetails: has_prediction.");
 
             if (!productCategory.IsSet)
-                throw new ArgumentException("Property is required for class ProductCategoryDetails.", nameof(productCategory));
+                throw new JsonException("Property is required for class ProductCategoryDetails: product_category.");
 
             if (hasPrediction.IsSet && hasPrediction.Value == null)
-                throw new ArgumentNullException(nameof(hasPrediction), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: has_prediction.");
 
             if (productCategory.IsSet && productCategory.Value == null)
-                throw new ArgumentNullException(nameof(productCategory), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: product_category.");
 
             if (demographics.IsSet && demographics.Value == null)
-                throw new ArgumentNullException(nameof(demographics), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: demographics.");
 
             if (metricsHighlights.IsSet && metricsHighlights.Value == null)
-                throw new ArgumentNullException(nameof(metricsHighlights), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: metrics_highlights.");
 
             if (predictedTimeSeries.IsSet && predictedTimeSeries.Value == null)
-                throw new ArgumentNullException(nameof(predictedTimeSeries), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: predicted_time_series.");
 
             if (relatedSearches.IsSet && relatedSearches.Value == null)
-                throw new ArgumentNullException(nameof(relatedSearches), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: related_searches.");
 
             if (timeSeries.IsSet && timeSeries.Value == null)
-                throw new ArgumentNullException(nameof(timeSeries), "Property is not nullable for class ProductCategoryDetails.");
+                throw new JsonException("Property is not nullable for class ProductCategoryDetails: time_series.");
 
             return new ProductCategoryDetails(hasPrediction.Value!.Value!, productCategory.Value!.Value!, demographics, metricsHighlights, predictedTimeSeries, relatedSearches, timeSeries);
         }
@@ -285,7 +285,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoryDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductCategoryDetails productCategoryDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -300,23 +299,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoryDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductCategoryDetails productCategoryDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             if (productCategoryDetails.DemographicsOption.IsSet && productCategoryDetails.Demographics == null)
-                throw new ArgumentNullException(nameof(productCategoryDetails.Demographics), "Property is required for class ProductCategoryDetails.");
+                throw new JsonException("Cannot write null property ProductCategoryDetails.Demographics to non-nullable JSON property 'demographics'.");
 
             if (productCategoryDetails.MetricsHighlightsOption.IsSet && productCategoryDetails.MetricsHighlights == null)
-                throw new ArgumentNullException(nameof(productCategoryDetails.MetricsHighlights), "Property is required for class ProductCategoryDetails.");
+                throw new JsonException("Cannot write null property ProductCategoryDetails.MetricsHighlights to non-nullable JSON property 'metrics_highlights'.");
 
             if (productCategoryDetails.PredictedTimeSeriesOption.IsSet && productCategoryDetails.PredictedTimeSeries == null)
-                throw new ArgumentNullException(nameof(productCategoryDetails.PredictedTimeSeries), "Property is required for class ProductCategoryDetails.");
+                throw new JsonException("Cannot write null property ProductCategoryDetails.PredictedTimeSeries to non-nullable JSON property 'predicted_time_series'.");
 
             if (productCategoryDetails.RelatedSearchesOption.IsSet && productCategoryDetails.RelatedSearches == null)
-                throw new ArgumentNullException(nameof(productCategoryDetails.RelatedSearches), "Property is required for class ProductCategoryDetails.");
+                throw new JsonException("Cannot write null property ProductCategoryDetails.RelatedSearches to non-nullable JSON property 'related_searches'.");
 
             if (productCategoryDetails.TimeSeriesOption.IsSet && productCategoryDetails.TimeSeries == null)
-                throw new ArgumentNullException(nameof(productCategoryDetails.TimeSeries), "Property is required for class ProductCategoryDetails.");
+                throw new JsonException("Cannot write null property ProductCategoryDetails.TimeSeries to non-nullable JSON property 'time_series'.");
 
             writer.WriteBoolean("has_prediction", productCategoryDetails.HasPrediction);
 

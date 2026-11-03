@@ -193,22 +193,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!reportStatus.IsSet)
-                throw new ArgumentException("Property is required for class TemplateBasedReport.", nameof(reportStatus));
+                throw new JsonException("Property is required for class TemplateBasedReport: report_status.");
 
             if (!templateId.IsSet)
-                throw new ArgumentException("Property is required for class TemplateBasedReport.", nameof(templateId));
+                throw new JsonException("Property is required for class TemplateBasedReport: template_id.");
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class TemplateBasedReport.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReport: report_status.");
 
             if (templateId.IsSet && templateId.Value == null)
-                throw new ArgumentNullException(nameof(templateId), "Property is not nullable for class TemplateBasedReport.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReport: template_id.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class TemplateBasedReport.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReport: message.");
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class TemplateBasedReport.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReport: token.");
 
             return new TemplateBasedReport(reportStatus.Value!.Value!, templateId.Value!, message, token);
         }
@@ -219,7 +219,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="templateBasedReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TemplateBasedReport templateBasedReport, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -234,17 +233,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="templateBasedReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TemplateBasedReport templateBasedReport, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (templateBasedReport.TemplateId == null)
-                throw new ArgumentNullException(nameof(templateBasedReport.TemplateId), "Property is required for class TemplateBasedReport.");
-
             if (templateBasedReport.MessageOption.IsSet && templateBasedReport.Message == null)
-                throw new ArgumentNullException(nameof(templateBasedReport.Message), "Property is required for class TemplateBasedReport.");
+                throw new JsonException("Cannot write null property TemplateBasedReport.Message to non-nullable JSON property 'message'.");
 
             if (templateBasedReport.TokenOption.IsSet && templateBasedReport.Token == null)
-                throw new ArgumentNullException(nameof(templateBasedReport.Token), "Property is required for class TemplateBasedReport.");
+                throw new JsonException("Cannot write null property TemplateBasedReport.Token to non-nullable JSON property 'token'.");
 
             var reportStatusRawValue = BulkReportingJobStatusValueConverter.ToJsonValue(templateBasedReport.ReportStatus);
             writer.WriteString("report_status", reportStatusRawValue);

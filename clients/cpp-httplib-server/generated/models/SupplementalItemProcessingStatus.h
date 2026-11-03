@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class SupplementalItemProcessingStatus
-{
-public:
-
-    SupplementalItemProcessingStatus();
-    virtual ~SupplementalItemProcessingStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(SupplementalItemProcessingStatus,
-        )
-
-private:
+enum class SupplementalItemProcessingStatus {
+    
+    SUCCESS,
+    
+    FAILURE,
+    
+    PROCESSING
+    
 };
 
+inline void to_json(nlohmann::json& j, const SupplementalItemProcessingStatus& value)
+{
+    switch (value)
+    {
+        
+        case SupplementalItemProcessingStatus::SUCCESS: j = "SUCCESS"; break;
+        
+        case SupplementalItemProcessingStatus::FAILURE: j = "FAILURE"; break;
+        
+        case SupplementalItemProcessingStatus::PROCESSING: j = "PROCESSING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for SupplementalItemProcessingStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, SupplementalItemProcessingStatus& value)
+{
+    
+    if (j == "SUCCESS")
+    {
+        value = SupplementalItemProcessingStatus::SUCCESS;
+        return;
+    }
+    
+    if (j == "FAILURE")
+    {
+        value = SupplementalItemProcessingStatus::FAILURE;
+        return;
+    }
+    
+    if (j == "PROCESSING")
+    {
+        value = SupplementalItemProcessingStatus::PROCESSING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for SupplementalItemProcessingStatus", &j);
+}
 
 } // namespace models
 

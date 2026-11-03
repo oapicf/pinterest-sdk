@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AssetPermissionType
-{
-public:
-
-    AssetPermissionType();
-    virtual ~AssetPermissionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AssetPermissionType,
-        )
-
-private:
+enum class AssetPermissionType {
+    
+    AGGREGATED_PERMISSION,
+    
+    DIRECT_PERMISSION
+    
 };
 
+inline void to_json(nlohmann::json& j, const AssetPermissionType& value)
+{
+    switch (value)
+    {
+        
+        case AssetPermissionType::AGGREGATED_PERMISSION: j = "AGGREGATED_PERMISSION"; break;
+        
+        case AssetPermissionType::DIRECT_PERMISSION: j = "DIRECT_PERMISSION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AssetPermissionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AssetPermissionType& value)
+{
+    
+    if (j == "AGGREGATED_PERMISSION")
+    {
+        value = AssetPermissionType::AGGREGATED_PERMISSION;
+        return;
+    }
+    
+    if (j == "DIRECT_PERMISSION")
+    {
+        value = AssetPermissionType::DIRECT_PERMISSION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AssetPermissionType", &j);
+}
 
 } // namespace models
 

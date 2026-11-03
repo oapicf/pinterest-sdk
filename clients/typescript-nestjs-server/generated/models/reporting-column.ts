@@ -2939,7 +2939,7 @@ export const ReportingColumn = {
     TotalOfflineAppOpenConversionProductValue: 'TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE',
     TotalOfflineAppOpenConversionProductValueInMicroUnits: 'TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS',
     TotalOfflineAppOpenConversionProductValueInUsd: 'TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_USD',
-    TotalOfflineAppOpenConversionProductValueInMicroUsd: 'TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD'
+    TotalOfflineAppOpenConversionProductValueInMicroUsd: 'TOTAL_OFFLINE_APP_OPEN_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD',
 } as const;
 export type ReportingColumn = typeof ReportingColumn[keyof typeof ReportingColumn];
 

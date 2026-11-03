@@ -6,20 +6,3 @@
 */
 #include "BulkEntityType.h"
 
-namespace models {
-
-BulkEntityType::BulkEntityType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -6,20 +6,3 @@
 */
 #include "WorkloadState.h"
 
-namespace models {
-
-WorkloadState::WorkloadState()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

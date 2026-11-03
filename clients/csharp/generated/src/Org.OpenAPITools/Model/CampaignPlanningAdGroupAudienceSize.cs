@@ -176,10 +176,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (countLower.IsSet && countLower.Value == null)
-                throw new ArgumentNullException(nameof(countLower), "Property is not nullable for class CampaignPlanningAdGroupAudienceSize.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningAdGroupAudienceSize: count_lower.");
 
             if (countUpper.IsSet && countUpper.Value == null)
-                throw new ArgumentNullException(nameof(countUpper), "Property is not nullable for class CampaignPlanningAdGroupAudienceSize.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningAdGroupAudienceSize: count_upper.");
 
             return new CampaignPlanningAdGroupAudienceSize(countLower, countUpper);
         }
@@ -190,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningAdGroupAudienceSize"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningAdGroupAudienceSize campaignPlanningAdGroupAudienceSize, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -205,9 +204,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningAdGroupAudienceSize"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningAdGroupAudienceSize campaignPlanningAdGroupAudienceSize, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningAdGroupAudienceSize.CountLowerOption.IsSet && campaignPlanningAdGroupAudienceSize.CountLower == null)
+                throw new JsonException("Cannot write null property CampaignPlanningAdGroupAudienceSize.CountLower to non-nullable JSON property 'count_lower'.");
+
+            if (campaignPlanningAdGroupAudienceSize.CountUpperOption.IsSet && campaignPlanningAdGroupAudienceSize.CountUpper == null)
+                throw new JsonException("Cannot write null property CampaignPlanningAdGroupAudienceSize.CountUpper to non-nullable JSON property 'count_upper'.");
+
             if (campaignPlanningAdGroupAudienceSize.CountLowerOption.IsSet)
                 writer.WriteNumber("count_lower", campaignPlanningAdGroupAudienceSize.CountLowerOption.Value!.Value);
 

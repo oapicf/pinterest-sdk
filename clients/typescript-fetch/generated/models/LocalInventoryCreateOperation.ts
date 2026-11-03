@@ -29,26 +29,18 @@ import {
 export interface LocalInventoryCreateOperation {
     /**
      * 
-     * @type {RetailLocalInventoryItemAttributes}
-     * @memberof LocalInventoryCreateOperation
      */
     attributes: RetailLocalInventoryItemAttributes;
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryCreateOperation
      */
     itemId: string;
     /**
      * 
-     * @type {LocalInventoryCreateOperationOperationEnum}
-     * @memberof LocalInventoryCreateOperation
      */
     operation: LocalInventoryCreateOperationOperationEnum;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof LocalInventoryCreateOperation
      */
     storeCode: string;
 }
@@ -58,7 +50,7 @@ export interface LocalInventoryCreateOperation {
  * @export
  */
 export const LocalInventoryCreateOperationOperationEnum = {
-    Create: 'CREATE'
+    Create: 'CREATE',
 } as const;
 export type LocalInventoryCreateOperationOperationEnum = typeof LocalInventoryCreateOperationOperationEnum[keyof typeof LocalInventoryCreateOperationOperationEnum];
 

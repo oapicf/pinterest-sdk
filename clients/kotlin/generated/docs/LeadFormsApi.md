@@ -41,9 +41,9 @@ try {
 ```
 
 ### Parameters
-| **leadFormId** | **kotlin.String**| The ID of this lead form | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **leadFormId** | **kotlin.String**| The ID of this lead form | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
@@ -98,10 +98,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **leadFormId** | **kotlin.String**| Unique identifier of a lead form. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **leadFormId** | **kotlin.String**| Unique identifier of a lead form. | |
 | **leadFormTestCreate** | [**LeadFormTestCreate**](LeadFormTestCreate.md)|  | |
 
 ### Return type
@@ -155,9 +155,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **leadFormCreate** | [**kotlin.collections.List&lt;LeadFormCreate&gt;**](LeadFormCreate.md)|  | |
 
 ### Return type
@@ -213,11 +213,11 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
@@ -271,9 +271,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **leadFormBatchUpdate** | [**kotlin.collections.List&lt;LeadFormBatchUpdate&gt;**](LeadFormBatchUpdate.md)|  | |
 
 ### Return type

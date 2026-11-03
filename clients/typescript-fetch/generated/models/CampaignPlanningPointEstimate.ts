@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface CampaignPlanningPointEstimate {
     /**
      * The budget value of the point.
-     * @type {number}
-     * @memberof CampaignPlanningPointEstimate
      */
     budget: number;
     /**
      * Y value as a decimal.
-     * @type {number}
-     * @memberof CampaignPlanningPointEstimate
      */
     doubleY: number | null;
     /**
      * The maximum Y value of the point.
-     * @type {number}
-     * @memberof CampaignPlanningPointEstimate
      */
     maxY: number | null;
     /**
      * The minimum Y value of the point.
-     * @type {number}
-     * @memberof CampaignPlanningPointEstimate
      */
     minY: number | null;
     /**
      * The expected Y value of the point.
-     * @type {number}
-     * @memberof CampaignPlanningPointEstimate
      */
     y: number | null;
 }

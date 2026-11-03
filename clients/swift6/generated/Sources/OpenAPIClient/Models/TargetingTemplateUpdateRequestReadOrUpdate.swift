@@ -9,7 +9,7 @@ import Foundation
 
 public struct TargetingTemplateUpdateRequestReadOrUpdate: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Targeting template ID */
     public var id: String
     public var operationType: AudienceUpdateOperationType

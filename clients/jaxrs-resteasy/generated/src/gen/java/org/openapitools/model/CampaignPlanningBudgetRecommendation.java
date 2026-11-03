@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Budget recommendation response containing recommended budget, estimated days, and point estimations.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Budget recommendation response containing recommended budget, estimated days, and point estimations.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation   {
   
   private Integer budgetRecommendation;
@@ -42,7 +42,6 @@ public class CampaignPlanningBudgetRecommendation   {
   
   @ApiModelProperty(value = "List of experimental budget recommendations.")
   @JsonProperty("experiment_campaign_budget_recommendation")
-  @Valid
   public List<@Valid CampaignPlanningExperimentBudgetRecommendation> getExperimentCampaignBudgetRecommendation() {
     return experimentCampaignBudgetRecommendation;
   }
@@ -69,7 +68,6 @@ public class CampaignPlanningBudgetRecommendation   {
   
   @ApiModelProperty(value = "List of point estimations for different budget scenarios.")
   @JsonProperty("point_estimations")
-  @Valid
   public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
     return pointEstimations;
   }

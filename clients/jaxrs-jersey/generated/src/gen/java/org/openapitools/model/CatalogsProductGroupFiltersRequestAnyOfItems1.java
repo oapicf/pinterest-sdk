@@ -32,13 +32,13 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   CatalogsProductGroupFiltersRequestAnyOfItems1.JSON_PROPERTY_ALL_OF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersRequestAnyOfItems1   {
   public static final String JSON_PROPERTY_ALL_OF = "all_of";
   @JsonProperty(JSON_PROPERTY_ALL_OF)
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsProductGroupFiltersRequestAnyOfItems1 allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersRequestAnyOfItems1 allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -57,12 +57,12 @@ public class CatalogsProductGroupFiltersRequestAnyOfItems1   {
    **/
   @JsonProperty(value = "all_of")
   @ApiModelProperty(required = true, value = "")
-  @NotNull @Valid  @Size(min=1)
-  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+  @NotNull  @Size(min=1)
+  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

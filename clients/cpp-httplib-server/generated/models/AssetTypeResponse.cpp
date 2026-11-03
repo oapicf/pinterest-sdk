@@ -6,20 +6,3 @@
 */
 #include "AssetTypeResponse.h"
 
-namespace models {
-
-AssetTypeResponse::AssetTypeResponse()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

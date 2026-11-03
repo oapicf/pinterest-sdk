@@ -180,6 +180,7 @@ class _$CatalogsRetailBatchRequestSerializer implements PrimitiveSerializer<Cata
   }
 }
 
+
 class CatalogsRetailBatchRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

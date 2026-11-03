@@ -23,9 +23,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A specific quiz inquiry.")
 @JsonTypeName("QuizPinQuestion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinQuestion   {
-  private @Valid List<@Valid QuizPinOption> options = new ArrayList<>();
+  private List<@Valid QuizPinOption> options = new ArrayList<>();
   private BigDecimal questionId;
   private String questionText;
 
@@ -42,7 +42,7 @@ public class QuizPinQuestion   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("options")
-  @Valid public List<@Valid QuizPinOption> getOptions() {
+  public List<@Valid QuizPinOption> getOptions() {
     return options;
   }
 

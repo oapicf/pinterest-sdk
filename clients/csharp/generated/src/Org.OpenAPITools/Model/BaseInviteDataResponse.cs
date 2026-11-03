@@ -214,16 +214,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BaseInviteDataResponse.");
+                throw new JsonException("Property is not nullable for class BaseInviteDataResponse: id.");
 
             if (inviteData.IsSet && inviteData.Value == null)
-                throw new ArgumentNullException(nameof(inviteData), "Property is not nullable for class BaseInviteDataResponse.");
+                throw new JsonException("Property is not nullable for class BaseInviteDataResponse: invite_data.");
 
             if (isReceivedInvite.IsSet && isReceivedInvite.Value == null)
-                throw new ArgumentNullException(nameof(isReceivedInvite), "Property is not nullable for class BaseInviteDataResponse.");
+                throw new JsonException("Property is not nullable for class BaseInviteDataResponse: is_received_invite.");
 
             if (user.IsSet && user.Value == null)
-                throw new ArgumentNullException(nameof(user), "Property is not nullable for class BaseInviteDataResponse.");
+                throw new JsonException("Property is not nullable for class BaseInviteDataResponse: user.");
 
             return new BaseInviteDataResponse(id, inviteData, isReceivedInvite, user);
         }
@@ -234,7 +234,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="baseInviteDataResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BaseInviteDataResponse baseInviteDataResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -249,17 +248,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="baseInviteDataResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BaseInviteDataResponse baseInviteDataResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (baseInviteDataResponse.IdOption.IsSet && baseInviteDataResponse.Id == null)
-                throw new ArgumentNullException(nameof(baseInviteDataResponse.Id), "Property is required for class BaseInviteDataResponse.");
+                throw new JsonException("Cannot write null property BaseInviteDataResponse.Id to non-nullable JSON property 'id'.");
 
             if (baseInviteDataResponse.InviteDataOption.IsSet && baseInviteDataResponse.InviteData == null)
-                throw new ArgumentNullException(nameof(baseInviteDataResponse.InviteData), "Property is required for class BaseInviteDataResponse.");
+                throw new JsonException("Cannot write null property BaseInviteDataResponse.InviteData to non-nullable JSON property 'invite_data'.");
+
+            if (baseInviteDataResponse.IsReceivedInviteOption.IsSet && baseInviteDataResponse.IsReceivedInvite == null)
+                throw new JsonException("Cannot write null property BaseInviteDataResponse.IsReceivedInvite to non-nullable JSON property 'is_received_invite'.");
 
             if (baseInviteDataResponse.UserOption.IsSet && baseInviteDataResponse.User == null)
-                throw new ArgumentNullException(nameof(baseInviteDataResponse.User), "Property is required for class BaseInviteDataResponse.");
+                throw new JsonException("Cannot write null property BaseInviteDataResponse.User to non-nullable JSON property 'user'.");
 
             if (baseInviteDataResponse.IdOption.IsSet)
                 writer.WriteString("id", baseInviteDataResponse.Id);

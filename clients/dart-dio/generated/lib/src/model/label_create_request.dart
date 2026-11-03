@@ -107,3 +107,4 @@ class _$LabelCreateRequestSerializer implements PrimitiveSerializer<LabelCreateR
   }
 }
 
+

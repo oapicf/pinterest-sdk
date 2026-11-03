@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CampaignDeliveryEstimatesDerivedMetrics model module.
  * @module model/CampaignDeliveryEstimatesDerivedMetrics
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignDeliveryEstimatesDerivedMetrics {
     /**

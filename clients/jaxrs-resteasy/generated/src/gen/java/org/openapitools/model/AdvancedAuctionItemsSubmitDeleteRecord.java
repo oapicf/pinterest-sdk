@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item bid option deletion operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Object describing an item bid option deletion operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitDeleteRecord   {
   
   private Country country;
@@ -65,7 +65,6 @@ public class AdvancedAuctionItemsSubmitDeleteRecord   {
   
   @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
   @JsonProperty("errors")
-  @Valid
   public List<@Valid AdvancedAuctionOperationError> getErrors() {
     return errors;
   }

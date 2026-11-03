@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class GenderBucket
-{
-public:
-
-    GenderBucket();
-    virtual ~GenderBucket() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(GenderBucket,
-        )
-
-private:
+enum class GenderBucket {
+    
+    MALE,
+    
+    FEMALE,
+    
+    UNSPECIFIED
+    
 };
 
+inline void to_json(nlohmann::json& j, const GenderBucket& value)
+{
+    switch (value)
+    {
+        
+        case GenderBucket::MALE: j = "MALE"; break;
+        
+        case GenderBucket::FEMALE: j = "FEMALE"; break;
+        
+        case GenderBucket::UNSPECIFIED: j = "UNSPECIFIED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for GenderBucket", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, GenderBucket& value)
+{
+    
+    if (j == "MALE")
+    {
+        value = GenderBucket::MALE;
+        return;
+    }
+    
+    if (j == "FEMALE")
+    {
+        value = GenderBucket::FEMALE;
+        return;
+    }
+    
+    if (j == "UNSPECIFIED")
+    {
+        value = GenderBucket::UNSPECIFIED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for GenderBucket", &j);
+}
 
 } // namespace models
 

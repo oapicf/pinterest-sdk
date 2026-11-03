@@ -9,11 +9,11 @@ import Foundation
 
 public struct ProductGroupPromotion: Sendable, Codable, Hashable {
 
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    public static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let collectionsHeroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
+    public static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let collectionsHeroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** ID of the ad group the product group belongs to. */
     public var adGroupId: String?
     /** The bid in micro currency. */

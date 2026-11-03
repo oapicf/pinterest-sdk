@@ -22,12 +22,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
 @JsonTypeName("InviteExceptionResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteExceptionResponse   {
   private Integer code;
   private String inviteOrRequestId;
   private String message;
-  private @Valid List<String> usersOrPartnerIds = new ArrayList<>();
+  private List<String> usersOrPartnerIds = new ArrayList<>();
 
   public InviteExceptionResponse() {
   }

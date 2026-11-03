@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -27,13 +26,11 @@ import jakarta.annotation.Generated;
  * AnalyticsMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AnalyticsMetricsResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
 
   public AnalyticsMetricsResponse dailyMetrics(List<@Valid AnalyticsDailyMetrics> dailyMetrics) {
@@ -53,7 +50,7 @@ public class AnalyticsMetricsResponse {
    * Array with the requested daily metric records
    * @return dailyMetrics
    */
-  @Valid 
+  
   @Schema(name = "daily_metrics", description = "Array with the requested daily metric records", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("daily_metrics")
   public List<@Valid AnalyticsDailyMetrics> getDailyMetrics() {
@@ -82,7 +79,7 @@ public class AnalyticsMetricsResponse {
    * The metric name and value over the requested period for each requested metric
    * @return summaryMetrics
    */
-  @Valid 
+  
   @Schema(name = "summary_metrics", example = "{\"CLOSEUP\":1,\"CLOSEUP_RATE\":0,\"ENGAGEMENT\":1,\"ENGAGEMENT_RATE\":0,\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"OUTBOUND_CLICK_RATE\":0.08,\"PIN_CLICK\":37,\"PIN_CLICK_RATE\":0.15,\"PROFILE_VISIT\":0,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", description = "The metric name and value over the requested period for each requested metric", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_metrics")
   public Map<String, BigDecimal> getSummaryMetrics() {

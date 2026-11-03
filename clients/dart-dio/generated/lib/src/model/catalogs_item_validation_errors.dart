@@ -549,3 +549,4 @@ class _$CatalogsItemValidationErrorsSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

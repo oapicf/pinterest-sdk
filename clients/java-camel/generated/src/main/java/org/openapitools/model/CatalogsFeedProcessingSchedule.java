@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProcessingSchedule", description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedProcessingSchedule {
 
   private String time;
@@ -69,7 +69,7 @@ public class CatalogsFeedProcessingSchedule {
    * The timezone considered for the processing schedule time.
    * @return timezone
    */
-  @NotNull @Valid 
+  /* @Present */ @Valid 
   @Schema(name = "timezone", description = "The timezone considered for the processing schedule time.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("timezone")
   public JsonNullable<CatalogsFeedProcessingScheduleTimezone> getTimezone() {

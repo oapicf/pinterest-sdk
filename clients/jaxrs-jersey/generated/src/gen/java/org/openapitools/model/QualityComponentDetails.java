@@ -36,7 +36,7 @@ import javax.validation.Valid;
   QualityComponentDetails.JSON_PROPERTY_ISSUES,
   QualityComponentDetails.JSON_PROPERTY_OVERLAP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponentDetails   {
   public static final String JSON_PROPERTY_COVERAGE = "coverage";
   @JsonProperty(JSON_PROPERTY_COVERAGE)
@@ -89,7 +89,7 @@ public class QualityComponentDetails   {
    **/
   @JsonProperty(value = "issues")
   @ApiModelProperty(value = "List of issues detected for this event type, if any.")
-  @Valid 
+  
   public List<@Valid QualityComponentIssue> getIssues() {
     return issues;
   }

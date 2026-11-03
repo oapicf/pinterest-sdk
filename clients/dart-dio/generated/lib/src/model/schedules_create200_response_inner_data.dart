@@ -87,3 +87,4 @@ class _$SchedulesCreate200ResponseInnerDataSerializer implements PrimitiveSerial
   }
 }
 
+

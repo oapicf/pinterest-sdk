@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   IntegrationLogsRequestCreate.JSON_PROPERTY_LOGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsRequestCreate   {
   public static final String JSON_PROPERTY_LOGS = "logs";
   @JsonProperty(JSON_PROPERTY_LOGS)
@@ -58,7 +58,7 @@ public class IntegrationLogsRequestCreate   {
    **/
   @JsonProperty(value = "logs")
   @ApiModelProperty(required = true, value = "")
-  @NotNull @Valid  @Size(min=1,max=250)
+  @NotNull  @Size(min=1,max=250)
   public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }

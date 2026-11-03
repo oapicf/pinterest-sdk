@@ -6,20 +6,3 @@
 */
 #include "UserListOperationType.h"
 
-namespace models {
-
-UserListOperationType::UserListOperationType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

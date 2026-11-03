@@ -12,24 +12,334 @@
 
 namespace models {
 
-
-class CustomizableCTAType
-{
-public:
-
-    CustomizableCTAType();
-    virtual ~CustomizableCTAType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CustomizableCTAType,
-        )
-
-private:
+enum class CustomizableCTAType {
+    
+    GET_OFFER,
+    
+    LEARN_MORE,
+    
+    ORDER_NOW,
+    
+    SHOP_NOW,
+    
+    SIGN_UP,
+    
+    SUBSCRIBE,
+    
+    BUY_NOW,
+    
+    CONTACT_US,
+    
+    GET_QUOTE,
+    
+    VISIT_SITE,
+    
+    APPLY_NOW,
+    
+    BOOK_NOW,
+    
+    REQUEST_DEMO,
+    
+    REGISTER_NOW,
+    
+    FIND_A_DEALER,
+    
+    ADD_TO_CART,
+    
+    WATCH_NOW,
+    
+    READ_MORE,
+    
+    BUY_TICKETS,
+    
+    DONATE_NOW,
+    
+    DOWNLOAD,
+    
+    EXPLORE_MORE,
+    
+    FIND_A_LOCATION,
+    
+    FIND_RETAILERS,
+    
+    GET_DEAL,
+    
+    GET_RECIPE,
+    
+    GET_SHOWTIMES,
+    
+    ON_SALE,
+    
+    PLAY_GAME,
+    
+    TRY_IT,
+    
+    TAKE_A_PEEK
+    
 };
 
+inline void to_json(nlohmann::json& j, const CustomizableCTAType& value)
+{
+    switch (value)
+    {
+        
+        case CustomizableCTAType::GET_OFFER: j = "GET_OFFER"; break;
+        
+        case CustomizableCTAType::LEARN_MORE: j = "LEARN_MORE"; break;
+        
+        case CustomizableCTAType::ORDER_NOW: j = "ORDER_NOW"; break;
+        
+        case CustomizableCTAType::SHOP_NOW: j = "SHOP_NOW"; break;
+        
+        case CustomizableCTAType::SIGN_UP: j = "SIGN_UP"; break;
+        
+        case CustomizableCTAType::SUBSCRIBE: j = "SUBSCRIBE"; break;
+        
+        case CustomizableCTAType::BUY_NOW: j = "BUY_NOW"; break;
+        
+        case CustomizableCTAType::CONTACT_US: j = "CONTACT_US"; break;
+        
+        case CustomizableCTAType::GET_QUOTE: j = "GET_QUOTE"; break;
+        
+        case CustomizableCTAType::VISIT_SITE: j = "VISIT_SITE"; break;
+        
+        case CustomizableCTAType::APPLY_NOW: j = "APPLY_NOW"; break;
+        
+        case CustomizableCTAType::BOOK_NOW: j = "BOOK_NOW"; break;
+        
+        case CustomizableCTAType::REQUEST_DEMO: j = "REQUEST_DEMO"; break;
+        
+        case CustomizableCTAType::REGISTER_NOW: j = "REGISTER_NOW"; break;
+        
+        case CustomizableCTAType::FIND_A_DEALER: j = "FIND_A_DEALER"; break;
+        
+        case CustomizableCTAType::ADD_TO_CART: j = "ADD_TO_CART"; break;
+        
+        case CustomizableCTAType::WATCH_NOW: j = "WATCH_NOW"; break;
+        
+        case CustomizableCTAType::READ_MORE: j = "READ_MORE"; break;
+        
+        case CustomizableCTAType::BUY_TICKETS: j = "BUY_TICKETS"; break;
+        
+        case CustomizableCTAType::DONATE_NOW: j = "DONATE_NOW"; break;
+        
+        case CustomizableCTAType::DOWNLOAD: j = "DOWNLOAD"; break;
+        
+        case CustomizableCTAType::EXPLORE_MORE: j = "EXPLORE_MORE"; break;
+        
+        case CustomizableCTAType::FIND_A_LOCATION: j = "FIND_A_LOCATION"; break;
+        
+        case CustomizableCTAType::FIND_RETAILERS: j = "FIND_RETAILERS"; break;
+        
+        case CustomizableCTAType::GET_DEAL: j = "GET_DEAL"; break;
+        
+        case CustomizableCTAType::GET_RECIPE: j = "GET_RECIPE"; break;
+        
+        case CustomizableCTAType::GET_SHOWTIMES: j = "GET_SHOWTIMES"; break;
+        
+        case CustomizableCTAType::ON_SALE: j = "ON_SALE"; break;
+        
+        case CustomizableCTAType::PLAY_GAME: j = "PLAY_GAME"; break;
+        
+        case CustomizableCTAType::TRY_IT: j = "TRY_IT"; break;
+        
+        case CustomizableCTAType::TAKE_A_PEEK: j = "TAKE_A_PEEK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CustomizableCTAType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CustomizableCTAType& value)
+{
+    
+    if (j == "GET_OFFER")
+    {
+        value = CustomizableCTAType::GET_OFFER;
+        return;
+    }
+    
+    if (j == "LEARN_MORE")
+    {
+        value = CustomizableCTAType::LEARN_MORE;
+        return;
+    }
+    
+    if (j == "ORDER_NOW")
+    {
+        value = CustomizableCTAType::ORDER_NOW;
+        return;
+    }
+    
+    if (j == "SHOP_NOW")
+    {
+        value = CustomizableCTAType::SHOP_NOW;
+        return;
+    }
+    
+    if (j == "SIGN_UP")
+    {
+        value = CustomizableCTAType::SIGN_UP;
+        return;
+    }
+    
+    if (j == "SUBSCRIBE")
+    {
+        value = CustomizableCTAType::SUBSCRIBE;
+        return;
+    }
+    
+    if (j == "BUY_NOW")
+    {
+        value = CustomizableCTAType::BUY_NOW;
+        return;
+    }
+    
+    if (j == "CONTACT_US")
+    {
+        value = CustomizableCTAType::CONTACT_US;
+        return;
+    }
+    
+    if (j == "GET_QUOTE")
+    {
+        value = CustomizableCTAType::GET_QUOTE;
+        return;
+    }
+    
+    if (j == "VISIT_SITE")
+    {
+        value = CustomizableCTAType::VISIT_SITE;
+        return;
+    }
+    
+    if (j == "APPLY_NOW")
+    {
+        value = CustomizableCTAType::APPLY_NOW;
+        return;
+    }
+    
+    if (j == "BOOK_NOW")
+    {
+        value = CustomizableCTAType::BOOK_NOW;
+        return;
+    }
+    
+    if (j == "REQUEST_DEMO")
+    {
+        value = CustomizableCTAType::REQUEST_DEMO;
+        return;
+    }
+    
+    if (j == "REGISTER_NOW")
+    {
+        value = CustomizableCTAType::REGISTER_NOW;
+        return;
+    }
+    
+    if (j == "FIND_A_DEALER")
+    {
+        value = CustomizableCTAType::FIND_A_DEALER;
+        return;
+    }
+    
+    if (j == "ADD_TO_CART")
+    {
+        value = CustomizableCTAType::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "WATCH_NOW")
+    {
+        value = CustomizableCTAType::WATCH_NOW;
+        return;
+    }
+    
+    if (j == "READ_MORE")
+    {
+        value = CustomizableCTAType::READ_MORE;
+        return;
+    }
+    
+    if (j == "BUY_TICKETS")
+    {
+        value = CustomizableCTAType::BUY_TICKETS;
+        return;
+    }
+    
+    if (j == "DONATE_NOW")
+    {
+        value = CustomizableCTAType::DONATE_NOW;
+        return;
+    }
+    
+    if (j == "DOWNLOAD")
+    {
+        value = CustomizableCTAType::DOWNLOAD;
+        return;
+    }
+    
+    if (j == "EXPLORE_MORE")
+    {
+        value = CustomizableCTAType::EXPLORE_MORE;
+        return;
+    }
+    
+    if (j == "FIND_A_LOCATION")
+    {
+        value = CustomizableCTAType::FIND_A_LOCATION;
+        return;
+    }
+    
+    if (j == "FIND_RETAILERS")
+    {
+        value = CustomizableCTAType::FIND_RETAILERS;
+        return;
+    }
+    
+    if (j == "GET_DEAL")
+    {
+        value = CustomizableCTAType::GET_DEAL;
+        return;
+    }
+    
+    if (j == "GET_RECIPE")
+    {
+        value = CustomizableCTAType::GET_RECIPE;
+        return;
+    }
+    
+    if (j == "GET_SHOWTIMES")
+    {
+        value = CustomizableCTAType::GET_SHOWTIMES;
+        return;
+    }
+    
+    if (j == "ON_SALE")
+    {
+        value = CustomizableCTAType::ON_SALE;
+        return;
+    }
+    
+    if (j == "PLAY_GAME")
+    {
+        value = CustomizableCTAType::PLAY_GAME;
+        return;
+    }
+    
+    if (j == "TRY_IT")
+    {
+        value = CustomizableCTAType::TRY_IT;
+        return;
+    }
+    
+    if (j == "TAKE_A_PEEK")
+    {
+        value = CustomizableCTAType::TAKE_A_PEEK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CustomizableCTAType", &j);
+}
 
 } // namespace models
 

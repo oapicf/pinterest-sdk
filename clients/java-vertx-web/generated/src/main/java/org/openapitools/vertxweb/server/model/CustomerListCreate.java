@@ -17,7 +17,7 @@ import org.openapitools.vertxweb.server.model.UserListType;
 public class CustomerListCreate   {
   
   private Boolean isNca;
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
   private String name;
   private String records;
   private List<CustomerListRecordRow> recordsV2 = new ArrayList<>();

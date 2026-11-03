@@ -56,7 +56,7 @@ import javax.validation.Valid;
   CampaignCreateItem.JSON_PROPERTY_STATUS,
   CampaignCreateItem.JSON_PROPERTY_TRACKING_URLS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateItem   {
   public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNT_ID)
@@ -136,7 +136,7 @@ public class CampaignCreateItem   {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public static final String JSON_PROPERTY_TRACKING_URLS = "tracking_urls";
   @JsonProperty(JSON_PROPERTY_TRACKING_URLS)

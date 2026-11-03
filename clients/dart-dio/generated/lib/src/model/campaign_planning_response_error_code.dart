@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_planning_response_error_code.g.dart';
 
+/// Error code returned for a campaign planning estimate failure.
 class CampaignPlanningResponseErrorCode extends EnumClass {
 
-  /// Error code returned for a campaign planning estimate failure.
   @BuiltValueEnumConst(wireName: r'SERVER_ERROR')
   static const CampaignPlanningResponseErrorCode SERVER_ERROR = _$SERVER_ERROR;
-  /// Error code returned for a campaign planning estimate failure.
   @BuiltValueEnumConst(wireName: r'AUDIENCE_LIST_MISSING')
   static const CampaignPlanningResponseErrorCode AUDIENCE_LIST_MISSING = _$AUDIENCE_LIST_MISSING;
-  /// Error code returned for a campaign planning estimate failure.
   @BuiltValueEnumConst(wireName: r'INVALID_REQUEST')
   static const CampaignPlanningResponseErrorCode INVALID_REQUEST = _$INVALID_REQUEST;
-  /// Error code returned for a campaign planning estimate failure.
   @BuiltValueEnumConst(wireName: r'PRODUCT_GROUP_MISSING')
   static const CampaignPlanningResponseErrorCode PRODUCT_GROUP_MISSING = _$PRODUCT_GROUP_MISSING;
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Lead form question type
-* Values: CUSTOM,FULL_NAME,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ZIP_CODE,GENDER,CITY,COUNTRY,STATE_PROVINCE,ADDRESS,DATE_OF_BIRTH,AGE
-*/
+ * Lead form question type
+ * Values: CUSTOM,FULL_NAME,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER,ZIP_CODE,GENDER,CITY,COUNTRY,STATE_PROVINCE,ADDRESS,DATE_OF_BIRTH,AGE
+ */
 enum class LeadFormQuestionType(@get:JsonValue val value: kotlin.String) {
 
     CUSTOM("CUSTOM"),
@@ -40,9 +40,8 @@ enum class LeadFormQuestionType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LeadFormQuestionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormQuestionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormQuestionType'")
         }
     }
 }
-

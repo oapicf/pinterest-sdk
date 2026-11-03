@@ -211,9 +211,10 @@ class _$CatalogsRetailProductGroupUpdateRequestSerializer implements PrimitiveSe
   }
 }
 
+
+/// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 class CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum extends EnumClass {
 
-  /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
   @BuiltValueEnumConst(wireName: r'RETAIL')
   static const CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum RETAIL = _$catalogsRetailProductGroupUpdateRequestCatalogTypeEnum_RETAIL;
 

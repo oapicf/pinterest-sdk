@@ -43,14 +43,10 @@ import {
 export interface CatalogsHotelProductGroupFilters {
     /**
      * 
-     * @type {Array<CatalogsHotelProductGroupFilterKeys>}
-     * @memberof CatalogsHotelProductGroupFilters
      */
     anyOf: Array<CatalogsHotelProductGroupFilterKeys>;
     /**
      * 
-     * @type {Array<CatalogsHotelProductGroupFilterKeys>}
-     * @memberof CatalogsHotelProductGroupFilters
      */
     allOf: Array<CatalogsHotelProductGroupFilterKeys>;
 }

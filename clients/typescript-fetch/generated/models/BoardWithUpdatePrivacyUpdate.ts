@@ -29,8 +29,6 @@ import {
 export interface BoardWithUpdatePrivacyUpdate {
     /**
      * 
-     * @type {string}
-     * @memberof BoardWithUpdatePrivacyUpdate
      */
     description?: string | null;
     /**
@@ -38,14 +36,10 @@ export interface BoardWithUpdatePrivacyUpdate {
      * 
      *     **Note:** If you create an ad-only board by setting `is_ads_only`
      *     to `true`, the board name automatically becomes "Ad-only Pins".
-     * @type {string}
-     * @memberof BoardWithUpdatePrivacyUpdate
      */
     name?: string;
     /**
      * 
-     * @type {BoardUpdatePrivacy}
-     * @memberof BoardWithUpdatePrivacyUpdate
      */
     privacy?: BoardUpdatePrivacy;
 }

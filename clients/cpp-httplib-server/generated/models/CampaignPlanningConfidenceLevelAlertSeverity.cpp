@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningConfidenceLevelAlertSeverity.h"
 
-namespace models {
-
-CampaignPlanningConfidenceLevelAlertSeverity::CampaignPlanningConfidenceLevelAlertSeverity()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

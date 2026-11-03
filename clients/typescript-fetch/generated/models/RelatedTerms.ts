@@ -29,20 +29,14 @@ import {
 export interface RelatedTerms {
     /**
      * First input term. For example, if you pass "?terms=clothes,workout", then id will be "clothes"
-     * @type {string}
-     * @memberof RelatedTerms
      */
     id?: string;
     /**
      * Total number of related terms returned
-     * @type {number}
-     * @memberof RelatedTerms
      */
     relatedTermCount?: number;
     /**
      * The id of the advertiser.
-     * @type {Array<RelatedTermsRelatedTermsListItems>}
-     * @memberof RelatedTerms
      */
     relatedTermsList?: Array<RelatedTermsRelatedTermsListItems>;
 }

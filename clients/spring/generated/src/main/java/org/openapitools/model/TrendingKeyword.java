@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -26,31 +25,23 @@ import jakarta.annotation.Generated;
  * TrendingKeyword
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingKeyword {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrendingKeywordDemographics> demographics = JsonNullable.<TrendingKeywordDemographics>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean hasPrediction;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String keyword;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer pctGrowthMom;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer pctGrowthWow;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer pctGrowthYoy;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PredictedTimeSeries predictedTimeSeries;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TimeSeries timeSeries;
 
   public TrendingKeyword demographics(TrendingKeywordDemographics demographics) {
@@ -63,7 +54,7 @@ public class TrendingKeyword {
    * @return demographics
    */
   @Valid 
-  @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("demographics")
   public JsonNullable<TrendingKeywordDemographics> getDemographics() {
     return demographics;

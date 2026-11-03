@@ -43,20 +43,14 @@ import {
 export interface TopVideoPinsAnalyticsResponse {
     /**
      * 
-     * @type {TopVideoPinsAnalyticsResponseDateAvailability}
-     * @memberof TopVideoPinsAnalyticsResponse
      */
     dateAvailability?: TopVideoPinsAnalyticsResponseDateAvailability;
     /**
      * 
-     * @type {Array<TopVideoPinsAnalyticsResponsePinsItems>}
-     * @memberof TopVideoPinsAnalyticsResponse
      */
     pins?: Array<TopVideoPinsAnalyticsResponsePinsItems>;
     /**
      * 
-     * @type {TopVideoPinsSortBy}
-     * @memberof TopVideoPinsAnalyticsResponse
      */
     sortBy?: TopVideoPinsSortBy;
 }

@@ -194,22 +194,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!availability.IsSet)
-                throw new ArgumentException("Property is required for class RetailLocalInventoryItemAttributes.", nameof(availability));
+                throw new JsonException("Property is required for class RetailLocalInventoryItemAttributes: availability.");
 
             if (!price.IsSet)
-                throw new ArgumentException("Property is required for class RetailLocalInventoryItemAttributes.", nameof(price));
+                throw new JsonException("Property is required for class RetailLocalInventoryItemAttributes: price.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Property is not nullable for class RetailLocalInventoryItemAttributes: availability.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Property is not nullable for class RetailLocalInventoryItemAttributes: price.");
 
             if (adLink.IsSet && adLink.Value == null)
-                throw new ArgumentNullException(nameof(adLink), "Property is not nullable for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Property is not nullable for class RetailLocalInventoryItemAttributes: ad_link.");
 
             if (salePrice.IsSet && salePrice.Value == null)
-                throw new ArgumentNullException(nameof(salePrice), "Property is not nullable for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Property is not nullable for class RetailLocalInventoryItemAttributes: sale_price.");
 
             return new RetailLocalInventoryItemAttributes(availability.Value!.Value!, price.Value!, adLink, salePrice);
         }
@@ -220,7 +220,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="retailLocalInventoryItemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, RetailLocalInventoryItemAttributes retailLocalInventoryItemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,17 +234,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="retailLocalInventoryItemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, RetailLocalInventoryItemAttributes retailLocalInventoryItemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (retailLocalInventoryItemAttributes.Price == null)
-                throw new ArgumentNullException(nameof(retailLocalInventoryItemAttributes.Price), "Property is required for class RetailLocalInventoryItemAttributes.");
-
             if (retailLocalInventoryItemAttributes.AdLinkOption.IsSet && retailLocalInventoryItemAttributes.AdLink == null)
-                throw new ArgumentNullException(nameof(retailLocalInventoryItemAttributes.AdLink), "Property is required for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Cannot write null property RetailLocalInventoryItemAttributes.AdLink to non-nullable JSON property 'ad_link'.");
 
             if (retailLocalInventoryItemAttributes.SalePriceOption.IsSet && retailLocalInventoryItemAttributes.SalePrice == null)
-                throw new ArgumentNullException(nameof(retailLocalInventoryItemAttributes.SalePrice), "Property is required for class RetailLocalInventoryItemAttributes.");
+                throw new JsonException("Cannot write null property RetailLocalInventoryItemAttributes.SalePrice to non-nullable JSON property 'sale_price'.");
 
             var availabilityRawValue = ItemAvailabilityValueConverter.ToJsonValue(retailLocalInventoryItemAttributes.Availability);
             writer.WriteString("availability", availabilityRawValue);

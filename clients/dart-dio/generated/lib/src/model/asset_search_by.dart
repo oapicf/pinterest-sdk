@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'asset_search_by.g.dart';
 
+/// The field to search member assets by
 class AssetSearchBy extends EnumClass {
 
-  /// The field to search member assets by
   @BuiltValueEnumConst(wireName: r'NAME')
   static const AssetSearchBy NAME = _$NAME;
-  /// The field to search member assets by
   @BuiltValueEnumConst(wireName: r'ID')
   static const AssetSearchBy ID = _$ID;
-  /// The field to search member assets by
   @BuiltValueEnumConst(wireName: r'NAME_OR_ID')
   static const AssetSearchBy NAME_OR_ID = _$NAME_OR_ID;
-  /// The field to search member assets by
   @BuiltValueEnumConst(wireName: r'OWNER_NAME')
   static const AssetSearchBy OWNER_NAME = _$OWNER_NAME;
-  /// The field to search member assets by
   @BuiltValueEnumConst(wireName: r'NAME_OR_OWNER')
   static const AssetSearchBy NAME_OR_OWNER = _$NAME_OR_OWNER;
 

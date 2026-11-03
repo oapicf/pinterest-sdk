@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { ConversionDeletionRequestStatus } from './ConversionDeletionRequestStatus';
 import {
     ConversionDeletionRequestStatusFromJSON,
@@ -29,28 +29,20 @@ import {
 export interface ConversionDeletionRequest {
     /**
      * Timestamp when the conversion deletion request was succesfully created.
-     * @type {Date}
-     * @memberof ConversionDeletionRequest
      */
     readonly createdTime: Date;
     /**
      * Timestamp when the conversion deletion request was processed.
-     * @type {Date}
-     * @memberof ConversionDeletionRequest
      */
     readonly processedTime?: Date | null;
     /**
      * Unique identifier of the conversion deletion request
-     * @type {string}
-     * @memberof ConversionDeletionRequest
      */
     requestId: string;
     /**
      * Represents the status of the conversion deletion request. "PENDING" or "SUBMITTED". "PENDING" meaning the Advertiser can cancel the request.
      * The advertiser has a 7 day time window after the conversion deletion request was submitted to cancel it. "SUBMITTED" meaning that the Data Deletion
      * process has begun and can no longer be canceled.
-     * @type {ConversionDeletionRequestStatus}
-     * @memberof ConversionDeletionRequest
      */
     readonly status: ConversionDeletionRequestStatus;
 }
@@ -77,8 +69,8 @@ export function ConversionDeletionRequestFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'createdTime': (new Date(json['created_time'])),
-        'processedTime': json['processed_time'] === undefined ? undefined : json['processed_time'] === null ? null : (new Date(json['processed_time'])),
+        'createdTime': (json['created_time'] == null ? json['created_time'] : parseDate(json['created_time'])),
+        'processedTime': json['processed_time'] === undefined ? undefined : json['processed_time'] === null ? null : (parseDate(json['processed_time'])),
         'requestId': json['request_id'],
         'status': ConversionDeletionRequestStatusFromJSON(json['status']),
     };

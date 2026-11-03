@@ -22,11 +22,11 @@ data class AdsCreditRedeemCreate(
 
     @get:Pattern(regexp="^[a-z0-9]*$")
     @Schema(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, description = "Takes in a SHA256 hash of the offerCode.")
-    @param:JsonProperty("offerCodeHash")
+    @param:JsonProperty("offerCodeHash", required = true)
     @get:JsonProperty("offerCodeHash", required = true) val offerCodeHash: kotlin.String,
 
     @Schema(example = "true", required = true, description = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
-    @param:JsonProperty("validateOnly")
+    @param:JsonProperty("validateOnly", required = true)
     @get:JsonProperty("validateOnly", required = true) val validateOnly: kotlin.Boolean
 ) {
 

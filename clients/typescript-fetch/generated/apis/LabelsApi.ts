@@ -60,34 +60,86 @@ import {
 } from '../models/QueryLabelTypesItems';
 
 export interface LabelsApplyRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Label ID.
+     */
     labelId: string;
+    /**
+     * 
+     */
     labeledEntitiesCreate: LabeledEntitiesCreate;
 }
 
 export interface LabelsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     labelCreateRequest: LabelCreateRequest;
 }
 
 export interface LabelsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds?: Array<string>;
+    /**
+     * List of Label Ids to use to filter the results.
+     */
     labelIds?: Array<string>;
+    /**
+     * Label entity status
+     */
     entityStatuses?: Array<QueryLabelEntityStatusesItems>;
+    /**
+     * Label type.
+     */
     labelTypes?: Array<QueryLabelTypesItems>;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface LabelsRemoveRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Label ID.
+     */
     labelId: string;
+    /**
+     * 
+     */
     labeledEntitiesCreate: LabeledEntitiesCreate;
 }
 
 export interface LabelsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     labelUpdateRequest: LabelUpdateRequest;
 }
 

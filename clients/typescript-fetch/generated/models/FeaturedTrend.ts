@@ -43,20 +43,14 @@ import {
 export interface FeaturedTrend {
     /**
      * The main interest category
-     * @type {InterestsEnum}
-     * @memberof FeaturedTrend
      */
     interest: InterestsEnum;
     /**
      * Market code (e.g., 'US', 'UK', etc.)
-     * @type {ProductCategoryRegion}
-     * @memberof FeaturedTrend
      */
     market?: ProductCategoryRegion;
     /**
      * List of trending topics within this interest category
-     * @type {Array<TrendingTopic>}
-     * @memberof FeaturedTrend
      */
     trends?: Array<TrendingTopic>;
 }

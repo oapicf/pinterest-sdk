@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Level of the reporting request
-* Values: ADVERTISER,ADVERTISER_TARGETING,CAMPAIGN,CAMPAIGN_TARGETING,AD_GROUP,AD_GROUP_TARGETING,PIN_PROMOTION,PIN_PROMOTION_TARGETING,KEYWORD,PRODUCT_GROUP,PRODUCT_GROUP_TARGETING,PRODUCT_ITEM,PRODUCT_ITEM_TARGETING
-*/
+ * Level of the reporting request
+ * Values: ADVERTISER,ADVERTISER_TARGETING,CAMPAIGN,CAMPAIGN_TARGETING,AD_GROUP,AD_GROUP_TARGETING,PIN_PROMOTION,PIN_PROMOTION_TARGETING,KEYWORD,PRODUCT_GROUP,PRODUCT_GROUP_TARGETING,PRODUCT_ITEM,PRODUCT_ITEM_TARGETING
+ */
 enum class MetricsReportingLevel(@get:JsonValue val value: kotlin.String) {
 
     ADVERTISER("ADVERTISER"),
@@ -39,9 +39,8 @@ enum class MetricsReportingLevel(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MetricsReportingLevel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MetricsReportingLevel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MetricsReportingLevel'")
         }
     }
 }
-

@@ -49,7 +49,7 @@ public class CustomerListCreate  {
   * Type of customer list (e.g., EMAIL, IDFA, MAID).
   */
   @JsonbProperty("list_type")
-  protected UserListType listType;
+  protected UserListType listType = UserListType.EMAIL;
 
  /**
   * Customer list name.

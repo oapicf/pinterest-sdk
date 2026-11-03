@@ -19,7 +19,7 @@ import SupplementalItemValidationEvent from './SupplementalItemValidationEvent';
 /**
  * The SupplementalOperationResult model module.
  * @module model/SupplementalOperationResult
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SupplementalOperationResult {
     /**

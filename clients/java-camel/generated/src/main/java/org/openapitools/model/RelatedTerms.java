@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,14 +22,13 @@ import jakarta.annotation.Generated;
  * RelatedTerms
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RelatedTerms {
 
   private String id;
 
   private Integer relatedTermCount;
 
-  @Valid
   private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms id(String id) {
@@ -90,7 +88,7 @@ public class RelatedTerms {
    * The id of the advertiser.
    * @return relatedTermsList
    */
-  @Valid 
+  
   @Schema(name = "related_terms_list", description = "The id of the advertiser.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_terms_list")
   public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {

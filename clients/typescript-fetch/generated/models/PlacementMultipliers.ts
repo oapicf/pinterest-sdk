@@ -32,8 +32,6 @@ export interface PlacementMultipliers {
     [key: string]: number | any;
     /**
      * Placement type identifier.
-     * @type {PlacementType}
-     * @memberof PlacementMultipliers
      */
     pLACEMENT?: PlacementType;
 }

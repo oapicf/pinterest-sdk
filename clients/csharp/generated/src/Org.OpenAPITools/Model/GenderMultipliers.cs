@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (gENDER.IsSet && gENDER.Value == null)
-                throw new ArgumentNullException(nameof(gENDER), "Property is not nullable for class GenderMultipliers.");
+                throw new JsonException("Property is not nullable for class GenderMultipliers: GENDER.");
 
             return new GenderMultipliers(gENDER);
         }
@@ -159,7 +159,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="genderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, GenderMultipliers genderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -174,9 +173,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="genderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, GenderMultipliers genderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (genderMultipliers.GENDEROption.IsSet && genderMultipliers.GENDER == null)
+                throw new JsonException("Cannot write null property GenderMultipliers.GENDER to non-nullable JSON property 'GENDER'.");
+
             if (genderMultipliers.GENDEROption.IsSet)
             {
                 var gENDERRawValue = TargetingSpecGenderValueConverter.ToJsonValue(genderMultipliers.GENDER!.Value);

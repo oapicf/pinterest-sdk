@@ -177,10 +177,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aDGROUPID.IsSet && aDGROUPID.Value == null)
-                throw new ArgumentNullException(nameof(aDGROUPID), "Property is not nullable for class AdGroupsAnalyticsMetrics.");
+                throw new JsonException("Property is not nullable for class AdGroupsAnalyticsMetrics: AD_GROUP_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class AdGroupsAnalyticsMetrics.");
+                throw new JsonException("Property is not nullable for class AdGroupsAnalyticsMetrics: DATE.");
 
             return new AdGroupsAnalyticsMetrics(aDGROUPID, dATE);
         }
@@ -191,7 +191,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsAnalyticsMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupsAnalyticsMetrics adGroupsAnalyticsMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -206,11 +205,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupsAnalyticsMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupsAnalyticsMetrics adGroupsAnalyticsMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adGroupsAnalyticsMetrics.AD_GROUP_IDOption.IsSet && adGroupsAnalyticsMetrics.AD_GROUP_ID == null)
-                throw new ArgumentNullException(nameof(adGroupsAnalyticsMetrics.AD_GROUP_ID), "Property is required for class AdGroupsAnalyticsMetrics.");
+                throw new JsonException("Cannot write null property AdGroupsAnalyticsMetrics.AD_GROUP_ID to non-nullable JSON property 'AD_GROUP_ID'.");
+
+            if (adGroupsAnalyticsMetrics.DATEOption.IsSet && adGroupsAnalyticsMetrics.DATE == null)
+                throw new JsonException("Cannot write null property AdGroupsAnalyticsMetrics.DATE to non-nullable JSON property 'DATE'.");
 
             if (adGroupsAnalyticsMetrics.AD_GROUP_IDOption.IsSet)
                 writer.WriteString("AD_GROUP_ID", adGroupsAnalyticsMetrics.AD_GROUP_ID);

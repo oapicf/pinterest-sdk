@@ -69,7 +69,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public abstract class BusinessesApiService {
     public abstract Response assetAccessRequestsCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,CreateAssetAccessRequestBody createAssetAccessRequestBody,SecurityContext securityContext) throws NotFoundException;
     public abstract Response assetGroupCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessId,AssetGroupInputCreate assetGroupInputCreate,SecurityContext securityContext) throws NotFoundException;

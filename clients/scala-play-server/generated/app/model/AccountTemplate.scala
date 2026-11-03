@@ -32,7 +32,7 @@ import play.api.libs.json._
   * @param userId ID of the user who created the template
   * @param viewWindowDays The length of the sliding window over which view conversions will be attributed
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class AccountTemplate(
   adAccountId: Option[String],
   adAccountIds: Option[List[String]],

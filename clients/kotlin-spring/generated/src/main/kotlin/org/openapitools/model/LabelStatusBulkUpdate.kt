@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Set status to `ARCHIVED` to remove the label from the parent entity.
-* Values: ARCHIVED
-*/
+ * Set status to `ARCHIVED` to remove the label from the parent entity.
+ * Values: ARCHIVED
+ */
 enum class LabelStatusBulkUpdate(@get:JsonValue val value: kotlin.String) {
 
     ARCHIVED("ARCHIVED");
@@ -27,9 +27,8 @@ enum class LabelStatusBulkUpdate(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LabelStatusBulkUpdate {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelStatusBulkUpdate'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelStatusBulkUpdate'")
         }
     }
 }
-

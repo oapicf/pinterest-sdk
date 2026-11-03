@@ -20,7 +20,6 @@ public class BusinessAssetMembersGet200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid UserSingleAssetBinding> items = new ArrayList<>();
  /**
   * Get bookmark

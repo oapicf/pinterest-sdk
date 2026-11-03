@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface InviteExceptionResponse {
     /**
      * Error code associated with the error in performing the action on the invite/request.
-     * @type {number}
-     * @memberof InviteExceptionResponse
      */
     code?: number;
     /**
      * Unique identifier of the invite/request.
-     * @type {string}
-     * @memberof InviteExceptionResponse
      */
     inviteOrRequestId?: string | null;
     /**
      * Error message associated with the error in performing the action on the invite/request.
-     * @type {string}
-     * @memberof InviteExceptionResponse
      */
     message?: string;
     /**
      * A list of users' usernames or emails OR a list of partner ids that caused the error.
-     * @type {Array<string>}
-     * @memberof InviteExceptionResponse
      */
     usersOrPartnerIds?: Array<string>;
 }

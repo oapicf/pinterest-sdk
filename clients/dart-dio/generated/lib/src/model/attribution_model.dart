@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'attribution_model.g.dart';
 
+/// Attribution model used to attribute the conversion event.
 class AttributionModel extends EnumClass {
 
-  /// Attribution model used to attribute the conversion event.
   @BuiltValueEnumConst(wireName: r'first_touch')
   static const AttributionModel firstTouch = _$firstTouch;
-  /// Attribution model used to attribute the conversion event.
   @BuiltValueEnumConst(wireName: r'last_touch')
   static const AttributionModel lastTouch = _$lastTouch;
-  /// Attribution model used to attribute the conversion event.
   @BuiltValueEnumConst(wireName: r'multi_touch')
   static const AttributionModel multiTouch = _$multiTouch;
-  /// Attribution model used to attribute the conversion event.
   @BuiltValueEnumConst(wireName: r'mmm')
   static const AttributionModel mmm = _$mmm;
 

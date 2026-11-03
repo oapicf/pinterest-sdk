@@ -78,50 +78,34 @@ import {
 export interface BulkUpsertRequestCreate {
     /**
      * 
-     * @type {Array<AdGroupCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     adGroups?: Array<AdGroupCreateRequest>;
     /**
      * 
-     * @type {Array<AdCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     ads?: Array<AdCreateRequest>;
     /**
      * 
-     * @type {Array<CampaignCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     campaigns?: Array<CampaignCreateRequest>;
     /**
      * 
-     * @type {Array<BulkUpsertRequestCreateCatalogProductGroupsItems>}
-     * @memberof BulkUpsertRequestCreate
      */
     catalogProductGroups?: Array<BulkUpsertRequestCreateCatalogProductGroupsItems>;
     /**
      * 
-     * @type {Array<KeywordsRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     keywords?: Array<KeywordsRequest>;
     /**
      * 
-     * @type {Array<LabelBulkCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     labels?: Array<LabelBulkCreateRequest>;
     /**
      * 
-     * @type {Array<ProductGroupPromotionCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     productGroups?: Array<ProductGroupPromotionCreateRequest>;
     /**
      * 
-     * @type {Array<ScheduleCreateRequest>}
-     * @memberof BulkUpsertRequestCreate
      */
     schedules?: Array<ScheduleCreateRequest>;
 }

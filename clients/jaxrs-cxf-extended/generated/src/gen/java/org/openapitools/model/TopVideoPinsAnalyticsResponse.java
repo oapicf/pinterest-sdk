@@ -23,7 +23,6 @@ public class TopVideoPinsAnalyticsResponse  {
   private TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
   @ApiModelProperty(value = "")

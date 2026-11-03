@@ -5,7 +5,7 @@
  */
 export const CatalogsHotelProductGroupType = {
     MerchantCreated: 'MERCHANT_CREATED',
-    AllListings: 'ALL_LISTINGS'
+    AllListings: 'ALL_LISTINGS',
 } as const;
 export type CatalogsHotelProductGroupType = typeof CatalogsHotelProductGroupType[keyof typeof CatalogsHotelProductGroupType];
 

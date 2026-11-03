@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'lead_form_question_field_type.g.dart';
 
+/// Lead form question field type
 class LeadFormQuestionFieldType extends EnumClass {
 
-  /// Lead form question field type
   @BuiltValueEnumConst(wireName: r'TEXT_FIELD')
   static const LeadFormQuestionFieldType TEXT_FIELD = _$TEXT_FIELD;
-  /// Lead form question field type
   @BuiltValueEnumConst(wireName: r'TEXT_AREA')
   static const LeadFormQuestionFieldType TEXT_AREA = _$TEXT_AREA;
-  /// Lead form question field type
   @BuiltValueEnumConst(wireName: r'RADIO_LIST')
   static const LeadFormQuestionFieldType RADIO_LIST = _$RADIO_LIST;
-  /// Lead form question field type
   @BuiltValueEnumConst(wireName: r'CHECKBOX')
   static const LeadFormQuestionFieldType CHECKBOX = _$CHECKBOX;
 

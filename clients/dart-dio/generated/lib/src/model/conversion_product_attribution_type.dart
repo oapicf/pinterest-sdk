@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_product_attribution_type.g.dart';
 
+/// Conversion product attribution level
 class ConversionProductAttributionType extends EnumClass {
 
-  /// Conversion product attribution level
   @BuiltValueEnumConst(wireName: r'DEFAULT')
   static const ConversionProductAttributionType DEFAULT = _$DEFAULT;
-  /// Conversion product attribution level
   @BuiltValueEnumConst(wireName: r'BRAND_ATTRIBUTION')
   static const ConversionProductAttributionType BRAND_ATTRIBUTION = _$BRAND_ATTRIBUTION;
 

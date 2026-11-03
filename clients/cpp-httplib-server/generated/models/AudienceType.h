@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class AudienceType
-{
-public:
-
-    AudienceType();
-    virtual ~AudienceType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceType,
-        )
-
-private:
+enum class AudienceType {
+    
+    CUSTOMER_LIST,
+    
+    VISITOR,
+    
+    ENGAGEMENT,
+    
+    ACTALIKE,
+    
+    PERSONA
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceType::CUSTOMER_LIST: j = "CUSTOMER_LIST"; break;
+        
+        case AudienceType::VISITOR: j = "VISITOR"; break;
+        
+        case AudienceType::ENGAGEMENT: j = "ENGAGEMENT"; break;
+        
+        case AudienceType::ACTALIKE: j = "ACTALIKE"; break;
+        
+        case AudienceType::PERSONA: j = "PERSONA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceType& value)
+{
+    
+    if (j == "CUSTOMER_LIST")
+    {
+        value = AudienceType::CUSTOMER_LIST;
+        return;
+    }
+    
+    if (j == "VISITOR")
+    {
+        value = AudienceType::VISITOR;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT")
+    {
+        value = AudienceType::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "ACTALIKE")
+    {
+        value = AudienceType::ACTALIKE;
+        return;
+    }
+    
+    if (j == "PERSONA")
+    {
+        value = AudienceType::PERSONA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceType", &j);
+}
 
 } // namespace models
 

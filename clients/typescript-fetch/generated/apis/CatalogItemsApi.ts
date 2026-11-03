@@ -40,17 +40,35 @@ import {
 } from '../models/PinterestLibError';
 
 export interface ItemsBatchGetRequest {
+    /**
+     * Id of a catalogs items batch to fetch
+     */
     batchId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ItemsBatchPostRequest {
+    /**
+     * 
+     */
     catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ItemsPostRequest {
+    /**
+     * 
+     */
     catalogsItemsRequest: CatalogsItemsRequest;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 

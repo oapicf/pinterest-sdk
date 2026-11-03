@@ -125,3 +125,4 @@ class _$CatalogsProductGroupMultipleGenderCriteriaSerializer implements Primitiv
   }
 }
 
+

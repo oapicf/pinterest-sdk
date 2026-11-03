@@ -85,35 +85,81 @@ import {
 } from '../models/UpdateInvitesResultsResponseArray';
 
 export interface AssetAccessRequestsCreateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     createAssetAccessRequestBody: CreateAssetAccessRequestBody;
 }
 
 export interface CancelInvitesOrRequestsRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     cancelInvitesRequest: CancelInvitesRequest;
 }
 
 export interface CreateAssetInvitesOperationRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     createAssetInvitesRequest: CreateAssetInvitesRequest;
 }
 
 export interface CreateMembershipOrPartnershipInvitesRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody;
 }
 
 export interface GetInvitesRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * A boolean field to indicate whether the invite is to create a partnership or a membership.
+     */
     isMember?: boolean;
+    /**
+     * A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+     */
     inviteStatus?: Array<InviteFilterStatus>;
+    /**
+     * Invite type to filter invites by. Only invites of the specified type will be returned.
+     */
     inviteType?: InviteType;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface RespondBusinessAccessInvitesRequest {
+    /**
+     * 
+     */
     authRespondInvitesBody: AuthRespondInvitesBody;
 }
 

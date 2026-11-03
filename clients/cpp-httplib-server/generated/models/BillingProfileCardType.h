@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class BillingProfileCardType
-{
-public:
-
-    BillingProfileCardType();
-    virtual ~BillingProfileCardType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingProfileCardType,
-        )
-
-private:
+enum class BillingProfileCardType {
+    
+    UNKNOWN,
+    
+    VISA,
+    
+    MASTERCARD,
+    
+    AMERICAN_EXPRESS,
+    
+    DISCOVER,
+    
+    ELO
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingProfileCardType& value)
+{
+    switch (value)
+    {
+        
+        case BillingProfileCardType::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case BillingProfileCardType::VISA: j = "VISA"; break;
+        
+        case BillingProfileCardType::MASTERCARD: j = "MASTERCARD"; break;
+        
+        case BillingProfileCardType::AMERICAN_EXPRESS: j = "AMERICAN_EXPRESS"; break;
+        
+        case BillingProfileCardType::DISCOVER: j = "DISCOVER"; break;
+        
+        case BillingProfileCardType::ELO: j = "ELO"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfileCardType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingProfileCardType& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = BillingProfileCardType::UNKNOWN;
+        return;
+    }
+    
+    if (j == "VISA")
+    {
+        value = BillingProfileCardType::VISA;
+        return;
+    }
+    
+    if (j == "MASTERCARD")
+    {
+        value = BillingProfileCardType::MASTERCARD;
+        return;
+    }
+    
+    if (j == "AMERICAN_EXPRESS")
+    {
+        value = BillingProfileCardType::AMERICAN_EXPRESS;
+        return;
+    }
+    
+    if (j == "DISCOVER")
+    {
+        value = BillingProfileCardType::DISCOVER;
+        return;
+    }
+    
+    if (j == "ELO")
+    {
+        value = BillingProfileCardType::ELO;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfileCardType", &j);
+}
 
 } // namespace models
 

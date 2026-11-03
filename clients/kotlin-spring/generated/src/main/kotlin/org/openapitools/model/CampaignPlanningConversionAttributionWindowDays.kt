@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Conversion attribution window in days.
-* Values: DAYS_0,DAYS_1,DAYS_7,DAYS_30,DAYS_60
-*/
+ * Conversion attribution window in days.
+ * Values: DAYS_0,DAYS_1,DAYS_7,DAYS_30,DAYS_60
+ */
 enum class CampaignPlanningConversionAttributionWindowDays(@get:JsonValue val value: kotlin.String) {
 
     DAYS_0("DAYS_0"),
@@ -31,9 +31,8 @@ enum class CampaignPlanningConversionAttributionWindowDays(@get:JsonValue val va
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningConversionAttributionWindowDays {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConversionAttributionWindowDays'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConversionAttributionWindowDays'")
         }
     }
 }
-

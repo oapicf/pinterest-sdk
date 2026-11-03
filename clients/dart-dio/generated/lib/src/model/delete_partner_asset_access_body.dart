@@ -107,3 +107,4 @@ class _$DeletePartnerAssetAccessBodySerializer implements PrimitiveSerializer<De
   }
 }
 
+

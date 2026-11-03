@@ -29,32 +29,22 @@ import {
 export interface ConversionProductReport {
     /**
      * Message returned from the create report request
-     * @type {string}
-     * @memberof ConversionProductReport
      */
     readonly message?: string;
     /**
      * Async report status
-     * @type {BulkReportingJobStatus}
-     * @memberof ConversionProductReport
      */
     readonly reportStatus?: BulkReportingJobStatus;
     /**
      * Size of the report in bytes
-     * @type {number}
-     * @memberof ConversionProductReport
      */
     readonly size?: number;
     /**
      * Token returned from the create report request
-     * @type {string}
-     * @memberof ConversionProductReport
      */
     readonly token?: string;
     /**
      * URL of the report
-     * @type {string}
-     * @memberof ConversionProductReport
      */
     readonly url?: string;
 }

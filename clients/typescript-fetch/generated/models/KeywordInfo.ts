@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface KeywordInfo {
     /**
      * Keyword Name
-     * @type {string}
-     * @memberof KeywordInfo
      */
     name: string;
     /**
      * MoM growth as a percentage, if there is no growth rate, this field is not present
-     * @type {number}
-     * @memberof KeywordInfo
      */
     pctGrowthMom?: number;
 }

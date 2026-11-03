@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object to update catalogs creative assets items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Request object to update catalogs creative assets items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsBatchRequest   {
   
   private String catalogId;
@@ -322,8 +322,7 @@ public class CatalogsCreativeAssetsBatchRequest   {
   @ApiModelProperty(required = true, value = "Array with creative assets item operations")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=1000)  @Valid
-  public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {
+ @Size(min=1,max=1000)  public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }
   public void setItems(List<@Valid CatalogsCreativeAssetsBatchItem> items) {

@@ -272,22 +272,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (advertiserId.IsSet && advertiserId.Value == null)
-                throw new ArgumentNullException(nameof(advertiserId), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: advertiser_id.");
 
             if (billingType.IsSet && billingType.Value == null)
-                throw new ArgumentNullException(nameof(billingType), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: billing_type.");
 
             if (cardType.IsSet && cardType.Value == null)
-                throw new ArgumentNullException(nameof(cardType), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: card_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: id.");
 
             if (paymentMethodBrand.IsSet && paymentMethodBrand.Value == null)
-                throw new ArgumentNullException(nameof(paymentMethodBrand), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: payment_method_brand.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class BillingProfilesResponse.");
+                throw new JsonException("Property is not nullable for class BillingProfilesResponse: status.");
 
             return new BillingProfilesResponse(advertiserId, billingType, cardType, id, paymentMethodBrand, status);
         }
@@ -298,7 +298,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="billingProfilesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BillingProfilesResponse billingProfilesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -313,14 +312,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="billingProfilesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BillingProfilesResponse billingProfilesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (billingProfilesResponse.AdvertiserIdOption.IsSet && billingProfilesResponse.AdvertiserId == null)
-                throw new ArgumentNullException(nameof(billingProfilesResponse.AdvertiserId), "Property is required for class BillingProfilesResponse.");
+                throw new JsonException("Cannot write null property BillingProfilesResponse.AdvertiserId to non-nullable JSON property 'advertiser_id'.");
+
+            if (billingProfilesResponse.BillingTypeOption.IsSet && billingProfilesResponse.BillingType == null)
+                throw new JsonException("Cannot write null property BillingProfilesResponse.BillingType to non-nullable JSON property 'billing_type'.");
+
+            if (billingProfilesResponse.CardTypeOption.IsSet && billingProfilesResponse.CardType == null)
+                throw new JsonException("Cannot write null property BillingProfilesResponse.CardType to non-nullable JSON property 'card_type'.");
 
             if (billingProfilesResponse.IdOption.IsSet && billingProfilesResponse.Id == null)
-                throw new ArgumentNullException(nameof(billingProfilesResponse.Id), "Property is required for class BillingProfilesResponse.");
+                throw new JsonException("Cannot write null property BillingProfilesResponse.Id to non-nullable JSON property 'id'.");
+
+            if (billingProfilesResponse.PaymentMethodBrandOption.IsSet && billingProfilesResponse.PaymentMethodBrand == null)
+                throw new JsonException("Cannot write null property BillingProfilesResponse.PaymentMethodBrand to non-nullable JSON property 'payment_method_brand'.");
+
+            if (billingProfilesResponse.StatusOption.IsSet && billingProfilesResponse.Status == null)
+                throw new JsonException("Cannot write null property BillingProfilesResponse.Status to non-nullable JSON property 'status'.");
 
             if (billingProfilesResponse.AdvertiserIdOption.IsSet)
                 writer.WriteString("advertiser_id", billingProfilesResponse.AdvertiserId);

@@ -22,7 +22,7 @@ export const BillingType = {
     Invoice: 'INVOICE',
     Internal: 'INTERNAL',
     Recurring: 'RECURRING',
-    Prepaid: 'PREPAID'
+    Prepaid: 'PREPAID',
 } as const;
 export type BillingType = typeof BillingType[keyof typeof BillingType];
 

@@ -6,20 +6,3 @@
 */
 #include "ConversionReportTimeType.h"
 
-namespace models {
-
-ConversionReportTimeType::ConversionReportTimeType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

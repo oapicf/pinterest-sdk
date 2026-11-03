@@ -109,3 +109,4 @@ class _$PredictedTimeSeriesSerializer implements PrimitiveSerializer<PredictedTi
   }
 }
 
+

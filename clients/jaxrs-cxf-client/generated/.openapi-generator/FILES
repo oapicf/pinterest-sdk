@@ -1156,9 +1156,3 @@ src/gen/java/org/openapitools/model/VideoMetadataWithItemType.java
 src/gen/java/org/openapitools/model/VideoPinMetricTypes.java
 src/gen/java/org/openapitools/model/WebsiteVerificationMethod.java
 src/gen/java/org/openapitools/model/WorkloadState.java
-src/test/java/org/openapitools/api/CatalogSupplementalApiTest.java
-src/test/java/org/openapitools/api/ConversionDeletionRequestsApiTest.java
-src/test/java/org/openapitools/api/CustomerSegmentApiTest.java
-src/test/java/org/openapitools/api/ProductTagsApiTest.java
-src/test/java/org/openapitools/api/SchedulesApiTest.java
-src/test/java/org/openapitools/api/TrendsApiTest.java

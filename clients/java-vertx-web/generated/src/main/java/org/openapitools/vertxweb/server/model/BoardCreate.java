@@ -16,7 +16,7 @@ public class BoardCreate   {
   private String description;
   private Boolean isAdsOnly = false;
   private String name;
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public BoardCreate () {
 

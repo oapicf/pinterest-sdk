@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'nullable_entity_status.g.dart';
 
+/// Entity status
 class NullableEntityStatus extends EnumClass {
 
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const NullableEntityStatus ACTIVE = _$ACTIVE;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const NullableEntityStatus PAUSED = _$PAUSED;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const NullableEntityStatus ARCHIVED = _$ARCHIVED;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const NullableEntityStatus DRAFT = _$DRAFT;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const NullableEntityStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

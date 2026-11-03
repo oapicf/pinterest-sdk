@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -30,67 +29,47 @@ import jakarta.annotation.Generated;
  * CatalogsHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelAttributes {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelAddress address;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> basePrice = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> category = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel0 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel1 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel2 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel3 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customLabel4 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelGuestRatings guestRatings;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal latitude;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> longitude = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> neighborhood = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> additionalImageLink = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes address(@Nullable CatalogsHotelAddress address) {
@@ -124,7 +103,7 @@ public class CatalogsHotelAttributes {
    * @return basePrice
    */
   
-  @Schema(name = "base_price", example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "base_price", example = "100 USD", description = "Base price of the hotel room per night followed by the ISO currency code", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("base_price")
   public JsonNullable<String> getBasePrice() {
     return basePrice;
@@ -144,7 +123,7 @@ public class CatalogsHotelAttributes {
    * @return brand
    */
   
-  @Schema(name = "brand", description = "The brand to which this hotel belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "brand", description = "The brand to which this hotel belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("brand")
   public JsonNullable<String> getBrand() {
     return brand;
@@ -164,7 +143,7 @@ public class CatalogsHotelAttributes {
    * @return category
    */
   
-  @Schema(name = "category", description = "The type of property. The category can be any type of internal description desired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "category", description = "The type of property. The category can be any type of internal description desired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("category")
   public JsonNullable<String> getCategory() {
     return category;
@@ -184,7 +163,7 @@ public class CatalogsHotelAttributes {
    * @return customLabel0
    */
   
-  @Schema(name = "custom_label_0", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_0", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_0")
   public JsonNullable<String> getCustomLabel0() {
     return customLabel0;
@@ -204,7 +183,7 @@ public class CatalogsHotelAttributes {
    * @return customLabel1
    */
   
-  @Schema(name = "custom_label_1", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_1", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_1")
   public JsonNullable<String> getCustomLabel1() {
     return customLabel1;
@@ -224,7 +203,7 @@ public class CatalogsHotelAttributes {
    * @return customLabel2
    */
   
-  @Schema(name = "custom_label_2", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_2", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_2")
   public JsonNullable<String> getCustomLabel2() {
     return customLabel2;
@@ -244,7 +223,7 @@ public class CatalogsHotelAttributes {
    * @return customLabel3
    */
   
-  @Schema(name = "custom_label_3", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_3", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_3")
   public JsonNullable<String> getCustomLabel3() {
     return customLabel3;
@@ -264,7 +243,7 @@ public class CatalogsHotelAttributes {
    * @return customLabel4
    */
   
-  @Schema(name = "custom_label_4", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_4", description = "Custom grouping of hotels", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_4")
   public JsonNullable<String> getCustomLabel4() {
     return customLabel4;
@@ -284,7 +263,7 @@ public class CatalogsHotelAttributes {
    * @return description
    */
   
-  @Schema(name = "description", description = "Brief description of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", description = "Brief description of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -346,7 +325,7 @@ public class CatalogsHotelAttributes {
    * @return link
    */
   
-  @Schema(name = "link", description = "Link to the product page", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", description = "Link to the product page", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("link")
   public JsonNullable<String> getLink() {
     return link;
@@ -366,7 +345,7 @@ public class CatalogsHotelAttributes {
    * @return longitude
    */
   @Valid 
-  @Schema(name = "longitude", description = "Longitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "longitude", description = "Longitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("longitude")
   public JsonNullable<BigDecimal> getLongitude() {
     return longitude;
@@ -386,7 +365,7 @@ public class CatalogsHotelAttributes {
    * @return name
    */
   
-  @Schema(name = "name", description = "The hotel's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", description = "The hotel's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -402,7 +381,7 @@ public class CatalogsHotelAttributes {
   }
 
   public CatalogsHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
-    if (this.neighborhood == null || !this.neighborhood.isPresent()) {
+    if (this.neighborhood == null || !this.neighborhood.isPresent() || this.neighborhood.get() == null) {
       this.neighborhood = JsonNullable.of(new ArrayList<>());
     }
     this.neighborhood.get().add(neighborhoodItem);
@@ -414,7 +393,7 @@ public class CatalogsHotelAttributes {
    * @return neighborhood
    */
   
-  @Schema(name = "neighborhood", description = "A list of neighborhoods where the hotel is located", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "neighborhood", description = "A list of neighborhoods where the hotel is located", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("neighborhood")
   public JsonNullable<List<String>> getNeighborhood() {
     return neighborhood;
@@ -434,7 +413,7 @@ public class CatalogsHotelAttributes {
    * @return salePrice
    */
   
-  @Schema(name = "sale_price", example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "sale_price", example = "90 USD", description = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("sale_price")
   public JsonNullable<String> getSalePrice() {
     return salePrice;
@@ -450,7 +429,7 @@ public class CatalogsHotelAttributes {
   }
 
   public CatalogsHotelAttributes addAdditionalImageLinkItem(String additionalImageLinkItem) {
-    if (this.additionalImageLink == null || !this.additionalImageLink.isPresent()) {
+    if (this.additionalImageLink == null || !this.additionalImageLink.isPresent() || this.additionalImageLink.get() == null) {
       this.additionalImageLink = JsonNullable.of(new ArrayList<>());
     }
     this.additionalImageLink.get().add(additionalImageLinkItem);
@@ -462,7 +441,7 @@ public class CatalogsHotelAttributes {
    * @return additionalImageLink
    */
   
-  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("additional_image_link")
   public JsonNullable<List<String>> getAdditionalImageLink() {
     return additionalImageLink;
@@ -489,7 +468,7 @@ public class CatalogsHotelAttributes {
    * AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.
    * @return aiDisclosures
    */
-  @Valid 
+  
   @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ai_disclosures")
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {

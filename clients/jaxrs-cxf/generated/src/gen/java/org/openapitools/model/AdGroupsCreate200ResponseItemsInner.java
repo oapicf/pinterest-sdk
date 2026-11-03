@@ -24,8 +24,6 @@ public class AdGroupsCreate200ResponseItemsInner  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid PinterestLibBatchItemException> exceptions = new ArrayList<>();
  /**
    * Get data

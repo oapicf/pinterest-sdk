@@ -26,7 +26,7 @@ import org.openapitools.model.TrackingUrls;
 /**
  * Ad
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Ad   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -206,7 +206,7 @@ public class Ad   {
 
   public Ad addCarouselAndroidDeepLinksItem(String carouselAndroidDeepLinksItem) {
     if (this.carouselAndroidDeepLinks == null) {
-      this.carouselAndroidDeepLinks = ;
+      this.carouselAndroidDeepLinks = new ArrayList<>();
     }
     this.carouselAndroidDeepLinks.add(carouselAndroidDeepLinksItem);
     return this;
@@ -232,7 +232,7 @@ public class Ad   {
 
   public Ad addCarouselDestinationUrlsItem(String carouselDestinationUrlsItem) {
     if (this.carouselDestinationUrls == null) {
-      this.carouselDestinationUrls = ;
+      this.carouselDestinationUrls = new ArrayList<>();
     }
     this.carouselDestinationUrls.add(carouselDestinationUrlsItem);
     return this;
@@ -258,7 +258,7 @@ public class Ad   {
 
   public Ad addCarouselIosDeepLinksItem(String carouselIosDeepLinksItem) {
     if (this.carouselIosDeepLinks == null) {
-      this.carouselIosDeepLinks = ;
+      this.carouselIosDeepLinks = new ArrayList<>();
     }
     this.carouselIosDeepLinks.add(carouselIosDeepLinksItem);
     return this;

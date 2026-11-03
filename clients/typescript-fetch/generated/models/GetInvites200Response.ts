@@ -29,14 +29,10 @@ import {
 export interface GetInvites200Response {
     /**
      * 
-     * @type {string}
-     * @memberof GetInvites200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<InviteResponse>}
-     * @memberof GetInvites200Response
      */
     items: Array<InviteResponse>;
 }

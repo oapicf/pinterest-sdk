@@ -15,22 +15,22 @@ import javax.validation.Valid;
 /**
  * Object holding a group of filters for a catalog product group
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsProductGroupFilters   {
   @JsonProperty("any_of")
   @NotNull
 @Valid
 
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @JsonProperty("all_of")
   @NotNull
 @Valid
 
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsProductGroupFilters anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFilters anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -47,15 +47,15 @@ public class CatalogsProductGroupFilters   {
    * Get anyOf
    * @return anyOf
   **/
-  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsProductGroupFilters allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFilters allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -72,11 +72,11 @@ public class CatalogsProductGroupFilters   {
    * Get allOf
    * @return allOf
   **/
-  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

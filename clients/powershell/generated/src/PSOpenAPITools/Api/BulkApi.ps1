@@ -66,7 +66,7 @@ function Invoke-BulkDownloadCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling bulkDownload_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$BulkDownloadCreate) {
             throw "Error! The required parameter `BulkDownloadCreate` missing when calling bulkDownload_create."
@@ -158,11 +158,11 @@ function Invoke-BulkRequestGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling bulkRequest_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$BulkRequestId) {
             throw "Error! The required parameter `BulkRequestId` missing when calling bulkRequest_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{bulk_request_id}', [System.Web.HTTPUtility]::UrlEncode($BulkRequestId))
+        $LocalVarUri = $LocalVarUri.replace('{bulk_request_id}', [System.Uri]::EscapeDataString([string]$BulkRequestId))
 
         if ($IncludeDetails) {
             $LocalVarQueryParameters['include_details'] = $IncludeDetails
@@ -250,7 +250,7 @@ function Invoke-BulkUpsertCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling bulkUpsert_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$BulkUpsertRequest) {
             throw "Error! The required parameter `BulkUpsertRequest` missing when calling bulkUpsert_create."

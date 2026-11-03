@@ -37,7 +37,7 @@ export const AdsCreditDiscountType = {
     ReferralCredit: 'REFERRAL_CREDIT',
     InvoiceSalesIncentiveCredit: 'INVOICE_SALES_INCENTIVE_CREDIT',
     InvoiceSalesIncentiveCreditApplied: 'INVOICE_SALES_INCENTIVE_CREDIT_APPLIED',
-    PrepaidCreditRefund: 'PREPAID_CREDIT_REFUND'
+    PrepaidCreditRefund: 'PREPAID_CREDIT_REFUND',
 } as const;
 export type AdsCreditDiscountType = typeof AdsCreditDiscountType[keyof typeof AdsCreditDiscountType];
 

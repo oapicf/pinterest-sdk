@@ -29,8 +29,6 @@ import {
 export interface MaxPriceFilter {
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof MaxPriceFilter
      */
     mAXPRICE: CatalogsProductGroupPricingCriteria;
 }

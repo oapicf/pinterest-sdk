@@ -29,8 +29,6 @@ import {
 export interface AuthRespondInvitesBody {
     /**
      * 
-     * @type {Array<AuthRespondInvitesBodyItem>}
-     * @memberof AuthRespondInvitesBody
      */
     invites: Array<AuthRespondInvitesBodyItem>;
 }

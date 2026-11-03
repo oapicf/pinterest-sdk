@@ -75,7 +75,7 @@ public class CatalogItemsApiHandler {
         CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsItemsBatchPostRequest>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsItemsBatchPostRequest is {}", catalogsItemsBatchPostRequest);
+        logger.debug("Parameter catalogsItemsBatchPostRequest is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.itemsBatchPost(catalogsItemsBatchPostRequest, adAccountId)
@@ -100,7 +100,7 @@ public class CatalogItemsApiHandler {
         CatalogsItemsRequest catalogsItemsRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsItemsRequest>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsItemsRequest is {}", catalogsItemsRequest);
+        logger.debug("Parameter catalogsItemsRequest is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.itemsPost(catalogsItemsRequest, adAccountId)

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -25,13 +24,11 @@ import jakarta.annotation.Generated;
  * CancelInviteResultItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CancelInviteResultItem {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CancelInviteException> exception = JsonNullable.<CancelInviteException>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CancelInviteResult> invite = JsonNullable.<CancelInviteResult>undefined();
 
   public CancelInviteResultItem exception(CancelInviteException exception) {
@@ -44,7 +41,7 @@ public class CancelInviteResultItem {
    * @return exception
    */
   @Valid 
-  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("exception")
   public JsonNullable<CancelInviteException> getException() {
     return exception;
@@ -64,7 +61,7 @@ public class CancelInviteResultItem {
    * @return invite
    */
   @Valid 
-  @Schema(name = "invite", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "invite", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("invite")
   public JsonNullable<CancelInviteResult> getInvite() {
     return invite;

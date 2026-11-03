@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdAccountAnalyticsItems {
     /**
      * 
-     * @type {string}
-     * @memberof AdAccountAnalyticsItems
      */
     aDACCOUNTID: string;
     /**
      * 
-     * @type {Date}
-     * @memberof AdAccountAnalyticsItems
      */
     dATE?: Date;
 }
@@ -52,7 +48,7 @@ export function AdAccountAnalyticsItemsFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'aDACCOUNTID': json['AD_ACCOUNT_ID'],
-        'dATE': json['DATE'] == null ? undefined : (new Date(json['DATE'])),
+        'dATE': json['DATE'] == null ? undefined : (parseDate(json['DATE'])),
     };
 }
 
@@ -68,7 +64,7 @@ export function AdAccountAnalyticsItemsToJSONTyped(value?: AdAccountAnalyticsIte
     return {
         
         'AD_ACCOUNT_ID': value['aDACCOUNTID'],
-        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
+        'DATE': value['dATE'] == null ? value['dATE'] : serializeDate(value['dATE']),
     };
 }
 

@@ -227,3 +227,4 @@ class _$CatalogsFeedProcessingResultSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

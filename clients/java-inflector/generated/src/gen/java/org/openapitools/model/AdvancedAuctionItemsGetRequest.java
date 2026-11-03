@@ -17,7 +17,7 @@ import org.openapitools.model.AdvancedAuctionKey;
  **/
 
 @ApiModel(description = "Request object used to get bid options values for a batch of retail catalog items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsGetRequest   {
   @JsonProperty("catalog_id")
   private String catalogId;

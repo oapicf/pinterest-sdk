@@ -29,8 +29,6 @@ import {
 export interface CustomLabel0Filter {
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CustomLabel0Filter
      */
     cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria;
 }

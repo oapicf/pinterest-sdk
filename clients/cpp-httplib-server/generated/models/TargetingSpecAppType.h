@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class TargetingSpecAppType
-{
-public:
-
-    TargetingSpecAppType();
-    virtual ~TargetingSpecAppType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingSpecAppType,
-        )
-
-private:
+enum class TargetingSpecAppType {
+    
+    ANDROID_MOBILE,
+    
+    ANDROID_TABLET,
+    
+    IPAD,
+    
+    IPHONE,
+    
+    WEB,
+    
+    WEB_MOBILE
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingSpecAppType& value)
+{
+    switch (value)
+    {
+        
+        case TargetingSpecAppType::ANDROID_MOBILE: j = "android_mobile"; break;
+        
+        case TargetingSpecAppType::ANDROID_TABLET: j = "android_tablet"; break;
+        
+        case TargetingSpecAppType::IPAD: j = "ipad"; break;
+        
+        case TargetingSpecAppType::IPHONE: j = "iphone"; break;
+        
+        case TargetingSpecAppType::WEB: j = "web"; break;
+        
+        case TargetingSpecAppType::WEB_MOBILE: j = "web_mobile"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecAppType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingSpecAppType& value)
+{
+    
+    if (j == "android_mobile")
+    {
+        value = TargetingSpecAppType::ANDROID_MOBILE;
+        return;
+    }
+    
+    if (j == "android_tablet")
+    {
+        value = TargetingSpecAppType::ANDROID_TABLET;
+        return;
+    }
+    
+    if (j == "ipad")
+    {
+        value = TargetingSpecAppType::IPAD;
+        return;
+    }
+    
+    if (j == "iphone")
+    {
+        value = TargetingSpecAppType::IPHONE;
+        return;
+    }
+    
+    if (j == "web")
+    {
+        value = TargetingSpecAppType::WEB;
+        return;
+    }
+    
+    if (j == "web_mobile")
+    {
+        value = TargetingSpecAppType::WEB_MOBILE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecAppType", &j);
+}
 
 } // namespace models
 

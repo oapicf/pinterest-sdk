@@ -125,3 +125,4 @@ class _$CatalogsList200ResponseSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+

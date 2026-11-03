@@ -933,100 +933,100 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(adAccountId));
+                throw new JsonException("Property is required for class Ad: ad_account_id.");
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(adGroupId));
+                throw new JsonException("Property is required for class Ad: ad_group_id.");
 
             if (!campaignId.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(campaignId));
+                throw new JsonException("Property is required for class Ad: campaign_id.");
 
             if (!creativeType.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(creativeType));
+                throw new JsonException("Property is required for class Ad: creative_type.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(id));
+                throw new JsonException("Property is required for class Ad: id.");
 
             if (!pinId.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(pinId));
+                throw new JsonException("Property is required for class Ad: pin_id.");
 
             if (!rejectedReasons.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(rejectedReasons));
+                throw new JsonException("Property is required for class Ad: rejected_reasons.");
 
             if (!rejectionLabels.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(rejectionLabels));
+                throw new JsonException("Property is required for class Ad: rejection_labels.");
 
             if (!reviewStatus.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(reviewStatus));
+                throw new JsonException("Property is required for class Ad: review_status.");
 
             if (!summaryStatus.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(summaryStatus));
+                throw new JsonException("Property is required for class Ad: summary_status.");
 
             if (!type.IsSet)
-                throw new ArgumentException("Property is required for class Ad.", nameof(type));
+                throw new JsonException("Property is required for class Ad: type.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: ad_account_id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: ad_group_id.");
 
             if (campaignId.IsSet && campaignId.Value == null)
-                throw new ArgumentNullException(nameof(campaignId), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: campaign_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: creative_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: id.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: pin_id.");
 
             if (rejectedReasons.IsSet && rejectedReasons.Value == null)
-                throw new ArgumentNullException(nameof(rejectedReasons), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: rejected_reasons.");
 
             if (rejectionLabels.IsSet && rejectionLabels.Value == null)
-                throw new ArgumentNullException(nameof(rejectionLabels), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: rejection_labels.");
 
             if (reviewStatus.IsSet && reviewStatus.Value == null)
-                throw new ArgumentNullException(nameof(reviewStatus), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: review_status.");
 
             if (summaryStatus.IsSet && summaryStatus.Value == null)
-                throw new ArgumentNullException(nameof(summaryStatus), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: summary_status.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: type.");
 
             if (cartingPlatformType.IsSet && cartingPlatformType.Value == null)
-                throw new ArgumentNullException(nameof(cartingPlatformType), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: carting_platform_type.");
 
             if (cartingProducts.IsSet && cartingProducts.Value == null)
-                throw new ArgumentNullException(nameof(cartingProducts), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: carting_products.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: created_time.");
 
             if (isCarting.IsSet && isCarting.Value == null)
-                throw new ArgumentNullException(nameof(isCarting), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: is_carting.");
 
             if (isCollageAcceptedTerms.IsSet && isCollageAcceptedTerms.Value == null)
-                throw new ArgumentNullException(nameof(isCollageAcceptedTerms), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: is_collage_accepted_terms.");
 
             if (isCollageSingleDestination.IsSet && isCollageSingleDestination.Value == null)
-                throw new ArgumentNullException(nameof(isCollageSingleDestination), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: is_collage_single_destination.");
 
             if (isPinDeleted.IsSet && isPinDeleted.Value == null)
-                throw new ArgumentNullException(nameof(isPinDeleted), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: is_pin_deleted.");
 
             if (isRemovable.IsSet && isRemovable.Value == null)
-                throw new ArgumentNullException(nameof(isRemovable), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: is_removable.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: status.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class Ad.");
+                throw new JsonException("Property is not nullable for class Ad: updated_time.");
 
             return new Ad(adAccountId.Value!, adGroupId.Value!, campaignId.Value!, creativeType.Value!.Value!, id.Value!, pinId.Value!, rejectedReasons.Value!, rejectionLabels.Value!, reviewStatus.Value!.Value!, summaryStatus.Value!.Value!, type.Value!, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, cartingPlatformType, cartingProducts, clickTrackingUrl, collectionItemsDestinationUrlTemplate, collectionsHeaderType, createdTime, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isCollageAcceptedTerms, isCollageSingleDestination, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, updatedTime, viewTrackingUrl);
         }
@@ -1037,7 +1037,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ad"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Ad ad, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1052,35 +1051,37 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ad"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Ad ad, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (ad.AdAccountId == null)
-                throw new ArgumentNullException(nameof(ad.AdAccountId), "Property is required for class Ad.");
-
-            if (ad.AdGroupId == null)
-                throw new ArgumentNullException(nameof(ad.AdGroupId), "Property is required for class Ad.");
-
-            if (ad.CampaignId == null)
-                throw new ArgumentNullException(nameof(ad.CampaignId), "Property is required for class Ad.");
-
-            if (ad.Id == null)
-                throw new ArgumentNullException(nameof(ad.Id), "Property is required for class Ad.");
-
-            if (ad.PinId == null)
-                throw new ArgumentNullException(nameof(ad.PinId), "Property is required for class Ad.");
-
-            if (ad.RejectedReasons == null)
-                throw new ArgumentNullException(nameof(ad.RejectedReasons), "Property is required for class Ad.");
-
-            if (ad.RejectionLabels == null)
-                throw new ArgumentNullException(nameof(ad.RejectionLabels), "Property is required for class Ad.");
-
-            if (ad.Type == null)
-                throw new ArgumentNullException(nameof(ad.Type), "Property is required for class Ad.");
+            if (ad.CartingPlatformTypeOption.IsSet && ad.CartingPlatformType == null)
+                throw new JsonException("Cannot write null property Ad.CartingPlatformType to non-nullable JSON property 'carting_platform_type'.");
 
             if (ad.CartingProductsOption.IsSet && ad.CartingProducts == null)
-                throw new ArgumentNullException(nameof(ad.CartingProducts), "Property is required for class Ad.");
+                throw new JsonException("Cannot write null property Ad.CartingProducts to non-nullable JSON property 'carting_products'.");
+
+            if (ad.CreatedTimeOption.IsSet && ad.CreatedTime == null)
+                throw new JsonException("Cannot write null property Ad.CreatedTime to non-nullable JSON property 'created_time'.");
+
+            if (ad.IsCartingOption.IsSet && ad.IsCarting == null)
+                throw new JsonException("Cannot write null property Ad.IsCarting to non-nullable JSON property 'is_carting'.");
+
+            if (ad.IsCollageAcceptedTermsOption.IsSet && ad.IsCollageAcceptedTerms == null)
+                throw new JsonException("Cannot write null property Ad.IsCollageAcceptedTerms to non-nullable JSON property 'is_collage_accepted_terms'.");
+
+            if (ad.IsCollageSingleDestinationOption.IsSet && ad.IsCollageSingleDestination == null)
+                throw new JsonException("Cannot write null property Ad.IsCollageSingleDestination to non-nullable JSON property 'is_collage_single_destination'.");
+
+            if (ad.IsPinDeletedOption.IsSet && ad.IsPinDeleted == null)
+                throw new JsonException("Cannot write null property Ad.IsPinDeleted to non-nullable JSON property 'is_pin_deleted'.");
+
+            if (ad.IsRemovableOption.IsSet && ad.IsRemovable == null)
+                throw new JsonException("Cannot write null property Ad.IsRemovable to non-nullable JSON property 'is_removable'.");
+
+            if (ad.StatusOption.IsSet && ad.Status == null)
+                throw new JsonException("Cannot write null property Ad.Status to non-nullable JSON property 'status'.");
+
+            if (ad.UpdatedTimeOption.IsSet && ad.UpdatedTime == null)
+                throw new JsonException("Cannot write null property Ad.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             writer.WriteString("ad_account_id", ad.AdAccountId);
 

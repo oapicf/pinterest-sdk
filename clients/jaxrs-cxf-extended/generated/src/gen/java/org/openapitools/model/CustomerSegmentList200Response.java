@@ -20,7 +20,6 @@ public class CustomerSegmentList200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid CustomerSegment> items = new ArrayList<>();
  /**
   * Get bookmark

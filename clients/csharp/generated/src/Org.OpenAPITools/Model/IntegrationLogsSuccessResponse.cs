@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class IntegrationLogsSuccessResponse.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsSuccessResponse: message.");
 
             return new IntegrationLogsSuccessResponse(message);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsSuccessResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogsSuccessResponse integrationLogsSuccessResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsSuccessResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogsSuccessResponse integrationLogsSuccessResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (integrationLogsSuccessResponse.MessageOption.IsSet && integrationLogsSuccessResponse.Message == null)
-                throw new ArgumentNullException(nameof(integrationLogsSuccessResponse.Message), "Property is required for class IntegrationLogsSuccessResponse.");
+                throw new JsonException("Cannot write null property IntegrationLogsSuccessResponse.Message to non-nullable JSON property 'message'.");
 
             if (integrationLogsSuccessResponse.MessageOption.IsSet)
                 writer.WriteString("message", integrationLogsSuccessResponse.Message);

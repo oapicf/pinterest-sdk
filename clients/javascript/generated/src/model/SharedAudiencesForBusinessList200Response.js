@@ -17,7 +17,7 @@ import Audience from './Audience';
 /**
  * The SharedAudiencesForBusinessList200Response model module.
  * @module model/SharedAudiencesForBusinessList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SharedAudiencesForBusinessList200Response {
     /**

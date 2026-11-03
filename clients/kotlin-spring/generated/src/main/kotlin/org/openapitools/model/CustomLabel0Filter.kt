@@ -22,7 +22,7 @@ data class CustomLabel0Filter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_0")
+    @param:JsonProperty("CUSTOM_LABEL_0", required = true)
     @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria
 ) {
 

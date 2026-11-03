@@ -23,7 +23,7 @@ import ReportsStats200Response from '../model/ReportsStats200Response';
 /**
 * CatalogReports service.
 * @module api/CatalogReportsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class CatalogReportsApi {
 

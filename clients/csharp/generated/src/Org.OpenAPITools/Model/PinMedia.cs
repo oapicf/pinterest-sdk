@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMedia" /> class.
         /// </summary>
         /// <param name="pinMediaWithImage"></param>
-        public PinMedia(PinMediaWithImage pinMediaWithImage)
+        internal PinMedia(PinMediaWithImage pinMediaWithImage)
         {
             PinMediaWithImage = pinMediaWithImage;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMedia" /> class.
         /// </summary>
         /// <param name="pinMediaWithVideo"></param>
-        public PinMedia(PinMediaWithVideo pinMediaWithVideo)
+        internal PinMedia(PinMediaWithVideo pinMediaWithVideo)
         {
             PinMediaWithVideo = pinMediaWithVideo;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMedia" /> class.
         /// </summary>
         /// <param name="pinMediaWithImages"></param>
-        public PinMedia(PinMediaWithImages pinMediaWithImages)
+        internal PinMedia(PinMediaWithImages pinMediaWithImages)
         {
             PinMediaWithImages = pinMediaWithImages;
             OnCreated();
@@ -65,7 +65,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMedia" /> class.
         /// </summary>
         /// <param name="pinMediaWithVideos"></param>
-        public PinMedia(PinMediaWithVideos pinMediaWithVideos)
+        internal PinMedia(PinMediaWithVideos pinMediaWithVideos)
         {
             PinMediaWithVideos = pinMediaWithVideos;
             OnCreated();
@@ -75,7 +75,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMedia" /> class.
         /// </summary>
         /// <param name="pinMediaWithImageAndVideo"></param>
-        public PinMedia(PinMediaWithImageAndVideo pinMediaWithImageAndVideo)
+        internal PinMedia(PinMediaWithImageAndVideo pinMediaWithImageAndVideo)
         {
             PinMediaWithImageAndVideo = pinMediaWithImageAndVideo;
             OnCreated();
@@ -296,7 +296,12 @@ namespace Org.OpenAPITools.Model
                         case "media_type":
                             string? mediaTypeRawValue = utf8JsonReader.GetString();
                             if (mediaTypeRawValue != null)
-                                mediaType = new Option<PinMedia.MediaTypeEnum?>(PinMedia.MediaTypeEnumFromStringOrDefault(mediaTypeRawValue));
+                            {
+                                PinMedia.MediaTypeEnum? mediaTypeValue = PinMedia.MediaTypeEnumFromStringOrDefault(mediaTypeRawValue);
+                                if (mediaTypeValue == null)
+                                    throw new JsonException();
+                                mediaType = new Option<PinMedia.MediaTypeEnum?>(mediaTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -305,10 +310,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaType.IsSet)
-                throw new ArgumentException("Property is required for class PinMedia.", nameof(mediaType));
+                throw new JsonException("Property is required for class PinMedia: media_type.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class PinMedia.");
+                throw new JsonException("Property is not nullable for class PinMedia: media_type.");
 
             if (pinMediaWithImage != null)
                 return new PinMedia(pinMediaWithImage);
@@ -334,7 +339,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMedia"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMedia pinMedia, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -379,7 +383,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMedia"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMedia pinMedia, JsonSerializerOptions jsonSerializerOptions)
         {
 

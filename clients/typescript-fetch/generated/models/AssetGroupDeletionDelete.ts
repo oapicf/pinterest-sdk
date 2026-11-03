@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface AssetGroupDeletionDelete {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AssetGroupDeletionDelete
      */
     assetGroupsToDelete: Array<string>;
 }

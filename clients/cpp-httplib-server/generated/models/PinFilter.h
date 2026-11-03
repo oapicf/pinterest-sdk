@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class PinFilter
-{
-public:
-
-    PinFilter();
-    virtual ~PinFilter() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PinFilter,
-        )
-
-private:
+enum class PinFilter {
+    
+    EXCLUDE_NATIVE,
+    
+    EXCLUDE_REPINS,
+    
+    HAS_BEEN_PROMOTED
+    
 };
 
+inline void to_json(nlohmann::json& j, const PinFilter& value)
+{
+    switch (value)
+    {
+        
+        case PinFilter::EXCLUDE_NATIVE: j = "exclude_native"; break;
+        
+        case PinFilter::EXCLUDE_REPINS: j = "exclude_repins"; break;
+        
+        case PinFilter::HAS_BEEN_PROMOTED: j = "has_been_promoted"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PinFilter", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PinFilter& value)
+{
+    
+    if (j == "exclude_native")
+    {
+        value = PinFilter::EXCLUDE_NATIVE;
+        return;
+    }
+    
+    if (j == "exclude_repins")
+    {
+        value = PinFilter::EXCLUDE_REPINS;
+        return;
+    }
+    
+    if (j == "has_been_promoted")
+    {
+        value = PinFilter::HAS_BEEN_PROMOTED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PinFilter", &j);
+}
 
 } // namespace models
 

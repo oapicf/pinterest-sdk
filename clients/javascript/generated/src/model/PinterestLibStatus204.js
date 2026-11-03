@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PinterestLibStatus204 model module.
  * @module model/PinterestLibStatus204
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinterestLibStatus204 {
     /**

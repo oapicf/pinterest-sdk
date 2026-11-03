@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.PinMedia
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -30,7 +27,7 @@ data class SummaryPin(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Size(max=500)
@@ -50,8 +47,6 @@ data class SummaryPin(
 
     @field:Valid
     @Schema(readOnly = true, description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("media")
     @get:JsonProperty("media") val media: PinMedia? = null,
 

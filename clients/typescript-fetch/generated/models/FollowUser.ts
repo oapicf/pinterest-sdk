@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface FollowUser {
     /**
      * Always 'user'
-     * @type {string}
-     * @memberof FollowUser
      */
     readonly type?: string;
     /**
      * Username
-     * @type {string}
-     * @memberof FollowUser
      */
     readonly username?: string;
 }

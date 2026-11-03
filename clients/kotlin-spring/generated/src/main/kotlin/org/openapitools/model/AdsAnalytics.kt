@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,13 +22,11 @@ data class AdsAnalytics(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("AD_ID")
+    @param:JsonProperty("AD_ID", required = true)
     @get:JsonProperty("AD_ID", required = true) val AD_ID: kotlin.String,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("DATE")
     @get:JsonProperty("DATE") val DATE: java.time.LocalDate? = null
 ) {

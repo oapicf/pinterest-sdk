@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (ingestedVideos.IsSet && ingestedVideos.Value == null)
-                throw new ArgumentNullException(nameof(ingestedVideos), "Property is not nullable for class CatalogsFeedVideoCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedVideoCounts: ingested_videos.");
 
             if (notIngestedVideos.IsSet && notIngestedVideos.Value == null)
-                throw new ArgumentNullException(nameof(notIngestedVideos), "Property is not nullable for class CatalogsFeedVideoCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedVideoCounts: not_ingested_videos.");
 
             if (totalVideos.IsSet && totalVideos.Value == null)
-                throw new ArgumentNullException(nameof(totalVideos), "Property is not nullable for class CatalogsFeedVideoCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedVideoCounts: total_videos.");
 
             return new CatalogsFeedVideoCounts(ingestedVideos, notIngestedVideos, totalVideos);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedVideoCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedVideoCounts catalogsFeedVideoCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,9 +214,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedVideoCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedVideoCounts catalogsFeedVideoCounts, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedVideoCounts.IngestedVideosOption.IsSet && catalogsFeedVideoCounts.IngestedVideos == null)
+                throw new JsonException("Cannot write null property CatalogsFeedVideoCounts.IngestedVideos to non-nullable JSON property 'ingested_videos'.");
+
+            if (catalogsFeedVideoCounts.NotIngestedVideosOption.IsSet && catalogsFeedVideoCounts.NotIngestedVideos == null)
+                throw new JsonException("Cannot write null property CatalogsFeedVideoCounts.NotIngestedVideos to non-nullable JSON property 'not_ingested_videos'.");
+
+            if (catalogsFeedVideoCounts.TotalVideosOption.IsSet && catalogsFeedVideoCounts.TotalVideos == null)
+                throw new JsonException("Cannot write null property CatalogsFeedVideoCounts.TotalVideos to non-nullable JSON property 'total_videos'.");
+
             if (catalogsFeedVideoCounts.IngestedVideosOption.IsSet)
                 writer.WriteNumber("ingested_videos", catalogsFeedVideoCounts.IngestedVideosOption.Value!.Value);
 

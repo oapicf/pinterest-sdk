@@ -1753,12 +1753,22 @@ namespace Org.OpenAPITools.Model
                         case "language":
                             string? languageRawValue = utf8JsonReader.GetString();
                             if (languageRawValue != null)
-                                language = new Option<CatalogsItemsCreateBatchRequest.LanguageEnum?>(CatalogsItemsCreateBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue));
+                            {
+                                CatalogsItemsCreateBatchRequest.LanguageEnum? languageValue = CatalogsItemsCreateBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue);
+                                if (languageValue == null)
+                                    throw new JsonException();
+                                language = new Option<CatalogsItemsCreateBatchRequest.LanguageEnum?>(languageValue);
+                            }
                             break;
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsItemsCreateBatchRequest.OperationEnum?>(CatalogsItemsCreateBatchRequest.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsItemsCreateBatchRequest.OperationEnum? operationValue = CatalogsItemsCreateBatchRequest.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsItemsCreateBatchRequest.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -1767,28 +1777,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsCreateBatchRequest.", nameof(country));
+                throw new JsonException("Property is required for class CatalogsItemsCreateBatchRequest: country.");
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsCreateBatchRequest.", nameof(items));
+                throw new JsonException("Property is required for class CatalogsItemsCreateBatchRequest: items.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsCreateBatchRequest.", nameof(language));
+                throw new JsonException("Property is required for class CatalogsItemsCreateBatchRequest: language.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsCreateBatchRequest.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsItemsCreateBatchRequest: operation.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsItemsCreateBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsCreateBatchRequest: country.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsItemsCreateBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsCreateBatchRequest: items.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class CatalogsItemsCreateBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsCreateBatchRequest: language.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsItemsCreateBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsCreateBatchRequest: operation.");
 
             return new CatalogsItemsCreateBatchRequest(country.Value!.Value!, items.Value!, language.Value!.Value!, operation.Value!.Value!);
         }
@@ -1799,7 +1809,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsCreateBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemsCreateBatchRequest catalogsItemsCreateBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1814,12 +1823,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsCreateBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemsCreateBatchRequest catalogsItemsCreateBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsItemsCreateBatchRequest.Items == null)
-                throw new ArgumentNullException(nameof(catalogsItemsCreateBatchRequest.Items), "Property is required for class CatalogsItemsCreateBatchRequest.");
-
             var countryRawValue = CountryValueConverter.ToJsonValue(catalogsItemsCreateBatchRequest.Country);
             writer.WriteString("country", countryRawValue);
 

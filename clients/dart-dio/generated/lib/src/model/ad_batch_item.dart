@@ -128,3 +128,4 @@ class _$AdBatchItemSerializer implements PrimitiveSerializer<AdBatchItem> {
   }
 }
 
+

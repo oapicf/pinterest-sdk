@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  * LabelUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelUpdateRequest {
 
   private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
@@ -56,7 +56,7 @@ public class LabelUpdateRequest {
    * Labels that you are applying to the campaign.
    * @return labels
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "labels", description = "Labels that you are applying to the campaign.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("labels")
   public List<@Valid LabelUpdateItem> getLabels() {

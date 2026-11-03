@@ -153,10 +153,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class UserAccountFollowedInterests200Response.", nameof(items));
+                throw new JsonException("Property is required for class UserAccountFollowedInterests200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class UserAccountFollowedInterests200Response.");
+                throw new JsonException("Property is not nullable for class UserAccountFollowedInterests200Response: items.");
 
             return new UserAccountFollowedInterests200Response(items.Value!, bookmark);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userAccountFollowedInterests200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserAccountFollowedInterests200Response userAccountFollowedInterests200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userAccountFollowedInterests200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserAccountFollowedInterests200Response userAccountFollowedInterests200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (userAccountFollowedInterests200Response.Items == null)
-                throw new ArgumentNullException(nameof(userAccountFollowedInterests200Response.Items), "Property is required for class UserAccountFollowedInterests200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, userAccountFollowedInterests200Response.Items, jsonSerializerOptions);
             if (userAccountFollowedInterests200Response.BookmarkOption.IsSet)

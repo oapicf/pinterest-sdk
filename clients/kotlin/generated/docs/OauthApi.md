@@ -94,13 +94,13 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **grantType** | [**TokenGrantType**](TokenGrantType.md)|  | [enum: authorization_code, refresh_token, client_credentials] |
 | **code** | **kotlin.String**|  | [optional] |
 | **continuousRefresh** | **kotlin.String**|   If your app was created before **September 25, 2025**, set to &#x60;true&#x60; to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token. | [optional] |
 | **redirectUri** | **kotlin.String**|  | [optional] |
 | **refreshToken** | **kotlin.String**|  | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **scope** | **kotlin.String**|  | [optional] |
 
 ### Return type
@@ -154,9 +154,9 @@ try {
 ```
 
 ### Parameters
-| **token** | **kotlin.String**| The token to revoke. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **token** | **kotlin.String**| The token to revoke. | |
 | **tokenTypeHint** | [**TokenTypeHint**](TokenTypeHint.md)| The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information. | [optional] [enum: access_token, refresh_token] |
 
 ### Return type

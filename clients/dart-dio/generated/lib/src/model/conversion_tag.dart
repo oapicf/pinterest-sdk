@@ -130,6 +130,7 @@ class _$ConversionTagSerializer implements PrimitiveSerializer<ConversionTag> {
   }
 }
 
+
 /// a concrete implementation of [ConversionTag], since [ConversionTag] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $ConversionTag implements ConversionTag, Built<$ConversionTag, $ConversionTagBuilder> {

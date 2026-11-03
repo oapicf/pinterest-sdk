@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CampaignBatchWriteResponseModel  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid CampaignBatchItem> items = new ArrayList<>();
  /**
   * Get items

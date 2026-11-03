@@ -6,20 +6,3 @@
 */
 #include "QueryLabelTypesItems.h"
 
-namespace models {
-
-QueryLabelTypesItems::QueryLabelTypesItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

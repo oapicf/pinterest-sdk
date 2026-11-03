@@ -160,16 +160,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupPromotionsUpdateWithRequiredBody.", nameof(adGroupId));
+                throw new JsonException("Property is required for class ProductGroupPromotionsUpdateWithRequiredBody: ad_group_id.");
 
             if (!productGroupPromotion.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupPromotionsUpdateWithRequiredBody.", nameof(productGroupPromotion));
+                throw new JsonException("Property is required for class ProductGroupPromotionsUpdateWithRequiredBody: product_group_promotion.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class ProductGroupPromotionsUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionsUpdateWithRequiredBody: ad_group_id.");
 
             if (productGroupPromotion.IsSet && productGroupPromotion.Value == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion), "Property is not nullable for class ProductGroupPromotionsUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionsUpdateWithRequiredBody: product_group_promotion.");
 
             return new ProductGroupPromotionsUpdateWithRequiredBody(adGroupId.Value!, productGroupPromotion.Value!);
         }
@@ -180,7 +180,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionsUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -195,15 +194,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionsUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productGroupPromotionsUpdateWithRequiredBody.AdGroupId == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionsUpdateWithRequiredBody.AdGroupId), "Property is required for class ProductGroupPromotionsUpdateWithRequiredBody.");
-
-            if (productGroupPromotionsUpdateWithRequiredBody.ProductGroupPromotion == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionsUpdateWithRequiredBody.ProductGroupPromotion), "Property is required for class ProductGroupPromotionsUpdateWithRequiredBody.");
-
             writer.WriteString("ad_group_id", productGroupPromotionsUpdateWithRequiredBody.AdGroupId);
 
             writer.WritePropertyName("product_group_promotion");

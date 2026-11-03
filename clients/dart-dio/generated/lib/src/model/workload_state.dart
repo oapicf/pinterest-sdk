@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'workload_state.g.dart';
 
+/// Workload processing state
 class WorkloadState extends EnumClass {
 
-  /// Workload processing state
   @BuiltValueEnumConst(wireName: r'NOT_STARTED')
   static const WorkloadState NOT_STARTED = _$NOT_STARTED;
-  /// Workload processing state
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const WorkloadState RUNNING = _$RUNNING;
-  /// Workload processing state
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const WorkloadState PAUSED = _$PAUSED;
-  /// Workload processing state
   @BuiltValueEnumConst(wireName: r'SUCCEEDED')
   static const WorkloadState SUCCEEDED = _$SUCCEEDED;
-  /// Workload processing state
   @BuiltValueEnumConst(wireName: r'FAILED')
   static const WorkloadState FAILED = _$FAILED;
 

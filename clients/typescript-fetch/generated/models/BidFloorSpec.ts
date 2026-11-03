@@ -64,38 +64,26 @@ import {
 export interface BidFloorSpec {
     /**
      * Ad group billable event type.
-     * @type {ActionType}
-     * @memberof BidFloorSpec
      */
     billableEvent: ActionType;
     /**
      * List of ISO 3166-1 alpha-2 country codes.
-     * @type {Array<Country>}
-     * @memberof BidFloorSpec
      */
     countries?: Array<Country>;
     /**
      * Creative type for the bid floor request.
-     * @type {CreativeType}
-     * @memberof BidFloorSpec
      */
     creativeType?: CreativeType;
     /**
      * Currency for the bid floor value.
-     * @type {Currency}
-     * @memberof BidFloorSpec
      */
     currency: Currency;
     /**
      * Campaign objective type.
-     * @type {BidFloorObjectiveType}
-     * @memberof BidFloorSpec
      */
     objectiveType?: BidFloorObjectiveType;
     /**
      * Optimization goal metadata.
-     * @type {OptimizationGoalMetadata}
-     * @memberof BidFloorSpec
      */
     optimizationGoalMetadata?: OptimizationGoalMetadata;
 }

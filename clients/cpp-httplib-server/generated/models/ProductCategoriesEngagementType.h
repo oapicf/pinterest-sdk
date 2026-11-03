@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ProductCategoriesEngagementType
-{
-public:
-
-    ProductCategoriesEngagementType();
-    virtual ~ProductCategoriesEngagementType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductCategoriesEngagementType,
-        )
-
-private:
+enum class ProductCategoriesEngagementType {
+    
+    ENGAGEMENT,
+    
+    OUTBOUND_CLICK,
+    
+    SAVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductCategoriesEngagementType& value)
+{
+    switch (value)
+    {
+        
+        case ProductCategoriesEngagementType::ENGAGEMENT: j = "ENGAGEMENT"; break;
+        
+        case ProductCategoriesEngagementType::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case ProductCategoriesEngagementType::SAVE: j = "SAVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoriesEngagementType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductCategoriesEngagementType& value)
+{
+    
+    if (j == "ENGAGEMENT")
+    {
+        value = ProductCategoriesEngagementType::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = ProductCategoriesEngagementType::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = ProductCategoriesEngagementType::SAVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoriesEngagementType", &j);
+}
 
 } // namespace models
 

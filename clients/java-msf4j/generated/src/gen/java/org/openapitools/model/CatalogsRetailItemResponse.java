@@ -17,7 +17,7 @@ import org.openapitools.model.Pin;
  * Object describing a retail item record
  */
 @ApiModel(description = "Object describing a retail item record")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailItemResponse   {
   @JsonProperty("attributes")
   private ItemAttributes attributes;
@@ -171,7 +171,7 @@ public class CatalogsRetailItemResponse   {
 
   public CatalogsRetailItemResponse addPinsItem(Pin pinsItem) {
     if (this.pins == null) {
-      this.pins = ;
+      this.pins = new ArrayList<>();
     }
     this.pins.add(pinsItem);
     return this;

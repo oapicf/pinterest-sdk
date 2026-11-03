@@ -146,6 +146,7 @@ class _$CatalogsRetailReportAllItemsFilterSerializer implements PrimitiveSeriali
   }
 }
 
+
 class CatalogsRetailReportAllItemsFilterReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'ALL_ITEMS')

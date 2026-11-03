@@ -23,7 +23,7 @@ import TargetingSpec from './TargetingSpec';
 /**
  * The AdGroupCreateRequest model module.
  * @module model/AdGroupCreateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupCreateRequest {
     /**

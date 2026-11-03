@@ -85,62 +85,178 @@ import {
 } from '../models/UpdateBusinessMembershipsResponse';
 
 export interface BrandAccountsCreateRequest {
+    /**
+     * business hierarchy node id
+     */
     businessHierarchyId: string;
+    /**
+     * 
+     */
     brandAccountCreate: BrandAccountCreate;
 }
 
 export interface BrandAccountsUpdateRequest {
+    /**
+     * 
+     */
     brandAccountId: string;
+    /**
+     * business hierarchy node id
+     */
     businessHierarchyId: string;
+    /**
+     * 
+     */
     brandAccountUpdate: BrandAccountUpdate;
 }
 
 export interface DeleteBusinessMembershipRequest {
+    /**
+     * Business id
+     */
     businessId: string;
+    /**
+     * 
+     */
     deleteBusinessMembershipBody: DeleteBusinessMembershipBody;
 }
 
 export interface DeleteBusinessPartnersRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete;
 }
 
 export interface GetBusinessEmployersRequest {
+    /**
+     * Include assets summary in the response if this is true. Defaults to true.
+     * 
+     * The assets summary returns a dictionary representing a summary of the assets
+     * for the business user ID, with information like the ad accounts and profiles
+     * the user has permissions for and what those permissions are
+     */
     assetsSummary?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface GetBusinessMembersRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Fetches system users if True. Fetches regular user employees if False.
+     */
     fetchSystemUsers?: boolean;
+    /**
+     * Include assets summary in the response if this is true.
+     * 
+     * The assets summary returns a dictionary representing a summary of the assets
+     * for the business user ID, with information like the ad accounts and profiles
+     * the user has permissions for and what those permissions are
+     */
     assetsSummary?: boolean;
+    /**
+     * A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
+     */
     businessRoles?: Array<MemberBusinessRole>;
+    /**
+     * A list of business members ids separated by comma.
+     */
     memberIds?: string;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface GetBusinessPartnersRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Include assets summary in the response if this is true.
+     * 
+     * The assets summary returns a dictionary representing a summary of the assets
+     * for the business user ID, with information like the ad accounts and profiles
+     * the user has permissions for and what those permissions are
+     */
     assetsSummary?: boolean;
+    /**
+     * Specifies whether to fetch internal or external (shared) partners.
+     * If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.
+     * If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+     */
     partnerType?: PartnerType;
+    /**
+     * A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+     */
     partnerIds?: string;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * Sort ascending.
+     */
     sortAscending?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface SystemUserUpdateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Unique identifier of a system user.
+     */
     systemUserId: string;
+    /**
+     * 
+     */
     systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody;
 }
 
 export interface UpdateBusinessMembershipsRequest {
+    /**
+     * Business id
+     */
     businessId: string;
+    /**
+     * 
+     */
     businessMembershipMember: Array<BusinessMembershipMember>;
 }
 

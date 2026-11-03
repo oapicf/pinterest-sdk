@@ -14,7 +14,7 @@ export const PermissionsWithOwner = {
     CatalogsManager: 'CATALOGS_MANAGER',
     CatalogsViewer: 'CATALOGS_VIEWER',
     ProfilePublisher: 'PROFILE_PUBLISHER',
-    Owner: 'OWNER'
+    Owner: 'OWNER',
 } as const;
 export type PermissionsWithOwner = typeof PermissionsWithOwner[keyof typeof PermissionsWithOwner];
 

@@ -10,9 +10,9 @@ import Foundation
 /** Resource create operation model. */
 public struct ConversionMSOTEventsCreate: Sendable, Codable, Hashable {
 
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let attributionScoreRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: true, maximum: 1, exclusiveMaximum: false, multipleOf: nil)
-    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let eventIdRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
     public static let totalEventTouchpointsRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public static let totalEventsRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)

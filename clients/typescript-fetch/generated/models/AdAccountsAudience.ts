@@ -43,80 +43,54 @@ import {
 export interface AdAccountsAudience {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     adAccountId?: string;
     /**
      * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-     * @type {AudienceType}
-     * @memberof AdAccountsAudience
      */
     audienceType?: AudienceType;
     /**
      * The company that created this audience.
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     readonly createdByCompanyName?: string | null;
     /**
      * Creation time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof AdAccountsAudience
      */
     readonly createdTimestamp?: number | null;
     /**
      * Audience description.
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     description?: string | null;
     /**
      * Audience ID.
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     id: string;
     /**
      * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
-     * @type {boolean}
-     * @memberof AdAccountsAudience
      */
     readonly isNca?: boolean;
     /**
      * Audience name.
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     name?: string;
     /**
      * 
-     * @type {AdAccountsAudienceRule}
-     * @memberof AdAccountsAudience
      */
     rule?: AdAccountsAudienceRule;
     /**
      * Audience size.
-     * @type {number}
-     * @memberof AdAccountsAudience
      */
     readonly size?: number | null;
     /**
      * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-     * @type {AudienceStatus}
-     * @memberof AdAccountsAudience
      */
     readonly status?: AudienceStatus;
     /**
      * Always "audience".
-     * @type {string}
-     * @memberof AdAccountsAudience
      */
     readonly type?: string;
     /**
      * Last update time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof AdAccountsAudience
      */
     readonly updatedTimestamp?: number | null;
 }

@@ -163,10 +163,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class DynamicTitlesProcessCSV.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesProcessCSV: errors.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class DynamicTitlesProcessCSV.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesProcessCSV: status.");
 
             return new DynamicTitlesProcessCSV(errors, status);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSV"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesProcessCSV dynamicTitlesProcessCSV, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,14 +191,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSV"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesProcessCSV dynamicTitlesProcessCSV, JsonSerializerOptions jsonSerializerOptions)
         {
             if (dynamicTitlesProcessCSV.ErrorsOption.IsSet && dynamicTitlesProcessCSV.Errors == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesProcessCSV.Errors), "Property is required for class DynamicTitlesProcessCSV.");
+                throw new JsonException("Cannot write null property DynamicTitlesProcessCSV.Errors to non-nullable JSON property 'errors'.");
 
             if (dynamicTitlesProcessCSV.StatusOption.IsSet && dynamicTitlesProcessCSV.Status == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesProcessCSV.Status), "Property is required for class DynamicTitlesProcessCSV.");
+                throw new JsonException("Cannot write null property DynamicTitlesProcessCSV.Status to non-nullable JSON property 'status'.");
 
             if (dynamicTitlesProcessCSV.ErrorsOption.IsSet)
             {

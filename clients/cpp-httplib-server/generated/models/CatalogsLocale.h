@@ -12,24 +12,484 @@
 
 namespace models {
 
-
-class CatalogsLocale
-{
-public:
-
-    CatalogsLocale();
-    virtual ~CatalogsLocale() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsLocale,
-        )
-
-private:
+enum class CatalogsLocale {
+    
+    AF_ZA,
+    
+    AR_SA,
+    
+    BG_BG,
+    
+    BN_IN,
+    
+    CS_CZ,
+    
+    DA_DK,
+    
+    DE,
+    
+    EL_GR,
+    
+    EN_AU,
+    
+    EN_CA,
+    
+    EN_GB,
+    
+    EN_IN,
+    
+    EN_US,
+    
+    ES_419,
+    
+    ES_AR,
+    
+    ES_ES,
+    
+    ES_MX,
+    
+    FI_FI,
+    
+    FR,
+    
+    FR_CA,
+    
+    HE_IL,
+    
+    HI_IN,
+    
+    HR_HR,
+    
+    HU_HU,
+    
+    ID_ID,
+    
+    IT,
+    
+    JA,
+    
+    KO_KR,
+    
+    MS_MY,
+    
+    NB_NO,
+    
+    NL,
+    
+    PL_PL,
+    
+    PT_BR,
+    
+    PT_PT,
+    
+    RO_RO,
+    
+    RU_RU,
+    
+    SK_SK,
+    
+    SV_SE,
+    
+    TE_IN,
+    
+    TH_TH,
+    
+    TL_PH,
+    
+    TR,
+    
+    UK_UA,
+    
+    VI_VN,
+    
+    ZH_CN,
+    
+    ZH_TW
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsLocale& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsLocale::AF_ZA: j = "af-ZA"; break;
+        
+        case CatalogsLocale::AR_SA: j = "ar-SA"; break;
+        
+        case CatalogsLocale::BG_BG: j = "bg-BG"; break;
+        
+        case CatalogsLocale::BN_IN: j = "bn-IN"; break;
+        
+        case CatalogsLocale::CS_CZ: j = "cs-CZ"; break;
+        
+        case CatalogsLocale::DA_DK: j = "da-DK"; break;
+        
+        case CatalogsLocale::DE: j = "de"; break;
+        
+        case CatalogsLocale::EL_GR: j = "el-GR"; break;
+        
+        case CatalogsLocale::EN_AU: j = "en-AU"; break;
+        
+        case CatalogsLocale::EN_CA: j = "en-CA"; break;
+        
+        case CatalogsLocale::EN_GB: j = "en-GB"; break;
+        
+        case CatalogsLocale::EN_IN: j = "en-IN"; break;
+        
+        case CatalogsLocale::EN_US: j = "en-US"; break;
+        
+        case CatalogsLocale::ES_419: j = "es-419"; break;
+        
+        case CatalogsLocale::ES_AR: j = "es-AR"; break;
+        
+        case CatalogsLocale::ES_ES: j = "es-ES"; break;
+        
+        case CatalogsLocale::ES_MX: j = "es-MX"; break;
+        
+        case CatalogsLocale::FI_FI: j = "fi-FI"; break;
+        
+        case CatalogsLocale::FR: j = "fr"; break;
+        
+        case CatalogsLocale::FR_CA: j = "fr-CA"; break;
+        
+        case CatalogsLocale::HE_IL: j = "he-IL"; break;
+        
+        case CatalogsLocale::HI_IN: j = "hi-IN"; break;
+        
+        case CatalogsLocale::HR_HR: j = "hr-HR"; break;
+        
+        case CatalogsLocale::HU_HU: j = "hu-HU"; break;
+        
+        case CatalogsLocale::ID_ID: j = "id-ID"; break;
+        
+        case CatalogsLocale::IT: j = "it"; break;
+        
+        case CatalogsLocale::JA: j = "ja"; break;
+        
+        case CatalogsLocale::KO_KR: j = "ko-KR"; break;
+        
+        case CatalogsLocale::MS_MY: j = "ms-MY"; break;
+        
+        case CatalogsLocale::NB_NO: j = "nb-NO"; break;
+        
+        case CatalogsLocale::NL: j = "nl"; break;
+        
+        case CatalogsLocale::PL_PL: j = "pl-PL"; break;
+        
+        case CatalogsLocale::PT_BR: j = "pt-BR"; break;
+        
+        case CatalogsLocale::PT_PT: j = "pt-PT"; break;
+        
+        case CatalogsLocale::RO_RO: j = "ro-RO"; break;
+        
+        case CatalogsLocale::RU_RU: j = "ru-RU"; break;
+        
+        case CatalogsLocale::SK_SK: j = "sk-SK"; break;
+        
+        case CatalogsLocale::SV_SE: j = "sv-SE"; break;
+        
+        case CatalogsLocale::TE_IN: j = "te-IN"; break;
+        
+        case CatalogsLocale::TH_TH: j = "th-TH"; break;
+        
+        case CatalogsLocale::TL_PH: j = "tl-PH"; break;
+        
+        case CatalogsLocale::TR: j = "tr"; break;
+        
+        case CatalogsLocale::UK_UA: j = "uk-UA"; break;
+        
+        case CatalogsLocale::VI_VN: j = "vi-VN"; break;
+        
+        case CatalogsLocale::ZH_CN: j = "zh-CN"; break;
+        
+        case CatalogsLocale::ZH_TW: j = "zh-TW"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsLocale", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsLocale& value)
+{
+    
+    if (j == "af-ZA")
+    {
+        value = CatalogsLocale::AF_ZA;
+        return;
+    }
+    
+    if (j == "ar-SA")
+    {
+        value = CatalogsLocale::AR_SA;
+        return;
+    }
+    
+    if (j == "bg-BG")
+    {
+        value = CatalogsLocale::BG_BG;
+        return;
+    }
+    
+    if (j == "bn-IN")
+    {
+        value = CatalogsLocale::BN_IN;
+        return;
+    }
+    
+    if (j == "cs-CZ")
+    {
+        value = CatalogsLocale::CS_CZ;
+        return;
+    }
+    
+    if (j == "da-DK")
+    {
+        value = CatalogsLocale::DA_DK;
+        return;
+    }
+    
+    if (j == "de")
+    {
+        value = CatalogsLocale::DE;
+        return;
+    }
+    
+    if (j == "el-GR")
+    {
+        value = CatalogsLocale::EL_GR;
+        return;
+    }
+    
+    if (j == "en-AU")
+    {
+        value = CatalogsLocale::EN_AU;
+        return;
+    }
+    
+    if (j == "en-CA")
+    {
+        value = CatalogsLocale::EN_CA;
+        return;
+    }
+    
+    if (j == "en-GB")
+    {
+        value = CatalogsLocale::EN_GB;
+        return;
+    }
+    
+    if (j == "en-IN")
+    {
+        value = CatalogsLocale::EN_IN;
+        return;
+    }
+    
+    if (j == "en-US")
+    {
+        value = CatalogsLocale::EN_US;
+        return;
+    }
+    
+    if (j == "es-419")
+    {
+        value = CatalogsLocale::ES_419;
+        return;
+    }
+    
+    if (j == "es-AR")
+    {
+        value = CatalogsLocale::ES_AR;
+        return;
+    }
+    
+    if (j == "es-ES")
+    {
+        value = CatalogsLocale::ES_ES;
+        return;
+    }
+    
+    if (j == "es-MX")
+    {
+        value = CatalogsLocale::ES_MX;
+        return;
+    }
+    
+    if (j == "fi-FI")
+    {
+        value = CatalogsLocale::FI_FI;
+        return;
+    }
+    
+    if (j == "fr")
+    {
+        value = CatalogsLocale::FR;
+        return;
+    }
+    
+    if (j == "fr-CA")
+    {
+        value = CatalogsLocale::FR_CA;
+        return;
+    }
+    
+    if (j == "he-IL")
+    {
+        value = CatalogsLocale::HE_IL;
+        return;
+    }
+    
+    if (j == "hi-IN")
+    {
+        value = CatalogsLocale::HI_IN;
+        return;
+    }
+    
+    if (j == "hr-HR")
+    {
+        value = CatalogsLocale::HR_HR;
+        return;
+    }
+    
+    if (j == "hu-HU")
+    {
+        value = CatalogsLocale::HU_HU;
+        return;
+    }
+    
+    if (j == "id-ID")
+    {
+        value = CatalogsLocale::ID_ID;
+        return;
+    }
+    
+    if (j == "it")
+    {
+        value = CatalogsLocale::IT;
+        return;
+    }
+    
+    if (j == "ja")
+    {
+        value = CatalogsLocale::JA;
+        return;
+    }
+    
+    if (j == "ko-KR")
+    {
+        value = CatalogsLocale::KO_KR;
+        return;
+    }
+    
+    if (j == "ms-MY")
+    {
+        value = CatalogsLocale::MS_MY;
+        return;
+    }
+    
+    if (j == "nb-NO")
+    {
+        value = CatalogsLocale::NB_NO;
+        return;
+    }
+    
+    if (j == "nl")
+    {
+        value = CatalogsLocale::NL;
+        return;
+    }
+    
+    if (j == "pl-PL")
+    {
+        value = CatalogsLocale::PL_PL;
+        return;
+    }
+    
+    if (j == "pt-BR")
+    {
+        value = CatalogsLocale::PT_BR;
+        return;
+    }
+    
+    if (j == "pt-PT")
+    {
+        value = CatalogsLocale::PT_PT;
+        return;
+    }
+    
+    if (j == "ro-RO")
+    {
+        value = CatalogsLocale::RO_RO;
+        return;
+    }
+    
+    if (j == "ru-RU")
+    {
+        value = CatalogsLocale::RU_RU;
+        return;
+    }
+    
+    if (j == "sk-SK")
+    {
+        value = CatalogsLocale::SK_SK;
+        return;
+    }
+    
+    if (j == "sv-SE")
+    {
+        value = CatalogsLocale::SV_SE;
+        return;
+    }
+    
+    if (j == "te-IN")
+    {
+        value = CatalogsLocale::TE_IN;
+        return;
+    }
+    
+    if (j == "th-TH")
+    {
+        value = CatalogsLocale::TH_TH;
+        return;
+    }
+    
+    if (j == "tl-PH")
+    {
+        value = CatalogsLocale::TL_PH;
+        return;
+    }
+    
+    if (j == "tr")
+    {
+        value = CatalogsLocale::TR;
+        return;
+    }
+    
+    if (j == "uk-UA")
+    {
+        value = CatalogsLocale::UK_UA;
+        return;
+    }
+    
+    if (j == "vi-VN")
+    {
+        value = CatalogsLocale::VI_VN;
+        return;
+    }
+    
+    if (j == "zh-CN")
+    {
+        value = CatalogsLocale::ZH_CN;
+        return;
+    }
+    
+    if (j == "zh-TW")
+    {
+        value = CatalogsLocale::ZH_TW;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsLocale", &j);
+}
 
 } // namespace models
 

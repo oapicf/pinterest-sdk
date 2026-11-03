@@ -9,8 +9,8 @@ import Foundation
 
 public struct ConversionEventResponse: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Id of the ad account. */
     public var adAccountId: String?
     public var conversionEvent: ConversionTagType?

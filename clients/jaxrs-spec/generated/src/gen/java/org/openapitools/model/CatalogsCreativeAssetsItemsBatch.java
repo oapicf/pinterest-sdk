@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing the catalogs creative assets items batch")
 @JsonTypeName("CatalogsCreativeAssetsItemsBatch")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsItemsBatch   {
   private String batchId;
   public enum CatalogTypeEnum {
@@ -78,7 +78,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
   private CatalogTypeEnum catalogType;
   private Date completedTime;
   private Date createdTime;
-  private @Valid List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
+  private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
   private BatchOperationStatus status;
 
   public CatalogsCreativeAssetsItemsBatch() {
@@ -181,7 +181,7 @@ public class CatalogsCreativeAssetsItemsBatch   {
   
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
   @JsonProperty("items")
-  @Valid public List<@Valid CreativeAssetsProcessingRecord> getItems() {
+  public List<@Valid CreativeAssetsProcessingRecord> getItems() {
     return items;
   }
 

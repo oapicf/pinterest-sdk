@@ -140,6 +140,7 @@ class _$TargetingSpecOperationGeoExcludeSerializer implements PrimitiveSerialize
   }
 }
 
+
 class TargetingSpecOperationGeoExcludeFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'GEO_EXCLUDE')

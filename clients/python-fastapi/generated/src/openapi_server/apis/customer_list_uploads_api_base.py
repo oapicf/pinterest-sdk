@@ -18,8 +18,8 @@ class BaseCustomerListUploadsApi:
         BaseCustomerListUploadsApi.subclasses = BaseCustomerListUploadsApi.subclasses + (cls,)
     async def customer_list_uploads_create(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18)],
-        customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18)],
+        customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")],
         customer_list_upload_create_request: CustomerListUploadCreateRequest,
     ) -> CustomerListUploadCreateResponse:
         """Create a customer list upload request for multipart S3 upload.  Note: Each part must be at least 5mb; however the last part can be any size greater than 0. Clients with smaller files can request a single part count. This minimal part size restriction is defined by the AWS S3 API.  **Please review the [update customer list endpoint](/docs/api/v5/customer_lists-update/) documentation for additional information.**"""
@@ -28,9 +28,9 @@ class BaseCustomerListUploadsApi:
 
     async def customer_list_uploads_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18)],
-        customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")],
-        customer_list_upload_id: Annotated[str, Field(strict=True, description="Customer List Upload ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18)],
+        customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")],
+        customer_list_upload_id: Annotated[str, Field(description="Customer List Upload ID.")],
     ) -> CustomerListUpload:
         """Get the metadata for a given upload by its ID."""
         ...
@@ -38,9 +38,9 @@ class BaseCustomerListUploadsApi:
 
     async def customer_list_uploads_run(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18)],
-        customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")],
-        customer_list_upload_id: Annotated[str, Field(strict=True, description="Customer List Upload ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18)],
+        customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")],
+        customer_list_upload_id: Annotated[str, Field(description="Customer List Upload ID.")],
     ) -> CustomerListUpload:
         """Begin processing a customer list upload."""
         ...

@@ -23,8 +23,6 @@ public class PinMediaWithVideos  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid VideoMetadataWithItemType> items = new ArrayList<>();
 
 public enum MediaTypeEnum {

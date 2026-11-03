@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class CampaignBidOptionsUpdateMaskItems
-{
-public:
-
-    CampaignBidOptionsUpdateMaskItems();
-    virtual ~CampaignBidOptionsUpdateMaskItems() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignBidOptionsUpdateMaskItems,
-        )
-
-private:
+enum class CampaignBidOptionsUpdateMaskItems {
+    
+    AUDIENCE,
+    
+    APP_TYPE,
+    
+    PLACEMENT,
+    
+    GENDER,
+    
+    AGE_BUCKET,
+    
+    FREQUENCY
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignBidOptionsUpdateMaskItems& value)
+{
+    switch (value)
+    {
+        
+        case CampaignBidOptionsUpdateMaskItems::AUDIENCE: j = "AUDIENCE"; break;
+        
+        case CampaignBidOptionsUpdateMaskItems::APP_TYPE: j = "APP_TYPE"; break;
+        
+        case CampaignBidOptionsUpdateMaskItems::PLACEMENT: j = "PLACEMENT"; break;
+        
+        case CampaignBidOptionsUpdateMaskItems::GENDER: j = "GENDER"; break;
+        
+        case CampaignBidOptionsUpdateMaskItems::AGE_BUCKET: j = "AGE_BUCKET"; break;
+        
+        case CampaignBidOptionsUpdateMaskItems::FREQUENCY: j = "FREQUENCY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignBidOptionsUpdateMaskItems", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignBidOptionsUpdateMaskItems& value)
+{
+    
+    if (j == "AUDIENCE")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::AUDIENCE;
+        return;
+    }
+    
+    if (j == "APP_TYPE")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::APP_TYPE;
+        return;
+    }
+    
+    if (j == "PLACEMENT")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::PLACEMENT;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::GENDER;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::AGE_BUCKET;
+        return;
+    }
+    
+    if (j == "FREQUENCY")
+    {
+        value = CampaignBidOptionsUpdateMaskItems::FREQUENCY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignBidOptionsUpdateMaskItems", &j);
+}
 
 } // namespace models
 

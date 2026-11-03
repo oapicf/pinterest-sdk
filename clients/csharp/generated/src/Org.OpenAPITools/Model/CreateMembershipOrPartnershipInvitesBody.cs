@@ -191,22 +191,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!businessRole.IsSet)
-                throw new ArgumentException("Property is required for class CreateMembershipOrPartnershipInvitesBody.", nameof(businessRole));
+                throw new JsonException("Property is required for class CreateMembershipOrPartnershipInvitesBody: business_role.");
 
             if (!inviteType.IsSet)
-                throw new ArgumentException("Property is required for class CreateMembershipOrPartnershipInvitesBody.", nameof(inviteType));
+                throw new JsonException("Property is required for class CreateMembershipOrPartnershipInvitesBody: invite_type.");
 
             if (businessRole.IsSet && businessRole.Value == null)
-                throw new ArgumentNullException(nameof(businessRole), "Property is not nullable for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Property is not nullable for class CreateMembershipOrPartnershipInvitesBody: business_role.");
 
             if (inviteType.IsSet && inviteType.Value == null)
-                throw new ArgumentNullException(nameof(inviteType), "Property is not nullable for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Property is not nullable for class CreateMembershipOrPartnershipInvitesBody: invite_type.");
 
             if (members.IsSet && members.Value == null)
-                throw new ArgumentNullException(nameof(members), "Property is not nullable for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Property is not nullable for class CreateMembershipOrPartnershipInvitesBody: members.");
 
             if (partners.IsSet && partners.Value == null)
-                throw new ArgumentNullException(nameof(partners), "Property is not nullable for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Property is not nullable for class CreateMembershipOrPartnershipInvitesBody: partners.");
 
             return new CreateMembershipOrPartnershipInvitesBody(businessRole.Value!.Value!, inviteType.Value!.Value!, members, partners);
         }
@@ -217,7 +217,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createMembershipOrPartnershipInvitesBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -232,14 +231,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createMembershipOrPartnershipInvitesBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody, JsonSerializerOptions jsonSerializerOptions)
         {
             if (createMembershipOrPartnershipInvitesBody.MembersOption.IsSet && createMembershipOrPartnershipInvitesBody.Members == null)
-                throw new ArgumentNullException(nameof(createMembershipOrPartnershipInvitesBody.Members), "Property is required for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Cannot write null property CreateMembershipOrPartnershipInvitesBody.Members to non-nullable JSON property 'members'.");
 
             if (createMembershipOrPartnershipInvitesBody.PartnersOption.IsSet && createMembershipOrPartnershipInvitesBody.Partners == null)
-                throw new ArgumentNullException(nameof(createMembershipOrPartnershipInvitesBody.Partners), "Property is required for class CreateMembershipOrPartnershipInvitesBody.");
+                throw new JsonException("Cannot write null property CreateMembershipOrPartnershipInvitesBody.Partners to non-nullable JSON property 'partners'.");
 
             var businessRoleRawValue = BusinessRoleForInviteValueConverter.ToJsonValue(createMembershipOrPartnershipInvitesBody.BusinessRole);
             writer.WriteString("business_role", businessRoleRawValue);

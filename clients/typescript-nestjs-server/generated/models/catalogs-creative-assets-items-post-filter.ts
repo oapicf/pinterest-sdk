@@ -10,7 +10,7 @@ export interface CatalogsCreativeAssetsItemsPostFilter {
 }
 export namespace CatalogsCreativeAssetsItemsPostFilter {
   export const CatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

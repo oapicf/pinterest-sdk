@@ -43,38 +43,26 @@ import {
 export interface AdAccountsAudienceUpdate {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof AdAccountsAudienceUpdate
      */
     adAccountId?: string;
     /**
      * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-     * @type {AudienceType}
-     * @memberof AdAccountsAudienceUpdate
      */
     audienceType?: AudienceType;
     /**
      * Audience description.
-     * @type {string}
-     * @memberof AdAccountsAudienceUpdate
      */
     description?: string | null;
     /**
      * Audience name.
-     * @type {string}
-     * @memberof AdAccountsAudienceUpdate
      */
     name?: string;
     /**
      * Audience operation type (update or remove). Only valid in update request body.
-     * @type {AudienceUpdateOperationType}
-     * @memberof AdAccountsAudienceUpdate
      */
     operationType?: AudienceUpdateOperationType;
     /**
      * 
-     * @type {AdAccountsAudienceRule}
-     * @memberof AdAccountsAudienceUpdate
      */
     rule?: AdAccountsAudienceRule;
 }

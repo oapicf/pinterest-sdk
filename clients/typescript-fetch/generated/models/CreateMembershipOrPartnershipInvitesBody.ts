@@ -36,26 +36,18 @@ import {
 export interface CreateMembershipOrPartnershipInvitesBody {
     /**
      * 
-     * @type {BusinessRoleForInvite}
-     * @memberof CreateMembershipOrPartnershipInvitesBody
      */
     businessRole: BusinessRoleForInvite;
     /**
      * 
-     * @type {InviteType}
-     * @memberof CreateMembershipOrPartnershipInvitesBody
      */
     inviteType: InviteType;
     /**
      * A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
-     * @type {Array<string>}
-     * @memberof CreateMembershipOrPartnershipInvitesBody
      */
     members?: Array<string>;
     /**
      * A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
-     * @type {Array<string>}
-     * @memberof CreateMembershipOrPartnershipInvitesBody
      */
     partners?: Array<string>;
 }

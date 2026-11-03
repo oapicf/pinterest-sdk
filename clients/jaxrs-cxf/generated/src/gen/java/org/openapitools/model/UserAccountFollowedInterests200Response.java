@@ -22,8 +22,6 @@ public class UserAccountFollowedInterests200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Interest> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* List of source platforms for a conversion event.
-* Values: WEB,MOBILE,MOBILE_ANDROID,MOBILE_IOS,OFFLINE,PINTEREST_WEB,PINTEREST_ANDROID,PINTEREST_IOS,POINT_OF_SALE
-*/
+ * List of source platforms for a conversion event.
+ * Values: WEB,MOBILE,MOBILE_ANDROID,MOBILE_IOS,OFFLINE,PINTEREST_WEB,PINTEREST_ANDROID,PINTEREST_IOS,POINT_OF_SALE
+ */
 enum class SourcePlatformOptions(@get:JsonValue val value: kotlin.String) {
 
     WEB("WEB"),
@@ -35,9 +35,8 @@ enum class SourcePlatformOptions(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): SourcePlatformOptions {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SourcePlatformOptions'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SourcePlatformOptions'")
         }
     }
 }
-

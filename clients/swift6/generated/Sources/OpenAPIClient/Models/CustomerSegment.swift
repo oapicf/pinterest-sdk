@@ -9,8 +9,8 @@ import Foundation
 
 public struct CustomerSegment: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the ad account that this customer segment belongs to. */
     public var adAccountId: String?
     /** Audience IDs included in the customer segment. */

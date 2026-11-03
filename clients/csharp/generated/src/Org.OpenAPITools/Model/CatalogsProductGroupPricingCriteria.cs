@@ -179,16 +179,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupPricingCriteria.", nameof(values));
+                throw new JsonException("Property is required for class CatalogsProductGroupPricingCriteria: values.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class CatalogsProductGroupPricingCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupPricingCriteria: values.");
 
             if (inclusion.IsSet && inclusion.Value == null)
-                throw new ArgumentNullException(nameof(inclusion), "Property is not nullable for class CatalogsProductGroupPricingCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupPricingCriteria: inclusion.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class CatalogsProductGroupPricingCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupPricingCriteria: negated.");
 
             return new CatalogsProductGroupPricingCriteria(values.Value!.Value!, inclusion, negated);
         }
@@ -199,7 +199,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupPricingCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupPricingCriteria catalogsProductGroupPricingCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -214,9 +213,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupPricingCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupPricingCriteria catalogsProductGroupPricingCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsProductGroupPricingCriteria.InclusionOption.IsSet && catalogsProductGroupPricingCriteria.Inclusion == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupPricingCriteria.Inclusion to non-nullable JSON property 'inclusion'.");
+
+            if (catalogsProductGroupPricingCriteria.NegatedOption.IsSet && catalogsProductGroupPricingCriteria.Negated == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupPricingCriteria.Negated to non-nullable JSON property 'negated'.");
+
             writer.WriteNumber("values", catalogsProductGroupPricingCriteria.Values);
 
             if (catalogsProductGroupPricingCriteria.InclusionOption.IsSet)

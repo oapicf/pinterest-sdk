@@ -25,12 +25,12 @@ data class IneligibleProductTagErrorItem(
 
     @field:Valid
     @Schema(required = true, description = "Reason why the pin is ineligible for tagging.")
-    @param:JsonProperty("error_message")
+    @param:JsonProperty("error_message", required = true)
     @get:JsonProperty("error_message", required = true) val errorMessage: IneligibleProductTagReason,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Pin ID that failed eligibility check.")
-    @param:JsonProperty("pin_id")
+    @param:JsonProperty("pin_id", required = true)
     @get:JsonProperty("pin_id", required = true) val pinId: kotlin.String
 ) {
 

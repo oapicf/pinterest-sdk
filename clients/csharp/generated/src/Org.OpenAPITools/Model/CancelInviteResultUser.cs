@@ -195,13 +195,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (email.IsSet && email.Value == null)
-                throw new ArgumentNullException(nameof(email), "Property is not nullable for class CancelInviteResultUser.");
+                throw new JsonException("Property is not nullable for class CancelInviteResultUser: email.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CancelInviteResultUser.");
+                throw new JsonException("Property is not nullable for class CancelInviteResultUser: id.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class CancelInviteResultUser.");
+                throw new JsonException("Property is not nullable for class CancelInviteResultUser: username.");
 
             return new CancelInviteResultUser(email, id, username);
         }
@@ -212,7 +212,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInviteResultUser"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CancelInviteResultUser cancelInviteResultUser, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -227,17 +226,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInviteResultUser"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CancelInviteResultUser cancelInviteResultUser, JsonSerializerOptions jsonSerializerOptions)
         {
             if (cancelInviteResultUser.EmailOption.IsSet && cancelInviteResultUser.Email == null)
-                throw new ArgumentNullException(nameof(cancelInviteResultUser.Email), "Property is required for class CancelInviteResultUser.");
+                throw new JsonException("Cannot write null property CancelInviteResultUser.Email to non-nullable JSON property 'email'.");
 
             if (cancelInviteResultUser.IdOption.IsSet && cancelInviteResultUser.Id == null)
-                throw new ArgumentNullException(nameof(cancelInviteResultUser.Id), "Property is required for class CancelInviteResultUser.");
+                throw new JsonException("Cannot write null property CancelInviteResultUser.Id to non-nullable JSON property 'id'.");
 
             if (cancelInviteResultUser.UsernameOption.IsSet && cancelInviteResultUser.Username == null)
-                throw new ArgumentNullException(nameof(cancelInviteResultUser.Username), "Property is required for class CancelInviteResultUser.");
+                throw new JsonException("Cannot write null property CancelInviteResultUser.Username to non-nullable JSON property 'username'.");
 
             if (cancelInviteResultUser.EmailOption.IsSet)
                 writer.WriteString("email", cancelInviteResultUser.Email);

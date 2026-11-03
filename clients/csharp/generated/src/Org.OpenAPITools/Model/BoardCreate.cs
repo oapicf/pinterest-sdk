@@ -199,16 +199,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class BoardCreate.", nameof(name));
+                throw new JsonException("Property is required for class BoardCreate: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardCreate.");
+                throw new JsonException("Property is not nullable for class BoardCreate: name.");
 
             if (isAdsOnly.IsSet && isAdsOnly.Value == null)
-                throw new ArgumentNullException(nameof(isAdsOnly), "Property is not nullable for class BoardCreate.");
+                throw new JsonException("Property is not nullable for class BoardCreate: is_ads_only.");
 
             if (privacy.IsSet && privacy.Value == null)
-                throw new ArgumentNullException(nameof(privacy), "Property is not nullable for class BoardCreate.");
+                throw new JsonException("Property is not nullable for class BoardCreate: privacy.");
 
             return new BoardCreate(name.Value!, description, isAdsOnly, privacy);
         }
@@ -219,7 +219,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardCreate boardCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -234,11 +233,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardCreate boardCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (boardCreate.Name == null)
-                throw new ArgumentNullException(nameof(boardCreate.Name), "Property is required for class BoardCreate.");
+            if (boardCreate.IsAdsOnlyOption.IsSet && boardCreate.IsAdsOnly == null)
+                throw new JsonException("Cannot write null property BoardCreate.IsAdsOnly to non-nullable JSON property 'is_ads_only'.");
+
+            if (boardCreate.PrivacyOption.IsSet && boardCreate.Privacy == null)
+                throw new JsonException("Cannot write null property BoardCreate.Privacy to non-nullable JSON property 'privacy'.");
 
             writer.WriteString("name", boardCreate.Name);
 

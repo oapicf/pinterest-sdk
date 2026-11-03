@@ -21,104 +21,70 @@ import { mapValues } from '../runtime';
 export interface IntegrationRecord {
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     additionalId1?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     connectedAdvertiserId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     connectedLbaId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     connectedMerchantId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     connectedTagId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     connectedUserId?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationRecord
      */
     createdTime?: number;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     externalBusinessId?: string | null;
     /**
      * Integration record ID.
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     readonly id: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     partnerAccessToken?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationRecord
      */
     partnerAccessTokenExpiry?: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     partnerMetadata?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     partnerPrimaryEmail?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     partnerRefreshToken?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationRecord
      */
     partnerRefreshTokenExpiry?: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationRecord
      */
     scopes?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationRecord
      */
     updatedTime?: number;
 }

@@ -38,7 +38,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface PinsApi {
     /**
@@ -83,7 +83,7 @@ public interface PinsApi {
         @PathVariable(name="pin_id") @NotNull String pinId, 
         @QueryValue(value="start_date") @NotNull @Format("yyyy-MM-dd") LocalDate startDate, 
         @QueryValue(value="end_date") @NotNull @Format("yyyy-MM-dd") LocalDate endDate, 
-        @QueryValue(value="metric_types") @NotNull List<QuerypinanalyticsmetrictypesItems> metricTypes, 
+        @QueryValue(value="metric_types") @NotNull List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes, 
         @QueryValue(value="app_types", defaultValue="ALL") @Nullable String appTypes, 
         @QueryValue(value="split_field", defaultValue="NO_SPLIT") @Nullable String splitField, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId

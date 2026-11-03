@@ -10,7 +10,7 @@ import Foundation
 /** A business member identified by &#x60;member_id&#x60; with their &#x60;business_role&#x60; in the business. */
 public struct BusinessMembershipMember: Sendable, Codable, Hashable {
 
-    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
     public var businessRole: BusinessRoleForMembers
     /** Unique identifier of the member. */
     public var memberId: String

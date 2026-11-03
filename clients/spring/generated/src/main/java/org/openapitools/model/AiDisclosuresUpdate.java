@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,10 +24,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AiDisclosuresUpdate", description = "AI disclosure declarations the creator has made about the Pin.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AiDisclosuresUpdate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AiDisclosureItem> values = new ArrayList<>();
 
   public AiDisclosuresUpdate values(List<AiDisclosureItem> values) {
@@ -48,7 +46,7 @@ public class AiDisclosuresUpdate {
    * List of AI disclosure declarations the creator has made about this Pin.
    * @return values
    */
-  @Valid 
+  
   @Schema(name = "values", description = "List of AI disclosure declarations the creator has made about this Pin.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("values")
   public List<AiDisclosureItem> getValues() {

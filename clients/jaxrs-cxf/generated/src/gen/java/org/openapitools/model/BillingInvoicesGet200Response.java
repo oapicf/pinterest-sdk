@@ -22,8 +22,6 @@ public class BillingInvoicesGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid BillingInvoice> items = new ArrayList<>();
  /**
    * Get bookmark

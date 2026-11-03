@@ -66,7 +66,7 @@ function Invoke-TargetingTemplateCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling targetingTemplate_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$TargetingTemplateCreate) {
             throw "Error! The required parameter `TargetingTemplateCreate` missing when calling targetingTemplate_create."
@@ -176,7 +176,7 @@ function Invoke-TargetingTemplateList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling targetingTemplate_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -280,7 +280,7 @@ function Invoke-TargetingTemplateUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling targetingTemplate_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$TargetingTemplateUpdateRequestReadOrUpdate) {
             throw "Error! The required parameter `TargetingTemplateUpdateRequestReadOrUpdate` missing when calling targetingTemplate_update."

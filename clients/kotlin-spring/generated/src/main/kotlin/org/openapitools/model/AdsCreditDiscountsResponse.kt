@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdsCreditDiscountType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -32,15 +29,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdsCreditDiscountsResponse(
 
     @Schema(example = "true", description = "True if the offer code is currently active.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("active")
     @get:JsonProperty("active") val active: kotlin.Boolean? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "12312451231", description = "Advertiser ID the offer was applied to.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("advertiser_id")
     @get:JsonProperty("advertiser_id") val advertiserId: kotlin.String? = null,
 

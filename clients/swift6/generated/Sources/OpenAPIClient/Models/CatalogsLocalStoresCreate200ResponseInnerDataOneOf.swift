@@ -9,7 +9,7 @@ import Foundation
 
 public struct CatalogsLocalStoresCreate200ResponseInnerDataOneOf: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the local store. */
     public var id: String
     public var exceptions: PinterestLibError

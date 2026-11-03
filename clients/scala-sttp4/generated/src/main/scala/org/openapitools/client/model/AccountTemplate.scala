@@ -12,14 +12,6 @@
 package org.openapitools.client.model
 
 import org.json4s.JValue
-import org.openapitools.client.model.ConversionReportTimeType._
-import org.openapitools.client.model.CreationSource._
-import org.openapitools.client.model.DataOutputFormat._
-import org.openapitools.client.model.Granularity._
-import org.openapitools.client.model.IngestionSource._
-import org.openapitools.client.model.MetricsReportingLevel._
-import org.openapitools.client.model.ReportingColumn._
-import org.openapitools.client.model.ReportingTimeZone._
 
 case class AccountTemplate(
   /* ID of the Ad Account that owns the template */

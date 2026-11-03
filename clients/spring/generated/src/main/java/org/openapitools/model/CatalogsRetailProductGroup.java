@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,7 +29,7 @@ import jakarta.annotation.Generated;
  * CatalogsRetailProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup {
 
   private String catalogId;
@@ -70,13 +69,10 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   private CatalogTypeEnum catalogType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> country = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdAt;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> feedId = JsonNullable.<String>undefined();
@@ -85,22 +81,17 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Deprecated
   private @Nullable Boolean isFeatured;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> locale = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsProductGroupStatus status;
 
   private CatalogsProductGroupType type;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedAt;
 
   public CatalogsRetailProductGroup() {
@@ -171,7 +162,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * @return country
    */
   
-  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("country")
   public JsonNullable<String> getCountry() {
     return country;
@@ -212,7 +203,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * @return description
    */
   
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -231,8 +222,8 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * id of the catalogs feed belonging to this catalog product group
    * @return feedId
    */
-  @NotNull @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "feed_id", example = "2680059592705", description = "id of the catalogs feed belonging to this catalog product group", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Pattern(regexp = "^\\d+$") 
+  @Schema(name = "feed_id", example = "2680059592705", description = "id of the catalogs feed belonging to this catalog product group", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("feed_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getFeedId() {
     return feedId;
@@ -322,7 +313,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * @return locale
    */
   
-  @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("locale")
   public JsonNullable<String> getLocale() {
     return locale;

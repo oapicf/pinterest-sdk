@@ -160,22 +160,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsMetricsFilter.", nameof(field));
+                throw new JsonException("Property is required for class AdsAnalyticsMetricsFilter: field.");
 
             if (!varOperator.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsMetricsFilter.", nameof(varOperator));
+                throw new JsonException("Property is required for class AdsAnalyticsMetricsFilter: operator.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsMetricsFilter.", nameof(values));
+                throw new JsonException("Property is required for class AdsAnalyticsMetricsFilter: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class AdsAnalyticsMetricsFilter.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsMetricsFilter: field.");
 
             if (varOperator.IsSet && varOperator.Value == null)
-                throw new ArgumentNullException(nameof(varOperator), "Property is not nullable for class AdsAnalyticsMetricsFilter.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsMetricsFilter: operator.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class AdsAnalyticsMetricsFilter.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsMetricsFilter: values.");
 
             return new AdsAnalyticsMetricsFilter(field.Value!.Value!, varOperator.Value!.Value!, values.Value!);
         }
@@ -186,7 +186,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsMetricsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsMetricsFilter adsAnalyticsMetricsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -201,12 +200,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsMetricsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsAnalyticsMetricsFilter adsAnalyticsMetricsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adsAnalyticsMetricsFilter.Values == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsMetricsFilter.Values), "Property is required for class AdsAnalyticsMetricsFilter.");
-
             var fieldRawValue = AdsAnalyticsFilterColumnValueConverter.ToJsonValue(adsAnalyticsMetricsFilter.Field);
             writer.WriteString("field", fieldRawValue);
 

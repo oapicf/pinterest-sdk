@@ -17,7 +17,7 @@ import AiDisclosureItem from './AiDisclosureItem';
 /**
  * The AiDisclosuresUpdate model module.
  * @module model/AiDisclosuresUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AiDisclosuresUpdate {
     /**

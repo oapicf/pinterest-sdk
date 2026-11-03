@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-* Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION,APP
-*/
+ * Ad creative type enum. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+ * Values: REGULAR,VIDEO,SHOPPING,CAROUSEL,MAX_VIDEO,SHOP_THE_PIN,COLLECTION,IDEA,SHOWCASE,QUIZ,COLLAGE,MAX_WIDTH_REGULAR_COLLECTION,MAX_WIDTH_VIDEO_COLLECTION,APP
+ */
 enum class CreativeType(@get:JsonValue val value: kotlin.String) {
 
     REGULAR("REGULAR"),
@@ -40,9 +40,8 @@ enum class CreativeType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CreativeType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreativeType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreativeType'")
         }
     }
 }
-

@@ -18,7 +18,7 @@ import CatalogsFeedValidationWarnings from './CatalogsFeedValidationWarnings';
 /**
  * The CatalogsFeedValidationDetails model module.
  * @module model/CatalogsFeedValidationDetails
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsFeedValidationDetails {
     /**

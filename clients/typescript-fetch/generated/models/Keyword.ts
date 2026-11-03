@@ -29,50 +29,34 @@ import {
 export interface Keyword {
     /**
      * 
-     * @type {boolean}
-     * @memberof Keyword
      */
     archived?: boolean;
     /**
      * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-     * @type {number}
-     * @memberof Keyword
      */
     bid?: number | null;
     /**
      * Keyword ID .
-     * @type {string}
-     * @memberof Keyword
      */
     id: string;
     /**
      * Keyword [match type](/docs/api-features/targeting-overview/)
-     * @type {MatchType}
-     * @memberof Keyword
      */
     matchType: MatchType | null;
     /**
      * Keyword parent entity ID (advertiser, campaign, ad group).
-     * @type {string}
-     * @memberof Keyword
      */
     readonly parentId: string;
     /**
      * Parent entity type (advertiser, campaign, ad group).
-     * @type {string}
-     * @memberof Keyword
      */
     readonly parentType?: string;
     /**
      * Always keyword
-     * @type {string}
-     * @memberof Keyword
      */
     readonly type?: string;
     /**
      * Keyword value (120 chars max).
-     * @type {string}
-     * @memberof Keyword
      */
     value: string;
 }

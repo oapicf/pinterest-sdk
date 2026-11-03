@@ -6,20 +6,3 @@
 */
 #include "IntegrationLogLevel.h"
 
-namespace models {
-
-IntegrationLogLevel::IntegrationLogLevel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

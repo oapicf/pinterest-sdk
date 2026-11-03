@@ -1160,10 +1160,4 @@ models/user_account_followed_interests_200_response.js
 models/user_websites_get_200_response.js
 operations/actions.js
 package.json
-samples/CatalogSupplementalApi.js
-samples/ConversionDeletionRequestsApi.js
-samples/CustomerSegmentApi.js
-samples/ProductTagsApi.js
-samples/SchedulesApi.js
-samples/TrendsApi.js
 utils/utils.js

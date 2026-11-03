@@ -36,104 +36,70 @@ import {
 export interface CatalogsUpdatableHotelAttributes {
     /**
      * Hotel address
-     * @type {CatalogsHotelAddress}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     address?: CatalogsHotelAddress;
     /**
      * Base price of the hotel room per night followed by the ISO currency code
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     basePrice?: string | null;
     /**
      * The brand to which this hotel belongs to.
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     brand?: string | null;
     /**
      * The type of property. The category can be any type of internal description desired.
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     category?: string | null;
     /**
      * Custom grouping of hotels
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     customLabel0?: string | null;
     /**
      * Custom grouping of hotels
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     customLabel1?: string | null;
     /**
      * Custom grouping of hotels
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     customLabel2?: string | null;
     /**
      * Custom grouping of hotels
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     customLabel3?: string | null;
     /**
      * Custom grouping of hotels
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     customLabel4?: string | null;
     /**
      * Brief description of the hotel.
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     description?: string | null;
     /**
      * If specified, you must provide all properties
-     * @type {CatalogsHotelGuestRatings}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     guestRatings?: CatalogsHotelGuestRatings;
     /**
      * Latitude of the hotel.
-     * @type {number}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     latitude?: number;
     /**
      * Link to the product page
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     link?: string | null;
     /**
      * Longitude of the hotel.
-     * @type {number}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     longitude?: number | null;
     /**
      * The hotel's name.
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     name?: string | null;
     /**
      * A list of neighborhoods where the hotel is located
-     * @type {Array<string>}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     neighborhood?: Array<string> | null;
     /**
      * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-     * @type {string}
-     * @memberof CatalogsUpdatableHotelAttributes
      */
     salePrice?: string | null;
 }

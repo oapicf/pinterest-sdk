@@ -8,7 +8,7 @@ import org.openapitools.model.WebsiteVerificationMethod;
 @Canonical
 class UserWebsiteCreate {
     /* Method used to verify website ownership. */
-    WebsiteVerificationMethod verificationMethod
+    WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG
     /* Website with path or domain only */
     String website
 }

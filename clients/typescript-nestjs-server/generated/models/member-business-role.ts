@@ -5,7 +5,7 @@
  */
 export const MemberBusinessRole = {
     Employee: 'EMPLOYEE',
-    BizAdmin: 'BIZ_ADMIN'
+    BizAdmin: 'BIZ_ADMIN',
 } as const;
 export type MemberBusinessRole = typeof MemberBusinessRole[keyof typeof MemberBusinessRole];
 

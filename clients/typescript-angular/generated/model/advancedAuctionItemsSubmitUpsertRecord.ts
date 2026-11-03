@@ -37,7 +37,7 @@ export interface AdvancedAuctionItemsSubmitUpsertRecord {
 }
 export namespace AdvancedAuctionItemsSubmitUpsertRecord {
     export const OperationEnum = {
-        Upsert: 'UPSERT'
+        Upsert: 'UPSERT',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

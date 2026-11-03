@@ -44,7 +44,7 @@ public class BoardCreate  {
 
   @Valid
 
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
  /**
    * Get description
    * @return description

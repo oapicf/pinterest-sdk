@@ -22,7 +22,7 @@ public class AdGroupAudienceSizingCreate   {
   private Boolean autoTargetingEnabled = true;
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes;
   private List<AdGroupAudienceSizingKeyword> keywords;
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
   private List<String> productGroupIds;
   private TargetingSpecOptimal targetingSpec;
 

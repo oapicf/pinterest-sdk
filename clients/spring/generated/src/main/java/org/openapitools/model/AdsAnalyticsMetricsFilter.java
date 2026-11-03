@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
  * AdsAnalyticsMetricsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsMetricsFilter {
 
   private AdsAnalyticsFilterColumn field;
@@ -107,7 +107,7 @@ public class AdsAnalyticsMetricsFilter {
    * List of values for filtering
    * @return values
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Size(min = 1) 
   @Schema(name = "values", description = "List of values for filtering", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<BigDecimal> getValues() {

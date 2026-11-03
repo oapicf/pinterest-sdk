@@ -189,28 +189,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!accountId.IsSet)
-                throw new ArgumentException("Property is required for class SharedAudienceAccount.", nameof(accountId));
+                throw new JsonException("Property is required for class SharedAudienceAccount: account_id.");
 
             if (!accountName.IsSet)
-                throw new ArgumentException("Property is required for class SharedAudienceAccount.", nameof(accountName));
+                throw new JsonException("Property is required for class SharedAudienceAccount: account_name.");
 
             if (!accountType.IsSet)
-                throw new ArgumentException("Property is required for class SharedAudienceAccount.", nameof(accountType));
+                throw new JsonException("Property is required for class SharedAudienceAccount: account_type.");
 
             if (!sharedOnTimestamp.IsSet)
-                throw new ArgumentException("Property is required for class SharedAudienceAccount.", nameof(sharedOnTimestamp));
+                throw new JsonException("Property is required for class SharedAudienceAccount: shared_on_timestamp.");
 
             if (accountId.IsSet && accountId.Value == null)
-                throw new ArgumentNullException(nameof(accountId), "Property is not nullable for class SharedAudienceAccount.");
+                throw new JsonException("Property is not nullable for class SharedAudienceAccount: account_id.");
 
             if (accountName.IsSet && accountName.Value == null)
-                throw new ArgumentNullException(nameof(accountName), "Property is not nullable for class SharedAudienceAccount.");
+                throw new JsonException("Property is not nullable for class SharedAudienceAccount: account_name.");
 
             if (accountType.IsSet && accountType.Value == null)
-                throw new ArgumentNullException(nameof(accountType), "Property is not nullable for class SharedAudienceAccount.");
+                throw new JsonException("Property is not nullable for class SharedAudienceAccount: account_type.");
 
             if (sharedOnTimestamp.IsSet && sharedOnTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(sharedOnTimestamp), "Property is not nullable for class SharedAudienceAccount.");
+                throw new JsonException("Property is not nullable for class SharedAudienceAccount: shared_on_timestamp.");
 
             return new SharedAudienceAccount(accountId.Value!, accountName.Value!, accountType.Value!.Value!, sharedOnTimestamp.Value!.Value!);
         }
@@ -221,7 +221,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sharedAudienceAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SharedAudienceAccount sharedAudienceAccount, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -236,15 +235,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sharedAudienceAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SharedAudienceAccount sharedAudienceAccount, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (sharedAudienceAccount.AccountId == null)
-                throw new ArgumentNullException(nameof(sharedAudienceAccount.AccountId), "Property is required for class SharedAudienceAccount.");
-
-            if (sharedAudienceAccount.AccountName == null)
-                throw new ArgumentNullException(nameof(sharedAudienceAccount.AccountName), "Property is required for class SharedAudienceAccount.");
-
             writer.WriteString("account_id", sharedAudienceAccount.AccountId);
 
             writer.WriteString("account_name", sharedAudienceAccount.AccountName);

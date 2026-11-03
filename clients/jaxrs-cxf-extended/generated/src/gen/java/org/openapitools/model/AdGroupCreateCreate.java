@@ -70,7 +70,7 @@ public class AdGroupCreateCreate  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
  /**
   * Campaign ID of the ad group.
@@ -140,7 +140,7 @@ public class AdGroupCreateCreate  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
  /**
   * Pinterest Performance+ campaign settings.

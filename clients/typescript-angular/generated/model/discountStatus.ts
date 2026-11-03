@@ -17,7 +17,7 @@ export const DiscountStatus = {
     Active: 'ACTIVE',
     Paused: 'PAUSED',
     Scheduled: 'SCHEDULED',
-    Expired: 'EXPIRED'
+    Expired: 'EXPIRED',
 } as const;
 export type DiscountStatus = typeof DiscountStatus[keyof typeof DiscountStatus];
 

@@ -29,14 +29,10 @@ import {
 export interface TargetingTemplateList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof TargetingTemplateList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<TargetingTemplate>}
-     * @memberof TargetingTemplateList200Response
      */
     items: Array<TargetingTemplate>;
 }

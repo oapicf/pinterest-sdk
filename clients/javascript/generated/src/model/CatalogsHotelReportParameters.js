@@ -17,7 +17,7 @@ import CatalogsHotelReportParametersReport from './CatalogsHotelReportParameters
 /**
  * The CatalogsHotelReportParameters model module.
  * @module model/CatalogsHotelReportParameters
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelReportParameters {
     /**

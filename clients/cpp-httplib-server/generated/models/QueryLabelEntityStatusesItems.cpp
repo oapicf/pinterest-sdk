@@ -6,20 +6,3 @@
 */
 #include "QueryLabelEntityStatusesItems.h"
 
-namespace models {
-
-QueryLabelEntityStatusesItems::QueryLabelEntityStatusesItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

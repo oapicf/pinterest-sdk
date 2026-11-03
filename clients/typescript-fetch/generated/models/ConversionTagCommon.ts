@@ -36,44 +36,30 @@ import {
 export interface ConversionTagCommon {
     /**
      * Tag code snippet.
-     * @type {string}
-     * @memberof ConversionTagCommon
      */
     readonly codeSnippet?: string;
     /**
      * 
-     * @type {ConversionTagConfigs}
-     * @memberof ConversionTagCommon
      */
     readonly configs?: ConversionTagConfigs;
     /**
      * The enhanced match status of the tag
-     * @type {EnhancedMatchStatusType}
-     * @memberof ConversionTagCommon
      */
     readonly enhancedMatchStatus?: EnhancedMatchStatusType | null;
     /**
      * Tag ID.
-     * @type {string}
-     * @memberof ConversionTagCommon
      */
     readonly id?: string;
     /**
      * Time for the last event fired.
-     * @type {number}
-     * @memberof ConversionTagCommon
      */
     readonly lastFiredTimeMs?: number | null;
     /**
      * Conversion tag name.
-     * @type {string}
-     * @memberof ConversionTagCommon
      */
     name: string;
     /**
      * Version number.
-     * @type {string}
-     * @memberof ConversionTagCommon
      */
     readonly version?: string;
 }

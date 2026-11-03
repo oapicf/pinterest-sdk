@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceInsightsScopeAndTypeGet200Response  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid AudienceDefinition> items = new ArrayList<>();
  /**
   * Get items

@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 # **assetGroupCreate**
 ```swift
-    open class func assetGroupCreate(businessId: String, assetGroupInputCreate: AssetGroupInputCreate, completion: @escaping (_ data: AssetGroupInput?, _ error: Error?) -> Void)
+    open class func assetGroupCreate(businessId: String, assetGroupInputCreate: AssetGroupInputCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AssetGroupInput
 ```
 
 Create a new asset group.
@@ -36,15 +36,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let assetGroupInputCreate = AssetGroupInputCreate(assetGroup: AssetGroupBinding(adAccountsIds: ["adAccountsIds_example"], assetGroupDescription: "assetGroupDescription_example", assetGroupName: "assetGroupName_example", assetGroupTypes: ["assetGroupTypes_example"], catalogsIds: ["catalogsIds_example"], createdBy: BusinessAccessUserSummary(email: "email_example", id: "id_example", username: "username_example"), createdTime: 123, id: "id_example", owner: nil, profilesIds: ["profilesIds_example"], updatedTime: 123), assetGroupDescription: "assetGroupDescription_example", assetGroupName: "assetGroupName_example", assetGroupTypes: [AssetGroupType()]) // AssetGroupInputCreate | 
 
 // Create a new asset group.
-BusinessAccessAssetsAPI.assetGroupCreate(businessId: businessId, assetGroupInputCreate: assetGroupInputCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.assetGroupCreate(businessId: businessId, assetGroupInputCreate: assetGroupInputCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -72,7 +68,7 @@ Name | Type | Description  | Notes
 
 # **assetGroupDelete**
 ```swift
-    open class func assetGroupDelete(businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete, completion: @escaping (_ data: AssetGroupDeletion?, _ error: Error?) -> Void)
+    open class func assetGroupDelete(businessId: String, assetGroupDeletionDelete: AssetGroupDeletionDelete, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AssetGroupDeletion
 ```
 
 Delete asset groups.
@@ -88,15 +84,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let assetGroupDeletionDelete = AssetGroupDeletionDelete(assetGroupsToDelete: ["assetGroupsToDelete_example"]) // AssetGroupDeletionDelete | 
 
 // Delete asset groups.
-BusinessAccessAssetsAPI.assetGroupDelete(businessId: businessId, assetGroupDeletionDelete: assetGroupDeletionDelete) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.assetGroupDelete(businessId: businessId, assetGroupDeletionDelete: assetGroupDeletionDelete)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -124,7 +116,7 @@ Name | Type | Description  | Notes
 
 # **assetGroupUpdate**
 ```swift
-    open class func assetGroupUpdate(businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, completion: @escaping (_ data: AssetGroupModification?, _ error: Error?) -> Void)
+    open class func assetGroupUpdate(businessId: String, assetGroupModificationReadOrUpdate: AssetGroupModificationReadOrUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AssetGroupModification
 ```
 
 Update asset groups.
@@ -140,15 +132,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let assetGroupModificationReadOrUpdate = AssetGroupModificationReadOrUpdate(assetGroupsToUpdate: [AssetGroupUpdateItemReadOrUpdateItem(assetGroupId: "assetGroupId_example", assetGroupTypes: [AssetGroupType()], assetsToAdd: ["assetsToAdd_example"], assetsToRemove: ["assetsToRemove_example"], description: "description_example", name: "name_example")], exceptions: [AssetGroupUpdateError(assetGroupId: "assetGroupId_example", code: 123, message: "message_example")], updatedAssetGroups: [AssetGroupBinding(adAccountsIds: ["adAccountsIds_example"], assetGroupDescription: "assetGroupDescription_example", assetGroupName: "assetGroupName_example", assetGroupTypes: ["assetGroupTypes_example"], catalogsIds: ["catalogsIds_example"], createdBy: BusinessAccessUserSummary(email: "email_example", id: "id_example", username: "username_example"), createdTime: 123, id: "id_example", owner: nil, profilesIds: ["profilesIds_example"], updatedTime: 123)]) // AssetGroupModificationReadOrUpdate | 
 
 // Update asset groups.
-BusinessAccessAssetsAPI.assetGroupUpdate(businessId: businessId, assetGroupModificationReadOrUpdate: assetGroupModificationReadOrUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.assetGroupUpdate(businessId: businessId, assetGroupModificationReadOrUpdate: assetGroupModificationReadOrUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -176,7 +164,7 @@ Name | Type | Description  | Notes
 
 # **businessAssetMembersGet**
 ```swift
-    open class func businessAssetMembersGet(businessId: String, assetId: String, startIndex: Int? = nil, fetchSystemUsers: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)
+    open class func businessAssetMembersGet(businessId: String, assetId: String, startIndex: Int? = nil, fetchSystemUsers: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessAssetMembersGet200Response
 ```
 
 Get members with access to asset
@@ -196,15 +184,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get members with access to asset
-BusinessAccessAssetsAPI.businessAssetMembersGet(businessId: businessId, assetId: assetId, startIndex: startIndex, fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessAssetMembersGet(businessId: businessId, assetId: assetId, startIndex: startIndex, fetchSystemUsers: fetchSystemUsers, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -236,7 +220,7 @@ Name | Type | Description  | Notes
 
 # **businessAssetPartnersGet**
 ```swift
-    open class func businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BusinessAssetMembersGet200Response?, _ error: Error?) -> Void)
+    open class func businessAssetPartnersGet(businessId: String, assetId: String, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessAssetMembersGet200Response
 ```
 
 Get partners with access to asset
@@ -255,15 +239,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get partners with access to asset
-BusinessAccessAssetsAPI.businessAssetPartnersGet(businessId: businessId, assetId: assetId, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessAssetPartnersGet(businessId: businessId, assetId: assetId, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -294,7 +274,7 @@ Name | Type | Description  | Notes
 
 # **businessAssetsGet**
 ```swift
-    open class func businessAssetsGet(businessId: String, permissions: [PermissionsWithOwner]? = nil, childAssetId: String? = nil, assetGroupId: String? = nil, assetType: AssetType_businessAssetsGet? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BusinessAssetsGet200Response?, _ error: Error?) -> Void)
+    open class func businessAssetsGet(businessId: String, permissions: [PermissionsWithOwner]? = nil, childAssetId: String? = nil, assetGroupId: String? = nil, assetType: AssetType_businessAssetsGet? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessAssetsGet200Response
 ```
 
 List business assets
@@ -316,15 +296,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List business assets
-BusinessAccessAssetsAPI.businessAssetsGet(businessId: businessId, permissions: permissions, childAssetId: childAssetId, assetGroupId: assetGroupId, assetType: assetType, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessAssetsGet(businessId: businessId, permissions: permissions, childAssetId: childAssetId, assetGroupId: assetGroupId, assetType: assetType, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -358,7 +334,7 @@ Name | Type | Description  | Notes
 
 # **businessMemberAssetsGet**
 ```swift
-    open class func businessMemberAssetsGet(businessId: String, memberId: String, assetType: AssetType_businessMemberAssetsGet? = nil, startIndex: Int? = nil, sortBy: AssetSortBy? = nil, sortAscending: Bool? = nil, searchBy: AssetSearchBy? = nil, searchValue: String? = nil, assetPermissionType: AssetPermissionType? = nil, adAccountStatuses: [NonDraftEntityStatus]? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BusinessMemberAssetsGetResponse?, _ error: Error?) -> Void)
+    open class func businessMemberAssetsGet(businessId: String, memberId: String, assetType: AssetType_businessMemberAssetsGet? = nil, startIndex: Int? = nil, sortBy: AssetSortBy? = nil, sortAscending: Bool? = nil, searchBy: AssetSearchBy? = nil, searchValue: String? = nil, assetPermissionType: AssetPermissionType? = nil, adAccountStatuses: [NonDraftEntityStatus]? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessMemberAssetsGetResponse
 ```
 
 Get assets assigned to a member
@@ -384,15 +360,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get assets assigned to a member
-BusinessAccessAssetsAPI.businessMemberAssetsGet(businessId: businessId, memberId: memberId, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, assetPermissionType: assetPermissionType, adAccountStatuses: adAccountStatuses, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessMemberAssetsGet(businessId: businessId, memberId: memberId, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, assetPermissionType: assetPermissionType, adAccountStatuses: adAccountStatuses, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -430,7 +402,7 @@ Name | Type | Description  | Notes
 
 # **businessMembersAssetAccessDelete**
 ```swift
-    open class func businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, completion: @escaping (_ data: DeleteMemberAccessResultsResponseArray?, _ error: Error?) -> Void)
+    open class func businessMembersAssetAccessDelete(businessId: String, businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteMemberAccessResultsResponseArray
 ```
 
 Delete member access to asset
@@ -446,15 +418,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let businessMembersAssetAccessDeleteBody = BusinessMembersAssetAccessDeleteBody(accesses: [DeleteMemberAssetAccessItem(assetId: "assetId_example", memberId: "memberId_example")]) // BusinessMembersAssetAccessDeleteBody | 
 
 // Delete member access to asset
-BusinessAccessAssetsAPI.businessMembersAssetAccessDelete(businessId: businessId, businessMembersAssetAccessDeleteBody: businessMembersAssetAccessDeleteBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessMembersAssetAccessDelete(businessId: businessId, businessMembersAssetAccessDeleteBody: businessMembersAssetAccessDeleteBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -482,7 +450,7 @@ Name | Type | Description  | Notes
 
 # **businessMembersAssetAccessUpdate**
 ```swift
-    open class func businessMembersAssetAccessUpdate(businessId: String, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, completion: @escaping (_ data: UpdateMemberAssetsResultsResponseArray?, _ error: Error?) -> Void)
+    open class func businessMembersAssetAccessUpdate(businessId: String, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UpdateMemberAssetsResultsResponseArray
 ```
 
 Assign/Update member asset permissions
@@ -498,15 +466,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let updateMemberAssetAccessBody = UpdateMemberAssetAccessBody(accesses: [UpdateMemberAssetAccessItem(assetId: "assetId_example", memberId: "memberId_example", permissions: [Permissions()])]) // UpdateMemberAssetAccessBody | 
 
 // Assign/Update member asset permissions
-BusinessAccessAssetsAPI.businessMembersAssetAccessUpdate(businessId: businessId, updateMemberAssetAccessBody: updateMemberAssetAccessBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessMembersAssetAccessUpdate(businessId: businessId, updateMemberAssetAccessBody: updateMemberAssetAccessBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -534,7 +498,7 @@ Name | Type | Description  | Notes
 
 # **businessPartnerAssetAccessGet**
 ```swift
-    open class func businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: PartnerType_businessPartnerAssetAccessGet? = nil, assetType: AssetType_businessPartnerAssetAccessGet? = nil, startIndex: Int? = nil, sortBy: AssetSortBy? = nil, sortAscending: Bool? = nil, searchBy: AssetSearchBy? = nil, searchValue: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BusinessPartnerAssetAccessGet200Response?, _ error: Error?) -> Void)
+    open class func businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: PartnerType_businessPartnerAssetAccessGet? = nil, assetType: AssetType_businessPartnerAssetAccessGet? = nil, startIndex: Int? = nil, sortBy: AssetSortBy? = nil, sortAscending: Bool? = nil, searchBy: AssetSearchBy? = nil, searchValue: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessPartnerAssetAccessGet200Response
 ```
 
 Get assets assigned to a partner or assets assigned by a partner
@@ -559,15 +523,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get assets assigned to a partner or assets assigned by a partner
-BusinessAccessAssetsAPI.businessPartnerAssetAccessGet(businessId: businessId, partnerId: partnerId, partnerType: partnerType, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.businessPartnerAssetAccessGet(businessId: businessId, partnerId: partnerId, partnerType: partnerType, assetType: assetType, startIndex: startIndex, sortBy: sortBy, sortAscending: sortAscending, searchBy: searchBy, searchValue: searchValue, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -604,7 +564,7 @@ Name | Type | Description  | Notes
 
 # **deletePartnerAssetAccessHandlerImpl**
 ```swift
-    open class func deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, completion: @escaping (_ data: DeletePartnerAssetAccessResultsResponseArray?, _ error: Error?) -> Void)
+    open class func deletePartnerAssetAccessHandlerImpl(businessId: String, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeletePartnerAssetAccessResultsResponseArray
 ```
 
 Delete partner access to asset
@@ -620,15 +580,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let deletePartnerAssetAccessBody = DeletePartnerAssetAccessBody(accesses: [DeletePartnerAssetAccessItem(assetId: "assetId_example", partnerId: "partnerId_example", partnerType: "partnerType_example")]) // DeletePartnerAssetAccessBody | 
 
 // Delete partner access to asset
-BusinessAccessAssetsAPI.deletePartnerAssetAccessHandlerImpl(businessId: businessId, deletePartnerAssetAccessBody: deletePartnerAssetAccessBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.deletePartnerAssetAccessHandlerImpl(businessId: businessId, deletePartnerAssetAccessBody: deletePartnerAssetAccessBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -656,7 +612,7 @@ Name | Type | Description  | Notes
 
 # **updatePartnerAssetAccessHandlerImpl**
 ```swift
-    open class func updatePartnerAssetAccessHandlerImpl(businessId: String, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, completion: @escaping (_ data: UpdatePartnerAssetsResultsResponseArray?, _ error: Error?) -> Void)
+    open class func updatePartnerAssetAccessHandlerImpl(businessId: String, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UpdatePartnerAssetsResultsResponseArray
 ```
 
 Assign/Update partner asset permissions
@@ -672,15 +628,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let updatePartnerAssetAccessBody = UpdatePartnerAssetAccessBody(accesses: [UpdatePartnerAssetAccessItem(assetId: "assetId_example", partnerId: "partnerId_example", permissions: [Permissions()])]) // UpdatePartnerAssetAccessBody | 
 
 // Assign/Update partner asset permissions
-BusinessAccessAssetsAPI.updatePartnerAssetAccessHandlerImpl(businessId: businessId, updatePartnerAssetAccessBody: updatePartnerAssetAccessBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessAssetsAPI.updatePartnerAssetAccessHandlerImpl(businessId: businessId, updatePartnerAssetAccessBody: updatePartnerAssetAccessBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

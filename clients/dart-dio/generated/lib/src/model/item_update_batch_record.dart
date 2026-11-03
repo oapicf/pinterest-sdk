@@ -150,3 +150,4 @@ class _$ItemUpdateBatchRecordSerializer implements PrimitiveSerializer<ItemUpdat
   }
 }
 
+

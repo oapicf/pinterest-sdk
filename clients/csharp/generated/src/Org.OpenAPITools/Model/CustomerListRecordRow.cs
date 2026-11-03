@@ -288,28 +288,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (email.IsSet && email.Value == null)
-                throw new ArgumentNullException(nameof(email), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: email.");
 
             if (externalId.IsSet && externalId.Value == null)
-                throw new ArgumentNullException(nameof(externalId), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: external_id.");
 
             if (hashedPhoneNumber.IsSet && hashedPhoneNumber.Value == null)
-                throw new ArgumentNullException(nameof(hashedPhoneNumber), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: hashed_phone_number.");
 
             if (hashedPinnerId.IsSet && hashedPinnerId.Value == null)
-                throw new ArgumentNullException(nameof(hashedPinnerId), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: hashed_pinner_id.");
 
             if (ipAddress.IsSet && ipAddress.Value == null)
-                throw new ArgumentNullException(nameof(ipAddress), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: ip_address.");
 
             if (liverampEnvelope.IsSet && liverampEnvelope.Value == null)
-                throw new ArgumentNullException(nameof(liverampEnvelope), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: liveramp_envelope.");
 
             if (maid.IsSet && maid.Value == null)
-                throw new ArgumentNullException(nameof(maid), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: maid.");
 
             if (userAgent.IsSet && userAgent.Value == null)
-                throw new ArgumentNullException(nameof(userAgent), "Property is not nullable for class CustomerListRecordRow.");
+                throw new JsonException("Property is not nullable for class CustomerListRecordRow: user_agent.");
 
             return new CustomerListRecordRow(email, externalId, hashedPhoneNumber, hashedPinnerId, ipAddress, liverampEnvelope, maid, userAgent);
         }
@@ -320,7 +320,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListRecordRow"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListRecordRow customerListRecordRow, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -335,32 +334,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListRecordRow"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListRecordRow customerListRecordRow, JsonSerializerOptions jsonSerializerOptions)
         {
             if (customerListRecordRow.EmailOption.IsSet && customerListRecordRow.Email == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.Email), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.Email to non-nullable JSON property 'email'.");
 
             if (customerListRecordRow.ExternalIdOption.IsSet && customerListRecordRow.ExternalId == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.ExternalId), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.ExternalId to non-nullable JSON property 'external_id'.");
 
             if (customerListRecordRow.HashedPhoneNumberOption.IsSet && customerListRecordRow.HashedPhoneNumber == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.HashedPhoneNumber), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.HashedPhoneNumber to non-nullable JSON property 'hashed_phone_number'.");
 
             if (customerListRecordRow.HashedPinnerIdOption.IsSet && customerListRecordRow.HashedPinnerId == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.HashedPinnerId), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.HashedPinnerId to non-nullable JSON property 'hashed_pinner_id'.");
 
             if (customerListRecordRow.IpAddressOption.IsSet && customerListRecordRow.IpAddress == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.IpAddress), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.IpAddress to non-nullable JSON property 'ip_address'.");
 
             if (customerListRecordRow.LiverampEnvelopeOption.IsSet && customerListRecordRow.LiverampEnvelope == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.LiverampEnvelope), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.LiverampEnvelope to non-nullable JSON property 'liveramp_envelope'.");
 
             if (customerListRecordRow.MaidOption.IsSet && customerListRecordRow.Maid == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.Maid), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.Maid to non-nullable JSON property 'maid'.");
 
             if (customerListRecordRow.UserAgentOption.IsSet && customerListRecordRow.UserAgent == null)
-                throw new ArgumentNullException(nameof(customerListRecordRow.UserAgent), "Property is required for class CustomerListRecordRow.");
+                throw new JsonException("Cannot write null property CustomerListRecordRow.UserAgent to non-nullable JSON property 'user_agent'.");
 
             if (customerListRecordRow.EmailOption.IsSet)
                 writer.WriteString("email", customerListRecordRow.Email);

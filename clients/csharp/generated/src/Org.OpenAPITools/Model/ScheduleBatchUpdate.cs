@@ -371,43 +371,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleBatchUpdate.", nameof(id));
+                throw new JsonException("Property is required for class ScheduleBatchUpdate: id.");
 
             if (!scheduleId.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleBatchUpdate.", nameof(scheduleId));
+                throw new JsonException("Property is required for class ScheduleBatchUpdate: schedule_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: id.");
 
             if (scheduleId.IsSet && scheduleId.Value == null)
-                throw new ArgumentNullException(nameof(scheduleId), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: schedule_id.");
 
             if (deltaValue.IsSet && deltaValue.Value == null)
-                throw new ArgumentNullException(nameof(deltaValue), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: delta_value.");
 
             if (endTimestamp.IsSet && endTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(endTimestamp), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: end_timestamp.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: entity_id.");
 
             if (entityType.IsSet && entityType.Value == null)
-                throw new ArgumentNullException(nameof(entityType), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: entity_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: name.");
 
             if (scheduleAction.IsSet && scheduleAction.Value == null)
-                throw new ArgumentNullException(nameof(scheduleAction), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: schedule_action.");
 
             if (scheduleStatus.IsSet && scheduleStatus.Value == null)
-                throw new ArgumentNullException(nameof(scheduleStatus), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: schedule_status.");
 
             if (scheduleType.IsSet && scheduleType.Value == null)
-                throw new ArgumentNullException(nameof(scheduleType), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: schedule_type.");
 
             if (startTimestamp.IsSet && startTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(startTimestamp), "Property is not nullable for class ScheduleBatchUpdate.");
+                throw new JsonException("Property is not nullable for class ScheduleBatchUpdate: start_timestamp.");
 
             return new ScheduleBatchUpdate(id.Value!, scheduleId.Value!, deltaValue, endTimestamp, entityId, entityType, name, scheduleAction, scheduleStatus, scheduleType, startTimestamp);
         }
@@ -418,7 +418,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleBatchUpdate scheduleBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -433,23 +432,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleBatchUpdate scheduleBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (scheduleBatchUpdate.Id == null)
-                throw new ArgumentNullException(nameof(scheduleBatchUpdate.Id), "Property is required for class ScheduleBatchUpdate.");
-
-            if (scheduleBatchUpdate.ScheduleId == null)
-                throw new ArgumentNullException(nameof(scheduleBatchUpdate.ScheduleId), "Property is required for class ScheduleBatchUpdate.");
-
             if (scheduleBatchUpdate.DeltaValueOption.IsSet && scheduleBatchUpdate.DeltaValue == null)
-                throw new ArgumentNullException(nameof(scheduleBatchUpdate.DeltaValue), "Property is required for class ScheduleBatchUpdate.");
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.DeltaValue to non-nullable JSON property 'delta_value'.");
+
+            if (scheduleBatchUpdate.EndTimestampOption.IsSet && scheduleBatchUpdate.EndTimestamp == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.EndTimestamp to non-nullable JSON property 'end_timestamp'.");
 
             if (scheduleBatchUpdate.EntityIdOption.IsSet && scheduleBatchUpdate.EntityId == null)
-                throw new ArgumentNullException(nameof(scheduleBatchUpdate.EntityId), "Property is required for class ScheduleBatchUpdate.");
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.EntityId to non-nullable JSON property 'entity_id'.");
+
+            if (scheduleBatchUpdate.EntityTypeOption.IsSet && scheduleBatchUpdate.EntityType == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.EntityType to non-nullable JSON property 'entity_type'.");
 
             if (scheduleBatchUpdate.NameOption.IsSet && scheduleBatchUpdate.Name == null)
-                throw new ArgumentNullException(nameof(scheduleBatchUpdate.Name), "Property is required for class ScheduleBatchUpdate.");
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.Name to non-nullable JSON property 'name'.");
+
+            if (scheduleBatchUpdate.ScheduleActionOption.IsSet && scheduleBatchUpdate.ScheduleAction == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.ScheduleAction to non-nullable JSON property 'schedule_action'.");
+
+            if (scheduleBatchUpdate.ScheduleStatusOption.IsSet && scheduleBatchUpdate.ScheduleStatus == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.ScheduleStatus to non-nullable JSON property 'schedule_status'.");
+
+            if (scheduleBatchUpdate.ScheduleTypeOption.IsSet && scheduleBatchUpdate.ScheduleType == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.ScheduleType to non-nullable JSON property 'schedule_type'.");
+
+            if (scheduleBatchUpdate.StartTimestampOption.IsSet && scheduleBatchUpdate.StartTimestamp == null)
+                throw new JsonException("Cannot write null property ScheduleBatchUpdate.StartTimestamp to non-nullable JSON property 'start_timestamp'.");
 
             writer.WriteString("id", scheduleBatchUpdate.Id);
 

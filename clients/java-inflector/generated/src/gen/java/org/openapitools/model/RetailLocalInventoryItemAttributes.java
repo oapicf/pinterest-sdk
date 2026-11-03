@@ -15,7 +15,7 @@ import org.openapitools.model.ItemAvailability;
  **/
 
 @ApiModel(description = "Local inventory attributes for retail items (required fields for create/upsert)")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RetailLocalInventoryItemAttributes   {
   @JsonProperty("ad_link")
   private String adLink;

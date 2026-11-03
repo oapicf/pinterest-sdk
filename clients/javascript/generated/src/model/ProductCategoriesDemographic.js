@@ -17,7 +17,7 @@ import GenderDemographics from './GenderDemographics';
 /**
  * The ProductCategoriesDemographic model module.
  * @module model/ProductCategoriesDemographic
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductCategoriesDemographic {
     /**

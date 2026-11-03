@@ -125,3 +125,4 @@ class _$CatalogsProductGroupCurrencyCriteriaSerializer implements PrimitiveSeria
   }
 }
 
+

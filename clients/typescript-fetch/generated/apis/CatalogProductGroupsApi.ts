@@ -60,63 +60,167 @@ import {
 } from '../models/PinterestLibError';
 
 export interface CatalogsProductGroupPinsListRequest {
+    /**
+     * Unique identifier of a product group
+     */
     productGroupId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments
+     * and total reactions are only available with lifetime Pin metrics. If Pin was
+     * created before `2023-03-20` lifetime metrics will only be available
+     * for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+     * formats since then.
+     */
     pinMetrics?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface CatalogsProductGroupsCreateRequest {
+    /**
+     * 
+     */
     catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsCreateManyRequest {
+    /**
+     * 
+     */
     catalogsProductGroupsCreateManyRequestItems: Array<CatalogsProductGroupsCreateManyRequestItems>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsDeleteRequest {
+    /**
+     * Unique identifier of a product group
+     */
     productGroupId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsDeleteManyRequest {
+    /**
+     * Comma-separated list of product group ids
+     */
     id: Array<number>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsGetRequest {
+    /**
+     * Unique identifier of a product group
+     */
     productGroupId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsListRequest {
+    /**
+     * Comma-separated list of product group ids
+     */
     id?: Array<number>;
+    /**
+     * Filter entities for a given feed_id. If not given, all feeds are considered.
+     */
     feedId?: string;
+    /**
+     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
+     */
     catalogId?: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface CatalogsProductGroupsProductCountsGetRequest {
+    /**
+     * Unique identifier of a product group
+     */
     productGroupId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsProductGroupsUpdateRequest {
+    /**
+     * Unique identifier of a product group
+     */
     productGroupId: string;
+    /**
+     * 
+     */
     catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ProductsByProductGroupFilterListRequest {
+    /**
+     * 
+     */
     catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments
+     * and total reactions are only available with lifetime Pin metrics. If Pin was
+     * created before `2023-03-20` lifetime metrics will only be available
+     * for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+     * formats since then.
+     */
     pinMetrics?: boolean;
 }
 

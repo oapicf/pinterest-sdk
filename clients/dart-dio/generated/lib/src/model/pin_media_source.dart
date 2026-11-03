@@ -198,6 +198,7 @@ class _$PinMediaSourceSerializer implements PrimitiveSerializer<PinMediaSource> 
   }
 }
 
+
 class PinMediaSourceSourceTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'pin_url')

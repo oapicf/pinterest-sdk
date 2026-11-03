@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CreativeAssetsProcessingRecord } from './CreativeAssetsProcessingRecord';
 import {
     CreativeAssetsProcessingRecordFromJSON,
@@ -36,38 +36,26 @@ import {
 export interface CatalogsCreativeAssetsItemsBatch {
     /**
      * Id of the catalogs items batch
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     batchId?: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsItemsBatchCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     catalogType: CatalogsCreativeAssetsItemsBatchCatalogTypeEnum;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-     * @type {Date}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     completedTime?: Date | null;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-     * @type {Date}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     createdTime?: Date;
     /**
      * Array with the catalogs items processing records part of the catalogs items batch
-     * @type {Array<CreativeAssetsProcessingRecord>}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     items?: Array<CreativeAssetsProcessingRecord>;
     /**
      * 
-     * @type {BatchOperationStatus}
-     * @memberof CatalogsCreativeAssetsItemsBatch
      */
     status?: BatchOperationStatus;
 }
@@ -77,7 +65,7 @@ export interface CatalogsCreativeAssetsItemsBatch {
  * @export
  */
 export const CatalogsCreativeAssetsItemsBatchCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsItemsBatchCatalogTypeEnum = typeof CatalogsCreativeAssetsItemsBatchCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsItemsBatchCatalogTypeEnum];
 
@@ -104,8 +92,8 @@ export function CatalogsCreativeAssetsItemsBatchFromJSONTyped(json: any, ignoreD
         
         'batchId': json['batch_id'] == null ? undefined : json['batch_id'],
         'catalogType': json['catalog_type'],
-        'completedTime': json['completed_time'] === undefined ? undefined : json['completed_time'] === null ? null : (new Date(json['completed_time'])),
-        'createdTime': json['created_time'] == null ? undefined : (new Date(json['created_time'])),
+        'completedTime': json['completed_time'] === undefined ? undefined : json['completed_time'] === null ? null : (parseDateTime(json['completed_time'])),
+        'createdTime': json['created_time'] == null ? undefined : (parseDateTime(json['created_time'])),
         'items': json['items'] == null ? undefined : ((json['items'] as Array<any>).map(CreativeAssetsProcessingRecordFromJSON)),
         'status': json['status'] == null ? undefined : BatchOperationStatusFromJSON(json['status']),
     };
@@ -124,8 +112,8 @@ export function CatalogsCreativeAssetsItemsBatchToJSONTyped(value?: CatalogsCrea
         
         'batch_id': value['batchId'],
         'catalog_type': value['catalogType'],
-        'completed_time': value['completedTime'] == null ? value['completedTime'] : value['completedTime'].toISOString(),
-        'created_time': value['createdTime'] == null ? value['createdTime'] : value['createdTime'].toISOString(),
+        'completed_time': value['completedTime'] == null ? value['completedTime'] : serializeDateTime(value['completedTime']),
+        'created_time': value['createdTime'] == null ? value['createdTime'] : serializeDateTime(value['createdTime']),
         'items': value['items'] == null ? undefined : ((value['items'] as Array<any>).map(CreativeAssetsProcessingRecordToJSON)),
         'status': BatchOperationStatusToJSON(value['status']),
     };

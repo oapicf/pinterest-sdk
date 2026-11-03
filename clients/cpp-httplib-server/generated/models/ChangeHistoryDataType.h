@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class ChangeHistoryDataType
-{
-public:
-
-    ChangeHistoryDataType();
-    virtual ~ChangeHistoryDataType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ChangeHistoryDataType,
-        )
-
-private:
+enum class ChangeHistoryDataType {
+    
+    STRING,
+    
+    NUMERIC,
+    
+    MICROCURRENCY,
+    
+    DATE,
+    
+    BOOL,
+    
+    GENDER_LIST,
+    
+    AGE_BUCKET_LIST,
+    
+    APPTYPE_LIST,
+    
+    COUNTRY_LIST,
+    
+    LOCALE_LIST
+    
 };
 
+inline void to_json(nlohmann::json& j, const ChangeHistoryDataType& value)
+{
+    switch (value)
+    {
+        
+        case ChangeHistoryDataType::STRING: j = "STRING"; break;
+        
+        case ChangeHistoryDataType::NUMERIC: j = "NUMERIC"; break;
+        
+        case ChangeHistoryDataType::MICROCURRENCY: j = "MICROCURRENCY"; break;
+        
+        case ChangeHistoryDataType::DATE: j = "DATE"; break;
+        
+        case ChangeHistoryDataType::BOOL: j = "BOOL"; break;
+        
+        case ChangeHistoryDataType::GENDER_LIST: j = "GENDER_LIST"; break;
+        
+        case ChangeHistoryDataType::AGE_BUCKET_LIST: j = "AGE_BUCKET_LIST"; break;
+        
+        case ChangeHistoryDataType::APPTYPE_LIST: j = "APPTYPE_LIST"; break;
+        
+        case ChangeHistoryDataType::COUNTRY_LIST: j = "COUNTRY_LIST"; break;
+        
+        case ChangeHistoryDataType::LOCALE_LIST: j = "LOCALE_LIST"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ChangeHistoryDataType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ChangeHistoryDataType& value)
+{
+    
+    if (j == "STRING")
+    {
+        value = ChangeHistoryDataType::STRING;
+        return;
+    }
+    
+    if (j == "NUMERIC")
+    {
+        value = ChangeHistoryDataType::NUMERIC;
+        return;
+    }
+    
+    if (j == "MICROCURRENCY")
+    {
+        value = ChangeHistoryDataType::MICROCURRENCY;
+        return;
+    }
+    
+    if (j == "DATE")
+    {
+        value = ChangeHistoryDataType::DATE;
+        return;
+    }
+    
+    if (j == "BOOL")
+    {
+        value = ChangeHistoryDataType::BOOL;
+        return;
+    }
+    
+    if (j == "GENDER_LIST")
+    {
+        value = ChangeHistoryDataType::GENDER_LIST;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET_LIST")
+    {
+        value = ChangeHistoryDataType::AGE_BUCKET_LIST;
+        return;
+    }
+    
+    if (j == "APPTYPE_LIST")
+    {
+        value = ChangeHistoryDataType::APPTYPE_LIST;
+        return;
+    }
+    
+    if (j == "COUNTRY_LIST")
+    {
+        value = ChangeHistoryDataType::COUNTRY_LIST;
+        return;
+    }
+    
+    if (j == "LOCALE_LIST")
+    {
+        value = ChangeHistoryDataType::LOCALE_LIST;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ChangeHistoryDataType", &j);
+}
 
 } // namespace models
 

@@ -178,19 +178,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!varOperator.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupUint32Criteria.", nameof(varOperator));
+                throw new JsonException("Property is required for class CatalogsProductGroupUint32Criteria: operator.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupUint32Criteria.", nameof(value));
+                throw new JsonException("Property is required for class CatalogsProductGroupUint32Criteria: value.");
 
             if (varOperator.IsSet && varOperator.Value == null)
-                throw new ArgumentNullException(nameof(varOperator), "Property is not nullable for class CatalogsProductGroupUint32Criteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUint32Criteria: operator.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class CatalogsProductGroupUint32Criteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUint32Criteria: value.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class CatalogsProductGroupUint32Criteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUint32Criteria: negated.");
 
             return new CatalogsProductGroupUint32Criteria(varOperator.Value!.Value!, value.Value!.Value!, negated);
         }
@@ -201,7 +201,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUint32Criteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupUint32Criteria catalogsProductGroupUint32Criteria, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -216,9 +215,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUint32Criteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupUint32Criteria catalogsProductGroupUint32Criteria, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsProductGroupUint32Criteria.NegatedOption.IsSet && catalogsProductGroupUint32Criteria.Negated == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupUint32Criteria.Negated to non-nullable JSON property 'negated'.");
+
             var varOperatorRawValue = NumericFilterOperatorTypeValueConverter.ToJsonValue(catalogsProductGroupUint32Criteria.Operator);
             writer.WriteString("operator", varOperatorRawValue);
 

@@ -76,8 +76,6 @@ HOTEL(String.valueOf("HOTEL"));
   */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
 
-  @Valid
-
   private List<@Valid CatalogsHotelBatchItem> items = new ArrayList<>();
 
 public enum LanguageEnum {

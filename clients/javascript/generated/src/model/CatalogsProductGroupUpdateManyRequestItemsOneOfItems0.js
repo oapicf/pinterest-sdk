@@ -18,7 +18,7 @@ import CatalogsProductGroupUpdateRequest from './CatalogsProductGroupUpdateReque
 /**
  * The CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 model module.
  * @module model/CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 {
     /**

@@ -22,7 +22,7 @@ export const BillingInvoiceSortField = {
     BillingPeriod: 'BILLING_PERIOD',
     DocumentType: 'DOCUMENT_TYPE',
     TotalAmount: 'TOTAL_AMOUNT',
-    InvoiceNumber: 'INVOICE_NUMBER'
+    InvoiceNumber: 'INVOICE_NUMBER',
 } as const;
 export type BillingInvoiceSortField = typeof BillingInvoiceSortField[keyof typeof BillingInvoiceSortField];
 

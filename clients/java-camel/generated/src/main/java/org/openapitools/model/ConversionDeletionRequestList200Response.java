@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -27,12 +26,11 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("conversion_deletion_request_list_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionDeletionRequestList200Response {
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid ConversionDeletionRequest> items = new ArrayList<>();
 
   public ConversionDeletionRequestList200Response() {
@@ -83,7 +81,7 @@ public class ConversionDeletionRequestList200Response {
    * Get items
    * @return items
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid ConversionDeletionRequest> getItems() {

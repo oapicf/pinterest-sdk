@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 # **adsCreditRedeem**
 ```swift
-    open class func adsCreditRedeem(adAccountId: String, adsCreditRedeemCreate: AdsCreditRedeemCreate, completion: @escaping (_ data: AdsCreditRedeem?, _ error: Error?) -> Void)
+    open class func adsCreditRedeem(adAccountId: String, adsCreditRedeemCreate: AdsCreditRedeemCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdsCreditRedeem
 ```
 
 Redeem ad credits
@@ -35,15 +35,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adsCreditRedeemCreate = AdsCreditRedeemCreate(offerCodeHash: "offerCodeHash_example", validateOnly: true) // AdsCreditRedeemCreate | 
 
 // Redeem ad credits
-BillingAPI.adsCreditRedeem(adAccountId: adAccountId, adsCreditRedeemCreate: adsCreditRedeemCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.adsCreditRedeem(adAccountId: adAccountId, adsCreditRedeemCreate: adsCreditRedeemCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -71,7 +67,7 @@ Name | Type | Description  | Notes
 
 # **adsCreditsDiscountsGet**
 ```swift
-    open class func adsCreditsDiscountsGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdsCreditsDiscountsGet200Response?, _ error: Error?) -> Void)
+    open class func adsCreditsDiscountsGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdsCreditsDiscountsGet200Response
 ```
 
 Get ads credit discounts
@@ -88,15 +84,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get ads credit discounts
-BillingAPI.adsCreditsDiscountsGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.adsCreditsDiscountsGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -125,7 +117,7 @@ Name | Type | Description  | Notes
 
 # **billingInvoiceDownloadGet**
 ```swift
-    open class func billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String, completion: @escaping (_ data: BillingInvoiceDownloadResponse?, _ error: Error?) -> Void)
+    open class func billingInvoiceDownloadGet(adAccountId: String, billingInvoiceId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BillingInvoiceDownloadResponse
 ```
 
 Get download url for a billing invoice
@@ -141,15 +133,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let billingInvoiceId = "billingInvoiceId_example" // String | Unique identifier of a billing invoice.
 
 // Get download url for a billing invoice
-BillingAPI.billingInvoiceDownloadGet(adAccountId: adAccountId, billingInvoiceId: billingInvoiceId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.billingInvoiceDownloadGet(adAccountId: adAccountId, billingInvoiceId: billingInvoiceId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -177,7 +165,7 @@ Name | Type | Description  | Notes
 
 # **billingInvoicesGet**
 ```swift
-    open class func billingInvoicesGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, sort: BillingInvoiceSortField? = nil, status: BillingInvoiceStatus? = nil, documentType: BillingInvoiceDocumentType? = nil, startDueDate: Date? = nil, endDueDate: Date? = nil, completion: @escaping (_ data: BillingInvoicesGet200Response?, _ error: Error?) -> Void)
+    open class func billingInvoicesGet(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, sort: BillingInvoiceSortField? = nil, status: BillingInvoiceStatus? = nil, documentType: BillingInvoiceDocumentType? = nil, startDueDate: Date? = nil, endDueDate: Date? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BillingInvoicesGet200Response
 ```
 
 Get billing invoices
@@ -200,15 +188,11 @@ let startDueDate = Date() // Date | Starting point for due dates when searching 
 let endDueDate = Date() // Date | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
 
 // Get billing invoices
-BillingAPI.billingInvoicesGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, sort: sort, status: status, documentType: documentType, startDueDate: startDueDate, endDueDate: endDueDate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.billingInvoicesGet(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, sort: sort, status: status, documentType: documentType, startDueDate: startDueDate, endDueDate: endDueDate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -243,7 +227,7 @@ Name | Type | Description  | Notes
 
 # **billingProfilesGet**
 ```swift
-    open class func billingProfilesGet(isActive: Bool, adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BillingProfilesGet200Response?, _ error: Error?) -> Void)
+    open class func billingProfilesGet(isActive: Bool, adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BillingProfilesGet200Response
 ```
 
 Get billing profiles
@@ -261,15 +245,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get billing profiles
-BillingAPI.billingProfilesGet(isActive: isActive, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.billingProfilesGet(isActive: isActive, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -299,7 +279,7 @@ Name | Type | Description  | Notes
 
 # **ssioAccountsGet**
 ```swift
-    open class func ssioAccountsGet(adAccountId: String, completion: @escaping (_ data: SSIOAccount?, _ error: Error?) -> Void)
+    open class func ssioAccountsGet(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SSIOAccount
 ```
 
 Get Salesforce account details including bill-to information.
@@ -314,15 +294,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get Salesforce account details including bill-to information.
-BillingAPI.ssioAccountsGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioAccountsGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -349,7 +325,7 @@ Name | Type | Description  | Notes
 
 # **ssioInsertionOrderCreate**
 ```swift
-    open class func ssioInsertionOrderCreate(adAccountId: String, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, completion: @escaping (_ data: SSIOInsertionOrder?, _ error: Error?) -> Void)
+    open class func ssioInsertionOrderCreate(adAccountId: String, sSIOInsertionOrderCreate: SSIOInsertionOrderCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SSIOInsertionOrder
 ```
 
 Create insertion order through SSIO.
@@ -365,15 +341,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let sSIOInsertionOrderCreate = SSIOInsertionOrderCreate(acceptedTermsId: "acceptedTermsId_example", acceptedTermsTime: 123, agencyLink: "agencyLink_example", billingContactEmail: "billingContactEmail_example", billingContactFirstname: "billingContactFirstname_example", billingContactLastname: "billingContactLastname_example", billtoBillingAddressId: "billtoBillingAddressId_example", billtoBusinessAddressId: "billtoBusinessAddressId_example", billtoCompanyId: "billtoCompanyId_example", budgetAmount: 123, currencyInfo: Currency(), endDate: "endDate_example", estimatedMonthlySpend: 123, mediaContactEmail: "mediaContactEmail_example", mediaContactFirstname: "mediaContactFirstname_example", mediaContactLastname: "mediaContactLastname_example", orderLineType: SSIOOrderLineType(), orderName: "orderName_example", pmpId: "pmpId_example", poNumber: "poNumber_example", startDate: "startDate_example", userEmail: "userEmail_example") // SSIOInsertionOrderCreate | 
 
 // Create insertion order through SSIO.
-BillingAPI.ssioInsertionOrderCreate(adAccountId: adAccountId, sSIOInsertionOrderCreate: sSIOInsertionOrderCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioInsertionOrderCreate(adAccountId: adAccountId, sSIOInsertionOrderCreate: sSIOInsertionOrderCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -401,7 +373,7 @@ Name | Type | Description  | Notes
 
 # **ssioInsertionOrderEdit**
 ```swift
-    open class func ssioInsertionOrderEdit(adAccountId: String, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, completion: @escaping (_ data: SSIOInsertionOrder?, _ error: Error?) -> Void)
+    open class func ssioInsertionOrderEdit(adAccountId: String, sSIOInsertionOrderUpdate: SSIOInsertionOrderUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SSIOInsertionOrder
 ```
 
 Edit insertion order through SSIO.
@@ -417,15 +389,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let sSIOInsertionOrderUpdate = SSIOInsertionOrderUpdate(adsManagerOrderLineId: "adsManagerOrderLineId_example", agencyLink: "agencyLink_example", billingContactEmail: "billingContactEmail_example", billingContactFirstname: "billingContactFirstname_example", billingContactLastname: "billingContactLastname_example", budgetAmount: 123, endDate: "endDate_example", mediaContactEmail: "mediaContactEmail_example", mediaContactFirstname: "mediaContactFirstname_example", mediaContactLastname: "mediaContactLastname_example", oracleLineId: "oracleLineId_example", poNumber: "poNumber_example", salesforceOrderId: "salesforceOrderId_example", salesforceOrderLineId: "salesforceOrderLineId_example", startDate: "startDate_example", userEmail: "userEmail_example") // SSIOInsertionOrderUpdate | 
 
 // Edit insertion order through SSIO.
-BillingAPI.ssioInsertionOrderEdit(adAccountId: adAccountId, sSIOInsertionOrderUpdate: sSIOInsertionOrderUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioInsertionOrderEdit(adAccountId: adAccountId, sSIOInsertionOrderUpdate: sSIOInsertionOrderUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -453,7 +421,7 @@ Name | Type | Description  | Notes
 
 # **ssioInsertionOrdersStatusGetByAdAccount**
 ```swift
-    open class func ssioInsertionOrdersStatusGetByAdAccount(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: SsioInsertionOrdersStatusGetByAdAccount200Response?, _ error: Error?) -> Void)
+    open class func ssioInsertionOrdersStatusGetByAdAccount(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SsioInsertionOrdersStatusGetByAdAccount200Response
 ```
 
 Get insertion order status by ad account id.
@@ -470,15 +438,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get insertion order status by ad account id.
-BillingAPI.ssioInsertionOrdersStatusGetByAdAccount(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioInsertionOrdersStatusGetByAdAccount(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -507,7 +471,7 @@ Name | Type | Description  | Notes
 
 # **ssioInsertionOrdersStatusGetByPinOrderId**
 ```swift
-    open class func ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: String, pinOrderId: String, completion: @escaping (_ data: SSIOInsertionOrderStatusResponse?, _ error: Error?) -> Void)
+    open class func ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: String, pinOrderId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SSIOInsertionOrderStatusResponse
 ```
 
 Get insertion order status by pin order id.
@@ -523,15 +487,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let pinOrderId = "pinOrderId_example" // String | The pin order id associated with the ssio insertion order
 
 // Get insertion order status by pin order id.
-BillingAPI.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: adAccountId, pinOrderId: pinOrderId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: adAccountId, pinOrderId: pinOrderId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -559,7 +519,7 @@ Name | Type | Description  | Notes
 
 # **ssioOrderLinesGetByAdAccount**
 ```swift
-    open class func ssioOrderLinesGetByAdAccount(adAccountId: String, pinOrderId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: SsioOrderLinesGetByAdAccount200Response?, _ error: Error?) -> Void)
+    open class func ssioOrderLinesGetByAdAccount(adAccountId: String, pinOrderId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SsioOrderLinesGetByAdAccount200Response
 ```
 
 Get Salesforce order lines by ad account id.
@@ -577,15 +537,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get Salesforce order lines by ad account id.
-BillingAPI.ssioOrderLinesGetByAdAccount(adAccountId: adAccountId, pinOrderId: pinOrderId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BillingAPI.ssioOrderLinesGetByAdAccount(adAccountId: adAccountId, pinOrderId: pinOrderId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

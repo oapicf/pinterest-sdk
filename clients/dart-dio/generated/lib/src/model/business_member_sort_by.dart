@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'business_member_sort_by.g.dart';
 
+/// The name of field that businesses are sorted by
 class BusinessMemberSortBy extends EnumClass {
 
-  /// The name of field that businesses are sorted by
   @BuiltValueEnumConst(wireName: r'FULL_NAME')
   static const BusinessMemberSortBy FULL_NAME = _$FULL_NAME;
-  /// The name of field that businesses are sorted by
   @BuiltValueEnumConst(wireName: r'BUSINESS_ROLES')
   static const BusinessMemberSortBy BUSINESS_ROLES = _$BUSINESS_ROLES;
-  /// The name of field that businesses are sorted by
   @BuiltValueEnumConst(wireName: r'CREATED_TIME')
   static const BusinessMemberSortBy CREATED_TIME = _$CREATED_TIME;
 

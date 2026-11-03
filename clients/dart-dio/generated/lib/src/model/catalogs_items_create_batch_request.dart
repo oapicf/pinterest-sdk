@@ -160,6 +160,7 @@ class _$CatalogsItemsCreateBatchRequestSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsItemsCreateBatchRequestOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATE')

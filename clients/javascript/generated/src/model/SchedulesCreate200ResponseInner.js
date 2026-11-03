@@ -17,7 +17,7 @@ import SchedulesCreate200ResponseInnerData from './SchedulesCreate200ResponseInn
 /**
  * The SchedulesCreate200ResponseInner model module.
  * @module model/SchedulesCreate200ResponseInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SchedulesCreate200ResponseInner {
     /**

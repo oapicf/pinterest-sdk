@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOptimal   {
   
   private List<TargetingSpecAgeBucket> AGE_BUCKET;
@@ -44,7 +44,6 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.")
   @JsonProperty("AGE_BUCKET")
-  @Valid
   public List<TargetingSpecAgeBucket> getAGEBUCKET() {
     return AGE_BUCKET;
   }
@@ -58,7 +57,6 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.")
   @JsonProperty("APPTYPE")
-  @Valid
   public List<TargetingSpecAppType> getAPPTYPE() {
     return APPTYPE;
   }
@@ -98,7 +96,6 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.")
   @JsonProperty("GENDER")
-  @Valid
   public List<TargetingSpecGender> getGENDER() {
     return GENDER;
   }
@@ -216,7 +213,6 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting")
   @JsonProperty("SHOPPING_RETARGETING")
-  @Valid
   public List<@Valid TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }
@@ -229,7 +225,6 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("TARGETING_STRATEGY")
-  @Valid
   public List<TargetingStrategy> getTARGETINGSTRATEGY() {
     return TARGETING_STRATEGY;
   }

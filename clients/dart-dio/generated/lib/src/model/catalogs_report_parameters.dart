@@ -126,6 +126,7 @@ class _$CatalogsReportParametersSerializer implements PrimitiveSerializer<Catalo
   }
 }
 
+
 class CatalogsReportParametersCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

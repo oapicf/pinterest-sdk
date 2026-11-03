@@ -105,76 +105,264 @@ import {
 } from '../models/ReportingTimeZone';
 
 export interface AdPinsAnalyticsRequest {
+    /**
+     * Campaign Id to use to filter the results.
+     */
     campaignId: string;
+    /**
+     * List of Pin IDs.
+     */
     pinIds: Array<string>;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: AdPinsAnalyticsClickWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: AdPinsAnalyticsEngagementWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: AdPinsAnalyticsViewWindowDaysEnum;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: AdPinsAnalyticsConversionReportTimeEnum;
 }
 
 export interface CampaignTargetingAnalyticsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds: Array<string>;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. ["AGE_BUCKET_AND_GENDER"] is in BETA and not yet available to all users.
+     */
     targetingTypes: Array<AdsAnalyticsCampaignTargetingType>;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: CampaignTargetingAnalyticsGetClickWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: CampaignTargetingAnalyticsGetEngagementWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: CampaignTargetingAnalyticsGetViewWindowDaysEnum;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: CampaignTargetingAnalyticsGetConversionReportTimeEnum;
+    /**
+     * List of types of attribution for the conversion report
+     */
     attributionTypes?: Array<ConversionReportAttributionType>;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
     reportingTimezone?: ReportingTimeZone;
 }
 
 export interface CampaignsAnalyticsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds: Array<string>;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: CampaignsAnalyticsClickWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: CampaignsAnalyticsEngagementWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: CampaignsAnalyticsViewWindowDaysEnum;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: CampaignsAnalyticsConversionReportTimeEnum;
+    /**
+     * Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
+     */
     aggregateReportRows?: boolean;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
     reportingTimezone?: ReportingTimeZone;
 }
 
 export interface CampaignsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     campaignCreateItem: Array<CampaignCreateItem>;
 }
 
 export interface CampaignsGetRequest {
+    /**
+     * Campaign ID, must be associated with the ad account ID provided in the path.
+     */
     campaignId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface CampaignsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds?: Array<string>;
+    /**
+     * Entity status
+     */
     entityStatuses?: Array<EntityStatus>;
 }
 
 export interface CampaignsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     campaignBatchUpdateItem: Array<CampaignBatchUpdateItem>;
 }
 
 export interface GetCampaignDeliveryEstimatesRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     campaignDeliveryEstimatesCampaign: Array<CampaignDeliveryEstimatesCampaign>;
 }
 
@@ -247,11 +435,11 @@ export class CampaignsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['columns'] != null) {
@@ -382,11 +570,11 @@ export class CampaignsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['targetingTypes'] != null) {
@@ -518,11 +706,11 @@ export class CampaignsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['campaignIds'] != null) {
@@ -944,7 +1132,7 @@ export const AdPinsAnalyticsClickWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdPinsAnalyticsClickWindowDaysEnum = typeof AdPinsAnalyticsClickWindowDaysEnum[keyof typeof AdPinsAnalyticsClickWindowDaysEnum];
 /**
@@ -956,7 +1144,7 @@ export const AdPinsAnalyticsEngagementWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdPinsAnalyticsEngagementWindowDaysEnum = typeof AdPinsAnalyticsEngagementWindowDaysEnum[keyof typeof AdPinsAnalyticsEngagementWindowDaysEnum];
 /**
@@ -968,7 +1156,7 @@ export const AdPinsAnalyticsViewWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdPinsAnalyticsViewWindowDaysEnum = typeof AdPinsAnalyticsViewWindowDaysEnum[keyof typeof AdPinsAnalyticsViewWindowDaysEnum];
 /**
@@ -976,7 +1164,7 @@ export type AdPinsAnalyticsViewWindowDaysEnum = typeof AdPinsAnalyticsViewWindow
  */
 export const AdPinsAnalyticsConversionReportTimeEnum = {
     TimeOfAdAction: 'TIME_OF_AD_ACTION',
-    TimeOfConversion: 'TIME_OF_CONVERSION'
+    TimeOfConversion: 'TIME_OF_CONVERSION',
 } as const;
 export type AdPinsAnalyticsConversionReportTimeEnum = typeof AdPinsAnalyticsConversionReportTimeEnum[keyof typeof AdPinsAnalyticsConversionReportTimeEnum];
 /**
@@ -988,7 +1176,7 @@ export const CampaignTargetingAnalyticsGetClickWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignTargetingAnalyticsGetClickWindowDaysEnum = typeof CampaignTargetingAnalyticsGetClickWindowDaysEnum[keyof typeof CampaignTargetingAnalyticsGetClickWindowDaysEnum];
 /**
@@ -1000,7 +1188,7 @@ export const CampaignTargetingAnalyticsGetEngagementWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignTargetingAnalyticsGetEngagementWindowDaysEnum = typeof CampaignTargetingAnalyticsGetEngagementWindowDaysEnum[keyof typeof CampaignTargetingAnalyticsGetEngagementWindowDaysEnum];
 /**
@@ -1012,7 +1200,7 @@ export const CampaignTargetingAnalyticsGetViewWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignTargetingAnalyticsGetViewWindowDaysEnum = typeof CampaignTargetingAnalyticsGetViewWindowDaysEnum[keyof typeof CampaignTargetingAnalyticsGetViewWindowDaysEnum];
 /**
@@ -1020,7 +1208,7 @@ export type CampaignTargetingAnalyticsGetViewWindowDaysEnum = typeof CampaignTar
  */
 export const CampaignTargetingAnalyticsGetConversionReportTimeEnum = {
     TimeOfAdAction: 'TIME_OF_AD_ACTION',
-    TimeOfConversion: 'TIME_OF_CONVERSION'
+    TimeOfConversion: 'TIME_OF_CONVERSION',
 } as const;
 export type CampaignTargetingAnalyticsGetConversionReportTimeEnum = typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum[keyof typeof CampaignTargetingAnalyticsGetConversionReportTimeEnum];
 /**
@@ -1032,7 +1220,7 @@ export const CampaignsAnalyticsClickWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignsAnalyticsClickWindowDaysEnum = typeof CampaignsAnalyticsClickWindowDaysEnum[keyof typeof CampaignsAnalyticsClickWindowDaysEnum];
 /**
@@ -1044,7 +1232,7 @@ export const CampaignsAnalyticsEngagementWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignsAnalyticsEngagementWindowDaysEnum = typeof CampaignsAnalyticsEngagementWindowDaysEnum[keyof typeof CampaignsAnalyticsEngagementWindowDaysEnum];
 /**
@@ -1056,7 +1244,7 @@ export const CampaignsAnalyticsViewWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type CampaignsAnalyticsViewWindowDaysEnum = typeof CampaignsAnalyticsViewWindowDaysEnum[keyof typeof CampaignsAnalyticsViewWindowDaysEnum];
 /**
@@ -1064,6 +1252,6 @@ export type CampaignsAnalyticsViewWindowDaysEnum = typeof CampaignsAnalyticsView
  */
 export const CampaignsAnalyticsConversionReportTimeEnum = {
     TimeOfAdAction: 'TIME_OF_AD_ACTION',
-    TimeOfConversion: 'TIME_OF_CONVERSION'
+    TimeOfConversion: 'TIME_OF_CONVERSION',
 } as const;
 export type CampaignsAnalyticsConversionReportTimeEnum = typeof CampaignsAnalyticsConversionReportTimeEnum[keyof typeof CampaignsAnalyticsConversionReportTimeEnum];

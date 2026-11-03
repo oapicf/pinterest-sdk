@@ -17,7 +17,7 @@ import OrderLine from './OrderLine';
 /**
  * The OrderLinesList200Response model module.
  * @module model/OrderLinesList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class OrderLinesList200Response {
     /**

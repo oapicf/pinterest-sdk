@@ -52,7 +52,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   TargetingSpecOptimal.JSON_PROPERTY_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y
 })
 @JsonTypeName("TargetingSpecOptimal")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class TargetingSpecOptimal {
     public static final String JSON_PROPERTY_A_G_E_B_U_C_K_E_T = "AGE_BUCKET";

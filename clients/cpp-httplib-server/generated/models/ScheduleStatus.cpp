@@ -6,20 +6,3 @@
 */
 #include "ScheduleStatus.h"
 
-namespace models {
-
-ScheduleStatus::ScheduleStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

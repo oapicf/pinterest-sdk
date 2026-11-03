@@ -19,7 +19,7 @@ import PinnerListType from './PinnerListType';
 /**
  * The Audience model module.
  * @module model/Audience
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Audience {
     /**

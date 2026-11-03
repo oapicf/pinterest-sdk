@@ -17,7 +17,7 @@ import SummaryPin from './SummaryPin';
 /**
  * The SearchPartnerPins200Response model module.
  * @module model/SearchPartnerPins200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SearchPartnerPins200Response {
     /**

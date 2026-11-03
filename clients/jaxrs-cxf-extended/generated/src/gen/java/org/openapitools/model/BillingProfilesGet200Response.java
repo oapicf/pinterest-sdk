@@ -20,7 +20,6 @@ public class BillingProfilesGet200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid BillingProfilesResponse> items = new ArrayList<>();
  /**
   * Get bookmark

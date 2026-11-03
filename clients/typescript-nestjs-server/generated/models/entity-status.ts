@@ -8,7 +8,7 @@ export const EntityStatus = {
     Paused: 'PAUSED',
     Archived: 'ARCHIVED',
     Draft: 'DRAFT',
-    DeletedDraft: 'DELETED_DRAFT'
+    DeletedDraft: 'DELETED_DRAFT',
 } as const;
 export type EntityStatus = typeof EntityStatus[keyof typeof EntityStatus];
 

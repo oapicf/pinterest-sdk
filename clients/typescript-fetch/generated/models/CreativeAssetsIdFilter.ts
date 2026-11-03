@@ -29,8 +29,6 @@ import {
 export interface CreativeAssetsIdFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CreativeAssetsIdFilter
      */
     cREATIVEASSETSID: CatalogsProductGroupMultipleStringCriteria;
 }

@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CampaignPlanningConfidenceLevelAlertReason
-{
-public:
-
-    CampaignPlanningConfidenceLevelAlertReason();
-    virtual ~CampaignPlanningConfidenceLevelAlertReason() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningConfidenceLevelAlertReason,
-        )
-
-private:
+enum class CampaignPlanningConfidenceLevelAlertReason {
+    
+    UNKNOWN,
+    
+    OTHER,
+    
+    ADVERTISER_HAS_NO_RECENT_CAMPAIGNS,
+    
+    ADVERTISER_HAS_NO_RECENT_CONVERSIONS
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningConfidenceLevelAlertReason& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningConfidenceLevelAlertReason::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertReason::OTHER: j = "OTHER"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertReason::ADVERTISER_HAS_NO_RECENT_CAMPAIGNS: j = "ADVERTISER_HAS_NO_RECENT_CAMPAIGNS"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertReason::ADVERTISER_HAS_NO_RECENT_CONVERSIONS: j = "ADVERTISER_HAS_NO_RECENT_CONVERSIONS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConfidenceLevelAlertReason", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningConfidenceLevelAlertReason& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = CampaignPlanningConfidenceLevelAlertReason::UNKNOWN;
+        return;
+    }
+    
+    if (j == "OTHER")
+    {
+        value = CampaignPlanningConfidenceLevelAlertReason::OTHER;
+        return;
+    }
+    
+    if (j == "ADVERTISER_HAS_NO_RECENT_CAMPAIGNS")
+    {
+        value = CampaignPlanningConfidenceLevelAlertReason::ADVERTISER_HAS_NO_RECENT_CAMPAIGNS;
+        return;
+    }
+    
+    if (j == "ADVERTISER_HAS_NO_RECENT_CONVERSIONS")
+    {
+        value = CampaignPlanningConfidenceLevelAlertReason::ADVERTISER_HAS_NO_RECENT_CONVERSIONS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConfidenceLevelAlertReason", &j);
+}
 
 } // namespace models
 

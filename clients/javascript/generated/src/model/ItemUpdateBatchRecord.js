@@ -18,7 +18,7 @@ import UpdateMaskFieldType from './UpdateMaskFieldType';
 /**
  * The ItemUpdateBatchRecord model module.
  * @module model/ItemUpdateBatchRecord
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ItemUpdateBatchRecord {
     /**

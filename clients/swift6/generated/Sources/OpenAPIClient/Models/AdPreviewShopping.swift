@@ -10,8 +10,8 @@ import Foundation
 /** Ad preview from a catalog product group (shopping). */
 public struct AdPreviewShopping: Sendable, Codable, Hashable {
 
-    public static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let heroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogProductGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let heroPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Catalog Product Group Id. */
     public var catalogProductGroupId: String
     /** Ad format of the shopping ad preview. */

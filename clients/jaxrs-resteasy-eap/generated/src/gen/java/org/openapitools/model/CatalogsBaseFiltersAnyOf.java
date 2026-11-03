@@ -14,10 +14,10 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsBaseFiltersAnyOf   {
   
-  private List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
   /**
    **/
@@ -25,10 +25,10 @@ public class CatalogsBaseFiltersAnyOf   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("any_of")
   @NotNull
- @Size(min=1)  public List<CatalogsBaseFilterKeys> getAnyOf() {
+ @Size(min=1)  public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
     return anyOf;
   }
-  public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

@@ -52,7 +52,7 @@ public class ProductTagsApiHandler {
         ProductTagsBulkAddRequest productTagsBulkAddRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductTagsBulkAddRequest>(){}) : null;
 
         logger.debug("Parameter pinId is {}", pinId);
-        logger.debug("Parameter productTagsBulkAddRequest is {}", productTagsBulkAddRequest);
+        logger.debug("Parameter productTagsBulkAddRequest is (body omitted)");
 
         api.productTagsBulkAdd(pinId, productTagsBulkAddRequest)
             .onSuccess(apiResponse -> {
@@ -77,7 +77,7 @@ public class ProductTagsApiHandler {
         ProductTagsBulkDeleteRequest productTagsBulkDeleteRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ProductTagsBulkDeleteRequest>(){}) : null;
 
         logger.debug("Parameter pinId is {}", pinId);
-        logger.debug("Parameter productTagsBulkDeleteRequest is {}", productTagsBulkDeleteRequest);
+        logger.debug("Parameter productTagsBulkDeleteRequest is (body omitted)");
 
         api.productTagsBulkDelete(pinId, productTagsBulkDeleteRequest)
             .onSuccess(apiResponse -> {

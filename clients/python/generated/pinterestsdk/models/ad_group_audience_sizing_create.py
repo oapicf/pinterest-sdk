@@ -84,8 +84,7 @@ class AdGroupAudienceSizingCreate(BaseModel):
         _items = []
         if self.keywords:
             for _item_keywords in self.keywords:
-                if _item_keywords:
-                    _items.append(_item_keywords.to_dict())
+                _items.append(_item_keywords.to_dict() if _item_keywords is not None else None)
             _dict['keywords'] = _items
         # override the default output from pydantic by calling `to_dict()` of targeting_spec
         if self.targeting_spec:

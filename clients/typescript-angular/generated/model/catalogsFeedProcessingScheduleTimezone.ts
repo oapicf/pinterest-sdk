@@ -399,7 +399,7 @@ export const CatalogsFeedProcessingScheduleTimezone = {
     PacificTongatapu: 'Pacific/Tongatapu',
     PacificWake: 'Pacific/Wake',
     PacificWallis: 'Pacific/Wallis',
-    Wet: 'WET'
+    Wet: 'WET',
 } as const;
 export type CatalogsFeedProcessingScheduleTimezone = typeof CatalogsFeedProcessingScheduleTimezone[keyof typeof CatalogsFeedProcessingScheduleTimezone];
 

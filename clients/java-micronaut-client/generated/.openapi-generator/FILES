@@ -2330,9 +2330,3 @@ src/main/java/org/openapitools/model/WebsiteVerificationMethod.java
 src/main/java/org/openapitools/model/WorkloadState.java
 src/main/resources/application.yml
 src/main/resources/logback.xml
-src/test/java/org/openapitools/api/CatalogSupplementalApiTest.java
-src/test/java/org/openapitools/api/ConversionDeletionRequestsApiTest.java
-src/test/java/org/openapitools/api/CustomerSegmentApiTest.java
-src/test/java/org/openapitools/api/ProductTagsApiTest.java
-src/test/java/org/openapitools/api/SchedulesApiTest.java
-src/test/java/org/openapitools/api/TrendsApiTest.java

@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Single campaign create item with create-specific defaults.")
 @JsonTypeName("CampaignCreateItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateItem   {
   @Deprecated
   private String adAccountId;
@@ -48,7 +48,7 @@ public class CampaignCreateItem   {
   private ConversionObjectiveType objectiveType;
   private String orderLineId;
   private Integer startTime;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
   private TrackingUrls trackingUrls;
 
   public CampaignCreateItem() {

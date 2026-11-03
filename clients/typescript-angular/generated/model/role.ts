@@ -31,7 +31,7 @@ export const Role = {
     ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER',
     ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER',
     BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER',
-    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER'
+    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER',
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Estimation type for campaign planning estimated curve
-* Values: IMPRESSION,CLICK,CONVERSION,WEEKLY_FREQUENCY,WEEKLY_REACH,LIFETIME_FREQUENCY,LIFETIME_REACH,CPM,CPC,CPA
-*/
+ * Estimation type for campaign planning estimated curve
+ * Values: IMPRESSION,CLICK,CONVERSION,WEEKLY_FREQUENCY,WEEKLY_REACH,LIFETIME_FREQUENCY,LIFETIME_REACH,CPM,CPC,CPA
+ */
 enum class CampaignPlanningEstimationType(@get:JsonValue val value: kotlin.String) {
 
     IMPRESSION("IMPRESSION"),
@@ -36,9 +36,8 @@ enum class CampaignPlanningEstimationType(@get:JsonValue val value: kotlin.Strin
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningEstimationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningEstimationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningEstimationType'")
         }
     }
 }
-

@@ -51,10 +51,10 @@ class ProductGroupPromotionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,19 +116,19 @@ class ProductGroupPromotionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'productGroupPromotionId' => $productGroupPromotionId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'product_group_promotion_id' => $productGroupPromotionId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'productGroupPromotionId' => [
+                'product_group_promotion_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -188,13 +188,13 @@ class ProductGroupPromotionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -203,22 +203,22 @@ class ProductGroupPromotionsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'productGroupPromotionIds' => [
+                'product_group_promotion_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'entityStatuses' => [
+                'entity_statuses' => [
                     'array',
                 ],
-                'adGroupId' => [
+                'ad_group_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -233,15 +233,15 @@ class ProductGroupPromotionsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $productGroupPromotionIds = $request->get('productGroupPromotionIds');
+        $productGroupPromotionIds = $request->get('product_group_promotion_ids');
 
-        $entityStatuses = $request->get('entityStatuses');
+        $entityStatuses = $request->get('entity_statuses');
 
-        $adGroupId = $request->string('adGroupId')->value();
+        $adGroupId = $request->string('ad_group_id')->value();
 
 
         $apiResult = $this->api->productGroupPromotionsList($adAccountId, $bookmark, $pageSize, $order, $productGroupPromotionIds, $entityStatuses, $adGroupId);
@@ -288,10 +288,10 @@ class ProductGroupPromotionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -349,19 +349,19 @@ class ProductGroupPromotionsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'productGroupIds' => [
+                'product_group_ids' => [
                     'required',
                     'min:1',
                     'max:250',
@@ -374,21 +374,21 @@ class ProductGroupPromotionsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -397,11 +397,11 @@ class ProductGroupPromotionsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $productGroupIds = $request->get('productGroupIds');
+        $productGroupIds = $request->get('product_group_ids');
 
         $columns = $request->get('columns');
 

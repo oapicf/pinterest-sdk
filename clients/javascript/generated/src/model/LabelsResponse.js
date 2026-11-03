@@ -18,7 +18,7 @@ import LabelError from './LabelError';
 /**
  * The LabelsResponse model module.
  * @module model/LabelsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelsResponse {
     /**

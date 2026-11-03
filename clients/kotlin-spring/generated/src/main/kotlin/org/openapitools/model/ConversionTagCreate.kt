@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ConversionTagCreate(
 
     @Schema(example = "download_picture", required = true, description = "Conversion tag name.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(description = "Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.")

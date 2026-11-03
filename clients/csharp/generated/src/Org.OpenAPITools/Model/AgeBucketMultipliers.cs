@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aGEBUCKET.IsSet && aGEBUCKET.Value == null)
-                throw new ArgumentNullException(nameof(aGEBUCKET), "Property is not nullable for class AgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class AgeBucketMultipliers: AGE_BUCKET.");
 
             return new AgeBucketMultipliers(aGEBUCKET);
         }
@@ -159,7 +159,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ageBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AgeBucketMultipliers ageBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -174,9 +173,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ageBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AgeBucketMultipliers ageBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (ageBucketMultipliers.AGE_BUCKETOption.IsSet && ageBucketMultipliers.AGE_BUCKET == null)
+                throw new JsonException("Cannot write null property AgeBucketMultipliers.AGE_BUCKET to non-nullable JSON property 'AGE_BUCKET'.");
+
             if (ageBucketMultipliers.AGE_BUCKETOption.IsSet)
             {
                 var aGEBUCKETRawValue = TargetingSpecAgeBucketValueConverter.ToJsonValue(ageBucketMultipliers.AGE_BUCKET!.Value);

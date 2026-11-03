@@ -594,3 +594,4 @@ class _$ProductGroupPromotionSerializer implements PrimitiveSerializer<ProductGr
   }
 }
 
+

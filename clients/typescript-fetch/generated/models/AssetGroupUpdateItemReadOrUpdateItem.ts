@@ -29,38 +29,26 @@ import {
 export interface AssetGroupUpdateItemReadOrUpdateItem {
     /**
      * Unique identifier of the asset group to update.
-     * @type {string}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     assetGroupId: string;
     /**
      * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
-     * @type {Array<AssetGroupType>}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     assetGroupTypes?: Array<AssetGroupType>;
     /**
      * A list of asset ids to add to the asset group.
-     * @type {Array<string>}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     assetsToAdd?: Array<string>;
     /**
      * A list of asset ids to remove from the asset group.
-     * @type {Array<string>}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     assetsToRemove?: Array<string>;
     /**
      * Asset group description.
-     * @type {string}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     description?: string;
     /**
      * Asset Group name.
-     * @type {string}
-     * @memberof AssetGroupUpdateItemReadOrUpdateItem
      */
     name?: string;
 }

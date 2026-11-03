@@ -29,14 +29,10 @@ import {
 export interface CatalogsAiContentDisclosure {
     /**
      * Disclosure labels that apply to this asset.
-     * @type {Array<CatalogsAiContentDisclosureLabel>}
-     * @memberof CatalogsAiContentDisclosure
      */
     disclosure: Array<CatalogsAiContentDisclosureLabel>;
     /**
      * URL of the asset. Must match one of image_link, additional_image_link, or video_link.
-     * @type {string}
-     * @memberof CatalogsAiContentDisclosure
      */
     url: string;
 }

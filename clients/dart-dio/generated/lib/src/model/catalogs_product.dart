@@ -143,6 +143,7 @@ class _$CatalogsProductSerializer implements PrimitiveSerializer<CatalogsProduct
   }
 }
 
+
 class CatalogsProductCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

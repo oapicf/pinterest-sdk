@@ -79,7 +79,7 @@ import javax.validation.Valid;
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_TARGETING_TYPES,
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   public static final String JSON_PROPERTY_AD_GROUP_IDS = "ad_group_ids";
   @JsonProperty(JSON_PROPERTY_AD_GROUP_IDS)
@@ -123,7 +123,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";
   @JsonProperty(JSON_PROPERTY_CLICK_WINDOW_DAYS)
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   public static final String JSON_PROPERTY_COLUMNS = "columns";
   @JsonProperty(JSON_PROPERTY_COLUMNS)
@@ -135,7 +135,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_CONVERSION_REPORT_TIME = "conversion_report_time";
   @JsonProperty(JSON_PROPERTY_CONVERSION_REPORT_TIME)
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   public static final String JSON_PROPERTY_CUSTOM_CONVERSION_EVENT_METRICS = "custom_conversion_event_metrics";
   @JsonProperty(JSON_PROPERTY_CUSTOM_CONVERSION_EVENT_METRICS)
@@ -151,7 +151,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
   @JsonProperty(JSON_PROPERTY_ENGAGEMENT_WINDOW_DAYS)
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   public static final String JSON_PROPERTY_GRANULARITY = "granularity";
   @JsonProperty(JSON_PROPERTY_GRANULARITY)
@@ -167,7 +167,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_PRIMARY_SORT = "primary_sort";
   @JsonProperty(JSON_PROPERTY_PRIMARY_SORT)
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   public static final String JSON_PROPERTY_PRODUCT_GROUP_IDS = "product_group_ids";
   @JsonProperty(JSON_PROPERTY_PRODUCT_GROUP_IDS)
@@ -183,7 +183,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_REPORT_FORMAT = "report_format";
   @JsonProperty(JSON_PROPERTY_REPORT_FORMAT)
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   public static final String JSON_PROPERTY_REPORTING_TIMEZONE = "reporting_timezone";
   @JsonProperty(JSON_PROPERTY_REPORTING_TIMEZONE)
@@ -203,7 +203,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   public static final String JSON_PROPERTY_VIEW_WINDOW_DAYS = "view_window_days";
   @JsonProperty(JSON_PROPERTY_VIEW_WINDOW_DAYS)
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest adGroupIds(List<@Pattern(regexp = "^\\d+$")String> adGroupIds) {
     this.adGroupIds = adGroupIds;
@@ -576,7 +576,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
    **/
   @JsonProperty(value = "custom_conversion_event_metrics")
   @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
-  @Valid 
+  
   public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
     return customConversionEventMetrics;
   }
@@ -706,7 +706,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
    **/
   @JsonProperty(value = "metrics_filters")
   @ApiModelProperty(value = "List of metrics filters")
-  @Valid  @Size(min=1)
+   @Size(min=1)
   public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
     return metricsFilters;
   }

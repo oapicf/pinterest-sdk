@@ -130,3 +130,4 @@ class _$InviteAssetsSummarySerializer implements PrimitiveSerializer<InviteAsset
   }
 }
 
+

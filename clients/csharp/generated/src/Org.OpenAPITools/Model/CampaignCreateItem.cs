@@ -581,40 +581,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CampaignCreateItem.", nameof(name));
+                throw new JsonException("Property is required for class CampaignCreateItem: name.");
 
             if (!objectiveType.IsSet)
-                throw new ArgumentException("Property is required for class CampaignCreateItem.", nameof(objectiveType));
+                throw new JsonException("Property is required for class CampaignCreateItem: objective_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: name.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: objective_type.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: ad_account_id.");
 
             if (appId.IsSet && appId.Value == null)
-                throw new ArgumentNullException(nameof(appId), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: app_id.");
 
             if (appPlatform.IsSet && appPlatform.Value == null)
-                throw new ArgumentNullException(nameof(appPlatform), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: app_platform.");
 
             if (intendedPromotionType.IsSet && intendedPromotionType.Value == null)
-                throw new ArgumentNullException(nameof(intendedPromotionType), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: intended_promotion_type.");
 
             if (isLtvOptimized.IsSet && isLtvOptimized.Value == null)
-                throw new ArgumentNullException(nameof(isLtvOptimized), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: is_ltv_optimized.");
 
             if (isPerformancePlus.IsSet && isPerformancePlus.Value == null)
-                throw new ArgumentNullException(nameof(isPerformancePlus), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: is_performance_plus.");
 
             if (isTopOfSearch.IsSet && isTopOfSearch.Value == null)
-                throw new ArgumentNullException(nameof(isTopOfSearch), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: is_top_of_search.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CampaignCreateItem.");
+                throw new JsonException("Property is not nullable for class CampaignCreateItem: status.");
 
             return new CampaignCreateItem(name.Value!, objectiveType.Value!.Value!, adAccountId, appId, appPlatform, bidOptions, dailySpendCap, defaultAdGroupBudgetInMicroCurrency, endTime, intendedPromotionType, isAutomatedCampaign, isCampaignBudgetOptimization, isFlexibleDailyBudgets, isLtvOptimized, isPerformancePlus, isTopOfSearch, lifetimeSpendCap, orderLineId, startTime, status, trackingUrls);
         }
@@ -625,7 +625,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignCreateItem campaignCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -640,17 +639,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignCreateItem campaignCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignCreateItem.Name == null)
-                throw new ArgumentNullException(nameof(campaignCreateItem.Name), "Property is required for class CampaignCreateItem.");
-
             if (campaignCreateItem.AdAccountIdOption.IsSet && campaignCreateItem.AdAccountId == null)
-                throw new ArgumentNullException(nameof(campaignCreateItem.AdAccountId), "Property is required for class CampaignCreateItem.");
+                throw new JsonException("Cannot write null property CampaignCreateItem.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (campaignCreateItem.AppIdOption.IsSet && campaignCreateItem.AppId == null)
-                throw new ArgumentNullException(nameof(campaignCreateItem.AppId), "Property is required for class CampaignCreateItem.");
+                throw new JsonException("Cannot write null property CampaignCreateItem.AppId to non-nullable JSON property 'app_id'.");
+
+            if (campaignCreateItem.AppPlatformOption.IsSet && campaignCreateItem.AppPlatform == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.AppPlatform to non-nullable JSON property 'app_platform'.");
+
+            if (campaignCreateItem.IntendedPromotionTypeOption.IsSet && campaignCreateItem.IntendedPromotionType == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.IntendedPromotionType to non-nullable JSON property 'intended_promotion_type'.");
+
+            if (campaignCreateItem.IsLtvOptimizedOption.IsSet && campaignCreateItem.IsLtvOptimized == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.IsLtvOptimized to non-nullable JSON property 'is_ltv_optimized'.");
+
+            if (campaignCreateItem.IsPerformancePlusOption.IsSet && campaignCreateItem.IsPerformancePlus == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.IsPerformancePlus to non-nullable JSON property 'is_performance_plus'.");
+
+            if (campaignCreateItem.IsTopOfSearchOption.IsSet && campaignCreateItem.IsTopOfSearch == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.IsTopOfSearch to non-nullable JSON property 'is_top_of_search'.");
+
+            if (campaignCreateItem.StatusOption.IsSet && campaignCreateItem.Status == null)
+                throw new JsonException("Cannot write null property CampaignCreateItem.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("name", campaignCreateItem.Name);
 

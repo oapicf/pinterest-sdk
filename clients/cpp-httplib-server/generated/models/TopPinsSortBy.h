@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class TopPinsSortBy
-{
-public:
-
-    TopPinsSortBy();
-    virtual ~TopPinsSortBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TopPinsSortBy,
-        )
-
-private:
+enum class TopPinsSortBy {
+    
+    ENGAGEMENT,
+    
+    SAVE,
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    PIN_CLICK
+    
 };
 
+inline void to_json(nlohmann::json& j, const TopPinsSortBy& value)
+{
+    switch (value)
+    {
+        
+        case TopPinsSortBy::ENGAGEMENT: j = "ENGAGEMENT"; break;
+        
+        case TopPinsSortBy::SAVE: j = "SAVE"; break;
+        
+        case TopPinsSortBy::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case TopPinsSortBy::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case TopPinsSortBy::PIN_CLICK: j = "PIN_CLICK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TopPinsSortBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TopPinsSortBy& value)
+{
+    
+    if (j == "ENGAGEMENT")
+    {
+        value = TopPinsSortBy::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = TopPinsSortBy::SAVE;
+        return;
+    }
+    
+    if (j == "IMPRESSION")
+    {
+        value = TopPinsSortBy::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = TopPinsSortBy::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "PIN_CLICK")
+    {
+        value = TopPinsSortBy::PIN_CLICK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TopPinsSortBy", &j);
+}
 
 } // namespace models
 

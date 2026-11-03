@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,10 +23,9 @@ import jakarta.annotation.Generated;
  * KeywordsMetricsArrayResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsMetricsArrayResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
 
   public KeywordsMetricsArrayResponse data(List<@Valid KeywordMetricsResponse> data) {
@@ -47,7 +45,7 @@ public class KeywordsMetricsArrayResponse {
    * Get data
    * @return data
    */
-  @Valid 
+  
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
   public List<@Valid KeywordMetricsResponse> getData() {

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Summary status for pin promotions
-* Values: APPROVED,PAUSED,PENDING,REJECTED,ADVERTISER_DISABLED,ARCHIVED,DRAFT,DELETED_DRAFT
-*/
+ * Summary status for pin promotions
+ * Values: APPROVED,PAUSED,PENDING,REJECTED,ADVERTISER_DISABLED,ARCHIVED,DRAFT,DELETED_DRAFT
+ */
 enum class PinPromotionSummaryStatus(@get:JsonValue val value: kotlin.String) {
 
     APPROVED("APPROVED"),
@@ -34,9 +34,8 @@ enum class PinPromotionSummaryStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PinPromotionSummaryStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinPromotionSummaryStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinPromotionSummaryStatus'")
         }
     }
 }
-

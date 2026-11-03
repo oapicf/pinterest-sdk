@@ -6,20 +6,3 @@
 */
 #include "ScheduleAction.h"
 
-namespace models {
-
-ScheduleAction::ScheduleAction()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

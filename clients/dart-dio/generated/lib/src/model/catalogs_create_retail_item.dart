@@ -140,6 +140,7 @@ class _$CatalogsCreateRetailItemSerializer implements PrimitiveSerializer<Catalo
   }
 }
 
+
 class CatalogsCreateRetailItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATE')

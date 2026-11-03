@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class OsFamily
-{
-public:
-
-    OsFamily();
-    virtual ~OsFamily() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OsFamily,
-        )
-
-private:
+enum class OsFamily {
+    
+    IOS,
+    
+    ANDROID,
+    
+    MACOS,
+    
+    WINDOWS,
+    
+    LINUX,
+    
+    BSD,
+    
+    OTHER
+    
 };
 
+inline void to_json(nlohmann::json& j, const OsFamily& value)
+{
+    switch (value)
+    {
+        
+        case OsFamily::IOS: j = "ios"; break;
+        
+        case OsFamily::ANDROID: j = "android"; break;
+        
+        case OsFamily::MACOS: j = "macos"; break;
+        
+        case OsFamily::WINDOWS: j = "windows"; break;
+        
+        case OsFamily::LINUX: j = "linux"; break;
+        
+        case OsFamily::BSD: j = "bsd"; break;
+        
+        case OsFamily::OTHER: j = "other"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OsFamily", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OsFamily& value)
+{
+    
+    if (j == "ios")
+    {
+        value = OsFamily::IOS;
+        return;
+    }
+    
+    if (j == "android")
+    {
+        value = OsFamily::ANDROID;
+        return;
+    }
+    
+    if (j == "macos")
+    {
+        value = OsFamily::MACOS;
+        return;
+    }
+    
+    if (j == "windows")
+    {
+        value = OsFamily::WINDOWS;
+        return;
+    }
+    
+    if (j == "linux")
+    {
+        value = OsFamily::LINUX;
+        return;
+    }
+    
+    if (j == "bsd")
+    {
+        value = OsFamily::BSD;
+        return;
+    }
+    
+    if (j == "other")
+    {
+        value = OsFamily::OTHER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OsFamily", &j);
+}
 
 } // namespace models
 

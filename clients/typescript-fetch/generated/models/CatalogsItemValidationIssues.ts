@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemValidationIssues {
     /**
      * 
-     * @type {CatalogsItemValidationErrors}
-     * @memberof CatalogsItemValidationIssues
      */
     errors: CatalogsItemValidationErrors;
     /**
      * The merchant-created unique ID that represents the product.
-     * @type {string}
-     * @memberof CatalogsItemValidationIssues
      */
     itemId: string | null;
     /**
      * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-     * @type {number}
-     * @memberof CatalogsItemValidationIssues
      */
     itemNumber: number;
     /**
      * 
-     * @type {CatalogsItemValidationWarnings}
-     * @memberof CatalogsItemValidationIssues
      */
     warnings: CatalogsItemValidationWarnings;
 }

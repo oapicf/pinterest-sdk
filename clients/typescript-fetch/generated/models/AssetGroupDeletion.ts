@@ -29,14 +29,10 @@ import {
 export interface AssetGroupDeletion {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AssetGroupDeletion
      */
     readonly deletedAssetGroups?: Array<string>;
     /**
      * 
-     * @type {Array<AssetGroupDeleteError>}
-     * @memberof AssetGroupDeletion
      */
     exceptions?: Array<AssetGroupDeleteError> | null;
 }

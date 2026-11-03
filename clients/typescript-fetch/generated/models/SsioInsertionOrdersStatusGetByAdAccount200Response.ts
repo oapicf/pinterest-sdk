@@ -29,14 +29,10 @@ import {
 export interface SsioInsertionOrdersStatusGetByAdAccount200Response {
     /**
      * 
-     * @type {string}
-     * @memberof SsioInsertionOrdersStatusGetByAdAccount200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<SSIOInsertionOrderStatus>}
-     * @memberof SsioInsertionOrdersStatusGetByAdAccount200Response
      */
     items: Array<SSIOInsertionOrderStatus>;
 }

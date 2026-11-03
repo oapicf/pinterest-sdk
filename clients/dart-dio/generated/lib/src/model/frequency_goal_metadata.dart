@@ -128,3 +128,4 @@ class _$FrequencyGoalMetadataSerializer implements PrimitiveSerializer<Frequency
   }
 }
 
+

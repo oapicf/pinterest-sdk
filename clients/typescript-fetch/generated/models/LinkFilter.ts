@@ -29,8 +29,6 @@ import {
 export interface LinkFilter {
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof LinkFilter
      */
     lINK: CatalogsProductGroupFilterOperatorTypeCriteria;
 }

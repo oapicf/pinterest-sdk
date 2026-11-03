@@ -136,15 +136,13 @@ class AdsAnalyticsCreateAsyncRequest(BaseModel):
         _items = []
         if self.custom_conversion_event_metrics:
             for _item_custom_conversion_event_metrics in self.custom_conversion_event_metrics:
-                if _item_custom_conversion_event_metrics:
-                    _items.append(_item_custom_conversion_event_metrics.to_dict())
+                _items.append(_item_custom_conversion_event_metrics.to_dict() if _item_custom_conversion_event_metrics is not None else None)
             _dict['custom_conversion_event_metrics'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in metrics_filters (list)
         _items = []
         if self.metrics_filters:
             for _item_metrics_filters in self.metrics_filters:
-                if _item_metrics_filters:
-                    _items.append(_item_metrics_filters.to_dict())
+                _items.append(_item_metrics_filters.to_dict() if _item_metrics_filters is not None else None)
             _dict['metrics_filters'] = _items
         return _dict
 

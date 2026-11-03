@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import jakarta.annotation.Generated;
  * CatalogsCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsAttributes {
 
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
@@ -52,7 +51,6 @@ public class CatalogsCreativeAssetsAttributes {
 
   private JsonNullable<String> visibility = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
   private String imageLink;
@@ -316,7 +314,7 @@ public class CatalogsCreativeAssetsAttributes {
    * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
    * @return aiDisclosures
    */
-  @Valid 
+  
   @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ai_disclosures")
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {

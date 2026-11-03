@@ -11,7 +11,7 @@ import Foundation
 public struct AdAccountCreate: Sendable, Codable, Hashable {
 
     public static let nameRule = StringRule(minLength: nil, maxLength: 256, pattern: nil)
-    public static let ownerUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let ownerUserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var country: Country?
     public var currency: Currency?
     /** Ad account name. */

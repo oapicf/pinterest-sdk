@@ -80,40 +80,170 @@ import {
 } from '../models/TrendsSupportedRegion';
 
 export interface CountryKeywordsMetricsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Two letter country code (ISO 3166-1 alpha-2)
+     */
     countryCode: string;
+    /**
+     * Comma-separated keywords
+     */
     keywords: Array<string>;
 }
 
 export interface KeywordsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     keywordsCreate: KeywordsCreate;
 }
 
 export interface KeywordsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Campaign Id to use to filter the results.
+     */
     campaignId?: string;
+    /**
+     * Ad group Id.
+     */
     adGroupId?: string;
+    /**
+     * List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
+     */
     adGroupIds?: Array<string>;
+    /**
+     * Keyword [match type](/docs/api-features/targeting-overview/)
+     */
     matchTypes?: Array<MatchType>;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface KeywordsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     keywordsUpdate: KeywordsUpdate;
 }
 
 export interface TrendingKeywordsListRequest {
+    /**
+     *   The geographic region of interest. Only top trends within the specified region will be returned.
+     * 
+     *   The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`, corresponding to the following geographic areas:
+     *   - `US` - United States
+     *   - `CA` - Canada
+     *   - `DE` - Germany
+     *   - `FR` - France
+     *   - `ES` - Spain
+     *   - `IT` - Italy
+     *   - `DE+AT+CH` - Germanic countries
+     *   - `GB+IE` - Great Britain & Ireland
+     *   - `IT+ES+PT+GR+MT` - Southern Europe
+     *   - `PL+RO+HU+SK+CZ` - Eastern Europe
+     *   - `SE+DK+FI+NO` - Nordic countries
+     *   - `NL+BE+LU` - Benelux
+     *   - `AR` - Argentina
+     *   - `BR` - Brazil
+     *   - `CO` - Colombia
+     *   - `MX` - Mexico
+     *   - `MX+AR+CO+CL` - Hispanic LatAm
+     *   - `AU+NZ` - Australasia
+     */
     region: TrendsSupportedRegion;
+    /**
+     *   The methodology used to rank how trendy a keyword is.
+     *   - `growing` trends have high upward growth in search volume over the last quarter
+     *   - `monthly` trends have high search volume in the last month
+     *   - `yearly` trends have high search volume in the last year
+     *   - `seasonal` trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual)
+     */
     trendType: TrendType;
+    /**
+     *   The list of supported interests is:
+     *   - `animals` - Animals
+     *   - `architecture` - Architecture
+     *   - `art` - Art
+     *   - `beauty` - Beauty
+     *   - `childrens_fashion` - Children's Fashion
+     *   - `design` - Design
+     *   - `diy_and_crafts` - DIY & Crafts
+     *   - `education` - Education
+     *   - `electronics` - Electronics
+     *   - `entertainment` - Entertainment
+     *   - `event_planning` - Event Planning
+     *   - `finance` - Finance
+     *   - `food_and_drinks` - Food & Drink
+     *   - `gardening` - Gardening
+     *   - `health` - Health
+     *   - `home_decor` - Home Decor
+     *   - `mens_fashion` - Men's Fashion
+     *   - `parenting` - Parenting
+     *   - `quotes` - Quotes
+     *   - `sport` - Sports
+     *   - `travel` - Travel
+     *   - `vehicles` - Vehicles
+     *   - `wedding` - Wedding
+     *   - `womens_fashion` - Women's Fashion
+     */
     interests?: Array<TrendsL1Interest>;
+    /**
+     * If set, filters the results to trends among users who identify with the
+     * specified gender(s). If unset, trends among all genders will be returned.
+     * The `unknown` group includes users with unspecified or customized gender
+     * profile settings.
+     */
     genders?: Array<TrendsGenderFilter>;
+    /**
+     * If set, filters the results to trends among users in the specified age
+     * range(s). If unset, trends among all age groups will be returned.
+     */
     ages?: Array<TrendsAgeBucket>;
+    /**
+     * If set, filters the results to top trends which include at least one of
+     * the specified keywords. If unset, no keyword filtering logic is applied.
+     */
     includeKeywords?: Array<string>;
+    /**
+     *  Governs how the resulting time series data will be normalized to a [0-100] scale.
+     * 
+     *   By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.
+     * 
+     *   If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
+     */
     normalizeAgainstGroup?: boolean;
+    /**
+     * The maximum number of trending keywords that will be returned. Keywords
+     * are returned in trend-ranked order, so a `limit` of 50 will return the
+     * top 50 trends.
+     */
     limit?: number;
+    /**
+     * Including the age and gender distribution for each keyword. By default
+     * (`false`), the response will not include demographics data.
+     */
     includeDemographics?: boolean;
 }
 

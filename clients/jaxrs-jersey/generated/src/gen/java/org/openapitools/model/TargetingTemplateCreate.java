@@ -42,7 +42,7 @@ import javax.validation.Valid;
   TargetingTemplateCreate.JSON_PROPERTY_TARGETING_ATTRIBUTES,
   TargetingTemplateCreate.JSON_PROPERTY_TRACKING_URLS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplateCreate   {
   public static final String JSON_PROPERTY_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @JsonProperty(JSON_PROPERTY_AUTO_TARGETING_ENABLED)
@@ -107,7 +107,7 @@ public class TargetingTemplateCreate   {
    **/
   @JsonProperty(value = "keywords")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid TargetingTemplateKeyword> getKeywords() {
     return keywords;
   }

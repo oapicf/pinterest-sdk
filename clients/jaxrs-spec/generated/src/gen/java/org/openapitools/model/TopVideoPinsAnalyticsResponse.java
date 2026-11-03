@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TopVideoPinsAnalyticsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TopVideoPinsAnalyticsResponse   {
   private TopVideoPinsAnalyticsResponseDateAvailability dateAvailability;
-  private @Valid List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
+  private List<@Valid TopVideoPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
   private TopVideoPinsSortBy sortBy;
 
   public TopVideoPinsAnalyticsResponse() {
@@ -60,7 +60,7 @@ public class TopVideoPinsAnalyticsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pins")
-  @Valid public List<@Valid TopVideoPinsAnalyticsResponsePinsItems> getPins() {
+  public List<@Valid TopVideoPinsAnalyticsResponsePinsItems> getPins() {
     return pins;
   }
 

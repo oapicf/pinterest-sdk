@@ -79,7 +79,7 @@ public class AdsApiHandler {
         AdPreviewRequest adPreviewRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdPreviewRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adPreviewRequest is {}", adPreviewRequest);
+        logger.debug("Parameter adPreviewRequest is (body omitted)");
 
         api.adPreviewsCreate(adAccountId, adPreviewRequest)
             .onSuccess(apiResponse -> {
@@ -200,7 +200,7 @@ public class AdsApiHandler {
         List<AdCreate> adCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<AdCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adCreate is {}", adCreate);
+        logger.debug("Parameter adCreate is (body omitted)");
 
         api.adsCreate(adAccountId, adCreate)
             .onSuccess(apiResponse -> {
@@ -285,7 +285,7 @@ public class AdsApiHandler {
         List<AdBatchUpdate> adBatchUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<AdBatchUpdate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adBatchUpdate is {}", adBatchUpdate);
+        logger.debug("Parameter adBatchUpdate is (body omitted)");
 
         api.adsUpdate(adAccountId, adBatchUpdate)
             .onSuccess(apiResponse -> {
@@ -310,7 +310,7 @@ public class AdsApiHandler {
         List<CampaignAdPreviewCreate> campaignAdPreviewCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CampaignAdPreviewCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter campaignAdPreviewCreate is {}", campaignAdPreviewCreate);
+        logger.debug("Parameter campaignAdPreviewCreate is (body omitted)");
 
         api.campaignAdPreviewCreate(adAccountId, campaignAdPreviewCreate)
             .onSuccess(apiResponse -> {

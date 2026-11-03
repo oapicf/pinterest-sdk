@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-* Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,FIND_RETAILERS,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT,TAKE_A_PEEK
-*/
+ * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+ * Values: GET_OFFER,LEARN_MORE,ORDER_NOW,SHOP_NOW,SIGN_UP,SUBSCRIBE,BUY_NOW,CONTACT_US,GET_QUOTE,VISIT_SITE,APPLY_NOW,BOOK_NOW,REQUEST_DEMO,REGISTER_NOW,FIND_A_DEALER,ADD_TO_CART,WATCH_NOW,READ_MORE,BUY_TICKETS,DONATE_NOW,DOWNLOAD,EXPLORE_MORE,FIND_A_LOCATION,FIND_RETAILERS,GET_DEAL,GET_RECIPE,GET_SHOWTIMES,ON_SALE,PLAY_GAME,TRY_IT,TAKE_A_PEEK
+ */
 enum class CustomizableCTAType(@get:JsonValue val value: kotlin.String) {
 
     GET_OFFER("GET_OFFER"),
@@ -57,9 +57,8 @@ enum class CustomizableCTAType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CustomizableCTAType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CustomizableCTAType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CustomizableCTAType'")
         }
     }
 }
-

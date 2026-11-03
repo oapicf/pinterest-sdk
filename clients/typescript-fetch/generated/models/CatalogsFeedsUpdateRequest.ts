@@ -64,50 +64,34 @@ import {
 export interface CatalogsFeedsUpdateRequest {
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {ProductAvailabilityType}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     defaultAvailability?: ProductAvailabilityType | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     format?: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     location?: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsFeedsUpdateRequest
      */
     status?: CatalogsStatus;
 }

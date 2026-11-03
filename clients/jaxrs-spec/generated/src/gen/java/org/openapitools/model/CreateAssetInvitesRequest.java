@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request body for updating asset roles for existing invites.")
 @JsonTypeName("CreateAssetInvitesRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetInvitesRequest   {
-  private @Valid List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
+  private List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
 
   public CreateAssetInvitesRequest() {
   }
@@ -46,7 +46,7 @@ public class CreateAssetInvitesRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "invites")
-  @NotNull @Valid  @Size(min=1,max=50)public List<@Valid CreateAssetInvitesRequestItem> getInvites() {
+  @NotNull  @Size(min=1,max=50)public List<@Valid CreateAssetInvitesRequestItem> getInvites() {
     return invites;
   }
 

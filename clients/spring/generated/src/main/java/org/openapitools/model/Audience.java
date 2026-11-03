@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,46 +26,33 @@ import jakarta.annotation.Generated;
  * Audience
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Audience {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PinnerListType audienceType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> createdByCompanyName = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> createdTimestamp = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isNca;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AudienceRule rule;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> size = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AudienceStatus status;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String type;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> updatedTimestamp = JsonNullable.<Integer>undefined();
 
   public Audience adAccountId(@Nullable String adAccountId) {
@@ -121,7 +107,7 @@ public class Audience {
    * @return createdByCompanyName
    */
   
-  @Schema(name = "created_by_company_name", example = "Pinterest", description = "The company that created this audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_by_company_name", example = "Pinterest", description = "The company that created this audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_by_company_name")
   public JsonNullable<String> getCreatedByCompanyName() {
     return createdByCompanyName;
@@ -141,7 +127,7 @@ public class Audience {
    * @return createdTimestamp
    */
   
-  @Schema(name = "created_timestamp", example = "1451431341", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_timestamp", example = "1451431341", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_timestamp")
   public JsonNullable<Integer> getCreatedTimestamp() {
     return createdTimestamp;
@@ -161,7 +147,7 @@ public class Audience {
    * @return description
    */
   
-  @Schema(name = "description", example = "People who love making quilts.", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", example = "People who love making quilts.", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -265,7 +251,7 @@ public class Audience {
    * @return size
    */
   
-  @Schema(name = "size", example = "1000", description = "Audience size.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size", example = "1000", description = "Audience size.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("size")
   public JsonNullable<Integer> getSize() {
     return size;
@@ -327,7 +313,7 @@ public class Audience {
    * @return updatedTimestamp
    */
   
-  @Schema(name = "updated_timestamp", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "updated_timestamp", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("updated_timestamp")
   public JsonNullable<Integer> getUpdatedTimestamp() {
     return updatedTimestamp;

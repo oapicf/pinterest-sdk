@@ -6,20 +6,3 @@
 */
 #include "AudienceUpdateOperationType.h"
 
-namespace models {
-
-AudienceUpdateOperationType::AudienceUpdateOperationType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

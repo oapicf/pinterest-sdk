@@ -6,20 +6,3 @@
 */
 #include "ConversionLearningModeType.h"
 
-namespace models {
-
-ConversionLearningModeType::ConversionLearningModeType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

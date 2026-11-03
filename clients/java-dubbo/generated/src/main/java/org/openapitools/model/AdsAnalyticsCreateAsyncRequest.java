@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 public class AdsAnalyticsCreateAsyncRequest implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -93,7 +93,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
    * Number of days to use as the conversion attribution window for a pin click action.
    */
   @JsonProperty("click_window_days")
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   /**
    * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
@@ -111,7 +111,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
    * Date dimension for conversion metrics.
    */
   @JsonProperty("conversion_report_time")
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   /**
    * List of advertiser-defined custom conversion event metrics to include in the report
@@ -135,7 +135,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
    * Number of days to use as the conversion attribution window for an engagement action.
    */
   @JsonProperty("engagement_window_days")
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   /**
    *   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
@@ -156,7 +156,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
   private List<AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
   @JsonProperty("primary_sort")
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   /**
    * List of product group ids
@@ -177,7 +177,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
   private List<String> productItemIds = new ArrayList<>();
 
   @JsonProperty("report_format")
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   /**
    * Specify the timezone to be applied for the reporting.
@@ -207,7 +207,7 @@ public class AdsAnalyticsCreateAsyncRequest implements Serializable {
    * Number of days to use as the conversion attribution window for a view action.
    */
   @JsonProperty("view_window_days")
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   /**
    * List of ad group ids

@@ -123,7 +123,7 @@ public interface CampaignsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public CampaignBatchWriteResponseModel campaignsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid CampaignCreateItem> campaignCreateItem);
+    public CampaignBatchWriteResponseModel campaignsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid CampaignCreateItem> campaignCreateItem);
 
     /**
      * Get campaign
@@ -184,7 +184,7 @@ public interface CampaignsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public CampaignBatchWriteResponseModel campaignsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem);
+    public CampaignBatchWriteResponseModel campaignsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem);
 
     /**
      * Get campaign delivery estimates
@@ -206,5 +206,5 @@ public interface CampaignsApi  {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 503, message = "The service is temporarily unavailable.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public CampaignDeliveryEstimatesResponse getCampaignDeliveryEstimates(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign);
+    public CampaignDeliveryEstimatesResponse getCampaignDeliveryEstimates(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign);
 }

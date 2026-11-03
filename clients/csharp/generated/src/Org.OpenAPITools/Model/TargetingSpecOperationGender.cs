@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationGender.FieldEnum?>(TargetingSpecOperationGender.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationGender.FieldEnum? fieldValue = TargetingSpecOperationGender.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationGender.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             operation = new Option<TargetingSpecListOperation?>(JsonSerializer.Deserialize<TargetingSpecListOperation?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGender.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationGender: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGender.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationGender: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGender.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationGender: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationGender.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGender: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationGender.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGender: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationGender.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGender: values.");
 
             return new TargetingSpecOperationGender(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationGender"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationGender targetingSpecOperationGender, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,12 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationGender"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationGender targetingSpecOperationGender, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationGender.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationGender.Values), "Property is required for class TargetingSpecOperationGender.");
-
             var fieldRawValue = TargetingSpecOperationGender.FieldEnumToJsonValue(targetingSpecOperationGender.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecListOperationValueConverter.ToJsonValue(targetingSpecOperationGender.Operation);

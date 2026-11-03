@@ -17,7 +17,7 @@ import Media from './Media';
 /**
  * The MediaList200Response model module.
  * @module model/MediaList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class MediaList200Response {
     /**

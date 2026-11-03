@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface RelatedTermsRelatedTermsListItems {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof RelatedTermsRelatedTermsListItems
      */
     relatedTerms?: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof RelatedTermsRelatedTermsListItems
      */
     term?: string;
 }

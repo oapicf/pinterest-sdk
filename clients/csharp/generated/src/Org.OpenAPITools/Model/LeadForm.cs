@@ -356,46 +356,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!hasAcceptedTerms.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(hasAcceptedTerms));
+                throw new JsonException("Property is required for class LeadForm: has_accepted_terms.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(id));
+                throw new JsonException("Property is required for class LeadForm: id.");
 
             if (!questions.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(questions));
+                throw new JsonException("Property is required for class LeadForm: questions.");
 
             if (!completionMessage.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(completionMessage));
+                throw new JsonException("Property is required for class LeadForm: completion_message.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(name));
+                throw new JsonException("Property is required for class LeadForm: name.");
 
             if (!privacyPolicyLink.IsSet)
-                throw new ArgumentException("Property is required for class LeadForm.", nameof(privacyPolicyLink));
+                throw new JsonException("Property is required for class LeadForm: privacy_policy_link.");
 
             if (hasAcceptedTerms.IsSet && hasAcceptedTerms.Value == null)
-                throw new ArgumentNullException(nameof(hasAcceptedTerms), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: has_accepted_terms.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: id.");
 
             if (questions.IsSet && questions.Value == null)
-                throw new ArgumentNullException(nameof(questions), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: questions.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: ad_account_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: created_time.");
 
             if (policyLinks.IsSet && policyLinks.Value == null)
-                throw new ArgumentNullException(nameof(policyLinks), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: policy_links.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: status.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class LeadForm.");
+                throw new JsonException("Property is not nullable for class LeadForm: updated_time.");
 
             return new LeadForm(hasAcceptedTerms.Value!.Value!, id.Value!, questions.Value!, adAccountId, completionMessage.Value!, createdTime, disclosureLanguage, name.Value!, policyLinks, privacyPolicyLink.Value!, status, updatedTime);
         }
@@ -406,7 +406,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadForm"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadForm leadForm, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -421,20 +420,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadForm"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadForm leadForm, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadForm.Id == null)
-                throw new ArgumentNullException(nameof(leadForm.Id), "Property is required for class LeadForm.");
-
-            if (leadForm.Questions == null)
-                throw new ArgumentNullException(nameof(leadForm.Questions), "Property is required for class LeadForm.");
-
             if (leadForm.AdAccountIdOption.IsSet && leadForm.AdAccountId == null)
-                throw new ArgumentNullException(nameof(leadForm.AdAccountId), "Property is required for class LeadForm.");
+                throw new JsonException("Cannot write null property LeadForm.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (leadForm.CreatedTimeOption.IsSet && leadForm.CreatedTime == null)
+                throw new JsonException("Cannot write null property LeadForm.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (leadForm.PolicyLinksOption.IsSet && leadForm.PolicyLinks == null)
-                throw new ArgumentNullException(nameof(leadForm.PolicyLinks), "Property is required for class LeadForm.");
+                throw new JsonException("Cannot write null property LeadForm.PolicyLinks to non-nullable JSON property 'policy_links'.");
+
+            if (leadForm.StatusOption.IsSet && leadForm.Status == null)
+                throw new JsonException("Cannot write null property LeadForm.Status to non-nullable JSON property 'status'.");
+
+            if (leadForm.UpdatedTimeOption.IsSet && leadForm.UpdatedTime == null)
+                throw new JsonException("Cannot write null property LeadForm.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             writer.WriteBoolean("has_accepted_terms", leadForm.HasAcceptedTerms);
 

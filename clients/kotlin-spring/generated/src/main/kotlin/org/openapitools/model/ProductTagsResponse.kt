@@ -22,7 +22,7 @@ data class ProductTagsResponse(
 
     @field:Valid
     @Schema(required = true, description = "List of product tags on the pin.")
-    @param:JsonProperty("product_tags")
+    @param:JsonProperty("product_tags", required = true)
     @get:JsonProperty("product_tags", required = true) val productTags: kotlin.collections.List<ProductTagItem>
 ) {
 

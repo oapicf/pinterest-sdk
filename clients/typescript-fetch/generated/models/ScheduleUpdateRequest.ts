@@ -50,62 +50,42 @@ import {
 export interface ScheduleUpdateRequest {
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleUpdateRequest
      */
     entityId?: string;
     /**
      * Entity type
-     * @type {string}
-     * @memberof ScheduleUpdateRequest
      */
     entityType?: string;
     /**
      * Schedule ID.
-     * @type {string}
-     * @memberof ScheduleUpdateRequest
      */
     id: string;
     /**
      * 
-     * @type {ScheduleCommonDeltaValue}
-     * @memberof ScheduleUpdateRequest
      */
     deltaValue?: ScheduleCommonDeltaValue;
     /**
      * Schedule end time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleUpdateRequest
      */
     endTimestamp?: number;
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleUpdateRequest
      */
     name?: string;
     /**
      * 
-     * @type {ScheduleAction}
-     * @memberof ScheduleUpdateRequest
      */
     scheduleAction?: ScheduleAction;
     /**
      * 
-     * @type {ScheduleStatus}
-     * @memberof ScheduleUpdateRequest
      */
     scheduleStatus?: ScheduleStatus;
     /**
      * 
-     * @type {ScheduleType}
-     * @memberof ScheduleUpdateRequest
      */
     scheduleType?: ScheduleType;
     /**
      * Schedule start time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleUpdateRequest
      */
     startTimestamp?: number;
 }

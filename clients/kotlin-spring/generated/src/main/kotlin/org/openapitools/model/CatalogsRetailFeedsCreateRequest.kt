@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
@@ -47,37 +44,35 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsRetailFeedsCreateRequest(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailFeedsCreateRequest.CatalogType = kotlin.String.RETAIL,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("default_country")
+    @param:JsonProperty("default_country", required = true)
     @get:JsonProperty("default_country", required = true) val defaultCountry: Country,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("default_locale")
+    @param:JsonProperty("default_locale", required = true)
     @get:JsonProperty("default_locale", required = true) val defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("format")
+    @param:JsonProperty("format", required = true)
     @get:JsonProperty("format", required = true) val format: CatalogsFormat,
 
     @get:Pattern(regexp="^(http|https|ftp|sftp)://")
     @Schema(required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-    @param:JsonProperty("location")
+    @param:JsonProperty("location", required = true)
     @get:JsonProperty("location", required = true) val location: kotlin.String,
 
     @Schema(required = true, description = "A human-friendly name associated to a given feed.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_id")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null,
 
@@ -103,8 +98,6 @@ data class CatalogsRetailFeedsCreateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: CatalogsStatus? = null
 ) : CatalogsVerticalFeedsCreateRequest {
@@ -116,12 +109,12 @@ data class CatalogsRetailFeedsCreateRequest(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         RETAIL("RETAIL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

@@ -125,3 +125,4 @@ class _$PinsList200ResponseSerializer implements PrimitiveSerializer<PinsList200
   }
 }
 
+

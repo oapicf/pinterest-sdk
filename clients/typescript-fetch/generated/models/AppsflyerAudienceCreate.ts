@@ -29,14 +29,10 @@ import {
 export interface AppsflyerAudienceCreate {
     /**
      * The name of the audience
-     * @type {string}
-     * @memberof AppsflyerAudienceCreate
      */
     name: string;
     /**
      * The platform of the audience
-     * @type {AppsflyerPlatform}
-     * @memberof AppsflyerAudienceCreate
      */
     platform: AppsflyerPlatform;
 }

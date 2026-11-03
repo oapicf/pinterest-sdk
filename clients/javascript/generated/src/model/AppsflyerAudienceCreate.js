@@ -17,7 +17,7 @@ import AppsflyerPlatform from './AppsflyerPlatform';
 /**
  * The AppsflyerAudienceCreate model module.
  * @module model/AppsflyerAudienceCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AppsflyerAudienceCreate {
     /**

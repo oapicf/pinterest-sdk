@@ -57,50 +57,34 @@ import {
 export interface BulkCampaignDeliveryEstimatesItem {
     /**
      * Range audience sizes for each ad group, in the same order as the ad groups in the request.
-     * @type {Array<CampaignPlanningAdGroupAudienceSize>}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     adgroupAudienceSizes?: Array<CampaignPlanningAdGroupAudienceSize>;
     /**
      * Conversion rate estimate. Used to translate impressions into conversions for oCPM ads, adapted based on the input conversion event and attribution windows.
-     * @type {number}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     conversionRate?: number;
     /**
      * Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.
-     * @type {Array<CampaignPlanningConversionRate>}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     conversionRates?: Array<CampaignPlanningConversionRate>;
     /**
      * Estimated curves. Each curve will pertain to a single estimation type.
-     * @type {Array<CampaignPlanningCurveEstimate>}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     curves?: Array<CampaignPlanningCurveEstimate>;
     /**
      * 
-     * @type {CampaignDeliveryEstimatesDerivedMetrics}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     derivedMetrics?: CampaignDeliveryEstimatesDerivedMetrics;
     /**
      * Errors encountered during estimation for this campaign.
-     * @type {Array<CampaignPlanningResponseError>}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     errors?: Array<CampaignPlanningResponseError>;
     /**
      * UUID used to track delivery estimates when they are generated as part of a saved campaign.
-     * @type {string}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     estimateId?: string;
     /**
      * Maximum potential spend estimate.
-     * @type {number}
-     * @memberof BulkCampaignDeliveryEstimatesItem
      */
     maxPotentialSpend?: number;
 }

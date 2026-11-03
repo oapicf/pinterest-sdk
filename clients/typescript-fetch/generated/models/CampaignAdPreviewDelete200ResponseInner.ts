@@ -29,8 +29,6 @@ import {
 export interface CampaignAdPreviewDelete200ResponseInner {
     /**
      * 
-     * @type {CampaignAdPreviewDelete200ResponseInnerStatus}
-     * @memberof CampaignAdPreviewDelete200ResponseInner
      */
     status: CampaignAdPreviewDelete200ResponseInnerStatus;
 }

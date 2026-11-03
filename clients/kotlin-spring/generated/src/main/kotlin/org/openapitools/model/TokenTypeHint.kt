@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The type of token to revoke.
-* Values: access_token,refresh_token
-*/
+ * The type of token to revoke.
+ * Values: access_token,refresh_token
+ */
 enum class TokenTypeHint(@get:JsonValue val value: kotlin.String) {
 
     access_token("access_token"),
@@ -28,9 +28,8 @@ enum class TokenTypeHint(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TokenTypeHint {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TokenTypeHint'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TokenTypeHint'")
         }
     }
 }
-

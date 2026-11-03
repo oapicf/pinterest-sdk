@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,7 +24,7 @@ import jakarta.annotation.Generated;
  * Label
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Label {
 
   private String id;
@@ -78,7 +77,7 @@ public class Label {
    * Get labelType
    * @return labelType
    */
-  @NotNull @Valid 
+  /* @Present */ @Valid 
   @Schema(name = "label_type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("label_type")
   public JsonNullable<NullableLabelType> getLabelType() {

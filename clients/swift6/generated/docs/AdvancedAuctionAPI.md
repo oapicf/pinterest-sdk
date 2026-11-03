@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **advancedAuctionItemsGetPost**
 ```swift
-    open class func advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId: String? = nil, completion: @escaping (_ data: AdvancedAuctionItems?, _ error: Error?) -> Void)
+    open class func advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvancedAuctionItems
 ```
 
 Get item bid options (POST)
@@ -26,15 +26,11 @@ let advancedAuctionItemsGetRequest = AdvancedAuctionItemsGetRequest(catalogId: "
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get item bid options (POST)
-AdvancedAuctionAPI.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: advancedAuctionItemsGetRequest, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdvancedAuctionAPI.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: advancedAuctionItemsGetRequest, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -62,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **advancedAuctionItemsSubmitPost**
 ```swift
-    open class func advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId: String? = nil, completion: @escaping (_ data: AdvancedAuctionProcessedItems?, _ error: Error?) -> Void)
+    open class func advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvancedAuctionProcessedItems
 ```
 
 Operate on item level bid options
@@ -78,15 +74,11 @@ let advancedAuctionItemsSubmitRequest = AdvancedAuctionItemsSubmitRequest(catalo
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Operate on item level bid options
-AdvancedAuctionAPI.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: advancedAuctionItemsSubmitRequest, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdvancedAuctionAPI.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: advancedAuctionItemsSubmitRequest, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

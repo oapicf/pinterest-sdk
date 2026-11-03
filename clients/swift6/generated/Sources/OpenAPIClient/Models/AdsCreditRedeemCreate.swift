@@ -10,7 +10,7 @@ import Foundation
 /** Resource create operation model. */
 public struct AdsCreditRedeemCreate: Sendable, Codable, Hashable {
 
-    public static let offerCodeHashRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[a-z0-9]*$/")
+    public static let offerCodeHashRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[a-z0-9]*$")
     /** Takes in a SHA256 hash of the offerCode. */
     public var offerCodeHash: String
     /** If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account */

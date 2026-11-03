@@ -115,7 +115,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   * Number of days to use as the conversion attribution window for a pin click action.
   */
   @JsonbProperty("click_window_days")
-  protected ConversionAttributionWindowDays clickWindowDays;
+  protected ConversionAttributionWindowDays clickWindowDays = 30;
 
  /**
   * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
@@ -133,7 +133,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   * Date dimension for conversion metrics.
   */
   @JsonbProperty("conversion_report_time")
-  protected ConversionReportTimeType conversionReportTime;
+  protected ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
  /**
   * List of advertiser-defined custom conversion event metrics to include in the report
@@ -157,7 +157,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   * Number of days to use as the conversion attribution window for an engagement action.
   */
   @JsonbProperty("engagement_window_days")
-  protected ConversionAttributionWindowDays engagementWindowDays;
+  protected ConversionAttributionWindowDays engagementWindowDays = 30;
 
  /**
   *   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
@@ -178,7 +178,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   protected List<AdsAnalyticsMetricsFilter> metricsFilters = null;
 
   @JsonbProperty("primary_sort")
-  protected PrimarySort primarySort;
+  protected PrimarySort primarySort = PrimarySort.BY_ID;
 
  /**
   * List of product group ids
@@ -199,7 +199,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   protected List<String> productItemIds = null;
 
   @JsonbProperty("report_format")
-  protected DataOutputFormat reportFormat;
+  protected DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
  /**
   * Specify the timezone to be applied for the reporting.
@@ -229,7 +229,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   * Number of days to use as the conversion attribution window for a view action.
   */
   @JsonbProperty("view_window_days")
-  protected ConversionAttributionWindowDays viewWindowDays;
+  protected ConversionAttributionWindowDays viewWindowDays = 1;
 
 
   /**

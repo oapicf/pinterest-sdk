@@ -29,14 +29,10 @@ import {
 export interface SearchPartnerPins200Response {
     /**
      * 
-     * @type {string}
-     * @memberof SearchPartnerPins200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<SummaryPin>}
-     * @memberof SearchPartnerPins200Response
      */
     items: Array<SummaryPin>;
 }

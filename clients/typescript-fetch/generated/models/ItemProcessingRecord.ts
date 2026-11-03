@@ -36,26 +36,18 @@ import {
 export interface ItemProcessingRecord {
     /**
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-     * @type {Array<ItemValidationEvent>}
-     * @memberof ItemProcessingRecord
      */
     errors?: Array<ItemValidationEvent>;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof ItemProcessingRecord
      */
     itemId?: string;
     /**
      * 
-     * @type {ItemProcessingStatus}
-     * @memberof ItemProcessingRecord
      */
     status?: ItemProcessingStatus;
     /**
      * Array with the validation warnings for the item processing record
-     * @type {Array<ItemValidationEvent>}
-     * @memberof ItemProcessingRecord
      */
     warnings?: Array<ItemValidationEvent>;
 }

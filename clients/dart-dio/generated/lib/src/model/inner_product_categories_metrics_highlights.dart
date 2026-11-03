@@ -105,3 +105,4 @@ class _$InnerProductCategoriesMetricsHighlightsSerializer implements PrimitiveSe
   }
 }
 
+

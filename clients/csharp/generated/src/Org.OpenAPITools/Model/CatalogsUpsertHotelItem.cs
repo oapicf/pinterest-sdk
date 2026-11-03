@@ -206,7 +206,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsUpsertHotelItem.OperationEnum?>(CatalogsUpsertHotelItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsUpsertHotelItem.OperationEnum? operationValue = CatalogsUpsertHotelItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsUpsertHotelItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -215,22 +220,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributes.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertHotelItem.", nameof(attributes));
+                throw new JsonException("Property is required for class CatalogsUpsertHotelItem: attributes.");
 
             if (!hotelId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertHotelItem.", nameof(hotelId));
+                throw new JsonException("Property is required for class CatalogsUpsertHotelItem: hotel_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertHotelItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsUpsertHotelItem: operation.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class CatalogsUpsertHotelItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertHotelItem: attributes.");
 
             if (hotelId.IsSet && hotelId.Value == null)
-                throw new ArgumentNullException(nameof(hotelId), "Property is not nullable for class CatalogsUpsertHotelItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertHotelItem: hotel_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsUpsertHotelItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertHotelItem: operation.");
 
             return new CatalogsUpsertHotelItem(attributes.Value!, hotelId.Value!, operation.Value!.Value!);
         }
@@ -241,7 +246,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpsertHotelItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsUpsertHotelItem catalogsUpsertHotelItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -256,15 +260,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpsertHotelItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsUpsertHotelItem catalogsUpsertHotelItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsUpsertHotelItem.Attributes == null)
-                throw new ArgumentNullException(nameof(catalogsUpsertHotelItem.Attributes), "Property is required for class CatalogsUpsertHotelItem.");
-
-            if (catalogsUpsertHotelItem.HotelId == null)
-                throw new ArgumentNullException(nameof(catalogsUpsertHotelItem.HotelId), "Property is required for class CatalogsUpsertHotelItem.");
-
             writer.WritePropertyName("attributes");
             JsonSerializer.Serialize(writer, catalogsUpsertHotelItem.Attributes, jsonSerializerOptions);
             writer.WriteString("hotel_id", catalogsUpsertHotelItem.HotelId);

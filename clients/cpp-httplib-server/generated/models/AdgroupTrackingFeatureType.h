@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AdgroupTrackingFeatureType
-{
-public:
-
-    AdgroupTrackingFeatureType();
-    virtual ~AdgroupTrackingFeatureType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdgroupTrackingFeatureType,
-        )
-
-private:
+enum class AdgroupTrackingFeatureType {
+    
+    TRENDS,
+    
+    CLONE_META,
+    
+    BULK_EDITOR,
+    
+    AD_ROTATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdgroupTrackingFeatureType& value)
+{
+    switch (value)
+    {
+        
+        case AdgroupTrackingFeatureType::TRENDS: j = "TRENDS"; break;
+        
+        case AdgroupTrackingFeatureType::CLONE_META: j = "CLONE_META"; break;
+        
+        case AdgroupTrackingFeatureType::BULK_EDITOR: j = "BULK_EDITOR"; break;
+        
+        case AdgroupTrackingFeatureType::AD_ROTATION: j = "AD_ROTATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdgroupTrackingFeatureType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdgroupTrackingFeatureType& value)
+{
+    
+    if (j == "TRENDS")
+    {
+        value = AdgroupTrackingFeatureType::TRENDS;
+        return;
+    }
+    
+    if (j == "CLONE_META")
+    {
+        value = AdgroupTrackingFeatureType::CLONE_META;
+        return;
+    }
+    
+    if (j == "BULK_EDITOR")
+    {
+        value = AdgroupTrackingFeatureType::BULK_EDITOR;
+        return;
+    }
+    
+    if (j == "AD_ROTATION")
+    {
+        value = AdgroupTrackingFeatureType::AD_ROTATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdgroupTrackingFeatureType", &j);
+}
 
 } // namespace models
 

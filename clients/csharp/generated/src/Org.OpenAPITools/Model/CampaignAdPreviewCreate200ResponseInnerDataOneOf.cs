@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!exceptions.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreviewCreate200ResponseInnerDataOneOf.", nameof(exceptions));
+                throw new JsonException("Property is required for class CampaignAdPreviewCreate200ResponseInnerDataOneOf: exceptions.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class CampaignAdPreviewCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreviewCreate200ResponseInnerDataOneOf: exceptions.");
 
             return new CampaignAdPreviewCreate200ResponseInnerDataOneOf(exceptions.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreviewCreate200ResponseInnerDataOneOf campaignAdPreviewCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreviewCreate200ResponseInnerDataOneOf campaignAdPreviewCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignAdPreviewCreate200ResponseInnerDataOneOf.Exceptions == null)
-                throw new ArgumentNullException(nameof(campaignAdPreviewCreate200ResponseInnerDataOneOf.Exceptions), "Property is required for class CampaignAdPreviewCreate200ResponseInnerDataOneOf.");
-
             writer.WritePropertyName("exceptions");
             JsonSerializer.Serialize(writer, campaignAdPreviewCreate200ResponseInnerDataOneOf.Exceptions, jsonSerializerOptions);
         }

@@ -364,40 +364,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class LocalStoreBatchUpdate.", nameof(id));
+                throw new JsonException("Property is required for class LocalStoreBatchUpdate: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: id.");
 
             if (addressPrimary.IsSet && addressPrimary.Value == null)
-                throw new ArgumentNullException(nameof(addressPrimary), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: address_primary.");
 
             if (addressSecondary.IsSet && addressSecondary.Value == null)
-                throw new ArgumentNullException(nameof(addressSecondary), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: address_secondary.");
 
             if (city.IsSet && city.Value == null)
-                throw new ArgumentNullException(nameof(city), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: city.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: country.");
 
             if (latitude.IsSet && latitude.Value == null)
-                throw new ArgumentNullException(nameof(latitude), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: latitude.");
 
             if (longitude.IsSet && longitude.Value == null)
-                throw new ArgumentNullException(nameof(longitude), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: longitude.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: name.");
 
             if (postalCode.IsSet && postalCode.Value == null)
-                throw new ArgumentNullException(nameof(postalCode), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: postal_code.");
 
             if (region.IsSet && region.Value == null)
-                throw new ArgumentNullException(nameof(region), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: region.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class LocalStoreBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LocalStoreBatchUpdate: store_code.");
 
             return new LocalStoreBatchUpdate(id.Value!, addressPrimary, addressSecondary, city, country, latitude, longitude, name, postalCode, region, storeCode);
         }
@@ -408,7 +408,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localStoreBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalStoreBatchUpdate localStoreBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -423,32 +422,37 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localStoreBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalStoreBatchUpdate localStoreBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localStoreBatchUpdate.Id == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.Id), "Property is required for class LocalStoreBatchUpdate.");
-
             if (localStoreBatchUpdate.AddressPrimaryOption.IsSet && localStoreBatchUpdate.AddressPrimary == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.AddressPrimary), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.AddressPrimary to non-nullable JSON property 'address_primary'.");
 
             if (localStoreBatchUpdate.AddressSecondaryOption.IsSet && localStoreBatchUpdate.AddressSecondary == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.AddressSecondary), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.AddressSecondary to non-nullable JSON property 'address_secondary'.");
 
             if (localStoreBatchUpdate.CityOption.IsSet && localStoreBatchUpdate.City == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.City), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.City to non-nullable JSON property 'city'.");
+
+            if (localStoreBatchUpdate.CountryOption.IsSet && localStoreBatchUpdate.Country == null)
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.Country to non-nullable JSON property 'country'.");
+
+            if (localStoreBatchUpdate.LatitudeOption.IsSet && localStoreBatchUpdate.Latitude == null)
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.Latitude to non-nullable JSON property 'latitude'.");
+
+            if (localStoreBatchUpdate.LongitudeOption.IsSet && localStoreBatchUpdate.Longitude == null)
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.Longitude to non-nullable JSON property 'longitude'.");
 
             if (localStoreBatchUpdate.NameOption.IsSet && localStoreBatchUpdate.Name == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.Name), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.Name to non-nullable JSON property 'name'.");
 
             if (localStoreBatchUpdate.PostalCodeOption.IsSet && localStoreBatchUpdate.PostalCode == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.PostalCode), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.PostalCode to non-nullable JSON property 'postal_code'.");
 
             if (localStoreBatchUpdate.RegionOption.IsSet && localStoreBatchUpdate.Region == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.Region), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.Region to non-nullable JSON property 'region'.");
 
             if (localStoreBatchUpdate.StoreCodeOption.IsSet && localStoreBatchUpdate.StoreCode == null)
-                throw new ArgumentNullException(nameof(localStoreBatchUpdate.StoreCode), "Property is required for class LocalStoreBatchUpdate.");
+                throw new JsonException("Cannot write null property LocalStoreBatchUpdate.StoreCode to non-nullable JSON property 'store_code'.");
 
             writer.WriteString("id", localStoreBatchUpdate.Id);
 

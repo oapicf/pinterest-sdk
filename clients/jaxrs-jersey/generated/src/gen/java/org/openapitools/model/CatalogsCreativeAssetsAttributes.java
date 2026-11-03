@@ -46,7 +46,7 @@ import javax.validation.Valid;
   CatalogsCreativeAssetsAttributes.JSON_PROPERTY_IMAGE_LINK,
   CatalogsCreativeAssetsAttributes.JSON_PROPERTY_VIDEO_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsAttributes   {
   public static final String JSON_PROPERTY_ANDROID_DEEP_LINK = "android_deep_link";
   @JsonProperty(JSON_PROPERTY_ANDROID_DEEP_LINK)
@@ -367,7 +367,7 @@ public class CatalogsCreativeAssetsAttributes   {
    **/
   @JsonProperty(value = "ai_disclosures")
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.")
-  @Valid 
+  
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }

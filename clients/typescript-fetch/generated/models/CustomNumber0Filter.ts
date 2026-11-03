@@ -29,8 +29,6 @@ import {
 export interface CustomNumber0Filter {
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CustomNumber0Filter
      */
     cUSTOMNUMBER0: CatalogsProductGroupUint32Criteria;
 }

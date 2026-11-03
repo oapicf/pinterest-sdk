@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,7 +28,7 @@ import jakarta.annotation.Generated;
  * CustomerListUpload
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpload {
 
   private String adAccountId;
@@ -38,7 +37,6 @@ public class CustomerListUpload {
 
   private String customerListId;
 
-  @Valid
   private JsonNullable<List<@Valid ErrorDetail>> errorCounts = JsonNullable.<List<@Valid ErrorDetail>>undefined();
 
   private String id;
@@ -145,7 +143,7 @@ public class CustomerListUpload {
    * Error counts by error code
    * @return errorCounts
    */
-  @Valid 
+  
   @Schema(name = "error_counts", example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", description = "Error counts by error code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("error_counts")
   public JsonNullable<List<@Valid ErrorDetail>> getErrorCounts() {

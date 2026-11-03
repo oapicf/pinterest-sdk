@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **orderLinesGet**
 ```swift
-    open class func orderLinesGet(orderLineId: String, adAccountId: String, completion: @escaping (_ data: OrderLine?, _ error: Error?) -> Void)
+    open class func orderLinesGet(orderLineId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> OrderLine
 ```
 
 Get order line
@@ -26,15 +26,11 @@ let orderLineId = "orderLineId_example" // String | Order line ID.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get order line
-OrderLinesAPI.orderLinesGet(orderLineId: orderLineId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await OrderLinesAPI.orderLinesGet(orderLineId: orderLineId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -62,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **orderLinesList**
 ```swift
-    open class func orderLinesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: OrderLinesList200Response?, _ error: Error?) -> Void)
+    open class func orderLinesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> OrderLinesList200Response
 ```
 
 Get order lines.
@@ -80,15 +76,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // Get order lines.
-OrderLinesAPI.orderLinesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await OrderLinesAPI.orderLinesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

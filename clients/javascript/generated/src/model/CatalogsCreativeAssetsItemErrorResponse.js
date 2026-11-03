@@ -17,7 +17,7 @@ import ItemValidationEvent from './ItemValidationEvent';
 /**
  * The CatalogsCreativeAssetsItemErrorResponse model module.
  * @module model/CatalogsCreativeAssetsItemErrorResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsItemErrorResponse {
     /**

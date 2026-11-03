@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -23,8 +20,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class DynamicTitlesDownloadCSV(
 
     @Schema(example = "https://s3.amazonaws.com/bucket/dynamic_titles/review.csv?AWSAccessKeyId=...", description = "Pre-signed S3 URL to download the CSV file.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("download_url")
     @get:JsonProperty("download_url") val downloadUrl: kotlin.String? = null
 ) {

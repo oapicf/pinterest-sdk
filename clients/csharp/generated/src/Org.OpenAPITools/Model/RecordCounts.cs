@@ -162,22 +162,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!invalid.IsSet)
-                throw new ArgumentException("Property is required for class RecordCounts.", nameof(invalid));
+                throw new JsonException("Property is required for class RecordCounts: invalid.");
 
             if (!processed.IsSet)
-                throw new ArgumentException("Property is required for class RecordCounts.", nameof(processed));
+                throw new JsonException("Property is required for class RecordCounts: processed.");
 
             if (!valid.IsSet)
-                throw new ArgumentException("Property is required for class RecordCounts.", nameof(valid));
+                throw new JsonException("Property is required for class RecordCounts: valid.");
 
             if (invalid.IsSet && invalid.Value == null)
-                throw new ArgumentNullException(nameof(invalid), "Property is not nullable for class RecordCounts.");
+                throw new JsonException("Property is not nullable for class RecordCounts: invalid.");
 
             if (processed.IsSet && processed.Value == null)
-                throw new ArgumentNullException(nameof(processed), "Property is not nullable for class RecordCounts.");
+                throw new JsonException("Property is not nullable for class RecordCounts: processed.");
 
             if (valid.IsSet && valid.Value == null)
-                throw new ArgumentNullException(nameof(valid), "Property is not nullable for class RecordCounts.");
+                throw new JsonException("Property is not nullable for class RecordCounts: valid.");
 
             return new RecordCounts(invalid.Value!.Value!, processed.Value!.Value!, valid.Value!.Value!);
         }
@@ -188,7 +188,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="recordCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, RecordCounts recordCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -203,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="recordCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, RecordCounts recordCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("invalid", recordCounts.Invalid);

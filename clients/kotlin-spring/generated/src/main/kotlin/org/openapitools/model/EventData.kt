@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.Currency
 import org.openapitools.model.LineItem
 import javax.validation.constraints.DecimalMax
@@ -29,78 +26,56 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param orderQuantity Order quantity. For example, 1.
  * @param pageName Page name. For example, 'Our Favorite Pins on Pinterest'.
  * @param promoCode Promotion code. For example, 'WINTER10'.
- * @param &#x60;property&#x60; Property. For example, 'Athleta'.
+ * @param `property` Property. For example, 'Athleta'.
  * @param searchQuery Search query string. For example, 'boots'.
- * @param &#x60;value&#x60; Product value. For example, '199.98'.
+ * @param `value` Product value. For example, '199.98'.
  * @param videoTitle Video title. For example, 'How to style your Parker Boots'.
  */
 data class EventData(
 
     @field:Valid
     @Schema(description = "Currency. For example, 'USD'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("currency")
     @get:JsonProperty("currency") val currency: Currency? = null,
 
     @Schema(example = "Newsletter", description = "Promotion code. For example, 'Newsletter'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("lead_type")
     @get:JsonProperty("lead_type") val leadType: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("line_items")
     @get:JsonProperty("line_items") val lineItems: LineItem? = null,
 
     @Schema(example = "X-151481", description = "Order ID. For example, 'X-151481'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("order_id")
     @get:JsonProperty("order_id") val orderId: kotlin.String? = null,
 
     @Schema(example = "1", description = "Order quantity. For example, 1.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("order_quantity")
     @get:JsonProperty("order_quantity") val orderQuantity: kotlin.Int? = null,
 
     @Schema(example = "Our Favorite Pins on Pinterest", description = "Page name. For example, 'Our Favorite Pins on Pinterest'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("page_name")
     @get:JsonProperty("page_name") val pageName: kotlin.String? = null,
 
     @Schema(example = "WINTER10", description = "Promotion code. For example, 'WINTER10'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("promo_code")
     @get:JsonProperty("promo_code") val promoCode: kotlin.String? = null,
 
     @Schema(example = "Athleta", description = "Property. For example, 'Athleta'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("property")
     @get:JsonProperty("property") val `property`: kotlin.String? = null,
 
     @Schema(example = "boots", description = "Search query string. For example, 'boots'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("search_query")
     @get:JsonProperty("search_query") val searchQuery: kotlin.String? = null,
 
     @Schema(example = "199.98", description = "Product value. For example, '199.98'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("value")
     @get:JsonProperty("value") val `value`: kotlin.String? = null,
 
     @Schema(example = "How to style your Parker Boots", description = "Video title. For example, 'How to style your Parker Boots'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("video_title")
     @get:JsonProperty("video_title") val videoTitle: kotlin.String? = null
 ) {

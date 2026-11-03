@@ -6,20 +6,3 @@
 */
 #include "CustomizableCTAType.h"
 
-namespace models {
-
-CustomizableCTAType::CustomizableCTAType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

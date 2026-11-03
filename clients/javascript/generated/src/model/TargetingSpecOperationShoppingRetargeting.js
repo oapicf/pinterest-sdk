@@ -17,7 +17,7 @@ import TargetingSpecShoppingRetargeting from './TargetingSpecShoppingRetargeting
 /**
  * The TargetingSpecOperationShoppingRetargeting model module.
  * @module model/TargetingSpecOperationShoppingRetargeting
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOperationShoppingRetargeting {
     /**

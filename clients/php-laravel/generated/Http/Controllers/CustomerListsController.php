@@ -51,10 +51,10 @@ class CustomerListsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,19 +116,19 @@ class CustomerListsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'customerListId' => $customerListId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'customer_list_id' => $customerListId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'customerListId' => [
+                'customer_list_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -188,13 +188,13 @@ class CustomerListsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -203,14 +203,14 @@ class CustomerListsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'excludeNca' => [
+                'exclude_nca' => [
                     'boolean',
                 ],
             ],
@@ -223,11 +223,11 @@ class CustomerListsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $excludeNca = $request->boolean('excludeNca');
+        $excludeNca = $request->boolean('exclude_nca');
 
 
         $apiResult = $this->api->customerListsList($adAccountId, $bookmark, $pageSize, $order, $excludeNca);
@@ -274,10 +274,10 @@ class CustomerListsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'customerListId' => $customerListId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'customer_list_id' => $customerListId,
+                ],
             ),
             [
             ],

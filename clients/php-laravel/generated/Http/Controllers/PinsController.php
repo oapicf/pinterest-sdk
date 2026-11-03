@@ -51,31 +51,31 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'pinIds' => [
+                'pin_ids' => [
                     'required',
                     'min:1',
                     'max:100',
                     'array',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'metricTypes' => [
+                'metric_types' => [
                     'required',
                     'array',
                 ],
-                'appTypes' => [
+                'app_types' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -87,17 +87,17 @@ class PinsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $pinIds = $request->get('pinIds');
+        $pinIds = $request->get('pin_ids');
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $metricTypes = $request->get('metricTypes');
+        $metricTypes = $request->get('metric_types');
 
         $appTypes = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\MultiPinsAnalyticsAppTypesParameter::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->multiPinsAnalytics($pinIds, $startDate, $endDate, $metricTypes, $appTypes, $adAccountId);
@@ -145,31 +145,31 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
-                'pinId' => [
+                'pin_id' => [
                     'required',
                     'string',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'metricTypes' => [
+                'metric_types' => [
                     'required',
                     'array',
                 ],
-                'appTypes' => [
+                'app_types' => [
                 ],
-                'splitField' => [
+                'split_field' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -182,17 +182,17 @@ class PinsController extends Controller
         }
 
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $metricTypes = $request->get('metricTypes');
+        $metricTypes = $request->get('metric_types');
 
         $appTypes = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\MultiPinsAnalyticsAppTypesParameter::class);
 
         $splitField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinsAnalyticsSplitFieldParameter::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->pinsAnalytics($pinId, $startDate, $endDate, $metricTypes, $appTypes, $splitField, $adAccountId);
@@ -240,10 +240,10 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -255,7 +255,7 @@ class PinsController extends Controller
 
         $pinCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->pinsCreate($pinCreate, $adAccountId);
@@ -306,18 +306,18 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
-                'pinId' => [
+                'pin_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -330,7 +330,7 @@ class PinsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->pinsDelete($pinId, $adAccountId);
@@ -381,23 +381,23 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
-                'pinId' => [
+                'pin_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinMetrics' => [
+                'pin_metrics' => [
                     'boolean',
                 ],
             ],
@@ -408,9 +408,9 @@ class PinsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $pinMetrics = $request->boolean('pinMetrics');
+        $pinMetrics = $request->boolean('pin_metrics');
 
 
         $apiResult = $this->api->pinsGet($pinId, $adAccountId, $pinMetrics);
@@ -457,26 +457,26 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'pinFilter' => [
+                'pin_filter' => [
                 ],
-                'pinMetrics' => [
+                'pin_metrics' => [
                     'boolean',
                 ],
-                'includeProtectedPins' => [
+                'include_protected_pins' => [
                     'boolean',
                 ],
-                'pinType' => [
+                'pin_type' => [
                 ],
-                'creativeTypes' => [
+                'creative_types' => [
                     'array',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -489,13 +489,13 @@ class PinsController extends Controller
                     'max:100',
                     'array',
                 ],
-                'includeProductTagObj' => [
+                'include_product_tag_obj' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -509,25 +509,25 @@ class PinsController extends Controller
 
         $pinFilter = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinFilter::class);
 
-        $pinMetrics = $request->boolean('pinMetrics');
+        $pinMetrics = $request->boolean('pin_metrics');
 
-        $includeProtectedPins = $request->boolean('includeProtectedPins');
+        $includeProtectedPins = $request->boolean('include_protected_pins');
 
         $pinType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinType::class);
 
-        $creativeTypes = $request->get('creativeTypes');
+        $creativeTypes = $request->get('creative_types');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $domain = $request->string('domain')->value();
 
         $domains = $request->get('domains');
 
-        $includeProductTagObj = $request->boolean('includeProductTagObj');
+        $includeProductTagObj = $request->boolean('include_product_tag_obj');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->pinsList($pinFilter, $pinMetrics, $includeProtectedPins, $pinType, $creativeTypes, $adAccountId, $domain, $domains, $includeProductTagObj, $bookmark, $pageSize);
@@ -574,10 +574,10 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
             ],
@@ -590,7 +590,7 @@ class PinsController extends Controller
 
         $pinsSaveRequestCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinsSaveRequestCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->pinsSave($pinId, $pinsSaveRequestCreate, $adAccountId);
@@ -637,10 +637,10 @@ class PinsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
             ],
@@ -653,7 +653,7 @@ class PinsController extends Controller
 
         $pinUpdate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinUpdate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->pinsUpdate($pinId, $pinUpdate, $adAccountId);

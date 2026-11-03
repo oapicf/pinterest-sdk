@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface InviteAssetsSummaryItem {
     /**
      * Unique identifier of the asset.
-     * @type {string}
-     * @memberof InviteAssetsSummaryItem
      */
     id?: string;
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof InviteAssetsSummaryItem
      */
     permissions?: Array<string>;
 }

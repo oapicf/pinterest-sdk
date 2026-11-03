@@ -52,7 +52,7 @@ import javax.validation.Valid;
   ItemResponse.JSON_PROPERTY_CREATIVE_ASSETS_ID,
   ItemResponse.JSON_PROPERTY_ERRORS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_response_kind", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_response_kind", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "creative_assets_item"),
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "creative_assets_item_error"),
@@ -260,7 +260,7 @@ public class ItemResponse   {
    **/
   @JsonProperty(value = "pins")
   @ApiModelProperty(value = "The pins mapped to the item")
-  @Valid  @Size(max=11)
+   @Size(max=11)
   public List<@Valid Pin> getPins() {
     return pins;
   }
@@ -328,7 +328,7 @@ public class ItemResponse   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
-  @NotNull @Valid 
+  @NotNull 
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }

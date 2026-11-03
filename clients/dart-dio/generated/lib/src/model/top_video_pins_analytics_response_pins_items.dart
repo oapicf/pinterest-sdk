@@ -148,3 +148,4 @@ class _$TopVideoPinsAnalyticsResponsePinsItemsSerializer implements PrimitiveSer
   }
 }
 
+

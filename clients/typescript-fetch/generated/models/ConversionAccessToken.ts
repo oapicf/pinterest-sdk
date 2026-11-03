@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface ConversionAccessToken {
     /**
      * 
-     * @type {string}
-     * @memberof ConversionAccessToken
      */
     accessToken: string;
     /**
      * 
-     * @type {string}
-     * @memberof ConversionAccessToken
      */
     tokenType?: string;
 }

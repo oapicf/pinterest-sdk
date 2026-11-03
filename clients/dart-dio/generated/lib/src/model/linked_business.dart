@@ -188,3 +188,4 @@ class _$LinkedBusinessSerializer implements PrimitiveSerializer<LinkedBusiness> 
   }
 }
 
+

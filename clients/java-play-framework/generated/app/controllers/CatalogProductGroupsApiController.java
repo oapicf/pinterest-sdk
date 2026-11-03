@@ -32,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogProductGroupsApiController extends Controller {
     private final CatalogProductGroupsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -103,9 +103,9 @@ public class CatalogProductGroupsApiController extends Controller {
     @ApiAction
     public Result catalogsProductGroupsCreateMany(Http.Request request) throws Exception {
         JsonNode nodecatalogsProductGroupsCreateManyRequestItems = request.body().asJson();
-        List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems;
+        List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems;
         if (nodecatalogsProductGroupsCreateManyRequestItems != null) {
-            catalogsProductGroupsCreateManyRequestItems = mapper.readValue(nodecatalogsProductGroupsCreateManyRequestItems.toString(), new TypeReference<List<CatalogsProductGroupsCreateManyRequestItems>>(){});
+            catalogsProductGroupsCreateManyRequestItems = mapper.readValue(nodecatalogsProductGroupsCreateManyRequestItems.toString(), new TypeReference<List<@Valid CatalogsProductGroupsCreateManyRequestItems>>(){});
             if (configuration.getBoolean("useInputBeanValidation")) {
                 for (CatalogsProductGroupsCreateManyRequestItems curItem : catalogsProductGroupsCreateManyRequestItems) {
                     OpenAPIUtils.validate(curItem);

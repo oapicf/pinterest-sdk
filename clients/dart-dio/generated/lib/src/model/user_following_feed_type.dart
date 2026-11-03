@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'user_following_feed_type.g.dart';
 
+/// Specifies the type of followees to be kept when filtering them.
 class UserFollowingFeedType extends EnumClass {
 
-  /// Specifies the type of followees to be kept when filtering them.
   @BuiltValueEnumConst(wireName: r'ALL')
   static const UserFollowingFeedType ALL = _$ALL;
-  /// Specifies the type of followees to be kept when filtering them.
   @BuiltValueEnumConst(wireName: r'RANKED')
   static const UserFollowingFeedType RANKED = _$RANKED;
-  /// Specifies the type of followees to be kept when filtering them.
   @BuiltValueEnumConst(wireName: r'CREATOR_ONLY')
   static const UserFollowingFeedType CREATOR_ONLY = _$CREATOR_ONLY;
-  /// Specifies the type of followees to be kept when filtering them.
   @BuiltValueEnumConst(wireName: r'RANKED_CREATOR_ONLY')
   static const UserFollowingFeedType RANKED_CREATOR_ONLY = _$RANKED_CREATOR_ONLY;
 

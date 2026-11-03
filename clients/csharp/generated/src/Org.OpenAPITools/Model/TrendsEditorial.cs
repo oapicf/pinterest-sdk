@@ -204,40 +204,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!boardUrl.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(boardUrl));
+                throw new JsonException("Property is required for class TrendsEditorial: board_url.");
 
             if (!description.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(description));
+                throw new JsonException("Property is required for class TrendsEditorial: description.");
 
             if (!interests.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(interests));
+                throw new JsonException("Property is required for class TrendsEditorial: interests.");
 
             if (!pinsUrl.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(pinsUrl));
+                throw new JsonException("Property is required for class TrendsEditorial: pins_url.");
 
             if (!relatedKeywords.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(relatedKeywords));
+                throw new JsonException("Property is required for class TrendsEditorial: related_keywords.");
 
             if (!title.IsSet)
-                throw new ArgumentException("Property is required for class TrendsEditorial.", nameof(title));
+                throw new JsonException("Property is required for class TrendsEditorial: title.");
 
             if (boardUrl.IsSet && boardUrl.Value == null)
-                throw new ArgumentNullException(nameof(boardUrl), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: board_url.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: description.");
 
             if (interests.IsSet && interests.Value == null)
-                throw new ArgumentNullException(nameof(interests), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: interests.");
 
             if (pinsUrl.IsSet && pinsUrl.Value == null)
-                throw new ArgumentNullException(nameof(pinsUrl), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: pins_url.");
 
             if (relatedKeywords.IsSet && relatedKeywords.Value == null)
-                throw new ArgumentNullException(nameof(relatedKeywords), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: related_keywords.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class TrendsEditorial.");
+                throw new JsonException("Property is not nullable for class TrendsEditorial: title.");
 
             return new TrendsEditorial(boardUrl.Value!, description.Value!, interests.Value!, pinsUrl.Value!, relatedKeywords.Value!, title.Value!);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsEditorial"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendsEditorial trendsEditorial, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,27 +262,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsEditorial"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendsEditorial trendsEditorial, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (trendsEditorial.BoardUrl == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.BoardUrl), "Property is required for class TrendsEditorial.");
-
-            if (trendsEditorial.Description == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.Description), "Property is required for class TrendsEditorial.");
-
-            if (trendsEditorial.Interests == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.Interests), "Property is required for class TrendsEditorial.");
-
-            if (trendsEditorial.PinsUrl == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.PinsUrl), "Property is required for class TrendsEditorial.");
-
-            if (trendsEditorial.RelatedKeywords == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.RelatedKeywords), "Property is required for class TrendsEditorial.");
-
-            if (trendsEditorial.Title == null)
-                throw new ArgumentNullException(nameof(trendsEditorial.Title), "Property is required for class TrendsEditorial.");
-
             writer.WriteString("board_url", trendsEditorial.BoardUrl);
 
             writer.WriteString("description", trendsEditorial.Description);

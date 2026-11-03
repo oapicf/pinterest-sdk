@@ -409,3 +409,4 @@ class _$IntegrationRecordSerializer implements PrimitiveSerializer<IntegrationRe
   }
 }
 
+

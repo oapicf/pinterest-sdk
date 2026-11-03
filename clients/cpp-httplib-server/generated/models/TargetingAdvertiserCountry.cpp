@@ -6,20 +6,3 @@
 */
 #include "TargetingAdvertiserCountry.h"
 
-namespace models {
-
-TargetingAdvertiserCountry::TargetingAdvertiserCountry()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -213,7 +213,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum? catalogTypeValue = CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "filters":
                             filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -225,22 +230,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest: catalog_id.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest: filters.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest: catalog_id.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelListProductsByCatalogBasedFilterRequest: filters.");
 
             return new CatalogsHotelListProductsByCatalogBasedFilterRequest(catalogId.Value!, catalogType.Value!.Value!, filters.Value!);
         }
@@ -251,7 +256,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -266,15 +270,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelListProductsByCatalogBasedFilterRequest catalogsHotelListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelListProductsByCatalogBasedFilterRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelListProductsByCatalogBasedFilterRequest.CatalogId), "Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest.");
-
-            if (catalogsHotelListProductsByCatalogBasedFilterRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsHotelListProductsByCatalogBasedFilterRequest.Filters), "Property is required for class CatalogsHotelListProductsByCatalogBasedFilterRequest.");
-
             writer.WriteString("catalog_id", catalogsHotelListProductsByCatalogBasedFilterRequest.CatalogId);
 
             var catalogTypeRawValue = CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnumToJsonValue(catalogsHotelListProductsByCatalogBasedFilterRequest.CatalogType);

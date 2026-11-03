@@ -29,14 +29,10 @@ import {
 export interface BoardsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof BoardsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Board>}
-     * @memberof BoardsList200Response
      */
     items: Array<Board>;
 }

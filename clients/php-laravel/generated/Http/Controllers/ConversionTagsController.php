@@ -51,10 +51,10 @@ class ConversionTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,19 +116,19 @@ class ConversionTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'conversionTagId' => $conversionTagId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'conversion_tag_id' => $conversionTagId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'conversionTagId' => [
+                'conversion_tag_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -188,19 +188,19 @@ class ConversionTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'filterDeleted' => [
+                'filter_deleted' => [
                     'boolean',
                 ],
             ],
@@ -211,7 +211,7 @@ class ConversionTagsController extends Controller
         }
 
 
-        $filterDeleted = $request->boolean('filterDeleted');
+        $filterDeleted = $request->boolean('filter_deleted');
 
 
         $apiResult = $this->api->conversionTagsList($adAccountId, $filterDeleted);
@@ -258,13 +258,13 @@ class ConversionTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -324,13 +324,13 @@ class ConversionTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -339,7 +339,7 @@ class ConversionTagsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -356,7 +356,7 @@ class ConversionTagsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 

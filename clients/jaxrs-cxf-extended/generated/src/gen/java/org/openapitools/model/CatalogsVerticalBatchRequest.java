@@ -80,7 +80,6 @@ public enum CatalogTypeEnum {
   * Array with creative assets item operations
   */
   @ApiModelProperty(required = true, value = "Array with creative assets item operations")
-  @Valid
   private List<@Valid CatalogsCreativeAssetsBatchItem> items = new ArrayList<>();
 
 public enum LanguageEnum {

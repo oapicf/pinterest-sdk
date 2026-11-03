@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.UserAccountType._
 
   /**
    * User account model containing properties related to a user's account.

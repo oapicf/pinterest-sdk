@@ -29,20 +29,14 @@ import {
 export interface CatalogsUpsertRetailItem {
     /**
      * 
-     * @type {ItemAttributesRequest}
-     * @memberof CatalogsUpsertRetailItem
      */
     attributes: ItemAttributesRequest;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsUpsertRetailItem
      */
     itemId: string;
     /**
      * 
-     * @type {CatalogsUpsertRetailItemOperationEnum}
-     * @memberof CatalogsUpsertRetailItem
      */
     operation: CatalogsUpsertRetailItemOperationEnum;
 }
@@ -52,7 +46,7 @@ export interface CatalogsUpsertRetailItem {
  * @export
  */
 export const CatalogsUpsertRetailItemOperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
 } as const;
 export type CatalogsUpsertRetailItemOperationEnum = typeof CatalogsUpsertRetailItemOperationEnum[keyof typeof CatalogsUpsertRetailItemOperationEnum];
 

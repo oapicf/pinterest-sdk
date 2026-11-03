@@ -60,22 +60,57 @@ import {
 } from '../models/SchedulesList200Response';
 
 export interface SchedulesCreateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     scheduleCreate: Array<ScheduleCreate>;
 }
 
 export interface SchedulesListRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * List of Entity IDs, must be associated with the Ad Accound ID provided in the path.
+     */
     entityIds: Array<string>;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * Filter schedules by status (one or more)
+     */
     scheduleStatuses?: Array<ScheduleStatus>;
+    /**
+     * Filter schedules by a type
+     */
     scheduleType?: ScheduleType;
 }
 
 export interface SchedulesUpdateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     scheduleBatchUpdate: Array<ScheduleBatchUpdate>;
 }
 

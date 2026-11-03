@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdsCreditRedeemCreate {
     /**
      * Takes in a SHA256 hash of the offerCode.
-     * @type {string}
-     * @memberof AdsCreditRedeemCreate
      */
     offerCodeHash: string;
     /**
      * If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
-     * @type {boolean}
-     * @memberof AdsCreditRedeemCreate
      */
     validateOnly: boolean;
 }

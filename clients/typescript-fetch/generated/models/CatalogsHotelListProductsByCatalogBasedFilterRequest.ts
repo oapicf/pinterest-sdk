@@ -29,20 +29,14 @@ import {
 export interface CatalogsHotelListProductsByCatalogBasedFilterRequest {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsHotelListProductsByCatalogBasedFilterRequest
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum}
-     * @memberof CatalogsHotelListProductsByCatalogBasedFilterRequest
      */
     catalogType: CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsHotelProductGroupFilters}
-     * @memberof CatalogsHotelListProductsByCatalogBasedFilterRequest
      */
     filters: CatalogsHotelProductGroupFilters;
 }
@@ -52,7 +46,7 @@ export interface CatalogsHotelListProductsByCatalogBasedFilterRequest {
  * @export
  */
 export const CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum = typeof CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum[keyof typeof CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum];
 

@@ -130,3 +130,4 @@ class _$LabeledEntitiesSerializer implements PrimitiveSerializer<LabeledEntities
   }
 }
 
+

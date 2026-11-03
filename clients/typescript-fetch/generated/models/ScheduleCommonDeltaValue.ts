@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { ScheduleBidOptions } from './ScheduleBidOptions';
 import {
     instanceOfScheduleBidOptions,
@@ -25,7 +26,7 @@ import {
  * 
  * @export
  */
-export type ScheduleCommonDeltaValue = ScheduleBidOptions | string;
+export type ScheduleCommonDeltaValue = ScheduleBidOptions | null | string;
 
 export function ScheduleCommonDeltaValueFromJSON(json: any): ScheduleCommonDeltaValue {
     return ScheduleCommonDeltaValueFromJSONTyped(json, false);

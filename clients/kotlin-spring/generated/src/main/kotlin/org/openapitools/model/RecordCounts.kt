@@ -22,15 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class RecordCounts(
 
     @Schema(required = true, description = "Number of invalid records processed")
-    @param:JsonProperty("invalid")
+    @param:JsonProperty("invalid", required = true)
     @get:JsonProperty("invalid", required = true) val invalid: kotlin.Int,
 
     @Schema(required = true, description = "Number of records processed")
-    @param:JsonProperty("processed")
+    @param:JsonProperty("processed", required = true)
     @get:JsonProperty("processed", required = true) val processed: kotlin.Int,
 
     @Schema(required = true, description = "Number of valid records processed")
-    @param:JsonProperty("valid")
+    @param:JsonProperty("valid", required = true)
     @get:JsonProperty("valid", required = true) val valid: kotlin.Int
 ) {
 

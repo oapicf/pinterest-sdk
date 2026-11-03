@@ -29,20 +29,14 @@ import {
 export interface TopPinsAnalyticsResponsePinsItems {
     /**
      * 
-     * @type {{ [key: string]: DataStatus; }}
-     * @memberof TopPinsAnalyticsResponsePinsItems
      */
     dataStatus?: { [key: string]: DataStatus; };
     /**
      * 
-     * @type {{ [key: string]: number; }}
-     * @memberof TopPinsAnalyticsResponsePinsItems
      */
     metrics?: { [key: string]: number; };
     /**
      * The pin id
-     * @type {string}
-     * @memberof TopPinsAnalyticsResponsePinsItems
      */
     pinId?: string;
 }

@@ -22,7 +22,7 @@ import CatalogsRetailProductGroup from './CatalogsRetailProductGroup';
 /**
  * The CatalogsVerticalProductGroup model module.
  * @module model/CatalogsVerticalProductGroup
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsVerticalProductGroup {
     /**

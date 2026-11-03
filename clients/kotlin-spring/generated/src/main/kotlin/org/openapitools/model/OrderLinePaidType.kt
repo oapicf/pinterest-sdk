@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Order Line Paid Type
-* Values: PAID,BONUS,MAKE_GOOD,TEST
-*/
+ * Order Line Paid Type
+ * Values: PAID,BONUS,MAKE_GOOD,TEST
+ */
 enum class OrderLinePaidType(@get:JsonValue val value: kotlin.String) {
 
     PAID("PAID"),
@@ -30,9 +30,8 @@ enum class OrderLinePaidType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OrderLinePaidType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OrderLinePaidType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OrderLinePaidType'")
         }
     }
 }
-

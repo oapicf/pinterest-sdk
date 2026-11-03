@@ -148,3 +148,4 @@ class _$CancelInviteResultUserSerializer implements PrimitiveSerializer<CancelIn
   }
 }
 
+

@@ -15,7 +15,7 @@
 export const WebsiteVerificationMethod = {
     Filename: 'FILENAME',
     Metatag: 'METATAG',
-    Dnstxt: 'DNSTXT'
+    Dnstxt: 'DNSTXT',
 } as const;
 export type WebsiteVerificationMethod = typeof WebsiteVerificationMethod[keyof typeof WebsiteVerificationMethod];
 

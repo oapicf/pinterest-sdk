@@ -6,20 +6,3 @@
 */
 #include "BillingProfileCardType.h"
 
-namespace models {
-
-BillingProfileCardType::BillingProfileCardType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class TieBreakerType
-{
-public:
-
-    TieBreakerType();
-    virtual ~TieBreakerType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TieBreakerType,
-        )
-
-private:
+enum class TieBreakerType {
+    
+    RANDOM,
+    
+    CUSTOM
+    
 };
 
+inline void to_json(nlohmann::json& j, const TieBreakerType& value)
+{
+    switch (value)
+    {
+        
+        case TieBreakerType::RANDOM: j = "RANDOM"; break;
+        
+        case TieBreakerType::CUSTOM: j = "CUSTOM"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TieBreakerType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TieBreakerType& value)
+{
+    
+    if (j == "RANDOM")
+    {
+        value = TieBreakerType::RANDOM;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = TieBreakerType::CUSTOM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TieBreakerType", &j);
+}
 
 } // namespace models
 

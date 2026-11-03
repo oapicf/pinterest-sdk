@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Objective type for delivery estimates.
-* Values: AWARENESS,CONSIDERATION,CATALOG_SALES,WEB_CONVERSION
-*/
+ * Objective type for delivery estimates.
+ * Values: AWARENESS,CONSIDERATION,CATALOG_SALES,WEB_CONVERSION
+ */
 enum class DeliveryEstimateObjectiveType(@get:JsonValue val value: kotlin.String) {
 
     AWARENESS("AWARENESS"),
@@ -30,9 +30,8 @@ enum class DeliveryEstimateObjectiveType(@get:JsonValue val value: kotlin.String
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): DeliveryEstimateObjectiveType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DeliveryEstimateObjectiveType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DeliveryEstimateObjectiveType'")
         }
     }
 }
-

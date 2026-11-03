@@ -21,39 +21,27 @@ import { mapValues } from '../runtime';
 export interface TrendingPin {
     /**
      * Dominant color of the pin image in hex format
-     * @type {string}
-     * @memberof TrendingPin
      */
     color: string;
     /**
      * Height of the pin image in pixels
-     * @type {number}
-     * @memberof TrendingPin
      */
     height: number;
     /**
      * Unique identifier for the pin
-     * @type {string}
-     * @memberof TrendingPin
      */
     id: string;
     /**
      * URL of the pin image
-     * @type {string}
-     * @memberof TrendingPin
      */
     src: string;
     /**
      * The vertical offset of the pin image as a percentage from 0 to 100, where 0
      * is the top of the image and 100 is the bottom.
-     * @type {number}
-     * @memberof TrendingPin
      */
     verticalOffset?: number;
     /**
      * Width of the pin image in pixels
-     * @type {number}
-     * @memberof TrendingPin
      */
     width: number;
 }

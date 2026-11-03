@@ -259,37 +259,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!accessToken.IsSet)
-                throw new ArgumentException("Property is required for class OauthAccessToken.", nameof(accessToken));
+                throw new JsonException("Property is required for class OauthAccessToken: access_token.");
 
             if (!expiresIn.IsSet)
-                throw new ArgumentException("Property is required for class OauthAccessToken.", nameof(expiresIn));
+                throw new JsonException("Property is required for class OauthAccessToken: expires_in.");
 
             if (!tokenType.IsSet)
-                throw new ArgumentException("Property is required for class OauthAccessToken.", nameof(tokenType));
+                throw new JsonException("Property is required for class OauthAccessToken: token_type.");
 
             if (accessToken.IsSet && accessToken.Value == null)
-                throw new ArgumentNullException(nameof(accessToken), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: access_token.");
 
             if (expiresIn.IsSet && expiresIn.Value == null)
-                throw new ArgumentNullException(nameof(expiresIn), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: expires_in.");
 
             if (refreshToken.IsSet && refreshToken.Value == null)
-                throw new ArgumentNullException(nameof(refreshToken), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: refresh_token.");
 
             if (refreshTokenExpiresAt.IsSet && refreshTokenExpiresAt.Value == null)
-                throw new ArgumentNullException(nameof(refreshTokenExpiresAt), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: refresh_token_expires_at.");
 
             if (refreshTokenExpiresIn.IsSet && refreshTokenExpiresIn.Value == null)
-                throw new ArgumentNullException(nameof(refreshTokenExpiresIn), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: refresh_token_expires_in.");
 
             if (responseType.IsSet && responseType.Value == null)
-                throw new ArgumentNullException(nameof(responseType), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: response_type.");
 
             if (scope.IsSet && scope.Value == null)
-                throw new ArgumentNullException(nameof(scope), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: scope.");
 
             if (tokenType.IsSet && tokenType.Value == null)
-                throw new ArgumentNullException(nameof(tokenType), "Property is not nullable for class OauthAccessToken.");
+                throw new JsonException("Property is not nullable for class OauthAccessToken: token_type.");
 
             return new OauthAccessToken(accessToken.Value!, expiresIn.Value!.Value!, refreshToken, refreshTokenExpiresAt, refreshTokenExpiresIn, responseType, scope, tokenType.Value!);
         }
@@ -300,7 +300,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="oauthAccessToken"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, OauthAccessToken oauthAccessToken, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -315,20 +314,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="oauthAccessToken"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, OauthAccessToken oauthAccessToken, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (oauthAccessToken.AccessToken == null)
-                throw new ArgumentNullException(nameof(oauthAccessToken.AccessToken), "Property is required for class OauthAccessToken.");
-
             if (oauthAccessToken.RefreshTokenOption.IsSet && oauthAccessToken.RefreshToken == null)
-                throw new ArgumentNullException(nameof(oauthAccessToken.RefreshToken), "Property is required for class OauthAccessToken.");
+                throw new JsonException("Cannot write null property OauthAccessToken.RefreshToken to non-nullable JSON property 'refresh_token'.");
+
+            if (oauthAccessToken.RefreshTokenExpiresAtOption.IsSet && oauthAccessToken.RefreshTokenExpiresAt == null)
+                throw new JsonException("Cannot write null property OauthAccessToken.RefreshTokenExpiresAt to non-nullable JSON property 'refresh_token_expires_at'.");
+
+            if (oauthAccessToken.RefreshTokenExpiresInOption.IsSet && oauthAccessToken.RefreshTokenExpiresIn == null)
+                throw new JsonException("Cannot write null property OauthAccessToken.RefreshTokenExpiresIn to non-nullable JSON property 'refresh_token_expires_in'.");
+
+            if (oauthAccessToken.ResponseTypeOption.IsSet && oauthAccessToken.ResponseType == null)
+                throw new JsonException("Cannot write null property OauthAccessToken.ResponseType to non-nullable JSON property 'response_type'.");
 
             if (oauthAccessToken.ScopeOption.IsSet && oauthAccessToken.Scope == null)
-                throw new ArgumentNullException(nameof(oauthAccessToken.Scope), "Property is required for class OauthAccessToken.");
-
-            if (oauthAccessToken.TokenType == null)
-                throw new ArgumentNullException(nameof(oauthAccessToken.TokenType), "Property is required for class OauthAccessToken.");
+                throw new JsonException("Cannot write null property OauthAccessToken.Scope to non-nullable JSON property 'scope'.");
 
             writer.WriteString("access_token", oauthAccessToken.AccessToken);
 

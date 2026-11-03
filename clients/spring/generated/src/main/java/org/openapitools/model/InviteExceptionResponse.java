@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,19 +25,15 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteExceptionResponse", description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteExceptionResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer code;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> usersOrPartnerIds = new ArrayList<>();
 
   public InviteExceptionResponse code(@Nullable Integer code) {
@@ -72,7 +67,7 @@ public class InviteExceptionResponse {
    * @return inviteOrRequestId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "invite_or_request_id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "invite_or_request_id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("invite_or_request_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getInviteOrRequestId() {
     return inviteOrRequestId;
@@ -179,7 +174,7 @@ public class InviteExceptionResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

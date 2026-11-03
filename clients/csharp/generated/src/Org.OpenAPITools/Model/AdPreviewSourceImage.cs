@@ -182,19 +182,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!imageUrl.IsSet)
-                throw new ArgumentException("Property is required for class AdPreviewSourceImage.", nameof(imageUrl));
+                throw new JsonException("Property is required for class AdPreviewSourceImage: image_url.");
 
             if (!title.IsSet)
-                throw new ArgumentException("Property is required for class AdPreviewSourceImage.", nameof(title));
+                throw new JsonException("Property is required for class AdPreviewSourceImage: title.");
 
             if (imageUrl.IsSet && imageUrl.Value == null)
-                throw new ArgumentNullException(nameof(imageUrl), "Property is not nullable for class AdPreviewSourceImage.");
+                throw new JsonException("Property is not nullable for class AdPreviewSourceImage: image_url.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class AdPreviewSourceImage.");
+                throw new JsonException("Property is not nullable for class AdPreviewSourceImage: title.");
 
             if (promotionId.IsSet && promotionId.Value == null)
-                throw new ArgumentNullException(nameof(promotionId), "Property is not nullable for class AdPreviewSourceImage.");
+                throw new JsonException("Property is not nullable for class AdPreviewSourceImage: promotion_id.");
 
             return new AdPreviewSourceImage(imageUrl.Value!, title.Value!, promotionId);
         }
@@ -205,7 +205,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewSourceImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdPreviewSourceImage adPreviewSourceImage, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -220,17 +219,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewSourceImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdPreviewSourceImage adPreviewSourceImage, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adPreviewSourceImage.ImageUrl == null)
-                throw new ArgumentNullException(nameof(adPreviewSourceImage.ImageUrl), "Property is required for class AdPreviewSourceImage.");
-
-            if (adPreviewSourceImage.Title == null)
-                throw new ArgumentNullException(nameof(adPreviewSourceImage.Title), "Property is required for class AdPreviewSourceImage.");
-
             if (adPreviewSourceImage.PromotionIdOption.IsSet && adPreviewSourceImage.PromotionId == null)
-                throw new ArgumentNullException(nameof(adPreviewSourceImage.PromotionId), "Property is required for class AdPreviewSourceImage.");
+                throw new JsonException("Cannot write null property AdPreviewSourceImage.PromotionId to non-nullable JSON property 'promotion_id'.");
 
             writer.WriteString("image_url", adPreviewSourceImage.ImageUrl);
 

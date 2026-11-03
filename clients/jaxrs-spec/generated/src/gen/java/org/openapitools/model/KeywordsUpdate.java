@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create or update operation model.")
 @JsonTypeName("KeywordsUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsUpdate   {
-  private @Valid List<@Valid KeywordUpdateItem> keywords = new ArrayList<>();
+  private List<@Valid KeywordUpdateItem> keywords = new ArrayList<>();
 
   public KeywordsUpdate() {
   }
@@ -40,7 +40,7 @@ public class KeywordsUpdate   {
   
   @ApiModelProperty(value = "Keywords")
   @JsonProperty("keywords")
-  @Valid public List<@Valid KeywordUpdateItem> getKeywords() {
+  public List<@Valid KeywordUpdateItem> getKeywords() {
     return keywords;
   }
 

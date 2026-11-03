@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventsCreateRequest.", nameof(items));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventsCreateRequest: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdvertiserDefinedEventsCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventsCreateRequest: items.");
 
             return new AdvertiserDefinedEventsCreateRequest(items.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advertiserDefinedEventsCreateRequest.Items == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventsCreateRequest.Items), "Property is required for class AdvertiserDefinedEventsCreateRequest.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, advertiserDefinedEventsCreateRequest.Items, jsonSerializerOptions);
         }

@@ -352,6 +352,7 @@ class _$CatalogsRetailProductGroupSerializer implements PrimitiveSerializer<Cata
   }
 }
 
+
 class CatalogsRetailProductGroupCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

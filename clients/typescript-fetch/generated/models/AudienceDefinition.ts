@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AudienceDefinition {
     /**
      * Generation date
-     * @type {string}
-     * @memberof AudienceDefinition
      */
     date?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof AudienceDefinition
      */
     scope?: string;
     /**
      * 
-     * @type {string}
-     * @memberof AudienceDefinition
      */
     type?: string;
 }

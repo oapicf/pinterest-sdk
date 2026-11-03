@@ -106,6 +106,7 @@ class _$PinterestLibStatus204Serializer implements PrimitiveSerializer<Pinterest
   }
 }
 
+
 class PinterestLibStatus204StatusCodeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'204')

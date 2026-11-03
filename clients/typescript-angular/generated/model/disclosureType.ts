@@ -18,7 +18,7 @@ export const DisclosureType = {
     PrescribingInformationBoxWarning: 'PRESCRIBING_INFORMATION_BOX_WARNING',
     ImportantSafetyInfo: 'IMPORTANT_SAFETY_INFO',
     MedGuide: 'MED_GUIDE',
-    PatientInformation: 'PATIENT_INFORMATION'
+    PatientInformation: 'PATIENT_INFORMATION',
 } as const;
 export type DisclosureType = typeof DisclosureType[keyof typeof DisclosureType];
 

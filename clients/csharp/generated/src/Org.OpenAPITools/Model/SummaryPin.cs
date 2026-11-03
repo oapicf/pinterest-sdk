@@ -267,13 +267,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class SummaryPin.", nameof(id));
+                throw new JsonException("Property is required for class SummaryPin: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class SummaryPin.");
+                throw new JsonException("Property is not nullable for class SummaryPin: id.");
 
             if (media.IsSet && media.Value == null)
-                throw new ArgumentNullException(nameof(media), "Property is not nullable for class SummaryPin.");
+                throw new JsonException("Property is not nullable for class SummaryPin: media.");
 
             return new SummaryPin(id.Value!, altText, description, link, media, title);
         }
@@ -284,7 +284,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="summaryPin"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SummaryPin summaryPin, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -299,14 +298,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="summaryPin"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SummaryPin summaryPin, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (summaryPin.Id == null)
-                throw new ArgumentNullException(nameof(summaryPin.Id), "Property is required for class SummaryPin.");
-
             if (summaryPin.MediaOption.IsSet && summaryPin.Media == null)
-                throw new ArgumentNullException(nameof(summaryPin.Media), "Property is required for class SummaryPin.");
+                throw new JsonException("Cannot write null property SummaryPin.Media to non-nullable JSON property 'media'.");
 
             writer.WriteString("id", summaryPin.Id);
 

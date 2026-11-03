@@ -6,20 +6,3 @@
 */
 #include "EntityLabelStatus.h"
 
-namespace models {
-
-EntityLabelStatus::EntityLabelStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

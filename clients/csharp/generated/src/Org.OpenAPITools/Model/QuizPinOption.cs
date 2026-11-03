@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class QuizPinOption.");
+                throw new JsonException("Property is not nullable for class QuizPinOption: id.");
 
             if (text.IsSet && text.Value == null)
-                throw new ArgumentNullException(nameof(text), "Property is not nullable for class QuizPinOption.");
+                throw new JsonException("Property is not nullable for class QuizPinOption: text.");
 
             return new QuizPinOption(id, text);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinOption"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QuizPinOption quizPinOption, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,11 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinOption"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QuizPinOption quizPinOption, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (quizPinOption.IdOption.IsSet && quizPinOption.Id == null)
+                throw new JsonException("Cannot write null property QuizPinOption.Id to non-nullable JSON property 'id'.");
+
             if (quizPinOption.TextOption.IsSet && quizPinOption.Text == null)
-                throw new ArgumentNullException(nameof(quizPinOption.Text), "Property is required for class QuizPinOption.");
+                throw new JsonException("Cannot write null property QuizPinOption.Text to non-nullable JSON property 'text'.");
 
             if (quizPinOption.IdOption.IsSet)
                 writer.WriteNumber("id", quizPinOption.IdOption.Value!.Value);

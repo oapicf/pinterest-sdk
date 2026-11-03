@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Advertisers billing type
-* Values: CREDIT_CARD,INVOICE,INTERNAL,RECURRING,PREPAID
-*/
+ * Advertisers billing type
+ * Values: CREDIT_CARD,INVOICE,INTERNAL,RECURRING,PREPAID
+ */
 enum class BillingType(@get:JsonValue val value: kotlin.String) {
 
     CREDIT_CARD("CREDIT_CARD"),
@@ -31,9 +31,8 @@ enum class BillingType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BillingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingType'")
         }
     }
 }
-

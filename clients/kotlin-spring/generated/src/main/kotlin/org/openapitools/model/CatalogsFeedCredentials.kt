@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsFeedCredentials(
 
     @Schema(required = true, description = "The required password for downloading a feed.")
-    @param:JsonProperty("password")
+    @param:JsonProperty("password", required = true)
     @get:JsonProperty("password", required = true) val password: kotlin.String,
 
     @Schema(required = true, description = "The required username for downloading a feed.")
-    @param:JsonProperty("username")
+    @param:JsonProperty("username", required = true)
     @get:JsonProperty("username", required = true) val username: kotlin.String
 ) {
 

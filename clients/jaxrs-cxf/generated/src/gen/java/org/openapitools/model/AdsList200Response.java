@@ -22,8 +22,6 @@ public class AdsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Ad> items = new ArrayList<>();
  /**
    * Get bookmark

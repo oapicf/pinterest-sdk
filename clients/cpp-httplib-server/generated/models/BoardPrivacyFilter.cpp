@@ -6,20 +6,3 @@
 */
 #include "BoardPrivacyFilter.h"
 
-namespace models {
-
-BoardPrivacyFilter::BoardPrivacyFilter()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

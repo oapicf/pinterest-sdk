@@ -45,7 +45,7 @@ import javax.validation.Valid;
   ProductCategoryDetails.JSON_PROPERTY_RELATED_SEARCHES,
   ProductCategoryDetails.JSON_PROPERTY_TIME_SERIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoryDetails   {
   public static final String JSON_PROPERTY_DEMOGRAPHICS = "demographics";
   @JsonProperty(JSON_PROPERTY_DEMOGRAPHICS)
@@ -154,7 +154,7 @@ public class ProductCategoryDetails   {
    **/
   @JsonProperty(value = "predicted_time_series")
   @ApiModelProperty(value = "    A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.")
-  @Valid 
+  
   public Map<String, BigDecimal> getPredictedTimeSeries() {
     return predictedTimeSeries;
   }
@@ -230,7 +230,7 @@ public class ProductCategoryDetails   {
    **/
   @JsonProperty(value = "time_series")
   @ApiModelProperty(value = "Time series data showing trend values over time, indexed between 0 and 100")
-  @Valid 
+  
   public Map<String, BigDecimal> getTimeSeries() {
     return timeSeries;
   }

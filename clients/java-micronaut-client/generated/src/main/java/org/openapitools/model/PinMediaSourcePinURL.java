@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   PinMediaSourcePinURL.JSON_PROPERTY_SOURCE_TYPE
 })
 @JsonTypeName("PinMediaSourcePinURL")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PinMediaSourcePinURL {
     public static final String JSON_PROPERTY_IS_AFFILIATE_LINK = "is_affiliate_link";

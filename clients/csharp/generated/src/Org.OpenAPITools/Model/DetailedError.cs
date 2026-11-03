@@ -159,22 +159,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!code.IsSet)
-                throw new ArgumentException("Property is required for class DetailedError.", nameof(code));
+                throw new JsonException("Property is required for class DetailedError: code.");
 
             if (!details.IsSet)
-                throw new ArgumentException("Property is required for class DetailedError.", nameof(details));
+                throw new JsonException("Property is required for class DetailedError: details.");
 
             if (!message.IsSet)
-                throw new ArgumentException("Property is required for class DetailedError.", nameof(message));
+                throw new JsonException("Property is required for class DetailedError: message.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class DetailedError.");
+                throw new JsonException("Property is not nullable for class DetailedError: code.");
 
             if (details.IsSet && details.Value == null)
-                throw new ArgumentNullException(nameof(details), "Property is not nullable for class DetailedError.");
+                throw new JsonException("Property is not nullable for class DetailedError: details.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class DetailedError.");
+                throw new JsonException("Property is not nullable for class DetailedError: message.");
 
             return new DetailedError(code.Value!.Value!, details.Value!, message.Value!);
         }
@@ -185,7 +185,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="detailedError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DetailedError detailedError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -200,15 +199,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="detailedError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DetailedError detailedError, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (detailedError.Details == null)
-                throw new ArgumentNullException(nameof(detailedError.Details), "Property is required for class DetailedError.");
-
-            if (detailedError.Message == null)
-                throw new ArgumentNullException(nameof(detailedError.Message), "Property is required for class DetailedError.");
-
             writer.WriteNumber("code", detailedError.Code);
 
             writer.WritePropertyName("details");

@@ -17,7 +17,7 @@ import PinMediaSourceImagesBase64Item from './PinMediaSourceImagesBase64Item';
 /**
  * The PinMediaSourceImagesBase64 model module.
  * @module model/PinMediaSourceImagesBase64
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaSourceImagesBase64 {
     /**

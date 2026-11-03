@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ContentType
-{
-public:
-
-    ContentType();
-    virtual ~ContentType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ContentType,
-        )
-
-private:
+enum class ContentType {
+    
+    IMAGE_JPEG,
+    
+    IMAGE_PNG
+    
 };
 
+inline void to_json(nlohmann::json& j, const ContentType& value)
+{
+    switch (value)
+    {
+        
+        case ContentType::IMAGE_JPEG: j = "image/jpeg"; break;
+        
+        case ContentType::IMAGE_PNG: j = "image/png"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ContentType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ContentType& value)
+{
+    
+    if (j == "image/jpeg")
+    {
+        value = ContentType::IMAGE_JPEG;
+        return;
+    }
+    
+    if (j == "image/png")
+    {
+        value = ContentType::IMAGE_PNG;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ContentType", &j);
+}
 
 } // namespace models
 

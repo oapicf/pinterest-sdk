@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,7 +30,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelItemResponse implements ItemResponse {
 
   private CatalogsHotelAttributes attributes;
@@ -108,7 +107,6 @@ public class CatalogsHotelItemResponse implements ItemResponse {
 
   private ItemResponseKindEnum itemResponseKind;
 
-  @Valid
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
 
   public CatalogsHotelItemResponse() {
@@ -220,7 +218,7 @@ public class CatalogsHotelItemResponse implements ItemResponse {
    * The pins mapped to the item
    * @return pins
    */
-  @Valid @Size(max = 11) 
+  @Size(max = 11) 
   @Schema(name = "pins", description = "The pins mapped to the item", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pins")
   public JsonNullable<List<@Valid Pin>> getPins() {

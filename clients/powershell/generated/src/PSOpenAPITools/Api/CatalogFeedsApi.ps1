@@ -75,7 +75,7 @@ function Invoke-FeedProcessingResultsList {
         if (!$FeedId) {
             throw "Error! The required parameter `FeedId` missing when calling feedProcessingResults_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Web.HTTPUtility]::UrlEncode($FeedId))
+        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Uri]::EscapeDataString([string]$FeedId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -260,7 +260,7 @@ function Invoke-FeedsDelete {
         if (!$FeedId) {
             throw "Error! The required parameter `FeedId` missing when calling feeds_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Web.HTTPUtility]::UrlEncode($FeedId))
+        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Uri]::EscapeDataString([string]$FeedId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -348,7 +348,7 @@ function Invoke-FeedsGet {
         if (!$FeedId) {
             throw "Error! The required parameter `FeedId` missing when calling feeds_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Web.HTTPUtility]::UrlEncode($FeedId))
+        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Uri]::EscapeDataString([string]$FeedId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -436,7 +436,7 @@ function Invoke-FeedsIngest {
         if (!$FeedId) {
             throw "Error! The required parameter `FeedId` missing when calling feeds_ingest."
         }
-        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Web.HTTPUtility]::UrlEncode($FeedId))
+        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Uri]::EscapeDataString([string]$FeedId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -634,7 +634,7 @@ function Invoke-FeedsUpdate {
         if (!$FeedId) {
             throw "Error! The required parameter `FeedId` missing when calling feeds_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Web.HTTPUtility]::UrlEncode($FeedId))
+        $LocalVarUri = $LocalVarUri.replace('{feed_id}', [System.Uri]::EscapeDataString([string]$FeedId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -752,7 +752,7 @@ function Invoke-ItemsIssuesList {
         if (!$ProcessingResultId) {
             throw "Error! The required parameter `ProcessingResultId` missing when calling itemsIssues_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{processing_result_id}', [System.Web.HTTPUtility]::UrlEncode($ProcessingResultId))
+        $LocalVarUri = $LocalVarUri.replace('{processing_result_id}', [System.Uri]::EscapeDataString([string]$ProcessingResultId))
 
         if ($ItemNumbers) {
             $LocalVarQueryParameters['item_numbers'] = $ItemNumbers

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Label type values.
-* Values: BRAND,CUSTOM
-*/
+ * Label type values.
+ * Values: BRAND,CUSTOM
+ */
 enum class LabelType(@get:JsonValue val value: kotlin.String) {
 
     BRAND("BRAND"),
@@ -28,9 +28,8 @@ enum class LabelType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LabelType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelType'")
         }
     }
 }
-

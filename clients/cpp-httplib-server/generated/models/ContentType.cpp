@@ -6,20 +6,3 @@
 */
 #include "ContentType.h"
 
-namespace models {
-
-ContentType::ContentType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

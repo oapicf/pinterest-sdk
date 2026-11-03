@@ -9,7 +9,7 @@ import Foundation
 
 public struct ScheduleUpdateRequestAllOf1: Sendable, Codable, Hashable {
 
-    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
+    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[C]?\\d+$")
     public var entityId: String?
     /** Entity type */
     public var entityType: String?

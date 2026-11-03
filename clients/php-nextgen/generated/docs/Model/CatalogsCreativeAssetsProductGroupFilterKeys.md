@@ -1,24 +1,25 @@
 # CatalogsCreativeAssetsProductGroupFilterKeys
 
-## Properties
+This model is an `anyOf` wrapper: a value is at least one of the member types listed below.
+It is never instantiated directly — use one of the concrete types.
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**creative_assets_id** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**custom_label_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**google_product_category_6** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_5** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**media_type** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  |
-**title_keywords** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**link** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
+## anyOf
+
+- [**\OpenAPI\Client\Model\CreativeAssetsIdFilter**](CreativeAssetsIdFilter.md)
+- [**\OpenAPI\Client\Model\CustomLabel0Filter**](CustomLabel0Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel1Filter**](CustomLabel1Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel2Filter**](CustomLabel2Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel3Filter**](CustomLabel3Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel4Filter**](CustomLabel4Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory6Filter**](GoogleProductCategory6Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory5Filter**](GoogleProductCategory5Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory4Filter**](GoogleProductCategory4Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory3Filter**](GoogleProductCategory3Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory2Filter**](GoogleProductCategory2Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory1Filter**](GoogleProductCategory1Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory0Filter**](GoogleProductCategory0Filter.md)
+- [**\OpenAPI\Client\Model\MediaTypeFilter**](MediaTypeFilter.md)
+- [**\OpenAPI\Client\Model\TitleKeywordsFilter**](TitleKeywordsFilter.md)
+- [**\OpenAPI\Client\Model\LinkFilter**](LinkFilter.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

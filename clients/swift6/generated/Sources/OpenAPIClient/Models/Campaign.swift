@@ -9,9 +9,9 @@ import Foundation
 
 public struct Campaign: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Campaign's Advertiser ID. */
     public var adAccountId: String?
     /** [Restricted](/docs/getting-started/using-beta-and-restricted-features/)  Object describing the campaign level bid multipliers. */

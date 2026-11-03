@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Permission role for business access.
-* Values: OWNER,ADMIN,ANALYST,SOS_READER,FINANCE_MANAGER,FINANCE_VIEW,FINANCE_EDIT,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,RESTRICTED_OWNER,PROFILE_MANAGER,PROFILE_PUBLISHER,RESOURCE_PINNER_LIST_OWNER,RESOURCE_PINNER_LIST_READER,BIZ_PINNER_LIST_SHARER,RESOURCE_CONVERSION_TAGS_READER
-*/
+ * Permission role for business access.
+ * Values: OWNER,ADMIN,ANALYST,SOS_READER,FINANCE_MANAGER,FINANCE_VIEW,FINANCE_EDIT,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,RESTRICTED_OWNER,PROFILE_MANAGER,PROFILE_PUBLISHER,RESOURCE_PINNER_LIST_OWNER,RESOURCE_PINNER_LIST_READER,BIZ_PINNER_LIST_SHARER,RESOURCE_CONVERSION_TAGS_READER
+ */
 enum class BusinessAccessRole(@get:JsonValue val value: kotlin.String) {
 
     OWNER("OWNER"),
@@ -43,9 +43,8 @@ enum class BusinessAccessRole(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BusinessAccessRole {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessAccessRole'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessAccessRole'")
         }
     }
 }
-

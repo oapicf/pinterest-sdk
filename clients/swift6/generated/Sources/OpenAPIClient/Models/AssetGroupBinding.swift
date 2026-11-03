@@ -9,7 +9,7 @@ import Foundation
 
 public struct AssetGroupBinding: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** A list of ad account IDs under the asset group */
     public var adAccountsIds: [String]
     /** Asset group description */

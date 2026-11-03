@@ -937,7 +937,8 @@ class CatalogReportsApi:
             
         if parameters is not None:
             
-            _query_params.append(('parameters', parameters))
+            _query_params.extend(self.api_client.explode_query_object('parameters', parameters))
+            _query_params.extend(self.api_client.explode_query_object('parameters', parameters))
             
         if bookmark is not None:
             

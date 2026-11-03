@@ -6,20 +6,3 @@
 */
 #include "TrendType.h"
 
-namespace models {
-
-TrendType::TrendType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -9,8 +9,8 @@ import Foundation
 
 public struct UpdateMemberAssetAccessItem: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
     public static let permissionsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** Id of the asset to update. */
     public var assetId: String

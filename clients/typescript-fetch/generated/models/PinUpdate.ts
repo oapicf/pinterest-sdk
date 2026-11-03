@@ -36,50 +36,34 @@ import {
 export interface PinUpdate {
     /**
      * AI disclosure declarations the creator has made about this Pin.
-     * @type {AiDisclosuresUpdate}
-     * @memberof PinUpdate
      */
     aiDisclosures?: AiDisclosuresUpdate;
     /**
      * 
-     * @type {string}
-     * @memberof PinUpdate
      */
     altText?: string | null;
     /**
      * The board to which this Pin belongs.
-     * @type {string}
-     * @memberof PinUpdate
      */
     boardId?: string;
     /**
      * The board section to which this Pin belongs.
-     * @type {string}
-     * @memberof PinUpdate
      */
     boardSectionId?: string | null;
     /**
      * Carousel Pin slots data.
-     * @type {Array<CarouselSlot>}
-     * @memberof PinUpdate
      */
     carouselSlots?: Array<CarouselSlot>;
     /**
      * 
-     * @type {string}
-     * @memberof PinUpdate
      */
     description?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof PinUpdate
      */
     link?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof PinUpdate
      */
     title?: string | null;
 }

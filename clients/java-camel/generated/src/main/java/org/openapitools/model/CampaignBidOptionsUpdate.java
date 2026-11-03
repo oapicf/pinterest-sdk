@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -34,7 +33,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignBidOptionsUpdate", description = "Object describing an update to the campaign level bid multipliers.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBidOptionsUpdate {
 
   private JsonNullable<AgeBucketMultipliers> ageBucketMultipliers = JsonNullable.<AgeBucketMultipliers>undefined();
@@ -51,7 +50,6 @@ public class CampaignBidOptionsUpdate {
 
   private JsonNullable<PlacementMultipliers> placementMultipliers = JsonNullable.<PlacementMultipliers>undefined();
 
-  @Valid
   private List<CampaignBidOptionsUpdateMaskItems> updateMask = new ArrayList<>();
 
   public CampaignBidOptionsUpdate() {
@@ -222,7 +220,7 @@ public class CampaignBidOptionsUpdate {
    * List of fields to update. Only the fields in the list will be updated.
    * @return updateMask
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "update_mask", description = "List of fields to update. Only the fields in the list will be updated.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("update_mask")
   public List<CampaignBidOptionsUpdateMaskItems> getUpdateMask() {

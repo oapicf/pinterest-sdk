@@ -36,26 +36,18 @@ import {
 export interface CampaignPlanningBudgetRecommendation {
     /**
      * The recommended budget amount.
-     * @type {number}
-     * @memberof CampaignPlanningBudgetRecommendation
      */
     budgetRecommendation?: number;
     /**
      * List of experimental budget recommendations.
-     * @type {Array<CampaignPlanningExperimentBudgetRecommendation>}
-     * @memberof CampaignPlanningBudgetRecommendation
      */
     experimentCampaignBudgetRecommendation?: Array<CampaignPlanningExperimentBudgetRecommendation>;
     /**
      * Recommended number of days for the campaign lifetime.
-     * @type {number}
-     * @memberof CampaignPlanningBudgetRecommendation
      */
     lifetimeDaysRecommendation?: number;
     /**
      * List of point estimations for different budget scenarios.
-     * @type {Array<CampaignPlanningBudgetRecommendationPoint>}
-     * @memberof CampaignPlanningBudgetRecommendation
      */
     pointEstimations?: Array<CampaignPlanningBudgetRecommendationPoint>;
 }

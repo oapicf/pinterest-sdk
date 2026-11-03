@@ -80,7 +80,9 @@ class QualityComponentDetails {
       return QualityComponentDetails(
         coverage: num.parse('${json[r'coverage']}'),
         issues: QualityComponentIssue.listFromJson(json[r'issues']),
-        overlap: num.parse('${json[r'overlap']}'),
+        overlap: json[r'overlap'] == null
+            ? null
+            : num.parse('${json[r'overlap']}'),
       );
     }
     return null;

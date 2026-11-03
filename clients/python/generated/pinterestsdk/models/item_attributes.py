@@ -186,8 +186,7 @@ class ItemAttributes(BaseModel):
         _items = []
         if self.ai_disclosures:
             for _item_ai_disclosures in self.ai_disclosures:
-                if _item_ai_disclosures:
-                    _items.append(_item_ai_disclosures.to_dict())
+                _items.append(_item_ai_disclosures.to_dict() if _item_ai_disclosures is not None else None)
             _dict['ai_disclosures'] = _items
         # set to None if ad_image_0_link (nullable) is None
         # and model_fields_set contains the field

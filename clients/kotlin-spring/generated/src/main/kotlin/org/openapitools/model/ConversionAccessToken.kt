@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,12 +21,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ConversionAccessToken(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("access_token")
+    @param:JsonProperty("access_token", required = true)
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("token_type")
     @get:JsonProperty("token_type") val tokenType: kotlin.String? = "conversion"
 ) {

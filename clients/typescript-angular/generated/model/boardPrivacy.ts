@@ -12,7 +12,7 @@
 export const BoardPrivacy = {
     Public: 'PUBLIC',
     Protected: 'PROTECTED',
-    Secret: 'SECRET'
+    Secret: 'SECRET',
 } as const;
 export type BoardPrivacy = typeof BoardPrivacy[keyof typeof BoardPrivacy];
 

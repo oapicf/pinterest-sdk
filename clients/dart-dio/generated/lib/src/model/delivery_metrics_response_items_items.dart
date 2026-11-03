@@ -170,12 +170,12 @@ class _$DeliveryMetricsResponseItemsItemsSerializer implements PrimitiveSerializ
   }
 }
 
+
+/// Category name
 class DeliveryMetricsResponseItemsItemsCategoryEnum extends EnumClass {
 
-  /// Category name
   @BuiltValueEnumConst(wireName: r'ADS')
   static const DeliveryMetricsResponseItemsItemsCategoryEnum ADS = _$deliveryMetricsResponseItemsItemsCategoryEnum_ADS;
-  /// Category name
   @BuiltValueEnumConst(wireName: r'ORGANIC')
   static const DeliveryMetricsResponseItemsItemsCategoryEnum ORGANIC = _$deliveryMetricsResponseItemsItemsCategoryEnum_ORGANIC;
 

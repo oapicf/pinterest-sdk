@@ -129,3 +129,4 @@ class _$CatalogUpdateSerializer implements PrimitiveSerializer<CatalogUpdate> {
   }
 }
 
+

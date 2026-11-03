@@ -9,7 +9,7 @@ import Foundation
 
 public struct CatalogsFeedProcessingResult: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var createdAt: Date
     /** ID of the feed processing result. */
     public var id: String

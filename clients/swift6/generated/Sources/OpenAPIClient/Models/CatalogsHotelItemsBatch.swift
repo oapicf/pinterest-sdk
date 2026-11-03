@@ -13,7 +13,7 @@ public struct CatalogsHotelItemsBatch: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let batchIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let batchIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Id of the catalogs items batch */
     public var batchId: String?
     public var catalogType: CatalogType

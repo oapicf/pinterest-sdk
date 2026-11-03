@@ -66,177 +66,177 @@ data class CatalogsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MIN_PRICE")
+    @param:JsonProperty("MIN_PRICE", required = true)
     @get:JsonProperty("MIN_PRICE", required = true) val MIN_PRICE: CatalogsProductGroupPricingCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MAX_PRICE")
+    @param:JsonProperty("MAX_PRICE", required = true)
     @get:JsonProperty("MAX_PRICE", required = true) val MAX_PRICE: CatalogsProductGroupPricingCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CURRENCY")
+    @param:JsonProperty("CURRENCY", required = true)
     @get:JsonProperty("CURRENCY", required = true) val CURRENCY: CatalogsProductGroupCurrencyCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("ITEM_ID")
+    @param:JsonProperty("ITEM_ID", required = true)
     @get:JsonProperty("ITEM_ID", required = true) val ITEM_ID: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("AVAILABILITY")
+    @param:JsonProperty("AVAILABILITY", required = true)
     @get:JsonProperty("AVAILABILITY", required = true) val AVAILABILITY: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("BRAND")
+    @param:JsonProperty("BRAND", required = true)
     @get:JsonProperty("BRAND", required = true) val BRAND: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CONDITION")
+    @param:JsonProperty("CONDITION", required = true)
     @get:JsonProperty("CONDITION", required = true) val CONDITION: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_0")
+    @param:JsonProperty("CUSTOM_LABEL_0", required = true)
     @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_1")
+    @param:JsonProperty("CUSTOM_LABEL_1", required = true)
     @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_2")
+    @param:JsonProperty("CUSTOM_LABEL_2", required = true)
     @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_3")
+    @param:JsonProperty("CUSTOM_LABEL_3", required = true)
     @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_4")
+    @param:JsonProperty("CUSTOM_LABEL_4", required = true)
     @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("ITEM_GROUP_ID")
+    @param:JsonProperty("ITEM_GROUP_ID", required = true)
     @get:JsonProperty("ITEM_GROUP_ID", required = true) val ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GENDER")
+    @param:JsonProperty("GENDER", required = true)
     @get:JsonProperty("GENDER", required = true) val GENDER: CatalogsProductGroupMultipleGenderCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MEDIA_TYPE")
+    @param:JsonProperty("MEDIA_TYPE", required = true)
     @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_TYPE_4")
+    @param:JsonProperty("PRODUCT_TYPE_4", required = true)
     @get:JsonProperty("PRODUCT_TYPE_4", required = true) val PRODUCT_TYPE_4: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_TYPE_3")
+    @param:JsonProperty("PRODUCT_TYPE_3", required = true)
     @get:JsonProperty("PRODUCT_TYPE_3", required = true) val PRODUCT_TYPE_3: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_TYPE_2")
+    @param:JsonProperty("PRODUCT_TYPE_2", required = true)
     @get:JsonProperty("PRODUCT_TYPE_2", required = true) val PRODUCT_TYPE_2: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_TYPE_1")
+    @param:JsonProperty("PRODUCT_TYPE_1", required = true)
     @get:JsonProperty("PRODUCT_TYPE_1", required = true) val PRODUCT_TYPE_1: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_TYPE_0")
+    @param:JsonProperty("PRODUCT_TYPE_0", required = true)
     @get:JsonProperty("PRODUCT_TYPE_0", required = true) val PRODUCT_TYPE_0: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6", required = true) val GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5", required = true) val GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4", required = true) val GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3", required = true) val GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true) val GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1", required = true) val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true) val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_0")
+    @param:JsonProperty("CUSTOM_NUMBER_0", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_0", required = true) val CUSTOM_NUMBER_0: CatalogsProductGroupUint32Criteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_1")
+    @param:JsonProperty("CUSTOM_NUMBER_1", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_1", required = true) val CUSTOM_NUMBER_1: CatalogsProductGroupUint32Criteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_2")
+    @param:JsonProperty("CUSTOM_NUMBER_2", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_2", required = true) val CUSTOM_NUMBER_2: CatalogsProductGroupUint32Criteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_3")
+    @param:JsonProperty("CUSTOM_NUMBER_3", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_3", required = true) val CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_4")
+    @param:JsonProperty("CUSTOM_NUMBER_4", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_4", required = true) val CUSTOM_NUMBER_4: CatalogsProductGroupUint32Criteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("TITLE_KEYWORDS")
+    @param:JsonProperty("TITLE_KEYWORDS", required = true)
     @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PINTEREST_PRODUCT_CATEGORIES")
+    @param:JsonProperty("PINTEREST_PRODUCT_CATEGORIES", required = true)
     @get:JsonProperty("PINTEREST_PRODUCT_CATEGORIES", required = true) val PINTEREST_PRODUCT_CATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRODUCT_GROUP")
+    @param:JsonProperty("PRODUCT_GROUP", required = true)
     @get:JsonProperty("PRODUCT_GROUP", required = true) val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
 ) {
 

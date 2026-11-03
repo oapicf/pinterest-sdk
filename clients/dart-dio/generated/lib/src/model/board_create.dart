@@ -168,3 +168,4 @@ class _$BoardCreateSerializer implements PrimitiveSerializer<BoardCreate> {
   }
 }
 
+

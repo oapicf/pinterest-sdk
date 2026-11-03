@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class CampaignBatchItem.");
+                throw new JsonException("Property is not nullable for class CampaignBatchItem: data.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class CampaignBatchItem.");
+                throw new JsonException("Property is not nullable for class CampaignBatchItem: exceptions.");
 
             return new CampaignBatchItem(data, exceptions);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignBatchItem campaignBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignBatchItem campaignBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignBatchItem.DataOption.IsSet && campaignBatchItem.Data == null)
-                throw new ArgumentNullException(nameof(campaignBatchItem.Data), "Property is required for class CampaignBatchItem.");
+                throw new JsonException("Cannot write null property CampaignBatchItem.Data to non-nullable JSON property 'data'.");
 
             if (campaignBatchItem.ExceptionsOption.IsSet && campaignBatchItem.Exceptions == null)
-                throw new ArgumentNullException(nameof(campaignBatchItem.Exceptions), "Property is required for class CampaignBatchItem.");
+                throw new JsonException("Cannot write null property CampaignBatchItem.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (campaignBatchItem.DataOption.IsSet)
             {

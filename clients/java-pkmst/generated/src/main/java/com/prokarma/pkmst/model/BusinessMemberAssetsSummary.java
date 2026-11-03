@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMemberAssetsSummary   {
   @JsonProperty("ad_accounts")
   

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **productTagsBulkAdd**
 ```swift
-    open class func productTagsBulkAdd(pinId: String, productTagsBulkAddRequest: ProductTagsBulkAddRequest, completion: @escaping (_ data: ProductTagsResponse?, _ error: Error?) -> Void)
+    open class func productTagsBulkAdd(pinId: String, productTagsBulkAddRequest: ProductTagsBulkAddRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductTagsResponse
 ```
 
 Add product tags to pin
@@ -27,15 +27,11 @@ let pinId = "pinId_example" // String | Unique identifier of the hero pin that w
 let productTagsBulkAddRequest = ProductTagsBulkAddRequest(productTags: [ProductTagItem(pinId: "pinId_example")]) // ProductTagsBulkAddRequest | 
 
 // Add product tags to pin
-ProductTagsAPI.productTagsBulkAdd(pinId: pinId, productTagsBulkAddRequest: productTagsBulkAddRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductTagsAPI.productTagsBulkAdd(pinId: pinId, productTagsBulkAddRequest: productTagsBulkAddRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -63,7 +59,7 @@ Name | Type | Description  | Notes
 
 # **productTagsBulkDelete**
 ```swift
-    open class func productTagsBulkDelete(pinId: String, productTagsBulkDeleteRequest: ProductTagsBulkDeleteRequest, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func productTagsBulkDelete(pinId: String, productTagsBulkDeleteRequest: ProductTagsBulkDeleteRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Delete product tags from pin
@@ -79,15 +75,10 @@ let pinId = "pinId_example" // String | Unique identifier of the hero pin that w
 let productTagsBulkDeleteRequest = ProductTagsBulkDeleteRequest(productTags: [ProductTagItem(pinId: "pinId_example")]) // ProductTagsBulkDeleteRequest | 
 
 // Delete product tags from pin
-ProductTagsAPI.productTagsBulkDelete(pinId: pinId, productTagsBulkDeleteRequest: productTagsBulkDeleteRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await ProductTagsAPI.productTagsBulkDelete(pinId: pinId, productTagsBulkDeleteRequest: productTagsBulkDeleteRequest)
+} catch {
+    print(error)
 }
 ```
 
@@ -115,7 +106,7 @@ Void (empty response body)
 
 # **productTagsList**
 ```swift
-    open class func productTagsList(pinId: String, completion: @escaping (_ data: ProductTagsResponse?, _ error: Error?) -> Void)
+    open class func productTagsList(pinId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductTagsResponse
 ```
 
 Get product tags for pin
@@ -130,15 +121,11 @@ import OpenAPIClient
 let pinId = "pinId_example" // String | Unique identifier of the hero pin that will receive product tags.
 
 // Get product tags for pin
-ProductTagsAPI.productTagsList(pinId: pinId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductTagsAPI.productTagsList(pinId: pinId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

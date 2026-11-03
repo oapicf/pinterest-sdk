@@ -14,7 +14,7 @@
  */
 export const OperationType = {
     Share: 'SHARE',
-    Revoke: 'REVOKE'
+    Revoke: 'REVOKE',
 } as const;
 export type OperationType = typeof OperationType[keyof typeof OperationType];
 

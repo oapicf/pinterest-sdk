@@ -29,14 +29,10 @@ import {
 export interface CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupMultiplePinterestProductCategoryCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<ProductCategoryEnum>}
-     * @memberof CatalogsProductGroupMultiplePinterestProductCategoryCriteria
      */
     values: Array<ProductCategoryEnum>;
 }

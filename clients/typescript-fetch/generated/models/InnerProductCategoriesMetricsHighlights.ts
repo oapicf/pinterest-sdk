@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface InnerProductCategoriesMetricsHighlights {
     /**
      * Month-over-month percentage change
-     * @type {number}
-     * @memberof InnerProductCategoriesMetricsHighlights
      */
     pctChangeMom: number;
 }

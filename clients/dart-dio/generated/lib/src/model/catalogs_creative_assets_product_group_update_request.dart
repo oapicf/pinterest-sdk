@@ -168,6 +168,7 @@ class _$CatalogsCreativeAssetsProductGroupUpdateRequestSerializer implements Pri
   }
 }
 
+
 class CatalogsCreativeAssetsProductGroupUpdateRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

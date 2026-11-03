@@ -22,7 +22,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a creative assets item error")
 @JsonTypeName("CatalogsCreativeAssetsItemErrorResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsItemErrorResponse   {
   public enum CatalogTypeEnum {
 
@@ -73,7 +73,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
 
   private CatalogTypeEnum catalogType;
   private String creativeAssetsId;
-  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
   public enum ItemResponseKindEnum {
 
     CREATIVE_ASSETS_ITEM_ERROR(String.valueOf("creative_assets_item_error"));
@@ -187,7 +187,7 @@ public class CatalogsCreativeAssetsItemErrorResponse   {
   
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
   @JsonProperty(required = true, value = "errors")
-  @NotNull @Valid public List<@Valid ItemValidationEvent> getErrors() {
+  @NotNull public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
 

@@ -39,7 +39,7 @@ export interface PinMediaSourceVideoID {
 }
 export namespace PinMediaSourceVideoID {
     export const SourceTypeEnum = {
-        VideoId: 'video_id'
+        VideoId: 'video_id',
     } as const;
     export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }

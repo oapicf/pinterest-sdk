@@ -209,22 +209,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!createdTime.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequest.", nameof(createdTime));
+                throw new JsonException("Property is required for class ConversionDeletionRequest: created_time.");
 
             if (!requestId.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequest.", nameof(requestId));
+                throw new JsonException("Property is required for class ConversionDeletionRequest: request_id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequest.", nameof(status));
+                throw new JsonException("Property is required for class ConversionDeletionRequest: status.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class ConversionDeletionRequest.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequest: created_time.");
 
             if (requestId.IsSet && requestId.Value == null)
-                throw new ArgumentNullException(nameof(requestId), "Property is not nullable for class ConversionDeletionRequest.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequest: request_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class ConversionDeletionRequest.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequest: status.");
 
             return new ConversionDeletionRequest(createdTime.Value!.Value!, requestId.Value!, status.Value!.Value!, processedTime);
         }
@@ -235,7 +235,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionDeletionRequest conversionDeletionRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -250,12 +249,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionDeletionRequest conversionDeletionRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionDeletionRequest.RequestId == null)
-                throw new ArgumentNullException(nameof(conversionDeletionRequest.RequestId), "Property is required for class ConversionDeletionRequest.");
-
             writer.WriteString("created_time", conversionDeletionRequest.CreatedTime.ToString(CreatedTimeFormat));
 
             writer.WriteString("request_id", conversionDeletionRequest.RequestId);

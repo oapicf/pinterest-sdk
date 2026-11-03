@@ -57,32 +57,22 @@ import {
 export interface ScheduleBidMultipliers {
     /**
      * 
-     * @type {BidOptionsAgeBucketMultipliers}
-     * @memberof ScheduleBidMultipliers
      */
     ageBucketMultipliers?: BidOptionsAgeBucketMultipliers;
     /**
      * 
-     * @type {BidOptionsAppTypeMultipliers}
-     * @memberof ScheduleBidMultipliers
      */
     appTypeMultipliers?: BidOptionsAppTypeMultipliers;
     /**
      * 
-     * @type {Array<BidOptionsAudienceMultipliers>}
-     * @memberof ScheduleBidMultipliers
      */
     audienceMultipliers?: Array<BidOptionsAudienceMultipliers>;
     /**
      * 
-     * @type {BidOptionsGenderMultipliers}
-     * @memberof ScheduleBidMultipliers
      */
     genderMultipliers?: BidOptionsGenderMultipliers;
     /**
      * 
-     * @type {BidOptionsPlacementMultipliers}
-     * @memberof ScheduleBidMultipliers
      */
     placementMultipliers?: BidOptionsPlacementMultipliers;
 }

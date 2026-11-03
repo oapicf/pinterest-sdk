@@ -29,8 +29,6 @@ import {
 export interface AdgroupTrackingFeatures {
     /**
      * Tracking features. To clear this field, set to null.
-     * @type {Array<AdgroupTrackingFeatureType>}
-     * @memberof AdgroupTrackingFeatures
      */
     enabled?: Array<AdgroupTrackingFeatureType>;
 }

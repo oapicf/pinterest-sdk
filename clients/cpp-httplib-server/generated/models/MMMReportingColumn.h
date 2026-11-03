@@ -12,24 +12,284 @@
 
 namespace models {
 
-
-class MMMReportingColumn
-{
-public:
-
-    MMMReportingColumn();
-    virtual ~MMMReportingColumn() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MMMReportingColumn,
-        )
-
-private:
+enum class MMMReportingColumn {
+    
+    SPEND_IN_DOLLAR,
+    
+    SPEND_IN_MICRO_DOLLAR,
+    
+    ECPC_IN_DOLLAR,
+    
+    ECTR,
+    
+    CAMPAIGN_NAME,
+    
+    TOTAL_ENGAGEMENT,
+    
+    EENGAGEMENT_RATE,
+    
+    ECPM_IN_DOLLAR,
+    
+    CAMPAIGN_ID,
+    
+    ADVERTISER_ID,
+    
+    AD_GROUP_ID,
+    
+    AD_GROUP_NAME,
+    
+    CLICKTHROUGH_1,
+    
+    IMPRESSION_1,
+    
+    CLICKTHROUGH_2,
+    
+    IMPRESSION_2,
+    
+    TOTAL_CLICKTHROUGH,
+    
+    TOTAL_IMPRESSION,
+    
+    ADVERTISER_NAME,
+    
+    SPEND_ORDER_LINE_PAID_TYPE,
+    
+    CAMPAIGN_OBJECTIVE_TYPE,
+    
+    PINNER_LIST_NAME,
+    
+    ADS_CREDIT_SPEND_IN_DOLLAR,
+    
+    ADVERTISER_PAID_SPEND_IN_DOLLAR,
+    
+    ADVERTISER_PAID_ECPC_IN_DOLLAR,
+    
+    ADVERTISER_PAID_ECPM_IN_DOLLAR
+    
 };
 
+inline void to_json(nlohmann::json& j, const MMMReportingColumn& value)
+{
+    switch (value)
+    {
+        
+        case MMMReportingColumn::SPEND_IN_DOLLAR: j = "SPEND_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::SPEND_IN_MICRO_DOLLAR: j = "SPEND_IN_MICRO_DOLLAR"; break;
+        
+        case MMMReportingColumn::ECPC_IN_DOLLAR: j = "ECPC_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::ECTR: j = "ECTR"; break;
+        
+        case MMMReportingColumn::CAMPAIGN_NAME: j = "CAMPAIGN_NAME"; break;
+        
+        case MMMReportingColumn::TOTAL_ENGAGEMENT: j = "TOTAL_ENGAGEMENT"; break;
+        
+        case MMMReportingColumn::EENGAGEMENT_RATE: j = "EENGAGEMENT_RATE"; break;
+        
+        case MMMReportingColumn::ECPM_IN_DOLLAR: j = "ECPM_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::CAMPAIGN_ID: j = "CAMPAIGN_ID"; break;
+        
+        case MMMReportingColumn::ADVERTISER_ID: j = "ADVERTISER_ID"; break;
+        
+        case MMMReportingColumn::AD_GROUP_ID: j = "AD_GROUP_ID"; break;
+        
+        case MMMReportingColumn::AD_GROUP_NAME: j = "AD_GROUP_NAME"; break;
+        
+        case MMMReportingColumn::CLICKTHROUGH_1: j = "CLICKTHROUGH_1"; break;
+        
+        case MMMReportingColumn::IMPRESSION_1: j = "IMPRESSION_1"; break;
+        
+        case MMMReportingColumn::CLICKTHROUGH_2: j = "CLICKTHROUGH_2"; break;
+        
+        case MMMReportingColumn::IMPRESSION_2: j = "IMPRESSION_2"; break;
+        
+        case MMMReportingColumn::TOTAL_CLICKTHROUGH: j = "TOTAL_CLICKTHROUGH"; break;
+        
+        case MMMReportingColumn::TOTAL_IMPRESSION: j = "TOTAL_IMPRESSION"; break;
+        
+        case MMMReportingColumn::ADVERTISER_NAME: j = "ADVERTISER_NAME"; break;
+        
+        case MMMReportingColumn::SPEND_ORDER_LINE_PAID_TYPE: j = "SPEND_ORDER_LINE_PAID_TYPE"; break;
+        
+        case MMMReportingColumn::CAMPAIGN_OBJECTIVE_TYPE: j = "CAMPAIGN_OBJECTIVE_TYPE"; break;
+        
+        case MMMReportingColumn::PINNER_LIST_NAME: j = "PINNER_LIST_NAME"; break;
+        
+        case MMMReportingColumn::ADS_CREDIT_SPEND_IN_DOLLAR: j = "ADS_CREDIT_SPEND_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::ADVERTISER_PAID_SPEND_IN_DOLLAR: j = "ADVERTISER_PAID_SPEND_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::ADVERTISER_PAID_ECPC_IN_DOLLAR: j = "ADVERTISER_PAID_ECPC_IN_DOLLAR"; break;
+        
+        case MMMReportingColumn::ADVERTISER_PAID_ECPM_IN_DOLLAR: j = "ADVERTISER_PAID_ECPM_IN_DOLLAR"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportingColumn", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MMMReportingColumn& value)
+{
+    
+    if (j == "SPEND_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "SPEND_IN_MICRO_DOLLAR")
+    {
+        value = MMMReportingColumn::SPEND_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPC_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ECPC_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECTR")
+    {
+        value = MMMReportingColumn::ECTR;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_NAME")
+    {
+        value = MMMReportingColumn::CAMPAIGN_NAME;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT")
+    {
+        value = MMMReportingColumn::TOTAL_ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "EENGAGEMENT_RATE")
+    {
+        value = MMMReportingColumn::EENGAGEMENT_RATE;
+        return;
+    }
+    
+    if (j == "ECPM_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ECPM_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_ID")
+    {
+        value = MMMReportingColumn::CAMPAIGN_ID;
+        return;
+    }
+    
+    if (j == "ADVERTISER_ID")
+    {
+        value = MMMReportingColumn::ADVERTISER_ID;
+        return;
+    }
+    
+    if (j == "AD_GROUP_ID")
+    {
+        value = MMMReportingColumn::AD_GROUP_ID;
+        return;
+    }
+    
+    if (j == "AD_GROUP_NAME")
+    {
+        value = MMMReportingColumn::AD_GROUP_NAME;
+        return;
+    }
+    
+    if (j == "CLICKTHROUGH_1")
+    {
+        value = MMMReportingColumn::CLICKTHROUGH_1;
+        return;
+    }
+    
+    if (j == "IMPRESSION_1")
+    {
+        value = MMMReportingColumn::IMPRESSION_1;
+        return;
+    }
+    
+    if (j == "CLICKTHROUGH_2")
+    {
+        value = MMMReportingColumn::CLICKTHROUGH_2;
+        return;
+    }
+    
+    if (j == "IMPRESSION_2")
+    {
+        value = MMMReportingColumn::IMPRESSION_2;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICKTHROUGH")
+    {
+        value = MMMReportingColumn::TOTAL_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "TOTAL_IMPRESSION")
+    {
+        value = MMMReportingColumn::TOTAL_IMPRESSION;
+        return;
+    }
+    
+    if (j == "ADVERTISER_NAME")
+    {
+        value = MMMReportingColumn::ADVERTISER_NAME;
+        return;
+    }
+    
+    if (j == "SPEND_ORDER_LINE_PAID_TYPE")
+    {
+        value = MMMReportingColumn::SPEND_ORDER_LINE_PAID_TYPE;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_OBJECTIVE_TYPE")
+    {
+        value = MMMReportingColumn::CAMPAIGN_OBJECTIVE_TYPE;
+        return;
+    }
+    
+    if (j == "PINNER_LIST_NAME")
+    {
+        value = MMMReportingColumn::PINNER_LIST_NAME;
+        return;
+    }
+    
+    if (j == "ADS_CREDIT_SPEND_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ADS_CREDIT_SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADVERTISER_PAID_SPEND_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ADVERTISER_PAID_SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADVERTISER_PAID_ECPC_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ADVERTISER_PAID_ECPC_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ADVERTISER_PAID_ECPM_IN_DOLLAR")
+    {
+        value = MMMReportingColumn::ADVERTISER_PAID_ECPM_IN_DOLLAR;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportingColumn", &j);
+}
 
 } // namespace models
 

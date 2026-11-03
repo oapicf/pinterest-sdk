@@ -107,7 +107,7 @@ open class CampaignsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "campaign_id": (wrappedValue: campaignId.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "pin_ids": (wrappedValue: pinIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -118,7 +118,8 @@ open class CampaignsAPI {
             "engagement_window_days": (wrappedValue: engagementWindowDays?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "view_window_days": (wrappedValue: viewWindowDays?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "conversion_report_time": (wrappedValue: conversionReportTime?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -233,7 +234,7 @@ open class CampaignsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "campaign_ids": (wrappedValue: campaignIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -246,7 +247,8 @@ open class CampaignsAPI {
             "conversion_report_time": (wrappedValue: conversionReportTime?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "attribution_types": (wrappedValue: attributionTypes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: false),
             "reporting_timezone": (wrappedValue: reportingTimezone?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -359,7 +361,7 @@ open class CampaignsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "campaign_ids": (wrappedValue: campaignIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -371,7 +373,8 @@ open class CampaignsAPI {
             "conversion_report_time": (wrappedValue: conversionReportTime?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "aggregate_report_rows": (wrappedValue: aggregateReportRows?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "reporting_timezone": (wrappedValue: reportingTimezone?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -524,13 +527,14 @@ open class CampaignsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "order": (wrappedValue: order?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "campaign_ids": (wrappedValue: campaignIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "entity_statuses": (wrappedValue: entityStatuses?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

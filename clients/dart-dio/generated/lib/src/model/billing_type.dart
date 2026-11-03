@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'billing_type.g.dart';
 
+/// Advertisers billing type
 class BillingType extends EnumClass {
 
-  /// Advertisers billing type
   @BuiltValueEnumConst(wireName: r'CREDIT_CARD')
   static const BillingType CREDIT_CARD = _$CREDIT_CARD;
-  /// Advertisers billing type
   @BuiltValueEnumConst(wireName: r'INVOICE')
   static const BillingType INVOICE = _$INVOICE;
-  /// Advertisers billing type
   @BuiltValueEnumConst(wireName: r'INTERNAL')
   static const BillingType INTERNAL = _$INTERNAL;
-  /// Advertisers billing type
   @BuiltValueEnumConst(wireName: r'RECURRING')
   static const BillingType RECURRING = _$RECURRING;
-  /// Advertisers billing type
   @BuiltValueEnumConst(wireName: r'PREPAID')
   static const BillingType PREPAID = _$PREPAID;
 

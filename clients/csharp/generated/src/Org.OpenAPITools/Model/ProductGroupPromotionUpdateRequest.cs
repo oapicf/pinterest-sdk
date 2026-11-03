@@ -157,16 +157,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupPromotionUpdateRequest.", nameof(adGroupId));
+                throw new JsonException("Property is required for class ProductGroupPromotionUpdateRequest: ad_group_id.");
 
             if (!productGroupPromotion.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupPromotionUpdateRequest.", nameof(productGroupPromotion));
+                throw new JsonException("Property is required for class ProductGroupPromotionUpdateRequest: product_group_promotion.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class ProductGroupPromotionUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionUpdateRequest: ad_group_id.");
 
             if (productGroupPromotion.IsSet && productGroupPromotion.Value == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion), "Property is not nullable for class ProductGroupPromotionUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionUpdateRequest: product_group_promotion.");
 
             return new ProductGroupPromotionUpdateRequest(adGroupId.Value!, productGroupPromotion.Value!);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,15 +191,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productGroupPromotionUpdateRequest.AdGroupId == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionUpdateRequest.AdGroupId), "Property is required for class ProductGroupPromotionUpdateRequest.");
-
-            if (productGroupPromotionUpdateRequest.ProductGroupPromotion == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionUpdateRequest.ProductGroupPromotion), "Property is required for class ProductGroupPromotionUpdateRequest.");
-
             writer.WriteString("ad_group_id", productGroupPromotionUpdateRequest.AdGroupId);
 
             writer.WritePropertyName("product_group_promotion");

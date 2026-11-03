@@ -36,20 +36,14 @@ import {
 export interface CatalogsRetailProduct {
     /**
      * 
-     * @type {CatalogsRetailProductCatalogTypeEnum}
-     * @memberof CatalogsRetailProduct
      */
     catalogType: CatalogsRetailProductCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsRetailProductMetadata}
-     * @memberof CatalogsRetailProduct
      */
     metadata: CatalogsRetailProductMetadata;
     /**
      * 
-     * @type {Pin}
-     * @memberof CatalogsRetailProduct
      */
     pin: Pin;
 }
@@ -59,7 +53,7 @@ export interface CatalogsRetailProduct {
  * @export
  */
 export const CatalogsRetailProductCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailProductCatalogTypeEnum = typeof CatalogsRetailProductCatalogTypeEnum[keyof typeof CatalogsRetailProductCatalogTypeEnum];
 

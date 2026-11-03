@@ -78,68 +78,46 @@ import {
 export interface AccountTemplate {
     /**
      * ID of the Ad Account that owns the template
-     * @type {string}
-     * @memberof AccountTemplate
      */
     readonly adAccountId?: string;
     /**
      * IDs of the Ad Accounts that have access to this template
-     * @type {Array<string>}
-     * @memberof AccountTemplate
      */
     adAccountIds?: Array<string>;
     /**
      * A list of ADE columns
-     * @type {Array<string>}
-     * @memberof AccountTemplate
      */
     adeColumns?: Array<string>;
     /**
      * Attribution type for Brand/Category/SKU reports
-     * @type {any}
-     * @memberof AccountTemplate
      */
     attributionType?: any | null;
     /**
      * The length of the sliding window over which click conversions will be attributed
-     * @type {number}
-     * @memberof AccountTemplate
      */
     clickWindowDays?: number;
     /**
      * A list of columns to be included in the report
-     * @type {Array<ReportingColumn>}
-     * @memberof AccountTemplate
      */
     columns?: Array<ReportingColumn>;
     /**
      * Conversion report time type
-     * @type {ConversionReportTimeType}
-     * @memberof AccountTemplate
      */
     conversionReportTimeType?: ConversionReportTimeType;
     /**
      * The surface used to create this template
-     * @type {CreationSource}
-     * @memberof AccountTemplate
      */
     creationSource?: CreationSource;
     /**
      * A list of custom column IDs
-     * @type {Array<string>}
-     * @memberof AccountTemplate
      */
     customColumnIds?: Array<string> | null;
     /**
      * Additional metadata about this reporting template
-     * @type {string}
-     * @memberof AccountTemplate
      */
     displayMetadata?: string;
     /**
      * The length of the sliding window over which engagement conversions will be attributed
-     * @type {number}
-     * @memberof AccountTemplate
      */
     engagementWindowDays?: number;
     /**
@@ -147,116 +125,78 @@ export interface AccountTemplate {
      * "field": The column name\
      * "operator": The operator. Allowed operators: ["=", "!=", "in", "not_in", "~", ">", "<", "contains_substring"]\
      * "value": A single value or a list of values
-     * @type {string}
-     * @memberof AccountTemplate
      */
     filtersJson?: string | null;
     /**
      * 
-     * @type {Granularity}
-     * @memberof AccountTemplate
      */
     granularity?: Granularity;
     /**
      * Template ID
-     * @type {string}
-     * @memberof AccountTemplate
      */
     readonly id: string;
     /**
      * The filter on the conversion ingestion source method for conversion metrics
-     * @type {Array<IngestionSource>}
-     * @memberof AccountTemplate
      */
     ingestionSources?: Array<IngestionSource> | null;
     /**
      * A boolean representing if this is the default view that loads for this template type
-     * @type {boolean}
-     * @memberof AccountTemplate
      */
     isDefault?: boolean;
     /**
      * A boolean that indicates if the template has been deleted
-     * @type {boolean}
-     * @memberof AccountTemplate
      */
     isDeleted?: boolean | null;
     /**
      * A boolean value that indicates if the user owns the template
-     * @type {boolean}
-     * @memberof AccountTemplate
      */
     isOwnedByUser?: boolean;
     /**
      * A boolean value that indicates if this template has been used to create a scheduled report
-     * @type {boolean}
-     * @memberof AccountTemplate
      */
     isScheduled?: boolean;
     /**
      * Template Name
-     * @type {string}
-     * @memberof AccountTemplate
      */
     name?: string | null;
     /**
      * The number of days prior to the day the report will be delivered at which the report will end
-     * @type {number}
-     * @memberof AccountTemplate
      */
     reportEndRelativeDaysInPast?: number;
     /**
      * 
-     * @type {DataOutputFormat}
-     * @memberof AccountTemplate
      */
     reportFormat?: DataOutputFormat;
     /**
      * 
-     * @type {MetricsReportingLevel}
-     * @memberof AccountTemplate
      */
     reportLevel?: MetricsReportingLevel;
     /**
      * The number of days prior to the day the report will be delivered at which the report will start
-     * @type {number}
-     * @memberof AccountTemplate
      */
     reportStartRelativeDaysInPast?: number;
     /**
      * Timezone for reporting data
-     * @type {ReportingTimeZone}
-     * @memberof AccountTemplate
      */
     reportingTimeZone?: ReportingTimeZone;
     /**
      * Unified metric sort configuration
-     * @type {any}
-     * @memberof AccountTemplate
      */
     sortBy?: any | null;
     /**
      * Type of the template
-     * @type {string}
-     * @memberof AccountTemplate
      */
     type?: string;
     /**
      * Time of last update in seconds since Unix epoch
-     * @type {number}
-     * @memberof AccountTemplate
      */
     readonly updatedTime?: number;
     /**
      * ID of the user who created the template
-     * @type {string}
-     * @memberof AccountTemplate
      */
     userId?: string;
     /**
      * The length of the sliding window over which view conversions will be attributed
-     * @type {number}
-     * @memberof AccountTemplate
      */
     viewWindowDays?: number;
 }

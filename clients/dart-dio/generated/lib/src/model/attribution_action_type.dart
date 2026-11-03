@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'attribution_action_type.g.dart';
 
+/// Type of an attributed action.
 class AttributionActionType extends EnumClass {
 
-  /// Type of an attributed action.
   @BuiltValueEnumConst(wireName: r'view')
   static const AttributionActionType view = _$view;
-  /// Type of an attributed action.
   @BuiltValueEnumConst(wireName: r'click')
   static const AttributionActionType click = _$click;
 

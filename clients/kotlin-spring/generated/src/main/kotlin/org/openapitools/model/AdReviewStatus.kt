@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad review status
-* Values: OTHER,PENDING,REJECTED,APPROVED
-*/
+ * Ad review status
+ * Values: OTHER,PENDING,REJECTED,APPROVED
+ */
 enum class AdReviewStatus(@get:JsonValue val value: kotlin.String) {
 
     OTHER("OTHER"),
@@ -30,9 +30,8 @@ enum class AdReviewStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdReviewStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdReviewStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdReviewStatus'")
         }
     }
 }
-

@@ -469,37 +469,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class PinBase.", nameof(id));
+                throw new JsonException("Property is required for class PinBase: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: id.");
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: ai_disclosures.");
 
             if (boardId.IsSet && boardId.Value == null)
-                throw new ArgumentNullException(nameof(boardId), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: board_id.");
 
             if (boardOwner.IsSet && boardOwner.Value == null)
-                throw new ArgumentNullException(nameof(boardOwner), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: board_owner.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: created_at.");
 
             if (hasBeenPromoted.IsSet && hasBeenPromoted.Value == null)
-                throw new ArgumentNullException(nameof(hasBeenPromoted), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: has_been_promoted.");
 
             if (isOwner.IsSet && isOwner.Value == null)
-                throw new ArgumentNullException(nameof(isOwner), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: is_owner.");
 
             if (isProduct.IsSet && isProduct.Value == null)
-                throw new ArgumentNullException(nameof(isProduct), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: is_product.");
 
             if (isStandard.IsSet && isStandard.Value == null)
-                throw new ArgumentNullException(nameof(isStandard), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: is_standard.");
 
             if (media.IsSet && media.Value == null)
-                throw new ArgumentNullException(nameof(media), "Property is not nullable for class PinBase.");
+                throw new JsonException("Property is not nullable for class PinBase: media.");
 
             return new PinBase(id.Value!, aiDisclosures, boardId, boardOwner, boardSectionId, createdAt, creativeType, dominantColor, hasBeenPromoted, isOwner, isProduct, isStandard, media, parentPinId, pinMetrics);
         }
@@ -510,7 +510,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinBase"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinBase pinBase, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -525,23 +524,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinBase"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinBase pinBase, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinBase.Id == null)
-                throw new ArgumentNullException(nameof(pinBase.Id), "Property is required for class PinBase.");
-
             if (pinBase.AiDisclosuresOption.IsSet && pinBase.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(pinBase.AiDisclosures), "Property is required for class PinBase.");
+                throw new JsonException("Cannot write null property PinBase.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (pinBase.BoardIdOption.IsSet && pinBase.BoardId == null)
-                throw new ArgumentNullException(nameof(pinBase.BoardId), "Property is required for class PinBase.");
+                throw new JsonException("Cannot write null property PinBase.BoardId to non-nullable JSON property 'board_id'.");
 
             if (pinBase.BoardOwnerOption.IsSet && pinBase.BoardOwner == null)
-                throw new ArgumentNullException(nameof(pinBase.BoardOwner), "Property is required for class PinBase.");
+                throw new JsonException("Cannot write null property PinBase.BoardOwner to non-nullable JSON property 'board_owner'.");
+
+            if (pinBase.CreatedAtOption.IsSet && pinBase.CreatedAt == null)
+                throw new JsonException("Cannot write null property PinBase.CreatedAt to non-nullable JSON property 'created_at'.");
+
+            if (pinBase.HasBeenPromotedOption.IsSet && pinBase.HasBeenPromoted == null)
+                throw new JsonException("Cannot write null property PinBase.HasBeenPromoted to non-nullable JSON property 'has_been_promoted'.");
+
+            if (pinBase.IsOwnerOption.IsSet && pinBase.IsOwner == null)
+                throw new JsonException("Cannot write null property PinBase.IsOwner to non-nullable JSON property 'is_owner'.");
+
+            if (pinBase.IsProductOption.IsSet && pinBase.IsProduct == null)
+                throw new JsonException("Cannot write null property PinBase.IsProduct to non-nullable JSON property 'is_product'.");
+
+            if (pinBase.IsStandardOption.IsSet && pinBase.IsStandard == null)
+                throw new JsonException("Cannot write null property PinBase.IsStandard to non-nullable JSON property 'is_standard'.");
 
             if (pinBase.MediaOption.IsSet && pinBase.Media == null)
-                throw new ArgumentNullException(nameof(pinBase.Media), "Property is required for class PinBase.");
+                throw new JsonException("Cannot write null property PinBase.Media to non-nullable JSON property 'media'.");
 
             writer.WriteString("id", pinBase.Id);
 

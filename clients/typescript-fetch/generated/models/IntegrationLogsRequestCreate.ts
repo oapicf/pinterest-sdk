@@ -29,8 +29,6 @@ import {
 export interface IntegrationLogsRequestCreate {
     /**
      * 
-     * @type {Array<IntegrationLog>}
-     * @memberof IntegrationLogsRequestCreate
      */
     logs: Array<IntegrationLog>;
 }

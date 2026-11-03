@@ -160,16 +160,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUploadCreateRequest.", nameof(operation));
+                throw new JsonException("Property is required for class CustomerListUploadCreateRequest: operation.");
 
             if (!totalParts.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUploadCreateRequest.", nameof(totalParts));
+                throw new JsonException("Property is required for class CustomerListUploadCreateRequest: total_parts.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CustomerListUploadCreateRequest.");
+                throw new JsonException("Property is not nullable for class CustomerListUploadCreateRequest: operation.");
 
             if (totalParts.IsSet && totalParts.Value == null)
-                throw new ArgumentNullException(nameof(totalParts), "Property is not nullable for class CustomerListUploadCreateRequest.");
+                throw new JsonException("Property is not nullable for class CustomerListUploadCreateRequest: total_parts.");
 
             return new CustomerListUploadCreateRequest(operation.Value!.Value!, totalParts.Value!.Value!);
         }
@@ -180,7 +180,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUploadCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListUploadCreateRequest customerListUploadCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -195,7 +194,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUploadCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListUploadCreateRequest customerListUploadCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             var operationRawValue = UserListOperationTypeValueConverter.ToJsonValue(customerListUploadCreateRequest.Operation);

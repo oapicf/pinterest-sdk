@@ -23,9 +23,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("BidFloorCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BidFloorCreate   {
-  private @Valid List<@Valid BidFloorSpec> bidFloorSpecs = new ArrayList<>();
+  private List<@Valid BidFloorSpec> bidFloorSpecs = new ArrayList<>();
   private TargetingSpecOptimal targetingSpec;
 
   public BidFloorCreate() {
@@ -49,7 +49,7 @@ public class BidFloorCreate   {
   
   @ApiModelProperty(required = true, value = "List of bid floor specifications.")
   @JsonProperty(required = true, value = "bid_floor_specs")
-  @NotNull @Valid public List<@Valid BidFloorSpec> getBidFloorSpecs() {
+  @NotNull public List<@Valid BidFloorSpec> getBidFloorSpecs() {
     return bidFloorSpecs;
   }
 

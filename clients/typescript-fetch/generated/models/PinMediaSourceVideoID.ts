@@ -29,44 +29,30 @@ import {
 export interface PinMediaSourceVideoID {
     /**
      * Content type for cover image Base64.
-     * @type {ContentType}
-     * @memberof PinMediaSourceVideoID
      */
     coverImageContentType?: ContentType;
     /**
      * Cover image Base64.
-     * @type {string}
-     * @memberof PinMediaSourceVideoID
      */
     coverImageData?: string;
     /**
      * Keyframe timestamp for cover image (seconds). If entered time exceeds video duration, the last frame is used.
-     * @type {number}
-     * @memberof PinMediaSourceVideoID
      */
     coverImageKeyFrameTime?: number;
     /**
      * Cover image URL.
-     * @type {string}
-     * @memberof PinMediaSourceVideoID
      */
     coverImageUrl?: string;
     /**
      * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-     * @type {boolean}
-     * @memberof PinMediaSourceVideoID
      */
     isStandard?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceVideoID
      */
     mediaId: string;
     /**
      * 
-     * @type {PinMediaSourceVideoIDSourceTypeEnum}
-     * @memberof PinMediaSourceVideoID
      */
     sourceType: PinMediaSourceVideoIDSourceTypeEnum;
 }
@@ -76,7 +62,7 @@ export interface PinMediaSourceVideoID {
  * @export
  */
 export const PinMediaSourceVideoIDSourceTypeEnum = {
-    VideoId: 'video_id'
+    VideoId: 'video_id',
 } as const;
 export type PinMediaSourceVideoIDSourceTypeEnum = typeof PinMediaSourceVideoIDSourceTypeEnum[keyof typeof PinMediaSourceVideoIDSourceTypeEnum];
 

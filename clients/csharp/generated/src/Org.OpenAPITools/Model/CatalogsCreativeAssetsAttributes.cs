@@ -438,22 +438,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: description.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: link.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: title.");
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: ai_disclosures.");
 
             if (imageLink.IsSet && imageLink.Value == null)
-                throw new ArgumentNullException(nameof(imageLink), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: image_link.");
 
             if (videoLink.IsSet && videoLink.Value == null)
-                throw new ArgumentNullException(nameof(videoLink), "Property is not nullable for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsAttributes: video_link.");
 
             return new CatalogsCreativeAssetsAttributes(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility, aiDisclosures, imageLink, videoLink);
         }
@@ -464,7 +464,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsAttributes catalogsCreativeAssetsAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -479,26 +478,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsAttributes catalogsCreativeAssetsAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsCreativeAssetsAttributes.DescriptionOption.IsSet && catalogsCreativeAssetsAttributes.Description == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.Description), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.Description to non-nullable JSON property 'description'.");
 
             if (catalogsCreativeAssetsAttributes.LinkOption.IsSet && catalogsCreativeAssetsAttributes.Link == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.Link), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.Link to non-nullable JSON property 'link'.");
 
             if (catalogsCreativeAssetsAttributes.TitleOption.IsSet && catalogsCreativeAssetsAttributes.Title == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.Title), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.Title to non-nullable JSON property 'title'.");
 
             if (catalogsCreativeAssetsAttributes.AiDisclosuresOption.IsSet && catalogsCreativeAssetsAttributes.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.AiDisclosures), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (catalogsCreativeAssetsAttributes.ImageLinkOption.IsSet && catalogsCreativeAssetsAttributes.ImageLink == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.ImageLink), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.ImageLink to non-nullable JSON property 'image_link'.");
 
             if (catalogsCreativeAssetsAttributes.VideoLinkOption.IsSet && catalogsCreativeAssetsAttributes.VideoLink == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsAttributes.VideoLink), "Property is required for class CatalogsCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsAttributes.VideoLink to non-nullable JSON property 'video_link'.");
 
             if (catalogsCreativeAssetsAttributes.AndroidDeepLinkOption.IsSet)
                 if (catalogsCreativeAssetsAttributes.AndroidDeepLinkOption.Value != null)

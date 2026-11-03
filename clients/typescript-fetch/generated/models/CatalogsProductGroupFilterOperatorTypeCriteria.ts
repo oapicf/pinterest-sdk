@@ -29,20 +29,14 @@ import {
 export interface CatalogsProductGroupFilterOperatorTypeCriteria {
     /**
      * 
-     * @type {FilterOperatorType}
-     * @memberof CatalogsProductGroupFilterOperatorTypeCriteria
      */
     filterOperatorType?: FilterOperatorType;
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupFilterOperatorTypeCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsProductGroupFilterOperatorTypeCriteria
      */
     values: Array<string>;
 }

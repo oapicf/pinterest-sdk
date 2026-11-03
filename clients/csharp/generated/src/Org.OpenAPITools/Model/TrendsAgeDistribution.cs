@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (ageDistribution.IsSet && ageDistribution.Value == null)
-                throw new ArgumentNullException(nameof(ageDistribution), "Property is not nullable for class TrendsAgeDistribution.");
+                throw new JsonException("Property is not nullable for class TrendsAgeDistribution: age_distribution.");
 
             return new TrendsAgeDistribution(ageDistribution);
         }
@@ -158,7 +158,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsAgeDistribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendsAgeDistribution trendsAgeDistribution, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -173,9 +172,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsAgeDistribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendsAgeDistribution trendsAgeDistribution, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (trendsAgeDistribution.AgeDistributionOption.IsSet && trendsAgeDistribution.AgeDistribution == null)
+                throw new JsonException("Cannot write null property TrendsAgeDistribution.AgeDistribution to non-nullable JSON property 'age_distribution'.");
+
             if (trendsAgeDistribution.AgeDistributionOption.IsSet)
             {
                 var ageDistributionRawValue = TrendsAgeBucketValueConverter.ToJsonValue(trendsAgeDistribution.AgeDistribution!.Value);

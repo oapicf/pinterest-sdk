@@ -29,44 +29,30 @@ import {
 export interface CustomerSegment {
     /**
      * The ID of the ad account that this customer segment belongs to.
-     * @type {string}
-     * @memberof CustomerSegment
      */
     readonly adAccountId?: string;
     /**
      * Audience IDs included in the customer segment.
-     * @type {Array<string>}
-     * @memberof CustomerSegment
      */
     audienceIds: Array<string>;
     /**
      * Customer segment created time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof CustomerSegment
      */
     readonly createdTime?: number;
     /**
      * Customer segment ID.
-     * @type {string}
-     * @memberof CustomerSegment
      */
     readonly id?: string;
     /**
      * Customer segment name.
-     * @type {string}
-     * @memberof CustomerSegment
      */
     name: string;
     /**
      * Indicates whether the customer segment is active or deleted.
-     * @type {TargetingTemplateStatus}
-     * @memberof CustomerSegment
      */
     readonly status?: TargetingTemplateStatus;
     /**
      * Customer segment updated time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof CustomerSegment
      */
     readonly updatedTime?: number;
 }

@@ -384,22 +384,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (about.IsSet && about.Value == null)
-                throw new ArgumentNullException(nameof(about), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: about.");
 
             if (accountType.IsSet && accountType.Value == null)
-                throw new ArgumentNullException(nameof(accountType), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: account_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: id.");
 
             if (profileImage.IsSet && profileImage.Value == null)
-                throw new ArgumentNullException(nameof(profileImage), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: profile_image.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: username.");
 
             if (websiteUrl.IsSet && websiteUrl.Value == null)
-                throw new ArgumentNullException(nameof(websiteUrl), "Property is not nullable for class Account.");
+                throw new JsonException("Property is not nullable for class Account: website_url.");
 
             return new Account(about, accountType, boardCount, businessName, followerCount, followingCount, id, monthlyViews, pinCount, profileImage, username, websiteUrl);
         }
@@ -410,7 +410,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="account"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Account account, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -425,23 +424,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="account"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Account account, JsonSerializerOptions jsonSerializerOptions)
         {
             if (account.AboutOption.IsSet && account.About == null)
-                throw new ArgumentNullException(nameof(account.About), "Property is required for class Account.");
+                throw new JsonException("Cannot write null property Account.About to non-nullable JSON property 'about'.");
+
+            if (account.AccountTypeOption.IsSet && account.AccountType == null)
+                throw new JsonException("Cannot write null property Account.AccountType to non-nullable JSON property 'account_type'.");
 
             if (account.IdOption.IsSet && account.Id == null)
-                throw new ArgumentNullException(nameof(account.Id), "Property is required for class Account.");
+                throw new JsonException("Cannot write null property Account.Id to non-nullable JSON property 'id'.");
 
             if (account.ProfileImageOption.IsSet && account.ProfileImage == null)
-                throw new ArgumentNullException(nameof(account.ProfileImage), "Property is required for class Account.");
+                throw new JsonException("Cannot write null property Account.ProfileImage to non-nullable JSON property 'profile_image'.");
 
             if (account.UsernameOption.IsSet && account.Username == null)
-                throw new ArgumentNullException(nameof(account.Username), "Property is required for class Account.");
+                throw new JsonException("Cannot write null property Account.Username to non-nullable JSON property 'username'.");
 
             if (account.WebsiteUrlOption.IsSet && account.WebsiteUrl == null)
-                throw new ArgumentNullException(nameof(account.WebsiteUrl), "Property is required for class Account.");
+                throw new JsonException("Cannot write null property Account.WebsiteUrl to non-nullable JSON property 'website_url'.");
 
             if (account.AboutOption.IsSet)
                 writer.WriteString("about", account.About);

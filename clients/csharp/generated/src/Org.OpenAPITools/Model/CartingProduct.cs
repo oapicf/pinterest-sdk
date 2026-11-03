@@ -228,22 +228,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cartingProductId.IsSet)
-                throw new ArgumentException("Property is required for class CartingProduct.", nameof(cartingProductId));
+                throw new JsonException("Property is required for class CartingProduct: carting_product_id.");
 
             if (cartingProductId.IsSet && cartingProductId.Value == null)
-                throw new ArgumentNullException(nameof(cartingProductId), "Property is not nullable for class CartingProduct.");
+                throw new JsonException("Property is not nullable for class CartingProduct: carting_product_id.");
 
             if (displayPreferredRetailersOnly.IsSet && displayPreferredRetailersOnly.Value == null)
-                throw new ArgumentNullException(nameof(displayPreferredRetailersOnly), "Property is not nullable for class CartingProduct.");
+                throw new JsonException("Property is not nullable for class CartingProduct: display_preferred_retailers_only.");
 
             if (displayProductPrice.IsSet && displayProductPrice.Value == null)
-                throw new ArgumentNullException(nameof(displayProductPrice), "Property is not nullable for class CartingProduct.");
+                throw new JsonException("Property is not nullable for class CartingProduct: display_product_price.");
 
             if (preferredRetailers.IsSet && preferredRetailers.Value == null)
-                throw new ArgumentNullException(nameof(preferredRetailers), "Property is not nullable for class CartingProduct.");
+                throw new JsonException("Property is not nullable for class CartingProduct: preferred_retailers.");
 
             if (randomizePreferredRetailers.IsSet && randomizePreferredRetailers.Value == null)
-                throw new ArgumentNullException(nameof(randomizePreferredRetailers), "Property is not nullable for class CartingProduct.");
+                throw new JsonException("Property is not nullable for class CartingProduct: randomize_preferred_retailers.");
 
             return new CartingProduct(cartingProductId.Value!, displayPreferredRetailersOnly, displayProductPrice, preferredRetailers, randomizePreferredRetailers);
         }
@@ -254,7 +254,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cartingProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CartingProduct cartingProduct, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,14 +268,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cartingProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CartingProduct cartingProduct, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (cartingProduct.CartingProductId == null)
-                throw new ArgumentNullException(nameof(cartingProduct.CartingProductId), "Property is required for class CartingProduct.");
+            if (cartingProduct.DisplayPreferredRetailersOnlyOption.IsSet && cartingProduct.DisplayPreferredRetailersOnly == null)
+                throw new JsonException("Cannot write null property CartingProduct.DisplayPreferredRetailersOnly to non-nullable JSON property 'display_preferred_retailers_only'.");
+
+            if (cartingProduct.DisplayProductPriceOption.IsSet && cartingProduct.DisplayProductPrice == null)
+                throw new JsonException("Cannot write null property CartingProduct.DisplayProductPrice to non-nullable JSON property 'display_product_price'.");
 
             if (cartingProduct.PreferredRetailersOption.IsSet && cartingProduct.PreferredRetailers == null)
-                throw new ArgumentNullException(nameof(cartingProduct.PreferredRetailers), "Property is required for class CartingProduct.");
+                throw new JsonException("Cannot write null property CartingProduct.PreferredRetailers to non-nullable JSON property 'preferred_retailers'.");
+
+            if (cartingProduct.RandomizePreferredRetailersOption.IsSet && cartingProduct.RandomizePreferredRetailers == null)
+                throw new JsonException("Cannot write null property CartingProduct.RandomizePreferredRetailers to non-nullable JSON property 'randomize_preferred_retailers'.");
 
             writer.WriteString("carting_product_id", cartingProduct.CartingProductId);
 

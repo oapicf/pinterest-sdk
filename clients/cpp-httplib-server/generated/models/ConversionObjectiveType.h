@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class ConversionObjectiveType
-{
-public:
-
-    ConversionObjectiveType();
-    virtual ~ConversionObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionObjectiveType,
-        )
-
-private:
+enum class ConversionObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    WEB_CONVERSION,
+    
+    CATALOG_SALES,
+    
+    VIDEO_COMPLETION,
+    
+    APP_INSTALL,
+    
+    SALES,
+    
+    LEADS,
+    
+    CTV_CONSIDERATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case ConversionObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case ConversionObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case ConversionObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case ConversionObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case ConversionObjectiveType::VIDEO_COMPLETION: j = "VIDEO_COMPLETION"; break;
+        
+        case ConversionObjectiveType::APP_INSTALL: j = "APP_INSTALL"; break;
+        
+        case ConversionObjectiveType::SALES: j = "SALES"; break;
+        
+        case ConversionObjectiveType::LEADS: j = "LEADS"; break;
+        
+        case ConversionObjectiveType::CTV_CONSIDERATION: j = "CTV_CONSIDERATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = ConversionObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = ConversionObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = ConversionObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = ConversionObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "VIDEO_COMPLETION")
+    {
+        value = ConversionObjectiveType::VIDEO_COMPLETION;
+        return;
+    }
+    
+    if (j == "APP_INSTALL")
+    {
+        value = ConversionObjectiveType::APP_INSTALL;
+        return;
+    }
+    
+    if (j == "SALES")
+    {
+        value = ConversionObjectiveType::SALES;
+        return;
+    }
+    
+    if (j == "LEADS")
+    {
+        value = ConversionObjectiveType::LEADS;
+        return;
+    }
+    
+    if (j == "CTV_CONSIDERATION")
+    {
+        value = ConversionObjectiveType::CTV_CONSIDERATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionObjectiveType", &j);
+}
 
 } // namespace models
 

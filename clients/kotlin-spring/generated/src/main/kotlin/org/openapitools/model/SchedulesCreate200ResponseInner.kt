@@ -16,13 +16,13 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  */
 data class SchedulesCreate200ResponseInner(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("data")
+    @param:JsonProperty("data", required = true)
     @get:JsonProperty("data", required = true) val `data`: SchedulesCreate200ResponseInnerData
 ) {
 

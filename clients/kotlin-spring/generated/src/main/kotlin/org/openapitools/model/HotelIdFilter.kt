@@ -22,7 +22,7 @@ data class HotelIdFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("HOTEL_ID")
+    @param:JsonProperty("HOTEL_ID", required = true)
     @get:JsonProperty("HOTEL_ID", required = true) val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria
 ) {
 

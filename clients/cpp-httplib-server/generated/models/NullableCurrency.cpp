@@ -6,20 +6,3 @@
 */
 #include "NullableCurrency.h"
 
-namespace models {
-
-NullableCurrency::NullableCurrency()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

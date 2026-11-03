@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsLocalStoresCreate200ResponseInner.", nameof(data));
+                throw new JsonException("Property is required for class CatalogsLocalStoresCreate200ResponseInner: data.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class CatalogsLocalStoresCreate200ResponseInner.");
+                throw new JsonException("Property is not nullable for class CatalogsLocalStoresCreate200ResponseInner: data.");
 
             return new CatalogsLocalStoresCreate200ResponseInner(data.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInner catalogsLocalStoresCreate200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInner catalogsLocalStoresCreate200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsLocalStoresCreate200ResponseInner.Data == null)
-                throw new ArgumentNullException(nameof(catalogsLocalStoresCreate200ResponseInner.Data), "Property is required for class CatalogsLocalStoresCreate200ResponseInner.");
-
             writer.WritePropertyName("data");
             JsonSerializer.Serialize(writer, catalogsLocalStoresCreate200ResponseInner.Data, jsonSerializerOptions);
         }

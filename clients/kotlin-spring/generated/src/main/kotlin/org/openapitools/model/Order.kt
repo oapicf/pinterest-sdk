@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ASCENDING,DESCENDING
-*/
+ * 
+ * Values: ASCENDING,DESCENDING
+ */
 enum class Order(@get:JsonValue val value: kotlin.String) {
 
     ASCENDING("ASCENDING"),
@@ -28,9 +28,8 @@ enum class Order(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): Order {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Order'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Order'")
         }
     }
 }
-

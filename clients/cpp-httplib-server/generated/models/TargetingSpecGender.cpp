@@ -6,20 +6,3 @@
 */
 #include "TargetingSpecGender.h"
 
-namespace models {
-
-TargetingSpecGender::TargetingSpecGender()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CartingRetailer model module.
  * @module model/CartingRetailer
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CartingRetailer {
     /**

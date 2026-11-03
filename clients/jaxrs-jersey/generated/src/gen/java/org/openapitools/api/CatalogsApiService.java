@@ -57,7 +57,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public abstract class CatalogsApiService {
     public abstract Response catalogsAvailableFilterValues( @NotNull  @Pattern(regexp="^\\d+$")String catalogId, @Pattern(regexp="^\\d+$")String feedId,Country country,CatalogsLocale language, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsCreate(CatalogCreate catalogCreate, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
@@ -70,7 +70,7 @@ public abstract class CatalogsApiService {
     public abstract Response catalogsLocalStoresUpdate( @Pattern(regexp="^\\d+$") @Size(max=19)String catalogId,List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsProductGroupPinsList( @Pattern(regexp="^\\d+$")String productGroupId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,Boolean pinMetrics,String bookmark, @Min(1) @Max(250)Integer pageSize,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsProductGroupsCreate(CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response catalogsProductGroupsCreateMany(List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response catalogsProductGroupsCreateMany(List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsProductGroupsDelete( @Pattern(regexp="^\\d+$")String productGroupId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsProductGroupsDeleteMany( @NotNull  @Size(min=1,max=1000)List<Integer> id, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;
     public abstract Response catalogsProductGroupsGet( @Pattern(regexp="^\\d+$")String productGroupId, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,SecurityContext securityContext) throws NotFoundException;

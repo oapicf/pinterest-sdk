@@ -23,30 +23,26 @@ public class CatalogsHotelProductGroupFilters  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get anyOf
    * @return anyOf
   **/
   @JsonProperty("any_of")
   @NotNull
-  public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsHotelProductGroupFilters anyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public CatalogsHotelProductGroupFilters anyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -62,15 +58,15 @@ public class CatalogsHotelProductGroupFilters  {
   **/
   @JsonProperty("all_of")
   @NotNull
-  public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 
-  public CatalogsHotelProductGroupFilters allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFilters allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }

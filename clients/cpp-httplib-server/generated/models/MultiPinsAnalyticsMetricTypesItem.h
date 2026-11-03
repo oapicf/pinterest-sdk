@@ -12,24 +12,174 @@
 
 namespace models {
 
-
-class MultiPinsAnalyticsMetricTypesItem
-{
-public:
-
-    MultiPinsAnalyticsMetricTypesItem();
-    virtual ~MultiPinsAnalyticsMetricTypesItem() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MultiPinsAnalyticsMetricTypesItem,
-        )
-
-private:
+enum class MultiPinsAnalyticsMetricTypesItem {
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    PIN_CLICK,
+    
+    SAVE,
+    
+    SAVE_RATE,
+    
+    TOTAL_COMMENTS,
+    
+    TOTAL_REACTIONS,
+    
+    USER_FOLLOW,
+    
+    PROFILE_VISIT,
+    
+    VIDEO_MRC_VIEW,
+    
+    VIDEO_10S_VIEW,
+    
+    QUARTILE_95_PERCENT_VIEW,
+    
+    VIDEO_V50_WATCH_TIME,
+    
+    VIDEO_START,
+    
+    VIDEO_AVG_WATCH_TIME
+    
 };
 
+inline void to_json(nlohmann::json& j, const MultiPinsAnalyticsMetricTypesItem& value)
+{
+    switch (value)
+    {
+        
+        case MultiPinsAnalyticsMetricTypesItem::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::PIN_CLICK: j = "PIN_CLICK"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::SAVE: j = "SAVE"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::SAVE_RATE: j = "SAVE_RATE"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::TOTAL_COMMENTS: j = "TOTAL_COMMENTS"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::TOTAL_REACTIONS: j = "TOTAL_REACTIONS"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::USER_FOLLOW: j = "USER_FOLLOW"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::PROFILE_VISIT: j = "PROFILE_VISIT"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::VIDEO_MRC_VIEW: j = "VIDEO_MRC_VIEW"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::VIDEO_10S_VIEW: j = "VIDEO_10S_VIEW"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::QUARTILE_95_PERCENT_VIEW: j = "QUARTILE_95_PERCENT_VIEW"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::VIDEO_V50_WATCH_TIME: j = "VIDEO_V50_WATCH_TIME"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::VIDEO_START: j = "VIDEO_START"; break;
+        
+        case MultiPinsAnalyticsMetricTypesItem::VIDEO_AVG_WATCH_TIME: j = "VIDEO_AVG_WATCH_TIME"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MultiPinsAnalyticsMetricTypesItem", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MultiPinsAnalyticsMetricTypesItem& value)
+{
+    
+    if (j == "IMPRESSION")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "PIN_CLICK")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::PIN_CLICK;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::SAVE;
+        return;
+    }
+    
+    if (j == "SAVE_RATE")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::SAVE_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_COMMENTS")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::TOTAL_COMMENTS;
+        return;
+    }
+    
+    if (j == "TOTAL_REACTIONS")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::TOTAL_REACTIONS;
+        return;
+    }
+    
+    if (j == "USER_FOLLOW")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::USER_FOLLOW;
+        return;
+    }
+    
+    if (j == "PROFILE_VISIT")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::PROFILE_VISIT;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEW")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::VIDEO_MRC_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_10S_VIEW")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::VIDEO_10S_VIEW;
+        return;
+    }
+    
+    if (j == "QUARTILE_95_PERCENT_VIEW")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::QUARTILE_95_PERCENT_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_V50_WATCH_TIME")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::VIDEO_V50_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "VIDEO_START")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::VIDEO_START;
+        return;
+    }
+    
+    if (j == "VIDEO_AVG_WATCH_TIME")
+    {
+        value = MultiPinsAnalyticsMetricTypesItem::VIDEO_AVG_WATCH_TIME;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MultiPinsAnalyticsMetricTypesItem", &j);
+}
 
 } // namespace models
 

@@ -188,7 +188,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailAvailableFilterValues.CatalogTypeEnum?>(CatalogsRetailAvailableFilterValues.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailAvailableFilterValues.CatalogTypeEnum? catalogTypeValue = CatalogsRetailAvailableFilterValues.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailAvailableFilterValues.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "filter_values":
                             filterValues = new Option<CatalogsRetailFilterValuesMap?>(JsonSerializer.Deserialize<CatalogsRetailFilterValuesMap>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -200,16 +205,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailAvailableFilterValues.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailAvailableFilterValues: catalog_type.");
 
             if (!filterValues.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailAvailableFilterValues.", nameof(filterValues));
+                throw new JsonException("Property is required for class CatalogsRetailAvailableFilterValues: filter_values.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailAvailableFilterValues.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailAvailableFilterValues: catalog_type.");
 
             if (filterValues.IsSet && filterValues.Value == null)
-                throw new ArgumentNullException(nameof(filterValues), "Property is not nullable for class CatalogsRetailAvailableFilterValues.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailAvailableFilterValues: filter_values.");
 
             return new CatalogsRetailAvailableFilterValues(catalogType.Value!.Value!, filterValues.Value!);
         }
@@ -220,7 +225,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailAvailableFilterValues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailAvailableFilterValues catalogsRetailAvailableFilterValues, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,12 +239,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailAvailableFilterValues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailAvailableFilterValues catalogsRetailAvailableFilterValues, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailAvailableFilterValues.FilterValues == null)
-                throw new ArgumentNullException(nameof(catalogsRetailAvailableFilterValues.FilterValues), "Property is required for class CatalogsRetailAvailableFilterValues.");
-
             var catalogTypeRawValue = CatalogsRetailAvailableFilterValues.CatalogTypeEnumToJsonValue(catalogsRetailAvailableFilterValues.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WritePropertyName("filter_values");

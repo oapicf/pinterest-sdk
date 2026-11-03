@@ -211,7 +211,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the ad_accounts API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccountsApi  {
    private final AdAccountsApiService delegate;
 
@@ -568,7 +568,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid AdGroupCreateCreate> adGroupCreateCreate,@Context SecurityContext securityContext)
+    public Response adGroupsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid AdGroupCreateCreate> adGroupCreateCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adGroupsCreate(adAccountId, adGroupCreateCreate, securityContext);
     }
@@ -754,7 +754,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate,@Context SecurityContext securityContext)
+    public Response adGroupsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adGroupsUpdate(adAccountId, adGroupUpdateBatchUpdate, securityContext);
     }
@@ -874,7 +874,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid AdCreate> adCreate,@Context SecurityContext securityContext)
+    public Response adsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid AdCreate> adCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adsCreate(adAccountId, adCreate, securityContext);
     }
@@ -993,7 +993,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid AdBatchUpdate> adBatchUpdate,@Context SecurityContext securityContext)
+    public Response adsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid AdBatchUpdate> adBatchUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adsUpdate(adAccountId, adBatchUpdate, securityContext);
     }
@@ -1552,7 +1552,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignAdPreviewCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate,@Context SecurityContext securityContext)
+    public Response campaignAdPreviewCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.campaignAdPreviewCreate(adAccountId, campaignAdPreviewCreate, securityContext);
     }
@@ -1669,7 +1669,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid CampaignCreateItem> campaignCreateItem,@Context SecurityContext securityContext)
+    public Response campaignsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid CampaignCreateItem> campaignCreateItem,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.campaignsCreate(adAccountId, campaignCreateItem, securityContext);
     }
@@ -1741,7 +1741,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem,@Context SecurityContext securityContext)
+    public Response campaignsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.campaignsUpdate(adAccountId, campaignBatchUpdateItem, securityContext);
     }
@@ -2261,7 +2261,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 503, message = "The service is temporarily unavailable.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getCampaignDeliveryEstimates(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=1) List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign,@Context SecurityContext securityContext)
+    public Response getCampaignDeliveryEstimates(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=1) List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.getCampaignDeliveryEstimates(adAccountId, campaignDeliveryEstimatesCampaign, securityContext);
     }
@@ -2506,7 +2506,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid LeadFormCreate> leadFormCreate,@Context SecurityContext securityContext)
+    public Response leadFormsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid LeadFormCreate> leadFormCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.leadFormsCreate(adAccountId, leadFormCreate, securityContext);
     }
@@ -2550,7 +2550,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate,@Context SecurityContext securityContext)
+    public Response leadFormsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.leadFormsUpdate(adAccountId, leadFormBatchUpdate, securityContext);
     }
@@ -2848,7 +2848,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid PromotionCreate> promotionCreate,@Context SecurityContext securityContext)
+    public Response promotionsCreate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid PromotionCreate> promotionCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.promotionsCreate(adAccountId, promotionCreate, securityContext);
     }
@@ -2937,7 +2937,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=30) List<@Valid PromotionBatchUpdate> promotionBatchUpdate,@Context SecurityContext securityContext)
+    public Response promotionsUpdate(@ApiParam(value = "Unique identifier of an ad account.", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=30) List<@Valid PromotionBatchUpdate> promotionBatchUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.promotionsUpdate(adAccountId, promotionBatchUpdate, securityContext);
     }
@@ -2982,7 +2982,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response schedulesCreate(@ApiParam(value = "", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  List<@Valid ScheduleCreate> scheduleCreate,@Context SecurityContext securityContext)
+    public Response schedulesCreate(@ApiParam(value = "", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  List<@Valid ScheduleCreate> scheduleCreate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.schedulesCreate(adAccountId, scheduleCreate, securityContext);
     }
@@ -3026,7 +3026,7 @@ public class AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response schedulesUpdate(@ApiParam(value = "", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull @Valid  List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate,@Context SecurityContext securityContext)
+    public Response schedulesUpdate(@ApiParam(value = "", required = true) @PathParam("ad_account_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@ApiParam(value = "", required = true) @NotNull  List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.schedulesUpdate(adAccountId, scheduleBatchUpdate, securityContext);
     }

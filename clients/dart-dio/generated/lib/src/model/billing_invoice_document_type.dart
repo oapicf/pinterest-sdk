@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'billing_invoice_document_type.g.dart';
 
+/// The type of a billing invoice document.
 class BillingInvoiceDocumentType extends EnumClass {
 
-  /// The type of a billing invoice document.
   @BuiltValueEnumConst(wireName: r'INVOICE')
   static const BillingInvoiceDocumentType INVOICE = _$INVOICE;
-  /// The type of a billing invoice document.
   @BuiltValueEnumConst(wireName: r'CREDIT_MEMO')
   static const BillingInvoiceDocumentType CREDIT_MEMO = _$CREDIT_MEMO;
 

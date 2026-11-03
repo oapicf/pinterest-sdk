@@ -43,56 +43,38 @@ import {
 export interface ConversionTagResponse {
     /**
      * Tag code snippet.
-     * @type {string}
-     * @memberof ConversionTagResponse
      */
     readonly codeSnippet?: string;
     /**
      * 
-     * @type {ConversionTagConfigs}
-     * @memberof ConversionTagResponse
      */
     readonly configs?: ConversionTagConfigs;
     /**
      * The enhanced match status of the tag
-     * @type {EnhancedMatchStatusType}
-     * @memberof ConversionTagResponse
      */
     readonly enhancedMatchStatus?: EnhancedMatchStatusType | null;
     /**
      * Tag ID.
-     * @type {string}
-     * @memberof ConversionTagResponse
      */
     readonly id?: string;
     /**
      * Time for the last event fired.
-     * @type {number}
-     * @memberof ConversionTagResponse
      */
     readonly lastFiredTimeMs?: number | null;
     /**
      * Conversion tag name.
-     * @type {string}
-     * @memberof ConversionTagResponse
      */
     name: string;
     /**
      * Version number.
-     * @type {string}
-     * @memberof ConversionTagResponse
      */
     readonly version?: string;
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof ConversionTagResponse
      */
     readonly adAccountId: string;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof ConversionTagResponse
      */
     readonly status?: EntityStatus;
 }

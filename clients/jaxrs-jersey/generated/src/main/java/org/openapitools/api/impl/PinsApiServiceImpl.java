@@ -31,7 +31,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApiServiceImpl extends PinsApiService {
     @Override
     public Response multiPinsAnalytics( @NotNull  @Size(min=1,max=100)List<@Pattern(regexp = "^\\d+$")String> pinIds,  @NotNull Date startDate,  @NotNull Date endDate,  @NotNull List<MultiPinsAnalyticsMetricTypesItem> metricTypes, String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SecurityContext securityContext) throws NotFoundException {
@@ -39,7 +39,7 @@ public class PinsApiServiceImpl extends PinsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response pinsAnalytics(String pinId,  @NotNull Date startDate,  @NotNull Date endDate,  @NotNull List<QuerypinanalyticsmetrictypesItems> metricTypes, String appTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SecurityContext securityContext) throws NotFoundException {
+    public Response pinsAnalytics(String pinId,  @NotNull Date startDate,  @NotNull Date endDate,  @NotNull List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes, String appTypes, String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

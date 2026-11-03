@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("LocalInventoryItemsGetCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsGetCreate   {
-  private @Valid List<@Valid ItemIdStoreCodePair> itemFilters = new ArrayList<>();
+  private List<@Valid ItemIdStoreCodePair> itemFilters = new ArrayList<>();
 
   public LocalInventoryItemsGetCreate() {
   }
@@ -47,7 +47,7 @@ public class LocalInventoryItemsGetCreate   {
   
   @ApiModelProperty(required = true, value = "Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.")
   @JsonProperty(required = true, value = "item_filters")
-  @NotNull @Valid  @Size(min=1,max=1000)public List<@Valid ItemIdStoreCodePair> getItemFilters() {
+  @NotNull  @Size(min=1,max=1000)public List<@Valid ItemIdStoreCodePair> getItemFilters() {
     return itemFilters;
   }
 

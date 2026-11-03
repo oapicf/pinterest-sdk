@@ -105,3 +105,4 @@ class _$CustomNumber4FilterSerializer implements PrimitiveSerializer<CustomNumbe
   }
 }
 
+

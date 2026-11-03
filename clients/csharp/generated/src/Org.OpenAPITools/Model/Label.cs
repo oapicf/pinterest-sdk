@@ -198,19 +198,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Label.", nameof(id));
+                throw new JsonException("Property is required for class Label: id.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class Label.", nameof(value));
+                throw new JsonException("Property is required for class Label: value.");
 
             if (!labelType.IsSet)
-                throw new ArgumentException("Property is required for class Label.", nameof(labelType));
+                throw new JsonException("Property is required for class Label: label_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Label.");
+                throw new JsonException("Property is not nullable for class Label: id.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class Label.");
+                throw new JsonException("Property is not nullable for class Label: value.");
 
             return new Label(id.Value!, value.Value!, labelType.Value!, status);
         }
@@ -221,7 +221,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="label"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Label label, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -236,15 +235,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="label"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Label label, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (label.Id == null)
-                throw new ArgumentNullException(nameof(label.Id), "Property is required for class Label.");
-
-            if (label.Value == null)
-                throw new ArgumentNullException(nameof(label.Value), "Property is required for class Label.");
-
             writer.WriteString("id", label.Id);
 
             writer.WriteString("value", label.Value);

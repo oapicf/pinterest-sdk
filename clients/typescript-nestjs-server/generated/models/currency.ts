@@ -30,7 +30,7 @@ export const Currency = {
     Clp: 'CLP',
     Cop: 'COP',
     Inr: 'INR',
-    Try: 'TRY'
+    Try: 'TRY',
 } as const;
 export type Currency = typeof Currency[keyof typeof Currency];
 

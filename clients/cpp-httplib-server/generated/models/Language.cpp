@@ -6,20 +6,3 @@
 */
 #include "Language.h"
 
-namespace models {
-
-Language::Language()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

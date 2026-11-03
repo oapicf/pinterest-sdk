@@ -17,7 +17,7 @@ import MediaUploadType from './MediaUploadType';
 /**
  * The MediaUploadCreate model module.
  * @module model/MediaUploadCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class MediaUploadCreate {
     /**

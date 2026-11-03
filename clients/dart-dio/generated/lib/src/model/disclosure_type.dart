@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'disclosure_type.g.dart';
 
+/// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
 class DisclosureType extends EnumClass {
 
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'NO_DISCLOSURE')
   static const DisclosureType NO_DISCLOSURE = _$NO_DISCLOSURE;
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'PRESCRIBING_INFORMATION')
   static const DisclosureType PRESCRIBING_INFORMATION = _$PRESCRIBING_INFORMATION;
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'PRESCRIBING_INFORMATION_BOX_WARNING')
   static const DisclosureType PRESCRIBING_INFORMATION_BOX_WARNING = _$PRESCRIBING_INFORMATION_BOX_WARNING;
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'IMPORTANT_SAFETY_INFO')
   static const DisclosureType IMPORTANT_SAFETY_INFO = _$IMPORTANT_SAFETY_INFO;
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'MED_GUIDE')
   static const DisclosureType MED_GUIDE = _$MED_GUIDE;
-  /// Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
   @BuiltValueEnumConst(wireName: r'PATIENT_INFORMATION')
   static const DisclosureType PATIENT_INFORMATION = _$PATIENT_INFORMATION;
 

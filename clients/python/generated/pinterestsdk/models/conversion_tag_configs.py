@@ -130,14 +130,14 @@ class ConversionTagConfigs(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "aem_db_enabled": obj.get("aem_db_enabled") if obj.get("aem_db_enabled") is not None else False,
-            "aem_enabled": obj.get("aem_enabled") if obj.get("aem_enabled") is not None else False,
-            "aem_external_id_enabled": obj.get("aem_external_id_enabled") if obj.get("aem_external_id_enabled") is not None else False,
-            "aem_fnln_enabled": obj.get("aem_fnln_enabled") if obj.get("aem_fnln_enabled") is not None else False,
-            "aem_ge_enabled": obj.get("aem_ge_enabled") if obj.get("aem_ge_enabled") is not None else False,
-            "aem_loc_enabled": obj.get("aem_loc_enabled") if obj.get("aem_loc_enabled") is not None else False,
-            "aem_ph_enabled": obj.get("aem_ph_enabled") if obj.get("aem_ph_enabled") is not None else False,
-            "md_frequency": obj.get("md_frequency") if obj.get("md_frequency") is not None else 1,
+            "aem_db_enabled": obj.get("aem_db_enabled") if "aem_db_enabled" in obj else False,
+            "aem_enabled": obj.get("aem_enabled") if "aem_enabled" in obj else False,
+            "aem_external_id_enabled": obj.get("aem_external_id_enabled") if "aem_external_id_enabled" in obj else False,
+            "aem_fnln_enabled": obj.get("aem_fnln_enabled") if "aem_fnln_enabled" in obj else False,
+            "aem_ge_enabled": obj.get("aem_ge_enabled") if "aem_ge_enabled" in obj else False,
+            "aem_loc_enabled": obj.get("aem_loc_enabled") if "aem_loc_enabled" in obj else False,
+            "aem_ph_enabled": obj.get("aem_ph_enabled") if "aem_ph_enabled" in obj else False,
+            "md_frequency": obj.get("md_frequency") if "md_frequency" in obj else 1,
             "no_code_capi_domains": obj.get("no_code_capi_domains")
         })
         return _obj

@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!deletionTargets.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequestCreate.", nameof(deletionTargets));
+                throw new JsonException("Property is required for class ConversionDeletionRequestCreate: deletion_targets.");
 
             if (deletionTargets.IsSet && deletionTargets.Value == null)
-                throw new ArgumentNullException(nameof(deletionTargets), "Property is not nullable for class ConversionDeletionRequestCreate.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequestCreate: deletion_targets.");
 
             return new ConversionDeletionRequestCreate(deletionTargets.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionDeletionRequestCreate conversionDeletionRequestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionDeletionRequestCreate conversionDeletionRequestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionDeletionRequestCreate.DeletionTargets == null)
-                throw new ArgumentNullException(nameof(conversionDeletionRequestCreate.DeletionTargets), "Property is required for class ConversionDeletionRequestCreate.");
-
             writer.WritePropertyName("deletion_targets");
             JsonSerializer.Serialize(writer, conversionDeletionRequestCreate.DeletionTargets, jsonSerializerOptions);
         }

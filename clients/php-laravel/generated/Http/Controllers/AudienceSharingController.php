@@ -51,22 +51,22 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'audienceId' => [
+                'audience_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'accountType' => [
+                'account_type' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -75,7 +75,7 @@ class AudienceSharingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -87,14 +87,14 @@ class AudienceSharingController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $audienceId = $request->string('audienceId')->value();
+        $audienceId = $request->string('audience_id')->value();
 
         $accountType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceAccountType::class);
 
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->adAccountsAudiencesSharedAccountsList($audienceId, $accountType, $adAccountId, $bookmark, $pageSize);
@@ -141,32 +141,32 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'audienceId' => [
+                'audience_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'accountType' => [
+                'account_type' => [
                     'required',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -179,13 +179,13 @@ class AudienceSharingController extends Controller
         }
 
 
-        $audienceId = $request->string('audienceId')->value();
+        $audienceId = $request->string('audience_id')->value();
 
         $accountType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceAccountType::class);
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessAccountAudiencesSharedAccountsList($businessId, $audienceId, $accountType, $bookmark, $pageSize);
@@ -232,13 +232,13 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
@@ -250,7 +250,7 @@ class AudienceSharingController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -267,7 +267,7 @@ class AudienceSharingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->sharedAudiencesForBusinessList($businessId, $order, $bookmark, $pageSize);
@@ -314,10 +314,10 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -375,10 +375,10 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -436,10 +436,10 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -497,10 +497,10 @@ class AudienceSharingController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],

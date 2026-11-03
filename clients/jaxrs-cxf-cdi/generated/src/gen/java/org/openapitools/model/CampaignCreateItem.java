@@ -63,7 +63,7 @@ public class CampaignCreateItem   {
 
   private Integer startTime;
 
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   private TrackingUrls trackingUrls;
 

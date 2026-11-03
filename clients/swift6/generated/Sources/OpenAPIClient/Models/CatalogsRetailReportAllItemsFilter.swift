@@ -13,8 +13,8 @@ public struct CatalogsRetailReportAllItemsFilter: Sendable, Codable, Hashable {
     public enum ReportType: String, Sendable, Codable, CaseIterable {
         case allItems = "ALL_ITEMS"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let productGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let productGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of a catalog. If not given, oldest catalog will be used */
     public var catalogId: String?
     /** Optional product group ID. If omitted, all items are included. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature. */

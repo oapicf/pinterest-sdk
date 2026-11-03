@@ -29,8 +29,6 @@ import {
 export interface CreateAssetAccessRequestBody {
     /**
      * 
-     * @type {Array<CreateAssetAccessRequestItem>}
-     * @memberof CreateAssetAccessRequestBody
      */
     assetRequests: Array<CreateAssetAccessRequestItem>;
 }

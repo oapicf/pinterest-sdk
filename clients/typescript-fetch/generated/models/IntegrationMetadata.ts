@@ -21,86 +21,58 @@ import { mapValues } from '../runtime';
 export interface IntegrationMetadata {
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     additionalId1?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     connectedAdvertiserId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     connectedLbaId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     connectedMerchantId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     connectedTagId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     readonly connectedUserId?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadata
      */
     readonly createdTimestamp?: number;
     /**
      * External business ID for the integration.
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     externalBusinessId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     readonly id?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadata
      */
     partnerAccessTokenExpiry?: number;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     partnerMetadata?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadata
      */
     partnerRefreshTokenExpiry?: number;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadata
      */
     scopes?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadata
      */
     readonly updatedTimestamp?: number;
 }

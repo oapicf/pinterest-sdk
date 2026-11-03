@@ -6,20 +6,3 @@
 */
 #include "PlacementType.h"
 
-namespace models {
-
-PlacementType::PlacementType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

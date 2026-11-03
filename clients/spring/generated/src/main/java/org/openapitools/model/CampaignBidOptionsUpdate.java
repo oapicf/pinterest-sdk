@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -35,28 +34,21 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignBidOptionsUpdate", description = "Object describing an update to the campaign level bid multipliers.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBidOptionsUpdate {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AgeBucketMultipliers> ageBucketMultipliers = JsonNullable.<AgeBucketMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AppTypeMultipliers> appTypeMultipliers = JsonNullable.<AppTypeMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CampaignAudienceMultipliers audienceMultipliers;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<FreqBidMultiplierTimeWindow> freqBidMultiplierTimeWindow = JsonNullable.<FreqBidMultiplierTimeWindow>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<FrequencyMultipliers> frequencyMultipliers = JsonNullable.<FrequencyMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<GenderMultipliers> genderMultipliers = JsonNullable.<GenderMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PlacementMultipliers> placementMultipliers = JsonNullable.<PlacementMultipliers>undefined();
 
   private List<CampaignBidOptionsUpdateMaskItems> updateMask = new ArrayList<>();
@@ -82,7 +74,7 @@ public class CampaignBidOptionsUpdate {
    * @return ageBucketMultipliers
    */
   @Valid 
-  @Schema(name = "age_bucket_multipliers", description = "Age bucket multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "age_bucket_multipliers", description = "Age bucket multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("age_bucket_multipliers")
   public JsonNullable<AgeBucketMultipliers> getAgeBucketMultipliers() {
     return ageBucketMultipliers;
@@ -102,7 +94,7 @@ public class CampaignBidOptionsUpdate {
    * @return appTypeMultipliers
    */
   @Valid 
-  @Schema(name = "app_type_multipliers", description = "App type multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_type_multipliers", description = "App type multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_type_multipliers")
   public JsonNullable<AppTypeMultipliers> getAppTypeMultipliers() {
     return appTypeMultipliers;
@@ -143,7 +135,7 @@ public class CampaignBidOptionsUpdate {
    * @return freqBidMultiplierTimeWindow
    */
   @Valid 
-  @Schema(name = "freq_bid_multiplier_time_window", description = "The time window for frequency bid multipliers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "freq_bid_multiplier_time_window", description = "The time window for frequency bid multipliers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("freq_bid_multiplier_time_window")
   public JsonNullable<FreqBidMultiplierTimeWindow> getFreqBidMultiplierTimeWindow() {
     return freqBidMultiplierTimeWindow;
@@ -163,7 +155,7 @@ public class CampaignBidOptionsUpdate {
    * @return frequencyMultipliers
    */
   @Valid 
-  @Schema(name = "frequency_multipliers", description = "Frequency multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "frequency_multipliers", description = "Frequency multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("frequency_multipliers")
   public JsonNullable<FrequencyMultipliers> getFrequencyMultipliers() {
     return frequencyMultipliers;
@@ -183,7 +175,7 @@ public class CampaignBidOptionsUpdate {
    * @return genderMultipliers
    */
   @Valid 
-  @Schema(name = "gender_multipliers", description = "Gender multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gender_multipliers", description = "Gender multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("gender_multipliers")
   public JsonNullable<GenderMultipliers> getGenderMultipliers() {
     return genderMultipliers;
@@ -203,7 +195,7 @@ public class CampaignBidOptionsUpdate {
    * @return placementMultipliers
    */
   @Valid 
-  @Schema(name = "placement_multipliers", description = "Placement multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_multipliers", description = "Placement multipliers for bid adjustments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("placement_multipliers")
   public JsonNullable<PlacementMultipliers> getPlacementMultipliers() {
     return placementMultipliers;
@@ -230,7 +222,7 @@ public class CampaignBidOptionsUpdate {
    * List of fields to update. Only the fields in the list will be updated.
    * @return updateMask
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "update_mask", description = "List of fields to update. Only the fields in the list will be updated.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("update_mask")
   public List<CampaignBidOptionsUpdateMaskItems> getUpdateMask() {
@@ -297,7 +289,7 @@ public class CampaignBidOptionsUpdate {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

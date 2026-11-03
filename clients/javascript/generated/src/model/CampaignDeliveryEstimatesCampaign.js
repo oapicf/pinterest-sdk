@@ -19,7 +19,7 @@ import DeliveryEstimateObjectiveType from './DeliveryEstimateObjectiveType';
 /**
  * The CampaignDeliveryEstimatesCampaign model module.
  * @module model/CampaignDeliveryEstimatesCampaign
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignDeliveryEstimatesCampaign {
     /**

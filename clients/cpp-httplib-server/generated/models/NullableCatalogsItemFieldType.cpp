@@ -6,20 +6,3 @@
 */
 #include "NullableCatalogsItemFieldType.h"
 
-namespace models {
-
-NullableCatalogsItemFieldType::NullableCatalogsItemFieldType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -51,10 +51,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessHierarchyId' => $businessHierarchyId,
-                ],
                 $request->all(),
+                [
+                    'business_hierarchy_id' => $businessHierarchyId,
+                ],
             ),
             [
             ],
@@ -116,10 +116,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'brandAccountId' => $brandAccountId,'businessHierarchyId' => $businessHierarchyId,
-                ],
                 $request->all(),
+                [
+                    'brand_account_id' => $brandAccountId,'business_hierarchy_id' => $businessHierarchyId,
+                ],
             ),
             [
             ],
@@ -182,10 +182,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -223,10 +223,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -268,19 +268,19 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'assetsSummary' => [
+                'assets_summary' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -292,11 +292,11 @@ class BusinessAccessRelationshipsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $assetsSummary = $request->boolean('assetsSummary');
+        $assetsSummary = $request->boolean('assets_summary');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->getBusinessEmployers($assetsSummary, $bookmark, $pageSize);
@@ -343,40 +343,40 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'fetchSystemUsers' => [
+                'fetch_system_users' => [
                     'boolean',
                 ],
-                'assetsSummary' => [
+                'assets_summary' => [
                     'boolean',
                 ],
-                'businessRoles' => [
+                'business_roles' => [
                     'array',
                 ],
-                'memberIds' => [
+                'member_ids' => [
                     'max:500',
                     'string',
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -389,19 +389,19 @@ class BusinessAccessRelationshipsController extends Controller
         }
 
 
-        $fetchSystemUsers = $request->boolean('fetchSystemUsers');
+        $fetchSystemUsers = $request->boolean('fetch_system_users');
 
-        $assetsSummary = $request->boolean('assetsSummary');
+        $assetsSummary = $request->boolean('assets_summary');
 
-        $businessRoles = $request->get('businessRoles');
+        $businessRoles = $request->get('business_roles');
 
-        $memberIds = $request->string('memberIds')->value();
+        $memberIds = $request->string('member_ids')->value();
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->getBusinessMembers($businessId, $fetchSystemUsers, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize);
@@ -448,39 +448,39 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetsSummary' => [
+                'assets_summary' => [
                     'boolean',
                 ],
-                'partnerType' => [
+                'partner_type' => [
                 ],
-                'partnerIds' => [
+                'partner_ids' => [
                     'max:500',
                     'string',
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
-                'sortAscending' => [
+                'sort_ascending' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -493,19 +493,19 @@ class BusinessAccessRelationshipsController extends Controller
         }
 
 
-        $assetsSummary = $request->boolean('assetsSummary');
+        $assetsSummary = $request->boolean('assets_summary');
 
         $partnerType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PartnerType::class);
 
-        $partnerIds = $request->string('partnerIds')->value();
+        $partnerIds = $request->string('partner_ids')->value();
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
-        $sortAscending = $request->boolean('sortAscending');
+        $sortAscending = $request->boolean('sort_ascending');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->getBusinessPartners($businessId, $assetsSummary, $partnerType, $partnerIds, $startIndex, $sortAscending, $bookmark, $pageSize);
@@ -552,10 +552,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,'systemUserId' => $systemUserId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,'system_user_id' => $systemUserId,
+                ],
             ),
             [
             ],
@@ -614,10 +614,10 @@ class BusinessAccessRelationshipsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],

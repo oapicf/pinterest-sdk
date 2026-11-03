@@ -186,22 +186,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf.", nameof(id));
+                throw new JsonException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf: id.");
 
             if (!scheduleId.IsSet)
-                throw new ArgumentException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf.", nameof(scheduleId));
+                throw new JsonException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf: schedule_id.");
 
             if (!exceptions.IsSet)
-                throw new ArgumentException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf.", nameof(exceptions));
+                throw new JsonException("Property is required for class SchedulesCreate200ResponseInnerDataOneOf: exceptions.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf: id.");
 
             if (scheduleId.IsSet && scheduleId.Value == null)
-                throw new ArgumentNullException(nameof(scheduleId), "Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf: schedule_id.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class SchedulesCreate200ResponseInnerDataOneOf: exceptions.");
 
             return new SchedulesCreate200ResponseInnerDataOneOf(id.Value!, scheduleId.Value!, exceptions.Value!);
         }
@@ -212,7 +212,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SchedulesCreate200ResponseInnerDataOneOf schedulesCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -227,18 +226,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SchedulesCreate200ResponseInnerDataOneOf schedulesCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (schedulesCreate200ResponseInnerDataOneOf.Id == null)
-                throw new ArgumentNullException(nameof(schedulesCreate200ResponseInnerDataOneOf.Id), "Property is required for class SchedulesCreate200ResponseInnerDataOneOf.");
-
-            if (schedulesCreate200ResponseInnerDataOneOf.ScheduleId == null)
-                throw new ArgumentNullException(nameof(schedulesCreate200ResponseInnerDataOneOf.ScheduleId), "Property is required for class SchedulesCreate200ResponseInnerDataOneOf.");
-
-            if (schedulesCreate200ResponseInnerDataOneOf.Exceptions == null)
-                throw new ArgumentNullException(nameof(schedulesCreate200ResponseInnerDataOneOf.Exceptions), "Property is required for class SchedulesCreate200ResponseInnerDataOneOf.");
-
             writer.WriteString("id", schedulesCreate200ResponseInnerDataOneOf.Id);
 
             writer.WriteString("schedule_id", schedulesCreate200ResponseInnerDataOneOf.ScheduleId);

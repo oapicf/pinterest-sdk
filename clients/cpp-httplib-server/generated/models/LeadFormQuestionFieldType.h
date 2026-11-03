@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class LeadFormQuestionFieldType
-{
-public:
-
-    LeadFormQuestionFieldType();
-    virtual ~LeadFormQuestionFieldType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LeadFormQuestionFieldType,
-        )
-
-private:
+enum class LeadFormQuestionFieldType {
+    
+    TEXT_FIELD,
+    
+    TEXT_AREA,
+    
+    RADIO_LIST,
+    
+    CHECKBOX
+    
 };
 
+inline void to_json(nlohmann::json& j, const LeadFormQuestionFieldType& value)
+{
+    switch (value)
+    {
+        
+        case LeadFormQuestionFieldType::TEXT_FIELD: j = "TEXT_FIELD"; break;
+        
+        case LeadFormQuestionFieldType::TEXT_AREA: j = "TEXT_AREA"; break;
+        
+        case LeadFormQuestionFieldType::RADIO_LIST: j = "RADIO_LIST"; break;
+        
+        case LeadFormQuestionFieldType::CHECKBOX: j = "CHECKBOX"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormQuestionFieldType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LeadFormQuestionFieldType& value)
+{
+    
+    if (j == "TEXT_FIELD")
+    {
+        value = LeadFormQuestionFieldType::TEXT_FIELD;
+        return;
+    }
+    
+    if (j == "TEXT_AREA")
+    {
+        value = LeadFormQuestionFieldType::TEXT_AREA;
+        return;
+    }
+    
+    if (j == "RADIO_LIST")
+    {
+        value = LeadFormQuestionFieldType::RADIO_LIST;
+        return;
+    }
+    
+    if (j == "CHECKBOX")
+    {
+        value = LeadFormQuestionFieldType::CHECKBOX;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormQuestionFieldType", &j);
+}
 
 } // namespace models
 

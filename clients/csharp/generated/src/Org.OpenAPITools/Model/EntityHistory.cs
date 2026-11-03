@@ -287,25 +287,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (changeTimestamp.IsSet && changeTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(changeTimestamp), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: change_timestamp.");
 
             if (dataChanges.IsSet && dataChanges.Value == null)
-                throw new ArgumentNullException(nameof(dataChanges), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: data_changes.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: entity_id.");
 
             if (entityName.IsSet && entityName.Value == null)
-                throw new ArgumentNullException(nameof(entityName), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: entity_name.");
 
             if (ldap.IsSet && ldap.Value == null)
-                throw new ArgumentNullException(nameof(ldap), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: ldap.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: operation.");
 
             if (userId.IsSet && userId.Value == null)
-                throw new ArgumentNullException(nameof(userId), "Property is not nullable for class EntityHistory.");
+                throw new JsonException("Property is not nullable for class EntityHistory: user_id.");
 
             return new EntityHistory(changeTimestamp, dataChanges, entityId, entityName, ldap, operation, userId);
         }
@@ -316,7 +316,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityHistory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, EntityHistory entityHistory, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -331,23 +330,28 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityHistory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EntityHistory entityHistory, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (entityHistory.ChangeTimestampOption.IsSet && entityHistory.ChangeTimestamp == null)
+                throw new JsonException("Cannot write null property EntityHistory.ChangeTimestamp to non-nullable JSON property 'change_timestamp'.");
+
             if (entityHistory.DataChangesOption.IsSet && entityHistory.DataChanges == null)
-                throw new ArgumentNullException(nameof(entityHistory.DataChanges), "Property is required for class EntityHistory.");
+                throw new JsonException("Cannot write null property EntityHistory.DataChanges to non-nullable JSON property 'data_changes'.");
 
             if (entityHistory.EntityIdOption.IsSet && entityHistory.EntityId == null)
-                throw new ArgumentNullException(nameof(entityHistory.EntityId), "Property is required for class EntityHistory.");
+                throw new JsonException("Cannot write null property EntityHistory.EntityId to non-nullable JSON property 'entity_id'.");
 
             if (entityHistory.EntityNameOption.IsSet && entityHistory.EntityName == null)
-                throw new ArgumentNullException(nameof(entityHistory.EntityName), "Property is required for class EntityHistory.");
+                throw new JsonException("Cannot write null property EntityHistory.EntityName to non-nullable JSON property 'entity_name'.");
 
             if (entityHistory.LdapOption.IsSet && entityHistory.Ldap == null)
-                throw new ArgumentNullException(nameof(entityHistory.Ldap), "Property is required for class EntityHistory.");
+                throw new JsonException("Cannot write null property EntityHistory.Ldap to non-nullable JSON property 'ldap'.");
+
+            if (entityHistory.OperationOption.IsSet && entityHistory.Operation == null)
+                throw new JsonException("Cannot write null property EntityHistory.Operation to non-nullable JSON property 'operation'.");
 
             if (entityHistory.UserIdOption.IsSet && entityHistory.UserId == null)
-                throw new ArgumentNullException(nameof(entityHistory.UserId), "Property is required for class EntityHistory.");
+                throw new JsonException("Cannot write null property EntityHistory.UserId to non-nullable JSON property 'user_id'.");
 
             if (entityHistory.ChangeTimestampOption.IsSet)
                 writer.WriteNumber("change_timestamp", entityHistory.ChangeTimestampOption.Value!.Value);

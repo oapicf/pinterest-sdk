@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IneligibleProductTagsErrorDetails", description = "Details about ineligible product tags in the request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IneligibleProductTagsErrorDetails {
 
-  @Valid
   private List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();
 
   public IneligibleProductTagsErrorDetails() {
@@ -57,7 +56,7 @@ public class IneligibleProductTagsErrorDetails {
    * List of product tags that failed eligibility check.
    * @return productTags
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_tags", description = "List of product tags that failed eligibility check.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_tags")
   public List<@Valid IneligibleProductTagErrorItem> getProductTags() {

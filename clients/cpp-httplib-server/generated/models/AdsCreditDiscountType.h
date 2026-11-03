@@ -12,24 +12,224 @@
 
 namespace models {
 
-
-class AdsCreditDiscountType
-{
-public:
-
-    AdsCreditDiscountType();
-    virtual ~AdsCreditDiscountType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdsCreditDiscountType,
-        )
-
-private:
+enum class AdsCreditDiscountType {
+    
+    COUPON,
+    
+    CREDIT,
+    
+    COUPON_APPLIED,
+    
+    CREDIT_APPLIED,
+    
+    MARKETING_OFFER_CREDIT,
+    
+    MARKETING_OFFER_CREDIT_APPLIED,
+    
+    GOODWILL_CREDIT,
+    
+    GOODWILL_CREDIT_APPLIED,
+    
+    INTERNAL_CREDIT,
+    
+    INTERNAL_CREDIT_APPLIED,
+    
+    PREPAID_CREDIT,
+    
+    PREPAID_CREDIT_APPLIED,
+    
+    SALES_INCENTIVE_CREDIT,
+    
+    SALES_INCENTIVE_CREDIT_APPLIED,
+    
+    CREDIT_EXPIRED,
+    
+    FUTURE_CREDIT,
+    
+    REFERRAL_CREDIT,
+    
+    INVOICE_SALES_INCENTIVE_CREDIT,
+    
+    INVOICE_SALES_INCENTIVE_CREDIT_APPLIED,
+    
+    PREPAID_CREDIT_REFUND
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdsCreditDiscountType& value)
+{
+    switch (value)
+    {
+        
+        case AdsCreditDiscountType::COUPON: j = "COUPON"; break;
+        
+        case AdsCreditDiscountType::CREDIT: j = "CREDIT"; break;
+        
+        case AdsCreditDiscountType::COUPON_APPLIED: j = "COUPON_APPLIED"; break;
+        
+        case AdsCreditDiscountType::CREDIT_APPLIED: j = "CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::MARKETING_OFFER_CREDIT: j = "MARKETING_OFFER_CREDIT"; break;
+        
+        case AdsCreditDiscountType::MARKETING_OFFER_CREDIT_APPLIED: j = "MARKETING_OFFER_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::GOODWILL_CREDIT: j = "GOODWILL_CREDIT"; break;
+        
+        case AdsCreditDiscountType::GOODWILL_CREDIT_APPLIED: j = "GOODWILL_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::INTERNAL_CREDIT: j = "INTERNAL_CREDIT"; break;
+        
+        case AdsCreditDiscountType::INTERNAL_CREDIT_APPLIED: j = "INTERNAL_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::PREPAID_CREDIT: j = "PREPAID_CREDIT"; break;
+        
+        case AdsCreditDiscountType::PREPAID_CREDIT_APPLIED: j = "PREPAID_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::SALES_INCENTIVE_CREDIT: j = "SALES_INCENTIVE_CREDIT"; break;
+        
+        case AdsCreditDiscountType::SALES_INCENTIVE_CREDIT_APPLIED: j = "SALES_INCENTIVE_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::CREDIT_EXPIRED: j = "CREDIT_EXPIRED"; break;
+        
+        case AdsCreditDiscountType::FUTURE_CREDIT: j = "FUTURE_CREDIT"; break;
+        
+        case AdsCreditDiscountType::REFERRAL_CREDIT: j = "REFERRAL_CREDIT"; break;
+        
+        case AdsCreditDiscountType::INVOICE_SALES_INCENTIVE_CREDIT: j = "INVOICE_SALES_INCENTIVE_CREDIT"; break;
+        
+        case AdsCreditDiscountType::INVOICE_SALES_INCENTIVE_CREDIT_APPLIED: j = "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"; break;
+        
+        case AdsCreditDiscountType::PREPAID_CREDIT_REFUND: j = "PREPAID_CREDIT_REFUND"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdsCreditDiscountType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdsCreditDiscountType& value)
+{
+    
+    if (j == "COUPON")
+    {
+        value = AdsCreditDiscountType::COUPON;
+        return;
+    }
+    
+    if (j == "CREDIT")
+    {
+        value = AdsCreditDiscountType::CREDIT;
+        return;
+    }
+    
+    if (j == "COUPON_APPLIED")
+    {
+        value = AdsCreditDiscountType::COUPON_APPLIED;
+        return;
+    }
+    
+    if (j == "CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "MARKETING_OFFER_CREDIT")
+    {
+        value = AdsCreditDiscountType::MARKETING_OFFER_CREDIT;
+        return;
+    }
+    
+    if (j == "MARKETING_OFFER_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::MARKETING_OFFER_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "GOODWILL_CREDIT")
+    {
+        value = AdsCreditDiscountType::GOODWILL_CREDIT;
+        return;
+    }
+    
+    if (j == "GOODWILL_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::GOODWILL_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "INTERNAL_CREDIT")
+    {
+        value = AdsCreditDiscountType::INTERNAL_CREDIT;
+        return;
+    }
+    
+    if (j == "INTERNAL_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::INTERNAL_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "PREPAID_CREDIT")
+    {
+        value = AdsCreditDiscountType::PREPAID_CREDIT;
+        return;
+    }
+    
+    if (j == "PREPAID_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::PREPAID_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "SALES_INCENTIVE_CREDIT")
+    {
+        value = AdsCreditDiscountType::SALES_INCENTIVE_CREDIT;
+        return;
+    }
+    
+    if (j == "SALES_INCENTIVE_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::SALES_INCENTIVE_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "CREDIT_EXPIRED")
+    {
+        value = AdsCreditDiscountType::CREDIT_EXPIRED;
+        return;
+    }
+    
+    if (j == "FUTURE_CREDIT")
+    {
+        value = AdsCreditDiscountType::FUTURE_CREDIT;
+        return;
+    }
+    
+    if (j == "REFERRAL_CREDIT")
+    {
+        value = AdsCreditDiscountType::REFERRAL_CREDIT;
+        return;
+    }
+    
+    if (j == "INVOICE_SALES_INCENTIVE_CREDIT")
+    {
+        value = AdsCreditDiscountType::INVOICE_SALES_INCENTIVE_CREDIT;
+        return;
+    }
+    
+    if (j == "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")
+    {
+        value = AdsCreditDiscountType::INVOICE_SALES_INCENTIVE_CREDIT_APPLIED;
+        return;
+    }
+    
+    if (j == "PREPAID_CREDIT_REFUND")
+    {
+        value = AdsCreditDiscountType::PREPAID_CREDIT_REFUND;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdsCreditDiscountType", &j);
+}
 
 } // namespace models
 

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cONDITION.IsSet)
-                throw new ArgumentException("Property is required for class ConditionFilter.", nameof(cONDITION));
+                throw new JsonException("Property is required for class ConditionFilter: CONDITION.");
 
             if (cONDITION.IsSet && cONDITION.Value == null)
-                throw new ArgumentNullException(nameof(cONDITION), "Property is not nullable for class ConditionFilter.");
+                throw new JsonException("Property is not nullable for class ConditionFilter: CONDITION.");
 
             return new ConditionFilter(cONDITION.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conditionFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConditionFilter conditionFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conditionFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConditionFilter conditionFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conditionFilter.CONDITION == null)
-                throw new ArgumentNullException(nameof(conditionFilter.CONDITION), "Property is required for class ConditionFilter.");
-
             writer.WritePropertyName("CONDITION");
             JsonSerializer.Serialize(writer, conditionFilter.CONDITION, jsonSerializerOptions);
         }

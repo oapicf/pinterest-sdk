@@ -26,8 +26,6 @@ public class AssetGroupUpdateItemReadOrUpdateItem  {
   */
   @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
 
-  @Valid
-
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
  /**

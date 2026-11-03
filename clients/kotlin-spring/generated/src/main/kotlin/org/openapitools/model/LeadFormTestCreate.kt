@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LeadFormTestCreate(
 
     @Schema(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, description = "Test lead answers. Should follow the creation order.")
-    @param:JsonProperty("answers")
+    @param:JsonProperty("answers", required = true)
     @get:JsonProperty("answers", required = true) val answers: kotlin.collections.List<kotlin.String>
 ) {
 

@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * CustomNumber4Filter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomNumber4Filter {
 
   private CatalogsProductGroupUint32Criteria CUSTOM_NUMBER_4;

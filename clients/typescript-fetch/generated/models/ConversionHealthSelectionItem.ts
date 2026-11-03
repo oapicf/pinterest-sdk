@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface ConversionHealthSelectionItem {
     /**
      * Status for conversion types
-     * @type {object}
-     * @memberof ConversionHealthSelectionItem
      */
     conversionType?: object;
     /**
      * Status for criteria
-     * @type {object}
-     * @memberof ConversionHealthSelectionItem
      */
     criteria?: object;
     /**
      * Status for ingestion sources
-     * @type {object}
-     * @memberof ConversionHealthSelectionItem
      */
     ingestionSource?: object;
     /**
      * Overall status for this selection item
-     * @type {any}
-     * @memberof ConversionHealthSelectionItem
      */
     status: any | null;
 }

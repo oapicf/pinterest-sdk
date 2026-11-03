@@ -143,7 +143,9 @@ class MMMReport {
       return MMMReport(
         message: mapValueOfType<String>(json, r'message'),
         reportStatus: BulkReportingJobStatus.fromJson(json[r'report_status']),
-        size: num.parse('${json[r'size']}'),
+        size: json[r'size'] == null
+            ? null
+            : num.parse('${json[r'size']}'),
         status: mapValueOfType<String>(json, r'status'),
         token: mapValueOfType<String>(json, r'token'),
         url: mapValueOfType<String>(json, r'url'),

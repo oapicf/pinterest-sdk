@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -28,330 +27,223 @@ import jakarta.annotation.Generated;
  * ItemAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemAttributes {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage0Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage0Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage10Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage10Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage11Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage11Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage12Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage12Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage13Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage13Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage14Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage14Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage15Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage15Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage16Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage16Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage17Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage17Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage18Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage18Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage19Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage19Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage1Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage1Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage2Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage2Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage3Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage3Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage4Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage4Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage5Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage5Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage6Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage6Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage7Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage7Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage8Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage8Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adImage9Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adImage9Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> adLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adVideo0Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adVideo0Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adVideo1Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adVideo1Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2000) String> adVideo2Link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> adVideo2Tag = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> adult = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> ageGroup = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String androidDeepLink;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String availability;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> averageReviewRating = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> brand = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   @Deprecated
   private JsonNullable<Boolean> checkoutEnabled = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> color = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> condition = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> customLabel0 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> customLabel1 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> customLabel2 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> customLabel3 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 511) String> customLabel4 = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> customNumber0 = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> customNumber1 = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> customNumber2 = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> customNumber3 = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> customNumber4 = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String description;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> freeShippingLabel = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> freeShippingLimit = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> gender = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> googleProductCategory = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<UpdatableItemAttributesGtin> gtin = JsonNullable.<UpdatableItemAttributesGtin>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Deprecated
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> installmentPrice = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String iosDeepLink;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> itemGroupId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Long> lastUpdatedTime = JsonNullable.<Long>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String link;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> material = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> minAdPrice = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> mobileLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> mpn = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> numberOfRatings = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> numberOfReviews = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> pattern = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String price;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> productType = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> promotionId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> salePrice = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> salePriceEffectiveDate = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> shipping = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> shippingHeight = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> shippingWeight = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> shippingWidth = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> size = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> sizeSystem = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> sizeType = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> tax = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String title;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> unitPricingBaseMeasure = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> unitPricingMeasure = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> variantNames = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> variantValues = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> additionalImageLink = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> imageLink = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> videoLink = JsonNullable.<String>undefined();
 
   public ItemAttributes adImage0Link(String adImage0Link) {
@@ -364,7 +256,7 @@ public class ItemAttributes {
    * @return adImage0Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_0_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_0_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_0_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage0Link() {
     return adImage0Link;
@@ -384,7 +276,7 @@ public class ItemAttributes {
    * @return adImage0Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_0_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_0_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_0_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage0Tag() {
     return adImage0Tag;
@@ -404,7 +296,7 @@ public class ItemAttributes {
    * @return adImage10Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_10_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_10_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_10_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage10Link() {
     return adImage10Link;
@@ -424,7 +316,7 @@ public class ItemAttributes {
    * @return adImage10Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_10_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_10_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_10_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage10Tag() {
     return adImage10Tag;
@@ -444,7 +336,7 @@ public class ItemAttributes {
    * @return adImage11Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_11_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_11_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_11_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage11Link() {
     return adImage11Link;
@@ -464,7 +356,7 @@ public class ItemAttributes {
    * @return adImage11Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_11_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_11_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_11_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage11Tag() {
     return adImage11Tag;
@@ -484,7 +376,7 @@ public class ItemAttributes {
    * @return adImage12Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_12_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_12_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_12_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage12Link() {
     return adImage12Link;
@@ -504,7 +396,7 @@ public class ItemAttributes {
    * @return adImage12Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_12_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_12_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_12_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage12Tag() {
     return adImage12Tag;
@@ -524,7 +416,7 @@ public class ItemAttributes {
    * @return adImage13Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_13_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_13_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_13_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage13Link() {
     return adImage13Link;
@@ -544,7 +436,7 @@ public class ItemAttributes {
    * @return adImage13Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_13_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_13_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_13_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage13Tag() {
     return adImage13Tag;
@@ -564,7 +456,7 @@ public class ItemAttributes {
    * @return adImage14Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_14_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_14_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_14_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage14Link() {
     return adImage14Link;
@@ -584,7 +476,7 @@ public class ItemAttributes {
    * @return adImage14Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_14_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_14_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_14_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage14Tag() {
     return adImage14Tag;
@@ -604,7 +496,7 @@ public class ItemAttributes {
    * @return adImage15Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_15_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_15_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_15_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage15Link() {
     return adImage15Link;
@@ -624,7 +516,7 @@ public class ItemAttributes {
    * @return adImage15Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_15_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_15_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_15_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage15Tag() {
     return adImage15Tag;
@@ -644,7 +536,7 @@ public class ItemAttributes {
    * @return adImage16Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_16_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_16_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_16_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage16Link() {
     return adImage16Link;
@@ -664,7 +556,7 @@ public class ItemAttributes {
    * @return adImage16Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_16_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_16_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_16_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage16Tag() {
     return adImage16Tag;
@@ -684,7 +576,7 @@ public class ItemAttributes {
    * @return adImage17Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_17_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_17_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_17_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage17Link() {
     return adImage17Link;
@@ -704,7 +596,7 @@ public class ItemAttributes {
    * @return adImage17Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_17_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_17_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_17_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage17Tag() {
     return adImage17Tag;
@@ -724,7 +616,7 @@ public class ItemAttributes {
    * @return adImage18Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_18_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_18_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_18_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage18Link() {
     return adImage18Link;
@@ -744,7 +636,7 @@ public class ItemAttributes {
    * @return adImage18Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_18_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_18_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_18_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage18Tag() {
     return adImage18Tag;
@@ -764,7 +656,7 @@ public class ItemAttributes {
    * @return adImage19Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_19_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_19_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_19_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage19Link() {
     return adImage19Link;
@@ -784,7 +676,7 @@ public class ItemAttributes {
    * @return adImage19Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_19_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_19_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_19_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage19Tag() {
     return adImage19Tag;
@@ -804,7 +696,7 @@ public class ItemAttributes {
    * @return adImage1Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_1_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_1_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_1_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage1Link() {
     return adImage1Link;
@@ -824,7 +716,7 @@ public class ItemAttributes {
    * @return adImage1Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_1_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_1_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_1_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage1Tag() {
     return adImage1Tag;
@@ -844,7 +736,7 @@ public class ItemAttributes {
    * @return adImage2Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_2_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_2_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_2_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage2Link() {
     return adImage2Link;
@@ -864,7 +756,7 @@ public class ItemAttributes {
    * @return adImage2Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_2_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_2_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_2_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage2Tag() {
     return adImage2Tag;
@@ -884,7 +776,7 @@ public class ItemAttributes {
    * @return adImage3Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_3_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_3_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_3_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage3Link() {
     return adImage3Link;
@@ -904,7 +796,7 @@ public class ItemAttributes {
    * @return adImage3Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_3_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_3_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_3_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage3Tag() {
     return adImage3Tag;
@@ -924,7 +816,7 @@ public class ItemAttributes {
    * @return adImage4Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_4_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_4_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_4_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage4Link() {
     return adImage4Link;
@@ -944,7 +836,7 @@ public class ItemAttributes {
    * @return adImage4Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_4_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_4_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_4_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage4Tag() {
     return adImage4Tag;
@@ -964,7 +856,7 @@ public class ItemAttributes {
    * @return adImage5Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_5_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_5_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_5_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage5Link() {
     return adImage5Link;
@@ -984,7 +876,7 @@ public class ItemAttributes {
    * @return adImage5Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_5_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_5_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_5_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage5Tag() {
     return adImage5Tag;
@@ -1004,7 +896,7 @@ public class ItemAttributes {
    * @return adImage6Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_6_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_6_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_6_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage6Link() {
     return adImage6Link;
@@ -1024,7 +916,7 @@ public class ItemAttributes {
    * @return adImage6Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_6_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_6_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_6_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage6Tag() {
     return adImage6Tag;
@@ -1044,7 +936,7 @@ public class ItemAttributes {
    * @return adImage7Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_7_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_7_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_7_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage7Link() {
     return adImage7Link;
@@ -1064,7 +956,7 @@ public class ItemAttributes {
    * @return adImage7Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_7_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_7_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_7_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage7Tag() {
     return adImage7Tag;
@@ -1084,7 +976,7 @@ public class ItemAttributes {
    * @return adImage8Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_8_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_8_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_8_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage8Link() {
     return adImage8Link;
@@ -1104,7 +996,7 @@ public class ItemAttributes {
    * @return adImage8Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_8_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_8_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_8_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage8Tag() {
     return adImage8Tag;
@@ -1124,7 +1016,7 @@ public class ItemAttributes {
    * @return adImage9Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_image_9_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_9_link", example = "https://www.example.com/image/image_v2.jpg", description = "Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_9_link")
   public JsonNullable<@Size(max = 2000) String> getAdImage9Link() {
     return adImage9Link;
@@ -1144,7 +1036,7 @@ public class ItemAttributes {
    * @return adImage9Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_image_9_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_image_9_tag", example = "black friday", description = "Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_image_9_tag")
   public JsonNullable<@Size(max = 511) String> getAdImage9Tag() {
     return adImage9Tag;
@@ -1164,7 +1056,7 @@ public class ItemAttributes {
    * @return adLink
    */
   
-  @Schema(name = "ad_link", example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", description = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_link", example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", description = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_link")
   public JsonNullable<String> getAdLink() {
     return adLink;
@@ -1184,7 +1076,7 @@ public class ItemAttributes {
    * @return adVideo0Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_video_0_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_0_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_0_link")
   public JsonNullable<@Size(max = 2000) String> getAdVideo0Link() {
     return adVideo0Link;
@@ -1204,7 +1096,7 @@ public class ItemAttributes {
    * @return adVideo0Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_video_0_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_0_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_0_tag")
   public JsonNullable<@Size(max = 511) String> getAdVideo0Tag() {
     return adVideo0Tag;
@@ -1224,7 +1116,7 @@ public class ItemAttributes {
    * @return adVideo1Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_video_1_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_1_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_1_link")
   public JsonNullable<@Size(max = 2000) String> getAdVideo1Link() {
     return adVideo1Link;
@@ -1244,7 +1136,7 @@ public class ItemAttributes {
    * @return adVideo1Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_video_1_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_1_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_1_tag")
   public JsonNullable<@Size(max = 511) String> getAdVideo1Tag() {
     return adVideo1Tag;
@@ -1264,7 +1156,7 @@ public class ItemAttributes {
    * @return adVideo2Link
    */
   @Size(max = 2000) 
-  @Schema(name = "ad_video_2_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_2_link", example = "https://www.example.com/video/video_v2.mov", description = "Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_2_link")
   public JsonNullable<@Size(max = 2000) String> getAdVideo2Link() {
     return adVideo2Link;
@@ -1284,7 +1176,7 @@ public class ItemAttributes {
    * @return adVideo2Tag
    */
   @Size(max = 511) 
-  @Schema(name = "ad_video_2_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ad_video_2_tag", example = "black friday", description = "Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ad_video_2_tag")
   public JsonNullable<@Size(max = 511) String> getAdVideo2Tag() {
     return adVideo2Tag;
@@ -1304,7 +1196,7 @@ public class ItemAttributes {
    * @return adult
    */
   
-  @Schema(name = "adult", example = "true", description = "Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "adult", example = "true", description = "Set this attribute to TRUE if you're submitting items that are considered \"adult\". These will not be shown on Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("adult")
   public JsonNullable<Boolean> getAdult() {
     return adult;
@@ -1324,7 +1216,7 @@ public class ItemAttributes {
    * @return ageGroup
    */
   
-  @Schema(name = "age_group", example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "age_group", example = "newborn", description = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("age_group")
   public JsonNullable<String> getAgeGroup() {
     return ageGroup;
@@ -1386,7 +1278,7 @@ public class ItemAttributes {
    * @return averageReviewRating
    */
   @Valid 
-  @Schema(name = "average_review_rating", example = "5", description = "Average reviews for the item. Can be a number from 1-5.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "average_review_rating", example = "5", description = "Average reviews for the item. Can be a number from 1-5.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("average_review_rating")
   public JsonNullable<BigDecimal> getAverageReviewRating() {
     return averageReviewRating;
@@ -1406,7 +1298,7 @@ public class ItemAttributes {
    * @return brand
    */
   
-  @Schema(name = "brand", example = "Josie's Denim", description = "The brand of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "brand", example = "Josie's Denim", description = "The brand of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("brand")
   public JsonNullable<String> getBrand() {
     return brand;
@@ -1427,7 +1319,7 @@ public class ItemAttributes {
    * @deprecated
    */
   
-  @Schema(name = "checkout_enabled", example = "false", description = "This attribute is not supported anymore.", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "checkout_enabled", example = "false", description = "This attribute is not supported anymore.", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @Deprecated
   @JsonProperty("checkout_enabled")
   public JsonNullable<Boolean> getCheckoutEnabled() {
@@ -1452,7 +1344,7 @@ public class ItemAttributes {
    * @return color
    */
   
-  @Schema(name = "color", example = "blue", description = "The primary color of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "color", example = "blue", description = "The primary color of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("color")
   public JsonNullable<String> getColor() {
     return color;
@@ -1472,7 +1364,7 @@ public class ItemAttributes {
    * @return condition
    */
   
-  @Schema(name = "condition", example = "new", description = "The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "condition", example = "new", description = "The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("condition")
   public JsonNullable<String> getCondition() {
     return condition;
@@ -1492,7 +1384,7 @@ public class ItemAttributes {
    * @return customLabel0
    */
   @Size(max = 511) 
-  @Schema(name = "custom_label_0", example = "Best sellers", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_0", example = "Best sellers", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_0")
   public JsonNullable<@Size(max = 511) String> getCustomLabel0() {
     return customLabel0;
@@ -1512,7 +1404,7 @@ public class ItemAttributes {
    * @return customLabel1
    */
   @Size(max = 511) 
-  @Schema(name = "custom_label_1", example = "Summer promotion", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_1", example = "Summer promotion", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_1")
   public JsonNullable<@Size(max = 511) String> getCustomLabel1() {
     return customLabel1;
@@ -1532,7 +1424,7 @@ public class ItemAttributes {
    * @return customLabel2
    */
   @Size(max = 511) 
-  @Schema(name = "custom_label_2", example = "Winter sales", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_2", example = "Winter sales", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_2")
   public JsonNullable<@Size(max = 511) String> getCustomLabel2() {
     return customLabel2;
@@ -1552,7 +1444,7 @@ public class ItemAttributes {
    * @return customLabel3
    */
   @Size(max = 511) 
-  @Schema(name = "custom_label_3", example = "Woman dress", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_3", example = "Woman dress", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_3")
   public JsonNullable<@Size(max = 511) String> getCustomLabel3() {
     return customLabel3;
@@ -1572,7 +1464,7 @@ public class ItemAttributes {
    * @return customLabel4
    */
   @Size(max = 511) 
-  @Schema(name = "custom_label_4", example = "Man hat", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_label_4", example = "Man hat", description = "<= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_label_4")
   public JsonNullable<@Size(max = 511) String> getCustomLabel4() {
     return customLabel4;
@@ -1592,7 +1484,7 @@ public class ItemAttributes {
    * @return customNumber0
    */
   
-  @Schema(name = "custom_number_0", example = "10", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_number_0", example = "10", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_number_0")
   public JsonNullable<Integer> getCustomNumber0() {
     return customNumber0;
@@ -1612,7 +1504,7 @@ public class ItemAttributes {
    * @return customNumber1
    */
   
-  @Schema(name = "custom_number_1", example = "0", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_number_1", example = "0", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_number_1")
   public JsonNullable<Integer> getCustomNumber1() {
     return customNumber1;
@@ -1632,7 +1524,7 @@ public class ItemAttributes {
    * @return customNumber2
    */
   
-  @Schema(name = "custom_number_2", example = "1520000000", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_number_2", example = "1520000000", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_number_2")
   public JsonNullable<Integer> getCustomNumber2() {
     return customNumber2;
@@ -1652,7 +1544,7 @@ public class ItemAttributes {
    * @return customNumber3
    */
   
-  @Schema(name = "custom_number_3", example = "4294967295", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_number_3", example = "4294967295", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_number_3")
   public JsonNullable<Integer> getCustomNumber3() {
     return customNumber3;
@@ -1672,7 +1564,7 @@ public class ItemAttributes {
    * @return customNumber4
    */
   
-  @Schema(name = "custom_number_4", example = "50", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_number_4", example = "50", description = "An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_number_4")
   public JsonNullable<Integer> getCustomNumber4() {
     return customNumber4;
@@ -1713,7 +1605,7 @@ public class ItemAttributes {
    * @return freeShippingLabel
    */
   
-  @Schema(name = "free_shipping_label", example = "true", description = "The item is free to ship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "free_shipping_label", example = "true", description = "The item is free to ship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("free_shipping_label")
   public JsonNullable<Boolean> getFreeShippingLabel() {
     return freeShippingLabel;
@@ -1733,7 +1625,7 @@ public class ItemAttributes {
    * @return freeShippingLimit
    */
   
-  @Schema(name = "free_shipping_limit", example = "35 USD", description = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "free_shipping_limit", example = "35 USD", description = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("free_shipping_limit")
   public JsonNullable<String> getFreeShippingLimit() {
     return freeShippingLimit;
@@ -1753,7 +1645,7 @@ public class ItemAttributes {
    * @return gender
    */
   
-  @Schema(name = "gender", example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gender", example = "unisex", description = "The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("gender")
   public JsonNullable<String> getGender() {
     return gender;
@@ -1773,7 +1665,7 @@ public class ItemAttributes {
    * @return googleProductCategory
    */
   
-  @Schema(name = "google_product_category", example = "Apparel & Accessories > Clothing > Shirts & Tops", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "google_product_category", example = "Apparel & Accessories > Clothing > Shirts & Tops", description = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("google_product_category")
   public JsonNullable<String> getGoogleProductCategory() {
     return googleProductCategory;
@@ -1793,7 +1685,7 @@ public class ItemAttributes {
    * @return gtin
    */
   @Valid 
-  @Schema(name = "gtin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gtin", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("gtin")
   public JsonNullable<UpdatableItemAttributesGtin> getGtin() {
     return gtin;
@@ -1840,7 +1732,7 @@ public class ItemAttributes {
    * @return installmentPrice
    */
   
-  @Schema(name = "installment_price", example = "10:10.00 USD", description = "Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "installment_price", example = "10:10.00 USD", description = "Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("installment_price")
   public JsonNullable<String> getInstallmentPrice() {
     return installmentPrice;
@@ -1881,7 +1773,7 @@ public class ItemAttributes {
    * @return itemGroupId
    */
   
-  @Schema(name = "item_group_id", example = "DS0294", description = "<= 127 characters. The parent ID of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "item_group_id", example = "DS0294", description = "<= 127 characters. The parent ID of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("item_group_id")
   public JsonNullable<String> getItemGroupId() {
     return itemGroupId;
@@ -1901,7 +1793,7 @@ public class ItemAttributes {
    * @return lastUpdatedTime
    */
   
-  @Schema(name = "last_updated_time", example = "1641483432072", description = "The millisecond timestamp when the item was lastly modified by the merchant.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "last_updated_time", example = "1641483432072", description = "The millisecond timestamp when the item was lastly modified by the merchant.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("last_updated_time")
   public JsonNullable<Long> getLastUpdatedTime() {
     return lastUpdatedTime;
@@ -1942,7 +1834,7 @@ public class ItemAttributes {
    * @return material
    */
   
-  @Schema(name = "material", example = "cotton", description = "The material used to make the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "material", example = "cotton", description = "The material used to make the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("material")
   public JsonNullable<String> getMaterial() {
     return material;
@@ -1962,7 +1854,7 @@ public class ItemAttributes {
    * @return minAdPrice
    */
   
-  @Schema(name = "min_ad_price", example = "19.99 USD", description = "The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "min_ad_price", example = "19.99 USD", description = "The minimum advertised price of the product. It supports the following formats: \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("min_ad_price")
   public JsonNullable<String> getMinAdPrice() {
     return minAdPrice;
@@ -1982,7 +1874,7 @@ public class ItemAttributes {
    * @return mobileLink
    */
   
-  @Schema(name = "mobile_link", example = "https://m.example.com/cat/womens-clothing/denim-shirt-0294", description = "The mobile-optimized version of your landing page. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "mobile_link", example = "https://m.example.com/cat/womens-clothing/denim-shirt-0294", description = "The mobile-optimized version of your landing page. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("mobile_link")
   public JsonNullable<String> getMobileLink() {
     return mobileLink;
@@ -2002,7 +1894,7 @@ public class ItemAttributes {
    * @return mpn
    */
   
-  @Schema(name = "mpn", example = "PI12345NTEREST", description = "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "mpn", example = "PI12345NTEREST", description = "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("mpn")
   public JsonNullable<String> getMpn() {
     return mpn;
@@ -2022,7 +1914,7 @@ public class ItemAttributes {
    * @return numberOfRatings
    */
   
-  @Schema(name = "number_of_ratings", example = "10", description = "The number of ratings for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "number_of_ratings", example = "10", description = "The number of ratings for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("number_of_ratings")
   public JsonNullable<Integer> getNumberOfRatings() {
     return numberOfRatings;
@@ -2042,7 +1934,7 @@ public class ItemAttributes {
    * @return numberOfReviews
    */
   
-  @Schema(name = "number_of_reviews", example = "10", description = "The number of reviews available for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "number_of_reviews", example = "10", description = "The number of reviews available for the item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("number_of_reviews")
   public JsonNullable<Integer> getNumberOfReviews() {
     return numberOfReviews;
@@ -2062,7 +1954,7 @@ public class ItemAttributes {
    * @return pattern
    */
   
-  @Schema(name = "pattern", example = "plaid", description = "The description of the pattern used for the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pattern", example = "plaid", description = "The description of the pattern used for the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("pattern")
   public JsonNullable<String> getPattern() {
     return pattern;
@@ -2103,7 +1995,7 @@ public class ItemAttributes {
    * @return productType
    */
   
-  @Schema(name = "product_type", example = "Clothing > Women's > Shirts > Denim", description = "<= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "product_type", example = "Clothing > Women's > Shirts > Denim", description = "<= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by \" > \".", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("product_type")
   public JsonNullable<String> getProductType() {
     return productType;
@@ -2123,7 +2015,7 @@ public class ItemAttributes {
    * @return promotionId
    */
   
-  @Schema(name = "promotion_id", example = "promotion_1", description = "A unique identifier referencing the promotion associated with this catalog item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "promotion_id", example = "promotion_1", description = "A unique identifier referencing the promotion associated with this catalog item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("promotion_id")
   public JsonNullable<String> getPromotionId() {
     return promotionId;
@@ -2143,7 +2035,7 @@ public class ItemAttributes {
    * @return salePrice
    */
   
-  @Schema(name = "sale_price", example = "14.99 USD", description = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "sale_price", example = "14.99 USD", description = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: \"14.99 USD\", \"14.99USD\" and \"14.99\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("sale_price")
   public JsonNullable<String> getSalePrice() {
     return salePrice;
@@ -2163,7 +2055,7 @@ public class ItemAttributes {
    * @return salePriceEffectiveDate
    */
   
-  @Schema(name = "sale_price_effective_date", example = "2025-01-01T00:00:00.000000Z/2025-01-07T00:00:00.000000Z", description = "Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "sale_price_effective_date", example = "2025-01-01T00:00:00.000000Z/2025-01-07T00:00:00.000000Z", description = "Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("sale_price_effective_date")
   public JsonNullable<String> getSalePriceEffectiveDate() {
     return salePriceEffectiveDate;
@@ -2183,7 +2075,7 @@ public class ItemAttributes {
    * @return shipping
    */
   
-  @Schema(name = "shipping", example = "US:CA:Ground:0 USD", description = "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "shipping", example = "US:CA:Ground:0 USD", description = "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("shipping")
   public JsonNullable<String> getShipping() {
     return shipping;
@@ -2203,7 +2095,7 @@ public class ItemAttributes {
    * @return shippingHeight
    */
   
-  @Schema(name = "shipping_height", example = "12 in", description = "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "shipping_height", example = "12 in", description = "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("shipping_height")
   public JsonNullable<String> getShippingHeight() {
     return shippingHeight;
@@ -2223,7 +2115,7 @@ public class ItemAttributes {
    * @return shippingWeight
    */
   
-  @Schema(name = "shipping_weight", example = "3 kg", description = "The weight of the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "shipping_weight", example = "3 kg", description = "The weight of the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("shipping_weight")
   public JsonNullable<String> getShippingWeight() {
     return shippingWeight;
@@ -2243,7 +2135,7 @@ public class ItemAttributes {
    * @return shippingWidth
    */
   
-  @Schema(name = "shipping_width", example = "16 in", description = "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "shipping_width", example = "16 in", description = "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("shipping_width")
   public JsonNullable<String> getShippingWidth() {
     return shippingWidth;
@@ -2263,7 +2155,7 @@ public class ItemAttributes {
    * @return size
    */
   
-  @Schema(name = "size", example = "M", description = "The size of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size", example = "M", description = "The size of the product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("size")
   public JsonNullable<String> getSize() {
     return size;
@@ -2283,7 +2175,7 @@ public class ItemAttributes {
    * @return sizeSystem
    */
   
-  @Schema(name = "size_system", example = "US", description = "Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size_system", example = "US", description = "Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("size_system")
   public JsonNullable<String> getSizeSystem() {
     return sizeSystem;
@@ -2303,7 +2195,7 @@ public class ItemAttributes {
    * @return sizeType
    */
   
-  @Schema(name = "size_type", example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size_type", example = "regular", description = "Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("size_type")
   public JsonNullable<String> getSizeType() {
     return sizeType;
@@ -2323,7 +2215,7 @@ public class ItemAttributes {
    * @return tax
    */
   
-  @Schema(name = "tax", example = "US:1025433:6.00:y", description = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tax", example = "US:1025433:6.00:y", description = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tax")
   public JsonNullable<String> getTax() {
     return tax;
@@ -2364,7 +2256,7 @@ public class ItemAttributes {
    * @return unitPricingBaseMeasure
    */
   
-  @Schema(name = "unit_pricing_base_measure", example = "10 ML", description = "Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "unit_pricing_base_measure", example = "10 ML", description = "Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("unit_pricing_base_measure")
   public JsonNullable<String> getUnitPricingBaseMeasure() {
     return unitPricingBaseMeasure;
@@ -2384,7 +2276,7 @@ public class ItemAttributes {
    * @return unitPricingMeasure
    */
   
-  @Schema(name = "unit_pricing_measure", example = "10 ML", description = "Unit pricing total measure of the product. Expected format: <total_units> <unit_type>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "unit_pricing_measure", example = "10 ML", description = "Unit pricing total measure of the product. Expected format: <total_units> <unit_type>", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("unit_pricing_measure")
   public JsonNullable<String> getUnitPricingMeasure() {
     return unitPricingMeasure;
@@ -2400,7 +2292,7 @@ public class ItemAttributes {
   }
 
   public ItemAttributes addVariantNamesItem(String variantNamesItem) {
-    if (this.variantNames == null || !this.variantNames.isPresent()) {
+    if (this.variantNames == null || !this.variantNames.isPresent() || this.variantNames.get() == null) {
       this.variantNames = JsonNullable.of(new ArrayList<>());
     }
     this.variantNames.get().add(variantNamesItem);
@@ -2412,7 +2304,7 @@ public class ItemAttributes {
    * @return variantNames
    */
   
-  @Schema(name = "variant_names", example = "[Color, Size]", description = "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "variant_names", example = "[Color, Size]", description = "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("variant_names")
   public JsonNullable<List<String>> getVariantNames() {
     return variantNames;
@@ -2428,7 +2320,7 @@ public class ItemAttributes {
   }
 
   public ItemAttributes addVariantValuesItem(String variantValuesItem) {
-    if (this.variantValues == null || !this.variantValues.isPresent()) {
+    if (this.variantValues == null || !this.variantValues.isPresent() || this.variantValues.get() == null) {
       this.variantValues = JsonNullable.of(new ArrayList<>());
     }
     this.variantValues.get().add(variantValuesItem);
@@ -2440,7 +2332,7 @@ public class ItemAttributes {
    * @return variantValues
    */
   
-  @Schema(name = "variant_values", example = "[Red, Small]", description = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "variant_values", example = "[Red, Small]", description = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("variant_values")
   public JsonNullable<List<String>> getVariantValues() {
     return variantValues;
@@ -2456,7 +2348,7 @@ public class ItemAttributes {
   }
 
   public ItemAttributes addAdditionalImageLinkItem(String additionalImageLinkItem) {
-    if (this.additionalImageLink == null || !this.additionalImageLink.isPresent()) {
+    if (this.additionalImageLink == null || !this.additionalImageLink.isPresent() || this.additionalImageLink.get() == null) {
       this.additionalImageLink = JsonNullable.of(new ArrayList<>());
     }
     this.additionalImageLink.get().add(additionalImageLinkItem);
@@ -2468,7 +2360,7 @@ public class ItemAttributes {
    * @return additionalImageLink
    */
   
-  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "additional_image_link", example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", description = "<= 2000 characters. The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("additional_image_link")
   public JsonNullable<List<String>> getAdditionalImageLink() {
     return additionalImageLink;
@@ -2495,7 +2387,7 @@ public class ItemAttributes {
    * AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
    * @return aiDisclosures
    */
-  @Valid 
+  
   @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ai_disclosures")
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
@@ -2546,7 +2438,7 @@ public class ItemAttributes {
    * @return videoLink
    */
   
-  @Schema(name = "video_link", example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", description = "<= 2,000 characters. Hosted link to the product video. File types must be .mp4, .mov or .m4v. File size cannot exceed 2GB.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "video_link", example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", description = "<= 2,000 characters. Hosted link to the product video. File types must be .mp4, .mov or .m4v. File size cannot exceed 2GB.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("video_link")
   public JsonNullable<String> getVideoLink() {
     return videoLink;

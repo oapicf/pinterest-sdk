@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Asset group type.
-* Values: BRAND,LOCATION_OR_LANGUAGE,PRODUCT_LINE,OTHER
-*/
+ * Asset group type.
+ * Values: BRAND,LOCATION_OR_LANGUAGE,PRODUCT_LINE,OTHER
+ */
 enum class AssetGroupType(@get:JsonValue val value: kotlin.String) {
 
     BRAND("BRAND"),
@@ -30,9 +30,8 @@ enum class AssetGroupType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AssetGroupType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetGroupType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetGroupType'")
         }
     }
 }
-

@@ -29,14 +29,10 @@ import {
 export interface ProductGroupPromotionsCreate {
     /**
      * ID of the ad group the product group promotion belongs to.
-     * @type {string}
-     * @memberof ProductGroupPromotionsCreate
      */
     adGroupId: string;
     /**
      * List of product group promotions to create or update.
-     * @type {Array<ProductGroupPromotion>}
-     * @memberof ProductGroupPromotionsCreate
      */
     productGroupPromotion: Array<ProductGroupPromotion>;
 }

@@ -57,44 +57,30 @@ import {
 export interface AdvancedAuctionItemsSubmitUpsertRecord {
     /**
      * 
-     * @type {AdvancedAuctionBidOptions}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     bidOptions: AdvancedAuctionBidOptions;
     /**
      * 
-     * @type {Country}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     country: Country;
     /**
      * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-     * @type {Array<AdvancedAuctionOperationError>}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     errors?: Array<AdvancedAuctionOperationError>;
     /**
      * The catalog retail item id in the merchant namespace
-     * @type {string}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     itemId: string;
     /**
      * 
-     * @type {Language}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     language: Language;
     /**
      * 
-     * @type {AdvancedAuctionItemsSubmitUpsertRecordOperationEnum}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     operation: AdvancedAuctionItemsSubmitUpsertRecordOperationEnum;
     /**
      * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
-     * @type {Array<UpdateMaskBidOptionField>}
-     * @memberof AdvancedAuctionItemsSubmitUpsertRecord
      */
     updateMask: Array<UpdateMaskBidOptionField> | null;
 }
@@ -104,7 +90,7 @@ export interface AdvancedAuctionItemsSubmitUpsertRecord {
  * @export
  */
 export const AdvancedAuctionItemsSubmitUpsertRecordOperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
 } as const;
 export type AdvancedAuctionItemsSubmitUpsertRecordOperationEnum = typeof AdvancedAuctionItemsSubmitUpsertRecordOperationEnum[keyof typeof AdvancedAuctionItemsSubmitUpsertRecordOperationEnum];
 

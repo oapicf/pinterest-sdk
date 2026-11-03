@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogsInvalidLogResponse", description = "Schema describing the response when a log has invalid fields.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsInvalidLogResponse {
 
-  @Valid
   private List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs = new ArrayList<>();
 
   public IntegrationLogsInvalidLogResponse rejectedLogs(List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> rejectedLogs) {
@@ -47,7 +45,7 @@ public class IntegrationLogsInvalidLogResponse {
    * Get rejectedLogs
    * @return rejectedLogs
    */
-  @Valid 
+  
   @Schema(name = "rejected_logs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejected_logs")
   public List<@Valid IntegrationLogsInvalidLogResponseRejectedLogsItems> getRejectedLogs() {

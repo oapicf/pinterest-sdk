@@ -37,14 +37,14 @@ import javax.annotation.Generated;
   CustomerListCreate.JSON_PROPERTY_RECORDS_V2
 })
 @JsonTypeName("CustomerListCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CustomerListCreate {
     public static final String JSON_PROPERTY_IS_NCA = "is_nca";
     private Boolean isNca;
 
     public static final String JSON_PROPERTY_LIST_TYPE = "list_type";
-    private UserListType listType;
+    private UserListType listType = UserListType.EMAIL;
 
     public static final String JSON_PROPERTY_NAME = "name";
     private String name;

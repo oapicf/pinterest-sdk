@@ -29,26 +29,18 @@ import {
 export interface PromotionTemplateValue {
     /**
      * Numeric value.
-     * @type {number}
-     * @memberof PromotionTemplateValue
      */
     amount?: number;
     /**
      * 
-     * @type {Currency}
-     * @memberof PromotionTemplateValue
      */
     currencyCode?: Currency;
     /**
      * Custom text.
-     * @type {string}
-     * @memberof PromotionTemplateValue
      */
     customText?: string;
     /**
      * Percent value.
-     * @type {number}
-     * @memberof PromotionTemplateValue
      */
     percent?: number;
 }

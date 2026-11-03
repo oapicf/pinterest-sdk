@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Response object containing item bid options")
 @JsonTypeName("AdvancedAuctionItems")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItems   {
   private String catalogId;
-  private @Valid List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
+  private List<@Valid AdvancedAuctionItem> items = new ArrayList<>();
 
   public AdvancedAuctionItems() {
   }
@@ -61,7 +61,7 @@ public class AdvancedAuctionItems   {
   
   @ApiModelProperty(value = "Array with item bid options")
   @JsonProperty("items")
-  @Valid public List<@Valid AdvancedAuctionItem> getItems() {
+  public List<@Valid AdvancedAuctionItem> getItems() {
     return items;
   }
 

@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object with a list of partner asset accesses to assign or update.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="An object with a list of partner asset accesses to assign or update.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdatePartnerAssetAccessBody   {
   
   private List<@Valid UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
@@ -26,8 +26,7 @@ public class UpdatePartnerAssetAccessBody   {
   @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=50)  @Valid
-  public List<@Valid UpdatePartnerAssetAccessItem> getAccesses() {
+ @Size(min=1,max=50)  public List<@Valid UpdatePartnerAssetAccessItem> getAccesses() {
     return accesses;
   }
   public void setAccesses(List<@Valid UpdatePartnerAssetAccessItem> accesses) {

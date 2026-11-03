@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "UpdateMemberAssetAccessBody", description = "An object with a list of all the new member asset accesses.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateMemberAssetAccessBody {
 
-  @Valid
   private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public UpdateMemberAssetAccessBody() {
@@ -57,7 +56,7 @@ public class UpdateMemberAssetAccessBody {
    * List of member asset accesses to assign or update.
    * @return accesses
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "accesses", description = "List of member asset accesses to assign or update.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accesses")
   public List<@Valid UpdateMemberAssetAccessItem> getAccesses() {

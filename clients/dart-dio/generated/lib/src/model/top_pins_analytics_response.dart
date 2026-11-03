@@ -150,3 +150,4 @@ class _$TopPinsAnalyticsResponseSerializer implements PrimitiveSerializer<TopPin
   }
 }
 
+

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Permission aggregation type for asset access
-* Values: AGGREGATED_PERMISSION,DIRECT_PERMISSION
-*/
+ * Permission aggregation type for asset access
+ * Values: AGGREGATED_PERMISSION,DIRECT_PERMISSION
+ */
 enum class AssetPermissionType(@get:JsonValue val value: kotlin.String) {
 
     AGGREGATED_PERMISSION("AGGREGATED_PERMISSION"),
@@ -28,9 +28,8 @@ enum class AssetPermissionType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AssetPermissionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetPermissionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetPermissionType'")
         }
     }
 }
-

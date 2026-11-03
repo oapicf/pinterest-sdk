@@ -12,24 +12,354 @@
 
 namespace models {
 
-
-class ProductGroupPromotionCustomizableCTAType
-{
-public:
-
-    ProductGroupPromotionCustomizableCTAType();
-    virtual ~ProductGroupPromotionCustomizableCTAType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductGroupPromotionCustomizableCTAType,
-        )
-
-private:
+enum class ProductGroupPromotionCustomizableCTAType {
+    
+    GET_OFFER,
+    
+    LEARN_MORE,
+    
+    ORDER_NOW,
+    
+    SHOP_NOW,
+    
+    SIGN_UP,
+    
+    SUBSCRIBE,
+    
+    BUY_NOW,
+    
+    CONTACT_US,
+    
+    GET_QUOTE,
+    
+    VISIT_SITE,
+    
+    APPLY_NOW,
+    
+    BOOK_NOW,
+    
+    REGISTER_NOW,
+    
+    FIND_A_DEALER,
+    
+    WATCH_NOW,
+    
+    READ_MORE,
+    
+    BUY_TICKETS,
+    
+    DONATE_NOW,
+    
+    DOWNLOAD,
+    
+    EXPLORE_MORE,
+    
+    FIND_A_LOCATION,
+    
+    GET_DEAL,
+    
+    GET_RECIPE,
+    
+    GET_SHOWTIMES,
+    
+    ON_SALE,
+    
+    PLAY_GAME,
+    
+    TRY_IT,
+    
+    BUY_ONLINE_PICKUP_IN_STORE,
+    
+    SHOP_ON_ADVERTISER,
+    
+    SHOP_THE_COLLECTION,
+    
+    GET_IT_NOW,
+    
+    TAKE_A_PEEK,
+    
+    TAKE_A_CLOSER_LOOK
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductGroupPromotionCustomizableCTAType& value)
+{
+    switch (value)
+    {
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_OFFER: j = "GET_OFFER"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::LEARN_MORE: j = "LEARN_MORE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::ORDER_NOW: j = "ORDER_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::SHOP_NOW: j = "SHOP_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::SIGN_UP: j = "SIGN_UP"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::SUBSCRIBE: j = "SUBSCRIBE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::BUY_NOW: j = "BUY_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::CONTACT_US: j = "CONTACT_US"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_QUOTE: j = "GET_QUOTE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::VISIT_SITE: j = "VISIT_SITE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::APPLY_NOW: j = "APPLY_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::BOOK_NOW: j = "BOOK_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::REGISTER_NOW: j = "REGISTER_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::FIND_A_DEALER: j = "FIND_A_DEALER"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::WATCH_NOW: j = "WATCH_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::READ_MORE: j = "READ_MORE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::BUY_TICKETS: j = "BUY_TICKETS"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::DONATE_NOW: j = "DONATE_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::DOWNLOAD: j = "DOWNLOAD"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::EXPLORE_MORE: j = "EXPLORE_MORE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::FIND_A_LOCATION: j = "FIND_A_LOCATION"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_DEAL: j = "GET_DEAL"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_RECIPE: j = "GET_RECIPE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_SHOWTIMES: j = "GET_SHOWTIMES"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::ON_SALE: j = "ON_SALE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::PLAY_GAME: j = "PLAY_GAME"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::TRY_IT: j = "TRY_IT"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::BUY_ONLINE_PICKUP_IN_STORE: j = "BUY_ONLINE_PICKUP_IN_STORE"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::SHOP_ON_ADVERTISER: j = "SHOP_ON_ADVERTISER"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::SHOP_THE_COLLECTION: j = "SHOP_THE_COLLECTION"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::GET_IT_NOW: j = "GET_IT_NOW"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::TAKE_A_PEEK: j = "TAKE_A_PEEK"; break;
+        
+        case ProductGroupPromotionCustomizableCTAType::TAKE_A_CLOSER_LOOK: j = "TAKE_A_CLOSER_LOOK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupPromotionCustomizableCTAType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductGroupPromotionCustomizableCTAType& value)
+{
+    
+    if (j == "GET_OFFER")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_OFFER;
+        return;
+    }
+    
+    if (j == "LEARN_MORE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::LEARN_MORE;
+        return;
+    }
+    
+    if (j == "ORDER_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::ORDER_NOW;
+        return;
+    }
+    
+    if (j == "SHOP_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::SHOP_NOW;
+        return;
+    }
+    
+    if (j == "SIGN_UP")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::SIGN_UP;
+        return;
+    }
+    
+    if (j == "SUBSCRIBE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::SUBSCRIBE;
+        return;
+    }
+    
+    if (j == "BUY_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::BUY_NOW;
+        return;
+    }
+    
+    if (j == "CONTACT_US")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::CONTACT_US;
+        return;
+    }
+    
+    if (j == "GET_QUOTE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_QUOTE;
+        return;
+    }
+    
+    if (j == "VISIT_SITE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::VISIT_SITE;
+        return;
+    }
+    
+    if (j == "APPLY_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::APPLY_NOW;
+        return;
+    }
+    
+    if (j == "BOOK_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::BOOK_NOW;
+        return;
+    }
+    
+    if (j == "REGISTER_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::REGISTER_NOW;
+        return;
+    }
+    
+    if (j == "FIND_A_DEALER")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::FIND_A_DEALER;
+        return;
+    }
+    
+    if (j == "WATCH_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::WATCH_NOW;
+        return;
+    }
+    
+    if (j == "READ_MORE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::READ_MORE;
+        return;
+    }
+    
+    if (j == "BUY_TICKETS")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::BUY_TICKETS;
+        return;
+    }
+    
+    if (j == "DONATE_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::DONATE_NOW;
+        return;
+    }
+    
+    if (j == "DOWNLOAD")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::DOWNLOAD;
+        return;
+    }
+    
+    if (j == "EXPLORE_MORE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::EXPLORE_MORE;
+        return;
+    }
+    
+    if (j == "FIND_A_LOCATION")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::FIND_A_LOCATION;
+        return;
+    }
+    
+    if (j == "GET_DEAL")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_DEAL;
+        return;
+    }
+    
+    if (j == "GET_RECIPE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_RECIPE;
+        return;
+    }
+    
+    if (j == "GET_SHOWTIMES")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_SHOWTIMES;
+        return;
+    }
+    
+    if (j == "ON_SALE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::ON_SALE;
+        return;
+    }
+    
+    if (j == "PLAY_GAME")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::PLAY_GAME;
+        return;
+    }
+    
+    if (j == "TRY_IT")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::TRY_IT;
+        return;
+    }
+    
+    if (j == "BUY_ONLINE_PICKUP_IN_STORE")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::BUY_ONLINE_PICKUP_IN_STORE;
+        return;
+    }
+    
+    if (j == "SHOP_ON_ADVERTISER")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::SHOP_ON_ADVERTISER;
+        return;
+    }
+    
+    if (j == "SHOP_THE_COLLECTION")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::SHOP_THE_COLLECTION;
+        return;
+    }
+    
+    if (j == "GET_IT_NOW")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::GET_IT_NOW;
+        return;
+    }
+    
+    if (j == "TAKE_A_PEEK")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::TAKE_A_PEEK;
+        return;
+    }
+    
+    if (j == "TAKE_A_CLOSER_LOOK")
+    {
+        value = ProductGroupPromotionCustomizableCTAType::TAKE_A_CLOSER_LOOK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupPromotionCustomizableCTAType", &j);
+}
 
 } // namespace models
 

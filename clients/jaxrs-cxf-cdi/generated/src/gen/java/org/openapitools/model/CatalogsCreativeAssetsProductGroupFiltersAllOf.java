@@ -19,11 +19,11 @@ import java.util.Objects;
 
 public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
   
-  private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   /**
    **/
-  public CatalogsCreativeAssetsProductGroupFiltersAllOf allOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public CatalogsCreativeAssetsProductGroupFiltersAllOf allOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -32,10 +32,10 @@ public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("all_of")
   @NotNull
-  public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
-  public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

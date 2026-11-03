@@ -179,19 +179,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class TargetingTemplateUpdateRequestReadOrUpdate.", nameof(id));
+                throw new JsonException("Property is required for class TargetingTemplateUpdateRequestReadOrUpdate: id.");
 
             if (!operationType.IsSet)
-                throw new ArgumentException("Property is required for class TargetingTemplateUpdateRequestReadOrUpdate.", nameof(operationType));
+                throw new JsonException("Property is required for class TargetingTemplateUpdateRequestReadOrUpdate: operation_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate: id.");
 
             if (operationType.IsSet && operationType.Value == null)
-                throw new ArgumentNullException(nameof(operationType), "Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate: operation_type.");
 
             if (targetingAttributes.IsSet && targetingAttributes.Value == null)
-                throw new ArgumentNullException(nameof(targetingAttributes), "Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateUpdateRequestReadOrUpdate: targeting_attributes.");
 
             return new TargetingTemplateUpdateRequestReadOrUpdate(id.Value!, operationType.Value!.Value!, targetingAttributes);
         }
@@ -202,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateUpdateRequestReadOrUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -217,14 +216,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateUpdateRequestReadOrUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingTemplateUpdateRequestReadOrUpdate.Id == null)
-                throw new ArgumentNullException(nameof(targetingTemplateUpdateRequestReadOrUpdate.Id), "Property is required for class TargetingTemplateUpdateRequestReadOrUpdate.");
-
             if (targetingTemplateUpdateRequestReadOrUpdate.TargetingAttributesOption.IsSet && targetingTemplateUpdateRequestReadOrUpdate.TargetingAttributes == null)
-                throw new ArgumentNullException(nameof(targetingTemplateUpdateRequestReadOrUpdate.TargetingAttributes), "Property is required for class TargetingTemplateUpdateRequestReadOrUpdate.");
+                throw new JsonException("Cannot write null property TargetingTemplateUpdateRequestReadOrUpdate.TargetingAttributes to non-nullable JSON property 'targeting_attributes'.");
 
             writer.WriteString("id", targetingTemplateUpdateRequestReadOrUpdate.Id);
 

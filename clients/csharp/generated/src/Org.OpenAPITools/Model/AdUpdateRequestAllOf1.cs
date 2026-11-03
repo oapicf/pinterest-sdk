@@ -175,10 +175,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdUpdateRequestAllOf1.", nameof(id));
+                throw new JsonException("Property is required for class AdUpdateRequestAllOf1: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdUpdateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdUpdateRequestAllOf1: id.");
 
             return new AdUpdateRequestAllOf1(id.Value!, pinId);
         }
@@ -189,7 +189,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adUpdateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdUpdateRequestAllOf1 adUpdateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -204,12 +203,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adUpdateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdUpdateRequestAllOf1 adUpdateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adUpdateRequestAllOf1.Id == null)
-                throw new ArgumentNullException(nameof(adUpdateRequestAllOf1.Id), "Property is required for class AdUpdateRequestAllOf1.");
-
             writer.WriteString("id", adUpdateRequestAllOf1.Id);
 
             if (adUpdateRequestAllOf1.PinIdOption.IsSet)

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'attribution_match_type.g.dart';
 
+/// Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
 class AttributionMatchType extends EnumClass {
 
-  /// Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
   @BuiltValueEnumConst(wireName: r'P')
   static const AttributionMatchType P = _$P;
-  /// Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
   @BuiltValueEnumConst(wireName: r'D')
   static const AttributionMatchType D = _$D;
-  /// Match type for an attributed event. P for probabilistic, D for deterministic, NA for Not applicable.
   @BuiltValueEnumConst(wireName: r'NA')
   static const AttributionMatchType NA = _$NA;
 

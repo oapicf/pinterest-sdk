@@ -172,10 +172,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (frequency.IsSet && frequency.Value == null)
-                throw new ArgumentNullException(nameof(frequency), "Property is not nullable for class FrequencyGoalMetadata.");
+                throw new JsonException("Property is not nullable for class FrequencyGoalMetadata: frequency.");
 
             if (timerange.IsSet && timerange.Value == null)
-                throw new ArgumentNullException(nameof(timerange), "Property is not nullable for class FrequencyGoalMetadata.");
+                throw new JsonException("Property is not nullable for class FrequencyGoalMetadata: timerange.");
 
             return new FrequencyGoalMetadata(frequency, timerange);
         }
@@ -186,7 +186,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="frequencyGoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, FrequencyGoalMetadata frequencyGoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -201,9 +200,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="frequencyGoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, FrequencyGoalMetadata frequencyGoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (frequencyGoalMetadata.FrequencyOption.IsSet && frequencyGoalMetadata.Frequency == null)
+                throw new JsonException("Cannot write null property FrequencyGoalMetadata.Frequency to non-nullable JSON property 'frequency'.");
+
+            if (frequencyGoalMetadata.TimerangeOption.IsSet && frequencyGoalMetadata.Timerange == null)
+                throw new JsonException("Cannot write null property FrequencyGoalMetadata.Timerange to non-nullable JSON property 'timerange'.");
+
             if (frequencyGoalMetadata.FrequencyOption.IsSet)
                 writer.WriteNumber("frequency", frequencyGoalMetadata.FrequencyOption.Value!.Value);
 

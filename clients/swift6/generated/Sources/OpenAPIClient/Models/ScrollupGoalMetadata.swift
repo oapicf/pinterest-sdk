@@ -9,7 +9,7 @@ import Foundation
 
 public struct ScrollupGoalMetadata: Sendable, Codable, Hashable {
 
-    public static let scrollupGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let scrollupGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var scrollupGoalValueInMicroCurrency: String?
 
     public init(scrollupGoalValueInMicroCurrency: String? = nil) {

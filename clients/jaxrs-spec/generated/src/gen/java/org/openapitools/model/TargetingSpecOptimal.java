@@ -25,23 +25,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TargetingSpecOptimal")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOptimal   {
-  private @Valid List<TargetingSpecAgeBucket> AGE_BUCKET;
-  private @Valid List<TargetingSpecAppType> APPTYPE;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_EXCLUDE;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_INCLUDE;
-  private @Valid List<TargetingSpecGender> GENDER;
-  private @Valid List<String> GEO;
-  private @Valid List<String> GEO_EXCLUDE = new ArrayList<>();
-  private @Valid List<String> INTEREST = new ArrayList<>();
-  private @Valid List<String> LOCALE;
-  private @Valid List<String> LOCATION;
-  private @Valid List<String> LOCATION_EXCLUDE = new ArrayList<>();
+  private List<TargetingSpecAgeBucket> AGE_BUCKET;
+  private List<TargetingSpecAppType> APPTYPE;
+  private List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_EXCLUDE;
+  private List<@Pattern(regexp = "^\\d+$")String> AUDIENCE_INCLUDE;
+  private List<TargetingSpecGender> GENDER;
+  private List<String> GEO;
+  private List<String> GEO_EXCLUDE = new ArrayList<>();
+  private List<String> INTEREST = new ArrayList<>();
+  private List<String> LOCALE;
+  private List<String> LOCATION;
+  private List<String> LOCATION_EXCLUDE = new ArrayList<>();
   private String MAXIMUM_AGE;
   private String MINIMUM_AGE;
-  private @Valid List<@Valid TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING;
-  private @Valid List<TargetingStrategy> TARGETING_STRATEGY;
+  private List<@Valid TargetingSpecShoppingRetargeting> SHOPPING_RETARGETING;
+  private List<TargetingStrategy> TARGETING_STRATEGY;
 
   public TargetingSpecOptimal() {
   }
@@ -493,7 +493,7 @@ public class TargetingSpecOptimal   {
   
   @ApiModelProperty(value = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting")
   @JsonProperty("SHOPPING_RETARGETING")
-  @Valid public List<@Valid TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
+  public List<@Valid TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }
 

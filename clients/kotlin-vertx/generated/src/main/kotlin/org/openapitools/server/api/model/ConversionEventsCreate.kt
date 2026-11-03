@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Conversion events.
- * @param &#x60;data&#x60; A list of events (one or more) encapsulated by a data object.
+ * @param `data` A list of events (one or more) encapsulated by a data object.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="List of members with role to delete.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="List of members with role to delete.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembershipBody   {
   
   private List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();
@@ -25,8 +25,7 @@ public class DeleteBusinessMembershipBody   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("members")
   @NotNull
- @Size(min=1,max=50)  @Valid
-  public List<@Valid DeleteBusinessMembershipMember> getMembers() {
+ @Size(min=1,max=50)  public List<@Valid DeleteBusinessMembershipMember> getMembers() {
     return members;
   }
   public void setMembers(List<@Valid DeleteBusinessMembershipMember> members) {

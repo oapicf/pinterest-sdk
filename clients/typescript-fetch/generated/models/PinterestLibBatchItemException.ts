@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PinterestLibBatchItemException {
     /**
      * 
-     * @type {number}
-     * @memberof PinterestLibBatchItemException
      */
     code?: number;
     /**
      * 
-     * @type {string}
-     * @memberof PinterestLibBatchItemException
      */
     message: string;
 }

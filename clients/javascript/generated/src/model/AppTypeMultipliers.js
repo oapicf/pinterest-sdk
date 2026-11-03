@@ -17,7 +17,7 @@ import TargetingSpecAppType from './TargetingSpecAppType';
 /**
  * The AppTypeMultipliers model module.
  * @module model/AppTypeMultipliers
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AppTypeMultipliers {
     /**

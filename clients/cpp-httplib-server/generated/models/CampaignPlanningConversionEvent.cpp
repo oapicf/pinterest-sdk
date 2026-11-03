@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningConversionEvent.h"
 
-namespace models {
-
-CampaignPlanningConversionEvent::CampaignPlanningConversionEvent()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

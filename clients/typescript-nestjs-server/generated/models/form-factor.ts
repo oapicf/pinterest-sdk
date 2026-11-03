@@ -12,7 +12,7 @@ export const FormFactor = {
     Tv: 'tv',
     Vr: 'vr',
     Console: 'console',
-    Other: 'other'
+    Other: 'other',
 } as const;
 export type FormFactor = typeof FormFactor[keyof typeof FormFactor];
 

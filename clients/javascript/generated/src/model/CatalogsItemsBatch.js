@@ -21,7 +21,7 @@ import CreativeAssetsProcessingRecord from './CreativeAssetsProcessingRecord';
 /**
  * The CatalogsItemsBatch model module.
  * @module model/CatalogsItemsBatch
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemsBatch {
     /**

@@ -123,3 +123,4 @@ class _$CatalogCreateSerializer implements PrimitiveSerializer<CatalogCreate> {
   }
 }
 
+

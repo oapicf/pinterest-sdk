@@ -13,8 +13,8 @@ public struct DeletePartnerAssetAccessItem: Sendable, Codable, Hashable {
         case _internal = "INTERNAL"
         case external = "EXTERNAL"
     }
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
     /** Unique identifier of the business asset. */
     public var assetId: String
     /** Unique identifier of a business partner to update asset access to. */

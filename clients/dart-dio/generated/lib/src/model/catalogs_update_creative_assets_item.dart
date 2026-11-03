@@ -140,6 +140,7 @@ class _$CatalogsUpdateCreativeAssetsItemSerializer implements PrimitiveSerialize
   }
 }
 
+
 class CatalogsUpdateCreativeAssetsItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPDATE')

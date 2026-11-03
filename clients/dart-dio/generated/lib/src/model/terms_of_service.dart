@@ -168,3 +168,4 @@ class _$TermsOfServiceSerializer implements PrimitiveSerializer<TermsOfService> 
   }
 }
 
+

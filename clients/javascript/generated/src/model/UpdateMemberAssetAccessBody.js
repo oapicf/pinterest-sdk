@@ -17,7 +17,7 @@ import UpdateMemberAssetAccessItem from './UpdateMemberAssetAccessItem';
 /**
  * The UpdateMemberAssetAccessBody model module.
  * @module model/UpdateMemberAssetAccessBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdateMemberAssetAccessBody {
     /**

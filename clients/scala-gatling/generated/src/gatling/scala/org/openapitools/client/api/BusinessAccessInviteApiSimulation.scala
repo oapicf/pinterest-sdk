@@ -137,10 +137,10 @@ class BusinessAccessInviteApiSimulation extends Simulation {
         .feed(get/invitesPATHFeeder)
         .exec(http("getInvites")
         .httpRequest("GET","/businesses/${business_id}/invites")
+        .queryParam("invite_status","${invite_status}")
+        .queryParam("page_size","${page_size}")
         .queryParam("invite_type","${invite_type}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("invite_status","${invite_status}")
         .queryParam("is_member","${is_member}")
 )
 

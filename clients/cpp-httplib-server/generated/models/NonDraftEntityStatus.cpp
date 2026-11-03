@@ -6,20 +6,3 @@
 */
 #include "NonDraftEntityStatus.h"
 
-namespace models {
-
-NonDraftEntityStatus::NonDraftEntityStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

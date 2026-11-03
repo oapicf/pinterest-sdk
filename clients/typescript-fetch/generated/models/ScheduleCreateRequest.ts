@@ -50,56 +50,38 @@ import {
 export interface ScheduleCreateRequest {
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleCreateRequest
      */
     entityId: string;
     /**
      * Entity type
-     * @type {string}
-     * @memberof ScheduleCreateRequest
      */
     entityType: string;
     /**
      * 
-     * @type {ScheduleCommonDeltaValue}
-     * @memberof ScheduleCreateRequest
      */
     deltaValue: ScheduleCommonDeltaValue;
     /**
      * Schedule end time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleCreateRequest
      */
     endTimestamp: number;
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleCreateRequest
      */
     name: string;
     /**
      * 
-     * @type {ScheduleAction}
-     * @memberof ScheduleCreateRequest
      */
     scheduleAction: ScheduleAction;
     /**
      * 
-     * @type {ScheduleStatus}
-     * @memberof ScheduleCreateRequest
      */
     scheduleStatus: ScheduleStatus;
     /**
      * 
-     * @type {ScheduleType}
-     * @memberof ScheduleCreateRequest
      */
     scheduleType: ScheduleType;
     /**
      * Schedule start time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleCreateRequest
      */
     startTimestamp: number;
 }

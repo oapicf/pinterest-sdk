@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Severity of a confidence level alert on delivery estimates.
-* Values: UNKNOWN,LOW_MILD,LOW_MODERATE,LOW_SEVERE
-*/
+ * Severity of a confidence level alert on delivery estimates.
+ * Values: UNKNOWN,LOW_MILD,LOW_MODERATE,LOW_SEVERE
+ */
 enum class CampaignPlanningConfidenceLevelAlertSeverity(@get:JsonValue val value: kotlin.String) {
 
     UNKNOWN("UNKNOWN"),
@@ -30,9 +30,8 @@ enum class CampaignPlanningConfidenceLevelAlertSeverity(@get:JsonValue val value
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningConfidenceLevelAlertSeverity {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConfidenceLevelAlertSeverity'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConfidenceLevelAlertSeverity'")
         }
     }
 }
-

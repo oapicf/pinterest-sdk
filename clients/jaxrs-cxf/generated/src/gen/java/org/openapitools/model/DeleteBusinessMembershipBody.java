@@ -21,8 +21,6 @@ public class DeleteBusinessMembershipBody  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();
  /**
    * Get members

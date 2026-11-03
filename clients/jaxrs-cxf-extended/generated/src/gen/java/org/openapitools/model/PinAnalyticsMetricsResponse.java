@@ -21,7 +21,6 @@ public class PinAnalyticsMetricsResponse  {
   * Array with the requested daily metric records
   */
   @ApiModelProperty(value = "Array with the requested daily metric records")
-  @Valid
   private List<@Valid PinAnalyticsDailyMetrics> dailyMetrics = new ArrayList<>();
 
  /**
@@ -34,7 +33,6 @@ public class PinAnalyticsMetricsResponse  {
   * The metric name and value over the requested period for each requested metric
   */
   @ApiModelProperty(example = "{\"IMPRESSION\":240,\"OUTBOUND_CLICK\":20,\"PIN_CLICK\":37,\"QUARTILE_95_PERCENT_VIEW\":8,\"SAVE\":20,\"SAVE_RATE\":0.18,\"VIDEO_10S_VIEW\":2,\"VIDEO_AVG_WATCH_TIME\":2507.75,\"VIDEO_MRC_VIEW\":20,\"VIDEO_START\":29,\"VIDEO_V50_WATCH_TIME\":10031}", value = "The metric name and value over the requested period for each requested metric")
-  @Valid
   private Map<String, BigDecimal> summaryMetrics = new HashMap<>();
  /**
   * Array with the requested daily metric records

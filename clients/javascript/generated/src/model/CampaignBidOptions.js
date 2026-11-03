@@ -23,7 +23,7 @@ import PlacementMultipliers from './PlacementMultipliers';
 /**
  * The CampaignBidOptions model module.
  * @module model/CampaignBidOptions
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignBidOptions {
     /**

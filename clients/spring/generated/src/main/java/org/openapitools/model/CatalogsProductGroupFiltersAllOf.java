@@ -23,10 +23,10 @@ import jakarta.annotation.Generated;
  * CatalogsProductGroupFiltersAllOf
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersAllOf {
 
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsProductGroupFiltersAllOf() {
     super();
@@ -35,11 +35,11 @@ public class CatalogsProductGroupFiltersAllOf {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsProductGroupFiltersAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 
-  public CatalogsProductGroupFiltersAllOf allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersAllOf allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -56,15 +56,15 @@ public class CatalogsProductGroupFiltersAllOf {
    * Get allOf
    * @return allOf
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("all_of")
-  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
   @JsonProperty("all_of")
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

@@ -170,3 +170,4 @@ class _$UpdatePartnerAssetsResultSerializer implements PrimitiveSerializer<Updat
   }
 }
 
+

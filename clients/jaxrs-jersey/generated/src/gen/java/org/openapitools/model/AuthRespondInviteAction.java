@@ -33,7 +33,7 @@ import javax.validation.Valid;
   AuthRespondInviteAction.JSON_PROPERTY_ACCEPT_INVITE,
   AuthRespondInviteAction.JSON_PROPERTY_ASSET_ID_TO_PERMISSIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInviteAction   {
   public static final String JSON_PROPERTY_ACCEPT_INVITE = "accept_invite";
   @JsonProperty(JSON_PROPERTY_ACCEPT_INVITE)
@@ -82,7 +82,7 @@ public class AuthRespondInviteAction   {
    **/
   @JsonProperty(value = "asset_id_to_permissions")
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.")
-  @Valid 
+  
   public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }

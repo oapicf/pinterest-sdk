@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class CatalogsAiContentDisclosureLabel
-{
-public:
-
-    CatalogsAiContentDisclosureLabel();
-    virtual ~CatalogsAiContentDisclosureLabel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsAiContentDisclosureLabel,
-        )
-
-private:
+enum class CatalogsAiContentDisclosureLabel {
+    
+    AI_MODIFIED,
+    
+    SYNTHETIC_PERFORMER
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsAiContentDisclosureLabel& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsAiContentDisclosureLabel::AI_MODIFIED: j = "ai_modified"; break;
+        
+        case CatalogsAiContentDisclosureLabel::SYNTHETIC_PERFORMER: j = "synthetic_performer"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsAiContentDisclosureLabel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsAiContentDisclosureLabel& value)
+{
+    
+    if (j == "ai_modified")
+    {
+        value = CatalogsAiContentDisclosureLabel::AI_MODIFIED;
+        return;
+    }
+    
+    if (j == "synthetic_performer")
+    {
+        value = CatalogsAiContentDisclosureLabel::SYNTHETIC_PERFORMER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsAiContentDisclosureLabel", &j);
+}
 
 } // namespace models
 

@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetGroup.IsSet && assetGroup.Value == null)
-                throw new ArgumentNullException(nameof(assetGroup), "Property is not nullable for class AssetGroupInput.");
+                throw new JsonException("Property is not nullable for class AssetGroupInput: asset_group.");
 
             return new AssetGroupInput(assetGroup);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupInput"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupInput assetGroupInput, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupInput"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupInput assetGroupInput, JsonSerializerOptions jsonSerializerOptions)
         {
             if (assetGroupInput.AssetGroupOption.IsSet && assetGroupInput.AssetGroup == null)
-                throw new ArgumentNullException(nameof(assetGroupInput.AssetGroup), "Property is required for class AssetGroupInput.");
+                throw new JsonException("Cannot write null property AssetGroupInput.AssetGroup to non-nullable JSON property 'asset_group'.");
 
             if (assetGroupInput.AssetGroupOption.IsSet)
             {

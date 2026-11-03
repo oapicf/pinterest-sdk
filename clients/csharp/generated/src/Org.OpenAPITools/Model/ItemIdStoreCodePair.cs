@@ -150,16 +150,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class ItemIdStoreCodePair.", nameof(itemId));
+                throw new JsonException("Property is required for class ItemIdStoreCodePair: item_id.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class ItemIdStoreCodePair.", nameof(storeCode));
+                throw new JsonException("Property is required for class ItemIdStoreCodePair: store_code.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class ItemIdStoreCodePair.");
+                throw new JsonException("Property is not nullable for class ItemIdStoreCodePair: item_id.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class ItemIdStoreCodePair.");
+                throw new JsonException("Property is not nullable for class ItemIdStoreCodePair: store_code.");
 
             return new ItemIdStoreCodePair(itemId.Value!, storeCode.Value!);
         }
@@ -170,7 +170,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemIdStoreCodePair"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemIdStoreCodePair itemIdStoreCodePair, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -185,15 +184,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemIdStoreCodePair"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemIdStoreCodePair itemIdStoreCodePair, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (itemIdStoreCodePair.ItemId == null)
-                throw new ArgumentNullException(nameof(itemIdStoreCodePair.ItemId), "Property is required for class ItemIdStoreCodePair.");
-
-            if (itemIdStoreCodePair.StoreCode == null)
-                throw new ArgumentNullException(nameof(itemIdStoreCodePair.StoreCode), "Property is required for class ItemIdStoreCodePair.");
-
             writer.WriteString("item_id", itemIdStoreCodePair.ItemId);
 
             writer.WriteString("store_code", itemIdStoreCodePair.StoreCode);

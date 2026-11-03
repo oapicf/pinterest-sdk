@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,49 +30,35 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TargetingSpec", description = "Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpec {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<TargetingSpecAgeBucket>> AGE_BUCKET = JsonNullable.<List<TargetingSpecAgeBucket>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<TargetingSpecAppType>> APPTYPE = JsonNullable.<List<TargetingSpecAppType>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_EXCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_INCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<TargetingSpecGender>> GENDER = JsonNullable.<List<TargetingSpecGender>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> GEO = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> GEO_EXCLUDE = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> INTEREST = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> LOCALE = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> LOCATION = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> LOCATION_EXCLUDE = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String MAXIMUM_AGE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String MINIMUM_AGE;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> SHOPPING_RETARGETING = JsonNullable.<List<@Valid TargetingSpecShoppingRetargeting>>undefined();
 
   /**
@@ -113,7 +98,6 @@ public class TargetingSpec {
     }
   }
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<TARGETINGSTRATEGYEnum>> TARGETING_STRATEGY = JsonNullable.<List<TARGETINGSTRATEGYEnum>>undefined();
 
   public TargetingSpec AGE_BUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
@@ -122,7 +106,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addAGEBUCKETItem(TargetingSpecAgeBucket AGE_BUCKETItem) {
-    if (this.AGE_BUCKET == null || !this.AGE_BUCKET.isPresent()) {
+    if (this.AGE_BUCKET == null || !this.AGE_BUCKET.isPresent() || this.AGE_BUCKET.get() == null) {
       this.AGE_BUCKET = JsonNullable.of(new ArrayList<>());
     }
     this.AGE_BUCKET.get().add(AGE_BUCKETItem);
@@ -133,8 +117,8 @@ public class TargetingSpec {
    * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
    * @return AGE_BUCKET
    */
-  @Valid 
-  @Schema(name = "AGE_BUCKET", example = "[\"35-44\",\"50-54\"]", description = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "AGE_BUCKET", example = "[\"35-44\",\"50-54\"]", description = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("AGE_BUCKET")
   public JsonNullable<List<TargetingSpecAgeBucket>> getAGEBUCKET() {
     return AGE_BUCKET;
@@ -150,7 +134,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addAPPTYPEItem(TargetingSpecAppType APPTYPEItem) {
-    if (this.APPTYPE == null || !this.APPTYPE.isPresent()) {
+    if (this.APPTYPE == null || !this.APPTYPE.isPresent() || this.APPTYPE.get() == null) {
       this.APPTYPE = JsonNullable.of(new ArrayList<>());
     }
     this.APPTYPE.get().add(APPTYPEItem);
@@ -161,8 +145,8 @@ public class TargetingSpec {
    * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
    * @return APPTYPE
    */
-  @Valid 
-  @Schema(name = "APPTYPE", example = "[\"ipad\",\"iphone\"]", description = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "APPTYPE", example = "[\"ipad\",\"iphone\"]", description = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("APPTYPE")
   public JsonNullable<List<TargetingSpecAppType>> getAPPTYPE() {
     return APPTYPE;
@@ -178,7 +162,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addAUDIENCEEXCLUDEItem(String AUDIENCE_EXCLUDEItem) {
-    if (this.AUDIENCE_EXCLUDE == null || !this.AUDIENCE_EXCLUDE.isPresent()) {
+    if (this.AUDIENCE_EXCLUDE == null || !this.AUDIENCE_EXCLUDE.isPresent() || this.AUDIENCE_EXCLUDE.get() == null) {
       this.AUDIENCE_EXCLUDE = JsonNullable.of(new ArrayList<>());
     }
     this.AUDIENCE_EXCLUDE.get().add(AUDIENCE_EXCLUDEItem);
@@ -190,7 +174,7 @@ public class TargetingSpec {
    * @return AUDIENCE_EXCLUDE
    */
   
-  @Schema(name = "AUDIENCE_EXCLUDE", description = "Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AUDIENCE_EXCLUDE", description = "Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("AUDIENCE_EXCLUDE")
   public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getAUDIENCEEXCLUDE() {
     return AUDIENCE_EXCLUDE;
@@ -206,7 +190,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addAUDIENCEINCLUDEItem(String AUDIENCE_INCLUDEItem) {
-    if (this.AUDIENCE_INCLUDE == null || !this.AUDIENCE_INCLUDE.isPresent()) {
+    if (this.AUDIENCE_INCLUDE == null || !this.AUDIENCE_INCLUDE.isPresent() || this.AUDIENCE_INCLUDE.get() == null) {
       this.AUDIENCE_INCLUDE = JsonNullable.of(new ArrayList<>());
     }
     this.AUDIENCE_INCLUDE.get().add(AUDIENCE_INCLUDEItem);
@@ -218,7 +202,7 @@ public class TargetingSpec {
    * @return AUDIENCE_INCLUDE
    */
   
-  @Schema(name = "AUDIENCE_INCLUDE", description = "Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "AUDIENCE_INCLUDE", description = "Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("AUDIENCE_INCLUDE")
   public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getAUDIENCEINCLUDE() {
     return AUDIENCE_INCLUDE;
@@ -234,7 +218,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addGENDERItem(TargetingSpecGender GENDERItem) {
-    if (this.GENDER == null || !this.GENDER.isPresent()) {
+    if (this.GENDER == null || !this.GENDER.isPresent() || this.GENDER.get() == null) {
       this.GENDER = JsonNullable.of(new ArrayList<>());
     }
     this.GENDER.get().add(GENDERItem);
@@ -245,8 +229,8 @@ public class TargetingSpec {
    * Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
    * @return GENDER
    */
-  @Valid 
-  @Schema(name = "GENDER", description = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "GENDER", description = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("GENDER")
   public JsonNullable<List<TargetingSpecGender>> getGENDER() {
     return GENDER;
@@ -262,7 +246,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addGEOItem(String GEOItem) {
-    if (this.GEO == null || !this.GEO.isPresent()) {
+    if (this.GEO == null || !this.GEO.isPresent() || this.GEO.get() == null) {
       this.GEO = JsonNullable.of(new ArrayList<>());
     }
     this.GEO.get().add(GEOItem);
@@ -274,7 +258,7 @@ public class TargetingSpec {
    * @return GEO
    */
   
-  @Schema(name = "GEO", description = "Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "GEO", description = "Region codes or postal codes to include for targeting.<br /><br /> Region codes represent broader geographical areas. Example: <code>US-CA</code> is the region code for California in the United States.<br /><br /> Postal codes represent more granular, specific areas. Example: <code>94103</code> is a postal code for a specifc area in San Francisco, California, U.S.A.<br /><br /> For each ad group, use only one of these methods, depending on which fits your targeting needs. Do not use both. For example, either specify a broader region code like <code>US-CA</code> or a more granular postal code within that regon, such as <code>94103</code>.<br /><br /> You can specify multiple region codes or postal codes in an array, depending on which method you choose.<br /><br /> Precede a region code array with the <code>region_codes</code> key and a postal code value with the <code>postal_codes</code> key. Examples:<br /><br /> <code>\"geo\": {</code><br /> <code>\"region_codes\": [\"US-CA\"]</code><br /> <code>}</code><br /><br /> <code>\"geo\": {</code><br /> <code>\"postal_codes\": [\"94103\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code>. <br /><br /> If you do not specifiy a <code>GEO</code> code, only <code>LOCATION</code> values will be targeted (See <code>LOCATION</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("GEO")
   public JsonNullable<List<String>> getGEO() {
     return GEO;
@@ -348,7 +332,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addLOCALEItem(String LOCALEItem) {
-    if (this.LOCALE == null || !this.LOCALE.isPresent()) {
+    if (this.LOCALE == null || !this.LOCALE.isPresent() || this.LOCALE.get() == null) {
       this.LOCALE = JsonNullable.of(new ArrayList<>());
     }
     this.LOCALE.get().add(LOCALEItem);
@@ -360,7 +344,7 @@ public class TargetingSpec {
    * @return LOCALE
    */
   
-  @Schema(name = "LOCALE", description = "24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LOCALE", description = "24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("LOCALE")
   public JsonNullable<List<String>> getLOCALE() {
     return LOCALE;
@@ -376,7 +360,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addLOCATIONItem(String LOCATIONItem) {
-    if (this.LOCATION == null || !this.LOCATION.isPresent()) {
+    if (this.LOCATION == null || !this.LOCATION.isPresent() || this.LOCATION.get() == null) {
       this.LOCATION = JsonNullable.of(new ArrayList<>());
     }
     this.LOCATION.get().add(LOCATIONItem);
@@ -388,7 +372,7 @@ public class TargetingSpec {
    * @return LOCATION
    */
   
-  @Schema(name = "LOCATION", description = "Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "LOCATION", description = "Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to include for targeting.<br /><br /> Precede country code values with the <code>country_codes</code> key and metro code values with <code>metro_codes</code> key. Example:<br /><br /> <code>\"location\": {</code><br /> <code>\"country_codes\": [\"US\", \"CA\"],</code><br /> <code>\"metro_codes\": [\"501\", \"602\"]</code><br /> <code>}</code><br /><br /> For each ad group, specify at least one <code>GEO</code> or <code>LOCATION</code> code. <br /><br /> If you do not specify a <code>LOCATION</code> code, only <code>GEO</code> values will be targeted (See <code>GEO</code> parameter in this targeting spec.).<br /><br /> Learn how to <a href=\"/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones\" target=\"_blank\">get a current, complete list of codes</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("LOCATION")
   public JsonNullable<List<String>> getLOCATION() {
     return LOCATION;
@@ -475,7 +459,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecShoppingRetargeting SHOPPING_RETARGETINGItem) {
-    if (this.SHOPPING_RETARGETING == null || !this.SHOPPING_RETARGETING.isPresent()) {
+    if (this.SHOPPING_RETARGETING == null || !this.SHOPPING_RETARGETING.isPresent() || this.SHOPPING_RETARGETING.get() == null) {
       this.SHOPPING_RETARGETING = JsonNullable.of(new ArrayList<>());
     }
     this.SHOPPING_RETARGETING.get().add(SHOPPING_RETARGETINGItem);
@@ -486,8 +470,8 @@ public class TargetingSpec {
    * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
    * @return SHOPPING_RETARGETING
    */
-  @Valid 
-  @Schema(name = "SHOPPING_RETARGETING", description = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "SHOPPING_RETARGETING", description = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("SHOPPING_RETARGETING")
   public JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
@@ -503,7 +487,7 @@ public class TargetingSpec {
   }
 
   public TargetingSpec addTARGETINGSTRATEGYItem(TARGETINGSTRATEGYEnum TARGETING_STRATEGYItem) {
-    if (this.TARGETING_STRATEGY == null || !this.TARGETING_STRATEGY.isPresent()) {
+    if (this.TARGETING_STRATEGY == null || !this.TARGETING_STRATEGY.isPresent() || this.TARGETING_STRATEGY.get() == null) {
       this.TARGETING_STRATEGY = JsonNullable.of(new ArrayList<>());
     }
     this.TARGETING_STRATEGY.get().add(TARGETING_STRATEGYItem);
@@ -515,7 +499,7 @@ public class TargetingSpec {
    * @return TARGETING_STRATEGY
    */
   
-  @Schema(name = "TARGETING_STRATEGY", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "TARGETING_STRATEGY", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("TARGETING_STRATEGY")
   public JsonNullable<List<TARGETINGSTRATEGYEnum>> getTARGETINGSTRATEGY() {
     return TARGETING_STRATEGY;

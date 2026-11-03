@@ -36,38 +36,26 @@ import {
 export interface ConversionTagV3GoalMetadata {
     /**
      * 
-     * @type {AttributionWindows}
-     * @memberof ConversionTagV3GoalMetadata
      */
     attributionWindows?: AttributionWindows;
     /**
      * 
-     * @type {ConversionEvent}
-     * @memberof ConversionTagV3GoalMetadata
      */
     conversionEvent?: ConversionEvent;
     /**
      * 
-     * @type {string}
-     * @memberof ConversionTagV3GoalMetadata
      */
     conversionTagId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof ConversionTagV3GoalMetadata
      */
     cpaGoalValueInMicroCurrency?: string;
     /**
      * Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `"CHECKOUT"` and `bid_strategy_type` is set to `"AUTOMATIC_BID"`. This parameter is not enabled for all advertisers. [Learn more](https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/).
-     * @type {boolean}
-     * @memberof ConversionTagV3GoalMetadata
      */
     isRoasOptimized?: boolean | null;
     /**
      * Event name for custom or standard events mapped to an oCPM model
-     * @type {string}
-     * @memberof ConversionTagV3GoalMetadata
      */
     reportingEvent?: string;
 }

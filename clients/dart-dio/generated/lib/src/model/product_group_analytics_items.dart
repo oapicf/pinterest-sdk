@@ -126,3 +126,4 @@ class _$ProductGroupAnalyticsItemsSerializer implements PrimitiveSerializer<Prod
   }
 }
 
+

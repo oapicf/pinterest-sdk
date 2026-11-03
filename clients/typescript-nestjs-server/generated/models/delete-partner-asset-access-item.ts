@@ -17,7 +17,7 @@ export interface DeletePartnerAssetAccessItem {
 export namespace DeletePartnerAssetAccessItem {
   export const PartnerTypeEnum = {
     Internal: 'INTERNAL',
-    External: 'EXTERNAL'
+    External: 'EXTERNAL',
   } as const;
   export type PartnerTypeEnum = typeof PartnerTypeEnum[keyof typeof PartnerTypeEnum];
 }

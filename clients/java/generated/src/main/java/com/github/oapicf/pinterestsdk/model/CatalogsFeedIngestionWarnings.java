@@ -29,6 +29,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -48,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionWarnings {
   public static final String SERIALIZED_NAME_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R = "AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR";
   @SerializedName(SERIALIZED_NAME_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R)

@@ -26,7 +26,7 @@ import javax.validation.Valid;
 */
 @Path("/integrations")
 @Api(description = "the integrations API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationsApi {
 
     @DELETE
@@ -46,7 +46,8 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommerceDel(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId) {
+    public Response integrationsCommerceDel(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -66,7 +67,8 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommerceGet(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId) {
+    public Response integrationsCommerceGet(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -87,7 +89,9 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId,@Valid @NotNull IntegrationMetadataUpdate integrationMetadataUpdate) {
+    public Response integrationsCommercePatch(@PathParam("external_business_id") @ApiParam("External business ID for the integration.") String externalBusinessId
+,@Valid @NotNull IntegrationMetadataUpdate integrationMetadataUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -109,7 +113,8 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsCommercePost(@Valid @NotNull IntegrationMetadataCreate integrationMetadataCreate) {
+    public Response integrationsCommercePost(@Valid @NotNull IntegrationMetadataCreate integrationMetadataCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -129,7 +134,8 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetById(@PathParam("id") @Pattern(regexp="^\\d+$") @ApiParam("Integration record ID.") String id) {
+    public Response integrationsGetById(@PathParam("id") @Pattern(regexp="^\\d+$") @ApiParam("Integration record ID.") String id
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -148,7 +154,9 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsGetList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response integrationsGetList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -169,7 +177,8 @@ public class IntegrationsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response integrationsLogsPost(@Valid @NotNull IntegrationLogsRequestCreate integrationLogsRequestCreate) {
+    public Response integrationsLogsPost(@Valid @NotNull IntegrationLogsRequestCreate integrationLogsRequestCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 }

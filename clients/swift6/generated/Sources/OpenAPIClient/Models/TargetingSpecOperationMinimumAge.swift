@@ -15,7 +15,7 @@ public struct TargetingSpecOperationMinimumAge: Sendable, Codable, Hashable {
     public enum Operation: String, Sendable, Codable, CaseIterable {
         case _set = "SET"
     }
-    public static let valueRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+\\+?$/")
+    public static let valueRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+\\+?$")
     public var field: Field
     public var operation: Operation
     public var value: String?

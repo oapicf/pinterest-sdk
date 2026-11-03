@@ -23,15 +23,15 @@ data class MetricsResponseDataItems(
 
     @field:Valid
     @Schema(required = true, description = "Metrics object containing the requested metric columns and their values. The keys are metric names (e.g., AD_GROUP_ID, DATE, SPEND_IN_DOLLAR) and values are the metric values (strings or numbers).")
-    @param:JsonProperty("metrics")
+    @param:JsonProperty("metrics", required = true)
     @get:JsonProperty("metrics", required = true) val metrics: kotlin.Any,
 
     @Schema(required = true, description = "The targeting type for this data item (e.g., KEYWORD, APPTYPE, GENDER)")
-    @param:JsonProperty("targeting_type")
+    @param:JsonProperty("targeting_type", required = true)
     @get:JsonProperty("targeting_type", required = true) val targetingType: kotlin.String,
 
     @Schema(required = true, description = "The targeting value for this data item (e.g., 'christmas decor ideas', 'iphone', 'female')")
-    @param:JsonProperty("targeting_value")
+    @param:JsonProperty("targeting_value", required = true)
     @get:JsonProperty("targeting_value", required = true) val targetingValue: kotlin.String
 ) {
 

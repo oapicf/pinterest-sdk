@@ -24,8 +24,6 @@ public class AiDisclosures  {
   */
   @ApiModelProperty(required = true, value = "List of AI disclosure declarations the creator has made about this Pin.")
 
-  @Valid
-
   private List<AiDisclosureItem> values = new ArrayList<>();
  /**
    * List of AI disclosure declarations the creator has made about this Pin.

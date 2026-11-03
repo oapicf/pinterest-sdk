@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class TopVideoPinsSortBy
-{
-public:
-
-    TopVideoPinsSortBy();
-    virtual ~TopVideoPinsSortBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TopVideoPinsSortBy,
-        )
-
-private:
+enum class TopVideoPinsSortBy {
+    
+    SAVE,
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    VIDEO_MRC_VIEW,
+    
+    VIDEO_AVG_WATCH_TIME,
+    
+    VIDEO_V50_WATCH_TIME,
+    
+    QUARTILE_95_PERCENT_VIEW,
+    
+    VIDEO_10S_VIEW,
+    
+    VIDEO_START
+    
 };
 
+inline void to_json(nlohmann::json& j, const TopVideoPinsSortBy& value)
+{
+    switch (value)
+    {
+        
+        case TopVideoPinsSortBy::SAVE: j = "SAVE"; break;
+        
+        case TopVideoPinsSortBy::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case TopVideoPinsSortBy::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case TopVideoPinsSortBy::VIDEO_MRC_VIEW: j = "VIDEO_MRC_VIEW"; break;
+        
+        case TopVideoPinsSortBy::VIDEO_AVG_WATCH_TIME: j = "VIDEO_AVG_WATCH_TIME"; break;
+        
+        case TopVideoPinsSortBy::VIDEO_V50_WATCH_TIME: j = "VIDEO_V50_WATCH_TIME"; break;
+        
+        case TopVideoPinsSortBy::QUARTILE_95_PERCENT_VIEW: j = "QUARTILE_95_PERCENT_VIEW"; break;
+        
+        case TopVideoPinsSortBy::VIDEO_10S_VIEW: j = "VIDEO_10S_VIEW"; break;
+        
+        case TopVideoPinsSortBy::VIDEO_START: j = "VIDEO_START"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TopVideoPinsSortBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TopVideoPinsSortBy& value)
+{
+    
+    if (j == "SAVE")
+    {
+        value = TopVideoPinsSortBy::SAVE;
+        return;
+    }
+    
+    if (j == "IMPRESSION")
+    {
+        value = TopVideoPinsSortBy::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = TopVideoPinsSortBy::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEW")
+    {
+        value = TopVideoPinsSortBy::VIDEO_MRC_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_AVG_WATCH_TIME")
+    {
+        value = TopVideoPinsSortBy::VIDEO_AVG_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "VIDEO_V50_WATCH_TIME")
+    {
+        value = TopVideoPinsSortBy::VIDEO_V50_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "QUARTILE_95_PERCENT_VIEW")
+    {
+        value = TopVideoPinsSortBy::QUARTILE_95_PERCENT_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_10S_VIEW")
+    {
+        value = TopVideoPinsSortBy::VIDEO_10S_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_START")
+    {
+        value = TopVideoPinsSortBy::VIDEO_START;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TopVideoPinsSortBy", &j);
+}
 
 } // namespace models
 

@@ -29,8 +29,6 @@ import {
 export interface AudienceInsightsScopeAndTypeGet200Response {
     /**
      * 
-     * @type {Array<AudienceDefinition>}
-     * @memberof AudienceInsightsScopeAndTypeGet200Response
      */
     items: Array<AudienceDefinition>;
 }

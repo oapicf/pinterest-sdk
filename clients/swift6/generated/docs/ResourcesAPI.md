@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **adAccountCountriesGet**
 ```swift
-    open class func adAccountCountriesGet(completion: @escaping (_ data: AdAccountCountriesGet200Response?, _ error: Error?) -> Void)
+    open class func adAccountCountriesGet(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountCountriesGet200Response
 ```
 
 Get ad accounts countries
@@ -28,15 +28,11 @@ import OpenAPIClient
 
 
 // Get ad accounts countries
-ResourcesAPI.adAccountCountriesGet() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ResourcesAPI.adAccountCountriesGet()
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -60,7 +56,7 @@ This endpoint does not need any parameter.
 
 # **deliveryMetricsGet**
 ```swift
-    open class func deliveryMetricsGet(reportType: ReportType? = nil, completion: @escaping (_ data: DeliveryMetricsGet200Response?, _ error: Error?) -> Void)
+    open class func deliveryMetricsGet(reportType: ReportType? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeliveryMetricsGet200Response
 ```
 
 Get available metrics' definitions
@@ -75,15 +71,11 @@ import OpenAPIClient
 let reportType = ReportType() // ReportType | Report type. (optional)
 
 // Get available metrics' definitions
-ResourcesAPI.deliveryMetricsGet(reportType: reportType) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ResourcesAPI.deliveryMetricsGet(reportType: reportType)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -110,7 +102,7 @@ Name | Type | Description  | Notes
 
 # **interestTargetingOptionsGet**
 ```swift
-    open class func interestTargetingOptionsGet(interestId: String, completion: @escaping (_ data: SingleInterestTargetingOption?, _ error: Error?) -> Void)
+    open class func interestTargetingOptionsGet(interestId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SingleInterestTargetingOption
 ```
 
 Get interest details
@@ -125,15 +117,11 @@ import OpenAPIClient
 let interestId = "interestId_example" // String | Unique identifier of an interest.
 
 // Get interest details
-ResourcesAPI.interestTargetingOptionsGet(interestId: interestId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ResourcesAPI.interestTargetingOptionsGet(interestId: interestId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -160,7 +148,7 @@ Name | Type | Description  | Notes
 
 # **leadFormQuestionsGet**
 ```swift
-    open class func leadFormQuestionsGet(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func leadFormQuestionsGet(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Get lead form questions
@@ -174,15 +162,10 @@ import OpenAPIClient
 
 
 // Get lead form questions
-ResourcesAPI.leadFormQuestionsGet() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await ResourcesAPI.leadFormQuestionsGet()
+} catch {
+    print(error)
 }
 ```
 
@@ -206,7 +189,7 @@ Void (empty response body)
 
 # **metricsReadyStateGet**
 ```swift
-    open class func metricsReadyStateGet(date: String, completion: @escaping (_ data: BookClosed?, _ error: Error?) -> Void)
+    open class func metricsReadyStateGet(date: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BookClosed
 ```
 
 Get metrics ready state
@@ -221,15 +204,11 @@ import OpenAPIClient
 let date = "date_example" // String | Analytics reports request date (UTC). Format: YYYY-MM-DD
 
 // Get metrics ready state
-ResourcesAPI.metricsReadyStateGet(date: date) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ResourcesAPI.metricsReadyStateGet(date: date)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -256,7 +235,7 @@ Name | Type | Description  | Notes
 
 # **targetingOptionsGet**
 ```swift
-    open class func targetingOptionsGet(targetingType: PublicTargetingType, adAccountId: String? = nil, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, completion: @escaping (_ data: [JSONValue]?, _ error: Error?) -> Void)
+    open class func targetingOptionsGet(targetingType: PublicTargetingType, adAccountId: String? = nil, clientId: String? = nil, oauthSignature: String? = nil, timestamp: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [JSONValue]
 ```
 
 Get targeting options
@@ -275,15 +254,11 @@ let oauthSignature = "oauthSignature_example" // String | Oauth signature (optio
 let timestamp = "timestamp_example" // String | Timestamp. (optional)
 
 // Get targeting options
-ResourcesAPI.targetingOptionsGet(targetingType: targetingType, adAccountId: adAccountId, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ResourcesAPI.targetingOptionsGet(targetingType: targetingType, adAccountId: adAccountId, clientId: clientId, oauthSignature: oauthSignature, timestamp: timestamp)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -36,44 +36,30 @@ import {
 export interface EntityHistory {
     /**
      * A Unix timestamp representing the time of the change in seconds
-     * @type {number}
-     * @memberof EntityHistory
      */
     changeTimestamp?: number;
     /**
      * Properties associated with a particular change to an entity's data
-     * @type {Array<EntityDataChangeHistory>}
-     * @memberof EntityHistory
      */
     dataChanges?: Array<EntityDataChangeHistory>;
     /**
      * The id of the entity that was changed
-     * @type {string}
-     * @memberof EntityHistory
      */
     entityId?: string;
     /**
      * The name of the entity that was changed
-     * @type {string}
-     * @memberof EntityHistory
      */
     entityName?: string;
     /**
      * The LDAP of the user who initiated the change; only pertinent for changes initiated by internal users
-     * @type {string}
-     * @memberof EntityHistory
      */
     ldap?: string;
     /**
      * The type of operation that caused the change
-     * @type {ChangeHistoryOperationType}
-     * @memberof EntityHistory
      */
     operation?: ChangeHistoryOperationType;
     /**
      * The id of the user who initiated the change
-     * @type {string}
-     * @memberof EntityHistory
      */
     userId?: string;
 }

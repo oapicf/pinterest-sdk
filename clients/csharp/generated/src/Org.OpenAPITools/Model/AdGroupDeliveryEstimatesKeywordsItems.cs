@@ -147,13 +147,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupDeliveryEstimatesKeywordsItems.", nameof(value));
+                throw new JsonException("Property is required for class AdGroupDeliveryEstimatesKeywordsItems: value.");
 
             if (!matchType.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupDeliveryEstimatesKeywordsItems.", nameof(matchType));
+                throw new JsonException("Property is required for class AdGroupDeliveryEstimatesKeywordsItems: match_type.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class AdGroupDeliveryEstimatesKeywordsItems.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimatesKeywordsItems: value.");
 
             return new AdGroupDeliveryEstimatesKeywordsItems(value.Value!, matchType.Value!);
         }
@@ -164,7 +164,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupDeliveryEstimatesKeywordsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupDeliveryEstimatesKeywordsItems adGroupDeliveryEstimatesKeywordsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -179,12 +178,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupDeliveryEstimatesKeywordsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupDeliveryEstimatesKeywordsItems adGroupDeliveryEstimatesKeywordsItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adGroupDeliveryEstimatesKeywordsItems.Value == null)
-                throw new ArgumentNullException(nameof(adGroupDeliveryEstimatesKeywordsItems.Value), "Property is required for class AdGroupDeliveryEstimatesKeywordsItems.");
-
             writer.WriteString("value", adGroupDeliveryEstimatesKeywordsItems.Value);
 
             if (adGroupDeliveryEstimatesKeywordsItems.MatchType == null)

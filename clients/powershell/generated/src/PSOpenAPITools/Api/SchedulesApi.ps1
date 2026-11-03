@@ -66,7 +66,7 @@ function Invoke-SchedulesCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling schedules_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ScheduleCreate) {
             throw "Error! The required parameter `ScheduleCreate` missing when calling schedules_create."
@@ -182,7 +182,7 @@ function Invoke-SchedulesList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling schedules_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -290,7 +290,7 @@ function Invoke-SchedulesUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling schedules_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ScheduleBatchUpdate) {
             throw "Error! The required parameter `ScheduleBatchUpdate` missing when calling schedules_update."

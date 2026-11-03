@@ -29,14 +29,10 @@ import {
 export interface ReportsStats200Response {
     /**
      * 
-     * @type {string}
-     * @memberof ReportsStats200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<CatalogsReportStats>}
-     * @memberof ReportsStats200Response
      */
     items: Array<CatalogsReportStats>;
 }

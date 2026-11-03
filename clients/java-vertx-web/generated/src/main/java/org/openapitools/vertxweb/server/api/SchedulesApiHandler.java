@@ -56,7 +56,7 @@ public class SchedulesApiHandler {
         List<ScheduleCreate> scheduleCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<ScheduleCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter scheduleCreate is {}", scheduleCreate);
+        logger.debug("Parameter scheduleCreate is (body omitted)");
 
         api.schedulesCreate(adAccountId, scheduleCreate)
             .onSuccess(apiResponse -> {
@@ -115,7 +115,7 @@ public class SchedulesApiHandler {
         List<ScheduleBatchUpdate> scheduleBatchUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<ScheduleBatchUpdate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter scheduleBatchUpdate is {}", scheduleBatchUpdate);
+        logger.debug("Parameter scheduleBatchUpdate is (body omitted)");
 
         api.schedulesUpdate(adAccountId, scheduleBatchUpdate)
             .onSuccess(apiResponse -> {

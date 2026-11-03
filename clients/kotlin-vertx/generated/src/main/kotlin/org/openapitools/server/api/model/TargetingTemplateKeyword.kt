@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * 
  * @param matchType 
- * @param &#x60;value&#x60; The keyword targeting (120 chars max).
+ * @param `value` The keyword targeting (120 chars max).
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

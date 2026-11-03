@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class NumericFilterOperatorType
-{
-public:
-
-    NumericFilterOperatorType();
-    virtual ~NumericFilterOperatorType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NumericFilterOperatorType,
-        )
-
-private:
+enum class NumericFilterOperatorType {
+    
+    GREATER_THAN,
+    
+    GREATER_THAN_OR_EQUALS,
+    
+    LESS_THAN,
+    
+    LESS_THAN_OR_EQUALS
+    
 };
 
+inline void to_json(nlohmann::json& j, const NumericFilterOperatorType& value)
+{
+    switch (value)
+    {
+        
+        case NumericFilterOperatorType::GREATER_THAN: j = "GREATER_THAN"; break;
+        
+        case NumericFilterOperatorType::GREATER_THAN_OR_EQUALS: j = "GREATER_THAN_OR_EQUALS"; break;
+        
+        case NumericFilterOperatorType::LESS_THAN: j = "LESS_THAN"; break;
+        
+        case NumericFilterOperatorType::LESS_THAN_OR_EQUALS: j = "LESS_THAN_OR_EQUALS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NumericFilterOperatorType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NumericFilterOperatorType& value)
+{
+    
+    if (j == "GREATER_THAN")
+    {
+        value = NumericFilterOperatorType::GREATER_THAN;
+        return;
+    }
+    
+    if (j == "GREATER_THAN_OR_EQUALS")
+    {
+        value = NumericFilterOperatorType::GREATER_THAN_OR_EQUALS;
+        return;
+    }
+    
+    if (j == "LESS_THAN")
+    {
+        value = NumericFilterOperatorType::LESS_THAN;
+        return;
+    }
+    
+    if (j == "LESS_THAN_OR_EQUALS")
+    {
+        value = NumericFilterOperatorType::LESS_THAN_OR_EQUALS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NumericFilterOperatorType", &j);
+}
 
 } // namespace models
 

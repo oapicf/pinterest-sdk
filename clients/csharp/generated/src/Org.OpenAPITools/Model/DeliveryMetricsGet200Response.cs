@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class DeliveryMetricsGet200Response.", nameof(items));
+                throw new JsonException("Property is required for class DeliveryMetricsGet200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class DeliveryMetricsGet200Response.");
+                throw new JsonException("Property is not nullable for class DeliveryMetricsGet200Response: items.");
 
             return new DeliveryMetricsGet200Response(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deliveryMetricsGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeliveryMetricsGet200Response deliveryMetricsGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deliveryMetricsGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeliveryMetricsGet200Response deliveryMetricsGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (deliveryMetricsGet200Response.Items == null)
-                throw new ArgumentNullException(nameof(deliveryMetricsGet200Response.Items), "Property is required for class DeliveryMetricsGet200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, deliveryMetricsGet200Response.Items, jsonSerializerOptions);
         }

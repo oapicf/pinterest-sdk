@@ -29,20 +29,14 @@ import {
 export interface UpdatePartnerAssetAccessItem {
     /**
      * Unique identifier of the business asset.
-     * @type {string}
-     * @memberof UpdatePartnerAssetAccessItem
      */
     assetId: string;
     /**
      * Unique identifier of a business partner to update asset access to.
-     * @type {string}
-     * @memberof UpdatePartnerAssetAccessItem
      */
     partnerId: string;
     /**
      * A non-empty array of permissions to assign to the partner.
-     * @type {Array<Permissions>}
-     * @memberof UpdatePartnerAssetAccessItem
      */
     permissions: Array<Permissions>;
 }

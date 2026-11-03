@@ -6,7 +6,7 @@ export const TargetingSpecAppType = {
     Ipad: 'ipad',
     Iphone: 'iphone',
     Web: 'web',
-    WebMobile: 'web_mobile'
+    WebMobile: 'web_mobile',
 } as const;
 export type TargetingSpecAppType = typeof TargetingSpecAppType[keyof typeof TargetingSpecAppType];
 

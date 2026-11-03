@@ -105,3 +105,4 @@ class _$BrandFilterSerializer implements PrimitiveSerializer<BrandFilter> {
   }
 }
 
+

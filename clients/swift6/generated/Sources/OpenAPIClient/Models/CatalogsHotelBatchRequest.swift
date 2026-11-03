@@ -122,7 +122,7 @@ public struct CatalogsHotelBatchRequest: Sendable, Codable, Hashable {
         case xx = "XX"
         case zh = "ZH"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     public var catalogId: String?

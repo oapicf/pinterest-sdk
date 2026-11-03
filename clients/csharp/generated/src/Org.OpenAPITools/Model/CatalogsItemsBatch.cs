@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsItemsBatch" /> class.
         /// </summary>
         /// <param name="catalogsRetailItemsBatch"></param>
-        public CatalogsItemsBatch(CatalogsRetailItemsBatch catalogsRetailItemsBatch)
+        internal CatalogsItemsBatch(CatalogsRetailItemsBatch catalogsRetailItemsBatch)
         {
             CatalogsRetailItemsBatch = catalogsRetailItemsBatch;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsItemsBatch" /> class.
         /// </summary>
         /// <param name="catalogsHotelItemsBatch"></param>
-        public CatalogsItemsBatch(CatalogsHotelItemsBatch catalogsHotelItemsBatch)
+        internal CatalogsItemsBatch(CatalogsHotelItemsBatch catalogsHotelItemsBatch)
         {
             CatalogsHotelItemsBatch = catalogsHotelItemsBatch;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsItemsBatch" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsItemsBatch"></param>
-        public CatalogsItemsBatch(CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch)
+        internal CatalogsItemsBatch(CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch)
         {
             CatalogsCreativeAssetsItemsBatch = catalogsCreativeAssetsItemsBatch;
             OnCreated();
@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsItemsBatch.CatalogTypeEnum?>(CatalogsItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsItemsBatch.CatalogTypeEnum? catalogTypeValue = CatalogsItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsItemsBatch.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsBatch.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsItemsBatch: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsBatch: catalog_type.");
 
             if (catalogsCreativeAssetsItemsBatch != null)
                 return new CatalogsItemsBatch(catalogsCreativeAssetsItemsBatch);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemsBatch catalogsItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemsBatch catalogsItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
 

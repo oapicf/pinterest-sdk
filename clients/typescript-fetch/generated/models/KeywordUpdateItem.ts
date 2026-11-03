@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface KeywordUpdateItem {
     /**
      * 
-     * @type {boolean}
-     * @memberof KeywordUpdateItem
      */
     archived?: boolean;
     /**
      * **Note:** bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-     * @type {number}
-     * @memberof KeywordUpdateItem
      */
     bid?: number | null;
     /**
      * Keyword ID .
-     * @type {string}
-     * @memberof KeywordUpdateItem
      */
     id: string;
 }

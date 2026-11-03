@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,77 +31,55 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignBatchUpdateItem", description = "Single campaign update item with update-specific bid options.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBatchUpdateItem {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @Deprecated
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String appId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable MobileAppPlatform appPlatform;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CampaignBidOptionsUpdate> bidOptions = JsonNullable.<CampaignBidOptionsUpdate>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> dailySpendCap = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   @Deprecated
   private JsonNullable<Integer> defaultAdGroupBudgetInMicroCurrency = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> endTime = JsonNullable.<Integer>undefined();
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntendedPromotionType intendedPromotionType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isAutomatedCampaign = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isCampaignBudgetOptimization = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isFlexibleDailyBudgets = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isLtvOptimized;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isPerformancePlus;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isTopOfSearch;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> lifetimeSpendCap = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionObjectiveType objectiveType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> orderLineId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PerformancePlusCampaignSettings> performancePlusCampaignSettings = JsonNullable.<PerformancePlusCampaignSettings>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> startTime = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   public CampaignBatchUpdateItem() {
@@ -195,7 +172,7 @@ public class CampaignBatchUpdateItem {
    * @return bidOptions
    */
   @Valid 
-  @Schema(name = "bid_options", description = "Object describing an update to the campaign level bid multipliers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_options", description = "Object describing an update to the campaign level bid multipliers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_options")
   public JsonNullable<CampaignBidOptionsUpdate> getBidOptions() {
     return bidOptions;
@@ -215,7 +192,7 @@ public class CampaignBatchUpdateItem {
    * @return dailySpendCap
    */
   
-  @Schema(name = "daily_spend_cap", example = "1432744744", description = "Note: The default for this field is null, which is treated the same as 0. For campaign budget optimization, a daily or lifetime spend cap must be set, but not both. For ad group level budgets, this field must be 0 or unset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "daily_spend_cap", example = "1432744744", description = "Note: The default for this field is null, which is treated the same as 0. For campaign budget optimization, a daily or lifetime spend cap must be set, but not both. For ad group level budgets, this field must be 0 or unset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("daily_spend_cap")
   public JsonNullable<Integer> getDailySpendCap() {
     return dailySpendCap;
@@ -236,7 +213,7 @@ public class CampaignBatchUpdateItem {
    * @deprecated
    */
   
-  @Schema(name = "default_ad_group_budget_in_micro_currency", example = "0", description = "Setting this field does nothing.", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "default_ad_group_budget_in_micro_currency", example = "0", description = "Setting this field does nothing.", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @Deprecated
   @JsonProperty("default_ad_group_budget_in_micro_currency")
   public JsonNullable<Integer> getDefaultAdGroupBudgetInMicroCurrency() {
@@ -261,7 +238,7 @@ public class CampaignBatchUpdateItem {
    * @return endTime
    */
   
-  @Schema(name = "end_time", example = "1644023526", description = "Note: To clear this field on update, set the end time to -1. Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about [scheduling campaigns](/docs/api-features/managing-campaigns/#campaign-scheduling). Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_time", example = "1644023526", description = "Note: To clear this field on update, set the end time to -1. Timestamp in Unix format for scheduling when ads in the campaign stop appearing. Must occur after any end times for child ad groups. If `end_time` is not specified for the campaign, ads run indefinitely unless you update the campaign, changing their status to `paused`. Learn about [scheduling campaigns](/docs/api-features/managing-campaigns/#campaign-scheduling). Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign. - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error. - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("end_time")
   public JsonNullable<Integer> getEndTime() {
     return endTime;
@@ -323,7 +300,7 @@ public class CampaignBatchUpdateItem {
    * @return isAutomatedCampaign
    */
   
-  @Schema(name = "is_automated_campaign", example = "true", description = "Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - LEADS - CATALOG\\_SALES", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_automated_campaign", example = "true", description = "Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - LEADS - CATALOG\\_SALES", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_automated_campaign")
   public JsonNullable<Boolean> getIsAutomatedCampaign() {
     return isAutomatedCampaign;
@@ -343,7 +320,7 @@ public class CampaignBatchUpdateItem {
    * @return isCampaignBudgetOptimization
    */
   
-  @Schema(name = "is_campaign_budget_optimization", example = "true", description = "Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_campaign_budget_optimization", example = "true", description = "Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_campaign_budget_optimization")
   public JsonNullable<Boolean> getIsCampaignBudgetOptimization() {
     return isCampaignBudgetOptimization;
@@ -363,7 +340,7 @@ public class CampaignBatchUpdateItem {
    * @return isFlexibleDailyBudgets
    */
   
-  @Schema(name = "is_flexible_daily_budgets", example = "true", description = "Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_flexible_daily_budgets", example = "true", description = "Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_flexible_daily_budgets")
   public JsonNullable<Boolean> getIsFlexibleDailyBudgets() {
     return isFlexibleDailyBudgets;
@@ -446,7 +423,7 @@ public class CampaignBatchUpdateItem {
    * @return lifetimeSpendCap
    */
   
-  @Schema(name = "lifetime_spend_cap", example = "1432744744", description = "Note: The default for this field is null, which is treated the same as 0. For campaign budget optimization, a daily or lifetime spend cap must be set, but not both. For ad group level budgets, this field must be 0 or unset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "lifetime_spend_cap", example = "1432744744", description = "Note: The default for this field is null, which is treated the same as 0. For campaign budget optimization, a daily or lifetime spend cap must be set, but not both. For ad group level budgets, this field must be 0 or unset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("lifetime_spend_cap")
   public JsonNullable<Integer> getLifetimeSpendCap() {
     return lifetimeSpendCap;
@@ -508,7 +485,7 @@ public class CampaignBatchUpdateItem {
    * @return orderLineId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "order_line_id", example = "549755885175", description = "Note: To clear this field on update, set the order line ID to 0. Order line ID that appears on the invoice. The order line must not be expired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "order_line_id", example = "549755885175", description = "Note: To clear this field on update, set the order line ID to 0. Order line ID that appears on the invoice. The order line must not be expired.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("order_line_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getOrderLineId() {
     return orderLineId;
@@ -528,7 +505,7 @@ public class CampaignBatchUpdateItem {
    * @return performancePlusCampaignSettings
    */
   @Valid 
-  @Schema(name = "performance_plus_campaign_settings", description = "Pinterest Performance+ campaign settings.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "performance_plus_campaign_settings", description = "Pinterest Performance+ campaign settings.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("performance_plus_campaign_settings")
   public JsonNullable<PerformancePlusCampaignSettings> getPerformancePlusCampaignSettings() {
     return performancePlusCampaignSettings;
@@ -548,7 +525,7 @@ public class CampaignBatchUpdateItem {
    * @return startTime
    */
   
-  @Schema(name = "start_time", example = "1580865126", description = "Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about [scheduling campaigns](/docs/api-features/managing-campaigns/#campaign-scheduling). Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_time", example = "1580865126", description = "Timestamp in Unix format for scheduling when ads in the campaign start to appear. Must precede any start times set for child ad groups. Defaults to current time if no time is specified. Learn about [scheduling campaigns](/docs/api-features/managing-campaigns/#campaign-scheduling). Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign. - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error. - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("start_time")
   public JsonNullable<Integer> getStartTime() {
     return startTime;
@@ -589,7 +566,7 @@ public class CampaignBatchUpdateItem {
    * @return trackingUrls
    */
   @Valid 
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tracking_urls")
   public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;

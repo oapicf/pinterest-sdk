@@ -292,16 +292,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsUpdateRequest: format.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsUpdateRequest: location.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsUpdateRequest: name.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedsUpdateRequest: status.");
 
             return new CatalogsFeedsUpdateRequest(credentials, defaultAvailability, defaultCurrency, format, location, name, preferredProcessingSchedule, status);
         }
@@ -312,7 +312,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedsUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -327,14 +326,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedsUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedsUpdateRequest catalogsFeedsUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedsUpdateRequest.FormatOption.IsSet && catalogsFeedsUpdateRequest.Format == null)
+                throw new JsonException("Cannot write null property CatalogsFeedsUpdateRequest.Format to non-nullable JSON property 'format'.");
+
             if (catalogsFeedsUpdateRequest.LocationOption.IsSet && catalogsFeedsUpdateRequest.Location == null)
-                throw new ArgumentNullException(nameof(catalogsFeedsUpdateRequest.Location), "Property is required for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsFeedsUpdateRequest.Location to non-nullable JSON property 'location'.");
 
             if (catalogsFeedsUpdateRequest.NameOption.IsSet && catalogsFeedsUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsFeedsUpdateRequest.Name), "Property is required for class CatalogsFeedsUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsFeedsUpdateRequest.Name to non-nullable JSON property 'name'.");
+
+            if (catalogsFeedsUpdateRequest.StatusOption.IsSet && catalogsFeedsUpdateRequest.Status == null)
+                throw new JsonException("Cannot write null property CatalogsFeedsUpdateRequest.Status to non-nullable JSON property 'status'.");
 
             if (catalogsFeedsUpdateRequest.CredentialsOption.IsSet)
                 if (catalogsFeedsUpdateRequest.CredentialsOption.Value != null)

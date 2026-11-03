@@ -148,3 +148,4 @@ class _$TotalCountByEntityStatusSerializer implements PrimitiveSerializer<TotalC
   }
 }
 
+

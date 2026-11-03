@@ -27,9 +27,9 @@ import com.fasterxml.jackson.annotation.JsonInclude
  * @param orderQuantity Order quantity. For example, 1.
  * @param pageName Page name. For example, 'Our Favorite Pins on Pinterest'.
  * @param promoCode Promotion code. For example, 'WINTER10'.
- * @param &#x60;property&#x60; Property. For example, 'Athleta'.
+ * @param `property` Property. For example, 'Athleta'.
  * @param searchQuery Search query string. For example, 'boots'.
- * @param &#x60;value&#x60; Product value. For example, '199.98'.
+ * @param `value` Product value. For example, '199.98'.
  * @param videoTitle Video title. For example, 'How to style your Parker Boots'.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

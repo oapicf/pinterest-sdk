@@ -17,7 +17,7 @@ import LabelStatus from './LabelStatus';
 /**
  * The LabelUpdateItem model module.
  * @module model/LabelUpdateItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelUpdateItem {
     /**

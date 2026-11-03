@@ -22,7 +22,7 @@ data class LabelUpdateRequest(
 
     @field:Valid
     @Schema(required = true, description = "Labels that you are applying to the campaign.")
-    @param:JsonProperty("labels")
+    @param:JsonProperty("labels", required = true)
     @get:JsonProperty("labels", required = true) val labels: kotlin.collections.List<LabelUpdateItem>
 ) {
 

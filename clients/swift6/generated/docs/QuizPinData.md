@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**questions** | [QuizPinQuestion] |  | [optional] 
-**results** | [QuizPinResult] |  | [optional] 
+**questions** | [QuizPinQuestion?] |  | [optional] 
+**results** | [QuizPinResult?] |  | [optional] 
 **tieBreakerCustomResult** | [**QuizPinResult**](QuizPinResult.md) |  | [optional] 
 **tieBreakerType** | [**TieBreakerType**](TieBreakerType.md) |  | [optional] 
 

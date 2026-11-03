@@ -36,26 +36,18 @@ import {
 export interface CatalogsUpdateRetailItem {
     /**
      * 
-     * @type {UpdatableItemAttributes}
-     * @memberof CatalogsUpdateRetailItem
      */
     attributes: UpdatableItemAttributes;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsUpdateRetailItem
      */
     itemId: string;
     /**
      * 
-     * @type {CatalogsUpdateRetailItemOperationEnum}
-     * @memberof CatalogsUpdateRetailItem
      */
     operation: CatalogsUpdateRetailItemOperationEnum;
     /**
      * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
-     * @type {Array<UpdateMaskFieldType>}
-     * @memberof CatalogsUpdateRetailItem
      */
     updateMask?: Array<UpdateMaskFieldType> | null;
 }
@@ -65,7 +57,7 @@ export interface CatalogsUpdateRetailItem {
  * @export
  */
 export const CatalogsUpdateRetailItemOperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
 } as const;
 export type CatalogsUpdateRetailItemOperationEnum = typeof CatalogsUpdateRetailItemOperationEnum[keyof typeof CatalogsUpdateRetailItemOperationEnum];
 

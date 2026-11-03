@@ -9,13 +9,13 @@ import Foundation
 
 public struct Ad: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let cartingPlatformTypeRule = NumericRule<Int>(minimum: 1, exclusiveMinimum: false, maximum: 2, exclusiveMaximum: false, multipleOf: nil)
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the advertiser that this ad belongs to. */
     public var adAccountId: String
     /** ID of the ad group that contains the ad. */

@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'lead_form_status.g.dart';
 
+/// Status of the lead form
 class LeadFormStatus extends EnumClass {
 
-  /// Status of the lead form
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const LeadFormStatus DRAFT = _$DRAFT;
-  /// Status of the lead form
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const LeadFormStatus ACTIVE = _$ACTIVE;
 

@@ -2321,9 +2321,3 @@ src/model/VideoMetadataWithItemType.js
 src/model/VideoPinMetricTypes.js
 src/model/WebsiteVerificationMethod.js
 src/model/WorkloadState.js
-test/api/CatalogSupplementalApi.spec.js
-test/api/ConversionDeletionRequestsApi.spec.js
-test/api/CustomerSegmentApi.spec.js
-test/api/ProductTagsApi.spec.js
-test/api/SchedulesApi.spec.js
-test/api/TrendsApi.spec.js

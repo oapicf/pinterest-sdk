@@ -267,3 +267,4 @@ class _$AdAccountSerializer implements PrimitiveSerializer<AdAccount> {
   }
 }
 
+

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad event type used for attribution.
-* Values: view,engagement,click
-*/
+ * Ad event type used for attribution.
+ * Values: view,engagement,click
+ */
 enum class AttributionScope(@get:JsonValue val value: kotlin.String) {
 
     view("view"),
@@ -29,9 +29,8 @@ enum class AttributionScope(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AttributionScope {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionScope'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionScope'")
         }
     }
 }
-

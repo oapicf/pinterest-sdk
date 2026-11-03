@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface SingleInterestTargetingOption {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof SingleInterestTargetingOption
      */
     childInterests: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof SingleInterestTargetingOption
      */
     id: string;
     /**
      * 
-     * @type {number}
-     * @memberof SingleInterestTargetingOption
      */
     level: number;
     /**
      * 
-     * @type {string}
-     * @memberof SingleInterestTargetingOption
      */
     name: string;
 }

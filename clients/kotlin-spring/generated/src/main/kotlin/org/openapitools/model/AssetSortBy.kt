@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The field to sort member assets by
-* Values: NAME,ID,PERMISSIONS
-*/
+ * The field to sort member assets by
+ * Values: NAME,ID,PERMISSIONS
+ */
 enum class AssetSortBy(@get:JsonValue val value: kotlin.String) {
 
     NAME("NAME"),
@@ -29,9 +29,8 @@ enum class AssetSortBy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AssetSortBy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetSortBy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetSortBy'")
         }
     }
 }
-

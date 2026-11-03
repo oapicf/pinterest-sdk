@@ -11,7 +11,7 @@ import jakarta.validation.Valid;
 
 public class CatalogsBaseFiltersAnyOf   {
 
-    private List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
     /**
      * Default constructor.
@@ -26,7 +26,7 @@ public class CatalogsBaseFiltersAnyOf   {
      * @param anyOf anyOf
      */
     public CatalogsBaseFiltersAnyOf(
-        List<CatalogsBaseFilterKeys> anyOf
+        List<@Valid CatalogsBaseFilterKeys> anyOf
     ) {
         this.anyOf = anyOf;
     }
@@ -37,11 +37,11 @@ public class CatalogsBaseFiltersAnyOf   {
      * Get anyOf
      * @return anyOf
      */
-    public List<CatalogsBaseFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
         return anyOf;
     }
 
-    public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 

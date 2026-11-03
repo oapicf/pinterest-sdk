@@ -26,7 +26,7 @@ import SchedulesList200Response from '../model/SchedulesList200Response';
 /**
 * Schedules service.
 * @module api/SchedulesApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class SchedulesApi {
 

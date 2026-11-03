@@ -5,7 +5,7 @@
  */
 export const ConversionReportAttributionType = {
     Individual: 'INDIVIDUAL',
-    Household: 'HOUSEHOLD'
+    Household: 'HOUSEHOLD',
 } as const;
 export type ConversionReportAttributionType = typeof ConversionReportAttributionType[keyof typeof ConversionReportAttributionType];
 

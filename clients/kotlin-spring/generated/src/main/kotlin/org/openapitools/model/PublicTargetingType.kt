@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Public ad targeting type with external names
-* Values: APPTYPE,GENDER,LOCALE,AGE_BUCKET,LOCATION,GEO,INTEREST,KEYWORD,AUDIENCE_INCLUDE,AUDIENCE_EXCLUDE
-*/
+ * Public ad targeting type with external names
+ * Values: APPTYPE,GENDER,LOCALE,AGE_BUCKET,LOCATION,GEO,INTEREST,KEYWORD,AUDIENCE_INCLUDE,AUDIENCE_EXCLUDE
+ */
 enum class PublicTargetingType(@get:JsonValue val value: kotlin.String) {
 
     APPTYPE("APPTYPE"),
@@ -36,9 +36,8 @@ enum class PublicTargetingType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PublicTargetingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PublicTargetingType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PublicTargetingType'")
         }
     }
 }
-

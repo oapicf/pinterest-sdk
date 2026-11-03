@@ -15,7 +15,7 @@
 export const ConversionProductReportGranularity = {
     Total: 'TOTAL',
     Week: 'WEEK',
-    Month: 'MONTH'
+    Month: 'MONTH',
 } as const;
 export type ConversionProductReportGranularity = typeof ConversionProductReportGranularity[keyof typeof ConversionProductReportGranularity];
 

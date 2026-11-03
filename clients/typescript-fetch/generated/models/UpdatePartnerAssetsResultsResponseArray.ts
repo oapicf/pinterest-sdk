@@ -29,8 +29,6 @@ import {
 export interface UpdatePartnerAssetsResultsResponseArray {
     /**
      * List of assigned/updated partner asset access.
-     * @type {Array<UpdatePartnerAssetsResult>}
-     * @memberof UpdatePartnerAssetsResultsResponseArray
      */
     items?: Array<UpdatePartnerAssetsResult>;
 }

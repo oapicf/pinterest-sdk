@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -24,13 +23,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "PinsSaveRequestCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsSaveRequestCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
   public PinsSaveRequestCreate boardId(String boardId) {
@@ -43,7 +40,7 @@ public class PinsSaveRequestCreate {
    * @return boardId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_id", description = "Unique identifier of the board to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_id", description = "Unique identifier of the board to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("board_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardId() {
     return boardId;
@@ -63,7 +60,7 @@ public class PinsSaveRequestCreate {
    * @return boardSectionId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_section_id", description = "Unique identifier of the board section to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_section_id", description = "Unique identifier of the board section to which the pin will be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("board_section_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardSectionId() {
     return boardSectionId;

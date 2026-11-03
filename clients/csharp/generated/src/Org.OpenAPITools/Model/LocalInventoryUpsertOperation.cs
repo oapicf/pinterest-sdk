@@ -218,7 +218,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<LocalInventoryUpsertOperation.OperationEnum?>(LocalInventoryUpsertOperation.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                LocalInventoryUpsertOperation.OperationEnum? operationValue = LocalInventoryUpsertOperation.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<LocalInventoryUpsertOperation.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "store_code":
                             storeCode = new Option<string?>(utf8JsonReader.GetString()!);
@@ -230,28 +235,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributes.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryUpsertOperation.", nameof(attributes));
+                throw new JsonException("Property is required for class LocalInventoryUpsertOperation: attributes.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryUpsertOperation.", nameof(itemId));
+                throw new JsonException("Property is required for class LocalInventoryUpsertOperation: item_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryUpsertOperation.", nameof(operation));
+                throw new JsonException("Property is required for class LocalInventoryUpsertOperation: operation.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryUpsertOperation.", nameof(storeCode));
+                throw new JsonException("Property is required for class LocalInventoryUpsertOperation: store_code.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class LocalInventoryUpsertOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryUpsertOperation: attributes.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class LocalInventoryUpsertOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryUpsertOperation: item_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class LocalInventoryUpsertOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryUpsertOperation: operation.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class LocalInventoryUpsertOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryUpsertOperation: store_code.");
 
             return new LocalInventoryUpsertOperation(attributes.Value!, itemId.Value!, operation.Value!.Value!, storeCode.Value!);
         }
@@ -262,7 +267,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryUpsertOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryUpsertOperation localInventoryUpsertOperation, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -277,18 +281,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryUpsertOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryUpsertOperation localInventoryUpsertOperation, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryUpsertOperation.Attributes == null)
-                throw new ArgumentNullException(nameof(localInventoryUpsertOperation.Attributes), "Property is required for class LocalInventoryUpsertOperation.");
-
-            if (localInventoryUpsertOperation.ItemId == null)
-                throw new ArgumentNullException(nameof(localInventoryUpsertOperation.ItemId), "Property is required for class LocalInventoryUpsertOperation.");
-
-            if (localInventoryUpsertOperation.StoreCode == null)
-                throw new ArgumentNullException(nameof(localInventoryUpsertOperation.StoreCode), "Property is required for class LocalInventoryUpsertOperation.");
-
             writer.WritePropertyName("attributes");
             JsonSerializer.Serialize(writer, localInventoryUpsertOperation.Attributes, jsonSerializerOptions);
             writer.WriteString("item_id", localInventoryUpsertOperation.ItemId);

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PinMediaSourcePinURL {
     /**
      * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-     * @type {boolean}
-     * @memberof PinMediaSourcePinURL
      */
     isAffiliateLink?: boolean;
     /**
      * 
-     * @type {PinMediaSourcePinURLSourceTypeEnum}
-     * @memberof PinMediaSourcePinURL
      */
     sourceType: PinMediaSourcePinURLSourceTypeEnum;
 }
@@ -38,7 +34,7 @@ export interface PinMediaSourcePinURL {
  * @export
  */
 export const PinMediaSourcePinURLSourceTypeEnum = {
-    PinUrl: 'pin_url'
+    PinUrl: 'pin_url',
 } as const;
 export type PinMediaSourcePinURLSourceTypeEnum = typeof PinMediaSourcePinURLSourceTypeEnum[keyof typeof PinMediaSourcePinURLSourceTypeEnum];
 

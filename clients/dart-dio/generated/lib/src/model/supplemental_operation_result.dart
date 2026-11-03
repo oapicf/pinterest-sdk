@@ -176,6 +176,7 @@ class _$SupplementalOperationResultSerializer implements PrimitiveSerializer<Sup
   }
 }
 
+
 class SupplementalOperationResultSupplementalTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'LOCAL_INVENTORY')

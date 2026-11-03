@@ -29,7 +29,7 @@ import javax.validation.Valid;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("ad_group_ids")
@@ -87,7 +87,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("click_window_days")
   @Valid
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   @JsonProperty("columns")
   @Valid
@@ -101,7 +101,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("conversion_report_time")
   @Valid
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   @JsonProperty("custom_conversion_event_metrics")
   @Valid
@@ -123,7 +123,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("engagement_window_days")
   @Valid
 
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   @JsonProperty("granularity")
   @NotNull
@@ -145,7 +145,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("primary_sort")
   @Valid
 
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   @JsonProperty("product_group_ids")
   @Size(min=1,max=500)
@@ -166,7 +166,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("report_format")
   @Valid
 
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   @JsonProperty("reporting_timezone")
   @Valid
@@ -194,7 +194,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("view_window_days")
   @Valid
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest adGroupIds(List<@Pattern(regexp = "^\\d+$")String> adGroupIds) {
     this.adGroupIds = adGroupIds;

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class TargetingStrategy
-{
-public:
-
-    TargetingStrategy();
-    virtual ~TargetingStrategy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingStrategy,
-        )
-
-private:
+enum class TargetingStrategy {
+    
+    CHOOSE_YOUR_OWN,
+    
+    FIND_NEW_CUSTOMERS,
+    
+    RECONNECT_WITH_USERS
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingStrategy& value)
+{
+    switch (value)
+    {
+        
+        case TargetingStrategy::CHOOSE_YOUR_OWN: j = "CHOOSE_YOUR_OWN"; break;
+        
+        case TargetingStrategy::FIND_NEW_CUSTOMERS: j = "FIND_NEW_CUSTOMERS"; break;
+        
+        case TargetingStrategy::RECONNECT_WITH_USERS: j = "RECONNECT_WITH_USERS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingStrategy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingStrategy& value)
+{
+    
+    if (j == "CHOOSE_YOUR_OWN")
+    {
+        value = TargetingStrategy::CHOOSE_YOUR_OWN;
+        return;
+    }
+    
+    if (j == "FIND_NEW_CUSTOMERS")
+    {
+        value = TargetingStrategy::FIND_NEW_CUSTOMERS;
+        return;
+    }
+    
+    if (j == "RECONNECT_WITH_USERS")
+    {
+        value = TargetingStrategy::RECONNECT_WITH_USERS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingStrategy", &j);
+}
 
 } // namespace models
 

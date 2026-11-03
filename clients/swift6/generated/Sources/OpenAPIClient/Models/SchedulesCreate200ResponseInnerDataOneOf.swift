@@ -9,8 +9,8 @@ import Foundation
 
 public struct SchedulesCreate200ResponseInnerDataOneOf: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let scheduleIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let scheduleIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var id: String
     /** Schedule ID. */
     public var scheduleId: String

@@ -39,7 +39,7 @@ import javax.validation.Valid;
   CustomerListCreate.JSON_PROPERTY_RECORDS,
   CustomerListCreate.JSON_PROPERTY_RECORDS_V2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListCreate   {
   public static final String JSON_PROPERTY_IS_NCA = "is_nca";
   @JsonProperty(JSON_PROPERTY_IS_NCA)
@@ -47,7 +47,7 @@ public class CustomerListCreate   {
 
   public static final String JSON_PROPERTY_LIST_TYPE = "list_type";
   @JsonProperty(JSON_PROPERTY_LIST_TYPE)
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @JsonProperty(JSON_PROPERTY_NAME)
@@ -160,7 +160,7 @@ public class CustomerListCreate   {
    **/
   @JsonProperty(value = "records_v2")
   @ApiModelProperty(value = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.")
-  @Valid 
+  
   public List<@Valid CustomerListRecordRow> getRecordsV2() {
     return recordsV2;
   }

@@ -51,29 +51,29 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'productGroupId' => $productGroupId,
-                ],
                 $request->all(),
+                [
+                    'product_group_id' => $productGroupId,
+                ],
             ),
             [
-                'productGroupId' => [
+                'product_group_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinMetrics' => [
+                'pin_metrics' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -86,13 +86,13 @@ class CatalogProductGroupsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $pinMetrics = $request->boolean('pinMetrics');
+        $pinMetrics = $request->boolean('pin_metrics');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->catalogsProductGroupPinsList($productGroupId, $adAccountId, $pinMetrics, $bookmark, $pageSize);
@@ -139,10 +139,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -154,7 +154,7 @@ class CatalogProductGroupsController extends Controller
 
         $catalogsProductGroupsCreateRequestSchema = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsProductGroupsCreateRequestSchema::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsCreate($catalogsProductGroupsCreateRequestSchema, $adAccountId);
@@ -205,10 +205,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -220,7 +220,7 @@ class CatalogProductGroupsController extends Controller
 
         $catalogsProductGroupsCreateManyRequestItems = $request->get('catalogsProductGroupsCreateManyRequestItems');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsCreateMany($catalogsProductGroupsCreateManyRequestItems, $adAccountId);
@@ -268,18 +268,18 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'productGroupId' => $productGroupId,
-                ],
                 $request->all(),
+                [
+                    'product_group_id' => $productGroupId,
+                ],
             ),
             [
-                'productGroupId' => [
+                'product_group_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -292,7 +292,7 @@ class CatalogProductGroupsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsDelete($productGroupId, $adAccountId);
@@ -343,10 +343,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'id' => [
@@ -355,7 +355,7 @@ class CatalogProductGroupsController extends Controller
                     'max:1000',
                     'array',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -369,7 +369,7 @@ class CatalogProductGroupsController extends Controller
 
         $id = $request->get('id');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsDeleteMany($id, $adAccountId);
@@ -416,18 +416,18 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'productGroupId' => $productGroupId,
-                ],
                 $request->all(),
+                [
+                    'product_group_id' => $productGroupId,
+                ],
             ),
             [
-                'productGroupId' => [
+                'product_group_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -440,7 +440,7 @@ class CatalogProductGroupsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsGet($productGroupId, $adAccountId);
@@ -487,10 +487,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'id' => [
@@ -498,15 +498,15 @@ class CatalogProductGroupsController extends Controller
                     'max:1000',
                     'array',
                 ],
-                'feedId' => [
+                'feed_id' => [
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'catalogId' => [
+                'catalog_id' => [
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -514,7 +514,7 @@ class CatalogProductGroupsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -528,15 +528,15 @@ class CatalogProductGroupsController extends Controller
 
         $id = $request->get('id');
 
-        $feedId = $request->string('feedId')->value();
+        $feedId = $request->string('feed_id')->value();
 
-        $catalogId = $request->string('catalogId')->value();
+        $catalogId = $request->string('catalog_id')->value();
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->catalogsProductGroupsList($id, $feedId, $catalogId, $adAccountId, $bookmark, $pageSize);
@@ -583,18 +583,18 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'productGroupId' => $productGroupId,
-                ],
                 $request->all(),
+                [
+                    'product_group_id' => $productGroupId,
+                ],
             ),
             [
-                'productGroupId' => [
+                'product_group_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -607,7 +607,7 @@ class CatalogProductGroupsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsProductCountsGet($productGroupId, $adAccountId);
@@ -654,10 +654,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'productGroupId' => $productGroupId,
-                ],
                 $request->all(),
+                [
+                    'product_group_id' => $productGroupId,
+                ],
             ),
             [
             ],
@@ -670,7 +670,7 @@ class CatalogProductGroupsController extends Controller
 
         $catalogsProductGroupsUpdateRequestSchema = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsProductGroupsUpdateRequestSchema::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsProductGroupsUpdate($productGroupId, $catalogsProductGroupsUpdateRequestSchema, $adAccountId);
@@ -717,10 +717,10 @@ class CatalogProductGroupsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -734,11 +734,11 @@ class CatalogProductGroupsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $pinMetrics = $request->boolean('pinMetrics');
+        $pinMetrics = $request->boolean('pin_metrics');
 
 
         $apiResult = $this->api->productsByProductGroupFilterList($catalogsListProductsByFilterRequest, $bookmark, $pageSize, $adAccountId, $pinMetrics);

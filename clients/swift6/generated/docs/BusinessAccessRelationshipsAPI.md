@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 # **brandAccountsCreate**
 ```swift
-    open class func brandAccountsCreate(businessHierarchyId: String, brandAccountCreate: BrandAccountCreate, completion: @escaping (_ data: BrandAccount?, _ error: Error?) -> Void)
+    open class func brandAccountsCreate(businessHierarchyId: String, brandAccountCreate: BrandAccountCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BrandAccount
 ```
 
 Create a Brand Account
@@ -33,15 +33,11 @@ let businessHierarchyId = "businessHierarchyId_example" // String | business hie
 let brandAccountCreate = BrandAccountCreate(about: "about_example", country: Country(), name: "name_example", profileImage: BrandAccountProfileImage(contentType: "contentType_example", data: "data_example"), username: "username_example", website: "website_example") // BrandAccountCreate | 
 
 // Create a Brand Account
-BusinessAccessRelationshipsAPI.brandAccountsCreate(businessHierarchyId: businessHierarchyId, brandAccountCreate: brandAccountCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.brandAccountsCreate(businessHierarchyId: businessHierarchyId, brandAccountCreate: brandAccountCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -69,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **brandAccountsUpdate**
 ```swift
-    open class func brandAccountsUpdate(brandAccountId: String, businessHierarchyId: String, brandAccountUpdate: BrandAccountUpdate, completion: @escaping (_ data: BrandAccount?, _ error: Error?) -> Void)
+    open class func brandAccountsUpdate(brandAccountId: String, businessHierarchyId: String, brandAccountUpdate: BrandAccountUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BrandAccount
 ```
 
 Update a Brand Account
@@ -86,15 +82,11 @@ let businessHierarchyId = "businessHierarchyId_example" // String | business hie
 let brandAccountUpdate = BrandAccountUpdate(about: "about_example", country: Country(), name: "name_example", profileImage: BrandAccountProfileImageUpdate(contentType: "contentType_example", data: "data_example"), username: "username_example", website: "website_example") // BrandAccountUpdate | 
 
 // Update a Brand Account
-BusinessAccessRelationshipsAPI.brandAccountsUpdate(brandAccountId: brandAccountId, businessHierarchyId: businessHierarchyId, brandAccountUpdate: brandAccountUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.brandAccountsUpdate(brandAccountId: brandAccountId, businessHierarchyId: businessHierarchyId, brandAccountUpdate: brandAccountUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -123,7 +115,7 @@ Name | Type | Description  | Notes
 
 # **deleteBusinessMembership**
 ```swift
-    open class func deleteBusinessMembership(businessId: String, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, completion: @escaping (_ data: DeleteBusinessMembership200Response?, _ error: Error?) -> Void)
+    open class func deleteBusinessMembership(businessId: String, deleteBusinessMembershipBody: DeleteBusinessMembershipBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteBusinessMembership200Response
 ```
 
 Terminate business memberships
@@ -139,15 +131,11 @@ let businessId = "businessId_example" // String | Business id
 let deleteBusinessMembershipBody = DeleteBusinessMembershipBody(members: [DeleteBusinessMembershipMember(businessRole: BusinessRoleForMembers(), memberId: "memberId_example")]) // DeleteBusinessMembershipBody | 
 
 // Terminate business memberships
-BusinessAccessRelationshipsAPI.deleteBusinessMembership(businessId: businessId, deleteBusinessMembershipBody: deleteBusinessMembershipBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.deleteBusinessMembership(businessId: businessId, deleteBusinessMembershipBody: deleteBusinessMembershipBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -175,7 +163,7 @@ Name | Type | Description  | Notes
 
 # **deleteBusinessPartners**
 ```swift
-    open class func deleteBusinessPartners(businessId: String, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, completion: @escaping (_ data: DeleteBusinessPartners?, _ error: Error?) -> Void)
+    open class func deleteBusinessPartners(businessId: String, deleteBusinessPartnersDelete: DeleteBusinessPartnersDelete, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> DeleteBusinessPartners
 ```
 
 Terminate business partnerships
@@ -191,15 +179,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let deleteBusinessPartnersDelete = DeleteBusinessPartnersDelete(partnerIds: ["partnerIds_example"], partnerType: NullablePartnerType()) // DeleteBusinessPartnersDelete | 
 
 // Terminate business partnerships
-BusinessAccessRelationshipsAPI.deleteBusinessPartners(businessId: businessId, deleteBusinessPartnersDelete: deleteBusinessPartnersDelete) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.deleteBusinessPartners(businessId: businessId, deleteBusinessPartnersDelete: deleteBusinessPartnersDelete)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -227,7 +211,7 @@ Name | Type | Description  | Notes
 
 # **getBusinessEmployers**
 ```swift
-    open class func getBusinessEmployers(assetsSummary: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetBusinessEmployers200Response?, _ error: Error?) -> Void)
+    open class func getBusinessEmployers(assetsSummary: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetBusinessEmployers200Response
 ```
 
 List business employers for user
@@ -244,15 +228,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List business employers for user
-BusinessAccessRelationshipsAPI.getBusinessEmployers(assetsSummary: assetsSummary, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.getBusinessEmployers(assetsSummary: assetsSummary, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -281,7 +261,7 @@ Name | Type | Description  | Notes
 
 # **getBusinessMembers**
 ```swift
-    open class func getBusinessMembers(businessId: String, fetchSystemUsers: Bool? = nil, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetBusinessEmployers200Response?, _ error: Error?) -> Void)
+    open class func getBusinessMembers(businessId: String, fetchSystemUsers: Bool? = nil, assetsSummary: Bool? = nil, businessRoles: [MemberBusinessRole]? = nil, memberIds: String? = nil, startIndex: Int? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetBusinessEmployers200Response
 ```
 
 Get business members
@@ -303,15 +283,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get business members
-BusinessAccessRelationshipsAPI.getBusinessMembers(businessId: businessId, fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.getBusinessMembers(businessId: businessId, fetchSystemUsers: fetchSystemUsers, assetsSummary: assetsSummary, businessRoles: businessRoles, memberIds: memberIds, startIndex: startIndex, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -345,7 +321,7 @@ Name | Type | Description  | Notes
 
 # **getBusinessPartners**
 ```swift
-    open class func getBusinessPartners(businessId: String, assetsSummary: Bool? = nil, partnerType: PartnerType? = nil, partnerIds: String? = nil, startIndex: Int? = nil, sortAscending: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetBusinessEmployers200Response?, _ error: Error?) -> Void)
+    open class func getBusinessPartners(businessId: String, assetsSummary: Bool? = nil, partnerType: PartnerType? = nil, partnerIds: String? = nil, startIndex: Int? = nil, sortAscending: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetBusinessEmployers200Response
 ```
 
 Get business partners
@@ -367,15 +343,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get business partners
-BusinessAccessRelationshipsAPI.getBusinessPartners(businessId: businessId, assetsSummary: assetsSummary, partnerType: partnerType, partnerIds: partnerIds, startIndex: startIndex, sortAscending: sortAscending, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.getBusinessPartners(businessId: businessId, assetsSummary: assetsSummary, partnerType: partnerType, partnerIds: partnerIds, startIndex: startIndex, sortAscending: sortAscending, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -409,7 +381,7 @@ Name | Type | Description  | Notes
 
 # **systemUserUpdate**
 ```swift
-    open class func systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func systemUserUpdate(businessId: String, systemUserId: String, systemUserUpdateWithRequiredBody: SystemUserUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Update a system user information.
@@ -426,15 +398,10 @@ let systemUserId = "systemUserId_example" // String | Unique identifier of a sys
 let systemUserUpdateWithRequiredBody = SystemUserUpdateWithRequiredBody(name: "name_example") // SystemUserUpdateWithRequiredBody | 
 
 // Update a system user information.
-BusinessAccessRelationshipsAPI.systemUserUpdate(businessId: businessId, systemUserId: systemUserId, systemUserUpdateWithRequiredBody: systemUserUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await BusinessAccessRelationshipsAPI.systemUserUpdate(businessId: businessId, systemUserId: systemUserId, systemUserUpdateWithRequiredBody: systemUserUpdateWithRequiredBody)
+} catch {
+    print(error)
 }
 ```
 
@@ -463,7 +430,7 @@ Void (empty response body)
 
 # **updateBusinessMemberships**
 ```swift
-    open class func updateBusinessMemberships(businessId: String, businessMembershipMember: [BusinessMembershipMember], completion: @escaping (_ data: UpdateBusinessMembershipsResponse?, _ error: Error?) -> Void)
+    open class func updateBusinessMemberships(businessId: String, businessMembershipMember: [BusinessMembershipMember], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UpdateBusinessMembershipsResponse
 ```
 
 Update member's business role
@@ -479,15 +446,11 @@ let businessId = "businessId_example" // String | Business id
 let businessMembershipMember = [BusinessMembershipMember(businessRole: BusinessRoleForMembers(), memberId: "memberId_example")] // [BusinessMembershipMember] | 
 
 // Update member's business role
-BusinessAccessRelationshipsAPI.updateBusinessMemberships(businessId: businessId, businessMembershipMember: businessMembershipMember) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessRelationshipsAPI.updateBusinessMemberships(businessId: businessId, businessMembershipMember: businessMembershipMember)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

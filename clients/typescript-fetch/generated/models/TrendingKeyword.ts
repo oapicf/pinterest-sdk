@@ -43,8 +43,6 @@ import {
 export interface TrendingKeyword {
     /**
      * 
-     * @type {TrendingKeywordDemographics}
-     * @memberof TrendingKeyword
      */
     demographics?: TrendingKeywordDemographics | null;
     /**
@@ -52,14 +50,10 @@ export interface TrendingKeyword {
      * This field is only applicable when `include_prediction` query parameter is set
      * to `true`. By default, the value is `false` and no prediction data is included
      * in the response.
-     * @type {boolean}
-     * @memberof TrendingKeyword
      */
     hasPrediction?: boolean;
     /**
      * The keyword that is trending.
-     * @type {string}
-     * @memberof TrendingKeyword
      */
     keyword?: string;
     /**
@@ -68,8 +62,6 @@ export interface TrendingKeyword {
      * in the last 30 days compared to the month prior. **Note**: growth rates are
      * rounded, with a maximum of +/- 10000% change. A value of 10001 indicates
      * that this keyword experienced > 10000% month-over-month growth.
-     * @type {number}
-     * @memberof TrendingKeyword
      */
     pctGrowthMom?: number;
     /**
@@ -78,8 +70,6 @@ export interface TrendingKeyword {
      * in the last seven days compared to the week prior. **Note**: growth rates
      * are rounded, with a maximum of +/- 10000% change. A value of 10001
      * indicates that this keyword experienced > 10000% week-over-week growth.
-     * @type {number}
-     * @memberof TrendingKeyword
      */
     pctGrowthWow?: number;
     /**
@@ -88,8 +78,6 @@ export interface TrendingKeyword {
      * in the last 365 days compared to the month prior. **Note**: growth rates
      * are rounded, with a maximum of +/- 10000% change. A value of 10001
      * indicates that this keyword experienced > 10000% year-over-year growth.
-     * @type {number}
-     * @memberof TrendingKeyword
      */
     pctGrowthYoy?: number;
     /**
@@ -109,8 +97,6 @@ export interface TrendingKeyword {
      * **Note**: The date of each observation is in ISO-8601 format and represents
      * the *end* of the week. For example, a value of `2024-01-07` would include
      * predicted searches for the week ending on `2024-01-07`.
-     * @type {PredictedTimeSeries}
-     * @memberof TrendingKeyword
      */
     predictedTimeSeries?: PredictedTimeSeries;
     /**
@@ -124,8 +110,6 @@ export interface TrendingKeyword {
      * **Note**: The date of each observation is in ISO-8601 format and represents
      * the *end* of the week. For example, a value of `2023-10-31` would include
      * searches that happened between `2023-10-25` and `2023-10-31`.
-     * @type {TimeSeries}
-     * @memberof TrendingKeyword
      */
     timeSeries?: TimeSeries;
 }

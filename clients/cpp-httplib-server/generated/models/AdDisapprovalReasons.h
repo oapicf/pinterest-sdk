@@ -12,24 +12,504 @@
 
 namespace models {
 
-
-class AdDisapprovalReasons
-{
-public:
-
-    AdDisapprovalReasons();
-    virtual ~AdDisapprovalReasons() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdDisapprovalReasons,
-        )
-
-private:
+enum class AdDisapprovalReasons {
+    
+    HASHTAGS,
+    
+    PROMOTIONS_AND_PRICES,
+    
+    TARGETING,
+    
+    LANDING_PAGE,
+    
+    CAPS_AND_SYMBOLS,
+    
+    SHOCKING,
+    
+    WEIGHT_LOSS,
+    
+    PROHIBITED_PRODUCT,
+    
+    AUTHENTICITY,
+    
+    NUDITY,
+    
+    CONFUSING_DESIGN,
+    
+    URGENCY,
+    
+    RATINGS,
+    
+    APP,
+    
+    ALCOHOL,
+    
+    CONTESTS,
+    
+    POLITICAL,
+    
+    OTHER,
+    
+    IMAGE,
+    
+    NAR,
+    
+    INCONSISTENT,
+    
+    CLICKBAIT,
+    
+    NO_DESCRIPTION,
+    
+    LOW_QUALITY,
+    
+    EXAGGERATED_CLAIMS,
+    
+    PINTEREST_BRAND,
+    
+    ALCOHOL_NO_SALE,
+    
+    LANDING_PAGE_SPEED,
+    
+    LANDING_PAGE_HARDWALL,
+    
+    LANDING_PAGE_BROKEN,
+    
+    LANDING_PAGE_QUALITY,
+    
+    OUT_OF_STOCK,
+    
+    IMAGE_LOW_QUALITY,
+    
+    IMAGE_BUSY,
+    
+    IMAGE_POORLY_EDITED,
+    
+    IMAGE_BEFORE_AFTER,
+    
+    UGC,
+    
+    FAKE_BUTTONS,
+    
+    WEAPONS,
+    
+    SENSITIVE,
+    
+    UNACCEPTABLE_BUSINESS,
+    
+    SUSPICIOUS_CLAIMS,
+    
+    PHARMA,
+    
+    SUSPICIOUS_SUPPLEMENTS,
+    
+    ILLEGAL_RECREATIONAL_DRUG,
+    
+    LOW_QUALITY_LANDING_PAGE,
+    
+    RESTRICTED_HEALTHCARE,
+    
+    INCONSISTENT_LANG_FR
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdDisapprovalReasons& value)
+{
+    switch (value)
+    {
+        
+        case AdDisapprovalReasons::HASHTAGS: j = "HASHTAGS"; break;
+        
+        case AdDisapprovalReasons::PROMOTIONS_AND_PRICES: j = "PROMOTIONS_AND_PRICES"; break;
+        
+        case AdDisapprovalReasons::TARGETING: j = "TARGETING"; break;
+        
+        case AdDisapprovalReasons::LANDING_PAGE: j = "LANDING_PAGE"; break;
+        
+        case AdDisapprovalReasons::CAPS_AND_SYMBOLS: j = "CAPS_AND_SYMBOLS"; break;
+        
+        case AdDisapprovalReasons::SHOCKING: j = "SHOCKING"; break;
+        
+        case AdDisapprovalReasons::WEIGHT_LOSS: j = "WEIGHT_LOSS"; break;
+        
+        case AdDisapprovalReasons::PROHIBITED_PRODUCT: j = "PROHIBITED_PRODUCT"; break;
+        
+        case AdDisapprovalReasons::AUTHENTICITY: j = "AUTHENTICITY"; break;
+        
+        case AdDisapprovalReasons::NUDITY: j = "NUDITY"; break;
+        
+        case AdDisapprovalReasons::CONFUSING_DESIGN: j = "CONFUSING_DESIGN"; break;
+        
+        case AdDisapprovalReasons::URGENCY: j = "URGENCY"; break;
+        
+        case AdDisapprovalReasons::RATINGS: j = "RATINGS"; break;
+        
+        case AdDisapprovalReasons::APP: j = "APP"; break;
+        
+        case AdDisapprovalReasons::ALCOHOL: j = "ALCOHOL"; break;
+        
+        case AdDisapprovalReasons::CONTESTS: j = "CONTESTS"; break;
+        
+        case AdDisapprovalReasons::POLITICAL: j = "POLITICAL"; break;
+        
+        case AdDisapprovalReasons::OTHER: j = "OTHER"; break;
+        
+        case AdDisapprovalReasons::IMAGE: j = "IMAGE"; break;
+        
+        case AdDisapprovalReasons::NAR: j = "NAR"; break;
+        
+        case AdDisapprovalReasons::INCONSISTENT: j = "INCONSISTENT"; break;
+        
+        case AdDisapprovalReasons::CLICKBAIT: j = "CLICKBAIT"; break;
+        
+        case AdDisapprovalReasons::NO_DESCRIPTION: j = "NO_DESCRIPTION"; break;
+        
+        case AdDisapprovalReasons::LOW_QUALITY: j = "LOW_QUALITY"; break;
+        
+        case AdDisapprovalReasons::EXAGGERATED_CLAIMS: j = "EXAGGERATED_CLAIMS"; break;
+        
+        case AdDisapprovalReasons::PINTEREST_BRAND: j = "PINTEREST_BRAND"; break;
+        
+        case AdDisapprovalReasons::ALCOHOL_NO_SALE: j = "ALCOHOL_NO_SALE"; break;
+        
+        case AdDisapprovalReasons::LANDING_PAGE_SPEED: j = "LANDING_PAGE_SPEED"; break;
+        
+        case AdDisapprovalReasons::LANDING_PAGE_HARDWALL: j = "LANDING_PAGE_HARDWALL"; break;
+        
+        case AdDisapprovalReasons::LANDING_PAGE_BROKEN: j = "LANDING_PAGE_BROKEN"; break;
+        
+        case AdDisapprovalReasons::LANDING_PAGE_QUALITY: j = "LANDING_PAGE_QUALITY"; break;
+        
+        case AdDisapprovalReasons::OUT_OF_STOCK: j = "OUT_OF_STOCK"; break;
+        
+        case AdDisapprovalReasons::IMAGE_LOW_QUALITY: j = "IMAGE_LOW_QUALITY"; break;
+        
+        case AdDisapprovalReasons::IMAGE_BUSY: j = "IMAGE_BUSY"; break;
+        
+        case AdDisapprovalReasons::IMAGE_POORLY_EDITED: j = "IMAGE_POORLY_EDITED"; break;
+        
+        case AdDisapprovalReasons::IMAGE_BEFORE_AFTER: j = "IMAGE_BEFORE_AFTER"; break;
+        
+        case AdDisapprovalReasons::UGC: j = "UGC"; break;
+        
+        case AdDisapprovalReasons::FAKE_BUTTONS: j = "FAKE_BUTTONS"; break;
+        
+        case AdDisapprovalReasons::WEAPONS: j = "WEAPONS"; break;
+        
+        case AdDisapprovalReasons::SENSITIVE: j = "SENSITIVE"; break;
+        
+        case AdDisapprovalReasons::UNACCEPTABLE_BUSINESS: j = "UNACCEPTABLE_BUSINESS"; break;
+        
+        case AdDisapprovalReasons::SUSPICIOUS_CLAIMS: j = "SUSPICIOUS_CLAIMS"; break;
+        
+        case AdDisapprovalReasons::PHARMA: j = "PHARMA"; break;
+        
+        case AdDisapprovalReasons::SUSPICIOUS_SUPPLEMENTS: j = "SUSPICIOUS_SUPPLEMENTS"; break;
+        
+        case AdDisapprovalReasons::ILLEGAL_RECREATIONAL_DRUG: j = "ILLEGAL_RECREATIONAL_DRUG"; break;
+        
+        case AdDisapprovalReasons::LOW_QUALITY_LANDING_PAGE: j = "LOW_QUALITY_LANDING_PAGE"; break;
+        
+        case AdDisapprovalReasons::RESTRICTED_HEALTHCARE: j = "RESTRICTED_HEALTHCARE"; break;
+        
+        case AdDisapprovalReasons::INCONSISTENT_LANG_FR: j = "INCONSISTENT_LANG_FR"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdDisapprovalReasons", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdDisapprovalReasons& value)
+{
+    
+    if (j == "HASHTAGS")
+    {
+        value = AdDisapprovalReasons::HASHTAGS;
+        return;
+    }
+    
+    if (j == "PROMOTIONS_AND_PRICES")
+    {
+        value = AdDisapprovalReasons::PROMOTIONS_AND_PRICES;
+        return;
+    }
+    
+    if (j == "TARGETING")
+    {
+        value = AdDisapprovalReasons::TARGETING;
+        return;
+    }
+    
+    if (j == "LANDING_PAGE")
+    {
+        value = AdDisapprovalReasons::LANDING_PAGE;
+        return;
+    }
+    
+    if (j == "CAPS_AND_SYMBOLS")
+    {
+        value = AdDisapprovalReasons::CAPS_AND_SYMBOLS;
+        return;
+    }
+    
+    if (j == "SHOCKING")
+    {
+        value = AdDisapprovalReasons::SHOCKING;
+        return;
+    }
+    
+    if (j == "WEIGHT_LOSS")
+    {
+        value = AdDisapprovalReasons::WEIGHT_LOSS;
+        return;
+    }
+    
+    if (j == "PROHIBITED_PRODUCT")
+    {
+        value = AdDisapprovalReasons::PROHIBITED_PRODUCT;
+        return;
+    }
+    
+    if (j == "AUTHENTICITY")
+    {
+        value = AdDisapprovalReasons::AUTHENTICITY;
+        return;
+    }
+    
+    if (j == "NUDITY")
+    {
+        value = AdDisapprovalReasons::NUDITY;
+        return;
+    }
+    
+    if (j == "CONFUSING_DESIGN")
+    {
+        value = AdDisapprovalReasons::CONFUSING_DESIGN;
+        return;
+    }
+    
+    if (j == "URGENCY")
+    {
+        value = AdDisapprovalReasons::URGENCY;
+        return;
+    }
+    
+    if (j == "RATINGS")
+    {
+        value = AdDisapprovalReasons::RATINGS;
+        return;
+    }
+    
+    if (j == "APP")
+    {
+        value = AdDisapprovalReasons::APP;
+        return;
+    }
+    
+    if (j == "ALCOHOL")
+    {
+        value = AdDisapprovalReasons::ALCOHOL;
+        return;
+    }
+    
+    if (j == "CONTESTS")
+    {
+        value = AdDisapprovalReasons::CONTESTS;
+        return;
+    }
+    
+    if (j == "POLITICAL")
+    {
+        value = AdDisapprovalReasons::POLITICAL;
+        return;
+    }
+    
+    if (j == "OTHER")
+    {
+        value = AdDisapprovalReasons::OTHER;
+        return;
+    }
+    
+    if (j == "IMAGE")
+    {
+        value = AdDisapprovalReasons::IMAGE;
+        return;
+    }
+    
+    if (j == "NAR")
+    {
+        value = AdDisapprovalReasons::NAR;
+        return;
+    }
+    
+    if (j == "INCONSISTENT")
+    {
+        value = AdDisapprovalReasons::INCONSISTENT;
+        return;
+    }
+    
+    if (j == "CLICKBAIT")
+    {
+        value = AdDisapprovalReasons::CLICKBAIT;
+        return;
+    }
+    
+    if (j == "NO_DESCRIPTION")
+    {
+        value = AdDisapprovalReasons::NO_DESCRIPTION;
+        return;
+    }
+    
+    if (j == "LOW_QUALITY")
+    {
+        value = AdDisapprovalReasons::LOW_QUALITY;
+        return;
+    }
+    
+    if (j == "EXAGGERATED_CLAIMS")
+    {
+        value = AdDisapprovalReasons::EXAGGERATED_CLAIMS;
+        return;
+    }
+    
+    if (j == "PINTEREST_BRAND")
+    {
+        value = AdDisapprovalReasons::PINTEREST_BRAND;
+        return;
+    }
+    
+    if (j == "ALCOHOL_NO_SALE")
+    {
+        value = AdDisapprovalReasons::ALCOHOL_NO_SALE;
+        return;
+    }
+    
+    if (j == "LANDING_PAGE_SPEED")
+    {
+        value = AdDisapprovalReasons::LANDING_PAGE_SPEED;
+        return;
+    }
+    
+    if (j == "LANDING_PAGE_HARDWALL")
+    {
+        value = AdDisapprovalReasons::LANDING_PAGE_HARDWALL;
+        return;
+    }
+    
+    if (j == "LANDING_PAGE_BROKEN")
+    {
+        value = AdDisapprovalReasons::LANDING_PAGE_BROKEN;
+        return;
+    }
+    
+    if (j == "LANDING_PAGE_QUALITY")
+    {
+        value = AdDisapprovalReasons::LANDING_PAGE_QUALITY;
+        return;
+    }
+    
+    if (j == "OUT_OF_STOCK")
+    {
+        value = AdDisapprovalReasons::OUT_OF_STOCK;
+        return;
+    }
+    
+    if (j == "IMAGE_LOW_QUALITY")
+    {
+        value = AdDisapprovalReasons::IMAGE_LOW_QUALITY;
+        return;
+    }
+    
+    if (j == "IMAGE_BUSY")
+    {
+        value = AdDisapprovalReasons::IMAGE_BUSY;
+        return;
+    }
+    
+    if (j == "IMAGE_POORLY_EDITED")
+    {
+        value = AdDisapprovalReasons::IMAGE_POORLY_EDITED;
+        return;
+    }
+    
+    if (j == "IMAGE_BEFORE_AFTER")
+    {
+        value = AdDisapprovalReasons::IMAGE_BEFORE_AFTER;
+        return;
+    }
+    
+    if (j == "UGC")
+    {
+        value = AdDisapprovalReasons::UGC;
+        return;
+    }
+    
+    if (j == "FAKE_BUTTONS")
+    {
+        value = AdDisapprovalReasons::FAKE_BUTTONS;
+        return;
+    }
+    
+    if (j == "WEAPONS")
+    {
+        value = AdDisapprovalReasons::WEAPONS;
+        return;
+    }
+    
+    if (j == "SENSITIVE")
+    {
+        value = AdDisapprovalReasons::SENSITIVE;
+        return;
+    }
+    
+    if (j == "UNACCEPTABLE_BUSINESS")
+    {
+        value = AdDisapprovalReasons::UNACCEPTABLE_BUSINESS;
+        return;
+    }
+    
+    if (j == "SUSPICIOUS_CLAIMS")
+    {
+        value = AdDisapprovalReasons::SUSPICIOUS_CLAIMS;
+        return;
+    }
+    
+    if (j == "PHARMA")
+    {
+        value = AdDisapprovalReasons::PHARMA;
+        return;
+    }
+    
+    if (j == "SUSPICIOUS_SUPPLEMENTS")
+    {
+        value = AdDisapprovalReasons::SUSPICIOUS_SUPPLEMENTS;
+        return;
+    }
+    
+    if (j == "ILLEGAL_RECREATIONAL_DRUG")
+    {
+        value = AdDisapprovalReasons::ILLEGAL_RECREATIONAL_DRUG;
+        return;
+    }
+    
+    if (j == "LOW_QUALITY_LANDING_PAGE")
+    {
+        value = AdDisapprovalReasons::LOW_QUALITY_LANDING_PAGE;
+        return;
+    }
+    
+    if (j == "RESTRICTED_HEALTHCARE")
+    {
+        value = AdDisapprovalReasons::RESTRICTED_HEALTHCARE;
+        return;
+    }
+    
+    if (j == "INCONSISTENT_LANG_FR")
+    {
+        value = AdDisapprovalReasons::INCONSISTENT_LANG_FR;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdDisapprovalReasons", &j);
+}
 
 } // namespace models
 

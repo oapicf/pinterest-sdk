@@ -349,22 +349,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: ad_account_id.");
 
             if (apiVersion.IsSet && apiVersion.Value == null)
-                throw new ArgumentNullException(nameof(apiVersion), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: api_version.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: id.");
 
             if (userAccountId.IsSet && userAccountId.Value == null)
-                throw new ArgumentNullException(nameof(userAccountId), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: user_account_id.");
 
             if (webhookUrl.IsSet && webhookUrl.Value == null)
-                throw new ArgumentNullException(nameof(webhookUrl), "Property is not nullable for class LeadSubscription.");
+                throw new JsonException("Property is not nullable for class LeadSubscription: webhook_url.");
 
             return new LeadSubscription(adAccountId, apiVersion, createdTime, cryptographicAlgorithm, cryptographicKey, id, leadFormId, userAccountId, webhookUrl);
         }
@@ -375,7 +375,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscription"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadSubscription leadSubscription, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -390,23 +389,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscription"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadSubscription leadSubscription, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadSubscription.AdAccountIdOption.IsSet && leadSubscription.AdAccountId == null)
-                throw new ArgumentNullException(nameof(leadSubscription.AdAccountId), "Property is required for class LeadSubscription.");
+                throw new JsonException("Cannot write null property LeadSubscription.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (leadSubscription.ApiVersionOption.IsSet && leadSubscription.ApiVersion == null)
-                throw new ArgumentNullException(nameof(leadSubscription.ApiVersion), "Property is required for class LeadSubscription.");
+                throw new JsonException("Cannot write null property LeadSubscription.ApiVersion to non-nullable JSON property 'api_version'.");
+
+            if (leadSubscription.CreatedTimeOption.IsSet && leadSubscription.CreatedTime == null)
+                throw new JsonException("Cannot write null property LeadSubscription.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (leadSubscription.IdOption.IsSet && leadSubscription.Id == null)
-                throw new ArgumentNullException(nameof(leadSubscription.Id), "Property is required for class LeadSubscription.");
+                throw new JsonException("Cannot write null property LeadSubscription.Id to non-nullable JSON property 'id'.");
 
             if (leadSubscription.UserAccountIdOption.IsSet && leadSubscription.UserAccountId == null)
-                throw new ArgumentNullException(nameof(leadSubscription.UserAccountId), "Property is required for class LeadSubscription.");
+                throw new JsonException("Cannot write null property LeadSubscription.UserAccountId to non-nullable JSON property 'user_account_id'.");
 
             if (leadSubscription.WebhookUrlOption.IsSet && leadSubscription.WebhookUrl == null)
-                throw new ArgumentNullException(nameof(leadSubscription.WebhookUrl), "Property is required for class LeadSubscription.");
+                throw new JsonException("Cannot write null property LeadSubscription.WebhookUrl to non-nullable JSON property 'webhook_url'.");
 
             if (leadSubscription.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", leadSubscription.AdAccountId);

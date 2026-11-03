@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Operating system family.
-* Values: ios,android,macos,windows,linux,bsd,other
-*/
+ * Operating system family.
+ * Values: ios,android,macos,windows,linux,bsd,other
+ */
 enum class OsFamily(@get:JsonValue val value: kotlin.String) {
 
     ios("ios"),
@@ -33,9 +33,8 @@ enum class OsFamily(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OsFamily {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OsFamily'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OsFamily'")
         }
     }
 }
-

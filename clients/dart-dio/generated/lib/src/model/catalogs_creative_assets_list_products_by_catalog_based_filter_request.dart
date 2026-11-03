@@ -140,6 +140,7 @@ class _$CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestSerializer 
   }
 }
 
+
 class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

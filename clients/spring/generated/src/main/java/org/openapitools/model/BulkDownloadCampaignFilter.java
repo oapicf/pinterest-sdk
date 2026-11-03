@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,22 +24,17 @@ import jakarta.annotation.Generated;
  * BulkDownloadCampaignFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkDownloadCampaignFilter {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<SummaryStatus> campaignStatus = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String endTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ConversionObjectiveType> objectiveType = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String startTime;
 
   public BulkDownloadCampaignFilter campaignStatus(List<SummaryStatus> campaignStatus) {
@@ -60,7 +54,7 @@ public class BulkDownloadCampaignFilter {
    * Get campaignStatus
    * @return campaignStatus
    */
-  @Valid 
+  
   @Schema(name = "campaign_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_status")
   public List<SummaryStatus> getCampaignStatus() {
@@ -131,7 +125,7 @@ public class BulkDownloadCampaignFilter {
    * Get objectiveType
    * @return objectiveType
    */
-  @Valid 
+  
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
   public List<ConversionObjectiveType> getObjectiveType() {

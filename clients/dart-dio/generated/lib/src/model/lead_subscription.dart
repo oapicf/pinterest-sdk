@@ -158,6 +158,7 @@ class _$LeadSubscriptionSerializer implements PrimitiveSerializer<LeadSubscripti
   }
 }
 
+
 /// a concrete implementation of [LeadSubscription], since [LeadSubscription] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $LeadSubscription implements LeadSubscription, Built<$LeadSubscription, $LeadSubscriptionBuilder> {

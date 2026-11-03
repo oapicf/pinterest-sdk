@@ -139,3 +139,4 @@ class _$QualityComponentIssueSerializer implements PrimitiveSerializer<QualityCo
   }
 }
 
+

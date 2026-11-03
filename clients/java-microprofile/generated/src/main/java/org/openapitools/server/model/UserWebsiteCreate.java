@@ -39,7 +39,7 @@ public class UserWebsiteCreate  {
   * Method used to verify website ownership.
   */
   @JsonbProperty("verification_method")
-  protected WebsiteVerificationMethod verificationMethod;
+  protected WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
  /**
   * Website with path or domain only

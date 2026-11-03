@@ -2336,9 +2336,3 @@ src/main/kotlin/org/openapitools/client/models/VideoMetadataWithItemType.kt
 src/main/kotlin/org/openapitools/client/models/VideoPinMetricTypes.kt
 src/main/kotlin/org/openapitools/client/models/WebsiteVerificationMethod.kt
 src/main/kotlin/org/openapitools/client/models/WorkloadState.kt
-src/test/kotlin/org/openapitools/client/apis/CatalogSupplementalApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/ConversionDeletionRequestsApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/CustomerSegmentApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/ProductTagsApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/SchedulesApiTest.kt
-src/test/kotlin/org/openapitools/client/apis/TrendsApiTest.kt

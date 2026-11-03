@@ -19,7 +19,7 @@
  */
 export const AudienceOwnershipType = {
     Owned: 'OWNED',
-    Received: 'RECEIVED'
+    Received: 'RECEIVED',
 } as const;
 export type AudienceOwnershipType = typeof AudienceOwnershipType[keyof typeof AudienceOwnershipType];
 

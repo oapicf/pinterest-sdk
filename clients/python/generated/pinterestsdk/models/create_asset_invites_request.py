@@ -76,8 +76,7 @@ class CreateAssetInvitesRequest(BaseModel):
         _items = []
         if self.invites:
             for _item_invites in self.invites:
-                if _item_invites:
-                    _items.append(_item_invites.to_dict())
+                _items.append(_item_invites.to_dict() if _item_invites is not None else None)
             _dict['invites'] = _items
         return _dict
 

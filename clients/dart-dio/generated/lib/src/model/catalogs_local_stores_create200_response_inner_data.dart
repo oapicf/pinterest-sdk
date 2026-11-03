@@ -85,3 +85,4 @@ class _$CatalogsLocalStoresCreate200ResponseInnerDataSerializer implements Primi
   }
 }
 
+

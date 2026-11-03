@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Label status values.
-* Values: ACTIVE,ARCHIVED
-*/
+ * Label status values.
+ * Values: ACTIVE,ARCHIVED
+ */
 enum class LabelStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class LabelStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LabelStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LabelStatus'")
         }
     }
 }
-

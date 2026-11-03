@@ -89,8 +89,7 @@ class ScheduleBidMultipliers(BaseModel):
         _items = []
         if self.audience_multipliers:
             for _item_audience_multipliers in self.audience_multipliers:
-                if _item_audience_multipliers:
-                    _items.append(_item_audience_multipliers.to_dict())
+                _items.append(_item_audience_multipliers.to_dict() if _item_audience_multipliers is not None else None)
             _dict['audience_multipliers'] = _items
         # override the default output from pydantic by calling `to_dict()` of gender_multipliers
         if self.gender_multipliers:

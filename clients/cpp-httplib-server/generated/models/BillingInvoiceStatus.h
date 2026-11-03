@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class BillingInvoiceStatus
-{
-public:
-
-    BillingInvoiceStatus();
-    virtual ~BillingInvoiceStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingInvoiceStatus,
-        )
-
-private:
+enum class BillingInvoiceStatus {
+    
+    OPEN,
+    
+    CLOSED
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingInvoiceStatus& value)
+{
+    switch (value)
+    {
+        
+        case BillingInvoiceStatus::OPEN: j = "OPEN"; break;
+        
+        case BillingInvoiceStatus::CLOSED: j = "CLOSED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingInvoiceStatus& value)
+{
+    
+    if (j == "OPEN")
+    {
+        value = BillingInvoiceStatus::OPEN;
+        return;
+    }
+    
+    if (j == "CLOSED")
+    {
+        value = BillingInvoiceStatus::CLOSED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceStatus", &j);
+}
 
 } // namespace models
 

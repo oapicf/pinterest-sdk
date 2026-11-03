@@ -29,20 +29,14 @@ import {
 export interface TopVideoPinsAnalyticsResponsePinsItems {
     /**
      * 
-     * @type {{ [key: string]: DataStatus; }}
-     * @memberof TopVideoPinsAnalyticsResponsePinsItems
      */
     dataStatus?: { [key: string]: DataStatus; };
     /**
      * 
-     * @type {{ [key: string]: number; }}
-     * @memberof TopVideoPinsAnalyticsResponsePinsItems
      */
     metrics?: { [key: string]: number; };
     /**
      * The pin id
-     * @type {string}
-     * @memberof TopVideoPinsAnalyticsResponsePinsItems
      */
     pinId?: string;
 }

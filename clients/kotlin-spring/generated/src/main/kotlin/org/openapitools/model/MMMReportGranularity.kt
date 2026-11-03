@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: DAY,WEEK
-*/
+ * 
+ * Values: DAY,WEEK
+ */
 enum class MMMReportGranularity(@get:JsonValue val value: kotlin.String) {
 
     DAY("DAY"),
@@ -28,9 +28,8 @@ enum class MMMReportGranularity(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MMMReportGranularity {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportGranularity'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportGranularity'")
         }
     }
 }
-

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'token_grant_type.g.dart';
 
+/// The type of OAuth grant being requested.
 class TokenGrantType extends EnumClass {
 
-  /// The type of OAuth grant being requested.
   @BuiltValueEnumConst(wireName: r'authorization_code')
   static const TokenGrantType authorizationCode = _$authorizationCode;
-  /// The type of OAuth grant being requested.
   @BuiltValueEnumConst(wireName: r'refresh_token')
   static const TokenGrantType refreshToken = _$refreshToken;
-  /// The type of OAuth grant being requested.
   @BuiltValueEnumConst(wireName: r'client_credentials')
   static const TokenGrantType clientCredentials = _$clientCredentials;
 

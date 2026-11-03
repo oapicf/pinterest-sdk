@@ -20,7 +20,6 @@ public class ProductGroupPromotionResponseItem  {
   private ProductGroupPromotion data;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();
  /**
   * Get data

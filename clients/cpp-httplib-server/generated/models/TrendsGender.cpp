@@ -6,20 +6,3 @@
 */
 #include "Gender.h"
 
-namespace models {
-
-Gender::Gender()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

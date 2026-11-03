@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: US,CA,DE,FR,ES,IT,DEPlusATPlusCH,GBPlusIE,ITPlusESPlusPTPlusGRPlusMT,PLPlusROPlusHUPlusSKPlusCZ,SEPlusDKPlusFIPlusNO,NLPlusBEPlusLU,AR,BR,CO,MX,MXPlusARPlusCOPlusCL,AUPlusNZ
-*/
+ * 
+ * Values: US,CA,DE,FR,ES,IT,DEPlusATPlusCH,GBPlusIE,ITPlusESPlusPTPlusGRPlusMT,PLPlusROPlusHUPlusSKPlusCZ,SEPlusDKPlusFIPlusNO,NLPlusBEPlusLU,AR,BR,CO,MX,MXPlusARPlusCOPlusCL,AUPlusNZ
+ */
 enum class TrendsSupportedRegion(@get:JsonValue val value: kotlin.String) {
 
     US("US"),
@@ -44,9 +44,8 @@ enum class TrendsSupportedRegion(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TrendsSupportedRegion {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsSupportedRegion'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsSupportedRegion'")
         }
     }
 }
-

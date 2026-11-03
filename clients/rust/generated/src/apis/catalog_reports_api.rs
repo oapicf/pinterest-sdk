@@ -159,7 +159,7 @@ pub async fn reports_slash_stats(configuration: &configuration::Configuration, p
     if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("parameters", &p_query_parameters.to_string())]);
+    req_builder = req_builder.query(&[("parameters", &serde_json::to_string(&p_query_parameters)?)]);
     if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }

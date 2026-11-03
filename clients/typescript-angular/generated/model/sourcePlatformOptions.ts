@@ -21,7 +21,7 @@ export const SourcePlatformOptions = {
     PinterestWeb: 'PINTEREST_WEB',
     PinterestAndroid: 'PINTEREST_ANDROID',
     PinterestIos: 'PINTEREST_IOS',
-    PointOfSale: 'POINT_OF_SALE'
+    PointOfSale: 'POINT_OF_SALE',
 } as const;
 export type SourcePlatformOptions = typeof SourcePlatformOptions[keyof typeof SourcePlatformOptions];
 

@@ -163,7 +163,7 @@ public class AdAccountsApiHandler {
         RequestParameter body = requestParameters.body();
         AdAccountCreate adAccountCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountCreate>(){}) : null;
 
-        logger.debug("Parameter adAccountCreate is {}", adAccountCreate);
+        logger.debug("Parameter adAccountCreate is (body omitted)");
 
         api.adAccountsCreate(adAccountCreate)
             .onSuccess(apiResponse -> {
@@ -236,7 +236,7 @@ public class AdAccountsApiHandler {
         ConversionProductReportCreate conversionProductReportCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionProductReportCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionProductReportCreate is {}", conversionProductReportCreate);
+        logger.debug("Parameter conversionProductReportCreate is (body omitted)");
 
         api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportCreate)
             .onSuccess(apiResponse -> {
@@ -261,7 +261,7 @@ public class AdAccountsApiHandler {
         MMMReportCreate mmMReportCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<MMMReportCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter mmMReportCreate is {}", mmMReportCreate);
+        logger.debug("Parameter mmMReportCreate is (body omitted)");
 
         api.analyticsCreateMmmReport(adAccountId, mmMReportCreate)
             .onSuccess(apiResponse -> {
@@ -286,7 +286,7 @@ public class AdAccountsApiHandler {
         AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdsAnalyticsCreateAsyncRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adsAnalyticsCreateAsyncRequest is {}", adsAnalyticsCreateAsyncRequest);
+        logger.debug("Parameter adsAnalyticsCreateAsyncRequest is (body omitted)");
 
         api.analyticsCreateReport(adAccountId, adsAnalyticsCreateAsyncRequest)
             .onSuccess(apiResponse -> {

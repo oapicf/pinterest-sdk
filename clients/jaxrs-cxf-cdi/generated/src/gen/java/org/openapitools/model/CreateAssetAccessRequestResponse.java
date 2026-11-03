@@ -23,7 +23,7 @@ public class CreateAssetAccessRequestResponse   {
   
   private List<@Valid AssetAccessRequestError> exceptions = new ArrayList<>();
 
-  private Map<String, String> invites = new HashMap<>();
+  private Map<String, @Pattern(regexp = "^\\d+$")String> invites = new HashMap<>();
 
   /**
    * A list of errors associated with the asset access requests. Will be returned if there is an error.
@@ -55,7 +55,7 @@ public class CreateAssetAccessRequestResponse   {
   /**
    * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    **/
-  public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse invites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
     return this;
   }
@@ -63,10 +63,10 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   @JsonProperty("invites")
-  public Map<String, String> getInvites() {
+  public Map<String, @Pattern(regexp = "^\\d+$")String> getInvites() {
     return invites;
   }
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
   }
 

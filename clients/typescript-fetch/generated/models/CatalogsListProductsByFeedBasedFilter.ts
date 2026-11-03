@@ -29,14 +29,10 @@ import {
 export interface CatalogsListProductsByFeedBasedFilter {
     /**
      * Catalog Feed id pertaining to the catalog product group filter.
-     * @type {string}
-     * @memberof CatalogsListProductsByFeedBasedFilter
      */
     feedId: string;
     /**
      * 
-     * @type {CatalogsProductGroupFilters}
-     * @memberof CatalogsListProductsByFeedBasedFilter
      */
     filters: CatalogsProductGroupFilters;
 }

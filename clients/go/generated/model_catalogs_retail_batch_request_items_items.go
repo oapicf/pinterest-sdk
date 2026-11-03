@@ -137,26 +137,11 @@ func (dst *CatalogsRetailBatchRequestItemsItems) UnmarshalJSON(data []byte) erro
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsRetailBatchRequestItemsItems)")
 	}
 }
 

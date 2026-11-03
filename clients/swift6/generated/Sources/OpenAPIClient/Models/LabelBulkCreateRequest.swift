@@ -9,7 +9,7 @@ import Foundation
 
 public struct LabelBulkCreateRequest: Sendable, Codable, Hashable {
 
-    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
+    public static let parentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[C]?\\d+$")
     /** Labels that you are applying to the campaign. */
     public var labels: [LabelCreateItem]
     /** Unique identifier of the asset you are labelling. Currently, you can only label campaigns. */

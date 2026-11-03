@@ -22,7 +22,6 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
@@ -31,6 +30,7 @@ from openapi_server.models.ingestion_source_options import IngestionSourceOption
 from openapi_server.models.lookback_period_options import LookbackPeriodOptions
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.source_platform_options import SourcePlatformOptions
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -56,8 +56,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def conversion_eqs_list(
-    lookback_period: Annotated[LookbackPeriodOptions, Field(description="Lookback window (number of days).")] = Query(None, description="Lookback window (number of days).", alias="lookback_period"),
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    lookback_period: Annotated[LookbackPeriodOptions, Field(description="Lookback window (number of days).")] = Query(..., description="Lookback window (number of days).", alias="lookback_period"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
     source_platform: Annotated[Optional[SourcePlatformOptions], Field(description="Source platform of event.")] = Query(None, description="Source platform of event.", alias="source_platform"),
     ingestion_source: Annotated[Optional[IngestionSourceOptions], Field(description="Ingestion source of event.")] = Query(None, description="Ingestion source of event.", alias="ingestion_source"),
     token_pinterest_oauth2: TokenModel = Security(

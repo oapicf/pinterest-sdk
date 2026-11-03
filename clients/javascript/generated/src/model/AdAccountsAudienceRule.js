@@ -18,7 +18,7 @@ import EventData from './EventData';
 /**
  * The AdAccountsAudienceRule model module.
  * @module model/AdAccountsAudienceRule
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccountsAudienceRule {
     /**

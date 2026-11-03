@@ -6,20 +6,3 @@
 */
 #include "AudienceOwnershipType.h"
 
-namespace models {
-
-AudienceOwnershipType::AudienceOwnershipType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

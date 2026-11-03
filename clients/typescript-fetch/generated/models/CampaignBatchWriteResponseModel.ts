@@ -29,8 +29,6 @@ import {
 export interface CampaignBatchWriteResponseModel {
     /**
      * 
-     * @type {Array<CampaignBatchItem>}
-     * @memberof CampaignBatchWriteResponseModel
      */
     items: Array<CampaignBatchItem>;
 }

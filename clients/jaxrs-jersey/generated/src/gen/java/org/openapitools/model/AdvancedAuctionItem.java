@@ -35,7 +35,7 @@ import javax.validation.Valid;
   AdvancedAuctionItem.JSON_PROPERTY_ITEM_ID,
   AdvancedAuctionItem.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItem   {
   public static final String JSON_PROPERTY_BID_OPTIONS = "bid_options";
   @JsonProperty(JSON_PROPERTY_BID_OPTIONS)

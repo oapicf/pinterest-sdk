@@ -75,63 +75,185 @@ import {
 } from '../models/QuerypinanalyticsmetrictypesItems';
 
 export interface MultiPinsAnalyticsRequest {
+    /**
+     * List of Pin IDs.
+     */
     pinIds: Array<string>;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Pin metric types to get data for.
+     */
     metricTypes: Array<MultiPinsAnalyticsMetricTypesItem>;
+    /**
+     * Apps or devices to get data for, default is all.
+     */
     appTypes?: MultiPinsAnalyticsAppTypesEnum;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface PinsAnalyticsRequest {
+    /**
+     * Unique identifier of a Pin.
+     */
     pinId: string;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`.
+     */
     metricTypes: Array<QuerypinanalyticsmetrictypesItems>;
+    /**
+     * Apps or devices to get data for, default is all.
+     */
     appTypes?: PinsAnalyticsAppTypesEnum;
+    /**
+     * How to split the data into groups. Not including this param means data won't be split.
+     */
     splitField?: PinsAnalyticsSplitFieldEnum;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface PinsCreateRequest {
+    /**
+     * 
+     */
     pinCreate: PinCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface PinsDeleteRequest {
+    /**
+     * 
+     */
     pinId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface PinsGetRequest {
+    /**
+     * 
+     */
     pinId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments
+     * and total reactions are only available with lifetime Pin metrics. If Pin was
+     * created before `2023-03-20` lifetime metrics will only be available
+     * for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+     * formats since then.
+     */
     pinMetrics?: boolean;
 }
 
 export interface PinsListRequest {
+    /**
+     * The filter to apply to the pins
+     */
     pinFilter?: PinFilter;
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments
+     * and total reactions are only available with lifetime Pin metrics. If Pin was
+     * created before `2023-03-20` lifetime metrics will only be available
+     * for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+     * formats since then.
+     */
     pinMetrics?: boolean;
+    /**
+     * Whether to include protected pins in the results
+     */
     includeProtectedPins?: boolean;
+    /**
+     * The type of pins to return, currently only enabled for private pins
+     */
     pinType?: PinType;
+    /**
+     * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+     */
     creativeTypes?: Array<CreativeType>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins).
+     */
     domain?: string;
+    /**
+     * Only return pins with links whose domain matches any value in the list.
+     * Values are joined comma-separated on the wire
+     * (e.g. `?domains=instagram.com,jcpenney.com`).
+     */
     domains?: Array<string>;
+    /**
+     * Include product tag objects in the response with their associated links.
+     */
     includeProductTagObj?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface PinsSaveRequest {
+    /**
+     * Unique identifier of a Pin.
+     */
     pinId: string;
+    /**
+     * 
+     */
     pinsSaveRequestCreate: PinsSaveRequestCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface PinsUpdateRequest {
+    /**
+     * 
+     */
     pinId: string;
+    /**
+     * 
+     */
     pinUpdate: PinUpdate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
@@ -179,11 +301,11 @@ export class PinsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['appTypes'] != null) {
@@ -276,11 +398,11 @@ export class PinsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['appTypes'] != null) {
@@ -778,7 +900,7 @@ export const MultiPinsAnalyticsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
     Tablet: 'TABLET',
-    Web: 'WEB'
+    Web: 'WEB',
 } as const;
 export type MultiPinsAnalyticsAppTypesEnum = typeof MultiPinsAnalyticsAppTypesEnum[keyof typeof MultiPinsAnalyticsAppTypesEnum];
 /**
@@ -788,7 +910,7 @@ export const PinsAnalyticsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
     Tablet: 'TABLET',
-    Web: 'WEB'
+    Web: 'WEB',
 } as const;
 export type PinsAnalyticsAppTypesEnum = typeof PinsAnalyticsAppTypesEnum[keyof typeof PinsAnalyticsAppTypesEnum];
 /**
@@ -796,6 +918,6 @@ export type PinsAnalyticsAppTypesEnum = typeof PinsAnalyticsAppTypesEnum[keyof t
  */
 export const PinsAnalyticsSplitFieldEnum = {
     NoSplit: 'NO_SPLIT',
-    AppType: 'APP_TYPE'
+    AppType: 'APP_TYPE',
 } as const;
 export type PinsAnalyticsSplitFieldEnum = typeof PinsAnalyticsSplitFieldEnum[keyof typeof PinsAnalyticsSplitFieldEnum];

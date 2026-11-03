@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface DetailedError {
     /**
      * 
-     * @type {number}
-     * @memberof DetailedError
      */
     code: number;
     /**
      * 
-     * @type {object}
-     * @memberof DetailedError
      */
     details: object;
     /**
      * 
-     * @type {string}
-     * @memberof DetailedError
      */
     message: string;
 }

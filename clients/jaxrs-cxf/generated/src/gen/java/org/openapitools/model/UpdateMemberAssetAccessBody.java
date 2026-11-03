@@ -24,8 +24,6 @@ public class UpdateMemberAssetAccessBody  {
   */
   @ApiModelProperty(required = true, value = "List of member asset accesses to assign or update.")
 
-  @Valid
-
   private List<@Valid UpdateMemberAssetAccessItem> accesses = new ArrayList<>();
  /**
    * List of member asset accesses to assign or update.

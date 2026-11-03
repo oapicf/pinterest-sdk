@@ -223,31 +223,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!host.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogClientRequest.", nameof(host));
+                throw new JsonException("Property is required for class IntegrationLogClientRequest: host.");
 
             if (!method.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogClientRequest.", nameof(method));
+                throw new JsonException("Property is required for class IntegrationLogClientRequest: method.");
 
             if (!path.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogClientRequest.", nameof(path));
+                throw new JsonException("Property is required for class IntegrationLogClientRequest: path.");
 
             if (host.IsSet && host.Value == null)
-                throw new ArgumentNullException(nameof(host), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: host.");
 
             if (method.IsSet && method.Value == null)
-                throw new ArgumentNullException(nameof(method), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: method.");
 
             if (path.IsSet && path.Value == null)
-                throw new ArgumentNullException(nameof(path), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: path.");
 
             if (requestHeaders.IsSet && requestHeaders.Value == null)
-                throw new ArgumentNullException(nameof(requestHeaders), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: request_headers.");
 
             if (responseHeaders.IsSet && responseHeaders.Value == null)
-                throw new ArgumentNullException(nameof(responseHeaders), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: response_headers.");
 
             if (responseStatusCode.IsSet && responseStatusCode.Value == null)
-                throw new ArgumentNullException(nameof(responseStatusCode), "Property is not nullable for class IntegrationLogClientRequest.");
+                throw new JsonException("Property is not nullable for class IntegrationLogClientRequest: response_status_code.");
 
             return new IntegrationLogClientRequest(host.Value!, method.Value!.Value!, path.Value!, requestHeaders, responseHeaders, responseStatusCode);
         }
@@ -258,7 +258,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogClientRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogClientRequest integrationLogClientRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -273,20 +272,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogClientRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogClientRequest integrationLogClientRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (integrationLogClientRequest.Host == null)
-                throw new ArgumentNullException(nameof(integrationLogClientRequest.Host), "Property is required for class IntegrationLogClientRequest.");
-
-            if (integrationLogClientRequest.Path == null)
-                throw new ArgumentNullException(nameof(integrationLogClientRequest.Path), "Property is required for class IntegrationLogClientRequest.");
-
             if (integrationLogClientRequest.RequestHeadersOption.IsSet && integrationLogClientRequest.RequestHeaders == null)
-                throw new ArgumentNullException(nameof(integrationLogClientRequest.RequestHeaders), "Property is required for class IntegrationLogClientRequest.");
+                throw new JsonException("Cannot write null property IntegrationLogClientRequest.RequestHeaders to non-nullable JSON property 'request_headers'.");
 
             if (integrationLogClientRequest.ResponseHeadersOption.IsSet && integrationLogClientRequest.ResponseHeaders == null)
-                throw new ArgumentNullException(nameof(integrationLogClientRequest.ResponseHeaders), "Property is required for class IntegrationLogClientRequest.");
+                throw new JsonException("Cannot write null property IntegrationLogClientRequest.ResponseHeaders to non-nullable JSON property 'response_headers'.");
+
+            if (integrationLogClientRequest.ResponseStatusCodeOption.IsSet && integrationLogClientRequest.ResponseStatusCode == null)
+                throw new JsonException("Cannot write null property IntegrationLogClientRequest.ResponseStatusCode to non-nullable JSON property 'response_status_code'.");
 
             writer.WriteString("host", integrationLogClientRequest.Host);
 

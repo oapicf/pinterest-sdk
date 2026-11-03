@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Catalog hotel product group type
-* Values: MERCHANT_CREATED,ALL_LISTINGS
-*/
+ * Catalog hotel product group type
+ * Values: MERCHANT_CREATED,ALL_LISTINGS
+ */
 enum class CatalogsHotelProductGroupType(@get:JsonValue val value: kotlin.String) {
 
     MERCHANT_CREATED("MERCHANT_CREATED"),
@@ -28,9 +28,8 @@ enum class CatalogsHotelProductGroupType(@get:JsonValue val value: kotlin.String
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsHotelProductGroupType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroupType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroupType'")
         }
     }
 }
-

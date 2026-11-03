@@ -17,7 +17,7 @@ import CampaignAdPreviewDelete200ResponseInnerStatus from './CampaignAdPreviewDe
 /**
  * The CatalogsLocalStoresDelete200ResponseInner model module.
  * @module model/CatalogsLocalStoresDelete200ResponseInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsLocalStoresDelete200ResponseInner {
     /**

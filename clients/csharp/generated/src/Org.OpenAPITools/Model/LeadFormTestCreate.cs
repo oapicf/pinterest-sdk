@@ -135,10 +135,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!answers.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormTestCreate.", nameof(answers));
+                throw new JsonException("Property is required for class LeadFormTestCreate: answers.");
 
             if (answers.IsSet && answers.Value == null)
-                throw new ArgumentNullException(nameof(answers), "Property is not nullable for class LeadFormTestCreate.");
+                throw new JsonException("Property is not nullable for class LeadFormTestCreate: answers.");
 
             return new LeadFormTestCreate(answers.Value!);
         }
@@ -149,7 +149,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormTestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormTestCreate leadFormTestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -164,12 +163,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormTestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormTestCreate leadFormTestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadFormTestCreate.Answers == null)
-                throw new ArgumentNullException(nameof(leadFormTestCreate.Answers), "Property is required for class LeadFormTestCreate.");
-
             writer.WritePropertyName("answers");
             JsonSerializer.Serialize(writer, leadFormTestCreate.Answers, jsonSerializerOptions);
         }

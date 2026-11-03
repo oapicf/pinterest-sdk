@@ -77,10 +77,9 @@ class AuthRespondInviteAction(BaseModel):
         _field_dict_of_array = {}
         if self.asset_id_to_permissions:
             for _key_asset_id_to_permissions in self.asset_id_to_permissions:
-                if self.asset_id_to_permissions[_key_asset_id_to_permissions] is not None:
-                    _field_dict_of_array[_key_asset_id_to_permissions] = [
-                        _item.to_dict() for _item in self.asset_id_to_permissions[_key_asset_id_to_permissions]
-                    ]
+                _field_dict_of_array[_key_asset_id_to_permissions] = [
+                    _item.to_dict() if _item is not None else None for _item in self.asset_id_to_permissions[_key_asset_id_to_permissions]
+                ] if self.asset_id_to_permissions[_key_asset_id_to_permissions] is not None else None
             _dict['asset_id_to_permissions'] = _field_dict_of_array
         return _dict
 

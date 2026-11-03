@@ -14,7 +14,7 @@ export interface CatalogsCreateCreativeAssetsItem {
 }
 export namespace CatalogsCreateCreativeAssetsItem {
   export const OperationEnum = {
-    Create: 'CREATE'
+    Create: 'CREATE',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

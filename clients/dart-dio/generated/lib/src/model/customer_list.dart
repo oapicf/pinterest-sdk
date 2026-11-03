@@ -325,3 +325,4 @@ class _$CustomerListSerializer implements PrimitiveSerializer<CustomerList> {
   }
 }
 
+

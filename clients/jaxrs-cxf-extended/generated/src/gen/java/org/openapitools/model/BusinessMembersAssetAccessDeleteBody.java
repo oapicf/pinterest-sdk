@@ -23,7 +23,6 @@ public class BusinessMembersAssetAccessDeleteBody  {
   * List of members asset access to be deleted
   */
   @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
-  @Valid
   private List<@Valid DeleteMemberAssetAccessItem> accesses = new ArrayList<>();
  /**
   * List of members asset access to be deleted

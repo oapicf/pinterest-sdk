@@ -19,7 +19,7 @@
  */
 export const PreferredMediaType = {
     Video: 'VIDEO',
-    Image: 'IMAGE'
+    Image: 'IMAGE',
 } as const;
 export type PreferredMediaType = typeof PreferredMediaType[keyof typeof PreferredMediaType];
 

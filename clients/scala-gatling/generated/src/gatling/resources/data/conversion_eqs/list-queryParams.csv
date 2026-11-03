@@ -1,1 +1,1 @@
-lookback_period,ingestion_source,source_platform
+source_platform,ingestion_source,lookback_period

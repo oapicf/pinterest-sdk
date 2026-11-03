@@ -220,19 +220,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (audienceVerification.IsSet && audienceVerification.Value == null)
-                throw new ArgumentNullException(nameof(audienceVerification), "Property is not nullable for class TrackingUrls.");
+                throw new JsonException("Property is not nullable for class TrackingUrls: audience_verification.");
 
             if (buyableButton.IsSet && buyableButton.Value == null)
-                throw new ArgumentNullException(nameof(buyableButton), "Property is not nullable for class TrackingUrls.");
+                throw new JsonException("Property is not nullable for class TrackingUrls: buyable_button.");
 
             if (click.IsSet && click.Value == null)
-                throw new ArgumentNullException(nameof(click), "Property is not nullable for class TrackingUrls.");
+                throw new JsonException("Property is not nullable for class TrackingUrls: click.");
 
             if (engagement.IsSet && engagement.Value == null)
-                throw new ArgumentNullException(nameof(engagement), "Property is not nullable for class TrackingUrls.");
+                throw new JsonException("Property is not nullable for class TrackingUrls: engagement.");
 
             if (impression.IsSet && impression.Value == null)
-                throw new ArgumentNullException(nameof(impression), "Property is not nullable for class TrackingUrls.");
+                throw new JsonException("Property is not nullable for class TrackingUrls: impression.");
 
             return new TrackingUrls(audienceVerification, buyableButton, click, engagement, impression);
         }
@@ -243,7 +243,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trackingUrls"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrackingUrls trackingUrls, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,23 +257,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trackingUrls"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrackingUrls trackingUrls, JsonSerializerOptions jsonSerializerOptions)
         {
             if (trackingUrls.AudienceVerificationOption.IsSet && trackingUrls.AudienceVerification == null)
-                throw new ArgumentNullException(nameof(trackingUrls.AudienceVerification), "Property is required for class TrackingUrls.");
+                throw new JsonException("Cannot write null property TrackingUrls.AudienceVerification to non-nullable JSON property 'audience_verification'.");
 
             if (trackingUrls.BuyableButtonOption.IsSet && trackingUrls.BuyableButton == null)
-                throw new ArgumentNullException(nameof(trackingUrls.BuyableButton), "Property is required for class TrackingUrls.");
+                throw new JsonException("Cannot write null property TrackingUrls.BuyableButton to non-nullable JSON property 'buyable_button'.");
 
             if (trackingUrls.ClickOption.IsSet && trackingUrls.Click == null)
-                throw new ArgumentNullException(nameof(trackingUrls.Click), "Property is required for class TrackingUrls.");
+                throw new JsonException("Cannot write null property TrackingUrls.Click to non-nullable JSON property 'click'.");
 
             if (trackingUrls.EngagementOption.IsSet && trackingUrls.Engagement == null)
-                throw new ArgumentNullException(nameof(trackingUrls.Engagement), "Property is required for class TrackingUrls.");
+                throw new JsonException("Cannot write null property TrackingUrls.Engagement to non-nullable JSON property 'engagement'.");
 
             if (trackingUrls.ImpressionOption.IsSet && trackingUrls.Impression == null)
-                throw new ArgumentNullException(nameof(trackingUrls.Impression), "Property is required for class TrackingUrls.");
+                throw new JsonException("Cannot write null property TrackingUrls.Impression to non-nullable JSON property 'impression'.");
 
             if (trackingUrls.AudienceVerificationOption.IsSet)
             {

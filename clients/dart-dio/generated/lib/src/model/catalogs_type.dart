@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'catalogs_type.g.dart';
 
+/// Type of the catalog entity.
 class CatalogsType extends EnumClass {
 
-  /// Type of the catalog entity.
   @BuiltValueEnumConst(wireName: r'RETAIL')
   static const CatalogsType RETAIL = _$RETAIL;
-  /// Type of the catalog entity.
   @BuiltValueEnumConst(wireName: r'HOTEL')
   static const CatalogsType HOTEL = _$HOTEL;
-  /// Type of the catalog entity.
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
   static const CatalogsType CREATIVE_ASSETS = _$CREATIVE_ASSETS;
 

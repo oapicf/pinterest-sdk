@@ -29,8 +29,6 @@ import {
 export interface DeletePartnerAssetAccessResultsResponseArray {
     /**
      * List of terminated partner asset accesses.
-     * @type {Array<DeletePartnerAssetAccessResult>}
-     * @memberof DeletePartnerAssetAccessResultsResponseArray
      */
     items?: Array<DeletePartnerAssetAccessResult>;
 }

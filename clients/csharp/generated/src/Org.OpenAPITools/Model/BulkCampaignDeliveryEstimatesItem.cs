@@ -290,28 +290,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adgroupAudienceSizes.IsSet && adgroupAudienceSizes.Value == null)
-                throw new ArgumentNullException(nameof(adgroupAudienceSizes), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: adgroup_audience_sizes.");
 
             if (conversionRate.IsSet && conversionRate.Value == null)
-                throw new ArgumentNullException(nameof(conversionRate), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: conversion_rate.");
 
             if (conversionRates.IsSet && conversionRates.Value == null)
-                throw new ArgumentNullException(nameof(conversionRates), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: conversion_rates.");
 
             if (curves.IsSet && curves.Value == null)
-                throw new ArgumentNullException(nameof(curves), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: curves.");
 
             if (derivedMetrics.IsSet && derivedMetrics.Value == null)
-                throw new ArgumentNullException(nameof(derivedMetrics), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: derived_metrics.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: errors.");
 
             if (estimateId.IsSet && estimateId.Value == null)
-                throw new ArgumentNullException(nameof(estimateId), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: estimate_id.");
 
             if (maxPotentialSpend.IsSet && maxPotentialSpend.Value == null)
-                throw new ArgumentNullException(nameof(maxPotentialSpend), "Property is not nullable for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesItem: max_potential_spend.");
 
             return new BulkCampaignDeliveryEstimatesItem(adgroupAudienceSizes, conversionRate, conversionRates, curves, derivedMetrics, errors, estimateId, maxPotentialSpend);
         }
@@ -322,7 +322,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkCampaignDeliveryEstimatesItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkCampaignDeliveryEstimatesItem bulkCampaignDeliveryEstimatesItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -337,26 +336,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkCampaignDeliveryEstimatesItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkCampaignDeliveryEstimatesItem bulkCampaignDeliveryEstimatesItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkCampaignDeliveryEstimatesItem.AdgroupAudienceSizesOption.IsSet && bulkCampaignDeliveryEstimatesItem.AdgroupAudienceSizes == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.AdgroupAudienceSizes), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.AdgroupAudienceSizes to non-nullable JSON property 'adgroup_audience_sizes'.");
+
+            if (bulkCampaignDeliveryEstimatesItem.ConversionRateOption.IsSet && bulkCampaignDeliveryEstimatesItem.ConversionRate == null)
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.ConversionRate to non-nullable JSON property 'conversion_rate'.");
 
             if (bulkCampaignDeliveryEstimatesItem.ConversionRatesOption.IsSet && bulkCampaignDeliveryEstimatesItem.ConversionRates == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.ConversionRates), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.ConversionRates to non-nullable JSON property 'conversion_rates'.");
 
             if (bulkCampaignDeliveryEstimatesItem.CurvesOption.IsSet && bulkCampaignDeliveryEstimatesItem.Curves == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.Curves), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.Curves to non-nullable JSON property 'curves'.");
 
             if (bulkCampaignDeliveryEstimatesItem.DerivedMetricsOption.IsSet && bulkCampaignDeliveryEstimatesItem.DerivedMetrics == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.DerivedMetrics), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.DerivedMetrics to non-nullable JSON property 'derived_metrics'.");
 
             if (bulkCampaignDeliveryEstimatesItem.ErrorsOption.IsSet && bulkCampaignDeliveryEstimatesItem.Errors == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.Errors), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.Errors to non-nullable JSON property 'errors'.");
 
             if (bulkCampaignDeliveryEstimatesItem.EstimateIdOption.IsSet && bulkCampaignDeliveryEstimatesItem.EstimateId == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesItem.EstimateId), "Property is required for class BulkCampaignDeliveryEstimatesItem.");
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.EstimateId to non-nullable JSON property 'estimate_id'.");
+
+            if (bulkCampaignDeliveryEstimatesItem.MaxPotentialSpendOption.IsSet && bulkCampaignDeliveryEstimatesItem.MaxPotentialSpend == null)
+                throw new JsonException("Cannot write null property BulkCampaignDeliveryEstimatesItem.MaxPotentialSpend to non-nullable JSON property 'max_potential_spend'.");
 
             if (bulkCampaignDeliveryEstimatesItem.AdgroupAudienceSizesOption.IsSet)
             {

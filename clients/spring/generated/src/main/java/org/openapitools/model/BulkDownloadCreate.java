@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,22 +27,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BulkDownloadCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkDownloadCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BulkDownloadCampaignFilter campaignFilter;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<BulkEntityType> entityTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String updatedSince;
 
   public BulkDownloadCreate campaignFilter(@Nullable BulkDownloadCampaignFilter campaignFilter) {
@@ -113,7 +107,7 @@ public class BulkDownloadCreate {
    * All entity types specified will be downloaded. Fewer types result in faster downloads.
    * @return entityTypes
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "entity_types", example = "[\"CAMPAIGN\",\"AD_GROUP\"]", description = "All entity types specified will be downloaded. Fewer types result in faster downloads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("entity_types")
   public List<BulkEntityType> getEntityTypes() {
@@ -125,7 +119,7 @@ public class BulkDownloadCreate {
     this.entityTypes = entityTypes;
   }
 
-  public BulkDownloadCreate outputFormat(@Nullable BulkOutputFormat outputFormat) {
+  public BulkDownloadCreate outputFormat(BulkOutputFormat outputFormat) {
     this.outputFormat = outputFormat;
     return this;
   }
@@ -137,12 +131,12 @@ public class BulkDownloadCreate {
   @Valid 
   @Schema(name = "output_format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("output_format")
-  public @Nullable BulkOutputFormat getOutputFormat() {
+  public BulkOutputFormat getOutputFormat() {
     return outputFormat;
   }
 
   @JsonProperty("output_format")
-  public void setOutputFormat(@Nullable BulkOutputFormat outputFormat) {
+  public void setOutputFormat(BulkOutputFormat outputFormat) {
     this.outputFormat = outputFormat;
   }
 

@@ -29,14 +29,10 @@ import {
 export interface PinMediaWithImage {
     /**
      * 
-     * @type {ImageSize}
-     * @memberof PinMediaWithImage
      */
     images?: ImageSize;
     /**
      * 
-     * @type {PinMediaWithImageMediaTypeEnum}
-     * @memberof PinMediaWithImage
      */
     mediaType: PinMediaWithImageMediaTypeEnum;
 }
@@ -46,7 +42,7 @@ export interface PinMediaWithImage {
  * @export
  */
 export const PinMediaWithImageMediaTypeEnum = {
-    Image: 'image'
+    Image: 'image',
 } as const;
 export type PinMediaWithImageMediaTypeEnum = typeof PinMediaWithImageMediaTypeEnum[keyof typeof PinMediaWithImageMediaTypeEnum];
 

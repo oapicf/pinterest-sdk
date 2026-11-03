@@ -32,7 +32,7 @@ public class AdGroupAudienceSizingCreate   {
 
   private List<@Valid AdGroupAudienceSizingKeyword> keywords;
 
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds;
 

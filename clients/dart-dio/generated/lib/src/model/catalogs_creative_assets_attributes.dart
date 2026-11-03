@@ -343,3 +343,4 @@ class _$CatalogsCreativeAssetsAttributesSerializer implements PrimitiveSerialize
   }
 }
 
+

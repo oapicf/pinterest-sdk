@@ -72,7 +72,9 @@ class KeywordInfo {
 
       return KeywordInfo(
         name: mapValueOfType<String>(json, r'name')!,
-        pctGrowthMom: num.parse('${json[r'pct_growth_mom']}'),
+        pctGrowthMom: json[r'pct_growth_mom'] == null
+            ? null
+            : num.parse('${json[r'pct_growth_mom']}'),
       );
     }
     return null;

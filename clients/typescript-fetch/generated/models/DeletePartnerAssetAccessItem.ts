@@ -21,21 +21,15 @@ import { mapValues } from '../runtime';
 export interface DeletePartnerAssetAccessItem {
     /**
      * Unique identifier of the business asset.
-     * @type {string}
-     * @memberof DeletePartnerAssetAccessItem
      */
     assetId: string;
     /**
      * Unique identifier of a business partner to update asset access to.
-     * @type {string}
-     * @memberof DeletePartnerAssetAccessItem
      */
     partnerId: string;
     /**
      * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.
      * If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
-     * @type {DeletePartnerAssetAccessItemPartnerTypeEnum}
-     * @memberof DeletePartnerAssetAccessItem
      */
     partnerType?: DeletePartnerAssetAccessItemPartnerTypeEnum;
 }
@@ -46,7 +40,7 @@ export interface DeletePartnerAssetAccessItem {
  */
 export const DeletePartnerAssetAccessItemPartnerTypeEnum = {
     Internal: 'INTERNAL',
-    External: 'EXTERNAL'
+    External: 'EXTERNAL',
 } as const;
 export type DeletePartnerAssetAccessItemPartnerTypeEnum = typeof DeletePartnerAssetAccessItemPartnerTypeEnum[keyof typeof DeletePartnerAssetAccessItemPartnerTypeEnum];
 

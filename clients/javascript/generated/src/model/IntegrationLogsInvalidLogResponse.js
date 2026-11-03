@@ -17,7 +17,7 @@ import IntegrationLogsInvalidLogResponseRejectedLogsItems from './IntegrationLog
 /**
  * The IntegrationLogsInvalidLogResponse model module.
  * @module model/IntegrationLogsInvalidLogResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class IntegrationLogsInvalidLogResponse {
     /**

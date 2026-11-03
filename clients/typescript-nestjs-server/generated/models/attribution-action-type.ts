@@ -5,7 +5,7 @@
  */
 export const AttributionActionType = {
     View: 'view',
-    Click: 'click'
+    Click: 'click',
 } as const;
 export type AttributionActionType = typeof AttributionActionType[keyof typeof AttributionActionType];
 

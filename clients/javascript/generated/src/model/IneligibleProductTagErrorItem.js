@@ -17,7 +17,7 @@ import IneligibleProductTagReason from './IneligibleProductTagReason';
 /**
  * The IneligibleProductTagErrorItem model module.
  * @module model/IneligibleProductTagErrorItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class IneligibleProductTagErrorItem {
     /**

@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 public class CustomerListCreate   {
 
     private Boolean isNca;
-    private UserListType listType;
+    private UserListType listType = UserListType.EMAIL;
     private String name;
     private String records;
     private List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();

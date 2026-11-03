@@ -15,10 +15,10 @@ import org.openapitools.model.WebsiteVerificationMethod;
  **/
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UserWebsiteCreate   {
   @JsonProperty("verification_method")
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
   @JsonProperty("website")
   private String website;

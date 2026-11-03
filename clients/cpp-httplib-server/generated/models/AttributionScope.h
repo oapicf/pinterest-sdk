@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class AttributionScope
-{
-public:
-
-    AttributionScope();
-    virtual ~AttributionScope() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AttributionScope,
-        )
-
-private:
+enum class AttributionScope {
+    
+    VIEW,
+    
+    ENGAGEMENT,
+    
+    CLICK
+    
 };
 
+inline void to_json(nlohmann::json& j, const AttributionScope& value)
+{
+    switch (value)
+    {
+        
+        case AttributionScope::VIEW: j = "view"; break;
+        
+        case AttributionScope::ENGAGEMENT: j = "engagement"; break;
+        
+        case AttributionScope::CLICK: j = "click"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AttributionScope", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AttributionScope& value)
+{
+    
+    if (j == "view")
+    {
+        value = AttributionScope::VIEW;
+        return;
+    }
+    
+    if (j == "engagement")
+    {
+        value = AttributionScope::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "click")
+    {
+        value = AttributionScope::CLICK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AttributionScope", &j);
+}
 
 } // namespace models
 

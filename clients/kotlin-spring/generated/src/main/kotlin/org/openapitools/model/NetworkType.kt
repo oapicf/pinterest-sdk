@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of network connection.
-* Values: wifi,cellular_2g,cellular_3g,cellular_4g,cellular_5g,cellular_6g,ethernet,unknown
-*/
+ * Type of network connection.
+ * Values: wifi,cellular_2g,cellular_3g,cellular_4g,cellular_5g,cellular_6g,ethernet,unknown
+ */
 enum class NetworkType(@get:JsonValue val value: kotlin.String) {
 
     wifi("wifi"),
@@ -34,9 +34,8 @@ enum class NetworkType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NetworkType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NetworkType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NetworkType'")
         }
     }
 }
-

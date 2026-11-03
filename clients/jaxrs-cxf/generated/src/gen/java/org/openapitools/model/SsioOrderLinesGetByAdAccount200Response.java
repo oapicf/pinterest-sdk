@@ -22,8 +22,6 @@ public class SsioOrderLinesGetByAdAccount200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid SSIOOrderLine> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -1776,7 +1776,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum?>(CatalogsCreativeAssetsBatchRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsBatchRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "country":
                             country = new Option<Country?>(JsonSerializer.Deserialize<Country?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -1787,7 +1792,12 @@ namespace Org.OpenAPITools.Model
                         case "language":
                             string? languageRawValue = utf8JsonReader.GetString();
                             if (languageRawValue != null)
-                                language = new Option<CatalogsCreativeAssetsBatchRequest.LanguageEnum?>(CatalogsCreativeAssetsBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue));
+                            {
+                                CatalogsCreativeAssetsBatchRequest.LanguageEnum? languageValue = CatalogsCreativeAssetsBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue);
+                                if (languageValue == null)
+                                    throw new JsonException();
+                                language = new Option<CatalogsCreativeAssetsBatchRequest.LanguageEnum?>(languageValue);
+                            }
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -1799,31 +1809,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsBatchRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsBatchRequest: catalog_type.");
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsBatchRequest.", nameof(country));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsBatchRequest: country.");
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsBatchRequest.", nameof(items));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsBatchRequest: items.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsBatchRequest.", nameof(language));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsBatchRequest: language.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchRequest: catalog_type.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchRequest: country.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchRequest: items.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchRequest: language.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchRequest: catalog_id.");
 
             return new CatalogsCreativeAssetsBatchRequest(catalogType.Value!.Value!, country.Value!.Value!, items.Value!, language.Value!.Value!, catalogId);
         }
@@ -1834,7 +1844,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsBatchRequest catalogsCreativeAssetsBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1849,14 +1858,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsBatchRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsBatchRequest catalogsCreativeAssetsBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsBatchRequest.Items == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsBatchRequest.Items), "Property is required for class CatalogsCreativeAssetsBatchRequest.");
-
             if (catalogsCreativeAssetsBatchRequest.CatalogIdOption.IsSet && catalogsCreativeAssetsBatchRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsBatchRequest.CatalogId), "Property is required for class CatalogsCreativeAssetsBatchRequest.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsBatchRequest.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsBatchRequest.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsBatchRequest.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

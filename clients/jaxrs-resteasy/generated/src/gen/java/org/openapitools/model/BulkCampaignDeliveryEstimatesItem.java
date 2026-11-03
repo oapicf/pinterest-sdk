@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Delivery estimate result for a single campaign within a bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Delivery estimate result for a single campaign within a bulk request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem   {
   
   private List<@Valid CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();
@@ -36,7 +36,6 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Range audience sizes for each ad group, in the same order as the ad groups in the request.")
   @JsonProperty("adgroup_audience_sizes")
-  @Valid
   public List<@Valid CampaignPlanningAdGroupAudienceSize> getAdgroupAudienceSizes() {
     return adgroupAudienceSizes;
   }
@@ -63,7 +62,6 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.")
   @JsonProperty("conversion_rates")
-  @Valid
   public List<@Valid CampaignPlanningConversionRate> getConversionRates() {
     return conversionRates;
   }
@@ -77,8 +75,7 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
   @JsonProperty("curves")
- @Size(max=20)  @Valid
-  public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
+ @Size(max=20)  public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
     return curves;
   }
   public void setCurves(List<@Valid CampaignPlanningCurveEstimate> curves) {
@@ -104,7 +101,6 @@ public class BulkCampaignDeliveryEstimatesItem   {
   
   @ApiModelProperty(value = "Errors encountered during estimation for this campaign.")
   @JsonProperty("errors")
-  @Valid
   public List<@Valid CampaignPlanningResponseError> getErrors() {
     return errors;
   }

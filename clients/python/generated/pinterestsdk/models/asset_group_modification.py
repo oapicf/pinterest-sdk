@@ -81,15 +81,13 @@ class AssetGroupModification(BaseModel):
         _items = []
         if self.exceptions:
             for _item_exceptions in self.exceptions:
-                if _item_exceptions:
-                    _items.append(_item_exceptions.to_dict())
+                _items.append(_item_exceptions.to_dict() if _item_exceptions is not None else None)
             _dict['exceptions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in updated_asset_groups (list)
         _items = []
         if self.updated_asset_groups:
             for _item_updated_asset_groups in self.updated_asset_groups:
-                if _item_updated_asset_groups:
-                    _items.append(_item_updated_asset_groups.to_dict())
+                _items.append(_item_updated_asset_groups.to_dict() if _item_updated_asset_groups is not None else None)
             _dict['updated_asset_groups'] = _items
         return _dict
 

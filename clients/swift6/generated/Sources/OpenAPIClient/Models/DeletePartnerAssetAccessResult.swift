@@ -10,8 +10,8 @@ import Foundation
 /** The terminated asset access. */
 public struct DeletePartnerAssetAccessResult: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of a business asset. */
     public var assetId: String?
     /** Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG. */

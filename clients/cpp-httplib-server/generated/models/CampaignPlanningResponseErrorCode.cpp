@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningResponseErrorCode.h"
 
-namespace models {
-
-CampaignPlanningResponseErrorCode::CampaignPlanningResponseErrorCode()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Budget duration type for delivery estimates.
-* Values: FIXED_DAILY,FLEXIBLE_DAILY,LIFETIME
-*/
+ * Budget duration type for delivery estimates.
+ * Values: FIXED_DAILY,FLEXIBLE_DAILY,LIFETIME
+ */
 enum class BudgetDurationType(@get:JsonValue val value: kotlin.String) {
 
     FIXED_DAILY("FIXED_DAILY"),
@@ -29,9 +29,8 @@ enum class BudgetDurationType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BudgetDurationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BudgetDurationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BudgetDurationType'")
         }
     }
 }
-

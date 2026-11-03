@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.order_line import OrderLine
@@ -19,9 +19,9 @@ class BaseOrderLinesApi:
         BaseOrderLinesApi.subclasses = BaseOrderLinesApi.subclasses + (cls,)
     async def order_lines_list(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
         order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")],
     ) -> OrderLinesList200Response:
         """List existing order lines associated with an ad account."""
@@ -30,8 +30,8 @@ class BaseOrderLinesApi:
 
     async def order_lines_get(
         self,
-        order_line_id: Annotated[str, Field(strict=True, description="Order line ID.")],
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        order_line_id: Annotated[str, Field(description="Order line ID.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
     ) -> OrderLine:
         """Get a specific existing order line associated with an ad account."""
         ...

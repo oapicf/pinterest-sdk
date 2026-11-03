@@ -17,7 +17,7 @@ import RespondToInviteResultItem from './RespondToInviteResultItem';
 /**
  * The RespondToInvitesResponseArray model module.
  * @module model/RespondToInvitesResponseArray
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class RespondToInvitesResponseArray {
     /**

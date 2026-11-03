@@ -22,7 +22,7 @@ data class CustomNumber3Filter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_NUMBER_3")
+    @param:JsonProperty("CUSTOM_NUMBER_3", required = true)
     @get:JsonProperty("CUSTOM_NUMBER_3", required = true) val CUSTOM_NUMBER_3: CatalogsProductGroupUint32Criteria
 ) {
 

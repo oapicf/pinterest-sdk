@@ -17,8 +17,6 @@ public class BulkDownloadCampaignFilter  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<SummaryStatus> campaignStatus = new ArrayList<>();
 
  /**
@@ -36,8 +34,6 @@ public class BulkDownloadCampaignFilter  {
   private String name;
 
   @ApiModelProperty(value = "")
-
-  @Valid
 
   private List<ConversionObjectiveType> objectiveType = new ArrayList<>();
 

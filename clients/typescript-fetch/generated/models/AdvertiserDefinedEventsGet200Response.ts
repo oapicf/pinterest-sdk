@@ -29,8 +29,6 @@ import {
 export interface AdvertiserDefinedEventsGet200Response {
     /**
      * 
-     * @type {Array<AdvertiserDefinedEvent>}
-     * @memberof AdvertiserDefinedEventsGet200Response
      */
     items: Array<AdvertiserDefinedEvent>;
 }

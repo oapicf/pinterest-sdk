@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Availability of the item
-* Values: in_stock,out_of_stock,preorder
-*/
+ * Availability of the item
+ * Values: in_stock,out_of_stock,preorder
+ */
 enum class ItemAvailability(@get:JsonValue val value: kotlin.String) {
 
     in_stock("in stock"),
@@ -29,9 +29,8 @@ enum class ItemAvailability(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ItemAvailability {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ItemAvailability'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ItemAvailability'")
         }
     }
 }
-

@@ -248,3 +248,4 @@ class _$CustomerListRecordRowSerializer implements PrimitiveSerializer<CustomerL
   }
 }
 
+

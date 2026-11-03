@@ -23,7 +23,7 @@ export const AudienceObjectiveType = {
     WebConversion: 'WEB_CONVERSION',
     CatalogSales: 'CATALOG_SALES',
     VideoCompletion: 'VIDEO_COMPLETION',
-    Sales: 'SALES'
+    Sales: 'SALES',
 } as const;
 export type AudienceObjectiveType = typeof AudienceObjectiveType[keyof typeof AudienceObjectiveType];
 

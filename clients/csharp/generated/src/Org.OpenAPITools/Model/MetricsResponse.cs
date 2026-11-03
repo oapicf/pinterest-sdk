@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class MetricsResponse.");
+                throw new JsonException("Property is not nullable for class MetricsResponse: data.");
 
             return new MetricsResponse(data);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="metricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MetricsResponse metricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="metricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MetricsResponse metricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (metricsResponse.DataOption.IsSet && metricsResponse.Data == null)
-                throw new ArgumentNullException(nameof(metricsResponse.Data), "Property is required for class MetricsResponse.");
+                throw new JsonException("Cannot write null property MetricsResponse.Data to non-nullable JSON property 'data'.");
 
             if (metricsResponse.DataOption.IsSet)
             {

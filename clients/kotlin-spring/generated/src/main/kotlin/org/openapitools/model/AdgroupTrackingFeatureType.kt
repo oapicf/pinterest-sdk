@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: TRENDS,CLONE_META,BULK_EDITOR,AD_ROTATION
-*/
+ * 
+ * Values: TRENDS,CLONE_META,BULK_EDITOR,AD_ROTATION
+ */
 enum class AdgroupTrackingFeatureType(@get:JsonValue val value: kotlin.String) {
 
     TRENDS("TRENDS"),
@@ -30,9 +30,8 @@ enum class AdgroupTrackingFeatureType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdgroupTrackingFeatureType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdgroupTrackingFeatureType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdgroupTrackingFeatureType'")
         }
     }
 }
-

@@ -17,7 +17,7 @@ import SSIOAccountAddress from './SSIOAccountAddress';
 /**
  * The SSIOAccountItem model module.
  * @module model/SSIOAccountItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SSIOAccountItem {
     /**

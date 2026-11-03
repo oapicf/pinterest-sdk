@@ -106,8 +106,8 @@ class LeadAdsApiSimulation extends Simulation {
         .feed(ad_accounts_subscriptions/get_listPATHFeeder)
         .exec(http("adAccountsSubscriptionsGetList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/leads/subscriptions")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnadAccountsSubscriptionsGetList with warm up and reach a constant rate for entire duration

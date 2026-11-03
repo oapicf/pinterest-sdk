@@ -86,7 +86,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroupCreate.JSON_PROPERTY_PACING_DELIVERY_TYPE
 })
 @JsonTypeName("AdGroupCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupCreate {
     public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
@@ -198,10 +198,10 @@ public class AdGroupCreate {
     private BigDecimal bidMultiplier;
 
     public static final String JSON_PROPERTY_BUDGET_TYPE = "budget_type";
-    private BudgetType budgetType;
+    private BudgetType budgetType = BudgetType.DAILY;
 
     public static final String JSON_PROPERTY_PACING_DELIVERY_TYPE = "pacing_delivery_type";
-    private PacingDeliveryType pacingDeliveryType;
+    private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
     public AdGroupCreate(ActionType billableEvent, String campaignId, ConversionLearningModeType conversionLearningModeType, Integer createdTime, String id, String name, SummaryStatus summaryStatus, String type, Integer updatedTime) {
         this.billableEvent = billableEvent;

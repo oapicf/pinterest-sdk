@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedCredentials {
     /**
      * The required password for downloading a feed.
-     * @type {string}
-     * @memberof CatalogsFeedCredentials
      */
     password: string;
     /**
      * The required username for downloading a feed.
-     * @type {string}
-     * @memberof CatalogsFeedCredentials
      */
     username: string;
 }

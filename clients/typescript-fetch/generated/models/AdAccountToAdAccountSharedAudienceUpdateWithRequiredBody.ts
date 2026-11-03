@@ -29,20 +29,14 @@ import {
 export interface AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody {
     /**
      * Unique identifier of an audience
-     * @type {string}
-     * @memberof AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
      */
     audienceId: string;
     /**
      * 
-     * @type {OperationType}
-     * @memberof AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
      */
     operationType: OperationType;
     /**
      * Ad account IDs to share with or revoke from (request) / that received the audience (response).
-     * @type {Array<string>}
-     * @memberof AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
      */
     recipientAccountIds: Array<string>;
 }

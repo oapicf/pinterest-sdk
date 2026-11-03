@@ -21,8 +21,6 @@ public class AssetGroupDeletion  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid AssetGroupDeleteError> exceptions;
  /**
    * Get deletedAssetGroups

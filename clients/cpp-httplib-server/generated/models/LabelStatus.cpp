@@ -6,20 +6,3 @@
 */
 #include "LabelStatus.h"
 
-namespace models {
-
-LabelStatus::LabelStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

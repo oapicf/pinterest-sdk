@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author pkmst
  *
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Controller
 public class ResourcesApiController implements ResourcesApi {
     private final ObjectMapper objectMapper;
@@ -237,7 +237,7 @@ public class ResourcesApiController implements ResourcesApi {
         return new ResponseEntity<BookClosed>(HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Object>> targetingOptionsGet(@ApiParam(value = "Public targeting type",required=true, allowableValues="{values=[APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE], enumVars=[{name=APPTYPE, isString=true, value="APPTYPE"}, {name=GENDER, isString=true, value="GENDER"}, {name=LOCALE, isString=true, value="LOCALE"}, {name=AGE_BUCKET, isString=true, value="AGE_BUCKET"}, {name=LOCATION, isString=true, value="LOCATION"}, {name=GEO, isString=true, value="GEO"}, {name=INTEREST, isString=true, value="INTEREST"}, {name=KEYWORD, isString=true, value="KEYWORD"}, {name=AUDIENCE_INCLUDE, isString=true, value="AUDIENCE_INCLUDE"}, {name=AUDIENCE_EXCLUDE, isString=true, value="AUDIENCE_EXCLUDE"}]}" ) @PathVariable("targeting_type") PublicTargetingType targetingType,
+    public ResponseEntity<List<Object>> targetingOptionsGet(@ApiParam(value = "Public targeting type",required=true, allowableValues="{values=[APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE], enumVars=[{rawValue=APPTYPE, name=APPTYPE, isString=true, value="APPTYPE"}, {rawValue=GENDER, name=GENDER, isString=true, value="GENDER"}, {rawValue=LOCALE, name=LOCALE, isString=true, value="LOCALE"}, {rawValue=AGE_BUCKET, name=AGE_BUCKET, isString=true, value="AGE_BUCKET"}, {rawValue=LOCATION, name=LOCATION, isString=true, value="LOCATION"}, {rawValue=GEO, name=GEO, isString=true, value="GEO"}, {rawValue=INTEREST, name=INTEREST, isString=true, value="INTEREST"}, {rawValue=KEYWORD, name=KEYWORD, isString=true, value="KEYWORD"}, {rawValue=AUDIENCE_INCLUDE, name=AUDIENCE_INCLUDE, isString=true, value="AUDIENCE_INCLUDE"}, {rawValue=AUDIENCE_EXCLUDE, name=AUDIENCE_EXCLUDE, isString=true, value="AUDIENCE_EXCLUDE"}]}" ) @PathVariable("targeting_type") PublicTargetingType targetingType,
         @ApiParam(value = "Unique identifier of an ad account.")  @RequestParam(value = "ad_account_id", required = false) String adAccountId,
         @ApiParam(value = "Client ID")  @RequestParam(value = "client_id", required = false) String clientId,
         @ApiParam(value = "Oauth signature")  @RequestParam(value = "oauth_signature", required = false) String oauthSignature,

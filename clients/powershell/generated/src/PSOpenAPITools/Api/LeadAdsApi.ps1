@@ -63,11 +63,11 @@ function Invoke-AdAccountsSubscriptionsDelById {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountsSubscriptions_delById."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$SubscriptionId) {
             throw "Error! The required parameter `SubscriptionId` missing when calling adAccountsSubscriptions_delById."
         }
-        $LocalVarUri = $LocalVarUri.replace('{subscription_id}', [System.Web.HTTPUtility]::UrlEncode($SubscriptionId))
+        $LocalVarUri = $LocalVarUri.replace('{subscription_id}', [System.Uri]::EscapeDataString([string]$SubscriptionId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'DELETE' `
@@ -147,11 +147,11 @@ function Invoke-AdAccountsSubscriptionsGetById {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountsSubscriptions_getById."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$SubscriptionId) {
             throw "Error! The required parameter `SubscriptionId` missing when calling adAccountsSubscriptions_getById."
         }
-        $LocalVarUri = $LocalVarUri.replace('{subscription_id}', [System.Web.HTTPUtility]::UrlEncode($SubscriptionId))
+        $LocalVarUri = $LocalVarUri.replace('{subscription_id}', [System.Uri]::EscapeDataString([string]$SubscriptionId))
 
 
 
@@ -238,7 +238,7 @@ function Invoke-AdAccountsSubscriptionsGetList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountsSubscriptions_getList."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -329,7 +329,7 @@ function Invoke-AdAccountsSubscriptionsPost {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountsSubscriptions_post."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LeadSubscriptionPostParamsCreate) {
             throw "Error! The required parameter `LeadSubscriptionPostParamsCreate` missing when calling adAccountsSubscriptions_post."

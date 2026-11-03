@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,19 +28,15 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "MMMReportCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MMMReportCreate {
 
-  @Valid
   private List<String> advertiserIds = new ArrayList<>();
 
-  @Valid
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
-  @Valid
   private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
-  @Valid
   private List<String> customColumnIds = new ArrayList<>();
 
   private String endDate;
@@ -54,7 +49,6 @@ public class MMMReportCreate {
 
   private String startDate;
 
-  @Valid
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
 
   public MMMReportCreate() {
@@ -119,7 +113,7 @@ public class MMMReportCreate {
    * Metric and entity columns
    * @return columns
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("columns")
   public List<MMMReportingColumn> getColumns() {
@@ -147,7 +141,7 @@ public class MMMReportCreate {
    * A List of countries for filtering
    * @return countries
    */
-  @Valid 
+  
   @Schema(name = "countries", description = "A List of countries for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")
   public List<TargetingAdvertiserCountry> getCountries() {
@@ -303,7 +297,7 @@ public class MMMReportCreate {
    * List of targeting types
    * @return targetingTypes
    */
-  @NotNull @Valid @Size(min = 1, max = 7) 
+  @NotNull @Size(min = 1, max = 7) 
   @Schema(name = "targeting_types", example = "[\"GENDER\"]", description = "List of targeting types", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("targeting_types")
   public List<MMMReportingTargetingType> getTargetingTypes() {

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -40,74 +39,60 @@ import jakarta.annotation.Generated;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest {
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
 
-  @Valid
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
 
-  @Valid
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
 
-  @Valid
   private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
 
   private String campaignBrandLabel;
 
   private String campaignCustomLabel;
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
 
-  @Valid
   private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  @Valid
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
-  @Valid
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
   private Boolean combineTargetingTypes = false;
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
-  @Valid
   private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
 
   private String endDate;
 
   private Integer endHour;
 
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   private Granularity granularity;
 
   private MetricsReportingLevel level;
 
-  @Valid
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
-  @Valid
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
 
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   private ReportingTimeZone reportingTimezone;
 
@@ -115,10 +100,9 @@ public class AdsAnalyticsCreateAsyncRequest {
 
   private Integer startHour;
 
-  @Valid
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest() {
     super();
@@ -178,7 +162,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering
    * @return adGroupStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "ad_group_statuses", description = "List of values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_statuses")
   public List<AdGroupSummaryStatus> getAdGroupStatuses() {
@@ -234,7 +218,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering. This parameter is not supported for Product Item level reports.
    * @return adStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "ad_statuses", description = "List of values for filtering. This parameter is not supported for Product Item level reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_statuses")
   public List<PinPromotionSummaryStatus> getAdStatuses() {
@@ -262,7 +246,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of attribution types for the conversion report.
    * @return attributionTypes
    */
-  @Valid 
+  
   @Schema(name = "attribution_types", description = "List of attribution types for the conversion report.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribution_types")
   public List<ConversionReportAttributionType> getAttributionTypes() {
@@ -358,7 +342,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.
    * @return campaignObjectiveTypes
    */
-  @Valid @Size(min = 1, max = 7) 
+  @Size(min = 1, max = 7) 
   @Schema(name = "campaign_objective_types", description = "List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_objective_types")
   public List<CampaignObjectiveType> getCampaignObjectiveTypes() {
@@ -386,7 +370,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of status values for filtering
    * @return campaignStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "campaign_statuses", description = "List of status values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_statuses")
   public List<CampaignSummaryStatus> getCampaignStatuses() {
@@ -434,7 +418,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
    * @return columns
    */
-  @Valid 
+  
   @Schema(name = "columns", description = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("columns")
   public List<ReportingColumnAsync> getColumns() {
@@ -502,7 +486,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of advertiser-defined custom conversion event metrics to include in the report
    * @return customConversionEventMetrics
    */
-  @Valid 
+  
   @Schema(name = "custom_conversion_event_metrics", description = "List of advertiser-defined custom conversion event metrics to include in the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_conversion_event_metrics")
   public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
@@ -632,7 +616,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of metrics filters
    * @return metricsFilters
    */
-  @Valid @Size(min = 1) 
+  @Size(min = 1) 
   @Schema(name = "metrics_filters", description = "List of metrics filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metrics_filters")
   public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
@@ -708,7 +692,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering
    * @return productGroupStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "product_group_statuses", description = "List of values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_group_statuses")
   public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
@@ -846,7 +830,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
    * @return targetingTypes
    */
-  @Valid @Size(min = 1, max = 5) 
+  @Size(min = 1, max = 5) 
   @Schema(name = "targeting_types", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_types")
   public List<AdAdsAnalyticsAsyncTargetingTypes> getTargetingTypes() {

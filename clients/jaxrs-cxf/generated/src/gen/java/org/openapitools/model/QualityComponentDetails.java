@@ -34,8 +34,6 @@ public class QualityComponentDetails  {
   */
   @ApiModelProperty(value = "List of issues detected for this event type, if any.")
 
-  @Valid
-
   private List<@Valid QualityComponentIssue> issues = new ArrayList<>();
 
  /**

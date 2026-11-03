@@ -164,16 +164,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!businessRole.IsSet)
-                throw new ArgumentException("Property is required for class BusinessMembershipMember.", nameof(businessRole));
+                throw new JsonException("Property is required for class BusinessMembershipMember: business_role.");
 
             if (!memberId.IsSet)
-                throw new ArgumentException("Property is required for class BusinessMembershipMember.", nameof(memberId));
+                throw new JsonException("Property is required for class BusinessMembershipMember: member_id.");
 
             if (businessRole.IsSet && businessRole.Value == null)
-                throw new ArgumentNullException(nameof(businessRole), "Property is not nullable for class BusinessMembershipMember.");
+                throw new JsonException("Property is not nullable for class BusinessMembershipMember: business_role.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class BusinessMembershipMember.");
+                throw new JsonException("Property is not nullable for class BusinessMembershipMember: member_id.");
 
             return new BusinessMembershipMember(businessRole.Value!.Value!, memberId.Value!);
         }
@@ -184,7 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMembershipMember"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessMembershipMember businessMembershipMember, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -199,12 +198,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessMembershipMember"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessMembershipMember businessMembershipMember, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessMembershipMember.MemberId == null)
-                throw new ArgumentNullException(nameof(businessMembershipMember.MemberId), "Property is required for class BusinessMembershipMember.");
-
             var businessRoleRawValue = BusinessRoleForMembersValueConverter.ToJsonValue(businessMembershipMember.BusinessRole);
             writer.WriteString("business_role", businessRoleRawValue);
 

@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -26,8 +23,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class InviteExceptionResponse(
 
     @Schema(example = "403", description = "Error code associated with the error in performing the action on the invite/request.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("code")
     @get:JsonProperty("code") val code: kotlin.Int? = null,
 
@@ -37,14 +32,10 @@ data class InviteExceptionResponse(
     @get:JsonProperty("invite_or_request_id") val inviteOrRequestId: kotlin.String? = null,
 
     @Schema(example = "You hit the maximum number of pending invites allowed.", description = "Error message associated with the error in performing the action on the invite/request.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("message")
     @get:JsonProperty("message") val message: kotlin.String? = null,
 
     @Schema(example = "[\"businessMember0101\",\"business+member@business.com\"]", description = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("users_or_partner_ids")
     @get:JsonProperty("users_or_partner_ids") val usersOrPartnerIds: kotlin.collections.List<kotlin.String>? = null
 ) {

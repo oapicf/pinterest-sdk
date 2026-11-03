@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **leadFormGet**
 ```swift
-    open class func leadFormGet(leadFormId: String, adAccountId: String, completion: @escaping (_ data: LeadForm?, _ error: Error?) -> Void)
+    open class func leadFormGet(leadFormId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadForm
 ```
 
 Get lead form by id
@@ -29,15 +29,11 @@ let leadFormId = "leadFormId_example" // String | The ID of this lead form
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get lead form by id
-LeadFormsAPI.leadFormGet(leadFormId: leadFormId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadFormsAPI.leadFormGet(leadFormId: leadFormId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **leadFormTestCreate**
 ```swift
-    open class func leadFormTestCreate(adAccountId: String, leadFormId: String, leadFormTestCreate: LeadFormTestCreate, completion: @escaping (_ data: LeadFormTest?, _ error: Error?) -> Void)
+    open class func leadFormTestCreate(adAccountId: String, leadFormId: String, leadFormTestCreate: LeadFormTestCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadFormTest
 ```
 
 Create lead form test data
@@ -82,15 +78,11 @@ let leadFormId = "leadFormId_example" // String | Unique identifier of a lead fo
 let leadFormTestCreate = LeadFormTestCreate(answers: ["answers_example"]) // LeadFormTestCreate | 
 
 // Create lead form test data
-LeadFormsAPI.leadFormTestCreate(adAccountId: adAccountId, leadFormId: leadFormId, leadFormTestCreate: leadFormTestCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadFormsAPI.leadFormTestCreate(adAccountId: adAccountId, leadFormId: leadFormId, leadFormTestCreate: leadFormTestCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -119,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **leadFormsCreate**
 ```swift
-    open class func leadFormsCreate(adAccountId: String, leadFormCreate: [LeadFormCreate], completion: @escaping (_ data: LeadFormsCreate200Response?, _ error: Error?) -> Void)
+    open class func leadFormsCreate(adAccountId: String, leadFormCreate: [LeadFormCreate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadFormsCreate200Response
 ```
 
 Create lead forms
@@ -135,15 +127,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let leadFormCreate = [LeadFormCreate(completionMessage: "completionMessage_example", disclosureLanguage: "disclosureLanguage_example", hasAcceptedTerms: false, name: "name_example", policyLinks: [LeadFormPolicyLink(label: "label_example", link: "link_example")], privacyPolicyLink: "privacyPolicyLink_example", questions: [LeadFormQuestion(customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"], questionType: LeadFormQuestionType())], status: LeadFormStatus())] // [LeadFormCreate] | 
 
 // Create lead forms
-LeadFormsAPI.leadFormsCreate(adAccountId: adAccountId, leadFormCreate: leadFormCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadFormsAPI.leadFormsCreate(adAccountId: adAccountId, leadFormCreate: leadFormCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -171,7 +159,7 @@ Name | Type | Description  | Notes
 
 # **leadFormsList**
 ```swift
-    open class func leadFormsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: LeadFormsList200Response?, _ error: Error?) -> Void)
+    open class func leadFormsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadFormsList200Response
 ```
 
 List lead forms
@@ -189,15 +177,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // List lead forms
-LeadFormsAPI.leadFormsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadFormsAPI.leadFormsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -227,7 +211,7 @@ Name | Type | Description  | Notes
 
 # **leadFormsUpdate**
 ```swift
-    open class func leadFormsUpdate(adAccountId: String, leadFormBatchUpdate: [LeadFormBatchUpdate], completion: @escaping (_ data: LeadFormsCreate200Response?, _ error: Error?) -> Void)
+    open class func leadFormsUpdate(adAccountId: String, leadFormBatchUpdate: [LeadFormBatchUpdate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadFormsCreate200Response
 ```
 
 Update lead forms
@@ -243,15 +227,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let leadFormBatchUpdate = [LeadFormBatchUpdate(completionMessage: "completionMessage_example", disclosureLanguage: "disclosureLanguage_example", hasAcceptedTerms: false, id: "id_example", name: "name_example", policyLinks: [LeadFormPolicyLink(label: "label_example", link: "link_example")], privacyPolicyLink: "privacyPolicyLink_example", questions: [LeadFormQuestion(customQuestionFieldType: LeadFormQuestionFieldType(), customQuestionLabel: "customQuestionLabel_example", customQuestionOptions: ["customQuestionOptions_example"], questionType: LeadFormQuestionType())], status: LeadFormStatus())] // [LeadFormBatchUpdate] | 
 
 // Update lead forms
-LeadFormsAPI.leadFormsUpdate(adAccountId: adAccountId, leadFormBatchUpdate: leadFormBatchUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadFormsAPI.leadFormsUpdate(adAccountId: adAccountId, leadFormBatchUpdate: leadFormBatchUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

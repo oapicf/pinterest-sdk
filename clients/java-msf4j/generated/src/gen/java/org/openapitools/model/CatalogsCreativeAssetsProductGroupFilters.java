@@ -16,15 +16,15 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFiltersAnyOf;
  * Object holding a group of filters for a creative assets product group
  */
 @ApiModel(description = "Object holding a group of filters for a creative assets product group")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFilters   {
   @JsonProperty("any_of")
-  private List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @JsonProperty("all_of")
-  private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsCreativeAssetsProductGroupFilters anyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public CatalogsCreativeAssetsProductGroupFilters anyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -39,15 +39,15 @@ public class CatalogsCreativeAssetsProductGroupFilters   {
    * @return anyOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsCreativeAssetsProductGroupFilters allOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public CatalogsCreativeAssetsProductGroupFilters allOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -62,11 +62,11 @@ public class CatalogsCreativeAssetsProductGroupFilters   {
    * @return allOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

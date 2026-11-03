@@ -18,7 +18,7 @@ import org.openapitools.model.CatalogsHotelMainImage;
 /**
  * CatalogsHotelAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelAttributes   {
   @JsonProperty("address")
   private CatalogsHotelAddress address;
@@ -357,7 +357,7 @@ public class CatalogsHotelAttributes   {
 
   public CatalogsHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
     if (this.neighborhood == null) {
-      this.neighborhood = ;
+      this.neighborhood = new ArrayList<>();
     }
     this.neighborhood.add(neighborhoodItem);
     return this;
@@ -401,7 +401,7 @@ public class CatalogsHotelAttributes   {
 
   public CatalogsHotelAttributes addAdditionalImageLinkItem(String additionalImageLinkItem) {
     if (this.additionalImageLink == null) {
-      this.additionalImageLink = ;
+      this.additionalImageLink = new ArrayList<>();
     }
     this.additionalImageLink.add(additionalImageLinkItem);
     return this;

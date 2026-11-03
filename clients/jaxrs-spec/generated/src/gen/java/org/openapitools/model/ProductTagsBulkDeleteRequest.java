@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request body for bulk deleting product tags from a pin.")
 @JsonTypeName("ProductTagsBulkDeleteRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkDeleteRequest   {
-  private @Valid List<@Valid ProductTagItem> productTags = new ArrayList<>();
+  private List<@Valid ProductTagItem> productTags = new ArrayList<>();
 
   public ProductTagsBulkDeleteRequest() {
   }
@@ -47,7 +47,7 @@ public class ProductTagsBulkDeleteRequest   {
   
   @ApiModelProperty(required = true, value = "List of product tags to delete.")
   @JsonProperty(required = true, value = "product_tags")
-  @NotNull @Valid  @Size(min=1,max=24)public List<@Valid ProductTagItem> getProductTags() {
+  @NotNull  @Size(min=1,max=24)public List<@Valid ProductTagItem> getProductTags() {
     return productTags;
   }
 

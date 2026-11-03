@@ -6,20 +6,3 @@
 */
 #include "AssetGroupType.h"
 
-namespace models {
-
-AssetGroupType::AssetGroupType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

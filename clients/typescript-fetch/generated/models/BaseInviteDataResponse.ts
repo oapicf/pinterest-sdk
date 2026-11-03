@@ -36,26 +36,18 @@ import {
 export interface BaseInviteDataResponse {
     /**
      * Unique identifier of the invite/request.
-     * @type {string}
-     * @memberof BaseInviteDataResponse
      */
     id?: string;
     /**
      * 
-     * @type {InviteDataResponse}
-     * @memberof BaseInviteDataResponse
      */
     inviteData?: InviteDataResponse;
     /**
      * Indicates whether the invite/request was received.
-     * @type {boolean}
-     * @memberof BaseInviteDataResponse
      */
     isReceivedInvite?: boolean;
     /**
      * Metadata for the member/partner that was sent the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof BaseInviteDataResponse
      */
     user?: BusinessAccessUserSummary;
 }

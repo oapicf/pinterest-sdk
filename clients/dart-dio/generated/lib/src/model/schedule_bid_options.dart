@@ -188,3 +188,4 @@ class _$ScheduleBidOptionsSerializer implements PrimitiveSerializer<ScheduleBidO
   }
 }
 
+

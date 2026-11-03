@@ -13,12 +13,12 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilterKeys;
 /**
  * CatalogsCreativeAssetsProductGroupFiltersAnyOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFiltersAnyOf   {
   @JsonProperty("any_of")
-  private List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-  public CatalogsCreativeAssetsProductGroupFiltersAnyOf anyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public CatalogsCreativeAssetsProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -33,11 +33,11 @@ public class CatalogsCreativeAssetsProductGroupFiltersAnyOf   {
    * @return anyOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

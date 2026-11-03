@@ -29,14 +29,10 @@ import {
 export interface PageVisitConversionTagsGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof PageVisitConversionTagsGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<ConversionEventResponse>}
-     * @memberof PageVisitConversionTagsGet200Response
      */
     items: Array<ConversionEventResponse>;
 }

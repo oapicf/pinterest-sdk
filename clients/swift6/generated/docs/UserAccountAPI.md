@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 # **boardsUserFollowsList**
 ```swift
-    open class func boardsUserFollowsList(adAccountId: String? = nil, explicitFollowing: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsList200Response?, _ error: Error?) -> Void)
+    open class func boardsUserFollowsList(adAccountId: String? = nil, explicitFollowing: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardsList200Response
 ```
 
 List following boards
@@ -40,15 +40,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List following boards
-UserAccountAPI.boardsUserFollowsList(adAccountId: adAccountId, explicitFollowing: explicitFollowing, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.boardsUserFollowsList(adAccountId: adAccountId, explicitFollowing: explicitFollowing, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -78,7 +74,7 @@ Name | Type | Description  | Notes
 
 # **followUserUpdate**
 ```swift
-    open class func followUserUpdate(username: String, followUserCreate: FollowUserCreate, completion: @escaping (_ data: FollowUser?, _ error: Error?) -> Void)
+    open class func followUserUpdate(username: String, followUserCreate: FollowUserCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> FollowUser
 ```
 
 Follow user
@@ -94,15 +90,11 @@ let username = "username_example" // String | A valid username
 let followUserCreate = FollowUserCreate(autoFollow: false) // FollowUserCreate | 
 
 // Follow user
-UserAccountAPI.followUserUpdate(username: username, followUserCreate: followUserCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.followUserUpdate(username: username, followUserCreate: followUserCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -130,7 +122,7 @@ Name | Type | Description  | Notes
 
 # **followersList**
 ```swift
-    open class func followersList(bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: FollowersList200Response?, _ error: Error?) -> Void)
+    open class func followersList(bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> FollowersList200Response
 ```
 
 List followers
@@ -146,15 +138,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List followers
-UserAccountAPI.followersList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.followersList(bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -182,7 +170,7 @@ Name | Type | Description  | Notes
 
 # **linkedBusinessAccountsGet**
 ```swift
-    open class func linkedBusinessAccountsGet(completion: @escaping (_ data: [LinkedBusiness]?, _ error: Error?) -> Void)
+    open class func linkedBusinessAccountsGet(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [LinkedBusiness]
 ```
 
 List linked businesses
@@ -196,15 +184,11 @@ import OpenAPIClient
 
 
 // List linked businesses
-UserAccountAPI.linkedBusinessAccountsGet() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.linkedBusinessAccountsGet()
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -228,7 +212,7 @@ This endpoint does not need any parameter.
 
 # **unverifyWebsiteDelete**
 ```swift
-    open class func unverifyWebsiteDelete(website: String, completion: @escaping (_ data: UserWebsite?, _ error: Error?) -> Void)
+    open class func unverifyWebsiteDelete(website: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UserWebsite?
 ```
 
 Unverify website
@@ -243,15 +227,11 @@ import OpenAPIClient
 let website = "website_example" // String | Website with path or domain only
 
 // Unverify website
-UserAccountAPI.unverifyWebsiteDelete(website: website) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.unverifyWebsiteDelete(website: website)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -278,7 +258,7 @@ Name | Type | Description  | Notes
 
 # **userAccountAnalytics**
 ```swift
-    open class func userAccountAnalytics(startDate: Date, endDate: Date, fromClaimedContent: FromClaimedContent_userAccountAnalytics? = nil, pinFormat: PinFormat_userAccountAnalytics? = nil, appTypes: AppTypes_userAccountAnalytics? = nil, contentType: ContentType_userAccountAnalytics? = nil, source: Source_userAccountAnalytics? = nil, metricTypes: [QuerymetrictypesItems]? = nil, splitField: SplitField_userAccountAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: AnalyticsMetricsResponse]?, _ error: Error?) -> Void)
+    open class func userAccountAnalytics(startDate: Date, endDate: Date, fromClaimedContent: FromClaimedContent_userAccountAnalytics? = nil, pinFormat: PinFormat_userAccountAnalytics? = nil, appTypes: AppTypes_userAccountAnalytics? = nil, contentType: ContentType_userAccountAnalytics? = nil, source: Source_userAccountAnalytics? = nil, metricTypes: [QuerymetrictypesItems]? = nil, splitField: SplitField_userAccountAnalytics? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String: AnalyticsMetricsResponse]
 ```
 
 Get user account analytics
@@ -302,15 +282,11 @@ let splitField = "splitField_example" // String | How to split the data into gro
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user account analytics
-UserAccountAPI.userAccountAnalytics(startDate: startDate, endDate: endDate, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, splitField: splitField, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userAccountAnalytics(startDate: startDate, endDate: endDate, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, splitField: splitField, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -346,7 +322,7 @@ Name | Type | Description  | Notes
 
 # **userAccountAnalyticsTopPins**
 ```swift
-    open class func userAccountAnalyticsTopPins(startDate: Date, endDate: Date, sortBy: TopPinsSortBy, fromClaimedContent: FromClaimedContent_userAccountAnalyticsTopPins? = nil, pinFormat: PinFormat_userAccountAnalyticsTopPins? = nil, appTypes: AppTypes_userAccountAnalyticsTopPins? = nil, contentType: ContentType_userAccountAnalyticsTopPins? = nil, source: Source_userAccountAnalyticsTopPins? = nil, metricTypes: [QuerymetrictypesItems]? = nil, numOfPins: Int? = nil, createdInLastNDays: CreatedInLastNDays_userAccountAnalyticsTopPins? = nil, adAccountId: String? = nil, completion: @escaping (_ data: TopPinsAnalyticsResponse?, _ error: Error?) -> Void)
+    open class func userAccountAnalyticsTopPins(startDate: Date, endDate: Date, sortBy: TopPinsSortBy, fromClaimedContent: FromClaimedContent_userAccountAnalyticsTopPins? = nil, pinFormat: PinFormat_userAccountAnalyticsTopPins? = nil, appTypes: AppTypes_userAccountAnalyticsTopPins? = nil, contentType: ContentType_userAccountAnalyticsTopPins? = nil, source: Source_userAccountAnalyticsTopPins? = nil, metricTypes: [QuerymetrictypesItems]? = nil, numOfPins: Int? = nil, createdInLastNDays: CreatedInLastNDays_userAccountAnalyticsTopPins? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TopPinsAnalyticsResponse
 ```
 
 Get user account top pins analytics
@@ -372,15 +348,11 @@ let createdInLastNDays = 987 // Double | Get metrics for pins created in the las
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user account top pins analytics
-UserAccountAPI.userAccountAnalyticsTopPins(startDate: startDate, endDate: endDate, sortBy: sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userAccountAnalyticsTopPins(startDate: startDate, endDate: endDate, sortBy: sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -418,7 +390,7 @@ Name | Type | Description  | Notes
 
 # **userAccountAnalyticsTopVideoPins**
 ```swift
-    open class func userAccountAnalyticsTopVideoPins(startDate: Date, endDate: Date, sortBy: TopVideoPinsSortBy, fromClaimedContent: FromClaimedContent_userAccountAnalyticsTopVideoPins? = nil, pinFormat: PinFormat_userAccountAnalyticsTopVideoPins? = nil, appTypes: AppTypes_userAccountAnalyticsTopVideoPins? = nil, contentType: ContentType_userAccountAnalyticsTopVideoPins? = nil, source: Source_userAccountAnalyticsTopVideoPins? = nil, metricTypes: [QueryvideopinmetrictypesItems]? = nil, numOfPins: Int? = nil, createdInLastNDays: CreatedInLastNDays_userAccountAnalyticsTopVideoPins? = nil, adAccountId: String? = nil, completion: @escaping (_ data: TopVideoPinsAnalyticsResponse?, _ error: Error?) -> Void)
+    open class func userAccountAnalyticsTopVideoPins(startDate: Date, endDate: Date, sortBy: TopVideoPinsSortBy, fromClaimedContent: FromClaimedContent_userAccountAnalyticsTopVideoPins? = nil, pinFormat: PinFormat_userAccountAnalyticsTopVideoPins? = nil, appTypes: AppTypes_userAccountAnalyticsTopVideoPins? = nil, contentType: ContentType_userAccountAnalyticsTopVideoPins? = nil, source: Source_userAccountAnalyticsTopVideoPins? = nil, metricTypes: [QueryvideopinmetrictypesItems]? = nil, numOfPins: Int? = nil, createdInLastNDays: CreatedInLastNDays_userAccountAnalyticsTopVideoPins? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TopVideoPinsAnalyticsResponse
 ```
 
 Get user account top video pins analytics
@@ -444,15 +416,11 @@ let createdInLastNDays = 987 // Double | Get metrics for pins created in the las
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user account top video pins analytics
-UserAccountAPI.userAccountAnalyticsTopVideoPins(startDate: startDate, endDate: endDate, sortBy: sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userAccountAnalyticsTopVideoPins(startDate: startDate, endDate: endDate, sortBy: sortBy, fromClaimedContent: fromClaimedContent, pinFormat: pinFormat, appTypes: appTypes, contentType: contentType, source: source, metricTypes: metricTypes, numOfPins: numOfPins, createdInLastNDays: createdInLastNDays, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -490,7 +458,7 @@ Name | Type | Description  | Notes
 
 # **userAccountFollowedInterests**
 ```swift
-    open class func userAccountFollowedInterests(username: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: UserAccountFollowedInterests200Response?, _ error: Error?) -> Void)
+    open class func userAccountFollowedInterests(username: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UserAccountFollowedInterests200Response
 ```
 
 List following interests
@@ -507,15 +475,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List following interests
-UserAccountAPI.userAccountFollowedInterests(username: username, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userAccountFollowedInterests(username: username, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -544,7 +508,7 @@ Name | Type | Description  | Notes
 
 # **userAccountGet**
 ```swift
-    open class func userAccountGet(adAccountId: String? = nil, completion: @escaping (_ data: Account?, _ error: Error?) -> Void)
+    open class func userAccountGet(adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Account
 ```
 
 Get user account
@@ -559,15 +523,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user account
-UserAccountAPI.userAccountGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userAccountGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -594,7 +554,7 @@ Name | Type | Description  | Notes
 
 # **userFollowingGet**
 ```swift
-    open class func userFollowingGet(adAccountId: String? = nil, explicitFollowing: Bool? = nil, feedType: UserFollowingFeedType? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: FollowersList200Response?, _ error: Error?) -> Void)
+    open class func userFollowingGet(adAccountId: String? = nil, explicitFollowing: Bool? = nil, feedType: UserFollowingFeedType? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> FollowersList200Response
 ```
 
 List following
@@ -613,15 +573,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List following
-UserAccountAPI.userFollowingGet(adAccountId: adAccountId, explicitFollowing: explicitFollowing, feedType: feedType, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userFollowingGet(adAccountId: adAccountId, explicitFollowing: explicitFollowing, feedType: feedType, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -652,7 +608,7 @@ Name | Type | Description  | Notes
 
 # **userWebsitesGet**
 ```swift
-    open class func userWebsitesGet(bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: UserWebsitesGet200Response?, _ error: Error?) -> Void)
+    open class func userWebsitesGet(bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UserWebsitesGet200Response
 ```
 
 Get user websites
@@ -668,15 +624,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get user websites
-UserAccountAPI.userWebsitesGet(bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.userWebsitesGet(bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -704,7 +656,7 @@ Name | Type | Description  | Notes
 
 # **verifyWebsiteUpdate**
 ```swift
-    open class func verifyWebsiteUpdate(userWebsiteCreate: UserWebsiteCreate, adAccountId: String? = nil, completion: @escaping (_ data: UserWebsite?, _ error: Error?) -> Void)
+    open class func verifyWebsiteUpdate(userWebsiteCreate: UserWebsiteCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UserWebsite
 ```
 
 Verify website
@@ -720,15 +672,11 @@ let userWebsiteCreate = UserWebsiteCreate(verificationMethod: WebsiteVerificatio
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Verify website
-UserAccountAPI.verifyWebsiteUpdate(userWebsiteCreate: userWebsiteCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.verifyWebsiteUpdate(userWebsiteCreate: userWebsiteCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -756,7 +704,7 @@ Name | Type | Description  | Notes
 
 # **websiteVerificationGet**
 ```swift
-    open class func websiteVerificationGet(adAccountId: String? = nil, completion: @escaping (_ data: UserWebsiteVerification?, _ error: Error?) -> Void)
+    open class func websiteVerificationGet(adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UserWebsiteVerification
 ```
 
 Get user verification code for website claiming
@@ -771,15 +719,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get user verification code for website claiming
-UserAccountAPI.websiteVerificationGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await UserAccountAPI.websiteVerificationGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

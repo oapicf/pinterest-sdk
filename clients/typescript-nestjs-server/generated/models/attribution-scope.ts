@@ -6,7 +6,7 @@
 export const AttributionScope = {
     View: 'view',
     Engagement: 'engagement',
-    Click: 'click'
+    Click: 'click',
 } as const;
 export type AttributionScope = typeof AttributionScope[keyof typeof AttributionScope];
 

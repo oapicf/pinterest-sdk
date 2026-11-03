@@ -26,28 +26,28 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class TrendsEditorial(
 
     @Schema(required = true, description = "URL of the editorial board")
-    @param:JsonProperty("board_url")
+    @param:JsonProperty("board_url", required = true)
     @get:JsonProperty("board_url", required = true) val boardUrl: kotlin.String,
 
     @Schema(required = true, description = "Description of the editorial article")
-    @param:JsonProperty("description")
+    @param:JsonProperty("description", required = true)
     @get:JsonProperty("description", required = true) val description: kotlin.String,
 
     @Schema(required = true, description = "List of interests related to the editorial article")
-    @param:JsonProperty("interests")
+    @param:JsonProperty("interests", required = true)
     @get:JsonProperty("interests", required = true) val interests: kotlin.collections.List<kotlin.String>,
 
     @Schema(required = true, description = "URL of the pins related to the editorial article")
-    @param:JsonProperty("pins_url")
+    @param:JsonProperty("pins_url", required = true)
     @get:JsonProperty("pins_url", required = true) val pinsUrl: kotlin.collections.List<kotlin.String>,
 
     @field:Valid
     @Schema(required = true, description = "List of keywords related to the editorial article")
-    @param:JsonProperty("related_keywords")
+    @param:JsonProperty("related_keywords", required = true)
     @get:JsonProperty("related_keywords", required = true) val relatedKeywords: kotlin.collections.List<KeywordInfo>,
 
     @Schema(required = true, description = "Title of the editorial article")
-    @param:JsonProperty("title")
+    @param:JsonProperty("title", required = true)
     @get:JsonProperty("title", required = true) val title: kotlin.String
 ) {
 

@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class ItemDeleteBatchRecord.");
+                throw new JsonException("Property is not nullable for class ItemDeleteBatchRecord: item_id.");
 
             return new ItemDeleteBatchRecord(itemId);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemDeleteBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemDeleteBatchRecord itemDeleteBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemDeleteBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemDeleteBatchRecord itemDeleteBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemDeleteBatchRecord.ItemIdOption.IsSet && itemDeleteBatchRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(itemDeleteBatchRecord.ItemId), "Property is required for class ItemDeleteBatchRecord.");
+                throw new JsonException("Cannot write null property ItemDeleteBatchRecord.ItemId to non-nullable JSON property 'item_id'.");
 
             if (itemDeleteBatchRecord.ItemIdOption.IsSet)
                 writer.WriteString("item_id", itemDeleteBatchRecord.ItemId);

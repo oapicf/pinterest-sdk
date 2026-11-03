@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.TargetingSpecAgeBucket
 import org.openapitools.model.TargetingSpecAppType
 import org.openapitools.model.TargetingSpecGender
@@ -70,14 +67,10 @@ data class TargetingSpec(
     @get:JsonProperty("GEO") val GEO: kotlin.collections.List<kotlin.String>? = null,
 
     @Schema(description = "Region codes or postal codes to exclude from the targeting inclusion area.<br /><br /> See <code>GEO</code> parameter in this targeting spec for rules, syntax, and other information.<br />")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("GEO_EXCLUDE")
     @get:JsonProperty("GEO_EXCLUDE") val GEO_EXCLUDE: kotlin.collections.List<kotlin.String>? = null,
 
     @Schema(description = "Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("INTEREST")
     @get:JsonProperty("INTEREST") val INTEREST: kotlin.collections.List<kotlin.String>? = null,
 
@@ -90,22 +83,16 @@ data class TargetingSpec(
     @get:JsonProperty("LOCATION") val LOCATION: kotlin.collections.List<kotlin.String>? = null,
 
     @Schema(description = "Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.<br /><br /> See <code>LOCATION</code> parameter in this targeting spec for rules, syntax, and other information.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("LOCATION_EXCLUDE")
     @get:JsonProperty("LOCATION_EXCLUDE") val LOCATION_EXCLUDE: kotlin.collections.List<kotlin.String>? = null,
 
     @get:Pattern(regexp="^\\d+\\+?$")
     @Schema(example = "65+", description = "Maximum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\", \"65+\". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("MAXIMUM_AGE")
     @get:JsonProperty("MAXIMUM_AGE") val MAXIMUM_AGE: kotlin.String? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "18", description = "Minimum age to target (inclusive). Values: \"18\", \"19\", ..., \"65\". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("MINIMUM_AGE")
     @get:JsonProperty("MINIMUM_AGE") val MINIMUM_AGE: kotlin.String? = null,
 
@@ -128,12 +115,12 @@ data class TargetingSpec(
         CHOOSE_YOUR_OWN("CHOOSE_YOUR_OWN"),
         FIND_NEW_CUSTOMERS("FIND_NEW_CUSTOMERS"),
         RECONNECT_WITH_USERS("RECONNECT_WITH_USERS");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): TARGETINGSTRATEGY {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TARGETINGSTRATEGY'")
             }
         }

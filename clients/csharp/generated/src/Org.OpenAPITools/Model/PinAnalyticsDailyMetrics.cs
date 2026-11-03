@@ -181,13 +181,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dataStatus.IsSet && dataStatus.Value == null)
-                throw new ArgumentNullException(nameof(dataStatus), "Property is not nullable for class PinAnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsDailyMetrics: data_status.");
 
             if (date.IsSet && date.Value == null)
-                throw new ArgumentNullException(nameof(date), "Property is not nullable for class PinAnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsDailyMetrics: date.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class PinAnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsDailyMetrics: metrics.");
 
             return new PinAnalyticsDailyMetrics(dataStatus, date, metrics);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinAnalyticsDailyMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinAnalyticsDailyMetrics pinAnalyticsDailyMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,14 +212,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinAnalyticsDailyMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinAnalyticsDailyMetrics pinAnalyticsDailyMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (pinAnalyticsDailyMetrics.DataStatusOption.IsSet && pinAnalyticsDailyMetrics.DataStatus == null)
+                throw new JsonException("Cannot write null property PinAnalyticsDailyMetrics.DataStatus to non-nullable JSON property 'data_status'.");
+
             if (pinAnalyticsDailyMetrics.DateOption.IsSet && pinAnalyticsDailyMetrics.Date == null)
-                throw new ArgumentNullException(nameof(pinAnalyticsDailyMetrics.Date), "Property is required for class PinAnalyticsDailyMetrics.");
+                throw new JsonException("Cannot write null property PinAnalyticsDailyMetrics.Date to non-nullable JSON property 'date'.");
 
             if (pinAnalyticsDailyMetrics.MetricsOption.IsSet && pinAnalyticsDailyMetrics.Metrics == null)
-                throw new ArgumentNullException(nameof(pinAnalyticsDailyMetrics.Metrics), "Property is required for class PinAnalyticsDailyMetrics.");
+                throw new JsonException("Cannot write null property PinAnalyticsDailyMetrics.Metrics to non-nullable JSON property 'metrics'.");
 
             if (pinAnalyticsDailyMetrics.DataStatusOption.IsSet)
             {

@@ -157,6 +157,7 @@ class _$LocalInventoryUpdateOperationSerializer implements PrimitiveSerializer<L
   }
 }
 
+
 class LocalInventoryUpdateOperationOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPDATE')

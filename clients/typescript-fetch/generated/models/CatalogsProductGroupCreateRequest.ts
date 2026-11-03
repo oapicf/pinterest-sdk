@@ -29,33 +29,23 @@ import {
 export interface CatalogsProductGroupCreateRequest {
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupCreateRequest
      */
     description?: string | null;
     /**
      * Catalog Feed id pertaining to the catalog product group.
-     * @type {string}
-     * @memberof CatalogsProductGroupCreateRequest
      */
     feedId: string;
     /**
      * 
-     * @type {CatalogsProductGroupFiltersRequest}
-     * @memberof CatalogsProductGroupCreateRequest
      */
     filters: CatalogsProductGroupFiltersRequest;
     /**
      * boolean indicator of whether the product group is being featured or not
-     * @type {boolean}
-     * @memberof CatalogsProductGroupCreateRequest
      * @deprecated
      */
     isFeatured?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupCreateRequest
      */
     name: string;
 }

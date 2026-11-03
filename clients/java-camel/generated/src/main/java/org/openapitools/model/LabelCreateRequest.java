@@ -22,10 +22,9 @@ import jakarta.annotation.Generated;
  * LabelCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelCreateRequest {
 
-  @Valid
   private List<@Valid LabelCreateItem> labels = new ArrayList<>();
 
   public LabelCreateRequest() {
@@ -56,7 +55,7 @@ public class LabelCreateRequest {
    * Labels that you are applying to the campaign.
    * @return labels
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "labels", description = "Labels that you are applying to the campaign.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("labels")
   public List<@Valid LabelCreateItem> getLabels() {

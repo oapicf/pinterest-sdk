@@ -70,11 +70,5 @@ src/Settings.hs
 src/Settings/StaticFiles.hs
 stack.yaml
 static/.gitkeep
-test/Handler/CatalogSupplementalSpec.hs
-test/Handler/ConversionDeletionRequestsSpec.hs
-test/Handler/CustomerSegmentSpec.hs
-test/Handler/ProductTagsSpec.hs
-test/Handler/SchedulesSpec.hs
-test/Handler/TrendsSpec.hs
 test/Spec.hs
 test/TestImport.hs

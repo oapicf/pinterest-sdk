@@ -18,7 +18,7 @@ import BoardOwner from './BoardOwner';
 /**
  * The BoardBase model module.
  * @module model/BoardBase
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BoardBase {
     /**

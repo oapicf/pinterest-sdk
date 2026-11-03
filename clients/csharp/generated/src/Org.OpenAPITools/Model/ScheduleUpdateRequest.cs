@@ -327,37 +327,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleUpdateRequest.", nameof(id));
+                throw new JsonException("Property is required for class ScheduleUpdateRequest: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: id.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: entity_id.");
 
             if (entityType.IsSet && entityType.Value == null)
-                throw new ArgumentNullException(nameof(entityType), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: entity_type.");
 
             if (deltaValue.IsSet && deltaValue.Value == null)
-                throw new ArgumentNullException(nameof(deltaValue), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: delta_value.");
 
             if (endTimestamp.IsSet && endTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(endTimestamp), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: end_timestamp.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: name.");
 
             if (scheduleAction.IsSet && scheduleAction.Value == null)
-                throw new ArgumentNullException(nameof(scheduleAction), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: schedule_action.");
 
             if (scheduleStatus.IsSet && scheduleStatus.Value == null)
-                throw new ArgumentNullException(nameof(scheduleStatus), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: schedule_status.");
 
             if (scheduleType.IsSet && scheduleType.Value == null)
-                throw new ArgumentNullException(nameof(scheduleType), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: schedule_type.");
 
             if (startTimestamp.IsSet && startTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(startTimestamp), "Property is not nullable for class ScheduleUpdateRequest.");
+                throw new JsonException("Property is not nullable for class ScheduleUpdateRequest: start_timestamp.");
 
             return new ScheduleUpdateRequest(id.Value!, entityId, entityType, deltaValue, endTimestamp, name, scheduleAction, scheduleStatus, scheduleType, startTimestamp);
         }
@@ -368,7 +368,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleUpdateRequest scheduleUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -383,23 +382,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleUpdateRequest scheduleUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (scheduleUpdateRequest.Id == null)
-                throw new ArgumentNullException(nameof(scheduleUpdateRequest.Id), "Property is required for class ScheduleUpdateRequest.");
-
             if (scheduleUpdateRequest.EntityIdOption.IsSet && scheduleUpdateRequest.EntityId == null)
-                throw new ArgumentNullException(nameof(scheduleUpdateRequest.EntityId), "Property is required for class ScheduleUpdateRequest.");
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.EntityId to non-nullable JSON property 'entity_id'.");
 
             if (scheduleUpdateRequest.EntityTypeOption.IsSet && scheduleUpdateRequest.EntityType == null)
-                throw new ArgumentNullException(nameof(scheduleUpdateRequest.EntityType), "Property is required for class ScheduleUpdateRequest.");
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.EntityType to non-nullable JSON property 'entity_type'.");
 
             if (scheduleUpdateRequest.DeltaValueOption.IsSet && scheduleUpdateRequest.DeltaValue == null)
-                throw new ArgumentNullException(nameof(scheduleUpdateRequest.DeltaValue), "Property is required for class ScheduleUpdateRequest.");
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.DeltaValue to non-nullable JSON property 'delta_value'.");
+
+            if (scheduleUpdateRequest.EndTimestampOption.IsSet && scheduleUpdateRequest.EndTimestamp == null)
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.EndTimestamp to non-nullable JSON property 'end_timestamp'.");
 
             if (scheduleUpdateRequest.NameOption.IsSet && scheduleUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(scheduleUpdateRequest.Name), "Property is required for class ScheduleUpdateRequest.");
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.Name to non-nullable JSON property 'name'.");
+
+            if (scheduleUpdateRequest.ScheduleActionOption.IsSet && scheduleUpdateRequest.ScheduleAction == null)
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.ScheduleAction to non-nullable JSON property 'schedule_action'.");
+
+            if (scheduleUpdateRequest.ScheduleStatusOption.IsSet && scheduleUpdateRequest.ScheduleStatus == null)
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.ScheduleStatus to non-nullable JSON property 'schedule_status'.");
+
+            if (scheduleUpdateRequest.ScheduleTypeOption.IsSet && scheduleUpdateRequest.ScheduleType == null)
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.ScheduleType to non-nullable JSON property 'schedule_type'.");
+
+            if (scheduleUpdateRequest.StartTimestampOption.IsSet && scheduleUpdateRequest.StartTimestamp == null)
+                throw new JsonException("Cannot write null property ScheduleUpdateRequest.StartTimestamp to non-nullable JSON property 'start_timestamp'.");
 
             writer.WriteString("id", scheduleUpdateRequest.Id);
 

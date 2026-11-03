@@ -283,10 +283,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (active.IsSet && active.Value == null)
-                throw new ArgumentNullException(nameof(active), "Property is not nullable for class AdsCreditDiscountsResponse.");
+                throw new JsonException("Property is not nullable for class AdsCreditDiscountsResponse: active.");
 
             if (advertiserId.IsSet && advertiserId.Value == null)
-                throw new ArgumentNullException(nameof(advertiserId), "Property is not nullable for class AdsCreditDiscountsResponse.");
+                throw new JsonException("Property is not nullable for class AdsCreditDiscountsResponse: advertiser_id.");
 
             return new AdsCreditDiscountsResponse(active, advertiserId, discountCurrency, discountInMicroCurrency, discountType, remainingDiscountInMicroCurrency, title);
         }
@@ -297,7 +297,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditDiscountsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsCreditDiscountsResponse adsCreditDiscountsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -312,11 +311,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsCreditDiscountsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsCreditDiscountsResponse adsCreditDiscountsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adsCreditDiscountsResponse.ActiveOption.IsSet && adsCreditDiscountsResponse.Active == null)
+                throw new JsonException("Cannot write null property AdsCreditDiscountsResponse.Active to non-nullable JSON property 'active'.");
+
             if (adsCreditDiscountsResponse.AdvertiserIdOption.IsSet && adsCreditDiscountsResponse.AdvertiserId == null)
-                throw new ArgumentNullException(nameof(adsCreditDiscountsResponse.AdvertiserId), "Property is required for class AdsCreditDiscountsResponse.");
+                throw new JsonException("Cannot write null property AdsCreditDiscountsResponse.AdvertiserId to non-nullable JSON property 'advertiser_id'.");
 
             if (adsCreditDiscountsResponse.ActiveOption.IsSet)
                 writer.WriteBoolean("active", adsCreditDiscountsResponse.ActiveOption.Value!.Value);

@@ -130,7 +130,7 @@ public class PinsApiHandler {
         PinCreate pinCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<PinCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter pinCreate is {}", pinCreate);
+        logger.debug("Parameter pinCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.pinsCreate(pinCreate, adAccountId)
@@ -249,7 +249,7 @@ public class PinsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter pinId is {}", pinId);
-        logger.debug("Parameter pinsSaveRequestCreate is {}", pinsSaveRequestCreate);
+        logger.debug("Parameter pinsSaveRequestCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.pinsSave(pinId, pinsSaveRequestCreate, adAccountId)
@@ -276,7 +276,7 @@ public class PinsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter pinId is {}", pinId);
-        logger.debug("Parameter pinUpdate is {}", pinUpdate);
+        logger.debug("Parameter pinUpdate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.pinsUpdate(pinId, pinUpdate, adAccountId)

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AssetIdWithPermissions {
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof AssetIdWithPermissions
      */
     id?: string;
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof AssetIdWithPermissions
      */
     permissions?: Array<string>;
 }

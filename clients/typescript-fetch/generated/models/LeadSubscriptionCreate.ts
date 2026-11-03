@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface LeadSubscriptionCreate {
     /**
      * Lead form ID.
-     * @type {string}
-     * @memberof LeadSubscriptionCreate
      */
     leadFormId?: string;
     /**
      * Standard HTTPS webhook URL.
-     * @type {string}
-     * @memberof LeadSubscriptionCreate
      */
     webhookUrl: string;
 }

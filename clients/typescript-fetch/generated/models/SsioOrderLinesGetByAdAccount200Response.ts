@@ -29,14 +29,10 @@ import {
 export interface SsioOrderLinesGetByAdAccount200Response {
     /**
      * 
-     * @type {string}
-     * @memberof SsioOrderLinesGetByAdAccount200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<SSIOOrderLine>}
-     * @memberof SsioOrderLinesGetByAdAccount200Response
      */
     items: Array<SSIOOrderLine>;
 }

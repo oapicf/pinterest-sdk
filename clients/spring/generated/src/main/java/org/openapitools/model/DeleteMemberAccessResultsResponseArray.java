@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,10 +23,9 @@ import jakarta.annotation.Generated;
  * DeleteMemberAccessResultsResponseArray
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteMemberAccessResultsResponseArray {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid DeleteMemberAccessResult> items = new ArrayList<>();
 
   public DeleteMemberAccessResultsResponseArray items(List<@Valid DeleteMemberAccessResult> items) {
@@ -47,7 +45,7 @@ public class DeleteMemberAccessResultsResponseArray {
    * List of member asset permissions that were deleted.
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", description = "List of member asset permissions that were deleted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
   public List<@Valid DeleteMemberAccessResult> getItems() {

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AdsAnalyticsFilterOperator
-{
-public:
-
-    AdsAnalyticsFilterOperator();
-    virtual ~AdsAnalyticsFilterOperator() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdsAnalyticsFilterOperator,
-        )
-
-private:
+enum class AdsAnalyticsFilterOperator {
+    
+    LESS_THAN,
+    
+    GREATER_THAN
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdsAnalyticsFilterOperator& value)
+{
+    switch (value)
+    {
+        
+        case AdsAnalyticsFilterOperator::LESS_THAN: j = "LESS_THAN"; break;
+        
+        case AdsAnalyticsFilterOperator::GREATER_THAN: j = "GREATER_THAN"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsFilterOperator", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdsAnalyticsFilterOperator& value)
+{
+    
+    if (j == "LESS_THAN")
+    {
+        value = AdsAnalyticsFilterOperator::LESS_THAN;
+        return;
+    }
+    
+    if (j == "GREATER_THAN")
+    {
+        value = AdsAnalyticsFilterOperator::GREATER_THAN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsFilterOperator", &j);
+}
 
 } // namespace models
 

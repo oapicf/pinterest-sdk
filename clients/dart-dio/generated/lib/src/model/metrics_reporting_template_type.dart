@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'metrics_reporting_template_type.g.dart';
 
+/// Reporting template type
 class MetricsReportingTemplateType extends EnumClass {
 
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'UNSPECIFIED')
   static const MetricsReportingTemplateType UNSPECIFIED = _$UNSPECIFIED;
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'BULK')
   static const MetricsReportingTemplateType BULK = _$BULK;
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'OVERVIEW')
   static const MetricsReportingTemplateType OVERVIEW = _$OVERVIEW;
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'TABLE')
   static const MetricsReportingTemplateType TABLE = _$TABLE;
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'MMM')
   static const MetricsReportingTemplateType MMM = _$MMM;
-  /// Reporting template type
   @BuiltValueEnumConst(wireName: r'BRAND_CATEGORY')
   static const MetricsReportingTemplateType BRAND_CATEGORY = _$BRAND_CATEGORY;
 

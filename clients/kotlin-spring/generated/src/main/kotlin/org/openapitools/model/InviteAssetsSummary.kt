@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.InviteAssetsSummaryItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -26,15 +23,11 @@ data class InviteAssetsSummary(
 
     @field:Valid
     @Schema(description = "List of ad account IDs and respective permission levels that will be assigned.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_accounts")
     @get:JsonProperty("ad_accounts") val adAccounts: kotlin.collections.List<InviteAssetsSummaryItem>? = null,
 
     @field:Valid
     @Schema(description = "List of profile IDs and respective permission levels that will be assigned.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("profiles")
     @get:JsonProperty("profiles") val profiles: kotlin.collections.List<InviteAssetsSummaryItem>? = null
 ) {

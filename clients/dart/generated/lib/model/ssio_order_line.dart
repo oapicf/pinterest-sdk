@@ -215,7 +215,7 @@ class SSIOOrderLine {
       json[r'currency_info'] = null;
     }
     if (this.endDate != null) {
-      json[r'end_date'] = _dateFormatter.format(this.endDate!.toUtc());
+      json[r'end_date'] = _dateFormatter.format(this.endDate!);
     } else {
       json[r'end_date'] = null;
     }
@@ -270,7 +270,7 @@ class SSIOOrderLine {
       json[r'salesforce_order_line_id'] = null;
     }
     if (this.startDate != null) {
-      json[r'start_date'] = _dateFormatter.format(this.startDate!.toUtc());
+      json[r'start_date'] = _dateFormatter.format(this.startDate!);
     } else {
       json[r'start_date'] = null;
     }

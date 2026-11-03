@@ -17,7 +17,7 @@ import BulkReportingJobStatus from './BulkReportingJobStatus';
 /**
  * The MMMReport model module.
  * @module model/MMMReport
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class MMMReport {
     /**

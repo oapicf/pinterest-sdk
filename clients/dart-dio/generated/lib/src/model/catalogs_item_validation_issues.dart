@@ -157,3 +157,4 @@ class _$CatalogsItemValidationIssuesSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

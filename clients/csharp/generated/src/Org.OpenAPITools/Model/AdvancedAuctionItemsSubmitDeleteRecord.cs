@@ -237,7 +237,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<AdvancedAuctionItemsSubmitDeleteRecord.OperationEnum?>(AdvancedAuctionItemsSubmitDeleteRecord.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                AdvancedAuctionItemsSubmitDeleteRecord.OperationEnum? operationValue = AdvancedAuctionItemsSubmitDeleteRecord.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<AdvancedAuctionItemsSubmitDeleteRecord.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "errors":
                             errors = new Option<List<AdvancedAuctionOperationError>?>(JsonSerializer.Deserialize<List<AdvancedAuctionOperationError>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -249,31 +254,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.", nameof(country));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord: country.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.", nameof(itemId));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord: item_id.");
 
             if (!language.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.", nameof(language));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord: language.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.", nameof(operation));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsSubmitDeleteRecord: operation.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord: country.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord: item_id.");
 
             if (language.IsSet && language.Value == null)
-                throw new ArgumentNullException(nameof(language), "Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord: language.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord: operation.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsSubmitDeleteRecord: errors.");
 
             return new AdvancedAuctionItemsSubmitDeleteRecord(country.Value!.Value!, itemId.Value!, language.Value!.Value!, operation.Value!.Value!, errors);
         }
@@ -284,7 +289,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsSubmitDeleteRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -299,14 +303,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsSubmitDeleteRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionItemsSubmitDeleteRecord advancedAuctionItemsSubmitDeleteRecord, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advancedAuctionItemsSubmitDeleteRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsSubmitDeleteRecord.ItemId), "Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.");
-
             if (advancedAuctionItemsSubmitDeleteRecord.ErrorsOption.IsSet && advancedAuctionItemsSubmitDeleteRecord.Errors == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsSubmitDeleteRecord.Errors), "Property is required for class AdvancedAuctionItemsSubmitDeleteRecord.");
+                throw new JsonException("Cannot write null property AdvancedAuctionItemsSubmitDeleteRecord.Errors to non-nullable JSON property 'errors'.");
 
             var countryRawValue = CountryValueConverter.ToJsonValue(advancedAuctionItemsSubmitDeleteRecord.Country);
             writer.WriteString("country", countryRawValue);

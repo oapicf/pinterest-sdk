@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface DynamicTitlesDownloadCSV {
     /**
      * Pre-signed S3 URL to download the CSV file.
-     * @type {string}
-     * @memberof DynamicTitlesDownloadCSV
      */
     downloadUrl?: string;
 }

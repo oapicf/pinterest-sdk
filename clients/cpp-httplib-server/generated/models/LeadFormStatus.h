@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class LeadFormStatus
-{
-public:
-
-    LeadFormStatus();
-    virtual ~LeadFormStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LeadFormStatus,
-        )
-
-private:
+enum class LeadFormStatus {
+    
+    DRAFT,
+    
+    ACTIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const LeadFormStatus& value)
+{
+    switch (value)
+    {
+        
+        case LeadFormStatus::DRAFT: j = "DRAFT"; break;
+        
+        case LeadFormStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LeadFormStatus& value)
+{
+    
+    if (j == "DRAFT")
+    {
+        value = LeadFormStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "ACTIVE")
+    {
+        value = LeadFormStatus::ACTIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LeadFormStatus", &j);
+}
 
 } // namespace models
 

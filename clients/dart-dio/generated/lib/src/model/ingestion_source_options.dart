@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'ingestion_source_options.g.dart';
 
+/// List of ingestion sources for a conversion event.
 class IngestionSourceOptions extends EnumClass {
 
-  /// List of ingestion sources for a conversion event.
   @BuiltValueEnumConst(wireName: r'TAG')
   static const IngestionSourceOptions TAG = _$TAG;
-  /// List of ingestion sources for a conversion event.
   @BuiltValueEnumConst(wireName: r'MMP')
   static const IngestionSourceOptions MMP = _$MMP;
-  /// List of ingestion sources for a conversion event.
   @BuiltValueEnumConst(wireName: r'FILE_UPLOAD')
   static const IngestionSourceOptions FILE_UPLOAD = _$FILE_UPLOAD;
-  /// List of ingestion sources for a conversion event.
   @BuiltValueEnumConst(wireName: r'CONVERSIONS_API')
   static const IngestionSourceOptions CONVERSIONS_API = _$CONVERSIONS_API;
-  /// List of ingestion sources for a conversion event.
   @BuiltValueEnumConst(wireName: r'NATIVE')
   static const IngestionSourceOptions NATIVE = _$NATIVE;
 

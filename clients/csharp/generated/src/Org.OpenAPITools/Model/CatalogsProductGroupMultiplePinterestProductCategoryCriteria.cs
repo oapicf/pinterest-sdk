@@ -153,13 +153,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria.", nameof(values));
+                throw new JsonException("Property is required for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria: values.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria: values.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria: negated.");
 
             return new CatalogsProductGroupMultiplePinterestProductCategoryCriteria(values.Value!, negated);
         }
@@ -170,7 +170,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupMultiplePinterestProductCategoryCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupMultiplePinterestProductCategoryCriteria catalogsProductGroupMultiplePinterestProductCategoryCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -185,11 +184,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupMultiplePinterestProductCategoryCriteria"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupMultiplePinterestProductCategoryCriteria catalogsProductGroupMultiplePinterestProductCategoryCriteria, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupMultiplePinterestProductCategoryCriteria.Values == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupMultiplePinterestProductCategoryCriteria.Values), "Property is required for class CatalogsProductGroupMultiplePinterestProductCategoryCriteria.");
+            if (catalogsProductGroupMultiplePinterestProductCategoryCriteria.NegatedOption.IsSet && catalogsProductGroupMultiplePinterestProductCategoryCriteria.Negated == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupMultiplePinterestProductCategoryCriteria.Negated to non-nullable JSON property 'negated'.");
 
             writer.WritePropertyName("values");
             JsonSerializer.Serialize(writer, catalogsProductGroupMultiplePinterestProductCategoryCriteria.Values, jsonSerializerOptions);

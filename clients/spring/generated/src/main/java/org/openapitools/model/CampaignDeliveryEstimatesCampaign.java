@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,20 +27,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignDeliveryEstimatesCampaign", description = "Campaign configuration for delivery estimates.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignDeliveryEstimatesCampaign {
 
   private List<@Valid AdGroupDeliveryEstimates> adGroups = new ArrayList<>();
 
   private BudgetDurationType budgetDurationType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer dailySpendCap;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String endDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lifetimeSpendCap;
 
   private DeliveryEstimateObjectiveType objectiveType;
@@ -79,7 +75,7 @@ public class CampaignDeliveryEstimatesCampaign {
    * Get adGroups
    * @return adGroups
    */
-  @NotNull @Valid @Size(min = 1, max = 10) 
+  @NotNull @Size(min = 1, max = 10) 
   @Schema(name = "ad_groups", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("ad_groups")
   public List<@Valid AdGroupDeliveryEstimates> getAdGroups() {

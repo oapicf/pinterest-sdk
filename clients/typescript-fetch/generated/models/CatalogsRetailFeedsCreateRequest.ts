@@ -78,74 +78,50 @@ import {
 export interface CatalogsRetailFeedsCreateRequest {
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-     * @type {string}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsRetailFeedsCreateRequestCatalogTypeEnum}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     catalogType: CatalogsRetailFeedsCreateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {ProductAvailabilityType}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     defaultAvailability?: ProductAvailabilityType | null;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     defaultCountry: Country;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     name: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsRetailFeedsCreateRequest
      */
     status?: CatalogsStatus;
 }
@@ -155,7 +131,7 @@ export interface CatalogsRetailFeedsCreateRequest {
  * @export
  */
 export const CatalogsRetailFeedsCreateRequestCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailFeedsCreateRequestCatalogTypeEnum = typeof CatalogsRetailFeedsCreateRequestCatalogTypeEnum[keyof typeof CatalogsRetailFeedsCreateRequestCatalogTypeEnum];
 

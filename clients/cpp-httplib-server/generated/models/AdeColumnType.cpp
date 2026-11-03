@@ -6,20 +6,3 @@
 */
 #include "AdeColumnType.h"
 
-namespace models {
-
-AdeColumnType::AdeColumnType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -208,6 +208,7 @@ class _$CatalogsCreativeAssetsItemsBatchSerializer implements PrimitiveSerialize
   }
 }
 
+
 class CatalogsCreativeAssetsItemsBatchCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

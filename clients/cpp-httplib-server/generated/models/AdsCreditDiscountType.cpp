@@ -6,20 +6,3 @@
 */
 #include "AdsCreditDiscountType.h"
 
-namespace models {
-
-AdsCreditDiscountType::AdsCreditDiscountType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

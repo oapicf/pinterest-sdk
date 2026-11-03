@@ -44,7 +44,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdPreviewShopping.JSON_PROPERTY_VIDEO_TAG
 })
 @JsonTypeName("AdPreviewShopping")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdPreviewShopping {
     public static final String JSON_PROPERTY_CATALOG_PRODUCT_GROUP_ID = "catalog_product_group_id";

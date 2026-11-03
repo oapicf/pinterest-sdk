@@ -36,7 +36,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-08-30T09:54:04.171825690Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-03T06:15:11.297068727Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApiServiceImpl implements PinsApiService {
       @Override
       public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<MultiPinsAnalyticsMetricTypesItem> metricTypes, String appTypes, String adAccountId, SecurityContext securityContext) {
@@ -44,7 +44,7 @@ public class PinsApiServiceImpl implements PinsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<QuerypinanalyticsmetrictypesItems> metricTypes, String appTypes, String splitField, String adAccountId, SecurityContext securityContext) {
+      public Response pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes, String appTypes, String splitField, String adAccountId, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

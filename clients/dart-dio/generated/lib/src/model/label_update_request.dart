@@ -107,3 +107,4 @@ class _$LabelUpdateRequestSerializer implements PrimitiveSerializer<LabelUpdateR
   }
 }
 
+

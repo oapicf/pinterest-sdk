@@ -36,26 +36,18 @@ import {
 export interface AssetGroupInputCreate {
     /**
      * 
-     * @type {AssetGroupBinding}
-     * @memberof AssetGroupInputCreate
      */
     assetGroup?: AssetGroupBinding;
     /**
      * Asset group description.
-     * @type {string}
-     * @memberof AssetGroupInputCreate
      */
     assetGroupDescription: string;
     /**
      * Asset Group name.
-     * @type {string}
-     * @memberof AssetGroupInputCreate
      */
     assetGroupName: string;
     /**
      * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
-     * @type {Array<AssetGroupType>}
-     * @memberof AssetGroupInputCreate
      */
     assetGroupTypes: Array<AssetGroupType>;
 }

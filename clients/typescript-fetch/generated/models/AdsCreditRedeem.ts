@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AdsCreditRedeem {
     /**
      * Error code type if error occurs
-     * @type {number}
-     * @memberof AdsCreditRedeem
      */
     readonly errorCode?: number | null;
     /**
      * Reason for failure
-     * @type {string}
-     * @memberof AdsCreditRedeem
      */
     readonly errorMessage?: string | null;
     /**
      * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-     * @type {boolean}
-     * @memberof AdsCreditRedeem
      */
     readonly success?: boolean;
 }

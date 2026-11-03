@@ -29,14 +29,10 @@ import {
 export interface AuthRespondInvitesBodyItem {
     /**
      * 
-     * @type {AuthRespondInviteAction}
-     * @memberof AuthRespondInvitesBodyItem
      */
     action: AuthRespondInviteAction;
     /**
      * Unique identifier of an invite.
-     * @type {string}
-     * @memberof AuthRespondInvitesBodyItem
      */
     inviteId: string;
 }

@@ -6,20 +6,3 @@
 */
 #include "ConversionEvent.h"
 
-namespace models {
-
-ConversionEvent::ConversionEvent()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

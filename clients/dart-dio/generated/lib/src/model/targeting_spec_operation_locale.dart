@@ -140,6 +140,7 @@ class _$TargetingSpecOperationLocaleSerializer implements PrimitiveSerializer<Ta
   }
 }
 
+
 class TargetingSpecOperationLocaleFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'LOCALE')

@@ -46,7 +46,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsHotelFeedsCreateRequest.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CatalogsHotelFeedsCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsHotelFeedsCreateRequest {
     public static final String JSON_PROPERTY_CATALOG_ID = "catalog_id";
@@ -109,7 +109,7 @@ public class CatalogsHotelFeedsCreateRequest {
     private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
     public static final String JSON_PROPERTY_STATUS = "status";
-    private CatalogsStatus status;
+    private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
     public CatalogsHotelFeedsCreateRequest(CatalogTypeEnum catalogType, CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale defaultLocale, CatalogsFormat _format, String location, String name) {
         this.catalogType = catalogType;

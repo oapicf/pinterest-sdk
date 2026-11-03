@@ -328,13 +328,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class PinUpdate.");
+                throw new JsonException("Property is not nullable for class PinUpdate: ai_disclosures.");
 
             if (boardId.IsSet && boardId.Value == null)
-                throw new ArgumentNullException(nameof(boardId), "Property is not nullable for class PinUpdate.");
+                throw new JsonException("Property is not nullable for class PinUpdate: board_id.");
 
             if (carouselSlots.IsSet && carouselSlots.Value == null)
-                throw new ArgumentNullException(nameof(carouselSlots), "Property is not nullable for class PinUpdate.");
+                throw new JsonException("Property is not nullable for class PinUpdate: carousel_slots.");
 
             return new PinUpdate(aiDisclosures, altText, boardId, boardSectionId, carouselSlots, description, link, title);
         }
@@ -345,7 +345,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinUpdate pinUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -360,17 +359,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinUpdate pinUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (pinUpdate.AiDisclosuresOption.IsSet && pinUpdate.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(pinUpdate.AiDisclosures), "Property is required for class PinUpdate.");
+                throw new JsonException("Cannot write null property PinUpdate.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (pinUpdate.BoardIdOption.IsSet && pinUpdate.BoardId == null)
-                throw new ArgumentNullException(nameof(pinUpdate.BoardId), "Property is required for class PinUpdate.");
+                throw new JsonException("Cannot write null property PinUpdate.BoardId to non-nullable JSON property 'board_id'.");
 
             if (pinUpdate.CarouselSlotsOption.IsSet && pinUpdate.CarouselSlots == null)
-                throw new ArgumentNullException(nameof(pinUpdate.CarouselSlots), "Property is required for class PinUpdate.");
+                throw new JsonException("Cannot write null property PinUpdate.CarouselSlots to non-nullable JSON property 'carousel_slots'.");
 
             if (pinUpdate.AiDisclosuresOption.IsSet)
             {

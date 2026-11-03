@@ -186,10 +186,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AssetIdWithPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdWithPermissions: id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class AssetIdWithPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdWithPermissions: permissions.");
 
             return new AssetIdWithPermissions(id, permissions);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetIdWithPermissions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetIdWithPermissions assetIdWithPermissions, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,14 +214,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetIdWithPermissions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetIdWithPermissions assetIdWithPermissions, JsonSerializerOptions jsonSerializerOptions)
         {
             if (assetIdWithPermissions.IdOption.IsSet && assetIdWithPermissions.Id == null)
-                throw new ArgumentNullException(nameof(assetIdWithPermissions.Id), "Property is required for class AssetIdWithPermissions.");
+                throw new JsonException("Cannot write null property AssetIdWithPermissions.Id to non-nullable JSON property 'id'.");
 
             if (assetIdWithPermissions.PermissionsOption.IsSet && assetIdWithPermissions.Permissions == null)
-                throw new ArgumentNullException(nameof(assetIdWithPermissions.Permissions), "Property is required for class AssetIdWithPermissions.");
+                throw new JsonException("Cannot write null property AssetIdWithPermissions.Permissions to non-nullable JSON property 'permissions'.");
 
             if (assetIdWithPermissions.IdOption.IsSet)
                 writer.WriteString("id", assetIdWithPermissions.Id);

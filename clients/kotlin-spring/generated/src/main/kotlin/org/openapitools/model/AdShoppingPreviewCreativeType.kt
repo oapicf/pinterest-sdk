@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: SHOPPING,COLLECTION,CAROUSEL,MAX_WIDTH_COLLECTION
-*/
+ * 
+ * Values: SHOPPING,COLLECTION,CAROUSEL,MAX_WIDTH_COLLECTION
+ */
 enum class AdShoppingPreviewCreativeType(@get:JsonValue val value: kotlin.String) {
 
     SHOPPING("SHOPPING"),
@@ -30,9 +30,8 @@ enum class AdShoppingPreviewCreativeType(@get:JsonValue val value: kotlin.String
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdShoppingPreviewCreativeType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdShoppingPreviewCreativeType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdShoppingPreviewCreativeType'")
         }
     }
 }
-

@@ -10,7 +10,7 @@ import Foundation
 /** An exception object if there is an error performing the action. Will only be provided if there is an error. */
 public struct InviteExceptionResponse: Sendable, Codable, Hashable {
 
-    public static let inviteOrRequestIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteOrRequestIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Error code associated with the error in performing the action on the invite/request. */
     public var code: Int?
     /** Unique identifier of the invite/request. */

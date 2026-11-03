@@ -9,7 +9,7 @@ import Foundation
 
 public struct PinMediaSourceImagesBase64Item: Sendable, Codable, Hashable {
 
-    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[a-zA-Z0-9+\/=]+$/")
+    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[a-zA-Z0-9+/=]+$")
     public var contentType: ContentType
     public var data: String
     public var description: String?

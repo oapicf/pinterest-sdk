@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,13 +23,11 @@ import jakarta.annotation.Generated;
  * LabelsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelsResponse {
 
-  @Valid
   private List<@Valid LabelError> errors = new ArrayList<>();
 
-  @Valid
   private List<@Valid Label> labels = new ArrayList<>();
 
   public LabelsResponse errors(List<@Valid LabelError> errors) {
@@ -50,7 +47,7 @@ public class LabelsResponse {
    * Labels that were not successfully applied.
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", description = "Labels that were not successfully applied.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
   public List<@Valid LabelError> getErrors() {
@@ -78,7 +75,7 @@ public class LabelsResponse {
    * Get labels
    * @return labels
    */
-  @Valid 
+  
   @Schema(name = "labels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("labels")
   public List<@Valid Label> getLabels() {

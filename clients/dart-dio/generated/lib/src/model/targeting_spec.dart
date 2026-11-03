@@ -393,6 +393,7 @@ class _$TargetingSpecSerializer implements PrimitiveSerializer<TargetingSpec> {
   }
 }
 
+
 class TargetingSpecTARGETING_STRATEGYEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CHOOSE_YOUR_OWN')

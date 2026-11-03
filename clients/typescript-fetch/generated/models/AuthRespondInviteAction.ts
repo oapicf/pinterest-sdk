@@ -29,16 +29,12 @@ import {
 export interface AuthRespondInviteAction {
     /**
      * Whether the invite/request is accepted.
-     * @type {boolean}
-     * @memberof AuthRespondInviteAction
      */
     acceptInvite: boolean;
     /**
      * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting
      * permissions on various assets. If accepting an invite or request, this object would be used to grant
      * asset permissions to the member or partner.
-     * @type {{ [key: string]: Array<Permissions>; }}
-     * @memberof AuthRespondInviteAction
      */
     assetIdToPermissions?: { [key: string]: Array<Permissions>; };
 }

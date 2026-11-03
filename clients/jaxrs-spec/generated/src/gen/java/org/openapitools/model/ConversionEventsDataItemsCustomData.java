@@ -23,13 +23,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object containing other custom data.")
 @JsonTypeName("ConversionEventsDataItemsCustomData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsDataItemsCustomData   {
   private String contentBrand;
   private String contentCategory;
-  private @Valid List<String> contentIds = new ArrayList<>();
+  private List<String> contentIds = new ArrayList<>();
   private String contentName;
-  private @Valid List<@Valid ConversionEventsDataItemsCustomDataContentsItems> contents = new ArrayList<>();
+  private List<@Valid ConversionEventsDataItemsCustomDataContentsItems> contents = new ArrayList<>();
   private String currency;
   private String externalMeasurementId;
   private Integer externalMeasurementVendorId;
@@ -151,7 +151,7 @@ public class ConversionEventsDataItemsCustomData   {
   
   @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
   @JsonProperty("contents")
-  @Valid public List<@Valid ConversionEventsDataItemsCustomDataContentsItems> getContents() {
+  public List<@Valid ConversionEventsDataItemsCustomDataContentsItems> getContents() {
     return contents;
   }
 

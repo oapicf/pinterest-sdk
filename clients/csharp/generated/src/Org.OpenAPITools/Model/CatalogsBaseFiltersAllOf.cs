@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!allOf.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsBaseFiltersAllOf.", nameof(allOf));
+                throw new JsonException("Property is required for class CatalogsBaseFiltersAllOf: all_of.");
 
             if (allOf.IsSet && allOf.Value == null)
-                throw new ArgumentNullException(nameof(allOf), "Property is not nullable for class CatalogsBaseFiltersAllOf.");
+                throw new JsonException("Property is not nullable for class CatalogsBaseFiltersAllOf: all_of.");
 
             return new CatalogsBaseFiltersAllOf(allOf.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsBaseFiltersAllOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsBaseFiltersAllOf catalogsBaseFiltersAllOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsBaseFiltersAllOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsBaseFiltersAllOf catalogsBaseFiltersAllOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsBaseFiltersAllOf.AllOf == null)
-                throw new ArgumentNullException(nameof(catalogsBaseFiltersAllOf.AllOf), "Property is required for class CatalogsBaseFiltersAllOf.");
-
             writer.WritePropertyName("all_of");
             JsonSerializer.Serialize(writer, catalogsBaseFiltersAllOf.AllOf, jsonSerializerOptions);
         }

@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.keywords import Keywords
@@ -39,6 +38,7 @@ from openapi_server.models.trends_age_bucket import TrendsAgeBucket
 from openapi_server.models.trends_gender_filter import TrendsGenderFilter
 from openapi_server.models.trends_l1_interest import TrendsL1Interest
 from openapi_server.models.trends_supported_region import TrendsSupportedRegion
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -64,13 +64,13 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def keywords_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    campaign_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Campaign Id to use to filter the results.")] = Query(None, description="Campaign Id to use to filter the results.", alias="campaign_id", regex=r"^\d+$", max_length=18),
-    ad_group_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Ad group Id.")] = Query(None, description="Ad group Id.", alias="ad_group_id", regex=r"^\d+$", max_length=18),
-    ad_group_ids: Annotated[Optional[Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=250)]], Field(description="List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")] = Query(None, description="List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.", alias="ad_group_ids"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    campaign_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Campaign Id to use to filter the results.")] = Query(None, description="Campaign Id to use to filter the results.", alias="campaign_id", regex=r"^\d+$", max_length=18),
+    ad_group_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Ad group Id.")] = Query(None, description="Ad group Id.", alias="ad_group_id", regex=r"^\d+$", max_length=18),
+    ad_group_ids: Annotated[Optional[Annotated[List[str], Field(min_length=1, max_length=250)]], Field(description="List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")] = Query(None, description="List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.", alias="ad_group_ids"),
     match_types: Annotated[Optional[Annotated[List[MatchType], Field(min_length=1, max_length=5)]], Field(description="Keyword [match type](/docs/api-features/targeting-overview/)")] = Query(None, description="Keyword [match type](/docs/api-features/targeting-overview/)", alias="match_types"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -101,8 +101,8 @@ async def keywords_get(
     response_model_by_alias=True,
 )
 async def keywords_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    keywords_create: KeywordsCreate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    keywords_create: KeywordsCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -129,8 +129,8 @@ async def keywords_create(
     response_model_by_alias=True,
 )
 async def keywords_update(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    keywords_update: KeywordsUpdate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    keywords_update: KeywordsUpdate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -157,9 +157,9 @@ async def keywords_update(
     response_model_by_alias=True,
 )
 async def country_keywords_metrics_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    country_code: Annotated[StrictStr, Field(description="Two letter country code (ISO 3166-1 alpha-2)")] = Query(None, description="Two letter country code (ISO 3166-1 alpha-2)", alias="country_code"),
-    keywords: Annotated[List[StrictStr], Field(min_length=1, max_length=2000, description="Comma-separated keywords")] = Query(None, description="Comma-separated keywords", alias="keywords"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    country_code: Annotated[str, Field(description="Two letter country code (ISO 3166-1 alpha-2)")] = Query(..., description="Two letter country code (ISO 3166-1 alpha-2)", alias="country_code"),
+    keywords: Annotated[List[str], Field(min_length=1, max_length=2000, description="Comma-separated keywords")] = Query(..., description="Comma-separated keywords", alias="keywords"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -194,10 +194,10 @@ async def trending_keywords_list(
     interests: Annotated[Optional[List[TrendsL1Interest]], Field(description="  The list of supported interests is:   - `animals` - Animals   - `architecture` - Architecture   - `art` - Art   - `beauty` - Beauty   - `childrens_fashion` - Children's Fashion   - `design` - Design   - `diy_and_crafts` - DIY & Crafts   - `education` - Education   - `electronics` - Electronics   - `entertainment` - Entertainment   - `event_planning` - Event Planning   - `finance` - Finance   - `food_and_drinks` - Food & Drink   - `gardening` - Gardening   - `health` - Health   - `home_decor` - Home Decor   - `mens_fashion` - Men's Fashion   - `parenting` - Parenting   - `quotes` - Quotes   - `sport` - Sports   - `travel` - Travel   - `vehicles` - Vehicles   - `wedding` - Wedding   - `womens_fashion` - Women's Fashion")] = Query(None, description="  The list of supported interests is:   - &#x60;animals&#x60; - Animals   - &#x60;architecture&#x60; - Architecture   - &#x60;art&#x60; - Art   - &#x60;beauty&#x60; - Beauty   - &#x60;childrens_fashion&#x60; - Children&#39;s Fashion   - &#x60;design&#x60; - Design   - &#x60;diy_and_crafts&#x60; - DIY &amp; Crafts   - &#x60;education&#x60; - Education   - &#x60;electronics&#x60; - Electronics   - &#x60;entertainment&#x60; - Entertainment   - &#x60;event_planning&#x60; - Event Planning   - &#x60;finance&#x60; - Finance   - &#x60;food_and_drinks&#x60; - Food &amp; Drink   - &#x60;gardening&#x60; - Gardening   - &#x60;health&#x60; - Health   - &#x60;home_decor&#x60; - Home Decor   - &#x60;mens_fashion&#x60; - Men&#39;s Fashion   - &#x60;parenting&#x60; - Parenting   - &#x60;quotes&#x60; - Quotes   - &#x60;sport&#x60; - Sports   - &#x60;travel&#x60; - Travel   - &#x60;vehicles&#x60; - Vehicles   - &#x60;wedding&#x60; - Wedding   - &#x60;womens_fashion&#x60; - Women&#39;s Fashion", alias="interests"),
     genders: Annotated[Optional[List[TrendsGenderFilter]], Field(description="If set, filters the results to trends among users who identify with the specified gender(s). If unset, trends among all genders will be returned. The `unknown` group includes users with unspecified or customized gender profile settings.")] = Query(None, description="If set, filters the results to trends among users who identify with the specified gender(s). If unset, trends among all genders will be returned. The &#x60;unknown&#x60; group includes users with unspecified or customized gender profile settings.", alias="genders"),
     ages: Annotated[Optional[List[TrendsAgeBucket]], Field(description="If set, filters the results to trends among users in the specified age range(s). If unset, trends among all age groups will be returned.")] = Query(None, description="If set, filters the results to trends among users in the specified age range(s). If unset, trends among all age groups will be returned.", alias="ages"),
-    include_keywords: Annotated[Optional[Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=100)]], Field(min_length=1, max_length=50)]], Field(description="If set, filters the results to top trends which include at least one of the specified keywords. If unset, no keyword filtering logic is applied.")] = Query(None, description="If set, filters the results to top trends which include at least one of the specified keywords. If unset, no keyword filtering logic is applied.", alias="include_keywords"),
-    normalize_against_group: Annotated[Optional[StrictBool], Field(description=" Governs how the resulting time series data will be normalized to a [0-100] scale.    By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.    If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.")] = Query(False, description=" Governs how the resulting time series data will be normalized to a [0-100] scale.    By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.    If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.", alias="normalize_against_group"),
-    limit: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.")] = Query(50, description="The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.", alias="limit", ge=1, le=50),
-    include_demographics: Annotated[Optional[StrictBool], Field(description="Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.")] = Query(False, description="Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.", alias="include_demographics"),
+    include_keywords: Annotated[Optional[Annotated[List[Annotated[str, Field(min_length=1, max_length=100)]], Field(min_length=1, max_length=50)]], Field(description="If set, filters the results to top trends which include at least one of the specified keywords. If unset, no keyword filtering logic is applied.")] = Query(None, description="If set, filters the results to top trends which include at least one of the specified keywords. If unset, no keyword filtering logic is applied.", alias="include_keywords"),
+    normalize_against_group: Annotated[Optional[bool], Field(description=" Governs how the resulting time series data will be normalized to a [0-100] scale.    By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.    If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.")] = Query(False, description=" Governs how the resulting time series data will be normalized to a [0-100] scale.    By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.    If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.", alias="normalize_against_group"),
+    limit: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.")] = Query(50, description="The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.", alias="limit", ge=1, le=50),
+    include_demographics: Annotated[Optional[bool], Field(description="Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.")] = Query(False, description="Including the age and gender distribution for each keyword. By default (&#x60;false&#x60;), the response will not include demographics data.", alias="include_demographics"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The field to search member assets by
-* Values: NAME,ID,NAME_OR_ID,OWNER_NAME,NAME_OR_OWNER
-*/
+ * The field to search member assets by
+ * Values: NAME,ID,NAME_OR_ID,OWNER_NAME,NAME_OR_OWNER
+ */
 enum class AssetSearchBy(@get:JsonValue val value: kotlin.String) {
 
     NAME("NAME"),
@@ -31,9 +31,8 @@ enum class AssetSearchBy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AssetSearchBy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetSearchBy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetSearchBy'")
         }
     }
 }
-

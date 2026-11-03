@@ -157,6 +157,7 @@ class _$CatalogsHotelBatchItemSerializer implements PrimitiveSerializer<Catalogs
   }
 }
 
+
 class CatalogsHotelBatchItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

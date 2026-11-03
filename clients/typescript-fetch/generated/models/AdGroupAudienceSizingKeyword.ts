@@ -29,14 +29,10 @@ import {
 export interface AdGroupAudienceSizingKeyword {
     /**
      * 
-     * @type {MatchType}
-     * @memberof AdGroupAudienceSizingKeyword
      */
     matchType: MatchType;
     /**
      * Keyword value (120 chars max).
-     * @type {string}
-     * @memberof AdGroupAudienceSizingKeyword
      */
     value: string;
 }

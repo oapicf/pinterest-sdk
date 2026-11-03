@@ -22,7 +22,7 @@ data class ItemGroupIdFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("ITEM_GROUP_ID")
+    @param:JsonProperty("ITEM_GROUP_ID", required = true)
     @get:JsonProperty("ITEM_GROUP_ID", required = true) val ITEM_GROUP_ID: CatalogsProductGroupMultipleStringCriteria
 ) {
 

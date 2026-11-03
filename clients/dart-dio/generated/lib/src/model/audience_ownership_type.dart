@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_ownership_type.g.dart';
 
+/// Filter audiences by ownership type.
 class AudienceOwnershipType extends EnumClass {
 
-  /// Filter audiences by ownership type.
   @BuiltValueEnumConst(wireName: r'OWNED')
   static const AudienceOwnershipType OWNED = _$OWNED;
-  /// Filter audiences by ownership type.
   @BuiltValueEnumConst(wireName: r'RECEIVED')
   static const AudienceOwnershipType RECEIVED = _$RECEIVED;
 

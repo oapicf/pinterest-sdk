@@ -6,20 +6,3 @@
 */
 #include "NullableLabelType.h"
 
-namespace models {
-
-NullableLabelType::NullableLabelType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -36,20 +36,14 @@ import {
 export interface ItemUpdateBatchRecord {
     /**
      * 
-     * @type {UpdatableItemAttributes}
-     * @memberof ItemUpdateBatchRecord
      */
     attributes?: UpdatableItemAttributes;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof ItemUpdateBatchRecord
      */
     itemId?: string;
     /**
      * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
-     * @type {Array<UpdateMaskFieldType>}
-     * @memberof ItemUpdateBatchRecord
      */
     updateMask?: Array<UpdateMaskFieldType> | null;
 }

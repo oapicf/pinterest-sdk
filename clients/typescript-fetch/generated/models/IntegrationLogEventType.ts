@@ -19,7 +19,7 @@
  */
 export const IntegrationLogEventType = {
     App: 'APP',
-    Api: 'API'
+    Api: 'API',
 } as const;
 export type IntegrationLogEventType = typeof IntegrationLogEventType[keyof typeof IntegrationLogEventType];
 

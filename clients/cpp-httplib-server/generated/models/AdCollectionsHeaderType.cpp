@@ -6,20 +6,3 @@
 */
 #include "AdCollectionsHeaderType.h"
 
-namespace models {
-
-AdCollectionsHeaderType::AdCollectionsHeaderType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

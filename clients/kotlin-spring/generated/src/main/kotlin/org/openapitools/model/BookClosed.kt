@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class BookClosed(
 
     @Schema(example = "false", required = true, description = "Are conversion metrics ready?")
-    @param:JsonProperty("conversion_metrics_ready")
+    @param:JsonProperty("conversion_metrics_ready", required = true)
     @get:JsonProperty("conversion_metrics_ready", required = true) val conversionMetricsReady: kotlin.Boolean,
 
     @Schema(example = "false", required = true, description = "Are non-conversion metrics ready?")
-    @param:JsonProperty("non_conversion_metrics_ready")
+    @param:JsonProperty("non_conversion_metrics_ready", required = true)
     @get:JsonProperty("non_conversion_metrics_ready", required = true) val nonConversionMetricsReady: kotlin.Boolean
 ) {
 

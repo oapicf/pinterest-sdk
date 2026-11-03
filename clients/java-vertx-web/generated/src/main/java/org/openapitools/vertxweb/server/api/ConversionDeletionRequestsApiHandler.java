@@ -53,7 +53,7 @@ public class ConversionDeletionRequestsApiHandler {
         ConversionDeletionRequestCreate conversionDeletionRequestCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionDeletionRequestCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionDeletionRequestCreate is {}", conversionDeletionRequestCreate);
+        logger.debug("Parameter conversionDeletionRequestCreate is (body omitted)");
 
         api.conversionDeletionRequestCreate(adAccountId, conversionDeletionRequestCreate)
             .onSuccess(apiResponse -> {

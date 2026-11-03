@@ -290,7 +290,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsItemsBatch.CatalogTypeEnum?>(CatalogsCreativeAssetsItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsItemsBatch.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsItemsBatch.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsItemsBatch.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "batch_id":
                             batchId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -314,22 +319,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsItemsBatch.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsItemsBatch: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsBatch: catalog_type.");
 
             if (batchId.IsSet && batchId.Value == null)
-                throw new ArgumentNullException(nameof(batchId), "Property is not nullable for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsBatch: batch_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsBatch: created_time.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsBatch: items.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsBatch: status.");
 
             return new CatalogsCreativeAssetsItemsBatch(catalogType.Value!.Value!, batchId, completedTime, createdTime, items, status);
         }
@@ -340,7 +345,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -355,14 +359,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsItemsBatch catalogsCreativeAssetsItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsCreativeAssetsItemsBatch.BatchIdOption.IsSet && catalogsCreativeAssetsItemsBatch.BatchId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemsBatch.BatchId), "Property is required for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemsBatch.BatchId to non-nullable JSON property 'batch_id'.");
+
+            if (catalogsCreativeAssetsItemsBatch.CreatedTimeOption.IsSet && catalogsCreativeAssetsItemsBatch.CreatedTime == null)
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemsBatch.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (catalogsCreativeAssetsItemsBatch.ItemsOption.IsSet && catalogsCreativeAssetsItemsBatch.Items == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemsBatch.Items), "Property is required for class CatalogsCreativeAssetsItemsBatch.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemsBatch.Items to non-nullable JSON property 'items'.");
+
+            if (catalogsCreativeAssetsItemsBatch.StatusOption.IsSet && catalogsCreativeAssetsItemsBatch.Status == null)
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemsBatch.Status to non-nullable JSON property 'status'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsItemsBatch.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsItemsBatch.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

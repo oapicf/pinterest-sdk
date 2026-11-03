@@ -147,14 +147,15 @@ open class LabelsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "campaign_ids": (wrappedValue: campaignIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "label_ids": (wrappedValue: labelIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "entity_statuses": (wrappedValue: entityStatuses?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "label_types": (wrappedValue: labelTypes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

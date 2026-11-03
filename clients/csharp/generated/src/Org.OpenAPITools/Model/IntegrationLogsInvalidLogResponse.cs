@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (rejectedLogs.IsSet && rejectedLogs.Value == null)
-                throw new ArgumentNullException(nameof(rejectedLogs), "Property is not nullable for class IntegrationLogsInvalidLogResponse.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsInvalidLogResponse: rejected_logs.");
 
             return new IntegrationLogsInvalidLogResponse(rejectedLogs);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsInvalidLogResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogsInvalidLogResponse integrationLogsInvalidLogResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsInvalidLogResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogsInvalidLogResponse integrationLogsInvalidLogResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (integrationLogsInvalidLogResponse.RejectedLogsOption.IsSet && integrationLogsInvalidLogResponse.RejectedLogs == null)
-                throw new ArgumentNullException(nameof(integrationLogsInvalidLogResponse.RejectedLogs), "Property is required for class IntegrationLogsInvalidLogResponse.");
+                throw new JsonException("Cannot write null property IntegrationLogsInvalidLogResponse.RejectedLogs to non-nullable JSON property 'rejected_logs'.");
 
             if (integrationLogsInvalidLogResponse.RejectedLogsOption.IsSet)
             {

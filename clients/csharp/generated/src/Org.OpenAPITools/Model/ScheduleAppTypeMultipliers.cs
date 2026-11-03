@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aPPTYPE.IsSet && aPPTYPE.Value == null)
-                throw new ArgumentNullException(nameof(aPPTYPE), "Property is not nullable for class ScheduleAppTypeMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleAppTypeMultipliers: APP_TYPE.");
 
             return new ScheduleAppTypeMultipliers(aPPTYPE);
         }
@@ -158,7 +158,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAppTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleAppTypeMultipliers scheduleAppTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -173,9 +172,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAppTypeMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleAppTypeMultipliers scheduleAppTypeMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (scheduleAppTypeMultipliers.APP_TYPEOption.IsSet && scheduleAppTypeMultipliers.APP_TYPE == null)
+                throw new JsonException("Cannot write null property ScheduleAppTypeMultipliers.APP_TYPE to non-nullable JSON property 'APP_TYPE'.");
+
             if (scheduleAppTypeMultipliers.APP_TYPEOption.IsSet)
             {
                 var aPPTYPERawValue = TargetingSpecAppTypeValueConverter.ToJsonValue(scheduleAppTypeMultipliers.APP_TYPE!.Value);

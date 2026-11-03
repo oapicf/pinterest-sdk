@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class EntityLabelStatus
-{
-public:
-
-    EntityLabelStatus();
-    virtual ~EntityLabelStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(EntityLabelStatus,
-        )
-
-private:
+enum class EntityLabelStatus {
+    
+    ACTIVE,
+    
+    ARCHIVED,
+    
+    r_NULL
+    
 };
 
+inline void to_json(nlohmann::json& j, const EntityLabelStatus& value)
+{
+    switch (value)
+    {
+        
+        case EntityLabelStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case EntityLabelStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case EntityLabelStatus::r_NULL: j = "NULL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for EntityLabelStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, EntityLabelStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = EntityLabelStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = EntityLabelStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "NULL")
+    {
+        value = EntityLabelStatus::r_NULL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for EntityLabelStatus", &j);
+}
 
 } // namespace models
 

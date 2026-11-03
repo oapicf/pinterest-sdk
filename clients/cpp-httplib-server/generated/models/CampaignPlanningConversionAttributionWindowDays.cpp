@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningConversionAttributionWindowDays.h"
 
-namespace models {
-
-CampaignPlanningConversionAttributionWindowDays::CampaignPlanningConversionAttributionWindowDays()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

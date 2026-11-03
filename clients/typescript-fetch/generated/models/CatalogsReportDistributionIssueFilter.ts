@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsReportDistributionIssueFilter {
     /**
      * Unique identifier of a catalog. If not given, oldest catalog will be used
-     * @type {string}
-     * @memberof CatalogsReportDistributionIssueFilter
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsReportDistributionIssueFilterReportTypeEnum}
-     * @memberof CatalogsReportDistributionIssueFilter
      */
     reportType: CatalogsReportDistributionIssueFilterReportTypeEnum;
 }
@@ -38,7 +34,7 @@ export interface CatalogsReportDistributionIssueFilter {
  * @export
  */
 export const CatalogsReportDistributionIssueFilterReportTypeEnum = {
-    DistributionIssues: 'DISTRIBUTION_ISSUES'
+    DistributionIssues: 'DISTRIBUTION_ISSUES',
 } as const;
 export type CatalogsReportDistributionIssueFilterReportTypeEnum = typeof CatalogsReportDistributionIssueFilterReportTypeEnum[keyof typeof CatalogsReportDistributionIssueFilterReportTypeEnum];
 

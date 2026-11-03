@@ -23,7 +23,7 @@ import ProductAvailabilityType from './ProductAvailabilityType';
 /**
  * The CatalogsRetailFeed model module.
  * @module model/CatalogsRetailFeed
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailFeed {
     /**

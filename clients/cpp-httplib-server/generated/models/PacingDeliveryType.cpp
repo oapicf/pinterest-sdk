@@ -6,20 +6,3 @@
 */
 #include "PacingDeliveryType.h"
 
-namespace models {
-
-PacingDeliveryType::PacingDeliveryType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

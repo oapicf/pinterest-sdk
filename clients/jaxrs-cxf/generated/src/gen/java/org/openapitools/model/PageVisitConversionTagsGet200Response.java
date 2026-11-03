@@ -22,8 +22,6 @@ public class PageVisitConversionTagsGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ConversionEventResponse> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Fields that can be updated in campaign bid options.
-* Values: AUDIENCE,APP_TYPE,PLACEMENT,GENDER,AGE_BUCKET,FREQUENCY
-*/
+ * Fields that can be updated in campaign bid options.
+ * Values: AUDIENCE,APP_TYPE,PLACEMENT,GENDER,AGE_BUCKET,FREQUENCY
+ */
 enum class CampaignBidOptionsUpdateMaskItems(@get:JsonValue val value: kotlin.String) {
 
     AUDIENCE("AUDIENCE"),
@@ -32,9 +32,8 @@ enum class CampaignBidOptionsUpdateMaskItems(@get:JsonValue val value: kotlin.St
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignBidOptionsUpdateMaskItems {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignBidOptionsUpdateMaskItems'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignBidOptionsUpdateMaskItems'")
         }
     }
 }
-

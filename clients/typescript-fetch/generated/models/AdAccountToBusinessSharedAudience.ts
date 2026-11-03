@@ -29,20 +29,14 @@ import {
 export interface AdAccountToBusinessSharedAudience {
     /**
      * Unique identifier of an audience
-     * @type {string}
-     * @memberof AdAccountToBusinessSharedAudience
      */
     audienceId: string;
     /**
      * Permissions granted to the recipients.
-     * @type {Array<Role>}
-     * @memberof AdAccountToBusinessSharedAudience
      */
     readonly permissions?: Array<Role>;
     /**
      * Business IDs to share with or revoke from (request) / that received the audience (response).
-     * @type {Array<string>}
-     * @memberof AdAccountToBusinessSharedAudience
      */
     recipientBusinessIds: Array<string>;
 }

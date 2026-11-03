@@ -29,8 +29,6 @@ import {
 export interface AdBatchWriteResponseModel {
     /**
      * 
-     * @type {Array<AdBatchItem>}
-     * @memberof AdBatchWriteResponseModel
      */
     items: Array<AdBatchItem>;
 }

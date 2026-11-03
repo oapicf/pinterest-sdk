@@ -78,7 +78,9 @@ class TopPinsAnalyticsResponseDateAvailability {
 
       return TopPinsAnalyticsResponseDateAvailability(
         isRealtime: mapValueOfType<bool>(json, r'is_realtime'),
-        latestAvailableTimestamp: num.parse('${json[r'latest_available_timestamp']}'),
+        latestAvailableTimestamp: json[r'latest_available_timestamp'] == null
+            ? null
+            : num.parse('${json[r'latest_available_timestamp']}'),
       );
     }
     return null;

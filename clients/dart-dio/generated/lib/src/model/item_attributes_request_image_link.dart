@@ -67,3 +67,4 @@ class _$ItemAttributesRequestImageLinkSerializer implements PrimitiveSerializer<
   }
 }
 
+

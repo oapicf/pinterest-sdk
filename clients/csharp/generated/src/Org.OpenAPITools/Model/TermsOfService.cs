@@ -208,13 +208,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class TermsOfService.");
+                throw new JsonException("Property is not nullable for class TermsOfService: ad_account_id.");
 
             if (hasAccepted.IsSet && hasAccepted.Value == null)
-                throw new ArgumentNullException(nameof(hasAccepted), "Property is not nullable for class TermsOfService.");
+                throw new JsonException("Property is not nullable for class TermsOfService: has_accepted.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class TermsOfService.");
+                throw new JsonException("Property is not nullable for class TermsOfService: id.");
 
             return new TermsOfService(adAccountId, hasAccepted, html, id);
         }
@@ -225,7 +225,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="termsOfService"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TermsOfService termsOfService, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -240,14 +239,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="termsOfService"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TermsOfService termsOfService, JsonSerializerOptions jsonSerializerOptions)
         {
             if (termsOfService.AdAccountIdOption.IsSet && termsOfService.AdAccountId == null)
-                throw new ArgumentNullException(nameof(termsOfService.AdAccountId), "Property is required for class TermsOfService.");
+                throw new JsonException("Cannot write null property TermsOfService.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (termsOfService.HasAcceptedOption.IsSet && termsOfService.HasAccepted == null)
+                throw new JsonException("Cannot write null property TermsOfService.HasAccepted to non-nullable JSON property 'has_accepted'.");
 
             if (termsOfService.IdOption.IsSet && termsOfService.Id == null)
-                throw new ArgumentNullException(nameof(termsOfService.Id), "Property is required for class TermsOfService.");
+                throw new JsonException("Cannot write null property TermsOfService.Id to non-nullable JSON property 'id'.");
 
             if (termsOfService.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", termsOfService.AdAccountId);

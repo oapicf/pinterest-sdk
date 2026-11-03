@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,67 +25,47 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdAccountsAudienceRule", description = "JSON object defining targeted audience users. Example rule formats per audience type: CUSTOMER_LIST: { \"customer_list_id\": \"<customer list ID>\"} ACTALIKE: { \"seed_id\": [\"<audience ID>\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.) VISITOR: { \"visitor_source_id\": [\"<conversion tag ID>\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.) ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccountsAudienceRule {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> adId = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> campaignId = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String country;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String customerListId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> engagementDomain = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String engagementType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer engagerType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String event;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EventData eventData;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Object eventSource;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Object ingestionSource;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AudienceObjectiveType> objectiveType = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer percentage;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> pinId = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean prefill;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer retentionDays;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> seedId = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> url = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String visitorSourceId;
 
   public AdAccountsAudienceRule adAccountId(@Nullable String adAccountId) {
@@ -382,7 +361,7 @@ public class AdAccountsAudienceRule {
    * Objective for engagement audience filter.
    * @return objectiveType
    */
-  @Valid 
+  
   @Schema(name = "objective_type", description = "Objective for engagement audience filter.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
   public List<AudienceObjectiveType> getObjectiveType() {

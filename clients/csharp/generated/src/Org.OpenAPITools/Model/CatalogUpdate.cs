@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogUpdate.");
+                throw new JsonException("Property is not nullable for class CatalogUpdate: catalog_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogUpdate.");
+                throw new JsonException("Property is not nullable for class CatalogUpdate: name.");
 
             return new CatalogUpdate(catalogType, name);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogUpdate catalogUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,11 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogUpdate catalogUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogUpdate.CatalogTypeOption.IsSet && catalogUpdate.CatalogType == null)
+                throw new JsonException("Cannot write null property CatalogUpdate.CatalogType to non-nullable JSON property 'catalog_type'.");
+
             if (catalogUpdate.NameOption.IsSet && catalogUpdate.Name == null)
-                throw new ArgumentNullException(nameof(catalogUpdate.Name), "Property is required for class CatalogUpdate.");
+                throw new JsonException("Cannot write null property CatalogUpdate.Name to non-nullable JSON property 'name'.");
 
             if (catalogUpdate.CatalogTypeOption.IsSet)
             {

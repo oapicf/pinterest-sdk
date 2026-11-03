@@ -29,14 +29,10 @@ import {
 export interface TargetingTemplateKeyword {
     /**
      * 
-     * @type {MatchType}
-     * @memberof TargetingTemplateKeyword
      */
     matchType?: MatchType;
     /**
      * The keyword targeting (120 chars max).
-     * @type {string}
-     * @memberof TargetingTemplateKeyword
      */
     value?: string;
 }

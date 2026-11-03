@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Invite statuses used for filters.
-* Values: PENDING,EXPIRED
-*/
+ * Invite statuses used for filters.
+ * Values: PENDING,EXPIRED
+ */
 enum class InviteFilterStatus(@get:JsonValue val value: kotlin.String) {
 
     PENDING("PENDING"),
@@ -28,9 +28,8 @@ enum class InviteFilterStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): InviteFilterStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InviteFilterStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InviteFilterStatus'")
         }
     }
 }
-

@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class AiDisclosures.", nameof(values));
+                throw new JsonException("Property is required for class AiDisclosures: values.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class AiDisclosures.");
+                throw new JsonException("Property is not nullable for class AiDisclosures: values.");
 
             return new AiDisclosures(values.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aiDisclosures"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AiDisclosures aiDisclosures, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aiDisclosures"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AiDisclosures aiDisclosures, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (aiDisclosures.Values == null)
-                throw new ArgumentNullException(nameof(aiDisclosures.Values), "Property is required for class AiDisclosures.");
-
             writer.WritePropertyName("values");
             JsonSerializer.Serialize(writer, aiDisclosures.Values, jsonSerializerOptions);
         }

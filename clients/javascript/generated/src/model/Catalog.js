@@ -17,7 +17,7 @@ import CatalogsType from './CatalogsType';
 /**
  * The Catalog model module.
  * @module model/Catalog
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Catalog {
     /**

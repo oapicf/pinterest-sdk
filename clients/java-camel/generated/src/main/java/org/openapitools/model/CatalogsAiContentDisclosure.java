@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsAiContentDisclosure", description = "AI content disclosure for a single asset of a catalog item.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsAiContentDisclosure {
 
-  @Valid
   private List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();
 
   private String url;
@@ -60,7 +59,7 @@ public class CatalogsAiContentDisclosure {
    * Disclosure labels that apply to this asset.
    * @return disclosure
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Size(min = 1) 
   @Schema(name = "disclosure", example = "[\"ai_modified\"]", description = "Disclosure labels that apply to this asset.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("disclosure")
   public List<CatalogsAiContentDisclosureLabel> getDisclosure() {

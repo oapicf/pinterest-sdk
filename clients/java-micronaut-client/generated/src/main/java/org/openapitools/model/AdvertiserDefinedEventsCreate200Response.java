@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   AdvertiserDefinedEventsCreate200Response.JSON_PROPERTY_ITEMS
 })
 @JsonTypeName("advertiser_defined_events_create_200_response")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdvertiserDefinedEventsCreate200Response {
     public static final String JSON_PROPERTY_ITEMS = "items";

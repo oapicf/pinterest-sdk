@@ -6,20 +6,3 @@
 */
 #include "CatalogsItemValidationIssue.h"
 
-namespace models {
-
-CatalogsItemValidationIssue::CatalogsItemValidationIssue()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

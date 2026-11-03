@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class NullalbleMatchType
-{
-public:
-
-    NullalbleMatchType();
-    virtual ~NullalbleMatchType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullalbleMatchType,
-        )
-
-private:
+enum class NullalbleMatchType {
+    
+    BROAD,
+    
+    PHRASE,
+    
+    EXACT,
+    
+    EXACT_NEGATIVE,
+    
+    PHRASE_NEGATIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullalbleMatchType& value)
+{
+    switch (value)
+    {
+        
+        case NullalbleMatchType::BROAD: j = "BROAD"; break;
+        
+        case NullalbleMatchType::PHRASE: j = "PHRASE"; break;
+        
+        case NullalbleMatchType::EXACT: j = "EXACT"; break;
+        
+        case NullalbleMatchType::EXACT_NEGATIVE: j = "EXACT_NEGATIVE"; break;
+        
+        case NullalbleMatchType::PHRASE_NEGATIVE: j = "PHRASE_NEGATIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullalbleMatchType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullalbleMatchType& value)
+{
+    
+    if (j == "BROAD")
+    {
+        value = NullalbleMatchType::BROAD;
+        return;
+    }
+    
+    if (j == "PHRASE")
+    {
+        value = NullalbleMatchType::PHRASE;
+        return;
+    }
+    
+    if (j == "EXACT")
+    {
+        value = NullalbleMatchType::EXACT;
+        return;
+    }
+    
+    if (j == "EXACT_NEGATIVE")
+    {
+        value = NullalbleMatchType::EXACT_NEGATIVE;
+        return;
+    }
+    
+    if (j == "PHRASE_NEGATIVE")
+    {
+        value = NullalbleMatchType::PHRASE_NEGATIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullalbleMatchType", &j);
+}
 
 } // namespace models
 

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ActionType
-{
-public:
-
-    ActionType();
-    virtual ~ActionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ActionType,
-        )
-
-private:
+enum class ActionType {
+    
+    CLICKTHROUGH,
+    
+    IMPRESSION,
+    
+    VIDEO_V_50_MRC
+    
 };
 
+inline void to_json(nlohmann::json& j, const ActionType& value)
+{
+    switch (value)
+    {
+        
+        case ActionType::CLICKTHROUGH: j = "CLICKTHROUGH"; break;
+        
+        case ActionType::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case ActionType::VIDEO_V_50_MRC: j = "VIDEO_V_50_MRC"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ActionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ActionType& value)
+{
+    
+    if (j == "CLICKTHROUGH")
+    {
+        value = ActionType::CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "IMPRESSION")
+    {
+        value = ActionType::IMPRESSION;
+        return;
+    }
+    
+    if (j == "VIDEO_V_50_MRC")
+    {
+        value = ActionType::VIDEO_V_50_MRC;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ActionType", &j);
+}
 
 } // namespace models
 

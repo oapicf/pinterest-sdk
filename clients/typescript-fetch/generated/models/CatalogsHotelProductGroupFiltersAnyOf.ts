@@ -29,8 +29,6 @@ import {
 export interface CatalogsHotelProductGroupFiltersAnyOf {
     /**
      * 
-     * @type {Array<CatalogsHotelProductGroupFilterKeys>}
-     * @memberof CatalogsHotelProductGroupFiltersAnyOf
      */
     anyOf: Array<CatalogsHotelProductGroupFilterKeys>;
 }

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,10 +29,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsBatchRequest", description = "Request object to update catalogs creative assets items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsBatchRequest implements CatalogsVerticalBatchRequest {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
   /**
@@ -416,7 +414,7 @@ public class CatalogsCreativeAssetsBatchRequest implements CatalogsVerticalBatch
    * Array with creative assets item operations
    * @return items
    */
-  @NotNull @Valid @Size(min = 1, max = 1000) 
+  @NotNull @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with creative assets item operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {

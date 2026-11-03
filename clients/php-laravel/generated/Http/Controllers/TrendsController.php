@@ -51,10 +51,10 @@ class TrendsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'region' => [
@@ -115,10 +115,10 @@ class TrendsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'region' => [
@@ -183,13 +183,13 @@ class TrendsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'productCategories' => [
+                'product_categories' => [
                     'required',
                     'min:1',
                     'max:20',
@@ -198,9 +198,9 @@ class TrendsController extends Controller
                 'region' => [
                     'required',
                 ],
-                'lookbackWindow' => [
+                'lookback_window' => [
                 ],
-                'engagementType' => [
+                'engagement_type' => [
                 ],
             ],
         );
@@ -209,7 +209,7 @@ class TrendsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $productCategories = $request->get('productCategories');
+        $productCategories = $request->get('product_categories');
 
         $region = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ProductCategoryRegion::class);
 
@@ -263,10 +263,10 @@ class TrendsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'region' => [
@@ -281,7 +281,7 @@ class TrendsController extends Controller
                 'genders' => [
                     'array',
                 ],
-                'engagementType' => [
+                'engagement_type' => [
                 ],
             ],
         );

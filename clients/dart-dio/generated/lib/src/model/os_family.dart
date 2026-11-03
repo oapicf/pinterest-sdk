@@ -9,27 +9,21 @@ import 'package:built_value/serializer.dart';
 
 part 'os_family.g.dart';
 
+/// Operating system family.
 class OsFamily extends EnumClass {
 
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'ios')
   static const OsFamily ios = _$ios;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'android')
   static const OsFamily android = _$android;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'macos')
   static const OsFamily macos = _$macos;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'windows')
   static const OsFamily windows = _$windows;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'linux')
   static const OsFamily linux = _$linux;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'bsd')
   static const OsFamily bsd = _$bsd;
-  /// Operating system family.
   @BuiltValueEnumConst(wireName: r'other')
   static const OsFamily other = _$other;
 

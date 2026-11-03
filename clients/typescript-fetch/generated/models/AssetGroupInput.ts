@@ -29,8 +29,6 @@ import {
 export interface AssetGroupInput {
     /**
      * 
-     * @type {AssetGroupBinding}
-     * @memberof AssetGroupInput
      */
     assetGroup?: AssetGroupBinding;
 }

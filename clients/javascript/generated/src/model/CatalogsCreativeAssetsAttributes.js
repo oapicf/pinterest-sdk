@@ -18,7 +18,7 @@ import CatalogsUpdatableCreativeAssetsAttributes from './CatalogsUpdatableCreati
 /**
  * The CatalogsCreativeAssetsAttributes model module.
  * @module model/CatalogsCreativeAssetsAttributes
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsAttributes {
     /**

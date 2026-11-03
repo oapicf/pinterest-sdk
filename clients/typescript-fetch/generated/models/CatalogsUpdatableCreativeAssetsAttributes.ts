@@ -21,74 +21,50 @@ import { mapValues } from '../runtime';
 export interface CatalogsUpdatableCreativeAssetsAttributes {
     /**
      * Link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     androidDeepLink?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     customLabel0?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     customLabel1?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     customLabel2?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     customLabel3?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     customLabel4?: string | null;
     /**
      * Brief description of the creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     description?: string;
     /**
      * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     googleProductCategory?: string | null;
     /**
      * IOS deep link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     iosDeepLink?: string | null;
     /**
      * Link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     link?: string;
     /**
      * The name of the creative assets.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     title?: string;
     /**
      * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
-     * @type {string}
-     * @memberof CatalogsUpdatableCreativeAssetsAttributes
      */
     visibility?: string | null;
 }

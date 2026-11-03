@@ -21,7 +21,7 @@ import UpdateMaskBidOptionField from './UpdateMaskBidOptionField';
 /**
  * The AdvancedAuctionItemsSubmitUpsertRecord model module.
  * @module model/AdvancedAuctionItemsSubmitUpsertRecord
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvancedAuctionItemsSubmitUpsertRecord {
     /**

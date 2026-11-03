@@ -284,34 +284,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Keyword.", nameof(id));
+                throw new JsonException("Property is required for class Keyword: id.");
 
             if (!parentId.IsSet)
-                throw new ArgumentException("Property is required for class Keyword.", nameof(parentId));
+                throw new JsonException("Property is required for class Keyword: parent_id.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class Keyword.", nameof(value));
+                throw new JsonException("Property is required for class Keyword: value.");
 
             if (!matchType.IsSet)
-                throw new ArgumentException("Property is required for class Keyword.", nameof(matchType));
+                throw new JsonException("Property is required for class Keyword: match_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: id.");
 
             if (parentId.IsSet && parentId.Value == null)
-                throw new ArgumentNullException(nameof(parentId), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: parent_id.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: value.");
 
             if (archived.IsSet && archived.Value == null)
-                throw new ArgumentNullException(nameof(archived), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: archived.");
 
             if (parentType.IsSet && parentType.Value == null)
-                throw new ArgumentNullException(nameof(parentType), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: parent_type.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class Keyword.");
+                throw new JsonException("Property is not nullable for class Keyword: type.");
 
             return new Keyword(id.Value!, parentId.Value!, value.Value!, archived, bid, matchType.Value!, parentType, type);
         }
@@ -322,7 +322,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Keyword keyword, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -337,23 +336,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Keyword keyword, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keyword.Id == null)
-                throw new ArgumentNullException(nameof(keyword.Id), "Property is required for class Keyword.");
-
-            if (keyword.ParentId == null)
-                throw new ArgumentNullException(nameof(keyword.ParentId), "Property is required for class Keyword.");
-
-            if (keyword.Value == null)
-                throw new ArgumentNullException(nameof(keyword.Value), "Property is required for class Keyword.");
+            if (keyword.ArchivedOption.IsSet && keyword.Archived == null)
+                throw new JsonException("Cannot write null property Keyword.Archived to non-nullable JSON property 'archived'.");
 
             if (keyword.ParentTypeOption.IsSet && keyword.ParentType == null)
-                throw new ArgumentNullException(nameof(keyword.ParentType), "Property is required for class Keyword.");
+                throw new JsonException("Cannot write null property Keyword.ParentType to non-nullable JSON property 'parent_type'.");
 
             if (keyword.TypeOption.IsSet && keyword.Type == null)
-                throw new ArgumentNullException(nameof(keyword.Type), "Property is required for class Keyword.");
+                throw new JsonException("Cannot write null property Keyword.Type to non-nullable JSON property 'type'.");
 
             writer.WriteString("id", keyword.Id);
 

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,19 +25,15 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignPlanningBudgetRecommendation", description = "Budget recommendation response containing recommended budget, estimated days, and point estimations.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer budgetRecommendation;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CampaignPlanningExperimentBudgetRecommendation> experimentCampaignBudgetRecommendation = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lifetimeDaysRecommendation;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
 
   public CampaignPlanningBudgetRecommendation budgetRecommendation(@Nullable Integer budgetRecommendation) {
@@ -79,7 +74,7 @@ public class CampaignPlanningBudgetRecommendation {
    * List of experimental budget recommendations.
    * @return experimentCampaignBudgetRecommendation
    */
-  @Valid 
+  
   @Schema(name = "experiment_campaign_budget_recommendation", description = "List of experimental budget recommendations.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("experiment_campaign_budget_recommendation")
   public List<@Valid CampaignPlanningExperimentBudgetRecommendation> getExperimentCampaignBudgetRecommendation() {
@@ -129,7 +124,7 @@ public class CampaignPlanningBudgetRecommendation {
    * List of point estimations for different budget scenarios.
    * @return pointEstimations
    */
-  @Valid 
+  
   @Schema(name = "point_estimations", description = "List of point estimations for different budget scenarios.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("point_estimations")
   public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {

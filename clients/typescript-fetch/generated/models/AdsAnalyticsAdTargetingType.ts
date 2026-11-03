@@ -31,7 +31,7 @@ export const AdsAnalyticsAdTargetingType = {
     AgeBucket: 'AGE_BUCKET',
     Region: 'REGION',
     QuizResult: 'QUIZ_RESULT',
-    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER'
+    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER',
 } as const;
 export type AdsAnalyticsAdTargetingType = typeof AdsAnalyticsAdTargetingType[keyof typeof AdsAnalyticsAdTargetingType];
 

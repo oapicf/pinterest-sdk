@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'creative_assets_visibility_type.g.dart';
 
+/// Creative assets visibility.
 class CreativeAssetsVisibilityType extends EnumClass {
 
-  /// Creative assets visibility.
   @BuiltValueEnumConst(wireName: r'VISIBLE')
   static const CreativeAssetsVisibilityType VISIBLE = _$VISIBLE;
-  /// Creative assets visibility.
   @BuiltValueEnumConst(wireName: r'HIDDEN')
   static const CreativeAssetsVisibilityType HIDDEN = _$HIDDEN;
 

@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductGroupPromotionsUpdateWithRequiredBody", description = "Resource create or update operation model with required body fields (no OptionalProperties).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotionsUpdateWithRequiredBody {
 
   private String adGroupId;
@@ -81,7 +81,7 @@ public class ProductGroupPromotionsUpdateWithRequiredBody {
    * List of product group promotions to create or update.
    * @return productGroupPromotion
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_group_promotion", example = "[{\"slideshow_collections_description\":\"Description\",\"creative_type\":\"REGULAR\",\"collections_hero_pin_id\":\"123123\",\"catalog_product_group_name\":\"catalogProductGroupName to create\",\"collections_hero_destination_url\":\"http://www.pinterest.com\",\"tracking_url\":\"https://www.pinterest.com\",\"slideshow_collections_title\":\"Title\",\"status\":\"ACTIVE\",\"is_mdl\":true},{\"id\":\"2680059592705\",\"catalog_product_group_id\":\"1234123\",\"slideshow_collections_description\":\"Description\",\"creative_type\":\"REGULAR\",\"collections_hero_pin_id\":\"123123\",\"catalog_product_group_name\":\"catalogProductGroupName to update\",\"collections_hero_destination_url\":\"http://www.pinterest.com\",\"tracking_url\":\"https://www.pinterest.com\",\"slideshow_collections_title\":\"Title\",\"status\":\"ACTIVE\"}]", description = "List of product group promotions to create or update.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_group_promotion")
   public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {

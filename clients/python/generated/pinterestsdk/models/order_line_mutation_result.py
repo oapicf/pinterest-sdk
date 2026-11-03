@@ -77,15 +77,13 @@ class OrderLineMutationResult(BaseModel):
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in order_line (list)
         _items = []
         if self.order_line:
             for _item_order_line in self.order_line:
-                if _item_order_line:
-                    _items.append(_item_order_line.to_dict())
+                _items.append(_item_order_line.to_dict() if _item_order_line is not None else None)
             _dict['order_line'] = _items
         return _dict
 

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'bid_strategy_type.g.dart';
 
+/// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
 class BidStrategyType extends EnumClass {
 
-  /// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
   @BuiltValueEnumConst(wireName: r'AUTOMATIC_BID')
   static const BidStrategyType AUTOMATIC_BID = _$AUTOMATIC_BID;
-  /// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
   @BuiltValueEnumConst(wireName: r'MAX_BID')
   static const BidStrategyType MAX_BID = _$MAX_BID;
-  /// Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
   @BuiltValueEnumConst(wireName: r'TARGET_AVG')
   static const BidStrategyType TARGET_AVG = _$TARGET_AVG;
 

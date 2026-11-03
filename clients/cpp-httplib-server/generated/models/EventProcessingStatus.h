@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class EventProcessingStatus
-{
-public:
-
-    EventProcessingStatus();
-    virtual ~EventProcessingStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(EventProcessingStatus,
-        )
-
-private:
+enum class EventProcessingStatus {
+    
+    FAILED,
+    
+    PROCESSED
+    
 };
 
+inline void to_json(nlohmann::json& j, const EventProcessingStatus& value)
+{
+    switch (value)
+    {
+        
+        case EventProcessingStatus::FAILED: j = "failed"; break;
+        
+        case EventProcessingStatus::PROCESSED: j = "processed"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for EventProcessingStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, EventProcessingStatus& value)
+{
+    
+    if (j == "failed")
+    {
+        value = EventProcessingStatus::FAILED;
+        return;
+    }
+    
+    if (j == "processed")
+    {
+        value = EventProcessingStatus::PROCESSED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for EventProcessingStatus", &j);
+}
 
 } // namespace models
 

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,25 +25,19 @@ import jakarta.annotation.Generated;
  * ConversionTagV3GoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionTagV3GoalMetadata {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AttributionWindows attributionWindows;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionEvent conversionEvent;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String conversionTagId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String cpaGoalValueInMicroCurrency;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isRoasOptimized = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String reportingEvent;
 
   public ConversionTagV3GoalMetadata attributionWindows(@Nullable AttributionWindows attributionWindows) {
@@ -141,7 +134,7 @@ public class ConversionTagV3GoalMetadata {
    * @return isRoasOptimized
    */
   
-  @Schema(name = "is_roas_optimized", description = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. This parameter is not enabled for all advertisers. [Learn more](https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_roas_optimized", description = "Pinterest Performance+ ROAS bidding. When enabled, Pinterest will optimize for conversion value instead of conversion volume. Only supported when `conversion_event` is set to `\"CHECKOUT\"` and `bid_strategy_type` is set to `\"AUTOMATIC_BID\"`. This parameter is not enabled for all advertisers. [Learn more](https://developers.pinterest.com/docs/getting-started/using-beta-and-restricted-features/).", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_roas_optimized")
   public JsonNullable<Boolean> getIsRoasOptimized() {
     return isRoasOptimized;

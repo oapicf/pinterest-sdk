@@ -125,3 +125,4 @@ class _$FeedsList200ResponseSerializer implements PrimitiveSerializer<FeedsList2
   }
 }
 
+

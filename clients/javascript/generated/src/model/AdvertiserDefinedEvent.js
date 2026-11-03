@@ -17,7 +17,7 @@ import ConversionTagTypeOptimal from './ConversionTagTypeOptimal';
 /**
  * The AdvertiserDefinedEvent model module.
  * @module model/AdvertiserDefinedEvent
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvertiserDefinedEvent {
     /**

@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object containing a list of all the asset access requests")
 @JsonTypeName("CreateAssetAccessRequestBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestBody   {
-  private @Valid List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
+  private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
 
   public CreateAssetAccessRequestBody() {
   }
@@ -46,7 +46,7 @@ public class CreateAssetAccessRequestBody   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "asset_requests")
-  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {
+  @NotNull  @Size(min=1,max=100)public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {
     return assetRequests;
   }
 

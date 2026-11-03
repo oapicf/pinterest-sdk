@@ -23,14 +23,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Salesforce account details including bill-to information.")
 @JsonTypeName("SSIOAccount")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccount   {
-  private @Valid List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
+  private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
   private Boolean canEdit;
   private String currency;
   private Boolean eligible;
   private String error;
-  private @Valid List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
+  private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   public SSIOAccount() {
   }
@@ -46,7 +46,7 @@ public class SSIOAccount   {
   
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
   @JsonProperty("billto_infos")
-  @Valid public List<@Valid SSIOAccountItem> getBilltoInfos() {
+  public List<@Valid SSIOAccountItem> getBilltoInfos() {
     return billtoInfos;
   }
 
@@ -160,7 +160,7 @@ public class SSIOAccount   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pmp_names")
-  @Valid public List<@Valid SSIOAccountPMPName> getPmpNames() {
+  public List<@Valid SSIOAccountPMPName> getPmpNames() {
     return pmpNames;
   }
 

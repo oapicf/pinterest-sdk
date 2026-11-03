@@ -150,16 +150,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mappedConversionType.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventInput.", nameof(mappedConversionType));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventInput: mapped_conversion_type.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventInput.", nameof(name));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventInput: name.");
 
             if (mappedConversionType.IsSet && mappedConversionType.Value == null)
-                throw new ArgumentNullException(nameof(mappedConversionType), "Property is not nullable for class AdvertiserDefinedEventInput.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventInput: mapped_conversion_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdvertiserDefinedEventInput.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventInput: name.");
 
             return new AdvertiserDefinedEventInput(mappedConversionType.Value!.Value!, name.Value!);
         }
@@ -170,7 +170,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventInput"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvertiserDefinedEventInput advertiserDefinedEventInput, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -185,12 +184,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventInput"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvertiserDefinedEventInput advertiserDefinedEventInput, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advertiserDefinedEventInput.Name == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventInput.Name), "Property is required for class AdvertiserDefinedEventInput.");
-
             var mappedConversionTypeRawValue = AdvertiserDefinedEventMappingTypeValueConverter.ToJsonValue(advertiserDefinedEventInput.MappedConversionType);
             writer.WriteString("mapped_conversion_type", mappedConversionTypeRawValue);
 

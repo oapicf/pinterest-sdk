@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class LabelsResponse.");
+                throw new JsonException("Property is not nullable for class LabelsResponse: errors.");
 
             if (labels.IsSet && labels.Value == null)
-                throw new ArgumentNullException(nameof(labels), "Property is not nullable for class LabelsResponse.");
+                throw new JsonException("Property is not nullable for class LabelsResponse: labels.");
 
             return new LabelsResponse(errors, labels);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelsResponse labelsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,14 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelsResponse labelsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (labelsResponse.ErrorsOption.IsSet && labelsResponse.Errors == null)
-                throw new ArgumentNullException(nameof(labelsResponse.Errors), "Property is required for class LabelsResponse.");
+                throw new JsonException("Cannot write null property LabelsResponse.Errors to non-nullable JSON property 'errors'.");
 
             if (labelsResponse.LabelsOption.IsSet && labelsResponse.Labels == null)
-                throw new ArgumentNullException(nameof(labelsResponse.Labels), "Property is required for class LabelsResponse.");
+                throw new JsonException("Cannot write null property LabelsResponse.Labels to non-nullable JSON property 'labels'.");
 
             if (labelsResponse.ErrorsOption.IsSet)
             {

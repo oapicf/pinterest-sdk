@@ -6,7 +6,7 @@
 export const TrendsGender = {
     Male: 'male',
     Female: 'female',
-    Unspecified: 'unspecified'
+    Unspecified: 'unspecified',
 } as const;
 export type TrendsGender = typeof TrendsGender[keyof typeof TrendsGender];
 

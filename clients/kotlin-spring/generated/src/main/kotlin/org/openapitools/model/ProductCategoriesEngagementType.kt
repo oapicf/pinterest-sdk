@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ENGAGEMENT,OUTBOUND_CLICK,SAVE
-*/
+ * 
+ * Values: ENGAGEMENT,OUTBOUND_CLICK,SAVE
+ */
 enum class ProductCategoriesEngagementType(@get:JsonValue val value: kotlin.String) {
 
     ENGAGEMENT("ENGAGEMENT"),
@@ -29,9 +29,8 @@ enum class ProductCategoriesEngagementType(@get:JsonValue val value: kotlin.Stri
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ProductCategoriesEngagementType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoriesEngagementType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoriesEngagementType'")
         }
     }
 }
-

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class MediaType
-{
-public:
-
-    MediaType();
-    virtual ~MediaType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MediaType,
-        )
-
-private:
+enum class MediaType {
+    
+    IMAGE,
+    
+    VIDEO
+    
 };
 
+inline void to_json(nlohmann::json& j, const MediaType& value)
+{
+    switch (value)
+    {
+        
+        case MediaType::IMAGE: j = "IMAGE"; break;
+        
+        case MediaType::VIDEO: j = "VIDEO"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MediaType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MediaType& value)
+{
+    
+    if (j == "IMAGE")
+    {
+        value = MediaType::IMAGE;
+        return;
+    }
+    
+    if (j == "VIDEO")
+    {
+        value = MediaType::VIDEO;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MediaType", &j);
+}
 
 } // namespace models
 

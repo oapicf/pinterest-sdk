@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PinterestLibError {
     /**
      * 
-     * @type {number}
-     * @memberof PinterestLibError
      */
     code: number;
     /**
      * 
-     * @type {string}
-     * @memberof PinterestLibError
      */
     message: string;
 }

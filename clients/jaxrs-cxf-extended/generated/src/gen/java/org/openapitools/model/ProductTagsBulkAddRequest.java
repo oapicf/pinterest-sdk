@@ -23,7 +23,6 @@ public class ProductTagsBulkAddRequest  {
   * List of product tags to add. Maximum 24 items allowed.
   */
   @ApiModelProperty(required = true, value = "List of product tags to add. Maximum 24 items allowed.")
-  @Valid
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
  /**
   * List of product tags to add. Maximum 24 items allowed.

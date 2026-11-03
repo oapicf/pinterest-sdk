@@ -14,7 +14,7 @@
  */
 export const AudienceUpdateOperationType = {
     Update: 'UPDATE',
-    Remove: 'REMOVE'
+    Remove: 'REMOVE',
 } as const;
 export type AudienceUpdateOperationType = typeof AudienceUpdateOperationType[keyof typeof AudienceUpdateOperationType];
 

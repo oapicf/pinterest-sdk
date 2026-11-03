@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class AttributionMatchType
-{
-public:
-
-    AttributionMatchType();
-    virtual ~AttributionMatchType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AttributionMatchType,
-        )
-
-private:
+enum class AttributionMatchType {
+    
+    P,
+    
+    D,
+    
+    NA
+    
 };
 
+inline void to_json(nlohmann::json& j, const AttributionMatchType& value)
+{
+    switch (value)
+    {
+        
+        case AttributionMatchType::P: j = "P"; break;
+        
+        case AttributionMatchType::D: j = "D"; break;
+        
+        case AttributionMatchType::NA: j = "NA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AttributionMatchType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AttributionMatchType& value)
+{
+    
+    if (j == "P")
+    {
+        value = AttributionMatchType::P;
+        return;
+    }
+    
+    if (j == "D")
+    {
+        value = AttributionMatchType::D;
+        return;
+    }
+    
+    if (j == "NA")
+    {
+        value = AttributionMatchType::NA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AttributionMatchType", &j);
+}
 
 } // namespace models
 

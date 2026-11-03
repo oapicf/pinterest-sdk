@@ -274,7 +274,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnum?>(CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "country":
                             country = new Option<Country?>(JsonSerializer.Deserialize<Country?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -298,19 +303,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupUpdateRequest: catalog_type.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupUpdateRequest: country.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupUpdateRequest: filters.");
 
             if (locale.IsSet && locale.Value == null)
-                throw new ArgumentNullException(nameof(locale), "Property is not nullable for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupUpdateRequest: locale.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupUpdateRequest: name.");
 
             return new CatalogsRetailProductGroupUpdateRequest(catalogType, country, description, filters, locale, name);
         }
@@ -321,7 +326,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -336,14 +340,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailProductGroupUpdateRequest catalogsRetailProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsRetailProductGroupUpdateRequest.CatalogTypeOption.IsSet && catalogsRetailProductGroupUpdateRequest.CatalogType == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupUpdateRequest.CatalogType to non-nullable JSON property 'catalog_type'.");
+
+            if (catalogsRetailProductGroupUpdateRequest.CountryOption.IsSet && catalogsRetailProductGroupUpdateRequest.Country == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupUpdateRequest.Country to non-nullable JSON property 'country'.");
+
             if (catalogsRetailProductGroupUpdateRequest.FiltersOption.IsSet && catalogsRetailProductGroupUpdateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductGroupUpdateRequest.Filters), "Property is required for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupUpdateRequest.Filters to non-nullable JSON property 'filters'.");
+
+            if (catalogsRetailProductGroupUpdateRequest.LocaleOption.IsSet && catalogsRetailProductGroupUpdateRequest.Locale == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupUpdateRequest.Locale to non-nullable JSON property 'locale'.");
 
             if (catalogsRetailProductGroupUpdateRequest.NameOption.IsSet && catalogsRetailProductGroupUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductGroupUpdateRequest.Name), "Property is required for class CatalogsRetailProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupUpdateRequest.Name to non-nullable JSON property 'name'.");
 
             var catalogTypeRawValue = CatalogsRetailProductGroupUpdateRequest.CatalogTypeEnumToJsonValue(catalogsRetailProductGroupUpdateRequest.CatalogTypeOption.Value!.Value);
             writer.WriteString("catalog_type", catalogTypeRawValue);

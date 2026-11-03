@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class Order
-{
-public:
-
-    Order();
-    virtual ~Order() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Order,
-        )
-
-private:
+enum class Order {
+    
+    ASCENDING,
+    
+    DESCENDING
+    
 };
 
+inline void to_json(nlohmann::json& j, const Order& value)
+{
+    switch (value)
+    {
+        
+        case Order::ASCENDING: j = "ASCENDING"; break;
+        
+        case Order::DESCENDING: j = "DESCENDING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Order", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Order& value)
+{
+    
+    if (j == "ASCENDING")
+    {
+        value = Order::ASCENDING;
+        return;
+    }
+    
+    if (j == "DESCENDING")
+    {
+        value = Order::DESCENDING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Order", &j);
+}
 
 } // namespace models
 

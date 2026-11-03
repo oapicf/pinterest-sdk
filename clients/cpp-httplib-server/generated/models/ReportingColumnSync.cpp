@@ -6,20 +6,3 @@
 */
 #include "ReportingColumnSync.h"
 
-namespace models {
-
-ReportingColumnSync::ReportingColumnSync()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

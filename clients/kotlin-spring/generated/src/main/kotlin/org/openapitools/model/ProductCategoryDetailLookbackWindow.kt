@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: _90,_180,_365,_730
-*/
+ * 
+ * Values: _90,_180,_365,_730
+ */
 enum class ProductCategoryDetailLookbackWindow(@get:JsonValue val value: java.math.BigDecimal) {
 
     _90("90"),
@@ -30,9 +30,8 @@ enum class ProductCategoryDetailLookbackWindow(@get:JsonValue val value: java.ma
         @JvmStatic
         @JsonCreator
         fun forValue(value: java.math.BigDecimal): ProductCategoryDetailLookbackWindow {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoryDetailLookbackWindow'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoryDetailLookbackWindow'")
         }
     }
 }
-

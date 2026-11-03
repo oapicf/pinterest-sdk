@@ -29,14 +29,10 @@ import {
 export interface DeleteBusinessPartnersDelete {
     /**
      * A list of partner ids to be deleted
-     * @type {Array<string>}
-     * @memberof DeleteBusinessPartnersDelete
      */
     partnerIds: Array<string>;
     /**
      * 
-     * @type {NullablePartnerType}
-     * @memberof DeleteBusinessPartnersDelete
      */
     partnerType?: NullablePartnerType | null;
 }

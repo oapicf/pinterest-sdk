@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsBaseFiltersAnyOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsBaseFiltersAnyOf   {
-  private @Valid List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
   public CatalogsBaseFiltersAnyOf() {
   }
@@ -36,7 +36,7 @@ public class CatalogsBaseFiltersAnyOf   {
 
   /**
    **/
-  public CatalogsBaseFiltersAnyOf anyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public CatalogsBaseFiltersAnyOf anyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -44,12 +44,12 @@ public class CatalogsBaseFiltersAnyOf   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "any_of")
-  @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
+  @NotNull  @Size(min=1)public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   @JsonProperty(required = true, value = "any_of")
-  public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

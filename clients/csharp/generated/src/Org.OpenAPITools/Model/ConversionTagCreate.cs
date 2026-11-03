@@ -304,10 +304,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class ConversionTagCreate.", nameof(name));
+                throw new JsonException("Property is required for class ConversionTagCreate: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class ConversionTagCreate.");
+                throw new JsonException("Property is not nullable for class ConversionTagCreate: name.");
 
             return new ConversionTagCreate(name.Value!, aemDbEnabled, aemEnabled, aemExternalIdEnabled, aemFnlnEnabled, aemGeEnabled, aemLocEnabled, aemPhEnabled, mdFrequency);
         }
@@ -318,7 +318,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionTagCreate conversionTagCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -333,12 +332,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionTagCreate conversionTagCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionTagCreate.Name == null)
-                throw new ArgumentNullException(nameof(conversionTagCreate.Name), "Property is required for class ConversionTagCreate.");
-
             writer.WriteString("name", conversionTagCreate.Name);
 
             if (conversionTagCreate.AemDbEnabledOption.IsSet)

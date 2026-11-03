@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!gOOGLEPRODUCTCATEGORY4.IsSet)
-                throw new ArgumentException("Property is required for class GoogleProductCategory4Filter.", nameof(gOOGLEPRODUCTCATEGORY4));
+                throw new JsonException("Property is required for class GoogleProductCategory4Filter: GOOGLE_PRODUCT_CATEGORY_4.");
 
             if (gOOGLEPRODUCTCATEGORY4.IsSet && gOOGLEPRODUCTCATEGORY4.Value == null)
-                throw new ArgumentNullException(nameof(gOOGLEPRODUCTCATEGORY4), "Property is not nullable for class GoogleProductCategory4Filter.");
+                throw new JsonException("Property is not nullable for class GoogleProductCategory4Filter: GOOGLE_PRODUCT_CATEGORY_4.");
 
             return new GoogleProductCategory4Filter(gOOGLEPRODUCTCATEGORY4.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="googleProductCategory4Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, GoogleProductCategory4Filter googleProductCategory4Filter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="googleProductCategory4Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, GoogleProductCategory4Filter googleProductCategory4Filter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (googleProductCategory4Filter.GOOGLEPRODUCTCATEGORY4 == null)
-                throw new ArgumentNullException(nameof(googleProductCategory4Filter.GOOGLEPRODUCTCATEGORY4), "Property is required for class GoogleProductCategory4Filter.");
-
             writer.WritePropertyName("GOOGLE_PRODUCT_CATEGORY_4");
             JsonSerializer.Serialize(writer, googleProductCategory4Filter.GOOGLEPRODUCTCATEGORY4, jsonSerializerOptions);
         }

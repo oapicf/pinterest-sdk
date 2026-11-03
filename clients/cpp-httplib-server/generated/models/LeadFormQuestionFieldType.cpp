@@ -6,20 +6,3 @@
 */
 #include "LeadFormQuestionFieldType.h"
 
-namespace models {
-
-LeadFormQuestionFieldType::LeadFormQuestionFieldType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

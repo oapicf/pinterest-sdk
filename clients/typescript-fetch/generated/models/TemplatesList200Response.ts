@@ -29,14 +29,10 @@ import {
 export interface TemplatesList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof TemplatesList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<AccountTemplate>}
-     * @memberof TemplatesList200Response
      */
     items: Array<AccountTemplate>;
 }

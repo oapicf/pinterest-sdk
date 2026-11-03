@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Quiz ad tie breaker type, default is RANDOM
-* Values: RANDOM,CUSTOM
-*/
+ * Quiz ad tie breaker type, default is RANDOM
+ * Values: RANDOM,CUSTOM
+ */
 enum class TieBreakerType(@get:JsonValue val value: kotlin.String) {
 
     RANDOM("RANDOM"),
@@ -28,9 +28,8 @@ enum class TieBreakerType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TieBreakerType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TieBreakerType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TieBreakerType'")
         }
     }
 }
-

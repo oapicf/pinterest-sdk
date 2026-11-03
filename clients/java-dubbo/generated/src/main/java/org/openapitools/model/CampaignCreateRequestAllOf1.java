@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 public class CampaignCreateRequestAllOf1 implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -26,19 +26,19 @@ public class CampaignCreateRequestAllOf1 implements Serializable {
    * Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES
    */
   @JsonProperty("is_automated_campaign")
-  private Boolean isAutomatedCampaign;
+  private Boolean isAutomatedCampaign = false;
 
   /**
    * Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.
    */
   @JsonProperty("is_campaign_budget_optimization")
-  private Boolean isCampaignBudgetOptimization;
+  private Boolean isCampaignBudgetOptimization = true;
 
   /**
    * Determine if a campaign has setup for flexible daily budgets, also known as \&quot;Pinterest Performance+ budgets\&quot;. Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
    */
   @JsonProperty("is_flexible_daily_budgets")
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isFlexibleDailyBudgets = false;
 
   /**
    * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
@@ -62,7 +62,7 @@ public class CampaignCreateRequestAllOf1 implements Serializable {
   private ObjectiveType objectiveType;
 
   @JsonProperty("status")
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   /**
    * 

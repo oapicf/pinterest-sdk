@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TargetingSpecOperationMinimumAge {
     /**
      * 
-     * @type {TargetingSpecOperationMinimumAgeFieldEnum}
-     * @memberof TargetingSpecOperationMinimumAge
      */
     field: TargetingSpecOperationMinimumAgeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecOperationMinimumAgeOperationEnum}
-     * @memberof TargetingSpecOperationMinimumAge
      */
     operation: TargetingSpecOperationMinimumAgeOperationEnum;
     /**
      * 
-     * @type {string}
-     * @memberof TargetingSpecOperationMinimumAge
      */
     value: string | null;
 }
@@ -44,7 +38,7 @@ export interface TargetingSpecOperationMinimumAge {
  * @export
  */
 export const TargetingSpecOperationMinimumAgeFieldEnum = {
-    MinimumAge: 'MINIMUM_AGE'
+    MinimumAge: 'MINIMUM_AGE',
 } as const;
 export type TargetingSpecOperationMinimumAgeFieldEnum = typeof TargetingSpecOperationMinimumAgeFieldEnum[keyof typeof TargetingSpecOperationMinimumAgeFieldEnum];
 
@@ -52,7 +46,7 @@ export type TargetingSpecOperationMinimumAgeFieldEnum = typeof TargetingSpecOper
  * @export
  */
 export const TargetingSpecOperationMinimumAgeOperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
 } as const;
 export type TargetingSpecOperationMinimumAgeOperationEnum = typeof TargetingSpecOperationMinimumAgeOperationEnum[keyof typeof TargetingSpecOperationMinimumAgeOperationEnum];
 

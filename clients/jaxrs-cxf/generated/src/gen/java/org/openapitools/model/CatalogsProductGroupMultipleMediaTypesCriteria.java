@@ -20,8 +20,6 @@ public class CatalogsProductGroupMultipleMediaTypesCriteria  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<MediaType> values = new ArrayList<>();
  /**
    * Get negated

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TopPinsAnalyticsResponseDateAvailability {
     /**
      * 
-     * @type {boolean}
-     * @memberof TopPinsAnalyticsResponseDateAvailability
      */
     isRealtime?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof TopPinsAnalyticsResponseDateAvailability
      */
     latestAvailableTimestamp?: number;
 }

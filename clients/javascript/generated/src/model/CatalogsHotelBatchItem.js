@@ -21,7 +21,7 @@ import CatalogsUpsertHotelItem from './CatalogsUpsertHotelItem';
 /**
  * The CatalogsHotelBatchItem model module.
  * @module model/CatalogsHotelBatchItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelBatchItem {
     /**

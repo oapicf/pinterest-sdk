@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * CatalogsBaseFiltersAnyOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsBaseFiltersAnyOf   {
   @JsonProperty("any_of")
@@ -21,9 +21,9 @@ public class CatalogsBaseFiltersAnyOf   {
 @Size(min=1)
 @Valid
 
-  private List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
-  public CatalogsBaseFiltersAnyOf anyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public CatalogsBaseFiltersAnyOf anyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -40,11 +40,11 @@ public class CatalogsBaseFiltersAnyOf   {
    * Get anyOf
    * @return anyOf
   **/
-  public List<CatalogsBaseFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

@@ -159,3 +159,4 @@ class _$IntegrationLogsInvalidLogResponseRejectedLogsItemsSerializer implements 
   }
 }
 
+

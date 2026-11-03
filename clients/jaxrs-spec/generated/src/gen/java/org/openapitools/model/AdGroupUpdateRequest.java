@@ -29,11 +29,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdGroupUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupUpdateRequest   {
   private BigDecimal bidMultiplier;
   private String id;
-  private @Valid List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
+  private List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
   private Boolean autoTargetingEnabled;
   private Integer bidInMicroCurrency;
   private BidStrategyType bidStrategyType;
@@ -97,11 +97,11 @@ public class AdGroupUpdateRequest   {
 
   private PromotionApplicationLevelEnum promotionApplicationLevel;
   private String promotionId = "0";
-  private @Valid List<String> promotionIds = new ArrayList<>();
+  private List<String> promotionIds = new ArrayList<>();
   private Integer startTime;
   private EntityStatus status;
   private TargetingSpec targetingSpec;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+  private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
   private Object trackingUrls;
 
   public AdGroupUpdateRequest() {
@@ -167,7 +167,7 @@ public class AdGroupUpdateRequest   {
   
   @ApiModelProperty(value = "<div>Targeting spec operations define modifications to apply to the targeting spec.</div> <br /> <div><strong>NOTE:</strong> The <code>targeting_spec</code> and <code>targeting_spec_operations</code> cannot be sent at the same time.</div> <br /> <div>The supported operations are:</div> <ul> <li><code>SET</code>: sets the field with the given values. If value is set to <code>null</code>, the field will be removed.</li> <li><code>ADD</code>: adds the given values to the field.</li> <li><code>REMOVE</code>: removes the given values from the field.</li> </ul> <div>Note the following:</div> <ul> <li>Same items are not added and removed at the same time.</li> <li>For a given field, only <code>ADD</code>/<code>REMOVE</code> or <code>SET</code> operations are allowed, not a mix of them.</li> <li>Only one SET operation is allowed for a given field.</li> <li>The <code>AGE_BUCKET</code>, <code>MAXIMUM_AGE</code>, <code>MINIMUM_AGE</code> and <code>SHOPPING_RETARGETING</code> fields only support the <code>SET</code> operation.</li> </ul>")
   @JsonProperty("targeting_spec_operations")
-  @Valid public List<@Valid TargetingSpecOperations> getTargetingSpecOperations() {
+  public List<@Valid TargetingSpecOperations> getTargetingSpecOperations() {
     return targetingSpecOperations;
   }
 

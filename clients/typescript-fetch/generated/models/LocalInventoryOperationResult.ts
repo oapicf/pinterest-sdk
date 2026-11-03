@@ -36,38 +36,26 @@ import {
 export interface LocalInventoryOperationResult {
     /**
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-     * @type {Array<SupplementalItemValidationEvent>}
-     * @memberof LocalInventoryOperationResult
      */
     errors?: Array<SupplementalItemValidationEvent>;
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryOperationResult
      */
     itemId: string;
     /**
      * Status of the item processing record
-     * @type {SupplementalItemProcessingStatus}
-     * @memberof LocalInventoryOperationResult
      */
     status: SupplementalItemProcessingStatus;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof LocalInventoryOperationResult
      */
     storeCode: string;
     /**
      * 
-     * @type {LocalInventoryOperationResultSupplementalTypeEnum}
-     * @memberof LocalInventoryOperationResult
      */
     supplementalType: LocalInventoryOperationResultSupplementalTypeEnum;
     /**
      * Array with the validation warnings for the item processing record
-     * @type {Array<SupplementalItemValidationEvent>}
-     * @memberof LocalInventoryOperationResult
      */
     warnings?: Array<SupplementalItemValidationEvent>;
 }
@@ -77,7 +65,7 @@ export interface LocalInventoryOperationResult {
  * @export
  */
 export const LocalInventoryOperationResultSupplementalTypeEnum = {
-    LocalInventory: 'LOCAL_INVENTORY'
+    LocalInventory: 'LOCAL_INVENTORY',
 } as const;
 export type LocalInventoryOperationResultSupplementalTypeEnum = typeof LocalInventoryOperationResultSupplementalTypeEnum[keyof typeof LocalInventoryOperationResultSupplementalTypeEnum];
 

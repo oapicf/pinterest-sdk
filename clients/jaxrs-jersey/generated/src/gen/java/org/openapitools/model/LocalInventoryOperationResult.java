@@ -40,7 +40,7 @@ import javax.validation.Valid;
   LocalInventoryOperationResult.JSON_PROPERTY_SUPPLEMENTAL_TYPE,
   LocalInventoryOperationResult.JSON_PROPERTY_WARNINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryOperationResult   {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @JsonProperty(JSON_PROPERTY_ERRORS)
@@ -118,7 +118,7 @@ public class LocalInventoryOperationResult   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
-  @Valid 
+  
   public List<@Valid SupplementalItemValidationEvent> getErrors() {
     return errors;
   }
@@ -226,7 +226,7 @@ public class LocalInventoryOperationResult   {
    **/
   @JsonProperty(value = "warnings")
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @Valid 
+  
   public List<@Valid SupplementalItemValidationEvent> getWarnings() {
     return warnings;
   }

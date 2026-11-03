@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reporting targeting type
-* Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,MEDIA_TYPE,AGE_BUCKET_AND_GENDER,AUDIENCE_MULTIPLIER,CREATIVE_ENHANCEMENTS,LOCAL_ADS_STORE_CODE
-*/
+ * Reporting targeting type
+ * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,MEDIA_TYPE,AGE_BUCKET_AND_GENDER,AUDIENCE_MULTIPLIER,CREATIVE_ENHANCEMENTS,LOCAL_ADS_STORE_CODE
+ */
 enum class AdAdsAnalyticsAsyncTargetingTypes(@get:JsonValue val value: kotlin.String) {
 
     KEYWORD("KEYWORD"),
@@ -43,9 +43,8 @@ enum class AdAdsAnalyticsAsyncTargetingTypes(@get:JsonValue val value: kotlin.St
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdAdsAnalyticsAsyncTargetingTypes {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdAdsAnalyticsAsyncTargetingTypes'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdAdsAnalyticsAsyncTargetingTypes'")
         }
     }
 }
-

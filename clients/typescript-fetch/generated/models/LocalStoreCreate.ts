@@ -29,62 +29,42 @@ import {
 export interface LocalStoreCreate {
     /**
      * Primary address line of the store.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     addressPrimary?: string;
     /**
      * Secondary address line of the store.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     addressSecondary?: string;
     /**
      * City where the store is located.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     city?: string;
     /**
      * Country code where the store is located.
-     * @type {Country}
-     * @memberof LocalStoreCreate
      */
     country: Country;
     /**
      * Geographic latitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStoreCreate
      */
     latitude?: number;
     /**
      * Geographic longitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStoreCreate
      */
     longitude?: number;
     /**
      * The name of the local store.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     name: string;
     /**
      * Postal or ZIP code of the store.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     postalCode?: string;
     /**
      * State or region code where the store is located.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     region?: string;
     /**
      * Merchant provided code for the local store. Unique within the merchant's catalog.
-     * @type {string}
-     * @memberof LocalStoreCreate
      */
     storeCode: string;
 }

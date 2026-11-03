@@ -30,26 +30,26 @@ data class CatalogsCreativeAssetsProductGroupProductCounts(
 
     @get:DecimalMin(value="0")
     @Schema(required = true, description = "")
-    @param:JsonProperty("app_links")
+    @param:JsonProperty("app_links", required = true)
     @get:JsonProperty("app_links", required = true) val appLinks: java.math.BigDecimal,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsProductGroupProductCounts.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @get:DecimalMin(value="0")
     @Schema(required = true, description = "")
-    @param:JsonProperty("images")
+    @param:JsonProperty("images", required = true)
     @get:JsonProperty("images", required = true) val images: java.math.BigDecimal,
 
     @get:DecimalMin(value="0")
     @Schema(required = true, description = "")
-    @param:JsonProperty("total")
+    @param:JsonProperty("total", required = true)
     @get:JsonProperty("total", required = true) val total: java.math.BigDecimal,
 
     @get:DecimalMin(value="0")
     @Schema(required = true, description = "")
-    @param:JsonProperty("videos")
+    @param:JsonProperty("videos", required = true)
     @get:JsonProperty("videos", required = true) val videos: java.math.BigDecimal
 ) : CatalogsProductGroupProductCountsVertical {
 
@@ -60,12 +60,12 @@ data class CatalogsCreativeAssetsProductGroupProductCounts(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         CREATIVE_ASSETS("CREATIVE_ASSETS");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

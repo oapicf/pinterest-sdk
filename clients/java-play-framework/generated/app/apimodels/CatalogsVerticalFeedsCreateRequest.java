@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsVerticalFeedsCreateRequest   {
   @JsonProperty("catalog_id")
@@ -118,7 +118,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsVerticalFeedsCreateRequest catalogId(String catalogId) {
     this.catalogId = catalogId;

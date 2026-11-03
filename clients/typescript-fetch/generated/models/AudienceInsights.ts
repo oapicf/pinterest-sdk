@@ -43,38 +43,26 @@ import {
 export interface AudienceInsights {
     /**
      * Category interest distribution
-     * @type {Array<AudienceCategory>}
-     * @memberof AudienceInsights
      */
     categories?: Array<AudienceCategory>;
     /**
      * Generation date
-     * @type {string}
-     * @memberof AudienceInsights
      */
     date?: string | null;
     /**
      * 
-     * @type {AudienceDemographics}
-     * @memberof AudienceInsights
      */
     demographics?: AudienceDemographics;
     /**
      * Population count.
-     * @type {number}
-     * @memberof AudienceInsights
      */
     size?: number;
     /**
      * Indicates whether the audience size has been rounded up to the next highest upper boundary.
-     * @type {boolean}
-     * @memberof AudienceInsights
      */
     sizeIsUpperBound?: boolean;
     /**
      * 
-     * @type {AudienceInsightType}
-     * @memberof AudienceInsights
      */
     type?: AudienceInsightType;
 }

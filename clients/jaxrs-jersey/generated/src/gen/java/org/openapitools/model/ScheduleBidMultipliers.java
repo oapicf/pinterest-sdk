@@ -41,7 +41,7 @@ import javax.validation.Valid;
   ScheduleBidMultipliers.JSON_PROPERTY_GENDER_MULTIPLIERS,
   ScheduleBidMultipliers.JSON_PROPERTY_PLACEMENT_MULTIPLIERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleBidMultipliers   {
   public static final String JSON_PROPERTY_AGE_BUCKET_MULTIPLIERS = "age_bucket_multipliers";
   @JsonProperty(JSON_PROPERTY_AGE_BUCKET_MULTIPLIERS)
@@ -122,7 +122,7 @@ public class ScheduleBidMultipliers   {
    **/
   @JsonProperty(value = "audience_multipliers")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid BidOptionsAudienceMultipliers> getAudienceMultipliers() {
     return audienceMultipliers;
   }

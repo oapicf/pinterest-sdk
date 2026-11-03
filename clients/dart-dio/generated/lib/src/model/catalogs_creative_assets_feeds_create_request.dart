@@ -296,6 +296,7 @@ class _$CatalogsCreativeAssetsFeedsCreateRequestSerializer implements PrimitiveS
   }
 }
 
+
 class CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

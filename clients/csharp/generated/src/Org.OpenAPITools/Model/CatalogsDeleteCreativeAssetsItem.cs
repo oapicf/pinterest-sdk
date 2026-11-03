@@ -193,7 +193,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsDeleteCreativeAssetsItem.OperationEnum?>(CatalogsDeleteCreativeAssetsItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsDeleteCreativeAssetsItem.OperationEnum? operationValue = CatalogsDeleteCreativeAssetsItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsDeleteCreativeAssetsItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -202,16 +207,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!creativeAssetsId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteCreativeAssetsItem.", nameof(creativeAssetsId));
+                throw new JsonException("Property is required for class CatalogsDeleteCreativeAssetsItem: creative_assets_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteCreativeAssetsItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsDeleteCreativeAssetsItem: operation.");
 
             if (creativeAssetsId.IsSet && creativeAssetsId.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsId), "Property is not nullable for class CatalogsDeleteCreativeAssetsItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteCreativeAssetsItem: creative_assets_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsDeleteCreativeAssetsItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteCreativeAssetsItem: operation.");
 
             return new CatalogsDeleteCreativeAssetsItem(creativeAssetsId.Value!, operation.Value!.Value!);
         }
@@ -222,7 +227,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteCreativeAssetsItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsDeleteCreativeAssetsItem catalogsDeleteCreativeAssetsItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -237,12 +241,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteCreativeAssetsItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsDeleteCreativeAssetsItem catalogsDeleteCreativeAssetsItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsDeleteCreativeAssetsItem.CreativeAssetsId == null)
-                throw new ArgumentNullException(nameof(catalogsDeleteCreativeAssetsItem.CreativeAssetsId), "Property is required for class CatalogsDeleteCreativeAssetsItem.");
-
             writer.WriteString("creative_assets_id", catalogsDeleteCreativeAssetsItem.CreativeAssetsId);
 
             var operationRawValue = CatalogsDeleteCreativeAssetsItem.OperationEnumToJsonValue(catalogsDeleteCreativeAssetsItem.Operation);

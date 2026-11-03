@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AudienceCategory
 import org.openapitools.model.AudienceDemographics
 import org.openapitools.model.AudienceInsightType
@@ -34,8 +31,6 @@ data class AudienceInsights(
 
     @field:Valid
     @Schema(description = "Category interest distribution")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("categories")
     @get:JsonProperty("categories") val categories: kotlin.collections.List<AudienceCategory>? = null,
 
@@ -46,27 +41,19 @@ data class AudienceInsights(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("demographics")
     @get:JsonProperty("demographics") val demographics: AudienceDemographics? = null,
 
     @Schema(example = "10000", description = "Population count.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("size")
     @get:JsonProperty("size") val propertySize: kotlin.Int? = null,
 
     @Schema(example = "true", description = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("size_is_upper_bound")
     @get:JsonProperty("size_is_upper_bound") val sizeIsUpperBound: kotlin.Boolean? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("type")
     @get:JsonProperty("type") val type: AudienceInsightType? = null
 ) {

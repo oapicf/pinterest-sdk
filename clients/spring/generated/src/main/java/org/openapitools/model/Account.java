@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,43 +25,31 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "Account", description = "User account model containing properties related to a user's account.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Account {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String about;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable UserAccountType accountType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> boardCount = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> businessName = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> followerCount = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> followingCount = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> monthlyViews = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> pinCount = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String profileImage;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String username;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String websiteUrl;
 
   public Account about(@Nullable String about) {
@@ -117,7 +104,7 @@ public class Account {
    * @return boardCount
    */
   
-  @Schema(name = "board_count", accessMode = Schema.AccessMode.READ_ONLY, example = "14", description = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_count", accessMode = Schema.AccessMode.READ_ONLY, example = "14", description = "  User account board count.   **Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("board_count")
   public JsonNullable<Integer> getBoardCount() {
     return boardCount;
@@ -137,7 +124,7 @@ public class Account {
    * @return businessName
    */
   
-  @Schema(name = "business_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "business_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("business_name")
   public JsonNullable<String> getBusinessName() {
     return businessName;
@@ -157,7 +144,7 @@ public class Account {
    * @return followerCount
    */
   
-  @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "10", description = "User account follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "10", description = "User account follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("follower_count")
   public JsonNullable<Integer> getFollowerCount() {
     return followerCount;
@@ -177,7 +164,7 @@ public class Account {
    * @return followingCount
    */
   
-  @Schema(name = "following_count", accessMode = Schema.AccessMode.READ_ONLY, example = "347", description = "User account following count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "following_count", accessMode = Schema.AccessMode.READ_ONLY, example = "347", description = "User account following count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("following_count")
   public JsonNullable<Integer> getFollowingCount() {
     return followingCount;
@@ -218,7 +205,7 @@ public class Account {
    * @return monthlyViews
    */
   
-  @Schema(name = "monthly_views", accessMode = Schema.AccessMode.READ_ONLY, example = "163", description = "User account monthly views.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "monthly_views", accessMode = Schema.AccessMode.READ_ONLY, example = "163", description = "User account monthly views.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("monthly_views")
   public JsonNullable<Integer> getMonthlyViews() {
     return monthlyViews;
@@ -238,7 +225,7 @@ public class Account {
    * @return pinCount
    */
   
-  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "339", description = "User account pin count. This includes both created and saved pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "339", description = "User account pin count. This includes both created and saved pins.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("pin_count")
   public JsonNullable<Integer> getPinCount() {
     return pinCount;

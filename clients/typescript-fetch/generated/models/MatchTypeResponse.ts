@@ -22,7 +22,7 @@ export const MatchTypeResponse = {
     Phrase: 'PHRASE',
     Exact: 'EXACT',
     ExactNegative: 'EXACT_NEGATIVE',
-    PhraseNegative: 'PHRASE_NEGATIVE'
+    PhraseNegative: 'PHRASE_NEGATIVE',
 } as const;
 export type MatchTypeResponse = typeof MatchTypeResponse[keyof typeof MatchTypeResponse];
 

@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AdReviewStatus
-{
-public:
-
-    AdReviewStatus();
-    virtual ~AdReviewStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdReviewStatus,
-        )
-
-private:
+enum class AdReviewStatus {
+    
+    OTHER,
+    
+    PENDING,
+    
+    REJECTED,
+    
+    APPROVED
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdReviewStatus& value)
+{
+    switch (value)
+    {
+        
+        case AdReviewStatus::OTHER: j = "OTHER"; break;
+        
+        case AdReviewStatus::PENDING: j = "PENDING"; break;
+        
+        case AdReviewStatus::REJECTED: j = "REJECTED"; break;
+        
+        case AdReviewStatus::APPROVED: j = "APPROVED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdReviewStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdReviewStatus& value)
+{
+    
+    if (j == "OTHER")
+    {
+        value = AdReviewStatus::OTHER;
+        return;
+    }
+    
+    if (j == "PENDING")
+    {
+        value = AdReviewStatus::PENDING;
+        return;
+    }
+    
+    if (j == "REJECTED")
+    {
+        value = AdReviewStatus::REJECTED;
+        return;
+    }
+    
+    if (j == "APPROVED")
+    {
+        value = AdReviewStatus::APPROVED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdReviewStatus", &j);
+}
 
 } // namespace models
 

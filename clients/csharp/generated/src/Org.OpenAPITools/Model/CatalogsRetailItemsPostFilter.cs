@@ -216,7 +216,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailItemsPostFilter.CatalogTypeEnum?>(CatalogsRetailItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailItemsPostFilter.CatalogTypeEnum? catalogTypeValue = CatalogsRetailItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailItemsPostFilter.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "item_ids":
                             itemIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -231,19 +236,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailItemsPostFilter.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailItemsPostFilter: catalog_type.");
 
             if (!itemIds.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailItemsPostFilter.", nameof(itemIds));
+                throw new JsonException("Property is required for class CatalogsRetailItemsPostFilter: item_ids.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemsPostFilter: catalog_type.");
 
             if (itemIds.IsSet && itemIds.Value == null)
-                throw new ArgumentNullException(nameof(itemIds), "Property is not nullable for class CatalogsRetailItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemsPostFilter: item_ids.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsRetailItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemsPostFilter: catalog_id.");
 
             return new CatalogsRetailItemsPostFilter(catalogType.Value!.Value!, itemIds.Value!, catalogId);
         }
@@ -254,7 +259,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailItemsPostFilter catalogsRetailItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,14 +273,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailItemsPostFilter catalogsRetailItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailItemsPostFilter.ItemIds == null)
-                throw new ArgumentNullException(nameof(catalogsRetailItemsPostFilter.ItemIds), "Property is required for class CatalogsRetailItemsPostFilter.");
-
             if (catalogsRetailItemsPostFilter.CatalogIdOption.IsSet && catalogsRetailItemsPostFilter.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailItemsPostFilter.CatalogId), "Property is required for class CatalogsRetailItemsPostFilter.");
+                throw new JsonException("Cannot write null property CatalogsRetailItemsPostFilter.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             var catalogTypeRawValue = CatalogsRetailItemsPostFilter.CatalogTypeEnumToJsonValue(catalogsRetailItemsPostFilter.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

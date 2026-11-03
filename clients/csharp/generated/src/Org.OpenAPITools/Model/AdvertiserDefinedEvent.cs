@@ -164,10 +164,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (mappedConversionType.IsSet && mappedConversionType.Value == null)
-                throw new ArgumentNullException(nameof(mappedConversionType), "Property is not nullable for class AdvertiserDefinedEvent.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEvent: mapped_conversion_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdvertiserDefinedEvent.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEvent: name.");
 
             return new AdvertiserDefinedEvent(mappedConversionType, name);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvertiserDefinedEvent advertiserDefinedEvent, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,11 +192,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvertiserDefinedEvent advertiserDefinedEvent, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (advertiserDefinedEvent.MappedConversionTypeOption.IsSet && advertiserDefinedEvent.MappedConversionType == null)
+                throw new JsonException("Cannot write null property AdvertiserDefinedEvent.MappedConversionType to non-nullable JSON property 'mapped_conversion_type'.");
+
             if (advertiserDefinedEvent.NameOption.IsSet && advertiserDefinedEvent.Name == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEvent.Name), "Property is required for class AdvertiserDefinedEvent.");
+                throw new JsonException("Cannot write null property AdvertiserDefinedEvent.Name to non-nullable JSON property 'name'.");
 
             if (advertiserDefinedEvent.MappedConversionTypeOption.IsSet)
             {

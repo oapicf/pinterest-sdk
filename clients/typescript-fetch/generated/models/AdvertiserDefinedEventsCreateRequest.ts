@@ -29,8 +29,6 @@ import {
 export interface AdvertiserDefinedEventsCreateRequest {
     /**
      * List of advertiser defined events to create or update
-     * @type {Array<AdvertiserDefinedEventInput>}
-     * @memberof AdvertiserDefinedEventsCreateRequest
      */
     items: Array<AdvertiserDefinedEventInput>;
 }

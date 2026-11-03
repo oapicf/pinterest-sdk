@@ -22,7 +22,6 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field
 from typing import List, Optional
 from typing_extensions import Annotated
@@ -39,6 +38,7 @@ from openapi_server.models.product_category_region import ProductCategoryRegion
 from openapi_server.models.trending_product_category import TrendingProductCategory
 from openapi_server.models.trends_editorial import TrendsEditorial
 from openapi_server.models.vertical_product_category import VerticalProductCategory
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -64,7 +64,7 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def trends_editorial_articles_list(
-    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(None, description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
+    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(..., description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -91,8 +91,8 @@ async def trends_editorial_articles_list(
     response_model_by_alias=True,
 )
 async def trends_product_categories_details_list(
-    product_categories: Annotated[List[ProductCategoryEnum], Field(min_length=1, max_length=20, description="List of product categories")] = Query(None, description="List of product categories", alias="product_categories"),
-    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(None, description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
+    product_categories: Annotated[List[ProductCategoryEnum], Field(min_length=1, max_length=20, description="List of product categories")] = Query(..., description="List of product categories", alias="product_categories"),
+    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(..., description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
     lookback_window: Annotated[Optional[ProductCategoryDetailLookbackWindow], Field(description="  Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - `90` - Last 90 days (3 months)   - `180` - Last 180 days (6 months)   - `365` - Last 365 days (1 year)   - `730` - Last 730 days (2 years)")] = Query(None, description="  Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.   - &#x60;90&#x60; - Last 90 days (3 months)   - &#x60;180&#x60; - Last 180 days (6 months)   - &#x60;365&#x60; - Last 365 days (1 year)   - &#x60;730&#x60; - Last 730 days (2 years)", alias="lookback_window"),
     engagement_type: Annotated[Optional[ProductCategoriesEngagementType], Field(description="    Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves")] = Query(None, description="    Type of engagement metric to analyze. - &#x60;ENGAGEMENT&#x60; - Overall engagement metric - &#x60;OUTBOUND_CLICK&#x60; - Number of outbound clicks - &#x60;SAVE&#x60; - Number of pin saves", alias="engagement_type"),
     token_pinterest_oauth2: TokenModel = Security(
@@ -124,7 +124,7 @@ async def trends_product_categories_details_list(
     response_model_by_alias=True,
 )
 async def trends_product_categories_trending_list(
-    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(None, description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
+    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(..., description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
     verticals: Annotated[Optional[List[VerticalProductCategory]], Field(description="List of verticals to filter by")] = Query(None, description="List of verticals to filter by", alias="verticals"),
     ages: Annotated[Optional[List[AgeTrendsBucket]], Field(description="Age to filter by. If not provided, the results will be filtered by all ages.")] = Query(None, description="Age to filter by. If not provided, the results will be filtered by all ages.", alias="ages"),
     genders: Annotated[Optional[List[GenderBucket]], Field(description="Gender to filter by, If not provided, the results will be filtered by all genders.")] = Query(None, description="Gender to filter by, If not provided, the results will be filtered by all genders.", alias="genders"),
@@ -158,7 +158,7 @@ async def trends_product_categories_trending_list(
     response_model_by_alias=True,
 )
 async def trends_featured_topics_list(
-    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(None, description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
+    region: Annotated[ProductCategoryRegion, Field(description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada")] = Query(..., description="     The geographic region of interest. Only top product categories within the specified region will be returned.      The &#x60;region&#x60; parameter is formatted as ISO 3166-2 country codes delimited by &#x60;+&#x60;.      - &#x60;US&#x60; - United States     - &#x60;GB+IE&#x60; - Great Britain &amp; Ireland     - &#x60;CA&#x60; - Canada", alias="region"),
     interest: Annotated[Optional[InterestsEnum], Field(description="Interest to filter by")] = Query(None, description="Interest to filter by", alias="interest"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]

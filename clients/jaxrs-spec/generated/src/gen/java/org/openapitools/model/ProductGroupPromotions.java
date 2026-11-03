@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Wrapper model for ProductGroupPromotion.")
 @JsonTypeName("ProductGroupPromotions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotions   {
-  private @Valid List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
 
   public ProductGroupPromotions() {
   }
@@ -40,7 +40,7 @@ public class ProductGroupPromotions   {
   
   @ApiModelProperty(value = "Response-only: created or updated product group promotions, or exceptions.")
   @JsonProperty("items")
-  @Valid public List<@Valid ProductGroupPromotionResponseItem> getItems() {
+  public List<@Valid ProductGroupPromotionResponseItem> getItems() {
     return items;
   }
 

@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class SourcePlatformOptions
-{
-public:
-
-    SourcePlatformOptions();
-    virtual ~SourcePlatformOptions() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(SourcePlatformOptions,
-        )
-
-private:
+enum class SourcePlatformOptions {
+    
+    WEB,
+    
+    MOBILE,
+    
+    MOBILE_ANDROID,
+    
+    MOBILE_IOS,
+    
+    OFFLINE,
+    
+    PINTEREST_WEB,
+    
+    PINTEREST_ANDROID,
+    
+    PINTEREST_IOS,
+    
+    POINT_OF_SALE
+    
 };
 
+inline void to_json(nlohmann::json& j, const SourcePlatformOptions& value)
+{
+    switch (value)
+    {
+        
+        case SourcePlatformOptions::WEB: j = "WEB"; break;
+        
+        case SourcePlatformOptions::MOBILE: j = "MOBILE"; break;
+        
+        case SourcePlatformOptions::MOBILE_ANDROID: j = "MOBILE_ANDROID"; break;
+        
+        case SourcePlatformOptions::MOBILE_IOS: j = "MOBILE_IOS"; break;
+        
+        case SourcePlatformOptions::OFFLINE: j = "OFFLINE"; break;
+        
+        case SourcePlatformOptions::PINTEREST_WEB: j = "PINTEREST_WEB"; break;
+        
+        case SourcePlatformOptions::PINTEREST_ANDROID: j = "PINTEREST_ANDROID"; break;
+        
+        case SourcePlatformOptions::PINTEREST_IOS: j = "PINTEREST_IOS"; break;
+        
+        case SourcePlatformOptions::POINT_OF_SALE: j = "POINT_OF_SALE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for SourcePlatformOptions", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, SourcePlatformOptions& value)
+{
+    
+    if (j == "WEB")
+    {
+        value = SourcePlatformOptions::WEB;
+        return;
+    }
+    
+    if (j == "MOBILE")
+    {
+        value = SourcePlatformOptions::MOBILE;
+        return;
+    }
+    
+    if (j == "MOBILE_ANDROID")
+    {
+        value = SourcePlatformOptions::MOBILE_ANDROID;
+        return;
+    }
+    
+    if (j == "MOBILE_IOS")
+    {
+        value = SourcePlatformOptions::MOBILE_IOS;
+        return;
+    }
+    
+    if (j == "OFFLINE")
+    {
+        value = SourcePlatformOptions::OFFLINE;
+        return;
+    }
+    
+    if (j == "PINTEREST_WEB")
+    {
+        value = SourcePlatformOptions::PINTEREST_WEB;
+        return;
+    }
+    
+    if (j == "PINTEREST_ANDROID")
+    {
+        value = SourcePlatformOptions::PINTEREST_ANDROID;
+        return;
+    }
+    
+    if (j == "PINTEREST_IOS")
+    {
+        value = SourcePlatformOptions::PINTEREST_IOS;
+        return;
+    }
+    
+    if (j == "POINT_OF_SALE")
+    {
+        value = SourcePlatformOptions::POINT_OF_SALE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for SourcePlatformOptions", &j);
+}
 
 } // namespace models
 

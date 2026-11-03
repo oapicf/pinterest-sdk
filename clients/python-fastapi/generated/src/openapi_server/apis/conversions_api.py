@@ -22,14 +22,14 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import List
 from typing_extensions import Annotated
 from openapi_server.models.advertiser_defined_events_create200_response import AdvertiserDefinedEventsCreate200Response
 from openapi_server.models.advertiser_defined_events_create_request import AdvertiserDefinedEventsCreateRequest
 from openapi_server.models.advertiser_defined_events_get200_response import AdvertiserDefinedEventsGet200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -55,7 +55,7 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def advertiser_defined_events_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -85,8 +85,8 @@ async def advertiser_defined_events_get(
     response_model_by_alias=True,
 )
 async def advertiser_defined_events_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    advertiser_defined_events_create_request: AdvertiserDefinedEventsCreateRequest = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    advertiser_defined_events_create_request: AdvertiserDefinedEventsCreateRequest = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -116,8 +116,8 @@ async def advertiser_defined_events_create(
     response_model_by_alias=True,
 )
 async def advertiser_defined_events_delete(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    event_names: Annotated[List[StrictStr], Field(description="List of event names to delete")] = Query(None, description="List of event names to delete", alias="event_names"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    event_names: Annotated[List[str], Field(description="List of event names to delete")] = Query(..., description="List of event names to delete", alias="event_names"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -147,8 +147,8 @@ async def advertiser_defined_events_delete(
     response_model_by_alias=True,
 )
 async def advertiser_defined_events_update(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    advertiser_defined_events_create_request: AdvertiserDefinedEventsCreateRequest = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    advertiser_defined_events_create_request: AdvertiserDefinedEventsCreateRequest = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),

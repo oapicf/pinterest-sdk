@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Lead form question field type
-* Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX
-*/
+ * Lead form question field type
+ * Values: TEXT_FIELD,TEXT_AREA,RADIO_LIST,CHECKBOX
+ */
 enum class LeadFormQuestionFieldType(@get:JsonValue val value: kotlin.String) {
 
     TEXT_FIELD("TEXT_FIELD"),
@@ -30,9 +30,8 @@ enum class LeadFormQuestionFieldType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LeadFormQuestionFieldType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormQuestionFieldType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormQuestionFieldType'")
         }
     }
 }
-

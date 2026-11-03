@@ -37,20 +37,14 @@ export interface Media {
     /**
      * Unique identifier for this media upload. Used to track status
      * and for attaching during Pin creation.
-     * @type {string}
-     * @memberof Media
      */
     readonly mediaId: string;
     /**
      * 
-     * @type {MediaUploadType}
-     * @memberof Media
      */
     mediaType: MediaUploadType;
     /**
      * 
-     * @type {MediaUploadStatus}
-     * @memberof Media
      */
     readonly status?: MediaUploadStatus;
 }

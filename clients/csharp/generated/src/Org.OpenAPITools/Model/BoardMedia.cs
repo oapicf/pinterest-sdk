@@ -164,7 +164,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (pinThumbnailUrls.IsSet && pinThumbnailUrls.Value == null)
-                throw new ArgumentNullException(nameof(pinThumbnailUrls), "Property is not nullable for class BoardMedia.");
+                throw new JsonException("Property is not nullable for class BoardMedia: pin_thumbnail_urls.");
 
             return new BoardMedia(imageCoverUrl, pinThumbnailUrls);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardMedia"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardMedia boardMedia, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,11 +189,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardMedia"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardMedia boardMedia, JsonSerializerOptions jsonSerializerOptions)
         {
             if (boardMedia.PinThumbnailUrlsOption.IsSet && boardMedia.PinThumbnailUrls == null)
-                throw new ArgumentNullException(nameof(boardMedia.PinThumbnailUrls), "Property is required for class BoardMedia.");
+                throw new JsonException("Cannot write null property BoardMedia.PinThumbnailUrls to non-nullable JSON property 'pin_thumbnail_urls'.");
 
             if (boardMedia.ImageCoverUrlOption.IsSet)
                 if (boardMedia.ImageCoverUrlOption.Value != null)

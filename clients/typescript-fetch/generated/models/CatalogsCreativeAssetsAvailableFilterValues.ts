@@ -29,14 +29,10 @@ import {
 export interface CatalogsCreativeAssetsAvailableFilterValues {
     /**
      * 
-     * @type {CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsAvailableFilterValues
      */
     catalogType: CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFilterValuesMap}
-     * @memberof CatalogsCreativeAssetsAvailableFilterValues
      */
     filterValues: CatalogsCreativeAssetsFilterValuesMap;
 }
@@ -46,7 +42,7 @@ export interface CatalogsCreativeAssetsAvailableFilterValues {
  * @export
  */
 export const CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum = typeof CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum];
 

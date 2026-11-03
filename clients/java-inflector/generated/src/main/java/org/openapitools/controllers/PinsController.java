@@ -30,7 +30,7 @@ import org.openapitools.model.ProductTagsError;
 import org.openapitools.model.ProductTagsResponse;
 import org.openapitools.model.QuerypinanalyticsmetrictypesItems;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map

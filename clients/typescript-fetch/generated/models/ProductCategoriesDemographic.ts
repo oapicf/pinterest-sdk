@@ -29,14 +29,10 @@ import {
 export interface ProductCategoriesDemographic {
     /**
      * Age demographic distribution
-     * @type {{ [key: string]: number; }}
-     * @memberof ProductCategoriesDemographic
      */
     age: { [key: string]: number; };
     /**
      * 
-     * @type {GenderDemographics}
-     * @memberof ProductCategoriesDemographic
      */
     gender: GenderDemographics;
 }

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class IntegrationLogEventType
-{
-public:
-
-    IntegrationLogEventType();
-    virtual ~IntegrationLogEventType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IntegrationLogEventType,
-        )
-
-private:
+enum class IntegrationLogEventType {
+    
+    APP,
+    
+    API
+    
 };
 
+inline void to_json(nlohmann::json& j, const IntegrationLogEventType& value)
+{
+    switch (value)
+    {
+        
+        case IntegrationLogEventType::APP: j = "APP"; break;
+        
+        case IntegrationLogEventType::API: j = "API"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for IntegrationLogEventType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, IntegrationLogEventType& value)
+{
+    
+    if (j == "APP")
+    {
+        value = IntegrationLogEventType::APP;
+        return;
+    }
+    
+    if (j == "API")
+    {
+        value = IntegrationLogEventType::API;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for IntegrationLogEventType", &j);
+}
 
 } // namespace models
 

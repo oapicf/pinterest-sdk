@@ -39,9 +39,9 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**| Unique identifier of the hero pin that will receive product tags. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**| Unique identifier of the hero pin that will receive product tags. | |
 | **productTagsBulkAddRequest** | [**ProductTagsBulkAddRequest**](ProductTagsBulkAddRequest.md)|  | |
 
 ### Return type
@@ -94,9 +94,9 @@ try {
 ```
 
 ### Parameters
-| **pinId** | **kotlin.String**| Unique identifier of the hero pin that will receive product tags. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **pinId** | **kotlin.String**| Unique identifier of the hero pin that will receive product tags. | |
 | **productTagsBulkDeleteRequest** | [**ProductTagsBulkDeleteRequest**](ProductTagsBulkDeleteRequest.md)|  | |
 
 ### Return type

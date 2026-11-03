@@ -81,7 +81,7 @@ function Invoke-AdAccountsAudiencesSharedAccountsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountsAudiencesSharedAccounts_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AudienceId) {
             throw "Error! The required parameter `AudienceId` missing when calling adAccountsAudiencesSharedAccounts_list."
@@ -198,7 +198,7 @@ function Invoke-BusinessAccountAudiencesSharedAccountsList {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling businessAccountAudiencesSharedAccounts_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$AudienceId) {
             throw "Error! The required parameter `AudienceId` missing when calling businessAccountAudiencesSharedAccounts_list."
@@ -308,7 +308,7 @@ function Invoke-SharedAudiencesForBusinessList {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling sharedAudiencesForBusiness_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if ($Order) {
             $LocalVarQueryParameters['order'] = $Order
@@ -403,7 +403,7 @@ function Update-AdAccountToAdAccountSharedAudience {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling updateAdAccountToAdAccountSharedAudience."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody) {
             throw "Error! The required parameter `AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody` missing when calling updateAdAccountToAdAccountSharedAudience."
@@ -492,7 +492,7 @@ function Update-AdAccountToBusinessSharedAudience {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling updateAdAccountToBusinessSharedAudience."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdAccountToBusinessSharedAudienceUpdateWithRequiredBody) {
             throw "Error! The required parameter `AdAccountToBusinessSharedAudienceUpdateWithRequiredBody` missing when calling updateAdAccountToBusinessSharedAudience."
@@ -581,7 +581,7 @@ function Update-BusinessToAdAccountSharedAudience {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling updateBusinessToAdAccountSharedAudience."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$BusinessToAdAccountSharedAudienceUpdateWithRequiredBody) {
             throw "Error! The required parameter `BusinessToAdAccountSharedAudienceUpdateWithRequiredBody` missing when calling updateBusinessToAdAccountSharedAudience."
@@ -670,7 +670,7 @@ function Update-BusinessToBusinessSharedAudience {
         if (!$BusinessId) {
             throw "Error! The required parameter `BusinessId` missing when calling updateBusinessToBusinessSharedAudience."
         }
-        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Web.HTTPUtility]::UrlEncode($BusinessId))
+        $LocalVarUri = $LocalVarUri.replace('{business_id}', [System.Uri]::EscapeDataString([string]$BusinessId))
 
         if (!$BusinessToBusinessSharedAudienceUpdateWithRequiredBody) {
             throw "Error! The required parameter `BusinessToBusinessSharedAudienceUpdateWithRequiredBody` missing when calling updateBusinessToBusinessSharedAudience."

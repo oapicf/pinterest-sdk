@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.LeadFormPolicyLink
 import org.openapitools.model.LeadFormQuestion
 import org.openapitools.model.LeadFormStatus
@@ -37,7 +34,7 @@ data class LeadFormBatchUpdate(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "The ID of this lead form")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.")
@@ -49,8 +46,6 @@ data class LeadFormBatchUpdate(
     @get:JsonProperty("disclosure_language") val disclosureLanguage: kotlin.String? = null,
 
     @Schema(example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("has_accepted_terms")
     @get:JsonProperty("has_accepted_terms") val hasAcceptedTerms: kotlin.Boolean? = null,
 
@@ -61,8 +56,6 @@ data class LeadFormBatchUpdate(
     @field:Valid
     @get:Size(min=0,max=3) 
     @Schema(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("policy_links")
     @get:JsonProperty("policy_links") val policyLinks: kotlin.collections.List<LeadFormPolicyLink>? = null,
 
@@ -73,15 +66,11 @@ data class LeadFormBatchUpdate(
     @field:Valid
     @get:Size(min=0,max=10) 
     @Schema(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", description = "List of questions to be displayed on the lead form.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("questions")
     @get:JsonProperty("questions") val questions: kotlin.collections.List<LeadFormQuestion>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: LeadFormStatus? = null
 ) {

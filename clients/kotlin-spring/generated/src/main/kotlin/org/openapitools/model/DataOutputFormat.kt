@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Format of generated report
-* Values: JSON,CSV
-*/
+ * Format of generated report
+ * Values: JSON,CSV
+ */
 enum class DataOutputFormat(@get:JsonValue val value: kotlin.String) {
 
     JSON("JSON"),
@@ -28,9 +28,8 @@ enum class DataOutputFormat(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): DataOutputFormat {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DataOutputFormat'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DataOutputFormat'")
         }
     }
 }
-

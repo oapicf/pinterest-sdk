@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'placement_type.g.dart';
 
+/// Placement type for bid multiplier targeting.
 class PlacementType extends EnumClass {
 
-  /// Placement type for bid multiplier targeting.
   @BuiltValueEnumConst(wireName: r'SEARCH')
   static const PlacementType SEARCH = _$SEARCH;
-  /// Placement type for bid multiplier targeting.
   @BuiltValueEnumConst(wireName: r'BROWSE')
   static const PlacementType BROWSE = _$BROWSE;
-  /// Placement type for bid multiplier targeting.
   @BuiltValueEnumConst(wireName: r'RELATED_PINS')
   static const PlacementType RELATED_PINS = _$RELATED_PINS;
 

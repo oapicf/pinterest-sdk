@@ -36,20 +36,14 @@ import {
 export interface CampaignPlanningConfidenceLevelAlert {
     /**
      * Human-readable context for debugging. Not intended for display to end users.
-     * @type {string}
-     * @memberof CampaignPlanningConfidenceLevelAlert
      */
     description?: string;
     /**
      * Reason for the confidence level alert.
-     * @type {CampaignPlanningConfidenceLevelAlertReason}
-     * @memberof CampaignPlanningConfidenceLevelAlert
      */
     reason?: CampaignPlanningConfidenceLevelAlertReason;
     /**
      * Severity of the confidence level alert.
-     * @type {CampaignPlanningConfidenceLevelAlertSeverity}
-     * @memberof CampaignPlanningConfidenceLevelAlert
      */
     severity?: CampaignPlanningConfidenceLevelAlertSeverity;
 }

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'promotion_application_level.g.dart';
 
+/// Specify if the promotion is applied at ad group or item level.
 class PromotionApplicationLevel extends EnumClass {
 
-  /// Specify if the promotion is applied at ad group or item level.
   @BuiltValueEnumConst(wireName: r'NONE')
   static const PromotionApplicationLevel NONE = _$NONE;
-  /// Specify if the promotion is applied at ad group or item level.
   @BuiltValueEnumConst(wireName: r'ITEM')
   static const PromotionApplicationLevel ITEM = _$ITEM;
-  /// Specify if the promotion is applied at ad group or item level.
   @BuiltValueEnumConst(wireName: r'AD_GROUP')
   static const PromotionApplicationLevel AD_GROUP = _$AD_GROUP;
 

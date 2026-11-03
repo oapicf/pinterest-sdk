@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemFilters.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsGetCreate.", nameof(itemFilters));
+                throw new JsonException("Property is required for class LocalInventoryItemsGetCreate: item_filters.");
 
             if (itemFilters.IsSet && itemFilters.Value == null)
-                throw new ArgumentNullException(nameof(itemFilters), "Property is not nullable for class LocalInventoryItemsGetCreate.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsGetCreate: item_filters.");
 
             return new LocalInventoryItemsGetCreate(itemFilters.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsGetCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryItemsGetCreate localInventoryItemsGetCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsGetCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryItemsGetCreate localInventoryItemsGetCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryItemsGetCreate.ItemFilters == null)
-                throw new ArgumentNullException(nameof(localInventoryItemsGetCreate.ItemFilters), "Property is required for class LocalInventoryItemsGetCreate.");
-
             writer.WritePropertyName("item_filters");
             JsonSerializer.Serialize(writer, localInventoryItemsGetCreate.ItemFilters, jsonSerializerOptions);
         }

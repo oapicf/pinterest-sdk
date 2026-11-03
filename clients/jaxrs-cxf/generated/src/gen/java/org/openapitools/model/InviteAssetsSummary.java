@@ -24,16 +24,12 @@ public class InviteAssetsSummary  {
   */
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
 
-  @Valid
-
   private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
 
  /**
   * List of profile IDs and respective permission levels that will be assigned.
   */
   @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
-
-  @Valid
 
   private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
  /**

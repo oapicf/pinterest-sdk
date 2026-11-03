@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (create.IsSet && create.Value == null)
-                throw new ArgumentNullException(nameof(create), "Property is not nullable for class BulkUpsertRequest.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequest: create.");
 
             if (update.IsSet && update.Value == null)
-                throw new ArgumentNullException(nameof(update), "Property is not nullable for class BulkUpsertRequest.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequest: update.");
 
             return new BulkUpsertRequest(create, update);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkUpsertRequest bulkUpsertRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkUpsertRequest bulkUpsertRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkUpsertRequest.CreateOption.IsSet && bulkUpsertRequest.Create == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequest.Create), "Property is required for class BulkUpsertRequest.");
+                throw new JsonException("Cannot write null property BulkUpsertRequest.Create to non-nullable JSON property 'create'.");
 
             if (bulkUpsertRequest.UpdateOption.IsSet && bulkUpsertRequest.Update == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequest.Update), "Property is required for class BulkUpsertRequest.");
+                throw new JsonException("Cannot write null property BulkUpsertRequest.Update to non-nullable JSON property 'update'.");
 
             if (bulkUpsertRequest.CreateOption.IsSet)
             {

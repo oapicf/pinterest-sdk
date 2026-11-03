@@ -6,20 +6,3 @@
 */
 #include "TargetingSpecAgeBucket.h"
 
-namespace models {
-
-TargetingSpecAgeBucket::TargetingSpecAgeBucket()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

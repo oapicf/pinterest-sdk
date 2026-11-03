@@ -59,5 +59,5 @@ class CatalogsRetailFeedsCreateRequest {
     
     CatalogsFeedProcessingSchedule preferredProcessingSchedule
     
-    CatalogsStatus status
+    CatalogsStatus status = CatalogsStatus.ACTIVE
 }

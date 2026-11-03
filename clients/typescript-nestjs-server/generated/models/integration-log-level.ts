@@ -6,7 +6,7 @@
 export const IntegrationLogLevel = {
     Info: 'INFO',
     Warn: 'WARN',
-    Error: 'ERROR'
+    Error: 'ERROR',
 } as const;
 export type IntegrationLogLevel = typeof IntegrationLogLevel[keyof typeof IntegrationLogLevel];
 

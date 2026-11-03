@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: _18Minus24,_25Minus34,_35Minus44,_45Minus49,_50Minus54,_55Minus64,_65Plus
-*/
+ * 
+ * Values: _18Minus24,_25Minus34,_35Minus44,_45Minus49,_50Minus54,_55Minus64,_65Plus
+ */
 enum class TrendsAgeBucket(@get:JsonValue val value: kotlin.String) {
 
     _18Minus24("18-24"),
@@ -33,9 +33,8 @@ enum class TrendsAgeBucket(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TrendsAgeBucket {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsAgeBucket'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsAgeBucket'")
         }
     }
 }
-

@@ -57,50 +57,34 @@ import {
 export interface CatalogsCreativeAssetsFeedsUpdateRequest {
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     catalogType: CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     format?: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     location?: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsCreativeAssetsFeedsUpdateRequest
      */
     status?: CatalogsStatus;
 }
@@ -110,7 +94,7 @@ export interface CatalogsCreativeAssetsFeedsUpdateRequest {
  * @export
  */
 export const CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum = typeof CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsFeedsUpdateRequestCatalogTypeEnum];
 

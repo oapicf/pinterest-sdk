@@ -35,7 +35,7 @@ import javax.validation.Valid;
   CampaignPlanningCurveEstimate.JSON_PROPERTY_ESTIMATION_TYPE,
   CampaignPlanningCurveEstimate.JSON_PROPERTY_POINTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningCurveEstimate   {
   public static final String JSON_PROPERTY_ESTIMATION_TYPE = "estimation_type";
   @JsonProperty(JSON_PROPERTY_ESTIMATION_TYPE)
@@ -84,7 +84,7 @@ public class CampaignPlanningCurveEstimate   {
    **/
   @JsonProperty(value = "points")
   @ApiModelProperty(value = "The estimation points that make up the estimated curve.")
-  @Valid  @Size(max=100)
+   @Size(max=100)
   public List<@Valid CampaignPlanningPointEstimate> getPoints() {
     return points;
   }

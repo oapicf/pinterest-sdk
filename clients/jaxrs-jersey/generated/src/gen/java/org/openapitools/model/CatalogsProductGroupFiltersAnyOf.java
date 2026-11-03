@@ -32,13 +32,13 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   CatalogsProductGroupFiltersAnyOf.JSON_PROPERTY_ANY_OF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersAnyOf   {
   public static final String JSON_PROPERTY_ANY_OF = "any_of";
   @JsonProperty(JSON_PROPERTY_ANY_OF)
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-  public CatalogsProductGroupFiltersAnyOf anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -57,12 +57,12 @@ public class CatalogsProductGroupFiltersAnyOf   {
    **/
   @JsonProperty(value = "any_of")
   @ApiModelProperty(required = true, value = "")
-  @NotNull @Valid 
-  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+  @NotNull 
+  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

@@ -44,7 +44,6 @@ public class TrendingTopic  {
   * Array of pin images related to this trend (up to 6)
   */
   @ApiModelProperty(required = true, value = "Array of pin images related to this trend (up to 6)")
-  @Valid
   private List<@Valid TrendingPin> pins = new ArrayList<>();
 
  /**
@@ -63,7 +62,6 @@ public class TrendingTopic  {
   * Time series data showing trend values over time, with dates as keys and values as numeric
   */
   @ApiModelProperty(required = true, value = "Time series data showing trend values over time, with dates as keys and values as numeric")
-  @Valid
   private Map<String, BigDecimal> timeSeries = new HashMap<>();
 
  /**

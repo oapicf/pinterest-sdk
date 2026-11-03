@@ -2333,10 +2333,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_catalog_supplemental_api.py
-test/test_conversion_deletion_requests_api.py
-test/test_customer_segment_api.py
-test/test_product_tags_api.py
-test/test_schedules_api.py
-test/test_trends_api.py
 tox.ini

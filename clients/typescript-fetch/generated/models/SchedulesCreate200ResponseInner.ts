@@ -29,8 +29,6 @@ import {
 export interface SchedulesCreate200ResponseInner {
     /**
      * 
-     * @type {SchedulesCreate200ResponseInnerData}
-     * @memberof SchedulesCreate200ResponseInner
      */
     data: SchedulesCreate200ResponseInnerData;
 }

@@ -8,7 +8,7 @@ import java.time.OffsetDateTime
   * @param id ID of the catalog entity.
   * @param name A human-friendly name associated to a catalog entity.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class Catalog(
   catalogType: CatalogsType,
   createdAt: OffsetDateTime,

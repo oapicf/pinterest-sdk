@@ -44,8 +44,6 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "List of values for filtering")
 
-  @Valid
-
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
 
  /**
@@ -60,16 +58,12 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "List of values for filtering. This parameter is not supported for Product Item level reports.")
 
-  @Valid
-
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
 
  /**
   * List of attribution types for the conversion report.
   */
   @ApiModelProperty(value = "List of attribution types for the conversion report.")
-
-  @Valid
 
   private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
 
@@ -99,16 +93,12 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.")
 
-  @Valid
-
   private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
  /**
   * List of status values for filtering
   */
   @ApiModelProperty(value = "List of status values for filtering")
-
-  @Valid
 
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
@@ -119,14 +109,12 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @Valid
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
  /**
   * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
   */
   @ApiModelProperty(value = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.")
-
-  @Valid
 
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
@@ -144,14 +132,12 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @Valid
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
  /**
   * List of advertiser-defined custom conversion event metrics to include in the report
   */
   @ApiModelProperty(value = "List of advertiser-defined custom conversion event metrics to include in the report")
-
-  @Valid
 
   private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
 
@@ -176,7 +162,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @Valid
 
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
  /**
   *   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
@@ -201,15 +187,13 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "List of metrics filters")
 
-  @Valid
-
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
   @ApiModelProperty(value = "")
 
   @Valid
 
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
  /**
   * List of product group ids
@@ -222,8 +206,6 @@ public class AdsAnalyticsCreateAsyncRequest  {
   * List of values for filtering
   */
   @ApiModelProperty(value = "List of values for filtering")
-
-  @Valid
 
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
 
@@ -238,7 +220,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @Valid
 
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
  /**
   * Specify the timezone to be applied for the reporting.
@@ -268,8 +250,6 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.")
 
-  @Valid
-
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
 
  /**
@@ -279,7 +259,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @Valid
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
  /**
    * List of ad group ids
    * @return adGroupIds

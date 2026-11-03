@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,10 +23,9 @@ import jakarta.annotation.Generated;
  * CatalogsProductGroupMultiplePinterestProductCategoryCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean negated;
 
   private List<ProductCategoryEnum> values = new ArrayList<>();
@@ -81,7 +79,7 @@ public class CatalogsProductGroupMultiplePinterestProductCategoryCriteria {
    * Get values
    * @return values
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<ProductCategoryEnum> getValues() {

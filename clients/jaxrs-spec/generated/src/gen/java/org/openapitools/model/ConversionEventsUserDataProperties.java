@@ -20,24 +20,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionEventsUserDataProperties")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsUserDataProperties   {
   private String clickId;
   private String clientIpAddress;
   private String clientUserAgent;
-  private @Valid List<String> country = new ArrayList<>();
-  private @Valid List<String> ct = new ArrayList<>();
-  private @Valid List<String> db = new ArrayList<>();
-  private @Valid List<String> em = new ArrayList<>();
-  private @Valid List<String> externalId = new ArrayList<>();
-  private @Valid List<String> fn = new ArrayList<>();
-  private @Valid List<String> ge = new ArrayList<>();
-  private @Valid List<String> hashedMaids = new ArrayList<>();
-  private @Valid List<String> ln = new ArrayList<>();
+  private List<String> country = new ArrayList<>();
+  private List<String> ct = new ArrayList<>();
+  private List<String> db = new ArrayList<>();
+  private List<String> em = new ArrayList<>();
+  private List<String> externalId = new ArrayList<>();
+  private List<String> fn = new ArrayList<>();
+  private List<String> ge = new ArrayList<>();
+  private List<String> hashedMaids = new ArrayList<>();
+  private List<String> ln = new ArrayList<>();
   private String partnerId;
-  private @Valid List<String> ph = new ArrayList<>();
-  private @Valid List<String> st = new ArrayList<>();
-  private @Valid List<String> zp = new ArrayList<>();
+  private List<String> ph = new ArrayList<>();
+  private List<String> st = new ArrayList<>();
+  private List<String> zp = new ArrayList<>();
 
   public ConversionEventsUserDataProperties() {
   }

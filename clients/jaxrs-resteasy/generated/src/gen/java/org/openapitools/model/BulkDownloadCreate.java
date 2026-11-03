@@ -17,13 +17,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkDownloadCreate   {
   
   private BulkDownloadCampaignFilter campaignFilter;
   private List<@Pattern(regexp = "^\\d+$")String> entityIds = new ArrayList<>();
   private List<BulkEntityType> entityTypes = new ArrayList<>();
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
   private String updatedSince;
 
   /**
@@ -58,8 +58,7 @@ public class BulkDownloadCreate   {
   
   @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
   @JsonProperty("entity_types")
- @Size(min=1,max=6)  @Valid
-  public List<BulkEntityType> getEntityTypes() {
+ @Size(min=1,max=6)  public List<BulkEntityType> getEntityTypes() {
     return entityTypes;
   }
   public void setEntityTypes(List<BulkEntityType> entityTypes) {

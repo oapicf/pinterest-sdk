@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class BillingInvoiceSortField
-{
-public:
-
-    BillingInvoiceSortField();
-    virtual ~BillingInvoiceSortField() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingInvoiceSortField,
-        )
-
-private:
+enum class BillingInvoiceSortField {
+    
+    DUE_DATE,
+    
+    BILLING_PERIOD,
+    
+    DOCUMENT_TYPE,
+    
+    TOTAL_AMOUNT,
+    
+    INVOICE_NUMBER
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingInvoiceSortField& value)
+{
+    switch (value)
+    {
+        
+        case BillingInvoiceSortField::DUE_DATE: j = "DUE_DATE"; break;
+        
+        case BillingInvoiceSortField::BILLING_PERIOD: j = "BILLING_PERIOD"; break;
+        
+        case BillingInvoiceSortField::DOCUMENT_TYPE: j = "DOCUMENT_TYPE"; break;
+        
+        case BillingInvoiceSortField::TOTAL_AMOUNT: j = "TOTAL_AMOUNT"; break;
+        
+        case BillingInvoiceSortField::INVOICE_NUMBER: j = "INVOICE_NUMBER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceSortField", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingInvoiceSortField& value)
+{
+    
+    if (j == "DUE_DATE")
+    {
+        value = BillingInvoiceSortField::DUE_DATE;
+        return;
+    }
+    
+    if (j == "BILLING_PERIOD")
+    {
+        value = BillingInvoiceSortField::BILLING_PERIOD;
+        return;
+    }
+    
+    if (j == "DOCUMENT_TYPE")
+    {
+        value = BillingInvoiceSortField::DOCUMENT_TYPE;
+        return;
+    }
+    
+    if (j == "TOTAL_AMOUNT")
+    {
+        value = BillingInvoiceSortField::TOTAL_AMOUNT;
+        return;
+    }
+    
+    if (j == "INVOICE_NUMBER")
+    {
+        value = BillingInvoiceSortField::INVOICE_NUMBER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingInvoiceSortField", &j);
+}
 
 } // namespace models
 

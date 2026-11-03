@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ALL,PUBLIC,PROTECTED,SECRET,PUBLIC_AND_SECRET
-*/
+ * 
+ * Values: ALL,PUBLIC,PROTECTED,SECRET,PUBLIC_AND_SECRET
+ */
 enum class BoardPrivacyFilter(@get:JsonValue val value: kotlin.String) {
 
     ALL("ALL"),
@@ -31,9 +31,8 @@ enum class BoardPrivacyFilter(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BoardPrivacyFilter {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BoardPrivacyFilter'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BoardPrivacyFilter'")
         }
     }
 }
-

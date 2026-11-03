@@ -6,20 +6,3 @@
 */
 #include "OsFamily.h"
 
-namespace models {
-
-OsFamily::OsFamily()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

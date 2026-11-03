@@ -792,106 +792,106 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!endDate.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsCreateAsyncRequest.", nameof(endDate));
+                throw new JsonException("Property is required for class AdsAnalyticsCreateAsyncRequest: end_date.");
 
             if (!granularity.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsCreateAsyncRequest.", nameof(granularity));
+                throw new JsonException("Property is required for class AdsAnalyticsCreateAsyncRequest: granularity.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalyticsCreateAsyncRequest.", nameof(startDate));
+                throw new JsonException("Property is required for class AdsAnalyticsCreateAsyncRequest: start_date.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: end_date.");
 
             if (granularity.IsSet && granularity.Value == null)
-                throw new ArgumentNullException(nameof(granularity), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: granularity.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: start_date.");
 
             if (adGroupIds.IsSet && adGroupIds.Value == null)
-                throw new ArgumentNullException(nameof(adGroupIds), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: ad_group_ids.");
 
             if (adGroupStatuses.IsSet && adGroupStatuses.Value == null)
-                throw new ArgumentNullException(nameof(adGroupStatuses), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: ad_group_statuses.");
 
             if (adIds.IsSet && adIds.Value == null)
-                throw new ArgumentNullException(nameof(adIds), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: ad_ids.");
 
             if (adStatuses.IsSet && adStatuses.Value == null)
-                throw new ArgumentNullException(nameof(adStatuses), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: ad_statuses.");
 
             if (attributionTypes.IsSet && attributionTypes.Value == null)
-                throw new ArgumentNullException(nameof(attributionTypes), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: attribution_types.");
 
             if (campaignBrandLabel.IsSet && campaignBrandLabel.Value == null)
-                throw new ArgumentNullException(nameof(campaignBrandLabel), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: campaign_brand_label.");
 
             if (campaignCustomLabel.IsSet && campaignCustomLabel.Value == null)
-                throw new ArgumentNullException(nameof(campaignCustomLabel), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: campaign_custom_label.");
 
             if (campaignIds.IsSet && campaignIds.Value == null)
-                throw new ArgumentNullException(nameof(campaignIds), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: campaign_ids.");
 
             if (campaignObjectiveTypes.IsSet && campaignObjectiveTypes.Value == null)
-                throw new ArgumentNullException(nameof(campaignObjectiveTypes), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: campaign_objective_types.");
 
             if (campaignStatuses.IsSet && campaignStatuses.Value == null)
-                throw new ArgumentNullException(nameof(campaignStatuses), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: campaign_statuses.");
 
             if (clickWindowDays.IsSet && clickWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(clickWindowDays), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: click_window_days.");
 
             if (columns.IsSet && columns.Value == null)
-                throw new ArgumentNullException(nameof(columns), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: columns.");
 
             if (combineTargetingTypes.IsSet && combineTargetingTypes.Value == null)
-                throw new ArgumentNullException(nameof(combineTargetingTypes), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: combine_targeting_types.");
 
             if (conversionReportTime.IsSet && conversionReportTime.Value == null)
-                throw new ArgumentNullException(nameof(conversionReportTime), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: conversion_report_time.");
 
             if (customConversionEventMetrics.IsSet && customConversionEventMetrics.Value == null)
-                throw new ArgumentNullException(nameof(customConversionEventMetrics), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: custom_conversion_event_metrics.");
 
             if (endHour.IsSet && endHour.Value == null)
-                throw new ArgumentNullException(nameof(endHour), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: end_hour.");
 
             if (engagementWindowDays.IsSet && engagementWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(engagementWindowDays), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: engagement_window_days.");
 
             if (level.IsSet && level.Value == null)
-                throw new ArgumentNullException(nameof(level), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: level.");
 
             if (metricsFilters.IsSet && metricsFilters.Value == null)
-                throw new ArgumentNullException(nameof(metricsFilters), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: metrics_filters.");
 
             if (primarySort.IsSet && primarySort.Value == null)
-                throw new ArgumentNullException(nameof(primarySort), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: primary_sort.");
 
             if (productGroupIds.IsSet && productGroupIds.Value == null)
-                throw new ArgumentNullException(nameof(productGroupIds), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: product_group_ids.");
 
             if (productGroupStatuses.IsSet && productGroupStatuses.Value == null)
-                throw new ArgumentNullException(nameof(productGroupStatuses), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: product_group_statuses.");
 
             if (productItemIds.IsSet && productItemIds.Value == null)
-                throw new ArgumentNullException(nameof(productItemIds), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: product_item_ids.");
 
             if (reportFormat.IsSet && reportFormat.Value == null)
-                throw new ArgumentNullException(nameof(reportFormat), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: report_format.");
 
             if (reportingTimezone.IsSet && reportingTimezone.Value == null)
-                throw new ArgumentNullException(nameof(reportingTimezone), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: reporting_timezone.");
 
             if (startHour.IsSet && startHour.Value == null)
-                throw new ArgumentNullException(nameof(startHour), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: start_hour.");
 
             if (targetingTypes.IsSet && targetingTypes.Value == null)
-                throw new ArgumentNullException(nameof(targetingTypes), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: targeting_types.");
 
             if (viewWindowDays.IsSet && viewWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(viewWindowDays), "Property is not nullable for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Property is not nullable for class AdsAnalyticsCreateAsyncRequest: view_window_days.");
 
             return new AdsAnalyticsCreateAsyncRequest(endDate.Value!, granularity.Value!.Value!, startDate.Value!, adGroupIds, adGroupStatuses, adIds, adStatuses, attributionTypes, campaignBrandLabel, campaignCustomLabel, campaignIds, campaignObjectiveTypes, campaignStatuses, clickWindowDays, columns, combineTargetingTypes, conversionReportTime, customConversionEventMetrics, endHour, engagementWindowDays, level, metricsFilters, primarySort, productGroupIds, productGroupStatuses, productItemIds, reportFormat, reportingTimezone, startHour, targetingTypes, viewWindowDays);
         }
@@ -902,7 +902,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsCreateAsyncRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -917,65 +916,91 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsCreateAsyncRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adsAnalyticsCreateAsyncRequest.EndDate == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.EndDate), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
-
-            if (adsAnalyticsCreateAsyncRequest.StartDate == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.StartDate), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
-
             if (adsAnalyticsCreateAsyncRequest.AdGroupIdsOption.IsSet && adsAnalyticsCreateAsyncRequest.AdGroupIds == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.AdGroupIds), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.AdGroupIds to non-nullable JSON property 'ad_group_ids'.");
 
             if (adsAnalyticsCreateAsyncRequest.AdGroupStatusesOption.IsSet && adsAnalyticsCreateAsyncRequest.AdGroupStatuses == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.AdGroupStatuses), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.AdGroupStatuses to non-nullable JSON property 'ad_group_statuses'.");
 
             if (adsAnalyticsCreateAsyncRequest.AdIdsOption.IsSet && adsAnalyticsCreateAsyncRequest.AdIds == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.AdIds), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.AdIds to non-nullable JSON property 'ad_ids'.");
 
             if (adsAnalyticsCreateAsyncRequest.AdStatusesOption.IsSet && adsAnalyticsCreateAsyncRequest.AdStatuses == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.AdStatuses), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.AdStatuses to non-nullable JSON property 'ad_statuses'.");
 
             if (adsAnalyticsCreateAsyncRequest.AttributionTypesOption.IsSet && adsAnalyticsCreateAsyncRequest.AttributionTypes == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.AttributionTypes), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.AttributionTypes to non-nullable JSON property 'attribution_types'.");
 
             if (adsAnalyticsCreateAsyncRequest.CampaignBrandLabelOption.IsSet && adsAnalyticsCreateAsyncRequest.CampaignBrandLabel == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CampaignBrandLabel), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CampaignBrandLabel to non-nullable JSON property 'campaign_brand_label'.");
 
             if (adsAnalyticsCreateAsyncRequest.CampaignCustomLabelOption.IsSet && adsAnalyticsCreateAsyncRequest.CampaignCustomLabel == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CampaignCustomLabel), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CampaignCustomLabel to non-nullable JSON property 'campaign_custom_label'.");
 
             if (adsAnalyticsCreateAsyncRequest.CampaignIdsOption.IsSet && adsAnalyticsCreateAsyncRequest.CampaignIds == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CampaignIds), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CampaignIds to non-nullable JSON property 'campaign_ids'.");
 
             if (adsAnalyticsCreateAsyncRequest.CampaignObjectiveTypesOption.IsSet && adsAnalyticsCreateAsyncRequest.CampaignObjectiveTypes == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CampaignObjectiveTypes), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CampaignObjectiveTypes to non-nullable JSON property 'campaign_objective_types'.");
 
             if (adsAnalyticsCreateAsyncRequest.CampaignStatusesOption.IsSet && adsAnalyticsCreateAsyncRequest.CampaignStatuses == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CampaignStatuses), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CampaignStatuses to non-nullable JSON property 'campaign_statuses'.");
+
+            if (adsAnalyticsCreateAsyncRequest.ClickWindowDaysOption.IsSet && adsAnalyticsCreateAsyncRequest.ClickWindowDays == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ClickWindowDays to non-nullable JSON property 'click_window_days'.");
 
             if (adsAnalyticsCreateAsyncRequest.ColumnsOption.IsSet && adsAnalyticsCreateAsyncRequest.Columns == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.Columns), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.Columns to non-nullable JSON property 'columns'.");
+
+            if (adsAnalyticsCreateAsyncRequest.CombineTargetingTypesOption.IsSet && adsAnalyticsCreateAsyncRequest.CombineTargetingTypes == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CombineTargetingTypes to non-nullable JSON property 'combine_targeting_types'.");
+
+            if (adsAnalyticsCreateAsyncRequest.ConversionReportTimeOption.IsSet && adsAnalyticsCreateAsyncRequest.ConversionReportTime == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ConversionReportTime to non-nullable JSON property 'conversion_report_time'.");
 
             if (adsAnalyticsCreateAsyncRequest.CustomConversionEventMetricsOption.IsSet && adsAnalyticsCreateAsyncRequest.CustomConversionEventMetrics == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.CustomConversionEventMetrics), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.CustomConversionEventMetrics to non-nullable JSON property 'custom_conversion_event_metrics'.");
+
+            if (adsAnalyticsCreateAsyncRequest.EndHourOption.IsSet && adsAnalyticsCreateAsyncRequest.EndHour == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.EndHour to non-nullable JSON property 'end_hour'.");
+
+            if (adsAnalyticsCreateAsyncRequest.EngagementWindowDaysOption.IsSet && adsAnalyticsCreateAsyncRequest.EngagementWindowDays == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.EngagementWindowDays to non-nullable JSON property 'engagement_window_days'.");
+
+            if (adsAnalyticsCreateAsyncRequest.LevelOption.IsSet && adsAnalyticsCreateAsyncRequest.Level == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.Level to non-nullable JSON property 'level'.");
 
             if (adsAnalyticsCreateAsyncRequest.MetricsFiltersOption.IsSet && adsAnalyticsCreateAsyncRequest.MetricsFilters == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.MetricsFilters), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.MetricsFilters to non-nullable JSON property 'metrics_filters'.");
+
+            if (adsAnalyticsCreateAsyncRequest.PrimarySortOption.IsSet && adsAnalyticsCreateAsyncRequest.PrimarySort == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.PrimarySort to non-nullable JSON property 'primary_sort'.");
 
             if (adsAnalyticsCreateAsyncRequest.ProductGroupIdsOption.IsSet && adsAnalyticsCreateAsyncRequest.ProductGroupIds == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.ProductGroupIds), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ProductGroupIds to non-nullable JSON property 'product_group_ids'.");
 
             if (adsAnalyticsCreateAsyncRequest.ProductGroupStatusesOption.IsSet && adsAnalyticsCreateAsyncRequest.ProductGroupStatuses == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.ProductGroupStatuses), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ProductGroupStatuses to non-nullable JSON property 'product_group_statuses'.");
 
             if (adsAnalyticsCreateAsyncRequest.ProductItemIdsOption.IsSet && adsAnalyticsCreateAsyncRequest.ProductItemIds == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.ProductItemIds), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ProductItemIds to non-nullable JSON property 'product_item_ids'.");
+
+            if (adsAnalyticsCreateAsyncRequest.ReportFormatOption.IsSet && adsAnalyticsCreateAsyncRequest.ReportFormat == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ReportFormat to non-nullable JSON property 'report_format'.");
+
+            if (adsAnalyticsCreateAsyncRequest.ReportingTimezoneOption.IsSet && adsAnalyticsCreateAsyncRequest.ReportingTimezone == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ReportingTimezone to non-nullable JSON property 'reporting_timezone'.");
+
+            if (adsAnalyticsCreateAsyncRequest.StartHourOption.IsSet && adsAnalyticsCreateAsyncRequest.StartHour == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.StartHour to non-nullable JSON property 'start_hour'.");
 
             if (adsAnalyticsCreateAsyncRequest.TargetingTypesOption.IsSet && adsAnalyticsCreateAsyncRequest.TargetingTypes == null)
-                throw new ArgumentNullException(nameof(adsAnalyticsCreateAsyncRequest.TargetingTypes), "Property is required for class AdsAnalyticsCreateAsyncRequest.");
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.TargetingTypes to non-nullable JSON property 'targeting_types'.");
+
+            if (adsAnalyticsCreateAsyncRequest.ViewWindowDaysOption.IsSet && adsAnalyticsCreateAsyncRequest.ViewWindowDays == null)
+                throw new JsonException("Cannot write null property AdsAnalyticsCreateAsyncRequest.ViewWindowDays to non-nullable JSON property 'view_window_days'.");
 
             writer.WriteString("end_date", adsAnalyticsCreateAsyncRequest.EndDate);
 

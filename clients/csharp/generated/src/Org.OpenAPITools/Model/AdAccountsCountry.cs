@@ -179,28 +179,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!code.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountsCountry.", nameof(code));
+                throw new JsonException("Property is required for class AdAccountsCountry: code.");
 
             if (!currency.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountsCountry.", nameof(currency));
+                throw new JsonException("Property is required for class AdAccountsCountry: currency.");
 
             if (!index.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountsCountry.", nameof(index));
+                throw new JsonException("Property is required for class AdAccountsCountry: index.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountsCountry.", nameof(name));
+                throw new JsonException("Property is required for class AdAccountsCountry: name.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class AdAccountsCountry.");
+                throw new JsonException("Property is not nullable for class AdAccountsCountry: code.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class AdAccountsCountry.");
+                throw new JsonException("Property is not nullable for class AdAccountsCountry: currency.");
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class AdAccountsCountry.");
+                throw new JsonException("Property is not nullable for class AdAccountsCountry: index.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdAccountsCountry.");
+                throw new JsonException("Property is not nullable for class AdAccountsCountry: name.");
 
             return new AdAccountsCountry(code.Value!.Value!, currency.Value!, index.Value!.Value!, name.Value!);
         }
@@ -211,7 +211,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsCountry"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountsCountry adAccountsCountry, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -226,15 +225,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsCountry"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountsCountry adAccountsCountry, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adAccountsCountry.Currency == null)
-                throw new ArgumentNullException(nameof(adAccountsCountry.Currency), "Property is required for class AdAccountsCountry.");
-
-            if (adAccountsCountry.Name == null)
-                throw new ArgumentNullException(nameof(adAccountsCountry.Name), "Property is required for class AdAccountsCountry.");
-
             var codeRawValue = CountryValueConverter.ToJsonValue(adAccountsCountry.Code);
             writer.WriteString("code", codeRawValue);
 

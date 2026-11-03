@@ -81,7 +81,7 @@ public class AdGroupCreateCreate  {
 
   @Valid
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
  /**
   * Campaign ID of the ad group.
@@ -167,7 +167,7 @@ public class AdGroupCreateCreate  {
 
   @Valid
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
  /**
   * Pinterest Performance+ campaign settings.

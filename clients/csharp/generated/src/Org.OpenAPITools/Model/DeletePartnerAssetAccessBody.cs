@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!accesses.IsSet)
-                throw new ArgumentException("Property is required for class DeletePartnerAssetAccessBody.", nameof(accesses));
+                throw new JsonException("Property is required for class DeletePartnerAssetAccessBody: accesses.");
 
             if (accesses.IsSet && accesses.Value == null)
-                throw new ArgumentNullException(nameof(accesses), "Property is not nullable for class DeletePartnerAssetAccessBody.");
+                throw new JsonException("Property is not nullable for class DeletePartnerAssetAccessBody: accesses.");
 
             return new DeletePartnerAssetAccessBody(accesses.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deletePartnerAssetAccessBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (deletePartnerAssetAccessBody.Accesses == null)
-                throw new ArgumentNullException(nameof(deletePartnerAssetAccessBody.Accesses), "Property is required for class DeletePartnerAssetAccessBody.");
-
             writer.WritePropertyName("accesses");
             JsonSerializer.Serialize(writer, deletePartnerAssetAccessBody.Accesses, jsonSerializerOptions);
         }

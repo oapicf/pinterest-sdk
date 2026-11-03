@@ -33,7 +33,7 @@ import javax.validation.Valid;
   SharedAudienceAccount.JSON_PROPERTY_ACCOUNT_TYPE,
   SharedAudienceAccount.JSON_PROPERTY_SHARED_ON_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SharedAudienceAccount   {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "account_id";
   @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)

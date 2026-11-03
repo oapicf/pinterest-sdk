@@ -10,9 +10,9 @@ import Foundation
 /** Single campaign update item with update-specific bid options. */
 public struct CampaignBatchUpdateItem: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Setting this field does nothing. The ad account ID gets set from the path parameter. */
     @available(*, deprecated, message: "This property is deprecated.")
     public var adAccountId: String?

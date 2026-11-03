@@ -180,7 +180,7 @@ export const NullableCurrency = {
     Yer: 'YER',
     Zar: 'ZAR',
     Zmw: 'ZMW',
-    Zwd: 'ZWD'
+    Zwd: 'ZWD',
 } as const;
 export type NullableCurrency = typeof NullableCurrency[keyof typeof NullableCurrency];
 

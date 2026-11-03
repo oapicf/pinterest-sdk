@@ -23,7 +23,6 @@ public class ProductGroupPromotions  {
   * Response-only: created or updated product group promotions, or exceptions.
   */
   @ApiModelProperty(value = "Response-only: created or updated product group promotions, or exceptions.")
-  @Valid
   private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
  /**
   * Response-only: created or updated product group promotions, or exceptions.

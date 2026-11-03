@@ -1,10 +1,11 @@
 # CatalogsProductGroupFilters
 
-## Properties
+This model is an `anyOf` wrapper: a value is at least one of the member types listed below.
+It is never instantiated directly — use one of the concrete types.
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**any_of** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterKeys[]**](CatalogsProductGroupFilterKeys.md) |  |
-**all_of** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterKeys[]**](CatalogsProductGroupFilterKeys.md) |  |
+## anyOf
+
+- [**\OpenAPI\Client\Model\CatalogsProductGroupFiltersAnyOf**](CatalogsProductGroupFiltersAnyOf.md)
+- [**\OpenAPI\Client\Model\CatalogsProductGroupFiltersAllOf**](CatalogsProductGroupFiltersAllOf.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

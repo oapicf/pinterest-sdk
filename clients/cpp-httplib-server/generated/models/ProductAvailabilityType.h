@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ProductAvailabilityType
-{
-public:
-
-    ProductAvailabilityType();
-    virtual ~ProductAvailabilityType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductAvailabilityType,
-        )
-
-private:
+enum class ProductAvailabilityType {
+    
+    IN_STOCK,
+    
+    OUT_OF_STOCK,
+    
+    PREORDER
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductAvailabilityType& value)
+{
+    switch (value)
+    {
+        
+        case ProductAvailabilityType::IN_STOCK: j = "IN_STOCK"; break;
+        
+        case ProductAvailabilityType::OUT_OF_STOCK: j = "OUT_OF_STOCK"; break;
+        
+        case ProductAvailabilityType::PREORDER: j = "PREORDER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductAvailabilityType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductAvailabilityType& value)
+{
+    
+    if (j == "IN_STOCK")
+    {
+        value = ProductAvailabilityType::IN_STOCK;
+        return;
+    }
+    
+    if (j == "OUT_OF_STOCK")
+    {
+        value = ProductAvailabilityType::OUT_OF_STOCK;
+        return;
+    }
+    
+    if (j == "PREORDER")
+    {
+        value = ProductAvailabilityType::PREORDER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductAvailabilityType", &j);
+}
 
 } // namespace models
 

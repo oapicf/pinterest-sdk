@@ -36,26 +36,18 @@ import {
 export interface HotelProcessingRecord {
     /**
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-     * @type {Array<ItemValidationEvent>}
-     * @memberof HotelProcessingRecord
      */
     errors?: Array<ItemValidationEvent>;
     /**
      * The catalog hotel id in the merchant namespace
-     * @type {string}
-     * @memberof HotelProcessingRecord
      */
     hotelId?: string;
     /**
      * 
-     * @type {ItemProcessingStatus}
-     * @memberof HotelProcessingRecord
      */
     status?: ItemProcessingStatus;
     /**
      * Array with the validation warnings for the item processing record
-     * @type {Array<ItemValidationEvent>}
-     * @memberof HotelProcessingRecord
      */
     warnings?: Array<ItemValidationEvent>;
 }

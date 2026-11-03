@@ -25,14 +25,13 @@ import jakarta.annotation.Generated;
  * AdsAnalyticsMetricsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsMetricsFilter {
 
   private AdsAnalyticsFilterColumn field;
 
   private AdsAnalyticsFilterOperator operator;
 
-  @Valid
   private List<BigDecimal> values = new ArrayList<>();
 
   public AdsAnalyticsMetricsFilter() {
@@ -105,7 +104,7 @@ public class AdsAnalyticsMetricsFilter {
    * List of values for filtering
    * @return values
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Size(min = 1) 
   @Schema(name = "values", description = "List of values for filtering", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<BigDecimal> getValues() {

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: CAMPAIGN_TARGETING,AD_GROUP_TARGETING
-*/
+ * 
+ * Values: CAMPAIGN_TARGETING,AD_GROUP_TARGETING
+ */
 enum class MMMReportLevel(@get:JsonValue val value: kotlin.String) {
 
     CAMPAIGN_TARGETING("CAMPAIGN_TARGETING"),
@@ -28,9 +28,8 @@ enum class MMMReportLevel(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MMMReportLevel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportLevel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportLevel'")
         }
     }
 }
-

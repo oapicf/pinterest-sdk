@@ -23,7 +23,7 @@ data class DeletePartnerAssetAccessBody(
     @field:Valid
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "List of partner asset accesses to delete.")
-    @param:JsonProperty("accesses")
+    @param:JsonProperty("accesses", required = true)
     @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<DeletePartnerAssetAccessItem>
 ) {
 

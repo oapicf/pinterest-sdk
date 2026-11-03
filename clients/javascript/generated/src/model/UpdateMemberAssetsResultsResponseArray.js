@@ -17,7 +17,7 @@ import UpdateMemberAssetResultItem from './UpdateMemberAssetResultItem';
 /**
  * The UpdateMemberAssetsResultsResponseArray model module.
  * @module model/UpdateMemberAssetsResultsResponseArray
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdateMemberAssetsResultsResponseArray {
     /**

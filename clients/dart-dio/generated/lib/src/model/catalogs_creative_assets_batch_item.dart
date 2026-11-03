@@ -157,6 +157,7 @@ class _$CatalogsCreativeAssetsBatchItemSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsCreativeAssetsBatchItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

@@ -51,7 +51,6 @@ public class AudienceCategory  {
   * Subcategory interest distribution
   */
   @ApiModelProperty(value = "Subcategory interest distribution")
-  @Valid
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
  /**
   * Interest ID.

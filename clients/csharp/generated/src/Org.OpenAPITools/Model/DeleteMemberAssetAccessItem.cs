@@ -180,16 +180,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetId.IsSet)
-                throw new ArgumentException("Property is required for class DeleteMemberAssetAccessItem.", nameof(assetId));
+                throw new JsonException("Property is required for class DeleteMemberAssetAccessItem: asset_id.");
 
             if (!memberId.IsSet)
-                throw new ArgumentException("Property is required for class DeleteMemberAssetAccessItem.", nameof(memberId));
+                throw new JsonException("Property is required for class DeleteMemberAssetAccessItem: member_id.");
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class DeleteMemberAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class DeleteMemberAssetAccessItem: asset_id.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class DeleteMemberAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class DeleteMemberAssetAccessItem: member_id.");
 
             return new DeleteMemberAssetAccessItem(assetId.Value!, memberId.Value!);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteMemberAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteMemberAssetAccessItem deleteMemberAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,15 +214,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteMemberAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteMemberAssetAccessItem deleteMemberAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (deleteMemberAssetAccessItem.AssetId == null)
-                throw new ArgumentNullException(nameof(deleteMemberAssetAccessItem.AssetId), "Property is required for class DeleteMemberAssetAccessItem.");
-
-            if (deleteMemberAssetAccessItem.MemberId == null)
-                throw new ArgumentNullException(nameof(deleteMemberAssetAccessItem.MemberId), "Property is required for class DeleteMemberAssetAccessItem.");
-
             writer.WriteString("asset_id", deleteMemberAssetAccessItem.AssetId);
 
             writer.WriteString("member_id", deleteMemberAssetAccessItem.MemberId);

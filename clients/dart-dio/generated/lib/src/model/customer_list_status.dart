@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'customer_list_status.g.dart';
 
+/// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
 class CustomerListStatus extends EnumClass {
 
-  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
   @BuiltValueEnumConst(wireName: r'PROCESSING')
   static const CustomerListStatus PROCESSING = _$PROCESSING;
-  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
   @BuiltValueEnumConst(wireName: r'READY')
   static const CustomerListStatus READY = _$READY;
-  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
   @BuiltValueEnumConst(wireName: r'TOO_SMALL')
   static const CustomerListStatus TOO_SMALL = _$TOO_SMALL;
-  /// Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
   @BuiltValueEnumConst(wireName: r'UPLOADING')
   static const CustomerListStatus UPLOADING = _$UPLOADING;
 

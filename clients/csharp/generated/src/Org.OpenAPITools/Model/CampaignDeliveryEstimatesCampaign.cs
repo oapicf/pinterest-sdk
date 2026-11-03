@@ -260,37 +260,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroups.IsSet)
-                throw new ArgumentException("Property is required for class CampaignDeliveryEstimatesCampaign.", nameof(adGroups));
+                throw new JsonException("Property is required for class CampaignDeliveryEstimatesCampaign: ad_groups.");
 
             if (!budgetDurationType.IsSet)
-                throw new ArgumentException("Property is required for class CampaignDeliveryEstimatesCampaign.", nameof(budgetDurationType));
+                throw new JsonException("Property is required for class CampaignDeliveryEstimatesCampaign: budget_duration_type.");
 
             if (!objectiveType.IsSet)
-                throw new ArgumentException("Property is required for class CampaignDeliveryEstimatesCampaign.", nameof(objectiveType));
+                throw new JsonException("Property is required for class CampaignDeliveryEstimatesCampaign: objective_type.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class CampaignDeliveryEstimatesCampaign.", nameof(startDate));
+                throw new JsonException("Property is required for class CampaignDeliveryEstimatesCampaign: start_date.");
 
             if (adGroups.IsSet && adGroups.Value == null)
-                throw new ArgumentNullException(nameof(adGroups), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: ad_groups.");
 
             if (budgetDurationType.IsSet && budgetDurationType.Value == null)
-                throw new ArgumentNullException(nameof(budgetDurationType), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: budget_duration_type.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: objective_type.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: start_date.");
 
             if (dailySpendCap.IsSet && dailySpendCap.Value == null)
-                throw new ArgumentNullException(nameof(dailySpendCap), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: daily_spend_cap.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: end_date.");
 
             if (lifetimeSpendCap.IsSet && lifetimeSpendCap.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeSpendCap), "Property is not nullable for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesCampaign: lifetime_spend_cap.");
 
             return new CampaignDeliveryEstimatesCampaign(adGroups.Value!, budgetDurationType.Value!.Value!, objectiveType.Value!.Value!, startDate.Value!, dailySpendCap, endDate, lifetimeSpendCap);
         }
@@ -301,7 +301,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesCampaign"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignDeliveryEstimatesCampaign campaignDeliveryEstimatesCampaign, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -316,17 +315,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesCampaign"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignDeliveryEstimatesCampaign campaignDeliveryEstimatesCampaign, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignDeliveryEstimatesCampaign.AdGroups == null)
-                throw new ArgumentNullException(nameof(campaignDeliveryEstimatesCampaign.AdGroups), "Property is required for class CampaignDeliveryEstimatesCampaign.");
-
-            if (campaignDeliveryEstimatesCampaign.StartDate == null)
-                throw new ArgumentNullException(nameof(campaignDeliveryEstimatesCampaign.StartDate), "Property is required for class CampaignDeliveryEstimatesCampaign.");
+            if (campaignDeliveryEstimatesCampaign.DailySpendCapOption.IsSet && campaignDeliveryEstimatesCampaign.DailySpendCap == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesCampaign.DailySpendCap to non-nullable JSON property 'daily_spend_cap'.");
 
             if (campaignDeliveryEstimatesCampaign.EndDateOption.IsSet && campaignDeliveryEstimatesCampaign.EndDate == null)
-                throw new ArgumentNullException(nameof(campaignDeliveryEstimatesCampaign.EndDate), "Property is required for class CampaignDeliveryEstimatesCampaign.");
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesCampaign.EndDate to non-nullable JSON property 'end_date'.");
+
+            if (campaignDeliveryEstimatesCampaign.LifetimeSpendCapOption.IsSet && campaignDeliveryEstimatesCampaign.LifetimeSpendCap == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesCampaign.LifetimeSpendCap to non-nullable JSON property 'lifetime_spend_cap'.");
 
             writer.WritePropertyName("ad_groups");
             JsonSerializer.Serialize(writer, campaignDeliveryEstimatesCampaign.AdGroups, jsonSerializerOptions);

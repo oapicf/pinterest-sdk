@@ -250,12 +250,22 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationAgeBucket.FieldEnum?>(TargetingSpecOperationAgeBucket.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationAgeBucket.FieldEnum? fieldValue = TargetingSpecOperationAgeBucket.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationAgeBucket.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<TargetingSpecOperationAgeBucket.OperationEnum?>(TargetingSpecOperationAgeBucket.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                TargetingSpecOperationAgeBucket.OperationEnum? operationValue = TargetingSpecOperationAgeBucket.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<TargetingSpecOperationAgeBucket.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "values":
                             values = new Option<List<TargetingSpecAgeBucket>?>(JsonSerializer.Deserialize<List<TargetingSpecAgeBucket>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -267,22 +277,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAgeBucket.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationAgeBucket: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAgeBucket.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationAgeBucket: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAgeBucket.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationAgeBucket: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationAgeBucket.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAgeBucket: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationAgeBucket.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAgeBucket: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationAgeBucket.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAgeBucket: values.");
 
             return new TargetingSpecOperationAgeBucket(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -293,7 +303,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationAgeBucket"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationAgeBucket targetingSpecOperationAgeBucket, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -308,12 +317,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationAgeBucket"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationAgeBucket targetingSpecOperationAgeBucket, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationAgeBucket.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationAgeBucket.Values), "Property is required for class TargetingSpecOperationAgeBucket.");
-
             var fieldRawValue = TargetingSpecOperationAgeBucket.FieldEnumToJsonValue(targetingSpecOperationAgeBucket.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecOperationAgeBucket.OperationEnumToJsonValue(targetingSpecOperationAgeBucket.Operation);

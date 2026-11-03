@@ -122,8 +122,8 @@ class PromotionsApiSimulation extends Simulation {
         .feed(promotions/listPATHFeeder)
         .exec(http("promotionsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/promotions")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("order","${order}")
 )
 

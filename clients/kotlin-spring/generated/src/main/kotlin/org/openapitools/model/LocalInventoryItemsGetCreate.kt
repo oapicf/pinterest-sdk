@@ -23,7 +23,7 @@ data class LocalInventoryItemsGetCreate(
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(required = true, description = "Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.")
-    @param:JsonProperty("item_filters")
+    @param:JsonProperty("item_filters", required = true)
     @get:JsonProperty("item_filters", required = true) val itemFilters: kotlin.collections.List<ItemIdStoreCodePair>
 ) {
 

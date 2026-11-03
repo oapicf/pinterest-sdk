@@ -318,43 +318,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class LocalStoreCreate.", nameof(country));
+                throw new JsonException("Property is required for class LocalStoreCreate: country.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class LocalStoreCreate.", nameof(name));
+                throw new JsonException("Property is required for class LocalStoreCreate: name.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class LocalStoreCreate.", nameof(storeCode));
+                throw new JsonException("Property is required for class LocalStoreCreate: store_code.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: country.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: name.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: store_code.");
 
             if (addressPrimary.IsSet && addressPrimary.Value == null)
-                throw new ArgumentNullException(nameof(addressPrimary), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: address_primary.");
 
             if (addressSecondary.IsSet && addressSecondary.Value == null)
-                throw new ArgumentNullException(nameof(addressSecondary), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: address_secondary.");
 
             if (city.IsSet && city.Value == null)
-                throw new ArgumentNullException(nameof(city), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: city.");
 
             if (latitude.IsSet && latitude.Value == null)
-                throw new ArgumentNullException(nameof(latitude), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: latitude.");
 
             if (longitude.IsSet && longitude.Value == null)
-                throw new ArgumentNullException(nameof(longitude), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: longitude.");
 
             if (postalCode.IsSet && postalCode.Value == null)
-                throw new ArgumentNullException(nameof(postalCode), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: postal_code.");
 
             if (region.IsSet && region.Value == null)
-                throw new ArgumentNullException(nameof(region), "Property is not nullable for class LocalStoreCreate.");
+                throw new JsonException("Property is not nullable for class LocalStoreCreate: region.");
 
             return new LocalStoreCreate(country.Value!.Value!, name.Value!, storeCode.Value!, addressPrimary, addressSecondary, city, latitude, longitude, postalCode, region);
         }
@@ -365,7 +365,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localStoreCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalStoreCreate localStoreCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -380,29 +379,28 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localStoreCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalStoreCreate localStoreCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localStoreCreate.Name == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.Name), "Property is required for class LocalStoreCreate.");
-
-            if (localStoreCreate.StoreCode == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.StoreCode), "Property is required for class LocalStoreCreate.");
-
             if (localStoreCreate.AddressPrimaryOption.IsSet && localStoreCreate.AddressPrimary == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.AddressPrimary), "Property is required for class LocalStoreCreate.");
+                throw new JsonException("Cannot write null property LocalStoreCreate.AddressPrimary to non-nullable JSON property 'address_primary'.");
 
             if (localStoreCreate.AddressSecondaryOption.IsSet && localStoreCreate.AddressSecondary == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.AddressSecondary), "Property is required for class LocalStoreCreate.");
+                throw new JsonException("Cannot write null property LocalStoreCreate.AddressSecondary to non-nullable JSON property 'address_secondary'.");
 
             if (localStoreCreate.CityOption.IsSet && localStoreCreate.City == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.City), "Property is required for class LocalStoreCreate.");
+                throw new JsonException("Cannot write null property LocalStoreCreate.City to non-nullable JSON property 'city'.");
+
+            if (localStoreCreate.LatitudeOption.IsSet && localStoreCreate.Latitude == null)
+                throw new JsonException("Cannot write null property LocalStoreCreate.Latitude to non-nullable JSON property 'latitude'.");
+
+            if (localStoreCreate.LongitudeOption.IsSet && localStoreCreate.Longitude == null)
+                throw new JsonException("Cannot write null property LocalStoreCreate.Longitude to non-nullable JSON property 'longitude'.");
 
             if (localStoreCreate.PostalCodeOption.IsSet && localStoreCreate.PostalCode == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.PostalCode), "Property is required for class LocalStoreCreate.");
+                throw new JsonException("Cannot write null property LocalStoreCreate.PostalCode to non-nullable JSON property 'postal_code'.");
 
             if (localStoreCreate.RegionOption.IsSet && localStoreCreate.Region == null)
-                throw new ArgumentNullException(nameof(localStoreCreate.Region), "Property is required for class LocalStoreCreate.");
+                throw new JsonException("Cannot write null property LocalStoreCreate.Region to non-nullable JSON property 'region'.");
 
             var countryRawValue = CountryValueConverter.ToJsonValue(localStoreCreate.Country);
             writer.WriteString("country", countryRawValue);

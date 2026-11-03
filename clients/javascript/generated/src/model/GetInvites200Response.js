@@ -17,7 +17,7 @@ import InviteResponse from './InviteResponse';
 /**
  * The GetInvites200Response model module.
  * @module model/GetInvites200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class GetInvites200Response {
     /**

@@ -106,3 +106,4 @@ class _$CatalogsHotelProductGroupFiltersAnyOfSerializer implements PrimitiveSeri
   }
 }
 
+

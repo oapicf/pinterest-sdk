@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'vertical_product_category.g.dart';
 
+/// List of verticals for product categories.
 class VerticalProductCategory extends EnumClass {
 
-  /// List of verticals for product categories.
   @BuiltValueEnumConst(wireName: r'FASHION')
   static const VerticalProductCategory FASHION = _$FASHION;
-  /// List of verticals for product categories.
   @BuiltValueEnumConst(wireName: r'HOME_DECOR')
   static const VerticalProductCategory HOME_DECOR = _$HOME_DECOR;
-  /// List of verticals for product categories.
   @BuiltValueEnumConst(wireName: r'BEAUTY')
   static const VerticalProductCategory BEAUTY = _$BEAUTY;
 

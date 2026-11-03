@@ -151,10 +151,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreviewCreate.", nameof(adGroupId));
+                throw new JsonException("Property is required for class CampaignAdPreviewCreate: ad_group_id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class CampaignAdPreviewCreate.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreviewCreate: ad_group_id.");
 
             return new CampaignAdPreviewCreate(adGroupId.Value!);
         }
@@ -165,7 +165,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreviewCreate campaignAdPreviewCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -180,12 +179,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreviewCreate campaignAdPreviewCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignAdPreviewCreate.AdGroupId == null)
-                throw new ArgumentNullException(nameof(campaignAdPreviewCreate.AdGroupId), "Property is required for class CampaignAdPreviewCreate.");
-
             writer.WriteString("ad_group_id", campaignAdPreviewCreate.AdGroupId);
         }
     }

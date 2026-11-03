@@ -29,14 +29,10 @@ import {
 export interface AdvertiserDefinedEvent {
     /**
      * Standard type mapped to ADE for optimization
-     * @type {ConversionTagTypeOptimal}
-     * @memberof AdvertiserDefinedEvent
      */
     mappedConversionType?: ConversionTagTypeOptimal;
     /**
      * Raw string name of the event, usually logged as raw_event_name in our dataset
-     * @type {string}
-     * @memberof AdvertiserDefinedEvent
      */
     name?: string;
 }

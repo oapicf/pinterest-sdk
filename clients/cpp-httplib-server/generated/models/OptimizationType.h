@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class OptimizationType
-{
-public:
-
-    OptimizationType();
-    virtual ~OptimizationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OptimizationType,
-        )
-
-private:
+enum class OptimizationType {
+    
+    CLICKTHROUGH,
+    
+    IMPRESSION,
+    
+    WEB_CONVERSION,
+    
+    ROAS,
+    
+    OUTBOUND_CLICK
+    
 };
 
+inline void to_json(nlohmann::json& j, const OptimizationType& value)
+{
+    switch (value)
+    {
+        
+        case OptimizationType::CLICKTHROUGH: j = "CLICKTHROUGH"; break;
+        
+        case OptimizationType::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case OptimizationType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case OptimizationType::ROAS: j = "ROAS"; break;
+        
+        case OptimizationType::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OptimizationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OptimizationType& value)
+{
+    
+    if (j == "CLICKTHROUGH")
+    {
+        value = OptimizationType::CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "IMPRESSION")
+    {
+        value = OptimizationType::IMPRESSION;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = OptimizationType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "ROAS")
+    {
+        value = OptimizationType::ROAS;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = OptimizationType::OUTBOUND_CLICK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OptimizationType", &j);
+}
 
 } // namespace models
 

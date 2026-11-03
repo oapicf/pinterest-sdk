@@ -248,7 +248,12 @@ namespace Org.OpenAPITools.Model
                         case "item_type":
                             string? itemTypeRawValue = utf8JsonReader.GetString();
                             if (itemTypeRawValue != null)
-                                itemType = new Option<ImageMetadata.ItemTypeEnum?>(ImageMetadata.ItemTypeEnumFromStringOrDefault(itemTypeRawValue));
+                            {
+                                ImageMetadata.ItemTypeEnum? itemTypeValue = ImageMetadata.ItemTypeEnumFromStringOrDefault(itemTypeRawValue);
+                                if (itemTypeValue == null)
+                                    throw new JsonException();
+                                itemType = new Option<ImageMetadata.ItemTypeEnum?>(itemTypeValue);
+                            }
                             break;
                         case "description":
                             description = new Option<string?>(utf8JsonReader.GetString());
@@ -269,13 +274,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemType.IsSet)
-                throw new ArgumentException("Property is required for class ImageMetadata.", nameof(itemType));
+                throw new JsonException("Property is required for class ImageMetadata: item_type.");
 
             if (itemType.IsSet && itemType.Value == null)
-                throw new ArgumentNullException(nameof(itemType), "Property is not nullable for class ImageMetadata.");
+                throw new JsonException("Property is not nullable for class ImageMetadata: item_type.");
 
             if (images.IsSet && images.Value == null)
-                throw new ArgumentNullException(nameof(images), "Property is not nullable for class ImageMetadata.");
+                throw new JsonException("Property is not nullable for class ImageMetadata: images.");
 
             return new ImageMetadata(itemType.Value!.Value!, description, images, link, title);
         }
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ImageMetadata imageMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -301,11 +305,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ImageMetadata imageMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             if (imageMetadata.ImagesOption.IsSet && imageMetadata.Images == null)
-                throw new ArgumentNullException(nameof(imageMetadata.Images), "Property is required for class ImageMetadata.");
+                throw new JsonException("Cannot write null property ImageMetadata.Images to non-nullable JSON property 'images'.");
 
             var itemTypeRawValue = ImageMetadata.ItemTypeEnumToJsonValue(imageMetadata.ItemType);
             writer.WriteString("item_type", itemTypeRawValue);

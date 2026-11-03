@@ -626,8 +626,6 @@ force-app/main/default/classes/OASCatalogReportsApi.cls
 force-app/main/default/classes/OASCatalogReportsApi.cls-meta.xml
 force-app/main/default/classes/OASCatalogSupplementalApi.cls
 force-app/main/default/classes/OASCatalogSupplementalApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogSupplementalApiTest.cls
-force-app/main/default/classes/OASCatalogSupplementalApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogUpdate.cls
 force-app/main/default/classes/OASCatalogUpdate.cls-meta.xml
 force-app/main/default/classes/OASCatalogsAiContentDisclosure.cls
@@ -1012,8 +1010,6 @@ force-app/main/default/classes/OASConversionDeletionRequestUserEmai.cls
 force-app/main/default/classes/OASConversionDeletionRequestUserEmai.cls-meta.xml
 force-app/main/default/classes/OASConversionDeletionRequestsApi.cls
 force-app/main/default/classes/OASConversionDeletionRequestsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionDeletionRequestsApiTest.cls
-force-app/main/default/classes/OASConversionDeletionRequestsApiTest.cls-meta.xml
 force-app/main/default/classes/OASConversionEqsApi.cls
 force-app/main/default/classes/OASConversionEqsApi.cls-meta.xml
 force-app/main/default/classes/OASConversionEvent.cls
@@ -1166,8 +1162,6 @@ force-app/main/default/classes/OASCustomerSegment.cls
 force-app/main/default/classes/OASCustomerSegment.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentApi.cls
 force-app/main/default/classes/OASCustomerSegmentApi.cls-meta.xml
-force-app/main/default/classes/OASCustomerSegmentApiTest.cls
-force-app/main/default/classes/OASCustomerSegmentApiTest.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentCreate.cls
 force-app/main/default/classes/OASCustomerSegmentCreate.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentList200Response.cls
@@ -1850,8 +1844,6 @@ force-app/main/default/classes/OASProductTagItem.cls
 force-app/main/default/classes/OASProductTagItem.cls-meta.xml
 force-app/main/default/classes/OASProductTagsApi.cls
 force-app/main/default/classes/OASProductTagsApi.cls-meta.xml
-force-app/main/default/classes/OASProductTagsApiTest.cls
-force-app/main/default/classes/OASProductTagsApiTest.cls-meta.xml
 force-app/main/default/classes/OASProductTagsBulkAddRequest.cls
 force-app/main/default/classes/OASProductTagsBulkAddRequest.cls-meta.xml
 force-app/main/default/classes/OASProductTagsBulkDeleteRequest.cls
@@ -2016,8 +2008,6 @@ force-app/main/default/classes/OASScheduleUpdateRequestAllOf1.cls
 force-app/main/default/classes/OASScheduleUpdateRequestAllOf1.cls-meta.xml
 force-app/main/default/classes/OASSchedulesApi.cls
 force-app/main/default/classes/OASSchedulesApi.cls-meta.xml
-force-app/main/default/classes/OASSchedulesApiTest.cls
-force-app/main/default/classes/OASSchedulesApiTest.cls-meta.xml
 force-app/main/default/classes/OASSchedulesCreate200ResponseInner.cls
 force-app/main/default/classes/OASSchedulesCreate200ResponseInner.cls-meta.xml
 force-app/main/default/classes/OASSchedulesCreate200ResponseInnerDa.cls
@@ -2194,8 +2184,6 @@ force-app/main/default/classes/OASTrendsAgeDistribution.cls
 force-app/main/default/classes/OASTrendsAgeDistribution.cls-meta.xml
 force-app/main/default/classes/OASTrendsApi.cls
 force-app/main/default/classes/OASTrendsApi.cls-meta.xml
-force-app/main/default/classes/OASTrendsApiTest.cls
-force-app/main/default/classes/OASTrendsApiTest.cls-meta.xml
 force-app/main/default/classes/OASTrendsEditorial.cls
 force-app/main/default/classes/OASTrendsEditorial.cls-meta.xml
 force-app/main/default/classes/OASTrendsGender.cls

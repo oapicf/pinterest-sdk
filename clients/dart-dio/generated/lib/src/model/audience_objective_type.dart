@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_objective_type.g.dart';
 
+/// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
 class AudienceObjectiveType extends EnumClass {
 
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'AWARENESS')
   static const AudienceObjectiveType AWARENESS = _$AWARENESS;
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'CONSIDERATION')
   static const AudienceObjectiveType CONSIDERATION = _$CONSIDERATION;
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'WEB_CONVERSION')
   static const AudienceObjectiveType WEB_CONVERSION = _$WEB_CONVERSION;
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'CATALOG_SALES')
   static const AudienceObjectiveType CATALOG_SALES = _$CATALOG_SALES;
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'VIDEO_COMPLETION')
   static const AudienceObjectiveType VIDEO_COMPLETION = _$VIDEO_COMPLETION;
-  /// Objective for engagement audience filter. Used only on ad account audience rule; matches baseline ObjectiveType (no VIDEO_VIEW, WEB_SESSIONS).
   @BuiltValueEnumConst(wireName: r'SALES')
   static const AudienceObjectiveType SALES = _$SALES;
 

@@ -22,8 +22,6 @@ public class CustomerSegmentList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid CustomerSegment> items = new ArrayList<>();
  /**
    * Get bookmark

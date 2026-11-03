@@ -80,26 +80,92 @@ import {
 } from '../models/VerticalProductCategory';
 
 export interface TrendsEditorialArticlesListRequest {
+    /**
+     *      The geographic region of interest. Only top product categories within the specified region will be returned.
+     *      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.
+     * 
+     *     - `US` - United States
+     *     - `GB+IE` - Great Britain & Ireland
+     *     - `CA` - Canada
+     */
     region: ProductCategoryRegion;
 }
 
 export interface TrendsFeaturedTopicsListRequest {
+    /**
+     *      The geographic region of interest. Only top product categories within the specified region will be returned.
+     *      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.
+     * 
+     *     - `US` - United States
+     *     - `GB+IE` - Great Britain & Ireland
+     *     - `CA` - Canada
+     */
     region: ProductCategoryRegion;
+    /**
+     * Interest to filter by
+     */
     interest?: InterestsEnum;
 }
 
 export interface TrendsProductCategoriesDetailsListRequest {
+    /**
+     * List of product categories
+     */
     productCategories: Array<ProductCategoryEnum>;
+    /**
+     *      The geographic region of interest. Only top product categories within the specified region will be returned.
+     *      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.
+     * 
+     *     - `US` - United States
+     *     - `GB+IE` - Great Britain & Ireland
+     *     - `CA` - Canada
+     */
     region: ProductCategoryRegion;
+    /**
+     *   Time period for historical data analysis in days. The lookback window defines how far back in time the API will analyze data to compute trend metrics.
+     *   - `90` - Last 90 days (3 months)
+     *   - `180` - Last 180 days (6 months)
+     *   - `365` - Last 365 days (1 year)
+     *   - `730` - Last 730 days (2 years)
+     */
     lookbackWindow?: ProductCategoryDetailLookbackWindow;
+    /**
+     *     Type of engagement metric to analyze.
+     * - `ENGAGEMENT` - Overall engagement metric
+     * - `OUTBOUND_CLICK` - Number of outbound clicks
+     * - `SAVE` - Number of pin saves
+     */
     engagementType?: ProductCategoriesEngagementType;
 }
 
 export interface TrendsProductCategoriesTrendingListRequest {
+    /**
+     *      The geographic region of interest. Only top product categories within the specified region will be returned.
+     *      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.
+     * 
+     *     - `US` - United States
+     *     - `GB+IE` - Great Britain & Ireland
+     *     - `CA` - Canada
+     */
     region: ProductCategoryRegion;
+    /**
+     * List of verticals to filter by
+     */
     verticals?: Array<VerticalProductCategory>;
+    /**
+     * Age to filter by. If not provided, the results will be filtered by all ages.
+     */
     ages?: Array<AgeTrendsBucket>;
+    /**
+     * Gender to filter by, If not provided, the results will be filtered by all genders.
+     */
     genders?: Array<GenderBucket>;
+    /**
+     *     Type of engagement metric to analyze.
+     * - `ENGAGEMENT` - Overall engagement metric
+     * - `OUTBOUND_CLICK` - Number of outbound clicks
+     * - `SAVE` - Number of pin saves
+     */
     engagementType?: ProductCategoriesEngagementType;
 }
 

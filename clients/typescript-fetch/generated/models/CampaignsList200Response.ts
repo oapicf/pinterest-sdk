@@ -29,14 +29,10 @@ import {
 export interface CampaignsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof CampaignsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Campaign>}
-     * @memberof CampaignsList200Response
      */
     items: Array<Campaign>;
 }

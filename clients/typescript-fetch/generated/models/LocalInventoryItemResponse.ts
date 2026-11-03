@@ -36,50 +36,34 @@ import {
 export interface LocalInventoryItemResponse {
     /**
      * Ad link for the item
-     * @type {string}
-     * @memberof LocalInventoryItemResponse
      */
     adLink?: string;
     /**
      * Availability status of the item
-     * @type {ItemAvailability}
-     * @memberof LocalInventoryItemResponse
      */
     availability?: ItemAvailability;
     /**
      * The millisecond timestamp when the local inventory item was created
-     * @type {number}
-     * @memberof LocalInventoryItemResponse
      */
     createdAt: number;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryItemResponse
      */
     itemId: string;
     /**
      * The millisecond timestamp when the local inventory item was lastly modified by the merchant.
-     * @type {number}
-     * @memberof LocalInventoryItemResponse
      */
     lastUpdatedTime: number;
     /**
      * The price of the product. It supports the following formats, "49.99 USD", "49.99USD" and "49.99". If the currency is not included, we default to US dollars.
-     * @type {string}
-     * @memberof LocalInventoryItemResponse
      */
     price?: string;
     /**
      * The sale price of the product. It supports the following formats, "24.99 USD", "24.99USD" and "24.99". If the currency is not included, we default to US dollars.
-     * @type {string}
-     * @memberof LocalInventoryItemResponse
      */
     salePrice?: string;
     /**
      * Store metadata for this local inventory item
-     * @type {StoreMetadata}
-     * @memberof LocalInventoryItemResponse
      */
     storeMetadata: StoreMetadata;
 }

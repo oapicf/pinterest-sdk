@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,7 +28,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailBatchRequest", description = "A request object that can have multiple operations on a single retail batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest {
 
   private String catalogId;
@@ -71,7 +70,6 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
 
   private Country country;
 
-  @Valid
   private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
   /**
@@ -412,7 +410,7 @@ public class CatalogsRetailBatchRequest implements CatalogsVerticalBatchRequest 
    * Array with catalogs item operations
    * @return items
    */
-  @NotNull @Valid @Size(min = 1, max = 1000) 
+  @NotNull @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with catalogs item operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {

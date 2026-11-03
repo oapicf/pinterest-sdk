@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The access level a member has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
-* Values: EMPLOYEE,BIZ_ADMIN
-*/
+ * The access level a member has to the business. Values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
+ * Values: EMPLOYEE,BIZ_ADMIN
+ */
 enum class BusinessRoleForMembers(@get:JsonValue val value: kotlin.String) {
 
     EMPLOYEE("EMPLOYEE"),
@@ -28,9 +28,8 @@ enum class BusinessRoleForMembers(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BusinessRoleForMembers {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessRoleForMembers'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessRoleForMembers'")
         }
     }
 }
-

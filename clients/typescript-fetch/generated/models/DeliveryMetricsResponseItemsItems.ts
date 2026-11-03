@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface DeliveryMetricsResponseItemsItems {
     /**
      * Category name
-     * @type {DeliveryMetricsResponseItemsItemsCategoryEnum}
-     * @memberof DeliveryMetricsResponseItemsItems
      */
     category?: DeliveryMetricsResponseItemsItemsCategoryEnum;
     /**
      * How the metric is defined.
-     * @type {string}
-     * @memberof DeliveryMetricsResponseItemsItems
      */
     definition?: string;
     /**
      * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
-     * @type {string}
-     * @memberof DeliveryMetricsResponseItemsItems
      */
     displayName?: string;
     /**
      * Metric's name.
-     * @type {string}
-     * @memberof DeliveryMetricsResponseItemsItems
      */
     name?: string;
 }
@@ -51,7 +43,7 @@ export interface DeliveryMetricsResponseItemsItems {
  */
 export const DeliveryMetricsResponseItemsItemsCategoryEnum = {
     Ads: 'ADS',
-    Organic: 'ORGANIC'
+    Organic: 'ORGANIC',
 } as const;
 export type DeliveryMetricsResponseItemsItemsCategoryEnum = typeof DeliveryMetricsResponseItemsItemsCategoryEnum[keyof typeof DeliveryMetricsResponseItemsItemsCategoryEnum];
 

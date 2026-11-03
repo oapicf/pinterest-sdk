@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class PromotionArrayElement.");
+                throw new JsonException("Property is not nullable for class PromotionArrayElement: data.");
 
             if (exception.IsSet && exception.Value == null)
-                throw new ArgumentNullException(nameof(exception), "Property is not nullable for class PromotionArrayElement.");
+                throw new JsonException("Property is not nullable for class PromotionArrayElement: exception.");
 
             return new PromotionArrayElement(data, exception);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionArrayElement"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PromotionArrayElement promotionArrayElement, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionArrayElement"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PromotionArrayElement promotionArrayElement, JsonSerializerOptions jsonSerializerOptions)
         {
             if (promotionArrayElement.DataOption.IsSet && promotionArrayElement.Data == null)
-                throw new ArgumentNullException(nameof(promotionArrayElement.Data), "Property is required for class PromotionArrayElement.");
+                throw new JsonException("Cannot write null property PromotionArrayElement.Data to non-nullable JSON property 'data'.");
 
             if (promotionArrayElement.ExceptionOption.IsSet && promotionArrayElement.Exception == null)
-                throw new ArgumentNullException(nameof(promotionArrayElement.Exception), "Property is required for class PromotionArrayElement.");
+                throw new JsonException("Cannot write null property PromotionArrayElement.Exception to non-nullable JSON property 'exception'.");
 
             if (promotionArrayElement.DataOption.IsSet)
             {

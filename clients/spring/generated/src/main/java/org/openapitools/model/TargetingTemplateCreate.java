@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,23 +30,19 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TargetingTemplateCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplateCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean autoTargetingEnabled = true;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   private TargetingSpecOptimal targetingAttributes;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
   public TargetingTemplateCreate() {
@@ -100,7 +95,7 @@ public class TargetingTemplateCreate {
    * Get keywords
    * @return keywords
    */
-  @Valid 
+  
   @Schema(name = "keywords", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid TargetingTemplateKeyword> getKeywords() {
@@ -185,7 +180,7 @@ public class TargetingTemplateCreate {
    * @return trackingUrls
    */
   @Valid 
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tracking_urls")
   public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;

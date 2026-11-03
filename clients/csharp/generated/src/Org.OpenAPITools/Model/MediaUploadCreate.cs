@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaType.IsSet)
-                throw new ArgumentException("Property is required for class MediaUploadCreate.", nameof(mediaType));
+                throw new JsonException("Property is required for class MediaUploadCreate: media_type.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class MediaUploadCreate.");
+                throw new JsonException("Property is not nullable for class MediaUploadCreate: media_type.");
 
             return new MediaUploadCreate(mediaType.Value!.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUploadCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MediaUploadCreate mediaUploadCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,7 +162,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUploadCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MediaUploadCreate mediaUploadCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             var mediaTypeRawValue = MediaUploadTypeValueConverter.ToJsonValue(mediaUploadCreate.MediaType);

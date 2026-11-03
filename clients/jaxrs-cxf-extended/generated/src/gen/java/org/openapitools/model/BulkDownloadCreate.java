@@ -37,12 +37,11 @@ public class BulkDownloadCreate  {
   * All entity types specified will be downloaded. Fewer types result in faster downloads.
   */
   @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
-  @Valid
   private List<BulkEntityType> entityTypes = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   @Valid
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
  /**
   * Unix UTC timestamp to retrieve all entities that have changed since this time.

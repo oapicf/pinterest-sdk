@@ -6,20 +6,3 @@
 */
 #include "TargetingStrategy.h"
 
-namespace models {
-
-TargetingStrategy::TargetingStrategy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

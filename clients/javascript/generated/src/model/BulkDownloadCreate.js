@@ -19,7 +19,7 @@ import BulkOutputFormat from './BulkOutputFormat';
 /**
  * The BulkDownloadCreate model module.
  * @module model/BulkDownloadCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BulkDownloadCreate {
     /**

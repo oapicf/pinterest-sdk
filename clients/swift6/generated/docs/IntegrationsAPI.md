@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **integrationsCommerceDel**
 ```swift
-    open class func integrationsCommerceDel(externalBusinessId: String, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommerceDel(externalBusinessId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationMetadata?
 ```
 
 Delete commerce integration
@@ -30,15 +30,11 @@ import OpenAPIClient
 let externalBusinessId = "externalBusinessId_example" // String | External business ID for the integration.
 
 // Delete commerce integration
-IntegrationsAPI.integrationsCommerceDel(externalBusinessId: externalBusinessId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsCommerceDel(externalBusinessId: externalBusinessId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommerceGet**
 ```swift
-    open class func integrationsCommerceGet(externalBusinessId: String, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommerceGet(externalBusinessId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationMetadata
 ```
 
 Get commerce integration
@@ -80,15 +76,11 @@ import OpenAPIClient
 let externalBusinessId = "externalBusinessId_example" // String | External business ID for the integration.
 
 // Get commerce integration
-IntegrationsAPI.integrationsCommerceGet(externalBusinessId: externalBusinessId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsCommerceGet(externalBusinessId: externalBusinessId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -115,7 +107,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommercePatch**
 ```swift
-    open class func integrationsCommercePatch(externalBusinessId: String, integrationMetadataUpdate: IntegrationMetadataUpdate, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommercePatch(externalBusinessId: String, integrationMetadataUpdate: IntegrationMetadataUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationMetadata
 ```
 
 Update commerce integration
@@ -131,15 +123,11 @@ let externalBusinessId = "externalBusinessId_example" // String | External busin
 let integrationMetadataUpdate = IntegrationMetadataUpdate(additionalId1: "additionalId1_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedMerchantId: "connectedMerchantId_example", connectedTagId: "connectedTagId_example", partnerAccessToken: "partnerAccessToken_example", partnerAccessTokenExpiry: 123, partnerMetadata: "partnerMetadata_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerRefreshToken: "partnerRefreshToken_example", partnerRefreshTokenExpiry: 123, scopes: "scopes_example") // IntegrationMetadataUpdate | 
 
 // Update commerce integration
-IntegrationsAPI.integrationsCommercePatch(externalBusinessId: externalBusinessId, integrationMetadataUpdate: integrationMetadataUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsCommercePatch(externalBusinessId: externalBusinessId, integrationMetadataUpdate: integrationMetadataUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -167,7 +155,7 @@ Name | Type | Description  | Notes
 
 # **integrationsCommercePost**
 ```swift
-    open class func integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, completion: @escaping (_ data: IntegrationMetadata?, _ error: Error?) -> Void)
+    open class func integrationsCommercePost(integrationMetadataCreate: IntegrationMetadataCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationMetadata
 ```
 
 Create commerce integration
@@ -182,15 +170,11 @@ import OpenAPIClient
 let integrationMetadataCreate = IntegrationMetadataCreate(additionalId1: "additionalId1_example", connectedAdvertiserId: "connectedAdvertiserId_example", connectedLbaId: "connectedLbaId_example", connectedMerchantId: "connectedMerchantId_example", connectedTagId: "connectedTagId_example", externalBusinessId: "externalBusinessId_example", partnerAccessToken: "partnerAccessToken_example", partnerAccessTokenExpiry: 123, partnerMetadata: "partnerMetadata_example", partnerPrimaryEmail: "partnerPrimaryEmail_example", partnerRefreshToken: "partnerRefreshToken_example", partnerRefreshTokenExpiry: 123, scopes: "scopes_example") // IntegrationMetadataCreate | 
 
 // Create commerce integration
-IntegrationsAPI.integrationsCommercePost(integrationMetadataCreate: integrationMetadataCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsCommercePost(integrationMetadataCreate: integrationMetadataCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -217,7 +201,7 @@ Name | Type | Description  | Notes
 
 # **integrationsGetById**
 ```swift
-    open class func integrationsGetById(id: String, completion: @escaping (_ data: IntegrationRecord?, _ error: Error?) -> Void)
+    open class func integrationsGetById(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationRecord
 ```
 
 Get integration metadata
@@ -232,15 +216,11 @@ import OpenAPIClient
 let id = "id_example" // String | Integration record ID.
 
 // Get integration metadata
-IntegrationsAPI.integrationsGetById(id: id) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsGetById(id: id)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -267,7 +247,7 @@ Name | Type | Description  | Notes
 
 # **integrationsGetList**
 ```swift
-    open class func integrationsGetList(bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: IntegrationsGetList200Response?, _ error: Error?) -> Void)
+    open class func integrationsGetList(bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationsGetList200Response
 ```
 
 Get integration metadata list
@@ -283,15 +263,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get integration metadata list
-IntegrationsAPI.integrationsGetList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsGetList(bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -319,7 +295,7 @@ Name | Type | Description  | Notes
 
 # **integrationsLogsPost**
 ```swift
-    open class func integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, completion: @escaping (_ data: IntegrationLogsSuccessResponse?, _ error: Error?) -> Void)
+    open class func integrationsLogsPost(integrationLogsRequestCreate: IntegrationLogsRequestCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> IntegrationLogsSuccessResponse
 ```
 
 Receives batched logs from integration applications.
@@ -334,15 +310,11 @@ import OpenAPIClient
 let integrationLogsRequestCreate = IntegrationLogsRequestCreate(logs: [IntegrationLog(advertiserId: "advertiserId_example", appVersionNumber: "appVersionNumber_example", clientTimestamp: 123, error: IntegrationLogClientError(cause: "cause_example", columnNumber: 123, fileName: "fileName_example", lineNumber: 123, message: "message_example", messageDetail: "messageDetail_example", name: "name_example", number: 123, stackTrace: "stackTrace_example"), eventType: IntegrationLogEventType(), externalBusinessId: "externalBusinessId_example", feedProfileId: "feedProfileId_example", logLevel: IntegrationLogLevel(), merchantId: "merchantId_example", message: "message_example", platformVersionNumber: "platformVersionNumber_example", request: IntegrationLogClientRequest(host: "host_example", method: HttpMethod(), path: "path_example", requestHeaders: "TODO", responseHeaders: "TODO", responseStatusCode: 123), tagId: "tagId_example")]) // IntegrationLogsRequestCreate | 
 
 // Receives batched logs from integration applications.
-IntegrationsAPI.integrationsLogsPost(integrationLogsRequestCreate: integrationLogsRequestCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await IntegrationsAPI.integrationsLogsPost(integrationLogsRequestCreate: integrationLogsRequestCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

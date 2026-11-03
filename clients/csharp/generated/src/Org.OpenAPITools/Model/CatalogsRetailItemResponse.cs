@@ -296,12 +296,22 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailItemResponse.CatalogTypeEnum?>(CatalogsRetailItemResponse.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailItemResponse.CatalogTypeEnum? catalogTypeValue = CatalogsRetailItemResponse.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailItemResponse.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "item_response_kind":
                             string? itemResponseKindRawValue = utf8JsonReader.GetString();
                             if (itemResponseKindRawValue != null)
-                                itemResponseKind = new Option<CatalogsRetailItemResponse.ItemResponseKindEnum?>(CatalogsRetailItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue));
+                            {
+                                CatalogsRetailItemResponse.ItemResponseKindEnum? itemResponseKindValue = CatalogsRetailItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue);
+                                if (itemResponseKindValue == null)
+                                    throw new JsonException();
+                                itemResponseKind = new Option<CatalogsRetailItemResponse.ItemResponseKindEnum?>(itemResponseKindValue);
+                            }
                             break;
                         case "attributes":
                             attributes = new Option<ItemAttributes?>(JsonSerializer.Deserialize<ItemAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -319,22 +329,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailItemResponse.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailItemResponse: catalog_type.");
 
             if (!itemResponseKind.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailItemResponse.", nameof(itemResponseKind));
+                throw new JsonException("Property is required for class CatalogsRetailItemResponse: item_response_kind.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemResponse: catalog_type.");
 
             if (itemResponseKind.IsSet && itemResponseKind.Value == null)
-                throw new ArgumentNullException(nameof(itemResponseKind), "Property is not nullable for class CatalogsRetailItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemResponse: item_response_kind.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class CatalogsRetailItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemResponse: attributes.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class CatalogsRetailItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailItemResponse: item_id.");
 
             return new CatalogsRetailItemResponse(catalogType.Value!.Value!, itemResponseKind.Value!.Value!, attributes, itemId, pins);
         }
@@ -345,7 +355,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailItemResponse catalogsRetailItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -360,14 +369,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailItemResponse catalogsRetailItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsRetailItemResponse.AttributesOption.IsSet && catalogsRetailItemResponse.Attributes == null)
-                throw new ArgumentNullException(nameof(catalogsRetailItemResponse.Attributes), "Property is required for class CatalogsRetailItemResponse.");
+                throw new JsonException("Cannot write null property CatalogsRetailItemResponse.Attributes to non-nullable JSON property 'attributes'.");
 
             if (catalogsRetailItemResponse.ItemIdOption.IsSet && catalogsRetailItemResponse.ItemId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailItemResponse.ItemId), "Property is required for class CatalogsRetailItemResponse.");
+                throw new JsonException("Cannot write null property CatalogsRetailItemResponse.ItemId to non-nullable JSON property 'item_id'.");
 
             var catalogTypeRawValue = CatalogsRetailItemResponse.CatalogTypeEnumToJsonValue(catalogsRetailItemResponse.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

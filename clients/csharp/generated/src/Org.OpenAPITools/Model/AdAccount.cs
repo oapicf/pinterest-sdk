@@ -320,28 +320,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdAccount.", nameof(id));
+                throw new JsonException("Property is required for class AdAccount: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: id.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: country.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: currency.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: name.");
 
             if (owner.IsSet && owner.Value == null)
-                throw new ArgumentNullException(nameof(owner), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: owner.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: permissions.");
 
             if (varTimeZone.IsSet && varTimeZone.Value == null)
-                throw new ArgumentNullException(nameof(varTimeZone), "Property is not nullable for class AdAccount.");
+                throw new JsonException("Property is not nullable for class AdAccount: time_zone.");
 
             return new AdAccount(id.Value!, country, createdTime, currency, name, owner, permissions, varTimeZone, updatedTime);
         }
@@ -352,7 +352,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccount adAccount, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -367,23 +366,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccount adAccount, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adAccount.Id == null)
-                throw new ArgumentNullException(nameof(adAccount.Id), "Property is required for class AdAccount.");
+            if (adAccount.CountryOption.IsSet && adAccount.Country == null)
+                throw new JsonException("Cannot write null property AdAccount.Country to non-nullable JSON property 'country'.");
+
+            if (adAccount.CurrencyOption.IsSet && adAccount.Currency == null)
+                throw new JsonException("Cannot write null property AdAccount.Currency to non-nullable JSON property 'currency'.");
 
             if (adAccount.NameOption.IsSet && adAccount.Name == null)
-                throw new ArgumentNullException(nameof(adAccount.Name), "Property is required for class AdAccount.");
+                throw new JsonException("Cannot write null property AdAccount.Name to non-nullable JSON property 'name'.");
 
             if (adAccount.OwnerOption.IsSet && adAccount.Owner == null)
-                throw new ArgumentNullException(nameof(adAccount.Owner), "Property is required for class AdAccount.");
+                throw new JsonException("Cannot write null property AdAccount.Owner to non-nullable JSON property 'owner'.");
 
             if (adAccount.PermissionsOption.IsSet && adAccount.Permissions == null)
-                throw new ArgumentNullException(nameof(adAccount.Permissions), "Property is required for class AdAccount.");
+                throw new JsonException("Cannot write null property AdAccount.Permissions to non-nullable JSON property 'permissions'.");
 
             if (adAccount.VarTimeZoneOption.IsSet && adAccount.VarTimeZone == null)
-                throw new ArgumentNullException(nameof(adAccount.VarTimeZone), "Property is required for class AdAccount.");
+                throw new JsonException("Cannot write null property AdAccount.VarTimeZone to non-nullable JSON property 'time_zone'.");
 
             writer.WriteString("id", adAccount.Id);
 

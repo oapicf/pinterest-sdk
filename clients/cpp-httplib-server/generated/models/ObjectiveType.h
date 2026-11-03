@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class ObjectiveType
-{
-public:
-
-    ObjectiveType();
-    virtual ~ObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ObjectiveType,
-        )
-
-private:
+enum class ObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    WEB_CONVERSION,
+    
+    CATALOG_SALES,
+    
+    VIDEO_COMPLETION,
+    
+    SALES,
+    
+    APP_INSTALL,
+    
+    CTV_CONSIDERATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const ObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case ObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case ObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case ObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case ObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case ObjectiveType::VIDEO_COMPLETION: j = "VIDEO_COMPLETION"; break;
+        
+        case ObjectiveType::SALES: j = "SALES"; break;
+        
+        case ObjectiveType::APP_INSTALL: j = "APP_INSTALL"; break;
+        
+        case ObjectiveType::CTV_CONSIDERATION: j = "CTV_CONSIDERATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = ObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = ObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = ObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = ObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "VIDEO_COMPLETION")
+    {
+        value = ObjectiveType::VIDEO_COMPLETION;
+        return;
+    }
+    
+    if (j == "SALES")
+    {
+        value = ObjectiveType::SALES;
+        return;
+    }
+    
+    if (j == "APP_INSTALL")
+    {
+        value = ObjectiveType::APP_INSTALL;
+        return;
+    }
+    
+    if (j == "CTV_CONSIDERATION")
+    {
+        value = ObjectiveType::CTV_CONSIDERATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ObjectiveType", &j);
+}
 
 } // namespace models
 

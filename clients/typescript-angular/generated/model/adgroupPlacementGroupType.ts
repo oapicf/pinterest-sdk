@@ -16,7 +16,7 @@ export const AdgroupPlacementGroupType = {
     All: 'ALL',
     Search: 'SEARCH',
     Browse: 'BROWSE',
-    Other: 'OTHER'
+    Other: 'OTHER',
 } as const;
 export type AdgroupPlacementGroupType = typeof AdgroupPlacementGroupType[keyof typeof AdgroupPlacementGroupType];
 

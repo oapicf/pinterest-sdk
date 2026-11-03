@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **promotionsCreate**
 ```swift
-    open class func promotionsCreate(adAccountId: String, promotionCreate: [PromotionCreate], completion: @escaping (_ data: PromotionsResponse?, _ error: Error?) -> Void)
+    open class func promotionsCreate(adAccountId: String, promotionCreate: [PromotionCreate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PromotionsResponse
 ```
 
 Create promotions
@@ -29,15 +29,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let promotionCreate = [PromotionCreate(discountStatus: DiscountStatus(), endTime: 123, externalId: "externalId_example", platformType: "platformType_example", promotionCode: "promotionCode_example", promotionCustomId: "promotionCustomId_example", promotionTitle: "promotionTitle_example", promotionType: PromotionType(), startTime: 123, templateValues: [PromotionTemplateValue(amount: 123, currencyCode: Currency(), customText: "customText_example", percent: 123)])] // [PromotionCreate] | 
 
 // Create promotions
-PromotionsAPI.promotionsCreate(adAccountId: adAccountId, promotionCreate: promotionCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PromotionsAPI.promotionsCreate(adAccountId: adAccountId, promotionCreate: promotionCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **promotionsDelete**
 ```swift
-    open class func promotionsDelete(promotionId: String, adAccountId: String, completion: @escaping (_ data: Promotion?, _ error: Error?) -> Void)
+    open class func promotionsDelete(promotionId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Promotion?
 ```
 
 Delete promotion by id
@@ -81,15 +77,11 @@ let promotionId = "promotionId_example" // String | Promotion ID
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Delete promotion by id
-PromotionsAPI.promotionsDelete(promotionId: promotionId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PromotionsAPI.promotionsDelete(promotionId: promotionId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -117,7 +109,7 @@ Name | Type | Description  | Notes
 
 # **promotionsGet**
 ```swift
-    open class func promotionsGet(promotionId: String, adAccountId: String, completion: @escaping (_ data: Promotion?, _ error: Error?) -> Void)
+    open class func promotionsGet(promotionId: String, adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Promotion
 ```
 
 Get promotion by id
@@ -133,15 +125,11 @@ let promotionId = "promotionId_example" // String | Promotion ID
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get promotion by id
-PromotionsAPI.promotionsGet(promotionId: promotionId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PromotionsAPI.promotionsGet(promotionId: promotionId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -169,7 +157,7 @@ Name | Type | Description  | Notes
 
 # **promotionsList**
 ```swift
-    open class func promotionsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: PromotionsList200Response?, _ error: Error?) -> Void)
+    open class func promotionsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PromotionsList200Response
 ```
 
 Get promotions
@@ -187,15 +175,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // Get promotions
-PromotionsAPI.promotionsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PromotionsAPI.promotionsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -225,7 +209,7 @@ Name | Type | Description  | Notes
 
 # **promotionsUpdate**
 ```swift
-    open class func promotionsUpdate(adAccountId: String, promotionBatchUpdate: [PromotionBatchUpdate], completion: @escaping (_ data: PromotionsResponse?, _ error: Error?) -> Void)
+    open class func promotionsUpdate(adAccountId: String, promotionBatchUpdate: [PromotionBatchUpdate], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PromotionsResponse
 ```
 
 Update promotions
@@ -241,15 +225,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let promotionBatchUpdate = [PromotionBatchUpdate(discountStatus: DiscountStatus(), endTime: 123, externalId: "externalId_example", id: "id_example", platformType: "platformType_example", promotionCode: "promotionCode_example", promotionCustomId: "promotionCustomId_example", promotionTitle: "promotionTitle_example", promotionType: PromotionType(), startTime: 123, templateValues: [PromotionTemplateValue(amount: 123, currencyCode: Currency(), customText: "customText_example", percent: 123)])] // [PromotionBatchUpdate] | 
 
 // Update promotions
-PromotionsAPI.promotionsUpdate(adAccountId: adAccountId, promotionBatchUpdate: promotionBatchUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await PromotionsAPI.promotionsUpdate(adAccountId: adAccountId, promotionBatchUpdate: promotionBatchUpdate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -285,3 +285,4 @@ class _$BoardSerializer implements PrimitiveSerializer<Board> {
   }
 }
 
+

@@ -6,20 +6,3 @@
 */
 #include "ReportingColumnAsync.h"
 
-namespace models {
-
-ReportingColumnAsync::ReportingColumnAsync()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

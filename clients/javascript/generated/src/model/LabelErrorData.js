@@ -18,7 +18,7 @@ import NullableLabelType from './NullableLabelType';
 /**
  * The LabelErrorData model module.
  * @module model/LabelErrorData
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelErrorData {
     /**

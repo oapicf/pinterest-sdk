@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Field by which to sort billing invoices.
-* Values: DUE_DATE,BILLING_PERIOD,DOCUMENT_TYPE,TOTAL_AMOUNT,INVOICE_NUMBER
-*/
+ * Field by which to sort billing invoices.
+ * Values: DUE_DATE,BILLING_PERIOD,DOCUMENT_TYPE,TOTAL_AMOUNT,INVOICE_NUMBER
+ */
 enum class BillingInvoiceSortField(@get:JsonValue val value: kotlin.String) {
 
     DUE_DATE("DUE_DATE"),
@@ -31,9 +31,8 @@ enum class BillingInvoiceSortField(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BillingInvoiceSortField {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingInvoiceSortField'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingInvoiceSortField'")
         }
     }
 }
-

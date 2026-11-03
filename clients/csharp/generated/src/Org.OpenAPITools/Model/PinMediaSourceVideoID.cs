@@ -297,7 +297,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourceVideoID.SourceTypeEnum?>(PinMediaSourceVideoID.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourceVideoID.SourceTypeEnum? sourceTypeValue = PinMediaSourceVideoID.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourceVideoID.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "cover_image_content_type":
                             coverImageContentType = new Option<ContentType?>(JsonSerializer.Deserialize<ContentType?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -321,31 +326,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaId.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceVideoID.", nameof(mediaId));
+                throw new JsonException("Property is required for class PinMediaSourceVideoID: media_id.");
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceVideoID.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourceVideoID: source_type.");
 
             if (mediaId.IsSet && mediaId.Value == null)
-                throw new ArgumentNullException(nameof(mediaId), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: media_id.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: source_type.");
 
             if (coverImageContentType.IsSet && coverImageContentType.Value == null)
-                throw new ArgumentNullException(nameof(coverImageContentType), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: cover_image_content_type.");
 
             if (coverImageData.IsSet && coverImageData.Value == null)
-                throw new ArgumentNullException(nameof(coverImageData), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: cover_image_data.");
 
             if (coverImageKeyFrameTime.IsSet && coverImageKeyFrameTime.Value == null)
-                throw new ArgumentNullException(nameof(coverImageKeyFrameTime), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: cover_image_key_frame_time.");
 
             if (coverImageUrl.IsSet && coverImageUrl.Value == null)
-                throw new ArgumentNullException(nameof(coverImageUrl), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: cover_image_url.");
 
             if (isStandard.IsSet && isStandard.Value == null)
-                throw new ArgumentNullException(nameof(isStandard), "Property is not nullable for class PinMediaSourceVideoID.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceVideoID: is_standard.");
 
             return new PinMediaSourceVideoID(mediaId.Value!, sourceType.Value!.Value!, coverImageContentType, coverImageData, coverImageKeyFrameTime, coverImageUrl, isStandard);
         }
@@ -356,7 +361,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceVideoID"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceVideoID pinMediaSourceVideoID, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -371,17 +375,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceVideoID"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceVideoID pinMediaSourceVideoID, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceVideoID.MediaId == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceVideoID.MediaId), "Property is required for class PinMediaSourceVideoID.");
+            if (pinMediaSourceVideoID.CoverImageContentTypeOption.IsSet && pinMediaSourceVideoID.CoverImageContentType == null)
+                throw new JsonException("Cannot write null property PinMediaSourceVideoID.CoverImageContentType to non-nullable JSON property 'cover_image_content_type'.");
 
             if (pinMediaSourceVideoID.CoverImageDataOption.IsSet && pinMediaSourceVideoID.CoverImageData == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceVideoID.CoverImageData), "Property is required for class PinMediaSourceVideoID.");
+                throw new JsonException("Cannot write null property PinMediaSourceVideoID.CoverImageData to non-nullable JSON property 'cover_image_data'.");
+
+            if (pinMediaSourceVideoID.CoverImageKeyFrameTimeOption.IsSet && pinMediaSourceVideoID.CoverImageKeyFrameTime == null)
+                throw new JsonException("Cannot write null property PinMediaSourceVideoID.CoverImageKeyFrameTime to non-nullable JSON property 'cover_image_key_frame_time'.");
 
             if (pinMediaSourceVideoID.CoverImageUrlOption.IsSet && pinMediaSourceVideoID.CoverImageUrl == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceVideoID.CoverImageUrl), "Property is required for class PinMediaSourceVideoID.");
+                throw new JsonException("Cannot write null property PinMediaSourceVideoID.CoverImageUrl to non-nullable JSON property 'cover_image_url'.");
+
+            if (pinMediaSourceVideoID.IsStandardOption.IsSet && pinMediaSourceVideoID.IsStandard == null)
+                throw new JsonException("Cannot write null property PinMediaSourceVideoID.IsStandard to non-nullable JSON property 'is_standard'.");
 
             writer.WriteString("media_id", pinMediaSourceVideoID.MediaId);
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **leadsExportCreate**
 ```swift
-    open class func leadsExportCreate(adAccountId: String, leadsExportsCreate: LeadsExportsCreate, completion: @escaping (_ data: LeadsExports?, _ error: Error?) -> Void)
+    open class func leadsExportCreate(adAccountId: String, leadsExportsCreate: LeadsExportsCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadsExports
 ```
 
 Create a request to export leads collected from a lead ad
@@ -26,15 +26,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let leadsExportsCreate = LeadsExportsCreate(adId: "adId_example", endDate: "endDate_example", startDate: "startDate_example") // LeadsExportsCreate | 
 
 // Create a request to export leads collected from a lead ad
-LeadsExportAPI.leadsExportCreate(adAccountId: adAccountId, leadsExportsCreate: leadsExportsCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadsExportAPI.leadsExportCreate(adAccountId: adAccountId, leadsExportsCreate: leadsExportsCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -62,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **leadsExportGet**
 ```swift
-    open class func leadsExportGet(adAccountId: String, leadsExportId: String, completion: @escaping (_ data: LeadsExportResponseData?, _ error: Error?) -> Void)
+    open class func leadsExportGet(adAccountId: String, leadsExportId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadsExportResponseData
 ```
 
 Get the lead export from the lead export create call
@@ -78,15 +74,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let leadsExportId = "leadsExportId_example" // String | lead_export_id token returned from the create a lead export endpoint
 
 // Get the lead export from the lead export create call
-LeadsExportAPI.leadsExportGet(adAccountId: adAccountId, leadsExportId: leadsExportId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadsExportAPI.leadsExportGet(adAccountId: adAccountId, leadsExportId: leadsExportId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

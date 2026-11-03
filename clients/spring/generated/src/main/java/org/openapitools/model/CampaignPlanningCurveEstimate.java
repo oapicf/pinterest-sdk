@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  * CampaignPlanningCurveEstimate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningCurveEstimate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CampaignPlanningEstimationType estimationType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CampaignPlanningPointEstimate> points = new ArrayList<>();
 
   public CampaignPlanningCurveEstimate estimationType(@Nullable CampaignPlanningEstimationType estimationType) {
@@ -73,7 +70,7 @@ public class CampaignPlanningCurveEstimate {
    * The estimation points that make up the estimated curve.
    * @return points
    */
-  @Valid @Size(max = 100) 
+  @Size(max = 100) 
   @Schema(name = "points", description = "The estimation points that make up the estimated curve.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("points")
   public List<@Valid CampaignPlanningPointEstimate> getPoints() {

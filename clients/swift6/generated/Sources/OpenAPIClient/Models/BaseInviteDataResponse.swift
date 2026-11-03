@@ -10,7 +10,7 @@ import Foundation
 /** Common invite/request data returned by the business access endpoints. */
 public struct BaseInviteDataResponse: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of the invite/request. */
     public var id: String?
     public var inviteData: InviteDataResponse?

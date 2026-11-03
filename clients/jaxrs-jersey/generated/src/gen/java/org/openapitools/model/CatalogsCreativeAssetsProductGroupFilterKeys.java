@@ -63,7 +63,7 @@ import javax.validation.Valid;
   CatalogsCreativeAssetsProductGroupFilterKeys.JSON_PROPERTY_T_I_T_L_E_K_E_Y_W_O_R_D_S,
   CatalogsCreativeAssetsProductGroupFilterKeys.JSON_PROPERTY_L_I_N_K
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys   {
   public static final String JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D = "CREATIVE_ASSETS_ID";
   @JsonProperty(JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D)

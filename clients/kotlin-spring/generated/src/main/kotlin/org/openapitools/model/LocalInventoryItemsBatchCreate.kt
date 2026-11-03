@@ -23,7 +23,7 @@ data class LocalInventoryItemsBatchCreate(
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(required = true, description = "Array of inventory operations. Up to 1000 items per request.")
-    @param:JsonProperty("operations")
+    @param:JsonProperty("operations", required = true)
     @get:JsonProperty("operations", required = true) val operations: kotlin.collections.List<LocalInventoryOperation>
 ) {
 

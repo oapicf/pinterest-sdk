@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale
 import org.openapitools.model.CatalogsFeedCredentials
 import org.openapitools.model.CatalogsFeedProcessingSchedule
@@ -43,16 +40,16 @@ data class CatalogsFeedsCreateRequest(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("format")
+    @param:JsonProperty("format", required = true)
     @get:JsonProperty("format", required = true) val format: CatalogsFormat,
 
     @get:Pattern(regexp="^(http|https|ftp|sftp)://")
     @Schema(required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-    @param:JsonProperty("location")
+    @param:JsonProperty("location", required = true)
     @get:JsonProperty("location", required = true) val location: kotlin.String,
 
     @Schema(required = true, description = "A human-friendly name associated to a given feed.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
@@ -67,8 +64,6 @@ data class CatalogsFeedsCreateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("default_country")
     @get:JsonProperty("default_country") val defaultCountry: Country? = null,
 
@@ -79,8 +74,6 @@ data class CatalogsFeedsCreateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("default_locale")
     @get:JsonProperty("default_locale") val defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale? = null,
 
@@ -91,8 +84,6 @@ data class CatalogsFeedsCreateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: CatalogsStatus? = null
 ) : CatalogsFeedCreateRequestSchema {

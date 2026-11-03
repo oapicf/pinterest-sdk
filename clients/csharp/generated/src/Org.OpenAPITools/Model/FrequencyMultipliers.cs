@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (iMPRESSIONCOUNT.IsSet && iMPRESSIONCOUNT.Value == null)
-                throw new ArgumentNullException(nameof(iMPRESSIONCOUNT), "Property is not nullable for class FrequencyMultipliers.");
+                throw new JsonException("Property is not nullable for class FrequencyMultipliers: IMPRESSION_COUNT.");
 
             return new FrequencyMultipliers(iMPRESSIONCOUNT);
         }
@@ -159,7 +159,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="frequencyMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, FrequencyMultipliers frequencyMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -174,11 +173,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="frequencyMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, FrequencyMultipliers frequencyMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             if (frequencyMultipliers.IMPRESSION_COUNTOption.IsSet && frequencyMultipliers.IMPRESSION_COUNT == null)
-                throw new ArgumentNullException(nameof(frequencyMultipliers.IMPRESSION_COUNT), "Property is required for class FrequencyMultipliers.");
+                throw new JsonException("Cannot write null property FrequencyMultipliers.IMPRESSION_COUNT to non-nullable JSON property 'IMPRESSION_COUNT'.");
 
             if (frequencyMultipliers.IMPRESSION_COUNTOption.IsSet)
                 writer.WriteString("IMPRESSION_COUNT", frequencyMultipliers.IMPRESSION_COUNT);

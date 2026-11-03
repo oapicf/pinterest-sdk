@@ -1,42 +1,43 @@
 # CatalogsBaseFilterKeys
 
-## Properties
+This model is an `anyOf` wrapper: a value is at least one of the member types listed below.
+It is never instantiated directly — use one of the concrete types.
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**min_price** | [**\OpenAPI\Client\Model\CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  |
-**max_price** | [**\OpenAPI\Client\Model\CatalogsProductGroupPricingCriteria**](CatalogsProductGroupPricingCriteria.md) |  |
-**currency** | [**\OpenAPI\Client\Model\CatalogsProductGroupCurrencyCriteria**](CatalogsProductGroupCurrencyCriteria.md) |  |
-**item_id** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**availability** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**brand** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**condition** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**custom_label_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**custom_label_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupFilterOperatorTypeCriteria**](CatalogsProductGroupFilterOperatorTypeCriteria.md) |  |
-**item_group_id** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**gender** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleGenderCriteria**](CatalogsProductGroupMultipleGenderCriteria.md) |  |
-**media_type** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleMediaTypesCriteria**](CatalogsProductGroupMultipleMediaTypesCriteria.md) |  |
-**product_type_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**product_type_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**product_type_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**product_type_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**product_type_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_6** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_5** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**google_product_category_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringListCriteria**](CatalogsProductGroupMultipleStringListCriteria.md) |  |
-**custom_number_0** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |
-**custom_number_1** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |
-**custom_number_2** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |
-**custom_number_3** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |
-**custom_number_4** | [**\OpenAPI\Client\Model\CatalogsProductGroupUint32Criteria**](CatalogsProductGroupUint32Criteria.md) |  |
-**title_keywords** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultipleStringCriteria**](CatalogsProductGroupMultipleStringCriteria.md) |  |
-**pinterest_product_categories** | [**\OpenAPI\Client\Model\CatalogsProductGroupMultiplePinterestProductCategoryCriteria**](CatalogsProductGroupMultiplePinterestProductCategoryCriteria.md) |  |
+## anyOf
+
+- [**\OpenAPI\Client\Model\MinPriceFilter**](MinPriceFilter.md)
+- [**\OpenAPI\Client\Model\MaxPriceFilter**](MaxPriceFilter.md)
+- [**\OpenAPI\Client\Model\CurrencyFilter**](CurrencyFilter.md)
+- [**\OpenAPI\Client\Model\ItemIdFilter**](ItemIdFilter.md)
+- [**\OpenAPI\Client\Model\AvailabilityFilter**](AvailabilityFilter.md)
+- [**\OpenAPI\Client\Model\BrandFilter**](BrandFilter.md)
+- [**\OpenAPI\Client\Model\ConditionFilter**](ConditionFilter.md)
+- [**\OpenAPI\Client\Model\CustomLabel0Filter**](CustomLabel0Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel1Filter**](CustomLabel1Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel2Filter**](CustomLabel2Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel3Filter**](CustomLabel3Filter.md)
+- [**\OpenAPI\Client\Model\CustomLabel4Filter**](CustomLabel4Filter.md)
+- [**\OpenAPI\Client\Model\ItemGroupIdFilter**](ItemGroupIdFilter.md)
+- [**\OpenAPI\Client\Model\GenderFilter**](GenderFilter.md)
+- [**\OpenAPI\Client\Model\MediaTypeFilter**](MediaTypeFilter.md)
+- [**\OpenAPI\Client\Model\ProductType4Filter**](ProductType4Filter.md)
+- [**\OpenAPI\Client\Model\ProductType3Filter**](ProductType3Filter.md)
+- [**\OpenAPI\Client\Model\ProductType2Filter**](ProductType2Filter.md)
+- [**\OpenAPI\Client\Model\ProductType1Filter**](ProductType1Filter.md)
+- [**\OpenAPI\Client\Model\ProductType0Filter**](ProductType0Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory6Filter**](GoogleProductCategory6Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory5Filter**](GoogleProductCategory5Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory4Filter**](GoogleProductCategory4Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory3Filter**](GoogleProductCategory3Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory2Filter**](GoogleProductCategory2Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory1Filter**](GoogleProductCategory1Filter.md)
+- [**\OpenAPI\Client\Model\GoogleProductCategory0Filter**](GoogleProductCategory0Filter.md)
+- [**\OpenAPI\Client\Model\CustomNumber0Filter**](CustomNumber0Filter.md)
+- [**\OpenAPI\Client\Model\CustomNumber1Filter**](CustomNumber1Filter.md)
+- [**\OpenAPI\Client\Model\CustomNumber2Filter**](CustomNumber2Filter.md)
+- [**\OpenAPI\Client\Model\CustomNumber3Filter**](CustomNumber3Filter.md)
+- [**\OpenAPI\Client\Model\CustomNumber4Filter**](CustomNumber4Filter.md)
+- [**\OpenAPI\Client\Model\TitleKeywordsFilter**](TitleKeywordsFilter.md)
+- [**\OpenAPI\Client\Model\PinterestProductCategoriesFilter**](PinterestProductCategoriesFilter.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

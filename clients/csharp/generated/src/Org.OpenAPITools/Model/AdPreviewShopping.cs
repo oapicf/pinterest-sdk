@@ -366,40 +366,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogProductGroupId.IsSet)
-                throw new ArgumentException("Property is required for class AdPreviewShopping.", nameof(catalogProductGroupId));
+                throw new JsonException("Property is required for class AdPreviewShopping: catalog_product_group_id.");
 
             if (!creativeType.IsSet)
-                throw new ArgumentException("Property is required for class AdPreviewShopping.", nameof(creativeType));
+                throw new JsonException("Property is required for class AdPreviewShopping: creative_type.");
 
             if (catalogProductGroupId.IsSet && catalogProductGroupId.Value == null)
-                throw new ArgumentNullException(nameof(catalogProductGroupId), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: catalog_product_group_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: creative_type.");
 
             if (heroImageTitle.IsSet && heroImageTitle.Value == null)
-                throw new ArgumentNullException(nameof(heroImageTitle), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: hero_image_title.");
 
             if (heroImageUrl.IsSet && heroImageUrl.Value == null)
-                throw new ArgumentNullException(nameof(heroImageUrl), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: hero_image_url.");
 
             if (heroPinId.IsSet && heroPinId.Value == null)
-                throw new ArgumentNullException(nameof(heroPinId), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: hero_pin_id.");
 
             if (imageTag.IsSet && imageTag.Value == null)
-                throw new ArgumentNullException(nameof(imageTag), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: image_tag.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: item_id.");
 
             if (preferredMediaType.IsSet && preferredMediaType.Value == null)
-                throw new ArgumentNullException(nameof(preferredMediaType), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: preferred_media_type.");
 
             if (showPromotion.IsSet && showPromotion.Value == null)
-                throw new ArgumentNullException(nameof(showPromotion), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: show_promotion.");
 
             if (videoTag.IsSet && videoTag.Value == null)
-                throw new ArgumentNullException(nameof(videoTag), "Property is not nullable for class AdPreviewShopping.");
+                throw new JsonException("Property is not nullable for class AdPreviewShopping: video_tag.");
 
             return new AdPreviewShopping(catalogProductGroupId.Value!, creativeType.Value!.Value!, customizableCtaType, heroImageTitle, heroImageUrl, heroPinId, imageTag, itemId, preferredMediaType, showPromotion, videoTag);
         }
@@ -410,7 +410,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewShopping"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdPreviewShopping adPreviewShopping, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -425,29 +424,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewShopping"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdPreviewShopping adPreviewShopping, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adPreviewShopping.CatalogProductGroupId == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.CatalogProductGroupId), "Property is required for class AdPreviewShopping.");
-
             if (adPreviewShopping.HeroImageTitleOption.IsSet && adPreviewShopping.HeroImageTitle == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.HeroImageTitle), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.HeroImageTitle to non-nullable JSON property 'hero_image_title'.");
 
             if (adPreviewShopping.HeroImageUrlOption.IsSet && adPreviewShopping.HeroImageUrl == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.HeroImageUrl), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.HeroImageUrl to non-nullable JSON property 'hero_image_url'.");
 
             if (adPreviewShopping.HeroPinIdOption.IsSet && adPreviewShopping.HeroPinId == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.HeroPinId), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.HeroPinId to non-nullable JSON property 'hero_pin_id'.");
 
             if (adPreviewShopping.ImageTagOption.IsSet && adPreviewShopping.ImageTag == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.ImageTag), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.ImageTag to non-nullable JSON property 'image_tag'.");
 
             if (adPreviewShopping.ItemIdOption.IsSet && adPreviewShopping.ItemId == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.ItemId), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.ItemId to non-nullable JSON property 'item_id'.");
+
+            if (adPreviewShopping.PreferredMediaTypeOption.IsSet && adPreviewShopping.PreferredMediaType == null)
+                throw new JsonException("Cannot write null property AdPreviewShopping.PreferredMediaType to non-nullable JSON property 'preferred_media_type'.");
+
+            if (adPreviewShopping.ShowPromotionOption.IsSet && adPreviewShopping.ShowPromotion == null)
+                throw new JsonException("Cannot write null property AdPreviewShopping.ShowPromotion to non-nullable JSON property 'show_promotion'.");
 
             if (adPreviewShopping.VideoTagOption.IsSet && adPreviewShopping.VideoTag == null)
-                throw new ArgumentNullException(nameof(adPreviewShopping.VideoTag), "Property is required for class AdPreviewShopping.");
+                throw new JsonException("Cannot write null property AdPreviewShopping.VideoTag to non-nullable JSON property 'video_tag'.");
 
             writer.WriteString("catalog_product_group_id", adPreviewShopping.CatalogProductGroupId);
 

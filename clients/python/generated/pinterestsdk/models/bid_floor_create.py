@@ -77,8 +77,7 @@ class BidFloorCreate(BaseModel):
         _items = []
         if self.bid_floor_specs:
             for _item_bid_floor_specs in self.bid_floor_specs:
-                if _item_bid_floor_specs:
-                    _items.append(_item_bid_floor_specs.to_dict())
+                _items.append(_item_bid_floor_specs.to_dict() if _item_bid_floor_specs is not None else None)
             _dict['bid_floor_specs'] = _items
         # override the default output from pydantic by calling `to_dict()` of targeting_spec
         if self.targeting_spec:

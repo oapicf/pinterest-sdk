@@ -98,7 +98,7 @@ class AdGroupCreate {
     /* [Open beta](https://help.pinterest.com/en/business/article/beta-features) Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for [Performance+ campaigns](https://help.pinterest.com/en/business/article/performance-plus-campaigns). */
     BigDecimal bidMultiplier
     
-    BudgetType budgetType
+    BudgetType budgetType = BudgetType.DAILY
     
-    PacingDeliveryType pacingDeliveryType
+    PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD
 }

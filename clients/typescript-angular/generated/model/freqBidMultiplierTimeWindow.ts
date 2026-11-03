@@ -14,7 +14,7 @@
  */
 export const FreqBidMultiplierTimeWindow = {
     Week: 'WEEK',
-    Month: 'MONTH'
+    Month: 'MONTH',
 } as const;
 export type FreqBidMultiplierTimeWindow = typeof FreqBidMultiplierTimeWindow[keyof typeof FreqBidMultiplierTimeWindow];
 

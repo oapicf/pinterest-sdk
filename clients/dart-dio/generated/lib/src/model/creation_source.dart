@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'creation_source.g.dart';
 
+/// The source of conversion events ingestion
 class CreationSource extends EnumClass {
 
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'ADS_API')
   static const CreationSource ADS_API = _$ADS_API;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'ADS_MANAGER_REPORTING_PAGE')
   static const CreationSource ADS_MANAGER_REPORTING_PAGE = _$ADS_MANAGER_REPORTING_PAGE;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'ADS_MANAGER_REPORT_BUILDER')
   static const CreationSource ADS_MANAGER_REPORT_BUILDER = _$ADS_MANAGER_REPORT_BUILDER;
 

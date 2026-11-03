@@ -17,7 +17,7 @@ import Country from './Country';
 /**
  * The LocalStoreBatchUpdate model module.
  * @module model/LocalStoreBatchUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalStoreBatchUpdate {
     /**

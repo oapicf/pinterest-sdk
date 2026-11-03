@@ -260,25 +260,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (var1824.IsSet && var1824.Value == null)
-                throw new ArgumentNullException(nameof(var1824), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 18-24.");
 
             if (var2534.IsSet && var2534.Value == null)
-                throw new ArgumentNullException(nameof(var2534), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 25-34.");
 
             if (var3544.IsSet && var3544.Value == null)
-                throw new ArgumentNullException(nameof(var3544), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 35-44.");
 
             if (var4549.IsSet && var4549.Value == null)
-                throw new ArgumentNullException(nameof(var4549), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 45-49.");
 
             if (var5054.IsSet && var5054.Value == null)
-                throw new ArgumentNullException(nameof(var5054), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 50-54.");
 
             if (var5564.IsSet && var5564.Value == null)
-                throw new ArgumentNullException(nameof(var5564), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 55-64.");
 
             if (var65.IsSet && var65.Value == null)
-                throw new ArgumentNullException(nameof(var65), "Property is not nullable for class BidOptionsAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAgeBucketMultipliers: 65+.");
 
             return new BidOptionsAgeBucketMultipliers(var1824, var2534, var3544, var4549, var5054, var5564, var65);
         }
@@ -289,7 +289,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAgeBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidOptionsAgeBucketMultipliers bidOptionsAgeBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -304,9 +303,29 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAgeBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidOptionsAgeBucketMultipliers bidOptionsAgeBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (bidOptionsAgeBucketMultipliers.Var1824Option.IsSet && bidOptionsAgeBucketMultipliers.Var1824 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var1824 to non-nullable JSON property '18-24'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var2534Option.IsSet && bidOptionsAgeBucketMultipliers.Var2534 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var2534 to non-nullable JSON property '25-34'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var3544Option.IsSet && bidOptionsAgeBucketMultipliers.Var3544 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var3544 to non-nullable JSON property '35-44'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var4549Option.IsSet && bidOptionsAgeBucketMultipliers.Var4549 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var4549 to non-nullable JSON property '45-49'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var5054Option.IsSet && bidOptionsAgeBucketMultipliers.Var5054 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var5054 to non-nullable JSON property '50-54'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var5564Option.IsSet && bidOptionsAgeBucketMultipliers.Var5564 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var5564 to non-nullable JSON property '55-64'.");
+
+            if (bidOptionsAgeBucketMultipliers.Var65Option.IsSet && bidOptionsAgeBucketMultipliers.Var65 == null)
+                throw new JsonException("Cannot write null property BidOptionsAgeBucketMultipliers.Var65 to non-nullable JSON property '65+'.");
+
             if (bidOptionsAgeBucketMultipliers.Var1824Option.IsSet)
                 writer.WriteNumber("18-24", bidOptionsAgeBucketMultipliers.Var1824Option.Value!.Value);
 

@@ -43,26 +43,18 @@ import {
 export interface AdvancedAuctionItem {
     /**
      * 
-     * @type {AdvancedAuctionBidOptions}
-     * @memberof AdvancedAuctionItem
      */
     bidOptions: AdvancedAuctionBidOptions;
     /**
      * 
-     * @type {Country}
-     * @memberof AdvancedAuctionItem
      */
     country: Country;
     /**
      * The catalog retail item id in the merchant namespace
-     * @type {string}
-     * @memberof AdvancedAuctionItem
      */
     itemId: string;
     /**
      * 
-     * @type {Language}
-     * @memberof AdvancedAuctionItem
      */
     language: Language;
 }

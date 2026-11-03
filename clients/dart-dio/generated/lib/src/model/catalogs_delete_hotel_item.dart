@@ -123,6 +123,7 @@ class _$CatalogsDeleteHotelItemSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+
 class CatalogsDeleteHotelItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

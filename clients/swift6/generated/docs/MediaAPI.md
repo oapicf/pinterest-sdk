@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **mediaCreate**
 ```swift
-    open class func mediaCreate(mediaUploadCreate: MediaUploadCreate, completion: @escaping (_ data: MediaUpload?, _ error: Error?) -> Void)
+    open class func mediaCreate(mediaUploadCreate: MediaUploadCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MediaUpload
 ```
 
 Register media upload
@@ -26,15 +26,11 @@ import OpenAPIClient
 let mediaUploadCreate = MediaUploadCreate(mediaType: MediaUploadType()) // MediaUploadCreate | 
 
 // Register media upload
-MediaAPI.mediaCreate(mediaUploadCreate: mediaUploadCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await MediaAPI.mediaCreate(mediaUploadCreate: mediaUploadCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -61,7 +57,7 @@ Name | Type | Description  | Notes
 
 # **mediaGet**
 ```swift
-    open class func mediaGet(mediaId: String, completion: @escaping (_ data: Media?, _ error: Error?) -> Void)
+    open class func mediaGet(mediaId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Media
 ```
 
 Get media upload details
@@ -76,15 +72,11 @@ import OpenAPIClient
 let mediaId = "mediaId_example" // String | Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
 
 // Get media upload details
-MediaAPI.mediaGet(mediaId: mediaId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await MediaAPI.mediaGet(mediaId: mediaId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -111,7 +103,7 @@ Name | Type | Description  | Notes
 
 # **mediaList**
 ```swift
-    open class func mediaList(bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: MediaList200Response?, _ error: Error?) -> Void)
+    open class func mediaList(bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MediaList200Response
 ```
 
 List media uploads
@@ -127,15 +119,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List media uploads
-MediaAPI.mediaList(bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await MediaAPI.mediaList(bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

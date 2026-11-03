@@ -126,3 +126,4 @@ class _$QuizPinOptionSerializer implements PrimitiveSerializer<QuizPinOption> {
   }
 }
 
+

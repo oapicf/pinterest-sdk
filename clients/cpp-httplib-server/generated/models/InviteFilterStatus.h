@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class InviteFilterStatus
-{
-public:
-
-    InviteFilterStatus();
-    virtual ~InviteFilterStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(InviteFilterStatus,
-        )
-
-private:
+enum class InviteFilterStatus {
+    
+    PENDING,
+    
+    EXPIRED
+    
 };
 
+inline void to_json(nlohmann::json& j, const InviteFilterStatus& value)
+{
+    switch (value)
+    {
+        
+        case InviteFilterStatus::PENDING: j = "PENDING"; break;
+        
+        case InviteFilterStatus::EXPIRED: j = "EXPIRED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for InviteFilterStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, InviteFilterStatus& value)
+{
+    
+    if (j == "PENDING")
+    {
+        value = InviteFilterStatus::PENDING;
+        return;
+    }
+    
+    if (j == "EXPIRED")
+    {
+        value = InviteFilterStatus::EXPIRED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for InviteFilterStatus", &j);
+}
 
 } // namespace models
 

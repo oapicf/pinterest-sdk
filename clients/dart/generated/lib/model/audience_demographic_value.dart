@@ -98,7 +98,9 @@ class AudienceDemographicValue {
       return AudienceDemographicValue(
         key: mapValueOfType<String>(json, r'key'),
         name: mapValueOfType<String>(json, r'name'),
-        ratio: num.parse('${json[r'ratio']}'),
+        ratio: json[r'ratio'] == null
+            ? null
+            : num.parse('${json[r'ratio']}'),
       );
     }
     return null;

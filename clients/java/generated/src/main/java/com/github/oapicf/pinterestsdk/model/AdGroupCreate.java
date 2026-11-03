@@ -48,6 +48,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -67,7 +68,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreate {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
@@ -252,12 +253,12 @@ public class AdGroupCreate {
   public static final String SERIALIZED_NAME_BUDGET_TYPE = "budget_type";
   @SerializedName(SERIALIZED_NAME_BUDGET_TYPE)
   @javax.annotation.Nullable
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   public static final String SERIALIZED_NAME_PACING_DELIVERY_TYPE = "pacing_delivery_type";
   @SerializedName(SERIALIZED_NAME_PACING_DELIVERY_TYPE)
   @javax.annotation.Nullable
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   public AdGroupCreate() {
   }

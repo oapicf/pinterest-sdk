@@ -36,26 +36,18 @@ import {
 export interface CreativeAssetsProcessingRecord {
     /**
      * The catalog creative assets id in the merchant namespace
-     * @type {string}
-     * @memberof CreativeAssetsProcessingRecord
      */
     creativeAssetsId?: string;
     /**
      * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-     * @type {Array<ItemValidationEvent>}
-     * @memberof CreativeAssetsProcessingRecord
      */
     errors?: Array<ItemValidationEvent>;
     /**
      * 
-     * @type {ItemProcessingStatus}
-     * @memberof CreativeAssetsProcessingRecord
      */
     status?: ItemProcessingStatus;
     /**
      * Array with the validation warnings for the item processing record
-     * @type {Array<ItemValidationEvent>}
-     * @memberof CreativeAssetsProcessingRecord
      */
     warnings?: Array<ItemValidationEvent>;
 }

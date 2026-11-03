@@ -8,7 +8,7 @@ export interface TargetingSpecOperationInterest {
 }
 export namespace TargetingSpecOperationInterest {
   export const FieldEnum = {
-    Interest: 'INTEREST'
+    Interest: 'INTEREST',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

@@ -22,9 +22,8 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from datetime import date
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.ads_credit_redeem import AdsCreditRedeem
@@ -45,6 +44,7 @@ from openapi_server.models.ssio_insertion_order_status_response import SSIOInser
 from openapi_server.models.ssio_insertion_order_update import SSIOInsertionOrderUpdate
 from openapi_server.models.ssio_insertion_orders_status_get_by_ad_account200_response import SsioInsertionOrdersStatusGetByAdAccount200Response
 from openapi_server.models.ssio_order_lines_get_by_ad_account200_response import SsioOrderLinesGetByAdAccount200Response
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -70,9 +70,9 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def ads_credits_discounts_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read", "billing:read"]
     ),
@@ -100,8 +100,8 @@ async def ads_credits_discounts_get(
     response_model_by_alias=True,
 )
 async def ads_credit_redeem(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    ads_credit_redeem_create: AdsCreditRedeemCreate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ads_credit_redeem_create: AdsCreditRedeemCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write", "billing:write"]
     ),
@@ -128,8 +128,8 @@ async def ads_credit_redeem(
     response_model_by_alias=True,
 )
 async def billing_invoice_download_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    billing_invoice_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of a billing invoice.")] = Path(..., description="Unique identifier of a billing invoice.", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    billing_invoice_id: Annotated[str, Field(max_length=18, description="Unique identifier of a billing invoice.")] = Path(..., description="Unique identifier of a billing invoice.", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read", "billing:read"]
     ),
@@ -156,9 +156,9 @@ async def billing_invoice_download_get(
     response_model_by_alias=True,
 )
 async def billing_invoices_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")] = Query(None, description="The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.", alias="order"),
     sort: Annotated[Optional[BillingInvoiceSortField], Field(description="Field of which to sort billing invoices")] = Query('DUE_DATE', description="Field of which to sort billing invoices", alias="sort"),
     status: Annotated[Optional[BillingInvoiceStatus], Field(description="Status of billing invoices to filter by")] = Query(None, description="Status of billing invoices to filter by", alias="status"),
@@ -191,10 +191,10 @@ async def billing_invoices_get(
     response_model_by_alias=True,
 )
 async def billing_profiles_get(
-    is_active: Annotated[StrictBool, Field(description="Return active billing profiles, if false return all billing profiles.")] = Query(None, description="Return active billing profiles, if false return all billing profiles.", alias="is_active"),
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    is_active: Annotated[bool, Field(description="Return active billing profiles, if false return all billing profiles.")] = Query(..., description="Return active billing profiles, if false return all billing profiles.", alias="is_active"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read", "billing:read"]
     ),
@@ -221,7 +221,7 @@ async def billing_profiles_get(
     response_model_by_alias=True,
 )
 async def ssio_accounts_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -249,8 +249,8 @@ async def ssio_accounts_get(
     response_model_by_alias=True,
 )
 async def ssio_insertion_order_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    ssio_insertion_order_create: SSIOInsertionOrderCreate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ssio_insertion_order_create: SSIOInsertionOrderCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -277,8 +277,8 @@ async def ssio_insertion_order_create(
     response_model_by_alias=True,
 )
 async def ssio_insertion_order_edit(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    ssio_insertion_order_update: SSIOInsertionOrderUpdate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ssio_insertion_order_update: SSIOInsertionOrderUpdate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -305,9 +305,9 @@ async def ssio_insertion_order_edit(
     response_model_by_alias=True,
 )
 async def ssio_insertion_orders_status_get_by_ad_account(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -334,8 +334,8 @@ async def ssio_insertion_orders_status_get_by_ad_account(
     response_model_by_alias=True,
 )
 async def ssio_insertion_orders_status_get_by_pin_order_id(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    pin_order_id: Annotated[StrictStr, Field(description="The pin order id associated with the ssio insertion order")] = Path(..., description="The pin order id associated with the ssio insertion order"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    pin_order_id: Annotated[str, Field(description="The pin order id associated with the ssio insertion order")] = Path(..., description="The pin order id associated with the ssio insertion order"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -362,10 +362,10 @@ async def ssio_insertion_orders_status_get_by_pin_order_id(
     response_model_by_alias=True,
 )
 async def ssio_order_lines_get_by_ad_account(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    pin_order_id: Annotated[Optional[StrictStr], Field(description="The pin order id associated with the SSIO insertion order")] = Query(None, description="The pin order id associated with the SSIO insertion order", alias="pin_order_id"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    pin_order_id: Annotated[Optional[str], Field(description="The pin order id associated with the SSIO insertion order")] = Query(None, description="The pin order id associated with the SSIO insertion order", alias="pin_order_id"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

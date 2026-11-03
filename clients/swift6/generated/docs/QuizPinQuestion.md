@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**options** | [QuizPinOption] |  | [optional] 
+**options** | [QuizPinOption?] |  | [optional] 
 **questionId** | **Double** |  | [optional] 
 **questionText** | **String** |  | [optional] 
 

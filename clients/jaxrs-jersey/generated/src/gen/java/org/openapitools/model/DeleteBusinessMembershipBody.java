@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   DeleteBusinessMembershipBody.JSON_PROPERTY_MEMBERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembershipBody   {
   public static final String JSON_PROPERTY_MEMBERS = "members";
   @JsonProperty(JSON_PROPERTY_MEMBERS)
@@ -58,7 +58,7 @@ public class DeleteBusinessMembershipBody   {
    **/
   @JsonProperty(value = "members")
   @ApiModelProperty(required = true, value = "")
-  @NotNull @Valid  @Size(min=1,max=50)
+  @NotNull  @Size(min=1,max=50)
   public List<@Valid DeleteBusinessMembershipMember> getMembers() {
     return members;
   }

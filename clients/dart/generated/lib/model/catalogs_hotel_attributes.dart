@@ -296,7 +296,9 @@ class CatalogsHotelAttributes {
         customLabel4: mapValueOfType<String>(json, r'custom_label_4'),
         description: mapValueOfType<String>(json, r'description'),
         guestRatings: CatalogsHotelGuestRatings.fromJson(json[r'guest_ratings']),
-        latitude: num.parse('${json[r'latitude']}'),
+        latitude: json[r'latitude'] == null
+            ? null
+            : num.parse('${json[r'latitude']}'),
         link: mapValueOfType<String>(json, r'link'),
         longitude: json[r'longitude'] == null
             ? null

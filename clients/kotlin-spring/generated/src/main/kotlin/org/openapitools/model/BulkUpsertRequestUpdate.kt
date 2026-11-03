@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdGroupUpdateRequest
 import org.openapitools.model.AdUpdateRequest
 import org.openapitools.model.BulkUpsertRequestUpdateCatalogProductGroupsItems
@@ -39,57 +36,41 @@ data class BulkUpsertRequestUpdate(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_groups")
     @get:JsonProperty("ad_groups") val adGroups: kotlin.collections.List<AdGroupUpdateRequest>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ads")
     @get:JsonProperty("ads") val ads: kotlin.collections.List<AdUpdateRequest>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("campaigns")
     @get:JsonProperty("campaigns") val campaigns: kotlin.collections.List<CampaignUpdateRequest>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_product_groups")
     @get:JsonProperty("catalog_product_groups") val catalogProductGroups: kotlin.collections.List<BulkUpsertRequestUpdateCatalogProductGroupsItems>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("keywords")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<KeywordUpdateGenerated>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("labels")
     @get:JsonProperty("labels") val labels: kotlin.collections.List<LabelBulkUpdateRequest>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("product_groups")
     @get:JsonProperty("product_groups") val productGroups: kotlin.collections.List<ProductGroupPromotionUpdateRequest>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("schedules")
     @get:JsonProperty("schedules") val schedules: kotlin.collections.List<ScheduleUpdateRequest>? = null
 ) {

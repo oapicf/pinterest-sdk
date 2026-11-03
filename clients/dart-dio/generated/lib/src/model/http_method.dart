@@ -9,33 +9,25 @@ import 'package:built_value/serializer.dart';
 
 part 'http_method.g.dart';
 
+/// HTTP request method.
 class HttpMethod extends EnumClass {
 
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'GET')
   static const HttpMethod GET = _$GET;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'HEAD')
   static const HttpMethod HEAD = _$HEAD;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'POST')
   static const HttpMethod POST = _$POST;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'PUT')
   static const HttpMethod PUT = _$PUT;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'DELETE')
   static const HttpMethod DELETE = _$DELETE;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'CONNECT')
   static const HttpMethod CONNECT = _$CONNECT;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'OPTIONS')
   static const HttpMethod OPTIONS = _$OPTIONS;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'TRACE')
   static const HttpMethod TRACE = _$TRACE;
-  /// HTTP request method.
   @BuiltValueEnumConst(wireName: r'PATCH')
   static const HttpMethod PATCH = _$PATCH;
 

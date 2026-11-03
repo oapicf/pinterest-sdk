@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface BrandAccount {
     /**
      * 
-     * @type {string}
-     * @memberof BrandAccount
      */
     readonly brandAccountId: string;
 }

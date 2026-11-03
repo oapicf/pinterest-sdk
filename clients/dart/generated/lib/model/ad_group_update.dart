@@ -528,7 +528,9 @@ class AdGroupUpdate {
         isCreativeOptimization: mapValueOfType<bool>(json, r'is_creative_optimization'),
         isLocalInventory: mapValueOfType<bool>(json, r'is_local_inventory'),
         lifetimeFrequencyCap: mapValueOfType<int>(json, r'lifetime_frequency_cap'),
-        localInventoryRadiusInMiles: num.parse('${json[r'local_inventory_radius_in_miles']}'),
+        localInventoryRadiusInMiles: json[r'local_inventory_radius_in_miles'] == null
+            ? null
+            : num.parse('${json[r'local_inventory_radius_in_miles']}'),
         name: mapValueOfType<String>(json, r'name')!,
         optimizationGoalMetadata: NullableOptimizationGoalMetadata.fromJson(json[r'optimization_goal_metadata']),
         performancePlusCampaignSettings: PerformancePlusCampaignSettings.fromJson(json[r'performance_plus_campaign_settings']),
@@ -550,7 +552,9 @@ class AdGroupUpdate {
         type: mapValueOfType<String>(json, r'type')!,
         updatedTime: mapValueOfType<int>(json, r'updated_time')!,
         autoTargetingEnabled: mapValueOfType<bool>(json, r'auto_targeting_enabled'),
-        bidMultiplier: num.parse('${json[r'bid_multiplier']}'),
+        bidMultiplier: json[r'bid_multiplier'] == null
+            ? null
+            : num.parse('${json[r'bid_multiplier']}'),
         budgetType: BudgetType.fromJson(json[r'budget_type']),
         pacingDeliveryType: PacingDeliveryType.fromJson(json[r'pacing_delivery_type']),
       );

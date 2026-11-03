@@ -29,20 +29,14 @@ import {
 export interface QuizPinQuestion {
     /**
      * 
-     * @type {Array<QuizPinOption>}
-     * @memberof QuizPinQuestion
      */
     options?: Array<QuizPinOption>;
     /**
      * 
-     * @type {number}
-     * @memberof QuizPinQuestion
      */
     questionId?: number;
     /**
      * 
-     * @type {string}
-     * @memberof QuizPinQuestion
      */
     questionText?: string;
 }

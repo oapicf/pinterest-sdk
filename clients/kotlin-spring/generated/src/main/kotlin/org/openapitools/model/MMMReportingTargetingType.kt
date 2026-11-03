@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad targeting types for MMM report
-* Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION,PLACEMENT,AUDIENCE_INCLUDE
-*/
+ * Ad targeting types for MMM report
+ * Values: APPTYPE,COUNTRY,CREATIVE_TYPE,GENDER,LOCATION,PLACEMENT,AUDIENCE_INCLUDE
+ */
 enum class MMMReportingTargetingType(@get:JsonValue val value: kotlin.String) {
 
     APPTYPE("APPTYPE"),
@@ -33,9 +33,8 @@ enum class MMMReportingTargetingType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MMMReportingTargetingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportingTargetingType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportingTargetingType'")
         }
     }
 }
-

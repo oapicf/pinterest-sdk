@@ -17,8 +17,6 @@ public class ItemsPost200Response  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ItemResponse> items = new ArrayList<>();
  /**
    * Get items

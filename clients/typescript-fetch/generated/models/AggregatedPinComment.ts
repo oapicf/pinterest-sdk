@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { PinMedia } from './PinMedia';
 import {
     PinMediaFromJSON,
@@ -50,116 +50,78 @@ import {
 export interface AggregatedPinComment {
     /**
      * AI disclosure declarations the creator has made about this Pin.
-     * @type {AiDisclosures}
-     * @memberof AggregatedPinComment
      */
     aiDisclosures?: AiDisclosures;
     /**
      * 
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     altText?: string | null;
     /**
      * The board to which this Pin belongs.
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     boardId?: string;
     /**
      * 
-     * @type {BoardOwner}
-     * @memberof AggregatedPinComment
      */
     readonly boardOwner?: BoardOwner;
     /**
      * The board section to which this Pin belongs.
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     boardSectionId?: string | null;
     /**
      * 
-     * @type {Date}
-     * @memberof AggregatedPinComment
      */
     readonly createdAt?: Date;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof AggregatedPinComment
      */
     readonly creativeType?: CreativeType | null;
     /**
      * 
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     description?: string | null;
     /**
      * Dominant pin color. Hex number, e.g. `#6E7874`.
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     dominantColor?: string | null;
     /**
      * Whether the Pin has been promoted or not.
-     * @type {boolean}
-     * @memberof AggregatedPinComment
      */
     readonly hasBeenPromoted?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     id: string;
     /**
      * Whether the "operation user_account" is the Pin owner.
-     * @type {boolean}
-     * @memberof AggregatedPinComment
      */
     readonly isOwner?: boolean;
     /**
      * Whether the Pin is a product Pin.
-     * @type {boolean}
-     * @memberof AggregatedPinComment
      */
     readonly isProduct?: boolean;
     /**
      * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
-     * @type {boolean}
-     * @memberof AggregatedPinComment
      */
     readonly isStandard?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     link?: string | null;
     /**
      * 
-     * @type {PinMedia}
-     * @memberof AggregatedPinComment
      */
     readonly media?: PinMedia;
     /**
      * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     parentPinId?: string | null;
     /**
      * Pin metrics with associated time intervals if any.
-     * @type {object}
-     * @memberof AggregatedPinComment
      */
     readonly pinMetrics?: object | null;
     /**
      * 
-     * @type {string}
-     * @memberof AggregatedPinComment
      */
     title?: string | null;
 }
@@ -189,7 +151,7 @@ export function AggregatedPinCommentFromJSONTyped(json: any, ignoreDiscriminator
         'boardId': json['board_id'] == null ? undefined : json['board_id'],
         'boardOwner': json['board_owner'] == null ? undefined : BoardOwnerFromJSON(json['board_owner']),
         'boardSectionId': json['board_section_id'] === undefined ? undefined : json['board_section_id'] === null ? null : json['board_section_id'],
-        'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
+        'createdAt': json['created_at'] == null ? undefined : (parseDateTime(json['created_at'])),
         'creativeType': json['creative_type'] === undefined ? undefined : json['creative_type'] === null ? null : CreativeTypeFromJSON(json['creative_type']),
         'description': json['description'] === undefined ? undefined : json['description'] === null ? null : json['description'],
         'dominantColor': json['dominant_color'] === undefined ? undefined : json['dominant_color'] === null ? null : json['dominant_color'],

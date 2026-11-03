@@ -46,7 +46,7 @@ public class NotificationApiHandler {
         RequestParameter body = requestParameters.body();
         NotificationPostRequest notificationPostRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<NotificationPostRequest>(){}) : null;
 
-        logger.debug("Parameter notificationPostRequest is {}", notificationPostRequest);
+        logger.debug("Parameter notificationPostRequest is (body omitted)");
 
         api.notificationPost(notificationPostRequest)
             .onSuccess(apiResponse -> {

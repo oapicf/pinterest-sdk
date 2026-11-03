@@ -29,14 +29,10 @@ import {
 export interface EntityLabelError {
     /**
      * 
-     * @type {EntityLabel}
-     * @memberof EntityLabelError
      */
     data?: EntityLabel;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof EntityLabelError
      */
     errorMessages?: Array<string>;
 }

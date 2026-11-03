@@ -18,7 +18,7 @@ import Currency from './Currency';
 /**
  * The AdAccountCreate model module.
  * @module model/AdAccountCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccountCreate {
     /**

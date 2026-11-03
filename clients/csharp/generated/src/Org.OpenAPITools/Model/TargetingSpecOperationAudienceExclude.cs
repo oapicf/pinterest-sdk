@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationAudienceExclude.FieldEnum?>(TargetingSpecOperationAudienceExclude.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationAudienceExclude.FieldEnum? fieldValue = TargetingSpecOperationAudienceExclude.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationAudienceExclude.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             operation = new Option<TargetingSpecListOperation?>(JsonSerializer.Deserialize<TargetingSpecListOperation?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAudienceExclude.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationAudienceExclude: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAudienceExclude.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationAudienceExclude: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationAudienceExclude.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationAudienceExclude: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationAudienceExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAudienceExclude: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationAudienceExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAudienceExclude: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationAudienceExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationAudienceExclude: values.");
 
             return new TargetingSpecOperationAudienceExclude(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationAudienceExclude"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationAudienceExclude targetingSpecOperationAudienceExclude, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,12 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationAudienceExclude"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationAudienceExclude targetingSpecOperationAudienceExclude, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationAudienceExclude.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationAudienceExclude.Values), "Property is required for class TargetingSpecOperationAudienceExclude.");
-
             var fieldRawValue = TargetingSpecOperationAudienceExclude.FieldEnumToJsonValue(targetingSpecOperationAudienceExclude.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecListOperationValueConverter.ToJsonValue(targetingSpecOperationAudienceExclude.Operation);

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.WebsiteVerificationMethod
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -28,14 +25,10 @@ data class UserWebsiteCreate(
 
     @field:Valid
     @Schema(description = "Method used to verify website ownership.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("verification_method")
     @get:JsonProperty("verification_method") val verificationMethod: WebsiteVerificationMethod? = null,
 
     @Schema(description = "Website with path or domain only")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("website")
     @get:JsonProperty("website") val website: kotlin.String? = null
 ) {

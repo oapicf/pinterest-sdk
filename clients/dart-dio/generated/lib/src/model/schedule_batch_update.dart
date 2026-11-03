@@ -309,3 +309,4 @@ class _$ScheduleBatchUpdateSerializer implements PrimitiveSerializer<ScheduleBat
   }
 }
 
+

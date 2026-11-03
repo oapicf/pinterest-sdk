@@ -186,13 +186,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class KeywordUpdateGenerated.", nameof(id));
+                throw new JsonException("Property is required for class KeywordUpdateGenerated: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class KeywordUpdateGenerated.");
+                throw new JsonException("Property is not nullable for class KeywordUpdateGenerated: id.");
 
             if (archived.IsSet && archived.Value == null)
-                throw new ArgumentNullException(nameof(archived), "Property is not nullable for class KeywordUpdateGenerated.");
+                throw new JsonException("Property is not nullable for class KeywordUpdateGenerated: archived.");
 
             return new KeywordUpdateGenerated(id.Value!, archived, bid);
         }
@@ -203,7 +203,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordUpdateGenerated"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordUpdateGenerated keywordUpdateGenerated, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -218,11 +217,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordUpdateGenerated"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordUpdateGenerated keywordUpdateGenerated, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keywordUpdateGenerated.Id == null)
-                throw new ArgumentNullException(nameof(keywordUpdateGenerated.Id), "Property is required for class KeywordUpdateGenerated.");
+            if (keywordUpdateGenerated.ArchivedOption.IsSet && keywordUpdateGenerated.Archived == null)
+                throw new JsonException("Cannot write null property KeywordUpdateGenerated.Archived to non-nullable JSON property 'archived'.");
 
             writer.WriteString("id", keywordUpdateGenerated.Id);
 

@@ -76,8 +76,6 @@ RETAIL(String.valueOf("RETAIL"));
   */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
 
-  @Valid
-
   private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
 public enum LanguageEnum {

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AttributionWindows
 import org.openapitools.model.ConversionEvent
 import javax.validation.constraints.DecimalMax
@@ -33,29 +30,21 @@ data class ConversionTagV3GoalMetadata(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("attribution_windows")
     @get:JsonProperty("attribution_windows") val attributionWindows: AttributionWindows? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("conversion_event")
     @get:JsonProperty("conversion_event") val conversionEvent: ConversionEvent? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("conversion_tag_id")
     @get:JsonProperty("conversion_tag_id") val conversionTagId: kotlin.String? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("cpa_goal_value_in_micro_currency")
     @get:JsonProperty("cpa_goal_value_in_micro_currency") val cpaGoalValueInMicroCurrency: kotlin.String? = null,
 
@@ -64,8 +53,6 @@ data class ConversionTagV3GoalMetadata(
     @get:JsonProperty("is_roas_optimized") val isRoasOptimized: kotlin.Boolean? = null,
 
     @Schema(description = "Event name for custom or standard events mapped to an oCPM model")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("reporting_event")
     @get:JsonProperty("reporting_event") val reportingEvent: kotlin.String? = null
 ) {

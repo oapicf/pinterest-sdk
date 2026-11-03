@@ -6,7 +6,7 @@
 export const ConversionDeletionRequestStatus = {
     Pending: 'PENDING',
     Submitted: 'SUBMITTED',
-    Cancelled: 'CANCELLED'
+    Cancelled: 'CANCELLED',
 } as const;
 export type ConversionDeletionRequestStatus = typeof ConversionDeletionRequestStatus[keyof typeof ConversionDeletionRequestStatus];
 

@@ -35,7 +35,7 @@ import javax.validation.Valid;
   BidFloorCreate.JSON_PROPERTY_BID_FLOOR_SPECS,
   BidFloorCreate.JSON_PROPERTY_TARGETING_SPEC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BidFloorCreate   {
   public static final String JSON_PROPERTY_BID_FLOOR_SPECS = "bid_floor_specs";
   @JsonProperty(JSON_PROPERTY_BID_FLOOR_SPECS)
@@ -64,7 +64,7 @@ public class BidFloorCreate   {
    **/
   @JsonProperty(value = "bid_floor_specs")
   @ApiModelProperty(required = true, value = "List of bid floor specifications.")
-  @NotNull @Valid 
+  @NotNull 
   public List<@Valid BidFloorSpec> getBidFloorSpecs() {
     return bidFloorSpecs;
   }

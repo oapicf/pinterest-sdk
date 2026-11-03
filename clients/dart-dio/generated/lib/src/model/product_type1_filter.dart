@@ -105,3 +105,4 @@ class _$ProductType1FilterSerializer implements PrimitiveSerializer<ProductType1
   }
 }
 
+

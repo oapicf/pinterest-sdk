@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class KeywordsMetricsArrayResponse.");
+                throw new JsonException("Property is not nullable for class KeywordsMetricsArrayResponse: data.");
 
             return new KeywordsMetricsArrayResponse(data);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsMetricsArrayResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordsMetricsArrayResponse keywordsMetricsArrayResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsMetricsArrayResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordsMetricsArrayResponse keywordsMetricsArrayResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (keywordsMetricsArrayResponse.DataOption.IsSet && keywordsMetricsArrayResponse.Data == null)
-                throw new ArgumentNullException(nameof(keywordsMetricsArrayResponse.Data), "Property is required for class KeywordsMetricsArrayResponse.");
+                throw new JsonException("Cannot write null property KeywordsMetricsArrayResponse.Data to non-nullable JSON property 'data'.");
 
             if (keywordsMetricsArrayResponse.DataOption.IsSet)
             {

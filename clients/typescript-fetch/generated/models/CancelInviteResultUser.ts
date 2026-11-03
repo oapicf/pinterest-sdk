@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CancelInviteResultUser {
     /**
      * Email of the business member/partner.
-     * @type {string}
-     * @memberof CancelInviteResultUser
      */
     email?: string;
     /**
      * Unique identifier of the business member/partner.
-     * @type {string}
-     * @memberof CancelInviteResultUser
      */
     id?: string;
     /**
      * Username of the business member/partner.
-     * @type {string}
-     * @memberof CancelInviteResultUser
      */
     username?: string;
 }

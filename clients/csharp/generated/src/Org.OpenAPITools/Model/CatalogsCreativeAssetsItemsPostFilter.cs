@@ -216,7 +216,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum?>(CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "creative_assets_ids":
                             creativeAssetsIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -231,19 +236,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsItemsPostFilter.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsItemsPostFilter: catalog_type.");
 
             if (!creativeAssetsIds.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsItemsPostFilter.", nameof(creativeAssetsIds));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsItemsPostFilter: creative_assets_ids.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter: catalog_type.");
 
             if (creativeAssetsIds.IsSet && creativeAssetsIds.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsIds), "Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter: creative_assets_ids.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemsPostFilter: catalog_id.");
 
             return new CatalogsCreativeAssetsItemsPostFilter(catalogType.Value!.Value!, creativeAssetsIds.Value!, catalogId);
         }
@@ -254,7 +259,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsItemsPostFilter catalogsCreativeAssetsItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,14 +273,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsItemsPostFilter catalogsCreativeAssetsItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsItemsPostFilter.CreativeAssetsIds == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemsPostFilter.CreativeAssetsIds), "Property is required for class CatalogsCreativeAssetsItemsPostFilter.");
-
             if (catalogsCreativeAssetsItemsPostFilter.CatalogIdOption.IsSet && catalogsCreativeAssetsItemsPostFilter.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemsPostFilter.CatalogId), "Property is required for class CatalogsCreativeAssetsItemsPostFilter.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemsPostFilter.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsItemsPostFilter.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

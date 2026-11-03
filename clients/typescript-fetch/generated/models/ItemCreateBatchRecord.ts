@@ -29,14 +29,10 @@ import {
 export interface ItemCreateBatchRecord {
     /**
      * 
-     * @type {ItemAttributesRequest}
-     * @memberof ItemCreateBatchRecord
      */
     attributes?: ItemAttributesRequest;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof ItemCreateBatchRecord
      */
     itemId?: string;
 }

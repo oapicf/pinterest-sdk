@@ -29,8 +29,6 @@ import {
 export interface S3MultipartUploadData {
     /**
      * Array of file parts with pre-signed URLs.
-     * @type {Array<S3FilePart>}
-     * @memberof S3MultipartUploadData
      */
     fileParts?: Array<S3FilePart>;
 }

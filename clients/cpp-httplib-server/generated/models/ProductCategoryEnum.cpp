@@ -6,20 +6,3 @@
 */
 #include "ProductCategoryEnum.h"
 
-namespace models {
-
-ProductCategoryEnum::ProductCategoryEnum()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

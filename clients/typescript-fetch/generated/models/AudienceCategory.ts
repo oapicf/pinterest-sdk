@@ -29,38 +29,26 @@ import {
 export interface AudienceCategory {
     /**
      * Interest ID.
-     * @type {string}
-     * @memberof AudienceCategory
      */
     id?: string;
     /**
      * Interest affinity index.
-     * @type {number}
-     * @memberof AudienceCategory
      */
     index?: number;
     /**
      * Interest unique key (same as ID).
-     * @type {string}
-     * @memberof AudienceCategory
      */
     key?: string;
     /**
      * Interest name.
-     * @type {string}
-     * @memberof AudienceCategory
      */
     name?: string;
     /**
      * Interest's percent of category's total audience.
-     * @type {number}
-     * @memberof AudienceCategory
      */
     ratio?: number;
     /**
      * Subcategory interest distribution
-     * @type {Array<AudienceSubcategory>}
-     * @memberof AudienceCategory
      */
     subcategories?: Array<AudienceSubcategory>;
 }

@@ -16,7 +16,7 @@ import org.openapitools.model.InviteExceptionResponse;
  **/
 
 @ApiModel(description = "An item representing the result of an invite/request action. Contains either an exception (on error) or an invite binding (on success).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteActionResultItem   {
   @JsonProperty("exception")
   private InviteExceptionResponse exception;

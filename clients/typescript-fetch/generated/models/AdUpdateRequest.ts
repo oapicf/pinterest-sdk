@@ -57,146 +57,98 @@ import {
 export interface AdUpdateRequest {
     /**
      * The ID of this ad.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     id: string;
     /**
      * Pin ID. This field may only be updated for draft ads.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     pinId?: string | null;
     /**
      * ID of the ad group that contains the ad.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     adGroupId?: string;
     /**
      * Deep link URL for Android devices.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     androidDeepLink?: string | null;
     /**
      * Comma-separated deep links for the carousel pin on Android.
-     * @type {Array<string>}
-     * @memberof AdUpdateRequest
      */
     carouselAndroidDeepLinks?: Array<string> | null;
     /**
      * Comma-separated destination URLs for the carousel pin to promote.
-     * @type {Array<string>}
-     * @memberof AdUpdateRequest
      */
     carouselDestinationUrls?: Array<string> | null;
     /**
      * Comma-separated deep links for the carousel pin on iOS.
-     * @type {Array<string>}
-     * @memberof AdUpdateRequest
      */
     carouselIosDeepLinks?: Array<string> | null;
     /**
      * Tracking url for the ad clicks.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     clickTrackingUrl?: string | null;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof AdUpdateRequest
      */
     creativeType?: CreativeType;
     /**
      * 
-     * @type {CustomizableCTAType}
-     * @memberof AdUpdateRequest
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Destination URL.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     destinationUrl?: string | null;
     /**
      * 
-     * @type {DisclosureType}
-     * @memberof AdUpdateRequest
      */
     disclosureType?: DisclosureType | null;
     /**
      * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     disclosureUrl?: string | null;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof AdUpdateRequest
      */
     gridClickType?: GridClickType | null;
     /**
      * Deep link URL for iOS devices.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     iosDeepLink?: string | null;
     /**
      * Is the ad a carting/WTB ad?
-     * @type {boolean}
-     * @memberof AdUpdateRequest
      */
     isCarting?: boolean;
     /**
      * Is original pin deleted?
-     * @type {boolean}
-     * @memberof AdUpdateRequest
      */
     isPinDeleted?: boolean;
     /**
      * Is pin repinnable?
-     * @type {boolean}
-     * @memberof AdUpdateRequest
      */
     isRemovable?: boolean;
     /**
      * Lead form ID for lead ad generation.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     leadFormId?: string | null;
     /**
      * Name of the ad - 255 chars max.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     name?: string | null;
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     * @type {object}
-     * @memberof AdUpdateRequest
      */
     quizPinData?: object | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof AdUpdateRequest
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {object}
-     * @memberof AdUpdateRequest
      */
     trackingUrls?: object | null;
     /**
      * Tracking URL for ad impressions.
-     * @type {string}
-     * @memberof AdUpdateRequest
      */
     viewTrackingUrl?: string | null;
 }

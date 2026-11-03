@@ -21,13 +21,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Request for creation of entities in bulk.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestCreate   {
   
   private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
   private List<@Valid AdCreateRequest> ads = new ArrayList<>();
   private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
-  private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
   private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
   private List<@Valid LabelBulkCreateRequest> labels = new ArrayList<>();
   private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
@@ -38,7 +38,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
-  @Valid
   public List<@Valid AdGroupCreateRequest> getAdGroups() {
     return adGroups;
   }
@@ -51,7 +50,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
-  @Valid
   public List<@Valid AdCreateRequest> getAds() {
     return ads;
   }
@@ -64,7 +62,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("campaigns")
-  @Valid
   public List<@Valid CampaignCreateRequest> getCampaigns() {
     return campaigns;
   }
@@ -77,11 +74,10 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("catalog_product_groups")
-  @Valid
-  public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
-  public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
@@ -90,7 +86,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("keywords")
-  @Valid
   public List<@Valid KeywordsRequest> getKeywords() {
     return keywords;
   }
@@ -103,7 +98,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("labels")
-  @Valid
   public List<@Valid LabelBulkCreateRequest> getLabels() {
     return labels;
   }
@@ -116,7 +110,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("product_groups")
-  @Valid
   public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
     return productGroups;
   }
@@ -129,7 +122,6 @@ public class BulkUpsertRequestCreate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("schedules")
-  @Valid
   public List<@Valid ScheduleCreateRequest> getSchedules() {
     return schedules;
   }

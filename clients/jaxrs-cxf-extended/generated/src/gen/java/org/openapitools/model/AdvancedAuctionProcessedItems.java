@@ -29,7 +29,6 @@ public class AdvancedAuctionProcessedItems  {
   * Array of advanced auction processed items
   */
   @ApiModelProperty(value = "Array of advanced auction processed items")
-  @Valid
   private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
  /**
   * Catalog id pertaining to all items

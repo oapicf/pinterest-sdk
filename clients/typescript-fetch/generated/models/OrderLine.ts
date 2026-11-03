@@ -36,74 +36,50 @@ import {
 export interface OrderLine {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof OrderLine
      */
     adAccountId: string;
     /**
      * Order line budget in micro currency.
-     * @type {number}
-     * @memberof OrderLine
      */
     budget?: number | null;
     /**
      * Associated List of campaign IDs.
-     * @type {Array<string>}
-     * @memberof OrderLine
      */
     campaignIds: Array<string>;
     /**
      * End time. Unix timestamp.
-     * @type {number}
-     * @memberof OrderLine
      */
     endTime?: number | null;
     /**
      * Order line ID.
-     * @type {string}
-     * @memberof OrderLine
      */
     id: string;
     /**
      * Order line name.
-     * @type {string}
-     * @memberof OrderLine
      */
     name?: string | null;
     /**
      * Order line paid budget in micro currency.
-     * @type {number}
-     * @memberof OrderLine
      */
     paidBudget?: number | null;
     /**
      * Order line paid type.
-     * @type {OrderLinePaidType}
-     * @memberof OrderLine
      */
     paidType?: OrderLinePaidType | null;
     /**
      * Purchase order ID.
-     * @type {string}
-     * @memberof OrderLine
      */
     purchaseOrderId?: string | null;
     /**
      * Start time. Unix timestamp.
-     * @type {number}
-     * @memberof OrderLine
      */
     startTime?: number;
     /**
      * Order line status.
-     * @type {OrderLineStatus}
-     * @memberof OrderLine
      */
     status: OrderLineStatus;
     /**
      * Always "orderline".
-     * @type {string}
-     * @memberof OrderLine
      */
     type: string;
 }

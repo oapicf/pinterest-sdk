@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **reportsCreate**
 ```swift
-    open class func reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsCreateReportResponse?, _ error: Error?) -> Void)
+    open class func reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsCreateReportResponse
 ```
 
 Build catalogs report
@@ -27,15 +27,11 @@ let catalogsReportParameters = CatalogsReportParameters(catalogType: "catalogTyp
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Build catalogs report
-CatalogReportsAPI.reportsCreate(catalogsReportParameters: catalogsReportParameters, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogReportsAPI.reportsCreate(catalogsReportParameters: catalogsReportParameters, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -63,7 +59,7 @@ Name | Type | Description  | Notes
 
 # **reportsGet**
 ```swift
-    open class func reportsGet(token: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsReport?, _ error: Error?) -> Void)
+    open class func reportsGet(token: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsReport
 ```
 
 Get catalogs report
@@ -79,15 +75,11 @@ let token = "token_example" // String | Token returned from the post request cre
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get catalogs report
-CatalogReportsAPI.reportsGet(token: token, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogReportsAPI.reportsGet(token: token, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -115,7 +107,7 @@ Name | Type | Description  | Notes
 
 # **reportsStats**
 ```swift
-    open class func reportsStats(parameters: CatalogsReportStatsParameters, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: ReportsStats200Response?, _ error: Error?) -> Void)
+    open class func reportsStats(parameters: CatalogsReportStatsParameters, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ReportsStats200Response
 ```
 
 List report stats
@@ -133,15 +125,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List report stats
-CatalogReportsAPI.reportsStats(parameters: parameters, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogReportsAPI.reportsStats(parameters: parameters, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

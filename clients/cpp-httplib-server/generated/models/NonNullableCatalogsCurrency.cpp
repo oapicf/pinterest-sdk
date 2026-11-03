@@ -6,20 +6,3 @@
 */
 #include "NonNullableCatalogsCurrency.h"
 
-namespace models {
-
-NonNullableCatalogsCurrency::NonNullableCatalogsCurrency()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -189,3 +189,4 @@ class _$DeletePartnerAssetAccessResultSerializer implements PrimitiveSerializer<
   }
 }
 
+

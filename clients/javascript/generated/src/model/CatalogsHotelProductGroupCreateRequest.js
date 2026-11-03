@@ -17,7 +17,7 @@ import CatalogsHotelProductGroupFilters from './CatalogsHotelProductGroupFilters
 /**
  * The CatalogsHotelProductGroupCreateRequest model module.
  * @module model/CatalogsHotelProductGroupCreateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelProductGroupCreateRequest {
     /**

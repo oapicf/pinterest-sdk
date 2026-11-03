@@ -130,7 +130,7 @@ public class CatalogsVerticalFeedsCreateRequest  {
   protected CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @JsonbProperty("status")
-  protected CatalogsStatus status;
+  protected CatalogsStatus status = CatalogsStatus.ACTIVE;
 
 
   /**

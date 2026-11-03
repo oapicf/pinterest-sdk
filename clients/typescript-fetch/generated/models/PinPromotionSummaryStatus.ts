@@ -25,7 +25,7 @@ export const PinPromotionSummaryStatus = {
     AdvertiserDisabled: 'ADVERTISER_DISABLED',
     Archived: 'ARCHIVED',
     Draft: 'DRAFT',
-    DeletedDraft: 'DELETED_DRAFT'
+    DeletedDraft: 'DELETED_DRAFT',
 } as const;
 export type PinPromotionSummaryStatus = typeof PinPromotionSummaryStatus[keyof typeof PinPromotionSummaryStatus];
 

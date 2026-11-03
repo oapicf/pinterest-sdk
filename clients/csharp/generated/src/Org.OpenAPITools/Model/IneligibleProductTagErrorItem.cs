@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!errorMessage.IsSet)
-                throw new ArgumentException("Property is required for class IneligibleProductTagErrorItem.", nameof(errorMessage));
+                throw new JsonException("Property is required for class IneligibleProductTagErrorItem: error_message.");
 
             if (!pinId.IsSet)
-                throw new ArgumentException("Property is required for class IneligibleProductTagErrorItem.", nameof(pinId));
+                throw new JsonException("Property is required for class IneligibleProductTagErrorItem: pin_id.");
 
             if (errorMessage.IsSet && errorMessage.Value == null)
-                throw new ArgumentNullException(nameof(errorMessage), "Property is not nullable for class IneligibleProductTagErrorItem.");
+                throw new JsonException("Property is not nullable for class IneligibleProductTagErrorItem: error_message.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class IneligibleProductTagErrorItem.");
+                throw new JsonException("Property is not nullable for class IneligibleProductTagErrorItem: pin_id.");
 
             return new IneligibleProductTagErrorItem(errorMessage.Value!.Value!, pinId.Value!);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ineligibleProductTagErrorItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IneligibleProductTagErrorItem ineligibleProductTagErrorItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,12 +192,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ineligibleProductTagErrorItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IneligibleProductTagErrorItem ineligibleProductTagErrorItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (ineligibleProductTagErrorItem.PinId == null)
-                throw new ArgumentNullException(nameof(ineligibleProductTagErrorItem.PinId), "Property is required for class IneligibleProductTagErrorItem.");
-
             var errorMessageRawValue = IneligibleProductTagReasonValueConverter.ToJsonValue(ineligibleProductTagErrorItem.ErrorMessage);
             writer.WriteString("error_message", errorMessageRawValue);
 

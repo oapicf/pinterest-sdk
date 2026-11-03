@@ -19,8 +19,6 @@ public class DeleteMemberAccessResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of member asset permissions that were deleted.")
 
-  @Valid
-
   private List<@Valid DeleteMemberAccessResult> items = new ArrayList<>();
  /**
    * List of member asset permissions that were deleted.

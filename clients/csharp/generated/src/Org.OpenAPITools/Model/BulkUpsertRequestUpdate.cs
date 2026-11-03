@@ -280,28 +280,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adGroups.IsSet && adGroups.Value == null)
-                throw new ArgumentNullException(nameof(adGroups), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: ad_groups.");
 
             if (ads.IsSet && ads.Value == null)
-                throw new ArgumentNullException(nameof(ads), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: ads.");
 
             if (campaigns.IsSet && campaigns.Value == null)
-                throw new ArgumentNullException(nameof(campaigns), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: campaigns.");
 
             if (catalogProductGroups.IsSet && catalogProductGroups.Value == null)
-                throw new ArgumentNullException(nameof(catalogProductGroups), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: catalog_product_groups.");
 
             if (keywords.IsSet && keywords.Value == null)
-                throw new ArgumentNullException(nameof(keywords), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: keywords.");
 
             if (labels.IsSet && labels.Value == null)
-                throw new ArgumentNullException(nameof(labels), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: labels.");
 
             if (productGroups.IsSet && productGroups.Value == null)
-                throw new ArgumentNullException(nameof(productGroups), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: product_groups.");
 
             if (schedules.IsSet && schedules.Value == null)
-                throw new ArgumentNullException(nameof(schedules), "Property is not nullable for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Property is not nullable for class BulkUpsertRequestUpdate: schedules.");
 
             return new BulkUpsertRequestUpdate(adGroups, ads, campaigns, catalogProductGroups, keywords, labels, productGroups, schedules);
         }
@@ -312,7 +312,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertRequestUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkUpsertRequestUpdate bulkUpsertRequestUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -327,32 +326,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertRequestUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkUpsertRequestUpdate bulkUpsertRequestUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkUpsertRequestUpdate.AdGroupsOption.IsSet && bulkUpsertRequestUpdate.AdGroups == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.AdGroups), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.AdGroups to non-nullable JSON property 'ad_groups'.");
 
             if (bulkUpsertRequestUpdate.AdsOption.IsSet && bulkUpsertRequestUpdate.Ads == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.Ads), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.Ads to non-nullable JSON property 'ads'.");
 
             if (bulkUpsertRequestUpdate.CampaignsOption.IsSet && bulkUpsertRequestUpdate.Campaigns == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.Campaigns), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.Campaigns to non-nullable JSON property 'campaigns'.");
 
             if (bulkUpsertRequestUpdate.CatalogProductGroupsOption.IsSet && bulkUpsertRequestUpdate.CatalogProductGroups == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.CatalogProductGroups), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.CatalogProductGroups to non-nullable JSON property 'catalog_product_groups'.");
 
             if (bulkUpsertRequestUpdate.KeywordsOption.IsSet && bulkUpsertRequestUpdate.Keywords == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.Keywords), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.Keywords to non-nullable JSON property 'keywords'.");
 
             if (bulkUpsertRequestUpdate.LabelsOption.IsSet && bulkUpsertRequestUpdate.Labels == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.Labels), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.Labels to non-nullable JSON property 'labels'.");
 
             if (bulkUpsertRequestUpdate.ProductGroupsOption.IsSet && bulkUpsertRequestUpdate.ProductGroups == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.ProductGroups), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.ProductGroups to non-nullable JSON property 'product_groups'.");
 
             if (bulkUpsertRequestUpdate.SchedulesOption.IsSet && bulkUpsertRequestUpdate.Schedules == null)
-                throw new ArgumentNullException(nameof(bulkUpsertRequestUpdate.Schedules), "Property is required for class BulkUpsertRequestUpdate.");
+                throw new JsonException("Cannot write null property BulkUpsertRequestUpdate.Schedules to non-nullable JSON property 'schedules'.");
 
             if (bulkUpsertRequestUpdate.AdGroupsOption.IsSet)
             {

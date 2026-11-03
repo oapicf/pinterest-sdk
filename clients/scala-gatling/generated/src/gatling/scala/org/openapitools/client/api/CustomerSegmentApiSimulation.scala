@@ -90,11 +90,11 @@ class CustomerSegmentApiSimulation extends Simulation {
         .feed(customer_segment/listPATHFeeder)
         .exec(http("customerSegmentList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/customer_segments")
+        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("include_sizing","${include_sizing}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("order","${order}")
         .queryParam("search_query","${search_query}")
+        .queryParam("order","${order}")
 )
 
     // Run scncustomerSegmentList with warm up and reach a constant rate for entire duration

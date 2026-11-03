@@ -78,8 +78,7 @@ class AssetGroupDeletion(BaseModel):
         _items = []
         if self.exceptions:
             for _item_exceptions in self.exceptions:
-                if _item_exceptions:
-                    _items.append(_item_exceptions.to_dict())
+                _items.append(_item_exceptions.to_dict() if _item_exceptions is not None else None)
             _dict['exceptions'] = _items
         # set to None if exceptions (nullable) is None
         # and model_fields_set contains the field

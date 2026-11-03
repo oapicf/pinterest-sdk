@@ -51,10 +51,10 @@ class LeadsExportController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,19 +116,19 @@ class LeadsExportController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'leadsExportId' => $leadsExportId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'leads_export_id' => $leadsExportId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'leadsExportId' => [
+                'leads_export_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',

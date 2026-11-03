@@ -167,19 +167,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!code.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagsError.", nameof(code));
+                throw new JsonException("Property is required for class ProductTagsError: code.");
 
             if (!message.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagsError.", nameof(message));
+                throw new JsonException("Property is required for class ProductTagsError: message.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class ProductTagsError.");
+                throw new JsonException("Property is not nullable for class ProductTagsError: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class ProductTagsError.");
+                throw new JsonException("Property is not nullable for class ProductTagsError: message.");
 
             if (details.IsSet && details.Value == null)
-                throw new ArgumentNullException(nameof(details), "Property is not nullable for class ProductTagsError.");
+                throw new JsonException("Property is not nullable for class ProductTagsError: details.");
 
             return new ProductTagsError(code.Value!.Value!, message.Value!, details);
         }
@@ -190,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductTagsError productTagsError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -205,14 +204,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductTagsError productTagsError, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productTagsError.Message == null)
-                throw new ArgumentNullException(nameof(productTagsError.Message), "Property is required for class ProductTagsError.");
-
             if (productTagsError.DetailsOption.IsSet && productTagsError.Details == null)
-                throw new ArgumentNullException(nameof(productTagsError.Details), "Property is required for class ProductTagsError.");
+                throw new JsonException("Cannot write null property ProductTagsError.Details to non-nullable JSON property 'details'.");
 
             writer.WriteNumber("code", productTagsError.Code);
 

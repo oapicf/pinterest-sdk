@@ -18,7 +18,7 @@ import ItemUpdateBatchRecord from './ItemUpdateBatchRecord';
 /**
  * The CatalogsItemsUpdateBatchRequest model module.
  * @module model/CatalogsItemsUpdateBatchRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemsUpdateBatchRequest {
     /**

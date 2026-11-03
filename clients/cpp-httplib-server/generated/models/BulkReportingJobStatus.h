@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class BulkReportingJobStatus
-{
-public:
-
-    BulkReportingJobStatus();
-    virtual ~BulkReportingJobStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BulkReportingJobStatus,
-        )
-
-private:
+enum class BulkReportingJobStatus {
+    
+    DOES_NOT_EXIST,
+    
+    FINISHED,
+    
+    IN_PROGRESS,
+    
+    EXPIRED,
+    
+    FAILED,
+    
+    CANCELLED
+    
 };
 
+inline void to_json(nlohmann::json& j, const BulkReportingJobStatus& value)
+{
+    switch (value)
+    {
+        
+        case BulkReportingJobStatus::DOES_NOT_EXIST: j = "DOES_NOT_EXIST"; break;
+        
+        case BulkReportingJobStatus::FINISHED: j = "FINISHED"; break;
+        
+        case BulkReportingJobStatus::IN_PROGRESS: j = "IN_PROGRESS"; break;
+        
+        case BulkReportingJobStatus::EXPIRED: j = "EXPIRED"; break;
+        
+        case BulkReportingJobStatus::FAILED: j = "FAILED"; break;
+        
+        case BulkReportingJobStatus::CANCELLED: j = "CANCELLED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BulkReportingJobStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BulkReportingJobStatus& value)
+{
+    
+    if (j == "DOES_NOT_EXIST")
+    {
+        value = BulkReportingJobStatus::DOES_NOT_EXIST;
+        return;
+    }
+    
+    if (j == "FINISHED")
+    {
+        value = BulkReportingJobStatus::FINISHED;
+        return;
+    }
+    
+    if (j == "IN_PROGRESS")
+    {
+        value = BulkReportingJobStatus::IN_PROGRESS;
+        return;
+    }
+    
+    if (j == "EXPIRED")
+    {
+        value = BulkReportingJobStatus::EXPIRED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = BulkReportingJobStatus::FAILED;
+        return;
+    }
+    
+    if (j == "CANCELLED")
+    {
+        value = BulkReportingJobStatus::CANCELLED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BulkReportingJobStatus", &j);
+}
 
 } // namespace models
 

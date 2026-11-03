@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BusinessRoleForInvite
-{
-public:
-
-    BusinessRoleForInvite();
-    virtual ~BusinessRoleForInvite() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BusinessRoleForInvite,
-        )
-
-private:
+enum class BusinessRoleForInvite {
+    
+    EMPLOYEE,
+    
+    BIZ_ADMIN,
+    
+    PARTNER
+    
 };
 
+inline void to_json(nlohmann::json& j, const BusinessRoleForInvite& value)
+{
+    switch (value)
+    {
+        
+        case BusinessRoleForInvite::EMPLOYEE: j = "EMPLOYEE"; break;
+        
+        case BusinessRoleForInvite::BIZ_ADMIN: j = "BIZ_ADMIN"; break;
+        
+        case BusinessRoleForInvite::PARTNER: j = "PARTNER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BusinessRoleForInvite", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BusinessRoleForInvite& value)
+{
+    
+    if (j == "EMPLOYEE")
+    {
+        value = BusinessRoleForInvite::EMPLOYEE;
+        return;
+    }
+    
+    if (j == "BIZ_ADMIN")
+    {
+        value = BusinessRoleForInvite::BIZ_ADMIN;
+        return;
+    }
+    
+    if (j == "PARTNER")
+    {
+        value = BusinessRoleForInvite::PARTNER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BusinessRoleForInvite", &j);
+}
 
 } // namespace models
 

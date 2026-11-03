@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class AdCollectionsHeaderType
-{
-public:
-
-    AdCollectionsHeaderType();
-    virtual ~AdCollectionsHeaderType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdCollectionsHeaderType,
-        )
-
-private:
+enum class AdCollectionsHeaderType {
+    
+    SHOP_THIS_COLLECTION,
+    
+    EXPLORE_THIS_COLLECTION,
+    
+    NO_HEADER
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdCollectionsHeaderType& value)
+{
+    switch (value)
+    {
+        
+        case AdCollectionsHeaderType::SHOP_THIS_COLLECTION: j = "SHOP_THIS_COLLECTION"; break;
+        
+        case AdCollectionsHeaderType::EXPLORE_THIS_COLLECTION: j = "EXPLORE_THIS_COLLECTION"; break;
+        
+        case AdCollectionsHeaderType::NO_HEADER: j = "NO_HEADER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdCollectionsHeaderType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdCollectionsHeaderType& value)
+{
+    
+    if (j == "SHOP_THIS_COLLECTION")
+    {
+        value = AdCollectionsHeaderType::SHOP_THIS_COLLECTION;
+        return;
+    }
+    
+    if (j == "EXPLORE_THIS_COLLECTION")
+    {
+        value = AdCollectionsHeaderType::EXPLORE_THIS_COLLECTION;
+        return;
+    }
+    
+    if (j == "NO_HEADER")
+    {
+        value = AdCollectionsHeaderType::NO_HEADER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdCollectionsHeaderType", &j);
+}
 
 } // namespace models
 

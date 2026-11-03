@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -22,46 +21,33 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationMetadataCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationMetadataCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String additionalId1;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedAdvertiserId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedLbaId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedMerchantId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String connectedTagId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String externalBusinessId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerAccessToken;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal partnerAccessTokenExpiry;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerMetadata;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerPrimaryEmail;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerRefreshToken;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal partnerRefreshTokenExpiry;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String scopes;
 
   public IntegrationMetadataCreate additionalId1(@Nullable String additionalId1) {

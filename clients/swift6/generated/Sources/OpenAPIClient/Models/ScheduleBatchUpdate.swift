@@ -9,9 +9,9 @@ import Foundation
 
 public struct ScheduleBatchUpdate: Sendable, Codable, Hashable {
 
-    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let scheduleIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let entityIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let scheduleIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var deltaValue: ScheduleDeltaValue?
     /** Schedule end time. Unix timestamp in seconds. */
     public var endTimestamp: Int?

@@ -142,6 +142,7 @@ class _$CatalogsRetailItemsPostFilterSerializer implements PrimitiveSerializer<C
   }
 }
 
+
 class CatalogsRetailItemsPostFilterCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

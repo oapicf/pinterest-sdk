@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_report_time_type.g.dart';
 
+/// Conversion report time type
 class ConversionReportTimeType extends EnumClass {
 
-  /// Conversion report time type
   @BuiltValueEnumConst(wireName: r'TIME_OF_AD_ACTION')
   static const ConversionReportTimeType TIME_OF_AD_ACTION = _$TIME_OF_AD_ACTION;
-  /// Conversion report time type
   @BuiltValueEnumConst(wireName: r'TIME_OF_CONVERSION')
   static const ConversionReportTimeType TIME_OF_CONVERSION = _$TIME_OF_CONVERSION;
 

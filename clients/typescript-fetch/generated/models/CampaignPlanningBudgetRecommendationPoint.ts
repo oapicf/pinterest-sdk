@@ -36,14 +36,10 @@ import {
 export interface CampaignPlanningBudgetRecommendationPoint {
     /**
      * Estimation type for this point.
-     * @type {CampaignPlanningEstimationType}
-     * @memberof CampaignPlanningBudgetRecommendationPoint
      */
     estimationType?: CampaignPlanningEstimationType;
     /**
      * Point estimate data.
-     * @type {CampaignPlanningPointEstimate}
-     * @memberof CampaignPlanningBudgetRecommendationPoint
      */
     pointEstimate?: CampaignPlanningPointEstimate;
 }

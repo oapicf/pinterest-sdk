@@ -57,68 +57,46 @@ import {
 export interface ScheduleBatchUpdate {
     /**
      * 
-     * @type {ScheduleDeltaValue}
-     * @memberof ScheduleBatchUpdate
      */
     deltaValue?: ScheduleDeltaValue;
     /**
      * Schedule end time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleBatchUpdate
      */
     endTimestamp?: number;
     /**
      * entity ID.
-     * @type {string}
-     * @memberof ScheduleBatchUpdate
      */
     entityId?: string;
     /**
      * Specify the entity_type to get summary information
-     * @type {AdAccountEntityType}
-     * @memberof ScheduleBatchUpdate
      */
     entityType?: AdAccountEntityType;
     /**
      * 
-     * @type {string}
-     * @memberof ScheduleBatchUpdate
      */
     id: string;
     /**
      * Schedule name.
-     * @type {string}
-     * @memberof ScheduleBatchUpdate
      */
     name?: string;
     /**
      * The schedule action.
-     * @type {ScheduleAction}
-     * @memberof ScheduleBatchUpdate
      */
     scheduleAction?: ScheduleAction;
     /**
      * Schedule ID.
-     * @type {string}
-     * @memberof ScheduleBatchUpdate
      */
     scheduleId: string;
     /**
      * Schedule status.
-     * @type {ScheduleStatus}
-     * @memberof ScheduleBatchUpdate
      */
     scheduleStatus?: ScheduleStatus;
     /**
      * The schedule type.
-     * @type {ScheduleType}
-     * @memberof ScheduleBatchUpdate
      */
     scheduleType?: ScheduleType;
     /**
      * Schedule start time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ScheduleBatchUpdate
      */
     startTimestamp?: number;
 }

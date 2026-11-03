@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: FEMALE,MALE,UNISEX
-*/
+ * 
+ * Values: FEMALE,MALE,UNISEX
+ */
 enum class Gender(@get:JsonValue val value: kotlin.String) {
 
     FEMALE("FEMALE"),
@@ -29,9 +29,8 @@ enum class Gender(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): Gender {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Gender'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Gender'")
         }
     }
 }
-

@@ -29,8 +29,6 @@ import {
 export interface MediaUploadCreate {
     /**
      * 
-     * @type {MediaUploadType}
-     * @memberof MediaUploadCreate
      */
     mediaType: MediaUploadType;
 }

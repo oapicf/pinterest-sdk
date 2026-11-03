@@ -17,7 +17,7 @@ import ProductTagItem from './ProductTagItem';
 /**
  * The ProductTagsBulkAddRequest model module.
  * @module model/ProductTagsBulkAddRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductTagsBulkAddRequest {
     /**

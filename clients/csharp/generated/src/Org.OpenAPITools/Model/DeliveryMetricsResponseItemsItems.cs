@@ -255,7 +255,12 @@ namespace Org.OpenAPITools.Model
                         case "category":
                             string? categoryRawValue = utf8JsonReader.GetString();
                             if (categoryRawValue != null)
-                                category = new Option<DeliveryMetricsResponseItemsItems.CategoryEnum?>(DeliveryMetricsResponseItemsItems.CategoryEnumFromStringOrDefault(categoryRawValue));
+                            {
+                                DeliveryMetricsResponseItemsItems.CategoryEnum? categoryValue = DeliveryMetricsResponseItemsItems.CategoryEnumFromStringOrDefault(categoryRawValue);
+                                if (categoryValue == null)
+                                    throw new JsonException();
+                                category = new Option<DeliveryMetricsResponseItemsItems.CategoryEnum?>(categoryValue);
+                            }
                             break;
                         case "definition":
                             definition = new Option<string?>(utf8JsonReader.GetString()!);
@@ -273,16 +278,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (category.IsSet && category.Value == null)
-                throw new ArgumentNullException(nameof(category), "Property is not nullable for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Property is not nullable for class DeliveryMetricsResponseItemsItems: category.");
 
             if (definition.IsSet && definition.Value == null)
-                throw new ArgumentNullException(nameof(definition), "Property is not nullable for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Property is not nullable for class DeliveryMetricsResponseItemsItems: definition.");
 
             if (displayName.IsSet && displayName.Value == null)
-                throw new ArgumentNullException(nameof(displayName), "Property is not nullable for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Property is not nullable for class DeliveryMetricsResponseItemsItems: display_name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Property is not nullable for class DeliveryMetricsResponseItemsItems: name.");
 
             return new DeliveryMetricsResponseItemsItems(category, definition, displayName, name);
         }
@@ -293,7 +298,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deliveryMetricsResponseItemsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeliveryMetricsResponseItemsItems deliveryMetricsResponseItemsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -308,17 +312,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deliveryMetricsResponseItemsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeliveryMetricsResponseItemsItems deliveryMetricsResponseItemsItems, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (deliveryMetricsResponseItemsItems.CategoryOption.IsSet && deliveryMetricsResponseItemsItems.Category == null)
+                throw new JsonException("Cannot write null property DeliveryMetricsResponseItemsItems.Category to non-nullable JSON property 'category'.");
+
             if (deliveryMetricsResponseItemsItems.DefinitionOption.IsSet && deliveryMetricsResponseItemsItems.Definition == null)
-                throw new ArgumentNullException(nameof(deliveryMetricsResponseItemsItems.Definition), "Property is required for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Cannot write null property DeliveryMetricsResponseItemsItems.Definition to non-nullable JSON property 'definition'.");
 
             if (deliveryMetricsResponseItemsItems.DisplayNameOption.IsSet && deliveryMetricsResponseItemsItems.DisplayName == null)
-                throw new ArgumentNullException(nameof(deliveryMetricsResponseItemsItems.DisplayName), "Property is required for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Cannot write null property DeliveryMetricsResponseItemsItems.DisplayName to non-nullable JSON property 'display_name'.");
 
             if (deliveryMetricsResponseItemsItems.NameOption.IsSet && deliveryMetricsResponseItemsItems.Name == null)
-                throw new ArgumentNullException(nameof(deliveryMetricsResponseItemsItems.Name), "Property is required for class DeliveryMetricsResponseItemsItems.");
+                throw new JsonException("Cannot write null property DeliveryMetricsResponseItemsItems.Name to non-nullable JSON property 'name'.");
 
             var categoryRawValue = DeliveryMetricsResponseItemsItems.CategoryEnumToJsonValue(deliveryMetricsResponseItemsItems.CategoryOption.Value!.Value);
             writer.WriteString("category", categoryRawValue);

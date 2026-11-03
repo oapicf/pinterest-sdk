@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Status of the lead form
-* Values: DRAFT,ACTIVE
-*/
+ * Status of the lead form
+ * Values: DRAFT,ACTIVE
+ */
 enum class LeadFormStatus(@get:JsonValue val value: kotlin.String) {
 
     DRAFT("DRAFT"),
@@ -28,9 +28,8 @@ enum class LeadFormStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LeadFormStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LeadFormStatus'")
         }
     }
 }
-

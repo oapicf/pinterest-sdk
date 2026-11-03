@@ -17,7 +17,7 @@ import PinRead from './PinRead';
 /**
  * The BoardsListPins200Response model module.
  * @module model/BoardsListPins200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BoardsListPins200Response {
     /**

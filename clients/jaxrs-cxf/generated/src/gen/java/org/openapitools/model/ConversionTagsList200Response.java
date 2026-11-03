@@ -17,8 +17,6 @@ public class ConversionTagsList200Response  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ConversionTag> items = new ArrayList<>();
  /**
    * Get items

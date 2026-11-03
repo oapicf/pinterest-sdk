@@ -343,37 +343,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (advertiserExternalId.IsSet && advertiserExternalId.Value == null)
-                throw new ArgumentNullException(nameof(advertiserExternalId), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: advertiser_external_id.");
 
             if (clickIdEpik.IsSet && clickIdEpik.Value == null)
-                throw new ArgumentNullException(nameof(clickIdEpik), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: click_id_epik.");
 
             if (externalEventId.IsSet && externalEventId.Value == null)
-                throw new ArgumentNullException(nameof(externalEventId), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: external_event_id.");
 
             if (hashedEmail.IsSet && hashedEmail.Value == null)
-                throw new ArgumentNullException(nameof(hashedEmail), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: hashed_email.");
 
             if (hashedMaid.IsSet && hashedMaid.Value == null)
-                throw new ArgumentNullException(nameof(hashedMaid), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: hashed_maid.");
 
             if (ipAddress.IsSet && ipAddress.Value == null)
-                throw new ArgumentNullException(nameof(ipAddress), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: ip_address.");
 
             if (orderId.IsSet && orderId.Value == null)
-                throw new ArgumentNullException(nameof(orderId), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: order_id.");
 
             if (orderValue.IsSet && orderValue.Value == null)
-                throw new ArgumentNullException(nameof(orderValue), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: order_value.");
 
             if (productId.IsSet && productId.Value == null)
-                throw new ArgumentNullException(nameof(productId), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: product_id.");
 
             if (sourceUrl.IsSet && sourceUrl.Value == null)
-                throw new ArgumentNullException(nameof(sourceUrl), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: source_url.");
 
             if (userAgent.IsSet && userAgent.Value == null)
-                throw new ArgumentNullException(nameof(userAgent), "Property is not nullable for class QualityComponents.");
+                throw new JsonException("Property is not nullable for class QualityComponents: user_agent.");
 
             return new QualityComponents(advertiserExternalId, clickIdEpik, externalEventId, hashedEmail, hashedMaid, ipAddress, orderId, orderValue, productId, sourceUrl, userAgent);
         }
@@ -384,7 +384,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponents"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QualityComponents qualityComponents, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -399,41 +398,40 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponents"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QualityComponents qualityComponents, JsonSerializerOptions jsonSerializerOptions)
         {
             if (qualityComponents.AdvertiserExternalIdOption.IsSet && qualityComponents.AdvertiserExternalId == null)
-                throw new ArgumentNullException(nameof(qualityComponents.AdvertiserExternalId), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.AdvertiserExternalId to non-nullable JSON property 'advertiser_external_id'.");
 
             if (qualityComponents.ClickIdEpikOption.IsSet && qualityComponents.ClickIdEpik == null)
-                throw new ArgumentNullException(nameof(qualityComponents.ClickIdEpik), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.ClickIdEpik to non-nullable JSON property 'click_id_epik'.");
 
             if (qualityComponents.ExternalEventIdOption.IsSet && qualityComponents.ExternalEventId == null)
-                throw new ArgumentNullException(nameof(qualityComponents.ExternalEventId), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.ExternalEventId to non-nullable JSON property 'external_event_id'.");
 
             if (qualityComponents.HashedEmailOption.IsSet && qualityComponents.HashedEmail == null)
-                throw new ArgumentNullException(nameof(qualityComponents.HashedEmail), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.HashedEmail to non-nullable JSON property 'hashed_email'.");
 
             if (qualityComponents.HashedMaidOption.IsSet && qualityComponents.HashedMaid == null)
-                throw new ArgumentNullException(nameof(qualityComponents.HashedMaid), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.HashedMaid to non-nullable JSON property 'hashed_maid'.");
 
             if (qualityComponents.IpAddressOption.IsSet && qualityComponents.IpAddress == null)
-                throw new ArgumentNullException(nameof(qualityComponents.IpAddress), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.IpAddress to non-nullable JSON property 'ip_address'.");
 
             if (qualityComponents.OrderIdOption.IsSet && qualityComponents.OrderId == null)
-                throw new ArgumentNullException(nameof(qualityComponents.OrderId), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.OrderId to non-nullable JSON property 'order_id'.");
 
             if (qualityComponents.OrderValueOption.IsSet && qualityComponents.OrderValue == null)
-                throw new ArgumentNullException(nameof(qualityComponents.OrderValue), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.OrderValue to non-nullable JSON property 'order_value'.");
 
             if (qualityComponents.ProductIdOption.IsSet && qualityComponents.ProductId == null)
-                throw new ArgumentNullException(nameof(qualityComponents.ProductId), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.ProductId to non-nullable JSON property 'product_id'.");
 
             if (qualityComponents.SourceUrlOption.IsSet && qualityComponents.SourceUrl == null)
-                throw new ArgumentNullException(nameof(qualityComponents.SourceUrl), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.SourceUrl to non-nullable JSON property 'source_url'.");
 
             if (qualityComponents.UserAgentOption.IsSet && qualityComponents.UserAgent == null)
-                throw new ArgumentNullException(nameof(qualityComponents.UserAgent), "Property is required for class QualityComponents.");
+                throw new JsonException("Cannot write null property QualityComponents.UserAgent to non-nullable JSON property 'user_agent'.");
 
             if (qualityComponents.AdvertiserExternalIdOption.IsSet)
             {

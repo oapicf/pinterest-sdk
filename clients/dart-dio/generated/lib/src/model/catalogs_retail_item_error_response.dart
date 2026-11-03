@@ -162,6 +162,7 @@ class _$CatalogsRetailItemErrorResponseSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsRetailItemErrorResponseCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')
@@ -175,9 +176,9 @@ class CatalogsRetailItemErrorResponseCatalogTypeEnum extends EnumClass {
   static CatalogsRetailItemErrorResponseCatalogTypeEnum valueOf(String name) => _$catalogsRetailItemErrorResponseCatalogTypeEnumValueOf(name);
 }
 
+/// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 class CatalogsRetailItemErrorResponseItemResponseKindEnum extends EnumClass {
 
-  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
   @BuiltValueEnumConst(wireName: r'retail_item_error')
   static const CatalogsRetailItemErrorResponseItemResponseKindEnum retailItemError = _$catalogsRetailItemErrorResponseItemResponseKindEnum_retailItemError;
 

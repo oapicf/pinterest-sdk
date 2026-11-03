@@ -10,8 +10,8 @@ import Foundation
 /** Resource create or update operation model. */
 public struct SSIOInsertionOrderUpdate: Sendable, Codable, Hashable {
 
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     /** Ads manager OrderLineId */
     public var adsManagerOrderLineId: String?
     /** URL link for agency */

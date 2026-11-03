@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **adAccountsAudiencesSharedAccountsList**
 ```swift
-    open class func adAccountsAudiencesSharedAccountsList(audienceId: String, accountType: AudienceAccountType, adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdAccountsAudiencesSharedAccountsList200Response?, _ error: Error?) -> Void)
+    open class func adAccountsAudiencesSharedAccountsList(audienceId: String, accountType: AudienceAccountType, adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsAudiencesSharedAccountsList200Response
 ```
 
 List accounts with access to an audience owned by an ad account
@@ -34,15 +34,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List accounts with access to an audience owned by an ad account
-AudienceSharingAPI.adAccountsAudiencesSharedAccountsList(audienceId: audienceId, accountType: accountType, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.adAccountsAudiencesSharedAccountsList(audienceId: audienceId, accountType: accountType, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -73,7 +69,7 @@ Name | Type | Description  | Notes
 
 # **businessAccountAudiencesSharedAccountsList**
 ```swift
-    open class func businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdAccountsAudiencesSharedAccountsList200Response?, _ error: Error?) -> Void)
+    open class func businessAccountAudiencesSharedAccountsList(businessId: String, audienceId: String, accountType: AudienceAccountType, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsAudiencesSharedAccountsList200Response
 ```
 
 List accounts with access to an audience owned by a business
@@ -92,15 +88,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List accounts with access to an audience owned by a business
-AudienceSharingAPI.businessAccountAudiencesSharedAccountsList(businessId: businessId, audienceId: audienceId, accountType: accountType, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.businessAccountAudiencesSharedAccountsList(businessId: businessId, audienceId: audienceId, accountType: accountType, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -131,7 +123,7 @@ Name | Type | Description  | Notes
 
 # **sharedAudiencesForBusinessList**
 ```swift
-    open class func sharedAudiencesForBusinessList(businessId: String, order: Order? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: SharedAudiencesForBusinessList200Response?, _ error: Error?) -> Void)
+    open class func sharedAudiencesForBusinessList(businessId: String, order: Order? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SharedAudiencesForBusinessList200Response
 ```
 
 List received audiences for a business
@@ -149,15 +141,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List received audiences for a business
-AudienceSharingAPI.sharedAudiencesForBusinessList(businessId: businessId, order: order, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.sharedAudiencesForBusinessList(businessId: businessId, order: order, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -187,7 +175,7 @@ Name | Type | Description  | Notes
 
 # **updateAdAccountToAdAccountSharedAudience**
 ```swift
-    open class func updateAdAccountToAdAccountSharedAudience(adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody, completion: @escaping (_ data: AdAccountToAdAccountSharedAudience?, _ error: Error?) -> Void)
+    open class func updateAdAccountToAdAccountSharedAudience(adAccountId: String, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountToAdAccountSharedAudience
 ```
 
 Update audience sharing between ad accounts
@@ -203,15 +191,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody(audienceId: "audienceId_example", operationType: OperationType(), recipientAccountIds: ["recipientAccountIds_example"]) // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 // Update audience sharing between ad accounts
-AudienceSharingAPI.updateAdAccountToAdAccountSharedAudience(adAccountId: adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.updateAdAccountToAdAccountSharedAudience(adAccountId: adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -239,7 +223,7 @@ Name | Type | Description  | Notes
 
 # **updateAdAccountToBusinessSharedAudience**
 ```swift
-    open class func updateAdAccountToBusinessSharedAudience(adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody, completion: @escaping (_ data: AdAccountToBusinessSharedAudience?, _ error: Error?) -> Void)
+    open class func updateAdAccountToBusinessSharedAudience(adAccountId: String, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountToBusinessSharedAudience
 ```
 
 Update audience sharing from an ad account to businesses
@@ -255,15 +239,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adAccountToBusinessSharedAudienceUpdateWithRequiredBody = AdAccountToBusinessSharedAudienceUpdateWithRequiredBody(audienceId: "audienceId_example", operationType: OperationType(), recipientBusinessIds: ["recipientBusinessIds_example"]) // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 // Update audience sharing from an ad account to businesses
-AudienceSharingAPI.updateAdAccountToBusinessSharedAudience(adAccountId: adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: adAccountToBusinessSharedAudienceUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.updateAdAccountToBusinessSharedAudience(adAccountId: adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody: adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -291,7 +271,7 @@ Name | Type | Description  | Notes
 
 # **updateBusinessToAdAccountSharedAudience**
 ```swift
-    open class func updateBusinessToAdAccountSharedAudience(businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody, completion: @escaping (_ data: BusinessToAdAccountSharedAudience?, _ error: Error?) -> Void)
+    open class func updateBusinessToAdAccountSharedAudience(businessId: String, businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessToAdAccountSharedAudience
 ```
 
 Update audience sharing from a business to ad accounts
@@ -307,15 +287,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let businessToAdAccountSharedAudienceUpdateWithRequiredBody = BusinessToAdAccountSharedAudienceUpdateWithRequiredBody(audienceId: "audienceId_example", operationType: OperationType(), recipientAccountIds: ["recipientAccountIds_example"]) // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
 
 // Update audience sharing from a business to ad accounts
-AudienceSharingAPI.updateBusinessToAdAccountSharedAudience(businessId: businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody: businessToAdAccountSharedAudienceUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.updateBusinessToAdAccountSharedAudience(businessId: businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody: businessToAdAccountSharedAudienceUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -343,7 +319,7 @@ Name | Type | Description  | Notes
 
 # **updateBusinessToBusinessSharedAudience**
 ```swift
-    open class func updateBusinessToBusinessSharedAudience(businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody, completion: @escaping (_ data: BusinessToBusinessSharedAudience?, _ error: Error?) -> Void)
+    open class func updateBusinessToBusinessSharedAudience(businessId: String, businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BusinessToBusinessSharedAudience
 ```
 
 Update audience sharing between businesses
@@ -359,15 +335,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let businessToBusinessSharedAudienceUpdateWithRequiredBody = BusinessToBusinessSharedAudienceUpdateWithRequiredBody(audienceId: "audienceId_example", operationType: OperationType(), recipientBusinessIds: ["recipientBusinessIds_example"]) // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
 
 // Update audience sharing between businesses
-AudienceSharingAPI.updateBusinessToBusinessSharedAudience(businessId: businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody: businessToBusinessSharedAudienceUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceSharingAPI.updateBusinessToBusinessSharedAudience(businessId: businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody: businessToBusinessSharedAudienceUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

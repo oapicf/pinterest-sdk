@@ -12,7 +12,7 @@ import play.api.libs.json._
   * @param status Indicates whether the customer segment is active or deleted.
   * @param updatedTime Customer segment updated time. Unix timestamp in seconds.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CustomerSegment(
   adAccountId: Option[String],
   audienceIds: List[String],

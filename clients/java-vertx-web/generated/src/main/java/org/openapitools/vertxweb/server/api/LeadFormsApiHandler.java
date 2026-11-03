@@ -84,7 +84,7 @@ public class LeadFormsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter leadFormId is {}", leadFormId);
-        logger.debug("Parameter leadFormTestCreate is {}", leadFormTestCreate);
+        logger.debug("Parameter leadFormTestCreate is (body omitted)");
 
         api.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
             .onSuccess(apiResponse -> {
@@ -109,7 +109,7 @@ public class LeadFormsApiHandler {
         List<LeadFormCreate> leadFormCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<LeadFormCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter leadFormCreate is {}", leadFormCreate);
+        logger.debug("Parameter leadFormCreate is (body omitted)");
 
         api.leadFormsCreate(adAccountId, leadFormCreate)
             .onSuccess(apiResponse -> {
@@ -162,7 +162,7 @@ public class LeadFormsApiHandler {
         List<LeadFormBatchUpdate> leadFormBatchUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<LeadFormBatchUpdate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter leadFormBatchUpdate is {}", leadFormBatchUpdate);
+        logger.debug("Parameter leadFormBatchUpdate is (body omitted)");
 
         api.leadFormsUpdate(adAccountId, leadFormBatchUpdate)
             .onSuccess(apiResponse -> {

@@ -6,20 +6,3 @@
 */
 #include "BillingProfilePaymentMethodBrand.h"
 
-namespace models {
-
-BillingProfilePaymentMethodBrand::BillingProfilePaymentMethodBrand()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

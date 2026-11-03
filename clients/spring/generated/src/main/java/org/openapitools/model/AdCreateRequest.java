@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -31,73 +30,53 @@ import jakarta.annotation.Generated;
  * AdCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdCreateRequest {
 
   private String adGroupId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> androidDeepLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> carouselAndroidDeepLinks = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> carouselDestinationUrls = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> carouselIosDeepLinks = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> clickTrackingUrl = JsonNullable.<String>undefined();
 
   private CreativeType creativeType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> destinationUrl = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<DisclosureType> disclosureType = JsonNullable.<DisclosureType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> disclosureUrl = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> iosDeepLink = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isCarting;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isPinDeleted;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isRemovable;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> leadFormId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
   private String pinId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> quizPinData = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> trackingUrls = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> viewTrackingUrl = JsonNullable.<String>undefined();
 
   public AdCreateRequest() {
@@ -144,7 +123,7 @@ public class AdCreateRequest {
    * @return androidDeepLink
    */
   
-  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "android_deep_link", description = "Deep link URL for Android devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("android_deep_link")
   public JsonNullable<String> getAndroidDeepLink() {
     return androidDeepLink;
@@ -160,7 +139,7 @@ public class AdCreateRequest {
   }
 
   public AdCreateRequest addCarouselAndroidDeepLinksItem(String carouselAndroidDeepLinksItem) {
-    if (this.carouselAndroidDeepLinks == null || !this.carouselAndroidDeepLinks.isPresent()) {
+    if (this.carouselAndroidDeepLinks == null || !this.carouselAndroidDeepLinks.isPresent() || this.carouselAndroidDeepLinks.get() == null) {
       this.carouselAndroidDeepLinks = JsonNullable.of(new ArrayList<>());
     }
     this.carouselAndroidDeepLinks.get().add(carouselAndroidDeepLinksItem);
@@ -172,7 +151,7 @@ public class AdCreateRequest {
    * @return carouselAndroidDeepLinks
    */
   
-  @Schema(name = "carousel_android_deep_links", description = "Comma-separated deep links for the carousel pin on Android.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "carousel_android_deep_links", description = "Comma-separated deep links for the carousel pin on Android.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("carousel_android_deep_links")
   public JsonNullable<List<String>> getCarouselAndroidDeepLinks() {
     return carouselAndroidDeepLinks;
@@ -188,7 +167,7 @@ public class AdCreateRequest {
   }
 
   public AdCreateRequest addCarouselDestinationUrlsItem(String carouselDestinationUrlsItem) {
-    if (this.carouselDestinationUrls == null || !this.carouselDestinationUrls.isPresent()) {
+    if (this.carouselDestinationUrls == null || !this.carouselDestinationUrls.isPresent() || this.carouselDestinationUrls.get() == null) {
       this.carouselDestinationUrls = JsonNullable.of(new ArrayList<>());
     }
     this.carouselDestinationUrls.get().add(carouselDestinationUrlsItem);
@@ -200,7 +179,7 @@ public class AdCreateRequest {
    * @return carouselDestinationUrls
    */
   
-  @Schema(name = "carousel_destination_urls", description = "Comma-separated destination URLs for the carousel pin to promote.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "carousel_destination_urls", description = "Comma-separated destination URLs for the carousel pin to promote.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("carousel_destination_urls")
   public JsonNullable<List<String>> getCarouselDestinationUrls() {
     return carouselDestinationUrls;
@@ -216,7 +195,7 @@ public class AdCreateRequest {
   }
 
   public AdCreateRequest addCarouselIosDeepLinksItem(String carouselIosDeepLinksItem) {
-    if (this.carouselIosDeepLinks == null || !this.carouselIosDeepLinks.isPresent()) {
+    if (this.carouselIosDeepLinks == null || !this.carouselIosDeepLinks.isPresent() || this.carouselIosDeepLinks.get() == null) {
       this.carouselIosDeepLinks = JsonNullable.of(new ArrayList<>());
     }
     this.carouselIosDeepLinks.get().add(carouselIosDeepLinksItem);
@@ -228,7 +207,7 @@ public class AdCreateRequest {
    * @return carouselIosDeepLinks
    */
   
-  @Schema(name = "carousel_ios_deep_links", description = "Comma-separated deep links for the carousel pin on iOS.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "carousel_ios_deep_links", description = "Comma-separated deep links for the carousel pin on iOS.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("carousel_ios_deep_links")
   public JsonNullable<List<String>> getCarouselIosDeepLinks() {
     return carouselIosDeepLinks;
@@ -248,7 +227,7 @@ public class AdCreateRequest {
    * @return clickTrackingUrl
    */
   
-  @Schema(name = "click_tracking_url", description = "Tracking url for the ad clicks.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "click_tracking_url", description = "Tracking url for the ad clicks.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("click_tracking_url")
   public JsonNullable<String> getClickTrackingUrl() {
     return clickTrackingUrl;
@@ -289,7 +268,7 @@ public class AdCreateRequest {
    * @return customizableCtaType
    */
   @Valid 
-  @Schema(name = "customizable_cta_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "customizable_cta_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("customizable_cta_type")
   public JsonNullable<CustomizableCTAType> getCustomizableCtaType() {
     return customizableCtaType;
@@ -309,7 +288,7 @@ public class AdCreateRequest {
    * @return destinationUrl
    */
   
-  @Schema(name = "destination_url", description = "Destination URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "destination_url", description = "Destination URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("destination_url")
   public JsonNullable<String> getDestinationUrl() {
     return destinationUrl;
@@ -329,7 +308,7 @@ public class AdCreateRequest {
    * @return disclosureType
    */
   @Valid 
-  @Schema(name = "disclosure_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "disclosure_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("disclosure_type")
   public JsonNullable<DisclosureType> getDisclosureType() {
     return disclosureType;
@@ -349,7 +328,7 @@ public class AdCreateRequest {
    * @return disclosureUrl
    */
   
-  @Schema(name = "disclosure_url", description = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "disclosure_url", description = "URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("disclosure_url")
   public JsonNullable<String> getDisclosureUrl() {
     return disclosureUrl;
@@ -369,7 +348,7 @@ public class AdCreateRequest {
    * @return gridClickType
    */
   @Valid 
-  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "grid_click_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("grid_click_type")
   public JsonNullable<GridClickType> getGridClickType() {
     return gridClickType;
@@ -389,7 +368,7 @@ public class AdCreateRequest {
    * @return iosDeepLink
    */
   
-  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ios_deep_link", description = "Deep link URL for iOS devices.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ios_deep_link")
   public JsonNullable<String> getIosDeepLink() {
     return iosDeepLink;
@@ -472,7 +451,7 @@ public class AdCreateRequest {
    * @return leadFormId
    */
   @Pattern(regexp = "^(AG)?\\d+$") 
-  @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "lead_form_id", description = "Lead form ID for lead ad generation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("lead_form_id")
   public JsonNullable<@Pattern(regexp = "^(AG)?\\d+$") String> getLeadFormId() {
     return leadFormId;
@@ -492,7 +471,7 @@ public class AdCreateRequest {
    * @return name
    */
   
-  @Schema(name = "name", description = "Name of the ad - 255 chars max.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "name", description = "Name of the ad - 255 chars max.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -533,7 +512,7 @@ public class AdCreateRequest {
    * @return quizPinData
    */
   
-  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "quiz_pin_data", description = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("quiz_pin_data")
   public JsonNullable<Object> getQuizPinData() {
     return quizPinData;
@@ -574,7 +553,7 @@ public class AdCreateRequest {
    * @return trackingUrls
    */
   
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tracking_urls")
   public JsonNullable<Object> getTrackingUrls() {
     return trackingUrls;
@@ -594,7 +573,7 @@ public class AdCreateRequest {
    * @return viewTrackingUrl
    */
   
-  @Schema(name = "view_tracking_url", description = "Tracking URL for ad impressions.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "view_tracking_url", description = "Tracking URL for ad impressions.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("view_tracking_url")
   public JsonNullable<String> getViewTrackingUrl() {
     return viewTrackingUrl;

@@ -23,7 +23,7 @@ export interface CatalogsReport {
 export namespace CatalogsReport {
     export const ReportStatusEnum = {
         Finished: 'FINISHED',
-        InProgress: 'IN_PROGRESS'
+        InProgress: 'IN_PROGRESS',
     } as const;
     export type ReportStatusEnum = typeof ReportStatusEnum[keyof typeof ReportStatusEnum];
 }

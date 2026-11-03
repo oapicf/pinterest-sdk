@@ -49,8 +49,6 @@ public class CatalogsItemsBatchRequest  {
   */
   @ApiModelProperty(required = true, value = "Array with catalogs items")
 
-  @Valid
-
   private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
 public enum LanguageEnum {

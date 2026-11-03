@@ -161,6 +161,7 @@ class _$CatalogsUpdateRetailItemSerializer implements PrimitiveSerializer<Catalo
   }
 }
 
+
 class CatalogsUpdateRetailItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPDATE')

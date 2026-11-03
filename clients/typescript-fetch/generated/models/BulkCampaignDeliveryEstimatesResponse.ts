@@ -29,8 +29,6 @@ import {
 export interface BulkCampaignDeliveryEstimatesResponse {
     /**
      * Per-campaign delivery estimate results, in the same order as the request.
-     * @type {Array<BulkCampaignDeliveryEstimatesItem>}
-     * @memberof BulkCampaignDeliveryEstimatesResponse
      */
     data: Array<BulkCampaignDeliveryEstimatesItem>;
 }

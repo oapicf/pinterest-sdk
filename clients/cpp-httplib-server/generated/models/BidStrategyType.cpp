@@ -6,20 +6,3 @@
 */
 #include "BidStrategyType.h"
 
-namespace models {
-
-BidStrategyType::BidStrategyType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

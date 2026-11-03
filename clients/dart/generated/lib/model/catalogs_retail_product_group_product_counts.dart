@@ -111,7 +111,9 @@ class CatalogsRetailProductGroupProductCounts {
         outOfStock: num.parse('${json[r'out_of_stock']}'),
         preorder: num.parse('${json[r'preorder']}'),
         total: num.parse('${json[r'total']}'),
-        videos: num.parse('${json[r'videos']}'),
+        videos: json[r'videos'] == null
+            ? null
+            : num.parse('${json[r'videos']}'),
       );
     }
     return null;

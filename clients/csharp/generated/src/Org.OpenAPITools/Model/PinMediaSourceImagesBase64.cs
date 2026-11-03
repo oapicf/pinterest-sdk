@@ -217,7 +217,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourceImagesBase64.SourceTypeEnum?>(PinMediaSourceImagesBase64.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourceImagesBase64.SourceTypeEnum? sourceTypeValue = PinMediaSourceImagesBase64.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourceImagesBase64.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "index":
                             index = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
@@ -229,19 +234,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesBase64.", nameof(items));
+                throw new JsonException("Property is required for class PinMediaSourceImagesBase64: items.");
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesBase64.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourceImagesBase64: source_type.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class PinMediaSourceImagesBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64: items.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourceImagesBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64: source_type.");
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class PinMediaSourceImagesBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64: index.");
 
             return new PinMediaSourceImagesBase64(items.Value!, sourceType.Value!.Value!, index);
         }
@@ -252,7 +257,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesBase64"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImagesBase64 pinMediaSourceImagesBase64, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -267,11 +271,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesBase64"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImagesBase64 pinMediaSourceImagesBase64, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImagesBase64.Items == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesBase64.Items), "Property is required for class PinMediaSourceImagesBase64.");
+            if (pinMediaSourceImagesBase64.IndexOption.IsSet && pinMediaSourceImagesBase64.Index == null)
+                throw new JsonException("Cannot write null property PinMediaSourceImagesBase64.Index to non-nullable JSON property 'index'.");
 
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, pinMediaSourceImagesBase64.Items, jsonSerializerOptions);

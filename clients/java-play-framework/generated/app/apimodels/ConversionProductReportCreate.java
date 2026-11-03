@@ -20,7 +20,7 @@ import javax.validation.Valid;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionProductReportCreate   {
   @JsonProperty("ad_group_ids")
@@ -42,7 +42,7 @@ public class ConversionProductReportCreate   {
   @JsonProperty("click_window_days")
   @Valid
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   @JsonProperty("columns")
   @NotNull
@@ -53,17 +53,17 @@ public class ConversionProductReportCreate   {
   @JsonProperty("conversion_product_attribution_type")
   @Valid
 
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
   @JsonProperty("conversion_product_breakdown")
   @Valid
 
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
   @JsonProperty("conversion_report_time")
   @Valid
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   @JsonProperty("end_date")
   @NotNull
@@ -102,7 +102,7 @@ public class ConversionProductReportCreate   {
   @JsonProperty("view_window_days")
   @Valid
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate adGroupIds(List<@Pattern(regexp = "^\\d+$")String> adGroupIds) {
     this.adGroupIds = adGroupIds;

@@ -288,28 +288,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (contentType.IsSet && contentType.Value == null)
-                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: Content-Type.");
 
             if (key.IsSet && key.Value == null)
-                throw new ArgumentNullException(nameof(key), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: key.");
 
             if (policy.IsSet && policy.Value == null)
-                throw new ArgumentNullException(nameof(policy), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: policy.");
 
             if (xAmzAlgorithm.IsSet && xAmzAlgorithm.Value == null)
-                throw new ArgumentNullException(nameof(xAmzAlgorithm), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: x-amz-algorithm.");
 
             if (xAmzCredential.IsSet && xAmzCredential.Value == null)
-                throw new ArgumentNullException(nameof(xAmzCredential), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: x-amz-credential.");
 
             if (xAmzDate.IsSet && xAmzDate.Value == null)
-                throw new ArgumentNullException(nameof(xAmzDate), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: x-amz-date.");
 
             if (xAmzSecurityToken.IsSet && xAmzSecurityToken.Value == null)
-                throw new ArgumentNullException(nameof(xAmzSecurityToken), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: x-amz-security-token.");
 
             if (xAmzSignature.IsSet && xAmzSignature.Value == null)
-                throw new ArgumentNullException(nameof(xAmzSignature), "Property is not nullable for class MediaUploadParameters.");
+                throw new JsonException("Property is not nullable for class MediaUploadParameters: x-amz-signature.");
 
             return new MediaUploadParameters(contentType, key, policy, xAmzAlgorithm, xAmzCredential, xAmzDate, xAmzSecurityToken, xAmzSignature);
         }
@@ -320,7 +320,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUploadParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MediaUploadParameters mediaUploadParameters, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -335,32 +334,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaUploadParameters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MediaUploadParameters mediaUploadParameters, JsonSerializerOptions jsonSerializerOptions)
         {
             if (mediaUploadParameters.ContentTypeOption.IsSet && mediaUploadParameters.ContentType == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.ContentType), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.ContentType to non-nullable JSON property 'Content-Type'.");
 
             if (mediaUploadParameters.KeyOption.IsSet && mediaUploadParameters.Key == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.Key), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.Key to non-nullable JSON property 'key'.");
 
             if (mediaUploadParameters.PolicyOption.IsSet && mediaUploadParameters.Policy == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.Policy), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.Policy to non-nullable JSON property 'policy'.");
 
             if (mediaUploadParameters.XAmzAlgorithmOption.IsSet && mediaUploadParameters.XAmzAlgorithm == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.XAmzAlgorithm), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.XAmzAlgorithm to non-nullable JSON property 'x-amz-algorithm'.");
 
             if (mediaUploadParameters.XAmzCredentialOption.IsSet && mediaUploadParameters.XAmzCredential == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.XAmzCredential), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.XAmzCredential to non-nullable JSON property 'x-amz-credential'.");
 
             if (mediaUploadParameters.XAmzDateOption.IsSet && mediaUploadParameters.XAmzDate == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.XAmzDate), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.XAmzDate to non-nullable JSON property 'x-amz-date'.");
 
             if (mediaUploadParameters.XAmzSecurityTokenOption.IsSet && mediaUploadParameters.XAmzSecurityToken == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.XAmzSecurityToken), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.XAmzSecurityToken to non-nullable JSON property 'x-amz-security-token'.");
 
             if (mediaUploadParameters.XAmzSignatureOption.IsSet && mediaUploadParameters.XAmzSignature == null)
-                throw new ArgumentNullException(nameof(mediaUploadParameters.XAmzSignature), "Property is required for class MediaUploadParameters.");
+                throw new JsonException("Cannot write null property MediaUploadParameters.XAmzSignature to non-nullable JSON property 'x-amz-signature'.");
 
             if (mediaUploadParameters.ContentTypeOption.IsSet)
                 writer.WriteString("Content-Type", mediaUploadParameters.ContentType);

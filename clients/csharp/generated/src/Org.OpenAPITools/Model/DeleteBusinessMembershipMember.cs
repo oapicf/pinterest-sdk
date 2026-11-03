@@ -164,16 +164,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!businessRole.IsSet)
-                throw new ArgumentException("Property is required for class DeleteBusinessMembershipMember.", nameof(businessRole));
+                throw new JsonException("Property is required for class DeleteBusinessMembershipMember: business_role.");
 
             if (!memberId.IsSet)
-                throw new ArgumentException("Property is required for class DeleteBusinessMembershipMember.", nameof(memberId));
+                throw new JsonException("Property is required for class DeleteBusinessMembershipMember: member_id.");
 
             if (businessRole.IsSet && businessRole.Value == null)
-                throw new ArgumentNullException(nameof(businessRole), "Property is not nullable for class DeleteBusinessMembershipMember.");
+                throw new JsonException("Property is not nullable for class DeleteBusinessMembershipMember: business_role.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class DeleteBusinessMembershipMember.");
+                throw new JsonException("Property is not nullable for class DeleteBusinessMembershipMember: member_id.");
 
             return new DeleteBusinessMembershipMember(businessRole.Value!.Value!, memberId.Value!);
         }
@@ -184,7 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessMembershipMember"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteBusinessMembershipMember deleteBusinessMembershipMember, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -199,12 +198,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessMembershipMember"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteBusinessMembershipMember deleteBusinessMembershipMember, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (deleteBusinessMembershipMember.MemberId == null)
-                throw new ArgumentNullException(nameof(deleteBusinessMembershipMember.MemberId), "Property is required for class DeleteBusinessMembershipMember.");
-
             var businessRoleRawValue = BusinessRoleForMembersValueConverter.ToJsonValue(deleteBusinessMembershipMember.BusinessRole);
             writer.WriteString("business_role", businessRoleRawValue);
 

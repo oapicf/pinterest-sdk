@@ -43,47 +43,47 @@ data class CatalogsHotelFeed(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
-    @param:JsonProperty("catalog_id")
+    @param:JsonProperty("catalog_id", required = true)
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsHotelFeed.CatalogType = kotlin.String.HOTEL,
 
     @Schema(required = true, readOnly = true, description = "")
-    @param:JsonProperty("created_at")
+    @param:JsonProperty("created_at", required = true)
     @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
 
     @Schema(required = true, description = "The locale used within a feed for product descriptions.")
-    @param:JsonProperty("default_locale")
+    @param:JsonProperty("default_locale", required = true)
     @get:JsonProperty("default_locale", required = true) val defaultLocale: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("format")
+    @param:JsonProperty("format", required = true)
     @get:JsonProperty("format", required = true) val format: CatalogsFormat,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "864344156814050986", required = true, readOnly = true, description = "ID of the feed entity.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^(http|https|ftp|sftp)://")
     @Schema(required = true, description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
-    @param:JsonProperty("location")
+    @param:JsonProperty("location", required = true)
     @get:JsonProperty("location", required = true) val location: kotlin.String,
 
     @Schema(required = true, description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String?,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: CatalogsStatus,
 
     @Schema(required = true, readOnly = true, description = "")
-    @param:JsonProperty("updated_at")
+    @param:JsonProperty("updated_at", required = true)
     @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime,
 
     @field:Valid
@@ -109,12 +109,12 @@ data class CatalogsHotelFeed(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         HOTEL("HOTEL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

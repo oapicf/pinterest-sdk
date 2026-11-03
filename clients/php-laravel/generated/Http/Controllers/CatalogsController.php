@@ -51,18 +51,18 @@ class CatalogsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'catalogId' => [
+                'catalog_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'feedId' => [
+                'feed_id' => [
                     'regex:/^\\d+$/',
                     'string',
                 ],
@@ -70,7 +70,7 @@ class CatalogsController extends Controller
                 ],
                 'language' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -82,15 +82,15 @@ class CatalogsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $catalogId = $request->string('catalogId')->value();
+        $catalogId = $request->string('catalog_id')->value();
 
-        $feedId = $request->string('feedId')->value();
+        $feedId = $request->string('feed_id')->value();
 
         $country = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Country::class);
 
         $language = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsLocale::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsAvailableFilterValues($catalogId, $feedId, $country, $language, $adAccountId);
@@ -137,10 +137,10 @@ class CatalogsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -152,7 +152,7 @@ class CatalogsController extends Controller
 
         $catalogCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsCreate($catalogCreate, $adAccountId);
@@ -203,13 +203,13 @@ class CatalogsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -217,7 +217,7 @@ class CatalogsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -229,11 +229,11 @@ class CatalogsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->catalogsList($adAccountId, $bookmark, $pageSize);

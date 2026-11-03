@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CatalogsRetailItemsPostFilter model module.
  * @module model/CatalogsRetailItemsPostFilter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailItemsPostFilter {
     /**

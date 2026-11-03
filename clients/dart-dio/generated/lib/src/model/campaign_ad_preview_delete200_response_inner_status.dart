@@ -73,6 +73,7 @@ class _$CampaignAdPreviewDelete200ResponseInnerStatusSerializer implements Primi
   }
 }
 
+
 class CampaignAdPreviewDelete200ResponseInnerStatusStatusCodeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'204')

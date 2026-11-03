@@ -21,200 +21,134 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedValidationErrors {
     /**
      * Some items have invalid adult values.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     aDULTINVALID?: number;
     /**
      * Some adwords links contain too many characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     aDWORDSFORMATINVALID?: number;
     /**
      * Some items are missing an availability value in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     aVAILABILITYINVALID?: number;
     /**
      * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     bLOCKLISTEDIMAGESIGNATURE?: number;
     /**
      * Your feed includes data with formatting errors.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     dELIMITERERROR?: number;
     /**
      * Some items are missing a description in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     dESCRIPTIONMISSING?: number;
     /**
      * Some products are duplicated.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     dUPLICATEPRODUCTS?: number;
     /**
      * Your feed includes data with an unsupported encoding format.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     eNCODINGERROR?: number;
     /**
      * Your feed contains too many items, some items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     fEEDLENGTHTOOLONG?: number;
     /**
      * Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     fEEDTOOSMALL?: number;
     /**
      * Pinterest couldn't download your feed.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     fETCHERROR?: number;
     /**
      * Your feed wasn't ingested because it hasn't changed in the previous 90 days.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     fETCHINACTIVEFEEDERROR?: number;
     /**
      * Some image links are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iMAGELINKINVALID?: number;
     /**
      * Some items have image_link URLs that contain too many characters, so those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iMAGELINKLENGTHTOOLONG?: number;
     /**
      * Some items are missing an image link URL in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iMAGELINKMISSING?: number;
     /**
      * We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iNTERNALSERVICEERROR?: number;
     /**
      * Some of your product link values don't match the verified domain associated with this account.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iNVALIDDOMAIN?: number;
     /**
      * Some items' main images can't be found.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iTEMMAINIMAGEDOWNLOADFAILURE?: number;
     /**
      * Some items are missing an item id in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     iTEMIDMISSING?: number;
     /**
      * Some link values are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     lINKFORMATINVALID?: number;
     /**
      * Some product links contain too many characters, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     lINKLENGTHTOOLONG?: number;
     /**
      * Some items have list price formatting errors in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     lISTPRICEINVALID?: number;
     /**
      * Your feed couldn't be validated because the xml file is formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     mALFORMEDXML?: number;
     /**
      * Some items exceed the maximum number of items per item group, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     mAXITEMSPERITEMGROUPEXCEEDED?: number;
     /**
      * Your merchant domain needs to be claimed.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     nOVERIFIEDDOMAIN?: number;
     /**
      * Your feed contains formatting errors for some items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pARSELINEERROR?: number;
     /**
      * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pINJOINCONTENTUNSAFE?: number;
     /**
      * Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pRICECANNOTBEDETERMINED?: number;
     /**
      * Some products are missing a price, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pRICEMISSING?: number;
     /**
      * Some items are missing a link URL in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pRODUCTLINKMISSING?: number;
     /**
      * Some items have price formatting errors in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     pRODUCTPRICEINVALID?: number;
     /**
      * Your feed is missing some required column headers.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     rEQUIREDCOLUMNSMISSING?: number;
     /**
      * Some items are missing a title in their product metadata, those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationErrors
      */
     tITLEMISSING?: number;
 }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Marketing Mix Modeling (MMM) Reporting Columns
-* Values: SPEND_IN_DOLLAR,SPEND_IN_MICRO_DOLLAR,ECPC_IN_DOLLAR,ECTR,CAMPAIGN_NAME,TOTAL_ENGAGEMENT,EENGAGEMENT_RATE,ECPM_IN_DOLLAR,CAMPAIGN_ID,ADVERTISER_ID,AD_GROUP_ID,AD_GROUP_NAME,CLICKTHROUGH_1,IMPRESSION_1,CLICKTHROUGH_2,IMPRESSION_2,TOTAL_CLICKTHROUGH,TOTAL_IMPRESSION,ADVERTISER_NAME,SPEND_ORDER_LINE_PAID_TYPE,CAMPAIGN_OBJECTIVE_TYPE,PINNER_LIST_NAME,ADS_CREDIT_SPEND_IN_DOLLAR,ADVERTISER_PAID_SPEND_IN_DOLLAR,ADVERTISER_PAID_ECPC_IN_DOLLAR,ADVERTISER_PAID_ECPM_IN_DOLLAR
-*/
+ * Marketing Mix Modeling (MMM) Reporting Columns
+ * Values: SPEND_IN_DOLLAR,SPEND_IN_MICRO_DOLLAR,ECPC_IN_DOLLAR,ECTR,CAMPAIGN_NAME,TOTAL_ENGAGEMENT,EENGAGEMENT_RATE,ECPM_IN_DOLLAR,CAMPAIGN_ID,ADVERTISER_ID,AD_GROUP_ID,AD_GROUP_NAME,CLICKTHROUGH_1,IMPRESSION_1,CLICKTHROUGH_2,IMPRESSION_2,TOTAL_CLICKTHROUGH,TOTAL_IMPRESSION,ADVERTISER_NAME,SPEND_ORDER_LINE_PAID_TYPE,CAMPAIGN_OBJECTIVE_TYPE,PINNER_LIST_NAME,ADS_CREDIT_SPEND_IN_DOLLAR,ADVERTISER_PAID_SPEND_IN_DOLLAR,ADVERTISER_PAID_ECPC_IN_DOLLAR,ADVERTISER_PAID_ECPM_IN_DOLLAR
+ */
 enum class MMMReportingColumn(@get:JsonValue val value: kotlin.String) {
 
     SPEND_IN_DOLLAR("SPEND_IN_DOLLAR"),
@@ -52,9 +52,8 @@ enum class MMMReportingColumn(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MMMReportingColumn {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportingColumn'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MMMReportingColumn'")
         }
     }
 }
-

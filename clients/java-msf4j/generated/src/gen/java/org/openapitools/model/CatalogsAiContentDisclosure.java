@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsAiContentDisclosureLabel;
  * AI content disclosure for a single asset of a catalog item.
  */
 @ApiModel(description = "AI content disclosure for a single asset of a catalog item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsAiContentDisclosure   {
   @JsonProperty("disclosure")
   private List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();

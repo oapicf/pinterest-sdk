@@ -233,7 +233,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsHotelReportStatsParametersReport.ReportTypeEnum?>(CatalogsHotelReportStatsParametersReport.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsHotelReportStatsParametersReport.ReportTypeEnum? reportTypeValue = CatalogsHotelReportStatsParametersReport.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsHotelReportStatsParametersReport.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -242,10 +247,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!reportType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelReportStatsParametersReport.", nameof(reportType));
+                throw new JsonException("Property is required for class CatalogsHotelReportStatsParametersReport: report_type.");
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsHotelReportStatsParametersReport.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelReportStatsParametersReport: report_type.");
 
             if (catalogsReportDistributionIssueFilter != null)
                 return new CatalogsHotelReportStatsParametersReport(catalogsReportDistributionIssueFilter);
@@ -262,7 +267,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelReportStatsParametersReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelReportStatsParametersReport catalogsHotelReportStatsParametersReport, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -289,7 +293,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelReportStatsParametersReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelReportStatsParametersReport catalogsHotelReportStatsParametersReport, JsonSerializerOptions jsonSerializerOptions)
         {
 

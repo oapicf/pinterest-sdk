@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Bulk campaign delivery estimates response.
- * @param &#x60;data&#x60; Per-campaign delivery estimate results, in the same order as the request.
+ * @param `data` Per-campaign delivery estimate results, in the same order as the request.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

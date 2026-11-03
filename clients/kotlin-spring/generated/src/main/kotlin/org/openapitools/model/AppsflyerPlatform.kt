@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Platform options for AppsFlyer audience
-* Values: android,ios
-*/
+ * Platform options for AppsFlyer audience
+ * Values: android,ios
+ */
 enum class AppsflyerPlatform(@get:JsonValue val value: kotlin.String) {
 
     android("android"),
@@ -28,9 +28,8 @@ enum class AppsflyerPlatform(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AppsflyerPlatform {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AppsflyerPlatform'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AppsflyerPlatform'")
         }
     }
 }
-

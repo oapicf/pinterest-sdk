@@ -61,8 +61,6 @@ GENDER(String.valueOf("GENDER"));
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<TargetingSpecGender> values = new ArrayList<>();
  /**
    * Get field

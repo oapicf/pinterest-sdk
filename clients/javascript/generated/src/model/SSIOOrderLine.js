@@ -17,7 +17,7 @@ import Currency from './Currency';
 /**
  * The SSIOOrderLine model module.
  * @module model/SSIOOrderLine
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SSIOOrderLine {
     /**

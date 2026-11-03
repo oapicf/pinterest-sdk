@@ -12,24 +12,2504 @@
 
 namespace models {
 
-
-class Country
-{
-public:
-
-    Country();
-    virtual ~Country() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Country,
-        )
-
-private:
+enum class Country {
+    
+    AD,
+    
+    AE,
+    
+    AF,
+    
+    AG,
+    
+    AI,
+    
+    AL,
+    
+    AM,
+    
+    AO,
+    
+    AQ,
+    
+    AR,
+    
+    AS,
+    
+    AT,
+    
+    AU,
+    
+    AW,
+    
+    AX,
+    
+    AZ,
+    
+    BA,
+    
+    BB,
+    
+    BD,
+    
+    BE,
+    
+    BF,
+    
+    BG,
+    
+    BH,
+    
+    BI,
+    
+    BJ,
+    
+    BL,
+    
+    BM,
+    
+    BN,
+    
+    BO,
+    
+    BQ,
+    
+    BR,
+    
+    BS,
+    
+    BT,
+    
+    BV,
+    
+    BW,
+    
+    BY,
+    
+    BZ,
+    
+    CA,
+    
+    CC,
+    
+    CD,
+    
+    CF,
+    
+    CG,
+    
+    CH,
+    
+    CI,
+    
+    CK,
+    
+    CL,
+    
+    CM,
+    
+    CN,
+    
+    CO,
+    
+    CR,
+    
+    CU,
+    
+    CV,
+    
+    CW,
+    
+    CX,
+    
+    CY,
+    
+    CZ,
+    
+    DE,
+    
+    DJ,
+    
+    DK,
+    
+    DM,
+    
+    DO,
+    
+    DZ,
+    
+    EC,
+    
+    EE,
+    
+    EG,
+    
+    EH,
+    
+    ER,
+    
+    ES,
+    
+    ET,
+    
+    FI,
+    
+    FJ,
+    
+    FK,
+    
+    FM,
+    
+    FO,
+    
+    FR,
+    
+    GA,
+    
+    GB,
+    
+    GD,
+    
+    GE,
+    
+    GF,
+    
+    GG,
+    
+    GH,
+    
+    GI,
+    
+    GL,
+    
+    GM,
+    
+    GN,
+    
+    GP,
+    
+    GQ,
+    
+    GR,
+    
+    GS,
+    
+    GT,
+    
+    GU,
+    
+    GW,
+    
+    GY,
+    
+    HK,
+    
+    HM,
+    
+    HN,
+    
+    HR,
+    
+    HT,
+    
+    HU,
+    
+    ID,
+    
+    IE,
+    
+    IL,
+    
+    IM,
+    
+    IN,
+    
+    IO,
+    
+    IQ,
+    
+    IR,
+    
+    IS,
+    
+    IT,
+    
+    JE,
+    
+    JM,
+    
+    JO,
+    
+    JP,
+    
+    KE,
+    
+    KG,
+    
+    KH,
+    
+    KI,
+    
+    KM,
+    
+    KN,
+    
+    KR,
+    
+    KW,
+    
+    KY,
+    
+    KZ,
+    
+    LA,
+    
+    LB,
+    
+    LC,
+    
+    LI,
+    
+    LK,
+    
+    LR,
+    
+    LS,
+    
+    LT,
+    
+    LU,
+    
+    LV,
+    
+    LY,
+    
+    MA,
+    
+    MC,
+    
+    MD,
+    
+    ME,
+    
+    MF,
+    
+    MG,
+    
+    MH,
+    
+    MK,
+    
+    ML,
+    
+    MM,
+    
+    MN,
+    
+    MO,
+    
+    MP,
+    
+    MQ,
+    
+    MR,
+    
+    MS,
+    
+    MT,
+    
+    MU,
+    
+    MV,
+    
+    MW,
+    
+    MX,
+    
+    MY,
+    
+    MZ,
+    
+    NA,
+    
+    NC,
+    
+    NE,
+    
+    NF,
+    
+    NG,
+    
+    NI,
+    
+    NL,
+    
+    FALSE,
+    
+    NP,
+    
+    NR,
+    
+    NU,
+    
+    NZ,
+    
+    OM,
+    
+    PA,
+    
+    PE,
+    
+    PF,
+    
+    PG,
+    
+    PH,
+    
+    PK,
+    
+    PL,
+    
+    PM,
+    
+    PN,
+    
+    PR,
+    
+    PS,
+    
+    PT,
+    
+    PW,
+    
+    PY,
+    
+    QA,
+    
+    RE,
+    
+    RO,
+    
+    RS,
+    
+    RU,
+    
+    RW,
+    
+    SA,
+    
+    SB,
+    
+    SC,
+    
+    SD,
+    
+    SE,
+    
+    SG,
+    
+    SH,
+    
+    SI,
+    
+    SJ,
+    
+    SK,
+    
+    SL,
+    
+    SM,
+    
+    SN,
+    
+    SO,
+    
+    SR,
+    
+    SS,
+    
+    ST,
+    
+    SV,
+    
+    SX,
+    
+    SY,
+    
+    SZ,
+    
+    TC,
+    
+    TD,
+    
+    TF,
+    
+    TG,
+    
+    TH,
+    
+    TJ,
+    
+    TK,
+    
+    TL,
+    
+    TM,
+    
+    TN,
+    
+    TO,
+    
+    TR,
+    
+    TT,
+    
+    TV,
+    
+    TW,
+    
+    TZ,
+    
+    UA,
+    
+    UG,
+    
+    UM,
+    
+    US,
+    
+    UY,
+    
+    UZ,
+    
+    VA,
+    
+    VC,
+    
+    VE,
+    
+    VG,
+    
+    VI,
+    
+    VN,
+    
+    VU,
+    
+    WF,
+    
+    WS,
+    
+    YE,
+    
+    YT,
+    
+    ZA,
+    
+    ZM,
+    
+    ZW
+    
 };
 
+inline void to_json(nlohmann::json& j, const Country& value)
+{
+    switch (value)
+    {
+        
+        case Country::AD: j = "AD"; break;
+        
+        case Country::AE: j = "AE"; break;
+        
+        case Country::AF: j = "AF"; break;
+        
+        case Country::AG: j = "AG"; break;
+        
+        case Country::AI: j = "AI"; break;
+        
+        case Country::AL: j = "AL"; break;
+        
+        case Country::AM: j = "AM"; break;
+        
+        case Country::AO: j = "AO"; break;
+        
+        case Country::AQ: j = "AQ"; break;
+        
+        case Country::AR: j = "AR"; break;
+        
+        case Country::AS: j = "AS"; break;
+        
+        case Country::AT: j = "AT"; break;
+        
+        case Country::AU: j = "AU"; break;
+        
+        case Country::AW: j = "AW"; break;
+        
+        case Country::AX: j = "AX"; break;
+        
+        case Country::AZ: j = "AZ"; break;
+        
+        case Country::BA: j = "BA"; break;
+        
+        case Country::BB: j = "BB"; break;
+        
+        case Country::BD: j = "BD"; break;
+        
+        case Country::BE: j = "BE"; break;
+        
+        case Country::BF: j = "BF"; break;
+        
+        case Country::BG: j = "BG"; break;
+        
+        case Country::BH: j = "BH"; break;
+        
+        case Country::BI: j = "BI"; break;
+        
+        case Country::BJ: j = "BJ"; break;
+        
+        case Country::BL: j = "BL"; break;
+        
+        case Country::BM: j = "BM"; break;
+        
+        case Country::BN: j = "BN"; break;
+        
+        case Country::BO: j = "BO"; break;
+        
+        case Country::BQ: j = "BQ"; break;
+        
+        case Country::BR: j = "BR"; break;
+        
+        case Country::BS: j = "BS"; break;
+        
+        case Country::BT: j = "BT"; break;
+        
+        case Country::BV: j = "BV"; break;
+        
+        case Country::BW: j = "BW"; break;
+        
+        case Country::BY: j = "BY"; break;
+        
+        case Country::BZ: j = "BZ"; break;
+        
+        case Country::CA: j = "CA"; break;
+        
+        case Country::CC: j = "CC"; break;
+        
+        case Country::CD: j = "CD"; break;
+        
+        case Country::CF: j = "CF"; break;
+        
+        case Country::CG: j = "CG"; break;
+        
+        case Country::CH: j = "CH"; break;
+        
+        case Country::CI: j = "CI"; break;
+        
+        case Country::CK: j = "CK"; break;
+        
+        case Country::CL: j = "CL"; break;
+        
+        case Country::CM: j = "CM"; break;
+        
+        case Country::CN: j = "CN"; break;
+        
+        case Country::CO: j = "CO"; break;
+        
+        case Country::CR: j = "CR"; break;
+        
+        case Country::CU: j = "CU"; break;
+        
+        case Country::CV: j = "CV"; break;
+        
+        case Country::CW: j = "CW"; break;
+        
+        case Country::CX: j = "CX"; break;
+        
+        case Country::CY: j = "CY"; break;
+        
+        case Country::CZ: j = "CZ"; break;
+        
+        case Country::DE: j = "DE"; break;
+        
+        case Country::DJ: j = "DJ"; break;
+        
+        case Country::DK: j = "DK"; break;
+        
+        case Country::DM: j = "DM"; break;
+        
+        case Country::DO: j = "DO"; break;
+        
+        case Country::DZ: j = "DZ"; break;
+        
+        case Country::EC: j = "EC"; break;
+        
+        case Country::EE: j = "EE"; break;
+        
+        case Country::EG: j = "EG"; break;
+        
+        case Country::EH: j = "EH"; break;
+        
+        case Country::ER: j = "ER"; break;
+        
+        case Country::ES: j = "ES"; break;
+        
+        case Country::ET: j = "ET"; break;
+        
+        case Country::FI: j = "FI"; break;
+        
+        case Country::FJ: j = "FJ"; break;
+        
+        case Country::FK: j = "FK"; break;
+        
+        case Country::FM: j = "FM"; break;
+        
+        case Country::FO: j = "FO"; break;
+        
+        case Country::FR: j = "FR"; break;
+        
+        case Country::GA: j = "GA"; break;
+        
+        case Country::GB: j = "GB"; break;
+        
+        case Country::GD: j = "GD"; break;
+        
+        case Country::GE: j = "GE"; break;
+        
+        case Country::GF: j = "GF"; break;
+        
+        case Country::GG: j = "GG"; break;
+        
+        case Country::GH: j = "GH"; break;
+        
+        case Country::GI: j = "GI"; break;
+        
+        case Country::GL: j = "GL"; break;
+        
+        case Country::GM: j = "GM"; break;
+        
+        case Country::GN: j = "GN"; break;
+        
+        case Country::GP: j = "GP"; break;
+        
+        case Country::GQ: j = "GQ"; break;
+        
+        case Country::GR: j = "GR"; break;
+        
+        case Country::GS: j = "GS"; break;
+        
+        case Country::GT: j = "GT"; break;
+        
+        case Country::GU: j = "GU"; break;
+        
+        case Country::GW: j = "GW"; break;
+        
+        case Country::GY: j = "GY"; break;
+        
+        case Country::HK: j = "HK"; break;
+        
+        case Country::HM: j = "HM"; break;
+        
+        case Country::HN: j = "HN"; break;
+        
+        case Country::HR: j = "HR"; break;
+        
+        case Country::HT: j = "HT"; break;
+        
+        case Country::HU: j = "HU"; break;
+        
+        case Country::ID: j = "ID"; break;
+        
+        case Country::IE: j = "IE"; break;
+        
+        case Country::IL: j = "IL"; break;
+        
+        case Country::IM: j = "IM"; break;
+        
+        case Country::IN: j = "IN"; break;
+        
+        case Country::IO: j = "IO"; break;
+        
+        case Country::IQ: j = "IQ"; break;
+        
+        case Country::IR: j = "IR"; break;
+        
+        case Country::IS: j = "IS"; break;
+        
+        case Country::IT: j = "IT"; break;
+        
+        case Country::JE: j = "JE"; break;
+        
+        case Country::JM: j = "JM"; break;
+        
+        case Country::JO: j = "JO"; break;
+        
+        case Country::JP: j = "JP"; break;
+        
+        case Country::KE: j = "KE"; break;
+        
+        case Country::KG: j = "KG"; break;
+        
+        case Country::KH: j = "KH"; break;
+        
+        case Country::KI: j = "KI"; break;
+        
+        case Country::KM: j = "KM"; break;
+        
+        case Country::KN: j = "KN"; break;
+        
+        case Country::KR: j = "KR"; break;
+        
+        case Country::KW: j = "KW"; break;
+        
+        case Country::KY: j = "KY"; break;
+        
+        case Country::KZ: j = "KZ"; break;
+        
+        case Country::LA: j = "LA"; break;
+        
+        case Country::LB: j = "LB"; break;
+        
+        case Country::LC: j = "LC"; break;
+        
+        case Country::LI: j = "LI"; break;
+        
+        case Country::LK: j = "LK"; break;
+        
+        case Country::LR: j = "LR"; break;
+        
+        case Country::LS: j = "LS"; break;
+        
+        case Country::LT: j = "LT"; break;
+        
+        case Country::LU: j = "LU"; break;
+        
+        case Country::LV: j = "LV"; break;
+        
+        case Country::LY: j = "LY"; break;
+        
+        case Country::MA: j = "MA"; break;
+        
+        case Country::MC: j = "MC"; break;
+        
+        case Country::MD: j = "MD"; break;
+        
+        case Country::ME: j = "ME"; break;
+        
+        case Country::MF: j = "MF"; break;
+        
+        case Country::MG: j = "MG"; break;
+        
+        case Country::MH: j = "MH"; break;
+        
+        case Country::MK: j = "MK"; break;
+        
+        case Country::ML: j = "ML"; break;
+        
+        case Country::MM: j = "MM"; break;
+        
+        case Country::MN: j = "MN"; break;
+        
+        case Country::MO: j = "MO"; break;
+        
+        case Country::MP: j = "MP"; break;
+        
+        case Country::MQ: j = "MQ"; break;
+        
+        case Country::MR: j = "MR"; break;
+        
+        case Country::MS: j = "MS"; break;
+        
+        case Country::MT: j = "MT"; break;
+        
+        case Country::MU: j = "MU"; break;
+        
+        case Country::MV: j = "MV"; break;
+        
+        case Country::MW: j = "MW"; break;
+        
+        case Country::MX: j = "MX"; break;
+        
+        case Country::MY: j = "MY"; break;
+        
+        case Country::MZ: j = "MZ"; break;
+        
+        case Country::NA: j = "NA"; break;
+        
+        case Country::NC: j = "NC"; break;
+        
+        case Country::NE: j = "NE"; break;
+        
+        case Country::NF: j = "NF"; break;
+        
+        case Country::NG: j = "NG"; break;
+        
+        case Country::NI: j = "NI"; break;
+        
+        case Country::NL: j = "NL"; break;
+        
+        case Country::FALSE: j = "false"; break;
+        
+        case Country::NP: j = "NP"; break;
+        
+        case Country::NR: j = "NR"; break;
+        
+        case Country::NU: j = "NU"; break;
+        
+        case Country::NZ: j = "NZ"; break;
+        
+        case Country::OM: j = "OM"; break;
+        
+        case Country::PA: j = "PA"; break;
+        
+        case Country::PE: j = "PE"; break;
+        
+        case Country::PF: j = "PF"; break;
+        
+        case Country::PG: j = "PG"; break;
+        
+        case Country::PH: j = "PH"; break;
+        
+        case Country::PK: j = "PK"; break;
+        
+        case Country::PL: j = "PL"; break;
+        
+        case Country::PM: j = "PM"; break;
+        
+        case Country::PN: j = "PN"; break;
+        
+        case Country::PR: j = "PR"; break;
+        
+        case Country::PS: j = "PS"; break;
+        
+        case Country::PT: j = "PT"; break;
+        
+        case Country::PW: j = "PW"; break;
+        
+        case Country::PY: j = "PY"; break;
+        
+        case Country::QA: j = "QA"; break;
+        
+        case Country::RE: j = "RE"; break;
+        
+        case Country::RO: j = "RO"; break;
+        
+        case Country::RS: j = "RS"; break;
+        
+        case Country::RU: j = "RU"; break;
+        
+        case Country::RW: j = "RW"; break;
+        
+        case Country::SA: j = "SA"; break;
+        
+        case Country::SB: j = "SB"; break;
+        
+        case Country::SC: j = "SC"; break;
+        
+        case Country::SD: j = "SD"; break;
+        
+        case Country::SE: j = "SE"; break;
+        
+        case Country::SG: j = "SG"; break;
+        
+        case Country::SH: j = "SH"; break;
+        
+        case Country::SI: j = "SI"; break;
+        
+        case Country::SJ: j = "SJ"; break;
+        
+        case Country::SK: j = "SK"; break;
+        
+        case Country::SL: j = "SL"; break;
+        
+        case Country::SM: j = "SM"; break;
+        
+        case Country::SN: j = "SN"; break;
+        
+        case Country::SO: j = "SO"; break;
+        
+        case Country::SR: j = "SR"; break;
+        
+        case Country::SS: j = "SS"; break;
+        
+        case Country::ST: j = "ST"; break;
+        
+        case Country::SV: j = "SV"; break;
+        
+        case Country::SX: j = "SX"; break;
+        
+        case Country::SY: j = "SY"; break;
+        
+        case Country::SZ: j = "SZ"; break;
+        
+        case Country::TC: j = "TC"; break;
+        
+        case Country::TD: j = "TD"; break;
+        
+        case Country::TF: j = "TF"; break;
+        
+        case Country::TG: j = "TG"; break;
+        
+        case Country::TH: j = "TH"; break;
+        
+        case Country::TJ: j = "TJ"; break;
+        
+        case Country::TK: j = "TK"; break;
+        
+        case Country::TL: j = "TL"; break;
+        
+        case Country::TM: j = "TM"; break;
+        
+        case Country::TN: j = "TN"; break;
+        
+        case Country::TO: j = "TO"; break;
+        
+        case Country::TR: j = "TR"; break;
+        
+        case Country::TT: j = "TT"; break;
+        
+        case Country::TV: j = "TV"; break;
+        
+        case Country::TW: j = "TW"; break;
+        
+        case Country::TZ: j = "TZ"; break;
+        
+        case Country::UA: j = "UA"; break;
+        
+        case Country::UG: j = "UG"; break;
+        
+        case Country::UM: j = "UM"; break;
+        
+        case Country::US: j = "US"; break;
+        
+        case Country::UY: j = "UY"; break;
+        
+        case Country::UZ: j = "UZ"; break;
+        
+        case Country::VA: j = "VA"; break;
+        
+        case Country::VC: j = "VC"; break;
+        
+        case Country::VE: j = "VE"; break;
+        
+        case Country::VG: j = "VG"; break;
+        
+        case Country::VI: j = "VI"; break;
+        
+        case Country::VN: j = "VN"; break;
+        
+        case Country::VU: j = "VU"; break;
+        
+        case Country::WF: j = "WF"; break;
+        
+        case Country::WS: j = "WS"; break;
+        
+        case Country::YE: j = "YE"; break;
+        
+        case Country::YT: j = "YT"; break;
+        
+        case Country::ZA: j = "ZA"; break;
+        
+        case Country::ZM: j = "ZM"; break;
+        
+        case Country::ZW: j = "ZW"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Country", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Country& value)
+{
+    
+    if (j == "AD")
+    {
+        value = Country::AD;
+        return;
+    }
+    
+    if (j == "AE")
+    {
+        value = Country::AE;
+        return;
+    }
+    
+    if (j == "AF")
+    {
+        value = Country::AF;
+        return;
+    }
+    
+    if (j == "AG")
+    {
+        value = Country::AG;
+        return;
+    }
+    
+    if (j == "AI")
+    {
+        value = Country::AI;
+        return;
+    }
+    
+    if (j == "AL")
+    {
+        value = Country::AL;
+        return;
+    }
+    
+    if (j == "AM")
+    {
+        value = Country::AM;
+        return;
+    }
+    
+    if (j == "AO")
+    {
+        value = Country::AO;
+        return;
+    }
+    
+    if (j == "AQ")
+    {
+        value = Country::AQ;
+        return;
+    }
+    
+    if (j == "AR")
+    {
+        value = Country::AR;
+        return;
+    }
+    
+    if (j == "AS")
+    {
+        value = Country::AS;
+        return;
+    }
+    
+    if (j == "AT")
+    {
+        value = Country::AT;
+        return;
+    }
+    
+    if (j == "AU")
+    {
+        value = Country::AU;
+        return;
+    }
+    
+    if (j == "AW")
+    {
+        value = Country::AW;
+        return;
+    }
+    
+    if (j == "AX")
+    {
+        value = Country::AX;
+        return;
+    }
+    
+    if (j == "AZ")
+    {
+        value = Country::AZ;
+        return;
+    }
+    
+    if (j == "BA")
+    {
+        value = Country::BA;
+        return;
+    }
+    
+    if (j == "BB")
+    {
+        value = Country::BB;
+        return;
+    }
+    
+    if (j == "BD")
+    {
+        value = Country::BD;
+        return;
+    }
+    
+    if (j == "BE")
+    {
+        value = Country::BE;
+        return;
+    }
+    
+    if (j == "BF")
+    {
+        value = Country::BF;
+        return;
+    }
+    
+    if (j == "BG")
+    {
+        value = Country::BG;
+        return;
+    }
+    
+    if (j == "BH")
+    {
+        value = Country::BH;
+        return;
+    }
+    
+    if (j == "BI")
+    {
+        value = Country::BI;
+        return;
+    }
+    
+    if (j == "BJ")
+    {
+        value = Country::BJ;
+        return;
+    }
+    
+    if (j == "BL")
+    {
+        value = Country::BL;
+        return;
+    }
+    
+    if (j == "BM")
+    {
+        value = Country::BM;
+        return;
+    }
+    
+    if (j == "BN")
+    {
+        value = Country::BN;
+        return;
+    }
+    
+    if (j == "BO")
+    {
+        value = Country::BO;
+        return;
+    }
+    
+    if (j == "BQ")
+    {
+        value = Country::BQ;
+        return;
+    }
+    
+    if (j == "BR")
+    {
+        value = Country::BR;
+        return;
+    }
+    
+    if (j == "BS")
+    {
+        value = Country::BS;
+        return;
+    }
+    
+    if (j == "BT")
+    {
+        value = Country::BT;
+        return;
+    }
+    
+    if (j == "BV")
+    {
+        value = Country::BV;
+        return;
+    }
+    
+    if (j == "BW")
+    {
+        value = Country::BW;
+        return;
+    }
+    
+    if (j == "BY")
+    {
+        value = Country::BY;
+        return;
+    }
+    
+    if (j == "BZ")
+    {
+        value = Country::BZ;
+        return;
+    }
+    
+    if (j == "CA")
+    {
+        value = Country::CA;
+        return;
+    }
+    
+    if (j == "CC")
+    {
+        value = Country::CC;
+        return;
+    }
+    
+    if (j == "CD")
+    {
+        value = Country::CD;
+        return;
+    }
+    
+    if (j == "CF")
+    {
+        value = Country::CF;
+        return;
+    }
+    
+    if (j == "CG")
+    {
+        value = Country::CG;
+        return;
+    }
+    
+    if (j == "CH")
+    {
+        value = Country::CH;
+        return;
+    }
+    
+    if (j == "CI")
+    {
+        value = Country::CI;
+        return;
+    }
+    
+    if (j == "CK")
+    {
+        value = Country::CK;
+        return;
+    }
+    
+    if (j == "CL")
+    {
+        value = Country::CL;
+        return;
+    }
+    
+    if (j == "CM")
+    {
+        value = Country::CM;
+        return;
+    }
+    
+    if (j == "CN")
+    {
+        value = Country::CN;
+        return;
+    }
+    
+    if (j == "CO")
+    {
+        value = Country::CO;
+        return;
+    }
+    
+    if (j == "CR")
+    {
+        value = Country::CR;
+        return;
+    }
+    
+    if (j == "CU")
+    {
+        value = Country::CU;
+        return;
+    }
+    
+    if (j == "CV")
+    {
+        value = Country::CV;
+        return;
+    }
+    
+    if (j == "CW")
+    {
+        value = Country::CW;
+        return;
+    }
+    
+    if (j == "CX")
+    {
+        value = Country::CX;
+        return;
+    }
+    
+    if (j == "CY")
+    {
+        value = Country::CY;
+        return;
+    }
+    
+    if (j == "CZ")
+    {
+        value = Country::CZ;
+        return;
+    }
+    
+    if (j == "DE")
+    {
+        value = Country::DE;
+        return;
+    }
+    
+    if (j == "DJ")
+    {
+        value = Country::DJ;
+        return;
+    }
+    
+    if (j == "DK")
+    {
+        value = Country::DK;
+        return;
+    }
+    
+    if (j == "DM")
+    {
+        value = Country::DM;
+        return;
+    }
+    
+    if (j == "DO")
+    {
+        value = Country::DO;
+        return;
+    }
+    
+    if (j == "DZ")
+    {
+        value = Country::DZ;
+        return;
+    }
+    
+    if (j == "EC")
+    {
+        value = Country::EC;
+        return;
+    }
+    
+    if (j == "EE")
+    {
+        value = Country::EE;
+        return;
+    }
+    
+    if (j == "EG")
+    {
+        value = Country::EG;
+        return;
+    }
+    
+    if (j == "EH")
+    {
+        value = Country::EH;
+        return;
+    }
+    
+    if (j == "ER")
+    {
+        value = Country::ER;
+        return;
+    }
+    
+    if (j == "ES")
+    {
+        value = Country::ES;
+        return;
+    }
+    
+    if (j == "ET")
+    {
+        value = Country::ET;
+        return;
+    }
+    
+    if (j == "FI")
+    {
+        value = Country::FI;
+        return;
+    }
+    
+    if (j == "FJ")
+    {
+        value = Country::FJ;
+        return;
+    }
+    
+    if (j == "FK")
+    {
+        value = Country::FK;
+        return;
+    }
+    
+    if (j == "FM")
+    {
+        value = Country::FM;
+        return;
+    }
+    
+    if (j == "FO")
+    {
+        value = Country::FO;
+        return;
+    }
+    
+    if (j == "FR")
+    {
+        value = Country::FR;
+        return;
+    }
+    
+    if (j == "GA")
+    {
+        value = Country::GA;
+        return;
+    }
+    
+    if (j == "GB")
+    {
+        value = Country::GB;
+        return;
+    }
+    
+    if (j == "GD")
+    {
+        value = Country::GD;
+        return;
+    }
+    
+    if (j == "GE")
+    {
+        value = Country::GE;
+        return;
+    }
+    
+    if (j == "GF")
+    {
+        value = Country::GF;
+        return;
+    }
+    
+    if (j == "GG")
+    {
+        value = Country::GG;
+        return;
+    }
+    
+    if (j == "GH")
+    {
+        value = Country::GH;
+        return;
+    }
+    
+    if (j == "GI")
+    {
+        value = Country::GI;
+        return;
+    }
+    
+    if (j == "GL")
+    {
+        value = Country::GL;
+        return;
+    }
+    
+    if (j == "GM")
+    {
+        value = Country::GM;
+        return;
+    }
+    
+    if (j == "GN")
+    {
+        value = Country::GN;
+        return;
+    }
+    
+    if (j == "GP")
+    {
+        value = Country::GP;
+        return;
+    }
+    
+    if (j == "GQ")
+    {
+        value = Country::GQ;
+        return;
+    }
+    
+    if (j == "GR")
+    {
+        value = Country::GR;
+        return;
+    }
+    
+    if (j == "GS")
+    {
+        value = Country::GS;
+        return;
+    }
+    
+    if (j == "GT")
+    {
+        value = Country::GT;
+        return;
+    }
+    
+    if (j == "GU")
+    {
+        value = Country::GU;
+        return;
+    }
+    
+    if (j == "GW")
+    {
+        value = Country::GW;
+        return;
+    }
+    
+    if (j == "GY")
+    {
+        value = Country::GY;
+        return;
+    }
+    
+    if (j == "HK")
+    {
+        value = Country::HK;
+        return;
+    }
+    
+    if (j == "HM")
+    {
+        value = Country::HM;
+        return;
+    }
+    
+    if (j == "HN")
+    {
+        value = Country::HN;
+        return;
+    }
+    
+    if (j == "HR")
+    {
+        value = Country::HR;
+        return;
+    }
+    
+    if (j == "HT")
+    {
+        value = Country::HT;
+        return;
+    }
+    
+    if (j == "HU")
+    {
+        value = Country::HU;
+        return;
+    }
+    
+    if (j == "ID")
+    {
+        value = Country::ID;
+        return;
+    }
+    
+    if (j == "IE")
+    {
+        value = Country::IE;
+        return;
+    }
+    
+    if (j == "IL")
+    {
+        value = Country::IL;
+        return;
+    }
+    
+    if (j == "IM")
+    {
+        value = Country::IM;
+        return;
+    }
+    
+    if (j == "IN")
+    {
+        value = Country::IN;
+        return;
+    }
+    
+    if (j == "IO")
+    {
+        value = Country::IO;
+        return;
+    }
+    
+    if (j == "IQ")
+    {
+        value = Country::IQ;
+        return;
+    }
+    
+    if (j == "IR")
+    {
+        value = Country::IR;
+        return;
+    }
+    
+    if (j == "IS")
+    {
+        value = Country::IS;
+        return;
+    }
+    
+    if (j == "IT")
+    {
+        value = Country::IT;
+        return;
+    }
+    
+    if (j == "JE")
+    {
+        value = Country::JE;
+        return;
+    }
+    
+    if (j == "JM")
+    {
+        value = Country::JM;
+        return;
+    }
+    
+    if (j == "JO")
+    {
+        value = Country::JO;
+        return;
+    }
+    
+    if (j == "JP")
+    {
+        value = Country::JP;
+        return;
+    }
+    
+    if (j == "KE")
+    {
+        value = Country::KE;
+        return;
+    }
+    
+    if (j == "KG")
+    {
+        value = Country::KG;
+        return;
+    }
+    
+    if (j == "KH")
+    {
+        value = Country::KH;
+        return;
+    }
+    
+    if (j == "KI")
+    {
+        value = Country::KI;
+        return;
+    }
+    
+    if (j == "KM")
+    {
+        value = Country::KM;
+        return;
+    }
+    
+    if (j == "KN")
+    {
+        value = Country::KN;
+        return;
+    }
+    
+    if (j == "KR")
+    {
+        value = Country::KR;
+        return;
+    }
+    
+    if (j == "KW")
+    {
+        value = Country::KW;
+        return;
+    }
+    
+    if (j == "KY")
+    {
+        value = Country::KY;
+        return;
+    }
+    
+    if (j == "KZ")
+    {
+        value = Country::KZ;
+        return;
+    }
+    
+    if (j == "LA")
+    {
+        value = Country::LA;
+        return;
+    }
+    
+    if (j == "LB")
+    {
+        value = Country::LB;
+        return;
+    }
+    
+    if (j == "LC")
+    {
+        value = Country::LC;
+        return;
+    }
+    
+    if (j == "LI")
+    {
+        value = Country::LI;
+        return;
+    }
+    
+    if (j == "LK")
+    {
+        value = Country::LK;
+        return;
+    }
+    
+    if (j == "LR")
+    {
+        value = Country::LR;
+        return;
+    }
+    
+    if (j == "LS")
+    {
+        value = Country::LS;
+        return;
+    }
+    
+    if (j == "LT")
+    {
+        value = Country::LT;
+        return;
+    }
+    
+    if (j == "LU")
+    {
+        value = Country::LU;
+        return;
+    }
+    
+    if (j == "LV")
+    {
+        value = Country::LV;
+        return;
+    }
+    
+    if (j == "LY")
+    {
+        value = Country::LY;
+        return;
+    }
+    
+    if (j == "MA")
+    {
+        value = Country::MA;
+        return;
+    }
+    
+    if (j == "MC")
+    {
+        value = Country::MC;
+        return;
+    }
+    
+    if (j == "MD")
+    {
+        value = Country::MD;
+        return;
+    }
+    
+    if (j == "ME")
+    {
+        value = Country::ME;
+        return;
+    }
+    
+    if (j == "MF")
+    {
+        value = Country::MF;
+        return;
+    }
+    
+    if (j == "MG")
+    {
+        value = Country::MG;
+        return;
+    }
+    
+    if (j == "MH")
+    {
+        value = Country::MH;
+        return;
+    }
+    
+    if (j == "MK")
+    {
+        value = Country::MK;
+        return;
+    }
+    
+    if (j == "ML")
+    {
+        value = Country::ML;
+        return;
+    }
+    
+    if (j == "MM")
+    {
+        value = Country::MM;
+        return;
+    }
+    
+    if (j == "MN")
+    {
+        value = Country::MN;
+        return;
+    }
+    
+    if (j == "MO")
+    {
+        value = Country::MO;
+        return;
+    }
+    
+    if (j == "MP")
+    {
+        value = Country::MP;
+        return;
+    }
+    
+    if (j == "MQ")
+    {
+        value = Country::MQ;
+        return;
+    }
+    
+    if (j == "MR")
+    {
+        value = Country::MR;
+        return;
+    }
+    
+    if (j == "MS")
+    {
+        value = Country::MS;
+        return;
+    }
+    
+    if (j == "MT")
+    {
+        value = Country::MT;
+        return;
+    }
+    
+    if (j == "MU")
+    {
+        value = Country::MU;
+        return;
+    }
+    
+    if (j == "MV")
+    {
+        value = Country::MV;
+        return;
+    }
+    
+    if (j == "MW")
+    {
+        value = Country::MW;
+        return;
+    }
+    
+    if (j == "MX")
+    {
+        value = Country::MX;
+        return;
+    }
+    
+    if (j == "MY")
+    {
+        value = Country::MY;
+        return;
+    }
+    
+    if (j == "MZ")
+    {
+        value = Country::MZ;
+        return;
+    }
+    
+    if (j == "NA")
+    {
+        value = Country::NA;
+        return;
+    }
+    
+    if (j == "NC")
+    {
+        value = Country::NC;
+        return;
+    }
+    
+    if (j == "NE")
+    {
+        value = Country::NE;
+        return;
+    }
+    
+    if (j == "NF")
+    {
+        value = Country::NF;
+        return;
+    }
+    
+    if (j == "NG")
+    {
+        value = Country::NG;
+        return;
+    }
+    
+    if (j == "NI")
+    {
+        value = Country::NI;
+        return;
+    }
+    
+    if (j == "NL")
+    {
+        value = Country::NL;
+        return;
+    }
+    
+    if (j == "false")
+    {
+        value = Country::FALSE;
+        return;
+    }
+    
+    if (j == "NP")
+    {
+        value = Country::NP;
+        return;
+    }
+    
+    if (j == "NR")
+    {
+        value = Country::NR;
+        return;
+    }
+    
+    if (j == "NU")
+    {
+        value = Country::NU;
+        return;
+    }
+    
+    if (j == "NZ")
+    {
+        value = Country::NZ;
+        return;
+    }
+    
+    if (j == "OM")
+    {
+        value = Country::OM;
+        return;
+    }
+    
+    if (j == "PA")
+    {
+        value = Country::PA;
+        return;
+    }
+    
+    if (j == "PE")
+    {
+        value = Country::PE;
+        return;
+    }
+    
+    if (j == "PF")
+    {
+        value = Country::PF;
+        return;
+    }
+    
+    if (j == "PG")
+    {
+        value = Country::PG;
+        return;
+    }
+    
+    if (j == "PH")
+    {
+        value = Country::PH;
+        return;
+    }
+    
+    if (j == "PK")
+    {
+        value = Country::PK;
+        return;
+    }
+    
+    if (j == "PL")
+    {
+        value = Country::PL;
+        return;
+    }
+    
+    if (j == "PM")
+    {
+        value = Country::PM;
+        return;
+    }
+    
+    if (j == "PN")
+    {
+        value = Country::PN;
+        return;
+    }
+    
+    if (j == "PR")
+    {
+        value = Country::PR;
+        return;
+    }
+    
+    if (j == "PS")
+    {
+        value = Country::PS;
+        return;
+    }
+    
+    if (j == "PT")
+    {
+        value = Country::PT;
+        return;
+    }
+    
+    if (j == "PW")
+    {
+        value = Country::PW;
+        return;
+    }
+    
+    if (j == "PY")
+    {
+        value = Country::PY;
+        return;
+    }
+    
+    if (j == "QA")
+    {
+        value = Country::QA;
+        return;
+    }
+    
+    if (j == "RE")
+    {
+        value = Country::RE;
+        return;
+    }
+    
+    if (j == "RO")
+    {
+        value = Country::RO;
+        return;
+    }
+    
+    if (j == "RS")
+    {
+        value = Country::RS;
+        return;
+    }
+    
+    if (j == "RU")
+    {
+        value = Country::RU;
+        return;
+    }
+    
+    if (j == "RW")
+    {
+        value = Country::RW;
+        return;
+    }
+    
+    if (j == "SA")
+    {
+        value = Country::SA;
+        return;
+    }
+    
+    if (j == "SB")
+    {
+        value = Country::SB;
+        return;
+    }
+    
+    if (j == "SC")
+    {
+        value = Country::SC;
+        return;
+    }
+    
+    if (j == "SD")
+    {
+        value = Country::SD;
+        return;
+    }
+    
+    if (j == "SE")
+    {
+        value = Country::SE;
+        return;
+    }
+    
+    if (j == "SG")
+    {
+        value = Country::SG;
+        return;
+    }
+    
+    if (j == "SH")
+    {
+        value = Country::SH;
+        return;
+    }
+    
+    if (j == "SI")
+    {
+        value = Country::SI;
+        return;
+    }
+    
+    if (j == "SJ")
+    {
+        value = Country::SJ;
+        return;
+    }
+    
+    if (j == "SK")
+    {
+        value = Country::SK;
+        return;
+    }
+    
+    if (j == "SL")
+    {
+        value = Country::SL;
+        return;
+    }
+    
+    if (j == "SM")
+    {
+        value = Country::SM;
+        return;
+    }
+    
+    if (j == "SN")
+    {
+        value = Country::SN;
+        return;
+    }
+    
+    if (j == "SO")
+    {
+        value = Country::SO;
+        return;
+    }
+    
+    if (j == "SR")
+    {
+        value = Country::SR;
+        return;
+    }
+    
+    if (j == "SS")
+    {
+        value = Country::SS;
+        return;
+    }
+    
+    if (j == "ST")
+    {
+        value = Country::ST;
+        return;
+    }
+    
+    if (j == "SV")
+    {
+        value = Country::SV;
+        return;
+    }
+    
+    if (j == "SX")
+    {
+        value = Country::SX;
+        return;
+    }
+    
+    if (j == "SY")
+    {
+        value = Country::SY;
+        return;
+    }
+    
+    if (j == "SZ")
+    {
+        value = Country::SZ;
+        return;
+    }
+    
+    if (j == "TC")
+    {
+        value = Country::TC;
+        return;
+    }
+    
+    if (j == "TD")
+    {
+        value = Country::TD;
+        return;
+    }
+    
+    if (j == "TF")
+    {
+        value = Country::TF;
+        return;
+    }
+    
+    if (j == "TG")
+    {
+        value = Country::TG;
+        return;
+    }
+    
+    if (j == "TH")
+    {
+        value = Country::TH;
+        return;
+    }
+    
+    if (j == "TJ")
+    {
+        value = Country::TJ;
+        return;
+    }
+    
+    if (j == "TK")
+    {
+        value = Country::TK;
+        return;
+    }
+    
+    if (j == "TL")
+    {
+        value = Country::TL;
+        return;
+    }
+    
+    if (j == "TM")
+    {
+        value = Country::TM;
+        return;
+    }
+    
+    if (j == "TN")
+    {
+        value = Country::TN;
+        return;
+    }
+    
+    if (j == "TO")
+    {
+        value = Country::TO;
+        return;
+    }
+    
+    if (j == "TR")
+    {
+        value = Country::TR;
+        return;
+    }
+    
+    if (j == "TT")
+    {
+        value = Country::TT;
+        return;
+    }
+    
+    if (j == "TV")
+    {
+        value = Country::TV;
+        return;
+    }
+    
+    if (j == "TW")
+    {
+        value = Country::TW;
+        return;
+    }
+    
+    if (j == "TZ")
+    {
+        value = Country::TZ;
+        return;
+    }
+    
+    if (j == "UA")
+    {
+        value = Country::UA;
+        return;
+    }
+    
+    if (j == "UG")
+    {
+        value = Country::UG;
+        return;
+    }
+    
+    if (j == "UM")
+    {
+        value = Country::UM;
+        return;
+    }
+    
+    if (j == "US")
+    {
+        value = Country::US;
+        return;
+    }
+    
+    if (j == "UY")
+    {
+        value = Country::UY;
+        return;
+    }
+    
+    if (j == "UZ")
+    {
+        value = Country::UZ;
+        return;
+    }
+    
+    if (j == "VA")
+    {
+        value = Country::VA;
+        return;
+    }
+    
+    if (j == "VC")
+    {
+        value = Country::VC;
+        return;
+    }
+    
+    if (j == "VE")
+    {
+        value = Country::VE;
+        return;
+    }
+    
+    if (j == "VG")
+    {
+        value = Country::VG;
+        return;
+    }
+    
+    if (j == "VI")
+    {
+        value = Country::VI;
+        return;
+    }
+    
+    if (j == "VN")
+    {
+        value = Country::VN;
+        return;
+    }
+    
+    if (j == "VU")
+    {
+        value = Country::VU;
+        return;
+    }
+    
+    if (j == "WF")
+    {
+        value = Country::WF;
+        return;
+    }
+    
+    if (j == "WS")
+    {
+        value = Country::WS;
+        return;
+    }
+    
+    if (j == "YE")
+    {
+        value = Country::YE;
+        return;
+    }
+    
+    if (j == "YT")
+    {
+        value = Country::YT;
+        return;
+    }
+    
+    if (j == "ZA")
+    {
+        value = Country::ZA;
+        return;
+    }
+    
+    if (j == "ZM")
+    {
+        value = Country::ZM;
+        return;
+    }
+    
+    if (j == "ZW")
+    {
+        value = Country::ZW;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Country", &j);
+}
 
 } // namespace models
 

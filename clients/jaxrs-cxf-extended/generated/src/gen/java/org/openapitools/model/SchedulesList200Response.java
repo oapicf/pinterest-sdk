@@ -20,7 +20,6 @@ public class SchedulesList200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid Schedule> items = new ArrayList<>();
  /**
   * Get bookmark

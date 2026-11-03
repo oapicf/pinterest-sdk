@@ -232,28 +232,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!billableEvent.IsSet)
-                throw new ArgumentException("Property is required for class BidFloorSpec.", nameof(billableEvent));
+                throw new JsonException("Property is required for class BidFloorSpec: billable_event.");
 
             if (!currency.IsSet)
-                throw new ArgumentException("Property is required for class BidFloorSpec.", nameof(currency));
+                throw new JsonException("Property is required for class BidFloorSpec: currency.");
 
             if (billableEvent.IsSet && billableEvent.Value == null)
-                throw new ArgumentNullException(nameof(billableEvent), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: billable_event.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: currency.");
 
             if (countries.IsSet && countries.Value == null)
-                throw new ArgumentNullException(nameof(countries), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: countries.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: creative_type.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: objective_type.");
 
             if (optimizationGoalMetadata.IsSet && optimizationGoalMetadata.Value == null)
-                throw new ArgumentNullException(nameof(optimizationGoalMetadata), "Property is not nullable for class BidFloorSpec.");
+                throw new JsonException("Property is not nullable for class BidFloorSpec: optimization_goal_metadata.");
 
             return new BidFloorSpec(billableEvent.Value!.Value!, currency.Value!.Value!, countries, creativeType, objectiveType, optimizationGoalMetadata);
         }
@@ -264,7 +264,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidFloorSpec"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidFloorSpec bidFloorSpec, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -279,14 +278,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidFloorSpec"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidFloorSpec bidFloorSpec, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bidFloorSpec.CountriesOption.IsSet && bidFloorSpec.Countries == null)
-                throw new ArgumentNullException(nameof(bidFloorSpec.Countries), "Property is required for class BidFloorSpec.");
+                throw new JsonException("Cannot write null property BidFloorSpec.Countries to non-nullable JSON property 'countries'.");
+
+            if (bidFloorSpec.CreativeTypeOption.IsSet && bidFloorSpec.CreativeType == null)
+                throw new JsonException("Cannot write null property BidFloorSpec.CreativeType to non-nullable JSON property 'creative_type'.");
+
+            if (bidFloorSpec.ObjectiveTypeOption.IsSet && bidFloorSpec.ObjectiveType == null)
+                throw new JsonException("Cannot write null property BidFloorSpec.ObjectiveType to non-nullable JSON property 'objective_type'.");
 
             if (bidFloorSpec.OptimizationGoalMetadataOption.IsSet && bidFloorSpec.OptimizationGoalMetadata == null)
-                throw new ArgumentNullException(nameof(bidFloorSpec.OptimizationGoalMetadata), "Property is required for class BidFloorSpec.");
+                throw new JsonException("Cannot write null property BidFloorSpec.OptimizationGoalMetadata to non-nullable JSON property 'optimization_goal_metadata'.");
 
             var billableEventRawValue = ActionTypeValueConverter.ToJsonValue(bidFloorSpec.BillableEvent);
             writer.WriteString("billable_event", billableEventRawValue);

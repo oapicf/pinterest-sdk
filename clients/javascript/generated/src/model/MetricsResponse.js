@@ -17,7 +17,7 @@ import MetricsResponseDataItems from './MetricsResponseDataItems';
 /**
  * The MetricsResponse model module.
  * @module model/MetricsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class MetricsResponse {
     /**

@@ -180,3 +180,4 @@ class _$LocalInventoryItemsBatchSerializer implements PrimitiveSerializer<LocalI
   }
 }
 
+

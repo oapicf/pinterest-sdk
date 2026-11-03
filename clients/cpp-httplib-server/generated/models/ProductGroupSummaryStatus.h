@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class ProductGroupSummaryStatus
-{
-public:
-
-    ProductGroupSummaryStatus();
-    virtual ~ProductGroupSummaryStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductGroupSummaryStatus,
-        )
-
-private:
+enum class ProductGroupSummaryStatus {
+    
+    RUNNING,
+    
+    PAUSED,
+    
+    EXCLUDED,
+    
+    ARCHIVED
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductGroupSummaryStatus& value)
+{
+    switch (value)
+    {
+        
+        case ProductGroupSummaryStatus::RUNNING: j = "RUNNING"; break;
+        
+        case ProductGroupSummaryStatus::PAUSED: j = "PAUSED"; break;
+        
+        case ProductGroupSummaryStatus::EXCLUDED: j = "EXCLUDED"; break;
+        
+        case ProductGroupSummaryStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupSummaryStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductGroupSummaryStatus& value)
+{
+    
+    if (j == "RUNNING")
+    {
+        value = ProductGroupSummaryStatus::RUNNING;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = ProductGroupSummaryStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "EXCLUDED")
+    {
+        value = ProductGroupSummaryStatus::EXCLUDED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = ProductGroupSummaryStatus::ARCHIVED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductGroupSummaryStatus", &j);
+}
 
 } // namespace models
 

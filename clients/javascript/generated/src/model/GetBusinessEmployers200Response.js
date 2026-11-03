@@ -17,7 +17,7 @@ import UserBusinessRoleBinding from './UserBusinessRoleBinding';
 /**
  * The GetBusinessEmployers200Response model module.
  * @module model/GetBusinessEmployers200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class GetBusinessEmployers200Response {
     /**

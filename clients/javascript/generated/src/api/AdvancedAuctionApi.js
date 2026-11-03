@@ -22,7 +22,7 @@ import PinterestLibError from '../model/PinterestLibError';
 /**
 * AdvancedAuction service.
 * @module api/AdvancedAuctionApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class AdvancedAuctionApi {
 

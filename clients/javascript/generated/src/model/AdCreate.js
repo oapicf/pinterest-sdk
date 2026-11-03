@@ -24,7 +24,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The AdCreate model module.
  * @module model/AdCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdCreate {
     /**

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: STRING,NUMERIC,MICROCURRENCY,DATE,BOOL,GENDER_LIST,AGE_BUCKET_LIST,APPTYPE_LIST,COUNTRY_LIST,LOCALE_LIST
-*/
+ * 
+ * Values: STRING,NUMERIC,MICROCURRENCY,DATE,BOOL,GENDER_LIST,AGE_BUCKET_LIST,APPTYPE_LIST,COUNTRY_LIST,LOCALE_LIST
+ */
 enum class ChangeHistoryDataType(@get:JsonValue val value: kotlin.String) {
 
     STRING("STRING"),
@@ -36,9 +36,8 @@ enum class ChangeHistoryDataType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ChangeHistoryDataType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ChangeHistoryDataType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ChangeHistoryDataType'")
         }
     }
 }
-

@@ -1,17 +1,5 @@
-OpenAPI.Tests/CatalogSupplementalApiTests.fs
-OpenAPI.Tests/CatalogSupplementalApiTestsHelper.fs
-OpenAPI.Tests/ConversionDeletionRequestsApiTests.fs
-OpenAPI.Tests/ConversionDeletionRequestsApiTestsHelper.fs
-OpenAPI.Tests/CustomerSegmentApiTests.fs
-OpenAPI.Tests/CustomerSegmentApiTestsHelper.fs
 OpenAPI.Tests/OpenAPITests.fsproj
-OpenAPI.Tests/ProductTagsApiTests.fs
-OpenAPI.Tests/ProductTagsApiTestsHelper.fs
-OpenAPI.Tests/SchedulesApiTests.fs
-OpenAPI.Tests/SchedulesApiTestsHelper.fs
 OpenAPI.Tests/TestHelper.fs
-OpenAPI.Tests/TrendsApiTests.fs
-OpenAPI.Tests/TrendsApiTestsHelper.fs
 OpenAPI/.gitignore
 OpenAPI/README.md
 OpenAPI/build.bat

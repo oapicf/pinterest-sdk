@@ -146,16 +146,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!code.IsSet)
-                throw new ArgumentException("Property is required for class PinterestLibError.", nameof(code));
+                throw new JsonException("Property is required for class PinterestLibError: code.");
 
             if (!message.IsSet)
-                throw new ArgumentException("Property is required for class PinterestLibError.", nameof(message));
+                throw new JsonException("Property is required for class PinterestLibError: message.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class PinterestLibError.");
+                throw new JsonException("Property is not nullable for class PinterestLibError: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class PinterestLibError.");
+                throw new JsonException("Property is not nullable for class PinterestLibError: message.");
 
             return new PinterestLibError(code.Value!.Value!, message.Value!);
         }
@@ -166,7 +166,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestLibError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinterestLibError pinterestLibError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -181,12 +180,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinterestLibError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinterestLibError pinterestLibError, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinterestLibError.Message == null)
-                throw new ArgumentNullException(nameof(pinterestLibError.Message), "Property is required for class PinterestLibError.");
-
             writer.WriteNumber("code", pinterestLibError.Code);
 
             writer.WriteString("message", pinterestLibError.Message);

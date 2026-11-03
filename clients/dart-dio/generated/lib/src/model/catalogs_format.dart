@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'catalogs_format.g.dart';
 
+/// The file format of a feed.
 class CatalogsFormat extends EnumClass {
 
-  /// The file format of a feed.
   @BuiltValueEnumConst(wireName: r'TSV')
   static const CatalogsFormat TSV = _$TSV;
-  /// The file format of a feed.
   @BuiltValueEnumConst(wireName: r'CSV')
   static const CatalogsFormat CSV = _$CSV;
-  /// The file format of a feed.
   @BuiltValueEnumConst(wireName: r'XML')
   static const CatalogsFormat XML = _$XML;
-  /// The file format of a feed.
   @BuiltValueEnumConst(wireName: r'INTEGRATION')
   static const CatalogsFormat INTEGRATION = _$INTEGRATION;
 

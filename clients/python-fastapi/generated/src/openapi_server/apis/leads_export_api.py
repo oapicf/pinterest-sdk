@@ -22,13 +22,13 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing_extensions import Annotated
 from openapi_server.models.leads_export_response_data import LeadsExportResponseData
 from openapi_server.models.leads_exports import LeadsExports
 from openapi_server.models.leads_exports_create import LeadsExportsCreate
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -55,8 +55,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def leads_export_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    leads_exports_create: LeadsExportsCreate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    leads_exports_create: LeadsExportsCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -83,8 +83,8 @@ async def leads_export_create(
     response_model_by_alias=True,
 )
 async def leads_export_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    leads_export_id: Annotated[str, Field(strict=True, description="lead_export_id token returned from the create a lead export endpoint")] = Path(..., description="lead_export_id token returned from the create a lead export endpoint", regex=r"^\d+$"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    leads_export_id: Annotated[str, Field(description="lead_export_id token returned from the create a lead export endpoint")] = Path(..., description="lead_export_id token returned from the create a lead export endpoint", regex=r"^\d+$"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

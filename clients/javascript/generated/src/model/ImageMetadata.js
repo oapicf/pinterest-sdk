@@ -17,7 +17,7 @@ import ImageSize from './ImageSize';
 /**
  * The ImageMetadata model module.
  * @module model/ImageMetadata
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ImageMetadata {
     /**

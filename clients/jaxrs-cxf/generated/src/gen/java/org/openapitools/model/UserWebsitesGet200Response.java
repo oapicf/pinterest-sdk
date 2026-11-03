@@ -22,8 +22,6 @@ public class UserWebsitesGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid UserWebsite> items = new ArrayList<>();
  /**
    * Get bookmark

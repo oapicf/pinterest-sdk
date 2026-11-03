@@ -17,7 +17,7 @@ export const MatchType = {
     Phrase: 'PHRASE',
     Exact: 'EXACT',
     ExactNegative: 'EXACT_NEGATIVE',
-    PhraseNegative: 'PHRASE_NEGATIVE'
+    PhraseNegative: 'PHRASE_NEGATIVE',
 } as const;
 export type MatchType = typeof MatchType[keyof typeof MatchType];
 

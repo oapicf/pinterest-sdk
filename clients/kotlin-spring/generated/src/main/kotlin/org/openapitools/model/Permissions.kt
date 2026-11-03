@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Permission levels available on a business asset.
-* Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,CONSUMER_USER,BIZ_PINNER_LIST_SHARER
-*/
+ * Permission levels available on a business asset.
+ * Values: ADMIN,ANALYST,FINANCE_MANAGER,FINANCE_EDIT,FINANCE_VIEW,AUDIENCE_MANAGER,CAMPAIGN_MANAGER,CATALOGS_MANAGER,CATALOGS_VIEWER,PROFILE_PUBLISHER,CONSUMER_USER,BIZ_PINNER_LIST_SHARER
+ */
 enum class Permissions(@get:JsonValue val value: kotlin.String) {
 
     ADMIN("ADMIN"),
@@ -38,9 +38,8 @@ enum class Permissions(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): Permissions {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Permissions'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Permissions'")
         }
     }
 }
-

@@ -210,31 +210,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!batchId.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalItemsBatchResponse.", nameof(batchId));
+                throw new JsonException("Property is required for class SupplementalItemsBatchResponse: batch_id.");
 
             if (!createdTime.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalItemsBatchResponse.", nameof(createdTime));
+                throw new JsonException("Property is required for class SupplementalItemsBatchResponse: created_time.");
 
             if (!operationResults.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalItemsBatchResponse.", nameof(operationResults));
+                throw new JsonException("Property is required for class SupplementalItemsBatchResponse: operation_results.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class SupplementalItemsBatchResponse.", nameof(status));
+                throw new JsonException("Property is required for class SupplementalItemsBatchResponse: status.");
 
             if (batchId.IsSet && batchId.Value == null)
-                throw new ArgumentNullException(nameof(batchId), "Property is not nullable for class SupplementalItemsBatchResponse.");
+                throw new JsonException("Property is not nullable for class SupplementalItemsBatchResponse: batch_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class SupplementalItemsBatchResponse.");
+                throw new JsonException("Property is not nullable for class SupplementalItemsBatchResponse: created_time.");
 
             if (operationResults.IsSet && operationResults.Value == null)
-                throw new ArgumentNullException(nameof(operationResults), "Property is not nullable for class SupplementalItemsBatchResponse.");
+                throw new JsonException("Property is not nullable for class SupplementalItemsBatchResponse: operation_results.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class SupplementalItemsBatchResponse.");
+                throw new JsonException("Property is not nullable for class SupplementalItemsBatchResponse: status.");
 
             if (completedTime.IsSet && completedTime.Value == null)
-                throw new ArgumentNullException(nameof(completedTime), "Property is not nullable for class SupplementalItemsBatchResponse.");
+                throw new JsonException("Property is not nullable for class SupplementalItemsBatchResponse: completed_time.");
 
             return new SupplementalItemsBatchResponse(batchId.Value!, createdTime.Value!.Value!, operationResults.Value!, status.Value!.Value!, completedTime);
         }
@@ -245,7 +245,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="supplementalItemsBatchResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SupplementalItemsBatchResponse supplementalItemsBatchResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -260,14 +259,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="supplementalItemsBatchResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SupplementalItemsBatchResponse supplementalItemsBatchResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (supplementalItemsBatchResponse.BatchId == null)
-                throw new ArgumentNullException(nameof(supplementalItemsBatchResponse.BatchId), "Property is required for class SupplementalItemsBatchResponse.");
-
-            if (supplementalItemsBatchResponse.OperationResults == null)
-                throw new ArgumentNullException(nameof(supplementalItemsBatchResponse.OperationResults), "Property is required for class SupplementalItemsBatchResponse.");
+            if (supplementalItemsBatchResponse.CompletedTimeOption.IsSet && supplementalItemsBatchResponse.CompletedTime == null)
+                throw new JsonException("Cannot write null property SupplementalItemsBatchResponse.CompletedTime to non-nullable JSON property 'completed_time'.");
 
             writer.WriteString("batch_id", supplementalItemsBatchResponse.BatchId);
 

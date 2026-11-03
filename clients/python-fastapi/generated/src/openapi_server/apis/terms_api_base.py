@@ -17,7 +17,7 @@ class BaseTermsApi:
         BaseTermsApi.subclasses = BaseTermsApi.subclasses + (cls,)
     async def terms_related_list(
         self,
-        terms: Annotated[List[StrictStr], Field(description="List of input terms.")],
+        terms: Annotated[List[str], Field(description="List of input terms.")],
     ) -> RelatedTerms:
         """Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc."""
         ...
@@ -25,8 +25,8 @@ class BaseTermsApi:
 
     async def terms_suggested_list(
         self,
-        term: Annotated[StrictStr, Field(description="Input term.")],
-        limit: Annotated[Optional[Annotated[int, Field(le=10, strict=True, ge=1)]], Field(description="Max suggested terms to return.")],
+        term: Annotated[str, Field(description="Input term.")],
+        limit: Annotated[Optional[Annotated[int, Field(le=10, ge=1)]], Field(description="Max suggested terms to return.")],
     ) -> List[str]:
         """Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term."""
         ...

@@ -80,15 +80,13 @@ class QuizPinData(BaseModel):
         _items = []
         if self.questions:
             for _item_questions in self.questions:
-                if _item_questions:
-                    _items.append(_item_questions.to_dict())
+                _items.append(_item_questions.to_dict() if _item_questions is not None else None)
             _dict['questions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
         if self.results:
             for _item_results in self.results:
-                if _item_results:
-                    _items.append(_item_results.to_dict())
+                _items.append(_item_results.to_dict() if _item_results is not None else None)
             _dict['results'] = _items
         # override the default output from pydantic by calling `to_dict()` of tie_breaker_custom_result
         if self.tie_breaker_custom_result:

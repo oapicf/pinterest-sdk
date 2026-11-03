@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelAddress {
     /**
      * Primary street address of hotel.
-     * @type {string}
-     * @memberof CatalogsHotelAddress
      */
     addr1?: string;
     /**
      * City where the hotel is located.
-     * @type {string}
-     * @memberof CatalogsHotelAddress
      */
     city?: string;
     /**
      * Country where the hotel is located.
-     * @type {string}
-     * @memberof CatalogsHotelAddress
      */
     country?: string;
     /**
      * Required for countries with a postal code system. Postal or zip code of the hotel.
-     * @type {string}
-     * @memberof CatalogsHotelAddress
      */
     postalCode?: string;
     /**
      * State, county, province, where the hotel is located.
-     * @type {string}
-     * @memberof CatalogsHotelAddress
      */
     region?: string;
 }

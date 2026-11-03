@@ -29,8 +29,6 @@ import {
 export interface AdGroupsCreate200Response {
     /**
      * 
-     * @type {Array<AdGroupsCreate200ResponseItemsInner>}
-     * @memberof AdGroupsCreate200Response
      */
     items: Array<AdGroupsCreate200ResponseItemsInner>;
 }

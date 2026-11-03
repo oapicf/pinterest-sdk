@@ -55,7 +55,7 @@ public class AudiencesApiHandler {
         AdAccountsAudienceCreate adAccountsAudienceCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountsAudienceCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adAccountsAudienceCreate is {}", adAccountsAudienceCreate);
+        logger.debug("Parameter adAccountsAudienceCreate is (body omitted)");
 
         api.audiencesCreate(adAccountId, adAccountsAudienceCreate)
             .onSuccess(apiResponse -> {
@@ -138,7 +138,7 @@ public class AudiencesApiHandler {
 
         logger.debug("Parameter audienceId is {}", audienceId);
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adAccountsAudienceUpdate is {}", adAccountsAudienceUpdate);
+        logger.debug("Parameter adAccountsAudienceUpdate is (body omitted)");
 
         api.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
             .onSuccess(apiResponse -> {

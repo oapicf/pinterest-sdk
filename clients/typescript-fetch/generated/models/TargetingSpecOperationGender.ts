@@ -36,20 +36,14 @@ import {
 export interface TargetingSpecOperationGender {
     /**
      * 
-     * @type {TargetingSpecOperationGenderFieldEnum}
-     * @memberof TargetingSpecOperationGender
      */
     field: TargetingSpecOperationGenderFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationGender
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<TargetingSpecGender>}
-     * @memberof TargetingSpecOperationGender
      */
     values: Array<TargetingSpecGender>;
 }
@@ -59,7 +53,7 @@ export interface TargetingSpecOperationGender {
  * @export
  */
 export const TargetingSpecOperationGenderFieldEnum = {
-    Gender: 'GENDER'
+    Gender: 'GENDER',
 } as const;
 export type TargetingSpecOperationGenderFieldEnum = typeof TargetingSpecOperationGenderFieldEnum[keyof typeof TargetingSpecOperationGenderFieldEnum];
 

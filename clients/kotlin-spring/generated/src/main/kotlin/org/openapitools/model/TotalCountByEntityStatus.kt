@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -25,20 +22,14 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class TotalCountByEntityStatus(
 
     @Schema(description = "Count of ACTIVE assets")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ACTIVE")
     @get:JsonProperty("ACTIVE") val ACTIVE: kotlin.Int? = null,
 
     @Schema(description = "Count of ARCHIVED assets")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ARCHIVED")
     @get:JsonProperty("ARCHIVED") val ARCHIVED: kotlin.Int? = null,
 
     @Schema(description = "Count of PAUSED assets")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("PAUSED")
     @get:JsonProperty("PAUSED") val PAUSED: kotlin.Int? = null
 ) {

@@ -29,14 +29,10 @@ import {
 export interface AnalyticsMetricsResponse {
     /**
      * Array with the requested daily metric records
-     * @type {Array<AnalyticsDailyMetrics>}
-     * @memberof AnalyticsMetricsResponse
      */
     dailyMetrics?: Array<AnalyticsDailyMetrics>;
     /**
      * The metric name and value over the requested period for each requested metric
-     * @type {{ [key: string]: number; }}
-     * @memberof AnalyticsMetricsResponse
      */
     summaryMetrics?: { [key: string]: number; };
 }

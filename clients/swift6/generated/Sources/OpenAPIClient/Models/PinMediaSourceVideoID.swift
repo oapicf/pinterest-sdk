@@ -14,7 +14,7 @@ public struct PinMediaSourceVideoID: Sendable, Codable, Hashable {
         case videoId = "video_id"
     }
     public static let coverImageKeyFrameTimeRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let mediaIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Content type for cover image Base64. */
     public var coverImageContentType: ContentType?
     /** Cover image Base64. */

@@ -16,19 +16,19 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1   {
   
   private CampaignBidOptionsCreate bidOptions;
   private IntendedPromotionType intendedPromotionType;
-  private Boolean isAutomatedCampaign;
-  private Boolean isCampaignBudgetOptimization;
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isAutomatedCampaign = false;
+  private Boolean isCampaignBudgetOptimization = true;
+  private Boolean isFlexibleDailyBudgets = false;
   private Boolean isLtvOptimized;
   private Boolean isPerformancePlus = false;
   private Boolean isTopOfSearch = false;
   private ObjectiveType objectiveType;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   /**
    **/

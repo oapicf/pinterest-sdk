@@ -29,26 +29,18 @@ import {
 export interface ImageSize {
     /**
      * 
-     * @type {ImageDetails}
-     * @memberof ImageSize
      */
     _1200x?: ImageDetails;
     /**
      * 
-     * @type {ImageDetails}
-     * @memberof ImageSize
      */
     _150x150?: ImageDetails;
     /**
      * 
-     * @type {ImageDetails}
-     * @memberof ImageSize
      */
     _400x300?: ImageDetails;
     /**
      * 
-     * @type {ImageDetails}
-     * @memberof ImageSize
      */
     _600x?: ImageDetails;
 }

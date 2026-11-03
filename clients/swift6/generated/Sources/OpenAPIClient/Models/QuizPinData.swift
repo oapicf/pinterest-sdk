@@ -10,12 +10,12 @@ import Foundation
 /** This field includes all quiz data including questions, options, and results. */
 public struct QuizPinData: Sendable, Codable, Hashable {
 
-    public var questions: [QuizPinQuestion]?
-    public var results: [QuizPinResult]?
+    public var questions: [QuizPinQuestion?]?
+    public var results: [QuizPinResult?]?
     public var tieBreakerCustomResult: QuizPinResult?
     public var tieBreakerType: TieBreakerType?
 
-    public init(questions: [QuizPinQuestion]? = nil, results: [QuizPinResult]? = nil, tieBreakerCustomResult: QuizPinResult? = nil, tieBreakerType: TieBreakerType? = nil) {
+    public init(questions: [QuizPinQuestion?]? = nil, results: [QuizPinResult?]? = nil, tieBreakerCustomResult: QuizPinResult? = nil, tieBreakerType: TieBreakerType? = nil) {
         self.questions = questions
         self.results = results
         self.tieBreakerCustomResult = tieBreakerCustomResult

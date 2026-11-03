@@ -29,38 +29,26 @@ import {
 export interface TrendsEditorial {
     /**
      * URL of the editorial board
-     * @type {string}
-     * @memberof TrendsEditorial
      */
     boardUrl: string;
     /**
      * Description of the editorial article
-     * @type {string}
-     * @memberof TrendsEditorial
      */
     description: string;
     /**
      * List of interests related to the editorial article
-     * @type {Array<string>}
-     * @memberof TrendsEditorial
      */
     interests: Array<string>;
     /**
      * URL of the pins related to the editorial article
-     * @type {Array<string>}
-     * @memberof TrendsEditorial
      */
     pinsUrl: Array<string>;
     /**
      * List of keywords related to the editorial article
-     * @type {Array<KeywordInfo>}
-     * @memberof TrendsEditorial
      */
     relatedKeywords: Array<KeywordInfo>;
     /**
      * Title of the editorial article
-     * @type {string}
-     * @memberof TrendsEditorial
      */
     title: string;
 }

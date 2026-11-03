@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AdGroupsAnalyticsMetrics model module.
  * @module model/AdGroupsAnalyticsMetrics
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupsAnalyticsMetrics {
     /**

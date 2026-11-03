@@ -22,11 +22,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AssetGroupModificationReadOrUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupModificationReadOrUpdate   {
-  private @Valid List<@Valid AssetGroupUpdateItemReadOrUpdateItem> assetGroupsToUpdate = new ArrayList<>();
-  private @Valid List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
-  private @Valid List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
+  private List<@Valid AssetGroupUpdateItemReadOrUpdateItem> assetGroupsToUpdate = new ArrayList<>();
+  private List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
+  private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   public AssetGroupModificationReadOrUpdate() {
   }
@@ -42,7 +42,7 @@ public class AssetGroupModificationReadOrUpdate   {
   
   @ApiModelProperty(value = "A list of asset groups and the data that will be used to update them.")
   @JsonProperty("asset_groups_to_update")
-  @Valid public List<@Valid AssetGroupUpdateItemReadOrUpdateItem> getAssetGroupsToUpdate() {
+  public List<@Valid AssetGroupUpdateItemReadOrUpdateItem> getAssetGroupsToUpdate() {
     return assetGroupsToUpdate;
   }
 
@@ -78,7 +78,7 @@ public class AssetGroupModificationReadOrUpdate   {
   
   @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
   @JsonProperty("exceptions")
-  @Valid public List<@Valid AssetGroupUpdateError> getExceptions() {
+  public List<@Valid AssetGroupUpdateError> getExceptions() {
     return exceptions;
   }
 
@@ -114,7 +114,7 @@ public class AssetGroupModificationReadOrUpdate   {
   
   @ApiModelProperty(value = "A list of successfully edited asset groups.")
   @JsonProperty("updated_asset_groups")
-  @Valid public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
+  public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
     return updatedAssetGroups;
   }
 

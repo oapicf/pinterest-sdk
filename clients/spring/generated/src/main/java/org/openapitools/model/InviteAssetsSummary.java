@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,13 +24,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteAssetsSummary", description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
 
   public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
@@ -51,7 +48,7 @@ public class InviteAssetsSummary {
    * List of ad account IDs and respective permission levels that will be assigned.
    * @return adAccounts
    */
-  @Valid 
+  
   @Schema(name = "ad_accounts", description = "List of ad account IDs and respective permission levels that will be assigned.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_accounts")
   public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
@@ -80,7 +77,7 @@ public class InviteAssetsSummary {
    * List of profile IDs and respective permission levels that will be assigned.
    * @return profiles
    */
-  @Valid 
+  
   @Schema(name = "profiles", description = "List of profile IDs and respective permission levels that will be assigned.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("profiles")
   public List<@Valid InviteAssetsSummaryItem> getProfiles() {
@@ -124,7 +121,7 @@ public class InviteAssetsSummary {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

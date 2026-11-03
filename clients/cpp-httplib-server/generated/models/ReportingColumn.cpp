@@ -6,20 +6,3 @@
 */
 #include "ReportingColumn.h"
 
-namespace models {
-
-ReportingColumn::ReportingColumn()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -185,25 +185,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetGroupDescription.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupInputCreate.", nameof(assetGroupDescription));
+                throw new JsonException("Property is required for class AssetGroupInputCreate: asset_group_description.");
 
             if (!assetGroupName.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupInputCreate.", nameof(assetGroupName));
+                throw new JsonException("Property is required for class AssetGroupInputCreate: asset_group_name.");
 
             if (!assetGroupTypes.IsSet)
-                throw new ArgumentException("Property is required for class AssetGroupInputCreate.", nameof(assetGroupTypes));
+                throw new JsonException("Property is required for class AssetGroupInputCreate: asset_group_types.");
 
             if (assetGroupDescription.IsSet && assetGroupDescription.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupDescription), "Property is not nullable for class AssetGroupInputCreate.");
+                throw new JsonException("Property is not nullable for class AssetGroupInputCreate: asset_group_description.");
 
             if (assetGroupName.IsSet && assetGroupName.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupName), "Property is not nullable for class AssetGroupInputCreate.");
+                throw new JsonException("Property is not nullable for class AssetGroupInputCreate: asset_group_name.");
 
             if (assetGroupTypes.IsSet && assetGroupTypes.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupTypes), "Property is not nullable for class AssetGroupInputCreate.");
+                throw new JsonException("Property is not nullable for class AssetGroupInputCreate: asset_group_types.");
 
             if (assetGroup.IsSet && assetGroup.Value == null)
-                throw new ArgumentNullException(nameof(assetGroup), "Property is not nullable for class AssetGroupInputCreate.");
+                throw new JsonException("Property is not nullable for class AssetGroupInputCreate: asset_group.");
 
             return new AssetGroupInputCreate(assetGroupDescription.Value!, assetGroupName.Value!, assetGroupTypes.Value!, assetGroup);
         }
@@ -214,7 +214,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupInputCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupInputCreate assetGroupInputCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -229,20 +228,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupInputCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupInputCreate assetGroupInputCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (assetGroupInputCreate.AssetGroupDescription == null)
-                throw new ArgumentNullException(nameof(assetGroupInputCreate.AssetGroupDescription), "Property is required for class AssetGroupInputCreate.");
-
-            if (assetGroupInputCreate.AssetGroupName == null)
-                throw new ArgumentNullException(nameof(assetGroupInputCreate.AssetGroupName), "Property is required for class AssetGroupInputCreate.");
-
-            if (assetGroupInputCreate.AssetGroupTypes == null)
-                throw new ArgumentNullException(nameof(assetGroupInputCreate.AssetGroupTypes), "Property is required for class AssetGroupInputCreate.");
-
             if (assetGroupInputCreate.AssetGroupOption.IsSet && assetGroupInputCreate.AssetGroup == null)
-                throw new ArgumentNullException(nameof(assetGroupInputCreate.AssetGroup), "Property is required for class AssetGroupInputCreate.");
+                throw new JsonException("Cannot write null property AssetGroupInputCreate.AssetGroup to non-nullable JSON property 'asset_group'.");
 
             writer.WriteString("asset_group_description", assetGroupInputCreate.AssetGroupDescription);
 

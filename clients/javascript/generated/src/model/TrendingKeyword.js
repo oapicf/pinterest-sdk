@@ -19,7 +19,7 @@ import TrendingKeywordDemographics from './TrendingKeywordDemographics';
 /**
  * The TrendingKeyword model module.
  * @module model/TrendingKeyword
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TrendingKeyword {
     /**

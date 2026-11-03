@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  * AssetGroupDeletion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupDeletion {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> deletedAssetGroups = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid AssetGroupDeleteError>> exceptions = JsonNullable.<List<@Valid AssetGroupDeleteError>>undefined();
 
   public AssetGroupDeletion deletedAssetGroups(List<String> deletedAssetGroups) {
@@ -70,7 +67,7 @@ public class AssetGroupDeletion {
   }
 
   public AssetGroupDeletion addExceptionsItem(AssetGroupDeleteError exceptionsItem) {
-    if (this.exceptions == null || !this.exceptions.isPresent()) {
+    if (this.exceptions == null || !this.exceptions.isPresent() || this.exceptions.get() == null) {
       this.exceptions = JsonNullable.of(new ArrayList<>());
     }
     this.exceptions.get().add(exceptionsItem);
@@ -81,8 +78,8 @@ public class AssetGroupDeletion {
    * Get exceptions
    * @return exceptions
    */
-  @Valid 
-  @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("exceptions")
   public JsonNullable<List<@Valid AssetGroupDeleteError>> getExceptions() {
     return exceptions;

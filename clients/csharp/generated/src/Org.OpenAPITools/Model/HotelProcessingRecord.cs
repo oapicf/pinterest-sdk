@@ -204,16 +204,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class HotelProcessingRecord.");
+                throw new JsonException("Property is not nullable for class HotelProcessingRecord: errors.");
 
             if (hotelId.IsSet && hotelId.Value == null)
-                throw new ArgumentNullException(nameof(hotelId), "Property is not nullable for class HotelProcessingRecord.");
+                throw new JsonException("Property is not nullable for class HotelProcessingRecord: hotel_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class HotelProcessingRecord.");
+                throw new JsonException("Property is not nullable for class HotelProcessingRecord: status.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class HotelProcessingRecord.");
+                throw new JsonException("Property is not nullable for class HotelProcessingRecord: warnings.");
 
             return new HotelProcessingRecord(errors, hotelId, status, warnings);
         }
@@ -224,7 +224,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="hotelProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, HotelProcessingRecord hotelProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -239,17 +238,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="hotelProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, HotelProcessingRecord hotelProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (hotelProcessingRecord.ErrorsOption.IsSet && hotelProcessingRecord.Errors == null)
-                throw new ArgumentNullException(nameof(hotelProcessingRecord.Errors), "Property is required for class HotelProcessingRecord.");
+                throw new JsonException("Cannot write null property HotelProcessingRecord.Errors to non-nullable JSON property 'errors'.");
 
             if (hotelProcessingRecord.HotelIdOption.IsSet && hotelProcessingRecord.HotelId == null)
-                throw new ArgumentNullException(nameof(hotelProcessingRecord.HotelId), "Property is required for class HotelProcessingRecord.");
+                throw new JsonException("Cannot write null property HotelProcessingRecord.HotelId to non-nullable JSON property 'hotel_id'.");
+
+            if (hotelProcessingRecord.StatusOption.IsSet && hotelProcessingRecord.Status == null)
+                throw new JsonException("Cannot write null property HotelProcessingRecord.Status to non-nullable JSON property 'status'.");
 
             if (hotelProcessingRecord.WarningsOption.IsSet && hotelProcessingRecord.Warnings == null)
-                throw new ArgumentNullException(nameof(hotelProcessingRecord.Warnings), "Property is required for class HotelProcessingRecord.");
+                throw new JsonException("Cannot write null property HotelProcessingRecord.Warnings to non-nullable JSON property 'warnings'.");
 
             if (hotelProcessingRecord.ErrorsOption.IsSet)
             {

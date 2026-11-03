@@ -7,7 +7,7 @@ export const ProductGroupSummaryStatus = {
     Running: 'RUNNING',
     Paused: 'PAUSED',
     Excluded: 'EXCLUDED',
-    Archived: 'ARCHIVED'
+    Archived: 'ARCHIVED',
 } as const;
 export type ProductGroupSummaryStatus = typeof ProductGroupSummaryStatus[keyof typeof ProductGroupSummaryStatus];
 

@@ -18,7 +18,6 @@ public class TrendingKeywordsResponse  {
   * The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.
   */
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.")
-  @Valid
   private List<@Valid TrendingKeyword> trends = new ArrayList<>();
  /**
   * The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.

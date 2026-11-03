@@ -36,14 +36,10 @@ import {
 export interface BulkUpsertRequest {
     /**
      * 
-     * @type {BulkUpsertRequestCreate}
-     * @memberof BulkUpsertRequest
      */
     create?: BulkUpsertRequestCreate;
     /**
      * 
-     * @type {BulkUpsertRequestUpdate}
-     * @memberof BulkUpsertRequest
      */
     update?: BulkUpsertRequestUpdate;
 }

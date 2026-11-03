@@ -6,20 +6,3 @@
 */
 #include "MMMReportLevel.h"
 
-namespace models {
-
-MMMReportLevel::MMMReportLevel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class BoardPrivacyFilter
-{
-public:
-
-    BoardPrivacyFilter();
-    virtual ~BoardPrivacyFilter() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BoardPrivacyFilter,
-        )
-
-private:
+enum class BoardPrivacyFilter {
+    
+    ALL,
+    
+    PUBLIC,
+    
+    PROTECTED,
+    
+    SECRET,
+    
+    PUBLIC_AND_SECRET
+    
 };
 
+inline void to_json(nlohmann::json& j, const BoardPrivacyFilter& value)
+{
+    switch (value)
+    {
+        
+        case BoardPrivacyFilter::ALL: j = "ALL"; break;
+        
+        case BoardPrivacyFilter::PUBLIC: j = "PUBLIC"; break;
+        
+        case BoardPrivacyFilter::PROTECTED: j = "PROTECTED"; break;
+        
+        case BoardPrivacyFilter::SECRET: j = "SECRET"; break;
+        
+        case BoardPrivacyFilter::PUBLIC_AND_SECRET: j = "PUBLIC_AND_SECRET"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BoardPrivacyFilter", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BoardPrivacyFilter& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = BoardPrivacyFilter::ALL;
+        return;
+    }
+    
+    if (j == "PUBLIC")
+    {
+        value = BoardPrivacyFilter::PUBLIC;
+        return;
+    }
+    
+    if (j == "PROTECTED")
+    {
+        value = BoardPrivacyFilter::PROTECTED;
+        return;
+    }
+    
+    if (j == "SECRET")
+    {
+        value = BoardPrivacyFilter::SECRET;
+        return;
+    }
+    
+    if (j == "PUBLIC_AND_SECRET")
+    {
+        value = BoardPrivacyFilter::PUBLIC_AND_SECRET;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BoardPrivacyFilter", &j);
+}
 
 } // namespace models
 

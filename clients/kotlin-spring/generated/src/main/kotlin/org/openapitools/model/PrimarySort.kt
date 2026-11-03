@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Whether to first sort the report by date or by ID
-* Values: BY_ID,BY_DATE
-*/
+ * Whether to first sort the report by date or by ID
+ * Values: BY_ID,BY_DATE
+ */
 enum class PrimarySort(@get:JsonValue val value: kotlin.String) {
 
     BY_ID("BY_ID"),
@@ -28,9 +28,8 @@ enum class PrimarySort(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PrimarySort {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PrimarySort'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PrimarySort'")
         }
     }
 }
-

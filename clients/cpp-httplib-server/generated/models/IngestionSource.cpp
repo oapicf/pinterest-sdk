@@ -6,20 +6,3 @@
 */
 #include "IngestionSource.h"
 
-namespace models {
-
-IngestionSource::IngestionSource()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

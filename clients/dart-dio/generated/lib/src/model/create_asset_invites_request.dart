@@ -106,3 +106,4 @@ class _$CreateAssetInvitesRequestSerializer implements PrimitiveSerializer<Creat
   }
 }
 
+

@@ -37,8 +37,6 @@ public class ScheduleBidMultipliers  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid BidOptionsAudienceMultipliers> audienceMultipliers = new ArrayList<>();
 
   @ApiModelProperty(value = "")

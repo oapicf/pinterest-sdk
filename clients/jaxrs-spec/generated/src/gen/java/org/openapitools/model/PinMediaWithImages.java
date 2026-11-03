@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Pin with multiple images.")
 @JsonTypeName("PinMediaWithImages")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaWithImages   {
-  private @Valid List<@Valid ImageMetadata> items = new ArrayList<>();
+  private List<@Valid ImageMetadata> items = new ArrayList<>();
   public enum MediaTypeEnum {
 
     MULTIPLE_IMAGES(String.valueOf("multiple_images"));
@@ -94,7 +94,7 @@ public class PinMediaWithImages   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  @Valid public List<@Valid ImageMetadata> getItems() {
+  public List<@Valid ImageMetadata> getItems() {
     return items;
   }
 

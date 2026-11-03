@@ -123,3 +123,4 @@ class _$BoardSectionUpdateWithRequiredBodySerializer implements PrimitiveSeriali
   }
 }
 
+

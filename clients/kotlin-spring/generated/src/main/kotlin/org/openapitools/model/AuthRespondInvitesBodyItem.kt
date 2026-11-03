@@ -23,13 +23,13 @@ data class AuthRespondInvitesBodyItem(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("action")
+    @param:JsonProperty("action", required = true)
     @get:JsonProperty("action", required = true) val action: AuthRespondInviteAction,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(min=1,max=25)
     @Schema(required = true, description = "Unique identifier of an invite.")
-    @param:JsonProperty("invite_id")
+    @param:JsonProperty("invite_id", required = true)
     @get:JsonProperty("invite_id", required = true) val inviteId: kotlin.String
 ) {
 

@@ -29,7 +29,7 @@ export const Permissions = {
     CatalogsViewer: 'CATALOGS_VIEWER',
     ProfilePublisher: 'PROFILE_PUBLISHER',
     ConsumerUser: 'CONSUMER_USER',
-    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER'
+    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER',
 } as const;
 export type Permissions = typeof Permissions[keyof typeof Permissions];
 

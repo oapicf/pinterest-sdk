@@ -68,7 +68,6 @@ public enum CatalogTypeEnum {
   * Array with catalogs item operations
   */
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
-  @Valid
   private List<@Valid CatalogsRetailBatchRequestItemsItems> items = new ArrayList<>();
 
 public enum LanguageEnum {

@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class BulkEntityType
-{
-public:
-
-    BulkEntityType();
-    virtual ~BulkEntityType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BulkEntityType,
-        )
-
-private:
+enum class BulkEntityType {
+    
+    CAMPAIGN,
+    
+    AD_GROUP,
+    
+    PRODUCT_GROUP,
+    
+    AD,
+    
+    KEYWORD,
+    
+    LABEL,
+    
+    SCHEDULE,
+    
+    ENTITY_HISTORY
+    
 };
 
+inline void to_json(nlohmann::json& j, const BulkEntityType& value)
+{
+    switch (value)
+    {
+        
+        case BulkEntityType::CAMPAIGN: j = "CAMPAIGN"; break;
+        
+        case BulkEntityType::AD_GROUP: j = "AD_GROUP"; break;
+        
+        case BulkEntityType::PRODUCT_GROUP: j = "PRODUCT_GROUP"; break;
+        
+        case BulkEntityType::AD: j = "AD"; break;
+        
+        case BulkEntityType::KEYWORD: j = "KEYWORD"; break;
+        
+        case BulkEntityType::LABEL: j = "LABEL"; break;
+        
+        case BulkEntityType::SCHEDULE: j = "SCHEDULE"; break;
+        
+        case BulkEntityType::ENTITY_HISTORY: j = "ENTITY_HISTORY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BulkEntityType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BulkEntityType& value)
+{
+    
+    if (j == "CAMPAIGN")
+    {
+        value = BulkEntityType::CAMPAIGN;
+        return;
+    }
+    
+    if (j == "AD_GROUP")
+    {
+        value = BulkEntityType::AD_GROUP;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP")
+    {
+        value = BulkEntityType::PRODUCT_GROUP;
+        return;
+    }
+    
+    if (j == "AD")
+    {
+        value = BulkEntityType::AD;
+        return;
+    }
+    
+    if (j == "KEYWORD")
+    {
+        value = BulkEntityType::KEYWORD;
+        return;
+    }
+    
+    if (j == "LABEL")
+    {
+        value = BulkEntityType::LABEL;
+        return;
+    }
+    
+    if (j == "SCHEDULE")
+    {
+        value = BulkEntityType::SCHEDULE;
+        return;
+    }
+    
+    if (j == "ENTITY_HISTORY")
+    {
+        value = BulkEntityType::ENTITY_HISTORY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BulkEntityType", &j);
+}
 
 } // namespace models
 

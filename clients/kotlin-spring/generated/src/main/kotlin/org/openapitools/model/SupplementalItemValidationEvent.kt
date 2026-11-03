@@ -22,15 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class SupplementalItemValidationEvent(
 
     @Schema(example = "price", required = true, description = "The item attribute referenced by the validation event eg. price, availability, ad_link")
-    @param:JsonProperty("attribute")
+    @param:JsonProperty("attribute", required = true)
     @get:JsonProperty("attribute", required = true) val attribute: kotlin.String,
 
     @Schema(example = "113", required = true, description = "The event code that the item validation event references")
-    @param:JsonProperty("code")
+    @param:JsonProperty("code", required = true)
     @get:JsonProperty("code", required = true) val code: kotlin.Int,
 
     @Schema(example = "Some supplemental item data was not published due to incorrect formatting", required = true, description = "Title message describing the item validation event")
-    @param:JsonProperty("message")
+    @param:JsonProperty("message", required = true)
     @get:JsonProperty("message", required = true) val message: kotlin.String
 ) {
 

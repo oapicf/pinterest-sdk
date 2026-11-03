@@ -19,8 +19,6 @@ public class LabelUpdateRequest  {
   */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
 
-  @Valid
-
   private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
  /**
    * Labels that you are applying to the campaign.

@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictInt, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.catalogs_feed import CatalogsFeed
@@ -35,6 +34,7 @@ from openapi_server.models.feed_processing_results_list200_response import FeedP
 from openapi_server.models.feeds_list200_response import FeedsList200Response
 from openapi_server.models.items_issues_list200_response import ItemsIssuesList200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -60,10 +60,10 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def feeds_list(
-    catalog_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter entities for a given catalog_id. If not given, all catalogs are considered.")] = Query(None, description="Filter entities for a given catalog_id. If not given, all catalogs are considered.", alias="catalog_id", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    catalog_id: Annotated[Optional[str], Field(description="Filter entities for a given catalog_id. If not given, all catalogs are considered.")] = Query(None, description="Filter entities for a given catalog_id. If not given, all catalogs are considered.", alias="catalog_id", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -94,8 +94,8 @@ async def feeds_list(
     response_model_by_alias=True,
 )
 async def feeds_create(
-    catalogs_feed_create_request_schema: CatalogsFeedCreateRequestSchema = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    catalogs_feed_create_request_schema: CatalogsFeedCreateRequestSchema = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read", "catalogs:write"]
     ),
@@ -125,8 +125,8 @@ async def feeds_create(
     response_model_by_alias=True,
 )
 async def feeds_get(
-    feed_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    feed_id: Annotated[str, Field(description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -157,8 +157,8 @@ async def feeds_get(
     response_model_by_alias=True,
 )
 async def feeds_delete(
-    feed_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    feed_id: Annotated[str, Field(description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read", "catalogs:write"]
     ),
@@ -188,9 +188,9 @@ async def feeds_delete(
     response_model_by_alias=True,
 )
 async def feeds_update(
-    feed_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
-    catalogs_feed_update_request_schema: CatalogsFeedUpdateRequestSchema = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    feed_id: Annotated[str, Field(description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
+    catalogs_feed_update_request_schema: CatalogsFeedUpdateRequestSchema = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read", "catalogs:write"]
     ),
@@ -220,8 +220,8 @@ async def feeds_update(
     response_model_by_alias=True,
 )
 async def feeds_ingest(
-    feed_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    feed_id: Annotated[str, Field(description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -248,10 +248,10 @@ async def feeds_ingest(
     response_model_by_alias=True,
 )
 async def feed_processing_results_list(
-    feed_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    feed_id: Annotated[str, Field(description="Unique identifier of a feed.")] = Path(..., description="Unique identifier of a feed.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -278,12 +278,12 @@ async def feed_processing_results_list(
     response_model_by_alias=True,
 )
 async def items_issues_list(
-    processing_result_id: Annotated[str, Field(strict=True, description="Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).")] = Path(..., description="Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).", regex=r"^\d+$"),
-    item_numbers: Annotated[Optional[List[StrictInt]], Field(description="Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")] = Query(None, description="Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.", alias="item_numbers"),
+    processing_result_id: Annotated[str, Field(description="Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).")] = Path(..., description="Unique identifier of a feed processing result. It can be acquired from the \&quot;id\&quot; field of the \&quot;items\&quot; array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).", regex=r"^\d+$"),
+    item_numbers: Annotated[Optional[List[int]], Field(description="Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")] = Query(None, description="Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.", alias="item_numbers"),
     item_validation_issue: Annotated[Optional[CatalogsItemValidationIssue], Field(description="Filter item validation issues that have a given type of item validation issue.")] = Query(None, description="Filter item validation issues that have a given type of item validation issue.", alias="item_validation_issue"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),

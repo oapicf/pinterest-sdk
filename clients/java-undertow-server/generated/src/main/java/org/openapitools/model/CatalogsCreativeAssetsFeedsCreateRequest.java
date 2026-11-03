@@ -32,7 +32,7 @@ import org.openapitools.model.NullableCurrency;
  */
 
 @ApiModel(description = "Request object for creating a feed.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
   private String catalogId;
@@ -63,7 +63,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.

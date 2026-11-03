@@ -36,20 +36,14 @@ import {
 export interface CatalogsItemsRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsRequest
      */
     country: Country;
     /**
      * 
-     * @type {CatalogsItemsPostFilters}
-     * @memberof CatalogsItemsRequest
      */
     filters: CatalogsItemsPostFilters;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsRequestLanguageEnum}
-     * @memberof CatalogsItemsRequest
      */
     language: CatalogsItemsRequestLanguageEnum;
 }
@@ -165,7 +159,7 @@ export const CatalogsItemsRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsRequestLanguageEnum = typeof CatalogsItemsRequestLanguageEnum[keyof typeof CatalogsItemsRequestLanguageEnum];
 

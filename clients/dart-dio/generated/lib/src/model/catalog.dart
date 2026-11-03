@@ -172,3 +172,4 @@ class _$CatalogSerializer implements PrimitiveSerializer<Catalog> {
   }
 }
 
+

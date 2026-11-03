@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,33 +29,25 @@ import jakarta.annotation.Generated;
  * AdAccount
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccount {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Country country;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Currency currency;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AdAccountOwner owner;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String timeZone;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> updatedTime = JsonNullable.<Integer>undefined();
 
   public AdAccount() {
@@ -101,7 +92,7 @@ public class AdAccount {
    * @return createdTime
    */
   
-  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = " Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = " Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_time")
   public JsonNullable<Integer> getCreatedTime() {
     return createdTime;
@@ -212,7 +203,7 @@ public class AdAccount {
    * Get permissions
    * @return permissions
    */
-  @Valid 
+  
   @Schema(name = "permissions", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("permissions")
   public List<BusinessAccessRole> getPermissions() {
@@ -255,7 +246,7 @@ public class AdAccount {
    * @return updatedTime
    */
   
-  @Schema(name = "updated_time", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "updated_time", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("updated_time")
   public JsonNullable<Integer> getUpdatedTime() {
     return updatedTime;

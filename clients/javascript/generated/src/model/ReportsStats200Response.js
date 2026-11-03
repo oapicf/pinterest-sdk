@@ -17,7 +17,7 @@ import CatalogsReportStats from './CatalogsReportStats';
 /**
  * The ReportsStats200Response model module.
  * @module model/ReportsStats200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ReportsStats200Response {
     /**

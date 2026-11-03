@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductTagsBulkAddRequest", description = "Request body for bulk adding product tags to a pin.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkAddRequest {
 
-  @Valid
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
 
   public ProductTagsBulkAddRequest() {
@@ -57,7 +56,7 @@ public class ProductTagsBulkAddRequest {
    * List of product tags to add. Maximum 24 items allowed.
    * @return productTags
    */
-  @NotNull @Valid @Size(min = 1, max = 24) 
+  @NotNull @Size(min = 1, max = 24) 
   @Schema(name = "product_tags", description = "List of product tags to add. Maximum 24 items allowed.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_tags")
   public List<@Valid ProductTagItem> getProductTags() {

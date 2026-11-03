@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -58,8 +55,6 @@ data class CatalogsUpdatableCreativeAssetsAttributes(
     @get:JsonProperty("custom_label_4") val customLabel4: kotlin.String? = null,
 
     @Schema(description = "Brief description of the creative assets.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
@@ -72,14 +67,10 @@ data class CatalogsUpdatableCreativeAssetsAttributes(
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(description = "Link to the creative assets page.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
     @Schema(description = "The name of the creative assets.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null,
 

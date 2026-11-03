@@ -249,6 +249,7 @@ class _$CatalogsHotelFeedsUpdateRequestSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsHotelFeedsUpdateRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

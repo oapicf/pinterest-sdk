@@ -206,13 +206,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Property is not nullable for class UsersForIndividualAssetResponse: asset_id.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Property is not nullable for class UsersForIndividualAssetResponse: member_id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Property is not nullable for class UsersForIndividualAssetResponse: permissions.");
 
             return new UsersForIndividualAssetResponse(assetId, memberId, permissions);
         }
@@ -223,7 +223,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="usersForIndividualAssetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UsersForIndividualAssetResponse usersForIndividualAssetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -238,17 +237,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="usersForIndividualAssetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UsersForIndividualAssetResponse usersForIndividualAssetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (usersForIndividualAssetResponse.AssetIdOption.IsSet && usersForIndividualAssetResponse.AssetId == null)
-                throw new ArgumentNullException(nameof(usersForIndividualAssetResponse.AssetId), "Property is required for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Cannot write null property UsersForIndividualAssetResponse.AssetId to non-nullable JSON property 'asset_id'.");
 
             if (usersForIndividualAssetResponse.MemberIdOption.IsSet && usersForIndividualAssetResponse.MemberId == null)
-                throw new ArgumentNullException(nameof(usersForIndividualAssetResponse.MemberId), "Property is required for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Cannot write null property UsersForIndividualAssetResponse.MemberId to non-nullable JSON property 'member_id'.");
 
             if (usersForIndividualAssetResponse.PermissionsOption.IsSet && usersForIndividualAssetResponse.Permissions == null)
-                throw new ArgumentNullException(nameof(usersForIndividualAssetResponse.Permissions), "Property is required for class UsersForIndividualAssetResponse.");
+                throw new JsonException("Cannot write null property UsersForIndividualAssetResponse.Permissions to non-nullable JSON property 'permissions'.");
 
             if (usersForIndividualAssetResponse.AssetIdOption.IsSet)
                 writer.WriteString("asset_id", usersForIndividualAssetResponse.AssetId);

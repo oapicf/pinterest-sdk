@@ -609,34 +609,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class AdCreateRequest.", nameof(adGroupId));
+                throw new JsonException("Property is required for class AdCreateRequest: ad_group_id.");
 
             if (!creativeType.IsSet)
-                throw new ArgumentException("Property is required for class AdCreateRequest.", nameof(creativeType));
+                throw new JsonException("Property is required for class AdCreateRequest: creative_type.");
 
             if (!pinId.IsSet)
-                throw new ArgumentException("Property is required for class AdCreateRequest.", nameof(pinId));
+                throw new JsonException("Property is required for class AdCreateRequest: pin_id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: ad_group_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: creative_type.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: pin_id.");
 
             if (isCarting.IsSet && isCarting.Value == null)
-                throw new ArgumentNullException(nameof(isCarting), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: is_carting.");
 
             if (isPinDeleted.IsSet && isPinDeleted.Value == null)
-                throw new ArgumentNullException(nameof(isPinDeleted), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: is_pin_deleted.");
 
             if (isRemovable.IsSet && isRemovable.Value == null)
-                throw new ArgumentNullException(nameof(isRemovable), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: is_removable.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class AdCreateRequest.");
+                throw new JsonException("Property is not nullable for class AdCreateRequest: status.");
 
             return new AdCreateRequest(adGroupId.Value!, creativeType.Value!.Value!, pinId.Value!, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isPinDeleted, isRemovable, leadFormId, name, quizPinData, status, trackingUrls, viewTrackingUrl);
         }
@@ -647,7 +647,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdCreateRequest adCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -662,14 +661,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdCreateRequest adCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adCreateRequest.AdGroupId == null)
-                throw new ArgumentNullException(nameof(adCreateRequest.AdGroupId), "Property is required for class AdCreateRequest.");
+            if (adCreateRequest.IsCartingOption.IsSet && adCreateRequest.IsCarting == null)
+                throw new JsonException("Cannot write null property AdCreateRequest.IsCarting to non-nullable JSON property 'is_carting'.");
 
-            if (adCreateRequest.PinId == null)
-                throw new ArgumentNullException(nameof(adCreateRequest.PinId), "Property is required for class AdCreateRequest.");
+            if (adCreateRequest.IsPinDeletedOption.IsSet && adCreateRequest.IsPinDeleted == null)
+                throw new JsonException("Cannot write null property AdCreateRequest.IsPinDeleted to non-nullable JSON property 'is_pin_deleted'.");
+
+            if (adCreateRequest.IsRemovableOption.IsSet && adCreateRequest.IsRemovable == null)
+                throw new JsonException("Cannot write null property AdCreateRequest.IsRemovable to non-nullable JSON property 'is_removable'.");
+
+            if (adCreateRequest.StatusOption.IsSet && adCreateRequest.Status == null)
+                throw new JsonException("Cannot write null property AdCreateRequest.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("ad_group_id", adCreateRequest.AdGroupId);
 

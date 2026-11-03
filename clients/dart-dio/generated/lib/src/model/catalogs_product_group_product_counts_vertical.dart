@@ -146,6 +146,7 @@ class _$CatalogsProductGroupProductCountsVerticalSerializer implements Primitive
   }
 }
 
+
 class CatalogsProductGroupProductCountsVerticalCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

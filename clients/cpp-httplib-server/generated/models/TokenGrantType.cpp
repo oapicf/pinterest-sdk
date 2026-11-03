@@ -6,20 +6,3 @@
 */
 #include "TokenGrantType.h"
 
-namespace models {
-
-TokenGrantType::TokenGrantType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

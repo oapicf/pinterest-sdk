@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AttributionWindows.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
 @JsonTypeName("AttributionWindows")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AttributionWindows {
     public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";

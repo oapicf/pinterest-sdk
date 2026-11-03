@@ -76,8 +76,7 @@ class CatalogsBaseFiltersAllOf(BaseModel):
         _items = []
         if self.all_of:
             for _item_all_of in self.all_of:
-                if _item_all_of:
-                    _items.append(_item_all_of.to_dict())
+                _items.append(_item_all_of.to_dict() if _item_all_of is not None else None)
             _dict['all_of'] = _items
         return _dict
 

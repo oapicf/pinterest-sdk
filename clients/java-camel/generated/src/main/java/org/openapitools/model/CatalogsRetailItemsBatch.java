@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -33,7 +32,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemsBatch", description = "Object describing the catalogs retail items batch")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
 
   private String batchId;
@@ -79,7 +78,6 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<Date> createdTime = JsonNullable.<Date>undefined();
 
-  @Valid
   private List<@Valid ItemProcessingRecord> items = new ArrayList<>();
 
   private BatchOperationStatus status;
@@ -165,7 +163,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
    * @return createdTime
    */
-  @NotNull @Valid 
+  /* @Present */ @Valid 
   @Schema(name = "created_time", example = "2024-01-01T20:10:40Z", description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("created_time")
   public JsonNullable<Date> getCreatedTime() {
@@ -193,7 +191,7 @@ public class CatalogsRetailItemsBatch implements CatalogsItemsBatch {
    * Array with the catalogs items processing records part of the catalogs items batch
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", description = "Array with the catalogs items processing records part of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
   public List<@Valid ItemProcessingRecord> getItems() {

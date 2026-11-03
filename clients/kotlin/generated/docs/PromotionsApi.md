@@ -41,9 +41,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **promotionCreate** | [**kotlin.collections.List&lt;PromotionCreate&gt;**](PromotionCreate.md)|  | |
 
 ### Return type
@@ -97,9 +97,9 @@ try {
 ```
 
 ### Parameters
-| **promotionId** | **kotlin.String**| Promotion ID | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **promotionId** | **kotlin.String**| Promotion ID | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
@@ -153,9 +153,9 @@ try {
 ```
 
 ### Parameters
-| **promotionId** | **kotlin.String**| Promotion ID | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **promotionId** | **kotlin.String**| Promotion ID | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 
 ### Return type
@@ -211,11 +211,11 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **order** | [**PinterestLibPaginationOrder**](.md)| The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items. | [optional] [enum: ASCENDING, DESCENDING] |
 
 ### Return type
@@ -269,9 +269,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **promotionBatchUpdate** | [**kotlin.collections.List&lt;PromotionBatchUpdate&gt;**](PromotionBatchUpdate.md)|  | |
 
 ### Return type

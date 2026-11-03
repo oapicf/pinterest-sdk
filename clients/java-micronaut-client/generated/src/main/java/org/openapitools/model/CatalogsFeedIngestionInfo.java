@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   CatalogsFeedIngestionInfo.JSON_PROPERTY_P_R_E_O_R_D_E_R
 })
 @JsonTypeName("CatalogsFeedIngestionInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsFeedIngestionInfo {
     public static final String JSON_PROPERTY_I_N_S_T_O_C_K = "IN_STOCK";

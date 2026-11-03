@@ -39,6 +39,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -58,7 +59,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate {
   public static final String SERIALIZED_NAME_AD_GROUP_IDS = "ad_group_ids";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_IDS)
@@ -78,7 +79,7 @@ public class ConversionProductReportCreate {
   public static final String SERIALIZED_NAME_CLICK_WINDOW_DAYS = "click_window_days";
   @SerializedName(SERIALIZED_NAME_CLICK_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
@@ -88,17 +89,17 @@ public class ConversionProductReportCreate {
   public static final String SERIALIZED_NAME_CONVERSION_PRODUCT_ATTRIBUTION_TYPE = "conversion_product_attribution_type";
   @SerializedName(SERIALIZED_NAME_CONVERSION_PRODUCT_ATTRIBUTION_TYPE)
   @javax.annotation.Nullable
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
   public static final String SERIALIZED_NAME_CONVERSION_PRODUCT_BREAKDOWN = "conversion_product_breakdown";
   @SerializedName(SERIALIZED_NAME_CONVERSION_PRODUCT_BREAKDOWN)
   @javax.annotation.Nullable
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
   public static final String SERIALIZED_NAME_CONVERSION_REPORT_TIME = "conversion_report_time";
   @SerializedName(SERIALIZED_NAME_CONVERSION_REPORT_TIME)
   @javax.annotation.Nullable
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   public static final String SERIALIZED_NAME_END_DATE = "end_date";
   @SerializedName(SERIALIZED_NAME_END_DATE)
@@ -133,7 +134,7 @@ public class ConversionProductReportCreate {
   public static final String SERIALIZED_NAME_VIEW_WINDOW_DAYS = "view_window_days";
   @SerializedName(SERIALIZED_NAME_VIEW_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate() {
   }

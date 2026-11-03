@@ -110,3 +110,4 @@ class _$TrendingKeywordsResponseSerializer implements PrimitiveSerializer<Trendi
   }
 }
 
+

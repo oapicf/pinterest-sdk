@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationAudienceExclude {
     /**
      * 
-     * @type {TargetingSpecOperationAudienceExcludeFieldEnum}
-     * @memberof TargetingSpecOperationAudienceExclude
      */
     field: TargetingSpecOperationAudienceExcludeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationAudienceExclude
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationAudienceExclude
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationAudienceExclude {
  * @export
  */
 export const TargetingSpecOperationAudienceExcludeFieldEnum = {
-    AudienceExclude: 'AUDIENCE_EXCLUDE'
+    AudienceExclude: 'AUDIENCE_EXCLUDE',
 } as const;
 export type TargetingSpecOperationAudienceExcludeFieldEnum = typeof TargetingSpecOperationAudienceExcludeFieldEnum[keyof typeof TargetingSpecOperationAudienceExcludeFieldEnum];
 

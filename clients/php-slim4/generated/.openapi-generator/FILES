@@ -1173,9 +1173,3 @@ phpcs.xml.dist
 phpunit.xml.dist
 public/.htaccess
 public/index.php
-tests/Api/CatalogSupplementalApiTest.php
-tests/Api/ConversionDeletionRequestsApiTest.php
-tests/Api/CustomerSegmentApiTest.php
-tests/Api/ProductTagsApiTest.php
-tests/Api/SchedulesApiTest.php
-tests/Api/TrendsApiTest.php

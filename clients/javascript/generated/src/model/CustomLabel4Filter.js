@@ -17,7 +17,7 @@ import CatalogsProductGroupFilterOperatorTypeCriteria from './CatalogsProductGro
 /**
  * The CustomLabel4Filter model module.
  * @module model/CustomLabel4Filter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomLabel4Filter {
     /**

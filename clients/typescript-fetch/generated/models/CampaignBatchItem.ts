@@ -36,14 +36,10 @@ import {
 export interface CampaignBatchItem {
     /**
      * Campaign data on success.
-     * @type {CampaignBatchResponseData}
-     * @memberof CampaignBatchItem
      */
     data?: CampaignBatchResponseData;
     /**
      * Exceptions on failure.
-     * @type {Array<Exception>}
-     * @memberof CampaignBatchItem
      */
     exceptions?: Array<Exception>;
 }

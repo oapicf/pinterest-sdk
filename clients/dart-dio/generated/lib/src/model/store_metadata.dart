@@ -202,3 +202,4 @@ class _$StoreMetadataSerializer implements PrimitiveSerializer<StoreMetadata> {
   }
 }
 
+

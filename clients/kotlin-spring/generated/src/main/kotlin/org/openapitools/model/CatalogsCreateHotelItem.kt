@@ -29,15 +29,15 @@ data class CatalogsCreateHotelItem(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("attributes")
+    @param:JsonProperty("attributes", required = true)
     @get:JsonProperty("attributes", required = true) val attributes: CatalogsHotelAttributes,
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog hotel id in the merchant namespace")
-    @param:JsonProperty("hotel_id")
+    @param:JsonProperty("hotel_id", required = true)
     @get:JsonProperty("hotel_id", required = true) val hotelId: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) override val operation: CatalogsCreateHotelItem.Operation = kotlin.String.CREATE
 ) : CatalogsHotelBatchItem {
 
@@ -48,12 +48,12 @@ data class CatalogsCreateHotelItem(
     enum class Operation(@get:JsonValue val value: kotlin.String) {
 
         CREATE("CREATE");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }

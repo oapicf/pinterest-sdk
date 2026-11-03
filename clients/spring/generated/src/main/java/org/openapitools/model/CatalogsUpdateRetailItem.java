@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,7 +31,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsUpdateRetailItem", description = "An item to be updated")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsUpdateRetailItem implements CatalogsRetailBatchRequestItemsItems {
 
   private UpdatableItemAttributes attributes;
@@ -74,7 +73,6 @@ public class CatalogsUpdateRetailItem implements CatalogsRetailBatchRequestItems
 
   private OperationEnum operation;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
 
   public CatalogsUpdateRetailItem() {
@@ -159,7 +157,7 @@ public class CatalogsUpdateRetailItem implements CatalogsRetailBatchRequestItems
   }
 
   public CatalogsUpdateRetailItem addUpdateMaskItem(UpdateMaskFieldType updateMaskItem) {
-    if (this.updateMask == null || !this.updateMask.isPresent()) {
+    if (this.updateMask == null || !this.updateMask.isPresent() || this.updateMask.get() == null) {
       this.updateMask = JsonNullable.of(new ArrayList<>());
     }
     this.updateMask.get().add(updateMaskItem);
@@ -170,8 +168,8 @@ public class CatalogsUpdateRetailItem implements CatalogsRetailBatchRequestItems
    * The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
    * @return updateMask
    */
-  @Valid 
-  @Schema(name = "update_mask", example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\",\"promotion_id\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "update_mask", example = "[\"ad_link\",\"adult\",\"age_group\",\"availability\",\"average_review_rating\",\"brand\",\"checkout_enabled\",\"color\",\"condition\",\"custom_label_0\",\"custom_label_1\",\"custom_label_2\",\"custom_label_3\",\"custom_label_4\",\"description\",\"free_shipping_label\",\"free_shipping_limit\",\"gender\",\"google_product_category\",\"gtin\",\"item_group_id\",\"last_updated_time\",\"link\",\"material\",\"min_ad_price\",\"mpn\",\"number_of_ratings\",\"number_of_reviews\",\"pattern\",\"price\",\"product_type\",\"sale_price\",\"shipping\",\"shipping_height\",\"shipping_weight\",\"shipping_width\",\"size\",\"size_system\",\"size_type\",\"tax\",\"title\",\"variant_names\",\"variant_values\",\"promotion_id\"]", description = "The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("update_mask")
   public JsonNullable<List<UpdateMaskFieldType>> getUpdateMask() {
     return updateMask;

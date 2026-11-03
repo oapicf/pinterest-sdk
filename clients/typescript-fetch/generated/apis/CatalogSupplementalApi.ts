@@ -75,46 +75,116 @@ import {
 } from '../models/SupplementalItemsBatchResponse';
 
 export interface CatalogsLocalInventoryItemsBatchOperateRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * 
+     */
     localInventoryItemsBatchCreate: LocalInventoryItemsBatchCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsLocalInventoryItemsPostRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * 
+     */
     localInventoryItemsGetCreate: LocalInventoryItemsGetCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsLocalStoresCreateRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * 
+     */
     localStoreCreate: Array<LocalStoreCreate>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsLocalStoresDeleteRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * List of local store IDs to filter by.
+     */
     ids: Array<string>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsLocalStoresListRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * List of local store IDs to filter by.
+     */
     ids?: Array<string>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface CatalogsLocalStoresUpdateRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * 
+     */
     localStoreBatchUpdate: Array<LocalStoreBatchUpdate>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface CatalogsSupplementalItemsBatchGetRequest {
+    /**
+     * Unique identifier of a catalog.
+     */
     catalogId: string;
+    /**
+     * Unique identifier of an items batch operation.
+     */
     batchId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 

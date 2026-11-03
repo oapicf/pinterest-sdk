@@ -20,7 +20,7 @@ import javax.validation.Valid;
 /**
  * CatalogsFeedCreateRequestSchema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsFeedCreateRequestSchema   {
   @JsonProperty("credentials")
@@ -73,7 +73,7 @@ public class CatalogsFeedCreateRequestSchema   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsFeedCreateRequestSchema credentials(CatalogsFeedCredentials credentials) {
     this.credentials = credentials;

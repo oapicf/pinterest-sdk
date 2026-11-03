@@ -126,10 +126,14 @@ class AudienceSubcategory {
 
       return AudienceSubcategory(
         id: mapValueOfType<String>(json, r'id'),
-        index: num.parse('${json[r'index']}'),
+        index: json[r'index'] == null
+            ? null
+            : num.parse('${json[r'index']}'),
         key: mapValueOfType<String>(json, r'key'),
         name: mapValueOfType<String>(json, r'name'),
-        ratio: num.parse('${json[r'ratio']}'),
+        ratio: json[r'ratio'] == null
+            ? null
+            : num.parse('${json[r'ratio']}'),
       );
     }
     return null;

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cURRENCY.IsSet)
-                throw new ArgumentException("Property is required for class CurrencyFilter.", nameof(cURRENCY));
+                throw new JsonException("Property is required for class CurrencyFilter: CURRENCY.");
 
             if (cURRENCY.IsSet && cURRENCY.Value == null)
-                throw new ArgumentNullException(nameof(cURRENCY), "Property is not nullable for class CurrencyFilter.");
+                throw new JsonException("Property is not nullable for class CurrencyFilter: CURRENCY.");
 
             return new CurrencyFilter(cURRENCY.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="currencyFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CurrencyFilter currencyFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="currencyFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CurrencyFilter currencyFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (currencyFilter.CURRENCY == null)
-                throw new ArgumentNullException(nameof(currencyFilter.CURRENCY), "Property is required for class CurrencyFilter.");
-
             writer.WritePropertyName("CURRENCY");
             JsonSerializer.Serialize(writer, currencyFilter.CURRENCY, jsonSerializerOptions);
         }

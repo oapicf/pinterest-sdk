@@ -5,7 +5,7 @@
  */
 export const AiDisclosureItem = {
     AiModified: 'AI_MODIFIED',
-    SyntheticPerformer: 'SYNTHETIC_PERFORMER'
+    SyntheticPerformer: 'SYNTHETIC_PERFORMER',
 } as const;
 export type AiDisclosureItem = typeof AiDisclosureItem[keyof typeof AiDisclosureItem];
 

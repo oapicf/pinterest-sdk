@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface Interest {
     /**
      * 
-     * @type {string}
-     * @memberof Interest
      */
     canonicalUrl?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Interest
      */
     id?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Interest
      */
     key?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Interest
      */
     name?: string;
 }

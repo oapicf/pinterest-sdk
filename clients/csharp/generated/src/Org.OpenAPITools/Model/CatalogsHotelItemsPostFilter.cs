@@ -216,7 +216,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelItemsPostFilter.CatalogTypeEnum?>(CatalogsHotelItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelItemsPostFilter.CatalogTypeEnum? catalogTypeValue = CatalogsHotelItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelItemsPostFilter.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "hotel_ids":
                             hotelIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -231,19 +236,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelItemsPostFilter.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelItemsPostFilter: catalog_type.");
 
             if (!hotelIds.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelItemsPostFilter.", nameof(hotelIds));
+                throw new JsonException("Property is required for class CatalogsHotelItemsPostFilter: hotel_ids.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsPostFilter: catalog_type.");
 
             if (hotelIds.IsSet && hotelIds.Value == null)
-                throw new ArgumentNullException(nameof(hotelIds), "Property is not nullable for class CatalogsHotelItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsPostFilter: hotel_ids.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsHotelItemsPostFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelItemsPostFilter: catalog_id.");
 
             return new CatalogsHotelItemsPostFilter(catalogType.Value!.Value!, hotelIds.Value!, catalogId);
         }
@@ -254,7 +259,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelItemsPostFilter catalogsHotelItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,14 +273,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelItemsPostFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelItemsPostFilter catalogsHotelItemsPostFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelItemsPostFilter.HotelIds == null)
-                throw new ArgumentNullException(nameof(catalogsHotelItemsPostFilter.HotelIds), "Property is required for class CatalogsHotelItemsPostFilter.");
-
             if (catalogsHotelItemsPostFilter.CatalogIdOption.IsSet && catalogsHotelItemsPostFilter.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelItemsPostFilter.CatalogId), "Property is required for class CatalogsHotelItemsPostFilter.");
+                throw new JsonException("Cannot write null property CatalogsHotelItemsPostFilter.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             var catalogTypeRawValue = CatalogsHotelItemsPostFilter.CatalogTypeEnumToJsonValue(catalogsHotelItemsPostFilter.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

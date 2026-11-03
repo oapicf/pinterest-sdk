@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ConversionProductReportLevel
-{
-public:
-
-    ConversionProductReportLevel();
-    virtual ~ConversionProductReportLevel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionProductReportLevel,
-        )
-
-private:
+enum class ConversionProductReportLevel {
+    
+    ADVERTISER,
+    
+    CAMPAIGN,
+    
+    AD_GROUP
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionProductReportLevel& value)
+{
+    switch (value)
+    {
+        
+        case ConversionProductReportLevel::ADVERTISER: j = "ADVERTISER"; break;
+        
+        case ConversionProductReportLevel::CAMPAIGN: j = "CAMPAIGN"; break;
+        
+        case ConversionProductReportLevel::AD_GROUP: j = "AD_GROUP"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportLevel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionProductReportLevel& value)
+{
+    
+    if (j == "ADVERTISER")
+    {
+        value = ConversionProductReportLevel::ADVERTISER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN")
+    {
+        value = ConversionProductReportLevel::CAMPAIGN;
+        return;
+    }
+    
+    if (j == "AD_GROUP")
+    {
+        value = ConversionProductReportLevel::AD_GROUP;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportLevel", &j);
+}
 
 } // namespace models
 

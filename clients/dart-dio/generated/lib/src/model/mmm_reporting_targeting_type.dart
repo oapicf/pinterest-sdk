@@ -9,27 +9,21 @@ import 'package:built_value/serializer.dart';
 
 part 'mmm_reporting_targeting_type.g.dart';
 
+/// Ad targeting types for MMM report
 class MMMReportingTargetingType extends EnumClass {
 
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'APPTYPE')
   static const MMMReportingTargetingType APPTYPE = _$APPTYPE;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'COUNTRY')
   static const MMMReportingTargetingType COUNTRY = _$COUNTRY;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'CREATIVE_TYPE')
   static const MMMReportingTargetingType CREATIVE_TYPE = _$CREATIVE_TYPE;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'GENDER')
   static const MMMReportingTargetingType GENDER = _$GENDER;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'LOCATION')
   static const MMMReportingTargetingType LOCATION = _$LOCATION;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'PLACEMENT')
   static const MMMReportingTargetingType PLACEMENT = _$PLACEMENT;
-  /// Ad targeting types for MMM report
   @BuiltValueEnumConst(wireName: r'AUDIENCE_INCLUDE')
   static const MMMReportingTargetingType AUDIENCE_INCLUDE = _$AUDIENCE_INCLUDE;
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DeleteBusinessMembership200Response model module.
  * @module model/DeleteBusinessMembership200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class DeleteBusinessMembership200Response {
     /**

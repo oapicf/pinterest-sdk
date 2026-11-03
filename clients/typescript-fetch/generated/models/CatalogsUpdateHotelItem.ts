@@ -29,20 +29,14 @@ import {
 export interface CatalogsUpdateHotelItem {
     /**
      * 
-     * @type {CatalogsUpdatableHotelAttributes}
-     * @memberof CatalogsUpdateHotelItem
      */
     attributes: CatalogsUpdatableHotelAttributes;
     /**
      * The catalog hotel item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsUpdateHotelItem
      */
     hotelId: string;
     /**
      * 
-     * @type {CatalogsUpdateHotelItemOperationEnum}
-     * @memberof CatalogsUpdateHotelItem
      */
     operation: CatalogsUpdateHotelItemOperationEnum;
 }
@@ -52,7 +46,7 @@ export interface CatalogsUpdateHotelItem {
  * @export
  */
 export const CatalogsUpdateHotelItemOperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
 } as const;
 export type CatalogsUpdateHotelItemOperationEnum = typeof CatalogsUpdateHotelItemOperationEnum[keyof typeof CatalogsUpdateHotelItemOperationEnum];
 

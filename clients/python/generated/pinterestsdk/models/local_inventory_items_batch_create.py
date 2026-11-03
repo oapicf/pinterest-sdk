@@ -76,8 +76,7 @@ class LocalInventoryItemsBatchCreate(BaseModel):
         _items = []
         if self.operations:
             for _item_operations in self.operations:
-                if _item_operations:
-                    _items.append(_item_operations.to_dict())
+                _items.append(_item_operations.to_dict() if _item_operations is not None else None)
             _dict['operations'] = _items
         return _dict
 

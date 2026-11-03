@@ -34,7 +34,7 @@ import javax.validation.Valid;
   OrderLineMutationResult.JSON_PROPERTY_ERRORS,
   OrderLineMutationResult.JSON_PROPERTY_ORDER_LINE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OrderLineMutationResult   {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @JsonProperty(JSON_PROPERTY_ERRORS)
@@ -63,7 +63,7 @@ public class OrderLineMutationResult   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Error list if update(s) fail.")
-  @Valid 
+  
   public List<@Valid OrderLineMutationError> getErrors() {
     return errors;
   }
@@ -91,7 +91,7 @@ public class OrderLineMutationResult   {
    **/
   @JsonProperty(value = "order_line")
   @ApiModelProperty(value = "Order Line object array.")
-  @Valid 
+  
   public List<@Valid OrderLine> getOrderLine() {
     return orderLine;
   }

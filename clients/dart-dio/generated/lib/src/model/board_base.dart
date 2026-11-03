@@ -177,6 +177,7 @@ class _$BoardBaseSerializer implements PrimitiveSerializer<BoardBase> {
   }
 }
 
+
 /// a concrete implementation of [BoardBase], since [BoardBase] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $BoardBase implements BoardBase, Built<$BoardBase, $BoardBaseBuilder> {

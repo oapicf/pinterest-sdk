@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ACTIVE,ARCHIVED
-*/
+ * 
+ * Values: ACTIVE,ARCHIVED
+ */
 enum class QueryLabelEntityStatusesItems(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class QueryLabelEntityStatusesItems(@get:JsonValue val value: kotlin.String
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): QueryLabelEntityStatusesItems {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QueryLabelEntityStatusesItems'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QueryLabelEntityStatusesItems'")
         }
     }
 }
-

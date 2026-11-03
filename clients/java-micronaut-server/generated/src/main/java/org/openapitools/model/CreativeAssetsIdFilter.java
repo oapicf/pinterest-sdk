@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CreativeAssetsIdFilter.JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D
 })
 @JsonTypeName("CreativeAssetsIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CreativeAssetsIdFilter {
     public static final String JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D = "CREATIVE_ASSETS_ID";

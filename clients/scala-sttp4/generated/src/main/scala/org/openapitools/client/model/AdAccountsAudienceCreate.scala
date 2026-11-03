@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.AudienceType._
 
   /**
    * Resource create operation model.

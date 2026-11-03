@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'attribution_scope.g.dart';
 
+/// Ad event type used for attribution.
 class AttributionScope extends EnumClass {
 
-  /// Ad event type used for attribution.
   @BuiltValueEnumConst(wireName: r'view')
   static const AttributionScope view = _$view;
-  /// Ad event type used for attribution.
   @BuiltValueEnumConst(wireName: r'engagement')
   static const AttributionScope engagement = _$engagement;
-  /// Ad event type used for attribution.
   @BuiltValueEnumConst(wireName: r'click')
   static const AttributionScope click = _$click;
 

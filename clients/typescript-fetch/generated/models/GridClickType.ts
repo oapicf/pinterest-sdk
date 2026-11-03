@@ -21,7 +21,7 @@
  */
 export const GridClickType = {
     Closeup: 'CLOSEUP',
-    DirectToDestination: 'DIRECT_TO_DESTINATION'
+    DirectToDestination: 'DIRECT_TO_DESTINATION',
 } as const;
 export type GridClickType = typeof GridClickType[keyof typeof GridClickType];
 

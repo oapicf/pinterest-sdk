@@ -30,28 +30,28 @@ data class CatalogsRetailProductMetadata(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("availability")
+    @param:JsonProperty("availability", required = true)
     @get:JsonProperty("availability", required = true) val availability: ProductAvailability,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("currency")
+    @param:JsonProperty("currency", required = true)
     @get:JsonProperty("currency", required = true) val currency: NonNullableCatalogsCurrency,
 
     @Schema(example = "DS0294", required = true, description = "The parent ID of the product.")
-    @param:JsonProperty("item_group_id")
+    @param:JsonProperty("item_group_id", required = true)
     @get:JsonProperty("item_group_id", required = true) val itemGroupId: kotlin.String?,
 
     @Schema(example = "DS0294-L", required = true, description = "The user-created unique ID that represents the product.")
-    @param:JsonProperty("item_id")
+    @param:JsonProperty("item_id", required = true)
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String,
 
     @Schema(example = "24.99", required = true, description = "The price of the product.")
-    @param:JsonProperty("price")
+    @param:JsonProperty("price", required = true)
     @get:JsonProperty("price", required = true) val price: java.math.BigDecimal,
 
     @Schema(example = "14.99", required = true, description = "The discounted price of the product.")
-    @param:JsonProperty("sale_price")
+    @param:JsonProperty("sale_price", required = true)
     @get:JsonProperty("sale_price", required = true) val salePrice: java.math.BigDecimal?
 ) {
 

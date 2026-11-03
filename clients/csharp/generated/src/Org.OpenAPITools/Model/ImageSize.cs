@@ -200,16 +200,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (var1200x.IsSet && var1200x.Value == null)
-                throw new ArgumentNullException(nameof(var1200x), "Property is not nullable for class ImageSize.");
+                throw new JsonException("Property is not nullable for class ImageSize: 1200x.");
 
             if (var150x150.IsSet && var150x150.Value == null)
-                throw new ArgumentNullException(nameof(var150x150), "Property is not nullable for class ImageSize.");
+                throw new JsonException("Property is not nullable for class ImageSize: 150x150.");
 
             if (var400x300.IsSet && var400x300.Value == null)
-                throw new ArgumentNullException(nameof(var400x300), "Property is not nullable for class ImageSize.");
+                throw new JsonException("Property is not nullable for class ImageSize: 400x300.");
 
             if (var600x.IsSet && var600x.Value == null)
-                throw new ArgumentNullException(nameof(var600x), "Property is not nullable for class ImageSize.");
+                throw new JsonException("Property is not nullable for class ImageSize: 600x.");
 
             return new ImageSize(var1200x, var150x150, var400x300, var600x);
         }
@@ -220,7 +220,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageSize"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ImageSize imageSize, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,20 +234,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageSize"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ImageSize imageSize, JsonSerializerOptions jsonSerializerOptions)
         {
             if (imageSize.Var1200xOption.IsSet && imageSize.Var1200x == null)
-                throw new ArgumentNullException(nameof(imageSize.Var1200x), "Property is required for class ImageSize.");
+                throw new JsonException("Cannot write null property ImageSize.Var1200x to non-nullable JSON property '1200x'.");
 
             if (imageSize.Var150x150Option.IsSet && imageSize.Var150x150 == null)
-                throw new ArgumentNullException(nameof(imageSize.Var150x150), "Property is required for class ImageSize.");
+                throw new JsonException("Cannot write null property ImageSize.Var150x150 to non-nullable JSON property '150x150'.");
 
             if (imageSize.Var400x300Option.IsSet && imageSize.Var400x300 == null)
-                throw new ArgumentNullException(nameof(imageSize.Var400x300), "Property is required for class ImageSize.");
+                throw new JsonException("Cannot write null property ImageSize.Var400x300 to non-nullable JSON property '400x300'.");
 
             if (imageSize.Var600xOption.IsSet && imageSize.Var600x == null)
-                throw new ArgumentNullException(nameof(imageSize.Var600x), "Property is required for class ImageSize.");
+                throw new JsonException("Cannot write null property ImageSize.Var600x to non-nullable JSON property '600x'.");
 
             if (imageSize.Var1200xOption.IsSet)
             {

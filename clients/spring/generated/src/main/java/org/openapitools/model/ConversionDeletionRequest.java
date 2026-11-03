@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,13 +27,12 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionDeletionRequest", description = "Conversion deletion request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionDeletionRequest {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private LocalDate createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private JsonNullable<LocalDate> processedTime = JsonNullable.<LocalDate>undefined();
 
@@ -86,7 +84,7 @@ public class ConversionDeletionRequest {
    * @return processedTime
    */
   @Valid 
-  @Schema(name = "processed_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Timestamp when the conversion deletion request was processed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "processed_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Timestamp when the conversion deletion request was processed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("processed_time")
   public JsonNullable<LocalDate> getProcessedTime() {
     return processedTime;

@@ -80,73 +80,195 @@ import {
 } from '../models/PinterestLibError';
 
 export interface BoardSectionsCreateRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * 
+     */
     boardSectionCreate: BoardSectionCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardSectionsDeleteRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * Unique identifier of a board section.
+     */
     sectionId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardSectionsListRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BoardSectionsListPinsRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * Unique identifier of a board section.
+     */
     sectionId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BoardSectionsUpdateRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * Unique identifier of a board section.
+     */
     sectionId: string;
+    /**
+     * 
+     */
     boardSectionUpdateWithRequiredBody: BoardSectionUpdateWithRequiredBody;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardsCreateRequest {
+    /**
+     * 
+     */
     boardCreate: BoardCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardsDeleteRequest {
+    /**
+     * 
+     */
     boardId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardsGetRequest {
+    /**
+     * 
+     */
     boardId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface BoardsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * The privacy level of the board
+     */
     privacy?: BoardPrivacyFilter;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BoardsListPinsRequest {
+    /**
+     * Unique identifier of a board.
+     */
     boardId: string;
+    /**
+     * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+     */
     creativeTypes?: Array<CreativeType>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Specify whether to return 90d and lifetime Pin metrics. Total comments
+     * and total reactions are only available with lifetime Pin metrics. If Pin was
+     * created before `2023-03-20` lifetime metrics will only be available
+     * for Video and Idea Pin formats. Lifetime metrics are available for all Pin
+     * formats since then.
+     */
     pinMetrics?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BoardsUpdateRequest {
+    /**
+     * 
+     */
     boardId: string;
+    /**
+     * 
+     */
     boardWithUpdatePrivacyUpdate: BoardWithUpdatePrivacyUpdate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 

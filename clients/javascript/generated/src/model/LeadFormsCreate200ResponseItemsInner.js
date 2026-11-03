@@ -18,7 +18,7 @@ import PinterestLibBatchItemException from './PinterestLibBatchItemException';
 /**
  * The LeadFormsCreate200ResponseItemsInner model module.
  * @module model/LeadFormsCreate200ResponseItemsInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LeadFormsCreate200ResponseItemsInner {
     /**

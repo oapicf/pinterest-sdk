@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class ProductCategoryDetailLookbackWindow
-{
-public:
-
-    ProductCategoryDetailLookbackWindow();
-    virtual ~ProductCategoryDetailLookbackWindow() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductCategoryDetailLookbackWindow,
-        )
-
-private:
+enum class ProductCategoryDetailLookbackWindow {
+    
+    _90,
+    
+    _180,
+    
+    _365,
+    
+    _730
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductCategoryDetailLookbackWindow& value)
+{
+    switch (value)
+    {
+        
+        case ProductCategoryDetailLookbackWindow::_90: j = 90; break;
+        
+        case ProductCategoryDetailLookbackWindow::_180: j = 180; break;
+        
+        case ProductCategoryDetailLookbackWindow::_365: j = 365; break;
+        
+        case ProductCategoryDetailLookbackWindow::_730: j = 730; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryDetailLookbackWindow", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductCategoryDetailLookbackWindow& value)
+{
+    
+    if (j == 90)
+    {
+        value = ProductCategoryDetailLookbackWindow::_90;
+        return;
+    }
+    
+    if (j == 180)
+    {
+        value = ProductCategoryDetailLookbackWindow::_180;
+        return;
+    }
+    
+    if (j == 365)
+    {
+        value = ProductCategoryDetailLookbackWindow::_365;
+        return;
+    }
+    
+    if (j == 730)
+    {
+        value = ProductCategoryDetailLookbackWindow::_730;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryDetailLookbackWindow", &j);
+}
 
 } // namespace models
 

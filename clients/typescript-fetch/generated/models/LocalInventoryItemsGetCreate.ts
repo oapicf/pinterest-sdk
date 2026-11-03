@@ -29,8 +29,6 @@ import {
 export interface LocalInventoryItemsGetCreate {
     /**
      * Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.
-     * @type {Array<ItemIdStoreCodePair>}
-     * @memberof LocalInventoryItemsGetCreate
      */
     itemFilters: Array<ItemIdStoreCodePair>;
 }

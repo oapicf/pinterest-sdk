@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class UpdateInvitesResultsResponseArray.");
+                throw new JsonException("Property is not nullable for class UpdateInvitesResultsResponseArray: items.");
 
             return new UpdateInvitesResultsResponseArray(items);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateInvitesResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdateInvitesResultsResponseArray updateInvitesResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateInvitesResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdateInvitesResultsResponseArray updateInvitesResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             if (updateInvitesResultsResponseArray.ItemsOption.IsSet && updateInvitesResultsResponseArray.Items == null)
-                throw new ArgumentNullException(nameof(updateInvitesResultsResponseArray.Items), "Property is required for class UpdateInvitesResultsResponseArray.");
+                throw new JsonException("Cannot write null property UpdateInvitesResultsResponseArray.Items to non-nullable JSON property 'items'.");
 
             if (updateInvitesResultsResponseArray.ItemsOption.IsSet)
             {

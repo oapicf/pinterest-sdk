@@ -15,8 +15,8 @@ import jakarta.validation.Valid;
  */
 public class CatalogsProductGroupFiltersRequest   {
 
-    private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
-    private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
     /**
      * Default constructor.
@@ -32,8 +32,8 @@ public class CatalogsProductGroupFiltersRequest   {
      * @param allOf allOf
      */
     public CatalogsProductGroupFiltersRequest(
-        List<CatalogsProductGroupFilterKeys> anyOf, 
-        List<CatalogsProductGroupFilterKeys> allOf
+        List<@Valid CatalogsProductGroupFilterKeys> anyOf, 
+        List<@Valid CatalogsProductGroupFilterKeys> allOf
     ) {
         this.anyOf = anyOf;
         this.allOf = allOf;
@@ -45,11 +45,11 @@ public class CatalogsProductGroupFiltersRequest   {
      * Get anyOf
      * @return anyOf
      */
-    public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
-    public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
@@ -57,11 +57,11 @@ public class CatalogsProductGroupFiltersRequest   {
      * Get allOf
      * @return allOf
      */
-    public List<CatalogsProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
-    public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an update to the campaign level bid multipliers.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Object describing an update to the campaign level bid multipliers.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBidOptionsUpdate   {
   
   private AgeBucketMultipliers ageBucketMultipliers;
@@ -140,7 +140,6 @@ public class CampaignBidOptionsUpdate   {
   @ApiModelProperty(required = true, value = "List of fields to update. Only the fields in the list will be updated.")
   @JsonProperty("update_mask")
   @NotNull
-  @Valid
   public List<CampaignBidOptionsUpdateMaskItems> getUpdateMask() {
     return updateMask;
   }

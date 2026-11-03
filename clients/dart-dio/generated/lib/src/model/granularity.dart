@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'granularity.g.dart';
 
+/// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
 class Granularity extends EnumClass {
 
-  /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
   @BuiltValueEnumConst(wireName: r'TOTAL')
   static const Granularity TOTAL = _$TOTAL;
-  /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
   @BuiltValueEnumConst(wireName: r'DAY')
   static const Granularity DAY = _$DAY;
-  /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
   @BuiltValueEnumConst(wireName: r'HOUR')
   static const Granularity HOUR = _$HOUR;
-  /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
   @BuiltValueEnumConst(wireName: r'WEEK')
   static const Granularity WEEK = _$WEEK;
-  /// Specifies the time interval at which analytics data is broken down. Determines how metrics are grouped within the requested date range. **Note:** The `HOUR` enum no longer provides data for conversion metrics, but it still returns data for non-conversion metrics. All other enums are unchanged.
   @BuiltValueEnumConst(wireName: r'MONTH')
   static const Granularity MONTH = _$MONTH;
 

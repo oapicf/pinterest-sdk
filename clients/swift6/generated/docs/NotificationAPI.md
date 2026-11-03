@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **notificationPost**
 ```swift
-    open class func notificationPost(notificationPostRequest: NotificationPostRequest, completion: @escaping (_ data: NotificationResponse?, _ error: Error?) -> Void)
+    open class func notificationPost(notificationPostRequest: NotificationPostRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> NotificationResponse
 ```
 
 Receive notifications from external partners.
@@ -24,15 +24,11 @@ import OpenAPIClient
 let notificationPostRequest = NotificationPostRequest() // NotificationPostRequest | 
 
 // Receive notifications from external partners.
-NotificationAPI.notificationPost(notificationPostRequest: notificationPostRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await NotificationAPI.notificationPost(notificationPostRequest: notificationPostRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

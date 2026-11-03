@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (isRealtime.IsSet && isRealtime.Value == null)
-                throw new ArgumentNullException(nameof(isRealtime), "Property is not nullable for class TopVideoPinsAnalyticsResponseDateAvailability.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponseDateAvailability: is_realtime.");
 
             if (latestAvailableTimestamp.IsSet && latestAvailableTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(latestAvailableTimestamp), "Property is not nullable for class TopVideoPinsAnalyticsResponseDateAvailability.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponseDateAvailability: latest_available_timestamp.");
 
             return new TopVideoPinsAnalyticsResponseDateAvailability(isRealtime, latestAvailableTimestamp);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponseDateAvailability"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponseDateAvailability topVideoPinsAnalyticsResponseDateAvailability, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,9 +188,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponseDateAvailability"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponseDateAvailability topVideoPinsAnalyticsResponseDateAvailability, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (topVideoPinsAnalyticsResponseDateAvailability.IsRealtimeOption.IsSet && topVideoPinsAnalyticsResponseDateAvailability.IsRealtime == null)
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponseDateAvailability.IsRealtime to non-nullable JSON property 'is_realtime'.");
+
+            if (topVideoPinsAnalyticsResponseDateAvailability.LatestAvailableTimestampOption.IsSet && topVideoPinsAnalyticsResponseDateAvailability.LatestAvailableTimestamp == null)
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponseDateAvailability.LatestAvailableTimestamp to non-nullable JSON property 'latest_available_timestamp'.");
+
             if (topVideoPinsAnalyticsResponseDateAvailability.IsRealtimeOption.IsSet)
                 writer.WriteBoolean("is_realtime", topVideoPinsAnalyticsResponseDateAvailability.IsRealtimeOption.Value!.Value);
 

@@ -9,9 +9,9 @@ import 'package:built_value/serializer.dart';
 
 part 'label_status_bulk_update.g.dart';
 
+/// Set status to `ARCHIVED` to remove the label from the parent entity.
 class LabelStatusBulkUpdate extends EnumClass {
 
-  /// Set status to `ARCHIVED` to remove the label from the parent entity.
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const LabelStatusBulkUpdate ARCHIVED = _$ARCHIVED;
 

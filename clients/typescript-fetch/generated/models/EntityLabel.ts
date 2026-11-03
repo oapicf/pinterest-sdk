@@ -36,26 +36,18 @@ import {
 export interface EntityLabel {
     /**
      * Entity ID to apply label to.
-     * @type {string}
-     * @memberof EntityLabel
      */
     entityId: string;
     /**
      * 
-     * @type {LabelParentType}
-     * @memberof EntityLabel
      */
     entityType?: LabelParentType | null;
     /**
      * Label ID.
-     * @type {string}
-     * @memberof EntityLabel
      */
     labelId: string;
     /**
      * 
-     * @type {EntityLabelStatus}
-     * @memberof EntityLabel
      */
     status?: EntityLabelStatus | null;
 }

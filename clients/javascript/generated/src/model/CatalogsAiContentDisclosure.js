@@ -17,7 +17,7 @@ import CatalogsAiContentDisclosureLabel from './CatalogsAiContentDisclosureLabel
 /**
  * The CatalogsAiContentDisclosure model module.
  * @module model/CatalogsAiContentDisclosure
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsAiContentDisclosure {
     /**

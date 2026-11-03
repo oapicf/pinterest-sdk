@@ -29,14 +29,10 @@ import {
 export interface CatalogsItemValidationDetails {
     /**
      * Attribute that has a validation issue.
-     * @type {NullableCatalogsItemFieldType}
-     * @memberof CatalogsItemValidationDetails
      */
     attributeName: NullableCatalogsItemFieldType | null;
     /**
      * Provided value that caused the validation issue.
-     * @type {string}
-     * @memberof CatalogsItemValidationDetails
      */
     providedValue: string | null;
 }

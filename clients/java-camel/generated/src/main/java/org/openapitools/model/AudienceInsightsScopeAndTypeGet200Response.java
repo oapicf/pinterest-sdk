@@ -24,10 +24,9 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("audience_insights_scope_and_type_get_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsightsScopeAndTypeGet200Response {
 
-  @Valid
   private List<@Valid AudienceDefinition> items = new ArrayList<>();
 
   public AudienceInsightsScopeAndTypeGet200Response() {
@@ -58,7 +57,7 @@ public class AudienceInsightsScopeAndTypeGet200Response {
    * Get items
    * @return items
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid AudienceDefinition> getItems() {

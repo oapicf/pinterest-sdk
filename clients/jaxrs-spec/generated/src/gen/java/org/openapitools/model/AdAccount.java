@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdAccount")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccount   {
   private Country country;
   private Integer createdTime;
@@ -32,7 +32,7 @@ public class AdAccount   {
   private String id;
   private String name;
   private AdAccountOwner owner;
-  private @Valid List<BusinessAccessRole> permissions = new ArrayList<>();
+  private List<BusinessAccessRole> permissions = new ArrayList<>();
   private String timeZone;
   private Integer updatedTime;
 

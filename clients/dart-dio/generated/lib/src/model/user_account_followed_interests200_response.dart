@@ -125,3 +125,4 @@ class _$UserAccountFollowedInterests200ResponseSerializer implements PrimitiveSe
   }
 }
 
+

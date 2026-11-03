@@ -31,8 +31,6 @@ public class CampaignPlanningCurveEstimate  {
   */
   @ApiModelProperty(value = "The estimation points that make up the estimated curve.")
 
-  @Valid
-
   private List<@Valid CampaignPlanningPointEstimate> points = new ArrayList<>();
  /**
    * Estimation type for campaign planning estimated curve

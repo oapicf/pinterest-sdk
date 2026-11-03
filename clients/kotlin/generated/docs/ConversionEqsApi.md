@@ -39,11 +39,11 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **lookbackPeriod** | [**LookbackPeriodOptions**](.md)| Lookback window (number of days). | [enum: 1d, 14d] |
 | **sourcePlatform** | [**SourcePlatformOptions**](.md)| Source platform of event. | [optional] [enum: WEB, MOBILE, MOBILE_ANDROID, MOBILE_IOS, OFFLINE, PINTEREST_WEB, PINTEREST_ANDROID, PINTEREST_IOS, POINT_OF_SALE] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **ingestionSource** | [**IngestionSourceOptions**](.md)| Ingestion source of event. | [optional] [enum: TAG, MMP, FILE_UPLOAD, CONVERSIONS_API, NATIVE] |
 
 ### Return type

@@ -6,20 +6,3 @@
 */
 #include "BatchOperationStatus.h"
 
-namespace models {
-
-BatchOperationStatus::BatchOperationStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

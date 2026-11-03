@@ -29,8 +29,6 @@ import {
 export interface CampaignAdPreviewCreate200ResponseInnerDataOneOf {
     /**
      * 
-     * @type {PinterestLibError}
-     * @memberof CampaignAdPreviewCreate200ResponseInnerDataOneOf
      */
     exceptions: PinterestLibError;
 }

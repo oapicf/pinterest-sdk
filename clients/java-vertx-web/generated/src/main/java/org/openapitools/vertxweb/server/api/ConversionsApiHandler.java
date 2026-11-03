@@ -52,7 +52,7 @@ public class ConversionsApiHandler {
         AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdvertiserDefinedEventsCreateRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter advertiserDefinedEventsCreateRequest is {}", advertiserDefinedEventsCreateRequest);
+        logger.debug("Parameter advertiserDefinedEventsCreateRequest is (body omitted)");
 
         api.advertiserDefinedEventsCreate(adAccountId, advertiserDefinedEventsCreateRequest)
             .onSuccess(apiResponse -> {
@@ -123,7 +123,7 @@ public class ConversionsApiHandler {
         AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdvertiserDefinedEventsCreateRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter advertiserDefinedEventsCreateRequest is {}", advertiserDefinedEventsCreateRequest);
+        logger.debug("Parameter advertiserDefinedEventsCreateRequest is (body omitted)");
 
         api.advertiserDefinedEventsUpdate(adAccountId, advertiserDefinedEventsCreateRequest)
             .onSuccess(apiResponse -> {

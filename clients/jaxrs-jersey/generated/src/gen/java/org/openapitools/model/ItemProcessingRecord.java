@@ -38,7 +38,7 @@ import javax.validation.Valid;
   ItemProcessingRecord.JSON_PROPERTY_STATUS,
   ItemProcessingRecord.JSON_PROPERTY_WARNINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemProcessingRecord   {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @JsonProperty(JSON_PROPERTY_ERRORS)
@@ -75,7 +75,7 @@ public class ItemProcessingRecord   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
-  @Valid 
+  
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }
@@ -143,7 +143,7 @@ public class ItemProcessingRecord   {
    **/
   @JsonProperty(value = "warnings")
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @Valid 
+  
   public List<@Valid ItemValidationEvent> getWarnings() {
     return warnings;
   }

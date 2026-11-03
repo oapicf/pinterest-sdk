@@ -17,7 +17,7 @@ import ProductGroupPromotion from './ProductGroupPromotion';
 /**
  * The ProductGroupPromotionUpdateRequest model module.
  * @module model/ProductGroupPromotionUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductGroupPromotionUpdateRequest {
     /**

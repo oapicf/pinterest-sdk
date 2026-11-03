@@ -621,7 +621,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (currencyInfo.IsSet && currencyInfo.Value == null)
-                throw new ArgumentNullException(nameof(currencyInfo), "Property is not nullable for class SSIOOrderLine.");
+                throw new JsonException("Property is not nullable for class SSIOOrderLine: currency_info.");
 
             return new SSIOOrderLine(acceptedTermsId, acceptedTermsTime, adsManagerOrderLineId, agencyLink, billToCompanyName, billingContactEmail, billingContactFirstname, billingContactLastname, budgetAmount, currencyInfo, endDate, estimatedMonthlySpend, lastModifiedDateTime, mediaContactEmail, mediaContactFirstname, mediaContactLastname, orderName, pinOrderId, pmpName, poNumber, salesforceOrderLineId, startDate);
         }
@@ -632,7 +632,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOOrderLine"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOOrderLine sSIOOrderLine, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -647,9 +646,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOOrderLine"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOOrderLine sSIOOrderLine, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (sSIOOrderLine.CurrencyInfoOption.IsSet && sSIOOrderLine.CurrencyInfo == null)
+                throw new JsonException("Cannot write null property SSIOOrderLine.CurrencyInfo to non-nullable JSON property 'currency_info'.");
+
             if (sSIOOrderLine.AcceptedTermsIdOption.IsSet)
                 if (sSIOOrderLine.AcceptedTermsIdOption.Value != null)
                     writer.WriteString("accepted_terms_id", sSIOOrderLine.AcceptedTermsId);

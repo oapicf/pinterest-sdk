@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'appsflyer_platform.g.dart';
 
+/// Platform options for AppsFlyer audience
 class AppsflyerPlatform extends EnumClass {
 
-  /// Platform options for AppsFlyer audience
   @BuiltValueEnumConst(wireName: r'android')
   static const AppsflyerPlatform android = _$android;
-  /// Platform options for AppsFlyer audience
   @BuiltValueEnumConst(wireName: r'ios')
   static const AppsflyerPlatform ios = _$ios;
 

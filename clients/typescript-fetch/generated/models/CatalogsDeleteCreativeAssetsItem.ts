@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsDeleteCreativeAssetsItem {
     /**
      * The catalog creative assets id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsDeleteCreativeAssetsItem
      */
     creativeAssetsId: string;
     /**
      * 
-     * @type {CatalogsDeleteCreativeAssetsItemOperationEnum}
-     * @memberof CatalogsDeleteCreativeAssetsItem
      */
     operation: CatalogsDeleteCreativeAssetsItemOperationEnum;
 }
@@ -38,7 +34,7 @@ export interface CatalogsDeleteCreativeAssetsItem {
  * @export
  */
 export const CatalogsDeleteCreativeAssetsItemOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type CatalogsDeleteCreativeAssetsItemOperationEnum = typeof CatalogsDeleteCreativeAssetsItemOperationEnum[keyof typeof CatalogsDeleteCreativeAssetsItemOperationEnum];
 

@@ -326,40 +326,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!promotionTitle.IsSet)
-                throw new ArgumentException("Property is required for class PromotionCreate.", nameof(promotionTitle));
+                throw new JsonException("Property is required for class PromotionCreate: promotion_title.");
 
             if (!promotionType.IsSet)
-                throw new ArgumentException("Property is required for class PromotionCreate.", nameof(promotionType));
+                throw new JsonException("Property is required for class PromotionCreate: promotion_type.");
 
             if (promotionTitle.IsSet && promotionTitle.Value == null)
-                throw new ArgumentNullException(nameof(promotionTitle), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: promotion_title.");
 
             if (promotionType.IsSet && promotionType.Value == null)
-                throw new ArgumentNullException(nameof(promotionType), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: promotion_type.");
 
             if (discountStatus.IsSet && discountStatus.Value == null)
-                throw new ArgumentNullException(nameof(discountStatus), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: discount_status.");
 
             if (endTime.IsSet && endTime.Value == null)
-                throw new ArgumentNullException(nameof(endTime), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: end_time.");
 
             if (externalId.IsSet && externalId.Value == null)
-                throw new ArgumentNullException(nameof(externalId), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: external_id.");
 
             if (platformType.IsSet && platformType.Value == null)
-                throw new ArgumentNullException(nameof(platformType), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: platform_type.");
 
             if (promotionCode.IsSet && promotionCode.Value == null)
-                throw new ArgumentNullException(nameof(promotionCode), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: promotion_code.");
 
             if (promotionCustomId.IsSet && promotionCustomId.Value == null)
-                throw new ArgumentNullException(nameof(promotionCustomId), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: promotion_custom_id.");
 
             if (startTime.IsSet && startTime.Value == null)
-                throw new ArgumentNullException(nameof(startTime), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: start_time.");
 
             if (templateValues.IsSet && templateValues.Value == null)
-                throw new ArgumentNullException(nameof(templateValues), "Property is not nullable for class PromotionCreate.");
+                throw new JsonException("Property is not nullable for class PromotionCreate: template_values.");
 
             return new PromotionCreate(promotionTitle.Value!, promotionType.Value!.Value!, discountStatus, endTime, externalId, platformType, promotionCode, promotionCustomId, startTime, templateValues);
         }
@@ -370,7 +370,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PromotionCreate promotionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -385,26 +384,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PromotionCreate promotionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (promotionCreate.PromotionTitle == null)
-                throw new ArgumentNullException(nameof(promotionCreate.PromotionTitle), "Property is required for class PromotionCreate.");
+            if (promotionCreate.DiscountStatusOption.IsSet && promotionCreate.DiscountStatus == null)
+                throw new JsonException("Cannot write null property PromotionCreate.DiscountStatus to non-nullable JSON property 'discount_status'.");
+
+            if (promotionCreate.EndTimeOption.IsSet && promotionCreate.EndTime == null)
+                throw new JsonException("Cannot write null property PromotionCreate.EndTime to non-nullable JSON property 'end_time'.");
 
             if (promotionCreate.ExternalIdOption.IsSet && promotionCreate.ExternalId == null)
-                throw new ArgumentNullException(nameof(promotionCreate.ExternalId), "Property is required for class PromotionCreate.");
+                throw new JsonException("Cannot write null property PromotionCreate.ExternalId to non-nullable JSON property 'external_id'.");
 
             if (promotionCreate.PlatformTypeOption.IsSet && promotionCreate.PlatformType == null)
-                throw new ArgumentNullException(nameof(promotionCreate.PlatformType), "Property is required for class PromotionCreate.");
+                throw new JsonException("Cannot write null property PromotionCreate.PlatformType to non-nullable JSON property 'platform_type'.");
 
             if (promotionCreate.PromotionCodeOption.IsSet && promotionCreate.PromotionCode == null)
-                throw new ArgumentNullException(nameof(promotionCreate.PromotionCode), "Property is required for class PromotionCreate.");
+                throw new JsonException("Cannot write null property PromotionCreate.PromotionCode to non-nullable JSON property 'promotion_code'.");
 
             if (promotionCreate.PromotionCustomIdOption.IsSet && promotionCreate.PromotionCustomId == null)
-                throw new ArgumentNullException(nameof(promotionCreate.PromotionCustomId), "Property is required for class PromotionCreate.");
+                throw new JsonException("Cannot write null property PromotionCreate.PromotionCustomId to non-nullable JSON property 'promotion_custom_id'.");
+
+            if (promotionCreate.StartTimeOption.IsSet && promotionCreate.StartTime == null)
+                throw new JsonException("Cannot write null property PromotionCreate.StartTime to non-nullable JSON property 'start_time'.");
 
             if (promotionCreate.TemplateValuesOption.IsSet && promotionCreate.TemplateValues == null)
-                throw new ArgumentNullException(nameof(promotionCreate.TemplateValues), "Property is required for class PromotionCreate.");
+                throw new JsonException("Cannot write null property PromotionCreate.TemplateValues to non-nullable JSON property 'template_values'.");
 
             writer.WriteString("promotion_title", promotionCreate.PromotionTitle);
 

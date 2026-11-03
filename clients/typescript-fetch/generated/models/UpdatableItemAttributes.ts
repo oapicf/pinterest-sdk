@@ -29,622 +29,416 @@ import {
 export interface UpdatableItemAttributes {
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage0Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage0Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage10Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage10Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage11Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage11Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage12Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage12Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage13Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage13Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage14Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage14Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage15Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage15Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage16Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage16Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage17Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage17Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage18Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage18Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage19Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage19Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage1Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage1Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage2Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage2Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage3Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage3Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage4Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage4Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage5Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage5Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage6Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage6Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage7Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage7Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage8Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage8Tag?: string | null;
     /**
      * Ad image link that supplements main image for shopping campaigns. Image format:- Pixel size at least 75 x 75 Link guidelines:- Include extension in file name - Do not include template or placeholder images in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage9Link?: string | null;
     /**
      * Ad image tag. If you provide an ad_image_x_link, include the image tag with the corresponding ad_image_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adImage9Tag?: string | null;
     /**
      * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking. Must begin with http:// or https://.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adLink?: string | null;
     /**
      * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo0Link?: string | null;
     /**
      * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo0Tag?: string | null;
     /**
      * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo1Link?: string | null;
     /**
      * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo1Tag?: string | null;
     /**
      * Restricted. Ad video link that supplements main video for shopping campaigns. Video format:- Pixel size between 75 x 75 and 9450 x 9450 - File size smaller than 2 GB - Time span between 4 seconds and 15 minutes - Accepted formats: .MP4, .MOV, .M4V Link guidelines:- Include extension in file name - Do not include template or placeholder videos in link - Make URL accessible to Pinterest user-agent - Must start with http:// or https://
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo2Link?: string | null;
     /**
      * Restricted. Ad video tag. If you provide an ad_video_x_link, include the video tag with the corresponding ad_video_x_tag attribute.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     adVideo2Tag?: string | null;
     /**
      * Set this attribute to TRUE if you're submitting items that are considered "adult". These will not be shown on Pinterest.
-     * @type {boolean}
-     * @memberof UpdatableItemAttributes
      */
     adult?: boolean | null;
     /**
      * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): 'newborn', 'infant', 'toddler', 'kids', or 'adult'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     ageGroup?: string | null;
     /**
      * The deep link to the product on the Android app.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     androidDeepLink?: string;
     /**
      * The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     availability?: string;
     /**
      * Average reviews for the item. Can be a number from 1-5.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     averageReviewRating?: number | null;
     /**
      * The brand of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     brand?: string | null;
     /**
      * This attribute is not supported anymore.
-     * @type {boolean}
-     * @memberof UpdatableItemAttributes
      * @deprecated
      */
     checkoutEnabled?: boolean | null;
     /**
      * The primary color of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     color?: string | null;
     /**
      * The condition of the product. Must be one of the following values (upper or lowercased): 'new', 'used', or 'refurbished'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     condition?: string | null;
     /**
      * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     customLabel0?: string | null;
     /**
      * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     customLabel1?: string | null;
     /**
      * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     customLabel2?: string | null;
     /**
      * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     customLabel3?: string | null;
     /**
      * <= 511 characters for retail and creative asset catalogs, <= 127 characters for hotel catalogs. Custom grouping of products.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     customLabel4?: string | null;
     /**
      * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     customNumber0?: number | null;
     /**
      * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     customNumber1?: number | null;
     /**
      * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     customNumber2?: number | null;
     /**
      * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     customNumber3?: number | null;
     /**
      * An attribute for any integer information ranging from 0 to 4,294,967,295, which can be used to group items.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     customNumber4?: number | null;
     /**
      * <= 10000 characters. The description of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     description?: string;
     /**
      * The item is free to ship.
-     * @type {boolean}
-     * @memberof UpdatableItemAttributes
      */
     freeShippingLabel?: boolean | null;
     /**
      * The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     freeShippingLimit?: string | null;
     /**
      * The gender associated with the product. Must be one of the following values (upper or lowercased): 'male', 'female', or 'unisex'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     gender?: string | null;
     /**
      * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     googleProductCategory?: string | null;
     /**
      * 
-     * @type {UpdatableItemAttributesGtin}
-     * @memberof UpdatableItemAttributes
      */
     gtin?: UpdatableItemAttributesGtin | null;
     /**
      * <= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      * @deprecated
      */
     id?: string;
     /**
      * Installment price of the product. Expected format: <payment_count>:<payment_amount> <currency>
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     installmentPrice?: string | null;
     /**
      * The deep link to the product on the iOS app.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     iosDeepLink?: string;
     /**
      * <= 127 characters. The parent ID of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     itemGroupId?: string | null;
     /**
      * The millisecond timestamp when the item was lastly modified by the merchant.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     lastUpdatedTime?: number | null;
     /**
      * <= 511 characters. The landing page for the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     link?: string;
     /**
      * The material used to make the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     material?: string | null;
     /**
      * The minimum advertised price of the product. It supports the following formats: "19.99 USD", "19.99USD" and "19.99". If the currency is not included, we default to US dollars.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     minAdPrice?: string | null;
     /**
      * The mobile-optimized version of your landing page. Must begin with http:// or https://.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     mobileLink?: string | null;
     /**
      * Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     mpn?: string | null;
     /**
      * The number of ratings for the item.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     numberOfRatings?: number | null;
     /**
      * The number of reviews available for the item.
-     * @type {number}
-     * @memberof UpdatableItemAttributes
      */
     numberOfReviews?: number | null;
     /**
      * The description of the pattern used for the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     pattern?: string | null;
     /**
      * The price of the product. It supports the following formats: "24.99 USD", "24.99USD" and "24.99". If the currency is not included, we default to US dollars.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     price?: string;
     /**
      * <= 1000 characters. The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by " > ".
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     productType?: string | null;
     /**
      * A unique identifier referencing the promotion associated with this catalog item.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     promotionId?: string | null;
     /**
      * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats: "14.99 USD", "14.99USD" and "14.99".
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     salePrice?: string | null;
     /**
      * Sale price effective date. Expected format: <start_date>/<end_date> (ISO 8601 format)
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     salePriceEffectiveDate?: string | null;
     /**
      * Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     shipping?: string | null;
     /**
      * The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     shippingHeight?: string | null;
     /**
      * The weight of the product. Ensure there is a space between the numeric string and the metric.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     shippingWeight?: string | null;
     /**
      * The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     shippingWidth?: string | null;
     /**
      * The size of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     size?: string | null;
     /**
      * Indicates the country's sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): 'US', 'UK', 'EU', 'DE', 'FR', 'JP', 'CN', 'IT', 'BR', 'MEX', or 'AU'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     sizeSystem?: string | null;
     /**
      * Additional description for the size. Must be one of the following values (upper or lowercased): 'regular', 'petite', 'plus', 'big_and_tall', or 'maternity'.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     sizeType?: string | null;
     /**
      * Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     tax?: string | null;
     /**
      * <= 500 characters. The name of the product.
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     title?: string;
     /**
      * Unit pricing base measure of the product. Expected format: <base_measure> <unit_type>
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     unitPricingBaseMeasure?: string | null;
     /**
      * Unit pricing total measure of the product. Expected format: <total_units> <unit_type>
-     * @type {string}
-     * @memberof UpdatableItemAttributes
      */
     unitPricingMeasure?: string | null;
     /**
      * Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
-     * @type {Array<string>}
-     * @memberof UpdatableItemAttributes
      */
     variantNames?: Array<string> | null;
     /**
      * Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
-     * @type {Array<string>}
-     * @memberof UpdatableItemAttributes
      */
     variantValues?: Array<string> | null;
 }

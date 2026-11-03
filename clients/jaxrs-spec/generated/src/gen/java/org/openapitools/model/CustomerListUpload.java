@@ -24,12 +24,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CustomerListUpload")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpload   {
   private String adAccountId;
   private Integer creationTime;
   private String customerListId;
-  private @Valid List<@Valid ErrorDetail> errorCounts;
+  private List<@Valid ErrorDetail> errorCounts;
   private String id;
   private UserListOperationType operation;
   private RecordCounts recordCounts;
@@ -129,7 +129,7 @@ public class CustomerListUpload   {
   
   @ApiModelProperty(example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", value = "Error counts by error code")
   @JsonProperty("error_counts")
-  @Valid public List<@Valid ErrorDetail> getErrorCounts() {
+  public List<@Valid ErrorDetail> getErrorCounts() {
     return errorCounts;
   }
 

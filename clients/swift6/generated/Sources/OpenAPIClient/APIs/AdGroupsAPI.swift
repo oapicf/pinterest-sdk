@@ -109,7 +109,7 @@ open class AdGroupsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "ad_group_ids": (wrappedValue: adGroupIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -121,7 +121,8 @@ open class AdGroupsAPI {
             "conversion_report_time": (wrappedValue: conversionReportTime?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "aggregate_report_rows": (wrappedValue: aggregateReportRows?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "reporting_timezone": (wrappedValue: reportingTimezone?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -568,7 +569,7 @@ open class AdGroupsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "order": (wrappedValue: order?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -576,7 +577,8 @@ open class AdGroupsAPI {
             "ad_group_ids": (wrappedValue: adGroupIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "entity_statuses": (wrappedValue: entityStatuses?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "translate_interests_to_names": (wrappedValue: translateInterestsToNames?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -695,7 +697,7 @@ open class AdGroupsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "ad_group_ids": (wrappedValue: adGroupIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "start_date": (wrappedValue: startDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "end_date": (wrappedValue: endDate.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -710,7 +712,8 @@ open class AdGroupsAPI {
             "reporting_timezone": (wrappedValue: reportingTimezone?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sort_columns": (wrappedValue: sortColumns?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "sort_ascending": (wrappedValue: sortAscending?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -807,12 +810,13 @@ open class AdGroupsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "order": (wrappedValue: order?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "promotion_ids": (wrappedValue: promotionIds.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

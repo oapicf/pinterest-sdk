@@ -18,7 +18,7 @@ import PlacementMultipliers from './PlacementMultipliers';
 /**
  * The AdvancedAuctionBidOptions model module.
  * @module model/AdvancedAuctionBidOptions
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvancedAuctionBidOptions {
     /**

@@ -294,3 +294,4 @@ class _$CampaignCreateRequestAllOf1Serializer implements PrimitiveSerializer<Cam
   }
 }
 
+

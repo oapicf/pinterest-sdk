@@ -23,7 +23,7 @@
 export const BusinessRoleForInvite = {
     Employee: 'EMPLOYEE',
     BizAdmin: 'BIZ_ADMIN',
-    Partner: 'PARTNER'
+    Partner: 'PARTNER',
 } as const;
 export type BusinessRoleForInvite = typeof BusinessRoleForInvite[keyof typeof BusinessRoleForInvite];
 

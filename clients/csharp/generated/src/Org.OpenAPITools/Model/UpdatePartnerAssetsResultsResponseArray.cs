@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class UpdatePartnerAssetsResultsResponseArray.");
+                throw new JsonException("Property is not nullable for class UpdatePartnerAssetsResultsResponseArray: items.");
 
             return new UpdatePartnerAssetsResultsResponseArray(items);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetsResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdatePartnerAssetsResultsResponseArray updatePartnerAssetsResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatePartnerAssetsResultsResponseArray"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdatePartnerAssetsResultsResponseArray updatePartnerAssetsResultsResponseArray, JsonSerializerOptions jsonSerializerOptions)
         {
             if (updatePartnerAssetsResultsResponseArray.ItemsOption.IsSet && updatePartnerAssetsResultsResponseArray.Items == null)
-                throw new ArgumentNullException(nameof(updatePartnerAssetsResultsResponseArray.Items), "Property is required for class UpdatePartnerAssetsResultsResponseArray.");
+                throw new JsonException("Cannot write null property UpdatePartnerAssetsResultsResponseArray.Items to non-nullable JSON property 'items'.");
 
             if (updatePartnerAssetsResultsResponseArray.ItemsOption.IsSet)
             {

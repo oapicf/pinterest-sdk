@@ -18,7 +18,7 @@ import OrderLineStatus from './OrderLineStatus';
 /**
  * The OrderLine model module.
  * @module model/OrderLine
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class OrderLine {
     /**

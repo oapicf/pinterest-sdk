@@ -23,38 +23,26 @@ import { mapValues } from '../runtime';
 export interface BidOptionsAppTypeMultipliers {
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     androidMobile?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     androidTablet?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     ipad?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     iphone?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     web?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAppTypeMultipliers
      */
     webMobile?: number;
 }

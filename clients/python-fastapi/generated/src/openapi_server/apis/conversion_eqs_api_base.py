@@ -21,7 +21,7 @@ class BaseConversionEqsApi:
     async def conversion_eqs_list(
         self,
         lookback_period: Annotated[LookbackPeriodOptions, Field(description="Lookback window (number of days).")],
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         source_platform: Annotated[Optional[SourcePlatformOptions], Field(description="Source platform of event.")],
         ingestion_source: Annotated[Optional[IngestionSourceOptions], Field(description="Ingestion source of event.")],
     ) -> List[EventQualityScore]:

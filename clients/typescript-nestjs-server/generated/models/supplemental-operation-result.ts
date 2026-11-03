@@ -30,7 +30,7 @@ export interface SupplementalOperationResult {
 }
 export namespace SupplementalOperationResult {
   export const SupplementalTypeEnum = {
-    LocalInventory: 'LOCAL_INVENTORY'
+    LocalInventory: 'LOCAL_INVENTORY',
   } as const;
   export type SupplementalTypeEnum = typeof SupplementalTypeEnum[keyof typeof SupplementalTypeEnum];
 }

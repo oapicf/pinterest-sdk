@@ -105,3 +105,4 @@ class _$HotelIdFilterSerializer implements PrimitiveSerializer<HotelIdFilter> {
   }
 }
 
+

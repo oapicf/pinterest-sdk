@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class WebsiteVerificationMethod
-{
-public:
-
-    WebsiteVerificationMethod();
-    virtual ~WebsiteVerificationMethod() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(WebsiteVerificationMethod,
-        )
-
-private:
+enum class WebsiteVerificationMethod {
+    
+    FILENAME,
+    
+    METATAG,
+    
+    DNSTXT
+    
 };
 
+inline void to_json(nlohmann::json& j, const WebsiteVerificationMethod& value)
+{
+    switch (value)
+    {
+        
+        case WebsiteVerificationMethod::FILENAME: j = "FILENAME"; break;
+        
+        case WebsiteVerificationMethod::METATAG: j = "METATAG"; break;
+        
+        case WebsiteVerificationMethod::DNSTXT: j = "DNSTXT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for WebsiteVerificationMethod", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, WebsiteVerificationMethod& value)
+{
+    
+    if (j == "FILENAME")
+    {
+        value = WebsiteVerificationMethod::FILENAME;
+        return;
+    }
+    
+    if (j == "METATAG")
+    {
+        value = WebsiteVerificationMethod::METATAG;
+        return;
+    }
+    
+    if (j == "DNSTXT")
+    {
+        value = WebsiteVerificationMethod::DNSTXT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for WebsiteVerificationMethod", &j);
+}
 
 } // namespace models
 

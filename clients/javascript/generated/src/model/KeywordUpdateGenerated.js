@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The KeywordUpdateGenerated model module.
  * @module model/KeywordUpdateGenerated
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordUpdateGenerated {
     /**

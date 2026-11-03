@@ -125,8 +125,6 @@ MULTIPLE_MIXED(String.valueOf("multiple_mixed"));
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid PinMediaMetadata> items = new ArrayList<>();
  /**
    * Get images

@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsHotelAddress
 import org.openapitools.model.CatalogsHotelGuestRatings
 import javax.validation.constraints.DecimalMax
@@ -42,8 +39,6 @@ data class CatalogsUpdatableHotelAttributes(
 
     @field:Valid
     @Schema(description = "Hotel address")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("address")
     @get:JsonProperty("address") val address: CatalogsHotelAddress? = null,
 
@@ -85,14 +80,10 @@ data class CatalogsUpdatableHotelAttributes(
 
     @field:Valid
     @Schema(description = "If specified, you must provide all properties")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("guest_ratings")
     @get:JsonProperty("guest_ratings") val guestRatings: CatalogsHotelGuestRatings? = null,
 
     @Schema(description = "Latitude of the hotel.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("latitude")
     @get:JsonProperty("latitude") val latitude: java.math.BigDecimal? = null,
 

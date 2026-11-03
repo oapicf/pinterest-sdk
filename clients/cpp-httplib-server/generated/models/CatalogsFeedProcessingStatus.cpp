@@ -6,20 +6,3 @@
 */
 #include "CatalogsFeedProcessingStatus.h"
 
-namespace models {
-
-CatalogsFeedProcessingStatus::CatalogsFeedProcessingStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

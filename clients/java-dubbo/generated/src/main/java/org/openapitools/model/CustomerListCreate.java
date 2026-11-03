@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 /**
  * Resource create operation model.
@@ -27,7 +27,7 @@ public class CustomerListCreate implements Serializable {
    * Type of customer list (e.g., EMAIL, IDFA, MAID).
    */
   @JsonProperty("list_type")
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
   /**
    * Customer list name.

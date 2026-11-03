@@ -159,16 +159,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsGetRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsGetRequest: catalog_id.");
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdvancedAuctionItemsGetRequest.", nameof(items));
+                throw new JsonException("Property is required for class AdvancedAuctionItemsGetRequest: items.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class AdvancedAuctionItemsGetRequest.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsGetRequest: catalog_id.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdvancedAuctionItemsGetRequest.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionItemsGetRequest: items.");
 
             return new AdvancedAuctionItemsGetRequest(catalogId.Value!, items.Value!);
         }
@@ -179,7 +179,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsGetRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -194,15 +193,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionItemsGetRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advancedAuctionItemsGetRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsGetRequest.CatalogId), "Property is required for class AdvancedAuctionItemsGetRequest.");
-
-            if (advancedAuctionItemsGetRequest.Items == null)
-                throw new ArgumentNullException(nameof(advancedAuctionItemsGetRequest.Items), "Property is required for class AdvancedAuctionItemsGetRequest.");
-
             writer.WriteString("catalog_id", advancedAuctionItemsGetRequest.CatalogId);
 
             writer.WritePropertyName("items");

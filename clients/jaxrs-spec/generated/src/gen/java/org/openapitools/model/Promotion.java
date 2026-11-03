@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("Promotion")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Promotion   {
   private String adAccountId;
   private DiscountStatus discountStatus;
@@ -37,7 +37,7 @@ public class Promotion   {
   private PromotionType promotionType;
   private Integer startTime;
   private EntityStatus status;
-  private @Valid List<@Valid PromotionTemplateValue> templateValues = new ArrayList<>();
+  private List<@Valid PromotionTemplateValue> templateValues = new ArrayList<>();
 
   public Promotion() {
   }
@@ -303,7 +303,7 @@ public class Promotion   {
   
   @ApiModelProperty(value = "List of values to be inserted in the promotion type-specific template.")
   @JsonProperty("template_values")
-  @Valid  @Size(min=0,max=2)public List<@Valid PromotionTemplateValue> getTemplateValues() {
+   @Size(min=0,max=2)public List<@Valid PromotionTemplateValue> getTemplateValues() {
     return templateValues;
   }
 

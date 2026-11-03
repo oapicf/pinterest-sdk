@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (conversionTagV3GoalMetadata.IsSet && conversionTagV3GoalMetadata.Value == null)
-                throw new ArgumentNullException(nameof(conversionTagV3GoalMetadata), "Property is not nullable for class OptimizationGoalMetadata.");
+                throw new JsonException("Property is not nullable for class OptimizationGoalMetadata: conversion_tag_v3_goal_metadata.");
 
             if (frequencyGoalMetadata.IsSet && frequencyGoalMetadata.Value == null)
-                throw new ArgumentNullException(nameof(frequencyGoalMetadata), "Property is not nullable for class OptimizationGoalMetadata.");
+                throw new JsonException("Property is not nullable for class OptimizationGoalMetadata: frequency_goal_metadata.");
 
             if (scrollupGoalMetadata.IsSet && scrollupGoalMetadata.Value == null)
-                throw new ArgumentNullException(nameof(scrollupGoalMetadata), "Property is not nullable for class OptimizationGoalMetadata.");
+                throw new JsonException("Property is not nullable for class OptimizationGoalMetadata: scrollup_goal_metadata.");
 
             return new OptimizationGoalMetadata(conversionTagV3GoalMetadata, frequencyGoalMetadata, scrollupGoalMetadata);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="optimizationGoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, OptimizationGoalMetadata optimizationGoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,17 +211,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="optimizationGoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, OptimizationGoalMetadata optimizationGoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             if (optimizationGoalMetadata.ConversionTagV3GoalMetadataOption.IsSet && optimizationGoalMetadata.ConversionTagV3GoalMetadata == null)
-                throw new ArgumentNullException(nameof(optimizationGoalMetadata.ConversionTagV3GoalMetadata), "Property is required for class OptimizationGoalMetadata.");
+                throw new JsonException("Cannot write null property OptimizationGoalMetadata.ConversionTagV3GoalMetadata to non-nullable JSON property 'conversion_tag_v3_goal_metadata'.");
 
             if (optimizationGoalMetadata.FrequencyGoalMetadataOption.IsSet && optimizationGoalMetadata.FrequencyGoalMetadata == null)
-                throw new ArgumentNullException(nameof(optimizationGoalMetadata.FrequencyGoalMetadata), "Property is required for class OptimizationGoalMetadata.");
+                throw new JsonException("Cannot write null property OptimizationGoalMetadata.FrequencyGoalMetadata to non-nullable JSON property 'frequency_goal_metadata'.");
 
             if (optimizationGoalMetadata.ScrollupGoalMetadataOption.IsSet && optimizationGoalMetadata.ScrollupGoalMetadata == null)
-                throw new ArgumentNullException(nameof(optimizationGoalMetadata.ScrollupGoalMetadata), "Property is required for class OptimizationGoalMetadata.");
+                throw new JsonException("Cannot write null property OptimizationGoalMetadata.ScrollupGoalMetadata to non-nullable JSON property 'scrollup_goal_metadata'.");
 
             if (optimizationGoalMetadata.ConversionTagV3GoalMetadataOption.IsSet)
             {

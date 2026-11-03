@@ -66,7 +66,7 @@ function Invoke-LeadsExportCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadsExport_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LeadsExportsCreate) {
             throw "Error! The required parameter `LeadsExportsCreate` missing when calling leadsExport_create."
@@ -152,11 +152,11 @@ function Invoke-LeadsExportGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadsExport_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$LeadsExportId) {
             throw "Error! The required parameter `LeadsExportId` missing when calling leadsExport_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{leads_export_id}', [System.Web.HTTPUtility]::UrlEncode($LeadsExportId))
+        $LocalVarUri = $LocalVarUri.replace('{leads_export_id}', [System.Uri]::EscapeDataString([string]$LeadsExportId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `

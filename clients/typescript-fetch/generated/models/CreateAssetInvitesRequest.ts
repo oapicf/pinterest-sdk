@@ -29,8 +29,6 @@ import {
 export interface CreateAssetInvitesRequest {
     /**
      * 
-     * @type {Array<CreateAssetInvitesRequestItem>}
-     * @memberof CreateAssetInvitesRequest
      */
     invites: Array<CreateAssetInvitesRequestItem>;
 }

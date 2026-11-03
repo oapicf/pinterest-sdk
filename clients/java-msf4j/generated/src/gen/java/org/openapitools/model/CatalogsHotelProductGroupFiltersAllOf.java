@@ -13,12 +13,12 @@ import org.openapitools.model.CatalogsHotelProductGroupFilterKeys;
 /**
  * CatalogsHotelProductGroupFiltersAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFiltersAllOf   {
   @JsonProperty("all_of")
-  private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsHotelProductGroupFiltersAllOf allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFiltersAllOf allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -33,11 +33,11 @@ public class CatalogsHotelProductGroupFiltersAllOf   {
    * @return allOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

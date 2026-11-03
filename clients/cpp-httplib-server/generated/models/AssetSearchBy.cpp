@@ -6,20 +6,3 @@
 */
 #include "AssetSearchBy.h"
 
-namespace models {
-
-AssetSearchBy::AssetSearchBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

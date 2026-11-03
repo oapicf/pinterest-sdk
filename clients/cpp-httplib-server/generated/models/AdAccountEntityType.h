@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AdAccountEntityType
-{
-public:
-
-    AdAccountEntityType();
-    virtual ~AdAccountEntityType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdAccountEntityType,
-        )
-
-private:
+enum class AdAccountEntityType {
+    
+    ADVERTISER,
+    
+    CAMPAIGN,
+    
+    AD_GROUP,
+    
+    AD
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdAccountEntityType& value)
+{
+    switch (value)
+    {
+        
+        case AdAccountEntityType::ADVERTISER: j = "ADVERTISER"; break;
+        
+        case AdAccountEntityType::CAMPAIGN: j = "CAMPAIGN"; break;
+        
+        case AdAccountEntityType::AD_GROUP: j = "AD_GROUP"; break;
+        
+        case AdAccountEntityType::AD: j = "AD"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdAccountEntityType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdAccountEntityType& value)
+{
+    
+    if (j == "ADVERTISER")
+    {
+        value = AdAccountEntityType::ADVERTISER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN")
+    {
+        value = AdAccountEntityType::CAMPAIGN;
+        return;
+    }
+    
+    if (j == "AD_GROUP")
+    {
+        value = AdAccountEntityType::AD_GROUP;
+        return;
+    }
+    
+    if (j == "AD")
+    {
+        value = AdAccountEntityType::AD;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdAccountEntityType", &j);
+}
 
 } // namespace models
 

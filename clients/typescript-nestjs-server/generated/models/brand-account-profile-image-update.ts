@@ -10,7 +10,7 @@ export interface BrandAccountProfileImageUpdate {
 export namespace BrandAccountProfileImageUpdate {
   export const ContentTypeEnum = {
     ImageJpeg: 'image/jpeg',
-    ImagePng: 'image/png'
+    ImagePng: 'image/png',
   } as const;
   export type ContentTypeEnum = typeof ContentTypeEnum[keyof typeof ContentTypeEnum];
 }

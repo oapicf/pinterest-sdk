@@ -29,68 +29,46 @@ import {
 export interface AssetGroupBinding {
     /**
      * A list of ad account IDs under the asset group
-     * @type {Array<string>}
-     * @memberof AssetGroupBinding
      */
     adAccountsIds: Array<string>;
     /**
      * Asset group description
-     * @type {string}
-     * @memberof AssetGroupBinding
      */
     assetGroupDescription: string | null;
     /**
      * Asset Group name
-     * @type {string}
-     * @memberof AssetGroupBinding
      */
     assetGroupName: string | null;
     /**
      * Asset group types
-     * @type {Array<string>}
-     * @memberof AssetGroupBinding
      */
     assetGroupTypes: Array<string>;
     /**
      * A list of catalog IDs under asset group
-     * @type {Array<string>}
-     * @memberof AssetGroupBinding
      */
     catalogsIds: Array<string>;
     /**
      * The data of the user that created the asset group.
-     * @type {BusinessAccessUserSummary}
-     * @memberof AssetGroupBinding
      */
     createdBy: BusinessAccessUserSummary;
     /**
      * The creation time of the asset group
-     * @type {number}
-     * @memberof AssetGroupBinding
      */
     createdTime: number | null;
     /**
      * Asset Group ID.
-     * @type {string}
-     * @memberof AssetGroupBinding
      */
     id: string;
     /**
      * The data of the business that owns the asset group.
-     * @type {BusinessAccessUserSummary}
-     * @memberof AssetGroupBinding
      */
     owner: BusinessAccessUserSummary;
     /**
      * A list of profile IDs under asset group
-     * @type {Array<string>}
-     * @memberof AssetGroupBinding
      */
     profilesIds: Array<string>;
     /**
      * The last update time of the asset group
-     * @type {number}
-     * @memberof AssetGroupBinding
      */
     updatedTime: number | null;
 }

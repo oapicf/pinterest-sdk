@@ -22,8 +22,6 @@ public class CampaignsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Campaign> items = new ArrayList<>();
  /**
    * Get bookmark

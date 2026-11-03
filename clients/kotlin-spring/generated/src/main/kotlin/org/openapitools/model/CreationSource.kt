@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The source of conversion events ingestion
-* Values: ADS_API,ADS_MANAGER_REPORTING_PAGE,ADS_MANAGER_REPORT_BUILDER
-*/
+ * The source of conversion events ingestion
+ * Values: ADS_API,ADS_MANAGER_REPORTING_PAGE,ADS_MANAGER_REPORT_BUILDER
+ */
 enum class CreationSource(@get:JsonValue val value: kotlin.String) {
 
     ADS_API("ADS_API"),
@@ -29,9 +29,8 @@ enum class CreationSource(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CreationSource {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreationSource'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreationSource'")
         }
     }
 }
-

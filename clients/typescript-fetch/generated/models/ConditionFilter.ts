@@ -29,8 +29,6 @@ import {
 export interface ConditionFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof ConditionFilter
      */
     cONDITION: CatalogsProductGroupMultipleStringCriteria;
 }

@@ -22,8 +22,6 @@ public class TemplatesList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid AccountTemplate> items = new ArrayList<>();
  /**
    * Get bookmark

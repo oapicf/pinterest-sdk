@@ -29,14 +29,10 @@ import {
 export interface BusinessMemberAssetsSummary {
     /**
      * List of ad account IDs and respective permission levels.
-     * @type {Array<AssetIdWithPermissions>}
-     * @memberof BusinessMemberAssetsSummary
      */
     adAccounts?: Array<AssetIdWithPermissions>;
     /**
      * List of profile IDs and respective permission levels.
-     * @type {Array<AssetIdWithPermissions>}
-     * @memberof BusinessMemberAssetsSummary
      */
     profiles?: Array<AssetIdWithPermissions>;
 }

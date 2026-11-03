@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **catalogsAvailableFilterValues**
 ```swift
-    open class func catalogsAvailableFilterValues(catalogId: String, feedId: String? = nil, country: Country? = nil, language: CatalogsLocale? = nil, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsAvailableFilterValues?, _ error: Error?) -> Void)
+    open class func catalogsAvailableFilterValues(catalogId: String, feedId: String? = nil, country: Country? = nil, language: CatalogsLocale? = nil, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsAvailableFilterValues
 ```
 
 List available filter values
@@ -30,15 +30,11 @@ let language = CatalogsLocale() // CatalogsLocale | Language for the Catalogs It
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // List available filter values
-CatalogsAPI.catalogsAvailableFilterValues(catalogId: catalogId, feedId: feedId, country: country, language: language, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogsAPI.catalogsAvailableFilterValues(catalogId: catalogId, feedId: feedId, country: country, language: language, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -69,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **catalogsCreate**
 ```swift
-    open class func catalogsCreate(catalogCreate: CatalogCreate, adAccountId: String? = nil, completion: @escaping (_ data: Catalog?, _ error: Error?) -> Void)
+    open class func catalogsCreate(catalogCreate: CatalogCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> Catalog
 ```
 
 Create catalog
@@ -85,15 +81,11 @@ let catalogCreate = CatalogCreate(catalogType: CatalogsType(), name: "name_examp
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create catalog
-CatalogsAPI.catalogsCreate(catalogCreate: catalogCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogsAPI.catalogsCreate(catalogCreate: catalogCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -121,7 +113,7 @@ Name | Type | Description  | Notes
 
 # **catalogsList**
 ```swift
-    open class func catalogsList(adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: CatalogsList200Response?, _ error: Error?) -> Void)
+    open class func catalogsList(adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsList200Response
 ```
 
 List catalogs
@@ -138,15 +130,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List catalogs
-CatalogsAPI.catalogsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogsAPI.catalogsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

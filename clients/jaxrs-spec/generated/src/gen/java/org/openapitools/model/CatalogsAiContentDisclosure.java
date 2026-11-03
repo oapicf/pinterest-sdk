@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "AI content disclosure for a single asset of a catalog item.")
 @JsonTypeName("CatalogsAiContentDisclosure")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsAiContentDisclosure   {
-  private @Valid List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();
+  private List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();
   private String url;
 
   public CatalogsAiContentDisclosure() {

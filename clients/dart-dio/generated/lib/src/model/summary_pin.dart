@@ -200,3 +200,4 @@ class _$SummaryPinSerializer implements PrimitiveSerializer<SummaryPin> {
   }
 }
 
+

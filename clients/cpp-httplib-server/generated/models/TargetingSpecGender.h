@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class TargetingSpecGender
-{
-public:
-
-    TargetingSpecGender();
-    virtual ~TargetingSpecGender() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingSpecGender,
-        )
-
-private:
+enum class TargetingSpecGender {
+    
+    UNKNOWN,
+    
+    MALE,
+    
+    FEMALE
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingSpecGender& value)
+{
+    switch (value)
+    {
+        
+        case TargetingSpecGender::UNKNOWN: j = "unknown"; break;
+        
+        case TargetingSpecGender::MALE: j = "male"; break;
+        
+        case TargetingSpecGender::FEMALE: j = "female"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecGender", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingSpecGender& value)
+{
+    
+    if (j == "unknown")
+    {
+        value = TargetingSpecGender::UNKNOWN;
+        return;
+    }
+    
+    if (j == "male")
+    {
+        value = TargetingSpecGender::MALE;
+        return;
+    }
+    
+    if (j == "female")
+    {
+        value = TargetingSpecGender::FEMALE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecGender", &j);
+}
 
 } // namespace models
 

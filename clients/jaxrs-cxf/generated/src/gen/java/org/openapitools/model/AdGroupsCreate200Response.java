@@ -17,8 +17,6 @@ public class AdGroupsCreate200Response  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid AdGroupsCreate200ResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items

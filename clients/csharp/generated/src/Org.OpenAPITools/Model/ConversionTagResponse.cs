@@ -300,31 +300,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class ConversionTagResponse.", nameof(name));
+                throw new JsonException("Property is required for class ConversionTagResponse: name.");
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class ConversionTagResponse.", nameof(adAccountId));
+                throw new JsonException("Property is required for class ConversionTagResponse: ad_account_id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: name.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: ad_account_id.");
 
             if (codeSnippet.IsSet && codeSnippet.Value == null)
-                throw new ArgumentNullException(nameof(codeSnippet), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: code_snippet.");
 
             if (configs.IsSet && configs.Value == null)
-                throw new ArgumentNullException(nameof(configs), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: configs.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: id.");
 
             if (varVersion.IsSet && varVersion.Value == null)
-                throw new ArgumentNullException(nameof(varVersion), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: version.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class ConversionTagResponse.");
+                throw new JsonException("Property is not nullable for class ConversionTagResponse: status.");
 
             return new ConversionTagResponse(name.Value!, adAccountId.Value!, codeSnippet, configs, enhancedMatchStatus, id, lastFiredTimeMs, varVersion, status);
         }
@@ -335,7 +335,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionTagResponse conversionTagResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -350,26 +349,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionTagResponse conversionTagResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionTagResponse.Name == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.Name), "Property is required for class ConversionTagResponse.");
-
-            if (conversionTagResponse.AdAccountId == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.AdAccountId), "Property is required for class ConversionTagResponse.");
-
             if (conversionTagResponse.CodeSnippetOption.IsSet && conversionTagResponse.CodeSnippet == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.CodeSnippet), "Property is required for class ConversionTagResponse.");
+                throw new JsonException("Cannot write null property ConversionTagResponse.CodeSnippet to non-nullable JSON property 'code_snippet'.");
 
             if (conversionTagResponse.ConfigsOption.IsSet && conversionTagResponse.Configs == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.Configs), "Property is required for class ConversionTagResponse.");
+                throw new JsonException("Cannot write null property ConversionTagResponse.Configs to non-nullable JSON property 'configs'.");
 
             if (conversionTagResponse.IdOption.IsSet && conversionTagResponse.Id == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.Id), "Property is required for class ConversionTagResponse.");
+                throw new JsonException("Cannot write null property ConversionTagResponse.Id to non-nullable JSON property 'id'.");
 
             if (conversionTagResponse.VarVersionOption.IsSet && conversionTagResponse.VarVersion == null)
-                throw new ArgumentNullException(nameof(conversionTagResponse.VarVersion), "Property is required for class ConversionTagResponse.");
+                throw new JsonException("Cannot write null property ConversionTagResponse.VarVersion to non-nullable JSON property 'version'.");
+
+            if (conversionTagResponse.StatusOption.IsSet && conversionTagResponse.Status == null)
+                throw new JsonException("Cannot write null property ConversionTagResponse.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("name", conversionTagResponse.Name);
 

@@ -1158,9 +1158,3 @@ openapiclient/model/video_metadata_with_item_type.lua
 openapiclient/model/video_pin_metric_types.lua
 openapiclient/model/website_verification_method.lua
 openapiclient/model/workload_state.lua
-spec/catalog_supplemental_api_spec.lua
-spec/conversion_deletion_requests_api_spec.lua
-spec/customer_segment_api_spec.lua
-spec/product_tags_api_spec.lua
-spec/schedules_api_spec.lua
-spec/trends_api_spec.lua

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface Exception {
     /**
      * 
-     * @type {number}
-     * @memberof Exception
      */
     code?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Exception
      */
     message: string;
 }

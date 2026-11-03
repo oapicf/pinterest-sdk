@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Bulk campaign delivery estimates response.")
 @JsonTypeName("BulkCampaignDeliveryEstimatesResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesResponse   {
-  private @Valid List<@Valid BulkCampaignDeliveryEstimatesItem> data = new ArrayList<>();
+  private List<@Valid BulkCampaignDeliveryEstimatesItem> data = new ArrayList<>();
 
   public BulkCampaignDeliveryEstimatesResponse() {
   }
@@ -47,7 +47,7 @@ public class BulkCampaignDeliveryEstimatesResponse   {
   
   @ApiModelProperty(required = true, value = "Per-campaign delivery estimate results, in the same order as the request.")
   @JsonProperty(required = true, value = "data")
-  @NotNull @Valid public List<@Valid BulkCampaignDeliveryEstimatesItem> getData() {
+  @NotNull public List<@Valid BulkCampaignDeliveryEstimatesItem> getData() {
     return data;
   }
 

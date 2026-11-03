@@ -110,3 +110,4 @@ class _$UpdateMemberAssetsResultsResponseArraySerializer implements PrimitiveSer
   }
 }
 
+

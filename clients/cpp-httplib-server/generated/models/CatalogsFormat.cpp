@@ -6,20 +6,3 @@
 */
 #include "CatalogsFormat.h"
 
-namespace models {
-
-CatalogsFormat::CatalogsFormat()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

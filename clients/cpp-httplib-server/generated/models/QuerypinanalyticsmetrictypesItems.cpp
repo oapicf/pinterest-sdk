@@ -6,20 +6,3 @@
 */
 #include "QuerypinanalyticsmetrictypesItems.h"
 
-namespace models {
-
-QuerypinanalyticsmetrictypesItems::QuerypinanalyticsmetrictypesItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -17,7 +17,7 @@ import TrendingKeyword from './TrendingKeyword';
 /**
  * The TrendingKeywordsResponse model module.
  * @module model/TrendingKeywordsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TrendingKeywordsResponse {
     /**

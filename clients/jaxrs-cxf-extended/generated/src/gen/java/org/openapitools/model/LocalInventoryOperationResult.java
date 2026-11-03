@@ -26,7 +26,6 @@ public class LocalInventoryOperationResult  {
   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
   */
   @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
-  @Valid
   private List<@Valid SupplementalItemValidationEvent> errors = new ArrayList<>();
 
  /**
@@ -84,7 +83,6 @@ public enum SupplementalTypeEnum {
   * Array with the validation warnings for the item processing record
   */
   @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @Valid
   private List<@Valid SupplementalItemValidationEvent> warnings = new ArrayList<>();
  /**
   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.

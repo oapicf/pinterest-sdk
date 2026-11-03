@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LeadForm")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadForm   {
   private String adAccountId;
   private String completionMessage;
@@ -32,9 +32,9 @@ public class LeadForm   {
   private Boolean hasAcceptedTerms;
   private String id;
   private String name;
-  private @Valid List<@Valid LeadFormPolicyLink> policyLinks = new ArrayList<>();
+  private List<@Valid LeadFormPolicyLink> policyLinks = new ArrayList<>();
   private String privacyPolicyLink;
-  private @Valid List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
   private LeadFormStatus status;
   private Integer updatedTime;
 
@@ -209,7 +209,7 @@ public class LeadForm   {
   
   @ApiModelProperty(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", value = "List of additional policy links to be displayed on the lead form.")
   @JsonProperty("policy_links")
-  @Valid  @Size(min=0,max=3)public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
+   @Size(min=0,max=3)public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
     return policyLinks;
   }
 
@@ -265,7 +265,7 @@ public class LeadForm   {
   
   @ApiModelProperty(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", required = true, value = "List of questions to be displayed on the lead form.")
   @JsonProperty(required = true, value = "questions")
-  @NotNull @Valid  @Size(min=0,max=10)public List<@Valid LeadFormQuestion> getQuestions() {
+  @NotNull  @Size(min=0,max=10)public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
   }
 

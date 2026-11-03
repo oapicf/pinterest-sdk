@@ -88,7 +88,7 @@ public class KeywordsApiHandler {
         KeywordsCreate keywordsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<KeywordsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter keywordsCreate is {}", keywordsCreate);
+        logger.debug("Parameter keywordsCreate is (body omitted)");
 
         api.keywordsCreate(adAccountId, keywordsCreate)
             .onSuccess(apiResponse -> {
@@ -147,7 +147,7 @@ public class KeywordsApiHandler {
         KeywordsUpdate keywordsUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<KeywordsUpdate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter keywordsUpdate is {}", keywordsUpdate);
+        logger.debug("Parameter keywordsUpdate is (body omitted)");
 
         api.keywordsUpdate(adAccountId, keywordsUpdate)
             .onSuccess(apiResponse -> {

@@ -66,7 +66,7 @@ export const AdeColumnType = {
     AdeTotalOfflineConversionProductValue: 'ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE',
     AdeTotalOfflineConversionProductValueInMicroUnits: 'ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_UNITS',
     AdeTotalOfflineConversionProductValueInUsd: 'ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_USD',
-    AdeTotalOfflineConversionProductValueInMicroUsd: 'ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD'
+    AdeTotalOfflineConversionProductValueInMicroUsd: 'ADE_TOTAL_OFFLINE_CONVERSION_PRODUCT_VALUE_IN_MICRO_USD',
 } as const;
 export type AdeColumnType = typeof AdeColumnType[keyof typeof AdeColumnType];
 

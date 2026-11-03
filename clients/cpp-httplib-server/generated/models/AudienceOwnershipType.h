@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AudienceOwnershipType
-{
-public:
-
-    AudienceOwnershipType();
-    virtual ~AudienceOwnershipType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceOwnershipType,
-        )
-
-private:
+enum class AudienceOwnershipType {
+    
+    OWNED,
+    
+    RECEIVED
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceOwnershipType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceOwnershipType::OWNED: j = "OWNED"; break;
+        
+        case AudienceOwnershipType::RECEIVED: j = "RECEIVED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceOwnershipType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceOwnershipType& value)
+{
+    
+    if (j == "OWNED")
+    {
+        value = AudienceOwnershipType::OWNED;
+        return;
+    }
+    
+    if (j == "RECEIVED")
+    {
+        value = AudienceOwnershipType::RECEIVED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceOwnershipType", &j);
+}
 
 } // namespace models
 

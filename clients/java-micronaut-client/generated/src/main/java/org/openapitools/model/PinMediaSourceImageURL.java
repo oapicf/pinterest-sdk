@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   PinMediaSourceImageURL.JSON_PROPERTY_URL
 })
 @JsonTypeName("PinMediaSourceImageURL")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PinMediaSourceImageURL {
     public static final String JSON_PROPERTY_IS_STANDARD = "is_standard";

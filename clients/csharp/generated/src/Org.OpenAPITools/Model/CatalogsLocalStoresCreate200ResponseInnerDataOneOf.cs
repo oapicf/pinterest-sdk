@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf: id.");
 
             if (!exceptions.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.", nameof(exceptions));
+                throw new JsonException("Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf: exceptions.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf: id.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.");
+                throw new JsonException("Property is not nullable for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf: exceptions.");
 
             return new CatalogsLocalStoresCreate200ResponseInnerDataOneOf(id.Value!, exceptions.Value!);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInnerDataOneOf catalogsLocalStoresCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,15 +192,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInnerDataOneOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInnerDataOneOf catalogsLocalStoresCreate200ResponseInnerDataOneOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsLocalStoresCreate200ResponseInnerDataOneOf.Id == null)
-                throw new ArgumentNullException(nameof(catalogsLocalStoresCreate200ResponseInnerDataOneOf.Id), "Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.");
-
-            if (catalogsLocalStoresCreate200ResponseInnerDataOneOf.Exceptions == null)
-                throw new ArgumentNullException(nameof(catalogsLocalStoresCreate200ResponseInnerDataOneOf.Exceptions), "Property is required for class CatalogsLocalStoresCreate200ResponseInnerDataOneOf.");
-
             writer.WriteString("id", catalogsLocalStoresCreate200ResponseInnerDataOneOf.Id);
 
             writer.WritePropertyName("exceptions");

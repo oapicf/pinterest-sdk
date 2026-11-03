@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class CampaignBatchWriteResponseModel.", nameof(items));
+                throw new JsonException("Property is required for class CampaignBatchWriteResponseModel: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CampaignBatchWriteResponseModel.");
+                throw new JsonException("Property is not nullable for class CampaignBatchWriteResponseModel: items.");
 
             return new CampaignBatchWriteResponseModel(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchWriteResponseModel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignBatchWriteResponseModel campaignBatchWriteResponseModel, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchWriteResponseModel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignBatchWriteResponseModel campaignBatchWriteResponseModel, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignBatchWriteResponseModel.Items == null)
-                throw new ArgumentNullException(nameof(campaignBatchWriteResponseModel.Items), "Property is required for class CampaignBatchWriteResponseModel.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, campaignBatchWriteResponseModel.Items, jsonSerializerOptions);
         }

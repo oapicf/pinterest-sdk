@@ -157,6 +157,7 @@ class _$LocalInventoryCreateOperationSerializer implements PrimitiveSerializer<L
   }
 }
 
+
 class LocalInventoryCreateOperationOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATE')

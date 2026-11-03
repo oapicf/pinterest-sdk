@@ -6,20 +6,3 @@
 */
 #include "AttributionActionType.h"
 
-namespace models {
-
-AttributionActionType::AttributionActionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

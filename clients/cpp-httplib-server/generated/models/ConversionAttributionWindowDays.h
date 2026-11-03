@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class ConversionAttributionWindowDays
-{
-public:
-
-    ConversionAttributionWindowDays();
-    virtual ~ConversionAttributionWindowDays() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionAttributionWindowDays,
-        )
-
-private:
+enum class ConversionAttributionWindowDays {
+    
+    _0,
+    
+    _1,
+    
+    _7,
+    
+    _14,
+    
+    _30,
+    
+    _60
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionAttributionWindowDays& value)
+{
+    switch (value)
+    {
+        
+        case ConversionAttributionWindowDays::_0: j = 0; break;
+        
+        case ConversionAttributionWindowDays::_1: j = 1; break;
+        
+        case ConversionAttributionWindowDays::_7: j = 7; break;
+        
+        case ConversionAttributionWindowDays::_14: j = 14; break;
+        
+        case ConversionAttributionWindowDays::_30: j = 30; break;
+        
+        case ConversionAttributionWindowDays::_60: j = 60; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionAttributionWindowDays", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionAttributionWindowDays& value)
+{
+    
+    if (j == 0)
+    {
+        value = ConversionAttributionWindowDays::_0;
+        return;
+    }
+    
+    if (j == 1)
+    {
+        value = ConversionAttributionWindowDays::_1;
+        return;
+    }
+    
+    if (j == 7)
+    {
+        value = ConversionAttributionWindowDays::_7;
+        return;
+    }
+    
+    if (j == 14)
+    {
+        value = ConversionAttributionWindowDays::_14;
+        return;
+    }
+    
+    if (j == 30)
+    {
+        value = ConversionAttributionWindowDays::_30;
+        return;
+    }
+    
+    if (j == 60)
+    {
+        value = ConversionAttributionWindowDays::_60;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionAttributionWindowDays", &j);
+}
 
 } // namespace models
 

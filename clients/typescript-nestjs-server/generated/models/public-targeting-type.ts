@@ -13,7 +13,7 @@ export const PublicTargetingType = {
     Interest: 'INTEREST',
     Keyword: 'KEYWORD',
     AudienceInclude: 'AUDIENCE_INCLUDE',
-    AudienceExclude: 'AUDIENCE_EXCLUDE'
+    AudienceExclude: 'AUDIENCE_EXCLUDE',
 } as const;
 export type PublicTargetingType = typeof PublicTargetingType[keyof typeof PublicTargetingType];
 

@@ -6,20 +6,3 @@
 */
 #include "UserFollowingFeedType.h"
 
-namespace models {
-
-UserFollowingFeedType::UserFollowingFeedType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

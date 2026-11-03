@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'catalogs_status.g.dart';
 
+/// Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
 class CatalogsStatus extends EnumClass {
 
-  /// Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const CatalogsStatus ACTIVE = _$ACTIVE;
-  /// Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
   @BuiltValueEnumConst(wireName: r'INACTIVE')
   static const CatalogsStatus INACTIVE = _$INACTIVE;
 

@@ -87,22 +87,19 @@ class BulkCampaignDeliveryEstimatesItem(BaseModel):
         _items = []
         if self.adgroup_audience_sizes:
             for _item_adgroup_audience_sizes in self.adgroup_audience_sizes:
-                if _item_adgroup_audience_sizes:
-                    _items.append(_item_adgroup_audience_sizes.to_dict())
+                _items.append(_item_adgroup_audience_sizes.to_dict() if _item_adgroup_audience_sizes is not None else None)
             _dict['adgroup_audience_sizes'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in conversion_rates (list)
         _items = []
         if self.conversion_rates:
             for _item_conversion_rates in self.conversion_rates:
-                if _item_conversion_rates:
-                    _items.append(_item_conversion_rates.to_dict())
+                _items.append(_item_conversion_rates.to_dict() if _item_conversion_rates is not None else None)
             _dict['conversion_rates'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in curves (list)
         _items = []
         if self.curves:
             for _item_curves in self.curves:
-                if _item_curves:
-                    _items.append(_item_curves.to_dict())
+                _items.append(_item_curves.to_dict() if _item_curves is not None else None)
             _dict['curves'] = _items
         # override the default output from pydantic by calling `to_dict()` of derived_metrics
         if self.derived_metrics:
@@ -111,8 +108,7 @@ class BulkCampaignDeliveryEstimatesItem(BaseModel):
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         return _dict
 

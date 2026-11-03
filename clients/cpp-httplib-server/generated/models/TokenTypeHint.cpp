@@ -6,20 +6,3 @@
 */
 #include "TokenTypeHint.h"
 
-namespace models {
-
-TokenTypeHint::TokenTypeHint()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

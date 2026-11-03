@@ -22,8 +22,6 @@ public class BusinessPartnerAssetAccessGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid BaseBusinessAssets> items = new ArrayList<>();
  /**
    * Get bookmark

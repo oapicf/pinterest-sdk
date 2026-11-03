@@ -189,3 +189,4 @@ class _$ScheduleBidMultipliersSerializer implements PrimitiveSerializer<Schedule
   }
 }
 
+

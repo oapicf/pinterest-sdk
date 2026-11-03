@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!inviteIds.IsSet)
-                throw new ArgumentException("Property is required for class CancelInvitesRequest.", nameof(inviteIds));
+                throw new JsonException("Property is required for class CancelInvitesRequest: invite_ids.");
 
             if (inviteIds.IsSet && inviteIds.Value == null)
-                throw new ArgumentNullException(nameof(inviteIds), "Property is not nullable for class CancelInvitesRequest.");
+                throw new JsonException("Property is not nullable for class CancelInvitesRequest: invite_ids.");
 
             return new CancelInvitesRequest(inviteIds.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInvitesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CancelInvitesRequest cancelInvitesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInvitesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CancelInvitesRequest cancelInvitesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (cancelInvitesRequest.InviteIds == null)
-                throw new ArgumentNullException(nameof(cancelInvitesRequest.InviteIds), "Property is required for class CancelInvitesRequest.");
-
             writer.WritePropertyName("invite_ids");
             JsonSerializer.Serialize(writer, cancelInvitesRequest.InviteIds, jsonSerializerOptions);
         }

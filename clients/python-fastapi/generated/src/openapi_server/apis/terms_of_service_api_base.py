@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.pinterest_lib_error import PinterestLibError
@@ -17,9 +17,9 @@ class BaseTermsOfServiceApi:
         BaseTermsOfServiceApi.subclasses = BaseTermsOfServiceApi.subclasses + (cls,)
     async def terms_of_service_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        include_html: Annotated[Optional[StrictBool], Field(description="Return HTML in TOS text.")],
-        tos_type: Annotated[Optional[StrictStr], Field(description="Request type.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        include_html: Annotated[Optional[bool], Field(description="Return HTML in TOS text.")],
+        tos_type: Annotated[Optional[str], Field(description="Request type.")],
     ) -> TermsOfService:
         """Get the text of the terms of service and see whether the advertiser has accepted the terms of service."""
         ...

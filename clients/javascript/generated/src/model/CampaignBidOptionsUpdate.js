@@ -24,7 +24,7 @@ import PlacementMultipliers from './PlacementMultipliers';
 /**
  * The CampaignBidOptionsUpdate model module.
  * @module model/CampaignBidOptionsUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignBidOptionsUpdate {
     /**

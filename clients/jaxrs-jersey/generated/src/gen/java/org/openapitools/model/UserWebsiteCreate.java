@@ -32,11 +32,11 @@ import javax.validation.Valid;
   UserWebsiteCreate.JSON_PROPERTY_VERIFICATION_METHOD,
   UserWebsiteCreate.JSON_PROPERTY_WEBSITE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UserWebsiteCreate   {
   public static final String JSON_PROPERTY_VERIFICATION_METHOD = "verification_method";
   @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
   public static final String JSON_PROPERTY_WEBSITE = "website";
   @JsonProperty(JSON_PROPERTY_WEBSITE)

@@ -30,6 +30,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinterestProductCategoriesFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinterestProductCategoriesFilter {
   public static final String SERIALIZED_NAME_P_I_N_T_E_R_E_S_T_P_R_O_D_U_C_T_C_A_T_E_G_O_R_I_E_S = "PINTEREST_PRODUCT_CATEGORIES";
   @SerializedName(SERIALIZED_NAME_P_I_N_T_E_R_E_S_T_P_R_O_D_U_C_T_C_A_T_E_G_O_R_I_E_S)

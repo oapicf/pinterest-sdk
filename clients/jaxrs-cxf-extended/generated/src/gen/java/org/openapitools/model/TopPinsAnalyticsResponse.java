@@ -23,7 +23,6 @@ public class TopPinsAnalyticsResponse  {
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid TopPinsAnalyticsResponsePinsItems> pins = new ArrayList<>();
 
   @ApiModelProperty(value = "")

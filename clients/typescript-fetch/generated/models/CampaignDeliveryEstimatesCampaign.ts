@@ -43,44 +43,30 @@ import {
 export interface CampaignDeliveryEstimatesCampaign {
     /**
      * 
-     * @type {Array<AdGroupDeliveryEstimates>}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     adGroups: Array<AdGroupDeliveryEstimates>;
     /**
      * Duration type of the budget
-     * @type {BudgetDurationType}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     budgetDurationType: BudgetDurationType;
     /**
      * Campaign daily spend cap. When the budget_duration_type is FIXED_DAILY or FLEXIBLE_DAILY, this field is required.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     dailySpendCap?: number;
     /**
      * End date of the date range for an ad campaign, pattern YYYY-MM-DD. Required when budget_duration_type is LIFETIME.
-     * @type {string}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     endDate?: string;
     /**
      * Campaign total spending cap. When the budget_duration_type is LIFETIME, this field is required. The end date field is also required for lifetime spending.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     lifetimeSpendCap?: number;
     /**
      * 
-     * @type {DeliveryEstimateObjectiveType}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     objectiveType: DeliveryEstimateObjectiveType;
     /**
      * Start date of the date range for an ad campaign, pattern YYYY-MM-DD.
-     * @type {string}
-     * @memberof CampaignDeliveryEstimatesCampaign
      */
     startDate: string;
 }

@@ -29,7 +29,6 @@ public class AdvancedAuctionItemsSubmitRequest  {
   * Array of item bid option operations
   */
   @ApiModelProperty(required = true, value = "Array of item bid option operations")
-  @Valid
   private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
  /**
   * Catalog id pertaining to all items

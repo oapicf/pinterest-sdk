@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **msotEventsCreate**
 ```swift
-    open class func msotEventsCreate(adAccountId: String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func msotEventsCreate(adAccountId: String, conversionMSOTEventsCreate: ConversionMSOTEventsCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Send Measurement Source Of Truth (MSOT) attributed conversion events
@@ -25,15 +25,10 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let conversionMSOTEventsCreate = ConversionMSOTEventsCreate(actionTimestamps: [123], adGroupId: "adGroupId_example", attributionModel: AttributionModel(), attributionScope: AttributionScope(), attributionScore: 123, campaignId: "campaignId_example", clickWindow: "clickWindow_example", currency: Currency(), eventId: "eventId_example", eventName: MsotEventName(), eventTimestamp: 123, totalEventTouchpoints: 123, totalEvents: 123, totalEventsFractional: 123, value: 123, viewWindow: "viewWindow_example") // ConversionMSOTEventsCreate | 
 
 // Send Measurement Source Of Truth (MSOT) attributed conversion events
-MsotEventsAPI.msotEventsCreate(adAccountId: adAccountId, conversionMSOTEventsCreate: conversionMSOTEventsCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await MsotEventsAPI.msotEventsCreate(adAccountId: adAccountId, conversionMSOTEventsCreate: conversionMSOTEventsCreate)
+} catch {
+    print(error)
 }
 ```
 

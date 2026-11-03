@@ -23,7 +23,7 @@ data class AdvertiserDefinedEventsCreateRequest(
     @field:Valid
     @get:Size(min=1)
     @Schema(required = true, description = "List of advertiser defined events to create or update")
-    @param:JsonProperty("items")
+    @param:JsonProperty("items", required = true)
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AdvertiserDefinedEventInput>
 ) {
 

@@ -139,3 +139,4 @@ class _$ErrorDetailSerializer implements PrimitiveSerializer<ErrorDetail> {
   }
 }
 
+

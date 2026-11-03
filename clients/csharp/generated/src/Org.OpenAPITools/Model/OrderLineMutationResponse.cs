@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class OrderLineMutationResponse.");
+                throw new JsonException("Property is not nullable for class OrderLineMutationResponse: data.");
 
             return new OrderLineMutationResponse(data);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLineMutationResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, OrderLineMutationResponse orderLineMutationResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLineMutationResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, OrderLineMutationResponse orderLineMutationResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (orderLineMutationResponse.DataOption.IsSet && orderLineMutationResponse.Data == null)
-                throw new ArgumentNullException(nameof(orderLineMutationResponse.Data), "Property is required for class OrderLineMutationResponse.");
+                throw new JsonException("Cannot write null property OrderLineMutationResponse.Data to non-nullable JSON property 'data'.");
 
             if (orderLineMutationResponse.DataOption.IsSet)
             {

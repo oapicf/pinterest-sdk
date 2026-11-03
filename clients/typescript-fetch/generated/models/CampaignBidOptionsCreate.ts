@@ -71,44 +71,30 @@ import {
 export interface CampaignBidOptionsCreate {
     /**
      * Age bucket multipliers for bid adjustments.
-     * @type {AgeBucketMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     ageBucketMultipliers?: AgeBucketMultipliers | null;
     /**
      * App type multipliers for bid adjustments.
-     * @type {AppTypeMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     appTypeMultipliers?: AppTypeMultipliers | null;
     /**
      * Audience multipliers for bid adjustments.
-     * @type {CampaignAudienceMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     audienceMultipliers?: CampaignAudienceMultipliers;
     /**
      * The time window for frequency bid multipliers.
-     * @type {FreqBidMultiplierTimeWindow}
-     * @memberof CampaignBidOptionsCreate
      */
     freqBidMultiplierTimeWindow?: FreqBidMultiplierTimeWindow | null;
     /**
      * Frequency multipliers for bid adjustments.
-     * @type {FrequencyMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     frequencyMultipliers?: FrequencyMultipliers | null;
     /**
      * Gender multipliers for bid adjustments.
-     * @type {GenderMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     genderMultipliers?: GenderMultipliers | null;
     /**
      * Placement multipliers for bid adjustments.
-     * @type {PlacementMultipliers}
-     * @memberof CampaignBidOptionsCreate
      */
     placementMultipliers?: PlacementMultipliers | null;
 }

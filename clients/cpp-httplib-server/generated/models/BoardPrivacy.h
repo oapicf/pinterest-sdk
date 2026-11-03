@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BoardPrivacy
-{
-public:
-
-    BoardPrivacy();
-    virtual ~BoardPrivacy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BoardPrivacy,
-        )
-
-private:
+enum class BoardPrivacy {
+    
+    PUBLIC,
+    
+    PROTECTED,
+    
+    SECRET
+    
 };
 
+inline void to_json(nlohmann::json& j, const BoardPrivacy& value)
+{
+    switch (value)
+    {
+        
+        case BoardPrivacy::PUBLIC: j = "PUBLIC"; break;
+        
+        case BoardPrivacy::PROTECTED: j = "PROTECTED"; break;
+        
+        case BoardPrivacy::SECRET: j = "SECRET"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BoardPrivacy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BoardPrivacy& value)
+{
+    
+    if (j == "PUBLIC")
+    {
+        value = BoardPrivacy::PUBLIC;
+        return;
+    }
+    
+    if (j == "PROTECTED")
+    {
+        value = BoardPrivacy::PROTECTED;
+        return;
+    }
+    
+    if (j == "SECRET")
+    {
+        value = BoardPrivacy::SECRET;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BoardPrivacy", &j);
+}
 
 } // namespace models
 

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface LeadsExports {
     /**
      * ID for the leads export job.
-     * @type {string}
-     * @memberof LeadsExports
      */
     readonly leadsExportId?: string;
 }

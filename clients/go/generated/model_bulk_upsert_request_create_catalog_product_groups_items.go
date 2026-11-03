@@ -85,16 +85,11 @@ func (dst *BulkUpsertRequestCreateCatalogProductGroupsItems) UnmarshalJSON(data 
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(BulkUpsertRequestCreateCatalogProductGroupsItems)")
 	}
 }
 

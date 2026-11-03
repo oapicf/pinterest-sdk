@@ -25,7 +25,7 @@ export const InterestsEnum = {
     HomeDecor: 'HOME_DECOR',
     Parenting: 'PARENTING',
     Travel: 'TRAVEL',
-    Wedding: 'WEDDING'
+    Wedding: 'WEDDING',
 } as const;
 export type InterestsEnum = typeof InterestsEnum[keyof typeof InterestsEnum];
 

@@ -81,7 +81,7 @@ function Get-alogsProductGroupPinsList {
         if (!$ProductGroupId) {
             throw "Error! The required parameter `ProductGroupId` missing when calling catalogsProductGroupPins_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Uri]::EscapeDataString([string]$ProductGroupId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -359,7 +359,7 @@ function Get-alogsProductGroupsDelete {
         if (!$ProductGroupId) {
             throw "Error! The required parameter `ProductGroupId` missing when calling catalogsProductGroups_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Uri]::EscapeDataString([string]$ProductGroupId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -531,7 +531,7 @@ function Get-alogsProductGroupsGet {
         if (!$ProductGroupId) {
             throw "Error! The required parameter `ProductGroupId` missing when calling catalogsProductGroups_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Uri]::EscapeDataString([string]$ProductGroupId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -742,7 +742,7 @@ function Get-alogsProductGroupsProductCountsGet {
         if (!$ProductGroupId) {
             throw "Error! The required parameter `ProductGroupId` missing when calling catalogsProductGroups_productCountsGet."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Uri]::EscapeDataString([string]$ProductGroupId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -838,7 +838,7 @@ function Get-alogsProductGroupsUpdate {
         if (!$ProductGroupId) {
             throw "Error! The required parameter `ProductGroupId` missing when calling catalogsProductGroups_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_id}', [System.Uri]::EscapeDataString([string]$ProductGroupId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

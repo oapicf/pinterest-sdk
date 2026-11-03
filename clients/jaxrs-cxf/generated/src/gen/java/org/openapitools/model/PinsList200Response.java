@@ -22,8 +22,6 @@ public class PinsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Pin> items = new ArrayList<>();
  /**
    * Get bookmark

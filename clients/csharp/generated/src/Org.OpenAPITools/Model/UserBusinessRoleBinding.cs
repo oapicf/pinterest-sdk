@@ -302,13 +302,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (businessRoles.IsSet && businessRoles.Value == null)
-                throw new ArgumentNullException(nameof(businessRoles), "Property is not nullable for class UserBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class UserBusinessRoleBinding: business_roles.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class UserBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class UserBusinessRoleBinding: id.");
 
             if (isSharedPartner.IsSet && isSharedPartner.Value == null)
-                throw new ArgumentNullException(nameof(isSharedPartner), "Property is not nullable for class UserBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class UserBusinessRoleBinding: is_shared_partner.");
 
             return new UserBusinessRoleBinding(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, isSharedPartner, user);
         }
@@ -319,7 +319,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userBusinessRoleBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserBusinessRoleBinding userBusinessRoleBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -334,14 +333,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userBusinessRoleBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserBusinessRoleBinding userBusinessRoleBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             if (userBusinessRoleBinding.BusinessRolesOption.IsSet && userBusinessRoleBinding.BusinessRoles == null)
-                throw new ArgumentNullException(nameof(userBusinessRoleBinding.BusinessRoles), "Property is required for class UserBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property UserBusinessRoleBinding.BusinessRoles to non-nullable JSON property 'business_roles'.");
 
             if (userBusinessRoleBinding.IdOption.IsSet && userBusinessRoleBinding.Id == null)
-                throw new ArgumentNullException(nameof(userBusinessRoleBinding.Id), "Property is required for class UserBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property UserBusinessRoleBinding.Id to non-nullable JSON property 'id'.");
+
+            if (userBusinessRoleBinding.IsSharedPartnerOption.IsSet && userBusinessRoleBinding.IsSharedPartner == null)
+                throw new JsonException("Cannot write null property UserBusinessRoleBinding.IsSharedPartner to non-nullable JSON property 'is_shared_partner'.");
 
             if (userBusinessRoleBinding.AssetsSummaryOption.IsSet)
                 if (userBusinessRoleBinding.AssetsSummaryOption.Value != null)

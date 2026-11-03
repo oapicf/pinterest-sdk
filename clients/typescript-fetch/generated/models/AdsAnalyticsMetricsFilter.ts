@@ -36,20 +36,14 @@ import {
 export interface AdsAnalyticsMetricsFilter {
     /**
      * 
-     * @type {AdsAnalyticsFilterColumn}
-     * @memberof AdsAnalyticsMetricsFilter
      */
     field: AdsAnalyticsFilterColumn;
     /**
      * 
-     * @type {AdsAnalyticsFilterOperator}
-     * @memberof AdsAnalyticsMetricsFilter
      */
     operator: AdsAnalyticsFilterOperator;
     /**
      * List of values for filtering
-     * @type {Array<number>}
-     * @memberof AdsAnalyticsMetricsFilter
      */
     values: Array<number>;
 }

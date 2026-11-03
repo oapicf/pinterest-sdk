@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of user conversion event.
-* Values: add_to_cart,checkout,lead,signup
-*/
+ * Type of user conversion event.
+ * Values: add_to_cart,checkout,lead,signup
+ */
 enum class MsotEventName(@get:JsonValue val value: kotlin.String) {
 
     add_to_cart("add_to_cart"),
@@ -30,9 +30,8 @@ enum class MsotEventName(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MsotEventName {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MsotEventName'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MsotEventName'")
         }
     }
 }
-

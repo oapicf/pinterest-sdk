@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ImageSize
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
@@ -36,12 +33,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PinMediaWithVideo(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("media_type")
+    @param:JsonProperty("media_type", required = true)
     @get:JsonProperty("media_type", required = true) override val mediaType: PinMediaWithVideo.MediaType = kotlin.String.video,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("cover_image_url")
     @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
 
@@ -55,8 +50,6 @@ data class PinMediaWithVideo(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("images")
     @get:JsonProperty("images") val images: ImageSize? = null,
 
@@ -80,12 +73,12 @@ data class PinMediaWithVideo(
     enum class MediaType(@get:JsonValue val value: kotlin.String) {
 
         video("video");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): MediaType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MediaType'")
             }
         }

@@ -29,20 +29,14 @@ import {
 export interface SchedulesCreate200ResponseInnerDataOneOf {
     /**
      * 
-     * @type {string}
-     * @memberof SchedulesCreate200ResponseInnerDataOneOf
      */
     id: string;
     /**
      * Schedule ID.
-     * @type {string}
-     * @memberof SchedulesCreate200ResponseInnerDataOneOf
      */
     scheduleId: string;
     /**
      * 
-     * @type {PinterestLibError}
-     * @memberof SchedulesCreate200ResponseInnerDataOneOf
      */
     exceptions: PinterestLibError;
 }

@@ -29,20 +29,14 @@ import {
 export interface QualityComponentDetails {
     /**
      * Coverage percentage for this event type.
-     * @type {number}
-     * @memberof QualityComponentDetails
      */
     coverage: number;
     /**
      * List of issues detected for this event type, if any.
-     * @type {Array<QualityComponentIssue>}
-     * @memberof QualityComponentDetails
      */
     issues?: Array<QualityComponentIssue>;
     /**
      * Overlap percentage for this event type. Only populated for external_event_id
-     * @type {number}
-     * @memberof QualityComponentDetails
      */
     overlap?: number;
 }

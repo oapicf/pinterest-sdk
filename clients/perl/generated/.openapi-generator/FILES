@@ -2323,9 +2323,3 @@ lib/WWW/OpenAPIClient/TermsApi.pm
 lib/WWW/OpenAPIClient/TermsOfServiceApi.pm
 lib/WWW/OpenAPIClient/TrendsApi.pm
 lib/WWW/OpenAPIClient/UserAccountApi.pm
-t/CatalogSupplementalApiTest.t
-t/ConversionDeletionRequestsApiTest.t
-t/CustomerSegmentApiTest.t
-t/ProductTagsApiTest.t
-t/SchedulesApiTest.t
-t/TrendsApiTest.t

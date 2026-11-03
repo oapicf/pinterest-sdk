@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -27,52 +26,37 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionEventsDataItemsCustomData", description = "Object containing other custom data.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsDataItemsCustomData {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> contentBrand = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> contentCategory = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> contentIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> contentName = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid ConversionEventsDataItemsCustomDataContentsItems> contents = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> currency = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> externalMeasurementId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> externalMeasurementVendorId = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> np = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Long numItems;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> optOutType = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> orderId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> predictedLtv = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> searchString = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> value = JsonNullable.<String>undefined();
 
   public ConversionEventsDataItemsCustomData contentBrand(String contentBrand) {
@@ -85,7 +69,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return contentBrand
    */
   
-  @Schema(name = "content_brand", description = "The brand of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "content_brand", description = "The brand of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("content_brand")
   public JsonNullable<String> getContentBrand() {
     return contentBrand;
@@ -105,7 +89,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return contentCategory
    */
   
-  @Schema(name = "content_category", description = "The category of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "content_category", description = "The category of the content associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("content_category")
   public JsonNullable<String> getContentCategory() {
     return contentCategory;
@@ -154,7 +138,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return contentName
    */
   
-  @Schema(name = "content_name", description = "The name of the page or product associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "content_name", description = "The name of the page or product associated with the event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("content_name")
   public JsonNullable<String> getContentName() {
     return contentName;
@@ -181,7 +165,7 @@ public class ConversionEventsDataItemsCustomData {
    * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).
    * @return contents
    */
-  @Valid 
+  
   @Schema(name = "contents", description = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("contents")
   public List<@Valid ConversionEventsDataItemsCustomDataContentsItems> getContents() {
@@ -203,7 +187,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return currency
    */
   
-  @Schema(name = "currency", description = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "currency", description = "The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("currency")
   public JsonNullable<String> getCurrency() {
     return currency;
@@ -223,7 +207,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return externalMeasurementId
    */
   
-  @Schema(name = "external_measurement_id", description = "Only use when instructed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "external_measurement_id", description = "Only use when instructed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("external_measurement_id")
   public JsonNullable<String> getExternalMeasurementId() {
     return externalMeasurementId;
@@ -243,7 +227,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return externalMeasurementVendorId
    */
   
-  @Schema(name = "external_measurement_vendor_id", description = "Only use when instructed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "external_measurement_vendor_id", description = "Only use when instructed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("external_measurement_vendor_id")
   public JsonNullable<Integer> getExternalMeasurementVendorId() {
     return externalMeasurementVendorId;
@@ -263,7 +247,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return np
    */
   
-  @Schema(name = "np", description = "Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "np", description = "Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("np")
   public JsonNullable<String> getNp() {
     return np;
@@ -304,7 +288,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return optOutType
    */
   
-  @Schema(name = "opt_out_type", description = "Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about [limited data processing](https://help.pinterest.com/en/business/article/limited-data-processing) and the developer's guide for [tracking conversion events](/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events) for help with using this parameter.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "opt_out_type", description = "Flags for different privacy rights laws to opt out users of sharing personal information. Separate values with commas. See the Help Center article about [limited data processing](https://help.pinterest.com/en/business/article/limited-data-processing) and the developer's guide for [tracking conversion events](/docs/track-conversions/track-conversions-in-the-api/#whether-the-user-has-opted-out-of-web-or-offline-conversion-events) for help with using this parameter.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("opt_out_type")
   public JsonNullable<String> getOptOutType() {
     return optOutType;
@@ -324,7 +308,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return orderId
    */
   
-  @Schema(name = "order_id", description = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "order_id", description = "The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("order_id")
   public JsonNullable<String> getOrderId() {
     return orderId;
@@ -344,7 +328,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return predictedLtv
    */
   
-  @Schema(name = "predicted_ltv", description = "Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "predicted_ltv", description = "Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("predicted_ltv")
   public JsonNullable<String> getPredictedLtv() {
     return predictedLtv;
@@ -364,7 +348,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return searchString
    */
   
-  @Schema(name = "search_string", description = "The search string related to the user conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "search_string", description = "The search string related to the user conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("search_string")
   public JsonNullable<String> getSearchString() {
     return searchString;
@@ -384,7 +368,7 @@ public class ConversionEventsDataItemsCustomData {
    * @return value
    */
   
-  @Schema(name = "value", description = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "value", description = "Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("value")
   public JsonNullable<String> getValue() {
     return value;

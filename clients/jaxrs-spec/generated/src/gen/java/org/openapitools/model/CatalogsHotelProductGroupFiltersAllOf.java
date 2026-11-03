@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsHotelProductGroupFiltersAllOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFiltersAllOf   {
-  private @Valid List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsHotelProductGroupFiltersAllOf() {
   }
@@ -36,7 +36,7 @@ public class CatalogsHotelProductGroupFiltersAllOf   {
 
   /**
    **/
-  public CatalogsHotelProductGroupFiltersAllOf allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFiltersAllOf allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -44,12 +44,12 @@ public class CatalogsHotelProductGroupFiltersAllOf   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "all_of")
-  @NotNull @Valid public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  @NotNull public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
   @JsonProperty(required = true, value = "all_of")
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

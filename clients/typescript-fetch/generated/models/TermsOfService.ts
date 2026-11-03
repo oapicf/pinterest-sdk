@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface TermsOfService {
     /**
      * The ID of the ad account.
-     * @type {string}
-     * @memberof TermsOfService
      */
     adAccountId?: string;
     /**
      * Whether the ad account has accepted terms of service.
-     * @type {boolean}
-     * @memberof TermsOfService
      */
     hasAccepted?: boolean;
     /**
      * The terms of service content
-     * @type {string}
-     * @memberof TermsOfService
      */
     html?: string | null;
     /**
      * The ID of the terms of service
-     * @type {string}
-     * @memberof TermsOfService
      */
     id?: string;
 }

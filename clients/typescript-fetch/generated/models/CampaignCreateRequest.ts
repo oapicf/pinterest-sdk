@@ -50,14 +50,10 @@ import {
 export interface CampaignCreateRequest {
     /**
      * 
-     * @type {CampaignBidOptionsCreate}
-     * @memberof CampaignCreateRequest
      */
     bidOptions?: CampaignBidOptionsCreate | null;
     /**
      * 
-     * @type {IntendedPromotionType}
-     * @memberof CampaignCreateRequest
      */
     intendedPromotionType?: IntendedPromotionType;
     /**
@@ -69,35 +65,25 @@ export interface CampaignCreateRequest {
      * - WEB\_CONVERSION
      * - SALES
      * - CATALOG\_SALES
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isAutomatedCampaign?: boolean | null;
     /**
      * Note: This field is immutable unless the campaign is in draft status.
      * Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome.
      * When using campaign budgets with a lifetime spend cap, the end time must be provided.
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isCampaignBudgetOptimization?: boolean | null;
     /**
      * Determine if a campaign has setup for flexible daily budgets, also known as "Pinterest Performance+ budgets".
      * Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isFlexibleDailyBudgets?: boolean | null;
     /**
      * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isLtvOptimized?: boolean;
     /**
      * Enable Pinterest Performance+ for your campaign. To learn more, see <a href="https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/">Pinterest Performance+ Setup</a>.
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isPerformancePlus?: boolean;
     /**
@@ -113,38 +99,26 @@ export interface CampaignCreateRequest {
      * You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.
      * 
      * You cannot change your `true` or `false` selection of this campaign if you <a href="https://developer.pinterest.com/docs/api/v5/campaigns-update" target="blank">update it</a>.
-     * @type {boolean}
-     * @memberof CampaignCreateRequest
      */
     isTopOfSearch?: boolean;
     /**
      * 
-     * @type {ObjectiveType}
-     * @memberof CampaignCreateRequest
      */
     objectiveType: ObjectiveType;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof CampaignCreateRequest
      */
     status?: EntityStatus;
     /**
      * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
-     * @type {string}
-     * @memberof CampaignCreateRequest
      */
     adAccountId: string;
     /**
      * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and "lifetime_spend_cap" cannot be set at the same time.
-     * @type {number}
-     * @memberof CampaignCreateRequest
      */
     dailySpendCap?: number | null;
     /**
      * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-     * @type {number}
-     * @memberof CampaignCreateRequest
      */
     defaultAdGroupBudgetInMicroCurrency?: number | null;
     /**
@@ -152,26 +126,18 @@ export interface CampaignCreateRequest {
      * Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign.
      * - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error.
      * - In this scenario, if you call <a href="/docs/api/v5/campaigns-list" target="blank">List campaigns</a> or <a href="/docs/api/v5/ad_groups-list" target="blank">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
-     * @type {number}
-     * @memberof CampaignCreateRequest
      */
     endTime?: number | null;
     /**
      * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and "daily_spend_cap" cannot be set at the same time.
-     * @type {number}
-     * @memberof CampaignCreateRequest
      */
     lifetimeSpendCap?: number | null;
     /**
      * Campaign name.
-     * @type {string}
-     * @memberof CampaignCreateRequest
      */
     name: string;
     /**
      * Order line ID that appears on the invoice.
-     * @type {string}
-     * @memberof CampaignCreateRequest
      */
     orderLineId?: string | null;
     /**
@@ -179,14 +145,10 @@ export interface CampaignCreateRequest {
      * Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign.
      * - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error.
      * - In this scenario, if you call <a href="/docs/api/v5/campaigns-list" target="blank">List campaigns</a> or <a href="/docs/api/v5/ad_groups-list" target="blank">List ad groups</a>, the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
-     * @type {number}
-     * @memberof CampaignCreateRequest
      */
     startTime?: number | null;
     /**
      * 
-     * @type {object}
-     * @memberof CampaignCreateRequest
      */
     trackingUrls?: object | null;
 }

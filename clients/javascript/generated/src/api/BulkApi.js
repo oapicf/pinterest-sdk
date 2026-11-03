@@ -23,7 +23,7 @@ import PinterestLibError from '../model/PinterestLibError';
 /**
 * Bulk service.
 * @module api/BulkApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class BulkApi {
 

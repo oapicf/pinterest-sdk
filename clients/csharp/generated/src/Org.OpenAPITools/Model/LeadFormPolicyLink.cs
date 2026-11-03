@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (label.IsSet && label.Value == null)
-                throw new ArgumentNullException(nameof(label), "Property is not nullable for class LeadFormPolicyLink.");
+                throw new JsonException("Property is not nullable for class LeadFormPolicyLink: label.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class LeadFormPolicyLink.");
+                throw new JsonException("Property is not nullable for class LeadFormPolicyLink: link.");
 
             return new LeadFormPolicyLink(label, link);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormPolicyLink"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormPolicyLink leadFormPolicyLink, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormPolicyLink"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormPolicyLink leadFormPolicyLink, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadFormPolicyLink.LabelOption.IsSet && leadFormPolicyLink.Label == null)
-                throw new ArgumentNullException(nameof(leadFormPolicyLink.Label), "Property is required for class LeadFormPolicyLink.");
+                throw new JsonException("Cannot write null property LeadFormPolicyLink.Label to non-nullable JSON property 'label'.");
 
             if (leadFormPolicyLink.LinkOption.IsSet && leadFormPolicyLink.Link == null)
-                throw new ArgumentNullException(nameof(leadFormPolicyLink.Link), "Property is required for class LeadFormPolicyLink.");
+                throw new JsonException("Cannot write null property LeadFormPolicyLink.Link to non-nullable JSON property 'link'.");
 
             if (leadFormPolicyLink.LabelOption.IsSet)
                 writer.WriteString("label", leadFormPolicyLink.Label);

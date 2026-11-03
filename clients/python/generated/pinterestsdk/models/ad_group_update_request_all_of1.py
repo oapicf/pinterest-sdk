@@ -85,8 +85,7 @@ class AdGroupUpdateRequestAllOf1(BaseModel):
         _items = []
         if self.targeting_spec_operations:
             for _item_targeting_spec_operations in self.targeting_spec_operations:
-                if _item_targeting_spec_operations:
-                    _items.append(_item_targeting_spec_operations.to_dict())
+                _items.append(_item_targeting_spec_operations.to_dict() if _item_targeting_spec_operations is not None else None)
             _dict['targeting_spec_operations'] = _items
         return _dict
 

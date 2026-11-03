@@ -144,9 +144,9 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_employersQUERYFeeder)
         .exec(http("getBusinessEmployers")
         .httpRequest("GET","/businesses/employers")
+        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("assets_summary","${assets_summary}")
-        .queryParam("page_size","${page_size}")
 )
 
     // Run scngetBusinessEmployers with warm up and reach a constant rate for entire duration
@@ -162,13 +162,13 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_membersPATHFeeder)
         .exec(http("getBusinessMembers")
         .httpRequest("GET","/businesses/${business_id}/members")
-        .queryParam("fetch_system_users","${fetch_system_users}")
-        .queryParam("member_ids","${member_ids}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("assets_summary","${assets_summary}")
         .queryParam("page_size","${page_size}")
+        .queryParam("assets_summary","${assets_summary}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("business_roles","${business_roles}")
+        .queryParam("member_ids","${member_ids}")
         .queryParam("start_index","${start_index}")
+        .queryParam("fetch_system_users","${fetch_system_users}")
 )
 
     // Run scngetBusinessMembers with warm up and reach a constant rate for entire duration
@@ -184,13 +184,13 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .feed(get/business_partnersPATHFeeder)
         .exec(http("getBusinessPartners")
         .httpRequest("GET","/businesses/${business_id}/partners")
+        .queryParam("page_size","${page_size}")
+        .queryParam("assets_summary","${assets_summary}")
         .queryParam("partner_type","${partner_type}")
         .queryParam("partner_ids","${partner_ids}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("assets_summary","${assets_summary}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("start_index","${start_index}")
         .queryParam("sort_ascending","${sort_ascending}")
+        .queryParam("start_index","${start_index}")
 )
 
     // Run scngetBusinessPartners with warm up and reach a constant rate for entire duration

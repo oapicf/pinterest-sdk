@@ -37,7 +37,7 @@ public class CampaignCreateItem   {
   private ConversionObjectiveType objectiveType;
   private String orderLineId;
   private Integer startTime;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
   private TrackingUrls trackingUrls;
 
   public CampaignCreateItem () {

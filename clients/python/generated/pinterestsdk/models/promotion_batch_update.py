@@ -95,8 +95,7 @@ class PromotionBatchUpdate(BaseModel):
         _items = []
         if self.template_values:
             for _item_template_values in self.template_values:
-                if _item_template_values:
-                    _items.append(_item_template_values.to_dict())
+                _items.append(_item_template_values.to_dict() if _item_template_values is not None else None)
             _dict['template_values'] = _items
         return _dict
 

@@ -6,20 +6,3 @@
 */
 #include "DisclosureType.h"
 
-namespace models {
-
-DisclosureType::DisclosureType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -17,7 +17,7 @@ import CatalogsProductGroupPricingCriteria from './CatalogsProductGroupPricingCr
 /**
  * The MinPriceFilter model module.
  * @module model/MinPriceFilter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class MinPriceFilter {
     /**

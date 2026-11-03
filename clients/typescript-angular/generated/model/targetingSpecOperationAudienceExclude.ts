@@ -17,7 +17,7 @@ export interface TargetingSpecOperationAudienceExclude {
 }
 export namespace TargetingSpecOperationAudienceExclude {
     export const FieldEnum = {
-        AudienceExclude: 'AUDIENCE_EXCLUDE'
+        AudienceExclude: 'AUDIENCE_EXCLUDE',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

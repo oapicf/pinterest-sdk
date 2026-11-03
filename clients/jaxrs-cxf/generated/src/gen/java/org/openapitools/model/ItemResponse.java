@@ -135,8 +135,6 @@ CREATIVE_ASSETS_ITEM_ERROR(String.valueOf("creative_assets_item_error"));
   */
   @ApiModelProperty(value = "The pins mapped to the item")
 
-  @Valid
-
   private List<@Valid Pin> pins;
 
  /**
@@ -157,8 +155,6 @@ CREATIVE_ASSETS_ITEM_ERROR(String.valueOf("creative_assets_item_error"));
   * Array with the errors for the item id requested
   */
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
-
-  @Valid
 
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
  /**

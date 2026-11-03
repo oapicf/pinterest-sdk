@@ -79,36 +79,31 @@ class AudienceDemographics(BaseModel):
         _items = []
         if self.ages:
             for _item_ages in self.ages:
-                if _item_ages:
-                    _items.append(_item_ages.to_dict())
+                _items.append(_item_ages.to_dict() if _item_ages is not None else None)
             _dict['ages'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in countries (list)
         _items = []
         if self.countries:
             for _item_countries in self.countries:
-                if _item_countries:
-                    _items.append(_item_countries.to_dict())
+                _items.append(_item_countries.to_dict() if _item_countries is not None else None)
             _dict['countries'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in devices (list)
         _items = []
         if self.devices:
             for _item_devices in self.devices:
-                if _item_devices:
-                    _items.append(_item_devices.to_dict())
+                _items.append(_item_devices.to_dict() if _item_devices is not None else None)
             _dict['devices'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in genders (list)
         _items = []
         if self.genders:
             for _item_genders in self.genders:
-                if _item_genders:
-                    _items.append(_item_genders.to_dict())
+                _items.append(_item_genders.to_dict() if _item_genders is not None else None)
             _dict['genders'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in metros (list)
         _items = []
         if self.metros:
             for _item_metros in self.metros:
-                if _item_metros:
-                    _items.append(_item_metros.to_dict())
+                _items.append(_item_metros.to_dict() if _item_metros is not None else None)
             _dict['metros'] = _items
         return _dict
 

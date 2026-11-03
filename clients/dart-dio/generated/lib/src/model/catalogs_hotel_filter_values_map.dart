@@ -203,3 +203,4 @@ class _$CatalogsHotelFilterValuesMapSerializer implements PrimitiveSerializer<Ca
   }
 }
 
+

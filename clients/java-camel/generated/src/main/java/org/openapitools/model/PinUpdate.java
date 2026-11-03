@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "PinUpdate", description = "Resource create or update operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinUpdate {
 
   private AiDisclosuresUpdate aiDisclosures;
@@ -38,7 +37,6 @@ public class PinUpdate {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
 
   private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
@@ -144,7 +142,7 @@ public class PinUpdate {
    * Carousel Pin slots data.
    * @return carouselSlots
    */
-  @Valid 
+  
   @Schema(name = "carousel_slots", description = "Carousel Pin slots data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_slots")
   public List<@Valid CarouselSlot> getCarouselSlots() {

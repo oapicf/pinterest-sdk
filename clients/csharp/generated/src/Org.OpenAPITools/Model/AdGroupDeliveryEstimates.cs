@@ -311,28 +311,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (autoTargetingEnabled.IsSet && autoTargetingEnabled.Value == null)
-                throw new ArgumentNullException(nameof(autoTargetingEnabled), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: auto_targeting_enabled.");
 
             if (creativeTypes.IsSet && creativeTypes.Value == null)
-                throw new ArgumentNullException(nameof(creativeTypes), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: creative_types.");
 
             if (monthlyFrequencyCap.IsSet && monthlyFrequencyCap.Value == null)
-                throw new ArgumentNullException(nameof(monthlyFrequencyCap), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: monthly_frequency_cap.");
 
             if (optimizationGoalMetadata.IsSet && optimizationGoalMetadata.Value == null)
-                throw new ArgumentNullException(nameof(optimizationGoalMetadata), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: optimization_goal_metadata.");
 
             if (optimizationType.IsSet && optimizationType.Value == null)
-                throw new ArgumentNullException(nameof(optimizationType), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: optimization_type.");
 
             if (placementGroup.IsSet && placementGroup.Value == null)
-                throw new ArgumentNullException(nameof(placementGroup), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: placement_group.");
 
             if (productGroupIds.IsSet && productGroupIds.Value == null)
-                throw new ArgumentNullException(nameof(productGroupIds), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: product_group_ids.");
 
             if (targetingSpec.IsSet && targetingSpec.Value == null)
-                throw new ArgumentNullException(nameof(targetingSpec), "Property is not nullable for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Property is not nullable for class AdGroupDeliveryEstimates: targeting_spec.");
 
             return new AdGroupDeliveryEstimates(autoTargetingEnabled, creativeTypes, keywords, monthlyFrequencyCap, optimizationGoalMetadata, optimizationType, placementGroup, productGroupIds, targetingSpec);
         }
@@ -343,7 +343,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupDeliveryEstimates"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupDeliveryEstimates adGroupDeliveryEstimates, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -358,20 +357,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupDeliveryEstimates"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupDeliveryEstimates adGroupDeliveryEstimates, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adGroupDeliveryEstimates.AutoTargetingEnabledOption.IsSet && adGroupDeliveryEstimates.AutoTargetingEnabled == null)
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.AutoTargetingEnabled to non-nullable JSON property 'auto_targeting_enabled'.");
+
             if (adGroupDeliveryEstimates.CreativeTypesOption.IsSet && adGroupDeliveryEstimates.CreativeTypes == null)
-                throw new ArgumentNullException(nameof(adGroupDeliveryEstimates.CreativeTypes), "Property is required for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.CreativeTypes to non-nullable JSON property 'creative_types'.");
+
+            if (adGroupDeliveryEstimates.MonthlyFrequencyCapOption.IsSet && adGroupDeliveryEstimates.MonthlyFrequencyCap == null)
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.MonthlyFrequencyCap to non-nullable JSON property 'monthly_frequency_cap'.");
 
             if (adGroupDeliveryEstimates.OptimizationGoalMetadataOption.IsSet && adGroupDeliveryEstimates.OptimizationGoalMetadata == null)
-                throw new ArgumentNullException(nameof(adGroupDeliveryEstimates.OptimizationGoalMetadata), "Property is required for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.OptimizationGoalMetadata to non-nullable JSON property 'optimization_goal_metadata'.");
+
+            if (adGroupDeliveryEstimates.OptimizationTypeOption.IsSet && adGroupDeliveryEstimates.OptimizationType == null)
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.OptimizationType to non-nullable JSON property 'optimization_type'.");
+
+            if (adGroupDeliveryEstimates.PlacementGroupOption.IsSet && adGroupDeliveryEstimates.PlacementGroup == null)
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.PlacementGroup to non-nullable JSON property 'placement_group'.");
 
             if (adGroupDeliveryEstimates.ProductGroupIdsOption.IsSet && adGroupDeliveryEstimates.ProductGroupIds == null)
-                throw new ArgumentNullException(nameof(adGroupDeliveryEstimates.ProductGroupIds), "Property is required for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.ProductGroupIds to non-nullable JSON property 'product_group_ids'.");
 
             if (adGroupDeliveryEstimates.TargetingSpecOption.IsSet && adGroupDeliveryEstimates.TargetingSpec == null)
-                throw new ArgumentNullException(nameof(adGroupDeliveryEstimates.TargetingSpec), "Property is required for class AdGroupDeliveryEstimates.");
+                throw new JsonException("Cannot write null property AdGroupDeliveryEstimates.TargetingSpec to non-nullable JSON property 'targeting_spec'.");
 
             if (adGroupDeliveryEstimates.AutoTargetingEnabledOption.IsSet)
                 writer.WriteBoolean("auto_targeting_enabled", adGroupDeliveryEstimates.AutoTargetingEnabledOption.Value!.Value);

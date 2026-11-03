@@ -211,37 +211,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!color.IsSet)
-                throw new ArgumentException("Property is required for class TrendingPin.", nameof(color));
+                throw new JsonException("Property is required for class TrendingPin: color.");
 
             if (!height.IsSet)
-                throw new ArgumentException("Property is required for class TrendingPin.", nameof(height));
+                throw new JsonException("Property is required for class TrendingPin: height.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class TrendingPin.", nameof(id));
+                throw new JsonException("Property is required for class TrendingPin: id.");
 
             if (!src.IsSet)
-                throw new ArgumentException("Property is required for class TrendingPin.", nameof(src));
+                throw new JsonException("Property is required for class TrendingPin: src.");
 
             if (!width.IsSet)
-                throw new ArgumentException("Property is required for class TrendingPin.", nameof(width));
+                throw new JsonException("Property is required for class TrendingPin: width.");
 
             if (color.IsSet && color.Value == null)
-                throw new ArgumentNullException(nameof(color), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: color.");
 
             if (height.IsSet && height.Value == null)
-                throw new ArgumentNullException(nameof(height), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: height.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: id.");
 
             if (src.IsSet && src.Value == null)
-                throw new ArgumentNullException(nameof(src), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: src.");
 
             if (width.IsSet && width.Value == null)
-                throw new ArgumentNullException(nameof(width), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: width.");
 
             if (verticalOffset.IsSet && verticalOffset.Value == null)
-                throw new ArgumentNullException(nameof(verticalOffset), "Property is not nullable for class TrendingPin.");
+                throw new JsonException("Property is not nullable for class TrendingPin: vertical_offset.");
 
             return new TrendingPin(color.Value!, height.Value!.Value!, id.Value!, src.Value!, width.Value!.Value!, verticalOffset);
         }
@@ -252,7 +252,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingPin"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendingPin trendingPin, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -267,17 +266,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingPin"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendingPin trendingPin, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (trendingPin.Color == null)
-                throw new ArgumentNullException(nameof(trendingPin.Color), "Property is required for class TrendingPin.");
-
-            if (trendingPin.Id == null)
-                throw new ArgumentNullException(nameof(trendingPin.Id), "Property is required for class TrendingPin.");
-
-            if (trendingPin.Src == null)
-                throw new ArgumentNullException(nameof(trendingPin.Src), "Property is required for class TrendingPin.");
+            if (trendingPin.VerticalOffsetOption.IsSet && trendingPin.VerticalOffset == null)
+                throw new JsonException("Cannot write null property TrendingPin.VerticalOffset to non-nullable JSON property 'vertical_offset'.");
 
             writer.WriteString("color", trendingPin.Color);
 

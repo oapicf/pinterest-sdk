@@ -17,7 +17,7 @@ import MediaType from './MediaType';
 /**
  * The CatalogsCreativeAssetsFilterValuesMap model module.
  * @module model/CatalogsCreativeAssetsFilterValuesMap
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsFilterValuesMap {
     /**

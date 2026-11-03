@@ -75,8 +75,7 @@ class LabelCreateRequest(BaseModel):
         _items = []
         if self.labels:
             for _item_labels in self.labels:
-                if _item_labels:
-                    _items.append(_item_labels.to_dict())
+                _items.append(_item_labels.to_dict() if _item_labels is not None else None)
             _dict['labels'] = _items
         return _dict
 

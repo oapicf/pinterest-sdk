@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class TrendType
-{
-public:
-
-    TrendType();
-    virtual ~TrendType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TrendType,
-        )
-
-private:
+enum class TrendType {
+    
+    GROWING,
+    
+    MONTHLY,
+    
+    YEARLY,
+    
+    SEASONAL
+    
 };
 
+inline void to_json(nlohmann::json& j, const TrendType& value)
+{
+    switch (value)
+    {
+        
+        case TrendType::GROWING: j = "growing"; break;
+        
+        case TrendType::MONTHLY: j = "monthly"; break;
+        
+        case TrendType::YEARLY: j = "yearly"; break;
+        
+        case TrendType::SEASONAL: j = "seasonal"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TrendType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TrendType& value)
+{
+    
+    if (j == "growing")
+    {
+        value = TrendType::GROWING;
+        return;
+    }
+    
+    if (j == "monthly")
+    {
+        value = TrendType::MONTHLY;
+        return;
+    }
+    
+    if (j == "yearly")
+    {
+        value = TrendType::YEARLY;
+        return;
+    }
+    
+    if (j == "seasonal")
+    {
+        value = TrendType::SEASONAL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TrendType", &j);
+}
 
 } // namespace models
 

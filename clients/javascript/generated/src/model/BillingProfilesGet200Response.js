@@ -17,7 +17,7 @@ import BillingProfilesResponse from './BillingProfilesResponse';
 /**
  * The BillingProfilesGet200Response model module.
  * @module model/BillingProfilesGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BillingProfilesGet200Response {
     /**

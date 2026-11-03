@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class AdGroupAudienceSizingCreativeTypes
-{
-public:
-
-    AdGroupAudienceSizingCreativeTypes();
-    virtual ~AdGroupAudienceSizingCreativeTypes() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdGroupAudienceSizingCreativeTypes,
-        )
-
-private:
+enum class AdGroupAudienceSizingCreativeTypes {
+    
+    REGULAR,
+    
+    VIDEO,
+    
+    SHOPPING,
+    
+    CAROUSEL,
+    
+    MAX_VIDEO,
+    
+    SHOP_THE_PIN,
+    
+    COLLECTION,
+    
+    IDEA
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdGroupAudienceSizingCreativeTypes& value)
+{
+    switch (value)
+    {
+        
+        case AdGroupAudienceSizingCreativeTypes::REGULAR: j = "REGULAR"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::VIDEO: j = "VIDEO"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::SHOPPING: j = "SHOPPING"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::CAROUSEL: j = "CAROUSEL"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::MAX_VIDEO: j = "MAX_VIDEO"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::SHOP_THE_PIN: j = "SHOP_THE_PIN"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::COLLECTION: j = "COLLECTION"; break;
+        
+        case AdGroupAudienceSizingCreativeTypes::IDEA: j = "IDEA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdGroupAudienceSizingCreativeTypes", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdGroupAudienceSizingCreativeTypes& value)
+{
+    
+    if (j == "REGULAR")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::REGULAR;
+        return;
+    }
+    
+    if (j == "VIDEO")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::VIDEO;
+        return;
+    }
+    
+    if (j == "SHOPPING")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::SHOPPING;
+        return;
+    }
+    
+    if (j == "CAROUSEL")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::CAROUSEL;
+        return;
+    }
+    
+    if (j == "MAX_VIDEO")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::MAX_VIDEO;
+        return;
+    }
+    
+    if (j == "SHOP_THE_PIN")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::SHOP_THE_PIN;
+        return;
+    }
+    
+    if (j == "COLLECTION")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::COLLECTION;
+        return;
+    }
+    
+    if (j == "IDEA")
+    {
+        value = AdGroupAudienceSizingCreativeTypes::IDEA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdGroupAudienceSizingCreativeTypes", &j);
+}
 
 } // namespace models
 

@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (audienceSizeLowerBound.IsSet && audienceSizeLowerBound.Value == null)
-                throw new ArgumentNullException(nameof(audienceSizeLowerBound), "Property is not nullable for class AdGroupAudienceSizing.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizing: audience_size_lower_bound.");
 
             if (audienceSizeUpperBound.IsSet && audienceSizeUpperBound.Value == null)
-                throw new ArgumentNullException(nameof(audienceSizeUpperBound), "Property is not nullable for class AdGroupAudienceSizing.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizing: audience_size_upper_bound.");
 
             return new AdGroupAudienceSizing(audienceSizeLowerBound, audienceSizeUpperBound);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizing"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupAudienceSizing adGroupAudienceSizing, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,9 +190,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizing"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupAudienceSizing adGroupAudienceSizing, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adGroupAudienceSizing.AudienceSizeLowerBoundOption.IsSet && adGroupAudienceSizing.AudienceSizeLowerBound == null)
+                throw new JsonException("Cannot write null property AdGroupAudienceSizing.AudienceSizeLowerBound to non-nullable JSON property 'audience_size_lower_bound'.");
+
+            if (adGroupAudienceSizing.AudienceSizeUpperBoundOption.IsSet && adGroupAudienceSizing.AudienceSizeUpperBound == null)
+                throw new JsonException("Cannot write null property AdGroupAudienceSizing.AudienceSizeUpperBound to non-nullable JSON property 'audience_size_upper_bound'.");
+
             if (adGroupAudienceSizing.AudienceSizeLowerBoundOption.IsSet)
                 writer.WriteNumber("audience_size_lower_bound", adGroupAudienceSizing.AudienceSizeLowerBoundOption.Value!.Value);
 

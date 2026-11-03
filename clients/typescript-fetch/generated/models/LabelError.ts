@@ -29,14 +29,10 @@ import {
 export interface LabelError {
     /**
      * 
-     * @type {LabelErrorData}
-     * @memberof LabelError
      */
     data?: LabelErrorData;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof LabelError
      */
     errorMessages?: Array<string>;
 }

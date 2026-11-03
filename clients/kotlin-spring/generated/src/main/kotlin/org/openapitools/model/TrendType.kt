@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: growing,monthly,yearly,seasonal
-*/
+ * 
+ * Values: growing,monthly,yearly,seasonal
+ */
 enum class TrendType(@get:JsonValue val value: kotlin.String) {
 
     growing("growing"),
@@ -30,9 +30,8 @@ enum class TrendType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TrendType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendType'")
         }
     }
 }
-

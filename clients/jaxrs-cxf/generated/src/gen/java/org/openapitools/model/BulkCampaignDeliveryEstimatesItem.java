@@ -28,8 +28,6 @@ public class BulkCampaignDeliveryEstimatesItem  {
   */
   @ApiModelProperty(value = "Range audience sizes for each ad group, in the same order as the ad groups in the request.")
 
-  @Valid
-
   private List<@Valid CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();
 
  /**
@@ -44,16 +42,12 @@ public class BulkCampaignDeliveryEstimatesItem  {
   */
   @ApiModelProperty(value = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.")
 
-  @Valid
-
   private List<@Valid CampaignPlanningConversionRate> conversionRates = new ArrayList<>();
 
  /**
   * Estimated curves. Each curve will pertain to a single estimation type.
   */
   @ApiModelProperty(value = "Estimated curves. Each curve will pertain to a single estimation type.")
-
-  @Valid
 
   private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
 
@@ -67,8 +61,6 @@ public class BulkCampaignDeliveryEstimatesItem  {
   * Errors encountered during estimation for this campaign.
   */
   @ApiModelProperty(value = "Errors encountered during estimation for this campaign.")
-
-  @Valid
 
   private List<@Valid CampaignPlanningResponseError> errors = new ArrayList<>();
 

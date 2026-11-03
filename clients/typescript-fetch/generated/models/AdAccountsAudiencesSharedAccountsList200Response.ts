@@ -29,14 +29,10 @@ import {
 export interface AdAccountsAudiencesSharedAccountsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof AdAccountsAudiencesSharedAccountsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<SharedAudienceAccount>}
-     * @memberof AdAccountsAudiencesSharedAccountsList200Response
      */
     items: Array<SharedAudienceAccount>;
 }

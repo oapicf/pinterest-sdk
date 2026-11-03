@@ -22,12 +22,11 @@ import jakarta.annotation.Generated;
  * ProductGroupPromotionUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotionUpdateRequest {
 
   private String adGroupId;
 
-  @Valid
   private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
 
   public ProductGroupPromotionUpdateRequest() {
@@ -79,7 +78,7 @@ public class ProductGroupPromotionUpdateRequest {
    * Get productGroupPromotion
    * @return productGroupPromotion
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_group_promotion", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_group_promotion")
   public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {

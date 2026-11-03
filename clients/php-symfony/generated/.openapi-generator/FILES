@@ -1225,12 +1225,6 @@ Service/StrictJsonDeserializationVisitorFactory.php
 Service/SymfonyValidator.php
 Service/TypeMismatchException.php
 Service/ValidatorInterface.php
-Tests/Api/CatalogSupplementalApiInterfaceTest.php
-Tests/Api/ConversionDeletionRequestsApiInterfaceTest.php
-Tests/Api/CustomerSegmentApiInterfaceTest.php
-Tests/Api/ProductTagsApiInterfaceTest.php
-Tests/Api/SchedulesApiInterfaceTest.php
-Tests/Api/TrendsApiInterfaceTest.php
 Tests/AppKernel.php
 Tests/Controller/ControllerTest.php
 Tests/test_config.yaml

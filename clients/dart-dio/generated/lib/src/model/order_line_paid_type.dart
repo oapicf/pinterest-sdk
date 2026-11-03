@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'order_line_paid_type.g.dart';
 
+/// Order Line Paid Type
 class OrderLinePaidType extends EnumClass {
 
-  /// Order Line Paid Type
   @BuiltValueEnumConst(wireName: r'PAID')
   static const OrderLinePaidType PAID = _$PAID;
-  /// Order Line Paid Type
   @BuiltValueEnumConst(wireName: r'BONUS')
   static const OrderLinePaidType BONUS = _$BONUS;
-  /// Order Line Paid Type
   @BuiltValueEnumConst(wireName: r'MAKE_GOOD')
   static const OrderLinePaidType MAKE_GOOD = _$MAKE_GOOD;
-  /// Order Line Paid Type
   @BuiltValueEnumConst(wireName: r'TEST')
   static const OrderLinePaidType TEST = _$TEST;
 

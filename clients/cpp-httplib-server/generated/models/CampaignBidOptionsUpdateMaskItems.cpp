@@ -6,20 +6,3 @@
 */
 #include "CampaignBidOptionsUpdateMaskItems.h"
 
-namespace models {
-
-CampaignBidOptionsUpdateMaskItems::CampaignBidOptionsUpdateMaskItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

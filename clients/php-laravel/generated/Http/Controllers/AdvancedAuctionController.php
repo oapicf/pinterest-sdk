@@ -51,10 +51,10 @@ class AdvancedAuctionController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -66,7 +66,7 @@ class AdvancedAuctionController extends Controller
 
         $advancedAuctionItemsGetRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdvancedAuctionItemsGetRequest::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->advancedAuctionItemsGetPost($advancedAuctionItemsGetRequest, $adAccountId);
@@ -117,10 +117,10 @@ class AdvancedAuctionController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -132,7 +132,7 @@ class AdvancedAuctionController extends Controller
 
         $advancedAuctionItemsSubmitRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdvancedAuctionItemsSubmitRequest::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->advancedAuctionItemsSubmitPost($advancedAuctionItemsSubmitRequest, $adAccountId);

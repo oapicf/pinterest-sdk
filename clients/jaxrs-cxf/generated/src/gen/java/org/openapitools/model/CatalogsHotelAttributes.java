@@ -158,8 +158,6 @@ public class CatalogsHotelAttributes  {
   */
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
 
-  @Valid
-
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
  /**

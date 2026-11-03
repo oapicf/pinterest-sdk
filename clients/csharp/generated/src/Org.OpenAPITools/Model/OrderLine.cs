@@ -348,37 +348,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class OrderLine.", nameof(adAccountId));
+                throw new JsonException("Property is required for class OrderLine: ad_account_id.");
 
             if (!campaignIds.IsSet)
-                throw new ArgumentException("Property is required for class OrderLine.", nameof(campaignIds));
+                throw new JsonException("Property is required for class OrderLine: campaign_ids.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class OrderLine.", nameof(id));
+                throw new JsonException("Property is required for class OrderLine: id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class OrderLine.", nameof(status));
+                throw new JsonException("Property is required for class OrderLine: status.");
 
             if (!type.IsSet)
-                throw new ArgumentException("Property is required for class OrderLine.", nameof(type));
+                throw new JsonException("Property is required for class OrderLine: type.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: ad_account_id.");
 
             if (campaignIds.IsSet && campaignIds.Value == null)
-                throw new ArgumentNullException(nameof(campaignIds), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: campaign_ids.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: status.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: type.");
 
             if (startTime.IsSet && startTime.Value == null)
-                throw new ArgumentNullException(nameof(startTime), "Property is not nullable for class OrderLine.");
+                throw new JsonException("Property is not nullable for class OrderLine: start_time.");
 
             return new OrderLine(adAccountId.Value!, campaignIds.Value!, id.Value!, status.Value!.Value!, type.Value!, budget, endTime, name, paidBudget, paidType, purchaseOrderId, startTime);
         }
@@ -389,7 +389,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLine"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, OrderLine orderLine, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -404,20 +403,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="orderLine"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, OrderLine orderLine, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (orderLine.AdAccountId == null)
-                throw new ArgumentNullException(nameof(orderLine.AdAccountId), "Property is required for class OrderLine.");
-
-            if (orderLine.CampaignIds == null)
-                throw new ArgumentNullException(nameof(orderLine.CampaignIds), "Property is required for class OrderLine.");
-
-            if (orderLine.Id == null)
-                throw new ArgumentNullException(nameof(orderLine.Id), "Property is required for class OrderLine.");
-
-            if (orderLine.Type == null)
-                throw new ArgumentNullException(nameof(orderLine.Type), "Property is required for class OrderLine.");
+            if (orderLine.StartTimeOption.IsSet && orderLine.StartTime == null)
+                throw new JsonException("Cannot write null property OrderLine.StartTime to non-nullable JSON property 'start_time'.");
 
             writer.WriteString("ad_account_id", orderLine.AdAccountId);
 

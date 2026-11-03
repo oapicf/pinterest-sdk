@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Summary status for product group
-* Values: RUNNING,PAUSED,EXCLUDED,ARCHIVED
-*/
+ * Summary status for product group
+ * Values: RUNNING,PAUSED,EXCLUDED,ARCHIVED
+ */
 enum class ProductGroupSummaryStatus(@get:JsonValue val value: kotlin.String) {
 
     RUNNING("RUNNING"),
@@ -30,9 +30,8 @@ enum class ProductGroupSummaryStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ProductGroupSummaryStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductGroupSummaryStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductGroupSummaryStatus'")
         }
     }
 }
-

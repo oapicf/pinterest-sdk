@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Platform of the mobile app for an `APP_INSTALL` campaign.
-* Values: IOS,ANDROID
-*/
+ * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Platform of the mobile app for an `APP_INSTALL` campaign.
+ * Values: IOS,ANDROID
+ */
 enum class MobileAppPlatform(@get:JsonValue val value: kotlin.String) {
 
     IOS("IOS"),
@@ -28,9 +28,8 @@ enum class MobileAppPlatform(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MobileAppPlatform {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MobileAppPlatform'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MobileAppPlatform'")
         }
     }
 }
-

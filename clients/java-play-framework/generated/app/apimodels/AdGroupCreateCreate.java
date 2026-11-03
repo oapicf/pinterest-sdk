@@ -27,7 +27,7 @@ import javax.validation.Valid;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdGroupCreateCreate   {
   @JsonProperty("auto_targeting_enabled")
@@ -63,7 +63,7 @@ public class AdGroupCreateCreate   {
   @JsonProperty("budget_type")
   @Valid
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @JsonProperty("campaign_id")
   @NotNull
@@ -119,7 +119,7 @@ public class AdGroupCreateCreate   {
   @JsonProperty("pacing_delivery_type")
   @Valid
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   @JsonProperty("performance_plus_campaign_settings")
   @Valid

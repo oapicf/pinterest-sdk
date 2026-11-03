@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CancelInviteResultUser;
@@ -22,19 +21,15 @@ import jakarta.annotation.Generated;
  * CancelInviteResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CancelInviteResult {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable InviteDataResponse inviteData;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isReceivedInvite;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CancelInviteResultUser user;
 
   public CancelInviteResult id(@Nullable String id) {
@@ -157,7 +152,7 @@ public class CancelInviteResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

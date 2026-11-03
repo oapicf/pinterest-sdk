@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,7 +24,7 @@ import jakarta.annotation.Generated;
  * CatalogsReport
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsReport {
 
   /**
@@ -63,13 +62,10 @@ public class CatalogsReport {
     }
   }
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ReportStatusEnum reportStatus;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> size = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> url = JsonNullable.<String>undefined();
 
   public CatalogsReport reportStatus(@Nullable ReportStatusEnum reportStatus) {
@@ -103,7 +99,7 @@ public class CatalogsReport {
    * @return size
    */
   @Valid 
-  @Schema(name = "size", description = "Size of the report in bytes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "size", description = "Size of the report in bytes", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("size")
   public JsonNullable<BigDecimal> getSize() {
     return size;
@@ -123,7 +119,7 @@ public class CatalogsReport {
    * @return url
    */
   
-  @Schema(name = "url", description = "URL to download the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "url", description = "URL to download the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("url")
   public JsonNullable<String> getUrl() {
     return url;

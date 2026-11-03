@@ -12,24 +12,1654 @@
 
 namespace models {
 
-
-class NullableCurrency
-{
-public:
-
-    NullableCurrency();
-    virtual ~NullableCurrency() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullableCurrency,
-        )
-
-private:
+enum class NullableCurrency {
+    
+    AED,
+    
+    AFN,
+    
+    ALL,
+    
+    AMD,
+    
+    ANG,
+    
+    AOA,
+    
+    ARS,
+    
+    AUD,
+    
+    AWG,
+    
+    AZN,
+    
+    BAM,
+    
+    BBD,
+    
+    BDT,
+    
+    BGN,
+    
+    BHD,
+    
+    BIF,
+    
+    BMD,
+    
+    BND,
+    
+    BOB,
+    
+    BRL,
+    
+    BSD,
+    
+    BTN,
+    
+    BWP,
+    
+    BYN,
+    
+    BYR,
+    
+    BZD,
+    
+    CAD,
+    
+    CDF,
+    
+    CHF,
+    
+    CLP,
+    
+    CNY,
+    
+    COP,
+    
+    CRC,
+    
+    CUC,
+    
+    CUP,
+    
+    CVE,
+    
+    CZK,
+    
+    DJF,
+    
+    DKK,
+    
+    DOP,
+    
+    DZD,
+    
+    EGP,
+    
+    ERN,
+    
+    ETB,
+    
+    EUR,
+    
+    FJD,
+    
+    FKP,
+    
+    GBP,
+    
+    GEL,
+    
+    GGP,
+    
+    GHS,
+    
+    GIP,
+    
+    GMD,
+    
+    GNF,
+    
+    GTQ,
+    
+    GYD,
+    
+    HKD,
+    
+    HNL,
+    
+    HRK,
+    
+    HTG,
+    
+    HUF,
+    
+    IDR,
+    
+    ILS,
+    
+    IMP,
+    
+    INR,
+    
+    IQD,
+    
+    IRR,
+    
+    ISK,
+    
+    JEP,
+    
+    JMD,
+    
+    JOD,
+    
+    JPY,
+    
+    KES,
+    
+    KGS,
+    
+    KHR,
+    
+    KMF,
+    
+    KPW,
+    
+    KRW,
+    
+    KWD,
+    
+    KYD,
+    
+    KZT,
+    
+    LAK,
+    
+    LBP,
+    
+    LKR,
+    
+    LRD,
+    
+    LSL,
+    
+    LYD,
+    
+    MAD,
+    
+    MDL,
+    
+    MGA,
+    
+    MKD,
+    
+    MMK,
+    
+    MNT,
+    
+    MOP,
+    
+    MRO,
+    
+    MUR,
+    
+    MVR,
+    
+    MWK,
+    
+    MXN,
+    
+    MYR,
+    
+    MZN,
+    
+    NAD,
+    
+    NGN,
+    
+    NIO,
+    
+    NOK,
+    
+    NPR,
+    
+    NZD,
+    
+    OMR,
+    
+    PAB,
+    
+    PEN,
+    
+    PGK,
+    
+    PHP,
+    
+    PKR,
+    
+    PLN,
+    
+    PYG,
+    
+    QAR,
+    
+    RON,
+    
+    RSD,
+    
+    RUB,
+    
+    RWF,
+    
+    SAR,
+    
+    SBD,
+    
+    SCR,
+    
+    SDG,
+    
+    SEK,
+    
+    SGD,
+    
+    SHP,
+    
+    SLL,
+    
+    SOS,
+    
+    SPL,
+    
+    SRD,
+    
+    STD,
+    
+    SVC,
+    
+    SYP,
+    
+    SZL,
+    
+    THB,
+    
+    TJS,
+    
+    TMT,
+    
+    TND,
+    
+    TOP,
+    
+    TRY,
+    
+    TTD,
+    
+    TVD,
+    
+    TWD,
+    
+    TZS,
+    
+    UAH,
+    
+    UGX,
+    
+    USD,
+    
+    UYU,
+    
+    UZS,
+    
+    VEF,
+    
+    VND,
+    
+    VUV,
+    
+    WST,
+    
+    XAF,
+    
+    XCD,
+    
+    XDR,
+    
+    XOF,
+    
+    XPF,
+    
+    YER,
+    
+    ZAR,
+    
+    ZMW,
+    
+    ZWD
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullableCurrency& value)
+{
+    switch (value)
+    {
+        
+        case NullableCurrency::AED: j = "AED"; break;
+        
+        case NullableCurrency::AFN: j = "AFN"; break;
+        
+        case NullableCurrency::ALL: j = "ALL"; break;
+        
+        case NullableCurrency::AMD: j = "AMD"; break;
+        
+        case NullableCurrency::ANG: j = "ANG"; break;
+        
+        case NullableCurrency::AOA: j = "AOA"; break;
+        
+        case NullableCurrency::ARS: j = "ARS"; break;
+        
+        case NullableCurrency::AUD: j = "AUD"; break;
+        
+        case NullableCurrency::AWG: j = "AWG"; break;
+        
+        case NullableCurrency::AZN: j = "AZN"; break;
+        
+        case NullableCurrency::BAM: j = "BAM"; break;
+        
+        case NullableCurrency::BBD: j = "BBD"; break;
+        
+        case NullableCurrency::BDT: j = "BDT"; break;
+        
+        case NullableCurrency::BGN: j = "BGN"; break;
+        
+        case NullableCurrency::BHD: j = "BHD"; break;
+        
+        case NullableCurrency::BIF: j = "BIF"; break;
+        
+        case NullableCurrency::BMD: j = "BMD"; break;
+        
+        case NullableCurrency::BND: j = "BND"; break;
+        
+        case NullableCurrency::BOB: j = "BOB"; break;
+        
+        case NullableCurrency::BRL: j = "BRL"; break;
+        
+        case NullableCurrency::BSD: j = "BSD"; break;
+        
+        case NullableCurrency::BTN: j = "BTN"; break;
+        
+        case NullableCurrency::BWP: j = "BWP"; break;
+        
+        case NullableCurrency::BYN: j = "BYN"; break;
+        
+        case NullableCurrency::BYR: j = "BYR"; break;
+        
+        case NullableCurrency::BZD: j = "BZD"; break;
+        
+        case NullableCurrency::CAD: j = "CAD"; break;
+        
+        case NullableCurrency::CDF: j = "CDF"; break;
+        
+        case NullableCurrency::CHF: j = "CHF"; break;
+        
+        case NullableCurrency::CLP: j = "CLP"; break;
+        
+        case NullableCurrency::CNY: j = "CNY"; break;
+        
+        case NullableCurrency::COP: j = "COP"; break;
+        
+        case NullableCurrency::CRC: j = "CRC"; break;
+        
+        case NullableCurrency::CUC: j = "CUC"; break;
+        
+        case NullableCurrency::CUP: j = "CUP"; break;
+        
+        case NullableCurrency::CVE: j = "CVE"; break;
+        
+        case NullableCurrency::CZK: j = "CZK"; break;
+        
+        case NullableCurrency::DJF: j = "DJF"; break;
+        
+        case NullableCurrency::DKK: j = "DKK"; break;
+        
+        case NullableCurrency::DOP: j = "DOP"; break;
+        
+        case NullableCurrency::DZD: j = "DZD"; break;
+        
+        case NullableCurrency::EGP: j = "EGP"; break;
+        
+        case NullableCurrency::ERN: j = "ERN"; break;
+        
+        case NullableCurrency::ETB: j = "ETB"; break;
+        
+        case NullableCurrency::EUR: j = "EUR"; break;
+        
+        case NullableCurrency::FJD: j = "FJD"; break;
+        
+        case NullableCurrency::FKP: j = "FKP"; break;
+        
+        case NullableCurrency::GBP: j = "GBP"; break;
+        
+        case NullableCurrency::GEL: j = "GEL"; break;
+        
+        case NullableCurrency::GGP: j = "GGP"; break;
+        
+        case NullableCurrency::GHS: j = "GHS"; break;
+        
+        case NullableCurrency::GIP: j = "GIP"; break;
+        
+        case NullableCurrency::GMD: j = "GMD"; break;
+        
+        case NullableCurrency::GNF: j = "GNF"; break;
+        
+        case NullableCurrency::GTQ: j = "GTQ"; break;
+        
+        case NullableCurrency::GYD: j = "GYD"; break;
+        
+        case NullableCurrency::HKD: j = "HKD"; break;
+        
+        case NullableCurrency::HNL: j = "HNL"; break;
+        
+        case NullableCurrency::HRK: j = "HRK"; break;
+        
+        case NullableCurrency::HTG: j = "HTG"; break;
+        
+        case NullableCurrency::HUF: j = "HUF"; break;
+        
+        case NullableCurrency::IDR: j = "IDR"; break;
+        
+        case NullableCurrency::ILS: j = "ILS"; break;
+        
+        case NullableCurrency::IMP: j = "IMP"; break;
+        
+        case NullableCurrency::INR: j = "INR"; break;
+        
+        case NullableCurrency::IQD: j = "IQD"; break;
+        
+        case NullableCurrency::IRR: j = "IRR"; break;
+        
+        case NullableCurrency::ISK: j = "ISK"; break;
+        
+        case NullableCurrency::JEP: j = "JEP"; break;
+        
+        case NullableCurrency::JMD: j = "JMD"; break;
+        
+        case NullableCurrency::JOD: j = "JOD"; break;
+        
+        case NullableCurrency::JPY: j = "JPY"; break;
+        
+        case NullableCurrency::KES: j = "KES"; break;
+        
+        case NullableCurrency::KGS: j = "KGS"; break;
+        
+        case NullableCurrency::KHR: j = "KHR"; break;
+        
+        case NullableCurrency::KMF: j = "KMF"; break;
+        
+        case NullableCurrency::KPW: j = "KPW"; break;
+        
+        case NullableCurrency::KRW: j = "KRW"; break;
+        
+        case NullableCurrency::KWD: j = "KWD"; break;
+        
+        case NullableCurrency::KYD: j = "KYD"; break;
+        
+        case NullableCurrency::KZT: j = "KZT"; break;
+        
+        case NullableCurrency::LAK: j = "LAK"; break;
+        
+        case NullableCurrency::LBP: j = "LBP"; break;
+        
+        case NullableCurrency::LKR: j = "LKR"; break;
+        
+        case NullableCurrency::LRD: j = "LRD"; break;
+        
+        case NullableCurrency::LSL: j = "LSL"; break;
+        
+        case NullableCurrency::LYD: j = "LYD"; break;
+        
+        case NullableCurrency::MAD: j = "MAD"; break;
+        
+        case NullableCurrency::MDL: j = "MDL"; break;
+        
+        case NullableCurrency::MGA: j = "MGA"; break;
+        
+        case NullableCurrency::MKD: j = "MKD"; break;
+        
+        case NullableCurrency::MMK: j = "MMK"; break;
+        
+        case NullableCurrency::MNT: j = "MNT"; break;
+        
+        case NullableCurrency::MOP: j = "MOP"; break;
+        
+        case NullableCurrency::MRO: j = "MRO"; break;
+        
+        case NullableCurrency::MUR: j = "MUR"; break;
+        
+        case NullableCurrency::MVR: j = "MVR"; break;
+        
+        case NullableCurrency::MWK: j = "MWK"; break;
+        
+        case NullableCurrency::MXN: j = "MXN"; break;
+        
+        case NullableCurrency::MYR: j = "MYR"; break;
+        
+        case NullableCurrency::MZN: j = "MZN"; break;
+        
+        case NullableCurrency::NAD: j = "NAD"; break;
+        
+        case NullableCurrency::NGN: j = "NGN"; break;
+        
+        case NullableCurrency::NIO: j = "NIO"; break;
+        
+        case NullableCurrency::NOK: j = "NOK"; break;
+        
+        case NullableCurrency::NPR: j = "NPR"; break;
+        
+        case NullableCurrency::NZD: j = "NZD"; break;
+        
+        case NullableCurrency::OMR: j = "OMR"; break;
+        
+        case NullableCurrency::PAB: j = "PAB"; break;
+        
+        case NullableCurrency::PEN: j = "PEN"; break;
+        
+        case NullableCurrency::PGK: j = "PGK"; break;
+        
+        case NullableCurrency::PHP: j = "PHP"; break;
+        
+        case NullableCurrency::PKR: j = "PKR"; break;
+        
+        case NullableCurrency::PLN: j = "PLN"; break;
+        
+        case NullableCurrency::PYG: j = "PYG"; break;
+        
+        case NullableCurrency::QAR: j = "QAR"; break;
+        
+        case NullableCurrency::RON: j = "RON"; break;
+        
+        case NullableCurrency::RSD: j = "RSD"; break;
+        
+        case NullableCurrency::RUB: j = "RUB"; break;
+        
+        case NullableCurrency::RWF: j = "RWF"; break;
+        
+        case NullableCurrency::SAR: j = "SAR"; break;
+        
+        case NullableCurrency::SBD: j = "SBD"; break;
+        
+        case NullableCurrency::SCR: j = "SCR"; break;
+        
+        case NullableCurrency::SDG: j = "SDG"; break;
+        
+        case NullableCurrency::SEK: j = "SEK"; break;
+        
+        case NullableCurrency::SGD: j = "SGD"; break;
+        
+        case NullableCurrency::SHP: j = "SHP"; break;
+        
+        case NullableCurrency::SLL: j = "SLL"; break;
+        
+        case NullableCurrency::SOS: j = "SOS"; break;
+        
+        case NullableCurrency::SPL: j = "SPL"; break;
+        
+        case NullableCurrency::SRD: j = "SRD"; break;
+        
+        case NullableCurrency::STD: j = "STD"; break;
+        
+        case NullableCurrency::SVC: j = "SVC"; break;
+        
+        case NullableCurrency::SYP: j = "SYP"; break;
+        
+        case NullableCurrency::SZL: j = "SZL"; break;
+        
+        case NullableCurrency::THB: j = "THB"; break;
+        
+        case NullableCurrency::TJS: j = "TJS"; break;
+        
+        case NullableCurrency::TMT: j = "TMT"; break;
+        
+        case NullableCurrency::TND: j = "TND"; break;
+        
+        case NullableCurrency::TOP: j = "TOP"; break;
+        
+        case NullableCurrency::TRY: j = "TRY"; break;
+        
+        case NullableCurrency::TTD: j = "TTD"; break;
+        
+        case NullableCurrency::TVD: j = "TVD"; break;
+        
+        case NullableCurrency::TWD: j = "TWD"; break;
+        
+        case NullableCurrency::TZS: j = "TZS"; break;
+        
+        case NullableCurrency::UAH: j = "UAH"; break;
+        
+        case NullableCurrency::UGX: j = "UGX"; break;
+        
+        case NullableCurrency::USD: j = "USD"; break;
+        
+        case NullableCurrency::UYU: j = "UYU"; break;
+        
+        case NullableCurrency::UZS: j = "UZS"; break;
+        
+        case NullableCurrency::VEF: j = "VEF"; break;
+        
+        case NullableCurrency::VND: j = "VND"; break;
+        
+        case NullableCurrency::VUV: j = "VUV"; break;
+        
+        case NullableCurrency::WST: j = "WST"; break;
+        
+        case NullableCurrency::XAF: j = "XAF"; break;
+        
+        case NullableCurrency::XCD: j = "XCD"; break;
+        
+        case NullableCurrency::XDR: j = "XDR"; break;
+        
+        case NullableCurrency::XOF: j = "XOF"; break;
+        
+        case NullableCurrency::XPF: j = "XPF"; break;
+        
+        case NullableCurrency::YER: j = "YER"; break;
+        
+        case NullableCurrency::ZAR: j = "ZAR"; break;
+        
+        case NullableCurrency::ZMW: j = "ZMW"; break;
+        
+        case NullableCurrency::ZWD: j = "ZWD"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullableCurrency", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullableCurrency& value)
+{
+    
+    if (j == "AED")
+    {
+        value = NullableCurrency::AED;
+        return;
+    }
+    
+    if (j == "AFN")
+    {
+        value = NullableCurrency::AFN;
+        return;
+    }
+    
+    if (j == "ALL")
+    {
+        value = NullableCurrency::ALL;
+        return;
+    }
+    
+    if (j == "AMD")
+    {
+        value = NullableCurrency::AMD;
+        return;
+    }
+    
+    if (j == "ANG")
+    {
+        value = NullableCurrency::ANG;
+        return;
+    }
+    
+    if (j == "AOA")
+    {
+        value = NullableCurrency::AOA;
+        return;
+    }
+    
+    if (j == "ARS")
+    {
+        value = NullableCurrency::ARS;
+        return;
+    }
+    
+    if (j == "AUD")
+    {
+        value = NullableCurrency::AUD;
+        return;
+    }
+    
+    if (j == "AWG")
+    {
+        value = NullableCurrency::AWG;
+        return;
+    }
+    
+    if (j == "AZN")
+    {
+        value = NullableCurrency::AZN;
+        return;
+    }
+    
+    if (j == "BAM")
+    {
+        value = NullableCurrency::BAM;
+        return;
+    }
+    
+    if (j == "BBD")
+    {
+        value = NullableCurrency::BBD;
+        return;
+    }
+    
+    if (j == "BDT")
+    {
+        value = NullableCurrency::BDT;
+        return;
+    }
+    
+    if (j == "BGN")
+    {
+        value = NullableCurrency::BGN;
+        return;
+    }
+    
+    if (j == "BHD")
+    {
+        value = NullableCurrency::BHD;
+        return;
+    }
+    
+    if (j == "BIF")
+    {
+        value = NullableCurrency::BIF;
+        return;
+    }
+    
+    if (j == "BMD")
+    {
+        value = NullableCurrency::BMD;
+        return;
+    }
+    
+    if (j == "BND")
+    {
+        value = NullableCurrency::BND;
+        return;
+    }
+    
+    if (j == "BOB")
+    {
+        value = NullableCurrency::BOB;
+        return;
+    }
+    
+    if (j == "BRL")
+    {
+        value = NullableCurrency::BRL;
+        return;
+    }
+    
+    if (j == "BSD")
+    {
+        value = NullableCurrency::BSD;
+        return;
+    }
+    
+    if (j == "BTN")
+    {
+        value = NullableCurrency::BTN;
+        return;
+    }
+    
+    if (j == "BWP")
+    {
+        value = NullableCurrency::BWP;
+        return;
+    }
+    
+    if (j == "BYN")
+    {
+        value = NullableCurrency::BYN;
+        return;
+    }
+    
+    if (j == "BYR")
+    {
+        value = NullableCurrency::BYR;
+        return;
+    }
+    
+    if (j == "BZD")
+    {
+        value = NullableCurrency::BZD;
+        return;
+    }
+    
+    if (j == "CAD")
+    {
+        value = NullableCurrency::CAD;
+        return;
+    }
+    
+    if (j == "CDF")
+    {
+        value = NullableCurrency::CDF;
+        return;
+    }
+    
+    if (j == "CHF")
+    {
+        value = NullableCurrency::CHF;
+        return;
+    }
+    
+    if (j == "CLP")
+    {
+        value = NullableCurrency::CLP;
+        return;
+    }
+    
+    if (j == "CNY")
+    {
+        value = NullableCurrency::CNY;
+        return;
+    }
+    
+    if (j == "COP")
+    {
+        value = NullableCurrency::COP;
+        return;
+    }
+    
+    if (j == "CRC")
+    {
+        value = NullableCurrency::CRC;
+        return;
+    }
+    
+    if (j == "CUC")
+    {
+        value = NullableCurrency::CUC;
+        return;
+    }
+    
+    if (j == "CUP")
+    {
+        value = NullableCurrency::CUP;
+        return;
+    }
+    
+    if (j == "CVE")
+    {
+        value = NullableCurrency::CVE;
+        return;
+    }
+    
+    if (j == "CZK")
+    {
+        value = NullableCurrency::CZK;
+        return;
+    }
+    
+    if (j == "DJF")
+    {
+        value = NullableCurrency::DJF;
+        return;
+    }
+    
+    if (j == "DKK")
+    {
+        value = NullableCurrency::DKK;
+        return;
+    }
+    
+    if (j == "DOP")
+    {
+        value = NullableCurrency::DOP;
+        return;
+    }
+    
+    if (j == "DZD")
+    {
+        value = NullableCurrency::DZD;
+        return;
+    }
+    
+    if (j == "EGP")
+    {
+        value = NullableCurrency::EGP;
+        return;
+    }
+    
+    if (j == "ERN")
+    {
+        value = NullableCurrency::ERN;
+        return;
+    }
+    
+    if (j == "ETB")
+    {
+        value = NullableCurrency::ETB;
+        return;
+    }
+    
+    if (j == "EUR")
+    {
+        value = NullableCurrency::EUR;
+        return;
+    }
+    
+    if (j == "FJD")
+    {
+        value = NullableCurrency::FJD;
+        return;
+    }
+    
+    if (j == "FKP")
+    {
+        value = NullableCurrency::FKP;
+        return;
+    }
+    
+    if (j == "GBP")
+    {
+        value = NullableCurrency::GBP;
+        return;
+    }
+    
+    if (j == "GEL")
+    {
+        value = NullableCurrency::GEL;
+        return;
+    }
+    
+    if (j == "GGP")
+    {
+        value = NullableCurrency::GGP;
+        return;
+    }
+    
+    if (j == "GHS")
+    {
+        value = NullableCurrency::GHS;
+        return;
+    }
+    
+    if (j == "GIP")
+    {
+        value = NullableCurrency::GIP;
+        return;
+    }
+    
+    if (j == "GMD")
+    {
+        value = NullableCurrency::GMD;
+        return;
+    }
+    
+    if (j == "GNF")
+    {
+        value = NullableCurrency::GNF;
+        return;
+    }
+    
+    if (j == "GTQ")
+    {
+        value = NullableCurrency::GTQ;
+        return;
+    }
+    
+    if (j == "GYD")
+    {
+        value = NullableCurrency::GYD;
+        return;
+    }
+    
+    if (j == "HKD")
+    {
+        value = NullableCurrency::HKD;
+        return;
+    }
+    
+    if (j == "HNL")
+    {
+        value = NullableCurrency::HNL;
+        return;
+    }
+    
+    if (j == "HRK")
+    {
+        value = NullableCurrency::HRK;
+        return;
+    }
+    
+    if (j == "HTG")
+    {
+        value = NullableCurrency::HTG;
+        return;
+    }
+    
+    if (j == "HUF")
+    {
+        value = NullableCurrency::HUF;
+        return;
+    }
+    
+    if (j == "IDR")
+    {
+        value = NullableCurrency::IDR;
+        return;
+    }
+    
+    if (j == "ILS")
+    {
+        value = NullableCurrency::ILS;
+        return;
+    }
+    
+    if (j == "IMP")
+    {
+        value = NullableCurrency::IMP;
+        return;
+    }
+    
+    if (j == "INR")
+    {
+        value = NullableCurrency::INR;
+        return;
+    }
+    
+    if (j == "IQD")
+    {
+        value = NullableCurrency::IQD;
+        return;
+    }
+    
+    if (j == "IRR")
+    {
+        value = NullableCurrency::IRR;
+        return;
+    }
+    
+    if (j == "ISK")
+    {
+        value = NullableCurrency::ISK;
+        return;
+    }
+    
+    if (j == "JEP")
+    {
+        value = NullableCurrency::JEP;
+        return;
+    }
+    
+    if (j == "JMD")
+    {
+        value = NullableCurrency::JMD;
+        return;
+    }
+    
+    if (j == "JOD")
+    {
+        value = NullableCurrency::JOD;
+        return;
+    }
+    
+    if (j == "JPY")
+    {
+        value = NullableCurrency::JPY;
+        return;
+    }
+    
+    if (j == "KES")
+    {
+        value = NullableCurrency::KES;
+        return;
+    }
+    
+    if (j == "KGS")
+    {
+        value = NullableCurrency::KGS;
+        return;
+    }
+    
+    if (j == "KHR")
+    {
+        value = NullableCurrency::KHR;
+        return;
+    }
+    
+    if (j == "KMF")
+    {
+        value = NullableCurrency::KMF;
+        return;
+    }
+    
+    if (j == "KPW")
+    {
+        value = NullableCurrency::KPW;
+        return;
+    }
+    
+    if (j == "KRW")
+    {
+        value = NullableCurrency::KRW;
+        return;
+    }
+    
+    if (j == "KWD")
+    {
+        value = NullableCurrency::KWD;
+        return;
+    }
+    
+    if (j == "KYD")
+    {
+        value = NullableCurrency::KYD;
+        return;
+    }
+    
+    if (j == "KZT")
+    {
+        value = NullableCurrency::KZT;
+        return;
+    }
+    
+    if (j == "LAK")
+    {
+        value = NullableCurrency::LAK;
+        return;
+    }
+    
+    if (j == "LBP")
+    {
+        value = NullableCurrency::LBP;
+        return;
+    }
+    
+    if (j == "LKR")
+    {
+        value = NullableCurrency::LKR;
+        return;
+    }
+    
+    if (j == "LRD")
+    {
+        value = NullableCurrency::LRD;
+        return;
+    }
+    
+    if (j == "LSL")
+    {
+        value = NullableCurrency::LSL;
+        return;
+    }
+    
+    if (j == "LYD")
+    {
+        value = NullableCurrency::LYD;
+        return;
+    }
+    
+    if (j == "MAD")
+    {
+        value = NullableCurrency::MAD;
+        return;
+    }
+    
+    if (j == "MDL")
+    {
+        value = NullableCurrency::MDL;
+        return;
+    }
+    
+    if (j == "MGA")
+    {
+        value = NullableCurrency::MGA;
+        return;
+    }
+    
+    if (j == "MKD")
+    {
+        value = NullableCurrency::MKD;
+        return;
+    }
+    
+    if (j == "MMK")
+    {
+        value = NullableCurrency::MMK;
+        return;
+    }
+    
+    if (j == "MNT")
+    {
+        value = NullableCurrency::MNT;
+        return;
+    }
+    
+    if (j == "MOP")
+    {
+        value = NullableCurrency::MOP;
+        return;
+    }
+    
+    if (j == "MRO")
+    {
+        value = NullableCurrency::MRO;
+        return;
+    }
+    
+    if (j == "MUR")
+    {
+        value = NullableCurrency::MUR;
+        return;
+    }
+    
+    if (j == "MVR")
+    {
+        value = NullableCurrency::MVR;
+        return;
+    }
+    
+    if (j == "MWK")
+    {
+        value = NullableCurrency::MWK;
+        return;
+    }
+    
+    if (j == "MXN")
+    {
+        value = NullableCurrency::MXN;
+        return;
+    }
+    
+    if (j == "MYR")
+    {
+        value = NullableCurrency::MYR;
+        return;
+    }
+    
+    if (j == "MZN")
+    {
+        value = NullableCurrency::MZN;
+        return;
+    }
+    
+    if (j == "NAD")
+    {
+        value = NullableCurrency::NAD;
+        return;
+    }
+    
+    if (j == "NGN")
+    {
+        value = NullableCurrency::NGN;
+        return;
+    }
+    
+    if (j == "NIO")
+    {
+        value = NullableCurrency::NIO;
+        return;
+    }
+    
+    if (j == "NOK")
+    {
+        value = NullableCurrency::NOK;
+        return;
+    }
+    
+    if (j == "NPR")
+    {
+        value = NullableCurrency::NPR;
+        return;
+    }
+    
+    if (j == "NZD")
+    {
+        value = NullableCurrency::NZD;
+        return;
+    }
+    
+    if (j == "OMR")
+    {
+        value = NullableCurrency::OMR;
+        return;
+    }
+    
+    if (j == "PAB")
+    {
+        value = NullableCurrency::PAB;
+        return;
+    }
+    
+    if (j == "PEN")
+    {
+        value = NullableCurrency::PEN;
+        return;
+    }
+    
+    if (j == "PGK")
+    {
+        value = NullableCurrency::PGK;
+        return;
+    }
+    
+    if (j == "PHP")
+    {
+        value = NullableCurrency::PHP;
+        return;
+    }
+    
+    if (j == "PKR")
+    {
+        value = NullableCurrency::PKR;
+        return;
+    }
+    
+    if (j == "PLN")
+    {
+        value = NullableCurrency::PLN;
+        return;
+    }
+    
+    if (j == "PYG")
+    {
+        value = NullableCurrency::PYG;
+        return;
+    }
+    
+    if (j == "QAR")
+    {
+        value = NullableCurrency::QAR;
+        return;
+    }
+    
+    if (j == "RON")
+    {
+        value = NullableCurrency::RON;
+        return;
+    }
+    
+    if (j == "RSD")
+    {
+        value = NullableCurrency::RSD;
+        return;
+    }
+    
+    if (j == "RUB")
+    {
+        value = NullableCurrency::RUB;
+        return;
+    }
+    
+    if (j == "RWF")
+    {
+        value = NullableCurrency::RWF;
+        return;
+    }
+    
+    if (j == "SAR")
+    {
+        value = NullableCurrency::SAR;
+        return;
+    }
+    
+    if (j == "SBD")
+    {
+        value = NullableCurrency::SBD;
+        return;
+    }
+    
+    if (j == "SCR")
+    {
+        value = NullableCurrency::SCR;
+        return;
+    }
+    
+    if (j == "SDG")
+    {
+        value = NullableCurrency::SDG;
+        return;
+    }
+    
+    if (j == "SEK")
+    {
+        value = NullableCurrency::SEK;
+        return;
+    }
+    
+    if (j == "SGD")
+    {
+        value = NullableCurrency::SGD;
+        return;
+    }
+    
+    if (j == "SHP")
+    {
+        value = NullableCurrency::SHP;
+        return;
+    }
+    
+    if (j == "SLL")
+    {
+        value = NullableCurrency::SLL;
+        return;
+    }
+    
+    if (j == "SOS")
+    {
+        value = NullableCurrency::SOS;
+        return;
+    }
+    
+    if (j == "SPL")
+    {
+        value = NullableCurrency::SPL;
+        return;
+    }
+    
+    if (j == "SRD")
+    {
+        value = NullableCurrency::SRD;
+        return;
+    }
+    
+    if (j == "STD")
+    {
+        value = NullableCurrency::STD;
+        return;
+    }
+    
+    if (j == "SVC")
+    {
+        value = NullableCurrency::SVC;
+        return;
+    }
+    
+    if (j == "SYP")
+    {
+        value = NullableCurrency::SYP;
+        return;
+    }
+    
+    if (j == "SZL")
+    {
+        value = NullableCurrency::SZL;
+        return;
+    }
+    
+    if (j == "THB")
+    {
+        value = NullableCurrency::THB;
+        return;
+    }
+    
+    if (j == "TJS")
+    {
+        value = NullableCurrency::TJS;
+        return;
+    }
+    
+    if (j == "TMT")
+    {
+        value = NullableCurrency::TMT;
+        return;
+    }
+    
+    if (j == "TND")
+    {
+        value = NullableCurrency::TND;
+        return;
+    }
+    
+    if (j == "TOP")
+    {
+        value = NullableCurrency::TOP;
+        return;
+    }
+    
+    if (j == "TRY")
+    {
+        value = NullableCurrency::TRY;
+        return;
+    }
+    
+    if (j == "TTD")
+    {
+        value = NullableCurrency::TTD;
+        return;
+    }
+    
+    if (j == "TVD")
+    {
+        value = NullableCurrency::TVD;
+        return;
+    }
+    
+    if (j == "TWD")
+    {
+        value = NullableCurrency::TWD;
+        return;
+    }
+    
+    if (j == "TZS")
+    {
+        value = NullableCurrency::TZS;
+        return;
+    }
+    
+    if (j == "UAH")
+    {
+        value = NullableCurrency::UAH;
+        return;
+    }
+    
+    if (j == "UGX")
+    {
+        value = NullableCurrency::UGX;
+        return;
+    }
+    
+    if (j == "USD")
+    {
+        value = NullableCurrency::USD;
+        return;
+    }
+    
+    if (j == "UYU")
+    {
+        value = NullableCurrency::UYU;
+        return;
+    }
+    
+    if (j == "UZS")
+    {
+        value = NullableCurrency::UZS;
+        return;
+    }
+    
+    if (j == "VEF")
+    {
+        value = NullableCurrency::VEF;
+        return;
+    }
+    
+    if (j == "VND")
+    {
+        value = NullableCurrency::VND;
+        return;
+    }
+    
+    if (j == "VUV")
+    {
+        value = NullableCurrency::VUV;
+        return;
+    }
+    
+    if (j == "WST")
+    {
+        value = NullableCurrency::WST;
+        return;
+    }
+    
+    if (j == "XAF")
+    {
+        value = NullableCurrency::XAF;
+        return;
+    }
+    
+    if (j == "XCD")
+    {
+        value = NullableCurrency::XCD;
+        return;
+    }
+    
+    if (j == "XDR")
+    {
+        value = NullableCurrency::XDR;
+        return;
+    }
+    
+    if (j == "XOF")
+    {
+        value = NullableCurrency::XOF;
+        return;
+    }
+    
+    if (j == "XPF")
+    {
+        value = NullableCurrency::XPF;
+        return;
+    }
+    
+    if (j == "YER")
+    {
+        value = NullableCurrency::YER;
+        return;
+    }
+    
+    if (j == "ZAR")
+    {
+        value = NullableCurrency::ZAR;
+        return;
+    }
+    
+    if (j == "ZMW")
+    {
+        value = NullableCurrency::ZMW;
+        return;
+    }
+    
+    if (j == "ZWD")
+    {
+        value = NullableCurrency::ZWD;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullableCurrency", &j);
+}
 
 } // namespace models
 

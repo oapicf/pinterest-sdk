@@ -175,7 +175,7 @@ export const NonNullableCatalogsCurrency = {
     Yer: 'YER',
     Zar: 'ZAR',
     Zmw: 'ZMW',
-    Zwd: 'ZWD'
+    Zwd: 'ZWD',
 } as const;
 export type NonNullableCatalogsCurrency = typeof NonNullableCatalogsCurrency[keyof typeof NonNullableCatalogsCurrency];
 

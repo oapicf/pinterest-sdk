@@ -77,7 +77,6 @@ public class PromotionCreate  {
   * List of values to be inserted in the promotion type-specific template.
   */
   @ApiModelProperty(value = "List of values to be inserted in the promotion type-specific template.")
-  @Valid
   private List<@Valid PromotionTemplateValue> templateValues = new ArrayList<>();
  /**
   * Get discountStatus

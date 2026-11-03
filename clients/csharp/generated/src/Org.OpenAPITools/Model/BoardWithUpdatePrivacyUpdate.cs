@@ -183,10 +183,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardWithUpdatePrivacyUpdate.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacyUpdate: name.");
 
             if (privacy.IsSet && privacy.Value == null)
-                throw new ArgumentNullException(nameof(privacy), "Property is not nullable for class BoardWithUpdatePrivacyUpdate.");
+                throw new JsonException("Property is not nullable for class BoardWithUpdatePrivacyUpdate: privacy.");
 
             return new BoardWithUpdatePrivacyUpdate(description, name, privacy);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardWithUpdatePrivacyUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,11 +211,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardWithUpdatePrivacyUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardWithUpdatePrivacyUpdate boardWithUpdatePrivacyUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (boardWithUpdatePrivacyUpdate.NameOption.IsSet && boardWithUpdatePrivacyUpdate.Name == null)
-                throw new ArgumentNullException(nameof(boardWithUpdatePrivacyUpdate.Name), "Property is required for class BoardWithUpdatePrivacyUpdate.");
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacyUpdate.Name to non-nullable JSON property 'name'.");
+
+            if (boardWithUpdatePrivacyUpdate.PrivacyOption.IsSet && boardWithUpdatePrivacyUpdate.Privacy == null)
+                throw new JsonException("Cannot write null property BoardWithUpdatePrivacyUpdate.Privacy to non-nullable JSON property 'privacy'.");
 
             if (boardWithUpdatePrivacyUpdate.DescriptionOption.IsSet)
                 if (boardWithUpdatePrivacyUpdate.DescriptionOption.Value != null)

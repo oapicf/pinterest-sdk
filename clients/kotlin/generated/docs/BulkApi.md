@@ -39,9 +39,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bulkDownloadCreate** | [**BulkDownloadCreate**](BulkDownloadCreate.md)|  | |
 
 ### Return type
@@ -96,10 +96,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **bulkRequestId** | **kotlin.String**| Bulk request ID that is from one of the entities bulk endpoints | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **bulkRequestId** | **kotlin.String**| Bulk request ID that is from one of the entities bulk endpoints | |
 | **includeDetails** | **kotlin.Boolean**| If set to True then attach the errors/details to all the requests | [optional] [default to false] |
 
 ### Return type
@@ -161,9 +161,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **bulkUpsertRequest** | [**BulkUpsertRequest**](BulkUpsertRequest.md)| Parameters to get create/update ad entities in bulk | |
 
 ### Return type

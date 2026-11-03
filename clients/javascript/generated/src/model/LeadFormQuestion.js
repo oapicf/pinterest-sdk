@@ -18,7 +18,7 @@ import LeadFormQuestionType from './LeadFormQuestionType';
 /**
  * The LeadFormQuestion model module.
  * @module model/LeadFormQuestion
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LeadFormQuestion {
     /**

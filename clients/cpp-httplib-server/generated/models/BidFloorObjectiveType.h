@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class BidFloorObjectiveType
-{
-public:
-
-    BidFloorObjectiveType();
-    virtual ~BidFloorObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BidFloorObjectiveType,
-        )
-
-private:
+enum class BidFloorObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    WEB_CONVERSION,
+    
+    CATALOG_SALES,
+    
+    VIDEO_COMPLETION,
+    
+    SALES
+    
 };
 
+inline void to_json(nlohmann::json& j, const BidFloorObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case BidFloorObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case BidFloorObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case BidFloorObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case BidFloorObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case BidFloorObjectiveType::VIDEO_COMPLETION: j = "VIDEO_COMPLETION"; break;
+        
+        case BidFloorObjectiveType::SALES: j = "SALES"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BidFloorObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BidFloorObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = BidFloorObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = BidFloorObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = BidFloorObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = BidFloorObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "VIDEO_COMPLETION")
+    {
+        value = BidFloorObjectiveType::VIDEO_COMPLETION;
+        return;
+    }
+    
+    if (j == "SALES")
+    {
+        value = BidFloorObjectiveType::SALES;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BidFloorObjectiveType", &j);
+}
 
 } // namespace models
 

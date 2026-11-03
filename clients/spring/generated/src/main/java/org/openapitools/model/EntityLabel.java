@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,17 +25,15 @@ import jakarta.annotation.Generated;
  * EntityLabel
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class EntityLabel {
 
   private String entityId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<LabelParentType> entityType = JsonNullable.<LabelParentType>undefined();
 
   private String labelId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<EntityLabelStatus> status = JsonNullable.<EntityLabelStatus>undefined();
 
   public EntityLabel() {
@@ -82,7 +79,7 @@ public class EntityLabel {
    * @return entityType
    */
   @Valid 
-  @Schema(name = "entity_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "entity_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("entity_type")
   public JsonNullable<LabelParentType> getEntityType() {
     return entityType;
@@ -123,7 +120,7 @@ public class EntityLabel {
    * @return status
    */
   @Valid 
-  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("status")
   public JsonNullable<EntityLabelStatus> getStatus() {
     return status;

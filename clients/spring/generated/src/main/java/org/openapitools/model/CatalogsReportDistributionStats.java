@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -24,28 +23,21 @@ import jakarta.annotation.Generated;
  * CatalogsReportDistributionStats
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsReportDistributionStats implements CatalogsReportStats {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer code;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String codeLabel;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean ineligibleForAds;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean ineligibleForOrganic;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer occurrences;
 
   /**
@@ -81,7 +73,6 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
     }
   }
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ReportTypeEnum reportType;
 
   public CatalogsReportDistributionStats catalogId(@Nullable String catalogId) {

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class AssetSortBy
-{
-public:
-
-    AssetSortBy();
-    virtual ~AssetSortBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AssetSortBy,
-        )
-
-private:
+enum class AssetSortBy {
+    
+    NAME,
+    
+    ID,
+    
+    PERMISSIONS
+    
 };
 
+inline void to_json(nlohmann::json& j, const AssetSortBy& value)
+{
+    switch (value)
+    {
+        
+        case AssetSortBy::NAME: j = "NAME"; break;
+        
+        case AssetSortBy::ID: j = "ID"; break;
+        
+        case AssetSortBy::PERMISSIONS: j = "PERMISSIONS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AssetSortBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AssetSortBy& value)
+{
+    
+    if (j == "NAME")
+    {
+        value = AssetSortBy::NAME;
+        return;
+    }
+    
+    if (j == "ID")
+    {
+        value = AssetSortBy::ID;
+        return;
+    }
+    
+    if (j == "PERMISSIONS")
+    {
+        value = AssetSortBy::PERMISSIONS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AssetSortBy", &j);
+}
 
 } // namespace models
 

@@ -18,7 +18,7 @@ import EntityLabelError from './EntityLabelError';
 /**
  * The LabeledEntities model module.
  * @module model/LabeledEntities
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabeledEntities {
     /**

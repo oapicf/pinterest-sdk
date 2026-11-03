@@ -146,3 +146,4 @@ class _$BulkJobDataSerializer implements PrimitiveSerializer<BulkJobData> {
   }
 }
 
+

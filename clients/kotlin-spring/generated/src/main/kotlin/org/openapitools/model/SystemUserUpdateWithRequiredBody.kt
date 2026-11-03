@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class SystemUserUpdateWithRequiredBody(
 
     @Schema(required = true, description = "New system user name")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
 

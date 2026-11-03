@@ -39,7 +39,7 @@ import javax.validation.Valid;
 */
 @Path("/user_account")
 @Api(description = "the user_account API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UserAccountApi {
 
     @GET
@@ -60,7 +60,11 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response boardsUserFollowsList(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("explicit_following") @DefaultValue("false")  @ApiParam("Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")  Boolean explicitFollowing,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response boardsUserFollowsList(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("explicit_following") @DefaultValue("false")  @ApiParam("Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")  Boolean explicitFollowing
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -82,7 +86,9 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response followUserUpdate(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username,@Valid @NotNull FollowUserCreate followUserCreate) {
+    public Response followUserUpdate(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username
+,@Valid @NotNull FollowUserCreate followUserCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -104,7 +110,9 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response followersList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response followersList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -147,7 +155,8 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response unverifyWebsiteDelete(@QueryParam("website") @NotNull  @ApiParam("Website with path or domain only")  String website) {
+    public Response unverifyWebsiteDelete(@QueryParam("website") @NotNull  @ApiParam("Website with path or domain only")  String website
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -167,7 +176,17 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userAccountAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source,@QueryParam("metric_types")  @ApiParam("Metric types to get data for, default is all.")  List<QuerymetrictypesItems> metricTypes,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response userAccountAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent
+,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat
+,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes
+,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType
+,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source
+,@QueryParam("metric_types")  @ApiParam("Metric types to get data for, default is all.")  List<QuerymetrictypesItems> metricTypes
+,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -191,7 +210,19 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userAccountAnalyticsTopPins(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("sort_by") @NotNull  @ApiParam("Specify sorting order for metrics")  TopPinsSortBy sortBy,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source,@QueryParam("metric_types")  @ApiParam("Metric types to get data for, default is all.")  List<QuerymetrictypesItems> metricTypes,@QueryParam("num_of_pins") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Number of pins to include, default is 10. Max is 50.")  Integer numOfPins,@QueryParam("created_in_last_n_days")  @ApiParam("Get metrics for pins created in the last \&quot;n\&quot; days.")  BigDecimal createdInLastNDays,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response userAccountAnalyticsTopPins(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("sort_by") @NotNull  @ApiParam("Specify sorting order for metrics")  TopPinsSortBy sortBy
+,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent
+,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat
+,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes
+,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType
+,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source
+,@QueryParam("metric_types")  @ApiParam("Metric types to get data for, default is all.")  List<QuerymetrictypesItems> metricTypes
+,@QueryParam("num_of_pins") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Number of pins to include, default is 10. Max is 50.")  Integer numOfPins
+,@QueryParam("created_in_last_n_days")  @ApiParam("Get metrics for pins created in the last \&quot;n\&quot; days.")  BigDecimal createdInLastNDays
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -215,7 +246,19 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userAccountAnalyticsTopVideoPins(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("sort_by") @NotNull  @ApiParam("Specify sorting order for video metrics")  TopVideoPinsSortBy sortBy,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source,@QueryParam("metric_types")  @ApiParam("Metric types to get video data for, default is all.")  List<QueryvideopinmetrictypesItems> metricTypes,@QueryParam("num_of_pins") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Number of pins to include, default is 10. Max is 50.")  Integer numOfPins,@QueryParam("created_in_last_n_days")  @ApiParam("Get metrics for pins created in the last \&quot;n\&quot; days.")  BigDecimal createdInLastNDays,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response userAccountAnalyticsTopVideoPins(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("sort_by") @NotNull  @ApiParam("Specify sorting order for video metrics")  TopVideoPinsSortBy sortBy
+,@QueryParam("from_claimed_content") @DefaultValue("BOTH")  @ApiParam("Filter on Pins that match your claimed domain.")  String fromClaimedContent
+,@QueryParam("pin_format") @DefaultValue("ALL")  @ApiParam("Pin formats to get data for, default is all.")  String pinFormat
+,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes
+,@QueryParam("content_type") @DefaultValue("ALL")  @ApiParam("Filter to paid or organic data. Default is all.")  String contentType
+,@QueryParam("source") @DefaultValue("ALL")  @ApiParam("Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")  String source
+,@QueryParam("metric_types")  @ApiParam("Metric types to get video data for, default is all.")  List<QueryvideopinmetrictypesItems> metricTypes
+,@QueryParam("num_of_pins") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Number of pins to include, default is 10. Max is 50.")  Integer numOfPins
+,@QueryParam("created_in_last_n_days")  @ApiParam("Get metrics for pins created in the last \&quot;n\&quot; days.")  BigDecimal createdInLastNDays
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -236,7 +279,8 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userAccountGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response userAccountGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -258,7 +302,12 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userFollowingGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("explicit_following") @DefaultValue("false")  @ApiParam("Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")  Boolean explicitFollowing,@QueryParam("feed_type") @DefaultValue("ALL")  @ApiParam("Thrift param specifying what type of followees will be kept. Default to include all followees.")  UserFollowingFeedType feedType,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response userFollowingGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("explicit_following") @DefaultValue("false")  @ApiParam("Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")  Boolean explicitFollowing
+,@QueryParam("feed_type") @DefaultValue("ALL")  @ApiParam("Thrift param specifying what type of followees will be kept. Default to include all followees.")  UserFollowingFeedType feedType
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -278,7 +327,9 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response userWebsitesGet(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response userWebsitesGet(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -300,7 +351,9 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response verifyWebsiteUpdate(@Valid @NotNull UserWebsiteCreate userWebsiteCreate,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response verifyWebsiteUpdate(@Valid @NotNull UserWebsiteCreate userWebsiteCreate
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -322,7 +375,8 @@ public class UserAccountApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response websiteVerificationGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response websiteVerificationGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 }

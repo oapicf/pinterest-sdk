@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class LeadsExportStatus
-{
-public:
-
-    LeadsExportStatus();
-    virtual ~LeadsExportStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LeadsExportStatus,
-        )
-
-private:
+enum class LeadsExportStatus {
+    
+    IN_PROGRESS,
+    
+    FINISHED,
+    
+    FAILED
+    
 };
 
+inline void to_json(nlohmann::json& j, const LeadsExportStatus& value)
+{
+    switch (value)
+    {
+        
+        case LeadsExportStatus::IN_PROGRESS: j = "IN_PROGRESS"; break;
+        
+        case LeadsExportStatus::FINISHED: j = "FINISHED"; break;
+        
+        case LeadsExportStatus::FAILED: j = "FAILED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LeadsExportStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LeadsExportStatus& value)
+{
+    
+    if (j == "IN_PROGRESS")
+    {
+        value = LeadsExportStatus::IN_PROGRESS;
+        return;
+    }
+    
+    if (j == "FINISHED")
+    {
+        value = LeadsExportStatus::FINISHED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = LeadsExportStatus::FAILED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LeadsExportStatus", &j);
+}
 
 } // namespace models
 

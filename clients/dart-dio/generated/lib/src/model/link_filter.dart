@@ -105,3 +105,4 @@ class _$LinkFilterSerializer implements PrimitiveSerializer<LinkFilter> {
   }
 }
 
+

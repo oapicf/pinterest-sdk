@@ -15,7 +15,7 @@
 export const AttributionMatchType = {
     P: 'P',
     D: 'D',
-    Na: 'NA'
+    Na: 'NA',
 } as const;
 export type AttributionMatchType = typeof AttributionMatchType[keyof typeof AttributionMatchType];
 

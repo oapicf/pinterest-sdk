@@ -360,40 +360,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (additionalId1.IsSet && additionalId1.Value == null)
-                throw new ArgumentNullException(nameof(additionalId1), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: additional_id_1.");
 
             if (connectedAdvertiserId.IsSet && connectedAdvertiserId.Value == null)
-                throw new ArgumentNullException(nameof(connectedAdvertiserId), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: connected_advertiser_id.");
 
             if (connectedLbaId.IsSet && connectedLbaId.Value == null)
-                throw new ArgumentNullException(nameof(connectedLbaId), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: connected_lba_id.");
 
             if (connectedMerchantId.IsSet && connectedMerchantId.Value == null)
-                throw new ArgumentNullException(nameof(connectedMerchantId), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: connected_merchant_id.");
 
             if (connectedTagId.IsSet && connectedTagId.Value == null)
-                throw new ArgumentNullException(nameof(connectedTagId), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: connected_tag_id.");
 
             if (partnerAccessToken.IsSet && partnerAccessToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerAccessToken), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_access_token.");
 
             if (partnerAccessTokenExpiry.IsSet && partnerAccessTokenExpiry.Value == null)
-                throw new ArgumentNullException(nameof(partnerAccessTokenExpiry), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_access_token_expiry.");
 
             if (partnerMetadata.IsSet && partnerMetadata.Value == null)
-                throw new ArgumentNullException(nameof(partnerMetadata), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_metadata.");
 
             if (partnerPrimaryEmail.IsSet && partnerPrimaryEmail.Value == null)
-                throw new ArgumentNullException(nameof(partnerPrimaryEmail), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_primary_email.");
 
             if (partnerRefreshToken.IsSet && partnerRefreshToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerRefreshToken), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_refresh_token.");
 
             if (partnerRefreshTokenExpiry.IsSet && partnerRefreshTokenExpiry.Value == null)
-                throw new ArgumentNullException(nameof(partnerRefreshTokenExpiry), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: partner_refresh_token_expiry.");
 
             if (scopes.IsSet && scopes.Value == null)
-                throw new ArgumentNullException(nameof(scopes), "Property is not nullable for class IntegrationMetadataUpdate.");
+                throw new JsonException("Property is not nullable for class IntegrationMetadataUpdate: scopes.");
 
             return new IntegrationMetadataUpdate(additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, partnerAccessToken, partnerAccessTokenExpiry, partnerMetadata, partnerPrimaryEmail, partnerRefreshToken, partnerRefreshTokenExpiry, scopes);
         }
@@ -404,7 +404,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationMetadataUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationMetadataUpdate integrationMetadataUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -419,38 +418,43 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationMetadataUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationMetadataUpdate integrationMetadataUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (integrationMetadataUpdate.AdditionalId1Option.IsSet && integrationMetadataUpdate.AdditionalId1 == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.AdditionalId1), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.AdditionalId1 to non-nullable JSON property 'additional_id_1'.");
 
             if (integrationMetadataUpdate.ConnectedAdvertiserIdOption.IsSet && integrationMetadataUpdate.ConnectedAdvertiserId == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.ConnectedAdvertiserId), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.ConnectedAdvertiserId to non-nullable JSON property 'connected_advertiser_id'.");
 
             if (integrationMetadataUpdate.ConnectedLbaIdOption.IsSet && integrationMetadataUpdate.ConnectedLbaId == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.ConnectedLbaId), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.ConnectedLbaId to non-nullable JSON property 'connected_lba_id'.");
 
             if (integrationMetadataUpdate.ConnectedMerchantIdOption.IsSet && integrationMetadataUpdate.ConnectedMerchantId == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.ConnectedMerchantId), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.ConnectedMerchantId to non-nullable JSON property 'connected_merchant_id'.");
 
             if (integrationMetadataUpdate.ConnectedTagIdOption.IsSet && integrationMetadataUpdate.ConnectedTagId == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.ConnectedTagId), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.ConnectedTagId to non-nullable JSON property 'connected_tag_id'.");
 
             if (integrationMetadataUpdate.PartnerAccessTokenOption.IsSet && integrationMetadataUpdate.PartnerAccessToken == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.PartnerAccessToken), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerAccessToken to non-nullable JSON property 'partner_access_token'.");
+
+            if (integrationMetadataUpdate.PartnerAccessTokenExpiryOption.IsSet && integrationMetadataUpdate.PartnerAccessTokenExpiry == null)
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerAccessTokenExpiry to non-nullable JSON property 'partner_access_token_expiry'.");
 
             if (integrationMetadataUpdate.PartnerMetadataOption.IsSet && integrationMetadataUpdate.PartnerMetadata == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.PartnerMetadata), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerMetadata to non-nullable JSON property 'partner_metadata'.");
 
             if (integrationMetadataUpdate.PartnerPrimaryEmailOption.IsSet && integrationMetadataUpdate.PartnerPrimaryEmail == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.PartnerPrimaryEmail), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerPrimaryEmail to non-nullable JSON property 'partner_primary_email'.");
 
             if (integrationMetadataUpdate.PartnerRefreshTokenOption.IsSet && integrationMetadataUpdate.PartnerRefreshToken == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.PartnerRefreshToken), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerRefreshToken to non-nullable JSON property 'partner_refresh_token'.");
+
+            if (integrationMetadataUpdate.PartnerRefreshTokenExpiryOption.IsSet && integrationMetadataUpdate.PartnerRefreshTokenExpiry == null)
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.PartnerRefreshTokenExpiry to non-nullable JSON property 'partner_refresh_token_expiry'.");
 
             if (integrationMetadataUpdate.ScopesOption.IsSet && integrationMetadataUpdate.Scopes == null)
-                throw new ArgumentNullException(nameof(integrationMetadataUpdate.Scopes), "Property is required for class IntegrationMetadataUpdate.");
+                throw new JsonException("Cannot write null property IntegrationMetadataUpdate.Scopes to non-nullable JSON property 'scopes'.");
 
             if (integrationMetadataUpdate.AdditionalId1Option.IsSet)
                 writer.WriteString("additional_id_1", integrationMetadataUpdate.AdditionalId1);

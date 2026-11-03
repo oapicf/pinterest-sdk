@@ -6,20 +6,3 @@
 */
 #include "BillingInvoiceDocumentType.h"
 
-namespace models {
-
-BillingInvoiceDocumentType::BillingInvoiceDocumentType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class PlacementType
-{
-public:
-
-    PlacementType();
-    virtual ~PlacementType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PlacementType,
-        )
-
-private:
+enum class PlacementType {
+    
+    SEARCH,
+    
+    BROWSE,
+    
+    RELATED_PINS
+    
 };
 
+inline void to_json(nlohmann::json& j, const PlacementType& value)
+{
+    switch (value)
+    {
+        
+        case PlacementType::SEARCH: j = "SEARCH"; break;
+        
+        case PlacementType::BROWSE: j = "BROWSE"; break;
+        
+        case PlacementType::RELATED_PINS: j = "RELATED_PINS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PlacementType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PlacementType& value)
+{
+    
+    if (j == "SEARCH")
+    {
+        value = PlacementType::SEARCH;
+        return;
+    }
+    
+    if (j == "BROWSE")
+    {
+        value = PlacementType::BROWSE;
+        return;
+    }
+    
+    if (j == "RELATED_PINS")
+    {
+        value = PlacementType::RELATED_PINS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PlacementType", &j);
+}
 
 } // namespace models
 

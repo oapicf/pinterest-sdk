@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogClientRequest   {
   @JsonProperty("host")
   private String host;
@@ -102,7 +102,7 @@ public class IntegrationLogClientRequest   {
 
   public IntegrationLogClientRequest putRequestHeadersItem(String key, String requestHeadersItem) {
     if (this.requestHeaders == null) {
-      this.requestHeaders = new HashMap<>());
+      this.requestHeaders = new HashMap<>();
     }
     this.requestHeaders.put(key, requestHeadersItem);
     return this;
@@ -128,7 +128,7 @@ public class IntegrationLogClientRequest   {
 
   public IntegrationLogClientRequest putResponseHeadersItem(String key, String responseHeadersItem) {
     if (this.responseHeaders == null) {
-      this.responseHeaders = new HashMap<>());
+      this.responseHeaders = new HashMap<>();
     }
     this.responseHeaders.put(key, responseHeadersItem);
     return this;

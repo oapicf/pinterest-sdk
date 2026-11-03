@@ -40,7 +40,7 @@ import javax.validation.Valid;
   SupplementalItemsBatchResponse.JSON_PROPERTY_OPERATION_RESULTS,
   SupplementalItemsBatchResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SupplementalItemsBatchResponse   {
   public static final String JSON_PROPERTY_BATCH_ID = "batch_id";
   @JsonProperty(JSON_PROPERTY_BATCH_ID)
@@ -56,7 +56,7 @@ public class SupplementalItemsBatchResponse   {
 
   public static final String JSON_PROPERTY_OPERATION_RESULTS = "operation_results";
   @JsonProperty(JSON_PROPERTY_OPERATION_RESULTS)
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
@@ -122,7 +122,7 @@ public class SupplementalItemsBatchResponse   {
     this.createdTime = createdTime;
   }
 
-  public SupplementalItemsBatchResponse operationResults(List<SupplementalOperationResult> operationResults) {
+  public SupplementalItemsBatchResponse operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -141,12 +141,12 @@ public class SupplementalItemsBatchResponse   {
    **/
   @JsonProperty(value = "operation_results", access = JsonProperty.Access.READ_ONLY)
   @ApiModelProperty(required = true, value = "Array of operation results")
-  @Valid 
-  public List<SupplementalOperationResult> getOperationResults() {
+  
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

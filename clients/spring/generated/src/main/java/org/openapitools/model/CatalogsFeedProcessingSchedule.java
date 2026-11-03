@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProcessingSchedule", description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedProcessingSchedule {
 
   private String time;
@@ -71,8 +71,8 @@ public class CatalogsFeedProcessingSchedule {
    * The timezone considered for the processing schedule time.
    * @return timezone
    */
-  @NotNull @Valid 
-  @Schema(name = "timezone", description = "The timezone considered for the processing schedule time.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Valid 
+  @Schema(name = "timezone", description = "The timezone considered for the processing schedule time.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("timezone")
   public JsonNullable<CatalogsFeedProcessingScheduleTimezone> getTimezone() {
     return timezone;
@@ -115,7 +115,7 @@ public class CatalogsFeedProcessingSchedule {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class CatalogsCreateReportResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsCreateReportResponse: token.");
 
             return new CatalogsCreateReportResponse(token);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreateReportResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreateReportResponse catalogsCreateReportResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreateReportResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreateReportResponse catalogsCreateReportResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsCreateReportResponse.TokenOption.IsSet && catalogsCreateReportResponse.Token == null)
-                throw new ArgumentNullException(nameof(catalogsCreateReportResponse.Token), "Property is required for class CatalogsCreateReportResponse.");
+                throw new JsonException("Cannot write null property CatalogsCreateReportResponse.Token to non-nullable JSON property 'token'.");
 
             if (catalogsCreateReportResponse.TokenOption.IsSet)
                 writer.WriteString("token", catalogsCreateReportResponse.Token);

@@ -25,7 +25,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsHotelAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelAttributes   {
   private CatalogsHotelAddress address;
   private String basePrice;
@@ -42,10 +42,10 @@ public class CatalogsHotelAttributes   {
   private String link;
   private BigDecimal longitude;
   private String name;
-  private @Valid List<String> neighborhood;
+  private List<String> neighborhood;
   private String salePrice;
-  private @Valid List<String> additionalImageLink;
-  private @Valid List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+  private List<String> additionalImageLink;
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private CatalogsHotelMainImage mainImage;
 
   public CatalogsHotelAttributes() {
@@ -454,7 +454,7 @@ public class CatalogsHotelAttributes   {
   
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
   @JsonProperty("ai_disclosures")
-  @Valid public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }
 

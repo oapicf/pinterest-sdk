@@ -167,13 +167,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class BoardSectionUpdateWithRequiredBody.", nameof(name));
+                throw new JsonException("Property is required for class BoardSectionUpdateWithRequiredBody: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardSectionUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class BoardSectionUpdateWithRequiredBody: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BoardSectionUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class BoardSectionUpdateWithRequiredBody: id.");
 
             return new BoardSectionUpdateWithRequiredBody(name.Value!, id);
         }
@@ -184,7 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSectionUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -199,14 +198,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSectionUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (boardSectionUpdateWithRequiredBody.Name == null)
-                throw new ArgumentNullException(nameof(boardSectionUpdateWithRequiredBody.Name), "Property is required for class BoardSectionUpdateWithRequiredBody.");
-
             if (boardSectionUpdateWithRequiredBody.IdOption.IsSet && boardSectionUpdateWithRequiredBody.Id == null)
-                throw new ArgumentNullException(nameof(boardSectionUpdateWithRequiredBody.Id), "Property is required for class BoardSectionUpdateWithRequiredBody.");
+                throw new JsonException("Cannot write null property BoardSectionUpdateWithRequiredBody.Id to non-nullable JSON property 'id'.");
 
             writer.WriteString("name", boardSectionUpdateWithRequiredBody.Name);
 

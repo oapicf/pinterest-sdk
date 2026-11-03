@@ -206,16 +206,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (amount.IsSet && amount.Value == null)
-                throw new ArgumentNullException(nameof(amount), "Property is not nullable for class PromotionTemplateValue.");
+                throw new JsonException("Property is not nullable for class PromotionTemplateValue: amount.");
 
             if (currencyCode.IsSet && currencyCode.Value == null)
-                throw new ArgumentNullException(nameof(currencyCode), "Property is not nullable for class PromotionTemplateValue.");
+                throw new JsonException("Property is not nullable for class PromotionTemplateValue: currency_code.");
 
             if (customText.IsSet && customText.Value == null)
-                throw new ArgumentNullException(nameof(customText), "Property is not nullable for class PromotionTemplateValue.");
+                throw new JsonException("Property is not nullable for class PromotionTemplateValue: custom_text.");
 
             if (percent.IsSet && percent.Value == null)
-                throw new ArgumentNullException(nameof(percent), "Property is not nullable for class PromotionTemplateValue.");
+                throw new JsonException("Property is not nullable for class PromotionTemplateValue: percent.");
 
             return new PromotionTemplateValue(amount, currencyCode, customText, percent);
         }
@@ -226,7 +226,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionTemplateValue"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PromotionTemplateValue promotionTemplateValue, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -241,11 +240,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="promotionTemplateValue"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PromotionTemplateValue promotionTemplateValue, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (promotionTemplateValue.AmountOption.IsSet && promotionTemplateValue.Amount == null)
+                throw new JsonException("Cannot write null property PromotionTemplateValue.Amount to non-nullable JSON property 'amount'.");
+
+            if (promotionTemplateValue.CurrencyCodeOption.IsSet && promotionTemplateValue.CurrencyCode == null)
+                throw new JsonException("Cannot write null property PromotionTemplateValue.CurrencyCode to non-nullable JSON property 'currency_code'.");
+
             if (promotionTemplateValue.CustomTextOption.IsSet && promotionTemplateValue.CustomText == null)
-                throw new ArgumentNullException(nameof(promotionTemplateValue.CustomText), "Property is required for class PromotionTemplateValue.");
+                throw new JsonException("Cannot write null property PromotionTemplateValue.CustomText to non-nullable JSON property 'custom_text'.");
+
+            if (promotionTemplateValue.PercentOption.IsSet && promotionTemplateValue.Percent == null)
+                throw new JsonException("Cannot write null property PromotionTemplateValue.Percent to non-nullable JSON property 'percent'.");
 
             if (promotionTemplateValue.AmountOption.IsSet)
                 writer.WriteNumber("amount", promotionTemplateValue.AmountOption.Value!.Value);

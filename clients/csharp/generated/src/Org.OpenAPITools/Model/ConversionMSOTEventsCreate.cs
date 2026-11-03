@@ -497,64 +497,64 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adGroupId.IsSet)
-                throw new ArgumentException("Property is required for class ConversionMSOTEventsCreate.", nameof(adGroupId));
+                throw new JsonException("Property is required for class ConversionMSOTEventsCreate: ad_group_id.");
 
             if (!eventId.IsSet)
-                throw new ArgumentException("Property is required for class ConversionMSOTEventsCreate.", nameof(eventId));
+                throw new JsonException("Property is required for class ConversionMSOTEventsCreate: event_id.");
 
             if (!eventName.IsSet)
-                throw new ArgumentException("Property is required for class ConversionMSOTEventsCreate.", nameof(eventName));
+                throw new JsonException("Property is required for class ConversionMSOTEventsCreate: event_name.");
 
             if (!eventTimestamp.IsSet)
-                throw new ArgumentException("Property is required for class ConversionMSOTEventsCreate.", nameof(eventTimestamp));
+                throw new JsonException("Property is required for class ConversionMSOTEventsCreate: event_timestamp.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: ad_group_id.");
 
             if (eventId.IsSet && eventId.Value == null)
-                throw new ArgumentNullException(nameof(eventId), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: event_id.");
 
             if (eventName.IsSet && eventName.Value == null)
-                throw new ArgumentNullException(nameof(eventName), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: event_name.");
 
             if (eventTimestamp.IsSet && eventTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(eventTimestamp), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: event_timestamp.");
 
             if (actionTimestamps.IsSet && actionTimestamps.Value == null)
-                throw new ArgumentNullException(nameof(actionTimestamps), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: action_timestamps.");
 
             if (attributionModel.IsSet && attributionModel.Value == null)
-                throw new ArgumentNullException(nameof(attributionModel), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: attribution_model.");
 
             if (attributionScope.IsSet && attributionScope.Value == null)
-                throw new ArgumentNullException(nameof(attributionScope), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: attribution_scope.");
 
             if (attributionScore.IsSet && attributionScore.Value == null)
-                throw new ArgumentNullException(nameof(attributionScore), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: attribution_score.");
 
             if (campaignId.IsSet && campaignId.Value == null)
-                throw new ArgumentNullException(nameof(campaignId), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: campaign_id.");
 
             if (clickWindow.IsSet && clickWindow.Value == null)
-                throw new ArgumentNullException(nameof(clickWindow), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: click_window.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: currency.");
 
             if (totalEventTouchpoints.IsSet && totalEventTouchpoints.Value == null)
-                throw new ArgumentNullException(nameof(totalEventTouchpoints), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: total_event_touchpoints.");
 
             if (totalEvents.IsSet && totalEvents.Value == null)
-                throw new ArgumentNullException(nameof(totalEvents), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: total_events.");
 
             if (totalEventsFractional.IsSet && totalEventsFractional.Value == null)
-                throw new ArgumentNullException(nameof(totalEventsFractional), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: total_events_fractional.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: value.");
 
             if (viewWindow.IsSet && viewWindow.Value == null)
-                throw new ArgumentNullException(nameof(viewWindow), "Property is not nullable for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionMSOTEventsCreate: view_window.");
 
             return new ConversionMSOTEventsCreate(adGroupId.Value!, eventId.Value!, eventName.Value!.Value!, eventTimestamp.Value!.Value!, actionTimestamps, attributionModel, attributionScope, attributionScore, campaignId, clickWindow, currency, totalEventTouchpoints, totalEvents, totalEventsFractional, value, viewWindow);
         }
@@ -565,7 +565,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionMSOTEventsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionMSOTEventsCreate conversionMSOTEventsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -580,26 +579,43 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionMSOTEventsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionMSOTEventsCreate conversionMSOTEventsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionMSOTEventsCreate.AdGroupId == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.AdGroupId), "Property is required for class ConversionMSOTEventsCreate.");
-
-            if (conversionMSOTEventsCreate.EventId == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.EventId), "Property is required for class ConversionMSOTEventsCreate.");
-
             if (conversionMSOTEventsCreate.ActionTimestampsOption.IsSet && conversionMSOTEventsCreate.ActionTimestamps == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.ActionTimestamps), "Property is required for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.ActionTimestamps to non-nullable JSON property 'action_timestamps'.");
+
+            if (conversionMSOTEventsCreate.AttributionModelOption.IsSet && conversionMSOTEventsCreate.AttributionModel == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.AttributionModel to non-nullable JSON property 'attribution_model'.");
+
+            if (conversionMSOTEventsCreate.AttributionScopeOption.IsSet && conversionMSOTEventsCreate.AttributionScope == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.AttributionScope to non-nullable JSON property 'attribution_scope'.");
+
+            if (conversionMSOTEventsCreate.AttributionScoreOption.IsSet && conversionMSOTEventsCreate.AttributionScore == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.AttributionScore to non-nullable JSON property 'attribution_score'.");
 
             if (conversionMSOTEventsCreate.CampaignIdOption.IsSet && conversionMSOTEventsCreate.CampaignId == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.CampaignId), "Property is required for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.CampaignId to non-nullable JSON property 'campaign_id'.");
 
             if (conversionMSOTEventsCreate.ClickWindowOption.IsSet && conversionMSOTEventsCreate.ClickWindow == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.ClickWindow), "Property is required for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.ClickWindow to non-nullable JSON property 'click_window'.");
+
+            if (conversionMSOTEventsCreate.CurrencyOption.IsSet && conversionMSOTEventsCreate.Currency == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.Currency to non-nullable JSON property 'currency'.");
+
+            if (conversionMSOTEventsCreate.TotalEventTouchpointsOption.IsSet && conversionMSOTEventsCreate.TotalEventTouchpoints == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.TotalEventTouchpoints to non-nullable JSON property 'total_event_touchpoints'.");
+
+            if (conversionMSOTEventsCreate.TotalEventsOption.IsSet && conversionMSOTEventsCreate.TotalEvents == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.TotalEvents to non-nullable JSON property 'total_events'.");
+
+            if (conversionMSOTEventsCreate.TotalEventsFractionalOption.IsSet && conversionMSOTEventsCreate.TotalEventsFractional == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.TotalEventsFractional to non-nullable JSON property 'total_events_fractional'.");
+
+            if (conversionMSOTEventsCreate.ValueOption.IsSet && conversionMSOTEventsCreate.Value == null)
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.Value to non-nullable JSON property 'value'.");
 
             if (conversionMSOTEventsCreate.ViewWindowOption.IsSet && conversionMSOTEventsCreate.ViewWindow == null)
-                throw new ArgumentNullException(nameof(conversionMSOTEventsCreate.ViewWindow), "Property is required for class ConversionMSOTEventsCreate.");
+                throw new JsonException("Cannot write null property ConversionMSOTEventsCreate.ViewWindow to non-nullable JSON property 'view_window'.");
 
             writer.WriteString("ad_group_id", conversionMSOTEventsCreate.AdGroupId);
 

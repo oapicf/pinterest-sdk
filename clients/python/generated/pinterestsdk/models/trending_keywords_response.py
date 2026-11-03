@@ -75,8 +75,7 @@ class TrendingKeywordsResponse(BaseModel):
         _items = []
         if self.trends:
             for _item_trends in self.trends:
-                if _item_trends:
-                    _items.append(_item_trends.to_dict())
+                _items.append(_item_trends.to_dict() if _item_trends is not None else None)
             _dict['trends'] = _items
         return _dict
 

@@ -6,20 +6,3 @@
 */
 #include "CatalogsFeedProcessingScheduleTimezone.h"
 
-namespace models {
-
-CatalogsFeedProcessingScheduleTimezone::CatalogsFeedProcessingScheduleTimezone()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

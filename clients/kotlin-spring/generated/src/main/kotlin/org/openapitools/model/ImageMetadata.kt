@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ImageSize
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
@@ -33,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ImageMetadata(
 
     @Schema(required = true, description = "Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.")
-    @param:JsonProperty("item_type")
+    @param:JsonProperty("item_type", required = true)
     @get:JsonProperty("item_type", required = true) override val itemType: ImageMetadata.ItemType = kotlin.String.image,
 
     @Schema(description = "")
@@ -42,8 +39,6 @@ data class ImageMetadata(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("images")
     @get:JsonProperty("images") val images: ImageSize? = null,
 
@@ -63,12 +58,12 @@ data class ImageMetadata(
     enum class ItemType(@get:JsonValue val value: kotlin.String) {
 
         image("image");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ItemType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ItemType'")
             }
         }

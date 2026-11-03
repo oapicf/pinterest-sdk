@@ -140,6 +140,7 @@ class _$CatalogsHotelListProductsByCatalogBasedFilterRequestSerializer implement
   }
 }
 
+
 class CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

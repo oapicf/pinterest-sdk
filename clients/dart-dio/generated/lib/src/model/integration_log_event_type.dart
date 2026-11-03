@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'integration_log_event_type.g.dart';
 
+/// Log event type for integration applications.
 class IntegrationLogEventType extends EnumClass {
 
-  /// Log event type for integration applications.
   @BuiltValueEnumConst(wireName: r'APP')
   static const IntegrationLogEventType APP = _$APP;
-  /// Log event type for integration applications.
   @BuiltValueEnumConst(wireName: r'API')
   static const IntegrationLogEventType API = _$API;
 

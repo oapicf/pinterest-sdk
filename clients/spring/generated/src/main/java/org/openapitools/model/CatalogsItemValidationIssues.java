@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * CatalogsItemValidationIssues
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemValidationIssues {
 
   private CatalogsItemValidationErrors errors;
@@ -76,8 +76,8 @@ public class CatalogsItemValidationIssues {
    * The merchant-created unique ID that represents the product.
    * @return itemId
    */
-  @NotNull 
-  @Schema(name = "item_id", example = "DS0294-L", description = "The merchant-created unique ID that represents the product.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "item_id", example = "DS0294-L", description = "The merchant-created unique ID that represents the product.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("item_id")
   public JsonNullable<String> getItemId() {
     return itemId;

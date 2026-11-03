@@ -103,8 +103,7 @@ class CatalogsHotelAttributes(BaseModel):
         _items = []
         if self.ai_disclosures:
             for _item_ai_disclosures in self.ai_disclosures:
-                if _item_ai_disclosures:
-                    _items.append(_item_ai_disclosures.to_dict())
+                _items.append(_item_ai_disclosures.to_dict() if _item_ai_disclosures is not None else None)
             _dict['ai_disclosures'] = _items
         # override the default output from pydantic by calling `to_dict()` of main_image
         if self.main_image:

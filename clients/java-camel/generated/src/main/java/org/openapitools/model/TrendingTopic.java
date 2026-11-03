@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -27,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TrendingTopic", description = "Individual trending topic within an interest category")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingTopic {
 
   private String description;
@@ -36,16 +35,12 @@ public class TrendingTopic {
 
   private Integer percentGrowthMom;
 
-  @Valid
   private List<@Valid TrendingPin> pins = new ArrayList<>();
 
-  @Valid
   private List<String> relatedInterests = new ArrayList<>();
 
-  @Valid
   private List<String> relatedSearches = new ArrayList<>();
 
-  @Valid
   private Map<String, BigDecimal> timeSeries = new HashMap<>();
 
   private String title;
@@ -144,7 +139,7 @@ public class TrendingTopic {
    * Array of pin images related to this trend (up to 6)
    * @return pins
    */
-  @NotNull @Valid @Size(max = 6) 
+  @NotNull @Size(max = 6) 
   @Schema(name = "pins", description = "Array of pin images related to this trend (up to 6)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("pins")
   public List<@Valid TrendingPin> getPins() {
@@ -228,7 +223,7 @@ public class TrendingTopic {
    * Time series data showing trend values over time, with dates as keys and values as numeric
    * @return timeSeries
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "time_series", description = "Time series data showing trend values over time, with dates as keys and values as numeric", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("time_series")
   public Map<String, BigDecimal> getTimeSeries() {

@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'event_processing_status.g.dart';
 
+/// Status of a single event in the response.
 class EventProcessingStatus extends EnumClass {
 
-  /// Status of a single event in the response.
   @BuiltValueEnumConst(wireName: r'failed')
   static const EventProcessingStatus failed = _$failed;
-  /// Status of a single event in the response.
   @BuiltValueEnumConst(wireName: r'processed')
   static const EventProcessingStatus processed = _$processed;
 

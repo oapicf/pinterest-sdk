@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.UserAccountType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -37,15 +34,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class Account(
 
     @Schema(description = "Profile about description.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("about")
     @get:JsonProperty("about") val about: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "Type of account")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("account_type")
     @get:JsonProperty("account_type") val accountType: UserAccountType? = null,
 
@@ -67,8 +60,6 @@ data class Account(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2783136121146311751", description = "User account ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
@@ -81,20 +72,14 @@ data class Account(
     @get:JsonProperty("pin_count") val pinCount: kotlin.Int? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("profile_image")
     @get:JsonProperty("profile_image") val profileImage: kotlin.String? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("username")
     @get:JsonProperty("username") val username: kotlin.String? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("website_url")
     @get:JsonProperty("website_url") val websiteUrl: kotlin.String? = null
 ) {

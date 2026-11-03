@@ -51,19 +51,19 @@ class KeywordsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'countryCode' => [
+                'country_code' => [
                     'required',
                     'string',
                 ],
@@ -81,7 +81,7 @@ class KeywordsController extends Controller
         }
 
 
-        $countryCode = $request->string('countryCode')->value();
+        $countryCode = $request->string('country_code')->value();
 
         $keywords = $request->get('keywords');
 
@@ -130,10 +130,10 @@ class KeywordsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -195,34 +195,34 @@ class KeywordsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'campaignId' => [
+                'campaign_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupId' => [
+                'ad_group_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adGroupIds' => [
+                'ad_group_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'matchTypes' => [
+                'match_types' => [
                     'min:1',
                     'max:5',
                     'array',
@@ -230,7 +230,7 @@ class KeywordsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -243,17 +243,17 @@ class KeywordsController extends Controller
         }
 
 
-        $campaignId = $request->string('campaignId')->value();
+        $campaignId = $request->string('campaign_id')->value();
 
-        $adGroupId = $request->string('adGroupId')->value();
+        $adGroupId = $request->string('ad_group_id')->value();
 
-        $adGroupIds = $request->get('adGroupIds');
+        $adGroupIds = $request->get('ad_group_ids');
 
-        $matchTypes = $request->get('matchTypes');
+        $matchTypes = $request->get('match_types');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->keywordsGet($adAccountId, $campaignId, $adGroupId, $adGroupIds, $matchTypes, $bookmark, $pageSize);
@@ -300,10 +300,10 @@ class KeywordsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -361,16 +361,16 @@ class KeywordsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'region' => $region,'trendType' => $trendType,
-                ],
                 $request->all(),
+                [
+                    'region' => $region,'trend_type' => $trendType,
+                ],
             ),
             [
                 'region' => [
                     'required',
                 ],
-                'trendType' => [
+                'trend_type' => [
                     'required',
                 ],
                 'interests' => [
@@ -382,12 +382,12 @@ class KeywordsController extends Controller
                 'ages' => [
                     'array',
                 ],
-                'includeKeywords' => [
+                'include_keywords' => [
                     'min:1',
                     'max:50',
                     'array',
                 ],
-                'normalizeAgainstGroup' => [
+                'normalize_against_group' => [
                     'boolean',
                 ],
                 'limit' => [
@@ -395,7 +395,7 @@ class KeywordsController extends Controller
                     'lte:50',
                     'integer',
                 ],
-                'includeDemographics' => [
+                'include_demographics' => [
                     'boolean',
                 ],
             ],
@@ -413,13 +413,13 @@ class KeywordsController extends Controller
 
         $ages = $request->get('ages');
 
-        $includeKeywords = $request->get('includeKeywords');
+        $includeKeywords = $request->get('include_keywords');
 
-        $normalizeAgainstGroup = $request->boolean('normalizeAgainstGroup');
+        $normalizeAgainstGroup = $request->boolean('normalize_against_group');
 
         $limit = $request->integer('limit');
 
-        $includeDemographics = $request->boolean('includeDemographics');
+        $includeDemographics = $request->boolean('include_demographics');
 
 
         $apiResult = $this->api->trendingKeywordsList($region, $trendType, $interests, $genders, $ages, $includeKeywords, $normalizeAgainstGroup, $limit, $includeDemographics);

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **customerListsCreate**
 ```swift
-    open class func customerListsCreate(adAccountId: String, customerListCreate: CustomerListCreate, completion: @escaping (_ data: CustomerList?, _ error: Error?) -> Void)
+    open class func customerListsCreate(adAccountId: String, customerListCreate: CustomerListCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerList
 ```
 
 Create customer lists
@@ -28,15 +28,11 @@ let adAccountId = "adAccountId_example" // String |
 let customerListCreate = CustomerListCreate(isNca: false, listType: UserListType(), name: "name_example", records: "records_example", recordsV2: [CustomerListRecordRow(email: "email_example", externalId: "externalId_example", hashedPhoneNumber: "hashedPhoneNumber_example", hashedPinnerId: "hashedPinnerId_example", ipAddress: "ipAddress_example", liverampEnvelope: "liverampEnvelope_example", maid: "maid_example", userAgent: "userAgent_example")]) // CustomerListCreate | 
 
 // Create customer lists
-CustomerListsAPI.customerListsCreate(adAccountId: adAccountId, customerListCreate: customerListCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListsAPI.customerListsCreate(adAccountId: adAccountId, customerListCreate: customerListCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -64,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **customerListsGet**
 ```swift
-    open class func customerListsGet(adAccountId: String, customerListId: String, completion: @escaping (_ data: CustomerList?, _ error: Error?) -> Void)
+    open class func customerListsGet(adAccountId: String, customerListId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerList
 ```
 
 Get customer list
@@ -80,15 +76,11 @@ let adAccountId = "adAccountId_example" // String |
 let customerListId = "customerListId_example" // String | Customer list ID.
 
 // Get customer list
-CustomerListsAPI.customerListsGet(adAccountId: adAccountId, customerListId: customerListId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListsAPI.customerListsGet(adAccountId: adAccountId, customerListId: customerListId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **customerListsList**
 ```swift
-    open class func customerListsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, excludeNca: Bool? = nil, completion: @escaping (_ data: CustomerListsList200Response?, _ error: Error?) -> Void)
+    open class func customerListsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, excludeNca: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerListsList200Response
 ```
 
 Get customer lists
@@ -135,15 +127,11 @@ let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The
 let excludeNca = true // Bool | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all). (optional) (default to false)
 
 // Get customer lists
-CustomerListsAPI.customerListsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, excludeNca: excludeNca) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListsAPI.customerListsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, excludeNca: excludeNca)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -174,7 +162,7 @@ Name | Type | Description  | Notes
 
 # **customerListsUpdate**
 ```swift
-    open class func customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, completion: @escaping (_ data: CustomerList?, _ error: Error?) -> Void)
+    open class func customerListsUpdate(adAccountId: String, customerListId: String, customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerList
 ```
 
 Update customer list
@@ -191,15 +179,11 @@ let customerListId = "customerListId_example" // String | Customer list ID.
 let customerListUpdateWithRequiredBody = CustomerListUpdateWithRequiredBody(operationType: UserListOperationType(), records: "records_example", recordsV2: [CustomerListRecordRow(email: "email_example", externalId: "externalId_example", hashedPhoneNumber: "hashedPhoneNumber_example", hashedPinnerId: "hashedPinnerId_example", ipAddress: "ipAddress_example", liverampEnvelope: "liverampEnvelope_example", maid: "maid_example", userAgent: "userAgent_example")]) // CustomerListUpdateWithRequiredBody | 
 
 // Update customer list
-CustomerListsAPI.customerListsUpdate(adAccountId: adAccountId, customerListId: customerListId, customerListUpdateWithRequiredBody: customerListUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListsAPI.customerListsUpdate(adAccountId: adAccountId, customerListId: customerListId, customerListUpdateWithRequiredBody: customerListUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

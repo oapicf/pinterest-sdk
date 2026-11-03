@@ -16,15 +16,15 @@ import org.openapitools.model.CatalogsHotelProductGroupFiltersAnyOf;
  * Object holding a group of filters for a hotel product group
  */
 @ApiModel(description = "Object holding a group of filters for a hotel product group")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFilters   {
   @JsonProperty("any_of")
-  private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @JsonProperty("all_of")
-  private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsHotelProductGroupFilters anyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public CatalogsHotelProductGroupFilters anyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -39,15 +39,15 @@ public class CatalogsHotelProductGroupFilters   {
    * @return anyOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsHotelProductGroupFilters allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public CatalogsHotelProductGroupFilters allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -62,11 +62,11 @@ public class CatalogsHotelProductGroupFilters   {
    * @return allOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+  public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

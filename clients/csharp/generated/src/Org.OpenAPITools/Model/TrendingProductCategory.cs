@@ -211,37 +211,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!engagementType.IsSet)
-                throw new ArgumentException("Property is required for class TrendingProductCategory.", nameof(engagementType));
+                throw new JsonException("Property is required for class TrendingProductCategory: engagement_type.");
 
             if (!pctChangeMom.IsSet)
-                throw new ArgumentException("Property is required for class TrendingProductCategory.", nameof(pctChangeMom));
+                throw new JsonException("Property is required for class TrendingProductCategory: pct_change_mom.");
 
             if (!percentRelativeVolume.IsSet)
-                throw new ArgumentException("Property is required for class TrendingProductCategory.", nameof(percentRelativeVolume));
+                throw new JsonException("Property is required for class TrendingProductCategory: percent_relative_volume.");
 
             if (!pinterestProductCategoryId.IsSet)
-                throw new ArgumentException("Property is required for class TrendingProductCategory.", nameof(pinterestProductCategoryId));
+                throw new JsonException("Property is required for class TrendingProductCategory: pinterest_product_category_id.");
 
             if (!productCategory.IsSet)
-                throw new ArgumentException("Property is required for class TrendingProductCategory.", nameof(productCategory));
+                throw new JsonException("Property is required for class TrendingProductCategory: product_category.");
 
             if (engagementType.IsSet && engagementType.Value == null)
-                throw new ArgumentNullException(nameof(engagementType), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: engagement_type.");
 
             if (pctChangeMom.IsSet && pctChangeMom.Value == null)
-                throw new ArgumentNullException(nameof(pctChangeMom), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: pct_change_mom.");
 
             if (percentRelativeVolume.IsSet && percentRelativeVolume.Value == null)
-                throw new ArgumentNullException(nameof(percentRelativeVolume), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: percent_relative_volume.");
 
             if (pinterestProductCategoryId.IsSet && pinterestProductCategoryId.Value == null)
-                throw new ArgumentNullException(nameof(pinterestProductCategoryId), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: pinterest_product_category_id.");
 
             if (productCategory.IsSet && productCategory.Value == null)
-                throw new ArgumentNullException(nameof(productCategory), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: product_category.");
 
             if (verticals.IsSet && verticals.Value == null)
-                throw new ArgumentNullException(nameof(verticals), "Property is not nullable for class TrendingProductCategory.");
+                throw new JsonException("Property is not nullable for class TrendingProductCategory: verticals.");
 
             return new TrendingProductCategory(engagementType.Value!.Value!, pctChangeMom.Value!.Value!, percentRelativeVolume.Value!.Value!, pinterestProductCategoryId.Value!.Value!, productCategory.Value!, verticals);
         }
@@ -252,7 +252,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingProductCategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendingProductCategory trendingProductCategory, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -267,14 +266,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendingProductCategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendingProductCategory trendingProductCategory, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (trendingProductCategory.ProductCategory == null)
-                throw new ArgumentNullException(nameof(trendingProductCategory.ProductCategory), "Property is required for class TrendingProductCategory.");
-
             if (trendingProductCategory.VerticalsOption.IsSet && trendingProductCategory.Verticals == null)
-                throw new ArgumentNullException(nameof(trendingProductCategory.Verticals), "Property is required for class TrendingProductCategory.");
+                throw new JsonException("Cannot write null property TrendingProductCategory.Verticals to non-nullable JSON property 'verticals'.");
 
             var engagementTypeRawValue = ProductCategoriesEngagementTypeValueConverter.ToJsonValue(trendingProductCategory.EngagementType);
             writer.WriteString("engagement_type", engagementTypeRawValue);

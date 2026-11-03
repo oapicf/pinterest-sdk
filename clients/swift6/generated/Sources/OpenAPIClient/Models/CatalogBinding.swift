@@ -10,7 +10,7 @@ import Foundation
 /** Information about a catalog asset. */
 public struct CatalogBinding: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Catalog type */
     public var catalogType: String?
     /** Catalog ID. */

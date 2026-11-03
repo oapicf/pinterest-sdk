@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -33,34 +32,25 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupDeliveryEstimates", description = "Ad group configuration for delivery estimates.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupDeliveryEstimates {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean autoTargetingEnabled;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>> keywords = JsonNullable.<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer monthlyFrequencyCap;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable OptimizationGoalMetadata optimizationGoalMetadata;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable OptimizationType optimizationType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingSpecOptimal targetingSpec;
 
   public AdGroupDeliveryEstimates autoTargetingEnabled(@Nullable Boolean autoTargetingEnabled) {
@@ -101,7 +91,7 @@ public class AdGroupDeliveryEstimates {
    * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
    */
-  @Valid 
+  
   @Schema(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_types")
   public List<AdGroupAudienceSizingCreativeTypes> getCreativeTypes() {
@@ -119,7 +109,7 @@ public class AdGroupDeliveryEstimates {
   }
 
   public AdGroupDeliveryEstimates addKeywordsItem(AdGroupDeliveryEstimatesKeywordsItems keywordsItem) {
-    if (this.keywords == null || !this.keywords.isPresent()) {
+    if (this.keywords == null || !this.keywords.isPresent() || this.keywords.get() == null) {
       this.keywords = JsonNullable.of(new ArrayList<>());
     }
     this.keywords.get().add(keywordsItem);
@@ -130,8 +120,8 @@ public class AdGroupDeliveryEstimates {
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
    */
-  @Valid 
-  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("keywords")
   public JsonNullable<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>> getKeywords() {
     return keywords;

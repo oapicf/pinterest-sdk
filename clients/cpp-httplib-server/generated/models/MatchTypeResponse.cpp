@@ -6,20 +6,3 @@
 */
 #include "MatchTypeResponse.h"
 
-namespace models {
-
-MatchTypeResponse::MatchTypeResponse()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

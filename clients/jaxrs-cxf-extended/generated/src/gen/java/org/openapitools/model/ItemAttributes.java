@@ -644,7 +644,6 @@ public class ItemAttributes  {
   * AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
   */
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.")
-  @Valid
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
  /**

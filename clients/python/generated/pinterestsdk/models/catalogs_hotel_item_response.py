@@ -98,8 +98,7 @@ class CatalogsHotelItemResponse(BaseModel):
         _items = []
         if self.pins:
             for _item_pins in self.pins:
-                if _item_pins:
-                    _items.append(_item_pins.to_dict())
+                _items.append(_item_pins.to_dict() if _item_pins is not None else None)
             _dict['pins'] = _items
         # set to None if pins (nullable) is None
         # and model_fields_set contains the field

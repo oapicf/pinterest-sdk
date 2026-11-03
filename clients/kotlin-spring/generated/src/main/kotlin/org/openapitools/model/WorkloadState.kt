@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Workload processing state
-* Values: NOT_STARTED,RUNNING,PAUSED,SUCCEEDED,FAILED
-*/
+ * Workload processing state
+ * Values: NOT_STARTED,RUNNING,PAUSED,SUCCEEDED,FAILED
+ */
 enum class WorkloadState(@get:JsonValue val value: kotlin.String) {
 
     NOT_STARTED("NOT_STARTED"),
@@ -31,9 +31,8 @@ enum class WorkloadState(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): WorkloadState {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'WorkloadState'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'WorkloadState'")
         }
     }
 }
-

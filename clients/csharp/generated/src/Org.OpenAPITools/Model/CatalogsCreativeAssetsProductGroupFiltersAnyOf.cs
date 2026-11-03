@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!anyOf.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupFiltersAnyOf.", nameof(anyOf));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupFiltersAnyOf: any_of.");
 
             if (anyOf.IsSet && anyOf.Value == null)
-                throw new ArgumentNullException(nameof(anyOf), "Property is not nullable for class CatalogsCreativeAssetsProductGroupFiltersAnyOf.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupFiltersAnyOf: any_of.");
 
             return new CatalogsCreativeAssetsProductGroupFiltersAnyOf(anyOf.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupFiltersAnyOf catalogsCreativeAssetsProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupFiltersAnyOf catalogsCreativeAssetsProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsProductGroupFiltersAnyOf.AnyOf == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupFiltersAnyOf.AnyOf), "Property is required for class CatalogsCreativeAssetsProductGroupFiltersAnyOf.");
-
             writer.WritePropertyName("any_of");
             JsonSerializer.Serialize(writer, catalogsCreativeAssetsProductGroupFiltersAnyOf.AnyOf, jsonSerializerOptions);
         }

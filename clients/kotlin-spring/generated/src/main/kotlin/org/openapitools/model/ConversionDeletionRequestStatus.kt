@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Represents the status of the conversion deletion request. \"PENDING\" or \"SUBMITTED\". \"PENDING\" meaning the Advertiser can cancel the request. The advertiser has a 7 day time window after the conversion deletion request was submitted to cancel it. \"SUBMITTED\" meaning that the Data Deletion process has begun and can no longer be canceled.
-* Values: PENDING,SUBMITTED,CANCELLED
-*/
+ * Represents the status of the conversion deletion request. \"PENDING\" or \"SUBMITTED\". \"PENDING\" meaning the Advertiser can cancel the request. The advertiser has a 7 day time window after the conversion deletion request was submitted to cancel it. \"SUBMITTED\" meaning that the Data Deletion process has begun and can no longer be canceled.
+ * Values: PENDING,SUBMITTED,CANCELLED
+ */
 enum class ConversionDeletionRequestStatus(@get:JsonValue val value: kotlin.String) {
 
     PENDING("PENDING"),
@@ -29,9 +29,8 @@ enum class ConversionDeletionRequestStatus(@get:JsonValue val value: kotlin.Stri
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionDeletionRequestStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionDeletionRequestStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionDeletionRequestStatus'")
         }
     }
 }
-

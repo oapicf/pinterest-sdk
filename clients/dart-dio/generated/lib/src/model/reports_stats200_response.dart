@@ -125,3 +125,4 @@ class _$ReportsStats200ResponseSerializer implements PrimitiveSerializer<Reports
   }
 }
 
+

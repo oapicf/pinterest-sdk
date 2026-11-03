@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,10 +31,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelItemResponse implements ItemResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsHotelAttributes attributes;
 
   /**
@@ -73,7 +71,6 @@ public class CatalogsHotelItemResponse implements ItemResponse {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String hotelId;
 
   /**
@@ -111,7 +108,6 @@ public class CatalogsHotelItemResponse implements ItemResponse {
 
   private ItemResponseKindEnum itemResponseKind;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
 
   public CatalogsHotelItemResponse() {
@@ -216,7 +212,7 @@ public class CatalogsHotelItemResponse implements ItemResponse {
   }
 
   public CatalogsHotelItemResponse addPinsItem(Pin pinsItem) {
-    if (this.pins == null || !this.pins.isPresent()) {
+    if (this.pins == null || !this.pins.isPresent() || this.pins.get() == null) {
       this.pins = JsonNullable.of(new ArrayList<>());
     }
     this.pins.get().add(pinsItem);
@@ -227,8 +223,8 @@ public class CatalogsHotelItemResponse implements ItemResponse {
    * The pins mapped to the item
    * @return pins
    */
-  @Valid @Size(max = 11) 
-  @Schema(name = "pins", description = "The pins mapped to the item", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Size(max = 11) 
+  @Schema(name = "pins", description = "The pins mapped to the item", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("pins")
   public JsonNullable<List<@Valid Pin>> getPins() {
     return pins;

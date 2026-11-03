@@ -50,22 +50,46 @@ import {
 } from '../models/SingleInterestTargetingOption';
 
 export interface DeliveryMetricsGetRequest {
+    /**
+     * Report type.
+     */
     reportType?: ReportType;
 }
 
 export interface InterestTargetingOptionsGetRequest {
+    /**
+     * Unique identifier of an interest.
+     */
     interestId: string;
 }
 
 export interface MetricsReadyStateGetRequest {
+    /**
+     * Analytics reports request date (UTC). Format: YYYY-MM-DD
+     */
     date: string;
 }
 
 export interface TargetingOptionsGetRequest {
+    /**
+     * Public targeting type
+     */
     targetingType: PublicTargetingType;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Client ID
+     */
     clientId?: string;
+    /**
+     * Oauth signature
+     */
     oauthSignature?: string;
+    /**
+     * Timestamp.
+     */
     timestamp?: string;
 }
 

@@ -29,8 +29,6 @@ import {
 export interface ProductType4Filter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof ProductType4Filter
      */
     pRODUCTTYPE4: CatalogsProductGroupMultipleStringListCriteria;
 }

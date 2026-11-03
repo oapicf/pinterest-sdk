@@ -17,7 +17,7 @@ import AdAccount from './AdAccount';
 /**
  * The AdAccountsList200Response model module.
  * @module model/AdAccountsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccountsList200Response {
     /**

@@ -2322,10 +2322,4 @@ model_video_pin_metric_types.go
 model_website_verification_method.go
 model_workload_state.go
 response.go
-test/api_catalog_supplemental_test.go
-test/api_conversion_deletion_requests_test.go
-test/api_customer_segment_test.go
-test/api_product_tags_test.go
-test/api_schedules_test.go
-test/api_trends_test.go
 utils.go

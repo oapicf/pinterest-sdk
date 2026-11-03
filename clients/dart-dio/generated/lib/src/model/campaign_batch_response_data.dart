@@ -614,3 +614,4 @@ class _$CampaignBatchResponseDataSerializer implements PrimitiveSerializer<Campa
   }
 }
 
+

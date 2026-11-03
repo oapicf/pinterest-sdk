@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class PinnerListType
-{
-public:
-
-    PinnerListType();
-    virtual ~PinnerListType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PinnerListType,
-        )
-
-private:
+enum class PinnerListType {
+    
+    CUSTOMER_LIST,
+    
+    VISITOR,
+    
+    ENGAGEMENT,
+    
+    LOOKALIKE,
+    
+    ACTALIKE,
+    
+    PERSONA
+    
 };
 
+inline void to_json(nlohmann::json& j, const PinnerListType& value)
+{
+    switch (value)
+    {
+        
+        case PinnerListType::CUSTOMER_LIST: j = "CUSTOMER_LIST"; break;
+        
+        case PinnerListType::VISITOR: j = "VISITOR"; break;
+        
+        case PinnerListType::ENGAGEMENT: j = "ENGAGEMENT"; break;
+        
+        case PinnerListType::LOOKALIKE: j = "LOOKALIKE"; break;
+        
+        case PinnerListType::ACTALIKE: j = "ACTALIKE"; break;
+        
+        case PinnerListType::PERSONA: j = "PERSONA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PinnerListType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PinnerListType& value)
+{
+    
+    if (j == "CUSTOMER_LIST")
+    {
+        value = PinnerListType::CUSTOMER_LIST;
+        return;
+    }
+    
+    if (j == "VISITOR")
+    {
+        value = PinnerListType::VISITOR;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT")
+    {
+        value = PinnerListType::ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "LOOKALIKE")
+    {
+        value = PinnerListType::LOOKALIKE;
+        return;
+    }
+    
+    if (j == "ACTALIKE")
+    {
+        value = PinnerListType::ACTALIKE;
+        return;
+    }
+    
+    if (j == "PERSONA")
+    {
+        value = PinnerListType::PERSONA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PinnerListType", &j);
+}
 
 } // namespace models
 

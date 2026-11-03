@@ -185,25 +185,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!currency.IsSet)
-                throw new ArgumentException("Property is required for class PriceFilterPrice.", nameof(currency));
+                throw new JsonException("Property is required for class PriceFilterPrice: currency.");
 
             if (!varOperator.IsSet)
-                throw new ArgumentException("Property is required for class PriceFilterPrice.", nameof(varOperator));
+                throw new JsonException("Property is required for class PriceFilterPrice: operator.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class PriceFilterPrice.", nameof(value));
+                throw new JsonException("Property is required for class PriceFilterPrice: value.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class PriceFilterPrice.");
+                throw new JsonException("Property is not nullable for class PriceFilterPrice: currency.");
 
             if (varOperator.IsSet && varOperator.Value == null)
-                throw new ArgumentNullException(nameof(varOperator), "Property is not nullable for class PriceFilterPrice.");
+                throw new JsonException("Property is not nullable for class PriceFilterPrice: operator.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class PriceFilterPrice.");
+                throw new JsonException("Property is not nullable for class PriceFilterPrice: value.");
 
             if (negated.IsSet && negated.Value == null)
-                throw new ArgumentNullException(nameof(negated), "Property is not nullable for class PriceFilterPrice.");
+                throw new JsonException("Property is not nullable for class PriceFilterPrice: negated.");
 
             return new PriceFilterPrice(currency.Value!.Value!, varOperator.Value!.Value!, value.Value!.Value!, negated);
         }
@@ -214,7 +214,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="priceFilterPrice"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PriceFilterPrice priceFilterPrice, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -229,9 +228,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="priceFilterPrice"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PriceFilterPrice priceFilterPrice, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (priceFilterPrice.NegatedOption.IsSet && priceFilterPrice.Negated == null)
+                throw new JsonException("Cannot write null property PriceFilterPrice.Negated to non-nullable JSON property 'negated'.");
+
             var currencyRawValue = NonNullableCatalogsCurrencyValueConverter.ToJsonValue(priceFilterPrice.Currency);
             writer.WriteString("currency", currencyRawValue);
 

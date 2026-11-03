@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class PrimarySort
-{
-public:
-
-    PrimarySort();
-    virtual ~PrimarySort() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PrimarySort,
-        )
-
-private:
+enum class PrimarySort {
+    
+    BY_ID,
+    
+    BY_DATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const PrimarySort& value)
+{
+    switch (value)
+    {
+        
+        case PrimarySort::BY_ID: j = "BY_ID"; break;
+        
+        case PrimarySort::BY_DATE: j = "BY_DATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PrimarySort", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PrimarySort& value)
+{
+    
+    if (j == "BY_ID")
+    {
+        value = PrimarySort::BY_ID;
+        return;
+    }
+    
+    if (j == "BY_DATE")
+    {
+        value = PrimarySort::BY_DATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PrimarySort", &j);
+}
 
 } // namespace models
 

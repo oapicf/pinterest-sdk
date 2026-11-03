@@ -107,3 +107,4 @@ class _$UpdatePartnerAssetAccessBodySerializer implements PrimitiveSerializer<Up
   }
 }
 
+

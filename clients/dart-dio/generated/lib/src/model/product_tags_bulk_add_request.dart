@@ -107,3 +107,4 @@ class _$ProductTagsBulkAddRequestSerializer implements PrimitiveSerializer<Produ
   }
 }
 
+

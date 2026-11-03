@@ -6,20 +6,3 @@
 */
 #include "StandardPinMetricTypes.h"
 
-namespace models {
-
-StandardPinMetricTypes::StandardPinMetricTypes()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

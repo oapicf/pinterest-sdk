@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AiDisclosureItem
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -25,8 +22,6 @@ data class AiDisclosuresUpdate(
 
     @field:Valid
     @Schema(description = "List of AI disclosure declarations the creator has made about this Pin.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("values")
     @get:JsonProperty("values") val propertyValues: kotlin.collections.List<AiDisclosureItem>? = null
 ) {

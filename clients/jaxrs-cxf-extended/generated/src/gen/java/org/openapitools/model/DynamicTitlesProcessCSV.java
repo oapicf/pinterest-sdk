@@ -18,7 +18,6 @@ public class DynamicTitlesProcessCSV  {
   * List of validation errors. Empty on success.
   */
   @ApiModelProperty(value = "List of validation errors. Empty on success.")
-  @Valid
   private List<@Valid DynamicTitlesProcessCSVError> errors = new ArrayList<>();
 
  /**

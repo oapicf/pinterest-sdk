@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsDeleteRetailItem {
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsDeleteRetailItem
      */
     itemId: string;
     /**
      * The millisecond timestamp when the item was lastly modified by the merchant.
-     * @type {number}
-     * @memberof CatalogsDeleteRetailItem
      */
     lastUpdatedTime?: number;
     /**
      * 
-     * @type {CatalogsDeleteRetailItemOperationEnum}
-     * @memberof CatalogsDeleteRetailItem
      */
     operation: CatalogsDeleteRetailItemOperationEnum;
 }
@@ -44,7 +38,7 @@ export interface CatalogsDeleteRetailItem {
  * @export
  */
 export const CatalogsDeleteRetailItemOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type CatalogsDeleteRetailItemOperationEnum = typeof CatalogsDeleteRetailItemOperationEnum[keyof typeof CatalogsDeleteRetailItemOperationEnum];
 

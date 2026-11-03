@@ -107,3 +107,4 @@ class _$ScrollupGoalMetadataSerializer implements PrimitiveSerializer<ScrollupGo
   }
 }
 
+

@@ -6,20 +6,3 @@
 */
 #include "Interest.h"
 
-namespace models {
-
-Interest::Interest()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

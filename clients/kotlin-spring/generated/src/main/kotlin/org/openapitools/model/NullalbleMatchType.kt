@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Keyword match type allowing null
-* Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
-*/
+ * Keyword match type allowing null
+ * Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
+ */
 enum class NullalbleMatchType(@get:JsonValue val value: kotlin.String) {
 
     BROAD("BROAD"),
@@ -31,9 +31,8 @@ enum class NullalbleMatchType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NullalbleMatchType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullalbleMatchType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullalbleMatchType'")
         }
     }
 }
-

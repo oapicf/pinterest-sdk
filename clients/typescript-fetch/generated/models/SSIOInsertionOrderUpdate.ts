@@ -21,98 +21,66 @@ import { mapValues } from '../runtime';
 export interface SSIOInsertionOrderUpdate {
     /**
      * Ads manager OrderLineId
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     adsManagerOrderLineId?: string;
     /**
      * URL link for agency
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     agencyLink?: string;
     /**
      * The billing contact email
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     billingContactEmail?: string;
     /**
      * The billing contact first name
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     billingContactFirstname?: string;
     /**
      * The billing contact last name
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     billingContactLastname?: string;
     /**
      * If Budget order line, the budget amount.
-     * @type {number}
-     * @memberof SSIOInsertionOrderUpdate
      */
     budgetAmount?: number;
     /**
      * End date of time period. Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     endDate?: string;
     /**
      * The media contact email
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     mediaContactEmail?: string;
     /**
      * The media contact first name
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     mediaContactFirstname?: string;
     /**
      * The media contact last name
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     mediaContactLastname?: string;
     /**
      * LineId in the Oracle DB
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     oracleLineId?: string;
     /**
      * The po number
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     poNumber?: string;
     /**
      * OrderId in SFDC
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     salesforceOrderId?: string;
     /**
      * OrderLineId in SFDC
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     salesforceOrderLineId?: string;
     /**
      * Starting date of time period. Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     startDate?: string;
     /**
      * The email of user submitting the insertion order
-     * @type {string}
-     * @memberof SSIOInsertionOrderUpdate
      */
     userEmail?: string;
 }

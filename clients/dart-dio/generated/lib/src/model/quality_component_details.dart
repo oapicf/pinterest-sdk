@@ -147,3 +147,4 @@ class _$QualityComponentDetailsSerializer implements PrimitiveSerializer<Quality
   }
 }
 
+

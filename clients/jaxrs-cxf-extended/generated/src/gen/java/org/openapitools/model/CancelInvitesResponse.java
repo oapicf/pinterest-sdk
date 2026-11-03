@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CancelInvitesResponse  {
   
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid CancelInviteResultItem> items = new ArrayList<>();
  /**
   * Get items

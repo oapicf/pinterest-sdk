@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class InviteStatus
-{
-public:
-
-    InviteStatus();
-    virtual ~InviteStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(InviteStatus,
-        )
-
-private:
+enum class InviteStatus {
+    
+    PENDING,
+    
+    ACCEPTED,
+    
+    DECLINED,
+    
+    CANCELLED,
+    
+    EXPIRED
+    
 };
 
+inline void to_json(nlohmann::json& j, const InviteStatus& value)
+{
+    switch (value)
+    {
+        
+        case InviteStatus::PENDING: j = "PENDING"; break;
+        
+        case InviteStatus::ACCEPTED: j = "ACCEPTED"; break;
+        
+        case InviteStatus::DECLINED: j = "DECLINED"; break;
+        
+        case InviteStatus::CANCELLED: j = "CANCELLED"; break;
+        
+        case InviteStatus::EXPIRED: j = "EXPIRED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for InviteStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, InviteStatus& value)
+{
+    
+    if (j == "PENDING")
+    {
+        value = InviteStatus::PENDING;
+        return;
+    }
+    
+    if (j == "ACCEPTED")
+    {
+        value = InviteStatus::ACCEPTED;
+        return;
+    }
+    
+    if (j == "DECLINED")
+    {
+        value = InviteStatus::DECLINED;
+        return;
+    }
+    
+    if (j == "CANCELLED")
+    {
+        value = InviteStatus::CANCELLED;
+        return;
+    }
+    
+    if (j == "EXPIRED")
+    {
+        value = InviteStatus::EXPIRED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for InviteStatus", &j);
+}
 
 } // namespace models
 

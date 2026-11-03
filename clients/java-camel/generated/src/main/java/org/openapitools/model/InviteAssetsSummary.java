@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,13 +23,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteAssetsSummary", description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary {
 
-  @Valid
   private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
 
-  @Valid
   private List<@Valid InviteAssetsSummaryItem> profiles = new ArrayList<>();
 
   public InviteAssetsSummary adAccounts(List<@Valid InviteAssetsSummaryItem> adAccounts) {
@@ -50,7 +47,7 @@ public class InviteAssetsSummary {
    * List of ad account IDs and respective permission levels that will be assigned.
    * @return adAccounts
    */
-  @Valid 
+  
   @Schema(name = "ad_accounts", description = "List of ad account IDs and respective permission levels that will be assigned.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_accounts")
   public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
@@ -78,7 +75,7 @@ public class InviteAssetsSummary {
    * List of profile IDs and respective permission levels that will be assigned.
    * @return profiles
    */
-  @Valid 
+  
   @Schema(name = "profiles", description = "List of profile IDs and respective permission levels that will be assigned.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("profiles")
   public List<@Valid InviteAssetsSummaryItem> getProfiles() {

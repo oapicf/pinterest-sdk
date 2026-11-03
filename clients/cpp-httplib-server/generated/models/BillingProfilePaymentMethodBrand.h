@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class BillingProfilePaymentMethodBrand
-{
-public:
-
-    BillingProfilePaymentMethodBrand();
-    virtual ~BillingProfilePaymentMethodBrand() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingProfilePaymentMethodBrand,
-        )
-
-private:
+enum class BillingProfilePaymentMethodBrand {
+    
+    UNKNOWN,
+    
+    VISA,
+    
+    MASTERCARD,
+    
+    AMERICAN_EXPRESS,
+    
+    DISCOVER,
+    
+    SOFORT,
+    
+    DINERS_CLUB,
+    
+    ELO,
+    
+    CARTE_BANCAIRE
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingProfilePaymentMethodBrand& value)
+{
+    switch (value)
+    {
+        
+        case BillingProfilePaymentMethodBrand::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case BillingProfilePaymentMethodBrand::VISA: j = "VISA"; break;
+        
+        case BillingProfilePaymentMethodBrand::MASTERCARD: j = "MASTERCARD"; break;
+        
+        case BillingProfilePaymentMethodBrand::AMERICAN_EXPRESS: j = "AMERICAN_EXPRESS"; break;
+        
+        case BillingProfilePaymentMethodBrand::DISCOVER: j = "DISCOVER"; break;
+        
+        case BillingProfilePaymentMethodBrand::SOFORT: j = "SOFORT"; break;
+        
+        case BillingProfilePaymentMethodBrand::DINERS_CLUB: j = "DINERS_CLUB"; break;
+        
+        case BillingProfilePaymentMethodBrand::ELO: j = "ELO"; break;
+        
+        case BillingProfilePaymentMethodBrand::CARTE_BANCAIRE: j = "CARTE_BANCAIRE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfilePaymentMethodBrand", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingProfilePaymentMethodBrand& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = BillingProfilePaymentMethodBrand::UNKNOWN;
+        return;
+    }
+    
+    if (j == "VISA")
+    {
+        value = BillingProfilePaymentMethodBrand::VISA;
+        return;
+    }
+    
+    if (j == "MASTERCARD")
+    {
+        value = BillingProfilePaymentMethodBrand::MASTERCARD;
+        return;
+    }
+    
+    if (j == "AMERICAN_EXPRESS")
+    {
+        value = BillingProfilePaymentMethodBrand::AMERICAN_EXPRESS;
+        return;
+    }
+    
+    if (j == "DISCOVER")
+    {
+        value = BillingProfilePaymentMethodBrand::DISCOVER;
+        return;
+    }
+    
+    if (j == "SOFORT")
+    {
+        value = BillingProfilePaymentMethodBrand::SOFORT;
+        return;
+    }
+    
+    if (j == "DINERS_CLUB")
+    {
+        value = BillingProfilePaymentMethodBrand::DINERS_CLUB;
+        return;
+    }
+    
+    if (j == "ELO")
+    {
+        value = BillingProfilePaymentMethodBrand::ELO;
+        return;
+    }
+    
+    if (j == "CARTE_BANCAIRE")
+    {
+        value = BillingProfilePaymentMethodBrand::CARTE_BANCAIRE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfilePaymentMethodBrand", &j);
+}
 
 } // namespace models
 

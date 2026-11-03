@@ -140,6 +140,7 @@ class _$TargetingSpecOperationInterestSerializer implements PrimitiveSerializer<
   }
 }
 
+
 class TargetingSpecOperationInterestFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'INTEREST')

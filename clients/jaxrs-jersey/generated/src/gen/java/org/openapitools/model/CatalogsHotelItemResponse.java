@@ -39,7 +39,7 @@ import javax.validation.Valid;
   CatalogsHotelItemResponse.JSON_PROPERTY_ITEM_RESPONSE_KIND,
   CatalogsHotelItemResponse.JSON_PROPERTY_PINS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelItemResponse   {
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
   @JsonProperty(JSON_PROPERTY_ATTRIBUTES)
@@ -226,7 +226,7 @@ public class CatalogsHotelItemResponse   {
    **/
   @JsonProperty(value = "pins")
   @ApiModelProperty(value = "The pins mapped to the item")
-  @Valid  @Size(max=11)
+   @Size(max=11)
   public List<@Valid Pin> getPins() {
     return pins;
   }

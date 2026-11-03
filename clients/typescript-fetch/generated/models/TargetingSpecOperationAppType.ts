@@ -36,20 +36,14 @@ import {
 export interface TargetingSpecOperationAppType {
     /**
      * 
-     * @type {TargetingSpecOperationAppTypeFieldEnum}
-     * @memberof TargetingSpecOperationAppType
      */
     field: TargetingSpecOperationAppTypeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationAppType
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<TargetingSpecAppType>}
-     * @memberof TargetingSpecOperationAppType
      */
     values: Array<TargetingSpecAppType>;
 }
@@ -59,7 +53,7 @@ export interface TargetingSpecOperationAppType {
  * @export
  */
 export const TargetingSpecOperationAppTypeFieldEnum = {
-    Apptype: 'APPTYPE'
+    Apptype: 'APPTYPE',
 } as const;
 export type TargetingSpecOperationAppTypeFieldEnum = typeof TargetingSpecOperationAppTypeFieldEnum[keyof typeof TargetingSpecOperationAppTypeFieldEnum];
 

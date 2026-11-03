@@ -4209,3 +4209,4 @@ class _$CatalogsItemValidationWarningsSerializer implements PrimitiveSerializer<
   }
 }
 
+

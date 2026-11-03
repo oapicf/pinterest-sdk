@@ -134,11 +134,11 @@ export namespace CatalogsItemsDeleteBatchRequest {
         Th: 'TH',
         Tr2: 'TR',
         Xx: 'XX',
-        Zh: 'ZH'
+        Zh: 'ZH',
     } as const;
     export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
     export const OperationEnum = {
-        Delete: 'DELETE'
+        Delete: 'DELETE',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

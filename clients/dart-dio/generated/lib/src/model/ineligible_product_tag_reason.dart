@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'ineligible_product_tag_reason.g.dart';
 
+/// Reason why a product pin is ineligible for tagging.
 class IneligibleProductTagReason extends EnumClass {
 
-  /// Reason why a product pin is ineligible for tagging.
   @BuiltValueEnumConst(wireName: r'PIN_MISSING')
   static const IneligibleProductTagReason PIN_MISSING = _$PIN_MISSING;
-  /// Reason why a product pin is ineligible for tagging.
   @BuiltValueEnumConst(wireName: r'PIN_IS_PRIVATE')
   static const IneligibleProductTagReason PIN_IS_PRIVATE = _$PIN_IS_PRIVATE;
-  /// Reason why a product pin is ineligible for tagging.
   @BuiltValueEnumConst(wireName: r'PRODUCT_METADATA_MISSING')
   static const IneligibleProductTagReason PRODUCT_METADATA_MISSING = _$PRODUCT_METADATA_MISSING;
-  /// Reason why a product pin is ineligible for tagging.
   @BuiltValueEnumConst(wireName: r'PIN_NOT_FROM_VERIFIED_DOMAIN')
   static const IneligibleProductTagReason PIN_NOT_FROM_VERIFIED_DOMAIN = _$PIN_NOT_FROM_VERIFIED_DOMAIN;
-  /// Reason why a product pin is ineligible for tagging.
   @BuiltValueEnumConst(wireName: r'PIN_NOT_FROM_SAME_USER_AS_HERO_PIN')
   static const IneligibleProductTagReason PIN_NOT_FROM_SAME_USER_AS_HERO_PIN = _$PIN_NOT_FROM_SAME_USER_AS_HERO_PIN;
 

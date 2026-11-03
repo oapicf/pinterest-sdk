@@ -5,7 +5,7 @@
  */
 export const NullableLabelType = {
     Brand: 'BRAND',
-    Custom: 'CUSTOM'
+    Custom: 'CUSTOM',
 } as const;
 export type NullableLabelType = typeof NullableLabelType[keyof typeof NullableLabelType];
 

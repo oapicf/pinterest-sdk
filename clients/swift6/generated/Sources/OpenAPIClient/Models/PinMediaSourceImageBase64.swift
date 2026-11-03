@@ -13,7 +13,7 @@ public struct PinMediaSourceImageBase64: Sendable, Codable, Hashable {
     public enum SourceType: String, Sendable, Codable, CaseIterable {
         case imageBase64 = "image_base64"
     }
-    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[a-zA-Z0-9+\/=]+$/")
+    public static let dataRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[a-zA-Z0-9+/=]+$")
     public var contentType: ContentType
     public var data: String
     /** Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users. */

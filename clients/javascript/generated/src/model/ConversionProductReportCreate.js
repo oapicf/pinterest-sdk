@@ -24,7 +24,7 @@ import ConversionReportTimeType from './ConversionReportTimeType';
 /**
  * The ConversionProductReportCreate model module.
  * @module model/ConversionProductReportCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ConversionProductReportCreate {
     /**

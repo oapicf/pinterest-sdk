@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **advertiserDefinedEventsCreate**
 ```swift
-    open class func advertiserDefinedEventsCreate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, completion: @escaping (_ data: AdvertiserDefinedEventsCreate200Response?, _ error: Error?) -> Void)
+    open class func advertiserDefinedEventsCreate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvertiserDefinedEventsCreate200Response
 ```
 
 Create advertiser defined events
@@ -28,15 +28,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let advertiserDefinedEventsCreateRequest = AdvertiserDefinedEventsCreateRequest(items: [AdvertiserDefinedEventInput(mappedConversionType: AdvertiserDefinedEventMappingType(), name: "name_example")]) // AdvertiserDefinedEventsCreateRequest | 
 
 // Create advertiser defined events
-ConversionsAPI.advertiserDefinedEventsCreate(adAccountId: adAccountId, advertiserDefinedEventsCreateRequest: advertiserDefinedEventsCreateRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionsAPI.advertiserDefinedEventsCreate(adAccountId: adAccountId, advertiserDefinedEventsCreateRequest: advertiserDefinedEventsCreateRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -64,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **advertiserDefinedEventsDelete**
 ```swift
-    open class func advertiserDefinedEventsDelete(adAccountId: String, eventNames: [String], completion: @escaping (_ data: AdvertiserDefinedEventsCreate200Response?, _ error: Error?) -> Void)
+    open class func advertiserDefinedEventsDelete(adAccountId: String, eventNames: [String], apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvertiserDefinedEventsCreate200Response
 ```
 
 Delete advertiser defined events
@@ -80,15 +76,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let eventNames = ["inner_example"] // [String] | List of event names to delete
 
 // Delete advertiser defined events
-ConversionsAPI.advertiserDefinedEventsDelete(adAccountId: adAccountId, eventNames: eventNames) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionsAPI.advertiserDefinedEventsDelete(adAccountId: adAccountId, eventNames: eventNames)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **advertiserDefinedEventsGet**
 ```swift
-    open class func advertiserDefinedEventsGet(adAccountId: String, completion: @escaping (_ data: AdvertiserDefinedEventsGet200Response?, _ error: Error?) -> Void)
+    open class func advertiserDefinedEventsGet(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvertiserDefinedEventsGet200Response
 ```
 
 Get advertiser defined events
@@ -131,15 +123,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get advertiser defined events
-ConversionsAPI.advertiserDefinedEventsGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionsAPI.advertiserDefinedEventsGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -166,7 +154,7 @@ Name | Type | Description  | Notes
 
 # **advertiserDefinedEventsUpdate**
 ```swift
-    open class func advertiserDefinedEventsUpdate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, completion: @escaping (_ data: AdvertiserDefinedEventsCreate200Response?, _ error: Error?) -> Void)
+    open class func advertiserDefinedEventsUpdate(adAccountId: String, advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdvertiserDefinedEventsCreate200Response
 ```
 
 Update advertiser defined events
@@ -182,15 +170,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let advertiserDefinedEventsCreateRequest = AdvertiserDefinedEventsCreateRequest(items: [AdvertiserDefinedEventInput(mappedConversionType: AdvertiserDefinedEventMappingType(), name: "name_example")]) // AdvertiserDefinedEventsCreateRequest | 
 
 // Update advertiser defined events
-ConversionsAPI.advertiserDefinedEventsUpdate(adAccountId: adAccountId, advertiserDefinedEventsCreateRequest: advertiserDefinedEventsCreateRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ConversionsAPI.advertiserDefinedEventsUpdate(adAccountId: adAccountId, advertiserDefinedEventsCreateRequest: advertiserDefinedEventsCreateRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

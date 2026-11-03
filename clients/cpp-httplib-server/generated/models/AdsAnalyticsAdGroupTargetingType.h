@@ -12,24 +12,164 @@
 
 namespace models {
 
-
-class AdsAnalyticsAdGroupTargetingType
-{
-public:
-
-    AdsAnalyticsAdGroupTargetingType();
-    virtual ~AdsAnalyticsAdGroupTargetingType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdsAnalyticsAdGroupTargetingType,
-        )
-
-private:
+enum class AdsAnalyticsAdGroupTargetingType {
+    
+    KEYWORD,
+    
+    APPTYPE,
+    
+    GENDER,
+    
+    LOCATION,
+    
+    PLACEMENT,
+    
+    COUNTRY,
+    
+    TARGETED_INTEREST,
+    
+    PINNER_INTEREST,
+    
+    AUDIENCE_INCLUDE,
+    
+    GEO,
+    
+    AGE_BUCKET,
+    
+    REGION,
+    
+    AGE_BUCKET_AND_GENDER,
+    
+    CREATIVE_ENHANCEMENTS
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdsAnalyticsAdGroupTargetingType& value)
+{
+    switch (value)
+    {
+        
+        case AdsAnalyticsAdGroupTargetingType::KEYWORD: j = "KEYWORD"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::APPTYPE: j = "APPTYPE"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::GENDER: j = "GENDER"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::LOCATION: j = "LOCATION"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::PLACEMENT: j = "PLACEMENT"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::COUNTRY: j = "COUNTRY"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::TARGETED_INTEREST: j = "TARGETED_INTEREST"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::PINNER_INTEREST: j = "PINNER_INTEREST"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::AUDIENCE_INCLUDE: j = "AUDIENCE_INCLUDE"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::GEO: j = "GEO"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::AGE_BUCKET: j = "AGE_BUCKET"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::REGION: j = "REGION"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::AGE_BUCKET_AND_GENDER: j = "AGE_BUCKET_AND_GENDER"; break;
+        
+        case AdsAnalyticsAdGroupTargetingType::CREATIVE_ENHANCEMENTS: j = "CREATIVE_ENHANCEMENTS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsAdGroupTargetingType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdsAnalyticsAdGroupTargetingType& value)
+{
+    
+    if (j == "KEYWORD")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::KEYWORD;
+        return;
+    }
+    
+    if (j == "APPTYPE")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::APPTYPE;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::GENDER;
+        return;
+    }
+    
+    if (j == "LOCATION")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::LOCATION;
+        return;
+    }
+    
+    if (j == "PLACEMENT")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::PLACEMENT;
+        return;
+    }
+    
+    if (j == "COUNTRY")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::COUNTRY;
+        return;
+    }
+    
+    if (j == "TARGETED_INTEREST")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::TARGETED_INTEREST;
+        return;
+    }
+    
+    if (j == "PINNER_INTEREST")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::PINNER_INTEREST;
+        return;
+    }
+    
+    if (j == "AUDIENCE_INCLUDE")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::AUDIENCE_INCLUDE;
+        return;
+    }
+    
+    if (j == "GEO")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::GEO;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::AGE_BUCKET;
+        return;
+    }
+    
+    if (j == "REGION")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::REGION;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET_AND_GENDER")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::AGE_BUCKET_AND_GENDER;
+        return;
+    }
+    
+    if (j == "CREATIVE_ENHANCEMENTS")
+    {
+        value = AdsAnalyticsAdGroupTargetingType::CREATIVE_ENHANCEMENTS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsAdGroupTargetingType", &j);
+}
 
 } // namespace models
 

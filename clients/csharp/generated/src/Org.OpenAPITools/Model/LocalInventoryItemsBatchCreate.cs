@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!operations.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsBatchCreate.", nameof(operations));
+                throw new JsonException("Property is required for class LocalInventoryItemsBatchCreate: operations.");
 
             if (operations.IsSet && operations.Value == null)
-                throw new ArgumentNullException(nameof(operations), "Property is not nullable for class LocalInventoryItemsBatchCreate.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatchCreate: operations.");
 
             return new LocalInventoryItemsBatchCreate(operations.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsBatchCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryItemsBatchCreate localInventoryItemsBatchCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsBatchCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryItemsBatchCreate localInventoryItemsBatchCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryItemsBatchCreate.Operations == null)
-                throw new ArgumentNullException(nameof(localInventoryItemsBatchCreate.Operations), "Property is required for class LocalInventoryItemsBatchCreate.");
-
             writer.WritePropertyName("operations");
             JsonSerializer.Serialize(writer, localInventoryItemsBatchCreate.Operations, jsonSerializerOptions);
         }

@@ -36,38 +36,26 @@ import {
 export interface BrandAccountUpdate {
     /**
      * Brand Account about information
-     * @type {string}
-     * @memberof BrandAccountUpdate
      */
     about?: string;
     /**
      * 
-     * @type {Country}
-     * @memberof BrandAccountUpdate
      */
     country?: Country;
     /**
      * Brand Account name
-     * @type {string}
-     * @memberof BrandAccountUpdate
      */
     name?: string;
     /**
      * 
-     * @type {BrandAccountProfileImageUpdate}
-     * @memberof BrandAccountUpdate
      */
     profileImage?: BrandAccountProfileImageUpdate;
     /**
      * Brand Account username
-     * @type {string}
-     * @memberof BrandAccountUpdate
      */
     username?: string;
     /**
      * Brand Account website
-     * @type {string}
-     * @memberof BrandAccountUpdate
      */
     website?: string;
 }

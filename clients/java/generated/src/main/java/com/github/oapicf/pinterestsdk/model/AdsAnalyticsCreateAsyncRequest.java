@@ -48,6 +48,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
@@ -67,7 +68,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-08-30T09:51:23.554522953Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_AD_GROUP_IDS = "ad_group_ids";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_IDS)
@@ -122,7 +123,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_CLICK_WINDOW_DAYS = "click_window_days";
   @SerializedName(SERIALIZED_NAME_CLICK_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   public static final String SERIALIZED_NAME_COLUMNS = "columns";
   @SerializedName(SERIALIZED_NAME_COLUMNS)
@@ -137,7 +138,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_CONVERSION_REPORT_TIME = "conversion_report_time";
   @SerializedName(SERIALIZED_NAME_CONVERSION_REPORT_TIME)
   @javax.annotation.Nullable
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   public static final String SERIALIZED_NAME_CUSTOM_CONVERSION_EVENT_METRICS = "custom_conversion_event_metrics";
   @SerializedName(SERIALIZED_NAME_CUSTOM_CONVERSION_EVENT_METRICS)
@@ -157,7 +158,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
   @SerializedName(SERIALIZED_NAME_ENGAGEMENT_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
   @SerializedName(SERIALIZED_NAME_GRANULARITY)
@@ -177,7 +178,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_PRIMARY_SORT = "primary_sort";
   @SerializedName(SERIALIZED_NAME_PRIMARY_SORT)
   @javax.annotation.Nullable
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   public static final String SERIALIZED_NAME_PRODUCT_GROUP_IDS = "product_group_ids";
   @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP_IDS)
@@ -197,7 +198,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_REPORT_FORMAT = "report_format";
   @SerializedName(SERIALIZED_NAME_REPORT_FORMAT)
   @javax.annotation.Nullable
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   public static final String SERIALIZED_NAME_REPORTING_TIMEZONE = "reporting_timezone";
   @SerializedName(SERIALIZED_NAME_REPORTING_TIMEZONE)
@@ -222,7 +223,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_VIEW_WINDOW_DAYS = "view_window_days";
   @SerializedName(SERIALIZED_NAME_VIEW_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest() {
   }

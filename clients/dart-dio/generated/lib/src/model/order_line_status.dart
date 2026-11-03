@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'order_line_status.g.dart';
 
+/// Order Line Status
 class OrderLineStatus extends EnumClass {
 
-  /// Order Line Status
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const OrderLineStatus ACTIVE = _$ACTIVE;
-  /// Order Line Status
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const OrderLineStatus PAUSED = _$PAUSED;
-  /// Order Line Status
   @BuiltValueEnumConst(wireName: r'DELETED')
   static const OrderLineStatus DELETED = _$DELETED;
 

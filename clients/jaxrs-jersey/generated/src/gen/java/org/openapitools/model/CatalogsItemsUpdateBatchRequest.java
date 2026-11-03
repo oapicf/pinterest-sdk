@@ -38,7 +38,7 @@ import javax.validation.Valid;
   CatalogsItemsUpdateBatchRequest.JSON_PROPERTY_LANGUAGE,
   CatalogsItemsUpdateBatchRequest.JSON_PROPERTY_OPERATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemsUpdateBatchRequest   {
   public static final String JSON_PROPERTY_COUNTRY = "country";
   @JsonProperty(JSON_PROPERTY_COUNTRY)
@@ -373,7 +373,7 @@ public class CatalogsItemsUpdateBatchRequest   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @NotNull @Valid  @Size(min=1,max=1000)
+  @NotNull  @Size(min=1,max=1000)
   public List<@Valid ItemUpdateBatchRecord> getItems() {
     return items;
   }

@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!requestId.IsSet)
-                throw new ArgumentException("Property is required for class DynamicTitlesProcessCSVCreate.", nameof(requestId));
+                throw new JsonException("Property is required for class DynamicTitlesProcessCSVCreate: request_id.");
 
             if (requestId.IsSet && requestId.Value == null)
-                throw new ArgumentNullException(nameof(requestId), "Property is not nullable for class DynamicTitlesProcessCSVCreate.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesProcessCSVCreate: request_id.");
 
             return new DynamicTitlesProcessCSVCreate(requestId.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSVCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSVCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (dynamicTitlesProcessCSVCreate.RequestId == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesProcessCSVCreate.RequestId), "Property is required for class DynamicTitlesProcessCSVCreate.");
-
             writer.WriteString("request_id", dynamicTitlesProcessCSVCreate.RequestId);
         }
     }

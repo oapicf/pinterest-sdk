@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'ssio_order_line_type.g.dart';
 
+/// The type of an SSIO order line.
 class SSIOOrderLineType extends EnumClass {
 
-  /// The type of an SSIO order line.
   @BuiltValueEnumConst(wireName: r'BUDGET')
   static const SSIOOrderLineType BUDGET = _$BUDGET;
-  /// The type of an SSIO order line.
   @BuiltValueEnumConst(wireName: r'PERPETUALS')
   static const SSIOOrderLineType PERPETUALS = _$PERPETUALS;
 

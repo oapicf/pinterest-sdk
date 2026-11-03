@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class OverallStatusOptions
-{
-public:
-
-    OverallStatusOptions();
-    virtual ~OverallStatusOptions() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OverallStatusOptions,
-        )
-
-private:
+enum class OverallStatusOptions {
+    
+    NEEDS_IMPROVEMENT,
+    
+    FAIR,
+    
+    GOOD
+    
 };
 
+inline void to_json(nlohmann::json& j, const OverallStatusOptions& value)
+{
+    switch (value)
+    {
+        
+        case OverallStatusOptions::NEEDS_IMPROVEMENT: j = "NEEDS_IMPROVEMENT"; break;
+        
+        case OverallStatusOptions::FAIR: j = "FAIR"; break;
+        
+        case OverallStatusOptions::GOOD: j = "GOOD"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OverallStatusOptions", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OverallStatusOptions& value)
+{
+    
+    if (j == "NEEDS_IMPROVEMENT")
+    {
+        value = OverallStatusOptions::NEEDS_IMPROVEMENT;
+        return;
+    }
+    
+    if (j == "FAIR")
+    {
+        value = OverallStatusOptions::FAIR;
+        return;
+    }
+    
+    if (j == "GOOD")
+    {
+        value = OverallStatusOptions::GOOD;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OverallStatusOptions", &j);
+}
 
 } // namespace models
 

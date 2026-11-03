@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CancelInviteException {
     /**
      * 
-     * @type {string}
-     * @memberof CancelInviteException
      */
     inviteId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof CancelInviteException
      */
     message?: string;
 }

@@ -35,21 +35,21 @@ import javax.annotation.Generated;
   CatalogsHotelProductGroupFilters.JSON_PROPERTY_ALL_OF
 })
 @JsonTypeName("CatalogsHotelProductGroupFilters")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsHotelProductGroupFilters {
     public static final String JSON_PROPERTY_ANY_OF = "any_of";
-    private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ALL_OF = "all_of";
-    private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
 
-    public CatalogsHotelProductGroupFilters(List<CatalogsHotelProductGroupFilterKeys> anyOf, List<CatalogsHotelProductGroupFilterKeys> allOf) {
+    public CatalogsHotelProductGroupFilters(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf, List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
         this.anyOf = anyOf;
         this.allOf = allOf;
     }
 
-    public CatalogsHotelProductGroupFilters anyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public CatalogsHotelProductGroupFilters anyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
         return this;
     }
@@ -66,17 +66,17 @@ public class CatalogsHotelProductGroupFilters {
     @NotNull
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
-    public CatalogsHotelProductGroupFilters allOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+    public CatalogsHotelProductGroupFilters allOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
         return this;
     }
@@ -93,13 +93,13 @@ public class CatalogsHotelProductGroupFilters {
     @NotNull
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsHotelProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsHotelProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAllOf(List<CatalogsHotelProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsHotelProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

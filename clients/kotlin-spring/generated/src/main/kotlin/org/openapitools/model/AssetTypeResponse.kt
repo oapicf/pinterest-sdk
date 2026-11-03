@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-* Values: AD_ACCOUNT,MERCHANT,PROFILE,ASSET_GROUP,PINNER_LIST,CONVERSION_TAG,CATALOG,CONVERSION_SEGMENT
-*/
+ * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
+ * Values: AD_ACCOUNT,MERCHANT,PROFILE,ASSET_GROUP,PINNER_LIST,CONVERSION_TAG,CATALOG,CONVERSION_SEGMENT
+ */
 enum class AssetTypeResponse(@get:JsonValue val value: kotlin.String) {
 
     AD_ACCOUNT("AD_ACCOUNT"),
@@ -34,9 +34,8 @@ enum class AssetTypeResponse(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AssetTypeResponse {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetTypeResponse'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AssetTypeResponse'")
         }
     }
 }
-

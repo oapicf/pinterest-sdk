@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionItemsGetRequest", description = "Request object used to get bid options values for a batch of retail catalog items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsGetRequest {
 
   private String catalogId;
@@ -81,7 +81,7 @@ public class AdvancedAuctionItemsGetRequest {
    * A list of retail catalog items to fetch bid options for
    * @return items
    */
-  @NotNull @Valid @Size(min = 1, max = 10000) 
+  @NotNull @Size(min = 1, max = 10000) 
   @Schema(name = "items", description = "A list of retail catalog items to fetch bid options for", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid AdvancedAuctionKey> getItems() {

@@ -66,7 +66,7 @@ function Invoke-AdsCreditRedeem {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adsCredit_redeem."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdsCreditRedeemCreate) {
             throw "Error! The required parameter `AdsCreditRedeemCreate` missing when calling adsCredit_redeem."
@@ -158,7 +158,7 @@ function Invoke-AdsCreditsDiscountsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adsCreditsDiscounts_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -246,11 +246,11 @@ function Invoke-BillingInvoiceDownloadGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling billingInvoiceDownload_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$BillingInvoiceId) {
             throw "Error! The required parameter `BillingInvoiceId` missing when calling billingInvoiceDownload_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{billing_invoice_id}', [System.Web.HTTPUtility]::UrlEncode($BillingInvoiceId))
+        $LocalVarUri = $LocalVarUri.replace('{billing_invoice_id}', [System.Uri]::EscapeDataString([string]$BillingInvoiceId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -372,7 +372,7 @@ function Invoke-BillingInvoicesGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling billingInvoices_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -496,7 +496,7 @@ function Invoke-BillingProfilesGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling billingProfiles_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$IsActive) {
             throw "Error! The required parameter `IsActive` missing when calling billingProfiles_get."
@@ -583,7 +583,7 @@ function Invoke-SsioAccountsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioAccounts_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -666,7 +666,7 @@ function Invoke-SsioInsertionOrderCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioInsertionOrder_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$SSIOInsertionOrderCreate) {
             throw "Error! The required parameter `SSIOInsertionOrderCreate` missing when calling ssioInsertionOrder_create."
@@ -755,7 +755,7 @@ function Invoke-SsioInsertionOrderEdit {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioInsertionOrder_edit."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$SSIOInsertionOrderUpdate) {
             throw "Error! The required parameter `SSIOInsertionOrderUpdate` missing when calling ssioInsertionOrder_edit."
@@ -847,7 +847,7 @@ function Invoke-SsioInsertionOrdersStatusGetByAdAccount {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioInsertionOrdersStatus_getByAdAccount."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -935,11 +935,11 @@ function Invoke-SsioInsertionOrdersStatusGetByPinOrderId {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioInsertionOrdersStatus_getByPinOrderId."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$PinOrderId) {
             throw "Error! The required parameter `PinOrderId` missing when calling ssioInsertionOrdersStatus_getByPinOrderId."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_order_id}', [System.Web.HTTPUtility]::UrlEncode($PinOrderId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_order_id}', [System.Uri]::EscapeDataString([string]$PinOrderId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -1031,7 +1031,7 @@ function Invoke-SsioOrderLinesGetByAdAccount {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ssioOrderLines_getByAdAccount."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($PinOrderId) {
             $LocalVarQueryParameters['pin_order_id'] = $PinOrderId

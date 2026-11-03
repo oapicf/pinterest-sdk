@@ -53,7 +53,7 @@ public class CustomerSegmentApiHandler {
         CustomerSegmentCreate customerSegmentCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerSegmentCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter customerSegmentCreate is {}", customerSegmentCreate);
+        logger.debug("Parameter customerSegmentCreate is (body omitted)");
 
         api.customerSegmentCreate(adAccountId, customerSegmentCreate)
             .onSuccess(apiResponse -> {
@@ -110,7 +110,7 @@ public class CustomerSegmentApiHandler {
         CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerSegmentUpdateRequestUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter customerSegmentUpdateRequestUpdateWithRequiredBody is {}", customerSegmentUpdateRequestUpdateWithRequiredBody);
+        logger.debug("Parameter customerSegmentUpdateRequestUpdateWithRequiredBody is (body omitted)");
 
         api.customerSegmentUpdate(adAccountId, customerSegmentUpdateRequestUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {

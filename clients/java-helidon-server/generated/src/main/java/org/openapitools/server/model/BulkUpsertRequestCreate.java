@@ -23,7 +23,7 @@ public class BulkUpsertRequestCreate   {
     private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
     private List<@Valid AdCreateRequest> ads = new ArrayList<>();
     private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
-    private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+    private List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
     private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
     private List<@Valid LabelBulkCreateRequest> labels = new ArrayList<>();
     private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
@@ -52,7 +52,7 @@ public class BulkUpsertRequestCreate   {
         List<@Valid AdGroupCreateRequest> adGroups, 
         List<@Valid AdCreateRequest> ads, 
         List<@Valid CampaignCreateRequest> campaigns, 
-        List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups, 
+        List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups, 
         List<@Valid KeywordsRequest> keywords, 
         List<@Valid LabelBulkCreateRequest> labels, 
         List<@Valid ProductGroupPromotionCreateRequest> productGroups, 
@@ -110,11 +110,11 @@ public class BulkUpsertRequestCreate   {
      * Get catalogProductGroups
      * @return catalogProductGroups
      */
-    public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
+    public List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
         return catalogProductGroups;
     }
 
-    public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+    public void setCatalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
         this.catalogProductGroups = catalogProductGroups;
     }
 

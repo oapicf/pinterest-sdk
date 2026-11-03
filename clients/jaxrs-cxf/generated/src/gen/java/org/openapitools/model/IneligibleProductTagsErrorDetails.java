@@ -24,8 +24,6 @@ public class IneligibleProductTagsErrorDetails  {
   */
   @ApiModelProperty(required = true, value = "List of product tags that failed eligibility check.")
 
-  @Valid
-
   private List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();
  /**
    * List of product tags that failed eligibility check.

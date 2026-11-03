@@ -6,7 +6,7 @@
 export const BusinessMemberSortBy = {
     FullName: 'FULL_NAME',
     BusinessRoles: 'BUSINESS_ROLES',
-    CreatedTime: 'CREATED_TIME'
+    CreatedTime: 'CREATED_TIME',
 } as const;
 export type BusinessMemberSortBy = typeof BusinessMemberSortBy[keyof typeof BusinessMemberSortBy];
 

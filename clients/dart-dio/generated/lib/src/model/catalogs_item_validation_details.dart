@@ -126,3 +126,4 @@ class _$CatalogsItemValidationDetailsSerializer implements PrimitiveSerializer<C
   }
 }
 
+

@@ -821,76 +821,76 @@ namespace Org.OpenAPITools.Model
             }
 
             if (batteryLevel.IsSet && batteryLevel.Value == null)
-                throw new ArgumentNullException(nameof(batteryLevel), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: battery_level.");
 
             if (brand.IsSet && brand.Value == null)
-                throw new ArgumentNullException(nameof(brand), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: brand.");
 
             if (carrier.IsSet && carrier.Value == null)
-                throw new ArgumentNullException(nameof(carrier), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: carrier.");
 
             if (cpuCores.IsSet && cpuCores.Value == null)
-                throw new ArgumentNullException(nameof(cpuCores), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: cpu_cores.");
 
             if (externalStorageFreeSpace.IsSet && externalStorageFreeSpace.Value == null)
-                throw new ArgumentNullException(nameof(externalStorageFreeSpace), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: external_storage_free_space.");
 
             if (externalStorageSize.IsSet && externalStorageSize.Value == null)
-                throw new ArgumentNullException(nameof(externalStorageSize), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: external_storage_size.");
 
             if (formFactor.IsSet && formFactor.Value == null)
-                throw new ArgumentNullException(nameof(formFactor), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: form_factor.");
 
             if (kernelVersion.IsSet && kernelVersion.Value == null)
-                throw new ArgumentNullException(nameof(kernelVersion), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: kernel_version.");
 
             if (languages.IsSet && languages.Value == null)
-                throw new ArgumentNullException(nameof(languages), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: languages.");
 
             if (locale.IsSet && locale.Value == null)
-                throw new ArgumentNullException(nameof(locale), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: locale.");
 
             if (model.IsSet && model.Value == null)
-                throw new ArgumentNullException(nameof(model), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: model.");
 
             if (networkType.IsSet && networkType.Value == null)
-                throw new ArgumentNullException(nameof(networkType), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: network_type.");
 
             if (osFamily.IsSet && osFamily.Value == null)
-                throw new ArgumentNullException(nameof(osFamily), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: os_family.");
 
             if (osName.IsSet && osName.Value == null)
-                throw new ArgumentNullException(nameof(osName), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: os_name.");
 
             if (osReleaseName.IsSet && osReleaseName.Value == null)
-                throw new ArgumentNullException(nameof(osReleaseName), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: os_release_name.");
 
             if (osVersion.IsSet && osVersion.Value == null)
-                throw new ArgumentNullException(nameof(osVersion), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: os_version.");
 
             if (screenDensity.IsSet && screenDensity.Value == null)
-                throw new ArgumentNullException(nameof(screenDensity), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: screen_density.");
 
             if (screenHeight.IsSet && screenHeight.Value == null)
-                throw new ArgumentNullException(nameof(screenHeight), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: screen_height.");
 
             if (screenWidth.IsSet && screenWidth.Value == null)
-                throw new ArgumentNullException(nameof(screenWidth), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: screen_width.");
 
             if (storageFreeSpace.IsSet && storageFreeSpace.Value == null)
-                throw new ArgumentNullException(nameof(storageFreeSpace), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: storage_free_space.");
 
             if (storageSize.IsSet && storageSize.Value == null)
-                throw new ArgumentNullException(nameof(storageSize), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: storage_size.");
 
             if (timezone.IsSet && timezone.Value == null)
-                throw new ArgumentNullException(nameof(timezone), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: timezone.");
 
             if (timezoneAbbr.IsSet && timezoneAbbr.Value == null)
-                throw new ArgumentNullException(nameof(timezoneAbbr), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: timezone_abbr.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class ConversionEventDeviceInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventDeviceInfo: type.");
 
             return new ConversionEventDeviceInfo(batteryLevel, brand, carrier, cpuCores, externalStorageFreeSpace, externalStorageSize, formFactor, kernelVersion, languages, locale, model, networkType, osFamily, osName, osReleaseName, osVersion, screenDensity, screenHeight, screenWidth, storageFreeSpace, storageSize, timezone, timezoneAbbr, type);
         }
@@ -901,7 +901,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventDeviceInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventDeviceInfo conversionEventDeviceInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -916,44 +915,79 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventDeviceInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventDeviceInfo conversionEventDeviceInfo, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (conversionEventDeviceInfo.BatteryLevelOption.IsSet && conversionEventDeviceInfo.BatteryLevel == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.BatteryLevel to non-nullable JSON property 'battery_level'.");
+
             if (conversionEventDeviceInfo.BrandOption.IsSet && conversionEventDeviceInfo.Brand == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Brand), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Brand to non-nullable JSON property 'brand'.");
 
             if (conversionEventDeviceInfo.CarrierOption.IsSet && conversionEventDeviceInfo.Carrier == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Carrier), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Carrier to non-nullable JSON property 'carrier'.");
+
+            if (conversionEventDeviceInfo.CpuCoresOption.IsSet && conversionEventDeviceInfo.CpuCores == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.CpuCores to non-nullable JSON property 'cpu_cores'.");
+
+            if (conversionEventDeviceInfo.ExternalStorageFreeSpaceOption.IsSet && conversionEventDeviceInfo.ExternalStorageFreeSpace == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.ExternalStorageFreeSpace to non-nullable JSON property 'external_storage_free_space'.");
+
+            if (conversionEventDeviceInfo.ExternalStorageSizeOption.IsSet && conversionEventDeviceInfo.ExternalStorageSize == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.ExternalStorageSize to non-nullable JSON property 'external_storage_size'.");
+
+            if (conversionEventDeviceInfo.FormFactorOption.IsSet && conversionEventDeviceInfo.FormFactor == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.FormFactor to non-nullable JSON property 'form_factor'.");
 
             if (conversionEventDeviceInfo.KernelVersionOption.IsSet && conversionEventDeviceInfo.KernelVersion == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.KernelVersion), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.KernelVersion to non-nullable JSON property 'kernel_version'.");
 
             if (conversionEventDeviceInfo.LanguagesOption.IsSet && conversionEventDeviceInfo.Languages == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Languages), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Languages to non-nullable JSON property 'languages'.");
 
             if (conversionEventDeviceInfo.LocaleOption.IsSet && conversionEventDeviceInfo.Locale == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Locale), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Locale to non-nullable JSON property 'locale'.");
 
             if (conversionEventDeviceInfo.ModelOption.IsSet && conversionEventDeviceInfo.Model == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Model), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Model to non-nullable JSON property 'model'.");
+
+            if (conversionEventDeviceInfo.NetworkTypeOption.IsSet && conversionEventDeviceInfo.NetworkType == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.NetworkType to non-nullable JSON property 'network_type'.");
+
+            if (conversionEventDeviceInfo.OsFamilyOption.IsSet && conversionEventDeviceInfo.OsFamily == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.OsFamily to non-nullable JSON property 'os_family'.");
 
             if (conversionEventDeviceInfo.OsNameOption.IsSet && conversionEventDeviceInfo.OsName == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.OsName), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.OsName to non-nullable JSON property 'os_name'.");
 
             if (conversionEventDeviceInfo.OsReleaseNameOption.IsSet && conversionEventDeviceInfo.OsReleaseName == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.OsReleaseName), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.OsReleaseName to non-nullable JSON property 'os_release_name'.");
 
             if (conversionEventDeviceInfo.OsVersionOption.IsSet && conversionEventDeviceInfo.OsVersion == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.OsVersion), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.OsVersion to non-nullable JSON property 'os_version'.");
+
+            if (conversionEventDeviceInfo.ScreenDensityOption.IsSet && conversionEventDeviceInfo.ScreenDensity == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.ScreenDensity to non-nullable JSON property 'screen_density'.");
+
+            if (conversionEventDeviceInfo.ScreenHeightOption.IsSet && conversionEventDeviceInfo.ScreenHeight == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.ScreenHeight to non-nullable JSON property 'screen_height'.");
+
+            if (conversionEventDeviceInfo.ScreenWidthOption.IsSet && conversionEventDeviceInfo.ScreenWidth == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.ScreenWidth to non-nullable JSON property 'screen_width'.");
+
+            if (conversionEventDeviceInfo.StorageFreeSpaceOption.IsSet && conversionEventDeviceInfo.StorageFreeSpace == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.StorageFreeSpace to non-nullable JSON property 'storage_free_space'.");
+
+            if (conversionEventDeviceInfo.StorageSizeOption.IsSet && conversionEventDeviceInfo.StorageSize == null)
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.StorageSize to non-nullable JSON property 'storage_size'.");
 
             if (conversionEventDeviceInfo.TimezoneOption.IsSet && conversionEventDeviceInfo.Timezone == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Timezone), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Timezone to non-nullable JSON property 'timezone'.");
 
             if (conversionEventDeviceInfo.TimezoneAbbrOption.IsSet && conversionEventDeviceInfo.TimezoneAbbr == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.TimezoneAbbr), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.TimezoneAbbr to non-nullable JSON property 'timezone_abbr'.");
 
             if (conversionEventDeviceInfo.TypeOption.IsSet && conversionEventDeviceInfo.Type == null)
-                throw new ArgumentNullException(nameof(conversionEventDeviceInfo.Type), "Property is required for class ConversionEventDeviceInfo.");
+                throw new JsonException("Cannot write null property ConversionEventDeviceInfo.Type to non-nullable JSON property 'type'.");
 
             if (conversionEventDeviceInfo.BatteryLevelOption.IsSet)
                 writer.WriteNumber("battery_level", conversionEventDeviceInfo.BatteryLevelOption.Value!.Value);

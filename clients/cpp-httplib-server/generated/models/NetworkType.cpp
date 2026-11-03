@@ -6,20 +6,3 @@
 */
 #include "NetworkType.h"
 
-namespace models {
-
-NetworkType::NetworkType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

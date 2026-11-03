@@ -10,7 +10,7 @@ import Foundation
 /** Audience interests and demographics. */
 public struct AudienceInsights: Sendable, Codable, Hashable {
 
-    public static let dateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let dateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     /** Category interest distribution */
     public var categories: [AudienceCategory]?
     /** Generation date */

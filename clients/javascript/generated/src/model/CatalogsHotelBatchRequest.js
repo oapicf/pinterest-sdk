@@ -18,7 +18,7 @@ import Country from './Country';
 /**
  * The CatalogsHotelBatchRequest model module.
  * @module model/CatalogsHotelBatchRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelBatchRequest {
     /**

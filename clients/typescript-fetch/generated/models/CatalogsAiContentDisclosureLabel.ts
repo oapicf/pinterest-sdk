@@ -19,7 +19,7 @@
  */
 export const CatalogsAiContentDisclosureLabel = {
     AiModified: 'ai_modified',
-    SyntheticPerformer: 'synthetic_performer'
+    SyntheticPerformer: 'synthetic_performer',
 } as const;
 export type CatalogsAiContentDisclosureLabel = typeof CatalogsAiContentDisclosureLabel[keyof typeof CatalogsAiContentDisclosureLabel];
 

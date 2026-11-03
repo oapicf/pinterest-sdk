@@ -43,45 +43,31 @@ import {
 export interface CatalogsRetailProductGroupCreateRequest {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     catalogId: string;
     /**
      * Retail catalog based product group is available only for selected partners at the moment.
      * If you are not eligible, please use feed based one.
-     * @type {CatalogsRetailProductGroupCreateRequestCatalogTypeEnum}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     catalogType: CatalogsRetailProductGroupCreateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     country?: Country;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsProductGroupFiltersRequest}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     filters: CatalogsProductGroupFiltersRequest;
     /**
      * 
-     * @type {CatalogsLocale}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     locale?: CatalogsLocale;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroupCreateRequest
      */
     name: string;
 }
@@ -91,7 +77,7 @@ export interface CatalogsRetailProductGroupCreateRequest {
  * @export
  */
 export const CatalogsRetailProductGroupCreateRequestCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailProductGroupCreateRequestCatalogTypeEnum = typeof CatalogsRetailProductGroupCreateRequestCatalogTypeEnum[keyof typeof CatalogsRetailProductGroupCreateRequestCatalogTypeEnum];
 

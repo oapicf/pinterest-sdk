@@ -66,7 +66,7 @@ function Invoke-ProductGroupPromotionsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling productGroupPromotions_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ProductGroupPromotionsCreate) {
             throw "Error! The required parameter `ProductGroupPromotionsCreate` missing when calling productGroupPromotions_create."
@@ -152,11 +152,11 @@ function Invoke-ProductGroupPromotionsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling productGroupPromotions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$ProductGroupPromotionId) {
             throw "Error! The required parameter `ProductGroupPromotionId` missing when calling productGroupPromotions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{product_group_promotion_id}', [System.Web.HTTPUtility]::UrlEncode($ProductGroupPromotionId))
+        $LocalVarUri = $LocalVarUri.replace('{product_group_promotion_id}', [System.Uri]::EscapeDataString([string]$ProductGroupPromotionId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -266,7 +266,7 @@ function Invoke-ProductGroupPromotionsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling productGroupPromotions_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -373,7 +373,7 @@ function Invoke-ProductGroupPromotionsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling productGroupPromotions_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ProductGroupPromotionsUpdateWithRequiredBody) {
             throw "Error! The required parameter `ProductGroupPromotionsUpdateWithRequiredBody` missing when calling productGroupPromotions_update."
@@ -517,7 +517,7 @@ function Invoke-ProductGroupsAnalytics {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling productGroups_analytics."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$StartDate) {
             throw "Error! The required parameter `StartDate` missing when calling productGroups_analytics."

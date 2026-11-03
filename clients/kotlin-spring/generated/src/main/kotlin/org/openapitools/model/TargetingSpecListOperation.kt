@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: SET,ADD,REMOVE
-*/
+ * 
+ * Values: SET,ADD,REMOVE
+ */
 enum class TargetingSpecListOperation(@get:JsonValue val value: kotlin.String) {
 
     SET("SET"),
@@ -29,9 +29,8 @@ enum class TargetingSpecListOperation(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TargetingSpecListOperation {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecListOperation'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecListOperation'")
         }
     }
 }
-

@@ -28,12 +28,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsDeleteDiscontinuedBatchRequest", description = "Request object to discontinue catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
 
-  @Valid
   private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
   /**
@@ -369,7 +368,7 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest implements CatalogsItem
    * Array with catalogs items
    * @return items
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid ItemDeleteDiscontinuedBatchRecord> getItems() {

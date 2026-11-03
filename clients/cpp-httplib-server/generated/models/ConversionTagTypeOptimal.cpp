@@ -6,20 +6,3 @@
 */
 #include "ConversionTagTypeOptimal.h"
 
-namespace models {
-
-ConversionTagTypeOptimal::ConversionTagTypeOptimal()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

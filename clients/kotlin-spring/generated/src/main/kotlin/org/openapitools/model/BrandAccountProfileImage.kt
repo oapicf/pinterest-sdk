@@ -18,17 +18,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * Base64-encoded image media source
  * @param contentType 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  */
 data class BrandAccountProfileImage(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("content_type")
+    @param:JsonProperty("content_type", required = true)
     @get:JsonProperty("content_type", required = true) val contentType: BrandAccountProfileImage.ContentType,
 
     @get:Pattern(regexp="[a-zA-Z0-9+/=]+")
     @Schema(required = true, description = "")
-    @param:JsonProperty("data")
+    @param:JsonProperty("data", required = true)
     @get:JsonProperty("data", required = true) val `data`: kotlin.String
 ) {
 
@@ -40,12 +40,12 @@ data class BrandAccountProfileImage(
 
         imageSlashJpeg("image/jpeg"),
         imageSlashPng("image/png");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ContentType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ContentType'")
             }
         }

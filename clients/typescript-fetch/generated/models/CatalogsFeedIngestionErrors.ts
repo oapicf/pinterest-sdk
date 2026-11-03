@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedIngestionErrors {
     /**
      * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     aCCOUNTFLAGGED?: number;
     /**
      * Update your Google Sheets sharing settings to 'Anyone with link' as a Viewer so that Pinterest can access your file.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     fETCHGOOGLESHEETNOTSHARED?: number;
     /**
      * Image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     iMAGEFILENOTACCESSIBLE?: number;
     /**
      * Image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     iMAGEFILENOTFOUND?: number;
     /**
      * Image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     iMAGEINVALIDFILE?: number;
     /**
      * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     iMAGELEVELINTERNALERROR?: number;
     /**
      * Image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     iMAGEMALFORMEDURL?: number;
     /**
      * The product count has decreased by more than 99% compared to the last successful ingestion.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     lARGEPRODUCTCOUNTDECREASE?: number;
     /**
      * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionErrors
      */
     lINELEVELINTERNALERROR?: number;
 }

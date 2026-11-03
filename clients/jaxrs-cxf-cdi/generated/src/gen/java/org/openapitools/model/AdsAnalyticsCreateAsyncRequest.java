@@ -55,13 +55,13 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
   private Boolean combineTargetingTypes = false;
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   private Integer endHour;
 
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   private Granularity granularity;
 
@@ -77,7 +77,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
@@ -85,7 +85,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
 
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   private ReportingTimeZone reportingTimezone;
 
@@ -95,7 +95,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
 
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   /**
    * List of ad group ids

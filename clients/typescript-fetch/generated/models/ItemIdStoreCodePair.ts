@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface ItemIdStoreCodePair {
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof ItemIdStoreCodePair
      */
     itemId: string;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof ItemIdStoreCodePair
      */
     storeCode: string;
 }

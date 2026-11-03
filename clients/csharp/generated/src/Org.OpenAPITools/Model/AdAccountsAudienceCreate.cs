@@ -234,16 +234,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class AdAccountsAudienceCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceCreate: ad_account_id.");
 
             if (audienceType.IsSet && audienceType.Value == null)
-                throw new ArgumentNullException(nameof(audienceType), "Property is not nullable for class AdAccountsAudienceCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceCreate: audience_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdAccountsAudienceCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceCreate: name.");
 
             if (rule.IsSet && rule.Value == null)
-                throw new ArgumentNullException(nameof(rule), "Property is not nullable for class AdAccountsAudienceCreate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceCreate: rule.");
 
             return new AdAccountsAudienceCreate(adAccountId, audienceType, description, name, rule);
         }
@@ -254,7 +254,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountsAudienceCreate adAccountsAudienceCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -269,17 +268,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountsAudienceCreate adAccountsAudienceCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adAccountsAudienceCreate.AdAccountIdOption.IsSet && adAccountsAudienceCreate.AdAccountId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceCreate.AdAccountId), "Property is required for class AdAccountsAudienceCreate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceCreate.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (adAccountsAudienceCreate.AudienceTypeOption.IsSet && adAccountsAudienceCreate.AudienceType == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceCreate.AudienceType to non-nullable JSON property 'audience_type'.");
 
             if (adAccountsAudienceCreate.NameOption.IsSet && adAccountsAudienceCreate.Name == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceCreate.Name), "Property is required for class AdAccountsAudienceCreate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceCreate.Name to non-nullable JSON property 'name'.");
 
             if (adAccountsAudienceCreate.RuleOption.IsSet && adAccountsAudienceCreate.Rule == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceCreate.Rule), "Property is required for class AdAccountsAudienceCreate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceCreate.Rule to non-nullable JSON property 'rule'.");
 
             if (adAccountsAudienceCreate.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", adAccountsAudienceCreate.AdAccountId);

@@ -61,8 +61,6 @@ APPTYPE(String.valueOf("APPTYPE"));
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<TargetingSpecAppType> values = new ArrayList<>();
  /**
    * Get field

@@ -218,13 +218,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class InviteExceptionResponse.");
+                throw new JsonException("Property is not nullable for class InviteExceptionResponse: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class InviteExceptionResponse.");
+                throw new JsonException("Property is not nullable for class InviteExceptionResponse: message.");
 
             if (usersOrPartnerIds.IsSet && usersOrPartnerIds.Value == null)
-                throw new ArgumentNullException(nameof(usersOrPartnerIds), "Property is not nullable for class InviteExceptionResponse.");
+                throw new JsonException("Property is not nullable for class InviteExceptionResponse: users_or_partner_ids.");
 
             return new InviteExceptionResponse(code, inviteOrRequestId, message, usersOrPartnerIds);
         }
@@ -235,7 +235,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteExceptionResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteExceptionResponse inviteExceptionResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -250,14 +249,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteExceptionResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteExceptionResponse inviteExceptionResponse, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (inviteExceptionResponse.CodeOption.IsSet && inviteExceptionResponse.Code == null)
+                throw new JsonException("Cannot write null property InviteExceptionResponse.Code to non-nullable JSON property 'code'.");
+
             if (inviteExceptionResponse.MessageOption.IsSet && inviteExceptionResponse.Message == null)
-                throw new ArgumentNullException(nameof(inviteExceptionResponse.Message), "Property is required for class InviteExceptionResponse.");
+                throw new JsonException("Cannot write null property InviteExceptionResponse.Message to non-nullable JSON property 'message'.");
 
             if (inviteExceptionResponse.UsersOrPartnerIdsOption.IsSet && inviteExceptionResponse.UsersOrPartnerIds == null)
-                throw new ArgumentNullException(nameof(inviteExceptionResponse.UsersOrPartnerIds), "Property is required for class InviteExceptionResponse.");
+                throw new JsonException("Cannot write null property InviteExceptionResponse.UsersOrPartnerIds to non-nullable JSON property 'users_or_partner_ids'.");
 
             if (inviteExceptionResponse.CodeOption.IsSet)
                 writer.WriteNumber("code", inviteExceptionResponse.CodeOption.Value!.Value);

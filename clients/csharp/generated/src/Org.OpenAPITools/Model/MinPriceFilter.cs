@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mINPRICE.IsSet)
-                throw new ArgumentException("Property is required for class MinPriceFilter.", nameof(mINPRICE));
+                throw new JsonException("Property is required for class MinPriceFilter: MIN_PRICE.");
 
             if (mINPRICE.IsSet && mINPRICE.Value == null)
-                throw new ArgumentNullException(nameof(mINPRICE), "Property is not nullable for class MinPriceFilter.");
+                throw new JsonException("Property is not nullable for class MinPriceFilter: MIN_PRICE.");
 
             return new MinPriceFilter(mINPRICE.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="minPriceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MinPriceFilter minPriceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="minPriceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MinPriceFilter minPriceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (minPriceFilter.MIN_PRICE == null)
-                throw new ArgumentNullException(nameof(minPriceFilter.MIN_PRICE), "Property is required for class MinPriceFilter.");
-
             writer.WritePropertyName("MIN_PRICE");
             JsonSerializer.Serialize(writer, minPriceFilter.MIN_PRICE, jsonSerializerOptions);
         }

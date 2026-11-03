@@ -13,7 +13,7 @@ public struct CatalogsHotelListProductsByCatalogBasedFilterRequest: Sendable, Co
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Catalog ID pertaining to the product group. */
     public var catalogId: String
     public var catalogType: CatalogType

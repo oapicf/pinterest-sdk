@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("keywords_get_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsGet200Response   {
   private String bookmark;
-  private @Valid List<@Valid Keyword> items = new ArrayList<>();
+  private List<@Valid Keyword> items = new ArrayList<>();
 
   public KeywordsGet200Response() {
   }
@@ -66,7 +66,7 @@ public class KeywordsGet200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid Keyword> getItems() {
+  @NotNull public List<@Valid Keyword> getItems() {
     return items;
   }
 

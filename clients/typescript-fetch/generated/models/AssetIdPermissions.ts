@@ -36,26 +36,18 @@ import {
 export interface AssetIdPermissions {
     /**
      * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
-     * @type {AssetGroupBinding}
-     * @memberof AssetIdPermissions
      */
     assetGroupInfo?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof AssetIdPermissions
      */
     assetId: string;
     /**
      * 
-     * @type {AssetTypeResponse}
-     * @memberof AssetIdPermissions
      */
     assetType: AssetTypeResponse;
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof AssetIdPermissions
      */
     permissions: Array<string>;
 }

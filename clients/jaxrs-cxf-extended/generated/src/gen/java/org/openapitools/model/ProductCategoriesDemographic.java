@@ -23,7 +23,6 @@ public class ProductCategoriesDemographic  {
   * Age demographic distribution
   */
   @ApiModelProperty(required = true, value = "Age demographic distribution")
-  @Valid
   private Map<String, BigDecimal> age = new HashMap<>();
 
   @ApiModelProperty(required = true, value = "")

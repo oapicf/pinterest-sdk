@@ -157,16 +157,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!entityId.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequestAllOf1.", nameof(entityId));
+                throw new JsonException("Property is required for class ScheduleCreateRequestAllOf1: entity_id.");
 
             if (!entityType.IsSet)
-                throw new ArgumentException("Property is required for class ScheduleCreateRequestAllOf1.", nameof(entityType));
+                throw new JsonException("Property is required for class ScheduleCreateRequestAllOf1: entity_type.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class ScheduleCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequestAllOf1: entity_id.");
 
             if (entityType.IsSet && entityType.Value == null)
-                throw new ArgumentNullException(nameof(entityType), "Property is not nullable for class ScheduleCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class ScheduleCreateRequestAllOf1: entity_type.");
 
             return new ScheduleCreateRequestAllOf1(entityId.Value!, entityType.Value!);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleCreateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleCreateRequestAllOf1 scheduleCreateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,15 +191,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleCreateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleCreateRequestAllOf1 scheduleCreateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (scheduleCreateRequestAllOf1.EntityId == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequestAllOf1.EntityId), "Property is required for class ScheduleCreateRequestAllOf1.");
-
-            if (scheduleCreateRequestAllOf1.EntityType == null)
-                throw new ArgumentNullException(nameof(scheduleCreateRequestAllOf1.EntityType), "Property is required for class ScheduleCreateRequestAllOf1.");
-
             writer.WriteString("entity_id", scheduleCreateRequestAllOf1.EntityId);
 
             writer.WriteString("entity_type", scheduleCreateRequestAllOf1.EntityType);

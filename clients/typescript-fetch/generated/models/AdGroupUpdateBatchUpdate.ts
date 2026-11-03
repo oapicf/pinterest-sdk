@@ -120,196 +120,132 @@ import {
 export interface AdGroupUpdateBatchUpdate {
     /**
      * Enable auto-targeting for ad group. Default value is True. Also known as ["Performance+ targeting"](https://help.pinterest.com/en/business/article/performance-plus-targeting).
-     * @type {boolean}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     autoTargetingEnabled?: boolean | null;
     /**
      * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     bidInMicroCurrency?: number | null;
     /**
      * [Open beta](https://help.pinterest.com/en/business/article/beta-features) Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Not currently supported for [Performance+ campaigns](https://help.pinterest.com/en/business/article/performance-plus-campaigns).
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     bidMultiplier?: number;
     /**
      * 
-     * @type {BidStrategyType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     bidStrategyType?: BidStrategyType | null;
     /**
      * 
-     * @type {ActionType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     billableEvent?: ActionType;
     /**
      * Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     budgetInMicroCurrency?: number | null;
     /**
      * 
-     * @type {BudgetType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     budgetType?: BudgetType;
     /**
      * Campaign ID of the ad group.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     campaignId?: string;
     /**
      * Customer segment ID applied to the ad group. We currently only support 1 customer segment per ad group. To use customer segments, do not set the `targeting_template_ids` field as well as the `AUDIENCE_INCLUDE` field of the `targeting_spec`. To clear the customer segment ID, set this field to '0'.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     customerSegmentId?: string;
     /**
      * Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about [scheduling ads](https://help.pinterest.com/en/business/article/ads-manager-schedule-ads). 
      * For certain organizations ([Closed beta](https://help.pinterest.com/en/business/article/beta-features)): Supported for campaigns with Campaign Budget Optimization (CBO). 
      * For all organizations: Supported for campaigns without CBO.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     endTime?: number | null;
     /**
      * 
-     * @type {AdgroupTrackingFeatures}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     extFeatures?: AdgroupTrackingFeatures | null;
     /**
      * Feed Profile ID associated to the adgroup.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     feedProfileId?: string;
     /**
      * Ad group ID.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     id: string;
     /**
      * Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.
-     * @type {boolean}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     isCreativeOptimization?: boolean | null;
     /**
      * Indicates whether the ad group should use the local inventory.
-     * @type {boolean}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     isLocalInventory?: boolean;
     /**
      * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION [billable_event](https://help.pinterest.com/en/business/article/billable-events) value. This field **REQUIRES** the `end_time` field.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     lifetimeFrequencyCap?: number;
     /**
      * The targeting radius of the local inventory ads in miles.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     localInventoryRadiusInMiles?: number;
     /**
      * Ad group name.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     name?: string;
     /**
      * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `"WEB_CONVERSION"`.
-     * @type {NullableOptimizationGoalMetadata}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     optimizationGoalMetadata?: NullableOptimizationGoalMetadata | null;
     /**
      * 
-     * @type {PacingDeliveryType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     pacingDeliveryType?: PacingDeliveryType;
     /**
      * Pinterest Performance+ campaign settings.
-     * @type {PerformancePlusCampaignSettings}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     performancePlusCampaignSettings?: PerformancePlusCampaignSettings | null;
     /**
      * [Placement group](https://help.pinterest.com/en/business/article/placement-groups).
-     * @type {PlacementGroupType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     placementGroup?: PlacementGroupType;
     /**
      * A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both
-     * @type {PlacementTrafficType}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     placementTrafficType?: PlacementTrafficType | null;
     /**
      * Specify if the promotion is applied at ad group or item level
-     * @type {PromotionApplicationLevel}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     promotionApplicationLevel?: PromotionApplicationLevel | null;
     /**
      * Promotion ID. To clear this field, set to null.
-     * @type {string}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     promotionId?: string | null;
     /**
      * Promotion IDs list. To clear this field, set to an empty array [].
-     * @type {Array<string>}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     promotionIds?: Array<string>;
     /**
      * Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about [scheduling ads](/docs/api-features/managing-ads/#step-2-create-an-ad-group). For certain organizations ([Closed beta](/docs/getting-started/using-beta-and-restricted-features/)): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.
-     * @type {number}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     startTime?: number | null;
     /**
      * Ad group/entity status.
-     * @type {EntityStatus}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {TargetingSpecOptimal}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     targetingSpec?: TargetingSpecOptimal;
     /**
      * 
-     * @type {Array<TargetingSpecOperations>}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     targetingSpecOperations?: Array<TargetingSpecOperations>;
     /**
      * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
-     * @type {Array<string>}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     targetingTemplateIds?: Array<string> | null;
     /**
      * 
-     * @type {AdGroupTrackingURLs}
-     * @memberof AdGroupUpdateBatchUpdate
      */
     trackingUrls?: AdGroupTrackingURLs | null;
 }

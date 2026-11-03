@@ -31,21 +31,21 @@ data class CatalogsItemsUpdateBatchRequest(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("country")
+    @param:JsonProperty("country", required = true)
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
     @get:Size(min=1,max=1000) 
     @Schema(required = true, description = "Array with catalogs items")
-    @param:JsonProperty("items")
+    @param:JsonProperty("items", required = true)
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<ItemUpdateBatchRecord>,
 
     @Schema(required = true, description = "We recommend using the CatalogsLocale values.")
-    @param:JsonProperty("language")
+    @param:JsonProperty("language", required = true)
     @get:JsonProperty("language", required = true) val language: CatalogsItemsUpdateBatchRequest.Language,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) override val operation: CatalogsItemsUpdateBatchRequest.Operation = kotlin.String.UPDATE
 ) : CatalogsItemsBatchRequest {
 
@@ -162,12 +162,12 @@ data class CatalogsItemsUpdateBatchRequest(
         TR("TR"),
         XX("XX"),
         ZH("ZH");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Language {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Language'")
             }
         }
@@ -180,12 +180,12 @@ data class CatalogsItemsUpdateBatchRequest(
     enum class Operation(@get:JsonValue val value: kotlin.String) {
 
         UPDATE("UPDATE");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }

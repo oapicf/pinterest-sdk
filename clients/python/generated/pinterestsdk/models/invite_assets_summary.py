@@ -76,15 +76,13 @@ class InviteAssetsSummary(BaseModel):
         _items = []
         if self.ad_accounts:
             for _item_ad_accounts in self.ad_accounts:
-                if _item_ad_accounts:
-                    _items.append(_item_ad_accounts.to_dict())
+                _items.append(_item_ad_accounts.to_dict() if _item_ad_accounts is not None else None)
             _dict['ad_accounts'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in profiles (list)
         _items = []
         if self.profiles:
             for _item_profiles in self.profiles:
-                if _item_profiles:
-                    _items.append(_item_profiles.to_dict())
+                _items.append(_item_profiles.to_dict() if _item_profiles is not None else None)
             _dict['profiles'] = _items
         return _dict
 

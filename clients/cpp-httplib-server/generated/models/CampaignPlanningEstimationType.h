@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class CampaignPlanningEstimationType
-{
-public:
-
-    CampaignPlanningEstimationType();
-    virtual ~CampaignPlanningEstimationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningEstimationType,
-        )
-
-private:
+enum class CampaignPlanningEstimationType {
+    
+    IMPRESSION,
+    
+    CLICK,
+    
+    CONVERSION,
+    
+    WEEKLY_FREQUENCY,
+    
+    WEEKLY_REACH,
+    
+    LIFETIME_FREQUENCY,
+    
+    LIFETIME_REACH,
+    
+    CPM,
+    
+    CPC,
+    
+    CPA
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningEstimationType& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningEstimationType::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case CampaignPlanningEstimationType::CLICK: j = "CLICK"; break;
+        
+        case CampaignPlanningEstimationType::CONVERSION: j = "CONVERSION"; break;
+        
+        case CampaignPlanningEstimationType::WEEKLY_FREQUENCY: j = "WEEKLY_FREQUENCY"; break;
+        
+        case CampaignPlanningEstimationType::WEEKLY_REACH: j = "WEEKLY_REACH"; break;
+        
+        case CampaignPlanningEstimationType::LIFETIME_FREQUENCY: j = "LIFETIME_FREQUENCY"; break;
+        
+        case CampaignPlanningEstimationType::LIFETIME_REACH: j = "LIFETIME_REACH"; break;
+        
+        case CampaignPlanningEstimationType::CPM: j = "CPM"; break;
+        
+        case CampaignPlanningEstimationType::CPC: j = "CPC"; break;
+        
+        case CampaignPlanningEstimationType::CPA: j = "CPA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningEstimationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningEstimationType& value)
+{
+    
+    if (j == "IMPRESSION")
+    {
+        value = CampaignPlanningEstimationType::IMPRESSION;
+        return;
+    }
+    
+    if (j == "CLICK")
+    {
+        value = CampaignPlanningEstimationType::CLICK;
+        return;
+    }
+    
+    if (j == "CONVERSION")
+    {
+        value = CampaignPlanningEstimationType::CONVERSION;
+        return;
+    }
+    
+    if (j == "WEEKLY_FREQUENCY")
+    {
+        value = CampaignPlanningEstimationType::WEEKLY_FREQUENCY;
+        return;
+    }
+    
+    if (j == "WEEKLY_REACH")
+    {
+        value = CampaignPlanningEstimationType::WEEKLY_REACH;
+        return;
+    }
+    
+    if (j == "LIFETIME_FREQUENCY")
+    {
+        value = CampaignPlanningEstimationType::LIFETIME_FREQUENCY;
+        return;
+    }
+    
+    if (j == "LIFETIME_REACH")
+    {
+        value = CampaignPlanningEstimationType::LIFETIME_REACH;
+        return;
+    }
+    
+    if (j == "CPM")
+    {
+        value = CampaignPlanningEstimationType::CPM;
+        return;
+    }
+    
+    if (j == "CPC")
+    {
+        value = CampaignPlanningEstimationType::CPC;
+        return;
+    }
+    
+    if (j == "CPA")
+    {
+        value = CampaignPlanningEstimationType::CPA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningEstimationType", &j);
+}
 
 } // namespace models
 

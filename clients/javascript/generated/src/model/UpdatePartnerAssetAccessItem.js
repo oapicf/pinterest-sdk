@@ -17,7 +17,7 @@ import Permissions from './Permissions';
 /**
  * The UpdatePartnerAssetAccessItem model module.
  * @module model/UpdatePartnerAssetAccessItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdatePartnerAssetAccessItem {
     /**

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,21 +26,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CustomerListCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isNca;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String records;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();
 
   public CustomerListCreate() {
@@ -76,7 +71,7 @@ public class CustomerListCreate {
     this.isNca = isNca;
   }
 
-  public CustomerListCreate listType(@Nullable UserListType listType) {
+  public CustomerListCreate listType(UserListType listType) {
     this.listType = listType;
     return this;
   }
@@ -88,12 +83,12 @@ public class CustomerListCreate {
   @Valid 
   @Schema(name = "list_type", description = "Type of customer list (e.g., EMAIL, IDFA, MAID).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("list_type")
-  public @Nullable UserListType getListType() {
+  public UserListType getListType() {
     return listType;
   }
 
   @JsonProperty("list_type")
-  public void setListType(@Nullable UserListType listType) {
+  public void setListType(UserListType listType) {
     this.listType = listType;
   }
 
@@ -156,7 +151,7 @@ public class CustomerListCreate {
    * Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.
    * @return recordsV2
    */
-  @Valid 
+  
   @Schema(name = "records_v2", description = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("records_v2")
   public List<@Valid CustomerListRecordRow> getRecordsV2() {

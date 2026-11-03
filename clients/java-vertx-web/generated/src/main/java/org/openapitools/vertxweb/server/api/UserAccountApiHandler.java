@@ -108,7 +108,7 @@ public class UserAccountApiHandler {
         FollowUserCreate followUserCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<FollowUserCreate>(){}) : null;
 
         logger.debug("Parameter username is {}", username);
-        logger.debug("Parameter followUserCreate is {}", followUserCreate);
+        logger.debug("Parameter followUserCreate is (body omitted)");
 
         api.followUserUpdate(username, followUserCreate)
             .onSuccess(apiResponse -> {
@@ -428,7 +428,7 @@ public class UserAccountApiHandler {
         UserWebsiteCreate userWebsiteCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<UserWebsiteCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter userWebsiteCreate is {}", userWebsiteCreate);
+        logger.debug("Parameter userWebsiteCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.verifyWebsiteUpdate(userWebsiteCreate, adAccountId)

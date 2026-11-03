@@ -5,7 +5,7 @@
  */
 export const EventProcessingStatus = {
     Failed: 'failed',
-    Processed: 'processed'
+    Processed: 'processed',
 } as const;
 export type EventProcessingStatus = typeof EventProcessingStatus[keyof typeof EventProcessingStatus];
 

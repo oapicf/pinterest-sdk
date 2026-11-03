@@ -18,7 +18,7 @@ export interface LocalInventoryUpsertOperation {
 }
 export namespace LocalInventoryUpsertOperation {
   export const OperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

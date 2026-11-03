@@ -17,7 +17,7 @@ export interface TargetingSpecOperationLocale {
 }
 export namespace TargetingSpecOperationLocale {
     export const FieldEnum = {
-        Locale: 'LOCALE'
+        Locale: 'LOCALE',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

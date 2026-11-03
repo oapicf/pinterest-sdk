@@ -32,7 +32,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   RespondToInvitesResponseArray.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RespondToInvitesResponseArray   {
   public static final String JSON_PROPERTY_ITEMS = "items";
   @JsonProperty(JSON_PROPERTY_ITEMS)
@@ -57,7 +57,7 @@ public class RespondToInvitesResponseArray   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(value = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
-  @Valid 
+  
   public List<@Valid RespondToInviteResultItem> getItems() {
     return items;
   }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Attribution model used to attribute the conversion event.
-* Values: first_touch,last_touch,multi_touch,mmm
-*/
+ * Attribution model used to attribute the conversion event.
+ * Values: first_touch,last_touch,multi_touch,mmm
+ */
 enum class AttributionModel(@get:JsonValue val value: kotlin.String) {
 
     first_touch("first_touch"),
@@ -30,9 +30,8 @@ enum class AttributionModel(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AttributionModel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionModel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionModel'")
         }
     }
 }
-

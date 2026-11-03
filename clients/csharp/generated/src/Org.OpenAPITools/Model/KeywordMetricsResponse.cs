@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (keyword.IsSet && keyword.Value == null)
-                throw new ArgumentNullException(nameof(keyword), "Property is not nullable for class KeywordMetricsResponse.");
+                throw new JsonException("Property is not nullable for class KeywordMetricsResponse: keyword.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class KeywordMetricsResponse.");
+                throw new JsonException("Property is not nullable for class KeywordMetricsResponse: metrics.");
 
             return new KeywordMetricsResponse(keyword, metrics);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordMetricsResponse keywordMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordMetricsResponse keywordMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (keywordMetricsResponse.KeywordOption.IsSet && keywordMetricsResponse.Keyword == null)
-                throw new ArgumentNullException(nameof(keywordMetricsResponse.Keyword), "Property is required for class KeywordMetricsResponse.");
+                throw new JsonException("Cannot write null property KeywordMetricsResponse.Keyword to non-nullable JSON property 'keyword'.");
 
             if (keywordMetricsResponse.MetricsOption.IsSet && keywordMetricsResponse.Metrics == null)
-                throw new ArgumentNullException(nameof(keywordMetricsResponse.Metrics), "Property is required for class KeywordMetricsResponse.");
+                throw new JsonException("Cannot write null property KeywordMetricsResponse.Metrics to non-nullable JSON property 'metrics'.");
 
             if (keywordMetricsResponse.KeywordOption.IsSet)
                 writer.WriteString("keyword", keywordMetricsResponse.Keyword);

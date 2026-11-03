@@ -2,8 +2,8 @@
 
 Pinterest REST API
 - API version: 5.28.0
-  - Build date: 2026-08-30T09:51:23.554522953Z[Etc/UTC]
-  - Generator version: 7.24.0
+  - Build date: 2026-11-03T06:12:19.906923460Z[Etc/UTC]
+  - Generator version: 7.26.0
 
 Pinterest's REST API
 
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.github.oapicf</groupId>
   <artifactId>pinterestsdk</artifactId>
-  <version>1.0.0-pre.0</version>
+  <version>2.1.1-pre.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +58,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.github.oapicf:pinterestsdk:1.0.0-pre.0"
+     implementation "com.github.oapicf:pinterestsdk:2.1.1-pre.0"
   }
 ```
 
@@ -72,7 +72,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/pinterestsdk-1.0.0-pre.0.jar`
+* `target/pinterestsdk-2.1.1-pre.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

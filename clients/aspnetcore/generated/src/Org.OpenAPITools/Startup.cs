@@ -75,7 +75,7 @@ namespace Org.OpenAPITools
                     c.SwaggerDoc("5.28.0", new OpenApiInfo
                     {
                         Title = "Pinterest REST API",
-                        Description = "Pinterest REST API (ASP.NET Core 8.0)",
+                        Description = "Pinterest REST API (ASP.NET Core 10.0)",
                         TermsOfService = new Uri("https://developers.pinterest.com/terms/"),
                         Contact = new OpenApiContact
                         {

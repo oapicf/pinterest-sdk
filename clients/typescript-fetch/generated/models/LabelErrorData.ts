@@ -36,26 +36,18 @@ import {
 export interface LabelErrorData {
     /**
      * Label ID.
-     * @type {string}
-     * @memberof LabelErrorData
      */
     id?: string;
     /**
      * 
-     * @type {NullableLabelType}
-     * @memberof LabelErrorData
      */
     labelType?: NullableLabelType | null;
     /**
      * 
-     * @type {NullableLabelStatus}
-     * @memberof LabelErrorData
      */
     status?: NullableLabelStatus | null;
     /**
      * Label name. 100-character limit.
-     * @type {string}
-     * @memberof LabelErrorData
      */
     value?: string;
 }

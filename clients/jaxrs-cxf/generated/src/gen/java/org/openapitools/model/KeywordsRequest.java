@@ -19,8 +19,6 @@ public class KeywordsRequest  {
   */
   @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
 
-  @Valid
-
   private List<@Valid KeywordsCommon> keywords = new ArrayList<>();
 
  /**

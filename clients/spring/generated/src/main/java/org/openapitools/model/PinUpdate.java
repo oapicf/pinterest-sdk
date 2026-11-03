@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -28,31 +27,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "PinUpdate", description = "Resource create or update operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinUpdate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AiDisclosuresUpdate aiDisclosures;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 500) String> altText = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String boardId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> boardSectionId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 800) String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 2048) String> link = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(max = 100) String> title = JsonNullable.<String>undefined();
 
   public PinUpdate aiDisclosures(@Nullable AiDisclosuresUpdate aiDisclosures) {
@@ -86,7 +77,7 @@ public class PinUpdate {
    * @return altText
    */
   @Size(max = 500) 
-  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "alt_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("alt_text")
   public JsonNullable<@Size(max = 500) String> getAltText() {
     return altText;
@@ -127,7 +118,7 @@ public class PinUpdate {
    * @return boardSectionId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "board_section_id", description = "The board section to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("board_section_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getBoardSectionId() {
     return boardSectionId;
@@ -154,7 +145,7 @@ public class PinUpdate {
    * Carousel Pin slots data.
    * @return carouselSlots
    */
-  @Valid 
+  
   @Schema(name = "carousel_slots", description = "Carousel Pin slots data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carousel_slots")
   public List<@Valid CarouselSlot> getCarouselSlots() {
@@ -176,7 +167,7 @@ public class PinUpdate {
    * @return description
    */
   @Size(max = 800) 
-  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<@Size(max = 800) String> getDescription() {
     return description;
@@ -196,7 +187,7 @@ public class PinUpdate {
    * @return link
    */
   @Size(max = 2048) 
-  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("link")
   public JsonNullable<@Size(max = 2048) String> getLink() {
     return link;
@@ -216,7 +207,7 @@ public class PinUpdate {
    * @return title
    */
   @Size(max = 100) 
-  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("title")
   public JsonNullable<@Size(max = 100) String> getTitle() {
     return title;

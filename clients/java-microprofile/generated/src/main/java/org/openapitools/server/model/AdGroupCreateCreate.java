@@ -82,7 +82,7 @@ public class AdGroupCreateCreate  {
   protected Integer budgetInMicroCurrency;
 
   @JsonbProperty("budget_type")
-  protected BudgetType budgetType;
+  protected BudgetType budgetType = BudgetType.DAILY;
 
  /**
   * Campaign ID of the ad group.
@@ -148,7 +148,7 @@ public class AdGroupCreateCreate  {
   protected NullableOptimizationGoalMetadata optimizationGoalMetadata;
 
   @JsonbProperty("pacing_delivery_type")
-  protected PacingDeliveryType pacingDeliveryType;
+  protected PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
  /**
   * Pinterest Performance+ campaign settings.

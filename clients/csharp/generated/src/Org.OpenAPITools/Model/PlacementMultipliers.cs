@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (pLACEMENT.IsSet && pLACEMENT.Value == null)
-                throw new ArgumentNullException(nameof(pLACEMENT), "Property is not nullable for class PlacementMultipliers.");
+                throw new JsonException("Property is not nullable for class PlacementMultipliers: PLACEMENT.");
 
             return new PlacementMultipliers(pLACEMENT);
         }
@@ -159,7 +159,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="placementMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PlacementMultipliers placementMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -174,9 +173,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="placementMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PlacementMultipliers placementMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (placementMultipliers.PLACEMENTOption.IsSet && placementMultipliers.PLACEMENT == null)
+                throw new JsonException("Cannot write null property PlacementMultipliers.PLACEMENT to non-nullable JSON property 'PLACEMENT'.");
+
             if (placementMultipliers.PLACEMENTOption.IsSet)
             {
                 var pLACEMENTRawValue = PlacementTypeValueConverter.ToJsonValue(placementMultipliers.PLACEMENT!.Value);

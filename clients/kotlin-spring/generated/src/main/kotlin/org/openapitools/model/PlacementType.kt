@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Placement type for bid multiplier targeting.
-* Values: SEARCH,BROWSE,RELATED_PINS
-*/
+ * Placement type for bid multiplier targeting.
+ * Values: SEARCH,BROWSE,RELATED_PINS
+ */
 enum class PlacementType(@get:JsonValue val value: kotlin.String) {
 
     SEARCH("SEARCH"),
@@ -29,9 +29,8 @@ enum class PlacementType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PlacementType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementType'")
         }
     }
 }
-

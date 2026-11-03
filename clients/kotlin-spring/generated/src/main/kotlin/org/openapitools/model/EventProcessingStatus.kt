@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Status of a single event in the response.
-* Values: failed,processed
-*/
+ * Status of a single event in the response.
+ * Values: failed,processed
+ */
 enum class EventProcessingStatus(@get:JsonValue val value: kotlin.String) {
 
     failed("failed"),
@@ -28,9 +28,8 @@ enum class EventProcessingStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): EventProcessingStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'EventProcessingStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'EventProcessingStatus'")
         }
     }
 }
-

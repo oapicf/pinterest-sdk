@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AssetGroupUpdateError {
     /**
      * 
-     * @type {string}
-     * @memberof AssetGroupUpdateError
      */
     assetGroupId?: string;
     /**
      * 
-     * @type {number}
-     * @memberof AssetGroupUpdateError
      */
     code?: number;
     /**
      * 
-     * @type {string}
-     * @memberof AssetGroupUpdateError
      */
     message?: string;
 }

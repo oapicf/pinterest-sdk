@@ -276,14 +276,22 @@ class IntegrationMetadata {
         connectedMerchantId: mapValueOfType<String>(json, r'connected_merchant_id'),
         connectedTagId: mapValueOfType<String>(json, r'connected_tag_id'),
         connectedUserId: mapValueOfType<String>(json, r'connected_user_id'),
-        createdTimestamp: num.parse('${json[r'created_timestamp']}'),
+        createdTimestamp: json[r'created_timestamp'] == null
+            ? null
+            : num.parse('${json[r'created_timestamp']}'),
         externalBusinessId: mapValueOfType<String>(json, r'external_business_id'),
         id: mapValueOfType<String>(json, r'id'),
-        partnerAccessTokenExpiry: num.parse('${json[r'partner_access_token_expiry']}'),
+        partnerAccessTokenExpiry: json[r'partner_access_token_expiry'] == null
+            ? null
+            : num.parse('${json[r'partner_access_token_expiry']}'),
         partnerMetadata: mapValueOfType<String>(json, r'partner_metadata'),
-        partnerRefreshTokenExpiry: num.parse('${json[r'partner_refresh_token_expiry']}'),
+        partnerRefreshTokenExpiry: json[r'partner_refresh_token_expiry'] == null
+            ? null
+            : num.parse('${json[r'partner_refresh_token_expiry']}'),
         scopes: mapValueOfType<String>(json, r'scopes'),
-        updatedTimestamp: num.parse('${json[r'updated_timestamp']}'),
+        updatedTimestamp: json[r'updated_timestamp'] == null
+            ? null
+            : num.parse('${json[r'updated_timestamp']}'),
       );
     }
     return null;

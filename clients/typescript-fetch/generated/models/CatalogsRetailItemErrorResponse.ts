@@ -29,26 +29,18 @@ import {
 export interface CatalogsRetailItemErrorResponse {
     /**
      * 
-     * @type {CatalogsRetailItemErrorResponseCatalogTypeEnum}
-     * @memberof CatalogsRetailItemErrorResponse
      */
     catalogType: CatalogsRetailItemErrorResponseCatalogTypeEnum;
     /**
      * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
-     * @memberof CatalogsRetailItemErrorResponse
      */
     errors: Array<ItemValidationEvent>;
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsRetailItemErrorResponse
      */
     itemId?: string;
     /**
      * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
-     * @type {CatalogsRetailItemErrorResponseItemResponseKindEnum}
-     * @memberof CatalogsRetailItemErrorResponse
      */
     itemResponseKind: CatalogsRetailItemErrorResponseItemResponseKindEnum;
 }
@@ -58,7 +50,7 @@ export interface CatalogsRetailItemErrorResponse {
  * @export
  */
 export const CatalogsRetailItemErrorResponseCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailItemErrorResponseCatalogTypeEnum = typeof CatalogsRetailItemErrorResponseCatalogTypeEnum[keyof typeof CatalogsRetailItemErrorResponseCatalogTypeEnum];
 
@@ -66,7 +58,7 @@ export type CatalogsRetailItemErrorResponseCatalogTypeEnum = typeof CatalogsReta
  * @export
  */
 export const CatalogsRetailItemErrorResponseItemResponseKindEnum = {
-    RetailItemError: 'retail_item_error'
+    RetailItemError: 'retail_item_error',
 } as const;
 export type CatalogsRetailItemErrorResponseItemResponseKindEnum = typeof CatalogsRetailItemErrorResponseItemResponseKindEnum[keyof typeof CatalogsRetailItemErrorResponseItemResponseKindEnum];
 

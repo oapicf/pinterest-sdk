@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Salesforce account item with billing and terms information.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Salesforce account item with billing and terms information.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccountItem   {
   
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
@@ -33,7 +33,6 @@ public class SSIOAccountItem   {
   
   @ApiModelProperty(value = "Address information that is associated with this account.")
   @JsonProperty("addresses")
-  @Valid
   public List<@Valid SSIOAccountAddress> getAddresses() {
     return addresses;
   }

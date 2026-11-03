@@ -20,18 +20,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AssetGroupBinding")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupBinding   {
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
   private String assetGroupDescription;
   private String assetGroupName;
-  private @Valid List<String> assetGroupTypes = new ArrayList<>();
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
+  private List<String> assetGroupTypes = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> catalogsIds = new ArrayList<>();
   private BusinessAccessUserSummary createdBy;
   private Integer createdTime;
   private String id;
   private BusinessAccessUserSummary owner;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> profilesIds = new ArrayList<>();
   private Integer updatedTime;
 
   public AssetGroupBinding() {

@@ -29,14 +29,10 @@ import {
 export interface AdPreviewSourcePinId {
     /**
      * Creative type of the ad preview.
-     * @type {AdPinPreviewCreativeType}
-     * @memberof AdPreviewSourcePinId
      */
     creativeType?: AdPinPreviewCreativeType;
     /**
      * Pin ID.
-     * @type {string}
-     * @memberof AdPreviewSourcePinId
      */
     pinId: string;
 }

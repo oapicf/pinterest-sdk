@@ -141,110 +141,74 @@ import {
 export interface AdsAnalyticsCreateAsyncRequest {
     /**
      * List of ad group ids
-     * @type {Array<string>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     adGroupIds?: Array<string>;
     /**
      * List of values for filtering
-     * @type {Array<AdGroupSummaryStatus>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     adGroupStatuses?: Array<AdGroupSummaryStatus>;
     /**
      * List of ad ids. This parameter is not supported for Product Item level reports.
-     * @type {Array<string>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     adIds?: Array<string>;
     /**
      * List of values for filtering. This parameter is not supported for Product Item level reports.
-     * @type {Array<PinPromotionSummaryStatus>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     adStatuses?: Array<PinPromotionSummaryStatus>;
     /**
      * List of attribution types for the conversion report.
-     * @type {Array<ConversionReportAttributionType>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     attributionTypes?: Array<ConversionReportAttributionType>;
     /**
      * Campaign brand label for filtering.
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     campaignBrandLabel?: string;
     /**
      * Campaign custom label for filtering.
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     campaignCustomLabel?: string;
     /**
      * List of campaign ids
-     * @type {Array<string>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     campaignIds?: Array<string>;
     /**
      * List of values for filtering. ["WEB_SESSIONS"] is in BETA.
-     * @type {Array<CampaignObjectiveType>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     campaignObjectiveTypes?: Array<CampaignObjectiveType>;
     /**
      * List of status values for filtering
-     * @type {Array<CampaignSummaryStatus>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     campaignStatuses?: Array<CampaignSummaryStatus>;
     /**
      * Number of days to use as the conversion attribution window for a pin click action.
-     * @type {ConversionAttributionWindowDays}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     clickWindowDays?: ConversionAttributionWindowDays;
     /**
      * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
-     * @type {Array<ReportingColumnAsync>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     columns?: Array<ReportingColumnAsync>;
     /**
      * Determines if the targeting types included in the request should be consolidated into a single breakdown.
-     * @type {boolean}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     combineTargetingTypes?: boolean;
     /**
      * Date dimension for conversion metrics.
-     * @type {ConversionReportTimeType}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     conversionReportTime?: ConversionReportTimeType;
     /**
      * List of advertiser-defined custom conversion event metrics to include in the report
-     * @type {Array<CustomConversionEventMetrics>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     customConversionEventMetrics?: Array<CustomConversionEventMetrics>;
     /**
      * Metric report end date (UTC). Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     endDate: string;
     /**
      * Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports.
-     * @type {number}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     endHour?: number;
     /**
      * Number of days to use as the conversion attribution window for an engagement action.
-     * @type {ConversionAttributionWindowDays}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     engagementWindowDays?: ConversionAttributionWindowDays;
     /**
@@ -253,80 +217,54 @@ export interface AdsAnalyticsCreateAsyncRequest {
      *   HOUR - metrics are broken down hourly.
      *   WEEKLY - metrics are broken down weekly.
      *   MONTHLY - metrics are broken down monthly.
-     * @type {Granularity}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     granularity: Granularity;
     /**
      * Level of the report
-     * @type {MetricsReportingLevel}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     level?: MetricsReportingLevel;
     /**
      * List of metrics filters
-     * @type {Array<AdsAnalyticsMetricsFilter>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     metricsFilters?: Array<AdsAnalyticsMetricsFilter>;
     /**
      * 
-     * @type {PrimarySort}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     primarySort?: PrimarySort;
     /**
      * List of product group ids
-     * @type {Array<string>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     productGroupIds?: Array<string>;
     /**
      * List of values for filtering
-     * @type {Array<ProductGroupSummaryStatus>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     productGroupStatuses?: Array<ProductGroupSummaryStatus>;
     /**
      * List of product item ids
-     * @type {Array<string>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     productItemIds?: Array<string>;
     /**
      * 
-     * @type {DataOutputFormat}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     reportFormat?: DataOutputFormat;
     /**
      * Specify the timezone to be applied for the reporting.
-     * @type {ReportingTimeZone}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     reportingTimezone?: ReportingTimeZone;
     /**
      * Metric report start date (UTC). Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     startDate: string;
     /**
      * Which hour of the start date to begin the report. Only allowed for hourly reports.
-     * @type {number}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     startHour?: number;
     /**
      * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
-     * @type {Array<AdAdsAnalyticsAsyncTargetingTypes>}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     targetingTypes?: Array<AdAdsAnalyticsAsyncTargetingTypes>;
     /**
      * Number of days to use as the conversion attribution window for a view action.
-     * @type {ConversionAttributionWindowDays}
-     * @memberof AdsAnalyticsCreateAsyncRequest
      */
     viewWindowDays?: ConversionAttributionWindowDays;
 }

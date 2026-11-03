@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pRICE.IsSet)
-                throw new ArgumentException("Property is required for class PriceFilter.", nameof(pRICE));
+                throw new JsonException("Property is required for class PriceFilter: PRICE.");
 
             if (pRICE.IsSet && pRICE.Value == null)
-                throw new ArgumentNullException(nameof(pRICE), "Property is not nullable for class PriceFilter.");
+                throw new JsonException("Property is not nullable for class PriceFilter: PRICE.");
 
             return new PriceFilter(pRICE.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="priceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PriceFilter priceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="priceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PriceFilter priceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (priceFilter.PRICE == null)
-                throw new ArgumentNullException(nameof(priceFilter.PRICE), "Property is required for class PriceFilter.");
-
             writer.WritePropertyName("PRICE");
             JsonSerializer.Serialize(writer, priceFilter.PRICE, jsonSerializerOptions);
         }

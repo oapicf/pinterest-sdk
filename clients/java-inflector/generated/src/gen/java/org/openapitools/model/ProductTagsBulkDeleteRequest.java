@@ -17,7 +17,7 @@ import org.openapitools.model.ProductTagItem;
  **/
 
 @ApiModel(description = "Request body for bulk deleting product tags from a pin.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkDeleteRequest   {
   @JsonProperty("product_tags")
   private List<ProductTagItem> productTags = new ArrayList<>();

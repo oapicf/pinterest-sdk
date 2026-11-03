@@ -19,7 +19,7 @@ import LeadFormStatus from './LeadFormStatus';
 /**
  * The LeadForm model module.
  * @module model/LeadForm
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LeadForm {
     /**

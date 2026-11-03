@@ -33,7 +33,7 @@ export interface CatalogsReportDistributionStats {
 }
 export namespace CatalogsReportDistributionStats {
   export const ReportTypeEnum = {
-    DistributionIssues: 'DISTRIBUTION_ISSUES'
+    DistributionIssues: 'DISTRIBUTION_ISSUES',
   } as const;
   export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }

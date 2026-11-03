@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -28,79 +27,55 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailFilterValuesMap", description = "A map of filter attributes to their available values.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFilterValuesMap {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> adImageTags = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> adVideoTags = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ProductAvailability> availability = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> brand = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ProductCondition> condition = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel0 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel1 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel2 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel3 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> customLabel4 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<Gender> gender = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory0 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory1 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory2 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory3 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory4 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory5 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<MediaType> mediaType = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> productType0 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> productType1 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> productType2 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> productType3 = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> productType4 = new ArrayList<>();
 
   public CatalogsRetailFilterValuesMap adImageTags(List<String> adImageTags) {
@@ -178,7 +153,7 @@ public class CatalogsRetailFilterValuesMap {
    * Get availability
    * @return availability
    */
-  @Valid 
+  
   @Schema(name = "availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("availability")
   public List<ProductAvailability> getAvailability() {
@@ -236,7 +211,7 @@ public class CatalogsRetailFilterValuesMap {
    * Get condition
    * @return condition
    */
-  @Valid 
+  
   @Schema(name = "condition", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("condition")
   public List<ProductCondition> getCondition() {
@@ -410,7 +385,7 @@ public class CatalogsRetailFilterValuesMap {
    * Get gender
    * @return gender
    */
-  @Valid 
+  
   @Schema(name = "gender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gender")
   public List<Gender> getGender() {
@@ -642,7 +617,7 @@ public class CatalogsRetailFilterValuesMap {
    * Get mediaType
    * @return mediaType
    */
-  @Valid 
+  
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
   public List<MediaType> getMediaType() {

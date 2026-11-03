@@ -53,7 +53,7 @@ public class BulkApiHandler {
         BulkDownloadCreate bulkDownloadCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BulkDownloadCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter bulkDownloadCreate is {}", bulkDownloadCreate);
+        logger.debug("Parameter bulkDownloadCreate is (body omitted)");
 
         api.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
             .onSuccess(apiResponse -> {
@@ -104,7 +104,7 @@ public class BulkApiHandler {
         BulkUpsertRequest bulkUpsertRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BulkUpsertRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter bulkUpsertRequest is {}", bulkUpsertRequest);
+        logger.debug("Parameter bulkUpsertRequest is (body omitted)");
 
         api.bulkUpsertCreate(adAccountId, bulkUpsertRequest)
             .onSuccess(apiResponse -> {

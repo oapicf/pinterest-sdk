@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (options.IsSet && options.Value == null)
-                throw new ArgumentNullException(nameof(options), "Property is not nullable for class QuizPinQuestion.");
+                throw new JsonException("Property is not nullable for class QuizPinQuestion: options.");
 
             if (questionId.IsSet && questionId.Value == null)
-                throw new ArgumentNullException(nameof(questionId), "Property is not nullable for class QuizPinQuestion.");
+                throw new JsonException("Property is not nullable for class QuizPinQuestion: question_id.");
 
             if (questionText.IsSet && questionText.Value == null)
-                throw new ArgumentNullException(nameof(questionText), "Property is not nullable for class QuizPinQuestion.");
+                throw new JsonException("Property is not nullable for class QuizPinQuestion: question_text.");
 
             return new QuizPinQuestion(options, questionId, questionText);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinQuestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QuizPinQuestion quizPinQuestion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,14 +211,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinQuestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QuizPinQuestion quizPinQuestion, JsonSerializerOptions jsonSerializerOptions)
         {
             if (quizPinQuestion.OptionsOption.IsSet && quizPinQuestion.Options == null)
-                throw new ArgumentNullException(nameof(quizPinQuestion.Options), "Property is required for class QuizPinQuestion.");
+                throw new JsonException("Cannot write null property QuizPinQuestion.Options to non-nullable JSON property 'options'.");
+
+            if (quizPinQuestion.QuestionIdOption.IsSet && quizPinQuestion.QuestionId == null)
+                throw new JsonException("Cannot write null property QuizPinQuestion.QuestionId to non-nullable JSON property 'question_id'.");
 
             if (quizPinQuestion.QuestionTextOption.IsSet && quizPinQuestion.QuestionText == null)
-                throw new ArgumentNullException(nameof(quizPinQuestion.QuestionText), "Property is required for class QuizPinQuestion.");
+                throw new JsonException("Cannot write null property QuizPinQuestion.QuestionText to non-nullable JSON property 'question_text'.");
 
             if (quizPinQuestion.OptionsOption.IsSet)
             {

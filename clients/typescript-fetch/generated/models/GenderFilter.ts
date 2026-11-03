@@ -29,8 +29,6 @@ import {
 export interface GenderFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleGenderCriteria}
-     * @memberof GenderFilter
      */
     gENDER: CatalogsProductGroupMultipleGenderCriteria;
 }

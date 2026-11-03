@@ -6,20 +6,3 @@
 */
 #include "TargetingTemplateStatus.h"
 
-namespace models {
-
-TargetingTemplateStatus::TargetingTemplateStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

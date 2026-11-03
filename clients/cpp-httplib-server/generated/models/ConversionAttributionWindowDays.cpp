@@ -6,20 +6,3 @@
 */
 #include "ConversionAttributionWindowDays.h"
 
-namespace models {
-
-ConversionAttributionWindowDays::ConversionAttributionWindowDays()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

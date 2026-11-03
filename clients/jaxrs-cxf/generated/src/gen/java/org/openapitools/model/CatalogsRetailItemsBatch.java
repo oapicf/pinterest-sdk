@@ -86,8 +86,6 @@ RETAIL(String.valueOf("RETAIL"));
   */
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
 
-  @Valid
-
   private List<@Valid ItemProcessingRecord> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")

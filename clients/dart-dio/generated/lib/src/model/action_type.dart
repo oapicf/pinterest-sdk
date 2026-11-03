@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'action_type.g.dart';
 
+/// Ad group billable event type. For update, only draft ad groups may update billable event.
 class ActionType extends EnumClass {
 
-  /// Ad group billable event type. For update, only draft ad groups may update billable event.
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH')
   static const ActionType CLICKTHROUGH = _$CLICKTHROUGH;
-  /// Ad group billable event type. For update, only draft ad groups may update billable event.
   @BuiltValueEnumConst(wireName: r'IMPRESSION')
   static const ActionType IMPRESSION = _$IMPRESSION;
-  /// Ad group billable event type. For update, only draft ad groups may update billable event.
   @BuiltValueEnumConst(wireName: r'VIDEO_V_50_MRC')
   static const ActionType VIDEO_V_50_MRC = _$VIDEO_V_50_MRC;
 

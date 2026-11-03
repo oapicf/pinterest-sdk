@@ -35,7 +35,7 @@ import java.util.List;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest   {
   @JsonProperty("ad_group_ids")
   
@@ -76,7 +76,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<CampaignSummaryStatus> campaignStatuses = null;
 
   @JsonProperty("click_window_days")
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   @JsonProperty("columns")
   
@@ -86,7 +86,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private Boolean combineTargetingTypes = false;
 
   @JsonProperty("conversion_report_time")
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   @JsonProperty("custom_conversion_event_metrics")
   
@@ -99,7 +99,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private Integer endHour;
 
   @JsonProperty("engagement_window_days")
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   @JsonProperty("granularity")
   private Granularity granularity;
@@ -112,7 +112,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<AdsAnalyticsMetricsFilter> metricsFilters = null;
 
   @JsonProperty("primary_sort")
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
   @JsonProperty("product_group_ids")
   
@@ -127,7 +127,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<String> productItemIds = null;
 
   @JsonProperty("report_format")
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
   @JsonProperty("reporting_timezone")
   private ReportingTimeZone reportingTimezone;
@@ -143,7 +143,7 @@ public class AdsAnalyticsCreateAsyncRequest   {
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = null;
 
   @JsonProperty("view_window_days")
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest adGroupIds(List<String> adGroupIds) {
     this.adGroupIds = adGroupIds;

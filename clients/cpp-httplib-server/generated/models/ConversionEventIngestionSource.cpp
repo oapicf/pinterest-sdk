@@ -6,20 +6,3 @@
 */
 #include "ConversionEventIngestionSource.h"
 
-namespace models {
-
-ConversionEventIngestionSource::ConversionEventIngestionSource()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

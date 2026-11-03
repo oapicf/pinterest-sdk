@@ -116,8 +116,6 @@ CREATIVE_ASSETS_ITEM(String.valueOf("creative_assets_item"));
   */
   @ApiModelProperty(value = "The pins mapped to the item")
 
-  @Valid
-
   private List<@Valid Pin> pins;
  /**
    * Get attributes

@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Model for getting local inventory items")
 @JsonTypeName("LocalInventoryItemsGet")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsGet   {
-  private @Valid List<@Valid LocalInventoryItemResponse> items = new ArrayList<>();
+  private List<@Valid LocalInventoryItemResponse> items = new ArrayList<>();
 
   public LocalInventoryItemsGet() {
   }
@@ -47,7 +47,7 @@ public class LocalInventoryItemsGet   {
   
   @ApiModelProperty(required = true, value = "Array of local inventory items")
   @JsonProperty(required = true, value = "items")
-  @Valid public List<@Valid LocalInventoryItemResponse> getItems() {
+  public List<@Valid LocalInventoryItemResponse> getItems() {
     return items;
   }
 

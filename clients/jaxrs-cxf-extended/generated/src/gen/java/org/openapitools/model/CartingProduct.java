@@ -36,7 +36,6 @@ public class CartingProduct  {
   * A sorted array of preferred retailers for the carting product
   */
   @ApiModelProperty(value = "A sorted array of preferred retailers for the carting product")
-  @Valid
   private List<@Valid CartingRetailer> preferredRetailers = new ArrayList<>();
 
  /**

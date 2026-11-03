@@ -53,7 +53,7 @@ import javax.annotation.Generated;
   ConversionEventsDataItems.JSON_PROPERTY_WIFI
 })
 @JsonTypeName("ConversionEventsDataItems")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ConversionEventsDataItems {
     public static final String JSON_PROPERTY_ACTION_SOURCE = "action_source";

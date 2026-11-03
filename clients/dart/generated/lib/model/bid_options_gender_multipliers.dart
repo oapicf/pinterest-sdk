@@ -77,8 +77,12 @@ class BidOptionsGenderMultipliers {
       }());
 
       return BidOptionsGenderMultipliers(
-        female: num.parse('${json[r'female']}'),
-        male: num.parse('${json[r'male']}'),
+        female: json[r'female'] == null
+            ? null
+            : num.parse('${json[r'female']}'),
+        male: json[r'male'] == null
+            ? null
+            : num.parse('${json[r'male']}'),
       );
     }
     return null;

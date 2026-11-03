@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -25,10 +24,9 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("delete_business_membership_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembership200Response {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> deletedMembers = new ArrayList<>();
 
   public DeleteBusinessMembership200Response deletedMembers(List<@Pattern(regexp = "^\\d+$")String> deletedMembers) {

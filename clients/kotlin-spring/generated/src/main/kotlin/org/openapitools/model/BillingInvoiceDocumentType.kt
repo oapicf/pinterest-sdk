@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The type of a billing invoice document.
-* Values: INVOICE,CREDIT_MEMO
-*/
+ * The type of a billing invoice document.
+ * Values: INVOICE,CREDIT_MEMO
+ */
 enum class BillingInvoiceDocumentType(@get:JsonValue val value: kotlin.String) {
 
     INVOICE("INVOICE"),
@@ -28,9 +28,8 @@ enum class BillingInvoiceDocumentType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BillingInvoiceDocumentType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingInvoiceDocumentType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingInvoiceDocumentType'")
         }
     }
 }
-

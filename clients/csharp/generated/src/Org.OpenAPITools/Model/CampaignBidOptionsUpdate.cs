@@ -281,13 +281,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!updateMask.IsSet)
-                throw new ArgumentException("Property is required for class CampaignBidOptionsUpdate.", nameof(updateMask));
+                throw new JsonException("Property is required for class CampaignBidOptionsUpdate: update_mask.");
 
             if (updateMask.IsSet && updateMask.Value == null)
-                throw new ArgumentNullException(nameof(updateMask), "Property is not nullable for class CampaignBidOptionsUpdate.");
+                throw new JsonException("Property is not nullable for class CampaignBidOptionsUpdate: update_mask.");
 
             if (audienceMultipliers.IsSet && audienceMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(audienceMultipliers), "Property is not nullable for class CampaignBidOptionsUpdate.");
+                throw new JsonException("Property is not nullable for class CampaignBidOptionsUpdate: audience_multipliers.");
 
             return new CampaignBidOptionsUpdate(updateMask.Value!, ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, freqBidMultiplierTimeWindow, frequencyMultipliers, genderMultipliers, placementMultipliers);
         }
@@ -298,7 +298,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBidOptionsUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignBidOptionsUpdate campaignBidOptionsUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -313,14 +312,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBidOptionsUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignBidOptionsUpdate campaignBidOptionsUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignBidOptionsUpdate.UpdateMask == null)
-                throw new ArgumentNullException(nameof(campaignBidOptionsUpdate.UpdateMask), "Property is required for class CampaignBidOptionsUpdate.");
-
             if (campaignBidOptionsUpdate.AudienceMultipliersOption.IsSet && campaignBidOptionsUpdate.AudienceMultipliers == null)
-                throw new ArgumentNullException(nameof(campaignBidOptionsUpdate.AudienceMultipliers), "Property is required for class CampaignBidOptionsUpdate.");
+                throw new JsonException("Cannot write null property CampaignBidOptionsUpdate.AudienceMultipliers to non-nullable JSON property 'audience_multipliers'.");
 
             writer.WritePropertyName("update_mask");
             JsonSerializer.Serialize(writer, campaignBidOptionsUpdate.UpdateMask, jsonSerializerOptions);

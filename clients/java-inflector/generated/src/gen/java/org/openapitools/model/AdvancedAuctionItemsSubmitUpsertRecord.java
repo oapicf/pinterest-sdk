@@ -22,7 +22,7 @@ import org.openapitools.model.UpdateMaskBidOptionField;
  **/
 
 @ApiModel(description = "Object describing an item bid option upsert operation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
   @JsonProperty("bid_options")
   private AdvancedAuctionBidOptions bidOptions;
@@ -72,7 +72,7 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
   private OperationEnum operation;
 
   @JsonProperty("update_mask")
-  private List<UpdateMaskBidOptionField> updateMask = ;
+  private List<UpdateMaskBidOptionField> updateMask = null;
 
   /**
    **/

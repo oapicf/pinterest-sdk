@@ -46,13 +46,13 @@ class AdsAnalyticsCreateAsyncRequest {
     /* List of status values for filtering */
     List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>()
     /* Number of days to use as the conversion attribution window for a pin click action. */
-    ConversionAttributionWindowDays clickWindowDays
+    ConversionAttributionWindowDays clickWindowDays = 30
     /* Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports. */
     List<ReportingColumnAsync> columns = new ArrayList<>()
     /* Determines if the targeting types included in the request should be consolidated into a single breakdown. */
     Boolean combineTargetingTypes = false
     /* Date dimension for conversion metrics. */
-    ConversionReportTimeType conversionReportTime
+    ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION
     /* List of advertiser-defined custom conversion event metrics to include in the report */
     List<CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>()
     /* Metric report end date (UTC). Format: YYYY-MM-DD */
@@ -60,7 +60,7 @@ class AdsAnalyticsCreateAsyncRequest {
     /* Which hour of the end date to stop the report (inclusive). Only allowed for hourly reports. */
     Integer endHour
     /* Number of days to use as the conversion attribution window for an engagement action. */
-    ConversionAttributionWindowDays engagementWindowDays
+    ConversionAttributionWindowDays engagementWindowDays = 30
     /*   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly. */
     Granularity granularity
     /* Level of the report */
@@ -68,7 +68,7 @@ class AdsAnalyticsCreateAsyncRequest {
     /* List of metrics filters */
     List<AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>()
     
-    PrimarySort primarySort
+    PrimarySort primarySort = PrimarySort.BY_ID
     /* List of product group ids */
     List<String> productGroupIds = new ArrayList<>()
     /* List of values for filtering */
@@ -76,7 +76,7 @@ class AdsAnalyticsCreateAsyncRequest {
     /* List of product item ids */
     List<String> productItemIds = new ArrayList<>()
     
-    DataOutputFormat reportFormat
+    DataOutputFormat reportFormat = DataOutputFormat.JSON
     /* Specify the timezone to be applied for the reporting. */
     ReportingTimeZone reportingTimezone
     /* Metric report start date (UTC). Format: YYYY-MM-DD */
@@ -86,5 +86,5 @@ class AdsAnalyticsCreateAsyncRequest {
     /* List of targeting types. Requires `level` to be a value ending in `_TARGETING`. */
     List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>()
     /* Number of days to use as the conversion attribution window for a view action. */
-    ConversionAttributionWindowDays viewWindowDays
+    ConversionAttributionWindowDays viewWindowDays = 1
 }

@@ -29,26 +29,18 @@ import {
 export interface LocalInventoryUpsertOperation {
     /**
      * 
-     * @type {RetailLocalInventoryItemAttributes}
-     * @memberof LocalInventoryUpsertOperation
      */
     attributes: RetailLocalInventoryItemAttributes;
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryUpsertOperation
      */
     itemId: string;
     /**
      * 
-     * @type {LocalInventoryUpsertOperationOperationEnum}
-     * @memberof LocalInventoryUpsertOperation
      */
     operation: LocalInventoryUpsertOperationOperationEnum;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof LocalInventoryUpsertOperation
      */
     storeCode: string;
 }
@@ -58,7 +50,7 @@ export interface LocalInventoryUpsertOperation {
  * @export
  */
 export const LocalInventoryUpsertOperationOperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
 } as const;
 export type LocalInventoryUpsertOperationOperationEnum = typeof LocalInventoryUpsertOperationOperationEnum[keyof typeof LocalInventoryUpsertOperationOperationEnum];
 

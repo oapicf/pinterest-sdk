@@ -69,7 +69,7 @@ function Invoke-CountryKeywordsMetricsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling countryKeywordsMetrics_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$CountryCode) {
             throw "Error! The required parameter `CountryCode` missing when calling countryKeywordsMetrics_get."
@@ -163,7 +163,7 @@ function Invoke-KeywordsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling keywords_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$KeywordsCreate) {
             throw "Error! The required parameter `KeywordsCreate` missing when calling keywords_create."
@@ -279,7 +279,7 @@ function Invoke-KeywordsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling keywords_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($CampaignId) {
             $LocalVarQueryParameters['campaign_id'] = $CampaignId
@@ -387,7 +387,7 @@ function Invoke-KeywordsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling keywords_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$KeywordsUpdate) {
             throw "Error! The required parameter `KeywordsUpdate` missing when calling keywords_update."
@@ -515,11 +515,11 @@ function Invoke-TrendingKeywordsList {
         if (!$Region) {
             throw "Error! The required parameter `Region` missing when calling trendingKeywords_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{region}', [System.Web.HTTPUtility]::UrlEncode($Region))
+        $LocalVarUri = $LocalVarUri.replace('{region}', [System.Uri]::EscapeDataString([string]$Region))
         if (!$TrendType) {
             throw "Error! The required parameter `TrendType` missing when calling trendingKeywords_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{trend_type}', [System.Web.HTTPUtility]::UrlEncode($TrendType))
+        $LocalVarUri = $LocalVarUri.replace('{trend_type}', [System.Uri]::EscapeDataString([string]$TrendType))
 
         if ($Interests) {
             $LocalVarQueryParameters['interests'] = $Interests

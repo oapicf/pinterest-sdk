@@ -6,20 +6,3 @@
 */
 #include "CreativeAssetsVisibilityType.h"
 
-namespace models {
-
-CreativeAssetsVisibilityType::CreativeAssetsVisibilityType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

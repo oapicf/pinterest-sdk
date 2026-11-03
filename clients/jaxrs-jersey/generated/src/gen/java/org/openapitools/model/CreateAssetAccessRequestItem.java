@@ -33,7 +33,7 @@ import javax.validation.Valid;
   CreateAssetAccessRequestItem.JSON_PROPERTY_ASSET_ID_TO_PERMISSIONS,
   CreateAssetAccessRequestItem.JSON_PROPERTY_PARTNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestItem   {
   public static final String JSON_PROPERTY_ASSET_ID_TO_PERMISSIONS = "asset_id_to_permissions";
   @JsonProperty(JSON_PROPERTY_ASSET_ID_TO_PERMISSIONS)
@@ -62,7 +62,7 @@ public class CreateAssetAccessRequestItem   {
    **/
   @JsonProperty(value = "asset_id_to_permissions")
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.")
-  @NotNull @Valid 
+  @NotNull 
   public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }

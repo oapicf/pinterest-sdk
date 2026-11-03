@@ -57,64 +57,44 @@ import {
 export interface MMMReportCreate {
     /**
      * Advertiser IDs for multi-advertiser report
-     * @type {Array<string>}
-     * @memberof MMMReportCreate
      */
     advertiserIds?: Array<string>;
     /**
      * Metric and entity columns
-     * @type {Array<MMMReportingColumn>}
-     * @memberof MMMReportCreate
      */
     columns: Array<MMMReportingColumn>;
     /**
      * A List of countries for filtering
-     * @type {Array<TargetingAdvertiserCountry>}
-     * @memberof MMMReportCreate
      */
     countries?: Array<TargetingAdvertiserCountry>;
     /**
      * List of custom column IDs
-     * @type {Array<string>}
-     * @memberof MMMReportCreate
      */
     customColumnIds?: Array<string>;
     /**
      * Metric report end date (UTC). Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof MMMReportCreate
      */
     endDate: string;
     /**
      *   DAY - metrics are broken down daily.
      * 
      *   WEEK - metrics are broken down weekly.
-     * @type {MMMReportGranularity}
-     * @memberof MMMReportCreate
      */
     granularity: MMMReportGranularity;
     /**
      * Level of the report
-     * @type {MMMReportLevel}
-     * @memberof MMMReportCreate
      */
     level: MMMReportLevel;
     /**
      * Name of the Marketing Mix Modeling (MMM) report
-     * @type {string}
-     * @memberof MMMReportCreate
      */
     reportName: string;
     /**
      * Metric report start date (UTC). Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof MMMReportCreate
      */
     startDate: string;
     /**
      * List of targeting types
-     * @type {Array<MMMReportingTargetingType>}
-     * @memberof MMMReportCreate
      */
     targetingTypes: Array<MMMReportingTargetingType>;
 }

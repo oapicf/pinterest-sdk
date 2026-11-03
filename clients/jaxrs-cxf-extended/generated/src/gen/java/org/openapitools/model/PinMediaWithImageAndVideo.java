@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaWithImageAndVideo  {
   
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid PinMediaMetadata> items = new ArrayList<>();
 
 public enum MediaTypeEnum {

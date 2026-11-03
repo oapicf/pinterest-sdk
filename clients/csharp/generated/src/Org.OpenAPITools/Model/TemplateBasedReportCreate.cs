@@ -173,16 +173,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!reportStatus.IsSet)
-                throw new ArgumentException("Property is required for class TemplateBasedReportCreate.", nameof(reportStatus));
+                throw new JsonException("Property is required for class TemplateBasedReportCreate: report_status.");
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class TemplateBasedReportCreate.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReportCreate: report_status.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class TemplateBasedReportCreate.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReportCreate: message.");
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class TemplateBasedReportCreate.");
+                throw new JsonException("Property is not nullable for class TemplateBasedReportCreate: token.");
 
             return new TemplateBasedReportCreate(reportStatus.Value!.Value!, message, token);
         }
@@ -193,7 +193,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="templateBasedReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TemplateBasedReportCreate templateBasedReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -208,14 +207,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="templateBasedReportCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TemplateBasedReportCreate templateBasedReportCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (templateBasedReportCreate.MessageOption.IsSet && templateBasedReportCreate.Message == null)
-                throw new ArgumentNullException(nameof(templateBasedReportCreate.Message), "Property is required for class TemplateBasedReportCreate.");
+                throw new JsonException("Cannot write null property TemplateBasedReportCreate.Message to non-nullable JSON property 'message'.");
 
             if (templateBasedReportCreate.TokenOption.IsSet && templateBasedReportCreate.Token == null)
-                throw new ArgumentNullException(nameof(templateBasedReportCreate.Token), "Property is required for class TemplateBasedReportCreate.");
+                throw new JsonException("Cannot write null property TemplateBasedReportCreate.Token to non-nullable JSON property 'token'.");
 
             var reportStatusRawValue = BulkReportingJobStatusValueConverter.ToJsonValue(templateBasedReportCreate.ReportStatus);
             writer.WriteString("report_status", reportStatusRawValue);

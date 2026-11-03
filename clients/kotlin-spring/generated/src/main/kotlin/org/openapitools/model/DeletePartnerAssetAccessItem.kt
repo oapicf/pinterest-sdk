@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,18 +26,16 @@ data class DeletePartnerAssetAccessItem(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Unique identifier of the business asset.")
-    @param:JsonProperty("asset_id")
+    @param:JsonProperty("asset_id", required = true)
     @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Unique identifier of a business partner to update asset access to.")
-    @param:JsonProperty("partner_id")
+    @param:JsonProperty("partner_id", required = true)
     @get:JsonProperty("partner_id", required = true) val partnerId: kotlin.String,
 
     @Schema(description = "If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset. If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("partner_type")
     @get:JsonProperty("partner_type") val partnerType: DeletePartnerAssetAccessItem.PartnerType? = PartnerType.INTERNAL
 ) {
@@ -53,12 +48,12 @@ data class DeletePartnerAssetAccessItem(
 
         INTERNAL("INTERNAL"),
         EXTERNAL("EXTERNAL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PartnerType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PartnerType'")
             }
         }

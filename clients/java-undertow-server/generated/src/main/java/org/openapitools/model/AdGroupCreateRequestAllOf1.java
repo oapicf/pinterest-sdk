@@ -24,13 +24,13 @@ import org.openapitools.model.PacingDeliveryType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateRequestAllOf1   {
   
   private Boolean autoTargetingEnabled;
   private BigDecimal bidMultiplier;
-  private BudgetType budgetType;
-  private PacingDeliveryType pacingDeliveryType;
+  private BudgetType budgetType = BudgetType.DAILY;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   /**
    * Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.

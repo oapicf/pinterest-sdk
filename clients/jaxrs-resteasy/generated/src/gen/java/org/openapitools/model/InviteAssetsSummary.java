@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Ad accounts and profiles the member/partner will be granted access to with this invite/request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Ad accounts and profiles the member/partner will be granted access to with this invite/request.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary   {
   
   private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();
@@ -26,7 +26,6 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
   @JsonProperty("ad_accounts")
-  @Valid
   public List<@Valid InviteAssetsSummaryItem> getAdAccounts() {
     return adAccounts;
   }
@@ -40,7 +39,6 @@ public class InviteAssetsSummary   {
   
   @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
   @JsonProperty("profiles")
-  @Valid
   public List<@Valid InviteAssetsSummaryItem> getProfiles() {
     return profiles;
   }

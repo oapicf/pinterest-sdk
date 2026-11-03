@@ -6,20 +6,3 @@
 */
 #include "InviteType.h"
 
-namespace models {
-
-InviteType::InviteType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

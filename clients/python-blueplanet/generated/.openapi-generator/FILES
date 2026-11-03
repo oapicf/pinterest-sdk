@@ -1183,12 +1183,6 @@ app/openapi_server/swagger/swagger.yaml
 app/openapi_server/swagger/swagger.yaml
 app/openapi_server/test/__init__.py
 app/openapi_server/test/__init__.py
-app/openapi_server/test/test_catalog_supplemental_controller.py
-app/openapi_server/test/test_conversion_deletion_requests_controller.py
-app/openapi_server/test/test_customer_segment_controller.py
-app/openapi_server/test/test_product_tags_controller.py
-app/openapi_server/test/test_schedules_controller.py
-app/openapi_server/test/test_trends_controller.py
 app/openapi_server/typing_utils.py
 app/openapi_server/typing_utils.py
 app/openapi_server/util.py

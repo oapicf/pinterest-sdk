@@ -19,7 +19,7 @@ import TopPinsSortBy from './TopPinsSortBy';
 /**
  * The TopPinsAnalyticsResponse model module.
  * @module model/TopPinsAnalyticsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TopPinsAnalyticsResponse {
     /**

@@ -43,62 +43,42 @@ import {
 export interface PromotionCreate {
     /**
      * 
-     * @type {DiscountStatus}
-     * @memberof PromotionCreate
      */
     discountStatus?: DiscountStatus;
     /**
      * Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
-     * @type {number}
-     * @memberof PromotionCreate
      */
     endTime?: number;
     /**
      * Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
-     * @type {string}
-     * @memberof PromotionCreate
      */
     externalId?: string;
     /**
      * The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.
-     * @type {string}
-     * @memberof PromotionCreate
      */
     platformType?: string;
     /**
      * Code that can be used to redeem a promotion.
-     * @type {string}
-     * @memberof PromotionCreate
      */
     promotionCode?: string;
     /**
      * An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
-     * @type {string}
-     * @memberof PromotionCreate
      */
     promotionCustomId?: string;
     /**
      * Internal name for the promotion.
-     * @type {string}
-     * @memberof PromotionCreate
      */
     promotionTitle: string;
     /**
      * 
-     * @type {PromotionType}
-     * @memberof PromotionCreate
      */
     promotionType: PromotionType;
     /**
      * Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
-     * @type {number}
-     * @memberof PromotionCreate
      */
     startTime?: number;
     /**
      * List of values to be inserted in the promotion type-specific template.
-     * @type {Array<PromotionTemplateValue>}
-     * @memberof PromotionCreate
      */
     templateValues?: Array<PromotionTemplateValue>;
 }

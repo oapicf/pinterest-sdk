@@ -29,14 +29,10 @@ import {
 export interface CatalogsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Catalog>}
-     * @memberof CatalogsList200Response
      */
     items: Array<Catalog>;
 }

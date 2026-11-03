@@ -169,3 +169,4 @@ class _$PromotionTemplateValueSerializer implements PrimitiveSerializer<Promotio
   }
 }
 
+

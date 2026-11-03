@@ -18,7 +18,7 @@ export interface TargetingSpecOperationGender {
 }
 export namespace TargetingSpecOperationGender {
     export const FieldEnum = {
-        Gender: 'GENDER'
+        Gender: 'GENDER',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

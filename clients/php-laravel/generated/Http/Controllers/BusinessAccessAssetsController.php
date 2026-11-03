@@ -51,10 +51,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -116,10 +116,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -157,10 +157,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -218,37 +218,37 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,'assetId' => $assetId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,'asset_id' => $assetId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetId' => [
+                'asset_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
-                'fetchSystemUsers' => [
+                'fetch_system_users' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -262,13 +262,13 @@ class BusinessAccessAssetsController extends Controller
 
 
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
-        $fetchSystemUsers = $request->boolean('fetchSystemUsers');
+        $fetchSystemUsers = $request->boolean('fetch_system_users');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessAssetMembersGet($businessId, $assetId, $startIndex, $fetchSystemUsers, $bookmark, $pageSize);
@@ -315,34 +315,34 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,'assetId' => $assetId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,'asset_id' => $assetId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetId' => [
+                'asset_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -356,11 +356,11 @@ class BusinessAccessAssetsController extends Controller
 
 
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessAssetPartnersGet($businessId, $assetId, $startIndex, $bookmark, $pageSize);
@@ -407,13 +407,13 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
@@ -423,28 +423,28 @@ class BusinessAccessAssetsController extends Controller
                 'permissions' => [
                     'array',
                 ],
-                'childAssetId' => [
+                'child_asset_id' => [
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetGroupId' => [
+                'asset_group_id' => [
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetType' => [
+                'asset_type' => [
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -459,17 +459,17 @@ class BusinessAccessAssetsController extends Controller
 
         $permissions = $request->get('permissions');
 
-        $childAssetId = $request->string('childAssetId')->value();
+        $childAssetId = $request->string('child_asset_id')->value();
 
-        $assetGroupId = $request->string('assetGroupId')->value();
+        $assetGroupId = $request->string('asset_group_id')->value();
 
         $assetType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessAssetsGetAssetTypeParameter::class);
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessAssetsGet($businessId, $permissions, $childAssetId, $assetGroupId, $assetType, $startIndex, $bookmark, $pageSize);
@@ -516,51 +516,51 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,'memberId' => $memberId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,'member_id' => $memberId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'memberId' => [
+                'member_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'assetType' => [
+                'asset_type' => [
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
-                'sortBy' => [
+                'sort_by' => [
                 ],
-                'sortAscending' => [
+                'sort_ascending' => [
                     'boolean',
                 ],
-                'searchBy' => [
+                'search_by' => [
                 ],
-                'searchValue' => [
+                'search_value' => [
                     'string',
                 ],
-                'assetPermissionType' => [
+                'asset_permission_type' => [
                 ],
-                'adAccountStatuses' => [
+                'ad_account_statuses' => [
                     'array',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -576,23 +576,23 @@ class BusinessAccessAssetsController extends Controller
 
         $assetType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessMemberAssetsGetAssetTypeParameter::class);
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
         $sortBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssetSortBy::class);
 
-        $sortAscending = $request->boolean('sortAscending');
+        $sortAscending = $request->boolean('sort_ascending');
 
         $searchBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssetSearchBy::class);
 
-        $searchValue = $request->string('searchValue')->value();
+        $searchValue = $request->string('search_value')->value();
 
         $assetPermissionType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssetPermissionType::class);
 
-        $adAccountStatuses = $request->get('adAccountStatuses');
+        $adAccountStatuses = $request->get('ad_account_statuses');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessMemberAssetsGet($businessId, $memberId, $assetType, $startIndex, $sortBy, $sortAscending, $searchBy, $searchValue, $assetPermissionType, $adAccountStatuses, $bookmark, $pageSize);
@@ -639,10 +639,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -680,10 +680,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -741,48 +741,48 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,'partnerId' => $partnerId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,'partner_id' => $partnerId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'partnerId' => [
+                'partner_id' => [
                     'required',
                     'min:1',
                     'max:20',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'partnerType' => [
+                'partner_type' => [
                 ],
-                'assetType' => [
+                'asset_type' => [
                 ],
-                'startIndex' => [
+                'start_index' => [
                     'gte:0',
                     'integer',
                 ],
-                'sortBy' => [
+                'sort_by' => [
                 ],
-                'sortAscending' => [
+                'sort_ascending' => [
                     'boolean',
                 ],
-                'searchBy' => [
+                'search_by' => [
                 ],
-                'searchValue' => [
+                'search_value' => [
                     'string',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -800,19 +800,19 @@ class BusinessAccessAssetsController extends Controller
 
         $assetType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessPartnerAssetAccessGetAssetTypeParameter::class);
 
-        $startIndex = $request->integer('startIndex');
+        $startIndex = $request->integer('start_index');
 
         $sortBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssetSortBy::class);
 
-        $sortAscending = $request->boolean('sortAscending');
+        $sortAscending = $request->boolean('sort_ascending');
 
         $searchBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AssetSearchBy::class);
 
-        $searchValue = $request->string('searchValue')->value();
+        $searchValue = $request->string('search_value')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->businessPartnerAssetAccessGet($businessId, $partnerId, $partnerType, $assetType, $startIndex, $sortBy, $sortAscending, $searchBy, $searchValue, $bookmark, $pageSize);
@@ -859,10 +859,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -900,10 +900,10 @@ class BusinessAccessAssetsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],

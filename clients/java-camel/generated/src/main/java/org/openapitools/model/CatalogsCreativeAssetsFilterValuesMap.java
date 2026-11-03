@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,46 +23,33 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsFilterValuesMap", description = "A map of filter attributes to their available values.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsFilterValuesMap {
 
-  @Valid
   private List<String> customLabel0 = new ArrayList<>();
 
-  @Valid
   private List<String> customLabel1 = new ArrayList<>();
 
-  @Valid
   private List<String> customLabel2 = new ArrayList<>();
 
-  @Valid
   private List<String> customLabel3 = new ArrayList<>();
 
-  @Valid
   private List<String> customLabel4 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory0 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory1 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory2 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory3 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory4 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory5 = new ArrayList<>();
 
-  @Valid
   private List<String> googleProductCategory6 = new ArrayList<>();
 
-  @Valid
   private List<MediaType> mediaType = new ArrayList<>();
 
   public CatalogsCreativeAssetsFilterValuesMap customLabel0(List<String> customLabel0) {
@@ -419,7 +405,7 @@ public class CatalogsCreativeAssetsFilterValuesMap {
    * Get mediaType
    * @return mediaType
    */
-  @Valid 
+  
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
   public List<MediaType> getMediaType() {

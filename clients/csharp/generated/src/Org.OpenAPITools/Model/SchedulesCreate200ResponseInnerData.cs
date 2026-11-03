@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="SchedulesCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="schedule"></param>
-        public SchedulesCreate200ResponseInnerData(Schedule schedule)
+        internal SchedulesCreate200ResponseInnerData(Schedule schedule)
         {
             Schedule = schedule;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="SchedulesCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="schedulesCreate200ResponseInnerDataOneOf"></param>
-        public SchedulesCreate200ResponseInnerData(SchedulesCreate200ResponseInnerDataOneOf schedulesCreate200ResponseInnerDataOneOf)
+        internal SchedulesCreate200ResponseInnerData(SchedulesCreate200ResponseInnerDataOneOf schedulesCreate200ResponseInnerDataOneOf)
         {
             SchedulesCreate200ResponseInnerDataOneOf = schedulesCreate200ResponseInnerDataOneOf;
             OnCreated();
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SchedulesCreate200ResponseInnerData schedulesCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="schedulesCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SchedulesCreate200ResponseInnerData schedulesCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
 

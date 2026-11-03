@@ -33,7 +33,7 @@ import javax.validation.Valid;
   CampaignPlanningConversionAttribution.JSON_PROPERTY_ENGAGEMENT_WINDOW_DAYS,
   CampaignPlanningConversionAttribution.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningConversionAttribution   {
   public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";
   @JsonProperty(JSON_PROPERTY_CLICK_WINDOW_DAYS)

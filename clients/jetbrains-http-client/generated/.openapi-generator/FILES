@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/AdAccountsApi.http
 Apis/AdGroupsApi.http
 Apis/AdsApi.http

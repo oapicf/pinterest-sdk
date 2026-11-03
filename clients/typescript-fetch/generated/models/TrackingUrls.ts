@@ -23,32 +23,22 @@ import { mapValues } from '../runtime';
 export interface TrackingUrls {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TrackingUrls
      */
     audienceVerification?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TrackingUrls
      */
     buyableButton?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TrackingUrls
      */
     click?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TrackingUrls
      */
     engagement?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TrackingUrls
      */
     impression?: Array<string>;
 }

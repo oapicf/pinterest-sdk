@@ -29,56 +29,38 @@ import {
 export interface SSIOAccountItem {
     /**
      * Address information that is associated with this account.
-     * @type {Array<SSIOAccountAddress>}
-     * @memberof SSIOAccountItem
      */
     addresses?: Array<SSIOAccountAddress>;
     /**
      * Salesforce id for billto_info
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     id?: string;
     /**
      * Salesforce text for IO Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     ioTerms?: string;
     /**
      * Salesforce id for IO Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     ioTermsId?: string;
     /**
      * Insertion Order Type - Pinterest Paper or Agency Paper
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     ioType?: string;
     /**
      * Salesforce text for Rest of the World Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     rowTerms?: string;
     /**
      * Salesforce id for Rest of the World Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     rowTermsId?: string;
     /**
      * Salesforce text for US Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     usTerms?: string;
     /**
      * Salesforce id for US Terms and Conditions
-     * @type {string}
-     * @memberof SSIOAccountItem
      */
     usTermsId?: string;
 }

@@ -25,7 +25,6 @@ public class BusinessMemberAssetsGetResponse  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid AssetIdPermissions> items = new ArrayList<>();
 
  /**

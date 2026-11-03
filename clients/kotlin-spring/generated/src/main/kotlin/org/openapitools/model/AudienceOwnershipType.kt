@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Filter audiences by ownership type.
-* Values: OWNED,RECEIVED
-*/
+ * Filter audiences by ownership type.
+ * Values: OWNED,RECEIVED
+ */
 enum class AudienceOwnershipType(@get:JsonValue val value: kotlin.String) {
 
     OWNED("OWNED"),
@@ -28,9 +28,8 @@ enum class AudienceOwnershipType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AudienceOwnershipType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceOwnershipType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceOwnershipType'")
         }
     }
 }
-

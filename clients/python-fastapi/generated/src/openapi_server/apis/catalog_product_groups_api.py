@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.catalogs_list_products_by_filter_request import CatalogsListProductsByFilterRequest
@@ -35,6 +34,7 @@ from openapi_server.models.catalogs_product_groups_list200_response import Catal
 from openapi_server.models.catalogs_product_groups_update_request_schema import CatalogsProductGroupsUpdateRequestSchema
 from openapi_server.models.catalogs_vertical_product_group import CatalogsVerticalProductGroup
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -60,12 +60,12 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_list(
-    id: Annotated[Optional[Annotated[List[StrictInt], Field(min_length=1, max_length=1000)]], Field(description="Comma-separated list of product group ids")] = Query(None, description="Comma-separated list of product group ids", alias="id"),
-    feed_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter entities for a given feed_id. If not given, all feeds are considered.")] = Query(None, description="Filter entities for a given feed_id. If not given, all feeds are considered.", alias="feed_id", regex=r"^\d+$"),
-    catalog_id: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Filter entities for a given catalog_id. If not given, all catalogs are considered.")] = Query(None, description="Filter entities for a given catalog_id. If not given, all catalogs are considered.", alias="catalog_id", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    id: Annotated[Optional[Annotated[List[int], Field(min_length=1, max_length=1000)]], Field(description="Comma-separated list of product group ids")] = Query(None, description="Comma-separated list of product group ids", alias="id"),
+    feed_id: Annotated[Optional[str], Field(description="Filter entities for a given feed_id. If not given, all feeds are considered.")] = Query(None, description="Filter entities for a given feed_id. If not given, all feeds are considered.", alias="feed_id", regex=r"^\d+$"),
+    catalog_id: Annotated[Optional[str], Field(description="Filter entities for a given catalog_id. If not given, all catalogs are considered.")] = Query(None, description="Filter entities for a given catalog_id. If not given, all catalogs are considered.", alias="catalog_id", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -93,8 +93,8 @@ async def catalogs_product_groups_list(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_create(
-    catalogs_product_groups_create_request_schema: CatalogsProductGroupsCreateRequestSchema = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    catalogs_product_groups_create_request_schema: CatalogsProductGroupsCreateRequestSchema = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -121,8 +121,8 @@ async def catalogs_product_groups_create(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_create_many(
-    catalogs_product_groups_create_many_request_items: Annotated[List[CatalogsProductGroupsCreateManyRequestItems], Field(min_length=1, max_length=1000)] = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    catalogs_product_groups_create_many_request_items: Annotated[List[CatalogsProductGroupsCreateManyRequestItems], Field(min_length=1, max_length=1000)] = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -149,8 +149,8 @@ async def catalogs_product_groups_create_many(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_delete_many(
-    id: Annotated[List[StrictInt], Field(min_length=1, max_length=1000, description="Comma-separated list of product group ids")] = Query(None, description="Comma-separated list of product group ids", alias="id"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    id: Annotated[List[int], Field(min_length=1, max_length=1000, description="Comma-separated list of product group ids")] = Query(..., description="Comma-separated list of product group ids", alias="id"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -177,8 +177,8 @@ async def catalogs_product_groups_delete_many(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_get(
-    product_group_id: Annotated[str, Field(strict=True, description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    product_group_id: Annotated[str, Field(description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -206,8 +206,8 @@ async def catalogs_product_groups_get(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_delete(
-    product_group_id: Annotated[str, Field(strict=True, description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    product_group_id: Annotated[str, Field(description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -234,9 +234,9 @@ async def catalogs_product_groups_delete(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_update(
-    product_group_id: Annotated[str, Field(strict=True, description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
-    catalogs_product_groups_update_request_schema: CatalogsProductGroupsUpdateRequestSchema = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    product_group_id: Annotated[str, Field(description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
+    catalogs_product_groups_update_request_schema: CatalogsProductGroupsUpdateRequestSchema = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:write"]
     ),
@@ -263,8 +263,8 @@ async def catalogs_product_groups_update(
     response_model_by_alias=True,
 )
 async def catalogs_product_groups_product_counts_get(
-    product_group_id: Annotated[str, Field(strict=True, description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    product_group_id: Annotated[str, Field(description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["catalogs:read"]
     ),
@@ -291,11 +291,11 @@ async def catalogs_product_groups_product_counts_get(
     response_model_by_alias=True,
 )
 async def catalogs_product_group_pins_list(
-    product_group_id: Annotated[str, Field(strict=True, description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    pin_metrics: Annotated[Optional[StrictBool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    product_group_id: Annotated[str, Field(description="Unique identifier of a product group")] = Path(..., description="Unique identifier of a product group", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_metrics: Annotated[Optional[bool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "catalogs:read", "pins:read"]
     ),
@@ -325,11 +325,11 @@ async def catalogs_product_group_pins_list(
     response_model_by_alias=True,
 )
 async def products_by_product_group_filter_list(
-    catalogs_list_products_by_filter_request: CatalogsListProductsByFilterRequest = Body(None, description=""),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    pin_metrics: Annotated[Optional[StrictBool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
+    catalogs_list_products_by_filter_request: CatalogsListProductsByFilterRequest = Body(..., description=""),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_metrics: Annotated[Optional[bool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "catalogs:read", "pins:read"]
     ),

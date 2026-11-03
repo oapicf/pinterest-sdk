@@ -6,20 +6,3 @@
 */
 #include "CreativeTypeEnumUsedAds.h"
 
-namespace models {
-
-CreativeTypeEnumUsedAds::CreativeTypeEnumUsedAds()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

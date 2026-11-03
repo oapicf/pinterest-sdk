@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,12 +24,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignBatchItem", description = "Item in a batch campaign response.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBatchItem {
 
   private CampaignBatchResponseData data;
 
-  @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();
 
   public CampaignBatchItem data(CampaignBatchResponseData data) {
@@ -70,7 +68,7 @@ public class CampaignBatchItem {
    * Exceptions on failure.
    * @return exceptions
    */
-  @Valid 
+  
   @Schema(name = "exceptions", description = "Exceptions on failure.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
   public List<@Valid Exception> getExceptions() {

@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'invite_status.g.dart';
 
+/// The current status of an invite or request.
 class InviteStatus extends EnumClass {
 
-  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const InviteStatus PENDING = _$PENDING;
-  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'ACCEPTED')
   static const InviteStatus ACCEPTED = _$ACCEPTED;
-  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'DECLINED')
   static const InviteStatus DECLINED = _$DECLINED;
-  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'CANCELLED')
   static const InviteStatus CANCELLED = _$CANCELLED;
-  /// The current status of an invite or request.
   @BuiltValueEnumConst(wireName: r'EXPIRED')
   static const InviteStatus EXPIRED = _$EXPIRED;
 

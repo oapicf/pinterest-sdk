@@ -25,12 +25,12 @@ data class CatalogsFeedProcessingSchedule(
 
     @get:Pattern(regexp="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$")
     @Schema(required = true, description = "A time in format HH:MM with leading 0 (zero)")
-    @param:JsonProperty("time")
+    @param:JsonProperty("time", required = true)
     @get:JsonProperty("time", required = true) val time: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "The timezone considered for the processing schedule time.")
-    @param:JsonProperty("timezone")
+    @param:JsonProperty("timezone", required = true)
     @get:JsonProperty("timezone", required = true) val timezone: CatalogsFeedProcessingScheduleTimezone?
 ) {
 

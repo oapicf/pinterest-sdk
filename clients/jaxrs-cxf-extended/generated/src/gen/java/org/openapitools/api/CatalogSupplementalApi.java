@@ -104,7 +104,7 @@ public interface CatalogSupplementalApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public List<CatalogsLocalStoresCreate200ResponseInner> catalogsLocalStoresCreate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId, @Valid List<@Valid LocalStoreCreate> localStoreCreate, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
+    public List<CatalogsLocalStoresCreate200ResponseInner> catalogsLocalStoresCreate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId, List<@Valid LocalStoreCreate> localStoreCreate, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Delete local stores
@@ -166,7 +166,7 @@ public interface CatalogSupplementalApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public List<CatalogsLocalStoresCreate200ResponseInner> catalogsLocalStoresUpdate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId, @Valid List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
+    public List<CatalogsLocalStoresCreate200ResponseInner> catalogsLocalStoresUpdate(@PathParam("catalog_id") @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId, List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Get supplemental items batch status

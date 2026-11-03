@@ -464,3 +464,4 @@ class _$CampaignCreateRequestSerializer implements PrimitiveSerializer<CampaignC
   }
 }
 
+

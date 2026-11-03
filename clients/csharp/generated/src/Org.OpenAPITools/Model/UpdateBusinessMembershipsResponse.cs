@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class UpdateBusinessMembershipsResponse.");
+                throw new JsonException("Property is not nullable for class UpdateBusinessMembershipsResponse: items.");
 
             return new UpdateBusinessMembershipsResponse(items);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateBusinessMembershipsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdateBusinessMembershipsResponse updateBusinessMembershipsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateBusinessMembershipsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdateBusinessMembershipsResponse updateBusinessMembershipsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (updateBusinessMembershipsResponse.ItemsOption.IsSet && updateBusinessMembershipsResponse.Items == null)
-                throw new ArgumentNullException(nameof(updateBusinessMembershipsResponse.Items), "Property is required for class UpdateBusinessMembershipsResponse.");
+                throw new JsonException("Cannot write null property UpdateBusinessMembershipsResponse.Items to non-nullable JSON property 'items'.");
 
             if (updateBusinessMembershipsResponse.ItemsOption.IsSet)
             {

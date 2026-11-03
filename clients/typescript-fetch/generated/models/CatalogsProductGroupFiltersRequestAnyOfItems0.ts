@@ -29,8 +29,6 @@ import {
 export interface CatalogsProductGroupFiltersRequestAnyOfItems0 {
     /**
      * 
-     * @type {Array<CatalogsProductGroupFilterKeys>}
-     * @memberof CatalogsProductGroupFiltersRequestAnyOfItems0
      */
     anyOf: Array<CatalogsProductGroupFilterKeys>;
 }

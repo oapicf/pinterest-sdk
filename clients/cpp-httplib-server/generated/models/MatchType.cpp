@@ -6,20 +6,3 @@
 */
 #include "MatchType.h"
 
-namespace models {
-
-MatchType::MatchType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

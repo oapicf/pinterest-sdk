@@ -31,8 +31,6 @@ export interface ScheduleGenderMultipliers {
     [key: string]: number | any;
     /**
      * 
-     * @type {TargetingSpecGender}
-     * @memberof ScheduleGenderMultipliers
      */
     gENDER?: TargetingSpecGender;
 }

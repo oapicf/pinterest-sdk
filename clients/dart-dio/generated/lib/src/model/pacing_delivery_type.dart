@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'pacing_delivery_type.g.dart';
 
+/// Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
 class PacingDeliveryType extends EnumClass {
 
-  /// Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
   @BuiltValueEnumConst(wireName: r'STANDARD')
   static const PacingDeliveryType STANDARD = _$STANDARD;
-  /// Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
   @BuiltValueEnumConst(wireName: r'ACCELERATED')
   static const PacingDeliveryType ACCELERATED = _$ACCELERATED;
 

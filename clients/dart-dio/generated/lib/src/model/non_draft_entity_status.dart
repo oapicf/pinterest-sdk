@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'non_draft_entity_status.g.dart';
 
+/// Entity status
 class NonDraftEntityStatus extends EnumClass {
 
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const NonDraftEntityStatus ACTIVE = _$ACTIVE;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const NonDraftEntityStatus PAUSED = _$PAUSED;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const NonDraftEntityStatus ARCHIVED = _$ARCHIVED;
 

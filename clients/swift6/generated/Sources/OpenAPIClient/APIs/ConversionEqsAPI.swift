@@ -49,11 +49,12 @@ open class ConversionEqsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "lookback_period": (wrappedValue: lookbackPeriod.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "source_platform": (wrappedValue: sourcePlatform?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "ingestion_source": (wrappedValue: ingestionSource?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

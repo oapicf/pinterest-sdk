@@ -40,10 +40,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | **customerListUploadCreateRequest** | [**CustomerListUploadCreateRequest**](CustomerListUploadCreateRequest.md)|  | |
 
 ### Return type
@@ -98,10 +98,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | **customerListUploadId** | **kotlin.String**| Customer List Upload ID. | |
 
 ### Return type
@@ -156,10 +156,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **customerListId** | **kotlin.String**| Customer list ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **customerListId** | **kotlin.String**| Customer list ID. | |
 | **customerListUploadId** | **kotlin.String**| Customer List Upload ID. | |
 
 ### Return type

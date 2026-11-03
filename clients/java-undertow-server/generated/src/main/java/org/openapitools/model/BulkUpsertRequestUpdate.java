@@ -34,7 +34,7 @@ import org.openapitools.model.ScheduleUpdateRequest;
  */
 
 @ApiModel(description = "Request for creation of entities in bulk.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestUpdate   {
   
   private List<AdGroupUpdateRequest> adGroups = new ArrayList<>();

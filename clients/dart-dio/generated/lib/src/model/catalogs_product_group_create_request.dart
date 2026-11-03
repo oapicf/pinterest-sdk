@@ -178,3 +178,4 @@ class _$CatalogsProductGroupCreateRequestSerializer implements PrimitiveSerializ
   }
 }
 
+

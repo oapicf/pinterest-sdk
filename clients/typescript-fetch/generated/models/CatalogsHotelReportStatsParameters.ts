@@ -29,14 +29,10 @@ import {
 export interface CatalogsHotelReportStatsParameters {
     /**
      * 
-     * @type {CatalogsHotelReportStatsParametersCatalogTypeEnum}
-     * @memberof CatalogsHotelReportStatsParameters
      */
     catalogType: CatalogsHotelReportStatsParametersCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsHotelReportStatsParametersReport}
-     * @memberof CatalogsHotelReportStatsParameters
      */
     report: CatalogsHotelReportStatsParametersReport;
 }
@@ -46,7 +42,7 @@ export interface CatalogsHotelReportStatsParameters {
  * @export
  */
 export const CatalogsHotelReportStatsParametersCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelReportStatsParametersCatalogTypeEnum = typeof CatalogsHotelReportStatsParametersCatalogTypeEnum[keyof typeof CatalogsHotelReportStatsParametersCatalogTypeEnum];
 

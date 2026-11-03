@@ -197,16 +197,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class ConversionHealthSelectionItem.", nameof(status));
+                throw new JsonException("Property is required for class ConversionHealthSelectionItem: status.");
 
             if (conversionType.IsSet && conversionType.Value == null)
-                throw new ArgumentNullException(nameof(conversionType), "Property is not nullable for class ConversionHealthSelectionItem.");
+                throw new JsonException("Property is not nullable for class ConversionHealthSelectionItem: conversionType.");
 
             if (criteria.IsSet && criteria.Value == null)
-                throw new ArgumentNullException(nameof(criteria), "Property is not nullable for class ConversionHealthSelectionItem.");
+                throw new JsonException("Property is not nullable for class ConversionHealthSelectionItem: criteria.");
 
             if (ingestionSource.IsSet && ingestionSource.Value == null)
-                throw new ArgumentNullException(nameof(ingestionSource), "Property is not nullable for class ConversionHealthSelectionItem.");
+                throw new JsonException("Property is not nullable for class ConversionHealthSelectionItem: ingestionSource.");
 
             return new ConversionHealthSelectionItem(conversionType, criteria, ingestionSource, status.Value!);
         }
@@ -217,7 +217,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionHealthSelectionItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionHealthSelectionItem conversionHealthSelectionItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -232,17 +231,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionHealthSelectionItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionHealthSelectionItem conversionHealthSelectionItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionHealthSelectionItem.ConversionTypeOption.IsSet && conversionHealthSelectionItem.ConversionType == null)
-                throw new ArgumentNullException(nameof(conversionHealthSelectionItem.ConversionType), "Property is required for class ConversionHealthSelectionItem.");
+                throw new JsonException("Cannot write null property ConversionHealthSelectionItem.ConversionType to non-nullable JSON property 'conversionType'.");
 
             if (conversionHealthSelectionItem.CriteriaOption.IsSet && conversionHealthSelectionItem.Criteria == null)
-                throw new ArgumentNullException(nameof(conversionHealthSelectionItem.Criteria), "Property is required for class ConversionHealthSelectionItem.");
+                throw new JsonException("Cannot write null property ConversionHealthSelectionItem.Criteria to non-nullable JSON property 'criteria'.");
 
             if (conversionHealthSelectionItem.IngestionSourceOption.IsSet && conversionHealthSelectionItem.IngestionSource == null)
-                throw new ArgumentNullException(nameof(conversionHealthSelectionItem.IngestionSource), "Property is required for class ConversionHealthSelectionItem.");
+                throw new JsonException("Cannot write null property ConversionHealthSelectionItem.IngestionSource to non-nullable JSON property 'ingestionSource'.");
 
             if (conversionHealthSelectionItem.ConversionTypeOption.IsSet)
             {

@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CartingRetailer(
 
     @Schema(required = true, description = "Unique identifier for the retailer")
-    @param:JsonProperty("retailer_id")
+    @param:JsonProperty("retailer_id", required = true)
     @get:JsonProperty("retailer_id", required = true) val retailerId: kotlin.String,
 
     @Schema(required = true, description = "Name of the retailer")
-    @param:JsonProperty("retailer_name")
+    @param:JsonProperty("retailer_name", required = true)
     @get:JsonProperty("retailer_name", required = true) val retailerName: kotlin.String
 ) {
 

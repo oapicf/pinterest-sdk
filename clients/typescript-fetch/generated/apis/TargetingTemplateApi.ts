@@ -45,21 +45,53 @@ import {
 } from '../models/TargetingTemplateUpdateRequestReadOrUpdate';
 
 export interface TargetingTemplateCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     targetingTemplateCreate: TargetingTemplateCreate;
 }
 
 export interface TargetingTemplateListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * Include audience sizing in result or not
+     */
     includeSizing?: boolean;
+    /**
+     * Search query. Can contain pin description keywords or comma-separated pin IDs.
+     */
     searchQuery?: string;
 }
 
 export interface TargetingTemplateUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate;
 }
 

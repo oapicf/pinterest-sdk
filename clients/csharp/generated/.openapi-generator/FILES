@@ -1162,13 +1162,7 @@ docs/models/WebsiteVerificationMethod.md
 docs/models/WorkloadState.md
 docs/scripts/git_push.ps1
 docs/scripts/git_push.sh
-src/Org.OpenAPITools.Test/Api/CatalogSupplementalApiTests.cs
-src/Org.OpenAPITools.Test/Api/ConversionDeletionRequestsApiTests.cs
-src/Org.OpenAPITools.Test/Api/CustomerSegmentApiTests.cs
 src/Org.OpenAPITools.Test/Api/DependencyInjectionTests.cs
-src/Org.OpenAPITools.Test/Api/ProductTagsApiTests.cs
-src/Org.OpenAPITools.Test/Api/SchedulesApiTests.cs
-src/Org.OpenAPITools.Test/Api/TrendsApiTests.cs
 src/Org.OpenAPITools.Test/Org.OpenAPITools.Test.csproj
 src/Org.OpenAPITools.Test/README.md
 src/Org.OpenAPITools/Api/AdAccountsApi.cs
@@ -1245,6 +1239,7 @@ src/Org.OpenAPITools/Client/RateLimitProvider`1.cs
 src/Org.OpenAPITools/Client/TokenBase.cs
 src/Org.OpenAPITools/Client/TokenContainer`1.cs
 src/Org.OpenAPITools/Client/TokenProvider`1.cs
+src/Org.OpenAPITools/Extensions/IHostApplicationBuilderExtensions.cs
 src/Org.OpenAPITools/Extensions/IHostBuilderExtensions.cs
 src/Org.OpenAPITools/Extensions/IHttpClientBuilderExtensions.cs
 src/Org.OpenAPITools/Extensions/IServiceCollectionExtensions.cs

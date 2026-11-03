@@ -9,7 +9,7 @@ import Foundation
 
 public struct AdsAnalytics: Sendable, Codable, Hashable {
 
-    public static let AD_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let AD_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var AD_ID: String
     public var DATE: Date?
 

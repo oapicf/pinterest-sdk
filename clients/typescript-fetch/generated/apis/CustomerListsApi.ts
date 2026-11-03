@@ -45,26 +45,64 @@ import {
 } from '../models/PinterestLibPaginationOrder';
 
 export interface CustomerListsCreateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     customerListCreate: CustomerListCreate;
 }
 
 export interface CustomerListsGetRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Customer list ID.
+     */
     customerListId: string;
 }
 
 export interface CustomerListsListRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+     */
     excludeNca?: boolean;
 }
 
 export interface CustomerListsUpdateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Customer list ID.
+     */
     customerListId: string;
+    /**
+     * 
+     */
     customerListUpdateWithRequiredBody: CustomerListUpdateWithRequiredBody;
 }
 

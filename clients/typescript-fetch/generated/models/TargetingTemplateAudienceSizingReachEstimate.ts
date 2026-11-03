@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TargetingTemplateAudienceSizingReachEstimate {
     /**
      * 
-     * @type {number}
-     * @memberof TargetingTemplateAudienceSizingReachEstimate
      */
     estimate?: number;
     /**
      * 
-     * @type {number}
-     * @memberof TargetingTemplateAudienceSizingReachEstimate
      */
     lowerBound?: number;
     /**
      * 
-     * @type {number}
-     * @memberof TargetingTemplateAudienceSizingReachEstimate
      */
     upperBound?: number;
 }

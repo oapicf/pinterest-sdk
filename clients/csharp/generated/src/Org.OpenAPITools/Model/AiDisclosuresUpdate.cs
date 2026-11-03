@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class AiDisclosuresUpdate.");
+                throw new JsonException("Property is not nullable for class AiDisclosuresUpdate: values.");
 
             return new AiDisclosuresUpdate(values);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aiDisclosuresUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AiDisclosuresUpdate aiDisclosuresUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="aiDisclosuresUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AiDisclosuresUpdate aiDisclosuresUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (aiDisclosuresUpdate.ValuesOption.IsSet && aiDisclosuresUpdate.Values == null)
-                throw new ArgumentNullException(nameof(aiDisclosuresUpdate.Values), "Property is required for class AiDisclosuresUpdate.");
+                throw new JsonException("Cannot write null property AiDisclosuresUpdate.Values to non-nullable JSON property 'values'.");
 
             if (aiDisclosuresUpdate.ValuesOption.IsSet)
             {

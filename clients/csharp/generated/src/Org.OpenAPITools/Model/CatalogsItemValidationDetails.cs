@@ -148,10 +148,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributeName.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationDetails.", nameof(attributeName));
+                throw new JsonException("Property is required for class CatalogsItemValidationDetails: attribute_name.");
 
             if (!providedValue.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemValidationDetails.", nameof(providedValue));
+                throw new JsonException("Property is required for class CatalogsItemValidationDetails: provided_value.");
 
             return new CatalogsItemValidationDetails(attributeName.Value!, providedValue.Value!);
         }
@@ -162,7 +162,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemValidationDetails catalogsItemValidationDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -177,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemValidationDetails catalogsItemValidationDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsItemValidationDetails.AttributeName == null)

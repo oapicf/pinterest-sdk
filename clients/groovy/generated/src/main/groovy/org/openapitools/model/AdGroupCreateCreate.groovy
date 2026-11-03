@@ -36,7 +36,7 @@ class AdGroupCreateCreate {
     /* Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups. */
     Integer budgetInMicroCurrency
     
-    BudgetType budgetType
+    BudgetType budgetType = BudgetType.DAILY
     /* Campaign ID of the ad group. */
     String campaignId
     /* Customer segment ID applied to the ad group. We currently only support 1 customer segment per ad group. To use customer segments, do not set the `targeting_template_ids` field as well as the `AUDIENCE_INCLUDE` field of the `targeting_spec`. To clear the customer segment ID, set this field to '0'. */
@@ -60,7 +60,7 @@ class AdGroupCreateCreate {
     /* Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`. */
     NullableOptimizationGoalMetadata optimizationGoalMetadata
     
-    PacingDeliveryType pacingDeliveryType
+    PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD
     /* Pinterest Performance+ campaign settings. */
     PerformancePlusCampaignSettings performancePlusCampaignSettings
     /* [Placement group](https://help.pinterest.com/en/business/article/placement-groups). */

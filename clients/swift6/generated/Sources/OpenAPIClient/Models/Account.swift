@@ -10,7 +10,7 @@ import Foundation
 /** User account model containing properties related to a user&#39;s account. */
 public struct Account: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Profile about description. */
     public var about: String?
     /** Type of account */

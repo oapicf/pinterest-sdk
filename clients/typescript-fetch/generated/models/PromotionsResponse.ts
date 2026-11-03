@@ -29,8 +29,6 @@ import {
 export interface PromotionsResponse {
     /**
      * 
-     * @type {Array<PromotionArrayElement>}
-     * @memberof PromotionsResponse
      */
     promotions?: Array<PromotionArrayElement>;
 }

@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (matchType.IsSet && matchType.Value == null)
-                throw new ArgumentNullException(nameof(matchType), "Property is not nullable for class TargetingTemplateKeyword.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateKeyword: match_type.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class TargetingTemplateKeyword.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateKeyword: value.");
 
             return new TargetingTemplateKeyword(matchType, value);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingTemplateKeyword targetingTemplateKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,11 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingTemplateKeyword targetingTemplateKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (targetingTemplateKeyword.MatchTypeOption.IsSet && targetingTemplateKeyword.MatchType == null)
+                throw new JsonException("Cannot write null property TargetingTemplateKeyword.MatchType to non-nullable JSON property 'match_type'.");
+
             if (targetingTemplateKeyword.ValueOption.IsSet && targetingTemplateKeyword.Value == null)
-                throw new ArgumentNullException(nameof(targetingTemplateKeyword.Value), "Property is required for class TargetingTemplateKeyword.");
+                throw new JsonException("Cannot write null property TargetingTemplateKeyword.Value to non-nullable JSON property 'value'.");
 
             if (targetingTemplateKeyword.MatchTypeOption.IsSet)
             {

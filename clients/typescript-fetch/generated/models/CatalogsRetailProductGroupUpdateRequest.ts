@@ -44,38 +44,26 @@ export interface CatalogsRetailProductGroupUpdateRequest {
     /**
      * Retail catalog based product group is available only for selected partners at the moment.
      * If you are not eligible, please use feed based one.
-     * @type {CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     catalogType?: CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     country?: Country;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsProductGroupFiltersRequest}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     filters?: CatalogsProductGroupFiltersRequest;
     /**
      * 
-     * @type {CatalogsLocale}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     locale?: CatalogsLocale;
     /**
      * Name of catalog product group
-     * @type {string}
-     * @memberof CatalogsRetailProductGroupUpdateRequest
      */
     name?: string;
 }
@@ -85,7 +73,7 @@ export interface CatalogsRetailProductGroupUpdateRequest {
  * @export
  */
 export const CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum = typeof CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum[keyof typeof CatalogsRetailProductGroupUpdateRequestCatalogTypeEnum];
 

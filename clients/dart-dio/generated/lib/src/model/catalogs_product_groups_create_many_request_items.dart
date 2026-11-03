@@ -82,6 +82,7 @@ class _$CatalogsProductGroupsCreateManyRequestItemsSerializer implements Primiti
   }
 }
 
+
 class CatalogsProductGroupsCreateManyRequestItemsCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

@@ -30,7 +30,6 @@ public class UpdateMemberAssetAccessItem  {
   * A non-empty array of permissions to assign to the member.
   */
   @ApiModelProperty(required = true, value = "A non-empty array of permissions to assign to the member.")
-  @Valid
   private List<Permissions> permissions = new ArrayList<>();
  /**
   * Id of the asset to update.

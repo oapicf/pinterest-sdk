@@ -24,7 +24,7 @@ import org.openapitools.model.UpdateMaskBidOptionField;
  * Object describing an item bid option operation
  */
 @ApiModel(description = "Object describing an item bid option operation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitRecord   {
   @JsonProperty("bid_options")
   private AdvancedAuctionBidOptions bidOptions;
@@ -74,7 +74,7 @@ public class AdvancedAuctionItemsSubmitRecord   {
   private OperationEnum operation;
 
   @JsonProperty("update_mask")
-  private List<UpdateMaskBidOptionField> updateMask = ;
+  private List<UpdateMaskBidOptionField> updateMask = null;
 
   public AdvancedAuctionItemsSubmitRecord bidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;

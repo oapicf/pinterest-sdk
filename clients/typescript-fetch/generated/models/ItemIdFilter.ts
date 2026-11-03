@@ -29,8 +29,6 @@ import {
 export interface ItemIdFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof ItemIdFilter
      */
     iTEMID: CatalogsProductGroupMultipleStringCriteria;
 }

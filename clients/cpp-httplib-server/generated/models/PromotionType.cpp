@@ -6,20 +6,3 @@
 */
 #include "PromotionType.h"
 
-namespace models {
-
-PromotionType::PromotionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

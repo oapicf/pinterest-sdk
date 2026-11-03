@@ -193,13 +193,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogBinding.");
+                throw new JsonException("Property is not nullable for class CatalogBinding: catalog_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogBinding.");
+                throw new JsonException("Property is not nullable for class CatalogBinding: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogBinding.");
+                throw new JsonException("Property is not nullable for class CatalogBinding: name.");
 
             return new CatalogBinding(catalogType, id, name);
         }
@@ -210,7 +210,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogBinding catalogBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -225,17 +224,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogBinding catalogBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogBinding.CatalogTypeOption.IsSet && catalogBinding.CatalogType == null)
-                throw new ArgumentNullException(nameof(catalogBinding.CatalogType), "Property is required for class CatalogBinding.");
+                throw new JsonException("Cannot write null property CatalogBinding.CatalogType to non-nullable JSON property 'catalog_type'.");
 
             if (catalogBinding.IdOption.IsSet && catalogBinding.Id == null)
-                throw new ArgumentNullException(nameof(catalogBinding.Id), "Property is required for class CatalogBinding.");
+                throw new JsonException("Cannot write null property CatalogBinding.Id to non-nullable JSON property 'id'.");
 
             if (catalogBinding.NameOption.IsSet && catalogBinding.Name == null)
-                throw new ArgumentNullException(nameof(catalogBinding.Name), "Property is required for class CatalogBinding.");
+                throw new JsonException("Cannot write null property CatalogBinding.Name to non-nullable JSON property 'name'.");
 
             if (catalogBinding.CatalogTypeOption.IsSet)
                 writer.WriteString("catalog_type", catalogBinding.CatalogType);

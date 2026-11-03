@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class DynamicTitlesProcessCSVCreate(
 
     @Schema(required = true, description = "The request_id returned from the GET uploads endpoint.")
-    @param:JsonProperty("request_id")
+    @param:JsonProperty("request_id", required = true)
     @get:JsonProperty("request_id", required = true) val requestId: kotlin.String
 ) {
 

@@ -22,11 +22,11 @@ data class ScheduleCreateRequestAllOf1(
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("entity_id")
+    @param:JsonProperty("entity_id", required = true)
     @get:JsonProperty("entity_id", required = true) val entityId: kotlin.String,
 
     @Schema(required = true, description = "Entity type")
-    @param:JsonProperty("entity_type")
+    @param:JsonProperty("entity_type", required = true)
     @get:JsonProperty("entity_type", required = true) val entityType: kotlin.String
 ) {
 

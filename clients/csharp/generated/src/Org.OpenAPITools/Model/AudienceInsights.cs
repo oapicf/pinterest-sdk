@@ -257,19 +257,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (categories.IsSet && categories.Value == null)
-                throw new ArgumentNullException(nameof(categories), "Property is not nullable for class AudienceInsights.");
+                throw new JsonException("Property is not nullable for class AudienceInsights: categories.");
 
             if (demographics.IsSet && demographics.Value == null)
-                throw new ArgumentNullException(nameof(demographics), "Property is not nullable for class AudienceInsights.");
+                throw new JsonException("Property is not nullable for class AudienceInsights: demographics.");
 
             if (size.IsSet && size.Value == null)
-                throw new ArgumentNullException(nameof(size), "Property is not nullable for class AudienceInsights.");
+                throw new JsonException("Property is not nullable for class AudienceInsights: size.");
 
             if (sizeIsUpperBound.IsSet && sizeIsUpperBound.Value == null)
-                throw new ArgumentNullException(nameof(sizeIsUpperBound), "Property is not nullable for class AudienceInsights.");
+                throw new JsonException("Property is not nullable for class AudienceInsights: size_is_upper_bound.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class AudienceInsights.");
+                throw new JsonException("Property is not nullable for class AudienceInsights: type.");
 
             return new AudienceInsights(categories, date, demographics, size, sizeIsUpperBound, type);
         }
@@ -280,7 +280,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceInsights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceInsights audienceInsights, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -295,14 +294,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceInsights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceInsights audienceInsights, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audienceInsights.CategoriesOption.IsSet && audienceInsights.Categories == null)
-                throw new ArgumentNullException(nameof(audienceInsights.Categories), "Property is required for class AudienceInsights.");
+                throw new JsonException("Cannot write null property AudienceInsights.Categories to non-nullable JSON property 'categories'.");
 
             if (audienceInsights.DemographicsOption.IsSet && audienceInsights.Demographics == null)
-                throw new ArgumentNullException(nameof(audienceInsights.Demographics), "Property is required for class AudienceInsights.");
+                throw new JsonException("Cannot write null property AudienceInsights.Demographics to non-nullable JSON property 'demographics'.");
+
+            if (audienceInsights.SizeOption.IsSet && audienceInsights.Size == null)
+                throw new JsonException("Cannot write null property AudienceInsights.Size to non-nullable JSON property 'size'.");
+
+            if (audienceInsights.SizeIsUpperBoundOption.IsSet && audienceInsights.SizeIsUpperBound == null)
+                throw new JsonException("Cannot write null property AudienceInsights.SizeIsUpperBound to non-nullable JSON property 'size_is_upper_bound'.");
+
+            if (audienceInsights.TypeOption.IsSet && audienceInsights.Type == null)
+                throw new JsonException("Cannot write null property AudienceInsights.Type to non-nullable JSON property 'type'.");
 
             if (audienceInsights.CategoriesOption.IsSet)
             {

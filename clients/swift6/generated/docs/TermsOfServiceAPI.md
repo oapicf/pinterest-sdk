@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **termsOfServiceGet**
 ```swift
-    open class func termsOfServiceGet(adAccountId: String, includeHtml: Bool? = nil, tosType: String? = nil, completion: @escaping (_ data: TermsOfService?, _ error: Error?) -> Void)
+    open class func termsOfServiceGet(adAccountId: String, includeHtml: Bool? = nil, tosType: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TermsOfService
 ```
 
 Get terms of service
@@ -26,15 +26,11 @@ let includeHtml = true // Bool | Return HTML in TOS text. (optional) (default to
 let tosType = "tosType_example" // String | Request type. (optional)
 
 // Get terms of service
-TermsOfServiceAPI.termsOfServiceGet(adAccountId: adAccountId, includeHtml: includeHtml, tosType: tosType) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TermsOfServiceAPI.termsOfServiceGet(adAccountId: adAccountId, includeHtml: includeHtml, tosType: tosType)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

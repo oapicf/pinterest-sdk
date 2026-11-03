@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class PublicTargetingType
-{
-public:
-
-    PublicTargetingType();
-    virtual ~PublicTargetingType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PublicTargetingType,
-        )
-
-private:
+enum class PublicTargetingType {
+    
+    APPTYPE,
+    
+    GENDER,
+    
+    LOCALE,
+    
+    AGE_BUCKET,
+    
+    LOCATION,
+    
+    GEO,
+    
+    INTEREST,
+    
+    KEYWORD,
+    
+    AUDIENCE_INCLUDE,
+    
+    AUDIENCE_EXCLUDE
+    
 };
 
+inline void to_json(nlohmann::json& j, const PublicTargetingType& value)
+{
+    switch (value)
+    {
+        
+        case PublicTargetingType::APPTYPE: j = "APPTYPE"; break;
+        
+        case PublicTargetingType::GENDER: j = "GENDER"; break;
+        
+        case PublicTargetingType::LOCALE: j = "LOCALE"; break;
+        
+        case PublicTargetingType::AGE_BUCKET: j = "AGE_BUCKET"; break;
+        
+        case PublicTargetingType::LOCATION: j = "LOCATION"; break;
+        
+        case PublicTargetingType::GEO: j = "GEO"; break;
+        
+        case PublicTargetingType::INTEREST: j = "INTEREST"; break;
+        
+        case PublicTargetingType::KEYWORD: j = "KEYWORD"; break;
+        
+        case PublicTargetingType::AUDIENCE_INCLUDE: j = "AUDIENCE_INCLUDE"; break;
+        
+        case PublicTargetingType::AUDIENCE_EXCLUDE: j = "AUDIENCE_EXCLUDE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PublicTargetingType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PublicTargetingType& value)
+{
+    
+    if (j == "APPTYPE")
+    {
+        value = PublicTargetingType::APPTYPE;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = PublicTargetingType::GENDER;
+        return;
+    }
+    
+    if (j == "LOCALE")
+    {
+        value = PublicTargetingType::LOCALE;
+        return;
+    }
+    
+    if (j == "AGE_BUCKET")
+    {
+        value = PublicTargetingType::AGE_BUCKET;
+        return;
+    }
+    
+    if (j == "LOCATION")
+    {
+        value = PublicTargetingType::LOCATION;
+        return;
+    }
+    
+    if (j == "GEO")
+    {
+        value = PublicTargetingType::GEO;
+        return;
+    }
+    
+    if (j == "INTEREST")
+    {
+        value = PublicTargetingType::INTEREST;
+        return;
+    }
+    
+    if (j == "KEYWORD")
+    {
+        value = PublicTargetingType::KEYWORD;
+        return;
+    }
+    
+    if (j == "AUDIENCE_INCLUDE")
+    {
+        value = PublicTargetingType::AUDIENCE_INCLUDE;
+        return;
+    }
+    
+    if (j == "AUDIENCE_EXCLUDE")
+    {
+        value = PublicTargetingType::AUDIENCE_EXCLUDE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PublicTargetingType", &j);
+}
 
 } // namespace models
 

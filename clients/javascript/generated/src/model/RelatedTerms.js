@@ -17,7 +17,7 @@ import RelatedTermsRelatedTermsListItems from './RelatedTermsRelatedTermsListIte
 /**
  * The RelatedTerms model module.
  * @module model/RelatedTerms
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class RelatedTerms {
     /**

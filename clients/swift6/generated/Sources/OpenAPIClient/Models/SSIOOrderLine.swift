@@ -10,8 +10,8 @@ import Foundation
 /** A Salesforce SSIO order line. */
 public struct SSIOOrderLine: Sendable, Codable, Hashable {
 
-    public static let acceptedTermsTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$/")
-    public static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$/")
+    public static let acceptedTermsTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")
+    public static let lastModifiedDateTimeRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})\\.(\\d{3})Z$")
     /** The SFDC id for the terms */
     public var acceptedTermsId: String?
     /** The UTC timestamp (to the nearest second) when terms were accepted. */

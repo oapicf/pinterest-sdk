@@ -12,24 +12,214 @@
 
 namespace models {
 
-
-class AdvertiserDefinedEventMappingType
-{
-public:
-
-    AdvertiserDefinedEventMappingType();
-    virtual ~AdvertiserDefinedEventMappingType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdvertiserDefinedEventMappingType,
-        )
-
-private:
+enum class AdvertiserDefinedEventMappingType {
+    
+    SIGNUP,
+    
+    ADD_TO_CART,
+    
+    LEAD,
+    
+    CHECKOUT,
+    
+    SUBSCRIBE,
+    
+    ADD_TO_WISHLIST,
+    
+    ADD_PAYMENT_INFO,
+    
+    INITIATE_CHECKOUT,
+    
+    CONTACT,
+    
+    CUSTOMIZE_PRODUCT,
+    
+    FIND_LOCATION,
+    
+    SCHEDULE,
+    
+    SUBMIT_APPLICATION,
+    
+    START_TRIAL,
+    
+    PAGE_VISIT,
+    
+    VIEW_CATEGORY,
+    
+    VIEW_CONTENT,
+    
+    SEARCH,
+    
+    WATCH_VIDEO
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdvertiserDefinedEventMappingType& value)
+{
+    switch (value)
+    {
+        
+        case AdvertiserDefinedEventMappingType::SIGNUP: j = "SIGNUP"; break;
+        
+        case AdvertiserDefinedEventMappingType::ADD_TO_CART: j = "ADD_TO_CART"; break;
+        
+        case AdvertiserDefinedEventMappingType::LEAD: j = "LEAD"; break;
+        
+        case AdvertiserDefinedEventMappingType::CHECKOUT: j = "CHECKOUT"; break;
+        
+        case AdvertiserDefinedEventMappingType::SUBSCRIBE: j = "SUBSCRIBE"; break;
+        
+        case AdvertiserDefinedEventMappingType::ADD_TO_WISHLIST: j = "ADD_TO_WISHLIST"; break;
+        
+        case AdvertiserDefinedEventMappingType::ADD_PAYMENT_INFO: j = "ADD_PAYMENT_INFO"; break;
+        
+        case AdvertiserDefinedEventMappingType::INITIATE_CHECKOUT: j = "INITIATE_CHECKOUT"; break;
+        
+        case AdvertiserDefinedEventMappingType::CONTACT: j = "CONTACT"; break;
+        
+        case AdvertiserDefinedEventMappingType::CUSTOMIZE_PRODUCT: j = "CUSTOMIZE_PRODUCT"; break;
+        
+        case AdvertiserDefinedEventMappingType::FIND_LOCATION: j = "FIND_LOCATION"; break;
+        
+        case AdvertiserDefinedEventMappingType::SCHEDULE: j = "SCHEDULE"; break;
+        
+        case AdvertiserDefinedEventMappingType::SUBMIT_APPLICATION: j = "SUBMIT_APPLICATION"; break;
+        
+        case AdvertiserDefinedEventMappingType::START_TRIAL: j = "START_TRIAL"; break;
+        
+        case AdvertiserDefinedEventMappingType::PAGE_VISIT: j = "PAGE_VISIT"; break;
+        
+        case AdvertiserDefinedEventMappingType::VIEW_CATEGORY: j = "VIEW_CATEGORY"; break;
+        
+        case AdvertiserDefinedEventMappingType::VIEW_CONTENT: j = "VIEW_CONTENT"; break;
+        
+        case AdvertiserDefinedEventMappingType::SEARCH: j = "SEARCH"; break;
+        
+        case AdvertiserDefinedEventMappingType::WATCH_VIDEO: j = "WATCH_VIDEO"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdvertiserDefinedEventMappingType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdvertiserDefinedEventMappingType& value)
+{
+    
+    if (j == "SIGNUP")
+    {
+        value = AdvertiserDefinedEventMappingType::SIGNUP;
+        return;
+    }
+    
+    if (j == "ADD_TO_CART")
+    {
+        value = AdvertiserDefinedEventMappingType::ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "LEAD")
+    {
+        value = AdvertiserDefinedEventMappingType::LEAD;
+        return;
+    }
+    
+    if (j == "CHECKOUT")
+    {
+        value = AdvertiserDefinedEventMappingType::CHECKOUT;
+        return;
+    }
+    
+    if (j == "SUBSCRIBE")
+    {
+        value = AdvertiserDefinedEventMappingType::SUBSCRIBE;
+        return;
+    }
+    
+    if (j == "ADD_TO_WISHLIST")
+    {
+        value = AdvertiserDefinedEventMappingType::ADD_TO_WISHLIST;
+        return;
+    }
+    
+    if (j == "ADD_PAYMENT_INFO")
+    {
+        value = AdvertiserDefinedEventMappingType::ADD_PAYMENT_INFO;
+        return;
+    }
+    
+    if (j == "INITIATE_CHECKOUT")
+    {
+        value = AdvertiserDefinedEventMappingType::INITIATE_CHECKOUT;
+        return;
+    }
+    
+    if (j == "CONTACT")
+    {
+        value = AdvertiserDefinedEventMappingType::CONTACT;
+        return;
+    }
+    
+    if (j == "CUSTOMIZE_PRODUCT")
+    {
+        value = AdvertiserDefinedEventMappingType::CUSTOMIZE_PRODUCT;
+        return;
+    }
+    
+    if (j == "FIND_LOCATION")
+    {
+        value = AdvertiserDefinedEventMappingType::FIND_LOCATION;
+        return;
+    }
+    
+    if (j == "SCHEDULE")
+    {
+        value = AdvertiserDefinedEventMappingType::SCHEDULE;
+        return;
+    }
+    
+    if (j == "SUBMIT_APPLICATION")
+    {
+        value = AdvertiserDefinedEventMappingType::SUBMIT_APPLICATION;
+        return;
+    }
+    
+    if (j == "START_TRIAL")
+    {
+        value = AdvertiserDefinedEventMappingType::START_TRIAL;
+        return;
+    }
+    
+    if (j == "PAGE_VISIT")
+    {
+        value = AdvertiserDefinedEventMappingType::PAGE_VISIT;
+        return;
+    }
+    
+    if (j == "VIEW_CATEGORY")
+    {
+        value = AdvertiserDefinedEventMappingType::VIEW_CATEGORY;
+        return;
+    }
+    
+    if (j == "VIEW_CONTENT")
+    {
+        value = AdvertiserDefinedEventMappingType::VIEW_CONTENT;
+        return;
+    }
+    
+    if (j == "SEARCH")
+    {
+        value = AdvertiserDefinedEventMappingType::SEARCH;
+        return;
+    }
+    
+    if (j == "WATCH_VIDEO")
+    {
+        value = AdvertiserDefinedEventMappingType::WATCH_VIDEO;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdvertiserDefinedEventMappingType", &j);
+}
 
 } // namespace models
 

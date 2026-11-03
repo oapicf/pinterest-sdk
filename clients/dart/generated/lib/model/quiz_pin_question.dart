@@ -84,7 +84,9 @@ class QuizPinQuestion {
 
       return QuizPinQuestion(
         options: QuizPinOption.listFromJson(json[r'options']),
-        questionId: num.parse('${json[r'question_id']}'),
+        questionId: json[r'question_id'] == null
+            ? null
+            : num.parse('${json[r'question_id']}'),
         questionText: mapValueOfType<String>(json, r'question_text'),
       );
     }

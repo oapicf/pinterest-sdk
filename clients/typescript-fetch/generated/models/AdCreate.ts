@@ -78,164 +78,110 @@ import {
 export interface AdCreate {
     /**
      * ID of the ad group that contains the ad.
-     * @type {string}
-     * @memberof AdCreate
      */
     adGroupId: string;
     /**
      * Deep link URL for Android devices.
-     * @type {string}
-     * @memberof AdCreate
      */
     androidDeepLink?: string | null;
     /**
      * Comma-separated deep links for the carousel pin on Android.
-     * @type {Array<string>}
-     * @memberof AdCreate
      */
     carouselAndroidDeepLinks?: Array<string> | null;
     /**
      * Comma-separated destination URLs for the carousel pin to promote.
-     * @type {Array<string>}
-     * @memberof AdCreate
      */
     carouselDestinationUrls?: Array<string> | null;
     /**
      * Comma-separated deep links for the carousel pin on iOS.
-     * @type {Array<string>}
-     * @memberof AdCreate
      */
     carouselIosDeepLinks?: Array<string> | null;
     /**
      * Tracking url for the ad clicks.
-     * @type {string}
-     * @memberof AdCreate
      */
     clickTrackingUrl?: string | null;
     /**
      * Destination URL template for all items within a collections drawer.
-     * @type {string}
-     * @memberof AdCreate
      */
     collectionItemsDestinationUrlTemplate?: string | null;
     /**
      * 
-     * @type {AdCollectionsHeaderType}
-     * @memberof AdCreate
      */
     collectionsHeaderType?: AdCollectionsHeaderType | null;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof AdCreate
      */
     creativeType: CreativeType;
     /**
      * 
-     * @type {CustomizableCTAType}
-     * @memberof AdCreate
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Destination URL.
-     * @type {string}
-     * @memberof AdCreate
      */
     destinationUrl?: string | null;
     /**
      * 
-     * @type {DisclosureType}
-     * @memberof AdCreate
      */
     disclosureType?: DisclosureType | null;
     /**
      * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
-     * @type {string}
-     * @memberof AdCreate
      */
     disclosureUrl?: string | null;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof AdCreate
      */
     gridClickType?: GridClickType | null;
     /**
      * Deep link URL for iOS devices.
-     * @type {string}
-     * @memberof AdCreate
      */
     iosDeepLink?: string | null;
     /**
      * Is the ad a carting/WTB ad?
-     * @type {boolean}
-     * @memberof AdCreate
      */
     isCarting?: boolean;
     /**
      * Whether the advertiser has accepted the terms and conditions for collage ad.
-     * @type {boolean}
-     * @memberof AdCreate
      */
     isCollageAcceptedTerms?: boolean;
     /**
      * Whether the collage ad has a single destination url override.
-     * @type {boolean}
-     * @memberof AdCreate
      */
     isCollageSingleDestination?: boolean;
     /**
      * Is original pin deleted?
-     * @type {boolean}
-     * @memberof AdCreate
      */
     isPinDeleted?: boolean;
     /**
      * Is pin repinnable?
-     * @type {boolean}
-     * @memberof AdCreate
      */
     isRemovable?: boolean;
     /**
      * Lead form ID for lead ad generation.
-     * @type {string}
-     * @memberof AdCreate
      */
     leadFormId?: string | null;
     /**
      * Name of the ad - 255 chars max.
-     * @type {string}
-     * @memberof AdCreate
      */
     name?: string | null;
     /**
      * Pin ID. This field may only be updated for draft ads.
-     * @type {string}
-     * @memberof AdCreate
      */
     pinId: string;
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     * @type {QuizPinData}
-     * @memberof AdCreate
      */
     quizPinData?: QuizPinData | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof AdCreate
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof AdCreate
      */
     trackingUrls?: TrackingUrls | null;
     /**
      * Tracking URL for ad impressions.
-     * @type {string}
-     * @memberof AdCreate
      */
     viewTrackingUrl?: string | null;
 }

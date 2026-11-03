@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_type.g.dart';
 
+/// Audience type
 class AudienceType extends EnumClass {
 
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'CUSTOMER_LIST')
   static const AudienceType CUSTOMER_LIST = _$CUSTOMER_LIST;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'VISITOR')
   static const AudienceType VISITOR = _$VISITOR;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'ENGAGEMENT')
   static const AudienceType ENGAGEMENT = _$ENGAGEMENT;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'ACTALIKE')
   static const AudienceType ACTALIKE = _$ACTALIKE;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'PERSONA')
   static const AudienceType PERSONA = _$PERSONA;
 

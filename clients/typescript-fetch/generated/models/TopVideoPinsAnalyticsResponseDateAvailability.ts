@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TopVideoPinsAnalyticsResponseDateAvailability {
     /**
      * 
-     * @type {boolean}
-     * @memberof TopVideoPinsAnalyticsResponseDateAvailability
      */
     isRealtime?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof TopVideoPinsAnalyticsResponseDateAvailability
      */
     latestAvailableTimestamp?: number;
 }

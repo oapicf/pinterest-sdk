@@ -6,20 +6,3 @@
 */
 #include "PermissionsWithOwner.h"
 
-namespace models {
-
-PermissionsWithOwner::PermissionsWithOwner()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

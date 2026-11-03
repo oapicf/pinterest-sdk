@@ -6,20 +6,3 @@
 */
 #include "SupplementalItemBatchOperationStatus.h"
 
-namespace models {
-
-SupplementalItemBatchOperationStatus::SupplementalItemBatchOperationStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

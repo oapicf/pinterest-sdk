@@ -20,7 +20,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The TargetingTemplateCreate model module.
  * @module model/TargetingTemplateCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingTemplateCreate {
     /**

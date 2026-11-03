@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,22 +23,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "DeletePartnerAssetAccessResult", description = "The terminated asset access.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeletePartnerAssetAccessResult {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String assetId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String assetType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isSharedPartner;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> permissions = new ArrayList<>();
 
   public DeletePartnerAssetAccessResult assetId(@Nullable String assetId) {

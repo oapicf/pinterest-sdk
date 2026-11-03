@@ -22,7 +22,7 @@ export interface CatalogsReportFeedIngestionFilter {
 }
 export namespace CatalogsReportFeedIngestionFilter {
     export const ReportTypeEnum = {
-        FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+        FeedIngestionIssues: 'FEED_INGESTION_ISSUES',
     } as const;
     export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }

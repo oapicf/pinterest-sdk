@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!feedId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsListProductsByFeedBasedFilter.", nameof(feedId));
+                throw new JsonException("Property is required for class CatalogsListProductsByFeedBasedFilter: feed_id.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsListProductsByFeedBasedFilter.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsListProductsByFeedBasedFilter: filters.");
 
             if (feedId.IsSet && feedId.Value == null)
-                throw new ArgumentNullException(nameof(feedId), "Property is not nullable for class CatalogsListProductsByFeedBasedFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsListProductsByFeedBasedFilter: feed_id.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsListProductsByFeedBasedFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsListProductsByFeedBasedFilter: filters.");
 
             return new CatalogsListProductsByFeedBasedFilter(feedId.Value!, filters.Value!);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsListProductsByFeedBasedFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsListProductsByFeedBasedFilter catalogsListProductsByFeedBasedFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,15 +192,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsListProductsByFeedBasedFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsListProductsByFeedBasedFilter catalogsListProductsByFeedBasedFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsListProductsByFeedBasedFilter.FeedId == null)
-                throw new ArgumentNullException(nameof(catalogsListProductsByFeedBasedFilter.FeedId), "Property is required for class CatalogsListProductsByFeedBasedFilter.");
-
-            if (catalogsListProductsByFeedBasedFilter.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsListProductsByFeedBasedFilter.Filters), "Property is required for class CatalogsListProductsByFeedBasedFilter.");
-
             writer.WriteString("feed_id", catalogsListProductsByFeedBasedFilter.FeedId);
 
             writer.WritePropertyName("filters");

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cREATIVEASSETSID.IsSet)
-                throw new ArgumentException("Property is required for class CreativeAssetsIdFilter.", nameof(cREATIVEASSETSID));
+                throw new JsonException("Property is required for class CreativeAssetsIdFilter: CREATIVE_ASSETS_ID.");
 
             if (cREATIVEASSETSID.IsSet && cREATIVEASSETSID.Value == null)
-                throw new ArgumentNullException(nameof(cREATIVEASSETSID), "Property is not nullable for class CreativeAssetsIdFilter.");
+                throw new JsonException("Property is not nullable for class CreativeAssetsIdFilter: CREATIVE_ASSETS_ID.");
 
             return new CreativeAssetsIdFilter(cREATIVEASSETSID.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="creativeAssetsIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreativeAssetsIdFilter creativeAssetsIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="creativeAssetsIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreativeAssetsIdFilter creativeAssetsIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (creativeAssetsIdFilter.CREATIVE_ASSETS_ID == null)
-                throw new ArgumentNullException(nameof(creativeAssetsIdFilter.CREATIVE_ASSETS_ID), "Property is required for class CreativeAssetsIdFilter.");
-
             writer.WritePropertyName("CREATIVE_ASSETS_ID");
             JsonSerializer.Serialize(writer, creativeAssetsIdFilter.CREATIVE_ASSETS_ID, jsonSerializerOptions);
         }

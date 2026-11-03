@@ -169,16 +169,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!action.IsSet)
-                throw new ArgumentException("Property is required for class AuthRespondInvitesBodyItem.", nameof(action));
+                throw new JsonException("Property is required for class AuthRespondInvitesBodyItem: action.");
 
             if (!inviteId.IsSet)
-                throw new ArgumentException("Property is required for class AuthRespondInvitesBodyItem.", nameof(inviteId));
+                throw new JsonException("Property is required for class AuthRespondInvitesBodyItem: invite_id.");
 
             if (action.IsSet && action.Value == null)
-                throw new ArgumentNullException(nameof(action), "Property is not nullable for class AuthRespondInvitesBodyItem.");
+                throw new JsonException("Property is not nullable for class AuthRespondInvitesBodyItem: action.");
 
             if (inviteId.IsSet && inviteId.Value == null)
-                throw new ArgumentNullException(nameof(inviteId), "Property is not nullable for class AuthRespondInvitesBodyItem.");
+                throw new JsonException("Property is not nullable for class AuthRespondInvitesBodyItem: invite_id.");
 
             return new AuthRespondInvitesBodyItem(action.Value!, inviteId.Value!);
         }
@@ -189,7 +189,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="authRespondInvitesBodyItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AuthRespondInvitesBodyItem authRespondInvitesBodyItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -204,15 +203,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="authRespondInvitesBodyItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AuthRespondInvitesBodyItem authRespondInvitesBodyItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (authRespondInvitesBodyItem.Action == null)
-                throw new ArgumentNullException(nameof(authRespondInvitesBodyItem.Action), "Property is required for class AuthRespondInvitesBodyItem.");
-
-            if (authRespondInvitesBodyItem.InviteId == null)
-                throw new ArgumentNullException(nameof(authRespondInvitesBodyItem.InviteId), "Property is required for class AuthRespondInvitesBodyItem.");
-
             writer.WritePropertyName("action");
             JsonSerializer.Serialize(writer, authRespondInvitesBodyItem.Action, jsonSerializerOptions);
             writer.WriteString("invite_id", authRespondInvitesBodyItem.InviteId);

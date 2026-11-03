@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductMetadata", description = "Retail product metadata entity")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailProductMetadata {
 
   private ProductAvailability availability;
@@ -106,8 +106,8 @@ public class CatalogsRetailProductMetadata {
    * The parent ID of the product.
    * @return itemGroupId
    */
-  @NotNull 
-  @Schema(name = "item_group_id", example = "DS0294", description = "The parent ID of the product.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "item_group_id", example = "DS0294", description = "The parent ID of the product.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("item_group_id")
   public JsonNullable<String> getItemGroupId() {
     return itemGroupId;
@@ -169,8 +169,8 @@ public class CatalogsRetailProductMetadata {
    * The discounted price of the product.
    * @return salePrice
    */
-  @NotNull @Valid 
-  @Schema(name = "sale_price", example = "14.99", description = "The discounted price of the product.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Valid 
+  @Schema(name = "sale_price", example = "14.99", description = "The discounted price of the product.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("sale_price")
   public JsonNullable<BigDecimal> getSalePrice() {
     return salePrice;

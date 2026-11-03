@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("UpdateMemberAssetsResultsResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateMemberAssetsResultsResponseArray   {
-  private @Valid List<@Valid UpdateMemberAssetResultItem> items = new ArrayList<>();
+  private List<@Valid UpdateMemberAssetResultItem> items = new ArrayList<>();
 
   public UpdateMemberAssetsResultsResponseArray() {
   }
@@ -38,7 +38,7 @@ public class UpdateMemberAssetsResultsResponseArray   {
   
   @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
   @JsonProperty("items")
-  @Valid public List<@Valid UpdateMemberAssetResultItem> getItems() {
+  public List<@Valid UpdateMemberAssetResultItem> getItems() {
     return items;
   }
 

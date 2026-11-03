@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Ad group configuration for delivery estimates.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Ad group configuration for delivery estimates.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupDeliveryEstimates   {
   
   private Boolean autoTargetingEnabled;
@@ -52,7 +52,6 @@ public class AdGroupDeliveryEstimates   {
   
   @ApiModelProperty(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")
   @JsonProperty("creative_types")
-  @Valid
   public List<AdGroupAudienceSizingCreativeTypes> getCreativeTypes() {
     return creativeTypes;
   }
@@ -66,7 +65,6 @@ public class AdGroupDeliveryEstimates   {
   
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
   @JsonProperty("keywords")
-  @Valid
   public List<@Valid AdGroupDeliveryEstimatesKeywordsItems> getKeywords() {
     return keywords;
   }

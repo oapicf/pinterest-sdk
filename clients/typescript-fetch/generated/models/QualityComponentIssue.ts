@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface QualityComponentIssue {
     /**
      * Unique identifier for the issue check.
-     * @type {string}
-     * @memberof QualityComponentIssue
      */
     id: string;
     /**
      * Human-readable name of the issue.
-     * @type {string}
-     * @memberof QualityComponentIssue
      */
     name: string;
     /**
      * Detailed reason for the issue.
-     * @type {string}
-     * @memberof QualityComponentIssue
      */
     reason: string;
 }

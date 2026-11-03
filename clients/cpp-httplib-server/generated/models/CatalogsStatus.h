@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class CatalogsStatus
-{
-public:
-
-    CatalogsStatus();
-    virtual ~CatalogsStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsStatus,
-        )
-
-private:
+enum class CatalogsStatus {
+    
+    ACTIVE,
+    
+    INACTIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsStatus& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case CatalogsStatus::INACTIVE: j = "INACTIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = CatalogsStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "INACTIVE")
+    {
+        value = CatalogsStatus::INACTIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsStatus", &j);
+}
 
 } // namespace models
 

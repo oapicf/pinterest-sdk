@@ -126,7 +126,7 @@ public class LeadAdsApiHandler {
         LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LeadSubscriptionPostParamsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter leadSubscriptionPostParamsCreate is {}", leadSubscriptionPostParamsCreate);
+        logger.debug("Parameter leadSubscriptionPostParamsCreate is (body omitted)");
 
         api.adAccountsSubscriptionsPost(adAccountId, leadSubscriptionPostParamsCreate)
             .onSuccess(apiResponse -> {

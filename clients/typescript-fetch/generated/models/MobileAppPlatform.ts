@@ -21,7 +21,7 @@
  */
 export const MobileAppPlatform = {
     Ios: 'IOS',
-    Android: 'ANDROID'
+    Android: 'ANDROID',
 } as const;
 export type MobileAppPlatform = typeof MobileAppPlatform[keyof typeof MobileAppPlatform];
 

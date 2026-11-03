@@ -13,8 +13,8 @@ public struct CatalogsRetailFeed: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     public var catalogType: CatalogType
     public var createdAt: Date
     public var credentials: CatalogsFeedCredentials?

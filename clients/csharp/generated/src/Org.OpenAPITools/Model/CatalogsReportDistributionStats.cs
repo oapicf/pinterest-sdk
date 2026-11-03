@@ -346,7 +346,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsReportDistributionStats.ReportTypeEnum?>(CatalogsReportDistributionStats.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsReportDistributionStats.ReportTypeEnum? reportTypeValue = CatalogsReportDistributionStats.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsReportDistributionStats.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -355,28 +360,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: catalog_id.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: code.");
 
             if (codeLabel.IsSet && codeLabel.Value == null)
-                throw new ArgumentNullException(nameof(codeLabel), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: code_label.");
 
             if (ineligibleForAds.IsSet && ineligibleForAds.Value == null)
-                throw new ArgumentNullException(nameof(ineligibleForAds), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: ineligible_for_ads.");
 
             if (ineligibleForOrganic.IsSet && ineligibleForOrganic.Value == null)
-                throw new ArgumentNullException(nameof(ineligibleForOrganic), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: ineligible_for_organic.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: message.");
 
             if (occurrences.IsSet && occurrences.Value == null)
-                throw new ArgumentNullException(nameof(occurrences), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: occurrences.");
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsReportDistributionStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportDistributionStats: report_type.");
 
             return new CatalogsReportDistributionStats(catalogId, code, codeLabel, ineligibleForAds, ineligibleForOrganic, message, occurrences, reportType);
         }
@@ -387,7 +392,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportDistributionStats"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsReportDistributionStats catalogsReportDistributionStats, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -402,17 +406,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportDistributionStats"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsReportDistributionStats catalogsReportDistributionStats, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsReportDistributionStats.CatalogIdOption.IsSet && catalogsReportDistributionStats.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsReportDistributionStats.CatalogId), "Property is required for class CatalogsReportDistributionStats.");
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.CatalogId to non-nullable JSON property 'catalog_id'.");
+
+            if (catalogsReportDistributionStats.CodeOption.IsSet && catalogsReportDistributionStats.Code == null)
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.Code to non-nullable JSON property 'code'.");
 
             if (catalogsReportDistributionStats.CodeLabelOption.IsSet && catalogsReportDistributionStats.CodeLabel == null)
-                throw new ArgumentNullException(nameof(catalogsReportDistributionStats.CodeLabel), "Property is required for class CatalogsReportDistributionStats.");
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.CodeLabel to non-nullable JSON property 'code_label'.");
+
+            if (catalogsReportDistributionStats.IneligibleForAdsOption.IsSet && catalogsReportDistributionStats.IneligibleForAds == null)
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.IneligibleForAds to non-nullable JSON property 'ineligible_for_ads'.");
+
+            if (catalogsReportDistributionStats.IneligibleForOrganicOption.IsSet && catalogsReportDistributionStats.IneligibleForOrganic == null)
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.IneligibleForOrganic to non-nullable JSON property 'ineligible_for_organic'.");
 
             if (catalogsReportDistributionStats.MessageOption.IsSet && catalogsReportDistributionStats.Message == null)
-                throw new ArgumentNullException(nameof(catalogsReportDistributionStats.Message), "Property is required for class CatalogsReportDistributionStats.");
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.Message to non-nullable JSON property 'message'.");
+
+            if (catalogsReportDistributionStats.OccurrencesOption.IsSet && catalogsReportDistributionStats.Occurrences == null)
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.Occurrences to non-nullable JSON property 'occurrences'.");
+
+            if (catalogsReportDistributionStats.ReportTypeOption.IsSet && catalogsReportDistributionStats.ReportType == null)
+                throw new JsonException("Cannot write null property CatalogsReportDistributionStats.ReportType to non-nullable JSON property 'report_type'.");
 
             if (catalogsReportDistributionStats.CatalogIdOption.IsSet)
                 writer.WriteString("catalog_id", catalogsReportDistributionStats.CatalogId);

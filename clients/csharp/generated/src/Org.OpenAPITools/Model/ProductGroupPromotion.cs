@@ -708,46 +708,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: ad_group_id.");
 
             if (bidInMicroCurrency.IsSet && bidInMicroCurrency.Value == null)
-                throw new ArgumentNullException(nameof(bidInMicroCurrency), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: bid_in_micro_currency.");
 
             if (catalogProductGroupId.IsSet && catalogProductGroupId.Value == null)
-                throw new ArgumentNullException(nameof(catalogProductGroupId), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: catalog_product_group_id.");
 
             if (catalogProductGroupName.IsSet && catalogProductGroupName.Value == null)
-                throw new ArgumentNullException(nameof(catalogProductGroupName), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: catalog_product_group_name.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: creative_type.");
 
             if (customizableCtaType.IsSet && customizableCtaType.Value == null)
-                throw new ArgumentNullException(nameof(customizableCtaType), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: customizable_cta_type.");
 
             if (definition.IsSet && definition.Value == null)
-                throw new ArgumentNullException(nameof(definition), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: definition.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: id.");
 
             if (included.IsSet && included.Value == null)
-                throw new ArgumentNullException(nameof(included), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: included.");
 
             if (isMdl.IsSet && isMdl.Value == null)
-                throw new ArgumentNullException(nameof(isMdl), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: is_mdl.");
 
             if (parentId.IsSet && parentId.Value == null)
-                throw new ArgumentNullException(nameof(parentId), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: parent_id.");
 
             if (relativeDefinition.IsSet && relativeDefinition.Value == null)
-                throw new ArgumentNullException(nameof(relativeDefinition), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: relative_definition.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: status.");
 
             if (trackingUrl.IsSet && trackingUrl.Value == null)
-                throw new ArgumentNullException(nameof(trackingUrl), "Property is not nullable for class ProductGroupPromotion.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotion: tracking_url.");
 
             return new ProductGroupPromotion(adGroupId, bidInMicroCurrency, catalogProductGroupId, catalogProductGroupName, collectionsHeaderType, collectionsHeroDestinationUrl, collectionsHeroPinId, creativeType, customizableCtaType, definition, gridClickType, id, included, isGenerateBackground, isImageAutoResizing, isMdl, parentId, preferredMediaType, relativeDefinition, selectedImageTag, selectedVideoTag, slideshowCollectionsDescription, slideshowCollectionsTitle, status, trackingUrl);
         }
@@ -758,7 +758,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupPromotion productGroupPromotion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -773,32 +772,49 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupPromotion productGroupPromotion, JsonSerializerOptions jsonSerializerOptions)
         {
             if (productGroupPromotion.AdGroupIdOption.IsSet && productGroupPromotion.AdGroupId == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.AdGroupId), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.AdGroupId to non-nullable JSON property 'ad_group_id'.");
+
+            if (productGroupPromotion.BidInMicroCurrencyOption.IsSet && productGroupPromotion.BidInMicroCurrency == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.BidInMicroCurrency to non-nullable JSON property 'bid_in_micro_currency'.");
 
             if (productGroupPromotion.CatalogProductGroupIdOption.IsSet && productGroupPromotion.CatalogProductGroupId == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.CatalogProductGroupId), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.CatalogProductGroupId to non-nullable JSON property 'catalog_product_group_id'.");
 
             if (productGroupPromotion.CatalogProductGroupNameOption.IsSet && productGroupPromotion.CatalogProductGroupName == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.CatalogProductGroupName), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.CatalogProductGroupName to non-nullable JSON property 'catalog_product_group_name'.");
+
+            if (productGroupPromotion.CreativeTypeOption.IsSet && productGroupPromotion.CreativeType == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.CreativeType to non-nullable JSON property 'creative_type'.");
+
+            if (productGroupPromotion.CustomizableCtaTypeOption.IsSet && productGroupPromotion.CustomizableCtaType == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.CustomizableCtaType to non-nullable JSON property 'customizable_cta_type'.");
 
             if (productGroupPromotion.DefinitionOption.IsSet && productGroupPromotion.Definition == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.Definition), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.Definition to non-nullable JSON property 'definition'.");
 
             if (productGroupPromotion.IdOption.IsSet && productGroupPromotion.Id == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.Id), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.Id to non-nullable JSON property 'id'.");
+
+            if (productGroupPromotion.IncludedOption.IsSet && productGroupPromotion.Included == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.Included to non-nullable JSON property 'included'.");
+
+            if (productGroupPromotion.IsMdlOption.IsSet && productGroupPromotion.IsMdl == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.IsMdl to non-nullable JSON property 'is_mdl'.");
 
             if (productGroupPromotion.ParentIdOption.IsSet && productGroupPromotion.ParentId == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.ParentId), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.ParentId to non-nullable JSON property 'parent_id'.");
 
             if (productGroupPromotion.RelativeDefinitionOption.IsSet && productGroupPromotion.RelativeDefinition == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.RelativeDefinition), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.RelativeDefinition to non-nullable JSON property 'relative_definition'.");
+
+            if (productGroupPromotion.StatusOption.IsSet && productGroupPromotion.Status == null)
+                throw new JsonException("Cannot write null property ProductGroupPromotion.Status to non-nullable JSON property 'status'.");
 
             if (productGroupPromotion.TrackingUrlOption.IsSet && productGroupPromotion.TrackingUrl == null)
-                throw new ArgumentNullException(nameof(productGroupPromotion.TrackingUrl), "Property is required for class ProductGroupPromotion.");
+                throw new JsonException("Cannot write null property ProductGroupPromotion.TrackingUrl to non-nullable JSON property 'tracking_url'.");
 
             if (productGroupPromotion.AdGroupIdOption.IsSet)
                 writer.WriteString("ad_group_id", productGroupPromotion.AdGroupId);

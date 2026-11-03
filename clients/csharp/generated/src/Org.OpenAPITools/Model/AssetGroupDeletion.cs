@@ -160,7 +160,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (deletedAssetGroups.IsSet && deletedAssetGroups.Value == null)
-                throw new ArgumentNullException(nameof(deletedAssetGroups), "Property is not nullable for class AssetGroupDeletion.");
+                throw new JsonException("Property is not nullable for class AssetGroupDeletion: deleted_asset_groups.");
 
             return new AssetGroupDeletion(deletedAssetGroups, exceptions);
         }
@@ -171,7 +171,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupDeletion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupDeletion assetGroupDeletion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -186,11 +185,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupDeletion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupDeletion assetGroupDeletion, JsonSerializerOptions jsonSerializerOptions)
         {
             if (assetGroupDeletion.DeletedAssetGroupsOption.IsSet && assetGroupDeletion.DeletedAssetGroups == null)
-                throw new ArgumentNullException(nameof(assetGroupDeletion.DeletedAssetGroups), "Property is required for class AssetGroupDeletion.");
+                throw new JsonException("Cannot write null property AssetGroupDeletion.DeletedAssetGroups to non-nullable JSON property 'deleted_asset_groups'.");
 
             if (assetGroupDeletion.DeletedAssetGroupsOption.IsSet)
             {

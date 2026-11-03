@@ -19,8 +19,6 @@ public class AdgroupTrackingFeatures  {
   */
   @ApiModelProperty(value = "Tracking features. To clear this field, set to null.")
 
-  @Valid
-
   private List<AdgroupTrackingFeatureType> enabled = new ArrayList<>();
  /**
    * Tracking features. To clear this field, set to null.

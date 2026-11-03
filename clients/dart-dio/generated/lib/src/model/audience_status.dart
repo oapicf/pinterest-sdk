@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_status.g.dart';
 
+/// Audience processing status
 class AudienceStatus extends EnumClass {
 
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'INITIALIZING')
   static const AudienceStatus INITIALIZING = _$INITIALIZING;
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'READY')
   static const AudienceStatus READY = _$READY;
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'TOO_SMALL')
   static const AudienceStatus TOO_SMALL = _$TOO_SMALL;
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'ELIGIBLE')
   static const AudienceStatus ELIGIBLE = _$ELIGIBLE;
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'PERSONAS_INELIGIBLE_SIZE')
   static const AudienceStatus PERSONAS_INELIGIBLE_SIZE = _$PERSONAS_INELIGIBLE_SIZE;
-  /// Audience processing status
   @BuiltValueEnumConst(wireName: r'PERSONAS_INITIALIZING')
   static const AudienceStatus PERSONAS_INITIALIZING = _$PERSONAS_INITIALIZING;
 

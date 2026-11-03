@@ -2328,10 +2328,4 @@ lib/pinterest_sdk/models/website_verification_method.rb
 lib/pinterest_sdk/models/workload_state.rb
 lib/pinterest_sdk/version.rb
 pinterest_sdk.gemspec
-spec/api/catalog_supplemental_api_spec.rb
-spec/api/conversion_deletion_requests_api_spec.rb
-spec/api/customer_segment_api_spec.rb
-spec/api/product_tags_api_spec.rb
-spec/api/schedules_api_spec.rb
-spec/api/trends_api_spec.rb
 spec/spec_helper.rb

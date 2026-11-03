@@ -45,7 +45,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Controller
 @Tag(name = "CatalogProductGroups", description = "The CatalogProductGroups API")
 public class CatalogProductGroupsController {
@@ -218,7 +218,7 @@ public class CatalogProductGroupsController {
     @Consumes(value = {"application/json"})
     @Secured({SecurityRule.IS_AUTHENTICATED})
     public Mono<List<String>> catalogsProductGroupsCreateMany(
-        @Body @NotNull @Size(min=1, max=1000) List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, 
+        @Body @NotNull @Size(min=1, max=1000) List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
     ) {
         // TODO implement catalogsProductGroupsCreateMany();

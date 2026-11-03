@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CampaignBidOptions
 import org.openapitools.model.CampaignObjectiveType
 import org.openapitools.model.IntendedPromotionType
@@ -58,8 +55,6 @@ data class CampaignBatchResponseData(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Campaign's Advertiser ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_account_id")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
@@ -69,8 +64,6 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("bid_options") val bidOptions: CampaignBidOptions? = null,
 
     @Schema(example = "1432744744", readOnly = true, description = "Campaign creation time. Unix timestamp in seconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_time")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
 
@@ -87,15 +80,11 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("end_time") val endTime: kotlin.Int? = null,
 
     @Schema(example = "549755885175", description = "Campaign ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("intended_promotion_type")
     @get:JsonProperty("intended_promotion_type") val intendedPromotionType: IntendedPromotionType? = null,
 
@@ -108,8 +97,6 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("is_campaign_budget_optimization") val isCampaignBudgetOptimization: kotlin.Boolean? = null,
 
     @Schema(example = "true", readOnly = true, description = "Whether the campaign contains a carting(where-to-buy link) ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_carting")
     @get:JsonProperty("is_carting") val isCarting: kotlin.Boolean? = null,
 
@@ -118,20 +105,14 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("is_flexible_daily_budgets") val isFlexibleDailyBudgets: kotlin.Boolean? = null,
 
     @Schema(example = "true", description = "Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_ltv_optimized")
     @get:JsonProperty("is_ltv_optimized") val isLtvOptimized: kotlin.Boolean? = null,
 
     @Schema(example = "true", description = "Note: This field is immutable unless the campaign is in draft status. You can only use this feature with the following objectives: - CONSIDERATION - WEB\\_CONVERSION - SALES - LEADS - CATALOG\\_SALES - APP\\_INSTALL Enable Pinterest Performance+ for your campaign. To learn more, see [Pinterest Performance+ Setup](https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/)")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_performance_plus")
     @get:JsonProperty("is_performance_plus") val isPerformancePlus: kotlin.Boolean? = null,
 
     @Schema(example = "true", description = "Note: This field is immutable unless the campaign is in draft status.  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)  Have your ads and content appear at the top of search result lists in Pinterest.  You can only use this feature with the following objectives:  - CONSIDERATION  - WEB\\_CONVERSION  - SALES  - LEADS  - CATALOG\\_SALES  You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_top_of_search")
     @get:JsonProperty("is_top_of_search") val isTopOfSearch: kotlin.Boolean? = null,
 
@@ -140,15 +121,11 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("lifetime_spend_cap") val lifetimeSpendCap: kotlin.Int? = null,
 
     @Schema(example = "ACME Tools", description = "Campaign name - 255 chars max.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("objective_type")
     @get:JsonProperty("objective_type") val objectiveType: CampaignObjectiveType? = null,
 
@@ -173,8 +150,6 @@ data class CampaignBatchResponseData(
 
     @field:Valid
     @Schema(readOnly = true, description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("summary_status")
     @get:JsonProperty("summary_status") val summaryStatus: SummaryStatus? = null,
 
@@ -184,14 +159,10 @@ data class CampaignBatchResponseData(
     @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null,
 
     @Schema(example = "campaign", readOnly = true, description = "Always \"campaign\".")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("type")
     @get:JsonProperty("type") val type: kotlin.String? = null,
 
     @Schema(example = "1432744744", readOnly = true, description = "UTC timestamp. Last update time.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("updated_time")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
 ) {

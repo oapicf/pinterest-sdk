@@ -15,7 +15,7 @@
 export const LeadsExportStatus = {
     InProgress: 'IN_PROGRESS',
     Finished: 'FINISHED',
-    Failed: 'FAILED'
+    Failed: 'FAILED',
 } as const;
 export type LeadsExportStatus = typeof LeadsExportStatus[keyof typeof LeadsExportStatus];
 

@@ -29,14 +29,10 @@ import {
 export interface CatalogsCreativeAssetsProductMetadata {
     /**
      * The user-created unique ID that represents the creative assets item.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductMetadata
      */
     creativeAssetsId: string;
     /**
      * 
-     * @type {CreativeAssetsVisibilityType}
-     * @memberof CatalogsCreativeAssetsProductMetadata
      */
     visibility: CreativeAssetsVisibilityType;
 }

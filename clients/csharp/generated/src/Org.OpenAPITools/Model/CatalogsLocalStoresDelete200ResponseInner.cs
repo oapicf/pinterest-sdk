@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsLocalStoresDelete200ResponseInner.", nameof(id));
+                throw new JsonException("Property is required for class CatalogsLocalStoresDelete200ResponseInner: id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsLocalStoresDelete200ResponseInner.", nameof(status));
+                throw new JsonException("Property is required for class CatalogsLocalStoresDelete200ResponseInner: status.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CatalogsLocalStoresDelete200ResponseInner.");
+                throw new JsonException("Property is not nullable for class CatalogsLocalStoresDelete200ResponseInner: id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsLocalStoresDelete200ResponseInner.");
+                throw new JsonException("Property is not nullable for class CatalogsLocalStoresDelete200ResponseInner: status.");
 
             return new CatalogsLocalStoresDelete200ResponseInner(id.Value!, status.Value!);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresDelete200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsLocalStoresDelete200ResponseInner catalogsLocalStoresDelete200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,15 +192,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresDelete200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsLocalStoresDelete200ResponseInner catalogsLocalStoresDelete200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsLocalStoresDelete200ResponseInner.Id == null)
-                throw new ArgumentNullException(nameof(catalogsLocalStoresDelete200ResponseInner.Id), "Property is required for class CatalogsLocalStoresDelete200ResponseInner.");
-
-            if (catalogsLocalStoresDelete200ResponseInner.Status == null)
-                throw new ArgumentNullException(nameof(catalogsLocalStoresDelete200ResponseInner.Status), "Property is required for class CatalogsLocalStoresDelete200ResponseInner.");
-
             writer.WriteString("id", catalogsLocalStoresDelete200ResponseInner.Id);
 
             writer.WritePropertyName("status");

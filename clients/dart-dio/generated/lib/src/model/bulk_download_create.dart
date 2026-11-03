@@ -192,3 +192,4 @@ class _$BulkDownloadCreateSerializer implements PrimitiveSerializer<BulkDownload
   }
 }
 
+

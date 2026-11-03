@@ -435,13 +435,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (contentIds.IsSet && contentIds.Value == null)
-                throw new ArgumentNullException(nameof(contentIds), "Property is not nullable for class ConversionEventsDataItemsCustomData.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomData: content_ids.");
 
             if (contents.IsSet && contents.Value == null)
-                throw new ArgumentNullException(nameof(contents), "Property is not nullable for class ConversionEventsDataItemsCustomData.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomData: contents.");
 
             if (numItems.IsSet && numItems.Value == null)
-                throw new ArgumentNullException(nameof(numItems), "Property is not nullable for class ConversionEventsDataItemsCustomData.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomData: num_items.");
 
             return new ConversionEventsDataItemsCustomData(contentBrand, contentCategory, contentIds, contentName, contents, currency, externalMeasurementId, externalMeasurementVendorId, np, numItems, optOutType, orderId, predictedLtv, searchString, value);
         }
@@ -452,7 +452,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItemsCustomData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventsDataItemsCustomData conversionEventsDataItemsCustomData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -467,14 +466,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItemsCustomData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventsDataItemsCustomData conversionEventsDataItemsCustomData, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionEventsDataItemsCustomData.ContentIdsOption.IsSet && conversionEventsDataItemsCustomData.ContentIds == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomData.ContentIds), "Property is required for class ConversionEventsDataItemsCustomData.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomData.ContentIds to non-nullable JSON property 'content_ids'.");
 
             if (conversionEventsDataItemsCustomData.ContentsOption.IsSet && conversionEventsDataItemsCustomData.Contents == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomData.Contents), "Property is required for class ConversionEventsDataItemsCustomData.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomData.Contents to non-nullable JSON property 'contents'.");
+
+            if (conversionEventsDataItemsCustomData.NumItemsOption.IsSet && conversionEventsDataItemsCustomData.NumItems == null)
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomData.NumItems to non-nullable JSON property 'num_items'.");
 
             if (conversionEventsDataItemsCustomData.ContentBrandOption.IsSet)
                 if (conversionEventsDataItemsCustomData.ContentBrandOption.Value != null)

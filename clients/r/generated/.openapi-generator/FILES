@@ -2324,9 +2324,3 @@ docs/WebsiteVerificationMethod.md
 docs/WorkloadState.md
 git_push.sh
 tests/testthat.R
-tests/testthat/test_catalog_supplemental_api.R
-tests/testthat/test_conversion_deletion_requests_api.R
-tests/testthat/test_customer_segment_api.R
-tests/testthat/test_product_tags_api.R
-tests/testthat/test_schedules_api.R
-tests/testthat/test_trends_api.R

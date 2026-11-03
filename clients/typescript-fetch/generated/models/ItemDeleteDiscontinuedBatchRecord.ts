@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ItemDeleteDiscontinuedBatchRecord {
     /**
      * The catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof ItemDeleteDiscontinuedBatchRecord
      */
     itemId?: string;
 }

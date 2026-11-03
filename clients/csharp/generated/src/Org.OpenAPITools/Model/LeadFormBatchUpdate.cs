@@ -318,22 +318,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormBatchUpdate.", nameof(id));
+                throw new JsonException("Property is required for class LeadFormBatchUpdate: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LeadFormBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LeadFormBatchUpdate: id.");
 
             if (hasAcceptedTerms.IsSet && hasAcceptedTerms.Value == null)
-                throw new ArgumentNullException(nameof(hasAcceptedTerms), "Property is not nullable for class LeadFormBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LeadFormBatchUpdate: has_accepted_terms.");
 
             if (policyLinks.IsSet && policyLinks.Value == null)
-                throw new ArgumentNullException(nameof(policyLinks), "Property is not nullable for class LeadFormBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LeadFormBatchUpdate: policy_links.");
 
             if (questions.IsSet && questions.Value == null)
-                throw new ArgumentNullException(nameof(questions), "Property is not nullable for class LeadFormBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LeadFormBatchUpdate: questions.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class LeadFormBatchUpdate.");
+                throw new JsonException("Property is not nullable for class LeadFormBatchUpdate: status.");
 
             return new LeadFormBatchUpdate(id.Value!, completionMessage, disclosureLanguage, hasAcceptedTerms, name, policyLinks, privacyPolicyLink, questions, status);
         }
@@ -344,7 +344,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormBatchUpdate leadFormBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -359,17 +358,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormBatchUpdate leadFormBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadFormBatchUpdate.Id == null)
-                throw new ArgumentNullException(nameof(leadFormBatchUpdate.Id), "Property is required for class LeadFormBatchUpdate.");
+            if (leadFormBatchUpdate.HasAcceptedTermsOption.IsSet && leadFormBatchUpdate.HasAcceptedTerms == null)
+                throw new JsonException("Cannot write null property LeadFormBatchUpdate.HasAcceptedTerms to non-nullable JSON property 'has_accepted_terms'.");
 
             if (leadFormBatchUpdate.PolicyLinksOption.IsSet && leadFormBatchUpdate.PolicyLinks == null)
-                throw new ArgumentNullException(nameof(leadFormBatchUpdate.PolicyLinks), "Property is required for class LeadFormBatchUpdate.");
+                throw new JsonException("Cannot write null property LeadFormBatchUpdate.PolicyLinks to non-nullable JSON property 'policy_links'.");
 
             if (leadFormBatchUpdate.QuestionsOption.IsSet && leadFormBatchUpdate.Questions == null)
-                throw new ArgumentNullException(nameof(leadFormBatchUpdate.Questions), "Property is required for class LeadFormBatchUpdate.");
+                throw new JsonException("Cannot write null property LeadFormBatchUpdate.Questions to non-nullable JSON property 'questions'.");
+
+            if (leadFormBatchUpdate.StatusOption.IsSet && leadFormBatchUpdate.Status == null)
+                throw new JsonException("Cannot write null property LeadFormBatchUpdate.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("id", leadFormBatchUpdate.Id);
 

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -24,43 +23,31 @@ import jakarta.annotation.Generated;
  * LeadSubscriptionPostParams
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadSubscriptionPostParams {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String apiVersion;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> cryptographicAlgorithm = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> cryptographicKey = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> leadFormId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String userAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String webhookUrl;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerAccessToken;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PartnerMetadata partnerMetadata;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String partnerRefreshToken;
 
   public LeadSubscriptionPostParams adAccountId(@Nullable String adAccountId) {
@@ -136,7 +123,7 @@ public class LeadSubscriptionPostParams {
    * @return cryptographicAlgorithm
    */
   
-  @Schema(name = "cryptographic_algorithm", description = "Lead data encryption algorithm.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "cryptographic_algorithm", description = "Lead data encryption algorithm.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("cryptographic_algorithm")
   public JsonNullable<String> getCryptographicAlgorithm() {
     return cryptographicAlgorithm;
@@ -156,7 +143,7 @@ public class LeadSubscriptionPostParams {
    * @return cryptographicKey
    */
   
-  @Schema(name = "cryptographic_key", description = "Base64 encoded key for client to decrypt lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "cryptographic_key", description = "Base64 encoded key for client to decrypt lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("cryptographic_key")
   public JsonNullable<String> getCryptographicKey() {
     return cryptographicKey;
@@ -197,7 +184,7 @@ public class LeadSubscriptionPostParams {
    * @return leadFormId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "lead_form_id", description = "Lead form ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "lead_form_id", description = "Lead form ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("lead_form_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getLeadFormId() {
     return leadFormId;

@@ -135,9 +135,10 @@ class _$PinMediaMetadataSerializer implements PrimitiveSerializer<PinMediaMetada
   }
 }
 
+
+/// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
 class PinMediaMetadataItemTypeEnum extends EnumClass {
 
-  /// Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
   @BuiltValueEnumConst(wireName: r'video')
   static const PinMediaMetadataItemTypeEnum video = _$pinMediaMetadataItemTypeEnum_video;
 

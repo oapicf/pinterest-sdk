@@ -29,8 +29,6 @@ import {
 export interface PriceFilter {
     /**
      * 
-     * @type {PriceFilterPrice}
-     * @memberof PriceFilter
      */
     pRICE: PriceFilterPrice;
 }

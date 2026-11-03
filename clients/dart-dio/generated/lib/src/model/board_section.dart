@@ -123,3 +123,4 @@ class _$BoardSectionSerializer implements PrimitiveSerializer<BoardSection> {
   }
 }
 
+

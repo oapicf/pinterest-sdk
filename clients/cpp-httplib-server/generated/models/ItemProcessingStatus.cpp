@@ -6,20 +6,3 @@
 */
 #include "ItemProcessingStatus.h"
 
-namespace models {
-
-ItemProcessingStatus::ItemProcessingStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

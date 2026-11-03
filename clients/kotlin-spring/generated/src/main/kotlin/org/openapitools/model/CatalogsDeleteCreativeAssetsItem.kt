@@ -26,11 +26,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsDeleteCreativeAssetsItem(
 
     @Schema(example = "DS0294-M", required = true, description = "The catalog creative assets id in the merchant namespace")
-    @param:JsonProperty("creative_assets_id")
+    @param:JsonProperty("creative_assets_id", required = true)
     @get:JsonProperty("creative_assets_id", required = true) val creativeAssetsId: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) override val operation: CatalogsDeleteCreativeAssetsItem.Operation = kotlin.String.DELETE
 ) : CatalogsCreativeAssetsBatchItem {
 
@@ -41,12 +41,12 @@ data class CatalogsDeleteCreativeAssetsItem(
     enum class Operation(@get:JsonValue val value: kotlin.String) {
 
         DELETE("DELETE");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }

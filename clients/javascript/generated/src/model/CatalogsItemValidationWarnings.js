@@ -17,7 +17,7 @@ import CatalogsItemValidationDetails from './CatalogsItemValidationDetails';
 /**
  * The CatalogsItemValidationWarnings model module.
  * @module model/CatalogsItemValidationWarnings
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemValidationWarnings {
     /**

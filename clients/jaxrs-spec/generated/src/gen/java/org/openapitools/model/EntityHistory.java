@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("EntityHistory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class EntityHistory   {
   private Integer changeTimestamp;
-  private @Valid List<@Valid EntityDataChangeHistory> dataChanges = new ArrayList<>();
+  private List<@Valid EntityDataChangeHistory> dataChanges = new ArrayList<>();
   private String entityId;
   private String entityName;
   private String ldap;
@@ -65,7 +65,7 @@ public class EntityHistory   {
   
   @ApiModelProperty(value = "Properties associated with a particular change to an entity's data")
   @JsonProperty("data_changes")
-  @Valid public List<@Valid EntityDataChangeHistory> getDataChanges() {
+  public List<@Valid EntityDataChangeHistory> getDataChanges() {
     return dataChanges;
   }
 

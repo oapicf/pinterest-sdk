@@ -63,7 +63,7 @@ public class AdGroupAudienceSizingCreate  {
   * [Placement group](/docs/redoc/#section/Placement-group).
   */
   @JsonbProperty("placement_group")
-  protected AdgroupPlacementGroupType placementGroup;
+  protected AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
  /**
   * Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.

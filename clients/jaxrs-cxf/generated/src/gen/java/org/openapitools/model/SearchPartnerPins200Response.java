@@ -22,8 +22,6 @@ public class SearchPartnerPins200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid SummaryPin> items = new ArrayList<>();
  /**
    * Get bookmark

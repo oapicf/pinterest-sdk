@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsItemsPostFilters.CatalogTypeEnum?>(CatalogsItemsPostFilters.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsItemsPostFilters.CatalogTypeEnum? catalogTypeValue = CatalogsItemsPostFilters.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsItemsPostFilters.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsItemsPostFilters.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsItemsPostFilters: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsItemsPostFilters.");
+                throw new JsonException("Property is not nullable for class CatalogsItemsPostFilters: catalog_type.");
 
             if (catalogsCreativeAssetsItemsPostFilter != null)
                 return new CatalogsItemsPostFilters(catalogsCreativeAssetsItemsPostFilter);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsPostFilters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsItemsPostFilters catalogsItemsPostFilters, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsItemsPostFilters"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsItemsPostFilters catalogsItemsPostFilters, JsonSerializerOptions jsonSerializerOptions)
         {
 

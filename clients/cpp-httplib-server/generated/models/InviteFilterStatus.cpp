@@ -6,20 +6,3 @@
 */
 #include "InviteFilterStatus.h"
 
-namespace models {
-
-InviteFilterStatus::InviteFilterStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -147,16 +147,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!age.IsSet)
-                throw new ArgumentException("Property is required for class ProductCategoriesDemographic.", nameof(age));
+                throw new JsonException("Property is required for class ProductCategoriesDemographic: age.");
 
             if (!gender.IsSet)
-                throw new ArgumentException("Property is required for class ProductCategoriesDemographic.", nameof(gender));
+                throw new JsonException("Property is required for class ProductCategoriesDemographic: gender.");
 
             if (age.IsSet && age.Value == null)
-                throw new ArgumentNullException(nameof(age), "Property is not nullable for class ProductCategoriesDemographic.");
+                throw new JsonException("Property is not nullable for class ProductCategoriesDemographic: age.");
 
             if (gender.IsSet && gender.Value == null)
-                throw new ArgumentNullException(nameof(gender), "Property is not nullable for class ProductCategoriesDemographic.");
+                throw new JsonException("Property is not nullable for class ProductCategoriesDemographic: gender.");
 
             return new ProductCategoriesDemographic(age.Value!, gender.Value!);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoriesDemographic"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductCategoriesDemographic productCategoriesDemographic, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,15 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoriesDemographic"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductCategoriesDemographic productCategoriesDemographic, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productCategoriesDemographic.Age == null)
-                throw new ArgumentNullException(nameof(productCategoriesDemographic.Age), "Property is required for class ProductCategoriesDemographic.");
-
-            if (productCategoriesDemographic.Gender == null)
-                throw new ArgumentNullException(nameof(productCategoriesDemographic.Gender), "Property is required for class ProductCategoriesDemographic.");
-
             writer.WritePropertyName("age");
             JsonSerializer.Serialize(writer, productCategoriesDemographic.Age, jsonSerializerOptions);
             writer.WritePropertyName("gender");

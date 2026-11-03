@@ -142,3 +142,4 @@ class _$CreateAssetInvitesRequestItemSerializer implements PrimitiveSerializer<C
   }
 }
 
+

@@ -16,7 +16,7 @@ import org.openapitools.model.CatalogsHotelGuestRatings;
 /**
  * CatalogsUpdatableHotelAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsUpdatableHotelAttributes   {
   @JsonProperty("address")
   private CatalogsHotelAddress address;
@@ -346,7 +346,7 @@ public class CatalogsUpdatableHotelAttributes   {
 
   public CatalogsUpdatableHotelAttributes addNeighborhoodItem(String neighborhoodItem) {
     if (this.neighborhood == null) {
-      this.neighborhood = ;
+      this.neighborhood = new ArrayList<>();
     }
     this.neighborhood.add(neighborhoodItem);
     return this;

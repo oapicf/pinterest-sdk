@@ -200,7 +200,7 @@ import javax.validation.Valid;
 */
 @Path("/ad_accounts")
 @Api(description = "the ad_accounts API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdAccountsApi {
 
     @GET
@@ -221,7 +221,17 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response adAccountAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -243,7 +253,19 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("targeting_types") @NotNull @Size(min=1,max=15)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsAccountTargetingType> targetingTypes,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response adAccountTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("targeting_types") @NotNull @Size(min=1,max=15)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsAccountTargetingType> targetingTypes
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -265,7 +287,12 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsAudiencesSharedAccountsList(@QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of the audience to use to filter the results.")  String audienceId,@QueryParam("account_type") @NotNull  @ApiParam("Filter accounts by account type.")  AudienceAccountType accountType,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response adAccountsAudiencesSharedAccountsList(@QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of the audience to use to filter the results.")  String audienceId
+,@QueryParam("account_type") @NotNull  @ApiParam("Filter accounts by account type.")  AudienceAccountType accountType
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -286,7 +313,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsCreate(@Valid @NotNull AdAccountCreate adAccountCreate) {
+    public Response adAccountsCreate(@Valid @NotNull AdAccountCreate adAccountCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -308,7 +336,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId) {
+    public Response adAccountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -329,7 +358,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsList(@QueryParam("include_shared_accounts") @DefaultValue("true")  @ApiParam("Include shared ad accounts")  Boolean includeSharedAccounts,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response adAccountsList(@QueryParam("include_shared_accounts") @DefaultValue("true")  @ApiParam("Include shared ad accounts")  Boolean includeSharedAccounts
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -350,7 +382,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsSubscriptionsDelById(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("subscription_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a subscription.") String subscriptionId) {
+    public Response adAccountsSubscriptionsDelById(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("subscription_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a subscription.") String subscriptionId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -372,7 +406,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsSubscriptionsGetById(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("subscription_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a subscription.") String subscriptionId) {
+    public Response adAccountsSubscriptionsGetById(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("subscription_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a subscription.") String subscriptionId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -392,7 +428,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsSubscriptionsGetList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response adAccountsSubscriptionsGetList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -410,7 +449,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adAccountsSubscriptionsPost(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate) {
+    public Response adAccountsSubscriptionsPost(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull LeadSubscriptionPostParamsCreate leadSubscriptionPostParamsCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -432,7 +473,19 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("aggregate_report_rows") @DefaultValue("false")  @ApiParam("Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.")  Boolean aggregateReportRows,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response adGroupsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("aggregate_report_rows") @DefaultValue("false")  @ApiParam("Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.")  Boolean aggregateReportRows
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -456,7 +509,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsAudienceSizing(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdGroupAudienceSizingCreate adGroupAudienceSizingCreate) {
+    public Response adGroupsAudienceSizing(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdGroupAudienceSizingCreate adGroupAudienceSizingCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -480,7 +535,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsBidFloorGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull BidFloorCreate bidFloorCreate) {
+    public Response adGroupsBidFloorGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull BidFloorCreate bidFloorCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -501,7 +558,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid AdGroupCreateCreate> adGroupCreateCreate) {
+    public Response adGroupsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid AdGroupCreateCreate> adGroupCreateCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -521,7 +580,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsDynamicTitlesDownloadCsv(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId) {
+    public Response adGroupsDynamicTitlesDownloadCsv(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -541,7 +602,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsDynamicTitlesGetStatus(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId) {
+    public Response adGroupsDynamicTitlesGetStatus(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -561,7 +624,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsDynamicTitlesGetUploadUrl(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId) {
+    public Response adGroupsDynamicTitlesGetUploadUrl(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -583,7 +648,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsDynamicTitlesProcessCsv(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId,@Valid @NotNull DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate) {
+    public Response adGroupsDynamicTitlesProcessCsv(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId
+,@Valid @NotNull DynamicTitlesProcessCSVCreate dynamicTitlesProcessCSVCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -605,7 +673,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsGet(@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response adGroupsGet(@PathParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Ad group ID.") String adGroupId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -627,7 +697,15 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses,@QueryParam("translate_interests_to_names") @DefaultValue("false")  @ApiParam("Return interests as text names (if value is true) rather than topic IDs.")  Boolean translateInterestsToNames) {
+    public Response adGroupsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds
+,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses
+,@QueryParam("translate_interests_to_names") @DefaultValue("false")  @ApiParam("Return interests as text names (if value is true) rather than topic IDs.")  Boolean translateInterestsToNames
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -649,7 +727,22 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.")  List<AdsAnalyticsAdGroupTargetingType> targetingTypes,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone,@QueryParam("sort_columns") @Size(min=1,max=2)  @ApiParam("Sort Columns.")  List<String> sortColumns,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending) {
+    public Response adGroupsTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;, \&quot;CREATIVE_ENHANCEMENTS\&quot;] are in BETA and not yet available to all users.")  List<AdsAnalyticsAdGroupTargetingType> targetingTypes
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+,@QueryParam("sort_columns") @Size(min=1,max=2)  @ApiParam("Sort Columns.")  List<String> sortColumns
+,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -670,7 +763,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adGroupsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate) {
+    public Response adGroupsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -692,7 +787,18 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adPinsAnalytics(@QueryParam("campaign_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Campaign Id to use to filter the results.")  String campaignId,@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime) {
+    public Response adPinsAnalytics(@QueryParam("campaign_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Campaign Id to use to filter the results.")  String campaignId
+,@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -714,7 +820,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adPreviewsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdPreviewRequest adPreviewRequest) {
+    public Response adPreviewsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdPreviewRequest adPreviewRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -736,7 +844,22 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("ad_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsAdTargetingType> targetingTypes,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@QueryParam("click_window_days")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  ConversionAttributionWindowDays clickWindowDays,@QueryParam("engagement_window_days")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  ConversionAttributionWindowDays engagementWindowDays,@QueryParam("view_window_days")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  ConversionAttributionWindowDays viewWindowDays,@QueryParam("conversion_report_time")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  ConversionReportTimeType conversionReportTime,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone,@QueryParam("sort_columns") @Size(min=1,max=2)  @ApiParam("Sort Columns.")  List<String> sortColumns,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending) {
+    public Response adTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("ad_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsAdTargetingType> targetingTypes
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@QueryParam("click_window_days")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  ConversionAttributionWindowDays clickWindowDays
+,@QueryParam("engagement_window_days")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  ConversionAttributionWindowDays engagementWindowDays
+,@QueryParam("view_window_days")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  ConversionAttributionWindowDays viewWindowDays
+,@QueryParam("conversion_report_time")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  ConversionReportTimeType conversionReportTime
+,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+,@QueryParam("sort_columns") @Size(min=1,max=2)  @ApiParam("Sort Columns.")  List<String> sortColumns
+,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -758,7 +881,20 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("pin_ids") @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<String> pinIds,@QueryParam("ad_ids") @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response adsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("pin_ids") @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<String> pinIds
+,@QueryParam("ad_ids") @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -779,7 +915,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid AdCreate> adCreate) {
+    public Response adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid AdCreate> adCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -802,7 +940,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsCreditRedeem(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdsCreditRedeemCreate adsCreditRedeemCreate) {
+    public Response adsCreditRedeem(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdsCreditRedeemCreate adsCreditRedeemCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -823,7 +963,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsCreditsDiscountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response adsCreditsDiscountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -845,7 +988,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsGet(@PathParam("ad_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("The ID of this ad.") String adId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response adsGet(@PathParam("ad_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("The ID of this ad.") String adId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -867,7 +1012,15 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds,@QueryParam("ad_ids") @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses) {
+    public Response adsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds
+,@QueryParam("ad_ids") @Size(min=1,max=250)  @ApiParam("List of Ad Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> adIds
+,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -888,7 +1041,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid AdBatchUpdate> adBatchUpdate) {
+    public Response adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid AdBatchUpdate> adBatchUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -911,7 +1066,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advertiserDefinedEventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+    public Response advertiserDefinedEventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -933,7 +1090,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advertiserDefinedEventsDelete(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("event_names") @NotNull  @ApiParam("List of event names to delete")  List<String> eventNames) {
+    public Response advertiserDefinedEventsDelete(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("event_names") @NotNull  @ApiParam("List of event names to delete")  List<String> eventNames
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -955,7 +1114,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advertiserDefinedEventsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response advertiserDefinedEventsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -978,7 +1138,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advertiserDefinedEventsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+    public Response advertiserDefinedEventsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1000,7 +1162,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsCreateConversionProductReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ConversionProductReportCreate conversionProductReportCreate) {
+    public Response analyticsCreateConversionProductReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ConversionProductReportCreate conversionProductReportCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1022,7 +1186,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsCreateMmmReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Valid @NotNull MMMReportCreate mmMReportCreate) {
+    public Response analyticsCreateMmmReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@Valid @NotNull MMMReportCreate mmMReportCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1043,7 +1209,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsCreateReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest) {
+    public Response analyticsCreateReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1064,7 +1232,12 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsCreateTemplateReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("template_id") @Size(max=18) @ApiParam("Unique identifier of a template.") String templateId,@QueryParam("start_date")  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.")  LocalDate startDate,@QueryParam("end_date")  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.")  LocalDate endDate,@QueryParam("granularity")  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity) {
+    public Response analyticsCreateTemplateReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("template_id") @Size(max=18) @ApiParam("Unique identifier of a template.") String templateId
+,@QueryParam("start_date")  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.")  LocalDate startDate
+,@QueryParam("end_date")  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.")  LocalDate endDate
+,@QueryParam("granularity")  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1084,7 +1257,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsGetConversionProductReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token) {
+    public Response analyticsGetConversionProductReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1104,7 +1279,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsGetMmmReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token) {
+    public Response analyticsGetMmmReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1124,7 +1301,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response analyticsGetReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token) {
+    public Response analyticsGetReport(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("token") @NotNull  @ApiParam("Token returned from the post request creation call")  String token
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1146,7 +1325,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audienceInsightsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("audience_insight_type") @NotNull  @ApiParam("Type of audience insights.")  AudienceInsightType audienceInsightType) {
+    public Response audienceInsightsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("audience_insight_type") @NotNull  @ApiParam("Type of audience insights.")  AudienceInsightType audienceInsightType
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1168,7 +1349,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audienceInsightsScopeAndTypeGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response audienceInsightsScopeAndTypeGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1190,7 +1372,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audiencesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdAccountsAudienceCreate adAccountsAudienceCreate) {
+    public Response audiencesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdAccountsAudienceCreate adAccountsAudienceCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1212,7 +1396,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audiencesGet(@PathParam("audience_id") @Pattern(regexp="^\\d+$") @ApiParam("Audience ID.") String audienceId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response audiencesGet(@PathParam("audience_id") @Pattern(regexp="^\\d+$") @ApiParam("Audience ID.") String audienceId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1234,7 +1420,13 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audiencesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("ownership_type")   AudienceOwnershipType ownershipType,@QueryParam("exclude_nca") @DefaultValue("false")  @ApiParam("When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).")  Boolean excludeNca) {
+    public Response audiencesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("ownership_type")   AudienceOwnershipType ownershipType
+,@QueryParam("exclude_nca") @DefaultValue("false")  @ApiParam("When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).")  Boolean excludeNca
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1255,7 +1447,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response audiencesUpdate(@PathParam("audience_id") @Pattern(regexp="^\\d+$") @ApiParam("Audience ID.") String audienceId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdAccountsAudienceUpdate adAccountsAudienceUpdate) {
+    public Response audiencesUpdate(@PathParam("audience_id") @Pattern(regexp="^\\d+$") @ApiParam("Audience ID.") String audienceId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdAccountsAudienceUpdate adAccountsAudienceUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1276,7 +1471,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response billingInvoiceDownloadGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("billing_invoice_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of a billing invoice.") String billingInvoiceId) {
+    public Response billingInvoiceDownloadGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("billing_invoice_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of a billing invoice.") String billingInvoiceId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1297,7 +1494,16 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response billingInvoicesGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("sort") @DefaultValue("DUE_DATE")  @ApiParam("Field of which to sort billing invoices")  BillingInvoiceSortField sort,@QueryParam("status")  @ApiParam("Status of billing invoices to filter by")  BillingInvoiceStatus status,@QueryParam("document_type")  @ApiParam("Document type of billing invoices to filter by")  BillingInvoiceDocumentType documentType,@QueryParam("start_due_date")  @ApiParam("Starting point for due dates when searching for invoices. Format: YYYY-MM-DD")  LocalDate startDueDate,@QueryParam("end_due_date")  @ApiParam("Ending point for due dates when searching for invoices. Format: YYYY-MM-DD")  LocalDate endDueDate) {
+    public Response billingInvoicesGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("sort") @DefaultValue("DUE_DATE")  @ApiParam("Field of which to sort billing invoices")  BillingInvoiceSortField sort
+,@QueryParam("status")  @ApiParam("Status of billing invoices to filter by")  BillingInvoiceStatus status
+,@QueryParam("document_type")  @ApiParam("Document type of billing invoices to filter by")  BillingInvoiceDocumentType documentType
+,@QueryParam("start_due_date")  @ApiParam("Starting point for due dates when searching for invoices. Format: YYYY-MM-DD")  LocalDate startDueDate
+,@QueryParam("end_due_date")  @ApiParam("Ending point for due dates when searching for invoices. Format: YYYY-MM-DD")  LocalDate endDueDate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1318,7 +1524,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response billingProfilesGet(@QueryParam("is_active") @NotNull  @ApiParam("Return active billing profiles, if false return all billing profiles.")  Boolean isActive,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response billingProfilesGet(@QueryParam("is_active") @NotNull  @ApiParam("Return active billing profiles, if false return all billing profiles.")  Boolean isActive
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1340,7 +1550,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response bulkDownloadCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull BulkDownloadCreate bulkDownloadCreate) {
+    public Response bulkDownloadCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull BulkDownloadCreate bulkDownloadCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1362,7 +1574,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response bulkRequestGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("bulk_request_id") @ApiParam("Bulk request ID that is from one of the entities bulk endpoints") String bulkRequestId,@QueryParam("include_details") @DefaultValue("false")  @ApiParam("If set to True then attach the errors/details to all the requests")  Boolean includeDetails) {
+    public Response bulkRequestGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("bulk_request_id") @ApiParam("Bulk request ID that is from one of the entities bulk endpoints") String bulkRequestId
+,@QueryParam("include_details") @DefaultValue("false")  @ApiParam("If set to True then attach the errors/details to all the requests")  Boolean includeDetails
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1378,7 +1593,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = BulkUpsertResponse.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class)
     })
-    public Response bulkUpsertCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull BulkUpsertRequest bulkUpsertRequest) {
+    public Response bulkUpsertCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull BulkUpsertRequest bulkUpsertRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1400,7 +1617,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignAdPreviewCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate) {
+    public Response campaignAdPreviewCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1421,7 +1640,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignAdPreviewDelete(@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response campaignAdPreviewDelete(@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1441,7 +1662,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignAdPreviewRead(@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response campaignAdPreviewRead(@QueryParam("ad_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1463,7 +1686,20 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("campaign_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsCampaignTargetingType> targetingTypes,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response campaignTargetingAnalyticsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("campaign_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("targeting_types") @NotNull @Size(min=1,max=14)  @ApiParam("Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\&quot;AGE_BUCKET_AND_GENDER\&quot;] is in BETA and not yet available to all users.")  List<AdsAnalyticsCampaignTargetingType> targetingTypes
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("attribution_types") @Size(max=2)  @ApiParam("List of types of attribution for the conversion report")  List<ConversionReportAttributionType> attributionTypes
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1485,7 +1721,19 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("campaign_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("aggregate_report_rows") @DefaultValue("false")  @ApiParam("Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.")  Boolean aggregateReportRows,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response campaignsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("campaign_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("aggregate_report_rows") @DefaultValue("false")  @ApiParam("Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.")  Boolean aggregateReportRows
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1506,7 +1754,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid CampaignCreateItem> campaignCreateItem) {
+    public Response campaignsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid CampaignCreateItem> campaignCreateItem
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1528,7 +1778,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsGet(@PathParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Campaign ID, must be associated with the ad account ID provided in the path.") String campaignId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response campaignsGet(@PathParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Campaign ID, must be associated with the ad account ID provided in the path.") String campaignId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1550,7 +1802,13 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses) {
+    public Response campaignsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1571,7 +1829,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response campaignsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem) {
+    public Response campaignsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1595,7 +1855,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionDeletionRequestCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ConversionDeletionRequestCreate conversionDeletionRequestCreate) {
+    public Response conversionDeletionRequestCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ConversionDeletionRequestCreate conversionDeletionRequestCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1618,7 +1880,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionDeletionRequestDelete(@PathParam("request_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of the conversion deletion request") String requestId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response conversionDeletionRequestDelete(@PathParam("request_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of the conversion deletion request") String requestId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1640,7 +1904,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionDeletionRequestGet(@PathParam("request_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of the conversion deletion request") String requestId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response conversionDeletionRequestGet(@PathParam("request_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of the conversion deletion request") String requestId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1662,7 +1928,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionDeletionRequestList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response conversionDeletionRequestList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1684,7 +1954,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionEqsList(@QueryParam("lookback_period") @NotNull  @ApiParam("Lookback window (number of days).")  LookbackPeriodOptions lookbackPeriod,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("source_platform")  @ApiParam("Source platform of event.")  SourcePlatformOptions sourcePlatform,@QueryParam("ingestion_source")  @ApiParam("Ingestion source of event.")  IngestionSourceOptions ingestionSource) {
+    public Response conversionEqsList(@QueryParam("lookback_period") @NotNull  @ApiParam("Lookback window (number of days).")  LookbackPeriodOptions lookbackPeriod
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("source_platform")  @ApiParam("Source platform of event.")  SourcePlatformOptions sourcePlatform
+,@QueryParam("ingestion_source")  @ApiParam("Ingestion source of event.")  IngestionSourceOptions ingestionSource
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1706,7 +1980,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionTagsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ConversionTagCreate conversionTagCreate) {
+    public Response conversionTagsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ConversionTagCreate conversionTagCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1728,7 +2004,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("conversion_tag_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Id of the conversion tag.") String conversionTagId) {
+    public Response conversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("conversion_tag_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Id of the conversion tag.") String conversionTagId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1750,7 +2028,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response conversionTagsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("filter_deleted") @DefaultValue("false")  @ApiParam("Filter by deleted status")  Boolean filterDeleted) {
+    public Response conversionTagsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("filter_deleted") @DefaultValue("false")  @ApiParam("Filter by deleted status")  Boolean filterDeleted
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1772,7 +2052,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response countryKeywordsMetricsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("country_code") @NotNull  @ApiParam("Two letter country code (ISO 3166-1 alpha-2)")  String countryCode,@QueryParam("keywords") @NotNull @Size(min=1,max=2000)  @ApiParam("Comma-separated keywords")  List<String> keywords) {
+    public Response countryKeywordsMetricsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("country_code") @NotNull  @ApiParam("Two letter country code (ISO 3166-1 alpha-2)")  String countryCode
+,@QueryParam("keywords") @NotNull @Size(min=1,max=2000)  @ApiParam("Comma-separated keywords")  List<String> keywords
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1793,7 +2076,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListUploadsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId,@Valid @NotNull CustomerListUploadCreateRequest customerListUploadCreateRequest) {
+    public Response customerListUploadsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId
+,@Valid @NotNull CustomerListUploadCreateRequest customerListUploadCreateRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1813,7 +2099,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListUploadsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId,@PathParam("customer_list_upload_id") @Pattern(regexp="^\\d+$") @ApiParam("Customer List Upload ID.") String customerListUploadId) {
+    public Response customerListUploadsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId
+,@PathParam("customer_list_upload_id") @Pattern(regexp="^\\d+$") @ApiParam("Customer List Upload ID.") String customerListUploadId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1833,7 +2122,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListUploadsRun(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId,@PathParam("customer_list_upload_id") @Pattern(regexp="^\\d+$") @ApiParam("Customer List Upload ID.") String customerListUploadId) {
+    public Response customerListUploadsRun(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId
+,@PathParam("customer_list_upload_id") @Pattern(regexp="^\\d+$") @ApiParam("Customer List Upload ID.") String customerListUploadId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1855,7 +2147,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Valid @NotNull CustomerListCreate customerListCreate) {
+    public Response customerListsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@Valid @NotNull CustomerListCreate customerListCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1877,7 +2171,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId) {
+    public Response customerListsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1897,7 +2193,12 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("exclude_nca") @DefaultValue("false")  @ApiParam("When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).")  Boolean excludeNca) {
+    public Response customerListsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("exclude_nca") @DefaultValue("false")  @ApiParam("When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).")  Boolean excludeNca
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1918,7 +2219,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerListsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId,@Valid @NotNull CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody) {
+    public Response customerListsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("customer_list_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Customer list ID.") String customerListId
+,@Valid @NotNull CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1940,7 +2244,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerSegmentCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull CustomerSegmentCreate customerSegmentCreate) {
+    public Response customerSegmentCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull CustomerSegmentCreate customerSegmentCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1960,7 +2266,13 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerSegmentList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("include_sizing") @DefaultValue("false")  @ApiParam("Include audience sizing in result or not")  Boolean includeSizing,@QueryParam("search_query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String searchQuery) {
+    public Response customerSegmentList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("include_sizing") @DefaultValue("false")  @ApiParam("Include audience sizing in result or not")  Boolean includeSizing
+,@QueryParam("search_query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String searchQuery
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -1981,7 +2293,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response customerSegmentUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody) {
+    public Response customerSegmentUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull CustomerSegmentUpdateRequestUpdateWithRequiredBody customerSegmentUpdateRequestUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2006,7 +2320,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 503, message = "The server is currently unable to handle the request due to a temporary overload or scheduled maintenance.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response eventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ConversionEventsCreate conversionEventsCreate,@QueryParam("test")  @ApiParam("Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.")  Boolean test) {
+    public Response eventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ConversionEventsCreate conversionEventsCreate
+,@QueryParam("test")  @ApiParam("Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.")  Boolean test
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2026,7 +2343,12 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getAdGroupsByPromotionIdsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("promotion_ids") @NotNull @Size(min=1,max=50)  @ApiParam("List of Promotion IDs to use to filter the results.")  List<String> promotionIds,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response getAdGroupsByPromotionIdsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("promotion_ids") @NotNull @Size(min=1,max=50)  @ApiParam("List of Promotion IDs to use to filter the results.")  List<String> promotionIds
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2048,7 +2370,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 503, message = "The service is temporarily unavailable.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getCampaignDeliveryEstimates(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign) {
+    public Response getCampaignDeliveryEstimates(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2070,7 +2394,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response keywordsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull KeywordsCreate keywordsCreate) {
+    public Response keywordsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull KeywordsCreate keywordsCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2092,7 +2418,14 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response keywordsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Campaign Id to use to filter the results.")  String campaignId,@QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Ad group Id.")  String adGroupId,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds,@QueryParam("match_types") @Size(min=1,max=5)  @ApiParam("Keyword [match type](/docs/api-features/targeting-overview/)")  List<MatchType> matchTypes,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response keywordsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("campaign_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Campaign Id to use to filter the results.")  String campaignId
+,@QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Ad group Id.")  String adGroupId
+,@QueryParam("ad_group_ids") @Size(min=1,max=250)  @ApiParam("List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.")  List<@Pattern(regexp = "^\\d+$")String> adGroupIds
+,@QueryParam("match_types") @Size(min=1,max=5)  @ApiParam("Keyword [match type](/docs/api-features/targeting-overview/)")  List<MatchType> matchTypes
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2113,7 +2446,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response keywordsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull KeywordsUpdate keywordsUpdate) {
+    public Response keywordsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull KeywordsUpdate keywordsUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2135,7 +2470,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response labelsApply(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("label_id") @ApiParam("Label ID.") String labelId,@Valid @NotNull LabeledEntitiesCreate labeledEntitiesCreate) {
+    public Response labelsApply(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("label_id") @ApiParam("Label ID.") String labelId
+,@Valid @NotNull LabeledEntitiesCreate labeledEntitiesCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2156,7 +2494,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response labelsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull LabelCreateRequest labelCreateRequest) {
+    public Response labelsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull LabelCreateRequest labelCreateRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2176,7 +2516,14 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response labelsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds,@QueryParam("label_ids") @Size(min=1,max=250)  @ApiParam("List of Label Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds,@QueryParam("entity_statuses")  @ApiParam("Label entity status")  List<QueryLabelEntityStatusesItems> entityStatuses,@QueryParam("label_types")  @ApiParam("Label type.")  List<QueryLabelTypesItems> labelTypes,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response labelsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("campaign_ids") @Size(min=1,max=250)  @ApiParam("List of Campaign Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds
+,@QueryParam("label_ids") @Size(min=1,max=250)  @ApiParam("List of Label Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds
+,@QueryParam("entity_statuses")  @ApiParam("Label entity status")  List<QueryLabelEntityStatusesItems> entityStatuses
+,@QueryParam("label_types")  @ApiParam("Label type.")  List<QueryLabelTypesItems> labelTypes
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2198,7 +2545,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response labelsRemove(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("label_id") @ApiParam("Label ID.") String labelId,@Valid @NotNull LabeledEntitiesCreate labeledEntitiesCreate) {
+    public Response labelsRemove(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("label_id") @ApiParam("Label ID.") String labelId
+,@Valid @NotNull LabeledEntitiesCreate labeledEntitiesCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2219,7 +2569,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response labelsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull LabelUpdateRequest labelUpdateRequest) {
+    public Response labelsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull LabelUpdateRequest labelUpdateRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2239,7 +2591,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormGet(@PathParam("lead_form_id") @Pattern(regexp="^\\d+$") @ApiParam("The ID of this lead form") String leadFormId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response leadFormGet(@PathParam("lead_form_id") @Pattern(regexp="^\\d+$") @ApiParam("The ID of this lead form") String leadFormId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2257,7 +2611,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormTestCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@PathParam("lead_form_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a lead form.") String leadFormId,@Valid @NotNull LeadFormTestCreate leadFormTestCreate) {
+    public Response leadFormTestCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@PathParam("lead_form_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier of a lead form.") String leadFormId
+,@Valid @NotNull LeadFormTestCreate leadFormTestCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2278,7 +2635,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid LeadFormCreate> leadFormCreate) {
+    public Response leadFormsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid LeadFormCreate> leadFormCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2298,7 +2657,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response leadFormsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2319,7 +2682,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadFormsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) {
+    public Response leadFormsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2341,7 +2706,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadsExportCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull LeadsExportsCreate leadsExportsCreate) {
+    public Response leadsExportCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull LeadsExportsCreate leadsExportsCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2361,7 +2728,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response leadsExportGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("leads_export_id") @Pattern(regexp="^\\d+$") @ApiParam("lead_export_id token returned from the create a lead export endpoint") String leadsExportId) {
+    public Response leadsExportGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("leads_export_id") @Pattern(regexp="^\\d+$") @ApiParam("lead_export_id token returned from the create a lead export endpoint") String leadsExportId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2383,7 +2752,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response msotEventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ConversionMSOTEventsCreate conversionMSOTEventsCreate) {
+    public Response msotEventsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ConversionMSOTEventsCreate conversionMSOTEventsCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2405,7 +2776,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ocpmEligibleConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response ocpmEligibleConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2425,7 +2797,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response orderLinesGet(@PathParam("order_line_id") @Pattern(regexp="^\\d+$") @ApiParam("Order line ID.") String orderLineId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response orderLinesGet(@PathParam("order_line_id") @Pattern(regexp="^\\d+$") @ApiParam("Order line ID.") String orderLineId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2445,7 +2819,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response orderLinesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response orderLinesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2467,7 +2845,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response pageVisitConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response pageVisitConversionTagsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2489,7 +2871,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productGroupPromotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ProductGroupPromotionsCreate productGroupPromotionsCreate) {
+    public Response productGroupPromotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ProductGroupPromotionsCreate productGroupPromotionsCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2509,7 +2893,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productGroupPromotionsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("product_group_promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of a product group promotion") String productGroupPromotionId) {
+    public Response productGroupPromotionsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("product_group_promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of a product group promotion") String productGroupPromotionId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2529,7 +2915,14 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productGroupPromotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("product_group_promotion_ids") @Size(min=1,max=250)  @ApiParam("List of Product group promotion Ids.")  List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses,@QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Ad group Id.")  String adGroupId) {
+    public Response productGroupPromotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("product_group_promotion_ids") @Size(min=1,max=250)  @ApiParam("List of Product group promotion Ids.")  List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds
+,@QueryParam("entity_statuses")  @ApiParam("Entity status")  List<EntityStatus> entityStatuses
+,@QueryParam("ad_group_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Ad group Id.")  String adGroupId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2550,7 +2943,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productGroupPromotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) {
+    public Response productGroupPromotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2572,7 +2967,18 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response productGroupsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("product_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Product group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> productGroupIds,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone) {
+    public Response productGroupsAnalytics(@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate
+,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate
+,@QueryParam("product_group_ids") @NotNull @Size(min=1,max=250)  @ApiParam("List of Product group Ids to use to filter the results.")  List<@Pattern(regexp = "^\\d+$")String> productGroupIds
+,@QueryParam("columns") @NotNull  @ApiParam("Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile&#39;s currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it&#39;s microdollars. Otherwise, it&#39;s in microunits of the advertiser&#39;s currency.  For example, if the advertiser&#39;s currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.")  List<ReportingColumnSync> columns
+,@QueryParam("granularity") @NotNull  @ApiParam("  TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly")  Granularity granularity
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("click_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days.")  BigDecimal clickWindowDays
+,@QueryParam("engagement_window_days") @DefaultValue("30")  @ApiParam("Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.")  BigDecimal engagementWindowDays
+,@QueryParam("view_window_days") @DefaultValue("1")  @ApiParam("Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day.")  BigDecimal viewWindowDays
+,@QueryParam("conversion_report_time") @DefaultValue("TIME_OF_AD_ACTION")  @ApiParam("The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")  String conversionReportTime
+,@QueryParam("reporting_timezone")  @ApiParam("Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.")  ReportingTimeZone reportingTimezone
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2593,7 +2999,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid PromotionCreate> promotionCreate) {
+    public Response promotionsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid PromotionCreate> promotionCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2614,7 +3022,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsDelete(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Promotion ID") String promotionId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response promotionsDelete(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Promotion ID") String promotionId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2634,7 +3044,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsGet(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Promotion ID") String promotionId,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response promotionsGet(@PathParam("promotion_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Promotion ID") String promotionId
+,@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2654,7 +3066,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response promotionsList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2675,7 +3091,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response promotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull List<@Valid PromotionBatchUpdate> promotionBatchUpdate) {
+    public Response promotionsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@NotNull List<@Valid PromotionBatchUpdate> promotionBatchUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2695,7 +3113,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response sandboxDelete(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response sandboxDelete(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2717,7 +3136,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response schedulesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Valid @NotNull List<@Valid ScheduleCreate> scheduleCreate) {
+    public Response schedulesCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@NotNull List<@Valid ScheduleCreate> scheduleCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2737,7 +3158,14 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response schedulesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@QueryParam("entity_ids") @NotNull @Size(min=1)  @ApiParam("List of Entity IDs, must be associated with the Ad Accound ID provided in the path.")  List<@Pattern(regexp = "^\\d+$")String> entityIds,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("schedule_statuses")  @ApiParam("Filter schedules by status (one or more)")  List<ScheduleStatus> scheduleStatuses,@QueryParam("schedule_type")  @ApiParam("Filter schedules by a type")  ScheduleType scheduleType) {
+    public Response schedulesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@QueryParam("entity_ids") @NotNull @Size(min=1)  @ApiParam("List of Entity IDs, must be associated with the Ad Accound ID provided in the path.")  List<@Pattern(regexp = "^\\d+$")String> entityIds
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("schedule_statuses")  @ApiParam("Filter schedules by status (one or more)")  List<ScheduleStatus> scheduleStatuses
+,@QueryParam("schedule_type")  @ApiParam("Filter schedules by a type")  ScheduleType scheduleType
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2758,7 +3186,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response schedulesUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Valid @NotNull List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate) {
+    public Response schedulesUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
+,@NotNull List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2778,7 +3208,8 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioAccountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId) {
+    public Response ssioAccountsGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2800,7 +3231,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioInsertionOrderCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull SSIOInsertionOrderCreate ssIOInsertionOrderCreate) {
+    public Response ssioInsertionOrderCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull SSIOInsertionOrderCreate ssIOInsertionOrderCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2821,7 +3254,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioInsertionOrderEdit(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) {
+    public Response ssioInsertionOrderEdit(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2841,7 +3276,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioInsertionOrdersStatusGetByAdAccount(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response ssioInsertionOrdersStatusGetByAdAccount(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2861,7 +3299,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioInsertionOrdersStatusGetByPinOrderId(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@PathParam("pin_order_id") @ApiParam("The pin order id associated with the ssio insertion order") String pinOrderId) {
+    public Response ssioInsertionOrdersStatusGetByPinOrderId(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@PathParam("pin_order_id") @ApiParam("The pin order id associated with the ssio insertion order") String pinOrderId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2881,7 +3321,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response ssioOrderLinesGetByAdAccount(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("pin_order_id")  @ApiParam("The pin order id associated with the SSIO insertion order")  String pinOrderId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response ssioOrderLinesGetByAdAccount(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("pin_order_id")  @ApiParam("The pin order id associated with the SSIO insertion order")  String pinOrderId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2903,7 +3347,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response targetingTemplateCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull TargetingTemplateCreate targetingTemplateCreate) {
+    public Response targetingTemplateCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull TargetingTemplateCreate targetingTemplateCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2925,7 +3371,13 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response targetingTemplateList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order,@QueryParam("include_sizing") @DefaultValue("false")  @ApiParam("Include audience sizing in result or not")  Boolean includeSizing,@QueryParam("search_query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String searchQuery) {
+    public Response targetingTemplateList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+,@QueryParam("include_sizing") @DefaultValue("false")  @ApiParam("Include audience sizing in result or not")  Boolean includeSizing
+,@QueryParam("search_query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String searchQuery
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2946,7 +3398,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response targetingTemplateUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate) {
+    public Response targetingTemplateUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2966,7 +3420,11 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response templatesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order) {
+    public Response templatesList(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  PinterestLibPaginationOrder order
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -2986,7 +3444,10 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response termsOfServiceGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@QueryParam("include_html") @DefaultValue("false")  @ApiParam("Return HTML in TOS text.")  Boolean includeHtml,@QueryParam("tos_type")  @ApiParam("Request type.")  String tosType) {
+    public Response termsOfServiceGet(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@QueryParam("include_html") @DefaultValue("false")  @ApiParam("Return HTML in TOS text.")  Boolean includeHtml
+,@QueryParam("tos_type")  @ApiParam("Request type.")  String tosType
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -3007,7 +3468,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateAdAccountToAdAccountSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) {
+    public Response updateAdAccountToAdAccountSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -3028,7 +3491,9 @@ public class AdAccountsApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateAdAccountToBusinessSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId,@Valid @NotNull AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) {
+    public Response updateAdAccountToBusinessSharedAudience(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) @ApiParam("Unique identifier of an ad account.") String adAccountId
+,@Valid @NotNull AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 }

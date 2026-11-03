@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'optimization_type.g.dart';
 
+/// Optimization type for ad group delivery estimates. Supported types vary by objective.
 class OptimizationType extends EnumClass {
 
-  /// Optimization type for ad group delivery estimates. Supported types vary by objective.
   @BuiltValueEnumConst(wireName: r'CLICKTHROUGH')
   static const OptimizationType CLICKTHROUGH = _$CLICKTHROUGH;
-  /// Optimization type for ad group delivery estimates. Supported types vary by objective.
   @BuiltValueEnumConst(wireName: r'IMPRESSION')
   static const OptimizationType IMPRESSION = _$IMPRESSION;
-  /// Optimization type for ad group delivery estimates. Supported types vary by objective.
   @BuiltValueEnumConst(wireName: r'WEB_CONVERSION')
   static const OptimizationType WEB_CONVERSION = _$WEB_CONVERSION;
-  /// Optimization type for ad group delivery estimates. Supported types vary by objective.
   @BuiltValueEnumConst(wireName: r'ROAS')
   static const OptimizationType ROAS = _$ROAS;
-  /// Optimization type for ad group delivery estimates. Supported types vary by objective.
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK')
   static const OptimizationType OUTBOUND_CLICK = _$OUTBOUND_CLICK;
 

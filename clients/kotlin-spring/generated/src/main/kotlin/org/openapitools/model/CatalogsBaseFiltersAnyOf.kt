@@ -23,7 +23,7 @@ data class CatalogsBaseFiltersAnyOf(
     @field:Valid
     @get:Size(min=1)
     @Schema(required = true, description = "")
-    @param:JsonProperty("any_of")
+    @param:JsonProperty("any_of", required = true)
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsBaseFilterKeys>
 ) {
 

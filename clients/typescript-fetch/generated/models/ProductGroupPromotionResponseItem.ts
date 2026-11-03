@@ -36,14 +36,10 @@ import {
 export interface ProductGroupPromotionResponseItem {
     /**
      * 
-     * @type {ProductGroupPromotion}
-     * @memberof ProductGroupPromotionResponseItem
      */
     data?: ProductGroupPromotion;
     /**
      * 
-     * @type {Array<Exception>}
-     * @memberof ProductGroupPromotionResponseItem
      */
     exceptions?: Array<Exception>;
 }

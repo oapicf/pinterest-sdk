@@ -23,44 +23,30 @@ import { mapValues } from '../runtime';
 export interface BidOptionsAgeBucketMultipliers {
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _1824?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _2534?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _3544?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _4549?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _5054?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _5564?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAgeBucketMultipliers
      */
     _65?: number;
 }

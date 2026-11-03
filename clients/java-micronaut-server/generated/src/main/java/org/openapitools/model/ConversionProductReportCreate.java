@@ -55,7 +55,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   ConversionProductReportCreate.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
 @JsonTypeName("ConversionProductReportCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ConversionProductReportCreate {
     public static final String JSON_PROPERTY_AD_GROUP_IDS = "ad_group_ids";
@@ -68,19 +68,19 @@ public class ConversionProductReportCreate {
     private List<ConversionObjectiveType> campaignObjectiveTypes = null;
 
     public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";
-    private ConversionAttributionWindowDays clickWindowDays;
+    private ConversionAttributionWindowDays clickWindowDays = 30;
 
     public static final String JSON_PROPERTY_COLUMNS = "columns";
     private List<ConversionProductReportingColumn> columns = new ArrayList<>();
 
     public static final String JSON_PROPERTY_CONVERSION_PRODUCT_ATTRIBUTION_TYPE = "conversion_product_attribution_type";
-    private ConversionProductAttributionType conversionProductAttributionType;
+    private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
     public static final String JSON_PROPERTY_CONVERSION_PRODUCT_BREAKDOWN = "conversion_product_breakdown";
-    private ConversionProductReportBreakdownType conversionProductBreakdown;
+    private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
     public static final String JSON_PROPERTY_CONVERSION_REPORT_TIME = "conversion_report_time";
-    private ConversionReportTimeType conversionReportTime;
+    private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
     public static final String JSON_PROPERTY_END_DATE = "end_date";
     private String endDate;
@@ -101,7 +101,7 @@ public class ConversionProductReportCreate {
     private String startDate;
 
     public static final String JSON_PROPERTY_VIEW_WINDOW_DAYS = "view_window_days";
-    private ConversionAttributionWindowDays viewWindowDays;
+    private ConversionAttributionWindowDays viewWindowDays = 30;
 
     public ConversionProductReportCreate(List<ConversionProductReportingColumn> columns, String endDate, ConversionProductReportGranularity granularity, ConversionProductReportLevel level, String reportName, String startDate) {
         this.columns = columns;

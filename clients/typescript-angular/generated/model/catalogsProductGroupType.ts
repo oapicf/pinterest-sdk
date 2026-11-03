@@ -22,7 +22,7 @@ export const CatalogsProductGroupType = {
     NewArrivals: 'NEW_ARRIVALS',
     ShopifyCollections: 'SHOPIFY_COLLECTIONS',
     I2Pc: 'I2PC',
-    CatalogExpansion: 'CATALOG_EXPANSION'
+    CatalogExpansion: 'CATALOG_EXPANSION',
 } as const;
 export type CatalogsProductGroupType = typeof CatalogsProductGroupType[keyof typeof CatalogsProductGroupType];
 

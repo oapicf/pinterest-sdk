@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface CatalogsHotelGuestRatings {
     /**
      * Max value for the hotel rating score.
-     * @type {number}
-     * @memberof CatalogsHotelGuestRatings
      */
     maxScore?: number | null;
     /**
      * Total number of people who have rated this hotel.
-     * @type {number}
-     * @memberof CatalogsHotelGuestRatings
      */
     numberOfReviewers?: number | null;
     /**
      * System you use for guest reviews.
-     * @type {string}
-     * @memberof CatalogsHotelGuestRatings
      */
     ratingSystem?: string | null;
     /**
      * Your hotel's rating.
-     * @type {number}
-     * @memberof CatalogsHotelGuestRatings
      */
     score?: number | null;
 }

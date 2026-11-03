@@ -6,7 +6,7 @@
 export const ActionType = {
     Clickthrough: 'CLICKTHROUGH',
     Impression: 'IMPRESSION',
-    VideoV50Mrc: 'VIDEO_V_50_MRC'
+    VideoV50Mrc: 'VIDEO_V_50_MRC',
 } as const;
 export type ActionType = typeof ActionType[keyof typeof ActionType];
 

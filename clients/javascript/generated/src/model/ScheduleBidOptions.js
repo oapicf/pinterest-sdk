@@ -21,7 +21,7 @@ import ScheduleBidOptionsPlacementMultipliers from './ScheduleBidOptionsPlacemen
 /**
  * The ScheduleBidOptions model module.
  * @module model/ScheduleBidOptions
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScheduleBidOptions {
     /**

@@ -29,8 +29,6 @@ import {
 export interface LabelUpdateRequest {
     /**
      * Labels that you are applying to the campaign.
-     * @type {Array<LabelUpdateItem>}
-     * @memberof LabelUpdateRequest
      */
     labels: Array<LabelUpdateItem>;
 }

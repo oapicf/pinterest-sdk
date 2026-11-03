@@ -16,7 +16,7 @@ import java.util.List;
  **/
 
 @ApiModel(description = "An object containing the permissions a business member has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UsersForIndividualAssetResponse   {
   @JsonProperty("asset_id")
   private String assetId;

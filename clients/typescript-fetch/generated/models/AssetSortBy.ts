@@ -20,7 +20,7 @@
 export const AssetSortBy = {
     Name: 'NAME',
     Id: 'ID',
-    Permissions: 'PERMISSIONS'
+    Permissions: 'PERMISSIONS',
 } as const;
 export type AssetSortBy = typeof AssetSortBy[keyof typeof AssetSortBy];
 

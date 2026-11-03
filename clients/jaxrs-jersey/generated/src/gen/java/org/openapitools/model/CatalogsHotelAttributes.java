@@ -55,7 +55,7 @@ import javax.validation.Valid;
   CatalogsHotelAttributes.JSON_PROPERTY_AI_DISCLOSURES,
   CatalogsHotelAttributes.JSON_PROPERTY_MAIN_IMAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelAttributes   {
   public static final String JSON_PROPERTY_ADDRESS = "address";
   @JsonProperty(JSON_PROPERTY_ADDRESS)
@@ -532,7 +532,7 @@ public class CatalogsHotelAttributes   {
    **/
   @JsonProperty(value = "ai_disclosures")
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
-  @Valid 
+  
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }

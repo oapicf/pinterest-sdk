@@ -10,7 +10,7 @@ import Foundation
 /** Product tag request item containing the pin_id of the product to tag. */
 public struct ProductTagItem: Sendable, Codable, Hashable {
 
-    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Pin ID of the product pin to tag onto the hero pin. */
     public var pinId: String
 

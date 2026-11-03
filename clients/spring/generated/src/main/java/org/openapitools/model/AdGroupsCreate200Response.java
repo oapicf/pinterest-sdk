@@ -25,7 +25,7 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("ad_groups_create_200_response")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupsCreate200Response {
 
   private List<@Valid AdGroupsCreate200ResponseItemsInner> items = new ArrayList<>();
@@ -58,7 +58,7 @@ public class AdGroupsCreate200Response {
    * Get items
    * @return items
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid AdGroupsCreate200ResponseItemsInner> getItems() {

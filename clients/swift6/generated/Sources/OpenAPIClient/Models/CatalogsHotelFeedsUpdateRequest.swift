@@ -13,7 +13,7 @@ public struct CatalogsHotelFeedsUpdateRequest: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     public var catalogType: CatalogType
     public var credentials: CatalogsFeedCredentials?
     public var defaultCurrency: NullableCurrency?

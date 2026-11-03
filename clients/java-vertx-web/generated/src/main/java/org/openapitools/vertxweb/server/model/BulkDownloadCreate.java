@@ -20,7 +20,7 @@ public class BulkDownloadCreate   {
   private BulkDownloadCampaignFilter campaignFilter;
   private List<String> entityIds = new ArrayList<>();
   private List<BulkEntityType> entityTypes = new ArrayList<>();
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
   private String updatedSince;
 
   public BulkDownloadCreate () {

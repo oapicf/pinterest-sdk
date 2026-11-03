@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_report_attribution_type.g.dart';
 
+/// Attribution type. Refers to the Pinterest Tag endpoints
 class ConversionReportAttributionType extends EnumClass {
 
-  /// Attribution type. Refers to the Pinterest Tag endpoints
   @BuiltValueEnumConst(wireName: r'INDIVIDUAL')
   static const ConversionReportAttributionType INDIVIDUAL = _$INDIVIDUAL;
-  /// Attribution type. Refers to the Pinterest Tag endpoints
   @BuiltValueEnumConst(wireName: r'HOUSEHOLD')
   static const ConversionReportAttributionType HOUSEHOLD = _$HOUSEHOLD;
 

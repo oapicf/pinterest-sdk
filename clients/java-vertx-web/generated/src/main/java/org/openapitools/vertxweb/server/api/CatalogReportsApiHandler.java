@@ -52,7 +52,7 @@ public class CatalogReportsApiHandler {
         CatalogsReportParameters catalogsReportParameters = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsReportParameters>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsReportParameters is {}", catalogsReportParameters);
+        logger.debug("Parameter catalogsReportParameters is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.reportsCreate(catalogsReportParameters, adAccountId)

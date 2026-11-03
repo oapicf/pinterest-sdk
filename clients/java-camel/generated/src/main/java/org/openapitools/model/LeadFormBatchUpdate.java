@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,7 +27,7 @@ import jakarta.annotation.Generated;
  * LeadFormBatchUpdate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormBatchUpdate {
 
   private JsonNullable<String> completionMessage = JsonNullable.<String>undefined();
@@ -41,12 +40,10 @@ public class LeadFormBatchUpdate {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid LeadFormPolicyLink> policyLinks = new ArrayList<>();
 
   private JsonNullable<String> privacyPolicyLink = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
 
   private LeadFormStatus status;
@@ -179,7 +176,7 @@ public class LeadFormBatchUpdate {
    * List of additional policy links to be displayed on the lead form.
    * @return policyLinks
    */
-  @Valid @Size(min = 0, max = 3) 
+  @Size(min = 0, max = 3) 
   @Schema(name = "policy_links", example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("policy_links")
   public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
@@ -227,7 +224,7 @@ public class LeadFormBatchUpdate {
    * List of questions to be displayed on the lead form.
    * @return questions
    */
-  @Valid @Size(min = 0, max = 10) 
+  @Size(min = 0, max = 10) 
   @Schema(name = "questions", example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
   public List<@Valid LeadFormQuestion> getQuestions() {

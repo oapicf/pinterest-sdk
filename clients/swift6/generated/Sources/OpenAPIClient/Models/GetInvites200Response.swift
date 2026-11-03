@@ -10,9 +10,9 @@ import Foundation
 public struct GetInvites200Response: Sendable, Codable, Hashable {
 
     public var bookmark: String?
-    public var items: [InviteResponse]
+    public var items: [InviteResponse?]
 
-    public init(bookmark: String? = nil, items: [InviteResponse]) {
+    public init(bookmark: String? = nil, items: [InviteResponse?]) {
         self.bookmark = bookmark
         self.items = items
     }

@@ -6,20 +6,3 @@
 */
 #include "VerticalProductCategory.h"
 
-namespace models {
-
-VerticalProductCategory::VerticalProductCategory()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

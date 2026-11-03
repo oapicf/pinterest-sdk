@@ -23,7 +23,6 @@ public class AdvertiserDefinedEventsCreateRequest  {
   * List of advertiser defined events to create or update
   */
   @ApiModelProperty(required = true, value = "List of advertiser defined events to create or update")
-  @Valid
   private List<@Valid AdvertiserDefinedEventInput> items = new ArrayList<>();
  /**
   * List of advertiser defined events to create or update

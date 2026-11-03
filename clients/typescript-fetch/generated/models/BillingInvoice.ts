@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { Currency } from './Currency';
 import {
     CurrencyFromJSON,
@@ -43,92 +43,62 @@ import {
 export interface BillingInvoice {
     /**
      * The ID of the ad account this invoice belongs to
-     * @type {string}
-     * @memberof BillingInvoice
      */
     adAccountId?: string;
     /**
      * The name of the ad account this invoice belongs to
-     * @type {string}
-     * @memberof BillingInvoice
      */
     adAccountName?: string;
     /**
      * The amount billed in this invoice. Denoted in micro currency
-     * @type {number}
-     * @memberof BillingInvoice
      */
     amountBilledMicroCurrency?: number;
     /**
      * The discount in this invoice. Denoted in micro currency
-     * @type {number}
-     * @memberof BillingInvoice
      */
     amountDiscountMicroCurrency?: number | null;
     /**
      * The net amount in this invoice. Denoted in micro currency
-     * @type {number}
-     * @memberof BillingInvoice
      */
     amountNetMicroCurrency?: number | null;
     /**
      * The tax in this invoice. Denoted in micro currency
-     * @type {number}
-     * @memberof BillingInvoice
      */
     amountTaxMicroCurrency?: number | null;
     /**
      * The country of the bill to address
-     * @type {string}
-     * @memberof BillingInvoice
      */
     billToCountry?: string;
     /**
      * The end date of the billing period. Format: YYYY-MM-DD
-     * @type {Date}
-     * @memberof BillingInvoice
      */
     billingPeriodEndDate?: Date;
     /**
      * The start date of the billing period. Format: YYYY-MM-DD
-     * @type {Date}
-     * @memberof BillingInvoice
      */
     billingPeriodStartDate?: Date;
     /**
      * 
-     * @type {Currency}
-     * @memberof BillingInvoice
      */
     currency?: Currency;
     /**
      * The type of the document
-     * @type {BillingInvoiceDocumentType}
-     * @memberof BillingInvoice
      */
     documentType?: BillingInvoiceDocumentType;
     /**
      * Unique identifier for the billing invoice
-     * @type {string}
-     * @memberof BillingInvoice
      */
     id?: string;
     /**
      * The date the invoice is due. Format: YYYY-MM-DD
-     * @type {Date}
-     * @memberof BillingInvoice
      */
     invoiceDueDate?: Date;
     /**
      * The payment terms of the invoice
-     * @type {string}
-     * @memberof BillingInvoice
      */
     paymentTerms?: string;
     /**
      * The status of the invoice
-     * @type {BillingInvoiceStatus}
-     * @memberof BillingInvoice
      */
     status?: BillingInvoiceStatus;
 }
@@ -159,12 +129,12 @@ export function BillingInvoiceFromJSONTyped(json: any, ignoreDiscriminator: bool
         'amountNetMicroCurrency': json['amount_net_micro_currency'] === undefined ? undefined : json['amount_net_micro_currency'] === null ? null : json['amount_net_micro_currency'],
         'amountTaxMicroCurrency': json['amount_tax_micro_currency'] === undefined ? undefined : json['amount_tax_micro_currency'] === null ? null : json['amount_tax_micro_currency'],
         'billToCountry': json['bill_to_country'] == null ? undefined : json['bill_to_country'],
-        'billingPeriodEndDate': json['billing_period_end_date'] == null ? undefined : (new Date(json['billing_period_end_date'])),
-        'billingPeriodStartDate': json['billing_period_start_date'] == null ? undefined : (new Date(json['billing_period_start_date'])),
+        'billingPeriodEndDate': json['billing_period_end_date'] == null ? undefined : (parseDate(json['billing_period_end_date'])),
+        'billingPeriodStartDate': json['billing_period_start_date'] == null ? undefined : (parseDate(json['billing_period_start_date'])),
         'currency': json['currency'] == null ? undefined : CurrencyFromJSON(json['currency']),
         'documentType': json['document_type'] == null ? undefined : BillingInvoiceDocumentTypeFromJSON(json['document_type']),
         'id': json['id'] == null ? undefined : json['id'],
-        'invoiceDueDate': json['invoice_due_date'] == null ? undefined : (new Date(json['invoice_due_date'])),
+        'invoiceDueDate': json['invoice_due_date'] == null ? undefined : (parseDate(json['invoice_due_date'])),
         'paymentTerms': json['payment_terms'] == null ? undefined : json['payment_terms'],
         'status': json['status'] == null ? undefined : BillingInvoiceStatusFromJSON(json['status']),
     };
@@ -188,12 +158,12 @@ export function BillingInvoiceToJSONTyped(value?: BillingInvoice | null, ignoreD
         'amount_net_micro_currency': value['amountNetMicroCurrency'],
         'amount_tax_micro_currency': value['amountTaxMicroCurrency'],
         'bill_to_country': value['billToCountry'],
-        'billing_period_end_date': value['billingPeriodEndDate'] == null ? value['billingPeriodEndDate'] : value['billingPeriodEndDate'].toISOString().substring(0,10),
-        'billing_period_start_date': value['billingPeriodStartDate'] == null ? value['billingPeriodStartDate'] : value['billingPeriodStartDate'].toISOString().substring(0,10),
+        'billing_period_end_date': value['billingPeriodEndDate'] == null ? value['billingPeriodEndDate'] : serializeDate(value['billingPeriodEndDate']),
+        'billing_period_start_date': value['billingPeriodStartDate'] == null ? value['billingPeriodStartDate'] : serializeDate(value['billingPeriodStartDate']),
         'currency': CurrencyToJSON(value['currency']),
         'document_type': BillingInvoiceDocumentTypeToJSON(value['documentType']),
         'id': value['id'],
-        'invoice_due_date': value['invoiceDueDate'] == null ? value['invoiceDueDate'] : value['invoiceDueDate'].toISOString().substring(0,10),
+        'invoice_due_date': value['invoiceDueDate'] == null ? value['invoiceDueDate'] : serializeDate(value['invoiceDueDate']),
         'payment_terms': value['paymentTerms'],
         'status': BillingInvoiceStatusToJSON(value['status']),
     };

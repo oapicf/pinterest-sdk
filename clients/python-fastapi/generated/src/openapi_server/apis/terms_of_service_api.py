@@ -22,12 +22,12 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.terms_of_service import TermsOfService
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -53,9 +53,9 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def terms_of_service_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    include_html: Annotated[Optional[StrictBool], Field(description="Return HTML in TOS text.")] = Query(False, description="Return HTML in TOS text.", alias="include_html"),
-    tos_type: Annotated[Optional[StrictStr], Field(description="Request type.")] = Query(None, description="Request type.", alias="tos_type"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    include_html: Annotated[Optional[bool], Field(description="Return HTML in TOS text.")] = Query(False, description="Return HTML in TOS text.", alias="include_html"),
+    tos_type: Annotated[Optional[str], Field(description="Request type.")] = Query(None, description="Request type.", alias="tos_type"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

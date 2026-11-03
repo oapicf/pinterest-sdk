@@ -80,45 +80,114 @@ import {
 } from '../models/SharedAudiencesForBusinessList200Response';
 
 export interface AdAccountsAudiencesSharedAccountsListRequest {
+    /**
+     * Unique identifier of the audience to use to filter the results.
+     */
     audienceId: string;
+    /**
+     * Filter accounts by account type.
+     */
     accountType: AudienceAccountType;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BusinessAccountAudiencesSharedAccountsListRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Unique identifier of the audience to use to filter the results.
+     */
     audienceId: string;
+    /**
+     * Filter accounts by account type.
+     */
     accountType: AudienceAccountType;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface SharedAudiencesForBusinessListRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID. Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: Order;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface UpdateAdAccountToAdAccountSharedAudienceRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adAccountToAdAccountSharedAudienceUpdateWithRequiredBody: AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
 }
 
 export interface UpdateAdAccountToBusinessSharedAudienceRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adAccountToBusinessSharedAudienceUpdateWithRequiredBody: AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 }
 
 export interface UpdateBusinessToAdAccountSharedAudienceRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     businessToAdAccountSharedAudienceUpdateWithRequiredBody: BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
 }
 
 export interface UpdateBusinessToBusinessSharedAudienceRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     businessToBusinessSharedAudienceUpdateWithRequiredBody: BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
 }
 

@@ -123,3 +123,4 @@ class _$ProductGroupPromotionUpdateRequestSerializer implements PrimitiveSeriali
   }
 }
 
+

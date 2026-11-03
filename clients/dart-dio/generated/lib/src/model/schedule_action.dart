@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'schedule_action.g.dart';
 
+/// The schedule action
 class ScheduleAction extends EnumClass {
 
-  /// The schedule action
   @BuiltValueEnumConst(wireName: r'INCREASE_BY_VALUE')
   static const ScheduleAction INCREASE_BY_VALUE = _$INCREASE_BY_VALUE;
-  /// The schedule action
   @BuiltValueEnumConst(wireName: r'INCREASE_BY_PERCENT')
   static const ScheduleAction INCREASE_BY_PERCENT = _$INCREASE_BY_PERCENT;
 

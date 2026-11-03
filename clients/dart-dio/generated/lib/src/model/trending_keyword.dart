@@ -250,3 +250,4 @@ class _$TrendingKeywordSerializer implements PrimitiveSerializer<TrendingKeyword
   }
 }
 
+

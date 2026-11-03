@@ -258,34 +258,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!amazonStorefrontName.IsSet)
-                throw new ArgumentException("Property is required for class AmazonConnectRequest.", nameof(amazonStorefrontName));
+                throw new JsonException("Property is required for class AmazonConnectRequest: amazon_storefront_name.");
 
             if (!amazonStorefrontUrl.IsSet)
-                throw new ArgumentException("Property is required for class AmazonConnectRequest.", nameof(amazonStorefrontUrl));
+                throw new JsonException("Property is required for class AmazonConnectRequest: amazon_storefront_url.");
 
             if (!isAmazonAccountLinked.IsSet)
-                throw new ArgumentException("Property is required for class AmazonConnectRequest.", nameof(isAmazonAccountLinked));
+                throw new JsonException("Property is required for class AmazonConnectRequest: is_amazon_account_linked.");
 
             if (amazonStorefrontName.IsSet && amazonStorefrontName.Value == null)
-                throw new ArgumentNullException(nameof(amazonStorefrontName), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: amazon_storefront_name.");
 
             if (amazonStorefrontUrl.IsSet && amazonStorefrontUrl.Value == null)
-                throw new ArgumentNullException(nameof(amazonStorefrontUrl), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: amazon_storefront_url.");
 
             if (isAmazonAccountLinked.IsSet && isAmazonAccountLinked.Value == null)
-                throw new ArgumentNullException(nameof(isAmazonAccountLinked), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: is_amazon_account_linked.");
 
             if (amazonStorefrontId.IsSet && amazonStorefrontId.Value == null)
-                throw new ArgumentNullException(nameof(amazonStorefrontId), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: amazon_storefront_id.");
 
             if (amazonUserId.IsSet && amazonUserId.Value == null)
-                throw new ArgumentNullException(nameof(amazonUserId), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: amazon_user_id.");
 
             if (oneTimePasscode.IsSet && oneTimePasscode.Value == null)
-                throw new ArgumentNullException(nameof(oneTimePasscode), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: one_time_passcode.");
 
             if (pinterestUserId.IsSet && pinterestUserId.Value == null)
-                throw new ArgumentNullException(nameof(pinterestUserId), "Property is not nullable for class AmazonConnectRequest.");
+                throw new JsonException("Property is not nullable for class AmazonConnectRequest: pinterest_user_id.");
 
             return new AmazonConnectRequest(amazonStorefrontName.Value!, amazonStorefrontUrl.Value!, isAmazonAccountLinked.Value!.Value!, amazonStorefrontId, amazonUserId, oneTimePasscode, pinterestUserId);
         }
@@ -296,7 +296,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="amazonConnectRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AmazonConnectRequest amazonConnectRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -311,26 +310,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="amazonConnectRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AmazonConnectRequest amazonConnectRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (amazonConnectRequest.AmazonStorefrontName == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.AmazonStorefrontName), "Property is required for class AmazonConnectRequest.");
-
-            if (amazonConnectRequest.AmazonStorefrontUrl == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.AmazonStorefrontUrl), "Property is required for class AmazonConnectRequest.");
-
             if (amazonConnectRequest.AmazonStorefrontIdOption.IsSet && amazonConnectRequest.AmazonStorefrontId == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.AmazonStorefrontId), "Property is required for class AmazonConnectRequest.");
+                throw new JsonException("Cannot write null property AmazonConnectRequest.AmazonStorefrontId to non-nullable JSON property 'amazon_storefront_id'.");
 
             if (amazonConnectRequest.AmazonUserIdOption.IsSet && amazonConnectRequest.AmazonUserId == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.AmazonUserId), "Property is required for class AmazonConnectRequest.");
+                throw new JsonException("Cannot write null property AmazonConnectRequest.AmazonUserId to non-nullable JSON property 'amazon_user_id'.");
 
             if (amazonConnectRequest.OneTimePasscodeOption.IsSet && amazonConnectRequest.OneTimePasscode == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.OneTimePasscode), "Property is required for class AmazonConnectRequest.");
+                throw new JsonException("Cannot write null property AmazonConnectRequest.OneTimePasscode to non-nullable JSON property 'one_time_passcode'.");
 
             if (amazonConnectRequest.PinterestUserIdOption.IsSet && amazonConnectRequest.PinterestUserId == null)
-                throw new ArgumentNullException(nameof(amazonConnectRequest.PinterestUserId), "Property is required for class AmazonConnectRequest.");
+                throw new JsonException("Cannot write null property AmazonConnectRequest.PinterestUserId to non-nullable JSON property 'pinterest_user_id'.");
 
             writer.WriteString("amazon_storefront_name", amazonConnectRequest.AmazonStorefrontName);
 

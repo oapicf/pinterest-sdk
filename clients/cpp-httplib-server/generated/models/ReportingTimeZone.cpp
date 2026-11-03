@@ -6,20 +6,3 @@
 */
 #include "ReportingTimeZone.h"
 
-namespace models {
-
-ReportingTimeZone::ReportingTimeZone()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

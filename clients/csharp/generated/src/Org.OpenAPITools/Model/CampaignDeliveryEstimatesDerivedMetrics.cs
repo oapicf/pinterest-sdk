@@ -705,85 +705,85 @@ namespace Org.OpenAPITools.Model
             }
 
             if (cpc.IsSet && cpc.Value == null)
-                throw new ArgumentNullException(nameof(cpc), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpc.");
 
             if (cpcLower.IsSet && cpcLower.Value == null)
-                throw new ArgumentNullException(nameof(cpcLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpc_lower.");
 
             if (cpcUpper.IsSet && cpcUpper.Value == null)
-                throw new ArgumentNullException(nameof(cpcUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpc_upper.");
 
             if (cpm.IsSet && cpm.Value == null)
-                throw new ArgumentNullException(nameof(cpm), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpm.");
 
             if (cpmLower.IsSet && cpmLower.Value == null)
-                throw new ArgumentNullException(nameof(cpmLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpm_lower.");
 
             if (cpmUpper.IsSet && cpmUpper.Value == null)
-                throw new ArgumentNullException(nameof(cpmUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: cpm_upper.");
 
             if (lifetimeFrequency.IsSet && lifetimeFrequency.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeFrequency), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_frequency.");
 
             if (lifetimeFrequencyLower.IsSet && lifetimeFrequencyLower.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeFrequencyLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_frequency_lower.");
 
             if (lifetimeFrequencyUpper.IsSet && lifetimeFrequencyUpper.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeFrequencyUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_frequency_upper.");
 
             if (lifetimeImpression.IsSet && lifetimeImpression.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeImpression), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_impression.");
 
             if (lifetimeImpressionLower.IsSet && lifetimeImpressionLower.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeImpressionLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_impression_lower.");
 
             if (lifetimeImpressionUpper.IsSet && lifetimeImpressionUpper.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeImpressionUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_impression_upper.");
 
             if (lifetimeReach.IsSet && lifetimeReach.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeReach), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_reach.");
 
             if (lifetimeReachLower.IsSet && lifetimeReachLower.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeReachLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_reach_lower.");
 
             if (lifetimeReachUpper.IsSet && lifetimeReachUpper.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeReachUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: lifetime_reach_upper.");
 
             if (weeklyClick.IsSet && weeklyClick.Value == null)
-                throw new ArgumentNullException(nameof(weeklyClick), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_click.");
 
             if (weeklyClickLower.IsSet && weeklyClickLower.Value == null)
-                throw new ArgumentNullException(nameof(weeklyClickLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_click_lower.");
 
             if (weeklyClickUpper.IsSet && weeklyClickUpper.Value == null)
-                throw new ArgumentNullException(nameof(weeklyClickUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_click_upper.");
 
             if (weeklyFrequency.IsSet && weeklyFrequency.Value == null)
-                throw new ArgumentNullException(nameof(weeklyFrequency), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_frequency.");
 
             if (weeklyFrequencyLower.IsSet && weeklyFrequencyLower.Value == null)
-                throw new ArgumentNullException(nameof(weeklyFrequencyLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_frequency_lower.");
 
             if (weeklyFrequencyUpper.IsSet && weeklyFrequencyUpper.Value == null)
-                throw new ArgumentNullException(nameof(weeklyFrequencyUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_frequency_upper.");
 
             if (weeklyImpression.IsSet && weeklyImpression.Value == null)
-                throw new ArgumentNullException(nameof(weeklyImpression), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_impression.");
 
             if (weeklyImpressionLower.IsSet && weeklyImpressionLower.Value == null)
-                throw new ArgumentNullException(nameof(weeklyImpressionLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_impression_lower.");
 
             if (weeklyImpressionUpper.IsSet && weeklyImpressionUpper.Value == null)
-                throw new ArgumentNullException(nameof(weeklyImpressionUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_impression_upper.");
 
             if (weeklyReach.IsSet && weeklyReach.Value == null)
-                throw new ArgumentNullException(nameof(weeklyReach), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_reach.");
 
             if (weeklyReachLower.IsSet && weeklyReachLower.Value == null)
-                throw new ArgumentNullException(nameof(weeklyReachLower), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_reach_lower.");
 
             if (weeklyReachUpper.IsSet && weeklyReachUpper.Value == null)
-                throw new ArgumentNullException(nameof(weeklyReachUpper), "Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics.");
+                throw new JsonException("Property is not nullable for class CampaignDeliveryEstimatesDerivedMetrics: weekly_reach_upper.");
 
             return new CampaignDeliveryEstimatesDerivedMetrics(cpc, cpcLower, cpcUpper, cpm, cpmLower, cpmUpper, lifetimeFrequency, lifetimeFrequencyLower, lifetimeFrequencyUpper, lifetimeImpression, lifetimeImpressionLower, lifetimeImpressionUpper, lifetimeReach, lifetimeReachLower, lifetimeReachUpper, weeklyClick, weeklyClickLower, weeklyClickUpper, weeklyFrequency, weeklyFrequencyLower, weeklyFrequencyUpper, weeklyImpression, weeklyImpressionLower, weeklyImpressionUpper, weeklyReach, weeklyReachLower, weeklyReachUpper);
         }
@@ -794,7 +794,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesDerivedMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignDeliveryEstimatesDerivedMetrics campaignDeliveryEstimatesDerivedMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -809,9 +808,89 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignDeliveryEstimatesDerivedMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignDeliveryEstimatesDerivedMetrics campaignDeliveryEstimatesDerivedMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignDeliveryEstimatesDerivedMetrics.CpcOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.Cpc == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.Cpc to non-nullable JSON property 'cpc'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.CpcLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.CpcLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.CpcLower to non-nullable JSON property 'cpc_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.CpcUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.CpcUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.CpcUpper to non-nullable JSON property 'cpc_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.CpmOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.Cpm == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.Cpm to non-nullable JSON property 'cpm'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.CpmLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.CpmLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.CpmLower to non-nullable JSON property 'cpm_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.CpmUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.CpmUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.CpmUpper to non-nullable JSON property 'cpm_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequency == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeFrequency to non-nullable JSON property 'lifetime_frequency'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyLower to non-nullable JSON property 'lifetime_frequency_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeFrequencyUpper to non-nullable JSON property 'lifetime_frequency_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeImpression == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeImpression to non-nullable JSON property 'lifetime_impression'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionLower to non-nullable JSON property 'lifetime_impression_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeImpressionUpper to non-nullable JSON property 'lifetime_impression_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeReachOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeReach == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeReach to non-nullable JSON property 'lifetime_reach'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeReachLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeReachLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeReachLower to non-nullable JSON property 'lifetime_reach_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.LifetimeReachUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.LifetimeReachUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.LifetimeReachUpper to non-nullable JSON property 'lifetime_reach_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyClickOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyClick == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyClick to non-nullable JSON property 'weekly_click'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyClickLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyClickLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyClickLower to non-nullable JSON property 'weekly_click_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyClickUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyClickUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyClickUpper to non-nullable JSON property 'weekly_click_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequency == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyFrequency to non-nullable JSON property 'weekly_frequency'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyLower to non-nullable JSON property 'weekly_frequency_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyFrequencyUpper to non-nullable JSON property 'weekly_frequency_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyImpression == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyImpression to non-nullable JSON property 'weekly_impression'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionLower to non-nullable JSON property 'weekly_impression_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyImpressionUpper to non-nullable JSON property 'weekly_impression_upper'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyReachOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyReach == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyReach to non-nullable JSON property 'weekly_reach'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyReachLowerOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyReachLower == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyReachLower to non-nullable JSON property 'weekly_reach_lower'.");
+
+            if (campaignDeliveryEstimatesDerivedMetrics.WeeklyReachUpperOption.IsSet && campaignDeliveryEstimatesDerivedMetrics.WeeklyReachUpper == null)
+                throw new JsonException("Cannot write null property CampaignDeliveryEstimatesDerivedMetrics.WeeklyReachUpper to non-nullable JSON property 'weekly_reach_upper'.");
+
             if (campaignDeliveryEstimatesDerivedMetrics.CpcOption.IsSet)
                 writer.WriteNumber("cpc", campaignDeliveryEstimatesDerivedMetrics.CpcOption.Value!.Value);
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
-* Values: BRAND,CUSTOM
-*/
+ * Category for the labeled items. You can apply one BRAND label to a campaign. You can apply 30 CUSTOM labels to a campaign.
+ * Values: BRAND,CUSTOM
+ */
 enum class NullableLabelType(@get:JsonValue val value: kotlin.String) {
 
     BRAND("BRAND"),
@@ -28,9 +28,8 @@ enum class NullableLabelType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NullableLabelType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableLabelType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableLabelType'")
         }
     }
 }
-

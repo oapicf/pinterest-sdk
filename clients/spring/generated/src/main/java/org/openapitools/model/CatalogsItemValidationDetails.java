@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * CatalogsItemValidationDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemValidationDetails {
 
   private JsonNullable<NullableCatalogsItemFieldType> attributeName = JsonNullable.<NullableCatalogsItemFieldType>undefined();
@@ -49,8 +49,8 @@ public class CatalogsItemValidationDetails {
    * Attribute that has a validation issue.
    * @return attributeName
    */
-  @NotNull @Valid 
-  @Schema(name = "attribute_name", description = "Attribute that has a validation issue.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Valid 
+  @Schema(name = "attribute_name", description = "Attribute that has a validation issue.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("attribute_name")
   public JsonNullable<NullableCatalogsItemFieldType> getAttributeName() {
     return attributeName;
@@ -70,8 +70,8 @@ public class CatalogsItemValidationDetails {
    * Provided value that caused the validation issue.
    * @return providedValue
    */
-  @NotNull 
-  @Schema(name = "provided_value", description = "Provided value that caused the validation issue.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "provided_value", description = "Provided value that caused the validation issue.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("provided_value")
   public JsonNullable<String> getProvidedValue() {
     return providedValue;

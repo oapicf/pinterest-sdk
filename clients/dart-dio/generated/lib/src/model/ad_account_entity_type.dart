@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'ad_account_entity_type.g.dart';
 
+/// Specify the entity type to get summary information
 class AdAccountEntityType extends EnumClass {
 
-  /// Specify the entity type to get summary information
   @BuiltValueEnumConst(wireName: r'ADVERTISER')
   static const AdAccountEntityType ADVERTISER = _$ADVERTISER;
-  /// Specify the entity type to get summary information
   @BuiltValueEnumConst(wireName: r'CAMPAIGN')
   static const AdAccountEntityType CAMPAIGN = _$CAMPAIGN;
-  /// Specify the entity type to get summary information
   @BuiltValueEnumConst(wireName: r'AD_GROUP')
   static const AdAccountEntityType AD_GROUP = _$AD_GROUP;
-  /// Specify the entity type to get summary information
   @BuiltValueEnumConst(wireName: r'AD')
   static const AdAccountEntityType AD = _$AD;
 

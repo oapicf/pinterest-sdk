@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'user_list_type.g.dart';
 
+/// User list type
 class UserListType extends EnumClass {
 
-  /// User list type
   @BuiltValueEnumConst(wireName: r'EMAIL')
   static const UserListType EMAIL = _$EMAIL;
-  /// User list type
   @BuiltValueEnumConst(wireName: r'IDFA')
   static const UserListType IDFA = _$IDFA;
-  /// User list type
   @BuiltValueEnumConst(wireName: r'MAID')
   static const UserListType MAID = _$MAID;
-  /// User list type
   @BuiltValueEnumConst(wireName: r'LR_ID')
   static const UserListType LR_ID = _$LR_ID;
-  /// User list type
   @BuiltValueEnumConst(wireName: r'DLX_ID')
   static const UserListType DLX_ID = _$DLX_ID;
-  /// User list type
   @BuiltValueEnumConst(wireName: r'HASHED_PINNER_ID')
   static const UserListType HASHED_PINNER_ID = _$HASHED_PINNER_ID;
 

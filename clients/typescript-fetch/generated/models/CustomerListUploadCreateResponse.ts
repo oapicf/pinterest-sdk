@@ -36,14 +36,10 @@ import {
 export interface CustomerListUploadCreateResponse {
     /**
      * The Customer List Upload created.
-     * @type {CustomerListUpload}
-     * @memberof CustomerListUploadCreateResponse
      */
     customerListUpload: CustomerListUpload;
     /**
      * Pre-signed upload URLs corresponding to each part of the upload.
-     * @type {S3MultipartUploadData}
-     * @memberof CustomerListUploadCreateResponse
      */
     s3MultipartUploadData: S3MultipartUploadData;
 }

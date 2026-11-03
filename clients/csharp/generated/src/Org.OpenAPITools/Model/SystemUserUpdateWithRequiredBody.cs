@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class SystemUserUpdateWithRequiredBody.", nameof(name));
+                throw new JsonException("Property is required for class SystemUserUpdateWithRequiredBody: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class SystemUserUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class SystemUserUpdateWithRequiredBody: name.");
 
             return new SystemUserUpdateWithRequiredBody(name.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="systemUserUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="systemUserUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (systemUserUpdateWithRequiredBody.Name == null)
-                throw new ArgumentNullException(nameof(systemUserUpdateWithRequiredBody.Name), "Property is required for class SystemUserUpdateWithRequiredBody.");
-
             writer.WriteString("name", systemUserUpdateWithRequiredBody.Name);
         }
     }

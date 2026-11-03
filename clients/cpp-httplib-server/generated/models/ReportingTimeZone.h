@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ReportingTimeZone
-{
-public:
-
-    ReportingTimeZone();
-    virtual ~ReportingTimeZone() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ReportingTimeZone,
-        )
-
-private:
+enum class ReportingTimeZone {
+    
+    PINTEREST_TIME_ZONE,
+    
+    AD_ACCOUNT_TIME_ZONE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ReportingTimeZone& value)
+{
+    switch (value)
+    {
+        
+        case ReportingTimeZone::PINTEREST_TIME_ZONE: j = "PINTEREST_TIME_ZONE"; break;
+        
+        case ReportingTimeZone::AD_ACCOUNT_TIME_ZONE: j = "AD_ACCOUNT_TIME_ZONE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ReportingTimeZone", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ReportingTimeZone& value)
+{
+    
+    if (j == "PINTEREST_TIME_ZONE")
+    {
+        value = ReportingTimeZone::PINTEREST_TIME_ZONE;
+        return;
+    }
+    
+    if (j == "AD_ACCOUNT_TIME_ZONE")
+    {
+        value = ReportingTimeZone::AD_ACCOUNT_TIME_ZONE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ReportingTimeZone", &j);
+}
 
 } // namespace models
 

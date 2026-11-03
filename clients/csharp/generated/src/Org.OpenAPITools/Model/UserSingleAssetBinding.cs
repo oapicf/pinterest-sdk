@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class UserSingleAssetBinding.");
+                throw new JsonException("Property is not nullable for class UserSingleAssetBinding: permissions.");
 
             if (user.IsSet && user.Value == null)
-                throw new ArgumentNullException(nameof(user), "Property is not nullable for class UserSingleAssetBinding.");
+                throw new JsonException("Property is not nullable for class UserSingleAssetBinding: user.");
 
             return new UserSingleAssetBinding(permissions, user);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userSingleAssetBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserSingleAssetBinding userSingleAssetBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userSingleAssetBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserSingleAssetBinding userSingleAssetBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             if (userSingleAssetBinding.PermissionsOption.IsSet && userSingleAssetBinding.Permissions == null)
-                throw new ArgumentNullException(nameof(userSingleAssetBinding.Permissions), "Property is required for class UserSingleAssetBinding.");
+                throw new JsonException("Cannot write null property UserSingleAssetBinding.Permissions to non-nullable JSON property 'permissions'.");
 
             if (userSingleAssetBinding.UserOption.IsSet && userSingleAssetBinding.User == null)
-                throw new ArgumentNullException(nameof(userSingleAssetBinding.User), "Property is required for class UserSingleAssetBinding.");
+                throw new JsonException("Cannot write null property UserSingleAssetBinding.User to non-nullable JSON property 'user'.");
 
             if (userSingleAssetBinding.PermissionsOption.IsSet)
             {

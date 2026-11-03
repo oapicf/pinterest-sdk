@@ -17,7 +17,7 @@ import AdsCreditDiscountsResponse from './AdsCreditDiscountsResponse';
 /**
  * The AdsCreditsDiscountsGet200Response model module.
  * @module model/AdsCreditsDiscountsGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdsCreditsDiscountsGet200Response {
     /**

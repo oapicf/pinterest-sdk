@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AttributionWindows {
     /**
      * 
-     * @type {number}
-     * @memberof AttributionWindows
      */
     clickWindowDays?: number;
     /**
      * 
-     * @type {number}
-     * @memberof AttributionWindows
      */
     engagementWindowDays?: number;
     /**
      * 
-     * @type {number}
-     * @memberof AttributionWindows
      */
     viewWindowDays?: number;
 }

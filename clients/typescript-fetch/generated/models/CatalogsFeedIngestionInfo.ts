@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedIngestionInfo {
     /**
      * The number of ingested products that are in stock.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionInfo
      */
     iNSTOCK?: number;
     /**
      * The number of ingested products that are in out of stock.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionInfo
      */
     oUTOFSTOCK?: number;
     /**
      * The number of ingested products that are in preorder.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionInfo
      */
     pREORDER?: number;
 }

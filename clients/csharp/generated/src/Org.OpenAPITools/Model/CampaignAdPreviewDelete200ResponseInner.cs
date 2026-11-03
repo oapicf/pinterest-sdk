@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class CampaignAdPreviewDelete200ResponseInner.", nameof(status));
+                throw new JsonException("Property is required for class CampaignAdPreviewDelete200ResponseInner: status.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CampaignAdPreviewDelete200ResponseInner.");
+                throw new JsonException("Property is not nullable for class CampaignAdPreviewDelete200ResponseInner: status.");
 
             return new CampaignAdPreviewDelete200ResponseInner(status.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewDelete200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreviewDelete200ResponseInner campaignAdPreviewDelete200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewDelete200ResponseInner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreviewDelete200ResponseInner campaignAdPreviewDelete200ResponseInner, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignAdPreviewDelete200ResponseInner.Status == null)
-                throw new ArgumentNullException(nameof(campaignAdPreviewDelete200ResponseInner.Status), "Property is required for class CampaignAdPreviewDelete200ResponseInner.");
-
             writer.WritePropertyName("status");
             JsonSerializer.Serialize(writer, campaignAdPreviewDelete200ResponseInner.Status, jsonSerializerOptions);
         }

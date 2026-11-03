@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdPinPreviewCreativeType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -27,13 +24,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdPreviewSourcePinId(
 
     @Schema(example = "7389479023", required = true, description = "Pin ID.")
-    @param:JsonProperty("pin_id")
+    @param:JsonProperty("pin_id", required = true)
     @get:JsonProperty("pin_id", required = true) val pinId: kotlin.String,
 
     @field:Valid
     @Schema(example = "MAX_WIDTH_VIDEO_COLLECTION", description = "Creative type of the ad preview.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("creative_type")
     @get:JsonProperty("creative_type") val creativeType: AdPinPreviewCreativeType? = null
 ) : AdPreviewRequest {

@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_planning_conversion_event.g.dart';
 
+/// Conversion event for which a conversion rate estimate is computed.
 class CampaignPlanningConversionEvent extends EnumClass {
 
-  /// Conversion event for which a conversion rate estimate is computed.
   @BuiltValueEnumConst(wireName: r'SIGNUP')
   static const CampaignPlanningConversionEvent SIGNUP = _$SIGNUP;
-  /// Conversion event for which a conversion rate estimate is computed.
   @BuiltValueEnumConst(wireName: r'CHECKOUT')
   static const CampaignPlanningConversionEvent CHECKOUT = _$CHECKOUT;
-  /// Conversion event for which a conversion rate estimate is computed.
   @BuiltValueEnumConst(wireName: r'ADD_TO_CART')
   static const CampaignPlanningConversionEvent ADD_TO_CART = _$ADD_TO_CART;
-  /// Conversion event for which a conversion rate estimate is computed.
   @BuiltValueEnumConst(wireName: r'LEAD')
   static const CampaignPlanningConversionEvent LEAD = _$LEAD;
 

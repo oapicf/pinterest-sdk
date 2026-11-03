@@ -51,19 +51,19 @@ class LeadAdsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'subscriptionId' => $subscriptionId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'subscription_id' => $subscriptionId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'subscriptionId' => [
+                'subscription_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
@@ -126,19 +126,19 @@ class LeadAdsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'subscriptionId' => $subscriptionId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'subscription_id' => $subscriptionId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'subscriptionId' => [
+                'subscription_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
@@ -197,13 +197,13 @@ class LeadAdsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -212,7 +212,7 @@ class LeadAdsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -227,7 +227,7 @@ class LeadAdsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->adAccountsSubscriptionsGetList($adAccountId, $bookmark, $pageSize);
@@ -274,10 +274,10 @@ class LeadAdsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

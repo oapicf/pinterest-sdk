@@ -114,8 +114,7 @@ class TargetingSpecOptimal(BaseModel):
         _items = []
         if self.shopping_retargeting:
             for _item_shopping_retargeting in self.shopping_retargeting:
-                if _item_shopping_retargeting:
-                    _items.append(_item_shopping_retargeting.to_dict())
+                _items.append(_item_shopping_retargeting.to_dict() if _item_shopping_retargeting is not None else None)
             _dict['SHOPPING_RETARGETING'] = _items
         # set to None if age_bucket (nullable) is None
         # and model_fields_set contains the field

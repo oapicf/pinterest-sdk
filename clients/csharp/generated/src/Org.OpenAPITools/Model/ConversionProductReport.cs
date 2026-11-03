@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class ConversionProductReport.");
+                throw new JsonException("Property is not nullable for class ConversionProductReport: message.");
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class ConversionProductReport.");
+                throw new JsonException("Property is not nullable for class ConversionProductReport: report_status.");
 
             if (size.IsSet && size.Value == null)
-                throw new ArgumentNullException(nameof(size), "Property is not nullable for class ConversionProductReport.");
+                throw new JsonException("Property is not nullable for class ConversionProductReport: size.");
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class ConversionProductReport.");
+                throw new JsonException("Property is not nullable for class ConversionProductReport: token.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class ConversionProductReport.");
+                throw new JsonException("Property is not nullable for class ConversionProductReport: url.");
 
             return new ConversionProductReport(message, reportStatus, size, token, url);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionProductReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionProductReport conversionProductReport, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,17 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionProductReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionProductReport conversionProductReport, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionProductReport.MessageOption.IsSet && conversionProductReport.Message == null)
-                throw new ArgumentNullException(nameof(conversionProductReport.Message), "Property is required for class ConversionProductReport.");
+                throw new JsonException("Cannot write null property ConversionProductReport.Message to non-nullable JSON property 'message'.");
+
+            if (conversionProductReport.ReportStatusOption.IsSet && conversionProductReport.ReportStatus == null)
+                throw new JsonException("Cannot write null property ConversionProductReport.ReportStatus to non-nullable JSON property 'report_status'.");
+
+            if (conversionProductReport.SizeOption.IsSet && conversionProductReport.Size == null)
+                throw new JsonException("Cannot write null property ConversionProductReport.Size to non-nullable JSON property 'size'.");
 
             if (conversionProductReport.TokenOption.IsSet && conversionProductReport.Token == null)
-                throw new ArgumentNullException(nameof(conversionProductReport.Token), "Property is required for class ConversionProductReport.");
+                throw new JsonException("Cannot write null property ConversionProductReport.Token to non-nullable JSON property 'token'.");
 
             if (conversionProductReport.UrlOption.IsSet && conversionProductReport.Url == null)
-                throw new ArgumentNullException(nameof(conversionProductReport.Url), "Property is required for class ConversionProductReport.");
+                throw new JsonException("Cannot write null property ConversionProductReport.Url to non-nullable JSON property 'url'.");
 
             if (conversionProductReport.MessageOption.IsSet)
                 writer.WriteString("message", conversionProductReport.Message);

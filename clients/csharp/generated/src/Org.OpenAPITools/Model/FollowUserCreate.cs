@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (autoFollow.IsSet && autoFollow.Value == null)
-                throw new ArgumentNullException(nameof(autoFollow), "Property is not nullable for class FollowUserCreate.");
+                throw new JsonException("Property is not nullable for class FollowUserCreate: auto_follow.");
 
             return new FollowUserCreate(autoFollow);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="followUserCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, FollowUserCreate followUserCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,9 +166,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="followUserCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, FollowUserCreate followUserCreate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (followUserCreate.AutoFollowOption.IsSet && followUserCreate.AutoFollow == null)
+                throw new JsonException("Cannot write null property FollowUserCreate.AutoFollow to non-nullable JSON property 'auto_follow'.");
+
             if (followUserCreate.AutoFollowOption.IsSet)
                 writer.WriteBoolean("auto_follow", followUserCreate.AutoFollowOption.Value!.Value);
         }

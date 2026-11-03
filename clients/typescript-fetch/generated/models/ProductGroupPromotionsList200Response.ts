@@ -29,14 +29,10 @@ import {
 export interface ProductGroupPromotionsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof ProductGroupPromotionsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<ProductGroupPromotion>}
-     * @memberof ProductGroupPromotionsList200Response
      */
     items: Array<ProductGroupPromotion>;
 }

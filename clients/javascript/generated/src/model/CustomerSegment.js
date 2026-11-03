@@ -17,7 +17,7 @@ import TargetingTemplateStatus from './TargetingTemplateStatus';
 /**
  * The CustomerSegment model module.
  * @module model/CustomerSegment
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomerSegment {
     /**

@@ -234,7 +234,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSourceImageBase64.SourceTypeEnum?>(PinMediaSourceImageBase64.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSourceImageBase64.SourceTypeEnum? sourceTypeValue = PinMediaSourceImageBase64.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSourceImageBase64.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         case "is_standard":
                             isStandard = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
@@ -246,25 +251,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!contentType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImageBase64.", nameof(contentType));
+                throw new JsonException("Property is required for class PinMediaSourceImageBase64: content_type.");
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImageBase64.", nameof(data));
+                throw new JsonException("Property is required for class PinMediaSourceImageBase64: data.");
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImageBase64.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSourceImageBase64: source_type.");
 
             if (contentType.IsSet && contentType.Value == null)
-                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class PinMediaSourceImageBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageBase64: content_type.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class PinMediaSourceImageBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageBase64: data.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSourceImageBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageBase64: source_type.");
 
             if (isStandard.IsSet && isStandard.Value == null)
-                throw new ArgumentNullException(nameof(isStandard), "Property is not nullable for class PinMediaSourceImageBase64.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImageBase64: is_standard.");
 
             return new PinMediaSourceImageBase64(contentType.Value!.Value!, data.Value!, sourceType.Value!.Value!, isStandard);
         }
@@ -275,7 +280,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImageBase64"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImageBase64 pinMediaSourceImageBase64, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -290,11 +294,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImageBase64"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImageBase64 pinMediaSourceImageBase64, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImageBase64.Data == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImageBase64.Data), "Property is required for class PinMediaSourceImageBase64.");
+            if (pinMediaSourceImageBase64.IsStandardOption.IsSet && pinMediaSourceImageBase64.IsStandard == null)
+                throw new JsonException("Cannot write null property PinMediaSourceImageBase64.IsStandard to non-nullable JSON property 'is_standard'.");
 
             var contentTypeRawValue = ContentTypeValueConverter.ToJsonValue(pinMediaSourceImageBase64.ContentType);
             writer.WriteString("content_type", contentTypeRawValue);

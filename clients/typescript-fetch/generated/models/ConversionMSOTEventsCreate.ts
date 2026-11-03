@@ -50,75 +50,51 @@ import {
 export interface ConversionMSOTEventsCreate {
     /**
      * Timestamp(s) when the ad action(s) happened. Unix timestamp in seconds.
-     * @type {Array<number>}
-     * @memberof ConversionMSOTEventsCreate
      */
     actionTimestamps?: Array<number>;
     /**
      * The ID of the ad group that was attributed to the conversion event.
-     * @type {string}
-     * @memberof ConversionMSOTEventsCreate
      */
     adGroupId: string;
     /**
      * The attribution model used to attribute the conversion event.
-     * @type {AttributionModel}
-     * @memberof ConversionMSOTEventsCreate
      */
     attributionModel?: AttributionModel;
     /**
      * Ad event type.
-     * @type {AttributionScope}
-     * @memberof ConversionMSOTEventsCreate
      */
     attributionScope?: AttributionScope;
     /**
      * Credit given to the attributed ad actions. Allowed values are > 0 and <= 1.
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      */
     attributionScore?: number;
     /**
      * The ID of the campaign that was attributed to the conversion event.
-     * @type {string}
-     * @memberof ConversionMSOTEventsCreate
      */
     campaignId?: string;
     /**
      * Click window used for attribution (for example, `1d`, `7d`, `30d`, `lifetime`).
-     * @type {string}
-     * @memberof ConversionMSOTEventsCreate
      */
     clickWindow?: string;
     /**
      * Currency code for the `value` field, required if `value` is present. Currency Codes should be in ISO 4217 standard.
-     * @type {Currency}
-     * @memberof ConversionMSOTEventsCreate
      */
     currency?: Currency;
     /**
      * A unique id string that identifies this event. If you are already sending us events through Conversions API,
      * then this id should match the event_id sent through Conversions API.
-     * @type {string}
-     * @memberof ConversionMSOTEventsCreate
      */
     eventId: string;
     /**
      * Type of user event.
-     * @type {MsotEventName}
-     * @memberof ConversionMSOTEventsCreate
      */
     eventName: MsotEventName;
     /**
      * The time when the event occurred. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      */
     eventTimestamp: number;
     /**
      * Total number of ad events including other non-Pinterest ad platforms.
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      */
     totalEventTouchpoints?: number;
     /**
@@ -128,8 +104,6 @@ export interface ConversionMSOTEventsCreate {
      * If you are sending one API request for one attributed conversion event then this value should be 1.
      * If you are sending multiple attributed conversion events in one API request then this value should be
      * the total number of attributed conversion events in the request.
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      * @deprecated
      */
     totalEvents?: number;
@@ -139,20 +113,14 @@ export interface ConversionMSOTEventsCreate {
      * 
      * If you are sending one API request for one attributed conversion event with full credit, this value should be 1.0.
      * For partial attribution, send the exact fractional value (e.g., 0.5 for half credit).
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      */
     totalEventsFractional?: number;
     /**
      * Order value of the conversion event. Required if `event_name` is `add_to_cart` or `checkout`.
-     * @type {number}
-     * @memberof ConversionMSOTEventsCreate
      */
     value?: number;
     /**
      * View window used for attribution (for example, `1d`, `7d`, `30d`).
-     * @type {string}
-     * @memberof ConversionMSOTEventsCreate
      */
     viewWindow?: string;
 }

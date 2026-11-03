@@ -148,3 +148,4 @@ class _$BusinessAccessUserSummarySerializer implements PrimitiveSerializer<Busin
   }
 }
 
+

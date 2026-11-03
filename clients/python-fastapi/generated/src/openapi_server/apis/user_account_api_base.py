@@ -3,7 +3,7 @@
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
 from datetime import date
-from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from openapi_server.models.account import Account
@@ -36,7 +36,7 @@ class BaseUserAccountApi:
         BaseUserAccountApi.subclasses = BaseUserAccountApi.subclasses + (cls,)
     async def user_account_get(
         self,
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> Account:
         """Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information."""
         ...
@@ -46,14 +46,14 @@ class BaseUserAccountApi:
         self,
         start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")],
         end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")],
-        from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")],
-        pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")],
-        app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")],
-        content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")],
-        source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
+        from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")],
+        pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")],
+        app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")],
+        content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")],
+        source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
         metric_types: Annotated[Optional[List[QuerymetrictypesItems]], Field(description="Metric types to get data for, default is all.")],
-        split_field: Annotated[Optional[StrictStr], Field(description="How to split the data into groups. Not including this param means data won't be split.")],
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        split_field: Annotated[Optional[str], Field(description="How to split the data into groups. Not including this param means data won't be split.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> Dict[str, AnalyticsMetricsResponse]:
         """Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;."""
         ...
@@ -64,15 +64,15 @@ class BaseUserAccountApi:
         start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")],
         end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")],
         sort_by: Annotated[TopPinsSortBy, Field(description="Specify sorting order for metrics")],
-        from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")],
-        pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")],
-        app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")],
-        content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")],
-        source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
+        from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")],
+        pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")],
+        app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")],
+        content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")],
+        source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
         metric_types: Annotated[Optional[List[QuerymetrictypesItems]], Field(description="Metric types to get data for, default is all.")],
-        num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")],
-        created_in_last_n_days: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Get metrics for pins created in the last \"n\" days.")],
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")],
+        created_in_last_n_days: Annotated[Optional[Union[float, int]], Field(description="Get metrics for pins created in the last \"n\" days.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> TopPinsAnalyticsResponse:
         """Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;."""
         ...
@@ -83,15 +83,15 @@ class BaseUserAccountApi:
         start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")],
         end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")],
         sort_by: Annotated[TopVideoPinsSortBy, Field(description="Specify sorting order for video metrics")],
-        from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")],
-        pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")],
-        app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")],
-        content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")],
-        source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
+        from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")],
+        pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")],
+        app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")],
+        content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")],
+        source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")],
         metric_types: Annotated[Optional[List[QueryvideopinmetrictypesItems]], Field(description="Metric types to get video data for, default is all.")],
-        num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")],
-        created_in_last_n_days: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Get metrics for pins created in the last \"n\" days.")],
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")],
+        created_in_last_n_days: Annotated[Optional[Union[float, int]], Field(description="Get metrics for pins created in the last \"n\" days.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> TopVideoPinsAnalyticsResponse:
         """Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;."""
         ...
@@ -106,8 +106,8 @@ class BaseUserAccountApi:
 
     async def followers_list(
         self,
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> FollowersList200Response:
         """Get a list of your followers."""
         ...
@@ -115,11 +115,11 @@ class BaseUserAccountApi:
 
     async def user_following_get(
         self,
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
-        explicit_following: Annotated[Optional[StrictBool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        explicit_following: Annotated[Optional[bool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")],
         feed_type: Annotated[Optional[UserFollowingFeedType], Field(description="Thrift param specifying what type of followees will be kept. Default to include all followees.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> FollowersList200Response:
         """Get a list of who a certain user follows."""
         ...
@@ -127,10 +127,10 @@ class BaseUserAccountApi:
 
     async def boards_user_follows_list(
         self,
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
-        explicit_following: Annotated[Optional[StrictBool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        explicit_following: Annotated[Optional[bool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> BoardsList200Response:
         """Get a list of the boards a user follows. The request returns a board summary object array."""
         ...
@@ -138,7 +138,7 @@ class BaseUserAccountApi:
 
     async def follow_user_update(
         self,
-        username: Annotated[str, Field(strict=True, description="A valid username")],
+        username: Annotated[str, Field(description="A valid username")],
         follow_user_create: FollowUserCreate,
     ) -> FollowUser:
         """**This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user."""
@@ -147,8 +147,8 @@ class BaseUserAccountApi:
 
     async def user_websites_get(
         self,
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> UserWebsitesGet200Response:
         """Get user websites, claimed or not"""
         ...
@@ -157,7 +157,7 @@ class BaseUserAccountApi:
     async def verify_website_update(
         self,
         user_website_create: UserWebsiteCreate,
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> UserWebsite:
         """Verify a website as a signed-in user."""
         ...
@@ -165,7 +165,7 @@ class BaseUserAccountApi:
 
     async def unverify_website_delete(
         self,
-        website: Annotated[StrictStr, Field(description="Website with path or domain only")],
+        website: Annotated[str, Field(description="Website with path or domain only")],
     ) -> UserWebsite:
         """Unverify a website verified by the signed-in user."""
         ...
@@ -173,7 +173,7 @@ class BaseUserAccountApi:
 
     async def website_verification_get(
         self,
-        ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")],
     ) -> UserWebsiteVerification:
         """Get verification code for user to install on the website to claim it."""
         ...
@@ -181,9 +181,9 @@ class BaseUserAccountApi:
 
     async def user_account_followed_interests(
         self,
-        username: Annotated[str, Field(strict=True, description="A valid username")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        username: Annotated[str, Field(description="A valid username")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> UserAccountFollowedInterests200Response:
         """Get a list of a user&#39;s following interests in one place."""
         ...

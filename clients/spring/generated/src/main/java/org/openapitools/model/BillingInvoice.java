@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,55 +29,40 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BillingInvoice", description = "A billing invoice in the advertiser account.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BillingInvoice {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountName;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer amountBilledMicroCurrency;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> amountDiscountMicroCurrency = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> amountNetMicroCurrency = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> amountTaxMicroCurrency = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String billToCountry;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private @Nullable LocalDate billingPeriodEndDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private @Nullable LocalDate billingPeriodStartDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Currency currency;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BillingInvoiceDocumentType documentType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private @Nullable LocalDate invoiceDueDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String paymentTerms;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BillingInvoiceStatus status;
 
   public BillingInvoice adAccountId(@Nullable String adAccountId) {
@@ -154,7 +138,7 @@ public class BillingInvoice {
    * @return amountDiscountMicroCurrency
    */
   
-  @Schema(name = "amount_discount_micro_currency", description = "The discount in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "amount_discount_micro_currency", description = "The discount in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("amount_discount_micro_currency")
   public JsonNullable<Integer> getAmountDiscountMicroCurrency() {
     return amountDiscountMicroCurrency;
@@ -174,7 +158,7 @@ public class BillingInvoice {
    * @return amountNetMicroCurrency
    */
   
-  @Schema(name = "amount_net_micro_currency", description = "The net amount in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "amount_net_micro_currency", description = "The net amount in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("amount_net_micro_currency")
   public JsonNullable<Integer> getAmountNetMicroCurrency() {
     return amountNetMicroCurrency;
@@ -194,7 +178,7 @@ public class BillingInvoice {
    * @return amountTaxMicroCurrency
    */
   
-  @Schema(name = "amount_tax_micro_currency", description = "The tax in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "amount_tax_micro_currency", description = "The tax in this invoice. Denoted in micro currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("amount_tax_micro_currency")
   public JsonNullable<Integer> getAmountTaxMicroCurrency() {
     return amountTaxMicroCurrency;

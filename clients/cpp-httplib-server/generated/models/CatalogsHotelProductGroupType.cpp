@@ -6,20 +6,3 @@
 */
 #include "HotelProductGroupType.h"
 
-namespace models {
-
-HotelProductGroupType::HotelProductGroupType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

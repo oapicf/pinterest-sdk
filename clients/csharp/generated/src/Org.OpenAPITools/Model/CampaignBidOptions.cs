@@ -267,7 +267,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (audienceMultipliers.IsSet && audienceMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(audienceMultipliers), "Property is not nullable for class CampaignBidOptions.");
+                throw new JsonException("Property is not nullable for class CampaignBidOptions: audience_multipliers.");
 
             return new CampaignBidOptions(ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, freqBidMultiplierTimeWindow, frequencyMultipliers, genderMultipliers, placementMultipliers);
         }
@@ -278,7 +278,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBidOptions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignBidOptions campaignBidOptions, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -293,11 +292,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBidOptions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignBidOptions campaignBidOptions, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignBidOptions.AudienceMultipliersOption.IsSet && campaignBidOptions.AudienceMultipliers == null)
-                throw new ArgumentNullException(nameof(campaignBidOptions.AudienceMultipliers), "Property is required for class CampaignBidOptions.");
+                throw new JsonException("Cannot write null property CampaignBidOptions.AudienceMultipliers to non-nullable JSON property 'audience_multipliers'.");
 
             if (campaignBidOptions.AgeBucketMultipliersOption.IsSet)
                 if (campaignBidOptions.AgeBucketMultipliersOption.Value != null)

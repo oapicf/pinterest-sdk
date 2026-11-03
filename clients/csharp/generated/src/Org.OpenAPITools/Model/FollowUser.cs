@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class FollowUser.");
+                throw new JsonException("Property is not nullable for class FollowUser: type.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class FollowUser.");
+                throw new JsonException("Property is not nullable for class FollowUser: username.");
 
             return new FollowUser(type, username);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="followUser"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, FollowUser followUser, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="followUser"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, FollowUser followUser, JsonSerializerOptions jsonSerializerOptions)
         {
             if (followUser.TypeOption.IsSet && followUser.Type == null)
-                throw new ArgumentNullException(nameof(followUser.Type), "Property is required for class FollowUser.");
+                throw new JsonException("Cannot write null property FollowUser.Type to non-nullable JSON property 'type'.");
 
             if (followUser.UsernameOption.IsSet && followUser.Username == null)
-                throw new ArgumentNullException(nameof(followUser.Username), "Property is required for class FollowUser.");
+                throw new JsonException("Cannot write null property FollowUser.Username to non-nullable JSON property 'username'.");
 
             if (followUser.TypeOption.IsSet)
                 writer.WriteString("type", followUser.Type);

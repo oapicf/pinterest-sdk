@@ -185,13 +185,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dailyMetrics.IsSet && dailyMetrics.Value == null)
-                throw new ArgumentNullException(nameof(dailyMetrics), "Property is not nullable for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsMetricsResponse: daily_metrics.");
 
             if (lifetimeMetrics.IsSet && lifetimeMetrics.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeMetrics), "Property is not nullable for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsMetricsResponse: lifetime_metrics.");
 
             if (summaryMetrics.IsSet && summaryMetrics.Value == null)
-                throw new ArgumentNullException(nameof(summaryMetrics), "Property is not nullable for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Property is not nullable for class PinAnalyticsMetricsResponse: summary_metrics.");
 
             return new PinAnalyticsMetricsResponse(dailyMetrics, lifetimeMetrics, summaryMetrics);
         }
@@ -202,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinAnalyticsMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -217,17 +216,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinAnalyticsMetricsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinAnalyticsMetricsResponse pinAnalyticsMetricsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (pinAnalyticsMetricsResponse.DailyMetricsOption.IsSet && pinAnalyticsMetricsResponse.DailyMetrics == null)
-                throw new ArgumentNullException(nameof(pinAnalyticsMetricsResponse.DailyMetrics), "Property is required for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Cannot write null property PinAnalyticsMetricsResponse.DailyMetrics to non-nullable JSON property 'daily_metrics'.");
 
             if (pinAnalyticsMetricsResponse.LifetimeMetricsOption.IsSet && pinAnalyticsMetricsResponse.LifetimeMetrics == null)
-                throw new ArgumentNullException(nameof(pinAnalyticsMetricsResponse.LifetimeMetrics), "Property is required for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Cannot write null property PinAnalyticsMetricsResponse.LifetimeMetrics to non-nullable JSON property 'lifetime_metrics'.");
 
             if (pinAnalyticsMetricsResponse.SummaryMetricsOption.IsSet && pinAnalyticsMetricsResponse.SummaryMetrics == null)
-                throw new ArgumentNullException(nameof(pinAnalyticsMetricsResponse.SummaryMetrics), "Property is required for class PinAnalyticsMetricsResponse.");
+                throw new JsonException("Cannot write null property PinAnalyticsMetricsResponse.SummaryMetrics to non-nullable JSON property 'summary_metrics'.");
 
             if (pinAnalyticsMetricsResponse.DailyMetricsOption.IsSet)
             {

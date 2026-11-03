@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!creativeAssetsId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductMetadata.", nameof(creativeAssetsId));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductMetadata: creative_assets_id.");
 
             if (!visibility.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductMetadata.", nameof(visibility));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductMetadata: visibility.");
 
             if (creativeAssetsId.IsSet && creativeAssetsId.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsId), "Property is not nullable for class CatalogsCreativeAssetsProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductMetadata: creative_assets_id.");
 
             if (visibility.IsSet && visibility.Value == null)
-                throw new ArgumentNullException(nameof(visibility), "Property is not nullable for class CatalogsCreativeAssetsProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductMetadata: visibility.");
 
             return new CatalogsCreativeAssetsProductMetadata(creativeAssetsId.Value!, visibility.Value!.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsProductMetadata catalogsCreativeAssetsProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,12 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsProductMetadata catalogsCreativeAssetsProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsProductMetadata.CreativeAssetsId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductMetadata.CreativeAssetsId), "Property is required for class CatalogsCreativeAssetsProductMetadata.");
-
             writer.WriteString("creative_assets_id", catalogsCreativeAssetsProductMetadata.CreativeAssetsId);
 
             var visibilityRawValue = CreativeAssetsVisibilityTypeValueConverter.ToJsonValue(catalogsCreativeAssetsProductMetadata.Visibility);

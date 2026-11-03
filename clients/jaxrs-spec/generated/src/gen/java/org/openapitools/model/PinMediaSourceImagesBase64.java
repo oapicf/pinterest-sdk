@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Multiple Base64-based images media source")
 @JsonTypeName("PinMediaSourceImagesBase64")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourceImagesBase64   {
   private Integer index;
-  private @Valid List<@Valid PinMediaSourceImagesBase64Item> items = new ArrayList<>();
+  private List<@Valid PinMediaSourceImagesBase64Item> items = new ArrayList<>();
   public enum SourceTypeEnum {
 
     MULTIPLE_IMAGE_BASE64(String.valueOf("multiple_image_base64"));
@@ -118,7 +118,7 @@ public class PinMediaSourceImagesBase64   {
   
   @ApiModelProperty(required = true, value = "Array with image objects.")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
+  @NotNull  @Size(min=2,max=5)public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
     return items;
   }
 

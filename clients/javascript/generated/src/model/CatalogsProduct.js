@@ -21,7 +21,7 @@ import Pin from './Pin';
 /**
  * The CatalogsProduct model module.
  * @module model/CatalogsProduct
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProduct {
     /**

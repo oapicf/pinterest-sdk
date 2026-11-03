@@ -85,78 +85,67 @@ class QualityComponents(BaseModel):
         _field_dict = {}
         if self.advertiser_external_id:
             for _key_advertiser_external_id in self.advertiser_external_id:
-                if self.advertiser_external_id[_key_advertiser_external_id]:
-                    _field_dict[_key_advertiser_external_id] = self.advertiser_external_id[_key_advertiser_external_id].to_dict()
+                _field_dict[_key_advertiser_external_id] = self.advertiser_external_id[_key_advertiser_external_id].to_dict() if self.advertiser_external_id[_key_advertiser_external_id] is not None else None
             _dict['advertiser_external_id'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in click_id_epik (dict)
         _field_dict = {}
         if self.click_id_epik:
             for _key_click_id_epik in self.click_id_epik:
-                if self.click_id_epik[_key_click_id_epik]:
-                    _field_dict[_key_click_id_epik] = self.click_id_epik[_key_click_id_epik].to_dict()
+                _field_dict[_key_click_id_epik] = self.click_id_epik[_key_click_id_epik].to_dict() if self.click_id_epik[_key_click_id_epik] is not None else None
             _dict['click_id_epik'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in external_event_id (dict)
         _field_dict = {}
         if self.external_event_id:
             for _key_external_event_id in self.external_event_id:
-                if self.external_event_id[_key_external_event_id]:
-                    _field_dict[_key_external_event_id] = self.external_event_id[_key_external_event_id].to_dict()
+                _field_dict[_key_external_event_id] = self.external_event_id[_key_external_event_id].to_dict() if self.external_event_id[_key_external_event_id] is not None else None
             _dict['external_event_id'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in hashed_email (dict)
         _field_dict = {}
         if self.hashed_email:
             for _key_hashed_email in self.hashed_email:
-                if self.hashed_email[_key_hashed_email]:
-                    _field_dict[_key_hashed_email] = self.hashed_email[_key_hashed_email].to_dict()
+                _field_dict[_key_hashed_email] = self.hashed_email[_key_hashed_email].to_dict() if self.hashed_email[_key_hashed_email] is not None else None
             _dict['hashed_email'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in hashed_maid (dict)
         _field_dict = {}
         if self.hashed_maid:
             for _key_hashed_maid in self.hashed_maid:
-                if self.hashed_maid[_key_hashed_maid]:
-                    _field_dict[_key_hashed_maid] = self.hashed_maid[_key_hashed_maid].to_dict()
+                _field_dict[_key_hashed_maid] = self.hashed_maid[_key_hashed_maid].to_dict() if self.hashed_maid[_key_hashed_maid] is not None else None
             _dict['hashed_maid'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in ip_address (dict)
         _field_dict = {}
         if self.ip_address:
             for _key_ip_address in self.ip_address:
-                if self.ip_address[_key_ip_address]:
-                    _field_dict[_key_ip_address] = self.ip_address[_key_ip_address].to_dict()
+                _field_dict[_key_ip_address] = self.ip_address[_key_ip_address].to_dict() if self.ip_address[_key_ip_address] is not None else None
             _dict['ip_address'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in order_id (dict)
         _field_dict = {}
         if self.order_id:
             for _key_order_id in self.order_id:
-                if self.order_id[_key_order_id]:
-                    _field_dict[_key_order_id] = self.order_id[_key_order_id].to_dict()
+                _field_dict[_key_order_id] = self.order_id[_key_order_id].to_dict() if self.order_id[_key_order_id] is not None else None
             _dict['order_id'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in order_value (dict)
         _field_dict = {}
         if self.order_value:
             for _key_order_value in self.order_value:
-                if self.order_value[_key_order_value]:
-                    _field_dict[_key_order_value] = self.order_value[_key_order_value].to_dict()
+                _field_dict[_key_order_value] = self.order_value[_key_order_value].to_dict() if self.order_value[_key_order_value] is not None else None
             _dict['order_value'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in product_id (dict)
         _field_dict = {}
         if self.product_id:
             for _key_product_id in self.product_id:
-                if self.product_id[_key_product_id]:
-                    _field_dict[_key_product_id] = self.product_id[_key_product_id].to_dict()
+                _field_dict[_key_product_id] = self.product_id[_key_product_id].to_dict() if self.product_id[_key_product_id] is not None else None
             _dict['product_id'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in source_url (dict)
         _field_dict = {}
         if self.source_url:
             for _key_source_url in self.source_url:
-                if self.source_url[_key_source_url]:
-                    _field_dict[_key_source_url] = self.source_url[_key_source_url].to_dict()
+                _field_dict[_key_source_url] = self.source_url[_key_source_url].to_dict() if self.source_url[_key_source_url] is not None else None
             _dict['source_url'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in user_agent (dict)
         _field_dict = {}
         if self.user_agent:
             for _key_user_agent in self.user_agent:
-                if self.user_agent[_key_user_agent]:
-                    _field_dict[_key_user_agent] = self.user_agent[_key_user_agent].to_dict()
+                _field_dict[_key_user_agent] = self.user_agent[_key_user_agent].to_dict() if self.user_agent[_key_user_agent] is not None else None
             _dict['user_agent'] = _field_dict
         return _dict
 

@@ -19,18 +19,18 @@ import io.swagger.v3.oas.annotations.media.Schema
 /**
  * 
  * @param labelType 
- * @param &#x60;value&#x60; Label name. 100-character limit.
+ * @param `value` Label name. 100-character limit.
  */
 data class LabelCreateItem(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("label_type")
+    @param:JsonProperty("label_type", required = true)
     @get:JsonProperty("label_type", required = true) val labelType: LabelType,
 
     @get:Size(max=100)
     @Schema(required = true, description = "Label name. 100-character limit.")
-    @param:JsonProperty("value")
+    @param:JsonProperty("value", required = true)
     @get:JsonProperty("value", required = true) val `value`: kotlin.String
 ) {
 

@@ -6,20 +6,3 @@
 */
 #include "NumericFilterOperatorType.h"
 
-namespace models {
-
-NumericFilterOperatorType::NumericFilterOperatorType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

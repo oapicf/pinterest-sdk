@@ -78,7 +78,7 @@ export const Language = {
     Th: 'TH',
     Tr: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type Language = typeof Language[keyof typeof Language];
 

@@ -20,7 +20,7 @@ export const NetworkType = {
     Cellular5g: 'cellular_5g',
     Cellular6g: 'cellular_6g',
     Ethernet: 'ethernet',
-    Unknown: 'unknown'
+    Unknown: 'unknown',
 } as const;
 export type NetworkType = typeof NetworkType[keyof typeof NetworkType];
 

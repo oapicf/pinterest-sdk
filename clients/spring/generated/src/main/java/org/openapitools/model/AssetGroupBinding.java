@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  * AssetGroupBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupBinding {
 
   private List<@Pattern(regexp = "^\\d+$")String> adAccountsIds = new ArrayList<>();
@@ -107,8 +107,8 @@ public class AssetGroupBinding {
    * Asset group description
    * @return assetGroupDescription
    */
-  @NotNull 
-  @Schema(name = "asset_group_description", example = "Asset group that has ad accounts used in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "asset_group_description", example = "Asset group that has ad accounts used in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("asset_group_description")
   public JsonNullable<String> getAssetGroupDescription() {
     return assetGroupDescription;
@@ -128,8 +128,8 @@ public class AssetGroupBinding {
    * Asset Group name
    * @return assetGroupName
    */
-  @NotNull 
-  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "asset_group_name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("asset_group_name")
   public JsonNullable<String> getAssetGroupName() {
     return assetGroupName;
@@ -228,8 +228,8 @@ public class AssetGroupBinding {
    * The creation time of the asset group
    * @return createdTime
    */
-  @NotNull 
-  @Schema(name = "created_time", example = "1646767577816", description = "The creation time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "created_time", example = "1646767577816", description = "The creation time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("created_time")
   public JsonNullable<Integer> getCreatedTime() {
     return createdTime;
@@ -320,8 +320,8 @@ public class AssetGroupBinding {
    * The last update time of the asset group
    * @return updatedTime
    */
-  @NotNull 
-  @Schema(name = "updated_time", example = "1646767577816", description = "The last update time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "updated_time", example = "1646767577816", description = "The last update time of the asset group", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("updated_time")
   public JsonNullable<Integer> getUpdatedTime() {
     return updatedTime;

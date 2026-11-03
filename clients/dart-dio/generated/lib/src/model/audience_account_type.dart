@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_account_type.g.dart';
 
+/// Account type filter for audience sharing.
 class AudienceAccountType extends EnumClass {
 
-  /// Account type filter for audience sharing.
   @BuiltValueEnumConst(wireName: r'AD_ACCOUNT')
   static const AudienceAccountType AD_ACCOUNT = _$AD_ACCOUNT;
-  /// Account type filter for audience sharing.
   @BuiltValueEnumConst(wireName: r'BUSINESS_ACCOUNT')
   static const AudienceAccountType BUSINESS_ACCOUNT = _$BUSINESS_ACCOUNT;
 

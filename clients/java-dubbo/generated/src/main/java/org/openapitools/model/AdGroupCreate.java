@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 public class AdGroupCreate implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -229,10 +229,10 @@ public class AdGroupCreate implements Serializable {
   private BigDecimal bidMultiplier;
 
   @JsonProperty("budget_type")
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   /**
    * Advertiser ID.

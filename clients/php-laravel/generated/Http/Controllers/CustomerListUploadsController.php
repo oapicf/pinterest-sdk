@@ -51,10 +51,10 @@ class CustomerListUploadsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'customerListId' => $customerListId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'customer_list_id' => $customerListId,
+                ],
             ),
             [
             ],
@@ -113,25 +113,25 @@ class CustomerListUploadsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'customerListId' => $customerListId,'customerListUploadId' => $customerListUploadId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'customer_list_id' => $customerListId,'customer_list_upload_id' => $customerListUploadId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'customerListId' => [
+                'customer_list_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'customerListUploadId' => [
+                'customer_list_upload_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
@@ -191,25 +191,25 @@ class CustomerListUploadsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'customerListId' => $customerListId,'customerListUploadId' => $customerListUploadId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'customer_list_id' => $customerListId,'customer_list_upload_id' => $customerListUploadId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'customerListId' => [
+                'customer_list_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'customerListUploadId' => [
+                'customer_list_upload_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',

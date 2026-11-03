@@ -17,11 +17,11 @@ export interface TargetingSpecOperationShoppingRetargeting {
 }
 export namespace TargetingSpecOperationShoppingRetargeting {
     export const FieldEnum = {
-        ShoppingRetargeting: 'SHOPPING_RETARGETING'
+        ShoppingRetargeting: 'SHOPPING_RETARGETING',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
     export const OperationEnum = {
-        Set: 'SET'
+        Set: 'SET',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

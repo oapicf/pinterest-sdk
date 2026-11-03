@@ -343,6 +343,7 @@ class _$CatalogsRetailFeedSerializer implements PrimitiveSerializer<CatalogsReta
   }
 }
 
+
 class CatalogsRetailFeedCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

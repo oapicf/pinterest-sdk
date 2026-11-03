@@ -54,7 +54,7 @@ public class CustomerListsApiHandler {
         CustomerListCreate customerListCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CustomerListCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter customerListCreate is {}", customerListCreate);
+        logger.debug("Parameter customerListCreate is (body omitted)");
 
         api.customerListsCreate(adAccountId, customerListCreate)
             .onSuccess(apiResponse -> {
@@ -135,7 +135,7 @@ public class CustomerListsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter customerListId is {}", customerListId);
-        logger.debug("Parameter customerListUpdateWithRequiredBody is {}", customerListUpdateWithRequiredBody);
+        logger.debug("Parameter customerListUpdateWithRequiredBody is (body omitted)");
 
         api.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {

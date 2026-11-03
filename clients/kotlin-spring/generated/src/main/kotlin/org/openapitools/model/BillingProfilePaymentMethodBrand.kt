@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Brand of the payment method.
-* Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,SOFORT,DINERS_CLUB,ELO,CARTE_BANCAIRE
-*/
+ * Brand of the payment method.
+ * Values: UNKNOWN,VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,SOFORT,DINERS_CLUB,ELO,CARTE_BANCAIRE
+ */
 enum class BillingProfilePaymentMethodBrand(@get:JsonValue val value: kotlin.String) {
 
     UNKNOWN("UNKNOWN"),
@@ -35,9 +35,8 @@ enum class BillingProfilePaymentMethodBrand(@get:JsonValue val value: kotlin.Str
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BillingProfilePaymentMethodBrand {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilePaymentMethodBrand'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilePaymentMethodBrand'")
         }
     }
 }
-

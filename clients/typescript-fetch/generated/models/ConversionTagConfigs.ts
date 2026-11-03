@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface ConversionTagConfigs {
     /**
      * Whether Automatic Enhanced Match birthdate is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemDbEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match email is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemExternalIdEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match name is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemFnlnEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match gender is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemGeEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match location is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemLocEnabled?: boolean | null;
     /**
      * Whether Automatic Enhanced Match phone is enabled. See [Enhanced match](https://help.pinterest.com/en/business/article/enhanced-match) for more information.
-     * @type {boolean}
-     * @memberof ConversionTagConfigs
      */
     aemPhEnabled?: boolean | null;
     /**
      * Metadata ingestion frequency.
-     * @type {number}
-     * @memberof ConversionTagConfigs
      */
     mdFrequency?: number | null;
     /**
      * List of advertiser subdomains configured for NoCodeCAPI calls.
-     * @type {Array<string>}
-     * @memberof ConversionTagConfigs
      */
     noCodeCapiDomains?: Array<string>;
 }

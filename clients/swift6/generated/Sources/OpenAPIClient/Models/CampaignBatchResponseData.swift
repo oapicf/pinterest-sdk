@@ -10,8 +10,8 @@ import Foundation
 /** Campaign data in batch response, with all fields optional to support error cases where data may be empty. */
 public struct CampaignBatchResponseData: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Campaign's Advertiser ID. */
     public var adAccountId: String?
     /** [Restricted](/docs/getting-started/using-beta-and-restricted-features/)  Object describing the campaign level bid multipliers. */

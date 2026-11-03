@@ -22,7 +22,7 @@ data class IneligibleProductTagsErrorDetails(
 
     @field:Valid
     @Schema(required = true, description = "List of product tags that failed eligibility check.")
-    @param:JsonProperty("product_tags")
+    @param:JsonProperty("product_tags", required = true)
     @get:JsonProperty("product_tags", required = true) val productTags: kotlin.collections.List<IneligibleProductTagErrorItem>
 ) {
 

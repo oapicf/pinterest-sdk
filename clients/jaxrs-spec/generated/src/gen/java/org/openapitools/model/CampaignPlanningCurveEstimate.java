@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CampaignPlanningCurveEstimate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningCurveEstimate   {
   private CampaignPlanningEstimationType estimationType;
-  private @Valid List<@Valid CampaignPlanningPointEstimate> points = new ArrayList<>();
+  private List<@Valid CampaignPlanningPointEstimate> points = new ArrayList<>();
 
   public CampaignPlanningCurveEstimate() {
   }
@@ -60,7 +60,7 @@ public class CampaignPlanningCurveEstimate   {
   
   @ApiModelProperty(value = "The estimation points that make up the estimated curve.")
   @JsonProperty("points")
-  @Valid  @Size(max=100)public List<@Valid CampaignPlanningPointEstimate> getPoints() {
+   @Size(max=100)public List<@Valid CampaignPlanningPointEstimate> getPoints() {
     return points;
   }
 

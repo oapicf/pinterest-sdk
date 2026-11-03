@@ -103,8 +103,7 @@ class EntityHistory(BaseModel):
         _items = []
         if self.data_changes:
             for _item_data_changes in self.data_changes:
-                if _item_data_changes:
-                    _items.append(_item_data_changes.to_dict())
+                _items.append(_item_data_changes.to_dict() if _item_data_changes is not None else None)
             _dict['data_changes'] = _items
         return _dict
 

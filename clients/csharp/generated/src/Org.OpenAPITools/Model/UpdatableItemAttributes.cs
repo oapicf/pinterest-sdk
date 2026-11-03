@@ -2692,28 +2692,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (androidDeepLink.IsSet && androidDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(androidDeepLink), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: android_deep_link.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: availability.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: description.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: id.");
 
             if (iosDeepLink.IsSet && iosDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(iosDeepLink), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: ios_deep_link.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: link.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: price.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class UpdatableItemAttributes.");
+                throw new JsonException("Property is not nullable for class UpdatableItemAttributes: title.");
 
             return new UpdatableItemAttributes(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues);
         }
@@ -2724,7 +2724,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatableItemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdatableItemAttributes updatableItemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -2739,32 +2738,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updatableItemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdatableItemAttributes updatableItemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (updatableItemAttributes.AndroidDeepLinkOption.IsSet && updatableItemAttributes.AndroidDeepLink == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.AndroidDeepLink), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.AndroidDeepLink to non-nullable JSON property 'android_deep_link'.");
 
             if (updatableItemAttributes.AvailabilityOption.IsSet && updatableItemAttributes.Availability == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Availability), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Availability to non-nullable JSON property 'availability'.");
 
             if (updatableItemAttributes.DescriptionOption.IsSet && updatableItemAttributes.Description == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Description), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Description to non-nullable JSON property 'description'.");
 
             if (updatableItemAttributes.IdOption.IsSet && updatableItemAttributes.Id == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Id), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Id to non-nullable JSON property 'id'.");
 
             if (updatableItemAttributes.IosDeepLinkOption.IsSet && updatableItemAttributes.IosDeepLink == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.IosDeepLink), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.IosDeepLink to non-nullable JSON property 'ios_deep_link'.");
 
             if (updatableItemAttributes.LinkOption.IsSet && updatableItemAttributes.Link == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Link), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Link to non-nullable JSON property 'link'.");
 
             if (updatableItemAttributes.PriceOption.IsSet && updatableItemAttributes.Price == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Price), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Price to non-nullable JSON property 'price'.");
 
             if (updatableItemAttributes.TitleOption.IsSet && updatableItemAttributes.Title == null)
-                throw new ArgumentNullException(nameof(updatableItemAttributes.Title), "Property is required for class UpdatableItemAttributes.");
+                throw new JsonException("Cannot write null property UpdatableItemAttributes.Title to non-nullable JSON property 'title'.");
 
             if (updatableItemAttributes.AdImage0LinkOption.IsSet)
                 if (updatableItemAttributes.AdImage0LinkOption.Value != null)

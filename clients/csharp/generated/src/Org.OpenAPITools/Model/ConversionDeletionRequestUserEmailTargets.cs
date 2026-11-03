@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!userEmails.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequestUserEmailTargets.", nameof(userEmails));
+                throw new JsonException("Property is required for class ConversionDeletionRequestUserEmailTargets: user_emails.");
 
             if (userEmails.IsSet && userEmails.Value == null)
-                throw new ArgumentNullException(nameof(userEmails), "Property is not nullable for class ConversionDeletionRequestUserEmailTargets.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequestUserEmailTargets: user_emails.");
 
             return new ConversionDeletionRequestUserEmailTargets(userEmails.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestUserEmailTargets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionDeletionRequestUserEmailTargets conversionDeletionRequestUserEmailTargets, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestUserEmailTargets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionDeletionRequestUserEmailTargets conversionDeletionRequestUserEmailTargets, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionDeletionRequestUserEmailTargets.UserEmails == null)
-                throw new ArgumentNullException(nameof(conversionDeletionRequestUserEmailTargets.UserEmails), "Property is required for class ConversionDeletionRequestUserEmailTargets.");
-
             writer.WritePropertyName("user_emails");
             JsonSerializer.Serialize(writer, conversionDeletionRequestUserEmailTargets.UserEmails, jsonSerializerOptions);
         }

@@ -5,7 +5,9 @@ It is never instantiated directly — use one of the concrete types.
 
 ## oneOf
 
-- [**\OpenAPI\Client\Model\CatalogsVerticalFeedsCreateRequest**](CatalogsVerticalFeedsCreateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsRetailFeedsCreateRequest**](CatalogsRetailFeedsCreateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsHotelFeedsCreateRequest**](CatalogsHotelFeedsCreateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsCreativeAssetsFeedsCreateRequest**](CatalogsCreativeAssetsFeedsCreateRequest.md)
 - [**\OpenAPI\Client\Model\CatalogsFeedsCreateRequest**](CatalogsFeedsCreateRequest.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -6,20 +6,3 @@
 */
 #include "LabelStatusBulkUpdate.h"
 
-namespace models {
-
-LabelStatusBulkUpdate::LabelStatusBulkUpdate()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

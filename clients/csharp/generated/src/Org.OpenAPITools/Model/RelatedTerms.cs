@@ -185,13 +185,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class RelatedTerms.");
+                throw new JsonException("Property is not nullable for class RelatedTerms: id.");
 
             if (relatedTermCount.IsSet && relatedTermCount.Value == null)
-                throw new ArgumentNullException(nameof(relatedTermCount), "Property is not nullable for class RelatedTerms.");
+                throw new JsonException("Property is not nullable for class RelatedTerms: related_term_count.");
 
             if (relatedTermsList.IsSet && relatedTermsList.Value == null)
-                throw new ArgumentNullException(nameof(relatedTermsList), "Property is not nullable for class RelatedTerms.");
+                throw new JsonException("Property is not nullable for class RelatedTerms: related_terms_list.");
 
             return new RelatedTerms(id, relatedTermCount, relatedTermsList);
         }
@@ -202,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="relatedTerms"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, RelatedTerms relatedTerms, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -217,14 +216,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="relatedTerms"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, RelatedTerms relatedTerms, JsonSerializerOptions jsonSerializerOptions)
         {
             if (relatedTerms.IdOption.IsSet && relatedTerms.Id == null)
-                throw new ArgumentNullException(nameof(relatedTerms.Id), "Property is required for class RelatedTerms.");
+                throw new JsonException("Cannot write null property RelatedTerms.Id to non-nullable JSON property 'id'.");
+
+            if (relatedTerms.RelatedTermCountOption.IsSet && relatedTerms.RelatedTermCount == null)
+                throw new JsonException("Cannot write null property RelatedTerms.RelatedTermCount to non-nullable JSON property 'related_term_count'.");
 
             if (relatedTerms.RelatedTermsListOption.IsSet && relatedTerms.RelatedTermsList == null)
-                throw new ArgumentNullException(nameof(relatedTerms.RelatedTermsList), "Property is required for class RelatedTerms.");
+                throw new JsonException("Cannot write null property RelatedTerms.RelatedTermsList to non-nullable JSON property 'related_terms_list'.");
 
             if (relatedTerms.IdOption.IsSet)
                 writer.WriteString("id", relatedTerms.Id);

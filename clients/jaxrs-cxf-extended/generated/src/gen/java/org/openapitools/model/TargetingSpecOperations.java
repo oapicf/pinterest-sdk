@@ -115,7 +115,6 @@ public enum OperationEnum {
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid TargetingSpecShoppingRetargeting> values = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")

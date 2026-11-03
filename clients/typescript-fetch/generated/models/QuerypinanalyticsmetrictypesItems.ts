@@ -32,7 +32,7 @@ export const QuerypinanalyticsmetrictypesItems = {
     Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
     VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
     VideoStart: 'VIDEO_START',
-    VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME'
+    VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME',
 } as const;
 export type QuerypinanalyticsmetrictypesItems = typeof QuerypinanalyticsmetrictypesItems[keyof typeof QuerypinanalyticsmetrictypesItems];
 

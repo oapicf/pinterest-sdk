@@ -29,50 +29,34 @@ import {
 export interface CatalogsCreativeAssetsProductGroup {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductGroupCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     catalogType: CatalogsCreativeAssetsProductGroupCatalogTypeEnum;
     /**
      * Unix timestamp in seconds of when catalog product group was created.
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     createdAt?: number;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductGroupFilters}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     filters: CatalogsCreativeAssetsProductGroupFilters;
     /**
      * ID of the catalog product group.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     id: string;
     /**
      * Name of catalog product group
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     name?: string;
     /**
      * Unix timestamp in seconds of last time catalog product group was updated.
-     * @type {number}
-     * @memberof CatalogsCreativeAssetsProductGroup
      */
     updatedAt?: number;
 }
@@ -82,7 +66,7 @@ export interface CatalogsCreativeAssetsProductGroup {
  * @export
  */
 export const CatalogsCreativeAssetsProductGroupCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsProductGroupCatalogTypeEnum = typeof CatalogsCreativeAssetsProductGroupCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsProductGroupCatalogTypeEnum];
 

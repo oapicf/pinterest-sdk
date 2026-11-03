@@ -105,3 +105,4 @@ class _$GoogleProductCategory2FilterSerializer implements PrimitiveSerializer<Go
   }
 }
 
+

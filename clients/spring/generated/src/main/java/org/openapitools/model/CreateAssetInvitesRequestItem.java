@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CreateAssetInvitesRequestItem", description = "Object declaring an asset role update to an invite.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetInvitesRequestItem {
 
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
@@ -65,7 +65,7 @@ public class CreateAssetInvitesRequestItem {
    * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.
    * @return assetIdToPermissions
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "asset_id_to_permissions", example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_id_to_permissions")
   public Map<String, List<Permissions>> getAssetIdToPermissions() {

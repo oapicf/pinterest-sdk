@@ -18,7 +18,7 @@ import Exception from './Exception';
 /**
  * The CampaignBatchItem model module.
  * @module model/CampaignBatchItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignBatchItem {
     /**

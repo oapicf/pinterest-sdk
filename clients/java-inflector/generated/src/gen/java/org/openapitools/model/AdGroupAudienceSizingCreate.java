@@ -22,7 +22,7 @@ import org.openapitools.model.TargetingSpecOptimal;
  **/
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
@@ -34,7 +34,7 @@ public class AdGroupAudienceSizingCreate   {
   private List<AdGroupAudienceSizingKeyword> keywords = null;
 
   @JsonProperty("placement_group")
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   @JsonProperty("product_group_ids")
   private List<String> productGroupIds = null;

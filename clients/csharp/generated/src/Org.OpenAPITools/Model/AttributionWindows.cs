@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (clickWindowDays.IsSet && clickWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(clickWindowDays), "Property is not nullable for class AttributionWindows.");
+                throw new JsonException("Property is not nullable for class AttributionWindows: click_window_days.");
 
             if (engagementWindowDays.IsSet && engagementWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(engagementWindowDays), "Property is not nullable for class AttributionWindows.");
+                throw new JsonException("Property is not nullable for class AttributionWindows: engagement_window_days.");
 
             if (viewWindowDays.IsSet && viewWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(viewWindowDays), "Property is not nullable for class AttributionWindows.");
+                throw new JsonException("Property is not nullable for class AttributionWindows: view_window_days.");
 
             return new AttributionWindows(clickWindowDays, engagementWindowDays, viewWindowDays);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="attributionWindows"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AttributionWindows attributionWindows, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,9 +211,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="attributionWindows"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AttributionWindows attributionWindows, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (attributionWindows.ClickWindowDaysOption.IsSet && attributionWindows.ClickWindowDays == null)
+                throw new JsonException("Cannot write null property AttributionWindows.ClickWindowDays to non-nullable JSON property 'click_window_days'.");
+
+            if (attributionWindows.EngagementWindowDaysOption.IsSet && attributionWindows.EngagementWindowDays == null)
+                throw new JsonException("Cannot write null property AttributionWindows.EngagementWindowDays to non-nullable JSON property 'engagement_window_days'.");
+
+            if (attributionWindows.ViewWindowDaysOption.IsSet && attributionWindows.ViewWindowDays == null)
+                throw new JsonException("Cannot write null property AttributionWindows.ViewWindowDays to non-nullable JSON property 'view_window_days'.");
+
             if (attributionWindows.ClickWindowDaysOption.IsSet)
                 writer.WriteNumber("click_window_days", attributionWindows.ClickWindowDaysOption.Value!.Value);
 

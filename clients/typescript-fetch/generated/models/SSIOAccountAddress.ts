@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface SSIOAccountAddress {
     /**
      * Salesforce id for address
-     * @type {string}
-     * @memberof SSIOAccountAddress
      */
     addressId?: string;
     /**
      * Address display
-     * @type {string}
-     * @memberof SSIOAccountAddress
      */
     display?: string;
     /**
      * Legal entity for this insertion order
-     * @type {string}
-     * @memberof SSIOAccountAddress
      */
     orderLegalEntity?: string;
     /**
      * Purpose for which the address is used, usually Billing or Businness
-     * @type {string}
-     * @memberof SSIOAccountAddress
      */
     purpose?: string;
 }

@@ -29,92 +29,62 @@ import {
 export interface CatalogsCreativeAssetsAttributes {
     /**
      * Link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     androidDeepLink?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     customLabel0?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     customLabel1?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     customLabel2?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     customLabel3?: string | null;
     /**
      * Custom grouping of creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     customLabel4?: string | null;
     /**
      * Brief description of the creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     description?: string;
     /**
      * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     googleProductCategory?: string | null;
     /**
      * IOS deep link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     iosDeepLink?: string | null;
     /**
      * Link to the creative assets page.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     link?: string;
     /**
      * The name of the creative assets.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     title?: string;
     /**
      * Visibility of the creative assets. Must be one of the following values (upper or lowercase): 'visible', 'hidden'.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     visibility?: string | null;
     /**
      * AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.
-     * @type {Array<CatalogsAiContentDisclosure>}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     aiDisclosures?: Array<CatalogsAiContentDisclosure>;
     /**
      * The creative assets image.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     imageLink?: string;
     /**
      * The creative assets video.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsAttributes
      */
     videoLink?: string;
 }

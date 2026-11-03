@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemsCreateBatchRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsCreateBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs items
-     * @type {Array<ItemCreateBatchRecord>}
-     * @memberof CatalogsItemsCreateBatchRequest
      */
     items: Array<ItemCreateBatchRecord>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsCreateBatchRequestLanguageEnum}
-     * @memberof CatalogsItemsCreateBatchRequest
      */
     language: CatalogsItemsCreateBatchRequestLanguageEnum;
     /**
      * 
-     * @type {CatalogsItemsCreateBatchRequestOperationEnum}
-     * @memberof CatalogsItemsCreateBatchRequest
      */
     operation: CatalogsItemsCreateBatchRequestOperationEnum;
 }
@@ -171,7 +163,7 @@ export const CatalogsItemsCreateBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsCreateBatchRequestLanguageEnum = typeof CatalogsItemsCreateBatchRequestLanguageEnum[keyof typeof CatalogsItemsCreateBatchRequestLanguageEnum];
 
@@ -179,7 +171,7 @@ export type CatalogsItemsCreateBatchRequestLanguageEnum = typeof CatalogsItemsCr
  * @export
  */
 export const CatalogsItemsCreateBatchRequestOperationEnum = {
-    Create: 'CREATE'
+    Create: 'CREATE',
 } as const;
 export type CatalogsItemsCreateBatchRequestOperationEnum = typeof CatalogsItemsCreateBatchRequestOperationEnum[keyof typeof CatalogsItemsCreateBatchRequestOperationEnum];
 

@@ -44,110 +44,74 @@ import {
 export interface AdAccountsAudienceRule {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     adAccountId?: string;
     /**
      * Ad ID for engagement audience filter.
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     adId?: Array<string>;
     /**
      * Campaign ID for engagement audience filter.
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     campaignId?: Array<string>;
     /**
      * Valid countries include: "US", "CA", and "GB".
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     country?: string;
     /**
      * Customer list ID. For CUSTOMER_LIST `audience_type`.
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     customerListId?: string;
     /**
      * The audience account's verified domain. **Required** for ENGAGEMENT `audience_type`.
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     engagementDomain?: Array<string>;
     /**
      * Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set.
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     engagementType?: string;
     /**
      * Optional for ENGAGEMENT. Engager type value should be 1-2.
-     * @type {number}
-     * @memberof AdAccountsAudienceRule
      */
     engagerType?: number;
     /**
      * A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     event?: string;
     /**
      * 
-     * @type {EventData}
-     * @memberof AdAccountsAudienceRule
      */
     eventData?: EventData;
     /**
      * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline
-     * @type {object}
-     * @memberof AdAccountsAudienceRule
      */
     eventSource?: object;
     /**
      * Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api
-     * @type {object}
-     * @memberof AdAccountsAudienceRule
      */
     ingestionSource?: object;
     /**
      * Objective for engagement audience filter.
-     * @type {Array<AudienceObjectiveType>}
-     * @memberof AdAccountsAudienceRule
      */
     objectiveType?: Array<AudienceObjectiveType>;
     /**
      * Percentage should be 1-10. The targeted audience should be this % size across Pinterest.
-     * @type {number}
-     * @memberof AdAccountsAudienceRule
      */
     percentage?: number;
     /**
      * IDs of engaged organic pins. Optional for ENGAGEMENT `audience_type`. For example, "pin_id:": ["34567"]
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     pinId?: Array<string>;
     /**
      * Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.
-     * @type {boolean}
-     * @memberof AdAccountsAudienceRule
      */
     prefill?: boolean;
     /**
      * Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.
-     * @type {number}
-     * @memberof AdAccountsAudienceRule
      */
     retentionDays?: number;
     /**
      * Audience ID(s). For ACTALIKE `audience_type`.
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     seedId?: Array<string>;
     /**
@@ -157,14 +121,10 @@ export interface AdAccountsAudienceRule {
      * Supported operators are [ =, !=, contains, not_contains].
      * Example 1:  "url": "http://www.myonlinestore123.com/view_item/shoe"
      * Example 2: "url": {"contains": "/view_item/shoe"}
-     * @type {Array<string>}
-     * @memberof AdAccountsAudienceRule
      */
     url?: Array<string>;
     /**
      * The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.
-     * @type {string}
-     * @memberof AdAccountsAudienceRule
      */
     visitorSourceId?: string;
 }

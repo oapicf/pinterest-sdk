@@ -257,6 +257,7 @@ class _$CatalogsUpdatableHotelAttributesSerializer implements PrimitiveSerialize
   }
 }
 
+
 /// a concrete implementation of [CatalogsUpdatableHotelAttributes], since [CatalogsUpdatableHotelAttributes] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $CatalogsUpdatableHotelAttributes implements CatalogsUpdatableHotelAttributes, Built<$CatalogsUpdatableHotelAttributes, $CatalogsUpdatableHotelAttributesBuilder> {

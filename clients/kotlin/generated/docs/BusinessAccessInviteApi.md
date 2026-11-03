@@ -42,9 +42,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **createAssetAccessRequestBody** | [**CreateAssetAccessRequestBody**](CreateAssetAccessRequestBody.md)|  | |
 
 ### Return type
@@ -98,9 +98,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **cancelInvitesRequest** | [**CancelInvitesRequest**](CancelInvitesRequest.md)|  | |
 
 ### Return type
@@ -154,9 +154,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **createAssetInvitesRequest** | [**CreateAssetInvitesRequest**](CreateAssetInvitesRequest.md)|  | |
 
 ### Return type
@@ -210,9 +210,9 @@ try {
 ```
 
 ### Parameters
-| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **createMembershipOrPartnershipInvitesBody** | [**CreateMembershipOrPartnershipInvitesBody**](CreateMembershipOrPartnershipInvitesBody.md)|  | |
 
 ### Return type
@@ -270,13 +270,13 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **isMember** | **kotlin.Boolean**| A boolean field to indicate whether the invite is to create a partnership or a membership. | [optional] [default to true] |
 | **inviteStatus** | [**kotlin.collections.List&lt;InviteFilterStatus&gt;**](InviteFilterStatus.md)| A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned. | [optional] |
 | **inviteType** | [**InviteType**](.md)| Invite type to filter invites by. Only invites of the specified type will be returned. | [optional] [enum: MEMBER_INVITE, PARTNER_INVITE, PARTNER_REQUEST] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type

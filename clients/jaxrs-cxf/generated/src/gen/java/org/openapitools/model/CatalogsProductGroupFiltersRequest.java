@@ -23,30 +23,26 @@ public class CatalogsProductGroupFiltersRequest  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
-  private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get anyOf
    * @return anyOf
   **/
   @JsonProperty("any_of")
   @NotNull
- @Size(min=1)  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+ @Size(min=1)  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsProductGroupFiltersRequest anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersRequest anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -62,15 +58,15 @@ public class CatalogsProductGroupFiltersRequest  {
   **/
   @JsonProperty("all_of")
   @NotNull
- @Size(min=1)  public List<CatalogsProductGroupFilterKeys> getAllOf() {
+ @Size(min=1)  public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 
-  public CatalogsProductGroupFiltersRequest allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersRequest allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }

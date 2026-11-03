@@ -37,7 +37,7 @@ import javax.validation.Valid;
   CustomerListUpdateWithRequiredBody.JSON_PROPERTY_RECORDS,
   CustomerListUpdateWithRequiredBody.JSON_PROPERTY_RECORDS_V2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpdateWithRequiredBody   {
   public static final String JSON_PROPERTY_OPERATION_TYPE = "operation_type";
   @JsonProperty(JSON_PROPERTY_OPERATION_TYPE)
@@ -110,7 +110,7 @@ public class CustomerListUpdateWithRequiredBody   {
    **/
   @JsonProperty(value = "records_v2")
   @ApiModelProperty(value = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.")
-  @Valid 
+  
   public List<@Valid CustomerListRecordRow> getRecordsV2() {
     return recordsV2;
   }

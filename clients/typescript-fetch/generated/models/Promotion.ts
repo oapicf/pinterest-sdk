@@ -50,80 +50,54 @@ import {
 export interface Promotion {
     /**
      * The Ad Account ID that this promotion belongs to.
-     * @type {string}
-     * @memberof Promotion
      */
     readonly adAccountId: string;
     /**
      * 
-     * @type {DiscountStatus}
-     * @memberof Promotion
      */
     discountStatus?: DiscountStatus;
     /**
      * Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
-     * @type {number}
-     * @memberof Promotion
      */
     endTime?: number;
     /**
      * Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
-     * @type {string}
-     * @memberof Promotion
      */
     externalId?: string;
     /**
      * Promotion ID
-     * @type {string}
-     * @memberof Promotion
      */
     id: string;
     /**
      * The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.
-     * @type {string}
-     * @memberof Promotion
      */
     platformType?: string;
     /**
      * Code that can be used to redeem a promotion.
-     * @type {string}
-     * @memberof Promotion
      */
     promotionCode?: string;
     /**
      * An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
-     * @type {string}
-     * @memberof Promotion
      */
     promotionCustomId?: string;
     /**
      * Internal name for the promotion.
-     * @type {string}
-     * @memberof Promotion
      */
     promotionTitle: string;
     /**
      * 
-     * @type {PromotionType}
-     * @memberof Promotion
      */
     promotionType: PromotionType;
     /**
      * Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
-     * @type {number}
-     * @memberof Promotion
      */
     startTime?: number;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof Promotion
      */
     readonly status?: EntityStatus;
     /**
      * List of values to be inserted in the promotion type-specific template.
-     * @type {Array<PromotionTemplateValue>}
-     * @memberof Promotion
      */
     templateValues?: Array<PromotionTemplateValue>;
 }

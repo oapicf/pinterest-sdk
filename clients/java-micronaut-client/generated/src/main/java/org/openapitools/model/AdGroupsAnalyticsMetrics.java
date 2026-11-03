@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   AdGroupsAnalyticsMetrics.JSON_PROPERTY_D_A_T_E
 })
 @JsonTypeName("AdGroupsAnalyticsMetrics")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupsAnalyticsMetrics {
     public static final String JSON_PROPERTY_A_D_G_R_O_U_P_I_D = "AD_GROUP_ID";

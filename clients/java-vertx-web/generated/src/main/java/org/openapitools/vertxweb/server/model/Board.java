@@ -24,7 +24,7 @@ public class Board   {
   private String name;
   private BoardOwner owner;
   private Integer pinCount;
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public Board () {
 

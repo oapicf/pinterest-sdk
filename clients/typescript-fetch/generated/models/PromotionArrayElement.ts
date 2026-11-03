@@ -36,14 +36,10 @@ import {
 export interface PromotionArrayElement {
     /**
      * 
-     * @type {Promotion}
-     * @memberof PromotionArrayElement
      */
     data?: Promotion;
     /**
      * 
-     * @type {Exception}
-     * @memberof PromotionArrayElement
      */
     exception?: Exception;
 }

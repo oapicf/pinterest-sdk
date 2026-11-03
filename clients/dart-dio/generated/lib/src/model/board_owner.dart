@@ -107,3 +107,4 @@ class _$BoardOwnerSerializer implements PrimitiveSerializer<BoardOwner> {
   }
 }
 
+

@@ -6,7 +6,7 @@
 export const BidStrategyType = {
     AutomaticBid: 'AUTOMATIC_BID',
     MaxBid: 'MAX_BID',
-    TargetAvg: 'TARGET_AVG'
+    TargetAvg: 'TARGET_AVG',
 } as const;
 export type BidStrategyType = typeof BidStrategyType[keyof typeof BidStrategyType];
 

@@ -68,7 +68,7 @@ public class CatalogsFeedsCreateRequest  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
  /**
   * Get credentials
   * @return credentials

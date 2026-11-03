@@ -64,56 +64,38 @@ import {
 export interface CatalogsRetailFeedsUpdateRequest {
     /**
      * 
-     * @type {CatalogsRetailFeedsUpdateRequestCatalogTypeEnum}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     catalogType: CatalogsRetailFeedsUpdateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {ProductAvailabilityType}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     defaultAvailability?: ProductAvailabilityType | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     format?: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     location?: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsRetailFeedsUpdateRequest
      */
     status?: CatalogsStatus;
 }
@@ -123,7 +105,7 @@ export interface CatalogsRetailFeedsUpdateRequest {
  * @export
  */
 export const CatalogsRetailFeedsUpdateRequestCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailFeedsUpdateRequestCatalogTypeEnum = typeof CatalogsRetailFeedsUpdateRequestCatalogTypeEnum[keyof typeof CatalogsRetailFeedsUpdateRequestCatalogTypeEnum];
 

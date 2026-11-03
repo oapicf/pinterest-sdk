@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class InviteType
-{
-public:
-
-    InviteType();
-    virtual ~InviteType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(InviteType,
-        )
-
-private:
+enum class InviteType {
+    
+    MEMBER_INVITE,
+    
+    PARTNER_INVITE,
+    
+    PARTNER_REQUEST
+    
 };
 
+inline void to_json(nlohmann::json& j, const InviteType& value)
+{
+    switch (value)
+    {
+        
+        case InviteType::MEMBER_INVITE: j = "MEMBER_INVITE"; break;
+        
+        case InviteType::PARTNER_INVITE: j = "PARTNER_INVITE"; break;
+        
+        case InviteType::PARTNER_REQUEST: j = "PARTNER_REQUEST"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for InviteType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, InviteType& value)
+{
+    
+    if (j == "MEMBER_INVITE")
+    {
+        value = InviteType::MEMBER_INVITE;
+        return;
+    }
+    
+    if (j == "PARTNER_INVITE")
+    {
+        value = InviteType::PARTNER_INVITE;
+        return;
+    }
+    
+    if (j == "PARTNER_REQUEST")
+    {
+        value = InviteType::PARTNER_REQUEST;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for InviteType", &j);
+}
 
 } // namespace models
 

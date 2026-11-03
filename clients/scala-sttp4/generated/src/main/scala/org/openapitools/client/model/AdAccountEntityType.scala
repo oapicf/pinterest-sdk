@@ -18,10 +18,10 @@ package org.openapitools.client.model
 sealed trait AdAccountEntityType
 
 object AdAccountEntityType {
-  case object ADVERTISER extends AdAccountEntityType
-  case object CAMPAIGN extends AdAccountEntityType
-  case object ADGROUP extends AdAccountEntityType
-  case object AD extends AdAccountEntityType
+  case object ADVERTISER extends AdAccountEntityType { override def toString: String = "ADVERTISER" }
+  case object CAMPAIGN extends AdAccountEntityType { override def toString: String = "CAMPAIGN" }
+  case object ADGROUP extends AdAccountEntityType { override def toString: String = "AD_GROUP" }
+  case object AD extends AdAccountEntityType { override def toString: String = "AD" }
 
   import org.json4s._
 

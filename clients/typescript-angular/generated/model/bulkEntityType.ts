@@ -20,7 +20,7 @@ export const BulkEntityType = {
     Keyword: 'KEYWORD',
     Label: 'LABEL',
     Schedule: 'SCHEDULE',
-    EntityHistory: 'ENTITY_HISTORY'
+    EntityHistory: 'ENTITY_HISTORY',
 } as const;
 export type BulkEntityType = typeof BulkEntityType[keyof typeof BulkEntityType];
 

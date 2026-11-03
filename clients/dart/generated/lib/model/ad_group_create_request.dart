@@ -335,7 +335,9 @@ class AdGroupCreateRequest {
 
       return AdGroupCreateRequest(
         autoTargetingEnabled: mapValueOfType<bool>(json, r'auto_targeting_enabled'),
-        bidMultiplier: num.parse('${json[r'bid_multiplier']}'),
+        bidMultiplier: json[r'bid_multiplier'] == null
+            ? null
+            : num.parse('${json[r'bid_multiplier']}'),
         budgetType: BudgetType.fromJson(json[r'budget_type']),
         pacingDeliveryType: PacingDeliveryType.fromJson(json[r'pacing_delivery_type']),
         bidInMicroCurrency: mapValueOfType<int>(json, r'bid_in_micro_currency'),

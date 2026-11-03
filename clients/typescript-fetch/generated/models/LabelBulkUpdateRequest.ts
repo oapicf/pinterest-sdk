@@ -29,20 +29,14 @@ import {
 export interface LabelBulkUpdateRequest {
     /**
      * Label ID.
-     * @type {string}
-     * @memberof LabelBulkUpdateRequest
      */
     id: string;
     /**
      * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-     * @type {string}
-     * @memberof LabelBulkUpdateRequest
      */
     parentId: string;
     /**
      * 
-     * @type {LabelStatusBulkUpdate}
-     * @memberof LabelBulkUpdateRequest
      */
     status: LabelStatusBulkUpdate;
 }

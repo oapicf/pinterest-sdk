@@ -84,8 +84,7 @@ class ProductGroupPromotionsCreate(BaseModel):
         _items = []
         if self.product_group_promotion:
             for _item_product_group_promotion in self.product_group_promotion:
-                if _item_product_group_promotion:
-                    _items.append(_item_product_group_promotion.to_dict())
+                _items.append(_item_product_group_promotion.to_dict() if _item_product_group_promotion is not None else None)
             _dict['product_group_promotion'] = _items
         return _dict
 

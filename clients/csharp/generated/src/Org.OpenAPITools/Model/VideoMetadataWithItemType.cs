@@ -287,7 +287,12 @@ namespace Org.OpenAPITools.Model
                         case "item_type":
                             string? itemTypeRawValue = utf8JsonReader.GetString();
                             if (itemTypeRawValue != null)
-                                itemType = new Option<VideoMetadataWithItemType.ItemTypeEnum?>(VideoMetadataWithItemType.ItemTypeEnumFromStringOrDefault(itemTypeRawValue));
+                            {
+                                VideoMetadataWithItemType.ItemTypeEnum? itemTypeValue = VideoMetadataWithItemType.ItemTypeEnumFromStringOrDefault(itemTypeRawValue);
+                                if (itemTypeValue == null)
+                                    throw new JsonException();
+                                itemType = new Option<VideoMetadataWithItemType.ItemTypeEnum?>(itemTypeValue);
+                            }
                             break;
                         case "cover_image_url":
                             coverImageUrl = new Option<string?>(utf8JsonReader.GetString()!);
@@ -314,13 +319,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemType.IsSet)
-                throw new ArgumentException("Property is required for class VideoMetadataWithItemType.", nameof(itemType));
+                throw new JsonException("Property is required for class VideoMetadataWithItemType: item_type.");
 
             if (itemType.IsSet && itemType.Value == null)
-                throw new ArgumentNullException(nameof(itemType), "Property is not nullable for class VideoMetadataWithItemType.");
+                throw new JsonException("Property is not nullable for class VideoMetadataWithItemType: item_type.");
 
             if (coverImageUrl.IsSet && coverImageUrl.Value == null)
-                throw new ArgumentNullException(nameof(coverImageUrl), "Property is not nullable for class VideoMetadataWithItemType.");
+                throw new JsonException("Property is not nullable for class VideoMetadataWithItemType: cover_image_url.");
 
             return new VideoMetadataWithItemType(itemType.Value!.Value!, coverImageUrl, duration, height, videoUrl, videoUrlHls, width);
         }
@@ -331,7 +336,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="videoMetadataWithItemType"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, VideoMetadataWithItemType videoMetadataWithItemType, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -346,11 +350,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="videoMetadataWithItemType"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, VideoMetadataWithItemType videoMetadataWithItemType, JsonSerializerOptions jsonSerializerOptions)
         {
             if (videoMetadataWithItemType.CoverImageUrlOption.IsSet && videoMetadataWithItemType.CoverImageUrl == null)
-                throw new ArgumentNullException(nameof(videoMetadataWithItemType.CoverImageUrl), "Property is required for class VideoMetadataWithItemType.");
+                throw new JsonException("Cannot write null property VideoMetadataWithItemType.CoverImageUrl to non-nullable JSON property 'cover_image_url'.");
 
             var itemTypeRawValue = VideoMetadataWithItemType.ItemTypeEnumToJsonValue(videoMetadataWithItemType.ItemType);
             writer.WriteString("item_type", itemTypeRawValue);

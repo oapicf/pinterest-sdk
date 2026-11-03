@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="A request object that can have multiple operations on a single retail batch")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailBatchRequest   {
   
   private String catalogId;
@@ -322,8 +322,7 @@ public class CatalogsRetailBatchRequest   {
   @ApiModelProperty(required = true, value = "Array with catalogs item operations")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=1000)  @Valid
-  public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
+ @Size(min=1,max=1000)  public List<@Valid CatalogsRetailBatchRequestItemsItems> getItems() {
     return items;
   }
   public void setItems(List<@Valid CatalogsRetailBatchRequestItemsItems> items) {

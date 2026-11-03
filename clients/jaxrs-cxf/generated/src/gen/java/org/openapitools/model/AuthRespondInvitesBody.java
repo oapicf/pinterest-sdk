@@ -21,8 +21,6 @@ public class AuthRespondInvitesBody  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
  /**
    * Get invites

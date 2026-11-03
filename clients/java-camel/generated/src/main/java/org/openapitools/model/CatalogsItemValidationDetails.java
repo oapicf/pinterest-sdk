@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * CatalogsItemValidationDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemValidationDetails {
 
   private JsonNullable<NullableCatalogsItemFieldType> attributeName = JsonNullable.<NullableCatalogsItemFieldType>undefined();
@@ -48,7 +48,7 @@ public class CatalogsItemValidationDetails {
    * Attribute that has a validation issue.
    * @return attributeName
    */
-  @NotNull @Valid 
+  /* @Present */ @Valid 
   @Schema(name = "attribute_name", description = "Attribute that has a validation issue.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attribute_name")
   public JsonNullable<NullableCatalogsItemFieldType> getAttributeName() {
@@ -68,7 +68,7 @@ public class CatalogsItemValidationDetails {
    * Provided value that caused the validation issue.
    * @return providedValue
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "provided_value", description = "Provided value that caused the validation issue.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("provided_value")
   public JsonNullable<String> getProvidedValue() {

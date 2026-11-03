@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reporting template type
-* Values: UNSPECIFIED,BULK,OVERVIEW,TABLE,MMM,BRAND_CATEGORY
-*/
+ * Reporting template type
+ * Values: UNSPECIFIED,BULK,OVERVIEW,TABLE,MMM,BRAND_CATEGORY
+ */
 enum class MetricsReportingTemplateType(@get:JsonValue val value: kotlin.String) {
 
     UNSPECIFIED("UNSPECIFIED"),
@@ -32,9 +32,8 @@ enum class MetricsReportingTemplateType(@get:JsonValue val value: kotlin.String)
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MetricsReportingTemplateType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MetricsReportingTemplateType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MetricsReportingTemplateType'")
         }
     }
 }
-

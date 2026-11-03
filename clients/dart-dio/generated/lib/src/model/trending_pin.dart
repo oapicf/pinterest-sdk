@@ -193,3 +193,4 @@ class _$TrendingPinSerializer implements PrimitiveSerializer<TrendingPin> {
   }
 }
 
+

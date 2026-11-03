@@ -108,3 +108,4 @@ class _$ItemDeleteBatchRecordSerializer implements PrimitiveSerializer<ItemDelet
   }
 }
 
+

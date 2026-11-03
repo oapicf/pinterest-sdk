@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class Granularity
-{
-public:
-
-    Granularity();
-    virtual ~Granularity() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Granularity,
-        )
-
-private:
+enum class Granularity {
+    
+    TOTAL,
+    
+    DAY,
+    
+    HOUR,
+    
+    WEEK,
+    
+    MONTH
+    
 };
 
+inline void to_json(nlohmann::json& j, const Granularity& value)
+{
+    switch (value)
+    {
+        
+        case Granularity::TOTAL: j = "TOTAL"; break;
+        
+        case Granularity::DAY: j = "DAY"; break;
+        
+        case Granularity::HOUR: j = "HOUR"; break;
+        
+        case Granularity::WEEK: j = "WEEK"; break;
+        
+        case Granularity::MONTH: j = "MONTH"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Granularity", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Granularity& value)
+{
+    
+    if (j == "TOTAL")
+    {
+        value = Granularity::TOTAL;
+        return;
+    }
+    
+    if (j == "DAY")
+    {
+        value = Granularity::DAY;
+        return;
+    }
+    
+    if (j == "HOUR")
+    {
+        value = Granularity::HOUR;
+        return;
+    }
+    
+    if (j == "WEEK")
+    {
+        value = Granularity::WEEK;
+        return;
+    }
+    
+    if (j == "MONTH")
+    {
+        value = Granularity::MONTH;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Granularity", &j);
+}
 
 } // namespace models
 

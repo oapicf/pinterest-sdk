@@ -6,20 +6,3 @@
 */
 #include "TopVideoPinsSortBy.h"
 
-namespace models {
-
-TopVideoPinsSortBy::TopVideoPinsSortBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

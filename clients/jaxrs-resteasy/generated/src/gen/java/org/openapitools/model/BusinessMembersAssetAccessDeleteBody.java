@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object with a list of member asset accesses to delete.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="An object with a list of member asset accesses to delete.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMembersAssetAccessDeleteBody   {
   
   private List<@Valid DeleteMemberAssetAccessItem> accesses = new ArrayList<>();
@@ -26,8 +26,7 @@ public class BusinessMembersAssetAccessDeleteBody   {
   @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
   @JsonProperty("accesses")
   @NotNull
- @Size(min=1,max=100)  @Valid
-  public List<@Valid DeleteMemberAssetAccessItem> getAccesses() {
+ @Size(min=1,max=100)  public List<@Valid DeleteMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
   public void setAccesses(List<@Valid DeleteMemberAssetAccessItem> accesses) {

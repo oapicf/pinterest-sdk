@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The name of field that businesses are sorted by
-* Values: FULL_NAME,BUSINESS_ROLES,CREATED_TIME
-*/
+ * The name of field that businesses are sorted by
+ * Values: FULL_NAME,BUSINESS_ROLES,CREATED_TIME
+ */
 enum class BusinessMemberSortBy(@get:JsonValue val value: kotlin.String) {
 
     FULL_NAME("FULL_NAME"),
@@ -29,9 +29,8 @@ enum class BusinessMemberSortBy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BusinessMemberSortBy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessMemberSortBy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessMemberSortBy'")
         }
     }
 }
-

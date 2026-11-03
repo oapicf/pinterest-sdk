@@ -6,20 +6,3 @@
 */
 #include "PublicTargetingType.h"
 
-namespace models {
-
-PublicTargetingType::PublicTargetingType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

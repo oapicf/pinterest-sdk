@@ -17,7 +17,7 @@ import CatalogsProductGroupMultiplePinterestProductCategoryCriteria from './Cata
 /**
  * The PinterestProductCategoriesFilter model module.
  * @module model/PinterestProductCategoriesFilter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinterestProductCategoriesFilter {
     /**

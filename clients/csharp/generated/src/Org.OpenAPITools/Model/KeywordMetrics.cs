@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (keywordQueryVolume.IsSet && keywordQueryVolume.Value == null)
-                throw new ArgumentNullException(nameof(keywordQueryVolume), "Property is not nullable for class KeywordMetrics.");
+                throw new JsonException("Property is not nullable for class KeywordMetrics: keyword_query_volume.");
 
             return new KeywordMetrics(keywordQueryVolume);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordMetrics keywordMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordMetrics keywordMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             if (keywordMetrics.KeywordQueryVolumeOption.IsSet && keywordMetrics.KeywordQueryVolume == null)
-                throw new ArgumentNullException(nameof(keywordMetrics.KeywordQueryVolume), "Property is required for class KeywordMetrics.");
+                throw new JsonException("Cannot write null property KeywordMetrics.KeywordQueryVolume to non-nullable JSON property 'keyword_query_volume'.");
 
             if (keywordMetrics.KeywordQueryVolumeOption.IsSet)
                 writer.WriteString("keyword_query_volume", keywordMetrics.KeywordQueryVolume);

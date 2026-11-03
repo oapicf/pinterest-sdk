@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -24,20 +23,16 @@ import jakarta.annotation.Generated;
  * AdGroupCreateRequestAllOf1
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateRequestAllOf1 {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean autoTargetingEnabled;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal bidMultiplier;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   public AdGroupCreateRequestAllOf1 autoTargetingEnabled(@Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
@@ -83,7 +78,7 @@ public class AdGroupCreateRequestAllOf1 {
     this.bidMultiplier = bidMultiplier;
   }
 
-  public AdGroupCreateRequestAllOf1 budgetType(@Nullable BudgetType budgetType) {
+  public AdGroupCreateRequestAllOf1 budgetType(BudgetType budgetType) {
     this.budgetType = budgetType;
     return this;
   }
@@ -95,16 +90,16 @@ public class AdGroupCreateRequestAllOf1 {
   @Valid 
   @Schema(name = "budget_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_type")
-  public @Nullable BudgetType getBudgetType() {
+  public BudgetType getBudgetType() {
     return budgetType;
   }
 
   @JsonProperty("budget_type")
-  public void setBudgetType(@Nullable BudgetType budgetType) {
+  public void setBudgetType(BudgetType budgetType) {
     this.budgetType = budgetType;
   }
 
-  public AdGroupCreateRequestAllOf1 pacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
+  public AdGroupCreateRequestAllOf1 pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
     return this;
   }
@@ -116,12 +111,12 @@ public class AdGroupCreateRequestAllOf1 {
   @Valid 
   @Schema(name = "pacing_delivery_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pacing_delivery_type")
-  public @Nullable PacingDeliveryType getPacingDeliveryType() {
+  public PacingDeliveryType getPacingDeliveryType() {
     return pacingDeliveryType;
   }
 
   @JsonProperty("pacing_delivery_type")
-  public void setPacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
+  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
   }
 

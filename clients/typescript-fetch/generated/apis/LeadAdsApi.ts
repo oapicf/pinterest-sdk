@@ -35,23 +35,51 @@ import {
 } from '../models/PinterestLibError';
 
 export interface AdAccountsSubscriptionsDelByIdRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Unique identifier of a subscription.
+     */
     subscriptionId: string;
 }
 
 export interface AdAccountsSubscriptionsGetByIdRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Unique identifier of a subscription.
+     */
     subscriptionId: string;
 }
 
 export interface AdAccountsSubscriptionsGetListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface AdAccountsSubscriptionsPostRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate;
 }
 

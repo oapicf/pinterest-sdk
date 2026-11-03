@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
-* Values: TOTAL,WEEK,MONTH
-*/
+ * Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
+ * Values: TOTAL,WEEK,MONTH
+ */
 enum class ConversionProductReportGranularity(@get:JsonValue val value: kotlin.String) {
 
     TOTAL("TOTAL"),
@@ -29,9 +29,8 @@ enum class ConversionProductReportGranularity(@get:JsonValue val value: kotlin.S
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionProductReportGranularity {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportGranularity'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportGranularity'")
         }
     }
 }
-

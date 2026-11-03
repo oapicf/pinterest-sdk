@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class HotelProductGroupType
-{
-public:
-
-    HotelProductGroupType();
-    virtual ~HotelProductGroupType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(HotelProductGroupType,
-        )
-
-private:
+enum class HotelProductGroupType {
+    
+    MERCHANT_CREATED,
+    
+    ALL_LISTINGS
+    
 };
 
+inline void to_json(nlohmann::json& j, const HotelProductGroupType& value)
+{
+    switch (value)
+    {
+        
+        case HotelProductGroupType::MERCHANT_CREATED: j = "MERCHANT_CREATED"; break;
+        
+        case HotelProductGroupType::ALL_LISTINGS: j = "ALL_LISTINGS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for HotelProductGroupType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, HotelProductGroupType& value)
+{
+    
+    if (j == "MERCHANT_CREATED")
+    {
+        value = HotelProductGroupType::MERCHANT_CREATED;
+        return;
+    }
+    
+    if (j == "ALL_LISTINGS")
+    {
+        value = HotelProductGroupType::ALL_LISTINGS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for HotelProductGroupType", &j);
+}
 
 } // namespace models
 

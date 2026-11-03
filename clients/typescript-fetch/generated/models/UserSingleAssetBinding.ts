@@ -29,14 +29,10 @@ import {
 export interface UserSingleAssetBinding {
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof UserSingleAssetBinding
      */
     permissions?: Array<string>;
     /**
      * 
-     * @type {BusinessAccessUserSummary}
-     * @memberof UserSingleAssetBinding
      */
     user?: BusinessAccessUserSummary;
 }

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **customerSegmentCreate**
 ```swift
-    open class func customerSegmentCreate(adAccountId: String, customerSegmentCreate: CustomerSegmentCreate, completion: @escaping (_ data: CustomerSegment?, _ error: Error?) -> Void)
+    open class func customerSegmentCreate(adAccountId: String, customerSegmentCreate: CustomerSegmentCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerSegment
 ```
 
 Create customer segments
@@ -27,15 +27,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let customerSegmentCreate = CustomerSegmentCreate(audienceIds: ["audienceIds_example"], name: "name_example") // CustomerSegmentCreate | 
 
 // Create customer segments
-CustomerSegmentAPI.customerSegmentCreate(adAccountId: adAccountId, customerSegmentCreate: customerSegmentCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerSegmentAPI.customerSegmentCreate(adAccountId: adAccountId, customerSegmentCreate: customerSegmentCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -63,7 +59,7 @@ Name | Type | Description  | Notes
 
 # **customerSegmentList**
 ```swift
-    open class func customerSegmentList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, includeSizing: Bool? = nil, searchQuery: String? = nil, completion: @escaping (_ data: CustomerSegmentList200Response?, _ error: Error?) -> Void)
+    open class func customerSegmentList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, includeSizing: Bool? = nil, searchQuery: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerSegmentList200Response
 ```
 
 List customer segments
@@ -83,15 +79,11 @@ let includeSizing = true // Bool | Include audience sizing in result or not (opt
 let searchQuery = "searchQuery_example" // String | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 
 // List customer segments
-CustomerSegmentAPI.customerSegmentList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, includeSizing: includeSizing, searchQuery: searchQuery) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerSegmentAPI.customerSegmentList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, includeSizing: includeSizing, searchQuery: searchQuery)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -123,7 +115,7 @@ Name | Type | Description  | Notes
 
 # **customerSegmentUpdate**
 ```swift
-    open class func customerSegmentUpdate(adAccountId: String, customerSegmentUpdateRequestUpdateWithRequiredBody: CustomerSegmentUpdateRequestUpdateWithRequiredBody, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func customerSegmentUpdate(adAccountId: String, customerSegmentUpdateRequestUpdateWithRequiredBody: CustomerSegmentUpdateRequestUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Update customer segments
@@ -139,15 +131,10 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let customerSegmentUpdateRequestUpdateWithRequiredBody = CustomerSegmentUpdateRequestUpdateWithRequiredBody(audienceIds: ["audienceIds_example"], id: "id_example", operationType: AudienceUpdateOperationType()) // CustomerSegmentUpdateRequestUpdateWithRequiredBody | 
 
 // Update customer segments
-CustomerSegmentAPI.customerSegmentUpdate(adAccountId: adAccountId, customerSegmentUpdateRequestUpdateWithRequiredBody: customerSegmentUpdateRequestUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await CustomerSegmentAPI.customerSegmentUpdate(adAccountId: adAccountId, customerSegmentUpdateRequestUpdateWithRequiredBody: customerSegmentUpdateRequestUpdateWithRequiredBody)
+} catch {
+    print(error)
 }
 ```
 

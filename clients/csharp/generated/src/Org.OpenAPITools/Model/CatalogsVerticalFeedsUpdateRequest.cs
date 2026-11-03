@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnum?>(CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsVerticalFeedsUpdateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsVerticalFeedsUpdateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsVerticalFeedsUpdateRequest: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalFeedsUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsVerticalFeedsUpdateRequest: catalog_type.");
 
             if (catalogsCreativeAssetsFeedsUpdateRequest != null)
                 return new CatalogsVerticalFeedsUpdateRequest(catalogsCreativeAssetsFeedsUpdateRequest);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalFeedsUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsVerticalFeedsUpdateRequest catalogsVerticalFeedsUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalFeedsUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsVerticalFeedsUpdateRequest catalogsVerticalFeedsUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
 

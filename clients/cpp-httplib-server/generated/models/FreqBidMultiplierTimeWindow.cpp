@@ -6,20 +6,3 @@
 */
 #include "FreqBidMultiplierTimeWindow.h"
 
-namespace models {
-
-FreqBidMultiplierTimeWindow::FreqBidMultiplierTimeWindow()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

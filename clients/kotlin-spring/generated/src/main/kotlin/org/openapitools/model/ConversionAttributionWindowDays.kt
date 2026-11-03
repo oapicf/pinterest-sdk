@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: _0,_1,_7,_14,_30,_60
-*/
+ * 
+ * Values: _0,_1,_7,_14,_30,_60
+ */
 enum class ConversionAttributionWindowDays(@get:JsonValue val value: java.math.BigDecimal) {
 
     _0("0"),
@@ -32,9 +32,8 @@ enum class ConversionAttributionWindowDays(@get:JsonValue val value: java.math.B
         @JvmStatic
         @JsonCreator
         fun forValue(value: java.math.BigDecimal): ConversionAttributionWindowDays {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionAttributionWindowDays'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionAttributionWindowDays'")
         }
     }
 }
-

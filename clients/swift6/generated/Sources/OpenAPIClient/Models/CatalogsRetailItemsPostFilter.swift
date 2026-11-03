@@ -12,7 +12,7 @@ public struct CatalogsRetailItemsPostFilter: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let itemIdsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
     public var catalogId: String?

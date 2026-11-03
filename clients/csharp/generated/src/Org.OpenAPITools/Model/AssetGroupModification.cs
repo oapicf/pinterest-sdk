@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class AssetGroupModification.");
+                throw new JsonException("Property is not nullable for class AssetGroupModification: exceptions.");
 
             if (updatedAssetGroups.IsSet && updatedAssetGroups.Value == null)
-                throw new ArgumentNullException(nameof(updatedAssetGroups), "Property is not nullable for class AssetGroupModification.");
+                throw new JsonException("Property is not nullable for class AssetGroupModification: updated_asset_groups.");
 
             return new AssetGroupModification(exceptions, updatedAssetGroups);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupModification"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetGroupModification assetGroupModification, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetGroupModification"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetGroupModification assetGroupModification, JsonSerializerOptions jsonSerializerOptions)
         {
             if (assetGroupModification.ExceptionsOption.IsSet && assetGroupModification.Exceptions == null)
-                throw new ArgumentNullException(nameof(assetGroupModification.Exceptions), "Property is required for class AssetGroupModification.");
+                throw new JsonException("Cannot write null property AssetGroupModification.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (assetGroupModification.UpdatedAssetGroupsOption.IsSet && assetGroupModification.UpdatedAssetGroups == null)
-                throw new ArgumentNullException(nameof(assetGroupModification.UpdatedAssetGroups), "Property is required for class AssetGroupModification.");
+                throw new JsonException("Cannot write null property AssetGroupModification.UpdatedAssetGroups to non-nullable JSON property 'updated_asset_groups'.");
 
             if (assetGroupModification.ExceptionsOption.IsSet)
             {

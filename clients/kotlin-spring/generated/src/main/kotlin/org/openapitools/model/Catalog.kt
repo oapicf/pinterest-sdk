@@ -28,24 +28,24 @@ data class Catalog(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
     @Schema(example = "2022-03-14T15:15:22Z", required = true, readOnly = true, description = "")
-    @param:JsonProperty("created_at")
+    @param:JsonProperty("created_at", required = true)
     @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "864344156814050986", required = true, description = "ID of the catalog entity.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(required = true, description = "A human-friendly name associated to a catalog entity.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(example = "2022-03-14T15:16:34Z", required = true, readOnly = true, description = "")
-    @param:JsonProperty("updated_at")
+    @param:JsonProperty("updated_at", required = true)
     @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime
 ) {
 

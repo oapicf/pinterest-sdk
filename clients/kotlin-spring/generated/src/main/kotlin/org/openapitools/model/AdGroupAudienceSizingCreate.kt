@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdGroupAudienceSizingCreativeTypes
 import org.openapitools.model.AdGroupAudienceSizingKeyword
 import org.openapitools.model.AdgroupPlacementGroupType
@@ -34,8 +31,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AdGroupAudienceSizingCreate(
 
     @Schema(description = "Enable auto-targeting for ad group. Default value is True. Also known as [Pinterest Performance+ targeting](https://help.pinterest.com/en/business/article/performance-plus-targeting).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("auto_targeting_enabled")
     @get:JsonProperty("auto_targeting_enabled") val autoTargetingEnabled: kotlin.Boolean? = true,
 
@@ -51,8 +46,6 @@ data class AdGroupAudienceSizingCreate(
 
     @field:Valid
     @Schema(description = "[Placement group](/docs/redoc/#section/Placement-group).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("placement_group")
     @get:JsonProperty("placement_group") val placementGroup: AdgroupPlacementGroupType? = null,
 
@@ -62,8 +55,6 @@ data class AdGroupAudienceSizingCreate(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("targeting_spec")
     @get:JsonProperty("targeting_spec") val targetingSpec: TargetingSpecOptimal? = null
 ) {

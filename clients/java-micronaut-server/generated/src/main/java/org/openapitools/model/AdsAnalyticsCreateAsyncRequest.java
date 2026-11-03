@@ -79,7 +79,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdsAnalyticsCreateAsyncRequest.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
 @JsonTypeName("AdsAnalyticsCreateAsyncRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdsAnalyticsCreateAsyncRequest {
     public static final String JSON_PROPERTY_AD_GROUP_IDS = "ad_group_ids";
@@ -113,7 +113,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private List<CampaignSummaryStatus> campaignStatuses = null;
 
     public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";
-    private ConversionAttributionWindowDays clickWindowDays;
+    private ConversionAttributionWindowDays clickWindowDays = 30;
 
     public static final String JSON_PROPERTY_COLUMNS = "columns";
     private List<ReportingColumnAsync> columns = null;
@@ -122,7 +122,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private Boolean combineTargetingTypes = false;
 
     public static final String JSON_PROPERTY_CONVERSION_REPORT_TIME = "conversion_report_time";
-    private ConversionReportTimeType conversionReportTime;
+    private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
     public static final String JSON_PROPERTY_CUSTOM_CONVERSION_EVENT_METRICS = "custom_conversion_event_metrics";
     private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = null;
@@ -134,7 +134,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private Integer endHour;
 
     public static final String JSON_PROPERTY_ENGAGEMENT_WINDOW_DAYS = "engagement_window_days";
-    private ConversionAttributionWindowDays engagementWindowDays;
+    private ConversionAttributionWindowDays engagementWindowDays = 30;
 
     public static final String JSON_PROPERTY_GRANULARITY = "granularity";
     private Granularity granularity;
@@ -146,7 +146,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = null;
 
     public static final String JSON_PROPERTY_PRIMARY_SORT = "primary_sort";
-    private PrimarySort primarySort;
+    private PrimarySort primarySort = PrimarySort.BY_ID;
 
     public static final String JSON_PROPERTY_PRODUCT_GROUP_IDS = "product_group_ids";
     private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = null;
@@ -158,7 +158,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private List<@Pattern(regexp = "^\\d+$")String> productItemIds = null;
 
     public static final String JSON_PROPERTY_REPORT_FORMAT = "report_format";
-    private DataOutputFormat reportFormat;
+    private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
     public static final String JSON_PROPERTY_REPORTING_TIMEZONE = "reporting_timezone";
     private ReportingTimeZone reportingTimezone;
@@ -173,7 +173,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = null;
 
     public static final String JSON_PROPERTY_VIEW_WINDOW_DAYS = "view_window_days";
-    private ConversionAttributionWindowDays viewWindowDays;
+    private ConversionAttributionWindowDays viewWindowDays = 1;
 
     public AdsAnalyticsCreateAsyncRequest(String endDate, Granularity granularity, String startDate) {
         this.endDate = endDate;

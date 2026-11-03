@@ -30,7 +30,7 @@ import model.ReportingTimeZone
 /**
   * Provides a default implementation for [[AdGroupsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 class AdGroupsApiImpl extends AdGroupsApi {
   /**
     * @inheritdoc

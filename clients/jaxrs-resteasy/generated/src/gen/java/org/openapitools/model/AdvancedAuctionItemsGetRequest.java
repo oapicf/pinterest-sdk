@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object used to get bid options values for a batch of retail catalog items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Request object used to get bid options values for a batch of retail catalog items")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsGetRequest   {
   
   private String catalogId;
@@ -41,8 +41,7 @@ public class AdvancedAuctionItemsGetRequest   {
   @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
   @JsonProperty("items")
   @NotNull
- @Size(min=1,max=10000)  @Valid
-  public List<@Valid AdvancedAuctionKey> getItems() {
+ @Size(min=1,max=10000)  public List<@Valid AdvancedAuctionKey> getItems() {
     return items;
   }
   public void setItems(List<@Valid AdvancedAuctionKey> items) {

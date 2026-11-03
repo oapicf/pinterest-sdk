@@ -9,10 +9,10 @@ import Foundation
 
 public struct AdUpdateRequest: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
-    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(AG)?\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(AG)?\\d+$")
     /** The ID of this ad. */
     public var id: String
     /** Pin ID. This field may only be updated for draft ads. */

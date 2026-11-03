@@ -115,98 +115,277 @@ import {
 } from '../models/UserWebsitesGet200Response';
 
 export interface BoardsUserFollowsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Whether or not to include implicit user follows, which means followees with board follows.
+     * When explicit_following is True, it means we only want explicit user follows.
+     */
     explicitFollowing?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface FollowUserUpdateRequest {
+    /**
+     * A valid username
+     */
     username: string;
+    /**
+     * 
+     */
     followUserCreate: FollowUserCreate;
 }
 
 export interface FollowersListRequest {
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface UnverifyWebsiteDeleteRequest {
+    /**
+     * Website with path or domain only
+     */
     website: string;
 }
 
 export interface UserAccountAnalyticsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Filter on Pins that match your claimed domain.
+     */
     fromClaimedContent?: UserAccountAnalyticsFromClaimedContentEnum;
+    /**
+     * Pin formats to get data for, default is all.
+     */
     pinFormat?: UserAccountAnalyticsPinFormatEnum;
+    /**
+     * Apps or devices to get data for, default is all.
+     */
     appTypes?: UserAccountAnalyticsAppTypesEnum;
+    /**
+     * Filter to paid or organic data. Default is all.
+     */
     contentType?: UserAccountAnalyticsContentTypeEnum;
+    /**
+     * Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
+     */
     source?: UserAccountAnalyticsSourceEnum;
+    /**
+     * Metric types to get data for, default is all.
+     */
     metricTypes?: Array<QuerymetrictypesItems>;
+    /**
+     * How to split the data into groups. Not including this param means data won't be split.
+     */
     splitField?: UserAccountAnalyticsSplitFieldEnum;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface UserAccountAnalyticsTopPinsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Specify sorting order for metrics
+     */
     sortBy: TopPinsSortBy;
+    /**
+     * Filter on Pins that match your claimed domain.
+     */
     fromClaimedContent?: UserAccountAnalyticsTopPinsFromClaimedContentEnum;
+    /**
+     * Pin formats to get data for, default is all.
+     */
     pinFormat?: UserAccountAnalyticsTopPinsPinFormatEnum;
+    /**
+     * Apps or devices to get data for, default is all.
+     */
     appTypes?: UserAccountAnalyticsTopPinsAppTypesEnum;
+    /**
+     * Filter to paid or organic data. Default is all.
+     */
     contentType?: UserAccountAnalyticsTopPinsContentTypeEnum;
+    /**
+     * Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
+     */
     source?: UserAccountAnalyticsTopPinsSourceEnum;
+    /**
+     * Metric types to get data for, default is all.
+     */
     metricTypes?: Array<QuerymetrictypesItems>;
+    /**
+     * Number of pins to include, default is 10. Max is 50.
+     */
     numOfPins?: number;
+    /**
+     * Get metrics for pins created in the last "n" days.
+     */
     createdInLastNDays?: UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface UserAccountAnalyticsTopVideoPinsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Specify sorting order for video metrics
+     */
     sortBy: TopVideoPinsSortBy;
+    /**
+     * Filter on Pins that match your claimed domain.
+     */
     fromClaimedContent?: UserAccountAnalyticsTopVideoPinsFromClaimedContentEnum;
+    /**
+     * Pin formats to get data for, default is all.
+     */
     pinFormat?: UserAccountAnalyticsTopVideoPinsPinFormatEnum;
+    /**
+     * Apps or devices to get data for, default is all.
+     */
     appTypes?: UserAccountAnalyticsTopVideoPinsAppTypesEnum;
+    /**
+     * Filter to paid or organic data. Default is all.
+     */
     contentType?: UserAccountAnalyticsTopVideoPinsContentTypeEnum;
+    /**
+     * Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
+     */
     source?: UserAccountAnalyticsTopVideoPinsSourceEnum;
+    /**
+     * Metric types to get video data for, default is all.
+     */
     metricTypes?: Array<QueryvideopinmetrictypesItems>;
+    /**
+     * Number of pins to include, default is 10. Max is 50.
+     */
     numOfPins?: number;
+    /**
+     * Get metrics for pins created in the last "n" days.
+     */
     createdInLastNDays?: UserAccountAnalyticsTopVideoPinsCreatedInLastNDaysEnum;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface UserAccountFollowedInterestsRequest {
+    /**
+     * A valid username
+     */
     username: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface UserAccountGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface UserFollowingGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Whether or not to include implicit user follows, which means followees with board follows.
+     * When explicit_following is True, it means we only want explicit user follows.
+     */
     explicitFollowing?: boolean;
+    /**
+     * Thrift param specifying what type of followees will be kept.
+     * Default to include all followees.
+     */
     feedType?: UserFollowingFeedType;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface UserWebsitesGetRequest {
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface VerifyWebsiteUpdateRequest {
+    /**
+     * 
+     */
     userWebsiteCreate: UserWebsiteCreate;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface WebsiteVerificationGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
@@ -531,11 +710,11 @@ export class UserAccountApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['fromClaimedContent'] != null) {
@@ -636,11 +815,11 @@ export class UserAccountApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['sortBy'] != null) {
@@ -754,11 +933,11 @@ export class UserAccountApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['sortBy'] != null) {
@@ -1202,7 +1381,7 @@ export class UserAccountApi extends runtime.BaseAPI {
 export const UserAccountAnalyticsFromClaimedContentEnum = {
     Other: 'OTHER',
     Claimed: 'CLAIMED',
-    Both: 'BOTH'
+    Both: 'BOTH',
 } as const;
 export type UserAccountAnalyticsFromClaimedContentEnum = typeof UserAccountAnalyticsFromClaimedContentEnum[keyof typeof UserAccountAnalyticsFromClaimedContentEnum];
 /**
@@ -1216,7 +1395,7 @@ export const UserAccountAnalyticsPinFormatEnum = {
     AdsStandard: 'ADS_STANDARD',
     AdsProduct: 'ADS_PRODUCT',
     AdsVideo: 'ADS_VIDEO',
-    AdsIdea: 'ADS_IDEA'
+    AdsIdea: 'ADS_IDEA',
 } as const;
 export type UserAccountAnalyticsPinFormatEnum = typeof UserAccountAnalyticsPinFormatEnum[keyof typeof UserAccountAnalyticsPinFormatEnum];
 /**
@@ -1226,7 +1405,7 @@ export const UserAccountAnalyticsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
     Tablet: 'TABLET',
-    Web: 'WEB'
+    Web: 'WEB',
 } as const;
 export type UserAccountAnalyticsAppTypesEnum = typeof UserAccountAnalyticsAppTypesEnum[keyof typeof UserAccountAnalyticsAppTypesEnum];
 /**
@@ -1235,7 +1414,7 @@ export type UserAccountAnalyticsAppTypesEnum = typeof UserAccountAnalyticsAppTyp
 export const UserAccountAnalyticsContentTypeEnum = {
     All: 'ALL',
     Paid: 'PAID',
-    Organic: 'ORGANIC'
+    Organic: 'ORGANIC',
 } as const;
 export type UserAccountAnalyticsContentTypeEnum = typeof UserAccountAnalyticsContentTypeEnum[keyof typeof UserAccountAnalyticsContentTypeEnum];
 /**
@@ -1244,7 +1423,7 @@ export type UserAccountAnalyticsContentTypeEnum = typeof UserAccountAnalyticsCon
 export const UserAccountAnalyticsSourceEnum = {
     All: 'ALL',
     YourPins: 'YOUR_PINS',
-    OtherPins: 'OTHER_PINS'
+    OtherPins: 'OTHER_PINS',
 } as const;
 export type UserAccountAnalyticsSourceEnum = typeof UserAccountAnalyticsSourceEnum[keyof typeof UserAccountAnalyticsSourceEnum];
 /**
@@ -1255,7 +1434,7 @@ export const UserAccountAnalyticsSplitFieldEnum = {
     AppType: 'APP_TYPE',
     OwnedContent: 'OWNED_CONTENT',
     Source: 'SOURCE',
-    PinFormat: 'PIN_FORMAT'
+    PinFormat: 'PIN_FORMAT',
 } as const;
 export type UserAccountAnalyticsSplitFieldEnum = typeof UserAccountAnalyticsSplitFieldEnum[keyof typeof UserAccountAnalyticsSplitFieldEnum];
 /**
@@ -1264,7 +1443,7 @@ export type UserAccountAnalyticsSplitFieldEnum = typeof UserAccountAnalyticsSpli
 export const UserAccountAnalyticsTopPinsFromClaimedContentEnum = {
     Other: 'OTHER',
     Claimed: 'CLAIMED',
-    Both: 'BOTH'
+    Both: 'BOTH',
 } as const;
 export type UserAccountAnalyticsTopPinsFromClaimedContentEnum = typeof UserAccountAnalyticsTopPinsFromClaimedContentEnum[keyof typeof UserAccountAnalyticsTopPinsFromClaimedContentEnum];
 /**
@@ -1278,7 +1457,7 @@ export const UserAccountAnalyticsTopPinsPinFormatEnum = {
     AdsStandard: 'ADS_STANDARD',
     AdsProduct: 'ADS_PRODUCT',
     AdsVideo: 'ADS_VIDEO',
-    AdsIdea: 'ADS_IDEA'
+    AdsIdea: 'ADS_IDEA',
 } as const;
 export type UserAccountAnalyticsTopPinsPinFormatEnum = typeof UserAccountAnalyticsTopPinsPinFormatEnum[keyof typeof UserAccountAnalyticsTopPinsPinFormatEnum];
 /**
@@ -1288,7 +1467,7 @@ export const UserAccountAnalyticsTopPinsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
     Tablet: 'TABLET',
-    Web: 'WEB'
+    Web: 'WEB',
 } as const;
 export type UserAccountAnalyticsTopPinsAppTypesEnum = typeof UserAccountAnalyticsTopPinsAppTypesEnum[keyof typeof UserAccountAnalyticsTopPinsAppTypesEnum];
 /**
@@ -1297,7 +1476,7 @@ export type UserAccountAnalyticsTopPinsAppTypesEnum = typeof UserAccountAnalytic
 export const UserAccountAnalyticsTopPinsContentTypeEnum = {
     All: 'ALL',
     Paid: 'PAID',
-    Organic: 'ORGANIC'
+    Organic: 'ORGANIC',
 } as const;
 export type UserAccountAnalyticsTopPinsContentTypeEnum = typeof UserAccountAnalyticsTopPinsContentTypeEnum[keyof typeof UserAccountAnalyticsTopPinsContentTypeEnum];
 /**
@@ -1306,14 +1485,14 @@ export type UserAccountAnalyticsTopPinsContentTypeEnum = typeof UserAccountAnaly
 export const UserAccountAnalyticsTopPinsSourceEnum = {
     All: 'ALL',
     YourPins: 'YOUR_PINS',
-    OtherPins: 'OTHER_PINS'
+    OtherPins: 'OTHER_PINS',
 } as const;
 export type UserAccountAnalyticsTopPinsSourceEnum = typeof UserAccountAnalyticsTopPinsSourceEnum[keyof typeof UserAccountAnalyticsTopPinsSourceEnum];
 /**
  * @export
  */
 export const UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum = {
-    NUMBER_30: 30
+    NUMBER_30: 30,
 } as const;
 export type UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum = typeof UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum[keyof typeof UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum];
 /**
@@ -1322,7 +1501,7 @@ export type UserAccountAnalyticsTopPinsCreatedInLastNDaysEnum = typeof UserAccou
 export const UserAccountAnalyticsTopVideoPinsFromClaimedContentEnum = {
     Other: 'OTHER',
     Claimed: 'CLAIMED',
-    Both: 'BOTH'
+    Both: 'BOTH',
 } as const;
 export type UserAccountAnalyticsTopVideoPinsFromClaimedContentEnum = typeof UserAccountAnalyticsTopVideoPinsFromClaimedContentEnum[keyof typeof UserAccountAnalyticsTopVideoPinsFromClaimedContentEnum];
 /**
@@ -1336,7 +1515,7 @@ export const UserAccountAnalyticsTopVideoPinsPinFormatEnum = {
     AdsStandard: 'ADS_STANDARD',
     AdsProduct: 'ADS_PRODUCT',
     AdsVideo: 'ADS_VIDEO',
-    AdsIdea: 'ADS_IDEA'
+    AdsIdea: 'ADS_IDEA',
 } as const;
 export type UserAccountAnalyticsTopVideoPinsPinFormatEnum = typeof UserAccountAnalyticsTopVideoPinsPinFormatEnum[keyof typeof UserAccountAnalyticsTopVideoPinsPinFormatEnum];
 /**
@@ -1346,7 +1525,7 @@ export const UserAccountAnalyticsTopVideoPinsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
     Tablet: 'TABLET',
-    Web: 'WEB'
+    Web: 'WEB',
 } as const;
 export type UserAccountAnalyticsTopVideoPinsAppTypesEnum = typeof UserAccountAnalyticsTopVideoPinsAppTypesEnum[keyof typeof UserAccountAnalyticsTopVideoPinsAppTypesEnum];
 /**
@@ -1355,7 +1534,7 @@ export type UserAccountAnalyticsTopVideoPinsAppTypesEnum = typeof UserAccountAna
 export const UserAccountAnalyticsTopVideoPinsContentTypeEnum = {
     All: 'ALL',
     Paid: 'PAID',
-    Organic: 'ORGANIC'
+    Organic: 'ORGANIC',
 } as const;
 export type UserAccountAnalyticsTopVideoPinsContentTypeEnum = typeof UserAccountAnalyticsTopVideoPinsContentTypeEnum[keyof typeof UserAccountAnalyticsTopVideoPinsContentTypeEnum];
 /**
@@ -1364,13 +1543,13 @@ export type UserAccountAnalyticsTopVideoPinsContentTypeEnum = typeof UserAccount
 export const UserAccountAnalyticsTopVideoPinsSourceEnum = {
     All: 'ALL',
     YourPins: 'YOUR_PINS',
-    OtherPins: 'OTHER_PINS'
+    OtherPins: 'OTHER_PINS',
 } as const;
 export type UserAccountAnalyticsTopVideoPinsSourceEnum = typeof UserAccountAnalyticsTopVideoPinsSourceEnum[keyof typeof UserAccountAnalyticsTopVideoPinsSourceEnum];
 /**
  * @export
  */
 export const UserAccountAnalyticsTopVideoPinsCreatedInLastNDaysEnum = {
-    NUMBER_30: 30
+    NUMBER_30: 30,
 } as const;
 export type UserAccountAnalyticsTopVideoPinsCreatedInLastNDaysEnum = typeof UserAccountAnalyticsTopVideoPinsCreatedInLastNDaysEnum[keyof typeof UserAccountAnalyticsTopVideoPinsCreatedInLastNDaysEnum];

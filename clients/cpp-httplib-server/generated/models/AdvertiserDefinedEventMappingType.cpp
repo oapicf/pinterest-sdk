@@ -6,20 +6,3 @@
 */
 #include "AdvertiserDefinedEventMappingType.h"
 
-namespace models {
-
-AdvertiserDefinedEventMappingType::AdvertiserDefinedEventMappingType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class StandardPinMetricTypes
-{
-public:
-
-    StandardPinMetricTypes();
-    virtual ~StandardPinMetricTypes() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(StandardPinMetricTypes,
-        )
-
-private:
+enum class StandardPinMetricTypes {
+    
+    IMPRESSION,
+    
+    OUTBOUND_CLICK,
+    
+    PIN_CLICK,
+    
+    SAVE,
+    
+    SAVE_RATE,
+    
+    TOTAL_COMMENTS,
+    
+    TOTAL_REACTIONS,
+    
+    USER_FOLLOW,
+    
+    PROFILE_VISIT
+    
 };
 
+inline void to_json(nlohmann::json& j, const StandardPinMetricTypes& value)
+{
+    switch (value)
+    {
+        
+        case StandardPinMetricTypes::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case StandardPinMetricTypes::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        case StandardPinMetricTypes::PIN_CLICK: j = "PIN_CLICK"; break;
+        
+        case StandardPinMetricTypes::SAVE: j = "SAVE"; break;
+        
+        case StandardPinMetricTypes::SAVE_RATE: j = "SAVE_RATE"; break;
+        
+        case StandardPinMetricTypes::TOTAL_COMMENTS: j = "TOTAL_COMMENTS"; break;
+        
+        case StandardPinMetricTypes::TOTAL_REACTIONS: j = "TOTAL_REACTIONS"; break;
+        
+        case StandardPinMetricTypes::USER_FOLLOW: j = "USER_FOLLOW"; break;
+        
+        case StandardPinMetricTypes::PROFILE_VISIT: j = "PROFILE_VISIT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for StandardPinMetricTypes", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, StandardPinMetricTypes& value)
+{
+    
+    if (j == "IMPRESSION")
+    {
+        value = StandardPinMetricTypes::IMPRESSION;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = StandardPinMetricTypes::OUTBOUND_CLICK;
+        return;
+    }
+    
+    if (j == "PIN_CLICK")
+    {
+        value = StandardPinMetricTypes::PIN_CLICK;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = StandardPinMetricTypes::SAVE;
+        return;
+    }
+    
+    if (j == "SAVE_RATE")
+    {
+        value = StandardPinMetricTypes::SAVE_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_COMMENTS")
+    {
+        value = StandardPinMetricTypes::TOTAL_COMMENTS;
+        return;
+    }
+    
+    if (j == "TOTAL_REACTIONS")
+    {
+        value = StandardPinMetricTypes::TOTAL_REACTIONS;
+        return;
+    }
+    
+    if (j == "USER_FOLLOW")
+    {
+        value = StandardPinMetricTypes::USER_FOLLOW;
+        return;
+    }
+    
+    if (j == "PROFILE_VISIT")
+    {
+        value = StandardPinMetricTypes::PROFILE_VISIT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for StandardPinMetricTypes", &j);
+}
 
 } // namespace models
 

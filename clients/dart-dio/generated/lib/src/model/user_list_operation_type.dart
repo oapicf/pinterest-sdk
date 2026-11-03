@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'user_list_operation_type.g.dart';
 
+/// User list operation type (add or remove)
 class UserListOperationType extends EnumClass {
 
-  /// User list operation type (add or remove)
   @BuiltValueEnumConst(wireName: r'ADD')
   static const UserListOperationType ADD = _$ADD;
-  /// User list operation type (add or remove)
   @BuiltValueEnumConst(wireName: r'REMOVE')
   static const UserListOperationType REMOVE = _$REMOVE;
 

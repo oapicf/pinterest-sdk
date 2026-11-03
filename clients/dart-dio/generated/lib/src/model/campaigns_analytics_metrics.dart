@@ -129,3 +129,4 @@ class _$CampaignsAnalyticsMetricsSerializer implements PrimitiveSerializer<Campa
   }
 }
 
+

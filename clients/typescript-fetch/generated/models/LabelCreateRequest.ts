@@ -29,8 +29,6 @@ import {
 export interface LabelCreateRequest {
     /**
      * Labels that you are applying to the campaign.
-     * @type {Array<LabelCreateItem>}
-     * @memberof LabelCreateRequest
      */
     labels: Array<LabelCreateItem>;
 }

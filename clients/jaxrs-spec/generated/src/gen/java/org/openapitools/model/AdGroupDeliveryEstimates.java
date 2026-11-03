@@ -28,16 +28,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Ad group configuration for delivery estimates.")
 @JsonTypeName("AdGroupDeliveryEstimates")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupDeliveryEstimates   {
   private Boolean autoTargetingEnabled;
-  private @Valid List<AdGroupAudienceSizingCreativeTypes> creativeTypes = new ArrayList<>();
-  private @Valid List<@Valid AdGroupDeliveryEstimatesKeywordsItems> keywords;
+  private List<AdGroupAudienceSizingCreativeTypes> creativeTypes = new ArrayList<>();
+  private List<@Valid AdGroupDeliveryEstimatesKeywordsItems> keywords;
   private Integer monthlyFrequencyCap;
   private OptimizationGoalMetadata optimizationGoalMetadata;
   private OptimizationType optimizationType;
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
   private TargetingSpecOptimal targetingSpec;
 
   public AdGroupDeliveryEstimates() {
@@ -109,7 +109,7 @@ public class AdGroupDeliveryEstimates   {
   
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
   @JsonProperty("keywords")
-  @Valid public List<@Valid AdGroupDeliveryEstimatesKeywordsItems> getKeywords() {
+  public List<@Valid AdGroupDeliveryEstimatesKeywordsItems> getKeywords() {
     return keywords;
   }
 

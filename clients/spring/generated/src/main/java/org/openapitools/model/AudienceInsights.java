@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,25 +29,19 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AudienceInsights", description = "Audience interests and demographics.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsights {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") String> date = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AudienceDemographics demographics;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer size;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean sizeIsUpperBound;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable AudienceInsightType type;
 
   public AudienceInsights categories(List<@Valid AudienceCategory> categories) {
@@ -68,7 +61,7 @@ public class AudienceInsights {
    * Category interest distribution
    * @return categories
    */
-  @Valid 
+  
   @Schema(name = "categories", description = "Category interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("categories")
   public List<@Valid AudienceCategory> getCategories() {
@@ -90,7 +83,7 @@ public class AudienceInsights {
    * @return date
    */
   @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") 
-  @Schema(name = "date", example = "2022-10-09", description = "Generation date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "date", example = "2022-10-09", description = "Generation date", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("date")
   public JsonNullable<@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") String> getDate() {
     return date;

@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Pin media source that can be an image, video, or a mix of both passed in as a request.
  * @param contentType 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  * @param sourceType 
  * @param url 
  * @param mediaId 

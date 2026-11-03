@@ -15,7 +15,7 @@
 export const SupplementalItemProcessingStatus = {
     Success: 'SUCCESS',
     Failure: 'FAILURE',
-    Processing: 'PROCESSING'
+    Processing: 'PROCESSING',
 } as const;
 export type SupplementalItemProcessingStatus = typeof SupplementalItemProcessingStatus[keyof typeof SupplementalItemProcessingStatus];
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Log event type for integration applications.
-* Values: APP,API
-*/
+ * Log event type for integration applications.
+ * Values: APP,API
+ */
 enum class IntegrationLogEventType(@get:JsonValue val value: kotlin.String) {
 
     APP("APP"),
@@ -28,9 +28,8 @@ enum class IntegrationLogEventType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): IntegrationLogEventType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLogEventType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLogEventType'")
         }
     }
 }
-

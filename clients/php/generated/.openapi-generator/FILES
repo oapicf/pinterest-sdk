@@ -2325,9 +2325,3 @@ lib/Model/WebsiteVerificationMethod.php
 lib/Model/WorkloadState.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/CatalogSupplementalApiTest.php
-test/Api/ConversionDeletionRequestsApiTest.php
-test/Api/CustomerSegmentApiTest.php
-test/Api/ProductTagsApiTest.php
-test/Api/SchedulesApiTest.php
-test/Api/TrendsApiTest.php

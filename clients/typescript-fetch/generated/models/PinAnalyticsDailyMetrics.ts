@@ -29,20 +29,14 @@ import {
 export interface PinAnalyticsDailyMetrics {
     /**
      * 
-     * @type {DataStatus}
-     * @memberof PinAnalyticsDailyMetrics
      */
     dataStatus?: DataStatus;
     /**
      * Metrics date (UTC): YYYY-MM-DD.
-     * @type {string}
-     * @memberof PinAnalyticsDailyMetrics
      */
     date?: string;
     /**
      * 
-     * @type {{ [key: string]: number; }}
-     * @memberof PinAnalyticsDailyMetrics
      */
     metrics?: { [key: string]: number; };
 }

@@ -12,24 +12,1074 @@
 
 namespace models {
 
-
-class NullableCatalogsItemFieldType
-{
-public:
-
-    NullableCatalogsItemFieldType();
-    virtual ~NullableCatalogsItemFieldType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullableCatalogsItemFieldType,
-        )
-
-private:
+enum class NullableCatalogsItemFieldType {
+    
+    ITEM_ID,
+    
+    ITEM_GROUP_ID,
+    
+    TITLE,
+    
+    DESCRIPTION,
+    
+    ITEM_LINK,
+    
+    ORGANIC_LINK,
+    
+    IMAGE_LINK,
+    
+    ADWORDS_REDIRECT_LINK,
+    
+    AD_LINK,
+    
+    SIZE,
+    
+    GOOGLE_PRODUCT_CATEGORY,
+    
+    PRODUCT_CATEGORY,
+    
+    CONDITION,
+    
+    AVAILABILITY,
+    
+    GENDER,
+    
+    AGE_GROUP,
+    
+    SIZE_TYPE,
+    
+    SIZE_SYSTEM,
+    
+    ADULT,
+    
+    SHIPPING,
+    
+    SHIPPING_WEIGHT,
+    
+    TAX,
+    
+    MULTIPACK,
+    
+    ADDITIONAL_IMAGE_LINK,
+    
+    PRICE,
+    
+    SALE_PRICE,
+    
+    IS_BUNDLE,
+    
+    EXPIRATION_DATE,
+    
+    AVAILABILITY_DATE,
+    
+    WEIGHT_UNIT,
+    
+    PRODUCT_TYPE,
+    
+    CUSTOM_LABEL_0,
+    
+    CUSTOM_LABEL_1,
+    
+    CUSTOM_LABEL_2,
+    
+    CUSTOM_LABEL_3,
+    
+    CUSTOM_LABEL_4,
+    
+    MATERIAL,
+    
+    PATTERN,
+    
+    COLOR,
+    
+    BRAND,
+    
+    GTIN,
+    
+    MPN,
+    
+    IOS_DEEP_LINK,
+    
+    ANDROID_DEEP_LINK,
+    
+    FREE_SHIPPING_LABEL,
+    
+    FREE_SHIPPING_LIMIT,
+    
+    AVG_REVIEW_RATING,
+    
+    NUM_RATINGS,
+    
+    NUM_REVIEWS,
+    
+    ALT_TEXT,
+    
+    VARIANT_NAMES,
+    
+    VARIANT_VALUES,
+    
+    MIN_AD_PRICE,
+    
+    SHIPPING_WIDTH,
+    
+    SHIPPING_HEIGHT,
+    
+    AD_IMAGE_0_LINK,
+    
+    AD_IMAGE_1_LINK,
+    
+    AD_IMAGE_2_LINK,
+    
+    AD_IMAGE_3_LINK,
+    
+    AD_IMAGE_4_LINK,
+    
+    AD_IMAGE_5_LINK,
+    
+    AD_IMAGE_6_LINK,
+    
+    AD_IMAGE_7_LINK,
+    
+    AD_IMAGE_8_LINK,
+    
+    AD_IMAGE_9_LINK,
+    
+    AD_IMAGE_10_LINK,
+    
+    AD_IMAGE_11_LINK,
+    
+    AD_IMAGE_12_LINK,
+    
+    AD_IMAGE_13_LINK,
+    
+    AD_IMAGE_14_LINK,
+    
+    AD_IMAGE_15_LINK,
+    
+    AD_IMAGE_16_LINK,
+    
+    AD_IMAGE_17_LINK,
+    
+    AD_IMAGE_18_LINK,
+    
+    AD_IMAGE_19_LINK,
+    
+    AD_IMAGE_0_TAG,
+    
+    AD_IMAGE_1_TAG,
+    
+    AD_IMAGE_2_TAG,
+    
+    AD_IMAGE_3_TAG,
+    
+    AD_IMAGE_4_TAG,
+    
+    AD_IMAGE_5_TAG,
+    
+    AD_IMAGE_6_TAG,
+    
+    AD_IMAGE_7_TAG,
+    
+    AD_IMAGE_8_TAG,
+    
+    AD_IMAGE_9_TAG,
+    
+    AD_IMAGE_10_TAG,
+    
+    AD_IMAGE_11_TAG,
+    
+    AD_IMAGE_12_TAG,
+    
+    AD_IMAGE_13_TAG,
+    
+    AD_IMAGE_14_TAG,
+    
+    AD_IMAGE_15_TAG,
+    
+    AD_IMAGE_16_TAG,
+    
+    AD_IMAGE_17_TAG,
+    
+    AD_IMAGE_18_TAG,
+    
+    AD_IMAGE_19_TAG,
+    
+    AD_VIDEO_0_LINK,
+    
+    AD_VIDEO_1_LINK,
+    
+    AD_VIDEO_2_LINK,
+    
+    AD_VIDEO_0_TAG,
+    
+    AD_VIDEO_1_TAG,
+    
+    AD_VIDEO_2_TAG,
+    
+    INSTALLMENT_PRICE,
+    
+    UNIT_PRICE_TOTAL_MEASURE,
+    
+    UNIT_PRICE_BASE_MEASURE,
+    
+    SALE_PRICE_EFFECTIVE_DATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullableCatalogsItemFieldType& value)
+{
+    switch (value)
+    {
+        
+        case NullableCatalogsItemFieldType::ITEM_ID: j = "ITEM_ID"; break;
+        
+        case NullableCatalogsItemFieldType::ITEM_GROUP_ID: j = "ITEM_GROUP_ID"; break;
+        
+        case NullableCatalogsItemFieldType::TITLE: j = "TITLE"; break;
+        
+        case NullableCatalogsItemFieldType::DESCRIPTION: j = "DESCRIPTION"; break;
+        
+        case NullableCatalogsItemFieldType::ITEM_LINK: j = "ITEM_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::ORGANIC_LINK: j = "ORGANIC_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::IMAGE_LINK: j = "IMAGE_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::ADWORDS_REDIRECT_LINK: j = "ADWORDS_REDIRECT_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_LINK: j = "AD_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::SIZE: j = "SIZE"; break;
+        
+        case NullableCatalogsItemFieldType::GOOGLE_PRODUCT_CATEGORY: j = "GOOGLE_PRODUCT_CATEGORY"; break;
+        
+        case NullableCatalogsItemFieldType::PRODUCT_CATEGORY: j = "PRODUCT_CATEGORY"; break;
+        
+        case NullableCatalogsItemFieldType::CONDITION: j = "CONDITION"; break;
+        
+        case NullableCatalogsItemFieldType::AVAILABILITY: j = "AVAILABILITY"; break;
+        
+        case NullableCatalogsItemFieldType::GENDER: j = "GENDER"; break;
+        
+        case NullableCatalogsItemFieldType::AGE_GROUP: j = "AGE_GROUP"; break;
+        
+        case NullableCatalogsItemFieldType::SIZE_TYPE: j = "SIZE_TYPE"; break;
+        
+        case NullableCatalogsItemFieldType::SIZE_SYSTEM: j = "SIZE_SYSTEM"; break;
+        
+        case NullableCatalogsItemFieldType::ADULT: j = "ADULT"; break;
+        
+        case NullableCatalogsItemFieldType::SHIPPING: j = "SHIPPING"; break;
+        
+        case NullableCatalogsItemFieldType::SHIPPING_WEIGHT: j = "SHIPPING_WEIGHT"; break;
+        
+        case NullableCatalogsItemFieldType::TAX: j = "TAX"; break;
+        
+        case NullableCatalogsItemFieldType::MULTIPACK: j = "MULTIPACK"; break;
+        
+        case NullableCatalogsItemFieldType::ADDITIONAL_IMAGE_LINK: j = "ADDITIONAL_IMAGE_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::PRICE: j = "PRICE"; break;
+        
+        case NullableCatalogsItemFieldType::SALE_PRICE: j = "SALE_PRICE"; break;
+        
+        case NullableCatalogsItemFieldType::IS_BUNDLE: j = "IS_BUNDLE"; break;
+        
+        case NullableCatalogsItemFieldType::EXPIRATION_DATE: j = "EXPIRATION_DATE"; break;
+        
+        case NullableCatalogsItemFieldType::AVAILABILITY_DATE: j = "AVAILABILITY_DATE"; break;
+        
+        case NullableCatalogsItemFieldType::WEIGHT_UNIT: j = "WEIGHT_UNIT"; break;
+        
+        case NullableCatalogsItemFieldType::PRODUCT_TYPE: j = "PRODUCT_TYPE"; break;
+        
+        case NullableCatalogsItemFieldType::CUSTOM_LABEL_0: j = "CUSTOM_LABEL_0"; break;
+        
+        case NullableCatalogsItemFieldType::CUSTOM_LABEL_1: j = "CUSTOM_LABEL_1"; break;
+        
+        case NullableCatalogsItemFieldType::CUSTOM_LABEL_2: j = "CUSTOM_LABEL_2"; break;
+        
+        case NullableCatalogsItemFieldType::CUSTOM_LABEL_3: j = "CUSTOM_LABEL_3"; break;
+        
+        case NullableCatalogsItemFieldType::CUSTOM_LABEL_4: j = "CUSTOM_LABEL_4"; break;
+        
+        case NullableCatalogsItemFieldType::MATERIAL: j = "MATERIAL"; break;
+        
+        case NullableCatalogsItemFieldType::PATTERN: j = "PATTERN"; break;
+        
+        case NullableCatalogsItemFieldType::COLOR: j = "COLOR"; break;
+        
+        case NullableCatalogsItemFieldType::BRAND: j = "BRAND"; break;
+        
+        case NullableCatalogsItemFieldType::GTIN: j = "GTIN"; break;
+        
+        case NullableCatalogsItemFieldType::MPN: j = "MPN"; break;
+        
+        case NullableCatalogsItemFieldType::IOS_DEEP_LINK: j = "IOS_DEEP_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::ANDROID_DEEP_LINK: j = "ANDROID_DEEP_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::FREE_SHIPPING_LABEL: j = "FREE_SHIPPING_LABEL"; break;
+        
+        case NullableCatalogsItemFieldType::FREE_SHIPPING_LIMIT: j = "FREE_SHIPPING_LIMIT"; break;
+        
+        case NullableCatalogsItemFieldType::AVG_REVIEW_RATING: j = "AVG_REVIEW_RATING"; break;
+        
+        case NullableCatalogsItemFieldType::NUM_RATINGS: j = "NUM_RATINGS"; break;
+        
+        case NullableCatalogsItemFieldType::NUM_REVIEWS: j = "NUM_REVIEWS"; break;
+        
+        case NullableCatalogsItemFieldType::ALT_TEXT: j = "ALT_TEXT"; break;
+        
+        case NullableCatalogsItemFieldType::VARIANT_NAMES: j = "VARIANT_NAMES"; break;
+        
+        case NullableCatalogsItemFieldType::VARIANT_VALUES: j = "VARIANT_VALUES"; break;
+        
+        case NullableCatalogsItemFieldType::MIN_AD_PRICE: j = "MIN_AD_PRICE"; break;
+        
+        case NullableCatalogsItemFieldType::SHIPPING_WIDTH: j = "SHIPPING_WIDTH"; break;
+        
+        case NullableCatalogsItemFieldType::SHIPPING_HEIGHT: j = "SHIPPING_HEIGHT"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_0_LINK: j = "AD_IMAGE_0_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_1_LINK: j = "AD_IMAGE_1_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_2_LINK: j = "AD_IMAGE_2_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_3_LINK: j = "AD_IMAGE_3_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_4_LINK: j = "AD_IMAGE_4_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_5_LINK: j = "AD_IMAGE_5_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_6_LINK: j = "AD_IMAGE_6_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_7_LINK: j = "AD_IMAGE_7_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_8_LINK: j = "AD_IMAGE_8_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_9_LINK: j = "AD_IMAGE_9_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_10_LINK: j = "AD_IMAGE_10_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_11_LINK: j = "AD_IMAGE_11_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_12_LINK: j = "AD_IMAGE_12_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_13_LINK: j = "AD_IMAGE_13_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_14_LINK: j = "AD_IMAGE_14_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_15_LINK: j = "AD_IMAGE_15_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_16_LINK: j = "AD_IMAGE_16_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_17_LINK: j = "AD_IMAGE_17_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_18_LINK: j = "AD_IMAGE_18_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_19_LINK: j = "AD_IMAGE_19_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_0_TAG: j = "AD_IMAGE_0_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_1_TAG: j = "AD_IMAGE_1_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_2_TAG: j = "AD_IMAGE_2_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_3_TAG: j = "AD_IMAGE_3_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_4_TAG: j = "AD_IMAGE_4_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_5_TAG: j = "AD_IMAGE_5_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_6_TAG: j = "AD_IMAGE_6_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_7_TAG: j = "AD_IMAGE_7_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_8_TAG: j = "AD_IMAGE_8_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_9_TAG: j = "AD_IMAGE_9_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_10_TAG: j = "AD_IMAGE_10_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_11_TAG: j = "AD_IMAGE_11_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_12_TAG: j = "AD_IMAGE_12_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_13_TAG: j = "AD_IMAGE_13_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_14_TAG: j = "AD_IMAGE_14_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_15_TAG: j = "AD_IMAGE_15_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_16_TAG: j = "AD_IMAGE_16_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_17_TAG: j = "AD_IMAGE_17_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_18_TAG: j = "AD_IMAGE_18_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_IMAGE_19_TAG: j = "AD_IMAGE_19_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_0_LINK: j = "AD_VIDEO_0_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_1_LINK: j = "AD_VIDEO_1_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_2_LINK: j = "AD_VIDEO_2_LINK"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_0_TAG: j = "AD_VIDEO_0_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_1_TAG: j = "AD_VIDEO_1_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::AD_VIDEO_2_TAG: j = "AD_VIDEO_2_TAG"; break;
+        
+        case NullableCatalogsItemFieldType::INSTALLMENT_PRICE: j = "INSTALLMENT_PRICE"; break;
+        
+        case NullableCatalogsItemFieldType::UNIT_PRICE_TOTAL_MEASURE: j = "UNIT_PRICE_TOTAL_MEASURE"; break;
+        
+        case NullableCatalogsItemFieldType::UNIT_PRICE_BASE_MEASURE: j = "UNIT_PRICE_BASE_MEASURE"; break;
+        
+        case NullableCatalogsItemFieldType::SALE_PRICE_EFFECTIVE_DATE: j = "SALE_PRICE_EFFECTIVE_DATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullableCatalogsItemFieldType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullableCatalogsItemFieldType& value)
+{
+    
+    if (j == "ITEM_ID")
+    {
+        value = NullableCatalogsItemFieldType::ITEM_ID;
+        return;
+    }
+    
+    if (j == "ITEM_GROUP_ID")
+    {
+        value = NullableCatalogsItemFieldType::ITEM_GROUP_ID;
+        return;
+    }
+    
+    if (j == "TITLE")
+    {
+        value = NullableCatalogsItemFieldType::TITLE;
+        return;
+    }
+    
+    if (j == "DESCRIPTION")
+    {
+        value = NullableCatalogsItemFieldType::DESCRIPTION;
+        return;
+    }
+    
+    if (j == "ITEM_LINK")
+    {
+        value = NullableCatalogsItemFieldType::ITEM_LINK;
+        return;
+    }
+    
+    if (j == "ORGANIC_LINK")
+    {
+        value = NullableCatalogsItemFieldType::ORGANIC_LINK;
+        return;
+    }
+    
+    if (j == "IMAGE_LINK")
+    {
+        value = NullableCatalogsItemFieldType::IMAGE_LINK;
+        return;
+    }
+    
+    if (j == "ADWORDS_REDIRECT_LINK")
+    {
+        value = NullableCatalogsItemFieldType::ADWORDS_REDIRECT_LINK;
+        return;
+    }
+    
+    if (j == "AD_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_LINK;
+        return;
+    }
+    
+    if (j == "SIZE")
+    {
+        value = NullableCatalogsItemFieldType::SIZE;
+        return;
+    }
+    
+    if (j == "GOOGLE_PRODUCT_CATEGORY")
+    {
+        value = NullableCatalogsItemFieldType::GOOGLE_PRODUCT_CATEGORY;
+        return;
+    }
+    
+    if (j == "PRODUCT_CATEGORY")
+    {
+        value = NullableCatalogsItemFieldType::PRODUCT_CATEGORY;
+        return;
+    }
+    
+    if (j == "CONDITION")
+    {
+        value = NullableCatalogsItemFieldType::CONDITION;
+        return;
+    }
+    
+    if (j == "AVAILABILITY")
+    {
+        value = NullableCatalogsItemFieldType::AVAILABILITY;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = NullableCatalogsItemFieldType::GENDER;
+        return;
+    }
+    
+    if (j == "AGE_GROUP")
+    {
+        value = NullableCatalogsItemFieldType::AGE_GROUP;
+        return;
+    }
+    
+    if (j == "SIZE_TYPE")
+    {
+        value = NullableCatalogsItemFieldType::SIZE_TYPE;
+        return;
+    }
+    
+    if (j == "SIZE_SYSTEM")
+    {
+        value = NullableCatalogsItemFieldType::SIZE_SYSTEM;
+        return;
+    }
+    
+    if (j == "ADULT")
+    {
+        value = NullableCatalogsItemFieldType::ADULT;
+        return;
+    }
+    
+    if (j == "SHIPPING")
+    {
+        value = NullableCatalogsItemFieldType::SHIPPING;
+        return;
+    }
+    
+    if (j == "SHIPPING_WEIGHT")
+    {
+        value = NullableCatalogsItemFieldType::SHIPPING_WEIGHT;
+        return;
+    }
+    
+    if (j == "TAX")
+    {
+        value = NullableCatalogsItemFieldType::TAX;
+        return;
+    }
+    
+    if (j == "MULTIPACK")
+    {
+        value = NullableCatalogsItemFieldType::MULTIPACK;
+        return;
+    }
+    
+    if (j == "ADDITIONAL_IMAGE_LINK")
+    {
+        value = NullableCatalogsItemFieldType::ADDITIONAL_IMAGE_LINK;
+        return;
+    }
+    
+    if (j == "PRICE")
+    {
+        value = NullableCatalogsItemFieldType::PRICE;
+        return;
+    }
+    
+    if (j == "SALE_PRICE")
+    {
+        value = NullableCatalogsItemFieldType::SALE_PRICE;
+        return;
+    }
+    
+    if (j == "IS_BUNDLE")
+    {
+        value = NullableCatalogsItemFieldType::IS_BUNDLE;
+        return;
+    }
+    
+    if (j == "EXPIRATION_DATE")
+    {
+        value = NullableCatalogsItemFieldType::EXPIRATION_DATE;
+        return;
+    }
+    
+    if (j == "AVAILABILITY_DATE")
+    {
+        value = NullableCatalogsItemFieldType::AVAILABILITY_DATE;
+        return;
+    }
+    
+    if (j == "WEIGHT_UNIT")
+    {
+        value = NullableCatalogsItemFieldType::WEIGHT_UNIT;
+        return;
+    }
+    
+    if (j == "PRODUCT_TYPE")
+    {
+        value = NullableCatalogsItemFieldType::PRODUCT_TYPE;
+        return;
+    }
+    
+    if (j == "CUSTOM_LABEL_0")
+    {
+        value = NullableCatalogsItemFieldType::CUSTOM_LABEL_0;
+        return;
+    }
+    
+    if (j == "CUSTOM_LABEL_1")
+    {
+        value = NullableCatalogsItemFieldType::CUSTOM_LABEL_1;
+        return;
+    }
+    
+    if (j == "CUSTOM_LABEL_2")
+    {
+        value = NullableCatalogsItemFieldType::CUSTOM_LABEL_2;
+        return;
+    }
+    
+    if (j == "CUSTOM_LABEL_3")
+    {
+        value = NullableCatalogsItemFieldType::CUSTOM_LABEL_3;
+        return;
+    }
+    
+    if (j == "CUSTOM_LABEL_4")
+    {
+        value = NullableCatalogsItemFieldType::CUSTOM_LABEL_4;
+        return;
+    }
+    
+    if (j == "MATERIAL")
+    {
+        value = NullableCatalogsItemFieldType::MATERIAL;
+        return;
+    }
+    
+    if (j == "PATTERN")
+    {
+        value = NullableCatalogsItemFieldType::PATTERN;
+        return;
+    }
+    
+    if (j == "COLOR")
+    {
+        value = NullableCatalogsItemFieldType::COLOR;
+        return;
+    }
+    
+    if (j == "BRAND")
+    {
+        value = NullableCatalogsItemFieldType::BRAND;
+        return;
+    }
+    
+    if (j == "GTIN")
+    {
+        value = NullableCatalogsItemFieldType::GTIN;
+        return;
+    }
+    
+    if (j == "MPN")
+    {
+        value = NullableCatalogsItemFieldType::MPN;
+        return;
+    }
+    
+    if (j == "IOS_DEEP_LINK")
+    {
+        value = NullableCatalogsItemFieldType::IOS_DEEP_LINK;
+        return;
+    }
+    
+    if (j == "ANDROID_DEEP_LINK")
+    {
+        value = NullableCatalogsItemFieldType::ANDROID_DEEP_LINK;
+        return;
+    }
+    
+    if (j == "FREE_SHIPPING_LABEL")
+    {
+        value = NullableCatalogsItemFieldType::FREE_SHIPPING_LABEL;
+        return;
+    }
+    
+    if (j == "FREE_SHIPPING_LIMIT")
+    {
+        value = NullableCatalogsItemFieldType::FREE_SHIPPING_LIMIT;
+        return;
+    }
+    
+    if (j == "AVG_REVIEW_RATING")
+    {
+        value = NullableCatalogsItemFieldType::AVG_REVIEW_RATING;
+        return;
+    }
+    
+    if (j == "NUM_RATINGS")
+    {
+        value = NullableCatalogsItemFieldType::NUM_RATINGS;
+        return;
+    }
+    
+    if (j == "NUM_REVIEWS")
+    {
+        value = NullableCatalogsItemFieldType::NUM_REVIEWS;
+        return;
+    }
+    
+    if (j == "ALT_TEXT")
+    {
+        value = NullableCatalogsItemFieldType::ALT_TEXT;
+        return;
+    }
+    
+    if (j == "VARIANT_NAMES")
+    {
+        value = NullableCatalogsItemFieldType::VARIANT_NAMES;
+        return;
+    }
+    
+    if (j == "VARIANT_VALUES")
+    {
+        value = NullableCatalogsItemFieldType::VARIANT_VALUES;
+        return;
+    }
+    
+    if (j == "MIN_AD_PRICE")
+    {
+        value = NullableCatalogsItemFieldType::MIN_AD_PRICE;
+        return;
+    }
+    
+    if (j == "SHIPPING_WIDTH")
+    {
+        value = NullableCatalogsItemFieldType::SHIPPING_WIDTH;
+        return;
+    }
+    
+    if (j == "SHIPPING_HEIGHT")
+    {
+        value = NullableCatalogsItemFieldType::SHIPPING_HEIGHT;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_0_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_0_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_1_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_1_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_2_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_2_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_3_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_3_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_4_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_4_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_5_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_5_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_6_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_6_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_7_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_7_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_8_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_8_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_9_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_9_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_10_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_10_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_11_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_11_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_12_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_12_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_13_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_13_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_14_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_14_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_15_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_15_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_16_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_16_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_17_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_17_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_18_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_18_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_19_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_19_LINK;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_0_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_0_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_1_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_1_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_2_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_2_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_3_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_3_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_4_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_4_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_5_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_5_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_6_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_6_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_7_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_7_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_8_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_8_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_9_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_9_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_10_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_10_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_11_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_11_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_12_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_12_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_13_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_13_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_14_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_14_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_15_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_15_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_16_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_16_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_17_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_17_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_18_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_18_TAG;
+        return;
+    }
+    
+    if (j == "AD_IMAGE_19_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_IMAGE_19_TAG;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_0_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_0_LINK;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_1_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_1_LINK;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_2_LINK")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_2_LINK;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_0_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_0_TAG;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_1_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_1_TAG;
+        return;
+    }
+    
+    if (j == "AD_VIDEO_2_TAG")
+    {
+        value = NullableCatalogsItemFieldType::AD_VIDEO_2_TAG;
+        return;
+    }
+    
+    if (j == "INSTALLMENT_PRICE")
+    {
+        value = NullableCatalogsItemFieldType::INSTALLMENT_PRICE;
+        return;
+    }
+    
+    if (j == "UNIT_PRICE_TOTAL_MEASURE")
+    {
+        value = NullableCatalogsItemFieldType::UNIT_PRICE_TOTAL_MEASURE;
+        return;
+    }
+    
+    if (j == "UNIT_PRICE_BASE_MEASURE")
+    {
+        value = NullableCatalogsItemFieldType::UNIT_PRICE_BASE_MEASURE;
+        return;
+    }
+    
+    if (j == "SALE_PRICE_EFFECTIVE_DATE")
+    {
+        value = NullableCatalogsItemFieldType::SALE_PRICE_EFFECTIVE_DATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullableCatalogsItemFieldType", &j);
+}
 
 } // namespace models
 

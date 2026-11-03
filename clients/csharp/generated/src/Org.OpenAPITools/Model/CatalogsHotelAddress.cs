@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (addr1.IsSet && addr1.Value == null)
-                throw new ArgumentNullException(nameof(addr1), "Property is not nullable for class CatalogsHotelAddress.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAddress: addr1.");
 
             if (city.IsSet && city.Value == null)
-                throw new ArgumentNullException(nameof(city), "Property is not nullable for class CatalogsHotelAddress.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAddress: city.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsHotelAddress.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAddress: country.");
 
             if (postalCode.IsSet && postalCode.Value == null)
-                throw new ArgumentNullException(nameof(postalCode), "Property is not nullable for class CatalogsHotelAddress.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAddress: postal_code.");
 
             if (region.IsSet && region.Value == null)
-                throw new ArgumentNullException(nameof(region), "Property is not nullable for class CatalogsHotelAddress.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAddress: region.");
 
             return new CatalogsHotelAddress(addr1, city, country, postalCode, region);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelAddress"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelAddress catalogsHotelAddress, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,23 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelAddress"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelAddress catalogsHotelAddress, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsHotelAddress.Addr1Option.IsSet && catalogsHotelAddress.Addr1 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAddress.Addr1), "Property is required for class CatalogsHotelAddress.");
+                throw new JsonException("Cannot write null property CatalogsHotelAddress.Addr1 to non-nullable JSON property 'addr1'.");
 
             if (catalogsHotelAddress.CityOption.IsSet && catalogsHotelAddress.City == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAddress.City), "Property is required for class CatalogsHotelAddress.");
+                throw new JsonException("Cannot write null property CatalogsHotelAddress.City to non-nullable JSON property 'city'.");
 
             if (catalogsHotelAddress.CountryOption.IsSet && catalogsHotelAddress.Country == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAddress.Country), "Property is required for class CatalogsHotelAddress.");
+                throw new JsonException("Cannot write null property CatalogsHotelAddress.Country to non-nullable JSON property 'country'.");
 
             if (catalogsHotelAddress.PostalCodeOption.IsSet && catalogsHotelAddress.PostalCode == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAddress.PostalCode), "Property is required for class CatalogsHotelAddress.");
+                throw new JsonException("Cannot write null property CatalogsHotelAddress.PostalCode to non-nullable JSON property 'postal_code'.");
 
             if (catalogsHotelAddress.RegionOption.IsSet && catalogsHotelAddress.Region == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAddress.Region), "Property is required for class CatalogsHotelAddress.");
+                throw new JsonException("Cannot write null property CatalogsHotelAddress.Region to non-nullable JSON property 'region'.");
 
             if (catalogsHotelAddress.Addr1Option.IsSet)
                 writer.WriteString("addr1", catalogsHotelAddress.Addr1);

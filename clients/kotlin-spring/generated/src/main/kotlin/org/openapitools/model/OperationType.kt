@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Operation type to share a specific audience or revoke access to a previously shared audience
-* Values: SHARE,REVOKE
-*/
+ * Operation type to share a specific audience or revoke access to a previously shared audience
+ * Values: SHARE,REVOKE
+ */
 enum class OperationType(@get:JsonValue val value: kotlin.String) {
 
     SHARE("SHARE"),
@@ -28,9 +28,8 @@ enum class OperationType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OperationType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OperationType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OperationType'")
         }
     }
 }
-

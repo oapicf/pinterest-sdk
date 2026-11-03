@@ -6,20 +6,3 @@
 */
 #include "CatalogsProductGroupStatus.h"
 
-namespace models {
-
-CatalogsProductGroupStatus::CatalogsProductGroupStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

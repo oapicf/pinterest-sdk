@@ -6,20 +6,3 @@
 */
 #include "ConversionProductReportGranularity.h"
 
-namespace models {
-
-ConversionProductReportGranularity::ConversionProductReportGranularity()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

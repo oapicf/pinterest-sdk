@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_product_report_level.g.dart';
 
+/// Level of the report
 class ConversionProductReportLevel extends EnumClass {
 
-  /// Level of the report
   @BuiltValueEnumConst(wireName: r'ADVERTISER')
   static const ConversionProductReportLevel ADVERTISER = _$ADVERTISER;
-  /// Level of the report
   @BuiltValueEnumConst(wireName: r'CAMPAIGN')
   static const ConversionProductReportLevel CAMPAIGN = _$CAMPAIGN;
-  /// Level of the report
   @BuiltValueEnumConst(wireName: r'AD_GROUP')
   static const ConversionProductReportLevel AD_GROUP = _$AD_GROUP;
 

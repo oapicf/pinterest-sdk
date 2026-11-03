@@ -22,7 +22,7 @@ export const AdvertiserDefinedEventMappingType = {
     ViewCategory: 'VIEW_CATEGORY',
     ViewContent: 'VIEW_CONTENT',
     Search: 'SEARCH',
-    WatchVideo: 'WATCH_VIDEO'
+    WatchVideo: 'WATCH_VIDEO',
 } as const;
 export type AdvertiserDefinedEventMappingType = typeof AdvertiserDefinedEventMappingType[keyof typeof AdvertiserDefinedEventMappingType];
 

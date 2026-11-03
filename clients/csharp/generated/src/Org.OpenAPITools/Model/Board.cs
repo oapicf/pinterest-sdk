@@ -400,43 +400,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Board.", nameof(id));
+                throw new JsonException("Property is required for class Board: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class Board.", nameof(name));
+                throw new JsonException("Property is required for class Board: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: name.");
 
             if (boardPinsModifiedAt.IsSet && boardPinsModifiedAt.Value == null)
-                throw new ArgumentNullException(nameof(boardPinsModifiedAt), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: board_pins_modified_at.");
 
             if (collaboratorCount.IsSet && collaboratorCount.Value == null)
-                throw new ArgumentNullException(nameof(collaboratorCount), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: collaborator_count.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: created_at.");
 
             if (followerCount.IsSet && followerCount.Value == null)
-                throw new ArgumentNullException(nameof(followerCount), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: follower_count.");
 
             if (isAdsOnly.IsSet && isAdsOnly.Value == null)
-                throw new ArgumentNullException(nameof(isAdsOnly), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: is_ads_only.");
 
             if (media.IsSet && media.Value == null)
-                throw new ArgumentNullException(nameof(media), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: media.");
 
             if (owner.IsSet && owner.Value == null)
-                throw new ArgumentNullException(nameof(owner), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: owner.");
 
             if (pinCount.IsSet && pinCount.Value == null)
-                throw new ArgumentNullException(nameof(pinCount), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: pin_count.");
 
             if (privacy.IsSet && privacy.Value == null)
-                throw new ArgumentNullException(nameof(privacy), "Property is not nullable for class Board.");
+                throw new JsonException("Property is not nullable for class Board: privacy.");
 
             return new Board(id.Value!, name.Value!, boardPinsModifiedAt, collaboratorCount, createdAt, description, followerCount, isAdsOnly, media, owner, pinCount, privacy);
         }
@@ -447,7 +447,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="board"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Board board, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -462,20 +461,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="board"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Board board, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (board.Id == null)
-                throw new ArgumentNullException(nameof(board.Id), "Property is required for class Board.");
+            if (board.BoardPinsModifiedAtOption.IsSet && board.BoardPinsModifiedAt == null)
+                throw new JsonException("Cannot write null property Board.BoardPinsModifiedAt to non-nullable JSON property 'board_pins_modified_at'.");
 
-            if (board.Name == null)
-                throw new ArgumentNullException(nameof(board.Name), "Property is required for class Board.");
+            if (board.CollaboratorCountOption.IsSet && board.CollaboratorCount == null)
+                throw new JsonException("Cannot write null property Board.CollaboratorCount to non-nullable JSON property 'collaborator_count'.");
+
+            if (board.CreatedAtOption.IsSet && board.CreatedAt == null)
+                throw new JsonException("Cannot write null property Board.CreatedAt to non-nullable JSON property 'created_at'.");
+
+            if (board.FollowerCountOption.IsSet && board.FollowerCount == null)
+                throw new JsonException("Cannot write null property Board.FollowerCount to non-nullable JSON property 'follower_count'.");
+
+            if (board.IsAdsOnlyOption.IsSet && board.IsAdsOnly == null)
+                throw new JsonException("Cannot write null property Board.IsAdsOnly to non-nullable JSON property 'is_ads_only'.");
 
             if (board.MediaOption.IsSet && board.Media == null)
-                throw new ArgumentNullException(nameof(board.Media), "Property is required for class Board.");
+                throw new JsonException("Cannot write null property Board.Media to non-nullable JSON property 'media'.");
 
             if (board.OwnerOption.IsSet && board.Owner == null)
-                throw new ArgumentNullException(nameof(board.Owner), "Property is required for class Board.");
+                throw new JsonException("Cannot write null property Board.Owner to non-nullable JSON property 'owner'.");
+
+            if (board.PinCountOption.IsSet && board.PinCount == null)
+                throw new JsonException("Cannot write null property Board.PinCount to non-nullable JSON property 'pin_count'.");
+
+            if (board.PrivacyOption.IsSet && board.Privacy == null)
+                throw new JsonException("Cannot write null property Board.Privacy to non-nullable JSON property 'privacy'.");
 
             writer.WriteString("id", board.Id);
 

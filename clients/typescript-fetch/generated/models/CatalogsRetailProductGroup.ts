@@ -43,87 +43,59 @@ import {
 export interface CatalogsRetailProductGroup {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsRetailProductGroupCatalogTypeEnum}
-     * @memberof CatalogsRetailProductGroup
      */
     catalogType: CatalogsRetailProductGroupCatalogTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     country?: string | null;
     /**
      * Unix timestamp in seconds of when catalog product group was created.
-     * @type {number}
-     * @memberof CatalogsRetailProductGroup
      */
     createdAt?: number;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     description?: string | null;
     /**
      * id of the catalogs feed belonging to this catalog product group
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     feedId: string | null;
     /**
      * 
-     * @type {CatalogsProductGroupFilters}
-     * @memberof CatalogsRetailProductGroup
      */
     filters: CatalogsProductGroupFilters;
     /**
      * ID of the catalog product group.
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     id: string;
     /**
      * boolean indicator of whether the product group is being featured or not
-     * @type {boolean}
-     * @memberof CatalogsRetailProductGroup
      * @deprecated
      */
     isFeatured?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     locale?: string | null;
     /**
      * Name of catalog product group
-     * @type {string}
-     * @memberof CatalogsRetailProductGroup
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsProductGroupStatus}
-     * @memberof CatalogsRetailProductGroup
      */
     status?: CatalogsProductGroupStatus;
     /**
      * 
-     * @type {CatalogsProductGroupType}
-     * @memberof CatalogsRetailProductGroup
      */
     type: CatalogsProductGroupType;
     /**
      * Unix timestamp in seconds of last time catalog product group was updated.
-     * @type {number}
-     * @memberof CatalogsRetailProductGroup
      */
     updatedAt?: number;
 }
@@ -133,7 +105,7 @@ export interface CatalogsRetailProductGroup {
  * @export
  */
 export const CatalogsRetailProductGroupCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailProductGroupCatalogTypeEnum = typeof CatalogsRetailProductGroupCatalogTypeEnum[keyof typeof CatalogsRetailProductGroupCatalogTypeEnum];
 

@@ -89,8 +89,8 @@ class CatalogReportsApiSimulation extends Simulation {
         .feed(reports/getQUERYFeeder)
         .exec(http("reportsGet")
         .httpRequest("GET","/catalogs/reports")
-        .queryParam("token","${token}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("token","${token}")
 )
 
     // Run scnreportsGet with warm up and reach a constant rate for entire duration
@@ -105,9 +105,9 @@ class CatalogReportsApiSimulation extends Simulation {
         .feed(reports/statsQUERYFeeder)
         .exec(http("reportsStats")
         .httpRequest("GET","/catalogs/reports/stats")
+        .queryParam("page_size","${page_size}")
         .queryParam("parameters","${parameters}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
 )
 

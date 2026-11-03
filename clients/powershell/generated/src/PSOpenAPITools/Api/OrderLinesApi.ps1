@@ -63,11 +63,11 @@ function Invoke-OrderLinesGet {
         if (!$OrderLineId) {
             throw "Error! The required parameter `OrderLineId` missing when calling orderLines_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{order_line_id}', [System.Web.HTTPUtility]::UrlEncode($OrderLineId))
+        $LocalVarUri = $LocalVarUri.replace('{order_line_id}', [System.Uri]::EscapeDataString([string]$OrderLineId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling orderLines_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -159,7 +159,7 @@ function Invoke-OrderLinesList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling orderLines_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

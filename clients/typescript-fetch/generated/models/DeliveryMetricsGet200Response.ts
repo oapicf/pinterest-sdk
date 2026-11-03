@@ -29,8 +29,6 @@ import {
 export interface DeliveryMetricsGet200Response {
     /**
      * 
-     * @type {Array<DeliveryMetricsResponseItemsItems>}
-     * @memberof DeliveryMetricsGet200Response
      */
     items: Array<DeliveryMetricsResponseItemsItems>;
 }

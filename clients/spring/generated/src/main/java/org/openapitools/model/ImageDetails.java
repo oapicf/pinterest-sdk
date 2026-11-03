@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * ImageDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ImageDetails {
 
   private JsonNullable<Integer> height = JsonNullable.<Integer>undefined();
@@ -50,8 +50,8 @@ public class ImageDetails {
    * Get height
    * @return height
    */
-  @NotNull 
-  @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("height")
   public JsonNullable<Integer> getHeight() {
     return height;
@@ -92,8 +92,8 @@ public class ImageDetails {
    * Get width
    * @return width
    */
-  @NotNull 
-  @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("width")
   public JsonNullable<Integer> getWidth() {
     return width;

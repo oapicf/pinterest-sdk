@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationLocale {
     /**
      * 
-     * @type {TargetingSpecOperationLocaleFieldEnum}
-     * @memberof TargetingSpecOperationLocale
      */
     field: TargetingSpecOperationLocaleFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationLocale
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationLocale
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationLocale {
  * @export
  */
 export const TargetingSpecOperationLocaleFieldEnum = {
-    Locale: 'LOCALE'
+    Locale: 'LOCALE',
 } as const;
 export type TargetingSpecOperationLocaleFieldEnum = typeof TargetingSpecOperationLocaleFieldEnum[keyof typeof TargetingSpecOperationLocaleFieldEnum];
 

@@ -29,20 +29,14 @@ import {
 export interface AnalyticsDailyMetrics {
     /**
      * 
-     * @type {DataStatus}
-     * @memberof AnalyticsDailyMetrics
      */
     dataStatus?: DataStatus;
     /**
      * Metrics date (UTC): YYYY-MM-DD.
-     * @type {string}
-     * @memberof AnalyticsDailyMetrics
      */
     date?: string;
     /**
      * 
-     * @type {{ [key: string]: number; }}
-     * @memberof AnalyticsDailyMetrics
      */
     metrics?: { [key: string]: number; };
 }

@@ -27,20 +27,20 @@ data class SharedAudienceAccount(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", required = true, description = "Account ID (ad account or business ID).")
-    @param:JsonProperty("account_id")
+    @param:JsonProperty("account_id", required = true)
     @get:JsonProperty("account_id", required = true) val accountId: kotlin.String,
 
     @Schema(example = "Home Depot USA", required = true, description = "Account name.")
-    @param:JsonProperty("account_name")
+    @param:JsonProperty("account_name", required = true)
     @get:JsonProperty("account_name", required = true) val accountName: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "account type")
-    @param:JsonProperty("account_type")
+    @param:JsonProperty("account_type", required = true)
     @get:JsonProperty("account_type", required = true) val accountType: AudienceAccountType,
 
     @Schema(example = "1677003860", required = true, description = "Epoch timestamp in seconds for the shared audience event")
-    @param:JsonProperty("shared_on_timestamp")
+    @param:JsonProperty("shared_on_timestamp", required = true)
     @get:JsonProperty("shared_on_timestamp", required = true) val sharedOnTimestamp: kotlin.Int
 ) {
 

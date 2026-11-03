@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,17 +24,15 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignPlanningBudgetRecommendation", description = "Budget recommendation response containing recommended budget, estimated days, and point estimations.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation {
 
   private Integer budgetRecommendation;
 
-  @Valid
   private List<@Valid CampaignPlanningExperimentBudgetRecommendation> experimentCampaignBudgetRecommendation = new ArrayList<>();
 
   private Integer lifetimeDaysRecommendation;
 
-  @Valid
   private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
 
   public CampaignPlanningBudgetRecommendation budgetRecommendation(Integer budgetRecommendation) {
@@ -75,7 +72,7 @@ public class CampaignPlanningBudgetRecommendation {
    * List of experimental budget recommendations.
    * @return experimentCampaignBudgetRecommendation
    */
-  @Valid 
+  
   @Schema(name = "experiment_campaign_budget_recommendation", description = "List of experimental budget recommendations.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("experiment_campaign_budget_recommendation")
   public List<@Valid CampaignPlanningExperimentBudgetRecommendation> getExperimentCampaignBudgetRecommendation() {
@@ -123,7 +120,7 @@ public class CampaignPlanningBudgetRecommendation {
    * List of point estimations for different budget scenarios.
    * @return pointEstimations
    */
-  @Valid 
+  
   @Schema(name = "point_estimations", description = "List of point estimations for different budget scenarios.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("point_estimations")
   public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {

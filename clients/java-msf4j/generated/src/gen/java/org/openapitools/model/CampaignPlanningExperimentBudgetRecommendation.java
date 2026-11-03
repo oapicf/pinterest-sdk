@@ -14,7 +14,7 @@ import org.openapitools.model.CampaignPlanningBudgetRecommendationPoint;
  * Experimental budget recommendation for a single experiment version.
  */
 @ApiModel(description = "Experimental budget recommendation for a single experiment version.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningExperimentBudgetRecommendation   {
   @JsonProperty("budget_recommendation")
   private Integer budgetRecommendation;

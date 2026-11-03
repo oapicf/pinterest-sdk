@@ -236,3 +236,4 @@ class _$CampaignBidOptionsSerializer implements PrimitiveSerializer<CampaignBidO
   }
 }
 
+

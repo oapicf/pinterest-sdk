@@ -1926,262 +1926,262 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aDIMAGEDOWNLOADCONTENTREADERROR.IsSet && aDIMAGEDOWNLOADCONTENTREADERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADCONTENTREADERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR.");
 
             if (aDIMAGEDOWNLOADDNSLOOKUPERROR.IsSet && aDIMAGEDOWNLOADDNSLOOKUPERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADDNSLOOKUPERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR.");
 
             if (aDIMAGEDOWNLOADFILENOTACCESSIBLE.IsSet && aDIMAGEDOWNLOADFILENOTACCESSIBLE.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADFILENOTACCESSIBLE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE.");
 
             if (aDIMAGEDOWNLOADFILENOTFOUND.IsSet && aDIMAGEDOWNLOADFILENOTFOUND.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADFILENOTFOUND), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS400.IsSet && aDIMAGEDOWNLOADHTTPSTATUS400.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS400), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_400.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS403.IsSet && aDIMAGEDOWNLOADHTTPSTATUS403.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS403), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_403.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS404.IsSet && aDIMAGEDOWNLOADHTTPSTATUS404.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS404), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_404.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS405.IsSet && aDIMAGEDOWNLOADHTTPSTATUS405.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS405), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_405.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS410.IsSet && aDIMAGEDOWNLOADHTTPSTATUS410.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS410), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_410.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS429.IsSet && aDIMAGEDOWNLOADHTTPSTATUS429.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS429), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_429.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS500.IsSet && aDIMAGEDOWNLOADHTTPSTATUS500.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS500), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_500.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS502.IsSet && aDIMAGEDOWNLOADHTTPSTATUS502.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS502), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_502.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS503.IsSet && aDIMAGEDOWNLOADHTTPSTATUS503.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS503), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_503.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS504.IsSet && aDIMAGEDOWNLOADHTTPSTATUS504.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS504), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_504.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS507.IsSet && aDIMAGEDOWNLOADHTTPSTATUS507.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS507), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_507.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS508.IsSet && aDIMAGEDOWNLOADHTTPSTATUS508.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS508), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_508.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS520.IsSet && aDIMAGEDOWNLOADHTTPSTATUS520.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS520), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_520.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS521.IsSet && aDIMAGEDOWNLOADHTTPSTATUS521.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS521), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_521.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS522.IsSet && aDIMAGEDOWNLOADHTTPSTATUS522.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS522), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_522.");
 
             if (aDIMAGEDOWNLOADHTTPSTATUS525.IsSet && aDIMAGEDOWNLOADHTTPSTATUS525.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADHTTPSTATUS525), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_HTTP_STATUS_525.");
 
             if (aDIMAGEDOWNLOADINTERNALCONFIGURATIONERROR.IsSet && aDIMAGEDOWNLOADINTERNALCONFIGURATIONERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALCONFIGURATIONERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR.");
 
             if (aDIMAGEDOWNLOADINTERNALERROR.IsSet && aDIMAGEDOWNLOADINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_ERROR.");
 
             if (aDIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD.IsSet && aDIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD.");
 
             if (aDIMAGEDOWNLOADINTERNALMALFORMEDURL.IsSet && aDIMAGEDOWNLOADINTERNALMALFORMEDURL.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALMALFORMEDURL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL.");
 
             if (aDIMAGEDOWNLOADINTERNALRATELIMITED.IsSet && aDIMAGEDOWNLOADINTERNALRATELIMITED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALRATELIMITED), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED.");
 
             if (aDIMAGEDOWNLOADINTERNALREQUESTEXPIRED.IsSet && aDIMAGEDOWNLOADINTERNALREQUESTEXPIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINTERNALREQUESTEXPIRED), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED.");
 
             if (aDIMAGEDOWNLOADINVALIDFILE.IsSet && aDIMAGEDOWNLOADINVALIDFILE.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADINVALIDFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_INVALID_FILE.");
 
             if (aDIMAGEDOWNLOADSITEERROR.IsSet && aDIMAGEDOWNLOADSITEERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADSITEERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_SITE_ERROR.");
 
             if (aDIMAGEDOWNLOADSITETIMEOUT.IsSet && aDIMAGEDOWNLOADSITETIMEOUT.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADSITETIMEOUT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_SITE_TIMEOUT.");
 
             if (aDIMAGEDOWNLOADSSLERROR.IsSet && aDIMAGEDOWNLOADSSLERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADSSLERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_SSL_ERROR.");
 
             if (aDIMAGEDOWNLOADSSLHANDSHAKEERROR.IsSet && aDIMAGEDOWNLOADSSLHANDSHAKEERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEDOWNLOADSSLHANDSHAKEERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR.");
 
             if (aDIMAGEPROCESSINGEMPTYFILE.IsSet && aDIMAGEPROCESSINGEMPTYFILE.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEPROCESSINGEMPTYFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_PROCESSING_EMPTY_FILE.");
 
             if (aDIMAGEPROCESSINGHEIGHTTOOSMALL.IsSet && aDIMAGEPROCESSINGHEIGHTTOOSMALL.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEPROCESSINGHEIGHTTOOSMALL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL.");
 
             if (aDIMAGEPROCESSINGTOOMANYPIXELS.IsSet && aDIMAGEPROCESSINGTOOMANYPIXELS.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEPROCESSINGTOOMANYPIXELS), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_PROCESSING_TOO_MANY_PIXELS.");
 
             if (aDIMAGEPROCESSINGTYPEMISMATCH.IsSet && aDIMAGEPROCESSINGTYPEMISMATCH.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEPROCESSINGTYPEMISMATCH), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_PROCESSING_TYPE_MISMATCH.");
 
             if (aDIMAGEPROCESSINGWIDTHTOOSMALL.IsSet && aDIMAGEPROCESSINGWIDTHTOOSMALL.Value == null)
-                throw new ArgumentNullException(nameof(aDIMAGEPROCESSINGWIDTHTOOSMALL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL.");
 
             if (aDVIDEODOWNLOADCONTENTREADERROR.IsSet && aDVIDEODOWNLOADCONTENTREADERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADCONTENTREADERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR.");
 
             if (aDVIDEODOWNLOADDNSLOOKUPERROR.IsSet && aDVIDEODOWNLOADDNSLOOKUPERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADDNSLOOKUPERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR.");
 
             if (aDVIDEODOWNLOADFILENOTACCESSIBLE.IsSet && aDVIDEODOWNLOADFILENOTACCESSIBLE.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADFILENOTACCESSIBLE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE.");
 
             if (aDVIDEODOWNLOADFILENOTFOUND.IsSet && aDVIDEODOWNLOADFILENOTFOUND.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADFILENOTFOUND), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS400.IsSet && aDVIDEODOWNLOADHTTPSTATUS400.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS400), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_400.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS403.IsSet && aDVIDEODOWNLOADHTTPSTATUS403.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS403), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_403.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS404.IsSet && aDVIDEODOWNLOADHTTPSTATUS404.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS404), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_404.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS405.IsSet && aDVIDEODOWNLOADHTTPSTATUS405.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS405), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_405.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS410.IsSet && aDVIDEODOWNLOADHTTPSTATUS410.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS410), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_410.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS429.IsSet && aDVIDEODOWNLOADHTTPSTATUS429.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS429), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_429.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS500.IsSet && aDVIDEODOWNLOADHTTPSTATUS500.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS500), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_500.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS502.IsSet && aDVIDEODOWNLOADHTTPSTATUS502.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS502), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_502.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS503.IsSet && aDVIDEODOWNLOADHTTPSTATUS503.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS503), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_503.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS504.IsSet && aDVIDEODOWNLOADHTTPSTATUS504.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS504), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_504.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS507.IsSet && aDVIDEODOWNLOADHTTPSTATUS507.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS507), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_507.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS508.IsSet && aDVIDEODOWNLOADHTTPSTATUS508.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS508), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_508.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS520.IsSet && aDVIDEODOWNLOADHTTPSTATUS520.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS520), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_520.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS521.IsSet && aDVIDEODOWNLOADHTTPSTATUS521.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS521), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_521.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS522.IsSet && aDVIDEODOWNLOADHTTPSTATUS522.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS522), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_522.");
 
             if (aDVIDEODOWNLOADHTTPSTATUS525.IsSet && aDVIDEODOWNLOADHTTPSTATUS525.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADHTTPSTATUS525), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_HTTP_STATUS_525.");
 
             if (aDVIDEODOWNLOADINTERNALCONFIGURATIONERROR.IsSet && aDVIDEODOWNLOADINTERNALCONFIGURATIONERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALCONFIGURATIONERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR.");
 
             if (aDVIDEODOWNLOADINTERNALERROR.IsSet && aDVIDEODOWNLOADINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_ERROR.");
 
             if (aDVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD.IsSet && aDVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD.");
 
             if (aDVIDEODOWNLOADINTERNALMALFORMEDURL.IsSet && aDVIDEODOWNLOADINTERNALMALFORMEDURL.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALMALFORMEDURL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL.");
 
             if (aDVIDEODOWNLOADINTERNALRATELIMITED.IsSet && aDVIDEODOWNLOADINTERNALRATELIMITED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALRATELIMITED), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED.");
 
             if (aDVIDEODOWNLOADINTERNALREQUESTEXPIRED.IsSet && aDVIDEODOWNLOADINTERNALREQUESTEXPIRED.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINTERNALREQUESTEXPIRED), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED.");
 
             if (aDVIDEODOWNLOADINVALIDFILE.IsSet && aDVIDEODOWNLOADINVALIDFILE.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADINVALIDFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_INVALID_FILE.");
 
             if (aDVIDEODOWNLOADSITEERROR.IsSet && aDVIDEODOWNLOADSITEERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADSITEERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_SITE_ERROR.");
 
             if (aDVIDEODOWNLOADSITETIMEOUT.IsSet && aDVIDEODOWNLOADSITETIMEOUT.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADSITETIMEOUT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_SITE_TIMEOUT.");
 
             if (aDVIDEODOWNLOADSSLERROR.IsSet && aDVIDEODOWNLOADSSLERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADSSLERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_SSL_ERROR.");
 
             if (aDVIDEODOWNLOADSSLHANDSHAKEERROR.IsSet && aDVIDEODOWNLOADSSLHANDSHAKEERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEODOWNLOADSSLHANDSHAKEERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR.");
 
             if (aDVIDEOLENGTHTOOSHORT.IsSet && aDVIDEOLENGTHTOOSHORT.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOLENGTHTOOSHORT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_LENGTH_TOO_SHORT.");
 
             if (aDVIDEOPROCESSINGEMPTYFILE.IsSet && aDVIDEOPROCESSINGEMPTYFILE.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOPROCESSINGEMPTYFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_PROCESSING_EMPTY_FILE.");
 
             if (aDVIDEOPROCESSINGHEIGHTTOOSMALL.IsSet && aDVIDEOPROCESSINGHEIGHTTOOSMALL.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOPROCESSINGHEIGHTTOOSMALL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL.");
 
             if (aDVIDEOPROCESSINGTOOMANYPIXELS.IsSet && aDVIDEOPROCESSINGTOOMANYPIXELS.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOPROCESSINGTOOMANYPIXELS), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_PROCESSING_TOO_MANY_PIXELS.");
 
             if (aDVIDEOPROCESSINGTYPEMISMATCH.IsSet && aDVIDEOPROCESSINGTYPEMISMATCH.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOPROCESSINGTYPEMISMATCH), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_PROCESSING_TYPE_MISMATCH.");
 
             if (aDVIDEOPROCESSINGWIDTHTOOSMALL.IsSet && aDVIDEOPROCESSINGWIDTHTOOSMALL.Value == null)
-                throw new ArgumentNullException(nameof(aDVIDEOPROCESSINGWIDTHTOOSMALL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL.");
 
             if (aDDITIONALIMAGEFILENOTACCESSIBLE.IsSet && aDDITIONALIMAGEFILENOTACCESSIBLE.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGEFILENOTACCESSIBLE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE.");
 
             if (aDDITIONALIMAGEFILENOTFOUND.IsSet && aDDITIONALIMAGEFILENOTFOUND.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGEFILENOTFOUND), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: ADDITIONAL_IMAGE_FILE_NOT_FOUND.");
 
             if (aDDITIONALIMAGEINVALIDFILE.IsSet && aDDITIONALIMAGEINVALIDFILE.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGEINVALIDFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: ADDITIONAL_IMAGE_INVALID_FILE.");
 
             if (aDDITIONALIMAGELEVELINTERNALERROR.IsSet && aDDITIONALIMAGELEVELINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGELEVELINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR.");
 
             if (aDDITIONALIMAGEMALFORMEDURL.IsSet && aDDITIONALIMAGEMALFORMEDURL.Value == null)
-                throw new ArgumentNullException(nameof(aDDITIONALIMAGEMALFORMEDURL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: ADDITIONAL_IMAGE_MALFORMED_URL.");
 
             if (fETCHGOOGLESHEETPUBLICCANEDIT.IsSet && fETCHGOOGLESHEETPUBLICCANEDIT.Value == null)
-                throw new ArgumentNullException(nameof(fETCHGOOGLESHEETPUBLICCANEDIT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT.");
 
             if (hOTELPRICEHEADERISPRESENT.IsSet && hOTELPRICEHEADERISPRESENT.Value == null)
-                throw new ArgumentNullException(nameof(hOTELPRICEHEADERISPRESENT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: HOTEL_PRICE_HEADER_IS_PRESENT.");
 
             if (vIDEODOWNLOADVIDEOTOOSHORT.IsSet && vIDEODOWNLOADVIDEOTOOSHORT.Value == null)
-                throw new ArgumentNullException(nameof(vIDEODOWNLOADVIDEOTOOSHORT), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_DOWNLOAD_VIDEO_TOO_SHORT.");
 
             if (vIDEOFILENOTACCESSIBLE.IsSet && vIDEOFILENOTACCESSIBLE.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOFILENOTACCESSIBLE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_FILE_NOT_ACCESSIBLE.");
 
             if (vIDEOFILENOTFOUND.IsSet && vIDEOFILENOTFOUND.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOFILENOTFOUND), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_FILE_NOT_FOUND.");
 
             if (vIDEOINVALIDFILE.IsSet && vIDEOINVALIDFILE.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOINVALIDFILE), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_INVALID_FILE.");
 
             if (vIDEOLEVELINTERNALERROR.IsSet && vIDEOLEVELINTERNALERROR.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOLEVELINTERNALERROR), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_LEVEL_INTERNAL_ERROR.");
 
             if (vIDEOMALFORMEDURL.IsSet && vIDEOMALFORMEDURL.Value == null)
-                throw new ArgumentNullException(nameof(vIDEOMALFORMEDURL), "Property is not nullable for class CatalogsFeedIngestionWarnings.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionWarnings: VIDEO_MALFORMED_URL.");
 
             return new CatalogsFeedIngestionWarnings(aDIMAGEDOWNLOADCONTENTREADERROR, aDIMAGEDOWNLOADDNSLOOKUPERROR, aDIMAGEDOWNLOADFILENOTACCESSIBLE, aDIMAGEDOWNLOADFILENOTFOUND, aDIMAGEDOWNLOADHTTPSTATUS400, aDIMAGEDOWNLOADHTTPSTATUS403, aDIMAGEDOWNLOADHTTPSTATUS404, aDIMAGEDOWNLOADHTTPSTATUS405, aDIMAGEDOWNLOADHTTPSTATUS410, aDIMAGEDOWNLOADHTTPSTATUS429, aDIMAGEDOWNLOADHTTPSTATUS500, aDIMAGEDOWNLOADHTTPSTATUS502, aDIMAGEDOWNLOADHTTPSTATUS503, aDIMAGEDOWNLOADHTTPSTATUS504, aDIMAGEDOWNLOADHTTPSTATUS507, aDIMAGEDOWNLOADHTTPSTATUS508, aDIMAGEDOWNLOADHTTPSTATUS520, aDIMAGEDOWNLOADHTTPSTATUS521, aDIMAGEDOWNLOADHTTPSTATUS522, aDIMAGEDOWNLOADHTTPSTATUS525, aDIMAGEDOWNLOADINTERNALCONFIGURATIONERROR, aDIMAGEDOWNLOADINTERNALERROR, aDIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD, aDIMAGEDOWNLOADINTERNALMALFORMEDURL, aDIMAGEDOWNLOADINTERNALRATELIMITED, aDIMAGEDOWNLOADINTERNALREQUESTEXPIRED, aDIMAGEDOWNLOADINVALIDFILE, aDIMAGEDOWNLOADSITEERROR, aDIMAGEDOWNLOADSITETIMEOUT, aDIMAGEDOWNLOADSSLERROR, aDIMAGEDOWNLOADSSLHANDSHAKEERROR, aDIMAGEPROCESSINGEMPTYFILE, aDIMAGEPROCESSINGHEIGHTTOOSMALL, aDIMAGEPROCESSINGTOOMANYPIXELS, aDIMAGEPROCESSINGTYPEMISMATCH, aDIMAGEPROCESSINGWIDTHTOOSMALL, aDVIDEODOWNLOADCONTENTREADERROR, aDVIDEODOWNLOADDNSLOOKUPERROR, aDVIDEODOWNLOADFILENOTACCESSIBLE, aDVIDEODOWNLOADFILENOTFOUND, aDVIDEODOWNLOADHTTPSTATUS400, aDVIDEODOWNLOADHTTPSTATUS403, aDVIDEODOWNLOADHTTPSTATUS404, aDVIDEODOWNLOADHTTPSTATUS405, aDVIDEODOWNLOADHTTPSTATUS410, aDVIDEODOWNLOADHTTPSTATUS429, aDVIDEODOWNLOADHTTPSTATUS500, aDVIDEODOWNLOADHTTPSTATUS502, aDVIDEODOWNLOADHTTPSTATUS503, aDVIDEODOWNLOADHTTPSTATUS504, aDVIDEODOWNLOADHTTPSTATUS507, aDVIDEODOWNLOADHTTPSTATUS508, aDVIDEODOWNLOADHTTPSTATUS520, aDVIDEODOWNLOADHTTPSTATUS521, aDVIDEODOWNLOADHTTPSTATUS522, aDVIDEODOWNLOADHTTPSTATUS525, aDVIDEODOWNLOADINTERNALCONFIGURATIONERROR, aDVIDEODOWNLOADINTERNALERROR, aDVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD, aDVIDEODOWNLOADINTERNALMALFORMEDURL, aDVIDEODOWNLOADINTERNALRATELIMITED, aDVIDEODOWNLOADINTERNALREQUESTEXPIRED, aDVIDEODOWNLOADINVALIDFILE, aDVIDEODOWNLOADSITEERROR, aDVIDEODOWNLOADSITETIMEOUT, aDVIDEODOWNLOADSSLERROR, aDVIDEODOWNLOADSSLHANDSHAKEERROR, aDVIDEOLENGTHTOOSHORT, aDVIDEOPROCESSINGEMPTYFILE, aDVIDEOPROCESSINGHEIGHTTOOSMALL, aDVIDEOPROCESSINGTOOMANYPIXELS, aDVIDEOPROCESSINGTYPEMISMATCH, aDVIDEOPROCESSINGWIDTHTOOSMALL, aDDITIONALIMAGEFILENOTACCESSIBLE, aDDITIONALIMAGEFILENOTFOUND, aDDITIONALIMAGEINVALIDFILE, aDDITIONALIMAGELEVELINTERNALERROR, aDDITIONALIMAGEMALFORMEDURL, fETCHGOOGLESHEETPUBLICCANEDIT, hOTELPRICEHEADERISPRESENT, vIDEODOWNLOADVIDEOTOOSHORT, vIDEOFILENOTACCESSIBLE, vIDEOFILENOTFOUND, vIDEOINVALIDFILE, vIDEOLEVELINTERNALERROR, vIDEOMALFORMEDURL);
         }
@@ -2192,7 +2192,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionWarnings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedIngestionWarnings catalogsFeedIngestionWarnings, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -2207,9 +2206,266 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionWarnings"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedIngestionWarnings catalogsFeedIngestionWarnings, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLEOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_FILE_NOT_ACCESSIBLE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUNDOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_FILE_NOT_FOUND'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS400Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS400 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS400 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_400'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS403Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS403 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS403 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_403'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS404Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS404 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS404 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_404'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS405Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS405 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS405 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_405'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS410Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS410 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS410 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_410'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS429Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS429 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS429 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_429'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS500Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS500 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS500 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_500'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS502Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS502 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS502 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_502'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS503Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS503 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS503 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_503'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS504Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS504 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS504 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_504'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS507Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS507 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS507 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_507'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS508Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS508 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS508 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_508'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS520Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS520 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS520 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_520'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS521Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS521 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS521 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_521'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS522Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS522 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS522 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_522'.");
+
+            if (catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS525Option.IsSet && catalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS525 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADIMAGEDOWNLOADHTTPSTATUS525 to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_HTTP_STATUS_525'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URLOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_MALFORMED_URL'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITEDOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_RATE_LIMITED'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INTERNAL_REQUEST_EXPIRED'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INVALID_FILEOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INVALID_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_INVALID_FILE to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_INVALID_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_SITE_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_TIMEOUTOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SITE_TIMEOUT to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_SITE_TIMEOUT'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_SSL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR to non-nullable JSON property 'AD_IMAGE_DOWNLOAD_SSL_HANDSHAKE_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_EMPTY_FILEOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_EMPTY_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_EMPTY_FILE to non-nullable JSON property 'AD_IMAGE_PROCESSING_EMPTY_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALLOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL to non-nullable JSON property 'AD_IMAGE_PROCESSING_HEIGHT_TOO_SMALL'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TOO_MANY_PIXELSOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TOO_MANY_PIXELS to non-nullable JSON property 'AD_IMAGE_PROCESSING_TOO_MANY_PIXELS'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TYPE_MISMATCHOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TYPE_MISMATCH == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_TYPE_MISMATCH to non-nullable JSON property 'AD_IMAGE_PROCESSING_TYPE_MISMATCH'.");
+
+            if (catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALLOption.IsSet && catalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL to non-nullable JSON property 'AD_IMAGE_PROCESSING_WIDTH_TOO_SMALL'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_CONTENT_READ_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_DNS_LOOKUP_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLEOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_FILE_NOT_ACCESSIBLE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUNDOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_FILE_NOT_FOUND'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS400Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS400 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS400 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_400'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS403Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS403 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS403 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_403'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS404Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS404 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS404 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_404'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS405Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS405 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS405 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_405'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS410Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS410 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS410 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_410'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS429Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS429 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS429 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_429'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS500Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS500 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS500 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_500'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS502Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS502 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS502 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_502'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS503Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS503 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS503 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_503'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS504Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS504 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS504 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_504'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS507Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS507 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS507 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_507'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS508Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS508 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS508 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_508'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS520Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS520 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS520 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_520'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS521Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS521 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS521 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_521'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS522Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS522 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS522 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_522'.");
+
+            if (catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS525Option.IsSet && catalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS525 == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADVIDEODOWNLOADHTTPSTATUS525 to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_HTTP_STATUS_525'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_CONFIGURATION_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOADOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_FAILED_TO_DOWNLOAD'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URLOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_MALFORMED_URL'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITEDOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_RATE_LIMITED'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIREDOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INTERNAL_REQUEST_EXPIRED'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INVALID_FILEOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INVALID_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_INVALID_FILE to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_INVALID_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_SITE_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_TIMEOUTOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SITE_TIMEOUT to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_SITE_TIMEOUT'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_SSL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROROption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR to non-nullable JSON property 'AD_VIDEO_DOWNLOAD_SSL_HANDSHAKE_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_LENGTH_TOO_SHORTOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_LENGTH_TOO_SHORT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_LENGTH_TOO_SHORT to non-nullable JSON property 'AD_VIDEO_LENGTH_TOO_SHORT'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_EMPTY_FILEOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_EMPTY_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_EMPTY_FILE to non-nullable JSON property 'AD_VIDEO_PROCESSING_EMPTY_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALLOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL to non-nullable JSON property 'AD_VIDEO_PROCESSING_HEIGHT_TOO_SMALL'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TOO_MANY_PIXELSOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TOO_MANY_PIXELS to non-nullable JSON property 'AD_VIDEO_PROCESSING_TOO_MANY_PIXELS'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TYPE_MISMATCHOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TYPE_MISMATCH == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_TYPE_MISMATCH to non-nullable JSON property 'AD_VIDEO_PROCESSING_TYPE_MISMATCH'.");
+
+            if (catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALLOption.IsSet && catalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL to non-nullable JSON property 'AD_VIDEO_PROCESSING_WIDTH_TOO_SMALL'.");
+
+            if (catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLEOption.IsSet && catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE to non-nullable JSON property 'ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE'.");
+
+            if (catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_FOUNDOption.IsSet && catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_FOUND == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_FILE_NOT_FOUND to non-nullable JSON property 'ADDITIONAL_IMAGE_FILE_NOT_FOUND'.");
+
+            if (catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_INVALID_FILEOption.IsSet && catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_INVALID_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_INVALID_FILE to non-nullable JSON property 'ADDITIONAL_IMAGE_INVALID_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR to non-nullable JSON property 'ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_MALFORMED_URLOption.IsSet && catalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_MALFORMED_URL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.ADDITIONAL_IMAGE_MALFORMED_URL to non-nullable JSON property 'ADDITIONAL_IMAGE_MALFORMED_URL'.");
+
+            if (catalogsFeedIngestionWarnings.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDITOption.IsSet && catalogsFeedIngestionWarnings.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT to non-nullable JSON property 'FETCH_GOOGLE_SHEET_PUBLIC_CAN_EDIT'.");
+
+            if (catalogsFeedIngestionWarnings.HOTEL_PRICE_HEADER_IS_PRESENTOption.IsSet && catalogsFeedIngestionWarnings.HOTEL_PRICE_HEADER_IS_PRESENT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.HOTEL_PRICE_HEADER_IS_PRESENT to non-nullable JSON property 'HOTEL_PRICE_HEADER_IS_PRESENT'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_DOWNLOAD_VIDEO_TOO_SHORTOption.IsSet && catalogsFeedIngestionWarnings.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_DOWNLOAD_VIDEO_TOO_SHORT to non-nullable JSON property 'VIDEO_DOWNLOAD_VIDEO_TOO_SHORT'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_FILE_NOT_ACCESSIBLEOption.IsSet && catalogsFeedIngestionWarnings.VIDEO_FILE_NOT_ACCESSIBLE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_FILE_NOT_ACCESSIBLE to non-nullable JSON property 'VIDEO_FILE_NOT_ACCESSIBLE'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_FILE_NOT_FOUNDOption.IsSet && catalogsFeedIngestionWarnings.VIDEO_FILE_NOT_FOUND == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_FILE_NOT_FOUND to non-nullable JSON property 'VIDEO_FILE_NOT_FOUND'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_INVALID_FILEOption.IsSet && catalogsFeedIngestionWarnings.VIDEO_INVALID_FILE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_INVALID_FILE to non-nullable JSON property 'VIDEO_INVALID_FILE'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_LEVEL_INTERNAL_ERROROption.IsSet && catalogsFeedIngestionWarnings.VIDEO_LEVEL_INTERNAL_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_LEVEL_INTERNAL_ERROR to non-nullable JSON property 'VIDEO_LEVEL_INTERNAL_ERROR'.");
+
+            if (catalogsFeedIngestionWarnings.VIDEO_MALFORMED_URLOption.IsSet && catalogsFeedIngestionWarnings.VIDEO_MALFORMED_URL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedIngestionWarnings.VIDEO_MALFORMED_URL to non-nullable JSON property 'VIDEO_MALFORMED_URL'.");
+
             if (catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROROption.IsSet)
                 writer.WriteNumber("AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR", catalogsFeedIngestionWarnings.AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROROption.Value!.Value);
 

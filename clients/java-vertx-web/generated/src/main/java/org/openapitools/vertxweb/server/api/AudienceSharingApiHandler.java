@@ -152,7 +152,7 @@ public class AudienceSharingApiHandler {
         AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adAccountToAdAccountSharedAudienceUpdateWithRequiredBody is {}", adAccountToAdAccountSharedAudienceUpdateWithRequiredBody);
+        logger.debug("Parameter adAccountToAdAccountSharedAudienceUpdateWithRequiredBody is (body omitted)");
 
         api.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
@@ -177,7 +177,7 @@ public class AudienceSharingApiHandler {
         AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdAccountToBusinessSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adAccountToBusinessSharedAudienceUpdateWithRequiredBody is {}", adAccountToBusinessSharedAudienceUpdateWithRequiredBody);
+        logger.debug("Parameter adAccountToBusinessSharedAudienceUpdateWithRequiredBody is (body omitted)");
 
         api.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
@@ -202,7 +202,7 @@ public class AudienceSharingApiHandler {
         BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessToAdAccountSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessToAdAccountSharedAudienceUpdateWithRequiredBody is {}", businessToAdAccountSharedAudienceUpdateWithRequiredBody);
+        logger.debug("Parameter businessToAdAccountSharedAudienceUpdateWithRequiredBody is (body omitted)");
 
         api.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
@@ -227,7 +227,7 @@ public class AudienceSharingApiHandler {
         BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BusinessToBusinessSharedAudienceUpdateWithRequiredBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessToBusinessSharedAudienceUpdateWithRequiredBody is {}", businessToBusinessSharedAudienceUpdateWithRequiredBody);
+        logger.debug("Parameter businessToBusinessSharedAudienceUpdateWithRequiredBody is (body omitted)");
 
         api.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {

@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopVideoPinsAnalyticsResponsePinsItems")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TopVideoPinsAnalyticsResponsePinsItems   {
-  private @Valid Map<String, DataStatus> dataStatus = new HashMap<>();
-  private @Valid Map<String, BigDecimal> metrics = new HashMap<>();
+  private Map<String, DataStatus> dataStatus = new HashMap<>();
+  private Map<String, BigDecimal> metrics = new HashMap<>();
   private String pinId;
 
   public TopVideoPinsAnalyticsResponsePinsItems() {
@@ -76,7 +76,7 @@ public class TopVideoPinsAnalyticsResponsePinsItems   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("metrics")
-  @Valid public Map<String, BigDecimal> getMetrics() {
+  public Map<String, BigDecimal> getMetrics() {
     return metrics;
   }
 

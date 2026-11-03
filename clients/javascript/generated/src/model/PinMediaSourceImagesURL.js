@@ -17,7 +17,7 @@ import PinMediaSourceImagesURLItem from './PinMediaSourceImagesURLItem';
 /**
  * The PinMediaSourceImagesURL model module.
  * @module model/PinMediaSourceImagesURL
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaSourceImagesURL {
     /**

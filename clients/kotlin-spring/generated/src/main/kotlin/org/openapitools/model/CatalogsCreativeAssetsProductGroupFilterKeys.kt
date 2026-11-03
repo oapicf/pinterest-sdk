@@ -56,82 +56,82 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CREATIVE_ASSETS_ID")
+    @param:JsonProperty("CREATIVE_ASSETS_ID", required = true)
     @get:JsonProperty("CREATIVE_ASSETS_ID", required = true) val CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_0")
+    @param:JsonProperty("CUSTOM_LABEL_0", required = true)
     @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_1")
+    @param:JsonProperty("CUSTOM_LABEL_1", required = true)
     @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_2")
+    @param:JsonProperty("CUSTOM_LABEL_2", required = true)
     @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_3")
+    @param:JsonProperty("CUSTOM_LABEL_3", required = true)
     @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_4")
+    @param:JsonProperty("CUSTOM_LABEL_4", required = true)
     @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_6", required = true) val GOOGLE_PRODUCT_CATEGORY_6: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_5", required = true) val GOOGLE_PRODUCT_CATEGORY_5: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_4", required = true) val GOOGLE_PRODUCT_CATEGORY_4: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_3", required = true) val GOOGLE_PRODUCT_CATEGORY_3: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true) val GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_1", required = true) val GOOGLE_PRODUCT_CATEGORY_1: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_0", required = true) val GOOGLE_PRODUCT_CATEGORY_0: CatalogsProductGroupMultipleStringListCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MEDIA_TYPE")
+    @param:JsonProperty("MEDIA_TYPE", required = true)
     @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("TITLE_KEYWORDS")
+    @param:JsonProperty("TITLE_KEYWORDS", required = true)
     @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("LINK")
+    @param:JsonProperty("LINK", required = true)
     @get:JsonProperty("LINK", required = true) val LINK: CatalogsProductGroupFilterOperatorTypeCriteria
 ) {
 

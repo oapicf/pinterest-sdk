@@ -6,20 +6,3 @@
 */
 #include "EnhancedMatchStatusType.h"
 
-namespace models {
-
-EnhancedMatchStatusType::EnhancedMatchStatusType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

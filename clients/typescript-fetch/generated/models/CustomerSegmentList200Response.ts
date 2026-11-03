@@ -29,14 +29,10 @@ import {
 export interface CustomerSegmentList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof CustomerSegmentList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<CustomerSegment>}
-     * @memberof CustomerSegmentList200Response
      */
     items: Array<CustomerSegment>;
 }

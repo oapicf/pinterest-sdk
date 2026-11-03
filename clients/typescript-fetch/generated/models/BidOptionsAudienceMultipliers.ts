@@ -23,14 +23,10 @@ import { mapValues } from '../runtime';
 export interface BidOptionsAudienceMultipliers {
     /**
      * 
-     * @type {string}
-     * @memberof BidOptionsAudienceMultipliers
      */
     audienceId: string;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsAudienceMultipliers
      */
     multiplier: number;
 }

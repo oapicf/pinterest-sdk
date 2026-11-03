@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdUpdateRequestAllOf1 {
     /**
      * The ID of this ad.
-     * @type {string}
-     * @memberof AdUpdateRequestAllOf1
      */
     id: string;
     /**
      * Pin ID. This field may only be updated for draft ads.
-     * @type {string}
-     * @memberof AdUpdateRequestAllOf1
      */
     pinId?: string | null;
 }

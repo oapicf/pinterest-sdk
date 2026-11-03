@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsReportFeedIngestionFilter {
     /**
      * ID of the feed entity.
-     * @type {string}
-     * @memberof CatalogsReportFeedIngestionFilter
      */
     feedId: string;
     /**
      * Unique identifier of a feed processing result. It can be acquired from the "id" field of the "items" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
-     * @type {string}
-     * @memberof CatalogsReportFeedIngestionFilter
      */
     processingResultId?: string;
     /**
      * 
-     * @type {CatalogsReportFeedIngestionFilterReportTypeEnum}
-     * @memberof CatalogsReportFeedIngestionFilter
      */
     reportType: CatalogsReportFeedIngestionFilterReportTypeEnum;
 }
@@ -44,7 +38,7 @@ export interface CatalogsReportFeedIngestionFilter {
  * @export
  */
 export const CatalogsReportFeedIngestionFilterReportTypeEnum = {
-    FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+    FeedIngestionIssues: 'FEED_INGESTION_ISSUES',
 } as const;
 export type CatalogsReportFeedIngestionFilterReportTypeEnum = typeof CatalogsReportFeedIngestionFilterReportTypeEnum[keyof typeof CatalogsReportFeedIngestionFilterReportTypeEnum];
 

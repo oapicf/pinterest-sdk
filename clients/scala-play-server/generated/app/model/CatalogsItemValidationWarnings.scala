@@ -211,7 +211,7 @@ import play.api.libs.json._
   * @param VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED A video is required in the item when ad_video fields are provided.
   * @param WEIGHT_UNIT_INVALID Item has a weight_unit value that is formatted incorrectly, this item will be published without a weight unit.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsItemValidationWarnings(
   AD_IMAGE_0_LINK_DUPLICATED: Option[CatalogsItemValidationDetails],
   AD_IMAGE_0_LINK_LENGTH_TOO_LONG: Option[CatalogsItemValidationDetails],

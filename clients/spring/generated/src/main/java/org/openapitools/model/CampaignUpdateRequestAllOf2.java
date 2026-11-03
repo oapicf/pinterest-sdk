@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,25 +26,19 @@ import jakarta.annotation.Generated;
  * CampaignUpdateRequestAllOf2
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignUpdateRequestAllOf2 {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CampaignBidOptionsUpdate> bidOptions = JsonNullable.<CampaignBidOptionsUpdate>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntendedPromotionType intendedPromotionType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isLtvOptimized;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isPerformancePlus;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isTopOfSearch;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ObjectiveType> objectiveType = JsonNullable.<ObjectiveType>undefined();
 
   public CampaignUpdateRequestAllOf2 bidOptions(CampaignBidOptionsUpdate bidOptions) {
@@ -58,7 +51,7 @@ public class CampaignUpdateRequestAllOf2 {
    * @return bidOptions
    */
   @Valid 
-  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_options")
   public JsonNullable<CampaignBidOptionsUpdate> getBidOptions() {
     return bidOptions;
@@ -162,7 +155,7 @@ public class CampaignUpdateRequestAllOf2 {
    * @return objectiveType
    */
   @Valid 
-  @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("objective_type")
   public JsonNullable<ObjectiveType> getObjectiveType() {
     return objectiveType;

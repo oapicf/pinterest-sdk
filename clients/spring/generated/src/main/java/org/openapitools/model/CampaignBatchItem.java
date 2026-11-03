@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignBatchItem", description = "Item in a batch campaign response.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBatchItem {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CampaignBatchResponseData data;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid Exception> exceptions = new ArrayList<>();
 
   public CampaignBatchItem data(@Nullable CampaignBatchResponseData data) {
@@ -73,7 +70,7 @@ public class CampaignBatchItem {
    * Exceptions on failure.
    * @return exceptions
    */
-  @Valid 
+  
   @Schema(name = "exceptions", description = "Exceptions on failure.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
   public List<@Valid Exception> getExceptions() {

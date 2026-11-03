@@ -122,3 +122,4 @@ class _$CatalogsLocalStoresCreate200ResponseInnerDataOneOfSerializer implements 
   }
 }
 
+

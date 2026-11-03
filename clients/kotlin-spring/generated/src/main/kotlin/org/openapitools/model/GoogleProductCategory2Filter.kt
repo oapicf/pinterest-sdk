@@ -22,7 +22,7 @@ data class GoogleProductCategory2Filter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2")
+    @param:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true)
     @get:JsonProperty("GOOGLE_PRODUCT_CATEGORY_2", required = true) val GOOGLE_PRODUCT_CATEGORY_2: CatalogsProductGroupMultipleStringListCriteria
 ) {
 

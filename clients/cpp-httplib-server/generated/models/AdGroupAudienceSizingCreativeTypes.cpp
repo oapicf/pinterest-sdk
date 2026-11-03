@@ -6,20 +6,3 @@
 */
 #include "AdGroupAudienceSizingCreativeTypes.h"
 
-namespace models {
-
-AdGroupAudienceSizingCreativeTypes::AdGroupAudienceSizingCreativeTypes()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

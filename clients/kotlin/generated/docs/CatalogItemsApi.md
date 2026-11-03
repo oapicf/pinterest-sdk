@@ -39,9 +39,9 @@ try {
 ```
 
 ### Parameters
-| **batchId** | **kotlin.String**| Id of a catalogs items batch to fetch | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **batchId** | **kotlin.String**| Id of a catalogs items batch to fetch | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -103,9 +103,9 @@ try {
 ```
 
 ### Parameters
-| **catalogsItemsBatchPostRequest** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogsItemsBatchPostRequest** | [**CatalogsItemsBatchPostRequest**](CatalogsItemsBatchPostRequest.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -167,9 +167,9 @@ try {
 ```
 
 ### Parameters
-| **catalogsItemsRequest** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogsItemsRequest** | [**CatalogsItemsRequest**](CatalogsItemsRequest.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type

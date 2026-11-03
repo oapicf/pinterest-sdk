@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CustomerSegmentCreate {
     /**
      * Audience IDs included in the customer segment.
-     * @type {Array<string>}
-     * @memberof CustomerSegmentCreate
      */
     audienceIds: Array<string>;
     /**
      * Customer segment name.
-     * @type {string}
-     * @memberof CustomerSegmentCreate
      */
     name: string;
 }

@@ -43,14 +43,10 @@ import {
 export interface CatalogsCreativeAssetsProductGroupFilters {
     /**
      * 
-     * @type {Array<CatalogsCreativeAssetsProductGroupFilterKeys>}
-     * @memberof CatalogsCreativeAssetsProductGroupFilters
      */
     anyOf: Array<CatalogsCreativeAssetsProductGroupFilterKeys>;
     /**
      * 
-     * @type {Array<CatalogsCreativeAssetsProductGroupFilterKeys>}
-     * @memberof CatalogsCreativeAssetsProductGroupFilters
      */
     allOf: Array<CatalogsCreativeAssetsProductGroupFilterKeys>;
 }

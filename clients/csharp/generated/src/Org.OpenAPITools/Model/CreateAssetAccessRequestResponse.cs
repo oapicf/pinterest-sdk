@@ -163,10 +163,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class CreateAssetAccessRequestResponse.");
+                throw new JsonException("Property is not nullable for class CreateAssetAccessRequestResponse: exceptions.");
 
             if (invites.IsSet && invites.Value == null)
-                throw new ArgumentNullException(nameof(invites), "Property is not nullable for class CreateAssetAccessRequestResponse.");
+                throw new JsonException("Property is not nullable for class CreateAssetAccessRequestResponse: invites.");
 
             return new CreateAssetAccessRequestResponse(exceptions, invites);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateAssetAccessRequestResponse createAssetAccessRequestResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,14 +191,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateAssetAccessRequestResponse createAssetAccessRequestResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (createAssetAccessRequestResponse.ExceptionsOption.IsSet && createAssetAccessRequestResponse.Exceptions == null)
-                throw new ArgumentNullException(nameof(createAssetAccessRequestResponse.Exceptions), "Property is required for class CreateAssetAccessRequestResponse.");
+                throw new JsonException("Cannot write null property CreateAssetAccessRequestResponse.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (createAssetAccessRequestResponse.InvitesOption.IsSet && createAssetAccessRequestResponse.Invites == null)
-                throw new ArgumentNullException(nameof(createAssetAccessRequestResponse.Invites), "Property is required for class CreateAssetAccessRequestResponse.");
+                throw new JsonException("Cannot write null property CreateAssetAccessRequestResponse.Invites to non-nullable JSON property 'invites'.");
 
             if (createAssetAccessRequestResponse.ExceptionsOption.IsSet)
             {

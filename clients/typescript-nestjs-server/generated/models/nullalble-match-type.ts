@@ -8,7 +8,7 @@ export const NullalbleMatchType = {
     Phrase: 'PHRASE',
     Exact: 'EXACT',
     ExactNegative: 'EXACT_NEGATIVE',
-    PhraseNegative: 'PHRASE_NEGATIVE'
+    PhraseNegative: 'PHRASE_NEGATIVE',
 } as const;
 export type NullalbleMatchType = typeof NullalbleMatchType[keyof typeof NullalbleMatchType];
 

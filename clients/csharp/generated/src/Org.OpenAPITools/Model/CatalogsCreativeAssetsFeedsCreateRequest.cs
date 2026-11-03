@@ -336,7 +336,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnum?>(CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "default_country":
                             defaultCountry = new Option<Country?>(JsonSerializer.Deserialize<Country?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -375,46 +380,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: catalog_type.");
 
             if (!defaultCountry.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(defaultCountry));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: default_country.");
 
             if (!defaultLocale.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(defaultLocale));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: default_locale.");
 
             if (!format.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(format));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: format.");
 
             if (!location.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(location));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: location.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsFeedsCreateRequest: name.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: catalog_type.");
 
             if (defaultCountry.IsSet && defaultCountry.Value == null)
-                throw new ArgumentNullException(nameof(defaultCountry), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: default_country.");
 
             if (defaultLocale.IsSet && defaultLocale.Value == null)
-                throw new ArgumentNullException(nameof(defaultLocale), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: default_locale.");
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: format.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: location.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: catalog_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFeedsCreateRequest: status.");
 
             return new CatalogsCreativeAssetsFeedsCreateRequest(catalogType.Value!.Value!, defaultCountry.Value!.Value!, defaultLocale.Value!, format.Value!.Value!, location.Value!, name.Value!, catalogId, credentials, defaultCurrency, preferredProcessingSchedule, status);
         }
@@ -425,7 +430,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsFeedsCreateRequest catalogsCreativeAssetsFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -440,20 +444,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsFeedsCreateRequest catalogsCreativeAssetsFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreativeAssetsFeedsCreateRequest.DefaultLocale == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFeedsCreateRequest.DefaultLocale), "Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.");
-
-            if (catalogsCreativeAssetsFeedsCreateRequest.Location == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFeedsCreateRequest.Location), "Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.");
-
-            if (catalogsCreativeAssetsFeedsCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFeedsCreateRequest.Name), "Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.");
-
             if (catalogsCreativeAssetsFeedsCreateRequest.CatalogIdOption.IsSet && catalogsCreativeAssetsFeedsCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFeedsCreateRequest.CatalogId), "Property is required for class CatalogsCreativeAssetsFeedsCreateRequest.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFeedsCreateRequest.CatalogId to non-nullable JSON property 'catalog_id'.");
+
+            if (catalogsCreativeAssetsFeedsCreateRequest.StatusOption.IsSet && catalogsCreativeAssetsFeedsCreateRequest.Status == null)
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFeedsCreateRequest.Status to non-nullable JSON property 'status'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsFeedsCreateRequest.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsFeedsCreateRequest.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

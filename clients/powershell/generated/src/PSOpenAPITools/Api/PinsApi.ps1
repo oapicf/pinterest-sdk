@@ -225,7 +225,7 @@ function Invoke-PinsAnalytics {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling pins_analytics."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if (!$StartDate) {
             throw "Error! The required parameter `StartDate` missing when calling pins_analytics."
@@ -423,7 +423,7 @@ function Invoke-PinsDelete {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling pins_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -514,7 +514,7 @@ function Invoke-PinsGet {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling pins_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -787,7 +787,7 @@ function Invoke-PinsSave {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling pins_save."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId
@@ -886,7 +886,7 @@ function Invoke-PinsUpdate {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling pins_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

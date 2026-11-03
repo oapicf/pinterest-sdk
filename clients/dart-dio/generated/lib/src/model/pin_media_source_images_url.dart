@@ -144,9 +144,10 @@ class _$PinMediaSourceImagesURLSerializer implements PrimitiveSerializer<PinMedi
   }
 }
 
+
+/// The source type of the media.
 class PinMediaSourceImagesURLSourceTypeEnum extends EnumClass {
 
-  /// The source type of the media.
   @BuiltValueEnumConst(wireName: r'multiple_image_urls')
   static const PinMediaSourceImagesURLSourceTypeEnum multipleImageUrls = _$pinMediaSourceImagesURLSourceTypeEnum_multipleImageUrls;
 

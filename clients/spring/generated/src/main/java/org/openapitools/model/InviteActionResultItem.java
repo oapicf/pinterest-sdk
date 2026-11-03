@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteActionResultItem", description = "An item representing the result of an invite/request action. Contains either an exception (on error) or an invite binding (on success).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteActionResultItem {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<InviteExceptionResponse> exception = JsonNullable.<InviteExceptionResponse>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<InviteBusinessRoleBinding> invite = JsonNullable.<InviteBusinessRoleBinding>undefined();
 
   public InviteActionResultItem exception(InviteExceptionResponse exception) {
@@ -45,7 +42,7 @@ public class InviteActionResultItem {
    * @return exception
    */
   @Valid 
-  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "exception", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("exception")
   public JsonNullable<InviteExceptionResponse> getException() {
     return exception;
@@ -65,7 +62,7 @@ public class InviteActionResultItem {
    * @return invite
    */
   @Valid 
-  @Schema(name = "invite", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "invite", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("invite")
   public JsonNullable<InviteBusinessRoleBinding> getInvite() {
     return invite;

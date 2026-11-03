@@ -64,80 +64,54 @@ import {
 export interface TargetingTemplate {
     /**
      * The ID of the advertiser that this targeting template belongs to.
-     * @type {string}
-     * @memberof TargetingTemplate
      */
     readonly adAccountId?: string;
     /**
      * Enable auto-targeting for ad group. Also known as ["expanded targeting"](https://help.pinterest.com/en/business/article/expanded-targeting).
-     * @type {boolean}
-     * @memberof TargetingTemplate
      */
     autoTargetingEnabled?: boolean;
     /**
      * Targeting template created time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof TargetingTemplate
      */
     readonly createdTime?: number;
     /**
      * Targeting template ID.
-     * @type {string}
-     * @memberof TargetingTemplate
      */
     readonly id?: string;
     /**
      * 
-     * @type {Array<TargetingTemplateKeyword>}
-     * @memberof TargetingTemplate
      */
     keywords?: Array<TargetingTemplateKeyword>;
     /**
      * targeting template name
-     * @type {string}
-     * @memberof TargetingTemplate
      */
     name: string;
     /**
      * 
-     * @type {PlacementGroupType}
-     * @memberof TargetingTemplate
      */
     placementGroup?: PlacementGroupType;
     /**
      * 
-     * @type {TargetingTemplateAudienceSizing}
-     * @memberof TargetingTemplate
      */
     readonly sizing?: TargetingTemplateAudienceSizing | null;
     /**
      * Indicate targeting template is active or Deleted
-     * @type {TargetingTemplateStatus}
-     * @memberof TargetingTemplate
      */
     readonly status?: TargetingTemplateStatus;
     /**
      * targeting profile attributes
-     * @type {TargetingSpecOptimal}
-     * @memberof TargetingTemplate
      */
     targetingAttributes: TargetingSpecOptimal;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof TargetingTemplate
      */
     trackingUrls?: TrackingUrls | null;
     /**
      * Targeting template updated time.Unix timestamp in seconds.
-     * @type {number}
-     * @memberof TargetingTemplate
      */
     readonly updatedTime?: number;
     /**
      * Inform if the targeting template is valid (ex. would be false if has revoked audience)
-     * @type {boolean}
-     * @memberof TargetingTemplate
      */
     readonly valid?: boolean | null;
 }

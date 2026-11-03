@@ -49,7 +49,7 @@ export interface CatalogsRetailFeed {
 }
 export namespace CatalogsRetailFeed {
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL'
+        Retail: 'RETAIL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

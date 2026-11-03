@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,7 +29,7 @@ import jakarta.annotation.Generated;
  * CustomerListUpload
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpload {
 
   private String adAccountId;
@@ -39,14 +38,12 @@ public class CustomerListUpload {
 
   private String customerListId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Valid ErrorDetail>> errorCounts = JsonNullable.<List<@Valid ErrorDetail>>undefined();
 
   private String id;
 
   private UserListOperationType operation;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable RecordCounts recordCounts;
 
   private WorkloadState state;
@@ -139,7 +136,7 @@ public class CustomerListUpload {
   }
 
   public CustomerListUpload addErrorCountsItem(ErrorDetail errorCountsItem) {
-    if (this.errorCounts == null || !this.errorCounts.isPresent()) {
+    if (this.errorCounts == null || !this.errorCounts.isPresent() || this.errorCounts.get() == null) {
       this.errorCounts = JsonNullable.of(new ArrayList<>());
     }
     this.errorCounts.get().add(errorCountsItem);
@@ -150,8 +147,8 @@ public class CustomerListUpload {
    * Error counts by error code
    * @return errorCounts
    */
-  @Valid 
-  @Schema(name = "error_counts", example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", description = "Error counts by error code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  
+  @Schema(name = "error_counts", example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", description = "Error counts by error code", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("error_counts")
   public JsonNullable<List<@Valid ErrorDetail>> getErrorCounts() {
     return errorCounts;

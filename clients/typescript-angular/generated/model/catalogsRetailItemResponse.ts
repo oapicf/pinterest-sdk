@@ -32,11 +32,11 @@ export interface CatalogsRetailItemResponse {
 }
 export namespace CatalogsRetailItemResponse {
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL'
+        Retail: 'RETAIL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
     export const ItemResponseKindEnum = {
-        RetailItem: 'retail_item'
+        RetailItem: 'retail_item',
     } as const;
     export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }

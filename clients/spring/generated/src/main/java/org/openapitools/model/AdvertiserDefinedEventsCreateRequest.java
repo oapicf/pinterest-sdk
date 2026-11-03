@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdvertiserDefinedEventsCreateRequest", description = "Request body for creating or updating advertiser defined events")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvertiserDefinedEventsCreateRequest {
 
   private List<@Valid AdvertiserDefinedEventInput> items = new ArrayList<>();
@@ -57,7 +57,7 @@ public class AdvertiserDefinedEventsCreateRequest {
    * List of advertiser defined events to create or update
    * @return items
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Size(min = 1) 
   @Schema(name = "items", description = "List of advertiser defined events to create or update", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid AdvertiserDefinedEventInput> getItems() {

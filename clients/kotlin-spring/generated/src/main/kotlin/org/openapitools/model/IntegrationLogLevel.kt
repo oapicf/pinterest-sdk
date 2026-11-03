@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Log level type for integration applications.
-* Values: INFO,WARN,ERROR
-*/
+ * Log level type for integration applications.
+ * Values: INFO,WARN,ERROR
+ */
 enum class IntegrationLogLevel(@get:JsonValue val value: kotlin.String) {
 
     INFO("INFO"),
@@ -29,9 +29,8 @@ enum class IntegrationLogLevel(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): IntegrationLogLevel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLogLevel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLogLevel'")
         }
     }
 }
-

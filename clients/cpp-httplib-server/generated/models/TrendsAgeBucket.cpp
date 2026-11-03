@@ -6,20 +6,3 @@
 */
 #include "AgeRange.h"
 
-namespace models {
-
-AgeRange::AgeRange()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -30,13 +30,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("AdCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdCreate   {
   private String adGroupId;
   private String androidDeepLink;
-  private @Valid List<String> carouselAndroidDeepLinks;
-  private @Valid List<String> carouselDestinationUrls;
-  private @Valid List<String> carouselIosDeepLinks;
+  private List<String> carouselAndroidDeepLinks;
+  private List<String> carouselDestinationUrls;
+  private List<String> carouselIosDeepLinks;
   private String clickTrackingUrl;
   private String collectionItemsDestinationUrlTemplate;
   private AdCollectionsHeaderType collectionsHeaderType;

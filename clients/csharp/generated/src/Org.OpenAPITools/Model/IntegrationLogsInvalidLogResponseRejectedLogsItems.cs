@@ -183,25 +183,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.", nameof(field));
+                throw new JsonException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems: field.");
 
             if (!reason.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.", nameof(reason));
+                throw new JsonException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems: reason.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.", nameof(value));
+                throw new JsonException("Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems: value.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems: field.");
 
             if (reason.IsSet && reason.Value == null)
-                throw new ArgumentNullException(nameof(reason), "Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems: reason.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems: value.");
 
             if (logIndex.IsSet && logIndex.Value == null)
-                throw new ArgumentNullException(nameof(logIndex), "Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsInvalidLogResponseRejectedLogsItems: log_index.");
 
             return new IntegrationLogsInvalidLogResponseRejectedLogsItems(field.Value!, reason.Value!, value.Value!, logIndex);
         }
@@ -212,7 +212,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsInvalidLogResponseRejectedLogsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogsInvalidLogResponseRejectedLogsItems integrationLogsInvalidLogResponseRejectedLogsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -227,17 +226,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsInvalidLogResponseRejectedLogsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogsInvalidLogResponseRejectedLogsItems integrationLogsInvalidLogResponseRejectedLogsItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (integrationLogsInvalidLogResponseRejectedLogsItems.Field == null)
-                throw new ArgumentNullException(nameof(integrationLogsInvalidLogResponseRejectedLogsItems.Field), "Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
-
-            if (integrationLogsInvalidLogResponseRejectedLogsItems.Reason == null)
-                throw new ArgumentNullException(nameof(integrationLogsInvalidLogResponseRejectedLogsItems.Reason), "Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
-
-            if (integrationLogsInvalidLogResponseRejectedLogsItems.Value == null)
-                throw new ArgumentNullException(nameof(integrationLogsInvalidLogResponseRejectedLogsItems.Value), "Property is required for class IntegrationLogsInvalidLogResponseRejectedLogsItems.");
+            if (integrationLogsInvalidLogResponseRejectedLogsItems.LogIndexOption.IsSet && integrationLogsInvalidLogResponseRejectedLogsItems.LogIndex == null)
+                throw new JsonException("Cannot write null property IntegrationLogsInvalidLogResponseRejectedLogsItems.LogIndex to non-nullable JSON property 'log_index'.");
 
             writer.WriteString("field", integrationLogsInvalidLogResponseRejectedLogsItems.Field);
 

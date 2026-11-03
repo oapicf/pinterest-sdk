@@ -23,7 +23,7 @@ public class UserWebsiteCreate  {
   */
   @ApiModelProperty(value = "Method used to verify website ownership.")
   @Valid
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
  /**
   * Website with path or domain only

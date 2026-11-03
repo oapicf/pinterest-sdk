@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogBinding {
     /**
      * Catalog type
-     * @type {string}
-     * @memberof CatalogBinding
      */
     catalogType?: string;
     /**
      * Catalog ID.
-     * @type {string}
-     * @memberof CatalogBinding
      */
     id?: string;
     /**
      * Catalog name
-     * @type {string}
-     * @memberof CatalogBinding
      */
     name?: string;
 }

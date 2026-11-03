@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  * ProductGroupPromotionUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductGroupPromotionUpdateRequest {
 
   private String adGroupId;
@@ -80,7 +80,7 @@ public class ProductGroupPromotionUpdateRequest {
    * Get productGroupPromotion
    * @return productGroupPromotion
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_group_promotion", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_group_promotion")
   public List<@Valid ProductGroupPromotion> getProductGroupPromotion() {

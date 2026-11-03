@@ -6,20 +6,3 @@
 */
 #include "LeadFormStatus.h"
 
-namespace models {
-
-LeadFormStatus::LeadFormStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

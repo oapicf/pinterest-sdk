@@ -25,7 +25,7 @@ export const MetricsReportingLevel = {
     ProductGroup: 'PRODUCT_GROUP',
     ProductGroupTargeting: 'PRODUCT_GROUP_TARGETING',
     ProductItem: 'PRODUCT_ITEM',
-    ProductItemTargeting: 'PRODUCT_ITEM_TARGETING'
+    ProductItemTargeting: 'PRODUCT_ITEM_TARGETING',
 } as const;
 export type MetricsReportingLevel = typeof MetricsReportingLevel[keyof typeof MetricsReportingLevel];
 

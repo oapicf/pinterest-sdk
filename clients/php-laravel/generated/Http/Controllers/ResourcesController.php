@@ -51,10 +51,10 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -109,13 +109,13 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'reportType' => [
+                'report_type' => [
                 ],
             ],
         );
@@ -171,13 +171,13 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'interestId' => $interestId,
-                ],
                 $request->all(),
+                [
+                    'interest_id' => $interestId,
+                ],
             ),
             [
-                'interestId' => [
+                'interest_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -236,10 +236,10 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -294,10 +294,10 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'date' => [
@@ -359,26 +359,26 @@ class ResourcesController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'targetingType' => $targetingType,
-                ],
                 $request->all(),
+                [
+                    'targeting_type' => $targetingType,
+                ],
             ),
             [
-                'targetingType' => [
+                'targeting_type' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clientId' => [
+                'client_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'oauthSignature' => [
+                'oauth_signature' => [
                     'string',
                 ],
                 'timestamp' => [
@@ -393,11 +393,11 @@ class ResourcesController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $clientId = $request->string('clientId')->value();
+        $clientId = $request->string('client_id')->value();
 
-        $oauthSignature = $request->string('oauthSignature')->value();
+        $oauthSignature = $request->string('oauth_signature')->value();
 
         $timestamp = $request->string('timestamp')->value();
 

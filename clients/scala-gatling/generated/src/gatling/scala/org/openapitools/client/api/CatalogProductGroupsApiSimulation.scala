@@ -95,8 +95,8 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .exec(http("catalogsProductGroupPinsList")
         .httpRequest("GET","/catalogs/product_groups/${product_group_id}/products")
         .queryParam("pin_metrics","${pin_metrics}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("ad_account_id","${ad_account_id}")
 )
 
@@ -158,8 +158,8 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(catalogs_product_groups/delete_manyQUERYFeeder)
         .exec(http("catalogsProductGroupsDeleteMany")
         .httpRequest("DELETE","/catalogs/product_groups/multiple")
-        .queryParam("id","${id}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("id","${id}")
 )
 
     // Run scncatalogsProductGroupsDeleteMany with warm up and reach a constant rate for entire duration
@@ -191,10 +191,10 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .exec(http("catalogsProductGroupsList")
         .httpRequest("GET","/catalogs/product_groups")
         .queryParam("catalog_id","${catalog_id}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("id","${id}")
         .queryParam("feed_id","${feed_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("id","${id}")
-        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
 )
 
@@ -243,8 +243,8 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .exec(http("productsByProductGroupFilterList")
         .httpRequest("POST","/catalogs/products/get_by_product_group_filters")
         .queryParam("pin_metrics","${pin_metrics}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("ad_account_id","${ad_account_id}")
 )
 

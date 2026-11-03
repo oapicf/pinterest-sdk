@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogsRequestCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsRequestCreate {
 
   private List<@Valid IntegrationLog> logs = new ArrayList<>();
@@ -57,7 +57,7 @@ public class IntegrationLogsRequestCreate {
    * Get logs
    * @return logs
    */
-  @NotNull @Valid @Size(min = 1, max = 250) 
+  @NotNull @Size(min = 1, max = 250) 
   @Schema(name = "logs", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("logs")
   public List<@Valid IntegrationLog> getLogs() {

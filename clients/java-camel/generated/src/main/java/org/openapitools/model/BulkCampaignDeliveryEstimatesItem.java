@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -28,23 +27,19 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BulkCampaignDeliveryEstimatesItem", description = "Delivery estimate result for a single campaign within a bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem {
 
-  @Valid
   private List<@Valid CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();
 
   private Float conversionRate;
 
-  @Valid
   private List<@Valid CampaignPlanningConversionRate> conversionRates = new ArrayList<>();
 
-  @Valid
   private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
 
   private CampaignDeliveryEstimatesDerivedMetrics derivedMetrics;
 
-  @Valid
   private List<@Valid CampaignPlanningResponseError> errors = new ArrayList<>();
 
   private String estimateId;
@@ -68,7 +63,7 @@ public class BulkCampaignDeliveryEstimatesItem {
    * Range audience sizes for each ad group, in the same order as the ad groups in the request.
    * @return adgroupAudienceSizes
    */
-  @Valid 
+  
   @Schema(name = "adgroup_audience_sizes", description = "Range audience sizes for each ad group, in the same order as the ad groups in the request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("adgroup_audience_sizes")
   public List<@Valid CampaignPlanningAdGroupAudienceSize> getAdgroupAudienceSizes() {
@@ -116,7 +111,7 @@ public class BulkCampaignDeliveryEstimatesItem {
    * Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.
    * @return conversionRates
    */
-  @Valid 
+  
   @Schema(name = "conversion_rates", description = "Conversion rate estimates. Used to translate impressions into conversions for oCPM ads based on different conversion event and attribution windows settings.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_rates")
   public List<@Valid CampaignPlanningConversionRate> getConversionRates() {
@@ -144,7 +139,7 @@ public class BulkCampaignDeliveryEstimatesItem {
    * Estimated curves. Each curve will pertain to a single estimation type.
    * @return curves
    */
-  @Valid @Size(max = 20) 
+  @Size(max = 20) 
   @Schema(name = "curves", description = "Estimated curves. Each curve will pertain to a single estimation type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("curves")
   public List<@Valid CampaignPlanningCurveEstimate> getCurves() {
@@ -192,7 +187,7 @@ public class BulkCampaignDeliveryEstimatesItem {
    * Errors encountered during estimation for this campaign.
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", description = "Errors encountered during estimation for this campaign.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
   public List<@Valid CampaignPlanningResponseError> getErrors() {

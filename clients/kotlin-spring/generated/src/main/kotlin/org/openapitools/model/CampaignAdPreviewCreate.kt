@@ -22,7 +22,7 @@ data class CampaignAdPreviewCreate(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(example = "1234567890", required = true, description = "Ad group ID to create a preview record for.")
-    @param:JsonProperty("ad_group_id")
+    @param:JsonProperty("ad_group_id", required = true)
     @get:JsonProperty("ad_group_id", required = true) val adGroupId: kotlin.String
 ) {
 

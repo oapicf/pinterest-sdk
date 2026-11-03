@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("PromotionsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PromotionsResponse   {
-  private @Valid List<@Valid PromotionArrayElement> promotions = new ArrayList<>();
+  private List<@Valid PromotionArrayElement> promotions = new ArrayList<>();
 
   public PromotionsResponse() {
   }
@@ -37,7 +37,7 @@ public class PromotionsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("promotions")
-  @Valid public List<@Valid PromotionArrayElement> getPromotions() {
+  public List<@Valid PromotionArrayElement> getPromotions() {
     return promotions;
   }
 

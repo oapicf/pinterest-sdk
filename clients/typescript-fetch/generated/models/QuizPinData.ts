@@ -43,26 +43,18 @@ import {
 export interface QuizPinData {
     /**
      * 
-     * @type {Array<QuizPinQuestion>}
-     * @memberof QuizPinData
      */
     questions?: Array<QuizPinQuestion>;
     /**
      * 
-     * @type {Array<QuizPinResult>}
-     * @memberof QuizPinData
      */
     results?: Array<QuizPinResult>;
     /**
      * 
-     * @type {QuizPinResult}
-     * @memberof QuizPinData
      */
     tieBreakerCustomResult?: QuizPinResult | null;
     /**
      * 
-     * @type {TieBreakerType}
-     * @memberof QuizPinData
      */
     tieBreakerType?: TieBreakerType;
 }

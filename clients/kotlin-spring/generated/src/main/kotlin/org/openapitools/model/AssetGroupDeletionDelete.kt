@@ -21,7 +21,7 @@ data class AssetGroupDeletionDelete(
 
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("asset_groups_to_delete")
+    @param:JsonProperty("asset_groups_to_delete", required = true)
     @get:JsonProperty("asset_groups_to_delete", required = true) val assetGroupsToDelete: kotlin.collections.List<kotlin.String>
 ) {
 

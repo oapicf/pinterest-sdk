@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsCreativeAssetsAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsAttributes   {
   private String androidDeepLink;
   private String customLabel0;
@@ -35,7 +35,7 @@ public class CatalogsCreativeAssetsAttributes   {
   private String link;
   private String title;
   private String visibility;
-  private @Valid List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
   private String imageLink;
   private String videoLink;
 
@@ -293,7 +293,7 @@ public class CatalogsCreativeAssetsAttributes   {
   
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.")
   @JsonProperty("ai_disclosures")
-  @Valid public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }
 

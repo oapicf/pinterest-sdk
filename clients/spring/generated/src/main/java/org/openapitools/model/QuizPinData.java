@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,19 +29,15 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "QuizPinData", description = "This field includes all quiz data including questions, options, and results.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinData {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid QuizPinQuestion> questions = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid QuizPinResult> results = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<QuizPinResult> tieBreakerCustomResult = JsonNullable.<QuizPinResult>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TieBreakerType tieBreakerType;
 
   public QuizPinData questions(List<@Valid QuizPinQuestion> questions) {
@@ -62,7 +57,7 @@ public class QuizPinData {
    * Get questions
    * @return questions
    */
-  @Valid 
+  
   @Schema(name = "questions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
   public List<@Valid QuizPinQuestion> getQuestions() {
@@ -91,7 +86,7 @@ public class QuizPinData {
    * Get results
    * @return results
    */
-  @Valid 
+  
   @Schema(name = "results", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("results")
   public List<@Valid QuizPinResult> getResults() {
@@ -113,7 +108,7 @@ public class QuizPinData {
    * @return tieBreakerCustomResult
    */
   @Valid 
-  @Schema(name = "tie_breaker_custom_result", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tie_breaker_custom_result", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tie_breaker_custom_result")
   public JsonNullable<QuizPinResult> getTieBreakerCustomResult() {
     return tieBreakerCustomResult;
@@ -191,7 +186,7 @@ public class QuizPinData {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

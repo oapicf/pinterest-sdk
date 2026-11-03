@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ProductCategoryEnum
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -26,12 +23,10 @@ data class CatalogsProductGroupMultiplePinterestProductCategoryCriteria(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("values")
+    @param:JsonProperty("values", required = true)
     @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<ProductCategoryEnum>,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("negated")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = null
 ) {

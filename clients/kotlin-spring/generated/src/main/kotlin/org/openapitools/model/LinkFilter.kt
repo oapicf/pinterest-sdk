@@ -22,7 +22,7 @@ data class LinkFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("LINK")
+    @param:JsonProperty("LINK", required = true)
     @get:JsonProperty("LINK", required = true) val LINK: CatalogsProductGroupFilterOperatorTypeCriteria
 ) {
 

@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CatalogsCreativeAssetsProductGroupFiltersAnyOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFiltersAnyOf   {
-  private @Valid List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   public CatalogsCreativeAssetsProductGroupFiltersAnyOf() {
   }
@@ -36,7 +36,7 @@ public class CatalogsCreativeAssetsProductGroupFiltersAnyOf   {
 
   /**
    **/
-  public CatalogsCreativeAssetsProductGroupFiltersAnyOf anyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public CatalogsCreativeAssetsProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -44,12 +44,12 @@ public class CatalogsCreativeAssetsProductGroupFiltersAnyOf   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "any_of")
-  @NotNull @Valid public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
+  @NotNull public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   @JsonProperty(required = true, value = "any_of")
-  public void setAnyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

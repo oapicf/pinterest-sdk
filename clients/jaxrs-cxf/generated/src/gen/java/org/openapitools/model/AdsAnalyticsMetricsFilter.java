@@ -35,8 +35,6 @@ public class AdsAnalyticsMetricsFilter  {
   */
   @ApiModelProperty(required = true, value = "List of values for filtering")
 
-  @Valid
-
   private List<BigDecimal> values = new ArrayList<>();
  /**
    * Get field

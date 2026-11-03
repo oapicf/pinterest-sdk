@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CampaignAdPreviewDelete200ResponseInnerStatus.JSON_PROPERTY_MESSAGE
 })
 @JsonTypeName("campaign_ad_preview_delete_200_response_inner_status")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CampaignAdPreviewDelete200ResponseInnerStatus {
     /**

@@ -6,20 +6,3 @@
 */
 #include "DataOutputFormat.h"
 
-namespace models {
-
-DataOutputFormat::DataOutputFormat()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

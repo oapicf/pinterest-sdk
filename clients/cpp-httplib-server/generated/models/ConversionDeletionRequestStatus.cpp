@@ -6,20 +6,3 @@
 */
 #include "ConversionDeletionRequestStatus.h"
 
-namespace models {
-
-ConversionDeletionRequestStatus::ConversionDeletionRequestStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

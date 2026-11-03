@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Conversion events.")
 @JsonTypeName("ConversionEvents")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEvents   {
-  private @Valid List<@Valid ConversionApiResponseEventsItems> events = new ArrayList<>();
+  private List<@Valid ConversionApiResponseEventsItems> events = new ArrayList<>();
   private Integer numEventsProcessed;
   private Integer numEventsReceived;
 
@@ -53,7 +53,7 @@ public class ConversionEvents   {
   
   @ApiModelProperty(required = true, value = "Specific messages for each event received. The order will match the order in which the events were received in the request.")
   @JsonProperty(required = true, value = "events")
-  @Valid public List<@Valid ConversionApiResponseEventsItems> getEvents() {
+  public List<@Valid ConversionApiResponseEventsItems> getEvents() {
     return events;
   }
 

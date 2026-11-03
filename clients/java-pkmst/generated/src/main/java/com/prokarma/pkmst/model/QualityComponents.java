@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @ApiModel(description = "Set of quality components, with each component containing a event coverage and details.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponents   {
   @JsonProperty("advertiser_external_id")
   
@@ -71,7 +71,7 @@ public class QualityComponents   {
 
   public QualityComponents putAdvertiserExternalIdItem(String key, QualityComponentDetails advertiserExternalIdItem) {
     if (this.advertiserExternalId == null) {
-      this.advertiserExternalId = new HashMap<>());
+      this.advertiserExternalId = new HashMap<>();
     }
     this.advertiserExternalId.put(key, advertiserExternalIdItem);
     return this;
@@ -97,7 +97,7 @@ public class QualityComponents   {
 
   public QualityComponents putClickIdEpikItem(String key, QualityComponentDetails clickIdEpikItem) {
     if (this.clickIdEpik == null) {
-      this.clickIdEpik = new HashMap<>());
+      this.clickIdEpik = new HashMap<>();
     }
     this.clickIdEpik.put(key, clickIdEpikItem);
     return this;
@@ -123,7 +123,7 @@ public class QualityComponents   {
 
   public QualityComponents putExternalEventIdItem(String key, QualityComponentDetails externalEventIdItem) {
     if (this.externalEventId == null) {
-      this.externalEventId = new HashMap<>());
+      this.externalEventId = new HashMap<>();
     }
     this.externalEventId.put(key, externalEventIdItem);
     return this;
@@ -149,7 +149,7 @@ public class QualityComponents   {
 
   public QualityComponents putHashedEmailItem(String key, QualityComponentDetails hashedEmailItem) {
     if (this.hashedEmail == null) {
-      this.hashedEmail = new HashMap<>());
+      this.hashedEmail = new HashMap<>();
     }
     this.hashedEmail.put(key, hashedEmailItem);
     return this;
@@ -175,7 +175,7 @@ public class QualityComponents   {
 
   public QualityComponents putHashedMaidItem(String key, QualityComponentDetails hashedMaidItem) {
     if (this.hashedMaid == null) {
-      this.hashedMaid = new HashMap<>());
+      this.hashedMaid = new HashMap<>();
     }
     this.hashedMaid.put(key, hashedMaidItem);
     return this;
@@ -201,7 +201,7 @@ public class QualityComponents   {
 
   public QualityComponents putIpAddressItem(String key, QualityComponentDetails ipAddressItem) {
     if (this.ipAddress == null) {
-      this.ipAddress = new HashMap<>());
+      this.ipAddress = new HashMap<>();
     }
     this.ipAddress.put(key, ipAddressItem);
     return this;
@@ -227,7 +227,7 @@ public class QualityComponents   {
 
   public QualityComponents putOrderIdItem(String key, QualityComponentDetails orderIdItem) {
     if (this.orderId == null) {
-      this.orderId = new HashMap<>());
+      this.orderId = new HashMap<>();
     }
     this.orderId.put(key, orderIdItem);
     return this;
@@ -253,7 +253,7 @@ public class QualityComponents   {
 
   public QualityComponents putOrderValueItem(String key, QualityComponentDetails orderValueItem) {
     if (this.orderValue == null) {
-      this.orderValue = new HashMap<>());
+      this.orderValue = new HashMap<>();
     }
     this.orderValue.put(key, orderValueItem);
     return this;
@@ -279,7 +279,7 @@ public class QualityComponents   {
 
   public QualityComponents putProductIdItem(String key, QualityComponentDetails productIdItem) {
     if (this.productId == null) {
-      this.productId = new HashMap<>());
+      this.productId = new HashMap<>();
     }
     this.productId.put(key, productIdItem);
     return this;
@@ -305,7 +305,7 @@ public class QualityComponents   {
 
   public QualityComponents putSourceUrlItem(String key, QualityComponentDetails sourceUrlItem) {
     if (this.sourceUrl == null) {
-      this.sourceUrl = new HashMap<>());
+      this.sourceUrl = new HashMap<>();
     }
     this.sourceUrl.put(key, sourceUrlItem);
     return this;
@@ -331,7 +331,7 @@ public class QualityComponents   {
 
   public QualityComponents putUserAgentItem(String key, QualityComponentDetails userAgentItem) {
     if (this.userAgent == null) {
-      this.userAgent = new HashMap<>());
+      this.userAgent = new HashMap<>();
     }
     this.userAgent.put(key, userAgentItem);
     return this;

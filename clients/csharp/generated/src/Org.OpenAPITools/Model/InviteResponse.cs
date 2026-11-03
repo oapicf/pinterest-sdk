@@ -320,28 +320,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (businessRoles.IsSet && businessRoles.Value == null)
-                throw new ArgumentNullException(nameof(businessRoles), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: business_roles.");
 
             if (createdByBusiness.IsSet && createdByBusiness.Value == null)
-                throw new ArgumentNullException(nameof(createdByBusiness), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: created_by_business.");
 
             if (createdByUser.IsSet && createdByUser.Value == null)
-                throw new ArgumentNullException(nameof(createdByUser), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: created_by_user.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: id.");
 
             if (inviteData.IsSet && inviteData.Value == null)
-                throw new ArgumentNullException(nameof(inviteData), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: invite_data.");
 
             if (isReceivedInvite.IsSet && isReceivedInvite.Value == null)
-                throw new ArgumentNullException(nameof(isReceivedInvite), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: is_received_invite.");
 
             if (user.IsSet && user.Value == null)
-                throw new ArgumentNullException(nameof(user), "Property is not nullable for class InviteResponse.");
+                throw new JsonException("Property is not nullable for class InviteResponse: user.");
 
             return new InviteResponse(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
         }
@@ -352,7 +352,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteResponse inviteResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -367,26 +366,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteResponse inviteResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (inviteResponse.BusinessRolesOption.IsSet && inviteResponse.BusinessRoles == null)
-                throw new ArgumentNullException(nameof(inviteResponse.BusinessRoles), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.BusinessRoles to non-nullable JSON property 'business_roles'.");
 
             if (inviteResponse.CreatedByBusinessOption.IsSet && inviteResponse.CreatedByBusiness == null)
-                throw new ArgumentNullException(nameof(inviteResponse.CreatedByBusiness), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.CreatedByBusiness to non-nullable JSON property 'created_by_business'.");
 
             if (inviteResponse.CreatedByUserOption.IsSet && inviteResponse.CreatedByUser == null)
-                throw new ArgumentNullException(nameof(inviteResponse.CreatedByUser), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.CreatedByUser to non-nullable JSON property 'created_by_user'.");
+
+            if (inviteResponse.CreatedTimeOption.IsSet && inviteResponse.CreatedTime == null)
+                throw new JsonException("Cannot write null property InviteResponse.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (inviteResponse.IdOption.IsSet && inviteResponse.Id == null)
-                throw new ArgumentNullException(nameof(inviteResponse.Id), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.Id to non-nullable JSON property 'id'.");
 
             if (inviteResponse.InviteDataOption.IsSet && inviteResponse.InviteData == null)
-                throw new ArgumentNullException(nameof(inviteResponse.InviteData), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.InviteData to non-nullable JSON property 'invite_data'.");
+
+            if (inviteResponse.IsReceivedInviteOption.IsSet && inviteResponse.IsReceivedInvite == null)
+                throw new JsonException("Cannot write null property InviteResponse.IsReceivedInvite to non-nullable JSON property 'is_received_invite'.");
 
             if (inviteResponse.UserOption.IsSet && inviteResponse.User == null)
-                throw new ArgumentNullException(nameof(inviteResponse.User), "Property is required for class InviteResponse.");
+                throw new JsonException("Cannot write null property InviteResponse.User to non-nullable JSON property 'user'.");
 
             if (inviteResponse.AssetsSummaryOption.IsSet)
                 if (inviteResponse.AssetsSummaryOption.Value != null)

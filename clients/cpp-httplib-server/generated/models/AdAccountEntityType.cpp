@@ -6,20 +6,3 @@
 */
 #include "AdAccountEntityType.h"
 
-namespace models {
-
-AdAccountEntityType::AdAccountEntityType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

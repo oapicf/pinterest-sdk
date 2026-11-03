@@ -160,6 +160,7 @@ class _$CatalogsItemsDeleteBatchRequestSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsItemsDeleteBatchRequestOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

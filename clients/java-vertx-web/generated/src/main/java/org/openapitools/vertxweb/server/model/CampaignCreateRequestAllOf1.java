@@ -15,14 +15,14 @@ public class CampaignCreateRequestAllOf1   {
   
   private CampaignBidOptionsCreate bidOptions;
   private IntendedPromotionType intendedPromotionType;
-  private Boolean isAutomatedCampaign;
-  private Boolean isCampaignBudgetOptimization;
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isAutomatedCampaign = false;
+  private Boolean isCampaignBudgetOptimization = true;
+  private Boolean isFlexibleDailyBudgets = false;
   private Boolean isLtvOptimized;
   private Boolean isPerformancePlus = false;
   private Boolean isTopOfSearch = false;
   private ObjectiveType objectiveType;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1 () {
 

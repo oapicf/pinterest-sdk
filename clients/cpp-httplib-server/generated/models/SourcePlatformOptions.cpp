@@ -6,20 +6,3 @@
 */
 #include "SourcePlatformOptions.h"
 
-namespace models {
-
-SourcePlatformOptions::SourcePlatformOptions()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -20,7 +20,7 @@ import BoardPrivacy from './BoardPrivacy';
 /**
  * The Board model module.
  * @module model/Board
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Board {
     /**

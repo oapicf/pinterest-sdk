@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AssetGroupBinding
 import org.openapitools.model.AssetTypeResponse
 import javax.validation.constraints.DecimalMax
@@ -32,22 +29,20 @@ data class AssetIdPermissions(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(min=1,max=20)
     @Schema(example = "549755885175", required = true, description = "Unique identifier of a business asset.")
-    @param:JsonProperty("asset_id")
+    @param:JsonProperty("asset_id", required = true)
     @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("asset_type")
+    @param:JsonProperty("asset_type", required = true)
     @get:JsonProperty("asset_type", required = true) val assetType: AssetTypeResponse,
 
     @Schema(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", required = true, description = "Permission levels member or partner has on an asset.")
-    @param:JsonProperty("permissions")
+    @param:JsonProperty("permissions", required = true)
     @get:JsonProperty("permissions", required = true) val permissions: kotlin.collections.List<kotlin.String>,
 
     @field:Valid
     @Schema(description = "An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("asset_group_info")
     @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null
 ) {

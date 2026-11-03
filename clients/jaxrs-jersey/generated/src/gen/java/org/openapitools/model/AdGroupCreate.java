@@ -85,7 +85,7 @@ import javax.validation.Valid;
   AdGroupCreate.JSON_PROPERTY_BUDGET_TYPE,
   AdGroupCreate.JSON_PROPERTY_PACING_DELIVERY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreate   {
   public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNT_ID)
@@ -233,11 +233,11 @@ public class AdGroupCreate   {
 
   public static final String JSON_PROPERTY_BUDGET_TYPE = "budget_type";
   @JsonProperty(JSON_PROPERTY_BUDGET_TYPE)
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   public static final String JSON_PROPERTY_PACING_DELIVERY_TYPE = "pacing_delivery_type";
   @JsonProperty(JSON_PROPERTY_PACING_DELIVERY_TYPE)
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   public AdGroupCreate adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;

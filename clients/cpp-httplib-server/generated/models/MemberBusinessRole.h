@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class MemberBusinessRole
-{
-public:
-
-    MemberBusinessRole();
-    virtual ~MemberBusinessRole() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MemberBusinessRole,
-        )
-
-private:
+enum class MemberBusinessRole {
+    
+    EMPLOYEE,
+    
+    BIZ_ADMIN
+    
 };
 
+inline void to_json(nlohmann::json& j, const MemberBusinessRole& value)
+{
+    switch (value)
+    {
+        
+        case MemberBusinessRole::EMPLOYEE: j = "EMPLOYEE"; break;
+        
+        case MemberBusinessRole::BIZ_ADMIN: j = "BIZ_ADMIN"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MemberBusinessRole", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MemberBusinessRole& value)
+{
+    
+    if (j == "EMPLOYEE")
+    {
+        value = MemberBusinessRole::EMPLOYEE;
+        return;
+    }
+    
+    if (j == "BIZ_ADMIN")
+    {
+        value = MemberBusinessRole::BIZ_ADMIN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MemberBusinessRole", &j);
+}
 
 } // namespace models
 

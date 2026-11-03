@@ -9,7 +9,7 @@ export interface CatalogsHotelProduct {
 }
 export namespace CatalogsHotelProduct {
   export const CatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

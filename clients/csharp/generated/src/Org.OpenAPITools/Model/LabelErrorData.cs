@@ -219,10 +219,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LabelErrorData.");
+                throw new JsonException("Property is not nullable for class LabelErrorData: id.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class LabelErrorData.");
+                throw new JsonException("Property is not nullable for class LabelErrorData: value.");
 
             return new LabelErrorData(id, labelType, status, value);
         }
@@ -233,7 +233,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelErrorData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelErrorData labelErrorData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -248,14 +247,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelErrorData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelErrorData labelErrorData, JsonSerializerOptions jsonSerializerOptions)
         {
             if (labelErrorData.IdOption.IsSet && labelErrorData.Id == null)
-                throw new ArgumentNullException(nameof(labelErrorData.Id), "Property is required for class LabelErrorData.");
+                throw new JsonException("Cannot write null property LabelErrorData.Id to non-nullable JSON property 'id'.");
 
             if (labelErrorData.ValueOption.IsSet && labelErrorData.Value == null)
-                throw new ArgumentNullException(nameof(labelErrorData.Value), "Property is required for class LabelErrorData.");
+                throw new JsonException("Cannot write null property LabelErrorData.Value to non-nullable JSON property 'value'.");
 
             if (labelErrorData.IdOption.IsSet)
                 writer.WriteString("id", labelErrorData.Id);

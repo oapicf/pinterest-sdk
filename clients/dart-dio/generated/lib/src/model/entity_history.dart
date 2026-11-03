@@ -232,3 +232,4 @@ class _$EntityHistorySerializer implements PrimitiveSerializer<EntityHistory> {
   }
 }
 
+

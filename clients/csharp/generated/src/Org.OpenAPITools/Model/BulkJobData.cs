@@ -175,16 +175,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class BulkJobData.", nameof(status));
+                throw new JsonException("Property is required for class BulkJobData: status.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class BulkJobData.");
+                throw new JsonException("Property is not nullable for class BulkJobData: status.");
 
             if (resultUrl.IsSet && resultUrl.Value == null)
-                throw new ArgumentNullException(nameof(resultUrl), "Property is not nullable for class BulkJobData.");
+                throw new JsonException("Property is not nullable for class BulkJobData: result_url.");
 
             if (workloadId.IsSet && workloadId.Value == null)
-                throw new ArgumentNullException(nameof(workloadId), "Property is not nullable for class BulkJobData.");
+                throw new JsonException("Property is not nullable for class BulkJobData: workload_id.");
 
             return new BulkJobData(status.Value!.Value!, resultUrl, workloadId);
         }
@@ -195,7 +195,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkJobData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkJobData bulkJobData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -210,11 +209,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkJobData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkJobData bulkJobData, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkJobData.ResultUrlOption.IsSet && bulkJobData.ResultUrl == null)
-                throw new ArgumentNullException(nameof(bulkJobData.ResultUrl), "Property is required for class BulkJobData.");
+                throw new JsonException("Cannot write null property BulkJobData.ResultUrl to non-nullable JSON property 'result_url'.");
+
+            if (bulkJobData.WorkloadIdOption.IsSet && bulkJobData.WorkloadId == null)
+                throw new JsonException("Cannot write null property BulkJobData.WorkloadId to non-nullable JSON property 'workload_id'.");
 
             var statusRawValue = BulkRequestStatusValueConverter.ToJsonValue(bulkJobData.Status);
             writer.WriteString("status", statusRawValue);

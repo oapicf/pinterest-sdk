@@ -55,7 +55,7 @@ import javax.validation.Valid;
   ConversionProductReportCreate.JSON_PROPERTY_START_DATE,
   ConversionProductReportCreate.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate   {
   public static final String JSON_PROPERTY_AD_GROUP_IDS = "ad_group_ids";
   @JsonProperty(JSON_PROPERTY_AD_GROUP_IDS)
@@ -71,7 +71,7 @@ public class ConversionProductReportCreate   {
 
   public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";
   @JsonProperty(JSON_PROPERTY_CLICK_WINDOW_DAYS)
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   public static final String JSON_PROPERTY_COLUMNS = "columns";
   @JsonProperty(JSON_PROPERTY_COLUMNS)
@@ -79,15 +79,15 @@ public class ConversionProductReportCreate   {
 
   public static final String JSON_PROPERTY_CONVERSION_PRODUCT_ATTRIBUTION_TYPE = "conversion_product_attribution_type";
   @JsonProperty(JSON_PROPERTY_CONVERSION_PRODUCT_ATTRIBUTION_TYPE)
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
   public static final String JSON_PROPERTY_CONVERSION_PRODUCT_BREAKDOWN = "conversion_product_breakdown";
   @JsonProperty(JSON_PROPERTY_CONVERSION_PRODUCT_BREAKDOWN)
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
   public static final String JSON_PROPERTY_CONVERSION_REPORT_TIME = "conversion_report_time";
   @JsonProperty(JSON_PROPERTY_CONVERSION_REPORT_TIME)
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   public static final String JSON_PROPERTY_END_DATE = "end_date";
   @JsonProperty(JSON_PROPERTY_END_DATE)
@@ -115,7 +115,7 @@ public class ConversionProductReportCreate   {
 
   public static final String JSON_PROPERTY_VIEW_WINDOW_DAYS = "view_window_days";
   @JsonProperty(JSON_PROPERTY_VIEW_WINDOW_DAYS)
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate adGroupIds(List<@Pattern(regexp = "^\\d+$")String> adGroupIds) {
     this.adGroupIds = adGroupIds;

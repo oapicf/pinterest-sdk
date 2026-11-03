@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ItemAttributes")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemAttributes   {
   private String adImage0Link;
   private String adImage0Tag;
@@ -128,11 +128,11 @@ public class ItemAttributes   {
   private String title;
   private String unitPricingBaseMeasure;
   private String unitPricingMeasure;
-  private @Valid List<String> variantNames;
-  private @Valid List<String> variantValues;
-  private @Valid List<String> additionalImageLink;
-  private @Valid List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
-  private @Valid List<String> imageLink = new ArrayList<>();
+  private List<String> variantNames;
+  private List<String> variantValues;
+  private List<String> additionalImageLink;
+  private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
+  private List<String> imageLink = new ArrayList<>();
   private String videoLink;
 
   public ItemAttributes() {
@@ -2296,7 +2296,7 @@ public class ItemAttributes   {
   
   @ApiModelProperty(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", value = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.")
   @JsonProperty("ai_disclosures")
-  @Valid public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
+  public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {
     return aiDisclosures;
   }
 

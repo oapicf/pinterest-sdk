@@ -268,3 +268,4 @@ class _$IntegrationLogClientErrorSerializer implements PrimitiveSerializer<Integ
   }
 }
 
+

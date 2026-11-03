@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'catalogs_ai_content_disclosure_label.g.dart';
 
+/// Disclosure label for AI-generated or AI-modified content in a catalog item asset.
 class CatalogsAiContentDisclosureLabel extends EnumClass {
 
-  /// Disclosure label for AI-generated or AI-modified content in a catalog item asset.
   @BuiltValueEnumConst(wireName: r'ai_modified')
   static const CatalogsAiContentDisclosureLabel aiModified = _$aiModified;
-  /// Disclosure label for AI-generated or AI-modified content in a catalog item asset.
   @BuiltValueEnumConst(wireName: r'synthetic_performer')
   static const CatalogsAiContentDisclosureLabel syntheticPerformer = _$syntheticPerformer;
 

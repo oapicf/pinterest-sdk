@@ -338,3 +338,4 @@ class _$IntegrationLogSerializer implements PrimitiveSerializer<IntegrationLog> 
   }
 }
 
+

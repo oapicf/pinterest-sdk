@@ -108,8 +108,6 @@ public class AudienceRule  {
   */
   @ApiModelProperty(example = "[\"AWARENESS\"]", value = "Objective for engagement audience filter.")
 
-  @Valid
-
   private List<ObjectiveType> objectiveType = new ArrayList<>();
 
  /**

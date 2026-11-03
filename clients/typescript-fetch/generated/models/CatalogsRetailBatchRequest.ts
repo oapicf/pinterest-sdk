@@ -36,32 +36,22 @@ import {
 export interface CatalogsRetailBatchRequest {
     /**
      * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-     * @type {string}
-     * @memberof CatalogsRetailBatchRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsRetailBatchRequestCatalogTypeEnum}
-     * @memberof CatalogsRetailBatchRequest
      */
     catalogType: CatalogsRetailBatchRequestCatalogTypeEnum;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsRetailBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs item operations
-     * @type {Array<CatalogsRetailBatchRequestItemsItems>}
-     * @memberof CatalogsRetailBatchRequest
      */
     items: Array<CatalogsRetailBatchRequestItemsItems>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsRetailBatchRequestLanguageEnum}
-     * @memberof CatalogsRetailBatchRequest
      */
     language: CatalogsRetailBatchRequestLanguageEnum;
 }
@@ -71,7 +61,7 @@ export interface CatalogsRetailBatchRequest {
  * @export
  */
 export const CatalogsRetailBatchRequestCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailBatchRequestCatalogTypeEnum = typeof CatalogsRetailBatchRequestCatalogTypeEnum[keyof typeof CatalogsRetailBatchRequestCatalogTypeEnum];
 
@@ -185,7 +175,7 @@ export const CatalogsRetailBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsRetailBatchRequestLanguageEnum = typeof CatalogsRetailBatchRequestLanguageEnum[keyof typeof CatalogsRetailBatchRequestLanguageEnum];
 

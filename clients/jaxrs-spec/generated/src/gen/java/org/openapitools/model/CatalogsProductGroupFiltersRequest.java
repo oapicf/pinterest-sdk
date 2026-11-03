@@ -24,10 +24,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 @JsonTypeName("CatalogsProductGroupFiltersRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersRequest   {
-  private @Valid List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
-  private @Valid List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
 
   public CatalogsProductGroupFiltersRequest() {
   }
@@ -43,7 +43,7 @@ public class CatalogsProductGroupFiltersRequest   {
 
   /**
    **/
-  public CatalogsProductGroupFiltersRequest anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersRequest anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -51,12 +51,12 @@ public class CatalogsProductGroupFiltersRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "any_of")
-  @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
+  @NotNull  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   @JsonProperty(required = true, value = "any_of")
-  public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
@@ -78,7 +78,7 @@ public class CatalogsProductGroupFiltersRequest   {
   }
   /**
    **/
-  public CatalogsProductGroupFiltersRequest allOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public CatalogsProductGroupFiltersRequest allOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -86,12 +86,12 @@ public class CatalogsProductGroupFiltersRequest   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "all_of")
-  @NotNull @Valid  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
+  @NotNull  @Size(min=1)public List<@Valid CatalogsProductGroupFilterKeys> getAllOf() {
     return allOf;
   }
 
   @JsonProperty(required = true, value = "all_of")
-  public void setAllOf(List<CatalogsProductGroupFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsProductGroupFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

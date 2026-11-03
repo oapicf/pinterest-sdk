@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **catalogsLocalInventoryItemsBatchOperate**
 ```swift
-    open class func catalogsLocalInventoryItemsBatchOperate(catalogId: String, localInventoryItemsBatchCreate: LocalInventoryItemsBatchCreate, adAccountId: String? = nil, completion: @escaping (_ data: SupplementalItemsBatchResponse?, _ error: Error?) -> Void)
+    open class func catalogsLocalInventoryItemsBatchOperate(catalogId: String, localInventoryItemsBatchCreate: LocalInventoryItemsBatchCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SupplementalItemsBatchResponse
 ```
 
 Operate on local inventory item batch
@@ -32,15 +32,11 @@ let localInventoryItemsBatchCreate = LocalInventoryItemsBatchCreate(operations: 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Operate on local inventory item batch
-CatalogSupplementalAPI.catalogsLocalInventoryItemsBatchOperate(catalogId: catalogId, localInventoryItemsBatchCreate: localInventoryItemsBatchCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalInventoryItemsBatchOperate(catalogId: catalogId, localInventoryItemsBatchCreate: localInventoryItemsBatchCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -69,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **catalogsLocalInventoryItemsPost**
 ```swift
-    open class func catalogsLocalInventoryItemsPost(catalogId: String, localInventoryItemsGetCreate: LocalInventoryItemsGetCreate, adAccountId: String? = nil, completion: @escaping (_ data: LocalInventoryItemsGet?, _ error: Error?) -> Void)
+    open class func catalogsLocalInventoryItemsPost(catalogId: String, localInventoryItemsGetCreate: LocalInventoryItemsGetCreate, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LocalInventoryItemsGet
 ```
 
 Get local inventory items (POST)
@@ -86,15 +82,11 @@ let localInventoryItemsGetCreate = LocalInventoryItemsGetCreate(itemFilters: [It
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get local inventory items (POST)
-CatalogSupplementalAPI.catalogsLocalInventoryItemsPost(catalogId: catalogId, localInventoryItemsGetCreate: localInventoryItemsGetCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalInventoryItemsPost(catalogId: catalogId, localInventoryItemsGetCreate: localInventoryItemsGetCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -123,7 +115,7 @@ Name | Type | Description  | Notes
 
 # **catalogsLocalStoresCreate**
 ```swift
-    open class func catalogsLocalStoresCreate(catalogId: String, localStoreCreate: [LocalStoreCreate], adAccountId: String? = nil, completion: @escaping (_ data: [CatalogsLocalStoresCreate200ResponseInner]?, _ error: Error?) -> Void)
+    open class func catalogsLocalStoresCreate(catalogId: String, localStoreCreate: [LocalStoreCreate], adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CatalogsLocalStoresCreate200ResponseInner]
 ```
 
 Create local stores
@@ -140,15 +132,11 @@ let localStoreCreate = [LocalStoreCreate(addressPrimary: "addressPrimary_example
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create local stores
-CatalogSupplementalAPI.catalogsLocalStoresCreate(catalogId: catalogId, localStoreCreate: localStoreCreate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalStoresCreate(catalogId: catalogId, localStoreCreate: localStoreCreate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -177,7 +165,7 @@ Name | Type | Description  | Notes
 
 # **catalogsLocalStoresDelete**
 ```swift
-    open class func catalogsLocalStoresDelete(catalogId: String, ids: [String], adAccountId: String? = nil, completion: @escaping (_ data: [CatalogsLocalStoresDelete200ResponseInner]?, _ error: Error?) -> Void)
+    open class func catalogsLocalStoresDelete(catalogId: String, ids: [String], adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CatalogsLocalStoresDelete200ResponseInner]?
 ```
 
 Delete local stores
@@ -194,15 +182,11 @@ let ids = ["inner_example"] // [String] | List of local store IDs to filter by.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete local stores
-CatalogSupplementalAPI.catalogsLocalStoresDelete(catalogId: catalogId, ids: ids, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalStoresDelete(catalogId: catalogId, ids: ids, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -231,7 +215,7 @@ Name | Type | Description  | Notes
 
 # **catalogsLocalStoresList**
 ```swift
-    open class func catalogsLocalStoresList(catalogId: String, ids: [String]? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: CatalogsLocalStoresList200Response?, _ error: Error?) -> Void)
+    open class func catalogsLocalStoresList(catalogId: String, ids: [String]? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsLocalStoresList200Response
 ```
 
 List local stores
@@ -250,15 +234,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List local stores
-CatalogSupplementalAPI.catalogsLocalStoresList(catalogId: catalogId, ids: ids, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalStoresList(catalogId: catalogId, ids: ids, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -289,7 +269,7 @@ Name | Type | Description  | Notes
 
 # **catalogsLocalStoresUpdate**
 ```swift
-    open class func catalogsLocalStoresUpdate(catalogId: String, localStoreBatchUpdate: [LocalStoreBatchUpdate], adAccountId: String? = nil, completion: @escaping (_ data: [CatalogsLocalStoresCreate200ResponseInner]?, _ error: Error?) -> Void)
+    open class func catalogsLocalStoresUpdate(catalogId: String, localStoreBatchUpdate: [LocalStoreBatchUpdate], adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [CatalogsLocalStoresCreate200ResponseInner]
 ```
 
 Update local stores
@@ -306,15 +286,11 @@ let localStoreBatchUpdate = [LocalStoreBatchUpdate(addressPrimary: "addressPrima
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update local stores
-CatalogSupplementalAPI.catalogsLocalStoresUpdate(catalogId: catalogId, localStoreBatchUpdate: localStoreBatchUpdate, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsLocalStoresUpdate(catalogId: catalogId, localStoreBatchUpdate: localStoreBatchUpdate, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -343,7 +319,7 @@ Name | Type | Description  | Notes
 
 # **catalogsSupplementalItemsBatchGet**
 ```swift
-    open class func catalogsSupplementalItemsBatchGet(catalogId: String, batchId: String, adAccountId: String? = nil, completion: @escaping (_ data: SupplementalItemsBatchResponse?, _ error: Error?) -> Void)
+    open class func catalogsSupplementalItemsBatchGet(catalogId: String, batchId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SupplementalItemsBatchResponse
 ```
 
 Get supplemental items batch status
@@ -360,15 +336,11 @@ let batchId = "batchId_example" // String | Unique identifier of an items batch 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get supplemental items batch status
-CatalogSupplementalAPI.catalogsSupplementalItemsBatchGet(catalogId: catalogId, batchId: batchId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogSupplementalAPI.catalogsSupplementalItemsBatchGet(catalogId: catalogId, batchId: batchId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

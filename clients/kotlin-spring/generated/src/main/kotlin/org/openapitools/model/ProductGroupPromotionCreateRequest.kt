@@ -23,12 +23,12 @@ data class ProductGroupPromotionCreateRequest(
 
     @get:Pattern(regexp="^(AG)?\\d+$")
     @Schema(required = true, description = "ID of the Ad Group the Product Group Promotion belongs to.")
-    @param:JsonProperty("ad_group_id")
+    @param:JsonProperty("ad_group_id", required = true)
     @get:JsonProperty("ad_group_id", required = true) val adGroupId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("product_group_promotion")
+    @param:JsonProperty("product_group_promotion", required = true)
     @get:JsonProperty("product_group_promotion", required = true) val productGroupPromotion: kotlin.collections.List<ProductGroupPromotion>
 ) {
 

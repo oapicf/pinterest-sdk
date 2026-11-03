@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class NullableLabelStatus
-{
-public:
-
-    NullableLabelStatus();
-    virtual ~NullableLabelStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NullableLabelStatus,
-        )
-
-private:
+enum class NullableLabelStatus {
+    
+    ACTIVE,
+    
+    ARCHIVED
+    
 };
 
+inline void to_json(nlohmann::json& j, const NullableLabelStatus& value)
+{
+    switch (value)
+    {
+        
+        case NullableLabelStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case NullableLabelStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NullableLabelStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NullableLabelStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = NullableLabelStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = NullableLabelStatus::ARCHIVED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NullableLabelStatus", &j);
+}
 
 } // namespace models
 

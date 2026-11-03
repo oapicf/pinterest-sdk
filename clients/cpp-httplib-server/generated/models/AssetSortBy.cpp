@@ -6,20 +6,3 @@
 */
 #include "AssetSortBy.h"
 
-namespace models {
-
-AssetSortBy::AssetSortBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

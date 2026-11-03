@@ -21,11 +21,11 @@ export interface CatalogsRetailItemErrorResponse {
 }
 export namespace CatalogsRetailItemErrorResponse {
   export const CatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
   export const ItemResponseKindEnum = {
-    RetailItemError: 'retail_item_error'
+    RetailItemError: 'retail_item_error',
   } as const;
   export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }

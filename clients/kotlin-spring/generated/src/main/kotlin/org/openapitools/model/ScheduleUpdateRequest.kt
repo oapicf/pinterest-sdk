@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ScheduleAction
 import org.openapitools.model.ScheduleCommonDeltaValue
 import org.openapitools.model.ScheduleStatus
@@ -38,65 +35,47 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ScheduleUpdateRequest(
 
     @Schema(required = true, description = "Schedule ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("entity_id")
     @get:JsonProperty("entity_id") val entityId: kotlin.String? = null,
 
     @Schema(description = "Entity type")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("entity_type")
     @get:JsonProperty("entity_type") val entityType: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("delta_value")
     @get:JsonProperty("delta_value") val deltaValue: ScheduleCommonDeltaValue? = null,
 
     @Schema(description = "Schedule end time. Unix timestamp in seconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("end_timestamp")
     @get:JsonProperty("end_timestamp") val endTimestamp: kotlin.Int? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("schedule_action")
     @get:JsonProperty("schedule_action") val scheduleAction: ScheduleAction? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("schedule_status")
     @get:JsonProperty("schedule_status") val scheduleStatus: ScheduleStatus? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("schedule_type")
     @get:JsonProperty("schedule_type") val scheduleType: ScheduleType? = null,
 
     @Schema(description = "Schedule start time. Unix timestamp in seconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("start_timestamp")
     @get:JsonProperty("start_timestamp") val startTimestamp: kotlin.Int? = null
 ) {

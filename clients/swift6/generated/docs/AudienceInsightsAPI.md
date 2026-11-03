@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **audienceInsightsGet**
 ```swift
-    open class func audienceInsightsGet(adAccountId: String, audienceInsightType: AudienceInsightType, completion: @escaping (_ data: AudienceInsights?, _ error: Error?) -> Void)
+    open class func audienceInsightsGet(adAccountId: String, audienceInsightType: AudienceInsightType, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AudienceInsights
 ```
 
 Get audience insights
@@ -26,15 +26,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let audienceInsightType = AudienceInsightType() // AudienceInsightType | Type of audience insights.
 
 // Get audience insights
-AudienceInsightsAPI.audienceInsightsGet(adAccountId: adAccountId, audienceInsightType: audienceInsightType) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceInsightsAPI.audienceInsightsGet(adAccountId: adAccountId, audienceInsightType: audienceInsightType)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -62,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **audienceInsightsScopeAndTypeGet**
 ```swift
-    open class func audienceInsightsScopeAndTypeGet(adAccountId: String, completion: @escaping (_ data: AudienceInsightsScopeAndTypeGet200Response?, _ error: Error?) -> Void)
+    open class func audienceInsightsScopeAndTypeGet(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AudienceInsightsScopeAndTypeGet200Response
 ```
 
 Get audience insights scope and type
@@ -77,15 +73,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Get audience insights scope and type
-AudienceInsightsAPI.audienceInsightsScopeAndTypeGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AudienceInsightsAPI.audienceInsightsScopeAndTypeGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -24,11 +24,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Featured trending topics for a specific interest and market")
 @JsonTypeName("FeaturedTrend")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FeaturedTrend   {
   private InterestsEnum interest;
   private ProductCategoryRegion market;
-  private @Valid List<@Valid TrendingTopic> trends = new ArrayList<>();
+  private List<@Valid TrendingTopic> trends = new ArrayList<>();
 
   public FeaturedTrend() {
   }
@@ -91,7 +91,7 @@ public class FeaturedTrend   {
   
   @ApiModelProperty(value = "List of trending topics within this interest category")
   @JsonProperty("trends")
-  @Valid public List<@Valid TrendingTopic> getTrends() {
+  public List<@Valid TrendingTopic> getTrends() {
     return trends;
   }
 

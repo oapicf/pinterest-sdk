@@ -20,7 +20,6 @@ public class FeedsList200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid CatalogsFeed> items = new ArrayList<>();
  /**
   * Get bookmark

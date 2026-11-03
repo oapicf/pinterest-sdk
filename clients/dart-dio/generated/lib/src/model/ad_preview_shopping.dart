@@ -308,3 +308,4 @@ class _$AdPreviewShoppingSerializer implements PrimitiveSerializer<AdPreviewShop
   }
 }
 
+

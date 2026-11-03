@@ -6,20 +6,3 @@
 */
 #include "MemberBusinessRole.h"
 
-namespace models {
-
-MemberBusinessRole::MemberBusinessRole()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

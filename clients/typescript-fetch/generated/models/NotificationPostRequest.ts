@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * @type NotificationPostRequest
  * Notification request body. Can be either a batch of notification objects or a single notification object.

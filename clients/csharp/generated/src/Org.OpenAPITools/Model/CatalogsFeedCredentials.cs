@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!password.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedCredentials.", nameof(password));
+                throw new JsonException("Property is required for class CatalogsFeedCredentials: password.");
 
             if (!username.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedCredentials.", nameof(username));
+                throw new JsonException("Property is required for class CatalogsFeedCredentials: username.");
 
             if (password.IsSet && password.Value == null)
-                throw new ArgumentNullException(nameof(password), "Property is not nullable for class CatalogsFeedCredentials.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedCredentials: password.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class CatalogsFeedCredentials.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedCredentials: username.");
 
             return new CatalogsFeedCredentials(password.Value!, username.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedCredentials"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedCredentials catalogsFeedCredentials, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedCredentials"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedCredentials catalogsFeedCredentials, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedCredentials.Password == null)
-                throw new ArgumentNullException(nameof(catalogsFeedCredentials.Password), "Property is required for class CatalogsFeedCredentials.");
-
-            if (catalogsFeedCredentials.Username == null)
-                throw new ArgumentNullException(nameof(catalogsFeedCredentials.Username), "Property is required for class CatalogsFeedCredentials.");
-
             writer.WriteString("password", catalogsFeedCredentials.Password);
 
             writer.WriteString("username", catalogsFeedCredentials.Username);

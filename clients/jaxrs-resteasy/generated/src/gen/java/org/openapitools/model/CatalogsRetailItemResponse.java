@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing a retail item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Object describing a retail item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailItemResponse   {
   
   private ItemAttributes attributes;
@@ -123,8 +123,7 @@ public class CatalogsRetailItemResponse   {
   
   @ApiModelProperty(value = "The pins mapped to the item")
   @JsonProperty("pins")
- @Size(max=11)  @Valid
-  public List<@Valid Pin> getPins() {
+ @Size(max=11)  public List<@Valid Pin> getPins() {
     return pins;
   }
   public void setPins(List<@Valid Pin> pins) {

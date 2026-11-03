@@ -64,62 +64,42 @@ import {
 export interface CatalogsHotelFeedsCreateRequest {
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-     * @type {string}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsHotelFeedsCreateRequestCatalogTypeEnum}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     catalogType: CatalogsHotelFeedsCreateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     name: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsHotelFeedsCreateRequest
      */
     status?: CatalogsStatus;
 }
@@ -129,7 +109,7 @@ export interface CatalogsHotelFeedsCreateRequest {
  * @export
  */
 export const CatalogsHotelFeedsCreateRequestCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelFeedsCreateRequestCatalogTypeEnum = typeof CatalogsHotelFeedsCreateRequestCatalogTypeEnum[keyof typeof CatalogsHotelFeedsCreateRequestCatalogTypeEnum];
 

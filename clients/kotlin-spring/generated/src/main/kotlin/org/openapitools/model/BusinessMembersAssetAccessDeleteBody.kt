@@ -23,7 +23,7 @@ data class BusinessMembersAssetAccessDeleteBody(
     @field:Valid
     @get:Size(min=1,max=100) 
     @Schema(required = true, description = "List of members asset access to be deleted")
-    @param:JsonProperty("accesses")
+    @param:JsonProperty("accesses", required = true)
     @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<DeleteMemberAssetAccessItem>
 ) {
 

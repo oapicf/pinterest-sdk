@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface GenderDemographics {
     /**
      * Percentage of female users
-     * @type {number}
-     * @memberof GenderDemographics
      */
     female: number;
     /**
      * Percentage of male users
-     * @type {number}
-     * @memberof GenderDemographics
      */
     male: number;
     /**
      * Percentage of users with unspecified gender
-     * @type {number}
-     * @memberof GenderDemographics
      */
     unspecified: number;
 }

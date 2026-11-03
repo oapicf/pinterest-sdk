@@ -6,20 +6,3 @@
 */
 #include "CampaignPlanningEstimationType.h"
 
-namespace models {
-
-CampaignPlanningEstimationType::CampaignPlanningEstimationType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

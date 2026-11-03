@@ -36,32 +36,22 @@ import {
 export interface CatalogsHotelBatchRequest {
     /**
      * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-     * @type {string}
-     * @memberof CatalogsHotelBatchRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsHotelBatchRequestCatalogTypeEnum}
-     * @memberof CatalogsHotelBatchRequest
      */
     catalogType: CatalogsHotelBatchRequestCatalogTypeEnum;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsHotelBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs item operations
-     * @type {Array<CatalogsHotelBatchItem>}
-     * @memberof CatalogsHotelBatchRequest
      */
     items: Array<CatalogsHotelBatchItem>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsHotelBatchRequestLanguageEnum}
-     * @memberof CatalogsHotelBatchRequest
      */
     language: CatalogsHotelBatchRequestLanguageEnum;
 }
@@ -71,7 +61,7 @@ export interface CatalogsHotelBatchRequest {
  * @export
  */
 export const CatalogsHotelBatchRequestCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelBatchRequestCatalogTypeEnum = typeof CatalogsHotelBatchRequestCatalogTypeEnum[keyof typeof CatalogsHotelBatchRequestCatalogTypeEnum];
 
@@ -185,7 +175,7 @@ export const CatalogsHotelBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsHotelBatchRequestLanguageEnum = typeof CatalogsHotelBatchRequestLanguageEnum[keyof typeof CatalogsHotelBatchRequestLanguageEnum];
 

@@ -29,8 +29,6 @@ import {
 export interface MediaTypeFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleMediaTypesCriteria}
-     * @memberof MediaTypeFilter
      */
     mEDIATYPE: CatalogsProductGroupMultipleMediaTypesCriteria;
 }

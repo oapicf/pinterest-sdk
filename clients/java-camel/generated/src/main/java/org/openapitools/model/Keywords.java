@@ -23,13 +23,11 @@ import jakarta.annotation.Generated;
  * Keywords
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Keywords {
 
-  @Valid
   private List<@Valid KeywordError> errors = new ArrayList<>();
 
-  @Valid
   private List<@Valid Keyword> keywords = new ArrayList<>();
 
   public Keywords() {
@@ -61,7 +59,7 @@ public class Keywords {
    * Keyword error
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", accessMode = Schema.AccessMode.READ_ONLY, description = "Keyword error", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("errors")
   public List<@Valid KeywordError> getErrors() {
@@ -89,7 +87,7 @@ public class Keywords {
    * Keywords
    * @return keywords
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "keywords", description = "Keywords", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid Keyword> getKeywords() {

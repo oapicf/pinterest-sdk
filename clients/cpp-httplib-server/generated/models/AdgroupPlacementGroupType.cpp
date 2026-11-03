@@ -6,20 +6,3 @@
 */
 #include "AdgroupPlacementGroupType.h"
 
-namespace models {
-
-AdgroupPlacementGroupType::AdgroupPlacementGroupType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

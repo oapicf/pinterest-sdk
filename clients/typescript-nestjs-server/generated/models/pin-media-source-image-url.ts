@@ -16,7 +16,7 @@ export interface PinMediaSourceImageURL {
 }
 export namespace PinMediaSourceImageURL {
   export const SourceTypeEnum = {
-    ImageUrl: 'image_url'
+    ImageUrl: 'image_url',
   } as const;
   export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }

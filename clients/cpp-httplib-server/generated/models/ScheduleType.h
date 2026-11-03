@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ScheduleType
-{
-public:
-
-    ScheduleType();
-    virtual ~ScheduleType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ScheduleType,
-        )
-
-private:
+enum class ScheduleType {
+    
+    CAMPAIGN_BUDGET_CHANGE,
+    
+    CAMPAIGN_BID_MULTIPLIERS
+    
 };
 
+inline void to_json(nlohmann::json& j, const ScheduleType& value)
+{
+    switch (value)
+    {
+        
+        case ScheduleType::CAMPAIGN_BUDGET_CHANGE: j = "CAMPAIGN_BUDGET_CHANGE"; break;
+        
+        case ScheduleType::CAMPAIGN_BID_MULTIPLIERS: j = "CAMPAIGN_BID_MULTIPLIERS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ScheduleType& value)
+{
+    
+    if (j == "CAMPAIGN_BUDGET_CHANGE")
+    {
+        value = ScheduleType::CAMPAIGN_BUDGET_CHANGE;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_BID_MULTIPLIERS")
+    {
+        value = ScheduleType::CAMPAIGN_BID_MULTIPLIERS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleType", &j);
+}
 
 } // namespace models
 

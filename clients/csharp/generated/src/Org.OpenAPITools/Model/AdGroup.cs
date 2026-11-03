@@ -916,91 +916,91 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!billableEvent.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(billableEvent));
+                throw new JsonException("Property is required for class AdGroup: billable_event.");
 
             if (!campaignId.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(campaignId));
+                throw new JsonException("Property is required for class AdGroup: campaign_id.");
 
             if (!createdTime.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(createdTime));
+                throw new JsonException("Property is required for class AdGroup: created_time.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(id));
+                throw new JsonException("Property is required for class AdGroup: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(name));
+                throw new JsonException("Property is required for class AdGroup: name.");
 
             if (!summaryStatus.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(summaryStatus));
+                throw new JsonException("Property is required for class AdGroup: summary_status.");
 
             if (!updatedTime.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(updatedTime));
+                throw new JsonException("Property is required for class AdGroup: updated_time.");
 
             if (!conversionLearningModeType.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(conversionLearningModeType));
+                throw new JsonException("Property is required for class AdGroup: conversion_learning_mode_type.");
 
             if (!type.IsSet)
-                throw new ArgumentException("Property is required for class AdGroup.", nameof(type));
+                throw new JsonException("Property is required for class AdGroup: type.");
 
             if (billableEvent.IsSet && billableEvent.Value == null)
-                throw new ArgumentNullException(nameof(billableEvent), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: billable_event.");
 
             if (campaignId.IsSet && campaignId.Value == null)
-                throw new ArgumentNullException(nameof(campaignId), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: campaign_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: name.");
 
             if (summaryStatus.IsSet && summaryStatus.Value == null)
-                throw new ArgumentNullException(nameof(summaryStatus), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: summary_status.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: updated_time.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: ad_account_id.");
 
             if (customerSegmentId.IsSet && customerSegmentId.Value == null)
-                throw new ArgumentNullException(nameof(customerSegmentId), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: customer_segment_id.");
 
             if (feedProfileId.IsSet && feedProfileId.Value == null)
-                throw new ArgumentNullException(nameof(feedProfileId), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: feed_profile_id.");
 
             if (isLocalInventory.IsSet && isLocalInventory.Value == null)
-                throw new ArgumentNullException(nameof(isLocalInventory), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: is_local_inventory.");
 
             if (lifetimeFrequencyCap.IsSet && lifetimeFrequencyCap.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeFrequencyCap), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: lifetime_frequency_cap.");
 
             if (localInventoryRadiusInMiles.IsSet && localInventoryRadiusInMiles.Value == null)
-                throw new ArgumentNullException(nameof(localInventoryRadiusInMiles), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: local_inventory_radius_in_miles.");
 
             if (placementGroup.IsSet && placementGroup.Value == null)
-                throw new ArgumentNullException(nameof(placementGroup), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: placement_group.");
 
             if (promotionIds.IsSet && promotionIds.Value == null)
-                throw new ArgumentNullException(nameof(promotionIds), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: promotion_ids.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: status.");
 
             if (targetingSpec.IsSet && targetingSpec.Value == null)
-                throw new ArgumentNullException(nameof(targetingSpec), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: targeting_spec.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: type.");
 
             if (budgetType.IsSet && budgetType.Value == null)
-                throw new ArgumentNullException(nameof(budgetType), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: budget_type.");
 
             if (pacingDeliveryType.IsSet && pacingDeliveryType.Value == null)
-                throw new ArgumentNullException(nameof(pacingDeliveryType), "Property is not nullable for class AdGroup.");
+                throw new JsonException("Property is not nullable for class AdGroup: pacing_delivery_type.");
 
             return new AdGroup(billableEvent.Value!.Value!, campaignId.Value!, createdTime.Value!.Value!, id.Value!, name.Value!, summaryStatus.Value!.Value!, updatedTime.Value!.Value!, adAccountId, bidInMicroCurrency, bidStrategyType, budgetInMicroCurrency, conversionLearningModeType.Value!, customerSegmentId, dcaAssets, endTime, extFeatures, feedProfileId, isCreativeOptimization, isLocalInventory, lifetimeFrequencyCap, localInventoryRadiusInMiles, optimizationGoalMetadata, performancePlusCampaignSettings, placementGroup, placementTrafficType, promotionApplicationLevel, promotionId, promotionIds, startTime, status, targetingSpec, targetingTemplateIds, trackingUrls, type.Value!, autoTargetingEnabled, bidMultiplier, budgetType, pacingDeliveryType);
         }
@@ -1011,7 +1011,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroup"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroup adGroup, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -1026,35 +1025,43 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroup"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroup adGroup, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adGroup.CampaignId == null)
-                throw new ArgumentNullException(nameof(adGroup.CampaignId), "Property is required for class AdGroup.");
-
-            if (adGroup.Id == null)
-                throw new ArgumentNullException(nameof(adGroup.Id), "Property is required for class AdGroup.");
-
-            if (adGroup.Name == null)
-                throw new ArgumentNullException(nameof(adGroup.Name), "Property is required for class AdGroup.");
-
             if (adGroup.AdAccountIdOption.IsSet && adGroup.AdAccountId == null)
-                throw new ArgumentNullException(nameof(adGroup.AdAccountId), "Property is required for class AdGroup.");
+                throw new JsonException("Cannot write null property AdGroup.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (adGroup.CustomerSegmentIdOption.IsSet && adGroup.CustomerSegmentId == null)
-                throw new ArgumentNullException(nameof(adGroup.CustomerSegmentId), "Property is required for class AdGroup.");
+                throw new JsonException("Cannot write null property AdGroup.CustomerSegmentId to non-nullable JSON property 'customer_segment_id'.");
 
             if (adGroup.FeedProfileIdOption.IsSet && adGroup.FeedProfileId == null)
-                throw new ArgumentNullException(nameof(adGroup.FeedProfileId), "Property is required for class AdGroup.");
+                throw new JsonException("Cannot write null property AdGroup.FeedProfileId to non-nullable JSON property 'feed_profile_id'.");
+
+            if (adGroup.IsLocalInventoryOption.IsSet && adGroup.IsLocalInventory == null)
+                throw new JsonException("Cannot write null property AdGroup.IsLocalInventory to non-nullable JSON property 'is_local_inventory'.");
+
+            if (adGroup.LifetimeFrequencyCapOption.IsSet && adGroup.LifetimeFrequencyCap == null)
+                throw new JsonException("Cannot write null property AdGroup.LifetimeFrequencyCap to non-nullable JSON property 'lifetime_frequency_cap'.");
+
+            if (adGroup.LocalInventoryRadiusInMilesOption.IsSet && adGroup.LocalInventoryRadiusInMiles == null)
+                throw new JsonException("Cannot write null property AdGroup.LocalInventoryRadiusInMiles to non-nullable JSON property 'local_inventory_radius_in_miles'.");
+
+            if (adGroup.PlacementGroupOption.IsSet && adGroup.PlacementGroup == null)
+                throw new JsonException("Cannot write null property AdGroup.PlacementGroup to non-nullable JSON property 'placement_group'.");
 
             if (adGroup.PromotionIdsOption.IsSet && adGroup.PromotionIds == null)
-                throw new ArgumentNullException(nameof(adGroup.PromotionIds), "Property is required for class AdGroup.");
+                throw new JsonException("Cannot write null property AdGroup.PromotionIds to non-nullable JSON property 'promotion_ids'.");
+
+            if (adGroup.StatusOption.IsSet && adGroup.Status == null)
+                throw new JsonException("Cannot write null property AdGroup.Status to non-nullable JSON property 'status'.");
 
             if (adGroup.TargetingSpecOption.IsSet && adGroup.TargetingSpec == null)
-                throw new ArgumentNullException(nameof(adGroup.TargetingSpec), "Property is required for class AdGroup.");
+                throw new JsonException("Cannot write null property AdGroup.TargetingSpec to non-nullable JSON property 'targeting_spec'.");
 
-            if (adGroup.Type == null)
-                throw new ArgumentNullException(nameof(adGroup.Type), "Property is required for class AdGroup.");
+            if (adGroup.BudgetTypeOption.IsSet && adGroup.BudgetType == null)
+                throw new JsonException("Cannot write null property AdGroup.BudgetType to non-nullable JSON property 'budget_type'.");
+
+            if (adGroup.PacingDeliveryTypeOption.IsSet && adGroup.PacingDeliveryType == null)
+                throw new JsonException("Cannot write null property AdGroup.PacingDeliveryType to non-nullable JSON property 'pacing_delivery_type'.");
 
             var billableEventRawValue = ActionTypeValueConverter.ToJsonValue(adGroup.BillableEvent);
             writer.WriteString("billable_event", billableEventRawValue);

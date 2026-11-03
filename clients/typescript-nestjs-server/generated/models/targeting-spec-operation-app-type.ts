@@ -9,7 +9,7 @@ export interface TargetingSpecOperationAppType {
 }
 export namespace TargetingSpecOperationAppType {
   export const FieldEnum = {
-    Apptype: 'APPTYPE'
+    Apptype: 'APPTYPE',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

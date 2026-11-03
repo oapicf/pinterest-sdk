@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class BillingProfileStatus
-{
-public:
-
-    BillingProfileStatus();
-    virtual ~BillingProfileStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingProfileStatus,
-        )
-
-private:
+enum class BillingProfileStatus {
+    
+    UNSPECIFIED,
+    
+    VALID,
+    
+    INVALID,
+    
+    PENDING,
+    
+    DELETED,
+    
+    SECONDARY,
+    
+    PENDING_SECONDARY
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingProfileStatus& value)
+{
+    switch (value)
+    {
+        
+        case BillingProfileStatus::UNSPECIFIED: j = "UNSPECIFIED"; break;
+        
+        case BillingProfileStatus::VALID: j = "VALID"; break;
+        
+        case BillingProfileStatus::INVALID: j = "INVALID"; break;
+        
+        case BillingProfileStatus::PENDING: j = "PENDING"; break;
+        
+        case BillingProfileStatus::DELETED: j = "DELETED"; break;
+        
+        case BillingProfileStatus::SECONDARY: j = "SECONDARY"; break;
+        
+        case BillingProfileStatus::PENDING_SECONDARY: j = "PENDING_SECONDARY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfileStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingProfileStatus& value)
+{
+    
+    if (j == "UNSPECIFIED")
+    {
+        value = BillingProfileStatus::UNSPECIFIED;
+        return;
+    }
+    
+    if (j == "VALID")
+    {
+        value = BillingProfileStatus::VALID;
+        return;
+    }
+    
+    if (j == "INVALID")
+    {
+        value = BillingProfileStatus::INVALID;
+        return;
+    }
+    
+    if (j == "PENDING")
+    {
+        value = BillingProfileStatus::PENDING;
+        return;
+    }
+    
+    if (j == "DELETED")
+    {
+        value = BillingProfileStatus::DELETED;
+        return;
+    }
+    
+    if (j == "SECONDARY")
+    {
+        value = BillingProfileStatus::SECONDARY;
+        return;
+    }
+    
+    if (j == "PENDING_SECONDARY")
+    {
+        value = BillingProfileStatus::PENDING_SECONDARY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingProfileStatus", &j);
+}
 
 } // namespace models
 

@@ -17,7 +17,7 @@ import Keyword from './Keyword';
 /**
  * The KeywordError model module.
  * @module model/KeywordError
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordError {
     /**

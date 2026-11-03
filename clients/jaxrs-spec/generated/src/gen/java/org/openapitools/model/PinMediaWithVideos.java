@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Pin with multiple videos.")
 @JsonTypeName("PinMediaWithVideos")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaWithVideos   {
-  private @Valid List<@Valid VideoMetadataWithItemType> items = new ArrayList<>();
+  private List<@Valid VideoMetadataWithItemType> items = new ArrayList<>();
   public enum MediaTypeEnum {
 
     MULTIPLE_VIDEOS(String.valueOf("multiple_videos"));
@@ -94,7 +94,7 @@ public class PinMediaWithVideos   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  @Valid public List<@Valid VideoMetadataWithItemType> getItems() {
+  public List<@Valid VideoMetadataWithItemType> getItems() {
     return items;
   }
 

@@ -43,7 +43,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CampaignCreateRequestAllOf1.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CampaignCreateRequestAllOf1")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CampaignCreateRequestAllOf1 {
     public static final String JSON_PROPERTY_BID_OPTIONS = "bid_options";
@@ -53,13 +53,13 @@ public class CampaignCreateRequestAllOf1 {
     private IntendedPromotionType intendedPromotionType;
 
     public static final String JSON_PROPERTY_IS_AUTOMATED_CAMPAIGN = "is_automated_campaign";
-    private Boolean isAutomatedCampaign;
+    private Boolean isAutomatedCampaign = false;
 
     public static final String JSON_PROPERTY_IS_CAMPAIGN_BUDGET_OPTIMIZATION = "is_campaign_budget_optimization";
-    private Boolean isCampaignBudgetOptimization;
+    private Boolean isCampaignBudgetOptimization = true;
 
     public static final String JSON_PROPERTY_IS_FLEXIBLE_DAILY_BUDGETS = "is_flexible_daily_budgets";
-    private Boolean isFlexibleDailyBudgets;
+    private Boolean isFlexibleDailyBudgets = false;
 
     public static final String JSON_PROPERTY_IS_LTV_OPTIMIZED = "is_ltv_optimized";
     private Boolean isLtvOptimized;
@@ -74,7 +74,7 @@ public class CampaignCreateRequestAllOf1 {
     private ObjectiveType objectiveType;
 
     public static final String JSON_PROPERTY_STATUS = "status";
-    private EntityStatus status;
+    private EntityStatus status = EntityStatus.ACTIVE;
 
     public CampaignCreateRequestAllOf1(ObjectiveType objectiveType) {
         this.objectiveType = objectiveType;

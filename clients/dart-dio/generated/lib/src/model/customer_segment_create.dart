@@ -123,3 +123,4 @@ class _$CustomerSegmentCreateSerializer implements PrimitiveSerializer<CustomerS
   }
 }
 
+

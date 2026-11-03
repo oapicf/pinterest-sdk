@@ -149,3 +149,4 @@ class _$CustomerListUpdateWithRequiredBodySerializer implements PrimitiveSeriali
   }
 }
 
+

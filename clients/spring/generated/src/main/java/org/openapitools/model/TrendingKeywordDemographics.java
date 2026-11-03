@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -26,13 +25,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "TrendingKeywordDemographics", description = "A mapping of demographic dimensions (e.g. \"gender\", \"age\") to their category distributions. For each dimension: Key: The category (e.g., \"female\", \"18-24\"). Value: The proportion of search volume (e.g., 0.12 for 12%). Values less than 0.05 are set to 0.04 for privacy. The sum for all categories in a dimension will approximately equal 1. Only applicable when `include_demographics` query parameter is set to `true`.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingKeywordDemographics {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrendsAgeDistribution> ageDistribution = JsonNullable.<TrendsAgeDistribution>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrendsGenderDistribution> genderDistribution = JsonNullable.<TrendsGenderDistribution>undefined();
 
   public TrendingKeywordDemographics ageDistribution(TrendsAgeDistribution ageDistribution) {
@@ -45,7 +42,7 @@ public class TrendingKeywordDemographics {
    * @return ageDistribution
    */
   @Valid 
-  @Schema(name = "age_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "age_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("age_distribution")
   public JsonNullable<TrendsAgeDistribution> getAgeDistribution() {
     return ageDistribution;
@@ -65,7 +62,7 @@ public class TrendingKeywordDemographics {
    * @return genderDistribution
    */
   @Valid 
-  @Schema(name = "gender_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gender_distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("gender_distribution")
   public JsonNullable<TrendsGenderDistribution> getGenderDistribution() {
     return genderDistribution;
@@ -118,7 +115,7 @@ public class TrendingKeywordDemographics {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

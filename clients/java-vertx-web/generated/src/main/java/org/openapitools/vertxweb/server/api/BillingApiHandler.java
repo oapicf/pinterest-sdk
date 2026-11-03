@@ -74,7 +74,7 @@ public class BillingApiHandler {
         AdsCreditRedeemCreate adsCreditRedeemCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdsCreditRedeemCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adsCreditRedeemCreate is {}", adsCreditRedeemCreate);
+        logger.debug("Parameter adsCreditRedeemCreate is (body omitted)");
 
         api.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
             .onSuccess(apiResponse -> {
@@ -237,7 +237,7 @@ public class BillingApiHandler {
         SSIOInsertionOrderCreate ssIOInsertionOrderCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOInsertionOrderCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter ssIOInsertionOrderCreate is {}", ssIOInsertionOrderCreate);
+        logger.debug("Parameter ssIOInsertionOrderCreate is (body omitted)");
 
         api.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
             .onSuccess(apiResponse -> {
@@ -262,7 +262,7 @@ public class BillingApiHandler {
         SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<SSIOInsertionOrderUpdate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter ssIOInsertionOrderUpdate is {}", ssIOInsertionOrderUpdate);
+        logger.debug("Parameter ssIOInsertionOrderUpdate is (body omitted)");
 
         api.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
             .onSuccess(apiResponse -> {

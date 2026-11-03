@@ -17,7 +17,7 @@ import TargetingSpecOperations from './TargetingSpecOperations';
 /**
  * The AdGroupUpdateRequestAllOf1 model module.
  * @module model/AdGroupUpdateRequestAllOf1
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupUpdateRequestAllOf1 {
     /**

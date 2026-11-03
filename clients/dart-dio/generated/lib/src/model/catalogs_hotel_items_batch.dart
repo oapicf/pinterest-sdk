@@ -208,6 +208,7 @@ class _$CatalogsHotelItemsBatchSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+
 class CatalogsHotelItemsBatchCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

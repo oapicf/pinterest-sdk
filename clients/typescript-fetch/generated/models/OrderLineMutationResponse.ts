@@ -29,8 +29,6 @@ import {
 export interface OrderLineMutationResponse {
     /**
      * 
-     * @type {OrderLineMutationResult}
-     * @memberof OrderLineMutationResponse
      */
     data?: OrderLineMutationResult;
 }

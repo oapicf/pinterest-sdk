@@ -21,7 +21,7 @@ export const AdAccountEntityType = {
     Advertiser: 'ADVERTISER',
     Campaign: 'CAMPAIGN',
     AdGroup: 'AD_GROUP',
-    Ad: 'AD'
+    Ad: 'AD',
 } as const;
 export type AdAccountEntityType = typeof AdAccountEntityType[keyof typeof AdAccountEntityType];
 

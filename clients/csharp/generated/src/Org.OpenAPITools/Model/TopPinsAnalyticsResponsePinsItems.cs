@@ -181,13 +181,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dataStatus.IsSet && dataStatus.Value == null)
-                throw new ArgumentNullException(nameof(dataStatus), "Property is not nullable for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponsePinsItems: data_status.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponsePinsItems: metrics.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponsePinsItems: pin_id.");
 
             return new TopPinsAnalyticsResponsePinsItems(dataStatus, metrics, pinId);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponsePinsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopPinsAnalyticsResponsePinsItems topPinsAnalyticsResponsePinsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,17 +212,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponsePinsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopPinsAnalyticsResponsePinsItems topPinsAnalyticsResponsePinsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             if (topPinsAnalyticsResponsePinsItems.DataStatusOption.IsSet && topPinsAnalyticsResponsePinsItems.DataStatus == null)
-                throw new ArgumentNullException(nameof(topPinsAnalyticsResponsePinsItems.DataStatus), "Property is required for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponsePinsItems.DataStatus to non-nullable JSON property 'data_status'.");
 
             if (topPinsAnalyticsResponsePinsItems.MetricsOption.IsSet && topPinsAnalyticsResponsePinsItems.Metrics == null)
-                throw new ArgumentNullException(nameof(topPinsAnalyticsResponsePinsItems.Metrics), "Property is required for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponsePinsItems.Metrics to non-nullable JSON property 'metrics'.");
 
             if (topPinsAnalyticsResponsePinsItems.PinIdOption.IsSet && topPinsAnalyticsResponsePinsItems.PinId == null)
-                throw new ArgumentNullException(nameof(topPinsAnalyticsResponsePinsItems.PinId), "Property is required for class TopPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponsePinsItems.PinId to non-nullable JSON property 'pin_id'.");
 
             if (topPinsAnalyticsResponsePinsItems.DataStatusOption.IsSet)
             {

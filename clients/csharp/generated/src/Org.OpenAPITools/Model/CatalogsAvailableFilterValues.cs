@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsAvailableFilterValues" /> class.
         /// </summary>
         /// <param name="catalogsRetailAvailableFilterValues"></param>
-        public CatalogsAvailableFilterValues(CatalogsRetailAvailableFilterValues catalogsRetailAvailableFilterValues)
+        internal CatalogsAvailableFilterValues(CatalogsRetailAvailableFilterValues catalogsRetailAvailableFilterValues)
         {
             CatalogsRetailAvailableFilterValues = catalogsRetailAvailableFilterValues;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsAvailableFilterValues" /> class.
         /// </summary>
         /// <param name="catalogsHotelAvailableFilterValues"></param>
-        public CatalogsAvailableFilterValues(CatalogsHotelAvailableFilterValues catalogsHotelAvailableFilterValues)
+        internal CatalogsAvailableFilterValues(CatalogsHotelAvailableFilterValues catalogsHotelAvailableFilterValues)
         {
             CatalogsHotelAvailableFilterValues = catalogsHotelAvailableFilterValues;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsAvailableFilterValues" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsAvailableFilterValues"></param>
-        public CatalogsAvailableFilterValues(CatalogsCreativeAssetsAvailableFilterValues catalogsCreativeAssetsAvailableFilterValues)
+        internal CatalogsAvailableFilterValues(CatalogsCreativeAssetsAvailableFilterValues catalogsCreativeAssetsAvailableFilterValues)
         {
             CatalogsCreativeAssetsAvailableFilterValues = catalogsCreativeAssetsAvailableFilterValues;
             OnCreated();
@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsAvailableFilterValues.CatalogTypeEnum?>(CatalogsAvailableFilterValues.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsAvailableFilterValues.CatalogTypeEnum? catalogTypeValue = CatalogsAvailableFilterValues.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsAvailableFilterValues.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsAvailableFilterValues.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsAvailableFilterValues: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsAvailableFilterValues.");
+                throw new JsonException("Property is not nullable for class CatalogsAvailableFilterValues: catalog_type.");
 
             if (catalogsCreativeAssetsAvailableFilterValues != null)
                 return new CatalogsAvailableFilterValues(catalogsCreativeAssetsAvailableFilterValues);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsAvailableFilterValues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsAvailableFilterValues catalogsAvailableFilterValues, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsAvailableFilterValues"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsAvailableFilterValues catalogsAvailableFilterValues, JsonSerializerOptions jsonSerializerOptions)
         {
 

@@ -158,13 +158,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!time.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingSchedule.", nameof(time));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingSchedule: time.");
 
             if (!timezone.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedProcessingSchedule.", nameof(timezone));
+                throw new JsonException("Property is required for class CatalogsFeedProcessingSchedule: timezone.");
 
             if (time.IsSet && time.Value == null)
-                throw new ArgumentNullException(nameof(time), "Property is not nullable for class CatalogsFeedProcessingSchedule.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedProcessingSchedule: time.");
 
             return new CatalogsFeedProcessingSchedule(time.Value!, timezone.Value!);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProcessingSchedule"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedProcessingSchedule catalogsFeedProcessingSchedule, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,12 +189,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProcessingSchedule"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedProcessingSchedule catalogsFeedProcessingSchedule, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedProcessingSchedule.Time == null)
-                throw new ArgumentNullException(nameof(catalogsFeedProcessingSchedule.Time), "Property is required for class CatalogsFeedProcessingSchedule.");
-
             writer.WriteString("time", catalogsFeedProcessingSchedule.Time);
 
             if (catalogsFeedProcessingSchedule.Timezone == null)

@@ -36,14 +36,10 @@ import {
 export interface AssetGroupModification {
     /**
      * A list of errors associated with the asset groups. Will be returned if there is an error.
-     * @type {Array<AssetGroupUpdateError>}
-     * @memberof AssetGroupModification
      */
     readonly exceptions?: Array<AssetGroupUpdateError>;
     /**
      * A list of successfully edited asset groups.
-     * @type {Array<AssetGroupBinding>}
-     * @memberof AssetGroupModification
      */
     readonly updatedAssetGroups?: Array<AssetGroupBinding>;
 }

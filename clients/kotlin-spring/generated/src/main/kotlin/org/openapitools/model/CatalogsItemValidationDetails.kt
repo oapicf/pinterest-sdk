@@ -25,11 +25,11 @@ data class CatalogsItemValidationDetails(
 
     @field:Valid
     @Schema(required = true, description = "Attribute that has a validation issue.")
-    @param:JsonProperty("attribute_name")
+    @param:JsonProperty("attribute_name", required = true)
     @get:JsonProperty("attribute_name", required = true) val attributeName: NullableCatalogsItemFieldType?,
 
     @Schema(required = true, description = "Provided value that caused the validation issue.")
-    @param:JsonProperty("provided_value")
+    @param:JsonProperty("provided_value", required = true)
     @get:JsonProperty("provided_value", required = true) val providedValue: kotlin.String?
 ) {
 

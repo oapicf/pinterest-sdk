@@ -226,11 +226,12 @@ open class BusinessAccessRelationshipsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "assets_summary": (wrappedValue: assetsSummary?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -288,7 +289,7 @@ open class BusinessAccessRelationshipsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "fetch_system_users": (wrappedValue: fetchSystemUsers?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "assets_summary": (wrappedValue: assetsSummary?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "business_roles": (wrappedValue: businessRoles?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -296,7 +297,8 @@ open class BusinessAccessRelationshipsAPI {
             "start_index": (wrappedValue: startIndex?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -354,7 +356,7 @@ open class BusinessAccessRelationshipsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "assets_summary": (wrappedValue: assetsSummary?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "partner_type": (wrappedValue: partnerType?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "partner_ids": (wrappedValue: partnerIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -362,7 +364,8 @@ open class BusinessAccessRelationshipsAPI {
             "sort_ascending": (wrappedValue: sortAscending?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

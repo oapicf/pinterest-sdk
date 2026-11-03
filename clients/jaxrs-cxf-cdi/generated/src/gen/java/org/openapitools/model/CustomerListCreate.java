@@ -25,7 +25,7 @@ public class CustomerListCreate   {
   
   private Boolean isNca;
 
-  private UserListType listType;
+  private UserListType listType = UserListType.EMAIL;
 
   private String name;
 

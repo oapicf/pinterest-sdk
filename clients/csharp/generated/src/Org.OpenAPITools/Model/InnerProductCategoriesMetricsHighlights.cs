@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pctChangeMom.IsSet)
-                throw new ArgumentException("Property is required for class InnerProductCategoriesMetricsHighlights.", nameof(pctChangeMom));
+                throw new JsonException("Property is required for class InnerProductCategoriesMetricsHighlights: pct_change_mom.");
 
             if (pctChangeMom.IsSet && pctChangeMom.Value == null)
-                throw new ArgumentNullException(nameof(pctChangeMom), "Property is not nullable for class InnerProductCategoriesMetricsHighlights.");
+                throw new JsonException("Property is not nullable for class InnerProductCategoriesMetricsHighlights: pct_change_mom.");
 
             return new InnerProductCategoriesMetricsHighlights(pctChangeMom.Value!.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="innerProductCategoriesMetricsHighlights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InnerProductCategoriesMetricsHighlights innerProductCategoriesMetricsHighlights, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,7 +162,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="innerProductCategoriesMetricsHighlights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InnerProductCategoriesMetricsHighlights innerProductCategoriesMetricsHighlights, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("pct_change_mom", innerProductCategoriesMetricsHighlights.PctChangeMom);

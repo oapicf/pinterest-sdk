@@ -106,3 +106,4 @@ class _$ItemsPost200ResponseSerializer implements PrimitiveSerializer<ItemsPost2
   }
 }
 
+

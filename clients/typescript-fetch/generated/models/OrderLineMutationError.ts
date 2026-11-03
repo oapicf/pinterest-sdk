@@ -29,14 +29,10 @@ import {
 export interface OrderLineMutationError {
     /**
      * 
-     * @type {OrderLine}
-     * @memberof OrderLineMutationError
      */
     data?: OrderLine;
     /**
      * Error messages.
-     * @type {Array<string>}
-     * @memberof OrderLineMutationError
      */
     errorMessages?: Array<string>;
 }

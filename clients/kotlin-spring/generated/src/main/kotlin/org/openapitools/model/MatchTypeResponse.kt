@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Keyword match type
-* Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
-*/
+ * Keyword match type
+ * Values: BROAD,PHRASE,EXACT,EXACT_NEGATIVE,PHRASE_NEGATIVE
+ */
 enum class MatchTypeResponse(@get:JsonValue val value: kotlin.String) {
 
     BROAD("BROAD"),
@@ -31,9 +31,8 @@ enum class MatchTypeResponse(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MatchTypeResponse {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MatchTypeResponse'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MatchTypeResponse'")
         }
     }
 }
-

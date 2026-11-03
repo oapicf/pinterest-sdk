@@ -21,7 +21,7 @@ import TargetingStrategy from './TargetingStrategy';
 /**
  * The TargetingSpecOptimal model module.
  * @module model/TargetingSpecOptimal
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOptimal {
     /**

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { ItemProcessingRecord } from './ItemProcessingRecord';
 import {
     ItemProcessingRecordFromJSON,
@@ -36,38 +36,26 @@ import {
 export interface CatalogsRetailItemsBatch {
     /**
      * Id of the catalogs items batch
-     * @type {string}
-     * @memberof CatalogsRetailItemsBatch
      */
     batchId?: string;
     /**
      * 
-     * @type {CatalogsRetailItemsBatchCatalogTypeEnum}
-     * @memberof CatalogsRetailItemsBatch
      */
     catalogType: CatalogsRetailItemsBatchCatalogTypeEnum;
     /**
      * Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-     * @type {Date}
-     * @memberof CatalogsRetailItemsBatch
      */
     completedTime?: Date | null;
     /**
      * Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss. If null, batch creation was skipped due to a recent duplicate ingestion.
-     * @type {Date}
-     * @memberof CatalogsRetailItemsBatch
      */
     createdTime: Date | null;
     /**
      * Array with the catalogs items processing records part of the catalogs items batch
-     * @type {Array<ItemProcessingRecord>}
-     * @memberof CatalogsRetailItemsBatch
      */
     items?: Array<ItemProcessingRecord>;
     /**
      * 
-     * @type {BatchOperationStatus}
-     * @memberof CatalogsRetailItemsBatch
      */
     status?: BatchOperationStatus;
 }
@@ -77,7 +65,7 @@ export interface CatalogsRetailItemsBatch {
  * @export
  */
 export const CatalogsRetailItemsBatchCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailItemsBatchCatalogTypeEnum = typeof CatalogsRetailItemsBatchCatalogTypeEnum[keyof typeof CatalogsRetailItemsBatchCatalogTypeEnum];
 
@@ -105,8 +93,8 @@ export function CatalogsRetailItemsBatchFromJSONTyped(json: any, ignoreDiscrimin
         
         'batchId': json['batch_id'] == null ? undefined : json['batch_id'],
         'catalogType': json['catalog_type'],
-        'completedTime': json['completed_time'] === undefined ? undefined : json['completed_time'] === null ? null : (new Date(json['completed_time'])),
-        'createdTime': (json['created_time'] == null ? null : new Date(json['created_time'])),
+        'completedTime': json['completed_time'] === undefined ? undefined : json['completed_time'] === null ? null : (parseDateTime(json['completed_time'])),
+        'createdTime': (json['created_time'] == null ? null : parseDateTime(json['created_time'])),
         'items': json['items'] == null ? undefined : ((json['items'] as Array<any>).map(ItemProcessingRecordFromJSON)),
         'status': json['status'] == null ? undefined : BatchOperationStatusFromJSON(json['status']),
     };
@@ -125,8 +113,8 @@ export function CatalogsRetailItemsBatchToJSONTyped(value?: CatalogsRetailItemsB
         
         'batch_id': value['batchId'],
         'catalog_type': value['catalogType'],
-        'completed_time': value['completedTime'] == null ? value['completedTime'] : value['completedTime'].toISOString(),
-        'created_time': value['createdTime'] == null ? value['createdTime'] : value['createdTime'].toISOString(),
+        'completed_time': value['completedTime'] == null ? value['completedTime'] : serializeDateTime(value['completedTime']),
+        'created_time': value['createdTime'] == null ? value['createdTime'] : serializeDateTime(value['createdTime']),
         'items': value['items'] == null ? undefined : ((value['items'] as Array<any>).map(ItemProcessingRecordToJSON)),
         'status': BatchOperationStatusToJSON(value['status']),
     };

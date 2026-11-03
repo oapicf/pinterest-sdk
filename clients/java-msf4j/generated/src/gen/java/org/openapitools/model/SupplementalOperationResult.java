@@ -16,7 +16,7 @@ import org.openapitools.model.SupplementalItemValidationEvent;
  * Result of a supplemental item operation, discriminated by supplemental_type
  */
 @ApiModel(description = "Result of a supplemental item operation, discriminated by supplemental_type")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SupplementalOperationResult   {
   @JsonProperty("errors")
   private List<@Valid SupplementalItemValidationEvent> errors = null;

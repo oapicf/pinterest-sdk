@@ -10,8 +10,8 @@ import Foundation
 /** The terminated asset access. */
 public struct DeleteMemberAccessResult: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let memberIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of the business asset. */
     public var assetId: String?
     /** Unique identifier of the business member. */

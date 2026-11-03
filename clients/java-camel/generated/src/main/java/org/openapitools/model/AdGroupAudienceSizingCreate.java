@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,20 +29,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupAudienceSizingCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate {
 
   private Boolean autoTargetingEnabled = true;
 
-  @Valid
   private JsonNullable<List<AdGroupAudienceSizingCreativeTypes>> creativeTypes = JsonNullable.<List<AdGroupAudienceSizingCreativeTypes>>undefined();
 
-  @Valid
   private JsonNullable<List<@Valid AdGroupAudienceSizingKeyword>> keywords = JsonNullable.<List<@Valid AdGroupAudienceSizingKeyword>>undefined();
 
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
-  @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> productGroupIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
   private TargetingSpecOptimal targetingSpec;
@@ -85,7 +81,7 @@ public class AdGroupAudienceSizingCreate {
    * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
    */
-  @Valid 
+  
   @Schema(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_types")
   public JsonNullable<List<AdGroupAudienceSizingCreativeTypes>> getCreativeTypes() {
@@ -113,7 +109,7 @@ public class AdGroupAudienceSizingCreate {
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
    */
-  @Valid 
+  
   @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public JsonNullable<List<@Valid AdGroupAudienceSizingKeyword>> getKeywords() {

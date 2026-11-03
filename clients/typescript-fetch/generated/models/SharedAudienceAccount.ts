@@ -29,26 +29,18 @@ import {
 export interface SharedAudienceAccount {
     /**
      * Account ID (ad account or business ID).
-     * @type {string}
-     * @memberof SharedAudienceAccount
      */
     accountId: string;
     /**
      * Account name.
-     * @type {string}
-     * @memberof SharedAudienceAccount
      */
     accountName: string;
     /**
      * account type
-     * @type {AudienceAccountType}
-     * @memberof SharedAudienceAccount
      */
     accountType: AudienceAccountType;
     /**
      * Epoch timestamp in seconds for the shared audience event
-     * @type {number}
-     * @memberof SharedAudienceAccount
      */
     sharedOnTimestamp: number;
 }

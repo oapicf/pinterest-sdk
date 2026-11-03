@@ -6,20 +6,3 @@
 */
 #include "AudienceInsightType.h"
 
-namespace models {
-
-AudienceInsightType::AudienceInsightType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -25,7 +25,7 @@ data class DeleteBusinessPartnersDelete(
 
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "A list of partner ids to be deleted")
-    @param:JsonProperty("partner_ids")
+    @param:JsonProperty("partner_ids", required = true)
     @get:JsonProperty("partner_ids", required = true) val partnerIds: kotlin.collections.List<kotlin.String>,
 
     @field:Valid

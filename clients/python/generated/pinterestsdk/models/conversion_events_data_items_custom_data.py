@@ -89,8 +89,7 @@ class ConversionEventsDataItemsCustomData(BaseModel):
         _items = []
         if self.contents:
             for _item_contents in self.contents:
-                if _item_contents:
-                    _items.append(_item_contents.to_dict())
+                _items.append(_item_contents.to_dict() if _item_contents is not None else None)
             _dict['contents'] = _items
         # set to None if content_brand (nullable) is None
         # and model_fields_set contains the field

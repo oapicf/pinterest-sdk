@@ -10,8 +10,8 @@ import Foundation
 /** A billing invoice in the advertiser account. */
 public struct BillingInvoice: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** The ID of the ad account this invoice belongs to */
     public var adAccountId: String?
     /** The name of the ad account this invoice belongs to */

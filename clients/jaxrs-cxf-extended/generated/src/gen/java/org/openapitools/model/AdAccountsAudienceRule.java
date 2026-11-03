@@ -94,7 +94,6 @@ public class AdAccountsAudienceRule  {
   * Objective for engagement audience filter.
   */
   @ApiModelProperty(value = "Objective for engagement audience filter.")
-  @Valid
   private List<AudienceObjectiveType> objectiveType = new ArrayList<>();
 
  /**

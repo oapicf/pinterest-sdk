@@ -10,7 +10,7 @@ import Foundation
 /** Ad preview source from an image URL. */
 public struct AdPreviewSourceImage: Sendable, Codable, Hashable {
 
-    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Image URL. */
     public var imageUrl: String
     /** Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion. */

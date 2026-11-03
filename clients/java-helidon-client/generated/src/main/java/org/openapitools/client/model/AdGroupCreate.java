@@ -207,9 +207,9 @@ public class AdGroupCreate  {
   **/
   private BigDecimal bidMultiplier;
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
  /**
    * Advertiser ID.

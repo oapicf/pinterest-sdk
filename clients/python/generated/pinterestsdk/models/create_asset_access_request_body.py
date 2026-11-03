@@ -76,8 +76,7 @@ class CreateAssetAccessRequestBody(BaseModel):
         _items = []
         if self.asset_requests:
             for _item_asset_requests in self.asset_requests:
-                if _item_asset_requests:
-                    _items.append(_item_asset_requests.to_dict())
+                _items.append(_item_asset_requests.to_dict() if _item_asset_requests is not None else None)
             _dict['asset_requests'] = _items
         return _dict
 

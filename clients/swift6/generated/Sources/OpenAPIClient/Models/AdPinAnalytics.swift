@@ -9,7 +9,7 @@ import Foundation
 
 public struct AdPinAnalytics: Sendable, Codable, Hashable {
 
-    public static let PIN_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let PIN_IDRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`) */
     public var DATE: Date?
     /** The ID of the pin that the metric belongs to. */

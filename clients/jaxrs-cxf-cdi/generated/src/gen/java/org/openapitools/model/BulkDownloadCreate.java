@@ -30,7 +30,7 @@ public class BulkDownloadCreate   {
 
   private List<BulkEntityType> entityTypes = new ArrayList<>();
 
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
   private String updatedSince;
 

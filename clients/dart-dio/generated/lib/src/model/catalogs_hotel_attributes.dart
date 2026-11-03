@@ -426,3 +426,4 @@ class _$CatalogsHotelAttributesSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+

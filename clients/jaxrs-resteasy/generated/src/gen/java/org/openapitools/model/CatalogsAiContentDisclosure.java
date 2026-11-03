@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="AI content disclosure for a single asset of a catalog item.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="AI content disclosure for a single asset of a catalog item.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsAiContentDisclosure   {
   
   private List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();
@@ -27,8 +27,7 @@ public class CatalogsAiContentDisclosure   {
   @ApiModelProperty(example = "[\"ai_modified\"]", required = true, value = "Disclosure labels that apply to this asset.")
   @JsonProperty("disclosure")
   @NotNull
- @Size(min=1)  @Valid
-  public List<CatalogsAiContentDisclosureLabel> getDisclosure() {
+ @Size(min=1)  public List<CatalogsAiContentDisclosureLabel> getDisclosure() {
     return disclosure;
   }
   public void setDisclosure(List<CatalogsAiContentDisclosureLabel> disclosure) {

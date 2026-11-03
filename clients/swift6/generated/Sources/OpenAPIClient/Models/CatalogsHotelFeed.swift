@@ -13,9 +13,9 @@ public struct CatalogsHotelFeed: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case hotel = "HOTEL"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. */
     public var catalogId: String?
     public var catalogType: CatalogType

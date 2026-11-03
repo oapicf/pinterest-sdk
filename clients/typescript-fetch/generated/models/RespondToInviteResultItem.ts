@@ -36,14 +36,10 @@ import {
 export interface RespondToInviteResultItem {
     /**
      * 
-     * @type {InviteExceptionResponse}
-     * @memberof RespondToInviteResultItem
      */
     exception?: InviteExceptionResponse | null;
     /**
      * An invite object for the invite/request that was successfully accepted/declined. Will only be provided if the an invite/request is successfully created.
-     * @type {BaseInviteDataResponse}
-     * @memberof RespondToInviteResultItem
      */
     invite?: BaseInviteDataResponse | null;
 }

@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationAgeBucket {
     /**
      * 
-     * @type {TargetingSpecOperationAgeBucketFieldEnum}
-     * @memberof TargetingSpecOperationAgeBucket
      */
     field: TargetingSpecOperationAgeBucketFieldEnum;
     /**
      * 
-     * @type {TargetingSpecOperationAgeBucketOperationEnum}
-     * @memberof TargetingSpecOperationAgeBucket
      */
     operation: TargetingSpecOperationAgeBucketOperationEnum;
     /**
      * 
-     * @type {Array<TargetingSpecAgeBucket>}
-     * @memberof TargetingSpecOperationAgeBucket
      */
     values: Array<TargetingSpecAgeBucket>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationAgeBucket {
  * @export
  */
 export const TargetingSpecOperationAgeBucketFieldEnum = {
-    AgeBucket: 'AGE_BUCKET'
+    AgeBucket: 'AGE_BUCKET',
 } as const;
 export type TargetingSpecOperationAgeBucketFieldEnum = typeof TargetingSpecOperationAgeBucketFieldEnum[keyof typeof TargetingSpecOperationAgeBucketFieldEnum];
 
@@ -60,7 +54,7 @@ export type TargetingSpecOperationAgeBucketFieldEnum = typeof TargetingSpecOpera
  * @export
  */
 export const TargetingSpecOperationAgeBucketOperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
 } as const;
 export type TargetingSpecOperationAgeBucketOperationEnum = typeof TargetingSpecOperationAgeBucketOperationEnum[keyof typeof TargetingSpecOperationAgeBucketOperationEnum];
 

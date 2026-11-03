@@ -206,7 +206,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsCreateCreativeAssetsItem.OperationEnum?>(CatalogsCreateCreativeAssetsItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsCreateCreativeAssetsItem.OperationEnum? operationValue = CatalogsCreateCreativeAssetsItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsCreateCreativeAssetsItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -215,22 +220,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributes.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreateCreativeAssetsItem.", nameof(attributes));
+                throw new JsonException("Property is required for class CatalogsCreateCreativeAssetsItem: attributes.");
 
             if (!creativeAssetsId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreateCreativeAssetsItem.", nameof(creativeAssetsId));
+                throw new JsonException("Property is required for class CatalogsCreateCreativeAssetsItem: creative_assets_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreateCreativeAssetsItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsCreateCreativeAssetsItem: operation.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class CatalogsCreateCreativeAssetsItem.");
+                throw new JsonException("Property is not nullable for class CatalogsCreateCreativeAssetsItem: attributes.");
 
             if (creativeAssetsId.IsSet && creativeAssetsId.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsId), "Property is not nullable for class CatalogsCreateCreativeAssetsItem.");
+                throw new JsonException("Property is not nullable for class CatalogsCreateCreativeAssetsItem: creative_assets_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsCreateCreativeAssetsItem.");
+                throw new JsonException("Property is not nullable for class CatalogsCreateCreativeAssetsItem: operation.");
 
             return new CatalogsCreateCreativeAssetsItem(attributes.Value!, creativeAssetsId.Value!, operation.Value!.Value!);
         }
@@ -241,7 +246,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreateCreativeAssetsItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -256,15 +260,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreateCreativeAssetsItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreateCreativeAssetsItem catalogsCreateCreativeAssetsItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsCreateCreativeAssetsItem.Attributes == null)
-                throw new ArgumentNullException(nameof(catalogsCreateCreativeAssetsItem.Attributes), "Property is required for class CatalogsCreateCreativeAssetsItem.");
-
-            if (catalogsCreateCreativeAssetsItem.CreativeAssetsId == null)
-                throw new ArgumentNullException(nameof(catalogsCreateCreativeAssetsItem.CreativeAssetsId), "Property is required for class CatalogsCreateCreativeAssetsItem.");
-
             writer.WritePropertyName("attributes");
             JsonSerializer.Serialize(writer, catalogsCreateCreativeAssetsItem.Attributes, jsonSerializerOptions);
             writer.WriteString("creative_assets_id", catalogsCreateCreativeAssetsItem.CreativeAssetsId);

@@ -32,27 +32,27 @@ data class EventQualityScore(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("ingestion_source")
+    @param:JsonProperty("ingestion_source", required = true)
     @get:JsonProperty("ingestion_source", required = true) val ingestionSource: IngestionSourceOptions,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("lookback_period")
+    @param:JsonProperty("lookback_period", required = true)
     @get:JsonProperty("lookback_period", required = true) val lookbackPeriod: LookbackPeriodOptions,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("overall_status")
+    @param:JsonProperty("overall_status", required = true)
     @get:JsonProperty("overall_status", required = true) val overallStatus: OverallStatusOptions,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("quality_components")
+    @param:JsonProperty("quality_components", required = true)
     @get:JsonProperty("quality_components", required = true) val qualityComponents: QualityComponents,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("source_platform")
+    @param:JsonProperty("source_platform", required = true)
     @get:JsonProperty("source_platform", required = true) val sourcePlatform: SourcePlatformOptions
 ) {
 

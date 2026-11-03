@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,12 +22,11 @@ import jakarta.annotation.Generated;
  * CatalogsProductGroupMultipleGenderCriteria
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupMultipleGenderCriteria {
 
   private Boolean negated;
 
-  @Valid
   private List<Gender> values = new ArrayList<>();
 
   public CatalogsProductGroupMultipleGenderCriteria() {
@@ -79,7 +77,7 @@ public class CatalogsProductGroupMultipleGenderCriteria {
    * Get values
    * @return values
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<Gender> getValues() {

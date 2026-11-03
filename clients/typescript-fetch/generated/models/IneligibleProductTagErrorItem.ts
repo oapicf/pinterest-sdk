@@ -29,14 +29,10 @@ import {
 export interface IneligibleProductTagErrorItem {
     /**
      * Reason why the pin is ineligible for tagging.
-     * @type {IneligibleProductTagReason}
-     * @memberof IneligibleProductTagErrorItem
      */
     errorMessage: IneligibleProductTagReason;
     /**
      * Pin ID that failed eligibility check.
-     * @type {string}
-     * @memberof IneligibleProductTagErrorItem
      */
     pinId: string;
 }

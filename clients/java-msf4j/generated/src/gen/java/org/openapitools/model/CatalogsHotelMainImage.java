@@ -14,7 +14,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * The main hotel image
  */
 @ApiModel(description = "The main hotel image")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelMainImage   {
   @JsonProperty("link")
   private String link;
@@ -47,7 +47,7 @@ public class CatalogsHotelMainImage   {
 
   public CatalogsHotelMainImage addTagItem(String tagItem) {
     if (this.tag == null) {
-      this.tag = ;
+      this.tag = new ArrayList<>();
     }
     this.tag.add(tagItem);
     return this;

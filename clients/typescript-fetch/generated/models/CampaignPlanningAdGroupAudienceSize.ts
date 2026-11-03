@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CampaignPlanningAdGroupAudienceSize {
     /**
      * Lower bound of the audience size estimate.
-     * @type {number}
-     * @memberof CampaignPlanningAdGroupAudienceSize
      */
     countLower?: number;
     /**
      * Upper bound of the audience size estimate.
-     * @type {number}
-     * @memberof CampaignPlanningAdGroupAudienceSize
      */
     countUpper?: number;
 }

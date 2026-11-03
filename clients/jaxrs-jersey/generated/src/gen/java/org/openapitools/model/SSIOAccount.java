@@ -39,7 +39,7 @@ import javax.validation.Valid;
   SSIOAccount.JSON_PROPERTY_ERROR,
   SSIOAccount.JSON_PROPERTY_PMP_NAMES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccount   {
   public static final String JSON_PROPERTY_BILLTO_INFOS = "billto_infos";
   @JsonProperty(JSON_PROPERTY_BILLTO_INFOS)
@@ -84,7 +84,7 @@ public class SSIOAccount   {
    **/
   @JsonProperty(value = "billto_infos")
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
-  @Valid 
+  
   public List<@Valid SSIOAccountItem> getBilltoInfos() {
     return billtoInfos;
   }
@@ -192,7 +192,7 @@ public class SSIOAccount   {
    **/
   @JsonProperty(value = "pmp_names")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid SSIOAccountPMPName> getPmpNames() {
     return pmpNames;
   }

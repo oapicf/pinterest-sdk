@@ -22,7 +22,7 @@ import CustomizableCTAType from './CustomizableCTAType';
 /**
  * The AdPreviewRequest model module.
  * @module model/AdPreviewRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdPreviewRequest {
     /**

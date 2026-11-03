@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Details about ineligible product tags in the request.")
 @JsonTypeName("IneligibleProductTagsErrorDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IneligibleProductTagsErrorDetails   {
-  private @Valid List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();
+  private List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();
 
   public IneligibleProductTagsErrorDetails() {
   }
@@ -47,7 +47,7 @@ public class IneligibleProductTagsErrorDetails   {
   
   @ApiModelProperty(required = true, value = "List of product tags that failed eligibility check.")
   @JsonProperty(required = true, value = "product_tags")
-  @NotNull @Valid public List<@Valid IneligibleProductTagErrorItem> getProductTags() {
+  @NotNull public List<@Valid IneligibleProductTagErrorItem> getProductTags() {
     return productTags;
   }
 

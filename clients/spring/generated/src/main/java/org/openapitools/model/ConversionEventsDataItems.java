@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -27,65 +26,49 @@ import jakarta.annotation.Generated;
  * ConversionEventsDataItems
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsDataItems {
 
   private String actionSource;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> appId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionEventAppInfo appInfo;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> appName = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> appVersion = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionEventsDataItemsCustomData customData;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> deviceBrand = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> deviceCarrier = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ConversionEventDeviceInfo deviceInfo;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> deviceModel = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> deviceType = JsonNullable.<String>undefined();
 
   private String eventId;
 
   private String eventName;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> eventSourceUrl = JsonNullable.<String>undefined();
 
   private Long eventTime;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> language = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean optOut;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> osVersion = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> partnerName = JsonNullable.<String>undefined();
 
   private ConversionEventsUserDataProperties userData;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean wifi;
 
   public ConversionEventsDataItems() {
@@ -134,7 +117,7 @@ public class ConversionEventsDataItems {
    * @return appId
    */
   
-  @Schema(name = "app_id", description = "The app store app ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_id", description = "The app store app ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_id")
   public JsonNullable<String> getAppId() {
     return appId;
@@ -175,7 +158,7 @@ public class ConversionEventsDataItems {
    * @return appName
    */
   
-  @Schema(name = "app_name", description = "Name of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_name", description = "Name of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_name")
   public JsonNullable<String> getAppName() {
     return appName;
@@ -195,7 +178,7 @@ public class ConversionEventsDataItems {
    * @return appVersion
    */
   
-  @Schema(name = "app_version", description = "Version of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_version", description = "Version of the app.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_version")
   public JsonNullable<String> getAppVersion() {
     return appVersion;
@@ -236,7 +219,7 @@ public class ConversionEventsDataItems {
    * @return deviceBrand
    */
   
-  @Schema(name = "device_brand", description = "Brand of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "device_brand", description = "Brand of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("device_brand")
   public JsonNullable<String> getDeviceBrand() {
     return deviceBrand;
@@ -256,7 +239,7 @@ public class ConversionEventsDataItems {
    * @return deviceCarrier
    */
   
-  @Schema(name = "device_carrier", description = "User device's mobile carrier.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "device_carrier", description = "User device's mobile carrier.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("device_carrier")
   public JsonNullable<String> getDeviceCarrier() {
     return deviceCarrier;
@@ -297,7 +280,7 @@ public class ConversionEventsDataItems {
    * @return deviceModel
    */
   
-  @Schema(name = "device_model", description = "Model of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "device_model", description = "Model of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("device_model")
   public JsonNullable<String> getDeviceModel() {
     return deviceModel;
@@ -317,7 +300,7 @@ public class ConversionEventsDataItems {
    * @return deviceType
    */
   
-  @Schema(name = "device_type", description = "Type of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "device_type", description = "Type of the user device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("device_type")
   public JsonNullable<String> getDeviceType() {
     return deviceType;
@@ -379,7 +362,7 @@ public class ConversionEventsDataItems {
    * @return eventSourceUrl
    */
   
-  @Schema(name = "event_source_url", description = "URL of the web conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "event_source_url", description = "URL of the web conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("event_source_url")
   public JsonNullable<String> getEventSourceUrl() {
     return eventSourceUrl;
@@ -420,7 +403,7 @@ public class ConversionEventsDataItems {
    * @return language
    */
   
-  @Schema(name = "language", description = "Two-character ISO-639-1 language code indicating the user's language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "language", description = "Two-character ISO-639-1 language code indicating the user's language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("language")
   public JsonNullable<String> getLanguage() {
     return language;
@@ -461,7 +444,7 @@ public class ConversionEventsDataItems {
    * @return osVersion
    */
   
-  @Schema(name = "os_version", description = "Version of the device operating system.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "os_version", description = "Version of the device operating system.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("os_version")
   public JsonNullable<String> getOsVersion() {
     return osVersion;
@@ -481,7 +464,7 @@ public class ConversionEventsDataItems {
    * @return partnerName
    */
   
-  @Schema(name = "partner_name", description = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g 'ss-shopify'", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_name", description = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g 'ss-shopify'", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_name")
   public JsonNullable<String> getPartnerName() {
     return partnerName;

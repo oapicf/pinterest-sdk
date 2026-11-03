@@ -135,94 +135,271 @@ import {
 } from '../models/UpdatePartnerAssetsResultsResponseArray';
 
 export interface AssetGroupCreateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     assetGroupInputCreate: AssetGroupInputCreate;
 }
 
 export interface AssetGroupDeleteRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     assetGroupDeletionDelete: AssetGroupDeletionDelete;
 }
 
 export interface AssetGroupUpdateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     assetGroupModificationReadOrUpdate: Omit<AssetGroupModificationReadOrUpdate, 'exceptions'|'updatedAssetGroups'>;
 }
 
 export interface BusinessAssetMembersGetRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Unique identifier of a business asset.
+     */
     assetId: string;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * Fetches system users if True. Fetches regular user employees if False.
+     */
     fetchSystemUsers?: boolean;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BusinessAssetPartnersGetRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * Unique identifier of a business asset.
+     */
     assetId: string;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BusinessAssetsGetRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
+     */
     permissions?: Array<PermissionsWithOwner>;
+    /**
+     * A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+     */
     childAssetId?: string;
+    /**
+     * An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+     */
     assetGroupId?: string;
+    /**
+     * A resource type to filter the assets by. Only assets of the specified type will be returned.
+     */
     assetType?: BusinessAssetsGetAssetTypeEnum;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BusinessMemberAssetsGetRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * The member id to fetch assets for.
+     */
     memberId: string;
+    /**
+     * A resource type to filter the assets by. Only assets of the specified type will be returned.
+     */
     assetType?: BusinessMemberAssetsGetAssetTypeEnum;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * The field to sort member assets by
+     */
     sortBy?: AssetSortBy;
+    /**
+     * Sort assets in ascending order
+     */
     sortAscending?: boolean;
+    /**
+     * The field to search member assets by
+     */
     searchBy?: AssetSearchBy;
+    /**
+     * The value to search for
+     */
     searchValue?: string;
+    /**
+     * The type of asset permission to filter by
+     */
     assetPermissionType?: AssetPermissionType;
+    /**
+     * A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
+     */
     adAccountStatuses?: Array<NonDraftEntityStatus>;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface BusinessMembersAssetAccessDeleteRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     businessMembersAssetAccessDeleteBody: BusinessMembersAssetAccessDeleteBody;
 }
 
 export interface BusinessMembersAssetAccessUpdateRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     updateMemberAssetAccessBody: UpdateMemberAssetAccessBody;
 }
 
 export interface BusinessPartnerAssetAccessGetRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * The partner id to be bound to the Business
+     */
     partnerId: string;
+    /**
+     * Specifies whether to fetch internal or external (shared) partners.
+     * 
+     * If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.
+     * 
+     * If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+     */
     partnerType?: BusinessPartnerAssetAccessGetPartnerTypeEnum;
+    /**
+     * A resource type to filter the assets by. Only assets of the specified type will be returned.
+     */
     assetType?: BusinessPartnerAssetAccessGetAssetTypeEnum;
+    /**
+     * An index to start fetching the results from. Only the results starting from this index will be returned.
+     */
     startIndex?: number;
+    /**
+     * The field to sort member assets by
+     */
     sortBy?: AssetSortBy;
+    /**
+     * Sort assets in ascending order
+     */
     sortAscending?: boolean;
+    /**
+     * The field to search member assets by
+     */
     searchBy?: AssetSearchBy;
+    /**
+     * The value to search for
+     */
     searchValue?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface DeletePartnerAssetAccessHandlerImplRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody;
 }
 
 export interface UpdatePartnerAssetAccessHandlerImplRequest {
+    /**
+     * Unique identifier of the requesting business.
+     */
     businessId: string;
+    /**
+     * 
+     */
     updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody;
 }
 
@@ -1099,7 +1276,7 @@ export const BusinessAssetsGetAssetTypeEnum = {
     Profile: 'PROFILE',
     AssetGroup: 'ASSET_GROUP',
     Catalog: 'CATALOG',
-    Consumer: 'CONSUMER'
+    Consumer: 'CONSUMER',
 } as const;
 export type BusinessAssetsGetAssetTypeEnum = typeof BusinessAssetsGetAssetTypeEnum[keyof typeof BusinessAssetsGetAssetTypeEnum];
 /**
@@ -1111,7 +1288,7 @@ export const BusinessMemberAssetsGetAssetTypeEnum = {
     AssetGroup: 'ASSET_GROUP',
     Catalog: 'CATALOG',
     Consumer: 'CONSUMER',
-    ConversionTag: 'CONVERSION_TAG'
+    ConversionTag: 'CONVERSION_TAG',
 } as const;
 export type BusinessMemberAssetsGetAssetTypeEnum = typeof BusinessMemberAssetsGetAssetTypeEnum[keyof typeof BusinessMemberAssetsGetAssetTypeEnum];
 /**
@@ -1119,7 +1296,7 @@ export type BusinessMemberAssetsGetAssetTypeEnum = typeof BusinessMemberAssetsGe
  */
 export const BusinessPartnerAssetAccessGetPartnerTypeEnum = {
     Internal: 'INTERNAL',
-    External: 'EXTERNAL'
+    External: 'EXTERNAL',
 } as const;
 export type BusinessPartnerAssetAccessGetPartnerTypeEnum = typeof BusinessPartnerAssetAccessGetPartnerTypeEnum[keyof typeof BusinessPartnerAssetAccessGetPartnerTypeEnum];
 /**
@@ -1133,6 +1310,6 @@ export const BusinessPartnerAssetAccessGetAssetTypeEnum = {
     ConversionTag: 'CONVERSION_TAG',
     Catalog: 'CATALOG',
     Consumer: 'CONSUMER',
-    ConversionSegment: 'CONVERSION_SEGMENT'
+    ConversionSegment: 'CONVERSION_SEGMENT',
 } as const;
 export type BusinessPartnerAssetAccessGetAssetTypeEnum = typeof BusinessPartnerAssetAccessGetAssetTypeEnum[keyof typeof BusinessPartnerAssetAccessGetAssetTypeEnum];

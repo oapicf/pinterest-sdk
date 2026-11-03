@@ -17,7 +17,7 @@ import UpdatePartnerAssetAccessItem from './UpdatePartnerAssetAccessItem';
 /**
  * The UpdatePartnerAssetAccessBody model module.
  * @module model/UpdatePartnerAssetAccessBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdatePartnerAssetAccessBody {
     /**

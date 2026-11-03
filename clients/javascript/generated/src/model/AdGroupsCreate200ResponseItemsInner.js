@@ -18,7 +18,7 @@ import PinterestLibBatchItemException from './PinterestLibBatchItemException';
 /**
  * The AdGroupsCreate200ResponseItemsInner model module.
  * @module model/AdGroupsCreate200ResponseItemsInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupsCreate200ResponseItemsInner {
     /**

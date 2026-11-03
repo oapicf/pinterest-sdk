@@ -29,8 +29,6 @@ import {
 export interface AdAccountCountriesGet200Response {
     /**
      * 
-     * @type {Array<AdAccountsCountry>}
-     * @memberof AdAccountCountriesGet200Response
      */
     items: Array<AdAccountsCountry>;
 }

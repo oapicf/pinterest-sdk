@@ -20,12 +20,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CartingProduct")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CartingProduct   {
   private String cartingProductId;
   private Boolean displayPreferredRetailersOnly;
   private Boolean displayProductPrice;
-  private @Valid List<@Valid CartingRetailer> preferredRetailers = new ArrayList<>();
+  private List<@Valid CartingRetailer> preferredRetailers = new ArrayList<>();
   private Boolean randomizePreferredRetailers;
 
   public CartingProduct() {
@@ -109,7 +109,7 @@ public class CartingProduct   {
   
   @ApiModelProperty(value = "A sorted array of preferred retailers for the carting product")
   @JsonProperty("preferred_retailers")
-  @Valid public List<@Valid CartingRetailer> getPreferredRetailers() {
+  public List<@Valid CartingRetailer> getPreferredRetailers() {
     return preferredRetailers;
   }
 

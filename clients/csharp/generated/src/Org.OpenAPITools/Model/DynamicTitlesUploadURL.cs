@@ -172,19 +172,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!requestId.IsSet)
-                throw new ArgumentException("Property is required for class DynamicTitlesUploadURL.", nameof(requestId));
+                throw new JsonException("Property is required for class DynamicTitlesUploadURL: request_id.");
 
             if (!uploadUrl.IsSet)
-                throw new ArgumentException("Property is required for class DynamicTitlesUploadURL.", nameof(uploadUrl));
+                throw new JsonException("Property is required for class DynamicTitlesUploadURL: upload_url.");
 
             if (requestId.IsSet && requestId.Value == null)
-                throw new ArgumentNullException(nameof(requestId), "Property is not nullable for class DynamicTitlesUploadURL.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesUploadURL: request_id.");
 
             if (uploadUrl.IsSet && uploadUrl.Value == null)
-                throw new ArgumentNullException(nameof(uploadUrl), "Property is not nullable for class DynamicTitlesUploadURL.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesUploadURL: upload_url.");
 
             if (existingFilename.IsSet && existingFilename.Value == null)
-                throw new ArgumentNullException(nameof(existingFilename), "Property is not nullable for class DynamicTitlesUploadURL.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesUploadURL: existing_filename.");
 
             return new DynamicTitlesUploadURL(requestId.Value!, uploadUrl.Value!, existingFilename);
         }
@@ -195,7 +195,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesUploadURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesUploadURL dynamicTitlesUploadURL, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -210,17 +209,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesUploadURL"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesUploadURL dynamicTitlesUploadURL, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (dynamicTitlesUploadURL.RequestId == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesUploadURL.RequestId), "Property is required for class DynamicTitlesUploadURL.");
-
-            if (dynamicTitlesUploadURL.UploadUrl == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesUploadURL.UploadUrl), "Property is required for class DynamicTitlesUploadURL.");
-
             if (dynamicTitlesUploadURL.ExistingFilenameOption.IsSet && dynamicTitlesUploadURL.ExistingFilename == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesUploadURL.ExistingFilename), "Property is required for class DynamicTitlesUploadURL.");
+                throw new JsonException("Cannot write null property DynamicTitlesUploadURL.ExistingFilename to non-nullable JSON property 'existing_filename'.");
 
             writer.WriteString("request_id", dynamicTitlesUploadURL.RequestId);
 

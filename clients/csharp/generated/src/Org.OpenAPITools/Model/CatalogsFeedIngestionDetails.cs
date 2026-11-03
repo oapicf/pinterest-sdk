@@ -159,22 +159,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!errors.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestionDetails.", nameof(errors));
+                throw new JsonException("Property is required for class CatalogsFeedIngestionDetails: errors.");
 
             if (!info.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestionDetails.", nameof(info));
+                throw new JsonException("Property is required for class CatalogsFeedIngestionDetails: info.");
 
             if (!warnings.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedIngestionDetails.", nameof(warnings));
+                throw new JsonException("Property is required for class CatalogsFeedIngestionDetails: warnings.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class CatalogsFeedIngestionDetails.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionDetails: errors.");
 
             if (info.IsSet && info.Value == null)
-                throw new ArgumentNullException(nameof(info), "Property is not nullable for class CatalogsFeedIngestionDetails.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionDetails: info.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class CatalogsFeedIngestionDetails.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedIngestionDetails: warnings.");
 
             return new CatalogsFeedIngestionDetails(errors.Value!, info.Value!, warnings.Value!);
         }
@@ -185,7 +185,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedIngestionDetails catalogsFeedIngestionDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -200,18 +199,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedIngestionDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedIngestionDetails catalogsFeedIngestionDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedIngestionDetails.Errors == null)
-                throw new ArgumentNullException(nameof(catalogsFeedIngestionDetails.Errors), "Property is required for class CatalogsFeedIngestionDetails.");
-
-            if (catalogsFeedIngestionDetails.Info == null)
-                throw new ArgumentNullException(nameof(catalogsFeedIngestionDetails.Info), "Property is required for class CatalogsFeedIngestionDetails.");
-
-            if (catalogsFeedIngestionDetails.Warnings == null)
-                throw new ArgumentNullException(nameof(catalogsFeedIngestionDetails.Warnings), "Property is required for class CatalogsFeedIngestionDetails.");
-
             writer.WritePropertyName("errors");
             JsonSerializer.Serialize(writer, catalogsFeedIngestionDetails.Errors, jsonSerializerOptions);
             writer.WritePropertyName("info");

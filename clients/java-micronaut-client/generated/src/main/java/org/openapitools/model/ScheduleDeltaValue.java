@@ -42,7 +42,7 @@ import javax.annotation.Generated;
   ScheduleDeltaValue.JSON_PROPERTY_PLACEMENT_MULTIPLIERS
 })
 @JsonTypeName("Schedule_delta_value")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ScheduleDeltaValue {
     public static final String JSON_PROPERTY_AGE_BUCKET_MULTIPLIERS = "age_bucket_multipliers";

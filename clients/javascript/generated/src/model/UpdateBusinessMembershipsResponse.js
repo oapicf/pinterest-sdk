@@ -17,7 +17,7 @@ import BusinessMembershipMember from './BusinessMembershipMember';
 /**
  * The UpdateBusinessMembershipsResponse model module.
  * @module model/UpdateBusinessMembershipsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class UpdateBusinessMembershipsResponse {
     /**

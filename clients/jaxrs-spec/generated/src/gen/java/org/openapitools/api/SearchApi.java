@@ -21,7 +21,7 @@ import javax.validation.Valid;
 */
 @Path("/search")
 @Api(description = "the search API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SearchApi {
 
     @GET
@@ -41,7 +41,12 @@ public class SearchApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response searchPartnerPins(@QueryParam("term") @NotNull  @ApiParam("Search term to look up pins.")  String term,@QueryParam("country_code") @NotNull  @ApiParam("Two letter country code (ISO 3166-1 alpha-2)")  String countryCode,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("locale")  @ApiParam("Search locale.")  String locale,@QueryParam("limit") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Max search result size")  Integer limit) {
+    public Response searchPartnerPins(@QueryParam("term") @NotNull  @ApiParam("Search term to look up pins.")  String term
+,@QueryParam("country_code") @NotNull  @ApiParam("Two letter country code (ISO 3166-1 alpha-2)")  String countryCode
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("locale")  @ApiParam("Search locale.")  String locale
+,@QueryParam("limit") @Min(1) @Max(50) @DefaultValue("10")  @ApiParam("Max search result size")  Integer limit
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -65,7 +70,11 @@ public class SearchApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response searchUserBoardsGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String query,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response searchUserBoardsGet(@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("query")  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String query
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -88,7 +97,10 @@ public class SearchApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response searchUserPinsList(@QueryParam("query") @NotNull  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String query,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark) {
+    public Response searchUserPinsList(@QueryParam("query") @NotNull  @ApiParam("Search query. Can contain pin description keywords or comma-separated pin IDs.")  String query
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+) {
         return Response.ok().entity("magic!").build();
     }
 }

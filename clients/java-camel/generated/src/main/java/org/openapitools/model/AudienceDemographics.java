@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,22 +23,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AudienceDemographics", description = "Audience demographics")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceDemographics {
 
-  @Valid
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
-  @Valid
   private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
 
-  @Valid
   private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
-  @Valid
   private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
-  @Valid
   private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
   public AudienceDemographics ages(List<@Valid AudienceDemographicValue> ages) {
@@ -59,7 +53,7 @@ public class AudienceDemographics {
    * Ages distribution.
    * @return ages
    */
-  @Valid 
+  
   @Schema(name = "ages", description = "Ages distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ages")
   public List<@Valid AudienceDemographicValue> getAges() {
@@ -87,7 +81,7 @@ public class AudienceDemographics {
    * Country area distribution.
    * @return countries
    */
-  @Valid 
+  
   @Schema(name = "countries", description = "Country area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("countries")
   public List<@Valid AudienceDemographicValue> getCountries() {
@@ -115,7 +109,7 @@ public class AudienceDemographics {
    * Device usage distribution.
    * @return devices
    */
-  @Valid 
+  
   @Schema(name = "devices", description = "Device usage distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("devices")
   public List<@Valid AudienceDemographicValue> getDevices() {
@@ -143,7 +137,7 @@ public class AudienceDemographics {
    * Gender distribution.
    * @return genders
    */
-  @Valid 
+  
   @Schema(name = "genders", description = "Gender distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("genders")
   public List<@Valid AudienceDemographicValue> getGenders() {
@@ -171,7 +165,7 @@ public class AudienceDemographics {
    * Geographic metro area distribution.
    * @return metros
    */
-  @Valid 
+  
   @Schema(name = "metros", description = "Geographic metro area distribution.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metros")
   public List<@Valid AudienceDemographicValue> getMetros() {

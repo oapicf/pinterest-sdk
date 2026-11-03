@@ -29,14 +29,10 @@ import {
 export interface ItemsIssuesList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof ItemsIssuesList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<CatalogsItemValidationIssues>}
-     * @memberof ItemsIssuesList200Response
      */
     items: Array<CatalogsItemValidationIssues>;
 }

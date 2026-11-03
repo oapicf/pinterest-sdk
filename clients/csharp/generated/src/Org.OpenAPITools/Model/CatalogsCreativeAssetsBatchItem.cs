@@ -275,7 +275,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsCreativeAssetsBatchItem.OperationEnum?>(CatalogsCreativeAssetsBatchItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsCreativeAssetsBatchItem.OperationEnum? operationValue = CatalogsCreativeAssetsBatchItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsCreativeAssetsBatchItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -284,10 +289,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsBatchItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsBatchItem: operation.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsCreativeAssetsBatchItem.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsBatchItem: operation.");
 
             if (catalogsCreateCreativeAssetsItem != null)
                 return new CatalogsCreativeAssetsBatchItem(catalogsCreateCreativeAssetsItem);
@@ -310,7 +315,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -349,7 +353,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsBatchItem catalogsCreativeAssetsBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
 

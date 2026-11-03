@@ -10,8 +10,8 @@ import Foundation
 /** Resource create operation model. */
 public struct PinsSaveRequestCreate: Sendable, Codable, Hashable {
 
-    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of the board to which the pin will be saved. */
     public var boardId: String?
     /** Unique identifier of the board section to which the pin will be saved. */

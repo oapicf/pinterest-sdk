@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ProductTagItem {
     /**
      * Pin ID of the product pin to tag onto the hero pin.
-     * @type {string}
-     * @memberof ProductTagItem
      */
     pinId: string;
 }

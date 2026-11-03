@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemsDeleteBatchRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsDeleteBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs items
-     * @type {Array<ItemDeleteBatchRecord>}
-     * @memberof CatalogsItemsDeleteBatchRequest
      */
     items: Array<ItemDeleteBatchRecord>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsDeleteBatchRequestLanguageEnum}
-     * @memberof CatalogsItemsDeleteBatchRequest
      */
     language: CatalogsItemsDeleteBatchRequestLanguageEnum;
     /**
      * 
-     * @type {CatalogsItemsDeleteBatchRequestOperationEnum}
-     * @memberof CatalogsItemsDeleteBatchRequest
      */
     operation: CatalogsItemsDeleteBatchRequestOperationEnum;
 }
@@ -171,7 +163,7 @@ export const CatalogsItemsDeleteBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsDeleteBatchRequestLanguageEnum = typeof CatalogsItemsDeleteBatchRequestLanguageEnum[keyof typeof CatalogsItemsDeleteBatchRequestLanguageEnum];
 
@@ -179,7 +171,7 @@ export type CatalogsItemsDeleteBatchRequestLanguageEnum = typeof CatalogsItemsDe
  * @export
  */
 export const CatalogsItemsDeleteBatchRequestOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type CatalogsItemsDeleteBatchRequestOperationEnum = typeof CatalogsItemsDeleteBatchRequestOperationEnum[keyof typeof CatalogsItemsDeleteBatchRequestOperationEnum];
 

@@ -10,7 +10,7 @@ import Foundation
 /** Catalog entity */
 public struct Catalog: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var catalogType: CatalogsType
     public var createdAt: Date
     /** ID of the catalog entity. */

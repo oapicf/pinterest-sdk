@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Campaign placement group type
-* Values: ALL,SEARCH,BROWSE,OTHER
-*/
+ * Campaign placement group type
+ * Values: ALL,SEARCH,BROWSE,OTHER
+ */
 enum class PlacementGroupType(@get:JsonValue val value: kotlin.String) {
 
     ALL("ALL"),
@@ -30,9 +30,8 @@ enum class PlacementGroupType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PlacementGroupType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementGroupType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementGroupType'")
         }
     }
 }
-

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdAccountOwner {
     /**
      * The owning account's user ID.
-     * @type {string}
-     * @memberof AdAccountOwner
      */
     id?: string;
     /**
      * Public username for the user account
-     * @type {string}
-     * @memberof AdAccountOwner
      */
     username?: string;
 }

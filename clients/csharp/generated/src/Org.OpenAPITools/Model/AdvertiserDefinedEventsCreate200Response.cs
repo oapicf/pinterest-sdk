@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventsCreate200Response.", nameof(items));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventsCreate200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdvertiserDefinedEventsCreate200Response.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventsCreate200Response: items.");
 
             return new AdvertiserDefinedEventsCreate200Response(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventsCreate200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvertiserDefinedEventsCreate200Response advertiserDefinedEventsCreate200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventsCreate200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvertiserDefinedEventsCreate200Response advertiserDefinedEventsCreate200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advertiserDefinedEventsCreate200Response.Items == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventsCreate200Response.Items), "Property is required for class AdvertiserDefinedEventsCreate200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, advertiserDefinedEventsCreate200Response.Items, jsonSerializerOptions);
         }

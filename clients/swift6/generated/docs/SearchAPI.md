@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **searchPartnerPins**
 ```swift
-    open class func searchPartnerPins(term: String, countryCode: String, bookmark: String? = nil, locale: String? = nil, limit: Int? = nil, completion: @escaping (_ data: SearchPartnerPins200Response?, _ error: Error?) -> Void)
+    open class func searchPartnerPins(term: String, countryCode: String, bookmark: String? = nil, locale: String? = nil, limit: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SearchPartnerPins200Response
 ```
 
 Search pins by a given search term
@@ -30,15 +30,11 @@ let locale = "locale_example" // String | Search locale. (optional)
 let limit = 987 // Int | Max search result size (optional) (default to 10)
 
 // Search pins by a given search term
-SearchAPI.searchPartnerPins(term: term, countryCode: countryCode, bookmark: bookmark, locale: locale, limit: limit) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await SearchAPI.searchPartnerPins(term: term, countryCode: countryCode, bookmark: bookmark, locale: locale, limit: limit)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -69,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **searchUserBoardsGet**
 ```swift
-    open class func searchUserBoardsGet(adAccountId: String? = nil, query: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: BoardsList200Response?, _ error: Error?) -> Void)
+    open class func searchUserBoardsGet(adAccountId: String? = nil, query: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> BoardsList200Response
 ```
 
 Search user's boards
@@ -87,15 +83,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Search user's boards
-SearchAPI.searchUserBoardsGet(adAccountId: adAccountId, query: query, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await SearchAPI.searchUserBoardsGet(adAccountId: adAccountId, query: query, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -125,7 +117,7 @@ Name | Type | Description  | Notes
 
 # **searchUserPinsList**
 ```swift
-    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, completion: @escaping (_ data: PinsList200Response?, _ error: Error?) -> Void)
+    open class func searchUserPinsList(query: String, adAccountId: String? = nil, bookmark: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> PinsList200Response
 ```
 
 Search user's Pins
@@ -142,15 +134,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let bookmark = "bookmark_example" // String | Cursor used to fetch the next page of items (optional)
 
 // Search user's Pins
-SearchAPI.searchUserPinsList(query: query, adAccountId: adAccountId, bookmark: bookmark) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await SearchAPI.searchUserPinsList(query: query, adAccountId: adAccountId, bookmark: bookmark)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

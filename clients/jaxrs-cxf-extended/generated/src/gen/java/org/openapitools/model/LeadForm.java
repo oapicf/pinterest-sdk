@@ -65,7 +65,6 @@ public class LeadForm  {
   * List of additional policy links to be displayed on the lead form.
   */
   @ApiModelProperty(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", value = "List of additional policy links to be displayed on the lead form.")
-  @Valid
   private List<@Valid LeadFormPolicyLink> policyLinks = new ArrayList<>();
 
  /**
@@ -78,7 +77,6 @@ public class LeadForm  {
   * List of questions to be displayed on the lead form.
   */
   @ApiModelProperty(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", required = true, value = "List of questions to be displayed on the lead form.")
-  @Valid
   private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
 
   @ApiModelProperty(value = "")

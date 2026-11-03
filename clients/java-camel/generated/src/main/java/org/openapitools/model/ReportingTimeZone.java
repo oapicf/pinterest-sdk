@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Specify the timezone to be applied for the reporting.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum ReportingTimeZone {
   
   PINTEREST_TIME_ZONE("PINTEREST_TIME_ZONE"),

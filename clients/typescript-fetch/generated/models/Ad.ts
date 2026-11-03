@@ -106,236 +106,158 @@ import {
 export interface Ad {
     /**
      * The ID of the advertiser that this ad belongs to.
-     * @type {string}
-     * @memberof Ad
      */
     readonly adAccountId: string;
     /**
      * ID of the ad group that contains the ad.
-     * @type {string}
-     * @memberof Ad
      */
     adGroupId: string;
     /**
      * Deep link URL for Android devices.
-     * @type {string}
-     * @memberof Ad
      */
     androidDeepLink?: string | null;
     /**
      * ID of the ad campaign that contains this ad.
-     * @type {string}
-     * @memberof Ad
      */
     readonly campaignId: string;
     /**
      * Comma-separated deep links for the carousel pin on Android.
-     * @type {Array<string>}
-     * @memberof Ad
      */
     carouselAndroidDeepLinks?: Array<string> | null;
     /**
      * Comma-separated destination URLs for the carousel pin to promote.
-     * @type {Array<string>}
-     * @memberof Ad
      */
     carouselDestinationUrls?: Array<string> | null;
     /**
      * Comma-separated deep links for the carousel pin on iOS.
-     * @type {Array<string>}
-     * @memberof Ad
      */
     carouselIosDeepLinks?: Array<string> | null;
     /**
      * The vendor platform type of the carting/WTB ad.
-     * @type {number}
-     * @memberof Ad
      */
     readonly cartingPlatformType?: number;
     /**
      * Array of carting/WTB products for the ad.
-     * @type {Array<CartingProduct>}
-     * @memberof Ad
      */
     readonly cartingProducts?: Array<CartingProduct>;
     /**
      * Tracking url for the ad clicks.
-     * @type {string}
-     * @memberof Ad
      */
     clickTrackingUrl?: string | null;
     /**
      * Destination URL template for all items within a collections drawer.
-     * @type {string}
-     * @memberof Ad
      */
     collectionItemsDestinationUrlTemplate?: string | null;
     /**
      * 
-     * @type {AdCollectionsHeaderType}
-     * @memberof Ad
      */
     collectionsHeaderType?: AdCollectionsHeaderType | null;
     /**
      * Pin creation time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof Ad
      */
     readonly createdTime?: number;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof Ad
      */
     creativeType: CreativeType;
     /**
      * 
-     * @type {CustomizableCTAType}
-     * @memberof Ad
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Destination URL.
-     * @type {string}
-     * @memberof Ad
      */
     destinationUrl?: string | null;
     /**
      * 
-     * @type {DisclosureType}
-     * @memberof Ad
      */
     disclosureType?: DisclosureType | null;
     /**
      * URL for a page that provides disclosures about a pharmaceutical product, such as potential side effects. Make sure the URL takes the user directly to the disclosure content and the referenced site is secure.
-     * @type {string}
-     * @memberof Ad
      */
     disclosureUrl?: string | null;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof Ad
      */
     gridClickType?: GridClickType | null;
     /**
      * The ID of this ad.
-     * @type {string}
-     * @memberof Ad
      */
     id: string;
     /**
      * Deep link URL for iOS devices.
-     * @type {string}
-     * @memberof Ad
      */
     iosDeepLink?: string | null;
     /**
      * Is the ad a carting/WTB ad?
-     * @type {boolean}
-     * @memberof Ad
      */
     isCarting?: boolean;
     /**
      * Whether the advertiser has accepted the terms and conditions for collage ad.
-     * @type {boolean}
-     * @memberof Ad
      */
     isCollageAcceptedTerms?: boolean;
     /**
      * Whether the collage ad has a single destination url override.
-     * @type {boolean}
-     * @memberof Ad
      */
     isCollageSingleDestination?: boolean;
     /**
      * Is original pin deleted?
-     * @type {boolean}
-     * @memberof Ad
      */
     isPinDeleted?: boolean;
     /**
      * Is pin repinnable?
-     * @type {boolean}
-     * @memberof Ad
      */
     isRemovable?: boolean;
     /**
      * Lead form ID for lead ad generation.
-     * @type {string}
-     * @memberof Ad
      */
     leadFormId?: string | null;
     /**
      * Name of the ad - 255 chars max.
-     * @type {string}
-     * @memberof Ad
      */
     name?: string | null;
     /**
      * Pin ID. This field may only be updated for draft ads.
-     * @type {string}
-     * @memberof Ad
      */
     pinId: string;
     /**
      * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-     * @type {QuizPinData}
-     * @memberof Ad
      */
     quizPinData?: QuizPinData | null;
     /**
      * Enum reason why the pin was rejected. Returned if `review_status` is "REJECTED".
-     * @type {Array<AdDisapprovalReasons>}
-     * @memberof Ad
      */
     readonly rejectedReasons: Array<AdDisapprovalReasons>;
     /**
      * Text reason why the pin was rejected. Returned if `review_status` is "REJECTED".
-     * @type {Array<string>}
-     * @memberof Ad
      */
     readonly rejectionLabels: Array<string>;
     /**
      * Ad review status
-     * @type {AdReviewStatus}
-     * @memberof Ad
      */
     readonly reviewStatus: AdReviewStatus;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof Ad
      */
     status?: EntityStatus;
     /**
      * Ad summary status
-     * @type {PinPromotionSummaryStatus}
-     * @memberof Ad
      */
     readonly summaryStatus: PinPromotionSummaryStatus;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof Ad
      */
     trackingUrls?: TrackingUrls | null;
     /**
      * Always "ad".
-     * @type {string}
-     * @memberof Ad
      */
     readonly type: string;
     /**
      * Last update time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof Ad
      */
     readonly updatedTime?: number;
     /**
      * Tracking URL for ad impressions.
-     * @type {string}
-     * @memberof Ad
      */
     viewTrackingUrl?: string | null;
 }

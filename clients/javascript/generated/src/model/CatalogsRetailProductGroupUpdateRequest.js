@@ -19,7 +19,7 @@ import Country from './Country';
 /**
  * The CatalogsRetailProductGroupUpdateRequest model module.
  * @module model/CatalogsRetailProductGroupUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailProductGroupUpdateRequest {
     /**

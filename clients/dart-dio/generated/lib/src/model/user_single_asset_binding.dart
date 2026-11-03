@@ -129,3 +129,4 @@ class _$UserSingleAssetBindingSerializer implements PrimitiveSerializer<UserSing
   }
 }
 
+

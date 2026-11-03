@@ -234,7 +234,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsRetailReportAllItemsFilter.ReportTypeEnum?>(CatalogsRetailReportAllItemsFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsRetailReportAllItemsFilter.ReportTypeEnum? reportTypeValue = CatalogsRetailReportAllItemsFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsRetailReportAllItemsFilter.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -249,16 +254,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!reportType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailReportAllItemsFilter.", nameof(reportType));
+                throw new JsonException("Property is required for class CatalogsRetailReportAllItemsFilter: report_type.");
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsRetailReportAllItemsFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailReportAllItemsFilter: report_type.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsRetailReportAllItemsFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailReportAllItemsFilter: catalog_id.");
 
             if (productGroupId.IsSet && productGroupId.Value == null)
-                throw new ArgumentNullException(nameof(productGroupId), "Property is not nullable for class CatalogsRetailReportAllItemsFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailReportAllItemsFilter: product_group_id.");
 
             return new CatalogsRetailReportAllItemsFilter(reportType.Value!.Value!, catalogId, productGroupId);
         }
@@ -269,7 +274,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailReportAllItemsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailReportAllItemsFilter catalogsRetailReportAllItemsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -284,14 +288,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailReportAllItemsFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailReportAllItemsFilter catalogsRetailReportAllItemsFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsRetailReportAllItemsFilter.CatalogIdOption.IsSet && catalogsRetailReportAllItemsFilter.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailReportAllItemsFilter.CatalogId), "Property is required for class CatalogsRetailReportAllItemsFilter.");
+                throw new JsonException("Cannot write null property CatalogsRetailReportAllItemsFilter.CatalogId to non-nullable JSON property 'catalog_id'.");
 
             if (catalogsRetailReportAllItemsFilter.ProductGroupIdOption.IsSet && catalogsRetailReportAllItemsFilter.ProductGroupId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailReportAllItemsFilter.ProductGroupId), "Property is required for class CatalogsRetailReportAllItemsFilter.");
+                throw new JsonException("Cannot write null property CatalogsRetailReportAllItemsFilter.ProductGroupId to non-nullable JSON property 'product_group_id'.");
 
             var reportTypeRawValue = CatalogsRetailReportAllItemsFilter.ReportTypeEnumToJsonValue(catalogsRetailReportAllItemsFilter.ReportType);
             writer.WriteString("report_type", reportTypeRawValue);

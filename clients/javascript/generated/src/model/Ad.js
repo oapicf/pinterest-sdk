@@ -28,7 +28,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The Ad model module.
  * @module model/Ad
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Ad {
     /**

@@ -27,35 +27,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BulkUpsertRequestUpdate  {
   
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid KeywordUpdateGenerated> keywords = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid LabelBulkUpdateRequest> labels = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid ScheduleUpdateRequest> schedules = new ArrayList<>();
  /**
   * Get adGroups
@@ -158,21 +150,21 @@ public class BulkUpsertRequestUpdate  {
   * @return catalogProductGroups
   */
   @JsonProperty("catalog_product_groups")
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
   /**
    * Sets the <code>catalogProductGroups</code> property.
    */
- public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+ public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
   /**
    * Sets the <code>catalogProductGroups</code> property.
    */
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }

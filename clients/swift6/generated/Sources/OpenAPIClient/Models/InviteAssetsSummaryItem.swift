@@ -9,7 +9,7 @@ import Foundation
 
 public struct InviteAssetsSummaryItem: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of the asset. */
     public var id: String?
     /** Permission levels member or partner has on an asset. */

@@ -20,7 +20,7 @@ export const SummaryStatus = {
     AdvertiserDisabled: 'ADVERTISER_DISABLED',
     Archived: 'ARCHIVED',
     Draft: 'DRAFT',
-    DeletedDraft: 'DELETED_DRAFT'
+    DeletedDraft: 'DELETED_DRAFT',
 } as const;
 export type SummaryStatus = typeof SummaryStatus[keyof typeof SummaryStatus];
 

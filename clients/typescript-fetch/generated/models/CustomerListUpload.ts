@@ -50,56 +50,38 @@ import {
 export interface CustomerListUpload {
     /**
      * Advertiser ID.
-     * @type {string}
-     * @memberof CustomerListUpload
      */
     adAccountId: string;
     /**
      * Customer List Upload creation_time. Epoch (seconds).
-     * @type {number}
-     * @memberof CustomerListUpload
      */
     creationTime: number;
     /**
      * ID of the customer list associated with this upload.
-     * @type {string}
-     * @memberof CustomerListUpload
      */
     customerListId: string;
     /**
      * Error counts by error code
-     * @type {Array<ErrorDetail>}
-     * @memberof CustomerListUpload
      */
     errorCounts?: Array<ErrorDetail> | null;
     /**
      * Customer List Upload ID.
-     * @type {string}
-     * @memberof CustomerListUpload
      */
     id: string;
     /**
      * 
-     * @type {UserListOperationType}
-     * @memberof CustomerListUpload
      */
     operation: UserListOperationType;
     /**
      * Record processing counts
-     * @type {RecordCounts}
-     * @memberof CustomerListUpload
      */
     recordCounts?: RecordCounts;
     /**
      * 
-     * @type {WorkloadState}
-     * @memberof CustomerListUpload
      */
     state: WorkloadState;
     /**
      * Customer List Upload updated_time. Epoch (seconds).
-     * @type {number}
-     * @memberof CustomerListUpload
      */
     updatedTime: number;
 }

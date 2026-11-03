@@ -9,7 +9,7 @@ import Foundation
 
 public struct LabelUpdateItem: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let valueRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     /** Label ID. */
     public var id: String

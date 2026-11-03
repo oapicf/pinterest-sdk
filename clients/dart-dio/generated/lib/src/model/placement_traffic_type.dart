@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'placement_traffic_type.g.dart';
 
+/// A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
 class PlacementTrafficType extends EnumClass {
 
-  /// A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
   @BuiltValueEnumConst(wireName: r'ALL')
   static const PlacementTrafficType ALL = _$ALL;
-  /// A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
   @BuiltValueEnumConst(wireName: r'TWO_COLUMN_FEED')
   static const PlacementTrafficType TWO_COLUMN_FEED = _$TWO_COLUMN_FEED;
-  /// A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
   @BuiltValueEnumConst(wireName: r'FULLSCREEN_FEED')
   static const PlacementTrafficType FULLSCREEN_FEED = _$FULLSCREEN_FEED;
 

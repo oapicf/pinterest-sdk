@@ -32,7 +32,7 @@ import TargetingSpecOptimal from './TargetingSpecOptimal';
 /**
  * The AdGroupUpdate model module.
  * @module model/AdGroupUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupUpdate {
     /**

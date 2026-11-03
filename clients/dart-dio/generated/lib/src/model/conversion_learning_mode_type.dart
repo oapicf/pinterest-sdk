@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_learning_mode_type.g.dart';
 
+/// oCPM learn mode.
 class ConversionLearningModeType extends EnumClass {
 
-  /// oCPM learn mode.
   @BuiltValueEnumConst(wireName: r'NOT_ACTIVE')
   static const ConversionLearningModeType NOT_ACTIVE = _$NOT_ACTIVE;
-  /// oCPM learn mode.
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const ConversionLearningModeType ACTIVE = _$ACTIVE;
 

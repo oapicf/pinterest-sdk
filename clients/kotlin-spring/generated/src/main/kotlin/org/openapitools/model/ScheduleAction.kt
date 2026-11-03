@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The schedule action
-* Values: INCREASE_BY_VALUE,INCREASE_BY_PERCENT
-*/
+ * The schedule action
+ * Values: INCREASE_BY_VALUE,INCREASE_BY_PERCENT
+ */
 enum class ScheduleAction(@get:JsonValue val value: kotlin.String) {
 
     INCREASE_BY_VALUE("INCREASE_BY_VALUE"),
@@ -28,9 +28,8 @@ enum class ScheduleAction(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ScheduleAction {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleAction'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleAction'")
         }
     }
 }
-

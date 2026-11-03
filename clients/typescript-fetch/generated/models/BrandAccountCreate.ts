@@ -36,38 +36,26 @@ import {
 export interface BrandAccountCreate {
     /**
      * Brand Account about information
-     * @type {string}
-     * @memberof BrandAccountCreate
      */
     about?: string;
     /**
      * 
-     * @type {Country}
-     * @memberof BrandAccountCreate
      */
     country: Country;
     /**
      * Brand Account name
-     * @type {string}
-     * @memberof BrandAccountCreate
      */
     name: string;
     /**
      * 
-     * @type {BrandAccountProfileImage}
-     * @memberof BrandAccountCreate
      */
     profileImage?: BrandAccountProfileImage;
     /**
      * Brand Account username
-     * @type {string}
-     * @memberof BrandAccountCreate
      */
     username: string;
     /**
      * Brand Account website
-     * @type {string}
-     * @memberof BrandAccountCreate
      */
     website?: string;
 }

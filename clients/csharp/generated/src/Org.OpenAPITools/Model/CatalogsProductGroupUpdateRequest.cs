@@ -202,13 +202,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateRequest: filters.");
 
             if (isFeatured.IsSet && isFeatured.Value == null)
-                throw new ArgumentNullException(nameof(isFeatured), "Property is not nullable for class CatalogsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateRequest: is_featured.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupUpdateRequest: name.");
 
             return new CatalogsProductGroupUpdateRequest(description, filters, isFeatured, name);
         }
@@ -219,7 +219,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -234,14 +233,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupUpdateRequest catalogsProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsProductGroupUpdateRequest.FiltersOption.IsSet && catalogsProductGroupUpdateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupUpdateRequest.Filters), "Property is required for class CatalogsProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateRequest.Filters to non-nullable JSON property 'filters'.");
+
+            if (catalogsProductGroupUpdateRequest.IsFeaturedOption.IsSet && catalogsProductGroupUpdateRequest.IsFeatured == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateRequest.IsFeatured to non-nullable JSON property 'is_featured'.");
 
             if (catalogsProductGroupUpdateRequest.NameOption.IsSet && catalogsProductGroupUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupUpdateRequest.Name), "Property is required for class CatalogsProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsProductGroupUpdateRequest.Name to non-nullable JSON property 'name'.");
 
             if (catalogsProductGroupUpdateRequest.DescriptionOption.IsSet)
                 if (catalogsProductGroupUpdateRequest.DescriptionOption.Value != null)

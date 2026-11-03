@@ -51,10 +51,10 @@ class ConversionDeletionRequestsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,19 +116,19 @@ class ConversionDeletionRequestsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'requestId' => $requestId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'request_id' => $requestId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'requestId' => [
+                'request_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -192,19 +192,19 @@ class ConversionDeletionRequestsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'requestId' => $requestId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'request_id' => $requestId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'requestId' => [
+                'request_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -264,13 +264,13 @@ class ConversionDeletionRequestsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -279,7 +279,7 @@ class ConversionDeletionRequestsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -296,7 +296,7 @@ class ConversionDeletionRequestsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 

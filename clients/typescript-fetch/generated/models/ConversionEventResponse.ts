@@ -29,32 +29,22 @@ import {
 export interface ConversionEventResponse {
     /**
      * Id of the ad account.
-     * @type {string}
-     * @memberof ConversionEventResponse
      */
     adAccountId?: string;
     /**
      * 
-     * @type {ConversionTagType}
-     * @memberof ConversionEventResponse
      */
     conversionEvent?: ConversionTagType;
     /**
      * Id of the tag.
-     * @type {string}
-     * @memberof ConversionEventResponse
      */
     conversionTagId?: string;
     /**
      * Creation date in epoch format.
-     * @type {number}
-     * @memberof ConversionEventResponse
      */
     createdTime?: number;
     /**
      * For advertiser-defined events, the reporting event label shown in optimization UIs.
-     * @type {string}
-     * @memberof ConversionEventResponse
      */
     reportingConversionEvent?: string;
 }

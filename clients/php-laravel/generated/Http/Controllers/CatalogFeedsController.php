@@ -51,18 +51,18 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'feedId' => $feedId,
-                ],
                 $request->all(),
+                [
+                    'feed_id' => $feedId,
+                ],
             ),
             [
-                'feedId' => [
+                'feed_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -70,7 +70,7 @@ class CatalogFeedsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -83,11 +83,11 @@ class CatalogFeedsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->feedProcessingResultsList($feedId, $adAccountId, $bookmark, $pageSize);
@@ -134,10 +134,10 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -149,7 +149,7 @@ class CatalogFeedsController extends Controller
 
         $catalogsFeedCreateRequestSchema = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsFeedCreateRequestSchema::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->feedsCreate($catalogsFeedCreateRequestSchema, $adAccountId);
@@ -200,18 +200,18 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'feedId' => $feedId,
-                ],
                 $request->all(),
+                [
+                    'feed_id' => $feedId,
+                ],
             ),
             [
-                'feedId' => [
+                'feed_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -224,7 +224,7 @@ class CatalogFeedsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->feedsDelete($feedId, $adAccountId);
@@ -275,18 +275,18 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'feedId' => $feedId,
-                ],
                 $request->all(),
+                [
+                    'feed_id' => $feedId,
+                ],
             ),
             [
-                'feedId' => [
+                'feed_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -299,7 +299,7 @@ class CatalogFeedsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->feedsGet($feedId, $adAccountId);
@@ -346,18 +346,18 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'feedId' => $feedId,
-                ],
                 $request->all(),
+                [
+                    'feed_id' => $feedId,
+                ],
             ),
             [
-                'feedId' => [
+                'feed_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -370,7 +370,7 @@ class CatalogFeedsController extends Controller
         }
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->feedsIngest($feedId, $adAccountId);
@@ -417,17 +417,17 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'catalogId' => [
+                'catalog_id' => [
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -435,7 +435,7 @@ class CatalogFeedsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -447,13 +447,13 @@ class CatalogFeedsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $catalogId = $request->string('catalogId')->value();
+        $catalogId = $request->string('catalog_id')->value();
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->feedsList($catalogId, $adAccountId, $bookmark, $pageSize);
@@ -500,10 +500,10 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'feedId' => $feedId,
-                ],
                 $request->all(),
+                [
+                    'feed_id' => $feedId,
+                ],
             ),
             [
             ],
@@ -516,7 +516,7 @@ class CatalogFeedsController extends Controller
 
         $catalogsFeedUpdateRequestSchema = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsFeedUpdateRequestSchema::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->feedsUpdate($feedId, $catalogsFeedUpdateRequestSchema, $adAccountId);
@@ -563,23 +563,23 @@ class CatalogFeedsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'processingResultId' => $processingResultId,
-                ],
                 $request->all(),
+                [
+                    'processing_result_id' => $processingResultId,
+                ],
             ),
             [
-                'processingResultId' => [
+                'processing_result_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'itemNumbers' => [
+                'item_numbers' => [
                     'array',
                 ],
-                'itemValidationIssue' => [
+                'item_validation_issue' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -587,7 +587,7 @@ class CatalogFeedsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -600,15 +600,15 @@ class CatalogFeedsController extends Controller
         }
 
 
-        $itemNumbers = $request->get('itemNumbers');
+        $itemNumbers = $request->get('item_numbers');
 
         $itemValidationIssue = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsItemValidationIssue::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->itemsIssuesList($processingResultId, $itemNumbers, $itemValidationIssue, $adAccountId, $bookmark, $pageSize);

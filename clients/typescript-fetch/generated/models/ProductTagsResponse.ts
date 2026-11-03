@@ -29,8 +29,6 @@ import {
 export interface ProductTagsResponse {
     /**
      * List of product tags on the pin.
-     * @type {Array<ProductTagItem>}
-     * @memberof ProductTagsResponse
      */
     productTags: Array<ProductTagItem>;
 }

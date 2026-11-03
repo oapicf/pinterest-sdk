@@ -6,20 +6,3 @@
 */
 #include "AppsflyerPlatform.h"
 
-namespace models {
-
-AppsflyerPlatform::AppsflyerPlatform()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

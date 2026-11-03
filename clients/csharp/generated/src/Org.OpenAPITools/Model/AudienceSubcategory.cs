@@ -220,19 +220,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AudienceSubcategory.");
+                throw new JsonException("Property is not nullable for class AudienceSubcategory: id.");
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class AudienceSubcategory.");
+                throw new JsonException("Property is not nullable for class AudienceSubcategory: index.");
 
             if (key.IsSet && key.Value == null)
-                throw new ArgumentNullException(nameof(key), "Property is not nullable for class AudienceSubcategory.");
+                throw new JsonException("Property is not nullable for class AudienceSubcategory: key.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AudienceSubcategory.");
+                throw new JsonException("Property is not nullable for class AudienceSubcategory: name.");
 
             if (ratio.IsSet && ratio.Value == null)
-                throw new ArgumentNullException(nameof(ratio), "Property is not nullable for class AudienceSubcategory.");
+                throw new JsonException("Property is not nullable for class AudienceSubcategory: ratio.");
 
             return new AudienceSubcategory(id, index, key, name, ratio);
         }
@@ -243,7 +243,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceSubcategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceSubcategory audienceSubcategory, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,17 +257,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceSubcategory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceSubcategory audienceSubcategory, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audienceSubcategory.IdOption.IsSet && audienceSubcategory.Id == null)
-                throw new ArgumentNullException(nameof(audienceSubcategory.Id), "Property is required for class AudienceSubcategory.");
+                throw new JsonException("Cannot write null property AudienceSubcategory.Id to non-nullable JSON property 'id'.");
+
+            if (audienceSubcategory.IndexOption.IsSet && audienceSubcategory.Index == null)
+                throw new JsonException("Cannot write null property AudienceSubcategory.Index to non-nullable JSON property 'index'.");
 
             if (audienceSubcategory.KeyOption.IsSet && audienceSubcategory.Key == null)
-                throw new ArgumentNullException(nameof(audienceSubcategory.Key), "Property is required for class AudienceSubcategory.");
+                throw new JsonException("Cannot write null property AudienceSubcategory.Key to non-nullable JSON property 'key'.");
 
             if (audienceSubcategory.NameOption.IsSet && audienceSubcategory.Name == null)
-                throw new ArgumentNullException(nameof(audienceSubcategory.Name), "Property is required for class AudienceSubcategory.");
+                throw new JsonException("Cannot write null property AudienceSubcategory.Name to non-nullable JSON property 'name'.");
+
+            if (audienceSubcategory.RatioOption.IsSet && audienceSubcategory.Ratio == null)
+                throw new JsonException("Cannot write null property AudienceSubcategory.Ratio to non-nullable JSON property 'ratio'.");
 
             if (audienceSubcategory.IdOption.IsSet)
                 writer.WriteString("id", audienceSubcategory.Id);

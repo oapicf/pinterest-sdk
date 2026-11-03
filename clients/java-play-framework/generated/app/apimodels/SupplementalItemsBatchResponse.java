@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Response model for supplemental items batch operation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class SupplementalItemsBatchResponse   {
   @JsonProperty("batch_id")
@@ -38,7 +38,7 @@ public class SupplementalItemsBatchResponse   {
   @NotNull
 @Valid
 
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   @JsonProperty("status")
   @NotNull
@@ -97,7 +97,7 @@ public class SupplementalItemsBatchResponse   {
     this.createdTime = createdTime;
   }
 
-  public SupplementalItemsBatchResponse operationResults(List<SupplementalOperationResult> operationResults) {
+  public SupplementalItemsBatchResponse operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -114,11 +114,11 @@ public class SupplementalItemsBatchResponse   {
    * Array of operation results
    * @return operationResults
   **/
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

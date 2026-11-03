@@ -10,7 +10,7 @@ import Foundation
 /** Integration record */
 public struct IntegrationRecord: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var additionalId1: String?
     public var connectedAdvertiserId: String?
     public var connectedLbaId: String?

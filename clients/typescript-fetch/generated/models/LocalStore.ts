@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { Country } from './Country';
 import {
     CountryFromJSON,
@@ -29,80 +29,54 @@ import {
 export interface LocalStore {
     /**
      * Primary address line of the store.
-     * @type {string}
-     * @memberof LocalStore
      */
     addressPrimary?: string;
     /**
      * Secondary address line of the store.
-     * @type {string}
-     * @memberof LocalStore
      */
     addressSecondary?: string;
     /**
      * City where the store is located.
-     * @type {string}
-     * @memberof LocalStore
      */
     city?: string;
     /**
      * Country code where the store is located.
-     * @type {Country}
-     * @memberof LocalStore
      */
     country: Country;
     /**
      * Creation timestamp
-     * @type {Date}
-     * @memberof LocalStore
      */
     readonly createdAt: Date;
     /**
      * The ID of the local store.
-     * @type {string}
-     * @memberof LocalStore
      */
     id: string;
     /**
      * Geographic latitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStore
      */
     latitude?: number;
     /**
      * Geographic longitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStore
      */
     longitude?: number;
     /**
      * The name of the local store.
-     * @type {string}
-     * @memberof LocalStore
      */
     name: string;
     /**
      * Postal or ZIP code of the store.
-     * @type {string}
-     * @memberof LocalStore
      */
     postalCode?: string;
     /**
      * State or region code where the store is located.
-     * @type {string}
-     * @memberof LocalStore
      */
     region?: string;
     /**
      * Merchant provided code for the local store. Unique within the merchant's catalog.
-     * @type {string}
-     * @memberof LocalStore
      */
     storeCode: string;
     /**
      * Last update timestamp
-     * @type {Date}
-     * @memberof LocalStore
      */
     readonly updatedAt: Date;
 }
@@ -136,7 +110,7 @@ export function LocalStoreFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'addressSecondary': json['address_secondary'] == null ? undefined : json['address_secondary'],
         'city': json['city'] == null ? undefined : json['city'],
         'country': CountryFromJSON(json['country']),
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'id': json['id'],
         'latitude': json['latitude'] == null ? undefined : json['latitude'],
         'longitude': json['longitude'] == null ? undefined : json['longitude'],
@@ -144,7 +118,7 @@ export function LocalStoreFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'postalCode': json['postal_code'] == null ? undefined : json['postal_code'],
         'region': json['region'] == null ? undefined : json['region'],
         'storeCode': json['store_code'],
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
     };
 }
 

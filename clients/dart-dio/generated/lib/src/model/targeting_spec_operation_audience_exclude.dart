@@ -140,6 +140,7 @@ class _$TargetingSpecOperationAudienceExcludeSerializer implements PrimitiveSeri
   }
 }
 
+
 class TargetingSpecOperationAudienceExcludeFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'AUDIENCE_EXCLUDE')

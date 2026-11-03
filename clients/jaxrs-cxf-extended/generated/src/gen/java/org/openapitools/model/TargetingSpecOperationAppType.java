@@ -54,7 +54,6 @@ public enum FieldEnum {
   private TargetingSpecListOperation operation;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<TargetingSpecAppType> values = new ArrayList<>();
  /**
   * Get field

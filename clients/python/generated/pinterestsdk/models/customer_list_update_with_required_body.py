@@ -78,8 +78,7 @@ class CustomerListUpdateWithRequiredBody(BaseModel):
         _items = []
         if self.records_v2:
             for _item_records_v2 in self.records_v2:
-                if _item_records_v2:
-                    _items.append(_item_records_v2.to_dict())
+                _items.append(_item_records_v2.to_dict() if _item_records_v2 is not None else None)
             _dict['records_v2'] = _items
         return _dict
 

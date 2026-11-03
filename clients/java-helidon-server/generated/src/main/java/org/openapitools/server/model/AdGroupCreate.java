@@ -65,8 +65,8 @@ public class AdGroupCreate   {
     private Integer updatedTime;
     private Boolean autoTargetingEnabled;
     private BigDecimal bidMultiplier;
-    private BudgetType budgetType;
-    private PacingDeliveryType pacingDeliveryType;
+    private BudgetType budgetType = BudgetType.DAILY;
+    private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
     /**
      * Default constructor.

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,12 +26,11 @@ import jakarta.annotation.Generated;
  * DeleteBusinessPartnersDelete
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessPartnersDelete {
 
   private List<@Pattern(regexp = "^\\d+$")@Size(max = 22)String> partnerIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullablePartnerType> partnerType = JsonNullable.<NullablePartnerType>undefined();
 
   public DeleteBusinessPartnersDelete() {
@@ -85,7 +83,7 @@ public class DeleteBusinessPartnersDelete {
    * @return partnerType
    */
   @Valid 
-  @Schema(name = "partner_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "partner_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("partner_type")
   public JsonNullable<NullablePartnerType> getPartnerType() {
     return partnerType;

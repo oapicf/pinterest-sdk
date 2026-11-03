@@ -38,9 +38,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **leadsExportsCreate** | [**LeadsExportsCreate**](LeadsExportsCreate.md)|  | |
 
 ### Return type
@@ -94,9 +94,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **leadsExportId** | **kotlin.String**| lead_export_id token returned from the create a lead export endpoint | |
 
 ### Return type

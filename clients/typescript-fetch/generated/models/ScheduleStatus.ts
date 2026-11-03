@@ -24,7 +24,7 @@ export const ScheduleStatus = {
     Active: 'ACTIVE',
     Completed: 'COMPLETED',
     Failed: 'FAILED',
-    Canceled: 'CANCELED'
+    Canceled: 'CANCELED',
 } as const;
 export type ScheduleStatus = typeof ScheduleStatus[keyof typeof ScheduleStatus];
 

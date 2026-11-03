@@ -21,7 +21,7 @@ export const ConversionObjectiveType = {
     AppInstall: 'APP_INSTALL',
     Sales: 'SALES',
     Leads: 'LEADS',
-    CtvConsideration: 'CTV_CONSIDERATION'
+    CtvConsideration: 'CTV_CONSIDERATION',
 } as const;
 export type ConversionObjectiveType = typeof ConversionObjectiveType[keyof typeof ConversionObjectiveType];
 

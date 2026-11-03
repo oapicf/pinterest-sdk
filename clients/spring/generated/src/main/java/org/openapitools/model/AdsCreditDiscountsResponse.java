@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,28 +25,21 @@ import jakarta.annotation.Generated;
  * AdsCreditDiscountsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsCreditDiscountsResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean active;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String advertiserId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> discountCurrency = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> discountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AdsCreditDiscountType> discountType = JsonNullable.<AdsCreditDiscountType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> remainingDiscountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> title = JsonNullable.<String>undefined();
 
   public AdsCreditDiscountsResponse active(@Nullable Boolean active) {
@@ -102,7 +94,7 @@ public class AdsCreditDiscountsResponse {
    * @return discountCurrency
    */
   
-  @Schema(name = "discountCurrency", example = "USD", description = "Currency value for the discount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "discountCurrency", example = "USD", description = "Currency value for the discount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("discountCurrency")
   public JsonNullable<String> getDiscountCurrency() {
     return discountCurrency;
@@ -122,7 +114,7 @@ public class AdsCreditDiscountsResponse {
    * @return discountInMicroCurrency
    */
   @Valid 
-  @Schema(name = "discountInMicroCurrency", example = "125000000", description = "The discount applied in the offer's currency value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "discountInMicroCurrency", example = "125000000", description = "The discount applied in the offer's currency value.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("discountInMicroCurrency")
   public JsonNullable<BigDecimal> getDiscountInMicroCurrency() {
     return discountInMicroCurrency;
@@ -142,7 +134,7 @@ public class AdsCreditDiscountsResponse {
    * @return discountType
    */
   @Valid 
-  @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "discountType", description = "The type of discount of this credit", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("discountType")
   public JsonNullable<AdsCreditDiscountType> getDiscountType() {
     return discountType;
@@ -162,7 +154,7 @@ public class AdsCreditDiscountsResponse {
    * @return remainingDiscountInMicroCurrency
    */
   @Valid 
-  @Schema(name = "remainingDiscountInMicroCurrency", example = "125000000", description = "The credits left to spend.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "remainingDiscountInMicroCurrency", example = "125000000", description = "The credits left to spend.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("remainingDiscountInMicroCurrency")
   public JsonNullable<BigDecimal> getRemainingDiscountInMicroCurrency() {
     return remainingDiscountInMicroCurrency;
@@ -182,7 +174,7 @@ public class AdsCreditDiscountsResponse {
    * @return title
    */
   
-  @Schema(name = "title", example = "Ads Credits", description = "Human readable title of the offer code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "title", example = "Ads Credits", description = "Human readable title of the offer code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("title")
   public JsonNullable<String> getTitle() {
     return title;

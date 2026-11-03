@@ -162,6 +162,7 @@ class _$CatalogsCreativeAssetsItemErrorResponseSerializer implements PrimitiveSe
   }
 }
 
+
 class CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
@@ -175,9 +176,9 @@ class CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum extends EnumClass {
   static CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum valueOf(String name) => _$catalogsCreativeAssetsItemErrorResponseCatalogTypeEnumValueOf(name);
 }
 
+/// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 class CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum extends EnumClass {
 
-  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
   @BuiltValueEnumConst(wireName: r'creative_assets_item_error')
   static const CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum creativeAssetsItemError = _$catalogsCreativeAssetsItemErrorResponseItemResponseKindEnum_creativeAssetsItemError;
 

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!allOf.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFiltersRequestAnyOfItems1.", nameof(allOf));
+                throw new JsonException("Property is required for class CatalogsProductGroupFiltersRequestAnyOfItems1: all_of.");
 
             if (allOf.IsSet && allOf.Value == null)
-                throw new ArgumentNullException(nameof(allOf), "Property is not nullable for class CatalogsProductGroupFiltersRequestAnyOfItems1.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFiltersRequestAnyOfItems1: all_of.");
 
             return new CatalogsProductGroupFiltersRequestAnyOfItems1(allOf.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFiltersRequestAnyOfItems1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupFiltersRequestAnyOfItems1 catalogsProductGroupFiltersRequestAnyOfItems1, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFiltersRequestAnyOfItems1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupFiltersRequestAnyOfItems1 catalogsProductGroupFiltersRequestAnyOfItems1, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupFiltersRequestAnyOfItems1.AllOf == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFiltersRequestAnyOfItems1.AllOf), "Property is required for class CatalogsProductGroupFiltersRequestAnyOfItems1.");
-
             writer.WritePropertyName("all_of");
             JsonSerializer.Serialize(writer, catalogsProductGroupFiltersRequestAnyOfItems1.AllOf, jsonSerializerOptions);
         }

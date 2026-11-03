@@ -157,7 +157,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aUDIENCEID.IsSet && aUDIENCEID.Value == null)
-                throw new ArgumentNullException(nameof(aUDIENCEID), "Property is not nullable for class ScheduleAudienceMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleAudienceMultipliers: AUDIENCE_ID.");
 
             return new ScheduleAudienceMultipliers(aUDIENCEID);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleAudienceMultipliers scheduleAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,11 +182,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleAudienceMultipliers scheduleAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             if (scheduleAudienceMultipliers.AUDIENCE_IDOption.IsSet && scheduleAudienceMultipliers.AUDIENCE_ID == null)
-                throw new ArgumentNullException(nameof(scheduleAudienceMultipliers.AUDIENCE_ID), "Property is required for class ScheduleAudienceMultipliers.");
+                throw new JsonException("Cannot write null property ScheduleAudienceMultipliers.AUDIENCE_ID to non-nullable JSON property 'AUDIENCE_ID'.");
 
             if (scheduleAudienceMultipliers.AUDIENCE_IDOption.IsSet)
                 writer.WriteString("AUDIENCE_ID", scheduleAudienceMultipliers.AUDIENCE_ID);

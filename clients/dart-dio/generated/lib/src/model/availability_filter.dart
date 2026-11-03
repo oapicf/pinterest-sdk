@@ -105,3 +105,4 @@ class _$AvailabilityFilterSerializer implements PrimitiveSerializer<Availability
   }
 }
 
+

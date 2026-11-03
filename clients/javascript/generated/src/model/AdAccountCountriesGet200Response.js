@@ -17,7 +17,7 @@ import AdAccountsCountry from './AdAccountsCountry';
 /**
  * The AdAccountCountriesGet200Response model module.
  * @module model/AdAccountCountriesGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccountCountriesGet200Response {
     /**

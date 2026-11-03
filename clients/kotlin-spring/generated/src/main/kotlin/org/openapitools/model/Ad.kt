@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdCollectionsHeaderType
 import org.openapitools.model.AdDisapprovalReasons
 import org.openapitools.model.AdReviewStatus
@@ -76,56 +73,56 @@ data class Ad(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, readOnly = true, description = "The ID of the advertiser that this ad belongs to.")
-    @param:JsonProperty("ad_account_id")
+    @param:JsonProperty("ad_account_id", required = true)
     @get:JsonProperty("ad_account_id", required = true) val adAccountId: kotlin.String,
 
     @get:Pattern(regexp="^(AG)?\\d+$")
     @Schema(required = true, description = "ID of the ad group that contains the ad.")
-    @param:JsonProperty("ad_group_id")
+    @param:JsonProperty("ad_group_id", required = true)
     @get:JsonProperty("ad_group_id", required = true) val adGroupId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, readOnly = true, description = "ID of the ad campaign that contains this ad.")
-    @param:JsonProperty("campaign_id")
+    @param:JsonProperty("campaign_id", required = true)
     @get:JsonProperty("campaign_id", required = true) val campaignId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("creative_type")
+    @param:JsonProperty("creative_type", required = true)
     @get:JsonProperty("creative_type", required = true) val creativeType: CreativeType,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(required = true, description = "The ID of this ad.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Pin ID. This field may only be updated for draft ads.")
-    @param:JsonProperty("pin_id")
+    @param:JsonProperty("pin_id", required = true)
     @get:JsonProperty("pin_id", required = true) val pinId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".")
-    @param:JsonProperty("rejected_reasons")
+    @param:JsonProperty("rejected_reasons", required = true)
     @get:JsonProperty("rejected_reasons", required = true) val rejectedReasons: kotlin.collections.List<AdDisapprovalReasons>,
 
     @Schema(required = true, readOnly = true, description = "Text reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".")
-    @param:JsonProperty("rejection_labels")
+    @param:JsonProperty("rejection_labels", required = true)
     @get:JsonProperty("rejection_labels", required = true) val rejectionLabels: kotlin.collections.List<kotlin.String>,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Ad review status")
-    @param:JsonProperty("review_status")
+    @param:JsonProperty("review_status", required = true)
     @get:JsonProperty("review_status", required = true) val reviewStatus: AdReviewStatus,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "Ad summary status")
-    @param:JsonProperty("summary_status")
+    @param:JsonProperty("summary_status", required = true)
     @get:JsonProperty("summary_status", required = true) val summaryStatus: PinPromotionSummaryStatus,
 
     @Schema(required = true, readOnly = true, description = "Always \"ad\".")
-    @param:JsonProperty("type")
+    @param:JsonProperty("type", required = true)
     @get:JsonProperty("type", required = true) val type: kotlin.String,
 
     @Schema(description = "Deep link URL for Android devices.")
@@ -147,15 +144,11 @@ data class Ad(
     @get:Min(value=1)
     @get:Max(value=2)
     @Schema(readOnly = true, description = "The vendor platform type of the carting/WTB ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("carting_platform_type")
     @get:JsonProperty("carting_platform_type") val cartingPlatformType: kotlin.Int? = null,
 
     @field:Valid
     @Schema(readOnly = true, description = "Array of carting/WTB products for the ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("carting_products")
     @get:JsonProperty("carting_products") val cartingProducts: kotlin.collections.List<CartingProduct>? = null,
 
@@ -173,8 +166,6 @@ data class Ad(
     @get:JsonProperty("collections_header_type") val collectionsHeaderType: AdCollectionsHeaderType? = null,
 
     @Schema(readOnly = true, description = "Pin creation time. Unix timestamp in seconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_time")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
 
@@ -206,32 +197,22 @@ data class Ad(
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(description = "Is the ad a carting/WTB ad?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_carting")
     @get:JsonProperty("is_carting") val isCarting: kotlin.Boolean? = null,
 
     @Schema(description = "Whether the advertiser has accepted the terms and conditions for collage ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_collage_accepted_terms")
     @get:JsonProperty("is_collage_accepted_terms") val isCollageAcceptedTerms: kotlin.Boolean? = null,
 
     @Schema(description = "Whether the collage ad has a single destination url override.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_collage_single_destination")
     @get:JsonProperty("is_collage_single_destination") val isCollageSingleDestination: kotlin.Boolean? = null,
 
     @Schema(description = "Is original pin deleted?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_pin_deleted")
     @get:JsonProperty("is_pin_deleted") val isPinDeleted: kotlin.Boolean? = null,
 
     @Schema(description = "Is pin repinnable?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_removable")
     @get:JsonProperty("is_removable") val isRemovable: kotlin.Boolean? = null,
 
@@ -251,8 +232,6 @@ data class Ad(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 
@@ -262,8 +241,6 @@ data class Ad(
     @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null,
 
     @Schema(readOnly = true, description = "Last update time. Unix timestamp in seconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("updated_time")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null,
 

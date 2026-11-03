@@ -6,20 +6,3 @@
 */
 #include "AudienceType.h"
 
-namespace models {
-
-AudienceType::AudienceType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

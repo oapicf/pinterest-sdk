@@ -6,20 +6,3 @@
 */
 #include "AccountType.h"
 
-namespace models {
-
-AccountType::AccountType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

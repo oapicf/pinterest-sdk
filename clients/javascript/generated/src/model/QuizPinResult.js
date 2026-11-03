@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuizPinResult model module.
  * @module model/QuizPinResult
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class QuizPinResult {
     /**

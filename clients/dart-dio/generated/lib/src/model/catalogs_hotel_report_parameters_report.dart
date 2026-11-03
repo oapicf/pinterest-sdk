@@ -127,6 +127,7 @@ class _$CatalogsHotelReportParametersReportSerializer implements PrimitiveSerial
   }
 }
 
+
 class CatalogsHotelReportParametersReportReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')

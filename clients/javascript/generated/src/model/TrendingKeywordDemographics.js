@@ -18,7 +18,7 @@ import TrendsGenderDistribution from './TrendsGenderDistribution';
 /**
  * The TrendingKeywordDemographics model module.
  * @module model/TrendingKeywordDemographics
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TrendingKeywordDemographics {
     /**

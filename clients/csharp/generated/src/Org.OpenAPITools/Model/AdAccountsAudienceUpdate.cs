@@ -255,19 +255,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceUpdate: ad_account_id.");
 
             if (audienceType.IsSet && audienceType.Value == null)
-                throw new ArgumentNullException(nameof(audienceType), "Property is not nullable for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceUpdate: audience_type.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceUpdate: name.");
 
             if (operationType.IsSet && operationType.Value == null)
-                throw new ArgumentNullException(nameof(operationType), "Property is not nullable for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceUpdate: operation_type.");
 
             if (rule.IsSet && rule.Value == null)
-                throw new ArgumentNullException(nameof(rule), "Property is not nullable for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Property is not nullable for class AdAccountsAudienceUpdate: rule.");
 
             return new AdAccountsAudienceUpdate(adAccountId, audienceType, description, name, operationType, rule);
         }
@@ -278,7 +278,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountsAudienceUpdate adAccountsAudienceUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -293,17 +292,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountsAudienceUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountsAudienceUpdate adAccountsAudienceUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adAccountsAudienceUpdate.AdAccountIdOption.IsSet && adAccountsAudienceUpdate.AdAccountId == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceUpdate.AdAccountId), "Property is required for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceUpdate.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (adAccountsAudienceUpdate.AudienceTypeOption.IsSet && adAccountsAudienceUpdate.AudienceType == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceUpdate.AudienceType to non-nullable JSON property 'audience_type'.");
 
             if (adAccountsAudienceUpdate.NameOption.IsSet && adAccountsAudienceUpdate.Name == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceUpdate.Name), "Property is required for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceUpdate.Name to non-nullable JSON property 'name'.");
+
+            if (adAccountsAudienceUpdate.OperationTypeOption.IsSet && adAccountsAudienceUpdate.OperationType == null)
+                throw new JsonException("Cannot write null property AdAccountsAudienceUpdate.OperationType to non-nullable JSON property 'operation_type'.");
 
             if (adAccountsAudienceUpdate.RuleOption.IsSet && adAccountsAudienceUpdate.Rule == null)
-                throw new ArgumentNullException(nameof(adAccountsAudienceUpdate.Rule), "Property is required for class AdAccountsAudienceUpdate.");
+                throw new JsonException("Cannot write null property AdAccountsAudienceUpdate.Rule to non-nullable JSON property 'rule'.");
 
             if (adAccountsAudienceUpdate.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", adAccountsAudienceUpdate.AdAccountId);

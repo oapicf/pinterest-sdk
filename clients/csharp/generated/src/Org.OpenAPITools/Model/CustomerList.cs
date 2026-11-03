@@ -384,46 +384,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CustomerList.", nameof(id));
+                throw new JsonException("Property is required for class CustomerList: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CustomerList.", nameof(name));
+                throw new JsonException("Property is required for class CustomerList: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: name.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: ad_account_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: created_time.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: exceptions.");
 
             if (isNca.IsSet && isNca.Value == null)
-                throw new ArgumentNullException(nameof(isNca), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: is_nca.");
 
             if (numBatches.IsSet && numBatches.Value == null)
-                throw new ArgumentNullException(nameof(numBatches), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: num_batches.");
 
             if (numRemovedUserRecords.IsSet && numRemovedUserRecords.Value == null)
-                throw new ArgumentNullException(nameof(numRemovedUserRecords), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: num_removed_user_records.");
 
             if (numUploadedUserRecords.IsSet && numUploadedUserRecords.Value == null)
-                throw new ArgumentNullException(nameof(numUploadedUserRecords), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: num_uploaded_user_records.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: status.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: type.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class CustomerList.");
+                throw new JsonException("Property is not nullable for class CustomerList: updated_time.");
 
             return new CustomerList(id.Value!, name.Value!, adAccountId, createdTime, exceptions, isNca, numBatches, numRemovedUserRecords, numUploadedUserRecords, status, type, updatedTime);
         }
@@ -434,7 +434,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerList"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerList customerList, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -449,23 +448,37 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerList"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerList customerList, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerList.Id == null)
-                throw new ArgumentNullException(nameof(customerList.Id), "Property is required for class CustomerList.");
-
-            if (customerList.Name == null)
-                throw new ArgumentNullException(nameof(customerList.Name), "Property is required for class CustomerList.");
-
             if (customerList.AdAccountIdOption.IsSet && customerList.AdAccountId == null)
-                throw new ArgumentNullException(nameof(customerList.AdAccountId), "Property is required for class CustomerList.");
+                throw new JsonException("Cannot write null property CustomerList.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (customerList.CreatedTimeOption.IsSet && customerList.CreatedTime == null)
+                throw new JsonException("Cannot write null property CustomerList.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (customerList.ExceptionsOption.IsSet && customerList.Exceptions == null)
-                throw new ArgumentNullException(nameof(customerList.Exceptions), "Property is required for class CustomerList.");
+                throw new JsonException("Cannot write null property CustomerList.Exceptions to non-nullable JSON property 'exceptions'.");
+
+            if (customerList.IsNcaOption.IsSet && customerList.IsNca == null)
+                throw new JsonException("Cannot write null property CustomerList.IsNca to non-nullable JSON property 'is_nca'.");
+
+            if (customerList.NumBatchesOption.IsSet && customerList.NumBatches == null)
+                throw new JsonException("Cannot write null property CustomerList.NumBatches to non-nullable JSON property 'num_batches'.");
+
+            if (customerList.NumRemovedUserRecordsOption.IsSet && customerList.NumRemovedUserRecords == null)
+                throw new JsonException("Cannot write null property CustomerList.NumRemovedUserRecords to non-nullable JSON property 'num_removed_user_records'.");
+
+            if (customerList.NumUploadedUserRecordsOption.IsSet && customerList.NumUploadedUserRecords == null)
+                throw new JsonException("Cannot write null property CustomerList.NumUploadedUserRecords to non-nullable JSON property 'num_uploaded_user_records'.");
+
+            if (customerList.StatusOption.IsSet && customerList.Status == null)
+                throw new JsonException("Cannot write null property CustomerList.Status to non-nullable JSON property 'status'.");
 
             if (customerList.TypeOption.IsSet && customerList.Type == null)
-                throw new ArgumentNullException(nameof(customerList.Type), "Property is required for class CustomerList.");
+                throw new JsonException("Cannot write null property CustomerList.Type to non-nullable JSON property 'type'.");
+
+            if (customerList.UpdatedTimeOption.IsSet && customerList.UpdatedTime == null)
+                throw new JsonException("Cannot write null property CustomerList.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             writer.WriteString("id", customerList.Id);
 

@@ -308,6 +308,7 @@ class _$TargetingSpecOperationsSerializer implements PrimitiveSerializer<Targeti
   }
 }
 
+
 class TargetingSpecOperationsFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'MINIMUM_AGE')

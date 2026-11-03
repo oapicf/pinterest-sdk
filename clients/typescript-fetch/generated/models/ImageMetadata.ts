@@ -29,32 +29,22 @@ import {
 export interface ImageMetadata {
     /**
      * 
-     * @type {string}
-     * @memberof ImageMetadata
      */
     description?: string | null;
     /**
      * 
-     * @type {ImageSize}
-     * @memberof ImageMetadata
      */
     images?: ImageSize;
     /**
      * Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
-     * @type {ImageMetadataItemTypeEnum}
-     * @memberof ImageMetadata
      */
     itemType: ImageMetadataItemTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof ImageMetadata
      */
     link?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof ImageMetadata
      */
     title?: string | null;
 }
@@ -64,7 +54,7 @@ export interface ImageMetadata {
  * @export
  */
 export const ImageMetadataItemTypeEnum = {
-    Image: 'image'
+    Image: 'image',
 } as const;
 export type ImageMetadataItemTypeEnum = typeof ImageMetadataItemTypeEnum[keyof typeof ImageMetadataItemTypeEnum];
 

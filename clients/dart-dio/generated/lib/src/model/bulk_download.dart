@@ -108,3 +108,4 @@ class _$BulkDownloadSerializer implements PrimitiveSerializer<BulkDownload> {
   }
 }
 
+

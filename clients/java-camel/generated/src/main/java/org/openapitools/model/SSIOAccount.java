@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,10 +24,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "SSIOAccount", description = "Salesforce account details including bill-to information.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccount {
 
-  @Valid
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   private Boolean canEdit;
@@ -39,7 +37,6 @@ public class SSIOAccount {
 
   private String error;
 
-  @Valid
   private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
   public SSIOAccount billtoInfos(List<@Valid SSIOAccountItem> billtoInfos) {
@@ -59,7 +56,7 @@ public class SSIOAccount {
    * An array of Salesforce account information that includes address, io terms, etc.
    * @return billtoInfos
    */
-  @Valid 
+  
   @Schema(name = "billto_infos", description = "An array of Salesforce account information that includes address, io terms, etc.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billto_infos")
   public List<@Valid SSIOAccountItem> getBilltoInfos() {
@@ -167,7 +164,7 @@ public class SSIOAccount {
    * Get pmpNames
    * @return pmpNames
    */
-  @Valid 
+  
   @Schema(name = "pmp_names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pmp_names")
   public List<@Valid SSIOAccountPMPName> getPmpNames() {

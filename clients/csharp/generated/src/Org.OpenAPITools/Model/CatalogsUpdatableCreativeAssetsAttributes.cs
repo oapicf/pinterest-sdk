@@ -372,13 +372,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes: description.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes: link.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableCreativeAssetsAttributes: title.");
 
             return new CatalogsUpdatableCreativeAssetsAttributes(androidDeepLink, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, googleProductCategory, iosDeepLink, link, title, visibility);
         }
@@ -389,7 +389,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpdatableCreativeAssetsAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsUpdatableCreativeAssetsAttributes catalogsUpdatableCreativeAssetsAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -404,17 +403,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpdatableCreativeAssetsAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsUpdatableCreativeAssetsAttributes catalogsUpdatableCreativeAssetsAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsUpdatableCreativeAssetsAttributes.DescriptionOption.IsSet && catalogsUpdatableCreativeAssetsAttributes.Description == null)
-                throw new ArgumentNullException(nameof(catalogsUpdatableCreativeAssetsAttributes.Description), "Property is required for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsUpdatableCreativeAssetsAttributes.Description to non-nullable JSON property 'description'.");
 
             if (catalogsUpdatableCreativeAssetsAttributes.LinkOption.IsSet && catalogsUpdatableCreativeAssetsAttributes.Link == null)
-                throw new ArgumentNullException(nameof(catalogsUpdatableCreativeAssetsAttributes.Link), "Property is required for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsUpdatableCreativeAssetsAttributes.Link to non-nullable JSON property 'link'.");
 
             if (catalogsUpdatableCreativeAssetsAttributes.TitleOption.IsSet && catalogsUpdatableCreativeAssetsAttributes.Title == null)
-                throw new ArgumentNullException(nameof(catalogsUpdatableCreativeAssetsAttributes.Title), "Property is required for class CatalogsUpdatableCreativeAssetsAttributes.");
+                throw new JsonException("Cannot write null property CatalogsUpdatableCreativeAssetsAttributes.Title to non-nullable JSON property 'title'.");
 
             if (catalogsUpdatableCreativeAssetsAttributes.AndroidDeepLinkOption.IsSet)
                 if (catalogsUpdatableCreativeAssetsAttributes.AndroidDeepLinkOption.Value != null)

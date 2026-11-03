@@ -244,22 +244,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (about.IsSet && about.Value == null)
-                throw new ArgumentNullException(nameof(about), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: about.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: country.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: name.");
 
             if (profileImage.IsSet && profileImage.Value == null)
-                throw new ArgumentNullException(nameof(profileImage), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: profile_image.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: username.");
 
             if (website.IsSet && website.Value == null)
-                throw new ArgumentNullException(nameof(website), "Property is not nullable for class BrandAccountUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountUpdate: website.");
 
             return new BrandAccountUpdate(about, country, name, profileImage, username, website);
         }
@@ -270,7 +270,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BrandAccountUpdate brandAccountUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -285,23 +284,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BrandAccountUpdate brandAccountUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (brandAccountUpdate.AboutOption.IsSet && brandAccountUpdate.About == null)
-                throw new ArgumentNullException(nameof(brandAccountUpdate.About), "Property is required for class BrandAccountUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountUpdate.About to non-nullable JSON property 'about'.");
+
+            if (brandAccountUpdate.CountryOption.IsSet && brandAccountUpdate.Country == null)
+                throw new JsonException("Cannot write null property BrandAccountUpdate.Country to non-nullable JSON property 'country'.");
 
             if (brandAccountUpdate.NameOption.IsSet && brandAccountUpdate.Name == null)
-                throw new ArgumentNullException(nameof(brandAccountUpdate.Name), "Property is required for class BrandAccountUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountUpdate.Name to non-nullable JSON property 'name'.");
 
             if (brandAccountUpdate.ProfileImageOption.IsSet && brandAccountUpdate.ProfileImage == null)
-                throw new ArgumentNullException(nameof(brandAccountUpdate.ProfileImage), "Property is required for class BrandAccountUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountUpdate.ProfileImage to non-nullable JSON property 'profile_image'.");
 
             if (brandAccountUpdate.UsernameOption.IsSet && brandAccountUpdate.Username == null)
-                throw new ArgumentNullException(nameof(brandAccountUpdate.Username), "Property is required for class BrandAccountUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountUpdate.Username to non-nullable JSON property 'username'.");
 
             if (brandAccountUpdate.WebsiteOption.IsSet && brandAccountUpdate.Website == null)
-                throw new ArgumentNullException(nameof(brandAccountUpdate.Website), "Property is required for class BrandAccountUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountUpdate.Website to non-nullable JSON property 'website'.");
 
             if (brandAccountUpdate.AboutOption.IsSet)
                 writer.WriteString("about", brandAccountUpdate.About);

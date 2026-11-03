@@ -30,7 +30,7 @@ import org.openapitools.model.TargetingSpecOptimal;
 /**
  * AdGroupCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreate   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -141,10 +141,10 @@ public class AdGroupCreate   {
   private BigDecimal bidMultiplier;
 
   @JsonProperty("budget_type")
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
    /**
    * Advertiser ID.
@@ -656,7 +656,7 @@ public class AdGroupCreate   {
 
   public AdGroupCreate addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
     if (this.targetingTemplateIds == null) {
-      this.targetingTemplateIds = ;
+      this.targetingTemplateIds = new ArrayList<>();
     }
     this.targetingTemplateIds.add(targetingTemplateIdsItem);
     return this;

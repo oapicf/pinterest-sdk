@@ -179,19 +179,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!mediaId.IsSet)
-                throw new ArgumentException("Property is required for class Media.", nameof(mediaId));
+                throw new JsonException("Property is required for class Media: media_id.");
 
             if (!mediaType.IsSet)
-                throw new ArgumentException("Property is required for class Media.", nameof(mediaType));
+                throw new JsonException("Property is required for class Media: media_type.");
 
             if (mediaId.IsSet && mediaId.Value == null)
-                throw new ArgumentNullException(nameof(mediaId), "Property is not nullable for class Media.");
+                throw new JsonException("Property is not nullable for class Media: media_id.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class Media.");
+                throw new JsonException("Property is not nullable for class Media: media_type.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class Media.");
+                throw new JsonException("Property is not nullable for class Media: status.");
 
             return new Media(mediaId.Value!, mediaType.Value!.Value!, status);
         }
@@ -202,7 +202,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="media"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Media media, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -217,11 +216,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="media"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Media media, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (media.MediaId == null)
-                throw new ArgumentNullException(nameof(media.MediaId), "Property is required for class Media.");
+            if (media.StatusOption.IsSet && media.Status == null)
+                throw new JsonException("Cannot write null property Media.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("media_id", media.MediaId);
 

@@ -47,7 +47,7 @@ import javax.validation.Valid;
   BulkUpsertRequestUpdate.JSON_PROPERTY_PRODUCT_GROUPS,
   BulkUpsertRequestUpdate.JSON_PROPERTY_SCHEDULES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestUpdate   {
   public static final String JSON_PROPERTY_AD_GROUPS = "ad_groups";
   @JsonProperty(JSON_PROPERTY_AD_GROUPS)
@@ -63,7 +63,7 @@ public class BulkUpsertRequestUpdate   {
 
   public static final String JSON_PROPERTY_CATALOG_PRODUCT_GROUPS = "catalog_product_groups";
   @JsonProperty(JSON_PROPERTY_CATALOG_PRODUCT_GROUPS)
-  private List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_KEYWORDS = "keywords";
   @JsonProperty(JSON_PROPERTY_KEYWORDS)
@@ -100,7 +100,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "ad_groups")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
@@ -128,7 +128,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "ads")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
@@ -156,7 +156,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "campaigns")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid CampaignUpdateRequest> getCampaigns() {
     return campaigns;
   }
@@ -165,7 +165,7 @@ public class BulkUpsertRequestUpdate   {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -184,12 +184,12 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "catalog_product_groups")
   @ApiModelProperty(value = "")
-  @Valid 
-  public List<BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
@@ -212,7 +212,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "keywords")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid KeywordUpdateGenerated> getKeywords() {
     return keywords;
   }
@@ -240,7 +240,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "labels")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid LabelBulkUpdateRequest> getLabels() {
     return labels;
   }
@@ -268,7 +268,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "product_groups")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
     return productGroups;
   }
@@ -296,7 +296,7 @@ public class BulkUpsertRequestUpdate   {
    **/
   @JsonProperty(value = "schedules")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid ScheduleUpdateRequest> getSchedules() {
     return schedules;
   }

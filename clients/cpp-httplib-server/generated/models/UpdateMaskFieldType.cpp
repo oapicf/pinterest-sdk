@@ -6,20 +6,3 @@
 */
 #include "UpdateMaskFieldType.h"
 
-namespace models {
-
-UpdateMaskFieldType::UpdateMaskFieldType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

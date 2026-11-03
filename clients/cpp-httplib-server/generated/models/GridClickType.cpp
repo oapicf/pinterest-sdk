@@ -6,20 +6,3 @@
 */
 #include "GridClickType.h"
 
-namespace models {
-
-GridClickType::GridClickType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

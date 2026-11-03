@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsGet.", nameof(items));
+                throw new JsonException("Property is required for class LocalInventoryItemsGet: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class LocalInventoryItemsGet.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsGet: items.");
 
             return new LocalInventoryItemsGet(items.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsGet"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryItemsGet localInventoryItemsGet, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsGet"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryItemsGet localInventoryItemsGet, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryItemsGet.Items == null)
-                throw new ArgumentNullException(nameof(localInventoryItemsGet.Items), "Property is required for class LocalInventoryItemsGet.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, localInventoryItemsGet.Items, jsonSerializerOptions);
         }

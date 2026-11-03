@@ -25,12 +25,12 @@ data class CatalogsCreativeAssetsProductGroupFilters(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("any_of")
+    @param:JsonProperty("any_of", required = true)
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsCreativeAssetsProductGroupFilterKeys>,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("all_of")
+    @param:JsonProperty("all_of", required = true)
     @get:JsonProperty("all_of", required = true) val allOf: kotlin.collections.List<CatalogsCreativeAssetsProductGroupFilterKeys>
 ) {
 

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.OrderLinePaidType
 import org.openapitools.model.OrderLineStatus
 import javax.validation.constraints.DecimalMax
@@ -38,25 +35,25 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class OrderLine(
 
     @Schema(required = true, description = "Ad account ID.")
-    @param:JsonProperty("ad_account_id")
+    @param:JsonProperty("ad_account_id", required = true)
     @get:JsonProperty("ad_account_id", required = true) val adAccountId: kotlin.String,
 
     @Schema(example = "[\"626735565838\"]", required = true, description = "Associated List of campaign IDs.")
-    @param:JsonProperty("campaign_ids")
+    @param:JsonProperty("campaign_ids", required = true)
     @get:JsonProperty("campaign_ids", required = true) val campaignIds: kotlin.collections.List<kotlin.String>,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Order line ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "Order line status.")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: OrderLineStatus,
 
     @Schema(required = true, description = "Always \"orderline\".")
-    @param:JsonProperty("type")
+    @param:JsonProperty("type", required = true)
     @get:JsonProperty("type", required = true) val type: kotlin.String,
 
     @Schema(description = "Order line budget in micro currency.")
@@ -85,8 +82,6 @@ data class OrderLine(
     @get:JsonProperty("purchase_order_id") val purchaseOrderId: kotlin.String? = null,
 
     @Schema(description = "Start time. Unix timestamp.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("start_time")
     @get:JsonProperty("start_time") val startTime: java.math.BigDecimal? = null
 ) {

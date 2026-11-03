@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MMMReportCreate   {
   
   private List<String> advertiserIds = new ArrayList<>();
@@ -53,7 +53,6 @@ public class MMMReportCreate   {
   @ApiModelProperty(required = true, value = "Metric and entity columns")
   @JsonProperty("columns")
   @NotNull
-  @Valid
   public List<MMMReportingColumn> getColumns() {
     return columns;
   }
@@ -67,7 +66,6 @@ public class MMMReportCreate   {
   
   @ApiModelProperty(value = "A List of countries for filtering")
   @JsonProperty("countries")
-  @Valid
   public List<TargetingAdvertiserCountry> getCountries() {
     return countries;
   }
@@ -167,8 +165,7 @@ public class MMMReportCreate   {
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
   @JsonProperty("targeting_types")
   @NotNull
- @Size(min=1,max=7)  @Valid
-  public List<MMMReportingTargetingType> getTargetingTypes() {
+ @Size(min=1,max=7)  public List<MMMReportingTargetingType> getTargetingTypes() {
     return targetingTypes;
   }
   public void setTargetingTypes(List<MMMReportingTargetingType> targetingTypes) {

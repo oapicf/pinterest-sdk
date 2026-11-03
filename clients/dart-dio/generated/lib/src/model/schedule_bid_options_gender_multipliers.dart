@@ -110,3 +110,4 @@ class _$ScheduleBidOptionsGenderMultipliersSerializer implements PrimitiveSerial
   }
 }
 
+

@@ -96,7 +96,7 @@ public class Board  {
 
   @Valid
 
-  private BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
  /**
    * Date and time of last board pins modified.
    * @return boardPinsModifiedAt

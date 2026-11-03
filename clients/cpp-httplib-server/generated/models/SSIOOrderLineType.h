@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class SSIOOrderLineType
-{
-public:
-
-    SSIOOrderLineType();
-    virtual ~SSIOOrderLineType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(SSIOOrderLineType,
-        )
-
-private:
+enum class SSIOOrderLineType {
+    
+    BUDGET,
+    
+    PERPETUALS
+    
 };
 
+inline void to_json(nlohmann::json& j, const SSIOOrderLineType& value)
+{
+    switch (value)
+    {
+        
+        case SSIOOrderLineType::BUDGET: j = "BUDGET"; break;
+        
+        case SSIOOrderLineType::PERPETUALS: j = "PERPETUALS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for SSIOOrderLineType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, SSIOOrderLineType& value)
+{
+    
+    if (j == "BUDGET")
+    {
+        value = SSIOOrderLineType::BUDGET;
+        return;
+    }
+    
+    if (j == "PERPETUALS")
+    {
+        value = SSIOOrderLineType::PERPETUALS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for SSIOOrderLineType", &j);
+}
 
 } // namespace models
 

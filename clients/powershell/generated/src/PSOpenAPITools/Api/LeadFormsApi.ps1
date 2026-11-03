@@ -72,11 +72,11 @@ function Invoke-LeadFormTestCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadFormTest_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$LeadFormId) {
             throw "Error! The required parameter `LeadFormId` missing when calling leadFormTest_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{lead_form_id}', [System.Web.HTTPUtility]::UrlEncode($LeadFormId))
+        $LocalVarUri = $LocalVarUri.replace('{lead_form_id}', [System.Uri]::EscapeDataString([string]$LeadFormId))
 
         if (!$LeadFormTestCreate) {
             throw "Error! The required parameter `LeadFormTestCreate` missing when calling leadFormTest_create."
@@ -162,11 +162,11 @@ function Invoke-LeadFormGet {
         if (!$LeadFormId) {
             throw "Error! The required parameter `LeadFormId` missing when calling leadForm_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{lead_form_id}', [System.Web.HTTPUtility]::UrlEncode($LeadFormId))
+        $LocalVarUri = $LocalVarUri.replace('{lead_form_id}', [System.Uri]::EscapeDataString([string]$LeadFormId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadForm_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -249,7 +249,7 @@ function Invoke-LeadFormsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadForms_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LeadFormCreate) {
             throw "Error! The required parameter `LeadFormCreate` missing when calling leadForms_create."
@@ -347,7 +347,7 @@ function Invoke-LeadFormsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadForms_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -442,7 +442,7 @@ function Invoke-LeadFormsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling leadForms_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LeadFormBatchUpdate) {
             throw "Error! The required parameter `LeadFormBatchUpdate` missing when calling leadForms_update."

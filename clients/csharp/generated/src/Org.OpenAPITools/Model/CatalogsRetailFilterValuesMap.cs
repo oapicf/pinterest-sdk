@@ -600,76 +600,76 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adImageTags.IsSet && adImageTags.Value == null)
-                throw new ArgumentNullException(nameof(adImageTags), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: ad_image_tags.");
 
             if (adVideoTags.IsSet && adVideoTags.Value == null)
-                throw new ArgumentNullException(nameof(adVideoTags), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: ad_video_tags.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: availability.");
 
             if (brand.IsSet && brand.Value == null)
-                throw new ArgumentNullException(nameof(brand), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: brand.");
 
             if (condition.IsSet && condition.Value == null)
-                throw new ArgumentNullException(nameof(condition), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: condition.");
 
             if (customLabel0.IsSet && customLabel0.Value == null)
-                throw new ArgumentNullException(nameof(customLabel0), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: custom_label_0.");
 
             if (customLabel1.IsSet && customLabel1.Value == null)
-                throw new ArgumentNullException(nameof(customLabel1), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: custom_label_1.");
 
             if (customLabel2.IsSet && customLabel2.Value == null)
-                throw new ArgumentNullException(nameof(customLabel2), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: custom_label_2.");
 
             if (customLabel3.IsSet && customLabel3.Value == null)
-                throw new ArgumentNullException(nameof(customLabel3), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: custom_label_3.");
 
             if (customLabel4.IsSet && customLabel4.Value == null)
-                throw new ArgumentNullException(nameof(customLabel4), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: custom_label_4.");
 
             if (gender.IsSet && gender.Value == null)
-                throw new ArgumentNullException(nameof(gender), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: gender.");
 
             if (googleProductCategory0.IsSet && googleProductCategory0.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory0), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_0.");
 
             if (googleProductCategory1.IsSet && googleProductCategory1.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory1), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_1.");
 
             if (googleProductCategory2.IsSet && googleProductCategory2.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory2), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_2.");
 
             if (googleProductCategory3.IsSet && googleProductCategory3.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory3), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_3.");
 
             if (googleProductCategory4.IsSet && googleProductCategory4.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory4), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_4.");
 
             if (googleProductCategory5.IsSet && googleProductCategory5.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory5), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_5.");
 
             if (googleProductCategory6.IsSet && googleProductCategory6.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory6), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: google_product_category_6.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: media_type.");
 
             if (productType0.IsSet && productType0.Value == null)
-                throw new ArgumentNullException(nameof(productType0), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: product_type_0.");
 
             if (productType1.IsSet && productType1.Value == null)
-                throw new ArgumentNullException(nameof(productType1), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: product_type_1.");
 
             if (productType2.IsSet && productType2.Value == null)
-                throw new ArgumentNullException(nameof(productType2), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: product_type_2.");
 
             if (productType3.IsSet && productType3.Value == null)
-                throw new ArgumentNullException(nameof(productType3), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: product_type_3.");
 
             if (productType4.IsSet && productType4.Value == null)
-                throw new ArgumentNullException(nameof(productType4), "Property is not nullable for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailFilterValuesMap: product_type_4.");
 
             return new CatalogsRetailFilterValuesMap(adImageTags, adVideoTags, availability, brand, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, gender, googleProductCategory0, googleProductCategory1, googleProductCategory2, googleProductCategory3, googleProductCategory4, googleProductCategory5, googleProductCategory6, mediaType, productType0, productType1, productType2, productType3, productType4);
         }
@@ -680,7 +680,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailFilterValuesMap catalogsRetailFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -695,80 +694,79 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailFilterValuesMap catalogsRetailFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsRetailFilterValuesMap.AdImageTagsOption.IsSet && catalogsRetailFilterValuesMap.AdImageTags == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.AdImageTags), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.AdImageTags to non-nullable JSON property 'ad_image_tags'.");
 
             if (catalogsRetailFilterValuesMap.AdVideoTagsOption.IsSet && catalogsRetailFilterValuesMap.AdVideoTags == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.AdVideoTags), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.AdVideoTags to non-nullable JSON property 'ad_video_tags'.");
 
             if (catalogsRetailFilterValuesMap.AvailabilityOption.IsSet && catalogsRetailFilterValuesMap.Availability == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.Availability), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.Availability to non-nullable JSON property 'availability'.");
 
             if (catalogsRetailFilterValuesMap.BrandOption.IsSet && catalogsRetailFilterValuesMap.Brand == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.Brand), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.Brand to non-nullable JSON property 'brand'.");
 
             if (catalogsRetailFilterValuesMap.ConditionOption.IsSet && catalogsRetailFilterValuesMap.Condition == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.Condition), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.Condition to non-nullable JSON property 'condition'.");
 
             if (catalogsRetailFilterValuesMap.CustomLabel0Option.IsSet && catalogsRetailFilterValuesMap.CustomLabel0 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.CustomLabel0), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.CustomLabel0 to non-nullable JSON property 'custom_label_0'.");
 
             if (catalogsRetailFilterValuesMap.CustomLabel1Option.IsSet && catalogsRetailFilterValuesMap.CustomLabel1 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.CustomLabel1), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.CustomLabel1 to non-nullable JSON property 'custom_label_1'.");
 
             if (catalogsRetailFilterValuesMap.CustomLabel2Option.IsSet && catalogsRetailFilterValuesMap.CustomLabel2 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.CustomLabel2), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.CustomLabel2 to non-nullable JSON property 'custom_label_2'.");
 
             if (catalogsRetailFilterValuesMap.CustomLabel3Option.IsSet && catalogsRetailFilterValuesMap.CustomLabel3 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.CustomLabel3), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.CustomLabel3 to non-nullable JSON property 'custom_label_3'.");
 
             if (catalogsRetailFilterValuesMap.CustomLabel4Option.IsSet && catalogsRetailFilterValuesMap.CustomLabel4 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.CustomLabel4), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.CustomLabel4 to non-nullable JSON property 'custom_label_4'.");
 
             if (catalogsRetailFilterValuesMap.GenderOption.IsSet && catalogsRetailFilterValuesMap.Gender == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.Gender), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.Gender to non-nullable JSON property 'gender'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory0Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory0 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory0), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory0 to non-nullable JSON property 'google_product_category_0'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory1Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory1 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory1), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory1 to non-nullable JSON property 'google_product_category_1'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory2Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory2 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory2), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory2 to non-nullable JSON property 'google_product_category_2'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory3Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory3 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory3), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory3 to non-nullable JSON property 'google_product_category_3'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory4Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory4 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory4), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory4 to non-nullable JSON property 'google_product_category_4'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory5Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory5 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory5), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory5 to non-nullable JSON property 'google_product_category_5'.");
 
             if (catalogsRetailFilterValuesMap.GoogleProductCategory6Option.IsSet && catalogsRetailFilterValuesMap.GoogleProductCategory6 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.GoogleProductCategory6), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.GoogleProductCategory6 to non-nullable JSON property 'google_product_category_6'.");
 
             if (catalogsRetailFilterValuesMap.MediaTypeOption.IsSet && catalogsRetailFilterValuesMap.MediaType == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.MediaType), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.MediaType to non-nullable JSON property 'media_type'.");
 
             if (catalogsRetailFilterValuesMap.ProductType0Option.IsSet && catalogsRetailFilterValuesMap.ProductType0 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.ProductType0), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.ProductType0 to non-nullable JSON property 'product_type_0'.");
 
             if (catalogsRetailFilterValuesMap.ProductType1Option.IsSet && catalogsRetailFilterValuesMap.ProductType1 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.ProductType1), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.ProductType1 to non-nullable JSON property 'product_type_1'.");
 
             if (catalogsRetailFilterValuesMap.ProductType2Option.IsSet && catalogsRetailFilterValuesMap.ProductType2 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.ProductType2), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.ProductType2 to non-nullable JSON property 'product_type_2'.");
 
             if (catalogsRetailFilterValuesMap.ProductType3Option.IsSet && catalogsRetailFilterValuesMap.ProductType3 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.ProductType3), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.ProductType3 to non-nullable JSON property 'product_type_3'.");
 
             if (catalogsRetailFilterValuesMap.ProductType4Option.IsSet && catalogsRetailFilterValuesMap.ProductType4 == null)
-                throw new ArgumentNullException(nameof(catalogsRetailFilterValuesMap.ProductType4), "Property is required for class CatalogsRetailFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsRetailFilterValuesMap.ProductType4 to non-nullable JSON property 'product_type_4'.");
 
             if (catalogsRetailFilterValuesMap.AdImageTagsOption.IsSet)
             {

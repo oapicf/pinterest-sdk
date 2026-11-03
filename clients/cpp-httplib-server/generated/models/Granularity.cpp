@@ -6,20 +6,3 @@
 */
 #include "Granularity.h"
 
-namespace models {
-
-Granularity::Granularity()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

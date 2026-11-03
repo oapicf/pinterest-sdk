@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,13 +28,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "QuizPinData", description = "This field includes all quiz data including questions, options, and results.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinData {
 
-  @Valid
   private List<@Valid QuizPinQuestion> questions = new ArrayList<>();
 
-  @Valid
   private List<@Valid QuizPinResult> results = new ArrayList<>();
 
   private JsonNullable<QuizPinResult> tieBreakerCustomResult = JsonNullable.<QuizPinResult>undefined();
@@ -59,7 +56,7 @@ public class QuizPinData {
    * Get questions
    * @return questions
    */
-  @Valid 
+  
   @Schema(name = "questions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
   public List<@Valid QuizPinQuestion> getQuestions() {
@@ -87,7 +84,7 @@ public class QuizPinData {
    * Get results
    * @return results
    */
-  @Valid 
+  
   @Schema(name = "results", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("results")
   public List<@Valid QuizPinResult> getResults() {

@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (downloadUrl.IsSet && downloadUrl.Value == null)
-                throw new ArgumentNullException(nameof(downloadUrl), "Property is not nullable for class DynamicTitlesDownloadCSV.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesDownloadCSV: download_url.");
 
             return new DynamicTitlesDownloadCSV(downloadUrl);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesDownloadCSV"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesDownloadCSV dynamicTitlesDownloadCSV, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesDownloadCSV"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesDownloadCSV dynamicTitlesDownloadCSV, JsonSerializerOptions jsonSerializerOptions)
         {
             if (dynamicTitlesDownloadCSV.DownloadUrlOption.IsSet && dynamicTitlesDownloadCSV.DownloadUrl == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesDownloadCSV.DownloadUrl), "Property is required for class DynamicTitlesDownloadCSV.");
+                throw new JsonException("Cannot write null property DynamicTitlesDownloadCSV.DownloadUrl to non-nullable JSON property 'download_url'.");
 
             if (dynamicTitlesDownloadCSV.DownloadUrlOption.IsSet)
                 writer.WriteString("download_url", dynamicTitlesDownloadCSV.DownloadUrl);

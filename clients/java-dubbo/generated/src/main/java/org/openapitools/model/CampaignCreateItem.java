@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 /**
  * Single campaign create item with create-specific defaults.
@@ -130,7 +130,7 @@ public class CampaignCreateItem implements Serializable {
   private Integer startTime;
 
   @JsonProperty("status")
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   @JsonProperty("tracking_urls")
   private TrackingUrls trackingUrls;

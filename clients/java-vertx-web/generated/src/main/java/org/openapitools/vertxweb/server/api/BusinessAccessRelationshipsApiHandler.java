@@ -67,7 +67,7 @@ public class BusinessAccessRelationshipsApiHandler {
         BrandAccountCreate brandAccountCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BrandAccountCreate>(){}) : null;
 
         logger.debug("Parameter businessHierarchyId is {}", businessHierarchyId);
-        logger.debug("Parameter brandAccountCreate is {}", brandAccountCreate);
+        logger.debug("Parameter brandAccountCreate is (body omitted)");
 
         api.brandAccountsCreate(businessHierarchyId, brandAccountCreate)
             .onSuccess(apiResponse -> {
@@ -94,7 +94,7 @@ public class BusinessAccessRelationshipsApiHandler {
 
         logger.debug("Parameter brandAccountId is {}", brandAccountId);
         logger.debug("Parameter businessHierarchyId is {}", businessHierarchyId);
-        logger.debug("Parameter brandAccountUpdate is {}", brandAccountUpdate);
+        logger.debug("Parameter brandAccountUpdate is (body omitted)");
 
         api.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
             .onSuccess(apiResponse -> {
@@ -119,7 +119,7 @@ public class BusinessAccessRelationshipsApiHandler {
         DeleteBusinessMembershipBody deleteBusinessMembershipBody = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<DeleteBusinessMembershipBody>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter deleteBusinessMembershipBody is {}", deleteBusinessMembershipBody);
+        logger.debug("Parameter deleteBusinessMembershipBody is (body omitted)");
 
         api.deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
             .onSuccess(apiResponse -> {
@@ -144,7 +144,7 @@ public class BusinessAccessRelationshipsApiHandler {
         DeleteBusinessPartnersDelete deleteBusinessPartnersDelete = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<DeleteBusinessPartnersDelete>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter deleteBusinessPartnersDelete is {}", deleteBusinessPartnersDelete);
+        logger.debug("Parameter deleteBusinessPartnersDelete is (body omitted)");
 
         api.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
             .onSuccess(apiResponse -> {
@@ -269,7 +269,7 @@ public class BusinessAccessRelationshipsApiHandler {
 
         logger.debug("Parameter businessId is {}", businessId);
         logger.debug("Parameter systemUserId is {}", systemUserId);
-        logger.debug("Parameter systemUserUpdateWithRequiredBody is {}", systemUserUpdateWithRequiredBody);
+        logger.debug("Parameter systemUserUpdateWithRequiredBody is (body omitted)");
 
         api.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
             .onSuccess(apiResponse -> {
@@ -294,7 +294,7 @@ public class BusinessAccessRelationshipsApiHandler {
         List<BusinessMembershipMember> businessMembershipMember = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<BusinessMembershipMember>>(){}) : null;
 
         logger.debug("Parameter businessId is {}", businessId);
-        logger.debug("Parameter businessMembershipMember is {}", businessMembershipMember);
+        logger.debug("Parameter businessMembershipMember is (body omitted)");
 
         api.updateBusinessMemberships(businessId, businessMembershipMember)
             .onSuccess(apiResponse -> {

@@ -29,14 +29,10 @@ import {
 export interface LabelBulkCreateRequest {
     /**
      * Labels that you are applying to the campaign.
-     * @type {Array<LabelCreateItem>}
-     * @memberof LabelBulkCreateRequest
      */
     labels: Array<LabelCreateItem>;
     /**
      * Unique identifier of the asset you are labelling. Currently, you can only label campaigns.
-     * @type {string}
-     * @memberof LabelBulkCreateRequest
      */
     parentId: string;
 }

@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object describing a creative assets item record")
 @JsonTypeName("CatalogsCreativeAssetsItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsItemResponse   {
   private CatalogsCreativeAssetsAttributes attributes;
   public enum CatalogTypeEnum {
@@ -124,7 +124,7 @@ public class CatalogsCreativeAssetsItemResponse   {
 }
 
   private ItemResponseKindEnum itemResponseKind;
-  private @Valid List<@Valid Pin> pins;
+  private List<@Valid Pin> pins;
 
   public CatalogsCreativeAssetsItemResponse() {
   }
@@ -227,7 +227,7 @@ public class CatalogsCreativeAssetsItemResponse   {
   
   @ApiModelProperty(value = "The pins mapped to the item")
   @JsonProperty("pins")
-  @Valid  @Size(max=11)public List<@Valid Pin> getPins() {
+   @Size(max=11)public List<@Valid Pin> getPins() {
     return pins;
   }
 

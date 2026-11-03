@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class MediaUploadStatus
-{
-public:
-
-    MediaUploadStatus();
-    virtual ~MediaUploadStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MediaUploadStatus,
-        )
-
-private:
+enum class MediaUploadStatus {
+    
+    REGISTERED,
+    
+    PROCESSING,
+    
+    SUCCEEDED,
+    
+    FAILED
+    
 };
 
+inline void to_json(nlohmann::json& j, const MediaUploadStatus& value)
+{
+    switch (value)
+    {
+        
+        case MediaUploadStatus::REGISTERED: j = "registered"; break;
+        
+        case MediaUploadStatus::PROCESSING: j = "processing"; break;
+        
+        case MediaUploadStatus::SUCCEEDED: j = "succeeded"; break;
+        
+        case MediaUploadStatus::FAILED: j = "failed"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MediaUploadStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MediaUploadStatus& value)
+{
+    
+    if (j == "registered")
+    {
+        value = MediaUploadStatus::REGISTERED;
+        return;
+    }
+    
+    if (j == "processing")
+    {
+        value = MediaUploadStatus::PROCESSING;
+        return;
+    }
+    
+    if (j == "succeeded")
+    {
+        value = MediaUploadStatus::SUCCEEDED;
+        return;
+    }
+    
+    if (j == "failed")
+    {
+        value = MediaUploadStatus::FAILED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MediaUploadStatus", &j);
+}
 
 } // namespace models
 

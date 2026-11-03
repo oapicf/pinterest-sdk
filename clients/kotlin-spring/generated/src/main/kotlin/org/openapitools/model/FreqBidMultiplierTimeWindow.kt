@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The time window for frequency bid multipliers.
-* Values: WEEK,MONTH
-*/
+ * The time window for frequency bid multipliers.
+ * Values: WEEK,MONTH
+ */
 enum class FreqBidMultiplierTimeWindow(@get:JsonValue val value: kotlin.String) {
 
     WEEK("WEEK"),
@@ -28,9 +28,8 @@ enum class FreqBidMultiplierTimeWindow(@get:JsonValue val value: kotlin.String) 
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): FreqBidMultiplierTimeWindow {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FreqBidMultiplierTimeWindow'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FreqBidMultiplierTimeWindow'")
         }
     }
 }
-

@@ -17,7 +17,7 @@ import CatalogsProductGroupFilterKeys from './CatalogsProductGroupFilterKeys';
 /**
  * The CatalogsProductGroupFiltersRequestAnyOfItems0 model module.
  * @module model/CatalogsProductGroupFiltersRequestAnyOfItems0
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupFiltersRequestAnyOfItems0 {
     /**

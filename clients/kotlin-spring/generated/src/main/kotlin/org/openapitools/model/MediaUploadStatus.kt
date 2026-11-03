@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: registered,processing,succeeded,failed
-*/
+ * 
+ * Values: registered,processing,succeeded,failed
+ */
 enum class MediaUploadStatus(@get:JsonValue val value: kotlin.String) {
 
     registered("registered"),
@@ -30,9 +30,8 @@ enum class MediaUploadStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MediaUploadStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MediaUploadStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MediaUploadStatus'")
         }
     }
 }
-

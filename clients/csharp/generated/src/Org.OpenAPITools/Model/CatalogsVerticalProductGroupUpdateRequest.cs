@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum?>(CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,7 +268,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsVerticalProductGroupUpdateRequest: catalog_type.");
 
             if (catalogsCreativeAssetsProductGroupUpdateRequest != null)
                 return new CatalogsVerticalProductGroupUpdateRequest(catalogsCreativeAssetsProductGroupUpdateRequest);
@@ -283,7 +288,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsVerticalProductGroupUpdateRequest catalogsVerticalProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -316,7 +320,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsVerticalProductGroupUpdateRequest catalogsVerticalProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
 

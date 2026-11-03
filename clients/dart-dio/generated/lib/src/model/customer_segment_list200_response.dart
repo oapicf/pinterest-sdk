@@ -125,3 +125,4 @@ class _$CustomerSegmentList200ResponseSerializer implements PrimitiveSerializer<
   }
 }
 
+

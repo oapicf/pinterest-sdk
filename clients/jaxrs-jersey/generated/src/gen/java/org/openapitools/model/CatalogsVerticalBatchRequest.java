@@ -45,7 +45,7 @@ import javax.validation.Valid;
   CatalogsVerticalBatchRequest.JSON_PROPERTY_ITEMS,
   CatalogsVerticalBatchRequest.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsBatchRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelBatchRequest.class, name = "HOTEL"),
@@ -430,7 +430,7 @@ public class CatalogsVerticalBatchRequest   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with creative assets item operations")
-  @NotNull @Valid  @Size(min=1,max=1000)
+  @NotNull  @Size(min=1,max=1000)
   public List<@Valid CatalogsCreativeAssetsBatchItem> getItems() {
     return items;
   }

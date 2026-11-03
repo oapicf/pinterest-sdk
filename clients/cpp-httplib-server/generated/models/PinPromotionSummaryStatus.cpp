@@ -6,20 +6,3 @@
 */
 #include "PinPromotionSummaryStatus.h"
 
-namespace models {
-
-PinPromotionSummaryStatus::PinPromotionSummaryStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

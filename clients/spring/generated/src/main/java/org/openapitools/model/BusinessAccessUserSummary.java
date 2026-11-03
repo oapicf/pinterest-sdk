@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -24,16 +23,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BusinessAccessUserSummary", description = "Metadata of the member/partner that has access to the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessAccessUserSummary {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> email = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Size(min = 1, max = 20) String> id = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> username = JsonNullable.<String>undefined();
 
   public BusinessAccessUserSummary email(String email) {
@@ -46,7 +42,7 @@ public class BusinessAccessUserSummary {
    * @return email
    */
   
-  @Schema(name = "email", example = "business0101@business.com", description = "Email of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "email", example = "business0101@business.com", description = "Email of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("email")
   public JsonNullable<String> getEmail() {
     return email;
@@ -66,7 +62,7 @@ public class BusinessAccessUserSummary {
    * @return id
    */
   @Size(min = 1, max = 20) 
-  @Schema(name = "id", example = "549755885175", description = "Unique identifier of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "id", example = "549755885175", description = "Unique identifier of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("id")
   public JsonNullable<@Size(min = 1, max = 20) String> getId() {
     return id;
@@ -86,7 +82,7 @@ public class BusinessAccessUserSummary {
    * @return username
    */
   
-  @Schema(name = "username", example = "business0101", description = "Username of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "username", example = "business0101", description = "Username of the business member/partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("username")
   public JsonNullable<String> getUsername() {
     return username;

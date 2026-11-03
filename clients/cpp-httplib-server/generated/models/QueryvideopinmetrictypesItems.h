@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class QueryvideopinmetrictypesItems
-{
-public:
-
-    QueryvideopinmetrictypesItems();
-    virtual ~QueryvideopinmetrictypesItems() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(QueryvideopinmetrictypesItems,
-        )
-
-private:
+enum class QueryvideopinmetrictypesItems {
+    
+    IMPRESSION,
+    
+    SAVE,
+    
+    VIDEO_MRC_VIEW,
+    
+    VIDEO_AVG_WATCH_TIME,
+    
+    VIDEO_V50_WATCH_TIME,
+    
+    QUARTILE_95_PERCENT_VIEW,
+    
+    VIDEO_10S_VIEW,
+    
+    VIDEO_START,
+    
+    OUTBOUND_CLICK
+    
 };
 
+inline void to_json(nlohmann::json& j, const QueryvideopinmetrictypesItems& value)
+{
+    switch (value)
+    {
+        
+        case QueryvideopinmetrictypesItems::IMPRESSION: j = "IMPRESSION"; break;
+        
+        case QueryvideopinmetrictypesItems::SAVE: j = "SAVE"; break;
+        
+        case QueryvideopinmetrictypesItems::VIDEO_MRC_VIEW: j = "VIDEO_MRC_VIEW"; break;
+        
+        case QueryvideopinmetrictypesItems::VIDEO_AVG_WATCH_TIME: j = "VIDEO_AVG_WATCH_TIME"; break;
+        
+        case QueryvideopinmetrictypesItems::VIDEO_V50_WATCH_TIME: j = "VIDEO_V50_WATCH_TIME"; break;
+        
+        case QueryvideopinmetrictypesItems::QUARTILE_95_PERCENT_VIEW: j = "QUARTILE_95_PERCENT_VIEW"; break;
+        
+        case QueryvideopinmetrictypesItems::VIDEO_10S_VIEW: j = "VIDEO_10S_VIEW"; break;
+        
+        case QueryvideopinmetrictypesItems::VIDEO_START: j = "VIDEO_START"; break;
+        
+        case QueryvideopinmetrictypesItems::OUTBOUND_CLICK: j = "OUTBOUND_CLICK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for QueryvideopinmetrictypesItems", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, QueryvideopinmetrictypesItems& value)
+{
+    
+    if (j == "IMPRESSION")
+    {
+        value = QueryvideopinmetrictypesItems::IMPRESSION;
+        return;
+    }
+    
+    if (j == "SAVE")
+    {
+        value = QueryvideopinmetrictypesItems::SAVE;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEW")
+    {
+        value = QueryvideopinmetrictypesItems::VIDEO_MRC_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_AVG_WATCH_TIME")
+    {
+        value = QueryvideopinmetrictypesItems::VIDEO_AVG_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "VIDEO_V50_WATCH_TIME")
+    {
+        value = QueryvideopinmetrictypesItems::VIDEO_V50_WATCH_TIME;
+        return;
+    }
+    
+    if (j == "QUARTILE_95_PERCENT_VIEW")
+    {
+        value = QueryvideopinmetrictypesItems::QUARTILE_95_PERCENT_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_10S_VIEW")
+    {
+        value = QueryvideopinmetrictypesItems::VIDEO_10S_VIEW;
+        return;
+    }
+    
+    if (j == "VIDEO_START")
+    {
+        value = QueryvideopinmetrictypesItems::VIDEO_START;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK")
+    {
+        value = QueryvideopinmetrictypesItems::OUTBOUND_CLICK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for QueryvideopinmetrictypesItems", &j);
+}
 
 } // namespace models
 

@@ -20,8 +20,6 @@ public class CatalogsProductGroupMultiplePinterestProductCategoryCriteria  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<ProductCategoryEnum> values = new ArrayList<>();
  /**
    * Get negated

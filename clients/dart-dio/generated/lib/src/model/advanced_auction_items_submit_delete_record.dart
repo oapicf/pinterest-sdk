@@ -180,6 +180,7 @@ class _$AdvancedAuctionItemsSubmitDeleteRecordSerializer implements PrimitiveSer
   }
 }
 
+
 class AdvancedAuctionItemsSubmitDeleteRecordOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

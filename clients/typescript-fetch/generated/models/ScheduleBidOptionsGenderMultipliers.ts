@@ -31,8 +31,6 @@ export interface ScheduleBidOptionsGenderMultipliers {
     [key: string]: number | any;
     /**
      * 
-     * @type {TargetingSpecGender}
-     * @memberof ScheduleBidOptionsGenderMultipliers
      */
     gENDER?: TargetingSpecGender;
 }

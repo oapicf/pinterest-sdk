@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TargetingSpecOperationMaximumAge model module.
  * @module model/TargetingSpecOperationMaximumAge
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOperationMaximumAge {
     /**

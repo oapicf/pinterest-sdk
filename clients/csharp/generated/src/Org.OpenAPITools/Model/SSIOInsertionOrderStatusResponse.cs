@@ -186,10 +186,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (pinOrderId.IsSet && pinOrderId.Value == null)
-                throw new ArgumentNullException(nameof(pinOrderId), "Property is not nullable for class SSIOInsertionOrderStatusResponse.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderStatusResponse: pin_order_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class SSIOInsertionOrderStatusResponse.");
+                throw new JsonException("Property is not nullable for class SSIOInsertionOrderStatusResponse: status.");
 
             return new SSIOInsertionOrderStatusResponse(creationTime, pinOrderId, status);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrderStatusResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOInsertionOrderStatusResponse sSIOInsertionOrderStatusResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,14 +214,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOInsertionOrderStatusResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOInsertionOrderStatusResponse sSIOInsertionOrderStatusResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (sSIOInsertionOrderStatusResponse.PinOrderIdOption.IsSet && sSIOInsertionOrderStatusResponse.PinOrderId == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderStatusResponse.PinOrderId), "Property is required for class SSIOInsertionOrderStatusResponse.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrderStatusResponse.PinOrderId to non-nullable JSON property 'pin_order_id'.");
 
             if (sSIOInsertionOrderStatusResponse.StatusOption.IsSet && sSIOInsertionOrderStatusResponse.Status == null)
-                throw new ArgumentNullException(nameof(sSIOInsertionOrderStatusResponse.Status), "Property is required for class SSIOInsertionOrderStatusResponse.");
+                throw new JsonException("Cannot write null property SSIOInsertionOrderStatusResponse.Status to non-nullable JSON property 'status'.");
 
             if (sSIOInsertionOrderStatusResponse.CreationTimeOption.IsSet)
                 if (sSIOInsertionOrderStatusResponse.CreationTimeOption.Value != null)

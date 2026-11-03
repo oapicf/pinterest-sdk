@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
  */
 public class UserWebsiteCreate   {
 
-    private WebsiteVerificationMethod verificationMethod;
+    private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
     private String website;
 
     /**

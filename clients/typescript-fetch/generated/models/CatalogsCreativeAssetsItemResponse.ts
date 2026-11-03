@@ -36,32 +36,22 @@ import {
 export interface CatalogsCreativeAssetsItemResponse {
     /**
      * 
-     * @type {CatalogsCreativeAssetsAttributes}
-     * @memberof CatalogsCreativeAssetsItemResponse
      */
     attributes?: CatalogsCreativeAssetsAttributes;
     /**
      * 
-     * @type {CatalogsCreativeAssetsItemResponseCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsItemResponse
      */
     catalogType: CatalogsCreativeAssetsItemResponseCatalogTypeEnum;
     /**
      * The catalog creative assets id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsItemResponse
      */
     creativeAssetsId?: string;
     /**
      * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
-     * @type {CatalogsCreativeAssetsItemResponseItemResponseKindEnum}
-     * @memberof CatalogsCreativeAssetsItemResponse
      */
     itemResponseKind: CatalogsCreativeAssetsItemResponseItemResponseKindEnum;
     /**
      * The pins mapped to the item
-     * @type {Array<Pin>}
-     * @memberof CatalogsCreativeAssetsItemResponse
      */
     pins?: Array<Pin> | null;
 }
@@ -71,7 +61,7 @@ export interface CatalogsCreativeAssetsItemResponse {
  * @export
  */
 export const CatalogsCreativeAssetsItemResponseCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsItemResponseCatalogTypeEnum = typeof CatalogsCreativeAssetsItemResponseCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsItemResponseCatalogTypeEnum];
 
@@ -79,7 +69,7 @@ export type CatalogsCreativeAssetsItemResponseCatalogTypeEnum = typeof CatalogsC
  * @export
  */
 export const CatalogsCreativeAssetsItemResponseItemResponseKindEnum = {
-    CreativeAssetsItem: 'creative_assets_item'
+    CreativeAssetsItem: 'creative_assets_item',
 } as const;
 export type CatalogsCreativeAssetsItemResponseItemResponseKindEnum = typeof CatalogsCreativeAssetsItemResponseItemResponseKindEnum[keyof typeof CatalogsCreativeAssetsItemResponseItemResponseKindEnum];
 

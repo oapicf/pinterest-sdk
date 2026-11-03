@@ -206,25 +206,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetId.IsSet)
-                throw new ArgumentException("Property is required for class AssetIdPermissions.", nameof(assetId));
+                throw new JsonException("Property is required for class AssetIdPermissions: asset_id.");
 
             if (!assetType.IsSet)
-                throw new ArgumentException("Property is required for class AssetIdPermissions.", nameof(assetType));
+                throw new JsonException("Property is required for class AssetIdPermissions: asset_type.");
 
             if (!permissions.IsSet)
-                throw new ArgumentException("Property is required for class AssetIdPermissions.", nameof(permissions));
+                throw new JsonException("Property is required for class AssetIdPermissions: permissions.");
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class AssetIdPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdPermissions: asset_id.");
 
             if (assetType.IsSet && assetType.Value == null)
-                throw new ArgumentNullException(nameof(assetType), "Property is not nullable for class AssetIdPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdPermissions: asset_type.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class AssetIdPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdPermissions: permissions.");
 
             if (assetGroupInfo.IsSet && assetGroupInfo.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupInfo), "Property is not nullable for class AssetIdPermissions.");
+                throw new JsonException("Property is not nullable for class AssetIdPermissions: asset_group_info.");
 
             return new AssetIdPermissions(assetId.Value!, assetType.Value!.Value!, permissions.Value!, assetGroupInfo);
         }
@@ -235,7 +235,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetIdPermissions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetIdPermissions assetIdPermissions, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -250,17 +249,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetIdPermissions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetIdPermissions assetIdPermissions, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (assetIdPermissions.AssetId == null)
-                throw new ArgumentNullException(nameof(assetIdPermissions.AssetId), "Property is required for class AssetIdPermissions.");
-
-            if (assetIdPermissions.Permissions == null)
-                throw new ArgumentNullException(nameof(assetIdPermissions.Permissions), "Property is required for class AssetIdPermissions.");
-
             if (assetIdPermissions.AssetGroupInfoOption.IsSet && assetIdPermissions.AssetGroupInfo == null)
-                throw new ArgumentNullException(nameof(assetIdPermissions.AssetGroupInfo), "Property is required for class AssetIdPermissions.");
+                throw new JsonException("Cannot write null property AssetIdPermissions.AssetGroupInfo to non-nullable JSON property 'asset_group_info'.");
 
             writer.WriteString("asset_id", assetIdPermissions.AssetId);
 

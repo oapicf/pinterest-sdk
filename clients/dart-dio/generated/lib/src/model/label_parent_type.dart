@@ -9,9 +9,9 @@ import 'package:built_value/serializer.dart';
 
 part 'label_parent_type.g.dart';
 
+/// Label parent entity type.
 class LabelParentType extends EnumClass {
 
-  /// Label parent entity type.
   @BuiltValueEnumConst(wireName: r'CAMPAIGN')
   static const LabelParentType CAMPAIGN = _$CAMPAIGN;
 

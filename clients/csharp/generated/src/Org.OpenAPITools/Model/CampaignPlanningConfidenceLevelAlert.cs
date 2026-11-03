@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class CampaignPlanningConfidenceLevelAlert.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConfidenceLevelAlert: description.");
 
             if (reason.IsSet && reason.Value == null)
-                throw new ArgumentNullException(nameof(reason), "Property is not nullable for class CampaignPlanningConfidenceLevelAlert.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConfidenceLevelAlert: reason.");
 
             if (severity.IsSet && severity.Value == null)
-                throw new ArgumentNullException(nameof(severity), "Property is not nullable for class CampaignPlanningConfidenceLevelAlert.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConfidenceLevelAlert: severity.");
 
             return new CampaignPlanningConfidenceLevelAlert(description, reason, severity);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConfidenceLevelAlert"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningConfidenceLevelAlert campaignPlanningConfidenceLevelAlert, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,11 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConfidenceLevelAlert"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningConfidenceLevelAlert campaignPlanningConfidenceLevelAlert, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignPlanningConfidenceLevelAlert.DescriptionOption.IsSet && campaignPlanningConfidenceLevelAlert.Description == null)
-                throw new ArgumentNullException(nameof(campaignPlanningConfidenceLevelAlert.Description), "Property is required for class CampaignPlanningConfidenceLevelAlert.");
+                throw new JsonException("Cannot write null property CampaignPlanningConfidenceLevelAlert.Description to non-nullable JSON property 'description'.");
+
+            if (campaignPlanningConfidenceLevelAlert.ReasonOption.IsSet && campaignPlanningConfidenceLevelAlert.Reason == null)
+                throw new JsonException("Cannot write null property CampaignPlanningConfidenceLevelAlert.Reason to non-nullable JSON property 'reason'.");
+
+            if (campaignPlanningConfidenceLevelAlert.SeverityOption.IsSet && campaignPlanningConfidenceLevelAlert.Severity == null)
+                throw new JsonException("Cannot write null property CampaignPlanningConfidenceLevelAlert.Severity to non-nullable JSON property 'severity'.");
 
             if (campaignPlanningConfidenceLevelAlert.DescriptionOption.IsSet)
                 writer.WriteString("description", campaignPlanningConfidenceLevelAlert.Description);

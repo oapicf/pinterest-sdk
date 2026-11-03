@@ -6,20 +6,3 @@
 */
 #include "IntendedPromotionType.h"
 
-namespace models {
-
-IntendedPromotionType::IntendedPromotionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

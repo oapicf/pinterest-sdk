@@ -23,7 +23,7 @@ data class BusinessAssetMembersGet200Response(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("items")
+    @param:JsonProperty("items", required = true)
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<UserSingleAssetBinding>,
 
     @Schema(description = "")

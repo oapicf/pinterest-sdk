@@ -29,14 +29,10 @@ import {
 export interface AdvancedAuctionItems {
     /**
      * Response object of item bid options
-     * @type {string}
-     * @memberof AdvancedAuctionItems
      */
     catalogId?: string;
     /**
      * Array with item bid options
-     * @type {Array<AdvancedAuctionItem>}
-     * @memberof AdvancedAuctionItems
      */
     items?: Array<AdvancedAuctionItem>;
 }

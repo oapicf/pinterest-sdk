@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateAssetAccessRequestItem")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestItem   {
-  private @Valid Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
+  private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
   private String partnerId;
 
   public CreateAssetAccessRequestItem() {
@@ -48,7 +48,7 @@ public class CreateAssetAccessRequestItem   {
   
   @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner.")
   @JsonProperty(required = true, value = "asset_id_to_permissions")
-  @NotNull @Valid public Map<String, List<Permissions>> getAssetIdToPermissions() {
+  @NotNull public Map<String, List<Permissions>> getAssetIdToPermissions() {
     return assetIdToPermissions;
   }
 

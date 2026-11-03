@@ -29,14 +29,10 @@ import {
 export interface BillingInvoicesGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof BillingInvoicesGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<BillingInvoice>}
-     * @memberof BillingInvoicesGet200Response
      */
     items: Array<BillingInvoice>;
 }

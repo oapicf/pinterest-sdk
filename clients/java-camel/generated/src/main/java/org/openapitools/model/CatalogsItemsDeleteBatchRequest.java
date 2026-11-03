@@ -28,12 +28,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsDeleteBatchRequest", description = "Request object to delete catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
 
-  @Valid
   private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
   /**
@@ -369,7 +368,7 @@ public class CatalogsItemsDeleteBatchRequest implements CatalogsItemsBatchReques
    * Array with catalogs items
    * @return items
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid ItemDeleteBatchRecord> getItems() {

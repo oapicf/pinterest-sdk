@@ -195,22 +195,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adId.IsSet)
-                throw new ArgumentException("Property is required for class LeadsExportsCreate.", nameof(adId));
+                throw new JsonException("Property is required for class LeadsExportsCreate: ad_id.");
 
             if (!endDate.IsSet)
-                throw new ArgumentException("Property is required for class LeadsExportsCreate.", nameof(endDate));
+                throw new JsonException("Property is required for class LeadsExportsCreate: end_date.");
 
             if (!startDate.IsSet)
-                throw new ArgumentException("Property is required for class LeadsExportsCreate.", nameof(startDate));
+                throw new JsonException("Property is required for class LeadsExportsCreate: start_date.");
 
             if (adId.IsSet && adId.Value == null)
-                throw new ArgumentNullException(nameof(adId), "Property is not nullable for class LeadsExportsCreate.");
+                throw new JsonException("Property is not nullable for class LeadsExportsCreate: ad_id.");
 
             if (endDate.IsSet && endDate.Value == null)
-                throw new ArgumentNullException(nameof(endDate), "Property is not nullable for class LeadsExportsCreate.");
+                throw new JsonException("Property is not nullable for class LeadsExportsCreate: end_date.");
 
             if (startDate.IsSet && startDate.Value == null)
-                throw new ArgumentNullException(nameof(startDate), "Property is not nullable for class LeadsExportsCreate.");
+                throw new JsonException("Property is not nullable for class LeadsExportsCreate: start_date.");
 
             return new LeadsExportsCreate(adId.Value!, endDate.Value!, startDate.Value!);
         }
@@ -221,7 +221,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExportsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadsExportsCreate leadsExportsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -236,18 +235,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadsExportsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadsExportsCreate leadsExportsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadsExportsCreate.AdId == null)
-                throw new ArgumentNullException(nameof(leadsExportsCreate.AdId), "Property is required for class LeadsExportsCreate.");
-
-            if (leadsExportsCreate.EndDate == null)
-                throw new ArgumentNullException(nameof(leadsExportsCreate.EndDate), "Property is required for class LeadsExportsCreate.");
-
-            if (leadsExportsCreate.StartDate == null)
-                throw new ArgumentNullException(nameof(leadsExportsCreate.StartDate), "Property is required for class LeadsExportsCreate.");
-
             writer.WriteString("ad_id", leadsExportsCreate.AdId);
 
             writer.WriteString("end_date", leadsExportsCreate.EndDate);

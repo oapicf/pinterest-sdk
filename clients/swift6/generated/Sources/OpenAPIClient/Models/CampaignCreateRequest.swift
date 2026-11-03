@@ -9,8 +9,8 @@ import Foundation
 
 public struct CampaignCreateRequest: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var bidOptions: CampaignBidOptionsCreate?
     public var intendedPromotionType: IntendedPromotionType?
     /** Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES */

@@ -83,7 +83,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessesApi  {
    private final BusinessesApiService delegate;
 
@@ -659,7 +659,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateBusinessMemberships(@ApiParam(value = "Business id", required = true) @PathParam("business_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId,@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1) List<@Valid BusinessMembershipMember> businessMembershipMember,@Context SecurityContext securityContext)
+    public Response updateBusinessMemberships(@ApiParam(value = "Business id", required = true) @PathParam("business_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId,@ApiParam(value = "", required = true) @NotNull  @Size(min=1) List<@Valid BusinessMembershipMember> businessMembershipMember,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.updateBusinessMemberships(businessId, businessMembershipMember, securityContext);
     }

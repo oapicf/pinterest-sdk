@@ -15,7 +15,7 @@
 export const InviteType = {
     MemberInvite: 'MEMBER_INVITE',
     PartnerInvite: 'PARTNER_INVITE',
-    PartnerRequest: 'PARTNER_REQUEST'
+    PartnerRequest: 'PARTNER_REQUEST',
 } as const;
 export type InviteType = typeof InviteType[keyof typeof InviteType];
 

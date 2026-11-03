@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  * Keywords
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Keywords {
 
   private List<@Valid KeywordError> errors = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Keywords {
    * Keyword error
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", accessMode = Schema.AccessMode.READ_ONLY, description = "Keyword error", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("errors")
   public List<@Valid KeywordError> getErrors() {
@@ -89,7 +89,7 @@ public class Keywords {
    * Keywords
    * @return keywords
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "keywords", description = "Keywords", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid Keyword> getKeywords() {

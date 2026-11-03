@@ -849,3 +849,4 @@ class _$AdSerializer implements PrimitiveSerializer<Ad> {
   }
 }
 
+

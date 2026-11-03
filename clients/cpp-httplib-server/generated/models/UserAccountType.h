@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AccountType
-{
-public:
-
-    AccountType();
-    virtual ~AccountType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AccountType,
-        )
-
-private:
+enum class AccountType {
+    
+    PINNER,
+    
+    BUSINESS
+    
 };
 
+inline void to_json(nlohmann::json& j, const AccountType& value)
+{
+    switch (value)
+    {
+        
+        case AccountType::PINNER: j = "PINNER"; break;
+        
+        case AccountType::BUSINESS: j = "BUSINESS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AccountType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AccountType& value)
+{
+    
+    if (j == "PINNER")
+    {
+        value = AccountType::PINNER;
+        return;
+    }
+    
+    if (j == "BUSINESS")
+    {
+        value = AccountType::BUSINESS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AccountType", &j);
+}
 
 } // namespace models
 

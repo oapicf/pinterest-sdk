@@ -153,10 +153,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class MediaList200Response.", nameof(items));
+                throw new JsonException("Property is required for class MediaList200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class MediaList200Response.");
+                throw new JsonException("Property is not nullable for class MediaList200Response: items.");
 
             return new MediaList200Response(items.Value!, bookmark);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MediaList200Response mediaList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mediaList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MediaList200Response mediaList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (mediaList200Response.Items == null)
-                throw new ArgumentNullException(nameof(mediaList200Response.Items), "Property is required for class MediaList200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, mediaList200Response.Items, jsonSerializerOptions);
             if (mediaList200Response.BookmarkOption.IsSet)

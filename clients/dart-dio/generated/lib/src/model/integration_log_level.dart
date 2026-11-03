@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'integration_log_level.g.dart';
 
+/// Log level type for integration applications.
 class IntegrationLogLevel extends EnumClass {
 
-  /// Log level type for integration applications.
   @BuiltValueEnumConst(wireName: r'INFO')
   static const IntegrationLogLevel INFO = _$INFO;
-  /// Log level type for integration applications.
   @BuiltValueEnumConst(wireName: r'WARN')
   static const IntegrationLogLevel WARN = _$WARN;
-  /// Log level type for integration applications.
   @BuiltValueEnumConst(wireName: r'ERROR')
   static const IntegrationLogLevel ERROR = _$ERROR;
 

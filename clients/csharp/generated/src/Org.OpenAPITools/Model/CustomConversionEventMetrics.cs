@@ -147,16 +147,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!customEventMetricsType.IsSet)
-                throw new ArgumentException("Property is required for class CustomConversionEventMetrics.", nameof(customEventMetricsType));
+                throw new JsonException("Property is required for class CustomConversionEventMetrics: custom_event_metrics_type.");
 
             if (!customEventName.IsSet)
-                throw new ArgumentException("Property is required for class CustomConversionEventMetrics.", nameof(customEventName));
+                throw new JsonException("Property is required for class CustomConversionEventMetrics: custom_event_name.");
 
             if (customEventMetricsType.IsSet && customEventMetricsType.Value == null)
-                throw new ArgumentNullException(nameof(customEventMetricsType), "Property is not nullable for class CustomConversionEventMetrics.");
+                throw new JsonException("Property is not nullable for class CustomConversionEventMetrics: custom_event_metrics_type.");
 
             if (customEventName.IsSet && customEventName.Value == null)
-                throw new ArgumentNullException(nameof(customEventName), "Property is not nullable for class CustomConversionEventMetrics.");
+                throw new JsonException("Property is not nullable for class CustomConversionEventMetrics: custom_event_name.");
 
             return new CustomConversionEventMetrics(customEventMetricsType.Value!.Value!, customEventName.Value!);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customConversionEventMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomConversionEventMetrics customConversionEventMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customConversionEventMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomConversionEventMetrics customConversionEventMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customConversionEventMetrics.CustomEventName == null)
-                throw new ArgumentNullException(nameof(customConversionEventMetrics.CustomEventName), "Property is required for class CustomConversionEventMetrics.");
-
             var customEventMetricsTypeRawValue = AdeColumnTypeValueConverter.ToJsonValue(customConversionEventMetrics.CustomEventMetricsType);
             writer.WriteString("custom_event_metrics_type", customEventMetricsTypeRawValue);
 

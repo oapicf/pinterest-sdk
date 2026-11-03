@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BidFloor {
     /**
      * A list of bid floors in micro currency. For example, [100000, 200000]
-     * @type {Array<number>}
-     * @memberof BidFloor
      */
     readonly bidFloors?: Array<number>;
     /**
      * Always the string 'bidfloor'.
-     * @type {string}
-     * @memberof BidFloor
      */
     readonly type?: string;
 }

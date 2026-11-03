@@ -19,7 +19,7 @@ import CatalogsRetailProductGroupProductCounts from './CatalogsRetailProductGrou
 /**
  * The CatalogsProductGroupProductCountsVertical model module.
  * @module model/CatalogsProductGroupProductCountsVertical
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupProductCountsVertical {
     /**

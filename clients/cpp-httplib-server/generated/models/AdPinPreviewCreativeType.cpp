@@ -6,20 +6,3 @@
 */
 #include "AdPinPreviewCreativeType.h"
 
-namespace models {
-
-AdPinPreviewCreativeType::AdPinPreviewCreativeType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

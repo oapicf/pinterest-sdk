@@ -17,7 +17,7 @@ import CatalogsHotelAttributes from './CatalogsHotelAttributes';
 /**
  * The CatalogsCreateHotelItem model module.
  * @module model/CatalogsCreateHotelItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreateHotelItem {
     /**

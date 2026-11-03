@@ -86,8 +86,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   */
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
 
-  @Valid
-
   private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")

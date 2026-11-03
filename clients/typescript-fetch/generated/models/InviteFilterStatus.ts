@@ -19,7 +19,7 @@
  */
 export const InviteFilterStatus = {
     Pending: 'PENDING',
-    Expired: 'EXPIRED'
+    Expired: 'EXPIRED',
 } as const;
 export type InviteFilterStatus = typeof InviteFilterStatus[keyof typeof InviteFilterStatus];
 

@@ -6,20 +6,3 @@
 */
 #include "LabelType.h"
 
-namespace models {
-
-LabelType::LabelType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -41,7 +41,7 @@ import javax.validation.Valid;
   PinUpdate.JSON_PROPERTY_LINK,
   PinUpdate.JSON_PROPERTY_TITLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinUpdate   {
   public static final String JSON_PROPERTY_AI_DISCLOSURES = "ai_disclosures";
   @JsonProperty(JSON_PROPERTY_AI_DISCLOSURES)
@@ -174,7 +174,7 @@ public class PinUpdate   {
    **/
   @JsonProperty(value = "carousel_slots")
   @ApiModelProperty(value = "Carousel Pin slots data.")
-  @Valid 
+  
   public List<@Valid CarouselSlot> getCarouselSlots() {
     return carouselSlots;
   }

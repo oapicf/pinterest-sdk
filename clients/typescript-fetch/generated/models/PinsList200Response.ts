@@ -29,14 +29,10 @@ import {
 export interface PinsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof PinsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Pin>}
-     * @memberof PinsList200Response
      */
     items: Array<Pin>;
 }

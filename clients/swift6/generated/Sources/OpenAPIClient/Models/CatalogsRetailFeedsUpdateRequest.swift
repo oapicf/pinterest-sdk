@@ -13,7 +13,7 @@ public struct CatalogsRetailFeedsUpdateRequest: Sendable, Codable, Hashable {
     public enum CatalogType: String, Sendable, Codable, CaseIterable {
         case retail = "RETAIL"
     }
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     public var catalogType: CatalogType
     public var credentials: CatalogsFeedCredentials?
     public var defaultAvailability: ProductAvailabilityType?

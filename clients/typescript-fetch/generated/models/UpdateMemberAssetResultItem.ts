@@ -29,8 +29,6 @@ import {
 export interface UpdateMemberAssetResultItem {
     /**
      * 
-     * @type {UsersForIndividualAssetResponse}
-     * @memberof UpdateMemberAssetResultItem
      */
     response?: UsersForIndividualAssetResponse;
 }

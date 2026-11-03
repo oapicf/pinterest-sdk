@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdBatchWriteResponseModel.", nameof(items));
+                throw new JsonException("Property is required for class AdBatchWriteResponseModel: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdBatchWriteResponseModel.");
+                throw new JsonException("Property is not nullable for class AdBatchWriteResponseModel: items.");
 
             return new AdBatchWriteResponseModel(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchWriteResponseModel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdBatchWriteResponseModel adBatchWriteResponseModel, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchWriteResponseModel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdBatchWriteResponseModel adBatchWriteResponseModel, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adBatchWriteResponseModel.Items == null)
-                throw new ArgumentNullException(nameof(adBatchWriteResponseModel.Items), "Property is required for class AdBatchWriteResponseModel.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, adBatchWriteResponseModel.Items, jsonSerializerOptions);
         }

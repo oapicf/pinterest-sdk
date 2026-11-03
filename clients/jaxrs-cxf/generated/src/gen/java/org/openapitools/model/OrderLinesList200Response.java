@@ -22,8 +22,6 @@ public class OrderLinesList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid OrderLine> items = new ArrayList<>();
  /**
    * Get bookmark

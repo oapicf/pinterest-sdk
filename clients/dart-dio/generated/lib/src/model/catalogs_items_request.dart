@@ -141,3 +141,4 @@ class _$CatalogsItemsRequestSerializer implements PrimitiveSerializer<CatalogsIt
   }
 }
 
+

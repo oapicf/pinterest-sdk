@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsType } from './CatalogsType';
 import {
     CatalogsTypeFromJSON,
@@ -29,32 +29,22 @@ import {
 export interface Catalog {
     /**
      * 
-     * @type {CatalogsType}
-     * @memberof Catalog
      */
     catalogType: CatalogsType;
     /**
      * 
-     * @type {Date}
-     * @memberof Catalog
      */
     readonly createdAt: Date;
     /**
      * ID of the catalog entity.
-     * @type {string}
-     * @memberof Catalog
      */
     id: string;
     /**
      * A human-friendly name associated to a catalog entity.
-     * @type {string}
-     * @memberof Catalog
      */
     name: string;
     /**
      * 
-     * @type {Date}
-     * @memberof Catalog
      */
     readonly updatedAt: Date;
 }
@@ -84,10 +74,10 @@ export function CatalogFromJSONTyped(json: any, ignoreDiscriminator: boolean): C
     return {
         
         'catalogType': CatalogsTypeFromJSON(json['catalog_type']),
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'id': json['id'],
         'name': json['name'],
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
     };
 }
 

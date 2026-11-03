@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -37,7 +36,7 @@ import jakarta.annotation.Generated;
  * Ad
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Ad {
 
   private String adAccountId;
@@ -48,18 +47,14 @@ public class Ad {
 
   private String campaignId;
 
-  @Valid
   private JsonNullable<List<String>> carouselAndroidDeepLinks = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> carouselDestinationUrls = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> carouselIosDeepLinks = JsonNullable.<List<String>>undefined();
 
   private Integer cartingPlatformType;
 
-  @Valid
   private List<@Valid CartingProduct> cartingProducts = new ArrayList<>();
 
   private JsonNullable<String> clickTrackingUrl = JsonNullable.<String>undefined();
@@ -104,10 +99,8 @@ public class Ad {
 
   private JsonNullable<QuizPinData> quizPinData = JsonNullable.<QuizPinData>undefined();
 
-  @Valid
   private List<AdDisapprovalReasons> rejectedReasons = new ArrayList<>();
 
-  @Valid
   private List<String> rejectionLabels = new ArrayList<>();
 
   private AdReviewStatus reviewStatus;
@@ -348,7 +341,7 @@ public class Ad {
    * Array of carting/WTB products for the ad.
    * @return cartingProducts
    */
-  @Valid 
+  
   @Schema(name = "carting_products", accessMode = Schema.AccessMode.READ_ONLY, description = "Array of carting/WTB products for the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("carting_products")
   public List<@Valid CartingProduct> getCartingProducts() {
@@ -796,7 +789,7 @@ public class Ad {
    * Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".
    * @return rejectedReasons
    */
-  @Valid 
+  
   @Schema(name = "rejected_reasons", accessMode = Schema.AccessMode.READ_ONLY, description = "Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("rejected_reasons")
   public List<AdDisapprovalReasons> getRejectedReasons() {

@@ -155,13 +155,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class KeywordInfo.", nameof(name));
+                throw new JsonException("Property is required for class KeywordInfo: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class KeywordInfo.");
+                throw new JsonException("Property is not nullable for class KeywordInfo: name.");
 
             if (pctGrowthMom.IsSet && pctGrowthMom.Value == null)
-                throw new ArgumentNullException(nameof(pctGrowthMom), "Property is not nullable for class KeywordInfo.");
+                throw new JsonException("Property is not nullable for class KeywordInfo: pct_growth_mom.");
 
             return new KeywordInfo(name.Value!, pctGrowthMom);
         }
@@ -172,7 +172,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordInfo keywordInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -187,11 +186,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordInfo keywordInfo, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keywordInfo.Name == null)
-                throw new ArgumentNullException(nameof(keywordInfo.Name), "Property is required for class KeywordInfo.");
+            if (keywordInfo.PctGrowthMomOption.IsSet && keywordInfo.PctGrowthMom == null)
+                throw new JsonException("Cannot write null property KeywordInfo.PctGrowthMom to non-nullable JSON property 'pct_growth_mom'.");
 
             writer.WriteString("name", keywordInfo.Name);
 

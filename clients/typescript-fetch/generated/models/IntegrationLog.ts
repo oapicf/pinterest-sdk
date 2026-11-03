@@ -50,80 +50,54 @@ import {
 export interface IntegrationLog {
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationLog
      */
     advertiserId?: string | null;
     /**
      * Version number of the integration application.
-     * @type {string}
-     * @memberof IntegrationLog
      */
     appVersionNumber?: string;
     /**
      * Timestamp in milliseconds of when the log was executed at the client.
-     * @type {number}
-     * @memberof IntegrationLog
      */
     clientTimestamp: number;
     /**
      * 
-     * @type {IntegrationLogClientError}
-     * @memberof IntegrationLog
      */
     error?: IntegrationLogClientError;
     /**
      * Log event type
-     * @type {IntegrationLogEventType}
-     * @memberof IntegrationLog
      */
     eventType: IntegrationLogEventType;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationLog
      */
     externalBusinessId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationLog
      */
     feedProfileId?: string | null;
     /**
      * Log level type
-     * @type {IntegrationLogLevel}
-     * @memberof IntegrationLog
      */
     logLevel: IntegrationLogLevel;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationLog
      */
     merchantId?: string | null;
     /**
      * Explanation of the event that occured.
-     * @type {string}
-     * @memberof IntegrationLog
      */
     message?: string;
     /**
      * Version number of the platform the integration application is running on.
-     * @type {string}
-     * @memberof IntegrationLog
      */
     platformVersionNumber?: string;
     /**
      * 
-     * @type {IntegrationLogClientRequest}
-     * @memberof IntegrationLog
      */
     request?: IntegrationLogClientRequest;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationLog
      */
     tagId?: string | null;
 }

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface KeywordMetrics {
     /**
      * Keyword's search frequency. This value is based on keyword frequency in pepsi client response
-     * @type {string}
-     * @memberof KeywordMetrics
      */
     keywordQueryVolume?: string;
 }

@@ -36,26 +36,18 @@ import {
 export interface CancelInviteResult {
     /**
      * 
-     * @type {string}
-     * @memberof CancelInviteResult
      */
     id?: string;
     /**
      * 
-     * @type {InviteDataResponse}
-     * @memberof CancelInviteResult
      */
     inviteData?: InviteDataResponse;
     /**
      * 
-     * @type {boolean}
-     * @memberof CancelInviteResult
      */
     isReceivedInvite?: boolean;
     /**
      * 
-     * @type {CancelInviteResultUser}
-     * @memberof CancelInviteResult
      */
     user?: CancelInviteResultUser;
 }

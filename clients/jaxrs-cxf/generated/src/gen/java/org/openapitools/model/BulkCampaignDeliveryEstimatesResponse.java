@@ -24,8 +24,6 @@ public class BulkCampaignDeliveryEstimatesResponse  {
   */
   @ApiModelProperty(required = true, value = "Per-campaign delivery estimate results, in the same order as the request.")
 
-  @Valid
-
   private List<@Valid BulkCampaignDeliveryEstimatesItem> data = new ArrayList<>();
  /**
    * Per-campaign delivery estimate results, in the same order as the request.

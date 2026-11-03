@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class GridClickType
-{
-public:
-
-    GridClickType();
-    virtual ~GridClickType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(GridClickType,
-        )
-
-private:
+enum class GridClickType {
+    
+    CLOSEUP,
+    
+    DIRECT_TO_DESTINATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const GridClickType& value)
+{
+    switch (value)
+    {
+        
+        case GridClickType::CLOSEUP: j = "CLOSEUP"; break;
+        
+        case GridClickType::DIRECT_TO_DESTINATION: j = "DIRECT_TO_DESTINATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for GridClickType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, GridClickType& value)
+{
+    
+    if (j == "CLOSEUP")
+    {
+        value = GridClickType::CLOSEUP;
+        return;
+    }
+    
+    if (j == "DIRECT_TO_DESTINATION")
+    {
+        value = GridClickType::DIRECT_TO_DESTINATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for GridClickType", &j);
+}
 
 } // namespace models
 

@@ -71,68 +71,46 @@ import {
 export interface CatalogsCreativeAssetsFeedsCreateRequest {
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     catalogType: CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     defaultCountry: Country;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     defaultLocale: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     name: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsCreativeAssetsFeedsCreateRequest
      */
     status?: CatalogsStatus;
 }
@@ -142,7 +120,7 @@ export interface CatalogsCreativeAssetsFeedsCreateRequest {
  * @export
  */
 export const CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum = typeof CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsFeedsCreateRequestCatalogTypeEnum];
 

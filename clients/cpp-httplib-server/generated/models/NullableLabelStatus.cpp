@@ -6,20 +6,3 @@
 */
 #include "NullableLabelStatus.h"
 
-namespace models {
-
-NullableLabelStatus::NullableLabelStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

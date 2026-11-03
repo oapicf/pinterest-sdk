@@ -87,8 +87,7 @@ class CartingProduct(BaseModel):
         _items = []
         if self.preferred_retailers:
             for _item_preferred_retailers in self.preferred_retailers:
-                if _item_preferred_retailers:
-                    _items.append(_item_preferred_retailers.to_dict())
+                _items.append(_item_preferred_retailers.to_dict() if _item_preferred_retailers is not None else None)
             _dict['preferred_retailers'] = _items
         return _dict
 

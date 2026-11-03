@@ -10,7 +10,7 @@ export const MMMReportingTargetingType = {
     Gender: 'GENDER',
     Location: 'LOCATION',
     Placement: 'PLACEMENT',
-    AudienceInclude: 'AUDIENCE_INCLUDE'
+    AudienceInclude: 'AUDIENCE_INCLUDE',
 } as const;
 export type MMMReportingTargetingType = typeof MMMReportingTargetingType[keyof typeof MMMReportingTargetingType];
 

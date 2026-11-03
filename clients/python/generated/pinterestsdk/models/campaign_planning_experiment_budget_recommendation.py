@@ -78,8 +78,7 @@ class CampaignPlanningExperimentBudgetRecommendation(BaseModel):
         _items = []
         if self.point_estimations:
             for _item_point_estimations in self.point_estimations:
-                if _item_point_estimations:
-                    _items.append(_item_point_estimations.to_dict())
+                _items.append(_item_point_estimations.to_dict() if _item_point_estimations is not None else None)
             _dict['point_estimations'] = _items
         return _dict
 

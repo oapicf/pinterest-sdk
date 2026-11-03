@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   ProductType0Filter.JSON_PROPERTY_P_R_O_D_U_C_T_T_Y_P_E0
 })
 @JsonTypeName("ProductType0Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ProductType0Filter {
     public static final String JSON_PROPERTY_P_R_O_D_U_C_T_T_Y_P_E0 = "PRODUCT_TYPE_0";

@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class AssetSearchBy
-{
-public:
-
-    AssetSearchBy();
-    virtual ~AssetSearchBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AssetSearchBy,
-        )
-
-private:
+enum class AssetSearchBy {
+    
+    NAME,
+    
+    ID,
+    
+    NAME_OR_ID,
+    
+    OWNER_NAME,
+    
+    NAME_OR_OWNER
+    
 };
 
+inline void to_json(nlohmann::json& j, const AssetSearchBy& value)
+{
+    switch (value)
+    {
+        
+        case AssetSearchBy::NAME: j = "NAME"; break;
+        
+        case AssetSearchBy::ID: j = "ID"; break;
+        
+        case AssetSearchBy::NAME_OR_ID: j = "NAME_OR_ID"; break;
+        
+        case AssetSearchBy::OWNER_NAME: j = "OWNER_NAME"; break;
+        
+        case AssetSearchBy::NAME_OR_OWNER: j = "NAME_OR_OWNER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AssetSearchBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AssetSearchBy& value)
+{
+    
+    if (j == "NAME")
+    {
+        value = AssetSearchBy::NAME;
+        return;
+    }
+    
+    if (j == "ID")
+    {
+        value = AssetSearchBy::ID;
+        return;
+    }
+    
+    if (j == "NAME_OR_ID")
+    {
+        value = AssetSearchBy::NAME_OR_ID;
+        return;
+    }
+    
+    if (j == "OWNER_NAME")
+    {
+        value = AssetSearchBy::OWNER_NAME;
+        return;
+    }
+    
+    if (j == "NAME_OR_OWNER")
+    {
+        value = AssetSearchBy::NAME_OR_OWNER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AssetSearchBy", &j);
+}
 
 } // namespace models
 

@@ -11,9 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.BusinessAccessRole._
-import org.openapitools.client.model.Country._
-import org.openapitools.client.model.Currency._
 
 case class AdAccount(
   country: Option[Country] = None,

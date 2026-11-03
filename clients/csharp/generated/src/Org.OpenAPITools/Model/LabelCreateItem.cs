@@ -153,16 +153,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!labelType.IsSet)
-                throw new ArgumentException("Property is required for class LabelCreateItem.", nameof(labelType));
+                throw new JsonException("Property is required for class LabelCreateItem: label_type.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class LabelCreateItem.", nameof(value));
+                throw new JsonException("Property is required for class LabelCreateItem: value.");
 
             if (labelType.IsSet && labelType.Value == null)
-                throw new ArgumentNullException(nameof(labelType), "Property is not nullable for class LabelCreateItem.");
+                throw new JsonException("Property is not nullable for class LabelCreateItem: label_type.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class LabelCreateItem.");
+                throw new JsonException("Property is not nullable for class LabelCreateItem: value.");
 
             return new LabelCreateItem(labelType.Value!.Value!, value.Value!);
         }
@@ -173,7 +173,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelCreateItem labelCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -188,12 +187,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelCreateItem labelCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (labelCreateItem.Value == null)
-                throw new ArgumentNullException(nameof(labelCreateItem.Value), "Property is required for class LabelCreateItem.");
-
             var labelTypeRawValue = LabelTypeValueConverter.ToJsonValue(labelCreateItem.LabelType);
             writer.WriteString("label_type", labelTypeRawValue);
 

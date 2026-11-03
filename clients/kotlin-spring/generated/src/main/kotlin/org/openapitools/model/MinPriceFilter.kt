@@ -22,7 +22,7 @@ data class MinPriceFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("MIN_PRICE")
+    @param:JsonProperty("MIN_PRICE", required = true)
     @get:JsonProperty("MIN_PRICE", required = true) val MIN_PRICE: CatalogsProductGroupPricingCriteria
 ) {
 

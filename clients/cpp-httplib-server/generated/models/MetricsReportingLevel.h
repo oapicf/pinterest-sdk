@@ -12,24 +12,154 @@
 
 namespace models {
 
-
-class MetricsReportingLevel
-{
-public:
-
-    MetricsReportingLevel();
-    virtual ~MetricsReportingLevel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MetricsReportingLevel,
-        )
-
-private:
+enum class MetricsReportingLevel {
+    
+    ADVERTISER,
+    
+    ADVERTISER_TARGETING,
+    
+    CAMPAIGN,
+    
+    CAMPAIGN_TARGETING,
+    
+    AD_GROUP,
+    
+    AD_GROUP_TARGETING,
+    
+    PIN_PROMOTION,
+    
+    PIN_PROMOTION_TARGETING,
+    
+    KEYWORD,
+    
+    PRODUCT_GROUP,
+    
+    PRODUCT_GROUP_TARGETING,
+    
+    PRODUCT_ITEM,
+    
+    PRODUCT_ITEM_TARGETING
+    
 };
 
+inline void to_json(nlohmann::json& j, const MetricsReportingLevel& value)
+{
+    switch (value)
+    {
+        
+        case MetricsReportingLevel::ADVERTISER: j = "ADVERTISER"; break;
+        
+        case MetricsReportingLevel::ADVERTISER_TARGETING: j = "ADVERTISER_TARGETING"; break;
+        
+        case MetricsReportingLevel::CAMPAIGN: j = "CAMPAIGN"; break;
+        
+        case MetricsReportingLevel::CAMPAIGN_TARGETING: j = "CAMPAIGN_TARGETING"; break;
+        
+        case MetricsReportingLevel::AD_GROUP: j = "AD_GROUP"; break;
+        
+        case MetricsReportingLevel::AD_GROUP_TARGETING: j = "AD_GROUP_TARGETING"; break;
+        
+        case MetricsReportingLevel::PIN_PROMOTION: j = "PIN_PROMOTION"; break;
+        
+        case MetricsReportingLevel::PIN_PROMOTION_TARGETING: j = "PIN_PROMOTION_TARGETING"; break;
+        
+        case MetricsReportingLevel::KEYWORD: j = "KEYWORD"; break;
+        
+        case MetricsReportingLevel::PRODUCT_GROUP: j = "PRODUCT_GROUP"; break;
+        
+        case MetricsReportingLevel::PRODUCT_GROUP_TARGETING: j = "PRODUCT_GROUP_TARGETING"; break;
+        
+        case MetricsReportingLevel::PRODUCT_ITEM: j = "PRODUCT_ITEM"; break;
+        
+        case MetricsReportingLevel::PRODUCT_ITEM_TARGETING: j = "PRODUCT_ITEM_TARGETING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MetricsReportingLevel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MetricsReportingLevel& value)
+{
+    
+    if (j == "ADVERTISER")
+    {
+        value = MetricsReportingLevel::ADVERTISER;
+        return;
+    }
+    
+    if (j == "ADVERTISER_TARGETING")
+    {
+        value = MetricsReportingLevel::ADVERTISER_TARGETING;
+        return;
+    }
+    
+    if (j == "CAMPAIGN")
+    {
+        value = MetricsReportingLevel::CAMPAIGN;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_TARGETING")
+    {
+        value = MetricsReportingLevel::CAMPAIGN_TARGETING;
+        return;
+    }
+    
+    if (j == "AD_GROUP")
+    {
+        value = MetricsReportingLevel::AD_GROUP;
+        return;
+    }
+    
+    if (j == "AD_GROUP_TARGETING")
+    {
+        value = MetricsReportingLevel::AD_GROUP_TARGETING;
+        return;
+    }
+    
+    if (j == "PIN_PROMOTION")
+    {
+        value = MetricsReportingLevel::PIN_PROMOTION;
+        return;
+    }
+    
+    if (j == "PIN_PROMOTION_TARGETING")
+    {
+        value = MetricsReportingLevel::PIN_PROMOTION_TARGETING;
+        return;
+    }
+    
+    if (j == "KEYWORD")
+    {
+        value = MetricsReportingLevel::KEYWORD;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP")
+    {
+        value = MetricsReportingLevel::PRODUCT_GROUP;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP_TARGETING")
+    {
+        value = MetricsReportingLevel::PRODUCT_GROUP_TARGETING;
+        return;
+    }
+    
+    if (j == "PRODUCT_ITEM")
+    {
+        value = MetricsReportingLevel::PRODUCT_ITEM;
+        return;
+    }
+    
+    if (j == "PRODUCT_ITEM_TARGETING")
+    {
+        value = MetricsReportingLevel::PRODUCT_ITEM_TARGETING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MetricsReportingLevel", &j);
+}
 
 } // namespace models
 

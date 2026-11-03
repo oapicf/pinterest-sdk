@@ -125,3 +125,4 @@ class _$AdsList200ResponseSerializer implements PrimitiveSerializer<AdsList200Re
   }
 }
 
+

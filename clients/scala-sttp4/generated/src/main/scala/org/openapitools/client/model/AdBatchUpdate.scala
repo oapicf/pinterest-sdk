@@ -11,12 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.AdCollectionsHeaderType._
-import org.openapitools.client.model.CreativeType._
-import org.openapitools.client.model.CustomizableCTAType._
-import org.openapitools.client.model.DisclosureType._
-import org.openapitools.client.model.EntityStatus._
-import org.openapitools.client.model.GridClickType._
 
 case class AdBatchUpdate(
   /* ID of the ad group that contains the ad. */

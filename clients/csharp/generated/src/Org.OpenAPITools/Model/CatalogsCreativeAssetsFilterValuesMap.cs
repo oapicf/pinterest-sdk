@@ -380,43 +380,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (customLabel0.IsSet && customLabel0.Value == null)
-                throw new ArgumentNullException(nameof(customLabel0), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: custom_label_0.");
 
             if (customLabel1.IsSet && customLabel1.Value == null)
-                throw new ArgumentNullException(nameof(customLabel1), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: custom_label_1.");
 
             if (customLabel2.IsSet && customLabel2.Value == null)
-                throw new ArgumentNullException(nameof(customLabel2), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: custom_label_2.");
 
             if (customLabel3.IsSet && customLabel3.Value == null)
-                throw new ArgumentNullException(nameof(customLabel3), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: custom_label_3.");
 
             if (customLabel4.IsSet && customLabel4.Value == null)
-                throw new ArgumentNullException(nameof(customLabel4), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: custom_label_4.");
 
             if (googleProductCategory0.IsSet && googleProductCategory0.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory0), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_0.");
 
             if (googleProductCategory1.IsSet && googleProductCategory1.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory1), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_1.");
 
             if (googleProductCategory2.IsSet && googleProductCategory2.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory2), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_2.");
 
             if (googleProductCategory3.IsSet && googleProductCategory3.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory3), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_3.");
 
             if (googleProductCategory4.IsSet && googleProductCategory4.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory4), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_4.");
 
             if (googleProductCategory5.IsSet && googleProductCategory5.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory5), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_5.");
 
             if (googleProductCategory6.IsSet && googleProductCategory6.Value == null)
-                throw new ArgumentNullException(nameof(googleProductCategory6), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: google_product_category_6.");
 
             if (mediaType.IsSet && mediaType.Value == null)
-                throw new ArgumentNullException(nameof(mediaType), "Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsFilterValuesMap: media_type.");
 
             return new CatalogsCreativeAssetsFilterValuesMap(customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, googleProductCategory0, googleProductCategory1, googleProductCategory2, googleProductCategory3, googleProductCategory4, googleProductCategory5, googleProductCategory6, mediaType);
         }
@@ -427,7 +427,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsFilterValuesMap catalogsCreativeAssetsFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -442,47 +441,46 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsFilterValuesMap catalogsCreativeAssetsFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel0Option.IsSet && catalogsCreativeAssetsFilterValuesMap.CustomLabel0 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.CustomLabel0), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.CustomLabel0 to non-nullable JSON property 'custom_label_0'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel1Option.IsSet && catalogsCreativeAssetsFilterValuesMap.CustomLabel1 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.CustomLabel1), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.CustomLabel1 to non-nullable JSON property 'custom_label_1'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel2Option.IsSet && catalogsCreativeAssetsFilterValuesMap.CustomLabel2 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.CustomLabel2), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.CustomLabel2 to non-nullable JSON property 'custom_label_2'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel3Option.IsSet && catalogsCreativeAssetsFilterValuesMap.CustomLabel3 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.CustomLabel3), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.CustomLabel3 to non-nullable JSON property 'custom_label_3'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel4Option.IsSet && catalogsCreativeAssetsFilterValuesMap.CustomLabel4 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.CustomLabel4), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.CustomLabel4 to non-nullable JSON property 'custom_label_4'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory0Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory0 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory0), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory0 to non-nullable JSON property 'google_product_category_0'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory1Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory1 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory1), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory1 to non-nullable JSON property 'google_product_category_1'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory2Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory2 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory2), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory2 to non-nullable JSON property 'google_product_category_2'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory3Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory3 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory3), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory3 to non-nullable JSON property 'google_product_category_3'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory4Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory4 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory4), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory4 to non-nullable JSON property 'google_product_category_4'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory5Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory5 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory5), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory5 to non-nullable JSON property 'google_product_category_5'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory6Option.IsSet && catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory6 == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.GoogleProductCategory6), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.GoogleProductCategory6 to non-nullable JSON property 'google_product_category_6'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.MediaTypeOption.IsSet && catalogsCreativeAssetsFilterValuesMap.MediaType == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsFilterValuesMap.MediaType), "Property is required for class CatalogsCreativeAssetsFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsFilterValuesMap.MediaType to non-nullable JSON property 'media_type'.");
 
             if (catalogsCreativeAssetsFilterValuesMap.CustomLabel0Option.IsSet)
             {

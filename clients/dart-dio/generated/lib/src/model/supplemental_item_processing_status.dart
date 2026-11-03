@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'supplemental_item_processing_status.g.dart';
 
+/// The status of the item processing record
 class SupplementalItemProcessingStatus extends EnumClass {
 
-  /// The status of the item processing record
   @BuiltValueEnumConst(wireName: r'SUCCESS')
   static const SupplementalItemProcessingStatus SUCCESS = _$SUCCESS;
-  /// The status of the item processing record
   @BuiltValueEnumConst(wireName: r'FAILURE')
   static const SupplementalItemProcessingStatus FAILURE = _$FAILURE;
-  /// The status of the item processing record
   @BuiltValueEnumConst(wireName: r'PROCESSING')
   static const SupplementalItemProcessingStatus PROCESSING = _$PROCESSING;
 

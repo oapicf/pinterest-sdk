@@ -51,28 +51,28 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'campaignId' => [
+                'campaign_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'pinIds' => [
+                'pin_ids' => [
                     'required',
                     'min:1',
                     'max:100',
                     'array',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
                 'columns' => [
@@ -82,19 +82,19 @@ class CampaignsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
             ],
         );
@@ -103,13 +103,13 @@ class CampaignsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $campaignId = $request->string('campaignId')->value();
+        $campaignId = $request->string('campaign_id')->value();
 
-        $pinIds = $request->get('pinIds');
+        $pinIds = $request->get('pin_ids');
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $columns = $request->get('columns');
 
@@ -170,31 +170,31 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'campaignIds' => [
+                'campaign_ids' => [
                     'required',
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'targetingTypes' => [
+                'targeting_types' => [
                     'required',
                     'min:1',
                     'max:14',
@@ -207,19 +207,19 @@ class CampaignsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'attributionTypes' => [
+                'attribution_types' => [
                     'max:2',
                     'array',
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -229,13 +229,13 @@ class CampaignsController extends Controller
         }
 
 
-        $campaignIds = $request->get('campaignIds');
+        $campaignIds = $request->get('campaign_ids');
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $targetingTypes = $request->get('targetingTypes');
+        $targetingTypes = $request->get('targeting_types');
 
         $columns = $request->get('columns');
 
@@ -249,7 +249,7 @@ class CampaignsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        $attributionTypes = $request->get('attributionTypes');
+        $attributionTypes = $request->get('attribution_types');
 
         $reportingTimezone = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ReportingTimeZone::class);
 
@@ -298,19 +298,19 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'campaignIds' => [
+                'campaign_ids' => [
                     'required',
                     'min:1',
                     'max:250',
@@ -323,24 +323,24 @@ class CampaignsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'aggregateReportRows' => [
+                'aggregate_report_rows' => [
                     'boolean',
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -349,11 +349,11 @@ class CampaignsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $campaignIds = $request->get('campaignIds');
+        $campaignIds = $request->get('campaign_ids');
 
         $columns = $request->get('columns');
 
@@ -368,7 +368,7 @@ class CampaignsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        $aggregateReportRows = $request->boolean('aggregateReportRows');
+        $aggregateReportRows = $request->boolean('aggregate_report_rows');
 
         $reportingTimezone = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ReportingTimeZone::class);
 
@@ -418,10 +418,10 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -479,19 +479,19 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'campaignId' => $campaignId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'campaign_id' => $campaignId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'campaignId' => [
+                'campaign_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -551,13 +551,13 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -566,19 +566,19 @@ class CampaignsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
                 ],
                 'order' => [
                 ],
-                'campaignIds' => [
+                'campaign_ids' => [
                     'min:1',
                     'max:250',
                     'array',
                 ],
-                'entityStatuses' => [
+                'entity_statuses' => [
                     'array',
                 ],
             ],
@@ -591,13 +591,13 @@ class CampaignsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
-        $campaignIds = $request->get('campaignIds');
+        $campaignIds = $request->get('campaign_ids');
 
-        $entityStatuses = $request->get('entityStatuses');
+        $entityStatuses = $request->get('entity_statuses');
 
 
         $apiResult = $this->api->campaignsList($adAccountId, $bookmark, $pageSize, $order, $campaignIds, $entityStatuses);
@@ -644,10 +644,10 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -705,10 +705,10 @@ class CampaignsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

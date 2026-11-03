@@ -21,12 +21,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AssetGroupInputCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupInputCreate   {
   private AssetGroupBinding assetGroup;
   private String assetGroupDescription;
   private String assetGroupName;
-  private @Valid List<AssetGroupType> assetGroupTypes = new ArrayList<>();
+  private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public AssetGroupInputCreate() {
   }

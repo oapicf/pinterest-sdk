@@ -240,7 +240,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum?>(CatalogsHotelProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsHotelProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelProductGroupCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "filters":
                             filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -258,28 +263,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductGroupCreateRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class CatalogsHotelProductGroupCreateRequest: catalog_id.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductGroupCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelProductGroupCreateRequest: catalog_type.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductGroupCreateRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsHotelProductGroupCreateRequest: filters.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductGroupCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsHotelProductGroupCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsHotelProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductGroupCreateRequest: catalog_id.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductGroupCreateRequest: catalog_type.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsHotelProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductGroupCreateRequest: filters.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsHotelProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductGroupCreateRequest: name.");
 
             return new CatalogsHotelProductGroupCreateRequest(catalogId.Value!, catalogType.Value!.Value!, filters.Value!, name.Value!, description);
         }
@@ -290,7 +295,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -305,18 +309,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelProductGroupCreateRequest catalogsHotelProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelProductGroupCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProductGroupCreateRequest.CatalogId), "Property is required for class CatalogsHotelProductGroupCreateRequest.");
-
-            if (catalogsHotelProductGroupCreateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProductGroupCreateRequest.Filters), "Property is required for class CatalogsHotelProductGroupCreateRequest.");
-
-            if (catalogsHotelProductGroupCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProductGroupCreateRequest.Name), "Property is required for class CatalogsHotelProductGroupCreateRequest.");
-
             writer.WriteString("catalog_id", catalogsHotelProductGroupCreateRequest.CatalogId);
 
             var catalogTypeRawValue = CatalogsHotelProductGroupCreateRequest.CatalogTypeEnumToJsonValue(catalogsHotelProductGroupCreateRequest.CatalogType);

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,19 +27,15 @@ import jakarta.annotation.Generated;
  * LeadFormQuestion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormQuestion {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<LeadFormQuestionFieldType> customQuestionFieldType = JsonNullable.<LeadFormQuestionFieldType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> customQuestionLabel = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<String>> customQuestionOptions = JsonNullable.<List<String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable LeadFormQuestionType questionType;
 
   public LeadFormQuestion customQuestionFieldType(LeadFormQuestionFieldType customQuestionFieldType) {
@@ -53,7 +48,7 @@ public class LeadFormQuestion {
    * @return customQuestionFieldType
    */
   @Valid 
-  @Schema(name = "custom_question_field_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_question_field_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_question_field_type")
   public JsonNullable<LeadFormQuestionFieldType> getCustomQuestionFieldType() {
     return customQuestionFieldType;
@@ -73,7 +68,7 @@ public class LeadFormQuestion {
    * @return customQuestionLabel
    */
   
-  @Schema(name = "custom_question_label", description = "Question label for a custom question.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_question_label", description = "Question label for a custom question.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_question_label")
   public JsonNullable<String> getCustomQuestionLabel() {
     return customQuestionLabel;
@@ -89,7 +84,7 @@ public class LeadFormQuestion {
   }
 
   public LeadFormQuestion addCustomQuestionOptionsItem(String customQuestionOptionsItem) {
-    if (this.customQuestionOptions == null || !this.customQuestionOptions.isPresent()) {
+    if (this.customQuestionOptions == null || !this.customQuestionOptions.isPresent() || this.customQuestionOptions.get() == null) {
       this.customQuestionOptions = JsonNullable.of(new ArrayList<>());
     }
     this.customQuestionOptions.get().add(customQuestionOptionsItem);
@@ -101,7 +96,7 @@ public class LeadFormQuestion {
    * @return customQuestionOptions
    */
   @Size(min = 0, max = 5) 
-  @Schema(name = "custom_question_options", description = "Question options for a custom question.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "custom_question_options", description = "Question options for a custom question.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("custom_question_options")
   public JsonNullable<List<String>> getCustomQuestionOptions() {
     return customQuestionOptions;

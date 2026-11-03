@@ -9,7 +9,7 @@ import Foundation
 
 public struct LeadFormBatchUpdate: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
     public static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
     /** A message for people who complete the form to let them know what happens next. */

@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class LabeledEntitiesCreate(
 
     @Schema(required = true, description = "Entity IDs to apply label to.")
-    @param:JsonProperty("entity_ids")
+    @param:JsonProperty("entity_ids", required = true)
     @get:JsonProperty("entity_ids", required = true) val entityIds: kotlin.collections.List<kotlin.String>
 ) {
 

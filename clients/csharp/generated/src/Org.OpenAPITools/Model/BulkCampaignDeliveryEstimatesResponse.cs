@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class BulkCampaignDeliveryEstimatesResponse.", nameof(data));
+                throw new JsonException("Property is required for class BulkCampaignDeliveryEstimatesResponse: data.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class BulkCampaignDeliveryEstimatesResponse.");
+                throw new JsonException("Property is not nullable for class BulkCampaignDeliveryEstimatesResponse: data.");
 
             return new BulkCampaignDeliveryEstimatesResponse(data.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkCampaignDeliveryEstimatesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkCampaignDeliveryEstimatesResponse bulkCampaignDeliveryEstimatesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkCampaignDeliveryEstimatesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkCampaignDeliveryEstimatesResponse bulkCampaignDeliveryEstimatesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (bulkCampaignDeliveryEstimatesResponse.Data == null)
-                throw new ArgumentNullException(nameof(bulkCampaignDeliveryEstimatesResponse.Data), "Property is required for class BulkCampaignDeliveryEstimatesResponse.");
-
             writer.WritePropertyName("data");
             JsonSerializer.Serialize(writer, bulkCampaignDeliveryEstimatesResponse.Data, jsonSerializerOptions);
         }

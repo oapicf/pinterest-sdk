@@ -22,7 +22,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The TargetingTemplate model module.
  * @module model/TargetingTemplate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingTemplate {
     /**

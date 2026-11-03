@@ -216,25 +216,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!contentType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesBase64Item.", nameof(contentType));
+                throw new JsonException("Property is required for class PinMediaSourceImagesBase64Item: content_type.");
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSourceImagesBase64Item.", nameof(data));
+                throw new JsonException("Property is required for class PinMediaSourceImagesBase64Item: data.");
 
             if (contentType.IsSet && contentType.Value == null)
-                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64Item: content_type.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64Item: data.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64Item: description.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64Item: link.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Property is not nullable for class PinMediaSourceImagesBase64Item: title.");
 
             return new PinMediaSourceImagesBase64Item(contentType.Value!.Value!, data.Value!, description, link, title);
         }
@@ -245,7 +245,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesBase64Item"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSourceImagesBase64Item pinMediaSourceImagesBase64Item, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -260,20 +259,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSourceImagesBase64Item"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSourceImagesBase64Item pinMediaSourceImagesBase64Item, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (pinMediaSourceImagesBase64Item.Data == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesBase64Item.Data), "Property is required for class PinMediaSourceImagesBase64Item.");
-
             if (pinMediaSourceImagesBase64Item.DescriptionOption.IsSet && pinMediaSourceImagesBase64Item.Description == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesBase64Item.Description), "Property is required for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesBase64Item.Description to non-nullable JSON property 'description'.");
 
             if (pinMediaSourceImagesBase64Item.LinkOption.IsSet && pinMediaSourceImagesBase64Item.Link == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesBase64Item.Link), "Property is required for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesBase64Item.Link to non-nullable JSON property 'link'.");
 
             if (pinMediaSourceImagesBase64Item.TitleOption.IsSet && pinMediaSourceImagesBase64Item.Title == null)
-                throw new ArgumentNullException(nameof(pinMediaSourceImagesBase64Item.Title), "Property is required for class PinMediaSourceImagesBase64Item.");
+                throw new JsonException("Cannot write null property PinMediaSourceImagesBase64Item.Title to non-nullable JSON property 'title'.");
 
             var contentTypeRawValue = ContentTypeValueConverter.ToJsonValue(pinMediaSourceImagesBase64Item.ContentType);
             writer.WriteString("content_type", contentTypeRawValue);

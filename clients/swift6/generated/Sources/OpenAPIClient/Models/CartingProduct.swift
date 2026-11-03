@@ -9,7 +9,7 @@ import Foundation
 
 public struct CartingProduct: Sendable, Codable, Hashable {
 
-    public static let cartingProductIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let cartingProductIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** the internal Pinterest carting product id (different from industry product id) */
     public var cartingProductId: String
     /** Whether to display only the preferred retailers for the carting product */

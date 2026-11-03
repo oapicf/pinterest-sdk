@@ -21,9 +21,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("items_post_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemsPost200Response   {
-  private @Valid List<@Valid ItemResponse> items = new ArrayList<>();
+  private List<@Valid ItemResponse> items = new ArrayList<>();
 
   public ItemsPost200Response() {
   }
@@ -45,7 +45,7 @@ public class ItemsPost200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid ItemResponse> getItems() {
+  @NotNull public List<@Valid ItemResponse> getItems() {
     return items;
   }
 

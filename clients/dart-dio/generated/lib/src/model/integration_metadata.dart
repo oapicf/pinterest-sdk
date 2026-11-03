@@ -355,3 +355,4 @@ class _$IntegrationMetadataSerializer implements PrimitiveSerializer<Integration
   }
 }
 
+

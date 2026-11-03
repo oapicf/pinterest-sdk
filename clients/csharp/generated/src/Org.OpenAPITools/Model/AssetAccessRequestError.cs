@@ -161,10 +161,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class AssetAccessRequestError.");
+                throw new JsonException("Property is not nullable for class AssetAccessRequestError: code.");
 
             if (messages.IsSet && messages.Value == null)
-                throw new ArgumentNullException(nameof(messages), "Property is not nullable for class AssetAccessRequestError.");
+                throw new JsonException("Property is not nullable for class AssetAccessRequestError: messages.");
 
             return new AssetAccessRequestError(code, messages);
         }
@@ -175,7 +175,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetAccessRequestError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AssetAccessRequestError assetAccessRequestError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -190,11 +189,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="assetAccessRequestError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AssetAccessRequestError assetAccessRequestError, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (assetAccessRequestError.CodeOption.IsSet && assetAccessRequestError.Code == null)
+                throw new JsonException("Cannot write null property AssetAccessRequestError.Code to non-nullable JSON property 'code'.");
+
             if (assetAccessRequestError.MessagesOption.IsSet && assetAccessRequestError.Messages == null)
-                throw new ArgumentNullException(nameof(assetAccessRequestError.Messages), "Property is required for class AssetAccessRequestError.");
+                throw new JsonException("Cannot write null property AssetAccessRequestError.Messages to non-nullable JSON property 'messages'.");
 
             if (assetAccessRequestError.CodeOption.IsSet)
                 writer.WriteNumber("code", assetAccessRequestError.CodeOption.Value!.Value);

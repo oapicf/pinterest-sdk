@@ -124,3 +124,4 @@ class _$ProductGroupPromotionsUpdateWithRequiredBodySerializer implements Primit
   }
 }
 
+

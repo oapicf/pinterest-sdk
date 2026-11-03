@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
-* Values: AUTOMATIC_BID,MAX_BID,TARGET_AVG
-*/
+ * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
+ * Values: AUTOMATIC_BID,MAX_BID,TARGET_AVG
+ */
 enum class BidStrategyType(@get:JsonValue val value: kotlin.String) {
 
     AUTOMATIC_BID("AUTOMATIC_BID"),
@@ -29,9 +29,8 @@ enum class BidStrategyType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BidStrategyType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BidStrategyType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BidStrategyType'")
         }
     }
 }
-

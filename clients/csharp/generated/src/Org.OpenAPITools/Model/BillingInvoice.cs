@@ -471,40 +471,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: ad_account_id.");
 
             if (adAccountName.IsSet && adAccountName.Value == null)
-                throw new ArgumentNullException(nameof(adAccountName), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: ad_account_name.");
 
             if (amountBilledMicroCurrency.IsSet && amountBilledMicroCurrency.Value == null)
-                throw new ArgumentNullException(nameof(amountBilledMicroCurrency), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: amount_billed_micro_currency.");
 
             if (billToCountry.IsSet && billToCountry.Value == null)
-                throw new ArgumentNullException(nameof(billToCountry), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: bill_to_country.");
 
             if (billingPeriodEndDate.IsSet && billingPeriodEndDate.Value == null)
-                throw new ArgumentNullException(nameof(billingPeriodEndDate), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: billing_period_end_date.");
 
             if (billingPeriodStartDate.IsSet && billingPeriodStartDate.Value == null)
-                throw new ArgumentNullException(nameof(billingPeriodStartDate), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: billing_period_start_date.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: currency.");
 
             if (documentType.IsSet && documentType.Value == null)
-                throw new ArgumentNullException(nameof(documentType), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: document_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: id.");
 
             if (invoiceDueDate.IsSet && invoiceDueDate.Value == null)
-                throw new ArgumentNullException(nameof(invoiceDueDate), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: invoice_due_date.");
 
             if (paymentTerms.IsSet && paymentTerms.Value == null)
-                throw new ArgumentNullException(nameof(paymentTerms), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: payment_terms.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class BillingInvoice.");
+                throw new JsonException("Property is not nullable for class BillingInvoice: status.");
 
             return new BillingInvoice(adAccountId, adAccountName, amountBilledMicroCurrency, amountDiscountMicroCurrency, amountNetMicroCurrency, amountTaxMicroCurrency, billToCountry, billingPeriodEndDate, billingPeriodStartDate, currency, documentType, id, invoiceDueDate, paymentTerms, status);
         }
@@ -515,7 +515,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="billingInvoice"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BillingInvoice billingInvoice, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -530,23 +529,43 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="billingInvoice"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BillingInvoice billingInvoice, JsonSerializerOptions jsonSerializerOptions)
         {
             if (billingInvoice.AdAccountIdOption.IsSet && billingInvoice.AdAccountId == null)
-                throw new ArgumentNullException(nameof(billingInvoice.AdAccountId), "Property is required for class BillingInvoice.");
+                throw new JsonException("Cannot write null property BillingInvoice.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (billingInvoice.AdAccountNameOption.IsSet && billingInvoice.AdAccountName == null)
-                throw new ArgumentNullException(nameof(billingInvoice.AdAccountName), "Property is required for class BillingInvoice.");
+                throw new JsonException("Cannot write null property BillingInvoice.AdAccountName to non-nullable JSON property 'ad_account_name'.");
+
+            if (billingInvoice.AmountBilledMicroCurrencyOption.IsSet && billingInvoice.AmountBilledMicroCurrency == null)
+                throw new JsonException("Cannot write null property BillingInvoice.AmountBilledMicroCurrency to non-nullable JSON property 'amount_billed_micro_currency'.");
 
             if (billingInvoice.BillToCountryOption.IsSet && billingInvoice.BillToCountry == null)
-                throw new ArgumentNullException(nameof(billingInvoice.BillToCountry), "Property is required for class BillingInvoice.");
+                throw new JsonException("Cannot write null property BillingInvoice.BillToCountry to non-nullable JSON property 'bill_to_country'.");
+
+            if (billingInvoice.BillingPeriodEndDateOption.IsSet && billingInvoice.BillingPeriodEndDate == null)
+                throw new JsonException("Cannot write null property BillingInvoice.BillingPeriodEndDate to non-nullable JSON property 'billing_period_end_date'.");
+
+            if (billingInvoice.BillingPeriodStartDateOption.IsSet && billingInvoice.BillingPeriodStartDate == null)
+                throw new JsonException("Cannot write null property BillingInvoice.BillingPeriodStartDate to non-nullable JSON property 'billing_period_start_date'.");
+
+            if (billingInvoice.CurrencyOption.IsSet && billingInvoice.Currency == null)
+                throw new JsonException("Cannot write null property BillingInvoice.Currency to non-nullable JSON property 'currency'.");
+
+            if (billingInvoice.DocumentTypeOption.IsSet && billingInvoice.DocumentType == null)
+                throw new JsonException("Cannot write null property BillingInvoice.DocumentType to non-nullable JSON property 'document_type'.");
 
             if (billingInvoice.IdOption.IsSet && billingInvoice.Id == null)
-                throw new ArgumentNullException(nameof(billingInvoice.Id), "Property is required for class BillingInvoice.");
+                throw new JsonException("Cannot write null property BillingInvoice.Id to non-nullable JSON property 'id'.");
+
+            if (billingInvoice.InvoiceDueDateOption.IsSet && billingInvoice.InvoiceDueDate == null)
+                throw new JsonException("Cannot write null property BillingInvoice.InvoiceDueDate to non-nullable JSON property 'invoice_due_date'.");
 
             if (billingInvoice.PaymentTermsOption.IsSet && billingInvoice.PaymentTerms == null)
-                throw new ArgumentNullException(nameof(billingInvoice.PaymentTerms), "Property is required for class BillingInvoice.");
+                throw new JsonException("Cannot write null property BillingInvoice.PaymentTerms to non-nullable JSON property 'payment_terms'.");
+
+            if (billingInvoice.StatusOption.IsSet && billingInvoice.Status == null)
+                throw new JsonException("Cannot write null property BillingInvoice.Status to non-nullable JSON property 'status'.");
 
             if (billingInvoice.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", billingInvoice.AdAccountId);

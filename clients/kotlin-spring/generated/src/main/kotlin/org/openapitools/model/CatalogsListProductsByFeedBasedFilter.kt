@@ -25,12 +25,12 @@ data class CatalogsListProductsByFeedBasedFilter(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the catalog product group filter.")
-    @param:JsonProperty("feed_id")
+    @param:JsonProperty("feed_id", required = true)
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters
 ) : CatalogsListProductsByFilterRequest {
 

@@ -17,13 +17,13 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Unified model for local inventory items batch operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Unified model for local inventory items batch operation")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsBatch   {
   
   private String batchId;
   private Date completedTime;
   private Date createdTime;
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
   private SupplementalItemBatchOperationStatus status;
 
   /**
@@ -74,10 +74,10 @@ public class LocalInventoryItemsBatch   {
   @ApiModelProperty(required = true, value = "Array of operation results")
   @JsonProperty("operation_results")
   @NotNull
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

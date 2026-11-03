@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsCreativeAssetsProductGroupProductCounts } from './CatalogsCreativeAssetsProductGroupProductCounts';
 import {
     instanceOfCatalogsCreativeAssetsProductGroupProductCounts,

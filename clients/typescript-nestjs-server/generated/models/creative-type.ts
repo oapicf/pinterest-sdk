@@ -17,7 +17,7 @@ export const CreativeType = {
     Collage: 'COLLAGE',
     MaxWidthRegularCollection: 'MAX_WIDTH_REGULAR_COLLECTION',
     MaxWidthVideoCollection: 'MAX_WIDTH_VIDEO_COLLECTION',
-    App: 'APP'
+    App: 'APP',
 } as const;
 export type CreativeType = typeof CreativeType[keyof typeof CreativeType];
 

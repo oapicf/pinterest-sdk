@@ -14,7 +14,7 @@
  */
 export const AdsAnalyticsFilterColumn = {
     SpendInDollar: 'SPEND_IN_DOLLAR',
-    TotalImpression: 'TOTAL_IMPRESSION'
+    TotalImpression: 'TOTAL_IMPRESSION',
 } as const;
 export type AdsAnalyticsFilterColumn = typeof AdsAnalyticsFilterColumn[keyof typeof AdsAnalyticsFilterColumn];
 

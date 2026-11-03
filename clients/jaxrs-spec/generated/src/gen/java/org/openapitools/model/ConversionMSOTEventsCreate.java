@@ -25,9 +25,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("ConversionMSOTEventsCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionMSOTEventsCreate   {
-  private @Valid List<Long> actionTimestamps = new ArrayList<>();
+  private List<Long> actionTimestamps = new ArrayList<>();
   private String adGroupId;
   private AttributionModel attributionModel;
   private AttributionScope attributionScope;

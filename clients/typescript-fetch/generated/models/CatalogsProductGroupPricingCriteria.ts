@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsProductGroupPricingCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupPricingCriteria
      */
     inclusion?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupPricingCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsProductGroupPricingCriteria
      */
     values: number;
 }

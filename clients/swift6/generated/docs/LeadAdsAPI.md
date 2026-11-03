@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **adAccountsSubscriptionsDelById**
 ```swift
-    open class func adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String, completion: @escaping (_ data: LeadSubscription?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsDelById(adAccountId: String, subscriptionId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadSubscription?
 ```
 
 Delete lead ads subscription
@@ -28,15 +28,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let subscriptionId = "subscriptionId_example" // String | Unique identifier of a subscription.
 
 // Delete lead ads subscription
-LeadAdsAPI.adAccountsSubscriptionsDelById(adAccountId: adAccountId, subscriptionId: subscriptionId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadAdsAPI.adAccountsSubscriptionsDelById(adAccountId: adAccountId, subscriptionId: subscriptionId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -64,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsSubscriptionsGetById**
 ```swift
-    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, completion: @escaping (_ data: LeadSubscription?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsGetById(adAccountId: String, subscriptionId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadSubscription
 ```
 
 Get lead ads subscription by ID
@@ -80,15 +76,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let subscriptionId = "subscriptionId_example" // String | Unique identifier of a subscription.
 
 // Get lead ads subscription by ID
-LeadAdsAPI.adAccountsSubscriptionsGetById(adAccountId: adAccountId, subscriptionId: subscriptionId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadAdsAPI.adAccountsSubscriptionsGetById(adAccountId: adAccountId, subscriptionId: subscriptionId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -116,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsSubscriptionsGetList**
 ```swift
-    open class func adAccountsSubscriptionsGetList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdAccountsSubscriptionsGetList200Response?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsGetList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsSubscriptionsGetList200Response
 ```
 
 Get lead ads subscriptions
@@ -133,15 +125,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get lead ads subscriptions
-LeadAdsAPI.adAccountsSubscriptionsGetList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadAdsAPI.adAccountsSubscriptionsGetList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -170,7 +158,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsSubscriptionsPost**
 ```swift
-    open class func adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, completion: @escaping (_ data: LeadSubscription?, _ error: Error?) -> Void)
+    open class func adAccountsSubscriptionsPost(adAccountId: String, leadSubscriptionPostParamsCreate: LeadSubscriptionPostParamsCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LeadSubscription
 ```
 
 Create lead ads subscription
@@ -186,15 +174,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let leadSubscriptionPostParamsCreate = LeadSubscriptionPostParamsCreate(leadFormId: "leadFormId_example", webhookUrl: "webhookUrl_example", partnerAccessToken: "partnerAccessToken_example", partnerMetadata: PartnerMetadata(subscriberKey: "subscriberKey_example"), partnerRefreshToken: "partnerRefreshToken_example") // LeadSubscriptionPostParamsCreate | 
 
 // Create lead ads subscription
-LeadAdsAPI.adAccountsSubscriptionsPost(adAccountId: adAccountId, leadSubscriptionPostParamsCreate: leadSubscriptionPostParamsCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LeadAdsAPI.adAccountsSubscriptionsPost(adAccountId: adAccountId, leadSubscriptionPostParamsCreate: leadSubscriptionPostParamsCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

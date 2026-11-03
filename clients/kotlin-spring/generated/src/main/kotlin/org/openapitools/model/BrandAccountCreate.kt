@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.BrandAccountProfileImage
 import org.openapitools.model.Country
 import javax.validation.constraints.DecimalMax
@@ -33,33 +30,27 @@ data class BrandAccountCreate(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("country")
+    @param:JsonProperty("country", required = true)
     @get:JsonProperty("country", required = true) val country: Country,
 
     @Schema(required = true, description = "Brand Account name")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(required = true, description = "Brand Account username")
-    @param:JsonProperty("username")
+    @param:JsonProperty("username", required = true)
     @get:JsonProperty("username", required = true) val username: kotlin.String,
 
     @Schema(description = "Brand Account about information")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("about")
     @get:JsonProperty("about") val about: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("profile_image")
     @get:JsonProperty("profile_image") val profileImage: BrandAccountProfileImage? = null,
 
     @Schema(description = "Brand Account website")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("website")
     @get:JsonProperty("website") val website: kotlin.String? = null
 ) {

@@ -82,3 +82,4 @@ class _$CampaignAdPreviewCreate200ResponseInnerDataSerializer implements Primiti
   }
 }
 
+

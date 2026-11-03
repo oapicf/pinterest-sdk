@@ -42,10 +42,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **labelId** | **kotlin.String**| Label ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **labelId** | **kotlin.String**| Label ID. | |
 | **labeledEntitiesCreate** | [**LabeledEntitiesCreate**](LabeledEntitiesCreate.md)|  | |
 
 ### Return type
@@ -99,9 +99,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **labelCreateRequest** | [**LabelCreateRequest**](LabelCreateRequest.md)|  | |
 
 ### Return type
@@ -160,14 +160,14 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **campaignIds** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of Campaign Ids to use to filter the results. | [optional] |
 | **labelIds** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of Label Ids to use to filter the results. | [optional] |
 | **entityStatuses** | [**kotlin.collections.List&lt;QueryLabelEntityStatusesItems&gt;**](QueryLabelEntityStatusesItems.md)| Label entity status | [optional] [default to arrayListOf(QueryLabelEntityStatusesItems.ACTIVE)] |
 | **labelTypes** | [**kotlin.collections.List&lt;QueryLabelTypesItems&gt;**](QueryLabelTypesItems.md)| Label type. | [optional] [default to arrayListOf(QueryLabelTypesItems.BRAND,QueryLabelTypesItems.CUSTOM)] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -222,10 +222,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**|  | |
-| **labelId** | **kotlin.String**| Label ID. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**|  | |
+| **labelId** | **kotlin.String**| Label ID. | |
 | **labeledEntitiesCreate** | [**LabeledEntitiesCreate**](LabeledEntitiesCreate.md)|  | |
 
 ### Return type
@@ -279,9 +279,9 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **labelUpdateRequest** | [**LabelUpdateRequest**](LabelUpdateRequest.md)|  | |
 
 ### Return type

@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'entity_status.g.dart';
 
+/// Entity status
 class EntityStatus extends EnumClass {
 
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const EntityStatus ACTIVE = _$ACTIVE;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const EntityStatus PAUSED = _$PAUSED;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const EntityStatus ARCHIVED = _$ARCHIVED;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const EntityStatus DRAFT = _$DRAFT;
-  /// Entity status
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const EntityStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

@@ -29,14 +29,10 @@ import {
 export interface FeedProcessingResultsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof FeedProcessingResultsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<CatalogsFeedProcessingResult>}
-     * @memberof FeedProcessingResultsList200Response
      */
     items: Array<CatalogsFeedProcessingResult>;
 }

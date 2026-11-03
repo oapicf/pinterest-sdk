@@ -25,32 +25,32 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A map of filter attributes to their available values.")
 @JsonTypeName("CatalogsRetailFilterValuesMap")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFilterValuesMap   {
-  private @Valid List<String> adImageTags = new ArrayList<>();
-  private @Valid List<String> adVideoTags = new ArrayList<>();
-  private @Valid List<ProductAvailability> availability = new ArrayList<>();
-  private @Valid List<String> brand = new ArrayList<>();
-  private @Valid List<ProductCondition> condition = new ArrayList<>();
-  private @Valid List<String> customLabel0 = new ArrayList<>();
-  private @Valid List<String> customLabel1 = new ArrayList<>();
-  private @Valid List<String> customLabel2 = new ArrayList<>();
-  private @Valid List<String> customLabel3 = new ArrayList<>();
-  private @Valid List<String> customLabel4 = new ArrayList<>();
-  private @Valid List<Gender> gender = new ArrayList<>();
-  private @Valid List<String> googleProductCategory0 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory1 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory2 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory3 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory4 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory5 = new ArrayList<>();
-  private @Valid List<String> googleProductCategory6 = new ArrayList<>();
-  private @Valid List<MediaType> mediaType = new ArrayList<>();
-  private @Valid List<String> productType0 = new ArrayList<>();
-  private @Valid List<String> productType1 = new ArrayList<>();
-  private @Valid List<String> productType2 = new ArrayList<>();
-  private @Valid List<String> productType3 = new ArrayList<>();
-  private @Valid List<String> productType4 = new ArrayList<>();
+  private List<String> adImageTags = new ArrayList<>();
+  private List<String> adVideoTags = new ArrayList<>();
+  private List<ProductAvailability> availability = new ArrayList<>();
+  private List<String> brand = new ArrayList<>();
+  private List<ProductCondition> condition = new ArrayList<>();
+  private List<String> customLabel0 = new ArrayList<>();
+  private List<String> customLabel1 = new ArrayList<>();
+  private List<String> customLabel2 = new ArrayList<>();
+  private List<String> customLabel3 = new ArrayList<>();
+  private List<String> customLabel4 = new ArrayList<>();
+  private List<Gender> gender = new ArrayList<>();
+  private List<String> googleProductCategory0 = new ArrayList<>();
+  private List<String> googleProductCategory1 = new ArrayList<>();
+  private List<String> googleProductCategory2 = new ArrayList<>();
+  private List<String> googleProductCategory3 = new ArrayList<>();
+  private List<String> googleProductCategory4 = new ArrayList<>();
+  private List<String> googleProductCategory5 = new ArrayList<>();
+  private List<String> googleProductCategory6 = new ArrayList<>();
+  private List<MediaType> mediaType = new ArrayList<>();
+  private List<String> productType0 = new ArrayList<>();
+  private List<String> productType1 = new ArrayList<>();
+  private List<String> productType2 = new ArrayList<>();
+  private List<String> productType3 = new ArrayList<>();
+  private List<String> productType4 = new ArrayList<>();
 
   public CatalogsRetailFilterValuesMap() {
   }

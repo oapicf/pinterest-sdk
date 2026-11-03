@@ -36,20 +36,14 @@ import {
 export interface AdvancedAuctionBidOptions {
     /**
      * 
-     * @type {AppTypeMultipliers}
-     * @memberof AdvancedAuctionBidOptions
      */
     appTypeMultipliers?: AppTypeMultipliers | null;
     /**
      * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-     * @type {number}
-     * @memberof AdvancedAuctionBidOptions
      */
     bidInMicroCurrency?: number | null;
     /**
      * 
-     * @type {PlacementMultipliers}
-     * @memberof AdvancedAuctionBidOptions
      */
     placementMultipliers?: PlacementMultipliers | null;
 }

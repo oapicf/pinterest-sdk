@@ -106,3 +106,4 @@ class _$AdBatchWriteResponseModelSerializer implements PrimitiveSerializer<AdBat
   }
 }
 
+

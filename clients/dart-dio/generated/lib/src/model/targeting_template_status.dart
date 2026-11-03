@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'targeting_template_status.g.dart';
 
+/// Indicate targeting template is active or Deleted
 class TargetingTemplateStatus extends EnumClass {
 
-  /// Indicate targeting template is active or Deleted
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const TargetingTemplateStatus ACTIVE = _$ACTIVE;
-  /// Indicate targeting template is active or Deleted
   @BuiltValueEnumConst(wireName: r'DELETED')
   static const TargetingTemplateStatus DELETED = _$DELETED;
 

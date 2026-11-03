@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,37 +27,28 @@ import jakarta.annotation.Generated;
  * CampaignCreateRequestAllOf1
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1 {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CampaignBidOptionsCreate> bidOptions = JsonNullable.<CampaignBidOptionsCreate>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable IntendedPromotionType intendedPromotionType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isAutomatedCampaign = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isCampaignBudgetOptimization = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isFlexibleDailyBudgets = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isLtvOptimized;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean isPerformancePlus = false;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean isTopOfSearch = false;
 
   private ObjectiveType objectiveType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1() {
     super();
@@ -81,7 +71,7 @@ public class CampaignCreateRequestAllOf1 {
    * @return bidOptions
    */
   @Valid 
-  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_options")
   public JsonNullable<CampaignBidOptionsCreate> getBidOptions() {
     return bidOptions;
@@ -122,7 +112,7 @@ public class CampaignCreateRequestAllOf1 {
    * @return isAutomatedCampaign
    */
   
-  @Schema(name = "is_automated_campaign", description = "Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_automated_campaign", description = "Note: This field is immutable unless the campaign is in draft status. Specifies whether the campaign was created in the automated campaign flow. When using Automated Campaigns, a daily spend cap must be set, and Pinterest Performance+ may not be used. The following objective types are supported: - CONSIDERATION - WEB\\_CONVERSION - SALES - CATALOG\\_SALES", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_automated_campaign")
   public JsonNullable<Boolean> getIsAutomatedCampaign() {
     return isAutomatedCampaign;
@@ -142,7 +132,7 @@ public class CampaignCreateRequestAllOf1 {
    * @return isCampaignBudgetOptimization
    */
   
-  @Schema(name = "is_campaign_budget_optimization", description = "Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_campaign_budget_optimization", description = "Note: This field is immutable unless the campaign is in draft status. Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome. When using campaign budgets with a lifetime spend cap, the end time must be provided.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_campaign_budget_optimization")
   public JsonNullable<Boolean> getIsCampaignBudgetOptimization() {
     return isCampaignBudgetOptimization;
@@ -162,7 +152,7 @@ public class CampaignCreateRequestAllOf1 {
    * @return isFlexibleDailyBudgets
    */
   
-  @Schema(name = "is_flexible_daily_budgets", description = "Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_flexible_daily_budgets", description = "Determine if a campaign has setup for flexible daily budgets, also known as \"Pinterest Performance+ budgets\". Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_flexible_daily_budgets")
   public JsonNullable<Boolean> getIsFlexibleDailyBudgets() {
     return isFlexibleDailyBudgets;
@@ -256,7 +246,7 @@ public class CampaignCreateRequestAllOf1 {
     this.objectiveType = objectiveType;
   }
 
-  public CampaignCreateRequestAllOf1 status(@Nullable EntityStatus status) {
+  public CampaignCreateRequestAllOf1 status(EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -268,12 +258,12 @@ public class CampaignCreateRequestAllOf1 {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public @Nullable EntityStatus getStatus() {
+  public EntityStatus getStatus() {
     return status;
   }
 
   @JsonProperty("status")
-  public void setStatus(@Nullable EntityStatus status) {
+  public void setStatus(EntityStatus status) {
     this.status = status;
   }
 

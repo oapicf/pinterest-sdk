@@ -17,7 +17,7 @@ import org.openapitools.model.TrendsAgeBucket;
  **/
 
 @ApiModel(description = "This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-08-30T09:52:16.246263874Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsAgeDistribution extends HashMap<String, Double>  {
   @JsonProperty("age_distribution")
   private TrendsAgeBucket ageDistribution;

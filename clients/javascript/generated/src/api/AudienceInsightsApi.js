@@ -21,7 +21,7 @@ import PinterestLibError from '../model/PinterestLibError';
 /**
 * AudienceInsights service.
 * @module api/AudienceInsightsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class AudienceInsightsApi {
 

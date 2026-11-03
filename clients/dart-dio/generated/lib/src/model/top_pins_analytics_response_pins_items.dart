@@ -148,3 +148,4 @@ class _$TopPinsAnalyticsResponsePinsItemsSerializer implements PrimitiveSerializ
   }
 }
 
+

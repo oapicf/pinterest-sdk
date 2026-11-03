@@ -13,7 +13,7 @@ import java.util.List;
  * A map of filter attributes to their available values.
  */
 @ApiModel(description = "A map of filter attributes to their available values.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelFilterValuesMap   {
   @JsonProperty("brand")
   private List<String> brand = null;

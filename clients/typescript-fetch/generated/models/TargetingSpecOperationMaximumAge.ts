@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TargetingSpecOperationMaximumAge {
     /**
      * 
-     * @type {TargetingSpecOperationMaximumAgeFieldEnum}
-     * @memberof TargetingSpecOperationMaximumAge
      */
     field: TargetingSpecOperationMaximumAgeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecOperationMaximumAgeOperationEnum}
-     * @memberof TargetingSpecOperationMaximumAge
      */
     operation: TargetingSpecOperationMaximumAgeOperationEnum;
     /**
      * 
-     * @type {string}
-     * @memberof TargetingSpecOperationMaximumAge
      */
     value: string | null;
 }
@@ -44,7 +38,7 @@ export interface TargetingSpecOperationMaximumAge {
  * @export
  */
 export const TargetingSpecOperationMaximumAgeFieldEnum = {
-    MaximumAge: 'MAXIMUM_AGE'
+    MaximumAge: 'MAXIMUM_AGE',
 } as const;
 export type TargetingSpecOperationMaximumAgeFieldEnum = typeof TargetingSpecOperationMaximumAgeFieldEnum[keyof typeof TargetingSpecOperationMaximumAgeFieldEnum];
 
@@ -52,7 +46,7 @@ export type TargetingSpecOperationMaximumAgeFieldEnum = typeof TargetingSpecOper
  * @export
  */
 export const TargetingSpecOperationMaximumAgeOperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
 } as const;
 export type TargetingSpecOperationMaximumAgeOperationEnum = typeof TargetingSpecOperationMaximumAgeOperationEnum[keyof typeof TargetingSpecOperationMaximumAgeOperationEnum];
 

@@ -75,8 +75,7 @@ class S3MultipartUploadData(BaseModel):
         _items = []
         if self.file_parts:
             for _item_file_parts in self.file_parts:
-                if _item_file_parts:
-                    _items.append(_item_file_parts.to_dict())
+                _items.append(_item_file_parts.to_dict() if _item_file_parts is not None else None)
             _dict['file_parts'] = _items
         return _dict
 

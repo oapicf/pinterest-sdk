@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
-* Values: NO_DISCLOSURE,PRESCRIBING_INFORMATION,PRESCRIBING_INFORMATION_BOX_WARNING,IMPORTANT_SAFETY_INFO,MED_GUIDE,PATIENT_INFORMATION
-*/
+ * Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
+ * Values: NO_DISCLOSURE,PRESCRIBING_INFORMATION,PRESCRIBING_INFORMATION_BOX_WARNING,IMPORTANT_SAFETY_INFO,MED_GUIDE,PATIENT_INFORMATION
+ */
 enum class DisclosureType(@get:JsonValue val value: kotlin.String) {
 
     NO_DISCLOSURE("NO_DISCLOSURE"),
@@ -32,9 +32,8 @@ enum class DisclosureType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): DisclosureType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DisclosureType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DisclosureType'")
         }
     }
 }
-

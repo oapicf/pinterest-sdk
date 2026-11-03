@@ -106,3 +106,4 @@ class _$CatalogsBaseFiltersAnyOfSerializer implements PrimitiveSerializer<Catalo
   }
 }
 
+

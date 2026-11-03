@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsProduct" /> class.
         /// </summary>
         /// <param name="catalogsRetailProduct"></param>
-        public CatalogsProduct(CatalogsRetailProduct catalogsRetailProduct)
+        internal CatalogsProduct(CatalogsRetailProduct catalogsRetailProduct)
         {
             CatalogsRetailProduct = catalogsRetailProduct;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsProduct" /> class.
         /// </summary>
         /// <param name="catalogsHotelProduct"></param>
-        public CatalogsProduct(CatalogsHotelProduct catalogsHotelProduct)
+        internal CatalogsProduct(CatalogsHotelProduct catalogsHotelProduct)
         {
             CatalogsHotelProduct = catalogsHotelProduct;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsProduct" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsProduct"></param>
-        public CatalogsProduct(CatalogsCreativeAssetsProduct catalogsCreativeAssetsProduct)
+        internal CatalogsProduct(CatalogsCreativeAssetsProduct catalogsCreativeAssetsProduct)
         {
             CatalogsCreativeAssetsProduct = catalogsCreativeAssetsProduct;
             OnCreated();
@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsProduct.CatalogTypeEnum?>(CatalogsProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsProduct.CatalogTypeEnum? catalogTypeValue = CatalogsProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsProduct.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProduct.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsProduct: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsProduct: catalog_type.");
 
             if (catalogsCreativeAssetsProduct != null)
                 return new CatalogsProduct(catalogsCreativeAssetsProduct);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProduct catalogsProduct, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProduct catalogsProduct, JsonSerializerOptions jsonSerializerOptions)
         {
 

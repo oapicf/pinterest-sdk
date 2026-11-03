@@ -140,6 +140,7 @@ class _$TargetingSpecOperationGeoSerializer implements PrimitiveSerializer<Targe
   }
 }
 
+
 class TargetingSpecOperationGeoFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'GEO')

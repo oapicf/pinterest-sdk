@@ -188,3 +188,4 @@ class _$CatalogsHotelAddressSerializer implements PrimitiveSerializer<CatalogsHo
   }
 }
 
+

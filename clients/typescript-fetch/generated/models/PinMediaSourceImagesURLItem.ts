@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface PinMediaSourceImagesURLItem {
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesURLItem
      */
     description?: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesURLItem
      */
     link?: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesURLItem
      */
     title?: string;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImagesURLItem
      */
     url: string;
 }

@@ -16,7 +16,7 @@ import org.openapitools.model.UpdatableItemAttributesGtin;
 /**
  * ItemAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemAttributes   {
   @JsonProperty("ad_image_0_link")
   private String adImage0Link;
@@ -2164,7 +2164,7 @@ public class ItemAttributes   {
 
   public ItemAttributes addVariantNamesItem(String variantNamesItem) {
     if (this.variantNames == null) {
-      this.variantNames = ;
+      this.variantNames = new ArrayList<>();
     }
     this.variantNames.add(variantNamesItem);
     return this;
@@ -2190,7 +2190,7 @@ public class ItemAttributes   {
 
   public ItemAttributes addVariantValuesItem(String variantValuesItem) {
     if (this.variantValues == null) {
-      this.variantValues = ;
+      this.variantValues = new ArrayList<>();
     }
     this.variantValues.add(variantValuesItem);
     return this;
@@ -2216,7 +2216,7 @@ public class ItemAttributes   {
 
   public ItemAttributes addAdditionalImageLinkItem(String additionalImageLinkItem) {
     if (this.additionalImageLink == null) {
-      this.additionalImageLink = ;
+      this.additionalImageLink = new ArrayList<>();
     }
     this.additionalImageLink.add(additionalImageLinkItem);
     return this;

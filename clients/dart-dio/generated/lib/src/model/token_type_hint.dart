@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'token_type_hint.g.dart';
 
+/// The type of token to revoke.
 class TokenTypeHint extends EnumClass {
 
-  /// The type of token to revoke.
   @BuiltValueEnumConst(wireName: r'access_token')
   static const TokenTypeHint accessToken = _$accessToken;
-  /// The type of token to revoke.
   @BuiltValueEnumConst(wireName: r'refresh_token')
   static const TokenTypeHint refreshToken = _$refreshToken;
 

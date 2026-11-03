@@ -23,8 +23,6 @@ public class PinMediaWithImages  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid ImageMetadata> items = new ArrayList<>();
 
 public enum MediaTypeEnum {

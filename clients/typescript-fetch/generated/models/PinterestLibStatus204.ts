@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface PinterestLibStatus204 {
     /**
      * 
-     * @type {PinterestLibStatus204StatusCodeEnum}
-     * @memberof PinterestLibStatus204
      */
     statusCode: PinterestLibStatus204StatusCodeEnum;
 }
@@ -32,7 +30,7 @@ export interface PinterestLibStatus204 {
  * @export
  */
 export const PinterestLibStatus204StatusCodeEnum = {
-    NUMBER_204: 204
+    NUMBER_204: 204,
 } as const;
 export type PinterestLibStatus204StatusCodeEnum = typeof PinterestLibStatus204StatusCodeEnum[keyof typeof PinterestLibStatus204StatusCodeEnum];
 

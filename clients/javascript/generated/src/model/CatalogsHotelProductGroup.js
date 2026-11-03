@@ -18,7 +18,7 @@ import CatalogsHotelProductGroupType from './CatalogsHotelProductGroupType';
 /**
  * The CatalogsHotelProductGroup model module.
  * @module model/CatalogsHotelProductGroup
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelProductGroup {
     /**

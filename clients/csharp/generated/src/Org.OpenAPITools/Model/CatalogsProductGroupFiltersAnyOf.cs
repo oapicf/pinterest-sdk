@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!anyOf.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupFiltersAnyOf.", nameof(anyOf));
+                throw new JsonException("Property is required for class CatalogsProductGroupFiltersAnyOf: any_of.");
 
             if (anyOf.IsSet && anyOf.Value == null)
-                throw new ArgumentNullException(nameof(anyOf), "Property is not nullable for class CatalogsProductGroupFiltersAnyOf.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupFiltersAnyOf: any_of.");
 
             return new CatalogsProductGroupFiltersAnyOf(anyOf.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupFiltersAnyOf catalogsProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupFiltersAnyOf catalogsProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupFiltersAnyOf.AnyOf == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupFiltersAnyOf.AnyOf), "Property is required for class CatalogsProductGroupFiltersAnyOf.");
-
             writer.WritePropertyName("any_of");
             JsonSerializer.Serialize(writer, catalogsProductGroupFiltersAnyOf.AnyOf, jsonSerializerOptions);
         }

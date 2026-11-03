@@ -123,6 +123,7 @@ class _$CatalogsDeleteCreativeAssetsItemSerializer implements PrimitiveSerialize
   }
 }
 
+
 class CatalogsDeleteCreativeAssetsItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

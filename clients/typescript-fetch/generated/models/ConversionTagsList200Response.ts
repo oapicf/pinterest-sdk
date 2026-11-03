@@ -29,8 +29,6 @@ import {
 export interface ConversionTagsList200Response {
     /**
      * 
-     * @type {Array<ConversionTag>}
-     * @memberof ConversionTagsList200Response
      */
     items: Array<ConversionTag>;
 }

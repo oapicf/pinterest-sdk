@@ -12,7 +12,7 @@ public struct CatalogsReportDistributionIssueFilter: Sendable, Codable, Hashable
     public enum ReportType: String, Sendable, Codable, CaseIterable {
         case distributionIssues = "DISTRIBUTION_ISSUES"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of a catalog. If not given, oldest catalog will be used */
     public var catalogId: String?
     public var reportType: ReportType

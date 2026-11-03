@@ -6,20 +6,3 @@
 */
 #include "MultiPinsAnalyticsMetricTypesItem.h"
 
-namespace models {
-
-MultiPinsAnalyticsMetricTypesItem::MultiPinsAnalyticsMetricTypesItem()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -17,7 +17,7 @@ import CatalogsCreativeAssetsFilterValuesMap from './CatalogsCreativeAssetsFilte
 /**
  * The CatalogsCreativeAssetsAvailableFilterValues model module.
  * @module model/CatalogsCreativeAssetsAvailableFilterValues
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsAvailableFilterValues {
     /**

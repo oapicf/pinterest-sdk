@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -33,31 +32,24 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionProductReportCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   private String endDate;
 
@@ -65,15 +57,13 @@ public class ConversionProductReportCreate {
 
   private ConversionProductReportLevel level;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^[a-zA-Z0-9]+$")String> productSkuIds = new ArrayList<>();
 
   private String reportName;
 
   private String startDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate() {
     super();
@@ -166,7 +156,7 @@ public class ConversionProductReportCreate {
    * List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].
    * @return campaignObjectiveTypes
    */
-  @Valid @Size(min = 1, max = 7) 
+  @Size(min = 1, max = 7) 
   @Schema(name = "campaign_objective_types", description = "List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION'].", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_objective_types")
   public List<ConversionObjectiveType> getCampaignObjectiveTypes() {
@@ -178,7 +168,7 @@ public class ConversionProductReportCreate {
     this.campaignObjectiveTypes = campaignObjectiveTypes;
   }
 
-  public ConversionProductReportCreate clickWindowDays(@Nullable ConversionAttributionWindowDays clickWindowDays) {
+  public ConversionProductReportCreate clickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -190,12 +180,12 @@ public class ConversionProductReportCreate {
   @Valid 
   @Schema(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_window_days")
-  public @Nullable ConversionAttributionWindowDays getClickWindowDays() {
+  public ConversionAttributionWindowDays getClickWindowDays() {
     return clickWindowDays;
   }
 
   @JsonProperty("click_window_days")
-  public void setClickWindowDays(@Nullable ConversionAttributionWindowDays clickWindowDays) {
+  public void setClickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
@@ -216,7 +206,7 @@ public class ConversionProductReportCreate {
    * Metric and entity columns
    * @return columns
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "columns", description = "Metric and entity columns", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("columns")
   public List<ConversionProductReportingColumn> getColumns() {
@@ -228,7 +218,7 @@ public class ConversionProductReportCreate {
     this.columns = columns;
   }
 
-  public ConversionProductReportCreate conversionProductAttributionType(@Nullable ConversionProductAttributionType conversionProductAttributionType) {
+  public ConversionProductReportCreate conversionProductAttributionType(ConversionProductAttributionType conversionProductAttributionType) {
     this.conversionProductAttributionType = conversionProductAttributionType;
     return this;
   }
@@ -240,16 +230,16 @@ public class ConversionProductReportCreate {
   @Valid 
   @Schema(name = "conversion_product_attribution_type", description = "  Required attribution type of the B/C/S report.   When the attribution type is BRAND_ATTRIBUTION, start_date for the report must be after 2025-04-01.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_product_attribution_type")
-  public @Nullable ConversionProductAttributionType getConversionProductAttributionType() {
+  public ConversionProductAttributionType getConversionProductAttributionType() {
     return conversionProductAttributionType;
   }
 
   @JsonProperty("conversion_product_attribution_type")
-  public void setConversionProductAttributionType(@Nullable ConversionProductAttributionType conversionProductAttributionType) {
+  public void setConversionProductAttributionType(ConversionProductAttributionType conversionProductAttributionType) {
     this.conversionProductAttributionType = conversionProductAttributionType;
   }
 
-  public ConversionProductReportCreate conversionProductBreakdown(@Nullable ConversionProductReportBreakdownType conversionProductBreakdown) {
+  public ConversionProductReportCreate conversionProductBreakdown(ConversionProductReportBreakdownType conversionProductBreakdown) {
     this.conversionProductBreakdown = conversionProductBreakdown;
     return this;
   }
@@ -261,16 +251,16 @@ public class ConversionProductReportCreate {
   @Valid 
   @Schema(name = "conversion_product_breakdown", description = "Report breakdown type. This is used to specify the breakdown of the report by brand, category, or SKU.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_product_breakdown")
-  public @Nullable ConversionProductReportBreakdownType getConversionProductBreakdown() {
+  public ConversionProductReportBreakdownType getConversionProductBreakdown() {
     return conversionProductBreakdown;
   }
 
   @JsonProperty("conversion_product_breakdown")
-  public void setConversionProductBreakdown(@Nullable ConversionProductReportBreakdownType conversionProductBreakdown) {
+  public void setConversionProductBreakdown(ConversionProductReportBreakdownType conversionProductBreakdown) {
     this.conversionProductBreakdown = conversionProductBreakdown;
   }
 
-  public ConversionProductReportCreate conversionReportTime(@Nullable ConversionReportTimeType conversionReportTime) {
+  public ConversionProductReportCreate conversionReportTime(ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
     return this;
   }
@@ -282,12 +272,12 @@ public class ConversionProductReportCreate {
   @Valid 
   @Schema(name = "conversion_report_time", description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_report_time")
-  public @Nullable ConversionReportTimeType getConversionReportTime() {
+  public ConversionReportTimeType getConversionReportTime() {
     return conversionReportTime;
   }
 
   @JsonProperty("conversion_report_time")
-  public void setConversionReportTime(@Nullable ConversionReportTimeType conversionReportTime) {
+  public void setConversionReportTime(ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
   }
 
@@ -425,7 +415,7 @@ public class ConversionProductReportCreate {
     this.startDate = startDate;
   }
 
-  public ConversionProductReportCreate viewWindowDays(@Nullable ConversionAttributionWindowDays viewWindowDays) {
+  public ConversionProductReportCreate viewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -437,12 +427,12 @@ public class ConversionProductReportCreate {
   @Valid 
   @Schema(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_window_days")
-  public @Nullable ConversionAttributionWindowDays getViewWindowDays() {
+  public ConversionAttributionWindowDays getViewWindowDays() {
     return viewWindowDays;
   }
 
   @JsonProperty("view_window_days")
-  public void setViewWindowDays(@Nullable ConversionAttributionWindowDays viewWindowDays) {
+  public void setViewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 

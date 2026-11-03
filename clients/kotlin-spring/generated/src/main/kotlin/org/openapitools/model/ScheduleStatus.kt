@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Schedule status
-* Values: DRAFT,CREATED,SCHEDULED,ACTIVE,COMPLETED,FAILED,CANCELED
-*/
+ * Schedule status
+ * Values: DRAFT,CREATED,SCHEDULED,ACTIVE,COMPLETED,FAILED,CANCELED
+ */
 enum class ScheduleStatus(@get:JsonValue val value: kotlin.String) {
 
     DRAFT("DRAFT"),
@@ -33,9 +33,8 @@ enum class ScheduleStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ScheduleStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleStatus'")
         }
     }
 }
-

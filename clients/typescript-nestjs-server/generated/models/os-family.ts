@@ -10,7 +10,7 @@ export const OsFamily = {
     Windows: 'windows',
     Linux: 'linux',
     Bsd: 'bsd',
-    Other: 'other'
+    Other: 'other',
 } as const;
 export type OsFamily = typeof OsFamily[keyof typeof OsFamily];
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reason for a confidence level alert on delivery estimates.
-* Values: UNKNOWN,OTHER,ADVERTISER_HAS_NO_RECENT_CAMPAIGNS,ADVERTISER_HAS_NO_RECENT_CONVERSIONS
-*/
+ * Reason for a confidence level alert on delivery estimates.
+ * Values: UNKNOWN,OTHER,ADVERTISER_HAS_NO_RECENT_CAMPAIGNS,ADVERTISER_HAS_NO_RECENT_CONVERSIONS
+ */
 enum class CampaignPlanningConfidenceLevelAlertReason(@get:JsonValue val value: kotlin.String) {
 
     UNKNOWN("UNKNOWN"),
@@ -30,9 +30,8 @@ enum class CampaignPlanningConfidenceLevelAlertReason(@get:JsonValue val value: 
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningConfidenceLevelAlertReason {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConfidenceLevelAlertReason'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningConfidenceLevelAlertReason'")
         }
     }
 }
-

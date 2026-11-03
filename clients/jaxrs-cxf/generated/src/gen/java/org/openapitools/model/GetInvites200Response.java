@@ -22,8 +22,6 @@ public class GetInvites200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid InviteResponse> items = new ArrayList<>();
  /**
    * Get bookmark

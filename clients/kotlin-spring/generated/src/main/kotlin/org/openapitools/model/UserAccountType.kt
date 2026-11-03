@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: PINNER,BUSINESS
-*/
+ * 
+ * Values: PINNER,BUSINESS
+ */
 enum class UserAccountType(@get:JsonValue val value: kotlin.String) {
 
     PINNER("PINNER"),
@@ -28,9 +28,8 @@ enum class UserAccountType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): UserAccountType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserAccountType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserAccountType'")
         }
     }
 }
-

@@ -45,7 +45,7 @@ public class CatalogsFeedsCreateRequest   {
 
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   /**
    **/

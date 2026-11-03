@@ -3,7 +3,7 @@
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
 from datetime import date
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.ads_credit_redeem import AdsCreditRedeem
@@ -34,9 +34,9 @@ class BaseBillingApi:
         BaseBillingApi.subclasses = BaseBillingApi.subclasses + (cls,)
     async def ads_credits_discounts_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> AdsCreditsDiscountsGet200Response:
         """Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**"""
         ...
@@ -44,7 +44,7 @@ class BaseBillingApi:
 
     async def ads_credit_redeem(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         ads_credit_redeem_create: AdsCreditRedeemCreate,
     ) -> AdsCreditRedeem:
         """Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**"""
@@ -53,8 +53,8 @@ class BaseBillingApi:
 
     async def billing_invoice_download_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        billing_invoice_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of a billing invoice.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        billing_invoice_id: Annotated[str, Field(max_length=18, description="Unique identifier of a billing invoice.")],
     ) -> BillingInvoiceDownloadResponse:
         """Get download url for a billing invoice."""
         ...
@@ -62,9 +62,9 @@ class BaseBillingApi:
 
     async def billing_invoices_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
         order: Annotated[Optional[PinterestLibPaginationOrder], Field(description="The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.")],
         sort: Annotated[Optional[BillingInvoiceSortField], Field(description="Field of which to sort billing invoices")],
         status: Annotated[Optional[BillingInvoiceStatus], Field(description="Status of billing invoices to filter by")],
@@ -78,10 +78,10 @@ class BaseBillingApi:
 
     async def billing_profiles_get(
         self,
-        is_active: Annotated[StrictBool, Field(description="Return active billing profiles, if false return all billing profiles.")],
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        is_active: Annotated[bool, Field(description="Return active billing profiles, if false return all billing profiles.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> BillingProfilesGet200Response:
         """Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**"""
         ...
@@ -89,7 +89,7 @@ class BaseBillingApi:
 
     async def ssio_accounts_get(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
     ) -> SSIOAccount:
         """  Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
         ...
@@ -97,7 +97,7 @@ class BaseBillingApi:
 
     async def ssio_insertion_order_create(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         ssio_insertion_order_create: SSIOInsertionOrderCreate,
     ) -> SSIOInsertionOrder:
         """  Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
@@ -106,7 +106,7 @@ class BaseBillingApi:
 
     async def ssio_insertion_order_edit(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
         ssio_insertion_order_update: SSIOInsertionOrderUpdate,
     ) -> SSIOInsertionOrder:
         """  Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
@@ -115,9 +115,9 @@ class BaseBillingApi:
 
     async def ssio_insertion_orders_status_get_by_ad_account(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> SsioInsertionOrdersStatusGetByAdAccount200Response:
         """  Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
         ...
@@ -125,8 +125,8 @@ class BaseBillingApi:
 
     async def ssio_insertion_orders_status_get_by_pin_order_id(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        pin_order_id: Annotated[StrictStr, Field(description="The pin order id associated with the ssio insertion order")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        pin_order_id: Annotated[str, Field(description="The pin order id associated with the ssio insertion order")],
     ) -> SSIOInsertionOrderStatusResponse:
         """  Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
         ...
@@ -134,10 +134,10 @@ class BaseBillingApi:
 
     async def ssio_order_lines_get_by_ad_account(
         self,
-        ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")],
-        pin_order_id: Annotated[Optional[StrictStr], Field(description="The pin order id associated with the SSIO insertion order")],
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")],
+        pin_order_id: Annotated[Optional[str], Field(description="The pin order id associated with the SSIO insertion order")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> SsioOrderLinesGetByAdAccount200Response:
         """  Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign."""
         ...

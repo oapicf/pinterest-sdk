@@ -137,3 +137,4 @@ class _$DetailedErrorSerializer implements PrimitiveSerializer<DetailedError> {
   }
 }
 
+

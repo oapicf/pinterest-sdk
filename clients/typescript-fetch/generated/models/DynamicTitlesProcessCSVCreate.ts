@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface DynamicTitlesProcessCSVCreate {
     /**
      * The request_id returned from the GET uploads endpoint.
-     * @type {string}
-     * @memberof DynamicTitlesProcessCSVCreate
      */
     requestId: string;
 }

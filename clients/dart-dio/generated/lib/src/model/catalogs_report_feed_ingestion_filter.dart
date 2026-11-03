@@ -143,6 +143,7 @@ class _$CatalogsReportFeedIngestionFilterSerializer implements PrimitiveSerializ
   }
 }
 
+
 class CatalogsReportFeedIngestionFilterReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'FEED_INGESTION_ISSUES')

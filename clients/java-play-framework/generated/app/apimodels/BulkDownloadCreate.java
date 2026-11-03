@@ -15,7 +15,7 @@ import javax.validation.Valid;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class BulkDownloadCreate   {
   @JsonProperty("campaign_filter")
@@ -36,7 +36,7 @@ public class BulkDownloadCreate   {
   @JsonProperty("output_format")
   @Valid
 
-  private BulkOutputFormat outputFormat;
+  private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
   @JsonProperty("updated_since")
   @Pattern(regexp="^\\d+$")

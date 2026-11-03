@@ -184,10 +184,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class DeleteMemberAccessResult.");
+                throw new JsonException("Property is not nullable for class DeleteMemberAccessResult: asset_id.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class DeleteMemberAccessResult.");
+                throw new JsonException("Property is not nullable for class DeleteMemberAccessResult: member_id.");
 
             return new DeleteMemberAccessResult(assetId, memberId);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteMemberAccessResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteMemberAccessResult deleteMemberAccessResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,14 +212,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteMemberAccessResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteMemberAccessResult deleteMemberAccessResult, JsonSerializerOptions jsonSerializerOptions)
         {
             if (deleteMemberAccessResult.AssetIdOption.IsSet && deleteMemberAccessResult.AssetId == null)
-                throw new ArgumentNullException(nameof(deleteMemberAccessResult.AssetId), "Property is required for class DeleteMemberAccessResult.");
+                throw new JsonException("Cannot write null property DeleteMemberAccessResult.AssetId to non-nullable JSON property 'asset_id'.");
 
             if (deleteMemberAccessResult.MemberIdOption.IsSet && deleteMemberAccessResult.MemberId == null)
-                throw new ArgumentNullException(nameof(deleteMemberAccessResult.MemberId), "Property is required for class DeleteMemberAccessResult.");
+                throw new JsonException("Cannot write null property DeleteMemberAccessResult.MemberId to non-nullable JSON property 'member_id'.");
 
             if (deleteMemberAccessResult.AssetIdOption.IsSet)
                 writer.WriteString("asset_id", deleteMemberAccessResult.AssetId);

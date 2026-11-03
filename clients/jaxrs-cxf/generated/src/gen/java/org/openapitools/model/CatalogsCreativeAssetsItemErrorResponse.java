@@ -69,8 +69,6 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
   */
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
 
-  @Valid
-
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
 public enum ItemResponseKindEnum {

@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Age and gender distribution who engaged with this product category in the past 3 months")
 @JsonTypeName("ProductCategoriesDemographic")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoriesDemographic   {
-  private @Valid Map<String, BigDecimal> age = new HashMap<>();
+  private Map<String, BigDecimal> age = new HashMap<>();
   private GenderDemographics gender;
 
   public ProductCategoriesDemographic() {
@@ -50,7 +50,7 @@ public class ProductCategoriesDemographic   {
   
   @ApiModelProperty(required = true, value = "Age demographic distribution")
   @JsonProperty(required = true, value = "age")
-  @NotNull @Valid public Map<String, BigDecimal> getAge() {
+  @NotNull public Map<String, BigDecimal> getAge() {
     return age;
   }
 

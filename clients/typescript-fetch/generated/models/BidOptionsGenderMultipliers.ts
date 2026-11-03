@@ -23,14 +23,10 @@ import { mapValues } from '../runtime';
 export interface BidOptionsGenderMultipliers {
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsGenderMultipliers
      */
     female?: number;
     /**
      * 
-     * @type {number}
-     * @memberof BidOptionsGenderMultipliers
      */
     male?: number;
 }

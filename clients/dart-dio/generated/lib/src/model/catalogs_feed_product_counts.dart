@@ -128,3 +128,4 @@ class _$CatalogsFeedProductCountsSerializer implements PrimitiveSerializer<Catal
   }
 }
 
+

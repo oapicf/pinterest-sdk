@@ -34,7 +34,7 @@ import javax.validation.Valid;
   ProductCategoriesDemographic.JSON_PROPERTY_AGE,
   ProductCategoriesDemographic.JSON_PROPERTY_GENDER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoriesDemographic   {
   public static final String JSON_PROPERTY_AGE = "age";
   @JsonProperty(JSON_PROPERTY_AGE)
@@ -63,7 +63,7 @@ public class ProductCategoriesDemographic   {
    **/
   @JsonProperty(value = "age")
   @ApiModelProperty(required = true, value = "Age demographic distribution")
-  @NotNull @Valid 
+  @NotNull 
   public Map<String, BigDecimal> getAge() {
     return age;
   }

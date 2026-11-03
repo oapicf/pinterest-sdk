@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("KeywordsMetricsArrayResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsMetricsArrayResponse   {
-  private @Valid List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
+  private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
 
   public KeywordsMetricsArrayResponse() {
   }
@@ -37,7 +37,7 @@ public class KeywordsMetricsArrayResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  @Valid public List<@Valid KeywordMetricsResponse> getData() {
+  public List<@Valid KeywordMetricsResponse> getData() {
     return data;
   }
 

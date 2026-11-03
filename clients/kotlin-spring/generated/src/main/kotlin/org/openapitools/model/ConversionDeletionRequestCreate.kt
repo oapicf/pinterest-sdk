@@ -22,7 +22,7 @@ data class ConversionDeletionRequestCreate(
 
     @field:Valid
     @Schema(required = true, description = "Object containing the targets of the conversion deletion request. Users can be identified with user_emails, epiks, or both within the same request.")
-    @param:JsonProperty("deletion_targets")
+    @param:JsonProperty("deletion_targets", required = true)
     @get:JsonProperty("deletion_targets", required = true) val deletionTargets: ConversionDeletionRequestTargets
 ) {
 

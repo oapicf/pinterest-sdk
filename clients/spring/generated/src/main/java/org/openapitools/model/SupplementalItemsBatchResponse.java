@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,19 +28,18 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "SupplementalItemsBatchResponse", description = "Response model for supplemental items batch operation")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SupplementalItemsBatchResponse {
 
   private String batchId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime completedTime;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime createdTime;
 
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   private SupplementalItemBatchOperationStatus status;
 
@@ -52,7 +50,7 @@ public class SupplementalItemsBatchResponse {
   /**
    * Constructor with only required parameters
    */
-  public SupplementalItemsBatchResponse(String batchId, OffsetDateTime createdTime, List<SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
+  public SupplementalItemsBatchResponse(String batchId, OffsetDateTime createdTime, List<@Valid SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
     this.batchId = batchId;
     this.createdTime = createdTime;
     this.operationResults = operationResults;
@@ -122,7 +120,7 @@ public class SupplementalItemsBatchResponse {
     this.createdTime = createdTime;
   }
 
-  public SupplementalItemsBatchResponse operationResults(List<SupplementalOperationResult> operationResults) {
+  public SupplementalItemsBatchResponse operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -139,15 +137,15 @@ public class SupplementalItemsBatchResponse {
    * Array of operation results
    * @return operationResults
    */
-  @Valid 
+  
   @Schema(name = "operation_results", accessMode = Schema.AccessMode.READ_ONLY, description = "Array of operation results", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation_results")
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
   @JsonProperty("operation_results")
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

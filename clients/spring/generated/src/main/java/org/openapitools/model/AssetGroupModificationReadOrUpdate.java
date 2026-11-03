@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,16 +25,13 @@ import jakarta.annotation.Generated;
  * AssetGroupModificationReadOrUpdate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupModificationReadOrUpdate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AssetGroupUpdateItemReadOrUpdateItem> assetGroupsToUpdate = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AssetGroupUpdateError> exceptions = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
   public AssetGroupModificationReadOrUpdate assetGroupsToUpdate(List<@Valid AssetGroupUpdateItemReadOrUpdateItem> assetGroupsToUpdate) {
@@ -55,7 +51,7 @@ public class AssetGroupModificationReadOrUpdate {
    * A list of asset groups and the data that will be used to update them.
    * @return assetGroupsToUpdate
    */
-  @Valid 
+  
   @Schema(name = "asset_groups_to_update", description = "A list of asset groups and the data that will be used to update them.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_groups_to_update")
   public List<@Valid AssetGroupUpdateItemReadOrUpdateItem> getAssetGroupsToUpdate() {
@@ -84,7 +80,7 @@ public class AssetGroupModificationReadOrUpdate {
    * A list of errors associated with the asset groups. Will be returned if there is an error.
    * @return exceptions
    */
-  @Valid 
+  
   @Schema(name = "exceptions", accessMode = Schema.AccessMode.READ_ONLY, description = "A list of errors associated with the asset groups. Will be returned if there is an error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
   public List<@Valid AssetGroupUpdateError> getExceptions() {
@@ -113,7 +109,7 @@ public class AssetGroupModificationReadOrUpdate {
    * A list of successfully edited asset groups.
    * @return updatedAssetGroups
    */
-  @Valid 
+  
   @Schema(name = "updated_asset_groups", accessMode = Schema.AccessMode.READ_ONLY, description = "A list of successfully edited asset groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_asset_groups")
   public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {

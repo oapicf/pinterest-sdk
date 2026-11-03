@@ -215,5 +215,5 @@ public interface BusinessAccessRelationshipsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public UpdateBusinessMembershipsResponse updateBusinessMemberships(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @Valid @NotNull List<@Valid BusinessMembershipMember> businessMembershipMember);
+    public UpdateBusinessMembershipsResponse updateBusinessMemberships(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @NotNull List<@Valid BusinessMembershipMember> businessMembershipMember);
 }

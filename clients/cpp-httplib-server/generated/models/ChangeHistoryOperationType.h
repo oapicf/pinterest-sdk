@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ChangeHistoryOperationType
-{
-public:
-
-    ChangeHistoryOperationType();
-    virtual ~ChangeHistoryOperationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ChangeHistoryOperationType,
-        )
-
-private:
+enum class ChangeHistoryOperationType {
+    
+    CREATE,
+    
+    UPDATE,
+    
+    DELETE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ChangeHistoryOperationType& value)
+{
+    switch (value)
+    {
+        
+        case ChangeHistoryOperationType::CREATE: j = "CREATE"; break;
+        
+        case ChangeHistoryOperationType::UPDATE: j = "UPDATE"; break;
+        
+        case ChangeHistoryOperationType::DELETE: j = "DELETE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ChangeHistoryOperationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ChangeHistoryOperationType& value)
+{
+    
+    if (j == "CREATE")
+    {
+        value = ChangeHistoryOperationType::CREATE;
+        return;
+    }
+    
+    if (j == "UPDATE")
+    {
+        value = ChangeHistoryOperationType::UPDATE;
+        return;
+    }
+    
+    if (j == "DELETE")
+    {
+        value = ChangeHistoryOperationType::DELETE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ChangeHistoryOperationType", &j);
+}
 
 } // namespace models
 

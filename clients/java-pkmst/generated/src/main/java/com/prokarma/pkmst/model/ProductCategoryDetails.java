@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @ApiModel(description = "Product category details")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoryDetails   {
   @JsonProperty("demographics")
   private ProductCategoriesDemographic demographics;
@@ -112,7 +112,7 @@ public class ProductCategoryDetails   {
 
   public ProductCategoryDetails putPredictedTimeSeriesItem(String key, BigDecimal predictedTimeSeriesItem) {
     if (this.predictedTimeSeries == null) {
-      this.predictedTimeSeries = new HashMap<>());
+      this.predictedTimeSeries = new HashMap<>();
     }
     this.predictedTimeSeries.put(key, predictedTimeSeriesItem);
     return this;
@@ -182,7 +182,7 @@ public class ProductCategoryDetails   {
 
   public ProductCategoryDetails putTimeSeriesItem(String key, BigDecimal timeSeriesItem) {
     if (this.timeSeries == null) {
-      this.timeSeries = new HashMap<>());
+      this.timeSeries = new HashMap<>();
     }
     this.timeSeries.put(key, timeSeriesItem);
     return this;

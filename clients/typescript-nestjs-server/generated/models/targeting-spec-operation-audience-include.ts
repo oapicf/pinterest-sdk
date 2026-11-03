@@ -8,7 +8,7 @@ export interface TargetingSpecOperationAudienceInclude {
 }
 export namespace TargetingSpecOperationAudienceInclude {
   export const FieldEnum = {
-    AudienceInclude: 'AUDIENCE_INCLUDE'
+    AudienceInclude: 'AUDIENCE_INCLUDE',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
-* Values: ACTIVE,ARCHIVED
-*/
+ * The new status you want to give the label, either `ACTIVE` (in use) or no longer in use (`ARCHIVED`).
+ * Values: ACTIVE,ARCHIVED
+ */
 enum class NullableLabelStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -28,9 +28,8 @@ enum class NullableLabelStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NullableLabelStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableLabelStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableLabelStatus'")
         }
     }
 }
-

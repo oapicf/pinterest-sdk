@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class OperationType
-{
-public:
-
-    OperationType();
-    virtual ~OperationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OperationType,
-        )
-
-private:
+enum class OperationType {
+    
+    SHARE,
+    
+    REVOKE
+    
 };
 
+inline void to_json(nlohmann::json& j, const OperationType& value)
+{
+    switch (value)
+    {
+        
+        case OperationType::SHARE: j = "SHARE"; break;
+        
+        case OperationType::REVOKE: j = "REVOKE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OperationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OperationType& value)
+{
+    
+    if (j == "SHARE")
+    {
+        value = OperationType::SHARE;
+        return;
+    }
+    
+    if (j == "REVOKE")
+    {
+        value = OperationType::REVOKE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OperationType", &j);
+}
 
 } // namespace models
 

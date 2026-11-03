@@ -33,17 +33,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsHotelProductGroupFiltersAnyOf.JSON_PROPERTY_ANY_OF
 })
 @JsonTypeName("CatalogsHotelProductGroupFiltersAnyOf")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsHotelProductGroupFiltersAnyOf {
     public static final String JSON_PROPERTY_ANY_OF = "any_of";
-    private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
-    public CatalogsHotelProductGroupFiltersAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public CatalogsHotelProductGroupFiltersAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
-    public CatalogsHotelProductGroupFiltersAnyOf anyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public CatalogsHotelProductGroupFiltersAnyOf anyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
         return this;
     }
@@ -61,13 +61,13 @@ public class CatalogsHotelProductGroupFiltersAnyOf {
     @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 

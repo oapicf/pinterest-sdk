@@ -140,6 +140,7 @@ class _$TargetingSpecOperationLocationSerializer implements PrimitiveSerializer<
   }
 }
 
+
 class TargetingSpecOperationLocationFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'LOCATION')

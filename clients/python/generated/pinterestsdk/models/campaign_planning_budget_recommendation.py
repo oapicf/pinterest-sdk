@@ -79,15 +79,13 @@ class CampaignPlanningBudgetRecommendation(BaseModel):
         _items = []
         if self.experiment_campaign_budget_recommendation:
             for _item_experiment_campaign_budget_recommendation in self.experiment_campaign_budget_recommendation:
-                if _item_experiment_campaign_budget_recommendation:
-                    _items.append(_item_experiment_campaign_budget_recommendation.to_dict())
+                _items.append(_item_experiment_campaign_budget_recommendation.to_dict() if _item_experiment_campaign_budget_recommendation is not None else None)
             _dict['experiment_campaign_budget_recommendation'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in point_estimations (list)
         _items = []
         if self.point_estimations:
             for _item_point_estimations in self.point_estimations:
-                if _item_point_estimations:
-                    _items.append(_item_point_estimations.to_dict())
+                _items.append(_item_point_estimations.to_dict() if _item_point_estimations is not None else None)
             _dict['point_estimations'] = _items
         return _dict
 

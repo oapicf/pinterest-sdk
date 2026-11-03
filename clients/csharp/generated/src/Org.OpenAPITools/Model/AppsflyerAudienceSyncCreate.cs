@@ -176,16 +176,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!containerId.IsSet)
-                throw new ArgumentException("Property is required for class AppsflyerAudienceSyncCreate.", nameof(containerId));
+                throw new JsonException("Property is required for class AppsflyerAudienceSyncCreate: container_id.");
 
             if (containerId.IsSet && containerId.Value == null)
-                throw new ArgumentNullException(nameof(containerId), "Property is not nullable for class AppsflyerAudienceSyncCreate.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudienceSyncCreate: container_id.");
 
             if (urlAdidSha256.IsSet && urlAdidSha256.Value == null)
-                throw new ArgumentNullException(nameof(urlAdidSha256), "Property is not nullable for class AppsflyerAudienceSyncCreate.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudienceSyncCreate: url_adid_sha256.");
 
             if (urlEmailSha256.IsSet && urlEmailSha256.Value == null)
-                throw new ArgumentNullException(nameof(urlEmailSha256), "Property is not nullable for class AppsflyerAudienceSyncCreate.");
+                throw new JsonException("Property is not nullable for class AppsflyerAudienceSyncCreate: url_email_sha256.");
 
             return new AppsflyerAudienceSyncCreate(containerId.Value!, urlAdidSha256, urlEmailSha256);
         }
@@ -196,7 +196,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appsflyerAudienceSyncCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AppsflyerAudienceSyncCreate appsflyerAudienceSyncCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -211,17 +210,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="appsflyerAudienceSyncCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AppsflyerAudienceSyncCreate appsflyerAudienceSyncCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (appsflyerAudienceSyncCreate.ContainerId == null)
-                throw new ArgumentNullException(nameof(appsflyerAudienceSyncCreate.ContainerId), "Property is required for class AppsflyerAudienceSyncCreate.");
-
             if (appsflyerAudienceSyncCreate.UrlAdidSha256Option.IsSet && appsflyerAudienceSyncCreate.UrlAdidSha256 == null)
-                throw new ArgumentNullException(nameof(appsflyerAudienceSyncCreate.UrlAdidSha256), "Property is required for class AppsflyerAudienceSyncCreate.");
+                throw new JsonException("Cannot write null property AppsflyerAudienceSyncCreate.UrlAdidSha256 to non-nullable JSON property 'url_adid_sha256'.");
 
             if (appsflyerAudienceSyncCreate.UrlEmailSha256Option.IsSet && appsflyerAudienceSyncCreate.UrlEmailSha256 == null)
-                throw new ArgumentNullException(nameof(appsflyerAudienceSyncCreate.UrlEmailSha256), "Property is required for class AppsflyerAudienceSyncCreate.");
+                throw new JsonException("Cannot write null property AppsflyerAudienceSyncCreate.UrlEmailSha256 to non-nullable JSON property 'url_email_sha256'.");
 
             writer.WriteString("container_id", appsflyerAudienceSyncCreate.ContainerId);
 

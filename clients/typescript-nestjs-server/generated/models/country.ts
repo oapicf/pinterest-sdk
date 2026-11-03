@@ -251,7 +251,7 @@ export const Country = {
     Yt: 'YT',
     Za: 'ZA',
     Zm: 'ZM',
-    Zw: 'ZW'
+    Zw: 'ZW',
 } as const;
 export type Country = typeof Country[keyof typeof Country];
 

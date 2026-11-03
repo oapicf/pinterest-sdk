@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errorMsg.IsSet && errorMsg.Value == null)
-                throw new ArgumentNullException(nameof(errorMsg), "Property is not nullable for class NotificationResponse.");
+                throw new JsonException("Property is not nullable for class NotificationResponse: error_msg.");
 
             if (receivedAt.IsSet && receivedAt.Value == null)
-                throw new ArgumentNullException(nameof(receivedAt), "Property is not nullable for class NotificationResponse.");
+                throw new JsonException("Property is not nullable for class NotificationResponse: received_at.");
 
             if (success.IsSet && success.Value == null)
-                throw new ArgumentNullException(nameof(success), "Property is not nullable for class NotificationResponse.");
+                throw new JsonException("Property is not nullable for class NotificationResponse: success.");
 
             return new NotificationResponse(errorMsg, receivedAt, success);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="notificationResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, NotificationResponse notificationResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,11 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="notificationResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, NotificationResponse notificationResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (notificationResponse.ErrorMsgOption.IsSet && notificationResponse.ErrorMsg == null)
-                throw new ArgumentNullException(nameof(notificationResponse.ErrorMsg), "Property is required for class NotificationResponse.");
+                throw new JsonException("Cannot write null property NotificationResponse.ErrorMsg to non-nullable JSON property 'error_msg'.");
+
+            if (notificationResponse.ReceivedAtOption.IsSet && notificationResponse.ReceivedAt == null)
+                throw new JsonException("Cannot write null property NotificationResponse.ReceivedAt to non-nullable JSON property 'received_at'.");
+
+            if (notificationResponse.SuccessOption.IsSet && notificationResponse.Success == null)
+                throw new JsonException("Cannot write null property NotificationResponse.Success to non-nullable JSON property 'success'.");
 
             if (notificationResponse.ErrorMsgOption.IsSet)
                 writer.WriteString("error_msg", notificationResponse.ErrorMsg);

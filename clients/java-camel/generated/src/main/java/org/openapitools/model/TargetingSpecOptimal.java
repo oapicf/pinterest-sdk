@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -29,50 +28,37 @@ import jakarta.annotation.Generated;
  * TargetingSpecOptimal
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOptimal {
 
-  @Valid
   private JsonNullable<List<TargetingSpecAgeBucket>> AGE_BUCKET = JsonNullable.<List<TargetingSpecAgeBucket>>undefined();
 
-  @Valid
   private JsonNullable<List<TargetingSpecAppType>> APPTYPE = JsonNullable.<List<TargetingSpecAppType>>undefined();
 
-  @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_EXCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> AUDIENCE_INCLUDE = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @Valid
   private JsonNullable<List<TargetingSpecGender>> GENDER = JsonNullable.<List<TargetingSpecGender>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> GEO = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private List<String> GEO_EXCLUDE = new ArrayList<>();
 
-  @Valid
   private List<String> INTEREST = new ArrayList<>();
 
-  @Valid
   private JsonNullable<List<String>> LOCALE = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> LOCATION = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private List<String> LOCATION_EXCLUDE = new ArrayList<>();
 
   private String MAXIMUM_AGE;
 
   private String MINIMUM_AGE;
 
-  @Valid
   private JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> SHOPPING_RETARGETING = JsonNullable.<List<@Valid TargetingSpecShoppingRetargeting>>undefined();
 
-  @Valid
   private JsonNullable<List<TargetingStrategy>> TARGETING_STRATEGY = JsonNullable.<List<TargetingStrategy>>undefined();
 
   public TargetingSpecOptimal AGE_BUCKET(List<TargetingSpecAgeBucket> AGE_BUCKET) {
@@ -92,7 +78,7 @@ public class TargetingSpecOptimal {
    * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
    * @return AGE_BUCKET
    */
-  @Valid 
+  
   @Schema(name = "AGE_BUCKET", description = "**Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_BUCKET")
   public JsonNullable<List<TargetingSpecAgeBucket>> getAGEBUCKET() {
@@ -120,7 +106,7 @@ public class TargetingSpecOptimal {
    * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
    * @return APPTYPE
    */
-  @Valid 
+  
   @Schema(name = "APPTYPE", description = "Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("APPTYPE")
   public JsonNullable<List<TargetingSpecAppType>> getAPPTYPE() {
@@ -204,7 +190,7 @@ public class TargetingSpecOptimal {
    * Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
    * @return GENDER
    */
-  @Valid 
+  
   @Schema(name = "GENDER", description = "Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER")
   public JsonNullable<List<TargetingSpecGender>> getGENDER() {
@@ -440,7 +426,7 @@ public class TargetingSpecOptimal {
    * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
    * @return SHOPPING_RETARGETING
    */
-  @Valid 
+  
   @Schema(name = "SHOPPING_RETARGETING", description = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHOPPING_RETARGETING")
   public JsonNullable<List<@Valid TargetingSpecShoppingRetargeting>> getSHOPPINGRETARGETING() {
@@ -468,7 +454,7 @@ public class TargetingSpecOptimal {
    * Get TARGETING_STRATEGY
    * @return TARGETING_STRATEGY
    */
-  @Valid 
+  
   @Schema(name = "TARGETING_STRATEGY", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TARGETING_STRATEGY")
   public JsonNullable<List<TargetingStrategy>> getTARGETINGSTRATEGY() {

@@ -6,20 +6,3 @@
 */
 #include "MMMReportingTargetingType.h"
 
-namespace models {
-
-MMMReportingTargetingType::MMMReportingTargetingType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

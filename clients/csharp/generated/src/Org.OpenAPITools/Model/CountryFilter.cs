@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cOUNTRY.IsSet)
-                throw new ArgumentException("Property is required for class CountryFilter.", nameof(cOUNTRY));
+                throw new JsonException("Property is required for class CountryFilter: COUNTRY.");
 
             if (cOUNTRY.IsSet && cOUNTRY.Value == null)
-                throw new ArgumentNullException(nameof(cOUNTRY), "Property is not nullable for class CountryFilter.");
+                throw new JsonException("Property is not nullable for class CountryFilter: COUNTRY.");
 
             return new CountryFilter(cOUNTRY.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="countryFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CountryFilter countryFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="countryFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CountryFilter countryFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (countryFilter.COUNTRY == null)
-                throw new ArgumentNullException(nameof(countryFilter.COUNTRY), "Property is required for class CountryFilter.");
-
             writer.WritePropertyName("COUNTRY");
             JsonSerializer.Serialize(writer, countryFilter.COUNTRY, jsonSerializerOptions);
         }

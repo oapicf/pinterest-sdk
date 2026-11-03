@@ -60,30 +60,71 @@ import {
 } from '../models/PinterestLibPaginationOrder';
 
 export interface LeadFormGetRequest {
+    /**
+     * The ID of this lead form
+     */
     leadFormId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface LeadFormTestCreateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Unique identifier of a lead form.
+     */
     leadFormId: string;
+    /**
+     * 
+     */
     leadFormTestCreate: LeadFormTestCreate;
 }
 
 export interface LeadFormsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     leadFormCreate: Array<LeadFormCreate>;
 }
 
 export interface LeadFormsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
 }
 
 export interface LeadFormsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     leadFormBatchUpdate: Array<LeadFormBatchUpdate>;
 }
 

@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationLocation.FieldEnum?>(TargetingSpecOperationLocation.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationLocation.FieldEnum? fieldValue = TargetingSpecOperationLocation.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationLocation.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             operation = new Option<TargetingSpecListOperation?>(JsonSerializer.Deserialize<TargetingSpecListOperation?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationLocation.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationLocation: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationLocation.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationLocation: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationLocation.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationLocation: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationLocation.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationLocation: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationLocation.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationLocation: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationLocation.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationLocation: values.");
 
             return new TargetingSpecOperationLocation(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationLocation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationLocation targetingSpecOperationLocation, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,12 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationLocation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationLocation targetingSpecOperationLocation, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationLocation.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationLocation.Values), "Property is required for class TargetingSpecOperationLocation.");
-
             var fieldRawValue = TargetingSpecOperationLocation.FieldEnumToJsonValue(targetingSpecOperationLocation.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecListOperationValueConverter.ToJsonValue(targetingSpecOperationLocation.Operation);

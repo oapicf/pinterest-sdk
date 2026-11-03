@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Sort metric for top pins analytics.
-* Values: ENGAGEMENT,SAVE,IMPRESSION,OUTBOUND_CLICK,PIN_CLICK
-*/
+ * Sort metric for top pins analytics.
+ * Values: ENGAGEMENT,SAVE,IMPRESSION,OUTBOUND_CLICK,PIN_CLICK
+ */
 enum class TopPinsSortBy(@get:JsonValue val value: kotlin.String) {
 
     ENGAGEMENT("ENGAGEMENT"),
@@ -31,9 +31,8 @@ enum class TopPinsSortBy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TopPinsSortBy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TopPinsSortBy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TopPinsSortBy'")
         }
     }
 }
-

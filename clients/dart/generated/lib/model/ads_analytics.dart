@@ -45,7 +45,7 @@ class AdsAnalytics {
     final json = <String, dynamic>{};
       json[r'AD_ID'] = this.AD_ID;
     if (this.DATE != null) {
-      json[r'DATE'] = _dateFormatter.format(this.DATE!.toUtc());
+      json[r'DATE'] = _dateFormatter.format(this.DATE!);
     } else {
       json[r'DATE'] = null;
     }

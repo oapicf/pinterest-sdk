@@ -17,7 +17,7 @@ import UserAccountType from './UserAccountType';
 /**
  * The Account model module.
  * @module model/Account
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Account {
     /**

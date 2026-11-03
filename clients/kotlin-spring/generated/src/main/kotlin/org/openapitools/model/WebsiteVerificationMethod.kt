@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Method used to verify website ownership.
-* Values: FILENAME,METATAG,DNSTXT
-*/
+ * Method used to verify website ownership.
+ * Values: FILENAME,METATAG,DNSTXT
+ */
 enum class WebsiteVerificationMethod(@get:JsonValue val value: kotlin.String) {
 
     FILENAME("FILENAME"),
@@ -29,9 +29,8 @@ enum class WebsiteVerificationMethod(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): WebsiteVerificationMethod {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'WebsiteVerificationMethod'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'WebsiteVerificationMethod'")
         }
     }
 }
-

@@ -6,20 +6,3 @@
 */
 #include "GenderBucket.h"
 
-namespace models {
-
-GenderBucket::GenderBucket()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

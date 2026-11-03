@@ -241,22 +241,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: message.");
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: report_status.");
 
             if (size.IsSet && size.Value == null)
-                throw new ArgumentNullException(nameof(size), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: size.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: status.");
 
             if (token.IsSet && token.Value == null)
-                throw new ArgumentNullException(nameof(token), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: token.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class MMMReport.");
+                throw new JsonException("Property is not nullable for class MMMReport: url.");
 
             return new MMMReport(message, reportStatus, size, status, token, url);
         }
@@ -267,7 +267,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mMMReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, MMMReport mMMReport, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -282,20 +281,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="mMMReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, MMMReport mMMReport, JsonSerializerOptions jsonSerializerOptions)
         {
             if (mMMReport.MessageOption.IsSet && mMMReport.Message == null)
-                throw new ArgumentNullException(nameof(mMMReport.Message), "Property is required for class MMMReport.");
+                throw new JsonException("Cannot write null property MMMReport.Message to non-nullable JSON property 'message'.");
+
+            if (mMMReport.ReportStatusOption.IsSet && mMMReport.ReportStatus == null)
+                throw new JsonException("Cannot write null property MMMReport.ReportStatus to non-nullable JSON property 'report_status'.");
+
+            if (mMMReport.SizeOption.IsSet && mMMReport.Size == null)
+                throw new JsonException("Cannot write null property MMMReport.Size to non-nullable JSON property 'size'.");
 
             if (mMMReport.StatusOption.IsSet && mMMReport.Status == null)
-                throw new ArgumentNullException(nameof(mMMReport.Status), "Property is required for class MMMReport.");
+                throw new JsonException("Cannot write null property MMMReport.Status to non-nullable JSON property 'status'.");
 
             if (mMMReport.TokenOption.IsSet && mMMReport.Token == null)
-                throw new ArgumentNullException(nameof(mMMReport.Token), "Property is required for class MMMReport.");
+                throw new JsonException("Cannot write null property MMMReport.Token to non-nullable JSON property 'token'.");
 
             if (mMMReport.UrlOption.IsSet && mMMReport.Url == null)
-                throw new ArgumentNullException(nameof(mMMReport.Url), "Property is required for class MMMReport.");
+                throw new JsonException("Cannot write null property MMMReport.Url to non-nullable JSON property 'url'.");
 
             if (mMMReport.MessageOption.IsSet)
                 writer.WriteString("message", mMMReport.Message);

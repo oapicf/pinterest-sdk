@@ -29,14 +29,10 @@ import {
 export interface KeywordsRequest {
     /**
      * Keyword JSON array. Each array element has 3 fields
-     * @type {Array<KeywordsCommon>}
-     * @memberof KeywordsRequest
      */
     keywords: Array<KeywordsCommon>;
     /**
      * Keyword parent entity ID (advertiser, campaign, ad group).
-     * @type {string}
-     * @memberof KeywordsRequest
      */
     parentId: string;
 }

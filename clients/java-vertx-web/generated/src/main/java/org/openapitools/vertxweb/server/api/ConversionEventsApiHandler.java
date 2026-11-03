@@ -50,7 +50,7 @@ public class ConversionEventsApiHandler {
         Boolean test = requestParameters.queryParameter("test") != null ? requestParameters.queryParameter("test").getBoolean() : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionEventsCreate is {}", conversionEventsCreate);
+        logger.debug("Parameter conversionEventsCreate is (body omitted)");
         logger.debug("Parameter test is {}", test);
 
         api.eventsCreate(adAccountId, conversionEventsCreate, test)

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,10 +22,9 @@ import jakarta.annotation.Generated;
  * DeletePartnerAssetAccessResultsResponseArray
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeletePartnerAssetAccessResultsResponseArray {
 
-  @Valid
   private List<@Valid DeletePartnerAssetAccessResult> items = new ArrayList<>();
 
   public DeletePartnerAssetAccessResultsResponseArray items(List<@Valid DeletePartnerAssetAccessResult> items) {
@@ -46,7 +44,7 @@ public class DeletePartnerAssetAccessResultsResponseArray {
    * List of terminated partner asset accesses.
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", description = "List of terminated partner asset accesses.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
   public List<@Valid DeletePartnerAssetAccessResult> getItems() {

@@ -18,7 +18,7 @@ export const AudienceStatus = {
     TooSmall: 'TOO_SMALL',
     Eligible: 'ELIGIBLE',
     PersonasIneligibleSize: 'PERSONAS_INELIGIBLE_SIZE',
-    PersonasInitializing: 'PERSONAS_INITIALIZING'
+    PersonasInitializing: 'PERSONAS_INITIALIZING',
 } as const;
 export type AudienceStatus = typeof AudienceStatus[keyof typeof AudienceStatus];
 

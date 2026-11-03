@@ -6,20 +6,3 @@
 */
 #include "MediaUploadStatus.h"
 
-namespace models {
-
-MediaUploadStatus::MediaUploadStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

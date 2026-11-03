@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Base64-encoded image media source
  * @param contentType 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -20,7 +20,7 @@ import Currency from './Currency';
 /**
  * The AdAccount model module.
  * @module model/AdAccount
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdAccount {
     /**

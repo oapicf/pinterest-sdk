@@ -86,8 +86,6 @@ HOTEL(String.valueOf("HOTEL"));
   */
   @ApiModelProperty(value = "Array with the catalogs items processing records part of the catalogs items batch")
 
-  @Valid
-
   private List<@Valid HotelProcessingRecord> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")

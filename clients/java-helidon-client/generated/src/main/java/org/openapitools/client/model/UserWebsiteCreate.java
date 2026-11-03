@@ -30,7 +30,7 @@ public class UserWebsiteCreate  {
  /**
    * Method used to verify website ownership.
   **/
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
  /**
    * Website with path or domain only

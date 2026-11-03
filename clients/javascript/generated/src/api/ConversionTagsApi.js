@@ -24,7 +24,7 @@ import PinterestLibPaginationOrder from '../model/PinterestLibPaginationOrder';
 /**
 * ConversionTags service.
 * @module api/ConversionTagsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class ConversionTagsApi {
 

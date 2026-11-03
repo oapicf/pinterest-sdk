@@ -21,11 +21,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CustomerSegmentCreate(
 
     @Schema(required = true, description = "Audience IDs included in the customer segment.")
-    @param:JsonProperty("audience_ids")
+    @param:JsonProperty("audience_ids", required = true)
     @get:JsonProperty("audience_ids", required = true) val audienceIds: kotlin.collections.List<kotlin.String>,
 
     @Schema(required = true, description = "Customer segment name.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
 

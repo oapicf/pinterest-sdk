@@ -185,34 +185,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!ingestionSource.IsSet)
-                throw new ArgumentException("Property is required for class EventQualityScore.", nameof(ingestionSource));
+                throw new JsonException("Property is required for class EventQualityScore: ingestion_source.");
 
             if (!lookbackPeriod.IsSet)
-                throw new ArgumentException("Property is required for class EventQualityScore.", nameof(lookbackPeriod));
+                throw new JsonException("Property is required for class EventQualityScore: lookback_period.");
 
             if (!overallStatus.IsSet)
-                throw new ArgumentException("Property is required for class EventQualityScore.", nameof(overallStatus));
+                throw new JsonException("Property is required for class EventQualityScore: overall_status.");
 
             if (!qualityComponents.IsSet)
-                throw new ArgumentException("Property is required for class EventQualityScore.", nameof(qualityComponents));
+                throw new JsonException("Property is required for class EventQualityScore: quality_components.");
 
             if (!sourcePlatform.IsSet)
-                throw new ArgumentException("Property is required for class EventQualityScore.", nameof(sourcePlatform));
+                throw new JsonException("Property is required for class EventQualityScore: source_platform.");
 
             if (ingestionSource.IsSet && ingestionSource.Value == null)
-                throw new ArgumentNullException(nameof(ingestionSource), "Property is not nullable for class EventQualityScore.");
+                throw new JsonException("Property is not nullable for class EventQualityScore: ingestion_source.");
 
             if (lookbackPeriod.IsSet && lookbackPeriod.Value == null)
-                throw new ArgumentNullException(nameof(lookbackPeriod), "Property is not nullable for class EventQualityScore.");
+                throw new JsonException("Property is not nullable for class EventQualityScore: lookback_period.");
 
             if (overallStatus.IsSet && overallStatus.Value == null)
-                throw new ArgumentNullException(nameof(overallStatus), "Property is not nullable for class EventQualityScore.");
+                throw new JsonException("Property is not nullable for class EventQualityScore: overall_status.");
 
             if (qualityComponents.IsSet && qualityComponents.Value == null)
-                throw new ArgumentNullException(nameof(qualityComponents), "Property is not nullable for class EventQualityScore.");
+                throw new JsonException("Property is not nullable for class EventQualityScore: quality_components.");
 
             if (sourcePlatform.IsSet && sourcePlatform.Value == null)
-                throw new ArgumentNullException(nameof(sourcePlatform), "Property is not nullable for class EventQualityScore.");
+                throw new JsonException("Property is not nullable for class EventQualityScore: source_platform.");
 
             return new EventQualityScore(ingestionSource.Value!.Value!, lookbackPeriod.Value!.Value!, overallStatus.Value!.Value!, qualityComponents.Value!, sourcePlatform.Value!.Value!);
         }
@@ -223,7 +223,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="eventQualityScore"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, EventQualityScore eventQualityScore, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -238,12 +237,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="eventQualityScore"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EventQualityScore eventQualityScore, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (eventQualityScore.QualityComponents == null)
-                throw new ArgumentNullException(nameof(eventQualityScore.QualityComponents), "Property is required for class EventQualityScore.");
-
             var ingestionSourceRawValue = IngestionSourceOptionsValueConverter.ToJsonValue(eventQualityScore.IngestionSource);
             writer.WriteString("ingestion_source", ingestionSourceRawValue);
 

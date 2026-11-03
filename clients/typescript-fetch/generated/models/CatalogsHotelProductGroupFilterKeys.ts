@@ -120,62 +120,42 @@ import {
 export interface CatalogsHotelProductGroupFilterKeys {
     /**
      * 
-     * @type {PriceFilterPrice}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     pRICE: PriceFilterPrice;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     hOTELID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     bRAND: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleCountriesCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     cOUNTRY: CatalogsProductGroupMultipleCountriesCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsHotelProductGroupFilterKeys
      */
     tITLEKEYWORDS: CatalogsProductGroupMultipleStringCriteria;
 }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Gender category for trends demographic distribution.
-* Values: male,female,unknown
-*/
+ * Gender category for trends demographic distribution.
+ * Values: male,female,unknown
+ */
 enum class TrendsGenderFilter(@get:JsonValue val value: kotlin.String) {
 
     male("male"),
@@ -29,9 +29,8 @@ enum class TrendsGenderFilter(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TrendsGenderFilter {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsGenderFilter'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TrendsGenderFilter'")
         }
     }
 }
-

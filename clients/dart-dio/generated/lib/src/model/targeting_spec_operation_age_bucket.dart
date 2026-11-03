@@ -140,6 +140,7 @@ class _$TargetingSpecOperationAgeBucketSerializer implements PrimitiveSerializer
   }
 }
 
+
 class TargetingSpecOperationAgeBucketFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'AGE_BUCKET')

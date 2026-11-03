@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The type of an SSIO order line.
-* Values: BUDGET,PERPETUALS
-*/
+ * The type of an SSIO order line.
+ * Values: BUDGET,PERPETUALS
+ */
 enum class SSIOOrderLineType(@get:JsonValue val value: kotlin.String) {
 
     BUDGET("BUDGET"),
@@ -28,9 +28,8 @@ enum class SSIOOrderLineType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): SSIOOrderLineType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SSIOOrderLineType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SSIOOrderLineType'")
         }
     }
 }
-

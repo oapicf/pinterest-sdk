@@ -37,16 +37,12 @@ public class MMMReportCreate  {
   */
   @ApiModelProperty(required = true, value = "Metric and entity columns")
 
-  @Valid
-
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
  /**
   * A List of countries for filtering
   */
   @ApiModelProperty(value = "A List of countries for filtering")
-
-  @Valid
 
   private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
@@ -100,8 +96,6 @@ public class MMMReportCreate  {
   * List of targeting types
   */
   @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
-
-  @Valid
 
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
  /**

@@ -153,6 +153,7 @@ class _$CatalogsVerticalFeedsUpdateRequestSerializer implements PrimitiveSeriali
   }
 }
 
+
 class CatalogsVerticalFeedsUpdateRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

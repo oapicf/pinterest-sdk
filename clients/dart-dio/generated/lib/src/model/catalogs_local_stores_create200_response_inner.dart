@@ -105,3 +105,4 @@ class _$CatalogsLocalStoresCreate200ResponseInnerSerializer implements Primitive
   }
 }
 
+

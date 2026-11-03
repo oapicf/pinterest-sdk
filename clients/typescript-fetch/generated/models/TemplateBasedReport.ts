@@ -29,26 +29,18 @@ import {
 export interface TemplateBasedReport {
     /**
      * 
-     * @type {string}
-     * @memberof TemplateBasedReport
      */
     message?: string;
     /**
      * 
-     * @type {BulkReportingJobStatus}
-     * @memberof TemplateBasedReport
      */
     reportStatus: BulkReportingJobStatus;
     /**
      * Unique identifier of a template.
-     * @type {string}
-     * @memberof TemplateBasedReport
      */
     templateId: string;
     /**
      * 
-     * @type {string}
-     * @memberof TemplateBasedReport
      */
     token?: string;
 }

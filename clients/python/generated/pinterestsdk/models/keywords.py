@@ -79,15 +79,13 @@ class Keywords(BaseModel):
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in keywords (list)
         _items = []
         if self.keywords:
             for _item_keywords in self.keywords:
-                if _item_keywords:
-                    _items.append(_item_keywords.to_dict())
+                _items.append(_item_keywords.to_dict() if _item_keywords is not None else None)
             _dict['keywords'] = _items
         return _dict
 

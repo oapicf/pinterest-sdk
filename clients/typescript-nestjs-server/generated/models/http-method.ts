@@ -12,7 +12,7 @@ export const HttpMethod = {
     Connect: 'CONNECT',
     Options: 'OPTIONS',
     Trace: 'TRACE',
-    Patch: 'PATCH'
+    Patch: 'PATCH',
 } as const;
 export type HttpMethod = typeof HttpMethod[keyof typeof HttpMethod];
 

@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
 import org.openapitools.server.model.PinterestLibError;
 import io.helidon.http.Status;
+import jakarta.validation.Valid;
 
 import io.helidon.webserver.http.HttpRules;
 import io.helidon.webserver.http.ServerRequest;
@@ -24,7 +25,7 @@ import io.helidon.webserver.http.HttpService;
 
 @io.helidon.common.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen",
                              trigger = "tag = 'CatalogProductGroups'",
-                             version = "7.24.0")
+                             version = "7.26.0")
 public interface CatalogProductGroupsService extends HttpService {
 
     /**

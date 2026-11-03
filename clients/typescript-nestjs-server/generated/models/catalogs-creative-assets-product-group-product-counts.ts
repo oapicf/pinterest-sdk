@@ -12,7 +12,7 @@ export interface CatalogsCreativeAssetsProductGroupProductCounts {
 }
 export namespace CatalogsCreativeAssetsProductGroupProductCounts {
   export const CatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

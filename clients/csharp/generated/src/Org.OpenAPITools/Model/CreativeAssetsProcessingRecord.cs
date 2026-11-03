@@ -204,16 +204,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (creativeAssetsId.IsSet && creativeAssetsId.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsId), "Property is not nullable for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Property is not nullable for class CreativeAssetsProcessingRecord: creative_assets_id.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Property is not nullable for class CreativeAssetsProcessingRecord: errors.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Property is not nullable for class CreativeAssetsProcessingRecord: status.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Property is not nullable for class CreativeAssetsProcessingRecord: warnings.");
 
             return new CreativeAssetsProcessingRecord(creativeAssetsId, errors, status, warnings);
         }
@@ -224,7 +224,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="creativeAssetsProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreativeAssetsProcessingRecord creativeAssetsProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -239,17 +238,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="creativeAssetsProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreativeAssetsProcessingRecord creativeAssetsProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (creativeAssetsProcessingRecord.CreativeAssetsIdOption.IsSet && creativeAssetsProcessingRecord.CreativeAssetsId == null)
-                throw new ArgumentNullException(nameof(creativeAssetsProcessingRecord.CreativeAssetsId), "Property is required for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Cannot write null property CreativeAssetsProcessingRecord.CreativeAssetsId to non-nullable JSON property 'creative_assets_id'.");
 
             if (creativeAssetsProcessingRecord.ErrorsOption.IsSet && creativeAssetsProcessingRecord.Errors == null)
-                throw new ArgumentNullException(nameof(creativeAssetsProcessingRecord.Errors), "Property is required for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Cannot write null property CreativeAssetsProcessingRecord.Errors to non-nullable JSON property 'errors'.");
+
+            if (creativeAssetsProcessingRecord.StatusOption.IsSet && creativeAssetsProcessingRecord.Status == null)
+                throw new JsonException("Cannot write null property CreativeAssetsProcessingRecord.Status to non-nullable JSON property 'status'.");
 
             if (creativeAssetsProcessingRecord.WarningsOption.IsSet && creativeAssetsProcessingRecord.Warnings == null)
-                throw new ArgumentNullException(nameof(creativeAssetsProcessingRecord.Warnings), "Property is required for class CreativeAssetsProcessingRecord.");
+                throw new JsonException("Cannot write null property CreativeAssetsProcessingRecord.Warnings to non-nullable JSON property 'warnings'.");
 
             if (creativeAssetsProcessingRecord.CreativeAssetsIdOption.IsSet)
                 writer.WriteString("creative_assets_id", creativeAssetsProcessingRecord.CreativeAssetsId);

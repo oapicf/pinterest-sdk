@@ -29,8 +29,6 @@ import {
 export interface CountryFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleCountriesCriteria}
-     * @memberof CountryFilter
      */
     cOUNTRY: CatalogsProductGroupMultipleCountriesCriteria;
 }

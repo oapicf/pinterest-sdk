@@ -204,16 +204,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class ItemProcessingRecord.");
+                throw new JsonException("Property is not nullable for class ItemProcessingRecord: errors.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class ItemProcessingRecord.");
+                throw new JsonException("Property is not nullable for class ItemProcessingRecord: item_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class ItemProcessingRecord.");
+                throw new JsonException("Property is not nullable for class ItemProcessingRecord: status.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class ItemProcessingRecord.");
+                throw new JsonException("Property is not nullable for class ItemProcessingRecord: warnings.");
 
             return new ItemProcessingRecord(errors, itemId, status, warnings);
         }
@@ -224,7 +224,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemProcessingRecord itemProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -239,17 +238,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemProcessingRecord itemProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemProcessingRecord.ErrorsOption.IsSet && itemProcessingRecord.Errors == null)
-                throw new ArgumentNullException(nameof(itemProcessingRecord.Errors), "Property is required for class ItemProcessingRecord.");
+                throw new JsonException("Cannot write null property ItemProcessingRecord.Errors to non-nullable JSON property 'errors'.");
 
             if (itemProcessingRecord.ItemIdOption.IsSet && itemProcessingRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(itemProcessingRecord.ItemId), "Property is required for class ItemProcessingRecord.");
+                throw new JsonException("Cannot write null property ItemProcessingRecord.ItemId to non-nullable JSON property 'item_id'.");
+
+            if (itemProcessingRecord.StatusOption.IsSet && itemProcessingRecord.Status == null)
+                throw new JsonException("Cannot write null property ItemProcessingRecord.Status to non-nullable JSON property 'status'.");
 
             if (itemProcessingRecord.WarningsOption.IsSet && itemProcessingRecord.Warnings == null)
-                throw new ArgumentNullException(nameof(itemProcessingRecord.Warnings), "Property is required for class ItemProcessingRecord.");
+                throw new JsonException("Cannot write null property ItemProcessingRecord.Warnings to non-nullable JSON property 'warnings'.");
 
             if (itemProcessingRecord.ErrorsOption.IsSet)
             {

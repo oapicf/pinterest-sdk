@@ -20,7 +20,7 @@ import ConversionEventsUserDataProperties from './ConversionEventsUserDataProper
 /**
  * The ConversionEventsDataItems model module.
  * @module model/ConversionEventsDataItems
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ConversionEventsDataItems {
     /**

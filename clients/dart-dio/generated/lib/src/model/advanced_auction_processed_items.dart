@@ -130,3 +130,4 @@ class _$AdvancedAuctionProcessedItemsSerializer implements PrimitiveSerializer<A
   }
 }
 
+

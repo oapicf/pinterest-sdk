@@ -169,13 +169,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class KeywordCreateItem.", nameof(value));
+                throw new JsonException("Property is required for class KeywordCreateItem: value.");
 
             if (!matchType.IsSet)
-                throw new ArgumentException("Property is required for class KeywordCreateItem.", nameof(matchType));
+                throw new JsonException("Property is required for class KeywordCreateItem: match_type.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class KeywordCreateItem.");
+                throw new JsonException("Property is not nullable for class KeywordCreateItem: value.");
 
             return new KeywordCreateItem(value.Value!, bid, matchType.Value!);
         }
@@ -186,7 +186,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordCreateItem keywordCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -201,12 +200,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordCreateItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordCreateItem keywordCreateItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keywordCreateItem.Value == null)
-                throw new ArgumentNullException(nameof(keywordCreateItem.Value), "Property is required for class KeywordCreateItem.");
-
             writer.WriteString("value", keywordCreateItem.Value);
 
             if (keywordCreateItem.BidOption.IsSet)

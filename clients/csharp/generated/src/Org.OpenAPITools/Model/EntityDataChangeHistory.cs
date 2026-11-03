@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (changedFieldId.IsSet && changedFieldId.Value == null)
-                throw new ArgumentNullException(nameof(changedFieldId), "Property is not nullable for class EntityDataChangeHistory.");
+                throw new JsonException("Property is not nullable for class EntityDataChangeHistory: changed_field_id.");
 
             if (changedFieldName.IsSet && changedFieldName.Value == null)
-                throw new ArgumentNullException(nameof(changedFieldName), "Property is not nullable for class EntityDataChangeHistory.");
+                throw new JsonException("Property is not nullable for class EntityDataChangeHistory: changed_field_name.");
 
             if (dataType.IsSet && dataType.Value == null)
-                throw new ArgumentNullException(nameof(dataType), "Property is not nullable for class EntityDataChangeHistory.");
+                throw new JsonException("Property is not nullable for class EntityDataChangeHistory: data_type.");
 
             if (newDataValue.IsSet && newDataValue.Value == null)
-                throw new ArgumentNullException(nameof(newDataValue), "Property is not nullable for class EntityDataChangeHistory.");
+                throw new JsonException("Property is not nullable for class EntityDataChangeHistory: new_data_value.");
 
             if (oldDataValue.IsSet && oldDataValue.Value == null)
-                throw new ArgumentNullException(nameof(oldDataValue), "Property is not nullable for class EntityDataChangeHistory.");
+                throw new JsonException("Property is not nullable for class EntityDataChangeHistory: old_data_value.");
 
             return new EntityDataChangeHistory(changedFieldId, changedFieldName, dataType, newDataValue, oldDataValue);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityDataChangeHistory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, EntityDataChangeHistory entityDataChangeHistory, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,20 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityDataChangeHistory"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EntityDataChangeHistory entityDataChangeHistory, JsonSerializerOptions jsonSerializerOptions)
         {
             if (entityDataChangeHistory.ChangedFieldIdOption.IsSet && entityDataChangeHistory.ChangedFieldId == null)
-                throw new ArgumentNullException(nameof(entityDataChangeHistory.ChangedFieldId), "Property is required for class EntityDataChangeHistory.");
+                throw new JsonException("Cannot write null property EntityDataChangeHistory.ChangedFieldId to non-nullable JSON property 'changed_field_id'.");
 
             if (entityDataChangeHistory.ChangedFieldNameOption.IsSet && entityDataChangeHistory.ChangedFieldName == null)
-                throw new ArgumentNullException(nameof(entityDataChangeHistory.ChangedFieldName), "Property is required for class EntityDataChangeHistory.");
+                throw new JsonException("Cannot write null property EntityDataChangeHistory.ChangedFieldName to non-nullable JSON property 'changed_field_name'.");
+
+            if (entityDataChangeHistory.DataTypeOption.IsSet && entityDataChangeHistory.DataType == null)
+                throw new JsonException("Cannot write null property EntityDataChangeHistory.DataType to non-nullable JSON property 'data_type'.");
 
             if (entityDataChangeHistory.NewDataValueOption.IsSet && entityDataChangeHistory.NewDataValue == null)
-                throw new ArgumentNullException(nameof(entityDataChangeHistory.NewDataValue), "Property is required for class EntityDataChangeHistory.");
+                throw new JsonException("Cannot write null property EntityDataChangeHistory.NewDataValue to non-nullable JSON property 'new_data_value'.");
 
             if (entityDataChangeHistory.OldDataValueOption.IsSet && entityDataChangeHistory.OldDataValue == null)
-                throw new ArgumentNullException(nameof(entityDataChangeHistory.OldDataValue), "Property is required for class EntityDataChangeHistory.");
+                throw new JsonException("Cannot write null property EntityDataChangeHistory.OldDataValue to non-nullable JSON property 'old_data_value'.");
 
             if (entityDataChangeHistory.ChangedFieldIdOption.IsSet)
                 writer.WriteString("changed_field_id", entityDataChangeHistory.ChangedFieldId);

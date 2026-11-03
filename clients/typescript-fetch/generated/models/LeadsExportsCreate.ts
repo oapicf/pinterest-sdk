@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface LeadsExportsCreate {
     /**
      * ID for the ad collecting leads.
-     * @type {string}
-     * @memberof LeadsExportsCreate
      */
     adId: string;
     /**
      * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD.
-     * @type {string}
-     * @memberof LeadsExportsCreate
      */
     endDate: string;
     /**
      * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD.
-     * @type {string}
-     * @memberof LeadsExportsCreate
      */
     startDate: string;
 }

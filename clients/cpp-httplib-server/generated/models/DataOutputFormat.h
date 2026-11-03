@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class DataOutputFormat
-{
-public:
-
-    DataOutputFormat();
-    virtual ~DataOutputFormat() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(DataOutputFormat,
-        )
-
-private:
+enum class DataOutputFormat {
+    
+    JSON,
+    
+    CSV
+    
 };
 
+inline void to_json(nlohmann::json& j, const DataOutputFormat& value)
+{
+    switch (value)
+    {
+        
+        case DataOutputFormat::JSON: j = "JSON"; break;
+        
+        case DataOutputFormat::CSV: j = "CSV"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for DataOutputFormat", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, DataOutputFormat& value)
+{
+    
+    if (j == "JSON")
+    {
+        value = DataOutputFormat::JSON;
+        return;
+    }
+    
+    if (j == "CSV")
+    {
+        value = DataOutputFormat::CSV;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for DataOutputFormat", &j);
+}
 
 } // namespace models
 

@@ -21,14 +21,14 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AudienceCategory")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceCategory   {
   private String id;
   private BigDecimal index;
   private String key;
   private String name;
   private BigDecimal ratio;
-  private @Valid List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
+  private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory() {
   }
@@ -144,7 +144,7 @@ public class AudienceCategory   {
   
   @ApiModelProperty(value = "Subcategory interest distribution")
   @JsonProperty("subcategories")
-  @Valid public List<@Valid AudienceSubcategory> getSubcategories() {
+  public List<@Valid AudienceSubcategory> getSubcategories() {
     return subcategories;
   }
 

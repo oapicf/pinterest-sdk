@@ -147,16 +147,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!matchType.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupAudienceSizingKeyword.", nameof(matchType));
+                throw new JsonException("Property is required for class AdGroupAudienceSizingKeyword: match_type.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class AdGroupAudienceSizingKeyword.", nameof(value));
+                throw new JsonException("Property is required for class AdGroupAudienceSizingKeyword: value.");
 
             if (matchType.IsSet && matchType.Value == null)
-                throw new ArgumentNullException(nameof(matchType), "Property is not nullable for class AdGroupAudienceSizingKeyword.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizingKeyword: match_type.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class AdGroupAudienceSizingKeyword.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizingKeyword: value.");
 
             return new AdGroupAudienceSizingKeyword(matchType.Value!.Value!, value.Value!);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizingKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupAudienceSizingKeyword adGroupAudienceSizingKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizingKeyword"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupAudienceSizingKeyword adGroupAudienceSizingKeyword, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adGroupAudienceSizingKeyword.Value == null)
-                throw new ArgumentNullException(nameof(adGroupAudienceSizingKeyword.Value), "Property is required for class AdGroupAudienceSizingKeyword.");
-
             var matchTypeRawValue = MatchTypeValueConverter.ToJsonValue(adGroupAudienceSizingKeyword.MatchType);
             writer.WriteString("match_type", matchTypeRawValue);
 

@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'pinner_list_type.g.dart';
 
+/// Audience type
 class PinnerListType extends EnumClass {
 
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'CUSTOMER_LIST')
   static const PinnerListType CUSTOMER_LIST = _$CUSTOMER_LIST;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'VISITOR')
   static const PinnerListType VISITOR = _$VISITOR;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'ENGAGEMENT')
   static const PinnerListType ENGAGEMENT = _$ENGAGEMENT;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'LOOKALIKE')
   static const PinnerListType LOOKALIKE = _$LOOKALIKE;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'ACTALIKE')
   static const PinnerListType ACTALIKE = _$ACTALIKE;
-  /// Audience type
   @BuiltValueEnumConst(wireName: r'PERSONA')
   static const PinnerListType PERSONA = _$PERSONA;
 

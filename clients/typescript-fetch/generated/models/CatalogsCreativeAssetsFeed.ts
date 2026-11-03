@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CatalogsFeedProcessingSchedule } from './CatalogsFeedProcessingSchedule';
 import {
     CatalogsFeedProcessingScheduleFromJSON,
@@ -64,86 +64,58 @@ import {
 export interface CatalogsCreativeAssetsFeed {
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     catalogType: CatalogsCreativeAssetsFeedCatalogTypeEnum;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     readonly createdAt: Date;
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     defaultCountry: Country;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * The locale used within a feed for product descriptions.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     defaultLocale: string;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     format: CatalogsFormat;
     /**
      * ID of the feed entity.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     readonly id: string;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     name: string | null;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     status: CatalogsStatus;
     /**
      * 
-     * @type {Date}
-     * @memberof CatalogsCreativeAssetsFeed
      */
     readonly updatedAt: Date;
 }
@@ -153,7 +125,7 @@ export interface CatalogsCreativeAssetsFeed {
  * @export
  */
 export const CatalogsCreativeAssetsFeedCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsFeedCatalogTypeEnum = typeof CatalogsCreativeAssetsFeedCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsFeedCatalogTypeEnum];
 
@@ -190,7 +162,7 @@ export function CatalogsCreativeAssetsFeedFromJSONTyped(json: any, ignoreDiscrim
         
         'catalogId': json['catalog_id'],
         'catalogType': json['catalog_type'],
-        'createdAt': (new Date(json['created_at'])),
+        'createdAt': (json['created_at'] == null ? json['created_at'] : parseDateTime(json['created_at'])),
         'credentials': json['credentials'] === undefined ? undefined : json['credentials'] === null ? null : CatalogsFeedCredentialsFromJSON(json['credentials']),
         'defaultCountry': CountryFromJSON(json['default_country']),
         'defaultCurrency': json['default_currency'] === undefined ? undefined : json['default_currency'] === null ? null : NullableCurrencyFromJSON(json['default_currency']),
@@ -201,7 +173,7 @@ export function CatalogsCreativeAssetsFeedFromJSONTyped(json: any, ignoreDiscrim
         'name': json['name'],
         'preferredProcessingSchedule': json['preferred_processing_schedule'] === undefined ? undefined : json['preferred_processing_schedule'] === null ? null : CatalogsFeedProcessingScheduleFromJSON(json['preferred_processing_schedule']),
         'status': CatalogsStatusFromJSON(json['status']),
-        'updatedAt': (new Date(json['updated_at'])),
+        'updatedAt': (json['updated_at'] == null ? json['updated_at'] : parseDateTime(json['updated_at'])),
     };
 }
 

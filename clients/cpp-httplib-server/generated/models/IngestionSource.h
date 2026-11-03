@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class IngestionSource
-{
-public:
-
-    IngestionSource();
-    virtual ~IngestionSource() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IngestionSource,
-        )
-
-private:
+enum class IngestionSource {
+    
+    TAG,
+    
+    MMP,
+    
+    FILE_UPLOAD,
+    
+    CONVERSIONS_API,
+    
+    NATIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const IngestionSource& value)
+{
+    switch (value)
+    {
+        
+        case IngestionSource::TAG: j = "TAG"; break;
+        
+        case IngestionSource::MMP: j = "MMP"; break;
+        
+        case IngestionSource::FILE_UPLOAD: j = "FILE_UPLOAD"; break;
+        
+        case IngestionSource::CONVERSIONS_API: j = "CONVERSIONS_API"; break;
+        
+        case IngestionSource::NATIVE: j = "NATIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for IngestionSource", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, IngestionSource& value)
+{
+    
+    if (j == "TAG")
+    {
+        value = IngestionSource::TAG;
+        return;
+    }
+    
+    if (j == "MMP")
+    {
+        value = IngestionSource::MMP;
+        return;
+    }
+    
+    if (j == "FILE_UPLOAD")
+    {
+        value = IngestionSource::FILE_UPLOAD;
+        return;
+    }
+    
+    if (j == "CONVERSIONS_API")
+    {
+        value = IngestionSource::CONVERSIONS_API;
+        return;
+    }
+    
+    if (j == "NATIVE")
+    {
+        value = IngestionSource::NATIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for IngestionSource", &j);
+}
 
 } // namespace models
 

@@ -181,19 +181,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!audienceId.IsSet)
-                throw new ArgumentException("Property is required for class BusinessToAdAccountSharedAudience.", nameof(audienceId));
+                throw new JsonException("Property is required for class BusinessToAdAccountSharedAudience: audience_id.");
 
             if (!recipientAccountIds.IsSet)
-                throw new ArgumentException("Property is required for class BusinessToAdAccountSharedAudience.", nameof(recipientAccountIds));
+                throw new JsonException("Property is required for class BusinessToAdAccountSharedAudience: recipient_account_ids.");
 
             if (audienceId.IsSet && audienceId.Value == null)
-                throw new ArgumentNullException(nameof(audienceId), "Property is not nullable for class BusinessToAdAccountSharedAudience.");
+                throw new JsonException("Property is not nullable for class BusinessToAdAccountSharedAudience: audience_id.");
 
             if (recipientAccountIds.IsSet && recipientAccountIds.Value == null)
-                throw new ArgumentNullException(nameof(recipientAccountIds), "Property is not nullable for class BusinessToAdAccountSharedAudience.");
+                throw new JsonException("Property is not nullable for class BusinessToAdAccountSharedAudience: recipient_account_ids.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class BusinessToAdAccountSharedAudience.");
+                throw new JsonException("Property is not nullable for class BusinessToAdAccountSharedAudience: permissions.");
 
             return new BusinessToAdAccountSharedAudience(audienceId.Value!, recipientAccountIds.Value!, permissions);
         }
@@ -204,7 +204,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessToAdAccountSharedAudience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessToAdAccountSharedAudience businessToAdAccountSharedAudience, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -219,17 +218,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessToAdAccountSharedAudience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessToAdAccountSharedAudience businessToAdAccountSharedAudience, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessToAdAccountSharedAudience.AudienceId == null)
-                throw new ArgumentNullException(nameof(businessToAdAccountSharedAudience.AudienceId), "Property is required for class BusinessToAdAccountSharedAudience.");
-
-            if (businessToAdAccountSharedAudience.RecipientAccountIds == null)
-                throw new ArgumentNullException(nameof(businessToAdAccountSharedAudience.RecipientAccountIds), "Property is required for class BusinessToAdAccountSharedAudience.");
-
             if (businessToAdAccountSharedAudience.PermissionsOption.IsSet && businessToAdAccountSharedAudience.Permissions == null)
-                throw new ArgumentNullException(nameof(businessToAdAccountSharedAudience.Permissions), "Property is required for class BusinessToAdAccountSharedAudience.");
+                throw new JsonException("Cannot write null property BusinessToAdAccountSharedAudience.Permissions to non-nullable JSON property 'permissions'.");
 
             writer.WriteString("audience_id", businessToAdAccountSharedAudience.AudienceId);
 

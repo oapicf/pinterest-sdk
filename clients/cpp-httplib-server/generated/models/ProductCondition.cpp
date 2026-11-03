@@ -6,20 +6,3 @@
 */
 #include "ProductCondition.h"
 
-namespace models {
-
-ProductCondition::ProductCondition()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

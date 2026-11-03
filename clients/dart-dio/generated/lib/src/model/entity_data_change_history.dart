@@ -190,3 +190,4 @@ class _$EntityDataChangeHistorySerializer implements PrimitiveSerializer<EntityD
   }
 }
 
+

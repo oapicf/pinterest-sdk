@@ -36,20 +36,14 @@ import {
 export interface TargetingTemplateUpdateRequestReadOrUpdate {
     /**
      * Targeting template ID
-     * @type {string}
-     * @memberof TargetingTemplateUpdateRequestReadOrUpdate
      */
     id: string;
     /**
      * 
-     * @type {AudienceUpdateOperationType}
-     * @memberof TargetingTemplateUpdateRequestReadOrUpdate
      */
     operationType: AudienceUpdateOperationType;
     /**
      * targeting profile attributes
-     * @type {TargetingSpecOptimal}
-     * @memberof TargetingTemplateUpdateRequestReadOrUpdate
      */
     targetingAttributes?: TargetingSpecOptimal;
 }

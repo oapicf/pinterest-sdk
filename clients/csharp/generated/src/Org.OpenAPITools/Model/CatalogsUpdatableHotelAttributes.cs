@@ -479,13 +479,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (address.IsSet && address.Value == null)
-                throw new ArgumentNullException(nameof(address), "Property is not nullable for class CatalogsUpdatableHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableHotelAttributes: address.");
 
             if (guestRatings.IsSet && guestRatings.Value == null)
-                throw new ArgumentNullException(nameof(guestRatings), "Property is not nullable for class CatalogsUpdatableHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableHotelAttributes: guest_ratings.");
 
             if (latitude.IsSet && latitude.Value == null)
-                throw new ArgumentNullException(nameof(latitude), "Property is not nullable for class CatalogsUpdatableHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsUpdatableHotelAttributes: latitude.");
 
             return new CatalogsUpdatableHotelAttributes(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice);
         }
@@ -496,7 +496,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpdatableHotelAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsUpdatableHotelAttributes catalogsUpdatableHotelAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -511,14 +510,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpdatableHotelAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsUpdatableHotelAttributes catalogsUpdatableHotelAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsUpdatableHotelAttributes.AddressOption.IsSet && catalogsUpdatableHotelAttributes.Address == null)
-                throw new ArgumentNullException(nameof(catalogsUpdatableHotelAttributes.Address), "Property is required for class CatalogsUpdatableHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsUpdatableHotelAttributes.Address to non-nullable JSON property 'address'.");
 
             if (catalogsUpdatableHotelAttributes.GuestRatingsOption.IsSet && catalogsUpdatableHotelAttributes.GuestRatings == null)
-                throw new ArgumentNullException(nameof(catalogsUpdatableHotelAttributes.GuestRatings), "Property is required for class CatalogsUpdatableHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsUpdatableHotelAttributes.GuestRatings to non-nullable JSON property 'guest_ratings'.");
+
+            if (catalogsUpdatableHotelAttributes.LatitudeOption.IsSet && catalogsUpdatableHotelAttributes.Latitude == null)
+                throw new JsonException("Cannot write null property CatalogsUpdatableHotelAttributes.Latitude to non-nullable JSON property 'latitude'.");
 
             if (catalogsUpdatableHotelAttributes.AddressOption.IsSet)
             {

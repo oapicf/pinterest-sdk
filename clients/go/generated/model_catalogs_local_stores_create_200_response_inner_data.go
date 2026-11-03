@@ -85,16 +85,11 @@ func (dst *CatalogsLocalStoresCreate200ResponseInnerData) UnmarshalJSON(data []b
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsLocalStoresCreate200ResponseInnerData)")
 	}
 }
 

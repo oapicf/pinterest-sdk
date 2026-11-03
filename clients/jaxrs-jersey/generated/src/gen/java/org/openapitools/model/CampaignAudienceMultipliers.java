@@ -31,7 +31,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   CampaignAudienceMultipliers.JSON_PROPERTY_A_U_D_I_E_N_C_E_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignAudienceMultipliers extends HashMap<String, Double>  {
   public static final String JSON_PROPERTY_A_U_D_I_E_N_C_E_I_D = "AUDIENCE_ID";
   @JsonProperty(JSON_PROPERTY_A_U_D_I_E_N_C_E_I_D)

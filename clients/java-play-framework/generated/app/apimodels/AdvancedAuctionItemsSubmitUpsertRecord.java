@@ -17,7 +17,7 @@ import javax.validation.Valid;
 /**
  * Object describing an item bid option upsert operation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
   @JsonProperty("bid_options")
@@ -86,7 +86,7 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
   @NotNull
 @Valid
 
-  private List<UpdateMaskBidOptionField> updateMask = ;
+  private List<UpdateMaskBidOptionField> updateMask = null;
 
   public AdvancedAuctionItemsSubmitUpsertRecord bidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;

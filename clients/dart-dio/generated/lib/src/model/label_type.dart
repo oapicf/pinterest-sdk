@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'label_type.g.dart';
 
+/// Label type values.
 class LabelType extends EnumClass {
 
-  /// Label type values.
   @BuiltValueEnumConst(wireName: r'BRAND')
   static const LabelType BRAND = _$BRAND;
-  /// Label type values.
   @BuiltValueEnumConst(wireName: r'CUSTOM')
   static const LabelType CUSTOM = _$CUSTOM;
 

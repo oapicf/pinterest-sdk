@@ -108,3 +108,4 @@ class _$AssetGroupInputSerializer implements PrimitiveSerializer<AssetGroupInput
   }
 }
 
+

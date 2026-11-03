@@ -260,12 +260,22 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationMaximumAge.FieldEnum?>(TargetingSpecOperationMaximumAge.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationMaximumAge.FieldEnum? fieldValue = TargetingSpecOperationMaximumAge.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationMaximumAge.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<TargetingSpecOperationMaximumAge.OperationEnum?>(TargetingSpecOperationMaximumAge.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                TargetingSpecOperationMaximumAge.OperationEnum? operationValue = TargetingSpecOperationMaximumAge.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<TargetingSpecOperationMaximumAge.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "value":
                             value = new Option<string?>(utf8JsonReader.GetString());
@@ -277,19 +287,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationMaximumAge.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationMaximumAge: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationMaximumAge.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationMaximumAge: operation.");
 
             if (!value.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationMaximumAge.", nameof(value));
+                throw new JsonException("Property is required for class TargetingSpecOperationMaximumAge: value.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationMaximumAge.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationMaximumAge: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationMaximumAge.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationMaximumAge: operation.");
 
             return new TargetingSpecOperationMaximumAge(field.Value!.Value!, operation.Value!.Value!, value.Value!);
         }
@@ -300,7 +310,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationMaximumAge"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationMaximumAge targetingSpecOperationMaximumAge, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -315,7 +324,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationMaximumAge"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationMaximumAge targetingSpecOperationMaximumAge, JsonSerializerOptions jsonSerializerOptions)
         {
             var fieldRawValue = TargetingSpecOperationMaximumAge.FieldEnumToJsonValue(targetingSpecOperationMaximumAge.Field);

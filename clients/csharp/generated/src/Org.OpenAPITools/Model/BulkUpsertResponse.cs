@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (requestId.IsSet && requestId.Value == null)
-                throw new ArgumentNullException(nameof(requestId), "Property is not nullable for class BulkUpsertResponse.");
+                throw new JsonException("Property is not nullable for class BulkUpsertResponse: request_id.");
 
             return new BulkUpsertResponse(requestId);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkUpsertResponse bulkUpsertResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkUpsertResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkUpsertResponse bulkUpsertResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkUpsertResponse.RequestIdOption.IsSet && bulkUpsertResponse.RequestId == null)
-                throw new ArgumentNullException(nameof(bulkUpsertResponse.RequestId), "Property is required for class BulkUpsertResponse.");
+                throw new JsonException("Cannot write null property BulkUpsertResponse.RequestId to non-nullable JSON property 'request_id'.");
 
             if (bulkUpsertResponse.RequestIdOption.IsSet)
                 writer.WriteString("request_id", bulkUpsertResponse.RequestId);

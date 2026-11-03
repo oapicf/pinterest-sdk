@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_planning_confidence_level_alert_reason.g.dart';
 
+/// Reason for a confidence level alert on delivery estimates.
 class CampaignPlanningConfidenceLevelAlertReason extends EnumClass {
 
-  /// Reason for a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'UNKNOWN')
   static const CampaignPlanningConfidenceLevelAlertReason UNKNOWN = _$UNKNOWN;
-  /// Reason for a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'OTHER')
   static const CampaignPlanningConfidenceLevelAlertReason OTHER = _$OTHER;
-  /// Reason for a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'ADVERTISER_HAS_NO_RECENT_CAMPAIGNS')
   static const CampaignPlanningConfidenceLevelAlertReason ADVERTISER_HAS_NO_RECENT_CAMPAIGNS = _$ADVERTISER_HAS_NO_RECENT_CAMPAIGNS;
-  /// Reason for a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'ADVERTISER_HAS_NO_RECENT_CONVERSIONS')
   static const CampaignPlanningConfidenceLevelAlertReason ADVERTISER_HAS_NO_RECENT_CONVERSIONS = _$ADVERTISER_HAS_NO_RECENT_CONVERSIONS;
 

@@ -35,11 +35,20 @@ import {
 } from '../models/PinterestLibError';
 
 export interface AudienceInsightsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Type of audience insights.
+     */
     audienceInsightType: AudienceInsightType;
 }
 
 export interface AudienceInsightsScopeAndTypeGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 

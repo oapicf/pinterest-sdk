@@ -10,7 +10,7 @@ import Foundation
 /** Lead form test action: submit sample answers and receive the resulting subscription id. */
 public struct LeadFormTest: Sendable, Codable, Hashable {
 
-    public static let subscriptionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let subscriptionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Subscription ID. */
     public var subscriptionId: String?
 

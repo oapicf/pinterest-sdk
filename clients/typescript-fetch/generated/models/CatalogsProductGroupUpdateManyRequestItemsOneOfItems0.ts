@@ -29,33 +29,23 @@ import {
 export interface CatalogsProductGroupUpdateManyRequestItemsOneOfItems0 {
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsProductGroupFiltersRequest}
-     * @memberof CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
      */
     filters?: CatalogsProductGroupFiltersRequest;
     /**
      * boolean indicator of whether the product group is being featured or not
-     * @type {boolean}
-     * @memberof CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
      * @deprecated
      */
     isFeatured?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
      */
     name?: string;
     /**
      * ID of the product group.
-     * @type {string}
-     * @memberof CatalogsProductGroupUpdateManyRequestItemsOneOfItems0
      */
     id: string;
 }

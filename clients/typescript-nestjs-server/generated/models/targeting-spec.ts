@@ -70,7 +70,7 @@ export namespace TargetingSpec {
   export const TARGETINGSTRATEGYEnum = {
     ChooseYourOwn: 'CHOOSE_YOUR_OWN',
     FindNewCustomers: 'FIND_NEW_CUSTOMERS',
-    ReconnectWithUsers: 'RECONNECT_WITH_USERS'
+    ReconnectWithUsers: 'RECONNECT_WITH_USERS',
   } as const;
   export type TARGETINGSTRATEGYEnum = typeof TARGETINGSTRATEGYEnum[keyof typeof TARGETINGSTRATEGYEnum];
 }

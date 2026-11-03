@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Entity status
-* Values: ACTIVE,PAUSED,ARCHIVED,DRAFT,DELETED_DRAFT
-*/
+ * Entity status
+ * Values: ACTIVE,PAUSED,ARCHIVED,DRAFT,DELETED_DRAFT
+ */
 enum class NullableEntityStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -31,9 +31,8 @@ enum class NullableEntityStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NullableEntityStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableEntityStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullableEntityStatus'")
         }
     }
 }
-

@@ -9,8 +9,8 @@ import Foundation
 
 public struct CatalogsFeedIngestion: Sendable, Codable, Hashable {
 
-    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Timestamp of the feed ingestion. */
     public var createdAt: Date
     /** Catalog Feed id pertaining to the feed ingestion. */

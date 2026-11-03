@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'schedule_type.g.dart';
 
+/// The schedule type
 class ScheduleType extends EnumClass {
 
-  /// The schedule type
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_BUDGET_CHANGE')
   static const ScheduleType CAMPAIGN_BUDGET_CHANGE = _$CAMPAIGN_BUDGET_CHANGE;
-  /// The schedule type
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_BID_MULTIPLIERS')
   static const ScheduleType CAMPAIGN_BID_MULTIPLIERS = _$CAMPAIGN_BID_MULTIPLIERS;
 

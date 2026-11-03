@@ -9,8 +9,8 @@ import Foundation
 
 public struct BillingProfilesResponse: Sendable, Codable, Hashable {
 
-    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let advertiserIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Advertiser ID of the billing. */
     public var advertiserId: String?
     /** Billing type of the advertiser */

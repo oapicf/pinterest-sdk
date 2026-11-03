@@ -7,11 +7,11 @@ export interface TargetingSpecOperationMinimumAge {
 }
 export namespace TargetingSpecOperationMinimumAge {
   export const FieldEnum = {
-    MinimumAge: 'MINIMUM_AGE'
+    MinimumAge: 'MINIMUM_AGE',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
   export const OperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

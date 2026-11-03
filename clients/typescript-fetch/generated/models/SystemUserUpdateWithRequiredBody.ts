@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SystemUserUpdateWithRequiredBody {
     /**
      * New system user name
-     * @type {string}
-     * @memberof SystemUserUpdateWithRequiredBody
      */
     name: string;
 }

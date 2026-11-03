@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Specify the timezone to be applied for the reporting.
-* Values: PINTEREST_TIME_ZONE,AD_ACCOUNT_TIME_ZONE
-*/
+ * Specify the timezone to be applied for the reporting.
+ * Values: PINTEREST_TIME_ZONE,AD_ACCOUNT_TIME_ZONE
+ */
 enum class ReportingTimeZone(@get:JsonValue val value: kotlin.String) {
 
     PINTEREST_TIME_ZONE("PINTEREST_TIME_ZONE"),
@@ -28,9 +28,8 @@ enum class ReportingTimeZone(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ReportingTimeZone {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportingTimeZone'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportingTimeZone'")
         }
     }
 }
-

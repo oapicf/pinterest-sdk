@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class DiscountStatus
-{
-public:
-
-    DiscountStatus();
-    virtual ~DiscountStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(DiscountStatus,
-        )
-
-private:
+enum class DiscountStatus {
+    
+    OTHER,
+    
+    ACTIVE,
+    
+    PAUSED,
+    
+    SCHEDULED,
+    
+    EXPIRED
+    
 };
 
+inline void to_json(nlohmann::json& j, const DiscountStatus& value)
+{
+    switch (value)
+    {
+        
+        case DiscountStatus::OTHER: j = "OTHER"; break;
+        
+        case DiscountStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case DiscountStatus::PAUSED: j = "PAUSED"; break;
+        
+        case DiscountStatus::SCHEDULED: j = "SCHEDULED"; break;
+        
+        case DiscountStatus::EXPIRED: j = "EXPIRED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for DiscountStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, DiscountStatus& value)
+{
+    
+    if (j == "OTHER")
+    {
+        value = DiscountStatus::OTHER;
+        return;
+    }
+    
+    if (j == "ACTIVE")
+    {
+        value = DiscountStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = DiscountStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "SCHEDULED")
+    {
+        value = DiscountStatus::SCHEDULED;
+        return;
+    }
+    
+    if (j == "EXPIRED")
+    {
+        value = DiscountStatus::EXPIRED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for DiscountStatus", &j);
+}
 
 } // namespace models
 

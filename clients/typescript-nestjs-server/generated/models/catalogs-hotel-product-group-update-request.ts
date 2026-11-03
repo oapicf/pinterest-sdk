@@ -15,7 +15,7 @@ export interface CatalogsHotelProductGroupUpdateRequest {
 }
 export namespace CatalogsHotelProductGroupUpdateRequest {
   export const CatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

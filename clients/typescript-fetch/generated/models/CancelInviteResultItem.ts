@@ -36,14 +36,10 @@ import {
 export interface CancelInviteResultItem {
     /**
      * 
-     * @type {CancelInviteException}
-     * @memberof CancelInviteResultItem
      */
     exception?: CancelInviteException | null;
     /**
      * 
-     * @type {CancelInviteResult}
-     * @memberof CancelInviteResultItem
      */
     invite?: CancelInviteResult | null;
 }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of the catalog entity.
-* Values: RETAIL,HOTEL,CREATIVE_ASSETS
-*/
+ * Type of the catalog entity.
+ * Values: RETAIL,HOTEL,CREATIVE_ASSETS
+ */
 enum class CatalogsType(@get:JsonValue val value: kotlin.String) {
 
     RETAIL("RETAIL"),
@@ -29,9 +29,8 @@ enum class CatalogsType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CatalogsType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsType'")
         }
     }
 }
-

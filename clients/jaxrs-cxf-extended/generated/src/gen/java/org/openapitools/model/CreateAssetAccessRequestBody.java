@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateAssetAccessRequestBody  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
  /**
   * Get assetRequests

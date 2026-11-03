@@ -86,7 +86,7 @@ Create product group to use in Catalogs owned by the \&quot;operation user_accou
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**catalogsProductGroupsCreateManyRequestItems** | [**List&lt;CatalogsProductGroupsCreateManyRequestItems&gt;**](../../docs/models/CatalogsProductGroupsCreateManyRequestItems.md) |  |
+**catalogsProductGroupsCreateManyRequestItems** | [**List&lt;@Valid CatalogsProductGroupsCreateManyRequestItems&gt;**](../../docs/models/CatalogsProductGroupsCreateManyRequestItems.md) |  |
 **adAccountId** | `String` | Unique identifier of an ad account. | [optional parameter]
 
 ### Return type

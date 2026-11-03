@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ProductCondition
-{
-public:
-
-    ProductCondition();
-    virtual ~ProductCondition() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductCondition,
-        )
-
-private:
+enum class ProductCondition {
+    
+    NEW,
+    
+    USED,
+    
+    REFURBISHED
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductCondition& value)
+{
+    switch (value)
+    {
+        
+        case ProductCondition::NEW: j = "NEW"; break;
+        
+        case ProductCondition::USED: j = "USED"; break;
+        
+        case ProductCondition::REFURBISHED: j = "REFURBISHED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductCondition", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductCondition& value)
+{
+    
+    if (j == "NEW")
+    {
+        value = ProductCondition::NEW;
+        return;
+    }
+    
+    if (j == "USED")
+    {
+        value = ProductCondition::USED;
+        return;
+    }
+    
+    if (j == "REFURBISHED")
+    {
+        value = ProductCondition::REFURBISHED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductCondition", &j);
+}
 
 } // namespace models
 

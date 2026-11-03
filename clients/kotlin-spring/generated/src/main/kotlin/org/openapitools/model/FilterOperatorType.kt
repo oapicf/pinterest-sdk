@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: IS,CONTAINS
-*/
+ * 
+ * Values: IS,CONTAINS
+ */
 enum class FilterOperatorType(@get:JsonValue val value: kotlin.String) {
 
     IS("IS"),
@@ -28,9 +28,8 @@ enum class FilterOperatorType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): FilterOperatorType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FilterOperatorType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FilterOperatorType'")
         }
     }
 }
-

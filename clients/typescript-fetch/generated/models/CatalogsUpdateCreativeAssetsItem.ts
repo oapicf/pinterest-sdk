@@ -29,20 +29,14 @@ import {
 export interface CatalogsUpdateCreativeAssetsItem {
     /**
      * 
-     * @type {CatalogsUpdatableCreativeAssetsAttributes}
-     * @memberof CatalogsUpdateCreativeAssetsItem
      */
     attributes: CatalogsUpdatableCreativeAssetsAttributes;
     /**
      * The catalog creative assets item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsUpdateCreativeAssetsItem
      */
     creativeAssetsId: string;
     /**
      * 
-     * @type {CatalogsUpdateCreativeAssetsItemOperationEnum}
-     * @memberof CatalogsUpdateCreativeAssetsItem
      */
     operation: CatalogsUpdateCreativeAssetsItemOperationEnum;
 }
@@ -52,7 +46,7 @@ export interface CatalogsUpdateCreativeAssetsItem {
  * @export
  */
 export const CatalogsUpdateCreativeAssetsItemOperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
 } as const;
 export type CatalogsUpdateCreativeAssetsItemOperationEnum = typeof CatalogsUpdateCreativeAssetsItemOperationEnum[keyof typeof CatalogsUpdateCreativeAssetsItemOperationEnum];
 

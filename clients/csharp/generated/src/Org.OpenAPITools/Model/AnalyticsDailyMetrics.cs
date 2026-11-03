@@ -182,13 +182,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dataStatus.IsSet && dataStatus.Value == null)
-                throw new ArgumentNullException(nameof(dataStatus), "Property is not nullable for class AnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class AnalyticsDailyMetrics: data_status.");
 
             if (date.IsSet && date.Value == null)
-                throw new ArgumentNullException(nameof(date), "Property is not nullable for class AnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class AnalyticsDailyMetrics: date.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class AnalyticsDailyMetrics.");
+                throw new JsonException("Property is not nullable for class AnalyticsDailyMetrics: metrics.");
 
             return new AnalyticsDailyMetrics(dataStatus, date, metrics);
         }
@@ -199,7 +199,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="analyticsDailyMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AnalyticsDailyMetrics analyticsDailyMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -214,14 +213,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="analyticsDailyMetrics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AnalyticsDailyMetrics analyticsDailyMetrics, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (analyticsDailyMetrics.DataStatusOption.IsSet && analyticsDailyMetrics.DataStatus == null)
+                throw new JsonException("Cannot write null property AnalyticsDailyMetrics.DataStatus to non-nullable JSON property 'data_status'.");
+
             if (analyticsDailyMetrics.DateOption.IsSet && analyticsDailyMetrics.Date == null)
-                throw new ArgumentNullException(nameof(analyticsDailyMetrics.Date), "Property is required for class AnalyticsDailyMetrics.");
+                throw new JsonException("Cannot write null property AnalyticsDailyMetrics.Date to non-nullable JSON property 'date'.");
 
             if (analyticsDailyMetrics.MetricsOption.IsSet && analyticsDailyMetrics.Metrics == null)
-                throw new ArgumentNullException(nameof(analyticsDailyMetrics.Metrics), "Property is required for class AnalyticsDailyMetrics.");
+                throw new JsonException("Cannot write null property AnalyticsDailyMetrics.Metrics to non-nullable JSON property 'metrics'.");
 
             if (analyticsDailyMetrics.DataStatusOption.IsSet)
             {

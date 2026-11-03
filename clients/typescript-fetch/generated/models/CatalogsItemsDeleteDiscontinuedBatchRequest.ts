@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemsDeleteDiscontinuedBatchRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsDeleteDiscontinuedBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs items
-     * @type {Array<ItemDeleteDiscontinuedBatchRecord>}
-     * @memberof CatalogsItemsDeleteDiscontinuedBatchRequest
      */
     items: Array<ItemDeleteDiscontinuedBatchRecord>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum}
-     * @memberof CatalogsItemsDeleteDiscontinuedBatchRequest
      */
     language: CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum;
     /**
      * 
-     * @type {CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum}
-     * @memberof CatalogsItemsDeleteDiscontinuedBatchRequest
      */
     operation: CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum;
 }
@@ -171,7 +163,7 @@ export const CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum = typeof CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum[keyof typeof CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum];
 
@@ -179,7 +171,7 @@ export type CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum = typeof Cat
  * @export
  */
 export const CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum = {
-    DeleteDiscontinued: 'DELETE_DISCONTINUED'
+    DeleteDiscontinued: 'DELETE_DISCONTINUED',
 } as const;
 export type CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum = typeof CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum[keyof typeof CatalogsItemsDeleteDiscontinuedBatchRequestOperationEnum];
 

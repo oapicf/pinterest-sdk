@@ -29,14 +29,10 @@ import {
 export interface CatalogsProductGroupMultipleMediaTypesCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupMultipleMediaTypesCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<MediaType>}
-     * @memberof CatalogsProductGroupMultipleMediaTypesCriteria
      */
     values: Array<MediaType>;
 }

@@ -50,7 +50,7 @@ export const TargetingAdvertiserCountry = {
     Mx: 'MX',
     Ar: 'AR',
     Cl: 'CL',
-    Co: 'CO'
+    Co: 'CO',
 } as const;
 export type TargetingAdvertiserCountry = typeof TargetingAdvertiserCountry[keyof typeof TargetingAdvertiserCountry];
 

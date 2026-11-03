@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'label_status.g.dart';
 
+/// Label status values.
 class LabelStatus extends EnumClass {
 
-  /// Label status values.
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const LabelStatus ACTIVE = _$ACTIVE;
-  /// Label status values.
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const LabelStatus ARCHIVED = _$ARCHIVED;
 

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface PinMediaSourceImageURL {
     /**
      * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-     * @type {boolean}
-     * @memberof PinMediaSourceImageURL
      */
     isStandard?: boolean;
     /**
      * The source type of the media.
-     * @type {PinMediaSourceImageURLSourceTypeEnum}
-     * @memberof PinMediaSourceImageURL
      */
     sourceType: PinMediaSourceImageURLSourceTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof PinMediaSourceImageURL
      */
     url: string;
 }
@@ -44,7 +38,7 @@ export interface PinMediaSourceImageURL {
  * @export
  */
 export const PinMediaSourceImageURLSourceTypeEnum = {
-    ImageUrl: 'image_url'
+    ImageUrl: 'image_url',
 } as const;
 export type PinMediaSourceImageURLSourceTypeEnum = typeof PinMediaSourceImageURLSourceTypeEnum[keyof typeof PinMediaSourceImageURLSourceTypeEnum];
 

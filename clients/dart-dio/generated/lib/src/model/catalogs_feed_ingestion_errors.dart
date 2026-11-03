@@ -268,3 +268,4 @@ class _$CatalogsFeedIngestionErrorsSerializer implements PrimitiveSerializer<Cat
   }
 }
 
+

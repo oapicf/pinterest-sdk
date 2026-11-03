@@ -9,7 +9,7 @@ export const QuerymetrictypesItems = {
     PinClick: 'PIN_CLICK',
     PinClickRate: 'PIN_CLICK_RATE',
     Save: 'SAVE',
-    SaveRate: 'SAVE_RATE'
+    SaveRate: 'SAVE_RATE',
 } as const;
 export type QuerymetrictypesItems = typeof QuerymetrictypesItems[keyof typeof QuerymetrictypesItems];
 

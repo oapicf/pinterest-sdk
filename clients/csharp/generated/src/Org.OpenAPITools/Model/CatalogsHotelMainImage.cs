@@ -162,7 +162,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class CatalogsHotelMainImage.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelMainImage: link.");
 
             return new CatalogsHotelMainImage(link, tag);
         }
@@ -173,7 +173,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelMainImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelMainImage catalogsHotelMainImage, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -188,11 +187,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelMainImage"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelMainImage catalogsHotelMainImage, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsHotelMainImage.LinkOption.IsSet && catalogsHotelMainImage.Link == null)
-                throw new ArgumentNullException(nameof(catalogsHotelMainImage.Link), "Property is required for class CatalogsHotelMainImage.");
+                throw new JsonException("Cannot write null property CatalogsHotelMainImage.Link to non-nullable JSON property 'link'.");
 
             if (catalogsHotelMainImage.LinkOption.IsSet)
                 writer.WriteString("link", catalogsHotelMainImage.Link);

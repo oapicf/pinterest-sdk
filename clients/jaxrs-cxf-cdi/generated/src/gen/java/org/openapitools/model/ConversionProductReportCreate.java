@@ -35,15 +35,15 @@ public class ConversionProductReportCreate   {
 
   private List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
 
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   private String endDate;
 
@@ -57,7 +57,7 @@ public class ConversionProductReportCreate   {
 
   private String startDate;
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   /**
    *   List of ad group ids.   Only support ad_group_ids field when level of the report is AD_GROUP.

@@ -21,518 +21,346 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedIngestionWarnings {
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADCONTENTREADERROR?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADDNSLOOKUPERROR?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADFILENOTACCESSIBLE?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADFILENOTFOUND?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS400?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS403?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS404?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS405?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS410?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS429?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS500?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS502?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS503?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS504?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS507?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS508?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS520?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS521?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS522?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADHTTPSTATUS525?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALCONFIGURATIONERROR?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALERROR?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALFAILEDTODOWNLOAD?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALMALFORMEDURL?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALRATELIMITED?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINTERNALREQUESTEXPIRED?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADINVALIDFILE?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADSITEERROR?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADSITETIMEOUT?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADSSLERROR?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEDOWNLOADSSLHANDSHAKEERROR?: number;
     /**
      * Ad image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEPROCESSINGEMPTYFILE?: number;
     /**
      * Ad images must have a height larger than 75 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEPROCESSINGHEIGHTTOOSMALL?: number;
     /**
      * Ad images must have a maximum area (width x height) of less than 89478485 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEPROCESSINGTOOMANYPIXELS?: number;
     /**
      * Some ad images could not be processed due to a file type mismatch.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEPROCESSINGTYPEMISMATCH?: number;
     /**
      * Ad images must have a width larger than 75 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDIMAGEPROCESSINGWIDTHTOOSMALL?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADCONTENTREADERROR?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADDNSLOOKUPERROR?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADFILENOTACCESSIBLE?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADFILENOTFOUND?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS400?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS403?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS404?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS405?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS410?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS429?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS500?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS502?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS503?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS504?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS507?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS508?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS520?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS521?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS522?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADHTTPSTATUS525?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALCONFIGURATIONERROR?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALERROR?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALFAILEDTODOWNLOAD?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALMALFORMEDURL?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALRATELIMITED?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINTERNALREQUESTEXPIRED?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADINVALIDFILE?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADSITEERROR?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADSITETIMEOUT?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADSSLERROR?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEODOWNLOADSSLHANDSHAKEERROR?: number;
     /**
      * Ad videos length is too short. Please ensure that all ad videos are at least 4 seconds long.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOLENGTHTOOSHORT?: number;
     /**
      * Ad video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOPROCESSINGEMPTYFILE?: number;
     /**
      * Ad videos must have a height larger than 75 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOPROCESSINGHEIGHTTOOSMALL?: number;
     /**
      * Ad videos must have a maximum area (width x height) of less than 89478485 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOPROCESSINGTOOMANYPIXELS?: number;
     /**
      * Some ad videos could not be processed due to a file type mismatch.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOPROCESSINGTYPEMISMATCH?: number;
     /**
      * Ad videos must have a width larger than 75 pixels
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDVIDEOPROCESSINGWIDTHTOOSMALL?: number;
     /**
      * Additional image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDDITIONALIMAGEFILENOTACCESSIBLE?: number;
     /**
      * Additional image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDDITIONALIMAGEFILENOTFOUND?: number;
     /**
      * Additional image files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDDITIONALIMAGEINVALIDFILE?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDDITIONALIMAGELEVELINTERNALERROR?: number;
     /**
      * Additional image files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     aDDITIONALIMAGEMALFORMEDURL?: number;
     /**
      * Update your Google Sheets sharing settings from 'Editor' to 'Viewer'.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     fETCHGOOGLESHEETPUBLICCANEDIT?: number;
     /**
      * Price is not a supported column. Use base_price and sale_price instead.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     hOTELPRICEHEADERISPRESENT?: number;
     /**
      * Video length is too short. Please ensure that the main video is at least 4 seconds long.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEODOWNLOADVIDEOTOOSHORT?: number;
     /**
      * Video files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEOFILENOTACCESSIBLE?: number;
     /**
      * Video files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEOFILENOTFOUND?: number;
     /**
      * Video files are unreadable. Please upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEOINVALIDFILE?: number;
     /**
      * We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEOLEVELINTERNALERROR?: number;
     /**
      * Video files are unreadable. Please check your link and upload new files to continue.
-     * @type {number}
-     * @memberof CatalogsFeedIngestionWarnings
      */
     vIDEOMALFORMEDURL?: number;
 }

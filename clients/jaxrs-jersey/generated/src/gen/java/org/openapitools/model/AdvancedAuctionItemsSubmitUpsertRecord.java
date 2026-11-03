@@ -44,7 +44,7 @@ import javax.validation.Valid;
   AdvancedAuctionItemsSubmitUpsertRecord.JSON_PROPERTY_OPERATION,
   AdvancedAuctionItemsSubmitUpsertRecord.JSON_PROPERTY_UPDATE_MASK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord   {
   public static final String JSON_PROPERTY_BID_OPTIONS = "bid_options";
   @JsonProperty(JSON_PROPERTY_BID_OPTIONS)
@@ -166,7 +166,7 @@ public class AdvancedAuctionItemsSubmitUpsertRecord   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
-  @Valid 
+  
   public List<@Valid AdvancedAuctionOperationError> getErrors() {
     return errors;
   }

@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TrendingKeywordsResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingKeywordsResponse   {
-  private @Valid List<@Valid TrendingKeyword> trends = new ArrayList<>();
+  private List<@Valid TrendingKeyword> trends = new ArrayList<>();
 
   public TrendingKeywordsResponse() {
   }
@@ -38,7 +38,7 @@ public class TrendingKeywordsResponse   {
   
   @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region. Results are ordered, with the first element in the array representing the #1 top trend.")
   @JsonProperty("trends")
-  @Valid public List<@Valid TrendingKeyword> getTrends() {
+  public List<@Valid TrendingKeyword> getTrends() {
     return trends;
   }
 

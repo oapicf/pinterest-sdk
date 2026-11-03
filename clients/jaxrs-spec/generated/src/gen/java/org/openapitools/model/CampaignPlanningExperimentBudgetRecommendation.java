@@ -22,11 +22,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Experimental budget recommendation for a single experiment version.")
 @JsonTypeName("CampaignPlanningExperimentBudgetRecommendation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningExperimentBudgetRecommendation   {
   private Integer budgetRecommendation;
   private Integer lifetimeDaysRecommendation;
-  private @Valid List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
+  private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
   private String versionId;
 
   public CampaignPlanningExperimentBudgetRecommendation() {
@@ -83,7 +83,7 @@ public class CampaignPlanningExperimentBudgetRecommendation   {
   
   @ApiModelProperty(value = "Point estimations for this experiment version.")
   @JsonProperty("point_estimations")
-  @Valid public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
+  public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
     return pointEstimations;
   }
 

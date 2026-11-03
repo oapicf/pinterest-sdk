@@ -36,14 +36,10 @@ import {
 export interface CampaignPlanningCurveEstimate {
     /**
      * Estimation type for campaign planning estimated curve
-     * @type {CampaignPlanningEstimationType}
-     * @memberof CampaignPlanningCurveEstimate
      */
     estimationType?: CampaignPlanningEstimationType;
     /**
      * The estimation points that make up the estimated curve.
-     * @type {Array<CampaignPlanningPointEstimate>}
-     * @memberof CampaignPlanningCurveEstimate
      */
     points?: Array<CampaignPlanningPointEstimate>;
 }

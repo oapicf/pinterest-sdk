@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AdvancedAuctionOperationError {
     /**
      * The error code for the item bid option operation validation error
-     * @type {number}
-     * @memberof AdvancedAuctionOperationError
      */
     code?: number;
     /**
      * Message describing the item bid option operation validation error
-     * @type {string}
-     * @memberof AdvancedAuctionOperationError
      */
     message?: string;
 }

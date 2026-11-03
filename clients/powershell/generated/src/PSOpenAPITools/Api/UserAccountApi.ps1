@@ -171,7 +171,7 @@ function Trace-UserUpdate {
         if (!$Username) {
             throw "Error! The required parameter `Username` missing when calling followUser_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{username}', [System.Web.HTTPUtility]::UrlEncode($Username))
+        $LocalVarUri = $LocalVarUri.replace('{username}', [System.Uri]::EscapeDataString([string]$Username))
 
         if (!$FollowUserCreate) {
             throw "Error! The required parameter `FollowUserCreate` missing when calling followUser_update."
@@ -1048,7 +1048,7 @@ function Use-rAccountFollowedInterests {
         if (!$Username) {
             throw "Error! The required parameter `Username` missing when calling userAccount_followedInterests."
         }
-        $LocalVarUri = $LocalVarUri.replace('{username}', [System.Web.HTTPUtility]::UrlEncode($Username))
+        $LocalVarUri = $LocalVarUri.replace('{username}', [System.Uri]::EscapeDataString([string]$Username))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

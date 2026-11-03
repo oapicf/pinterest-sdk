@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * The result, and link out, based on the user’s choice.
  */
 @ApiModel(description = "The result, and link out, based on the user’s choice.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinResult   {
   @JsonProperty("android_deep_link")
   private String androidDeepLink;

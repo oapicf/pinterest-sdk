@@ -17,7 +17,7 @@ import Schedule from './Schedule';
 /**
  * The SchedulesList200Response model module.
  * @module model/SchedulesList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SchedulesList200Response {
     /**

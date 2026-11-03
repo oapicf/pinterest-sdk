@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface IntegrationLogClientError {
     /**
      * Original cause of the error.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     cause?: string;
     /**
      * Column number in the line of the file that raised the error.
-     * @type {number}
-     * @memberof IntegrationLogClientError
      */
     columnNumber?: number;
     /**
      * Filename where the error happened.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     fileName?: string;
     /**
      * Line number where the error happened.
-     * @type {number}
-     * @memberof IntegrationLogClientError
      */
     lineNumber?: number;
     /**
      * Human-readable description of the error.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     message?: string;
     /**
      * More detail about the message.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     messageDetail?: string;
     /**
      * Filename where the error happened.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     name?: string;
     /**
      * Integer that specifies the error code.
-     * @type {number}
-     * @memberof IntegrationLogClientError
      */
     number?: number;
     /**
      * Stack trace of where the error happened.
-     * @type {string}
-     * @memberof IntegrationLogClientError
      */
     stackTrace?: string;
 }

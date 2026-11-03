@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  * UpdateMemberAssetAccessItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateMemberAssetAccessItem {
 
   private String assetId;
@@ -104,7 +104,7 @@ public class UpdateMemberAssetAccessItem {
    * A non-empty array of permissions to assign to the member.
    * @return permissions
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "permissions", description = "A non-empty array of permissions to assign to the member.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("permissions")
   public List<Permissions> getPermissions() {

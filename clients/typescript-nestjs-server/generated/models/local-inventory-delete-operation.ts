@@ -16,7 +16,7 @@ export interface LocalInventoryDeleteOperation {
 }
 export namespace LocalInventoryDeleteOperation {
   export const OperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

@@ -24,8 +24,6 @@ export interface CampaignAudienceMultipliers {
     [key: string]: number | any;
     /**
      * Audience ID for the multiplier.
-     * @type {string}
-     * @memberof CampaignAudienceMultipliers
      */
     aUDIENCEID?: string;
 }

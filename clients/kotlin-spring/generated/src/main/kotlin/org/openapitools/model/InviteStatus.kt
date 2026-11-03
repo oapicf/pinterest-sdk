@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The current status of an invite or request.
-* Values: PENDING,ACCEPTED,DECLINED,CANCELLED,EXPIRED
-*/
+ * The current status of an invite or request.
+ * Values: PENDING,ACCEPTED,DECLINED,CANCELLED,EXPIRED
+ */
 enum class InviteStatus(@get:JsonValue val value: kotlin.String) {
 
     PENDING("PENDING"),
@@ -31,9 +31,8 @@ enum class InviteStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): InviteStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InviteStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'InviteStatus'")
         }
     }
 }
-

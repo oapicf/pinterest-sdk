@@ -36,7 +36,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("AdGroupCreateCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateCreate   {
   private Boolean autoTargetingEnabled;
   private Integer bidInMicroCurrency;
@@ -44,7 +44,7 @@ public class AdGroupCreateCreate   {
   private BidStrategyType bidStrategyType;
   private ActionType billableEvent;
   private Integer budgetInMicroCurrency;
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
   private String campaignId;
   private String customerSegmentId;
   private Integer endTime;
@@ -56,17 +56,17 @@ public class AdGroupCreateCreate   {
   private BigDecimal localInventoryRadiusInMiles;
   private String name;
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;
   private PlacementGroupType placementGroup;
   private PlacementTrafficType placementTrafficType;
   private PromotionApplicationLevel promotionApplicationLevel;
   private String promotionId = "0";
-  private @Valid List<String> promotionIds = new ArrayList<>();
+  private List<String> promotionIds = new ArrayList<>();
   private Integer startTime;
   private EntityStatus status;
   private TargetingSpecOptimal targetingSpec;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+  private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
   private AdGroupTrackingURLs trackingUrls;
 
   public AdGroupCreateCreate() {

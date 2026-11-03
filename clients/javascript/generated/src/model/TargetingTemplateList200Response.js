@@ -17,7 +17,7 @@ import TargetingTemplate from './TargetingTemplate';
 /**
  * The TargetingTemplateList200Response model module.
  * @module model/TargetingTemplateList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingTemplateList200Response {
     /**

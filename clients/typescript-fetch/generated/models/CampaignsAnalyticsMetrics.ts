@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CampaignsAnalyticsMetrics {
     /**
      * The ID of the campaing that this metrics belongs to. Returned as long as aggregate_report_rows is not true.
-     * @type {string}
-     * @memberof CampaignsAnalyticsMetrics
      */
     cAMPAIGNID?: string;
     /**
      * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
-     * @type {Date}
-     * @memberof CampaignsAnalyticsMetrics
      */
     dATE?: Date;
 }
@@ -51,7 +47,7 @@ export function CampaignsAnalyticsMetricsFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'cAMPAIGNID': json['CAMPAIGN_ID'] == null ? undefined : json['CAMPAIGN_ID'],
-        'dATE': json['DATE'] == null ? undefined : (new Date(json['DATE'])),
+        'dATE': json['DATE'] == null ? undefined : (parseDate(json['DATE'])),
     };
 }
 
@@ -67,7 +63,7 @@ export function CampaignsAnalyticsMetricsToJSONTyped(value?: CampaignsAnalyticsM
     return {
         
         'CAMPAIGN_ID': value['cAMPAIGNID'],
-        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
+        'DATE': value['dATE'] == null ? value['dATE'] : serializeDate(value['dATE']),
     };
 }
 

@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'discount_status.g.dart';
 
+/// Discount status based on the current time and start and end time of discount
 class DiscountStatus extends EnumClass {
 
-  /// Discount status based on the current time and start and end time of discount
   @BuiltValueEnumConst(wireName: r'OTHER')
   static const DiscountStatus OTHER = _$OTHER;
-  /// Discount status based on the current time and start and end time of discount
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const DiscountStatus ACTIVE = _$ACTIVE;
-  /// Discount status based on the current time and start and end time of discount
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const DiscountStatus PAUSED = _$PAUSED;
-  /// Discount status based on the current time and start and end time of discount
   @BuiltValueEnumConst(wireName: r'SCHEDULED')
   static const DiscountStatus SCHEDULED = _$SCHEDULED;
-  /// Discount status based on the current time and start and end time of discount
   @BuiltValueEnumConst(wireName: r'EXPIRED')
   static const DiscountStatus EXPIRED = _$EXPIRED;
 

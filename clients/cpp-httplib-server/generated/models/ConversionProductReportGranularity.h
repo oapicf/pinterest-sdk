@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ConversionProductReportGranularity
-{
-public:
-
-    ConversionProductReportGranularity();
-    virtual ~ConversionProductReportGranularity() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionProductReportGranularity,
-        )
-
-private:
+enum class ConversionProductReportGranularity {
+    
+    TOTAL,
+    
+    WEEK,
+    
+    MONTH
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionProductReportGranularity& value)
+{
+    switch (value)
+    {
+        
+        case ConversionProductReportGranularity::TOTAL: j = "TOTAL"; break;
+        
+        case ConversionProductReportGranularity::WEEK: j = "WEEK"; break;
+        
+        case ConversionProductReportGranularity::MONTH: j = "MONTH"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportGranularity", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionProductReportGranularity& value)
+{
+    
+    if (j == "TOTAL")
+    {
+        value = ConversionProductReportGranularity::TOTAL;
+        return;
+    }
+    
+    if (j == "WEEK")
+    {
+        value = ConversionProductReportGranularity::WEEK;
+        return;
+    }
+    
+    if (j == "MONTH")
+    {
+        value = ConversionProductReportGranularity::MONTH;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportGranularity", &j);
+}
 
 } // namespace models
 

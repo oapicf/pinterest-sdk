@@ -29,14 +29,10 @@ import {
 export interface LabelCreateItem {
     /**
      * 
-     * @type {LabelType}
-     * @memberof LabelCreateItem
      */
     labelType: LabelType;
     /**
      * Label name. 100-character limit.
-     * @type {string}
-     * @memberof LabelCreateItem
      */
     value: string;
 }

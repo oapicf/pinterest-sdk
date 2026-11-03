@@ -21,23 +21,23 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param &#x60;field&#x60; 
+ * @param `field` 
  * @param operation 
  * @param propertyValues 
  */
 data class TargetingSpecOperationShoppingRetargeting(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("field")
+    @param:JsonProperty("field", required = true)
     @get:JsonProperty("field", required = true) override val `field`: TargetingSpecOperationShoppingRetargeting.`Field` = kotlin.String.SHOPPING_RETARGETING,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) val operation: TargetingSpecOperationShoppingRetargeting.Operation,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("values")
+    @param:JsonProperty("values", required = true)
     @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<TargetingSpecShoppingRetargeting>
 ) : TargetingSpecOperations {
 
@@ -48,12 +48,12 @@ data class TargetingSpecOperationShoppingRetargeting(
     enum class `Field`(@get:JsonValue val value: kotlin.String) {
 
         SHOPPING_RETARGETING("SHOPPING_RETARGETING");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): `Field` {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum '&#x60;Field&#x60;'")
             }
         }
@@ -66,12 +66,12 @@ data class TargetingSpecOperationShoppingRetargeting(
     enum class Operation(@get:JsonValue val value: kotlin.String) {
 
         SET("SET");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Operation'")
             }
         }

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -21,13 +20,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionOperationError", description = "Error which occurred when applying a bid options operation to a specific item.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionOperationError {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer code;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String message;
 
   public AdvancedAuctionOperationError code(@Nullable Integer code) {

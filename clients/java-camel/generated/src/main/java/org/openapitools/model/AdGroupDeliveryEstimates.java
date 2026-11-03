@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,15 +31,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupDeliveryEstimates", description = "Ad group configuration for delivery estimates.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupDeliveryEstimates {
 
   private Boolean autoTargetingEnabled;
 
-  @Valid
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes = new ArrayList<>();
 
-  @Valid
   private JsonNullable<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>> keywords = JsonNullable.<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>>undefined();
 
   private Integer monthlyFrequencyCap;
@@ -51,7 +48,6 @@ public class AdGroupDeliveryEstimates {
 
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  @Valid
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
   private TargetingSpecOptimal targetingSpec;
@@ -93,7 +89,7 @@ public class AdGroupDeliveryEstimates {
    * Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
    * @return creativeTypes
    */
-  @Valid 
+  
   @Schema(name = "creative_types", description = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_types")
   public List<AdGroupAudienceSizingCreativeTypes> getCreativeTypes() {
@@ -121,7 +117,7 @@ public class AdGroupDeliveryEstimates {
    * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
    * @return keywords
    */
-  @Valid 
+  
   @Schema(name = "keywords", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public JsonNullable<List<@Valid AdGroupDeliveryEstimatesKeywordsItems>> getKeywords() {

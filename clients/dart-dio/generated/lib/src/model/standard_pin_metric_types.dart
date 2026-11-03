@@ -9,33 +9,25 @@ import 'package:built_value/serializer.dart';
 
 part 'standard_pin_metric_types.g.dart';
 
+/// Standard Pin metric types
 class StandardPinMetricTypes extends EnumClass {
 
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'IMPRESSION')
   static const StandardPinMetricTypes IMPRESSION = _$IMPRESSION;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK')
   static const StandardPinMetricTypes OUTBOUND_CLICK = _$OUTBOUND_CLICK;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'PIN_CLICK')
   static const StandardPinMetricTypes PIN_CLICK = _$PIN_CLICK;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'SAVE')
   static const StandardPinMetricTypes SAVE = _$SAVE;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'SAVE_RATE')
   static const StandardPinMetricTypes SAVE_RATE = _$SAVE_RATE;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'TOTAL_COMMENTS')
   static const StandardPinMetricTypes TOTAL_COMMENTS = _$TOTAL_COMMENTS;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'TOTAL_REACTIONS')
   static const StandardPinMetricTypes TOTAL_REACTIONS = _$TOTAL_REACTIONS;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'USER_FOLLOW')
   static const StandardPinMetricTypes USER_FOLLOW = _$USER_FOLLOW;
-  /// Standard Pin metric types
   @BuiltValueEnumConst(wireName: r'PROFILE_VISIT')
   static const StandardPinMetricTypes PROFILE_VISIT = _$PROFILE_VISIT;
 

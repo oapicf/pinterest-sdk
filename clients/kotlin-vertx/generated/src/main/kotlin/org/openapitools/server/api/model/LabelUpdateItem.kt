@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
  * 
  * @param id Label ID.
  * @param status 
- * @param &#x60;value&#x60; Label name. 100-character limit.
+ * @param `value` Label name. 100-character limit.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -163,3 +163,4 @@ class _$BusinessMemberAssetsGetResponseSerializer implements PrimitiveSerializer
   }
 }
 
+

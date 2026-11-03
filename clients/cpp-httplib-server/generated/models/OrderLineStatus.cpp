@@ -6,20 +6,3 @@
 */
 #include "OrderLineStatus.h"
 
-namespace models {
-
-OrderLineStatus::OrderLineStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

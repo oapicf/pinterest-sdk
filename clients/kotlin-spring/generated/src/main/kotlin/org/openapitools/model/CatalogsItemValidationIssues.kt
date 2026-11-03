@@ -26,20 +26,20 @@ data class CatalogsItemValidationIssues(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("errors")
+    @param:JsonProperty("errors", required = true)
     @get:JsonProperty("errors", required = true) val errors: CatalogsItemValidationErrors,
 
     @Schema(example = "DS0294-L", required = true, description = "The merchant-created unique ID that represents the product.")
-    @param:JsonProperty("item_id")
+    @param:JsonProperty("item_id", required = true)
     @get:JsonProperty("item_id", required = true) val itemId: kotlin.String?,
 
     @Schema(example = "0", required = true, description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
-    @param:JsonProperty("item_number")
+    @param:JsonProperty("item_number", required = true)
     @get:JsonProperty("item_number", required = true) val itemNumber: kotlin.Int,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("warnings")
+    @param:JsonProperty("warnings", required = true)
     @get:JsonProperty("warnings", required = true) val warnings: CatalogsItemValidationWarnings
 ) {
 

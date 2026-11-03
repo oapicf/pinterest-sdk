@@ -185,6 +185,7 @@ class _$CatalogsCreativeAssetsItemResponseSerializer implements PrimitiveSeriali
   }
 }
 
+
 class CatalogsCreativeAssetsItemResponseCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')
@@ -198,9 +199,9 @@ class CatalogsCreativeAssetsItemResponseCatalogTypeEnum extends EnumClass {
   static CatalogsCreativeAssetsItemResponseCatalogTypeEnum valueOf(String name) => _$catalogsCreativeAssetsItemResponseCatalogTypeEnumValueOf(name);
 }
 
+/// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
 class CatalogsCreativeAssetsItemResponseItemResponseKindEnum extends EnumClass {
 
-  /// Discriminator literal identifying this leaf inside an `ItemResponse` payload.
   @BuiltValueEnumConst(wireName: r'creative_assets_item')
   static const CatalogsCreativeAssetsItemResponseItemResponseKindEnum creativeAssetsItem = _$catalogsCreativeAssetsItemResponseItemResponseKindEnum_creativeAssetsItem;
 

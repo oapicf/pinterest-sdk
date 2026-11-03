@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class PromotionApplicationLevel
-{
-public:
-
-    PromotionApplicationLevel();
-    virtual ~PromotionApplicationLevel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PromotionApplicationLevel,
-        )
-
-private:
+enum class PromotionApplicationLevel {
+    
+    NONE,
+    
+    ITEM,
+    
+    AD_GROUP
+    
 };
 
+inline void to_json(nlohmann::json& j, const PromotionApplicationLevel& value)
+{
+    switch (value)
+    {
+        
+        case PromotionApplicationLevel::NONE: j = "NONE"; break;
+        
+        case PromotionApplicationLevel::ITEM: j = "ITEM"; break;
+        
+        case PromotionApplicationLevel::AD_GROUP: j = "AD_GROUP"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PromotionApplicationLevel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PromotionApplicationLevel& value)
+{
+    
+    if (j == "NONE")
+    {
+        value = PromotionApplicationLevel::NONE;
+        return;
+    }
+    
+    if (j == "ITEM")
+    {
+        value = PromotionApplicationLevel::ITEM;
+        return;
+    }
+    
+    if (j == "AD_GROUP")
+    {
+        value = PromotionApplicationLevel::AD_GROUP;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PromotionApplicationLevel", &j);
+}
 
 } // namespace models
 

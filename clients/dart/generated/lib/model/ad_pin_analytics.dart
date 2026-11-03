@@ -46,7 +46,7 @@ class AdPinAnalytics {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.DATE != null) {
-      json[r'DATE'] = _dateFormatter.format(this.DATE!.toUtc());
+      json[r'DATE'] = _dateFormatter.format(this.DATE!);
     } else {
       json[r'DATE'] = null;
     }

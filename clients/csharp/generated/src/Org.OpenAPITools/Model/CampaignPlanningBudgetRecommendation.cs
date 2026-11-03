@@ -206,16 +206,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (budgetRecommendation.IsSet && budgetRecommendation.Value == null)
-                throw new ArgumentNullException(nameof(budgetRecommendation), "Property is not nullable for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendation: budget_recommendation.");
 
             if (experimentCampaignBudgetRecommendation.IsSet && experimentCampaignBudgetRecommendation.Value == null)
-                throw new ArgumentNullException(nameof(experimentCampaignBudgetRecommendation), "Property is not nullable for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendation: experiment_campaign_budget_recommendation.");
 
             if (lifetimeDaysRecommendation.IsSet && lifetimeDaysRecommendation.Value == null)
-                throw new ArgumentNullException(nameof(lifetimeDaysRecommendation), "Property is not nullable for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendation: lifetime_days_recommendation.");
 
             if (pointEstimations.IsSet && pointEstimations.Value == null)
-                throw new ArgumentNullException(nameof(pointEstimations), "Property is not nullable for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningBudgetRecommendation: point_estimations.");
 
             return new CampaignPlanningBudgetRecommendation(budgetRecommendation, experimentCampaignBudgetRecommendation, lifetimeDaysRecommendation, pointEstimations);
         }
@@ -226,7 +226,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningBudgetRecommendation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningBudgetRecommendation campaignPlanningBudgetRecommendation, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -241,14 +240,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningBudgetRecommendation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningBudgetRecommendation campaignPlanningBudgetRecommendation, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningBudgetRecommendation.BudgetRecommendationOption.IsSet && campaignPlanningBudgetRecommendation.BudgetRecommendation == null)
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendation.BudgetRecommendation to non-nullable JSON property 'budget_recommendation'.");
+
             if (campaignPlanningBudgetRecommendation.ExperimentCampaignBudgetRecommendationOption.IsSet && campaignPlanningBudgetRecommendation.ExperimentCampaignBudgetRecommendation == null)
-                throw new ArgumentNullException(nameof(campaignPlanningBudgetRecommendation.ExperimentCampaignBudgetRecommendation), "Property is required for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendation.ExperimentCampaignBudgetRecommendation to non-nullable JSON property 'experiment_campaign_budget_recommendation'.");
+
+            if (campaignPlanningBudgetRecommendation.LifetimeDaysRecommendationOption.IsSet && campaignPlanningBudgetRecommendation.LifetimeDaysRecommendation == null)
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendation.LifetimeDaysRecommendation to non-nullable JSON property 'lifetime_days_recommendation'.");
 
             if (campaignPlanningBudgetRecommendation.PointEstimationsOption.IsSet && campaignPlanningBudgetRecommendation.PointEstimations == null)
-                throw new ArgumentNullException(nameof(campaignPlanningBudgetRecommendation.PointEstimations), "Property is required for class CampaignPlanningBudgetRecommendation.");
+                throw new JsonException("Cannot write null property CampaignPlanningBudgetRecommendation.PointEstimations to non-nullable JSON property 'point_estimations'.");
 
             if (campaignPlanningBudgetRecommendation.BudgetRecommendationOption.IsSet)
                 writer.WriteNumber("budget_recommendation", campaignPlanningBudgetRecommendation.BudgetRecommendationOption.Value!.Value);

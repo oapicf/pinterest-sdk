@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ASCENDING,DESCENDING
-*/
+ * 
+ * Values: ASCENDING,DESCENDING
+ */
 enum class PinterestLibPaginationOrder(@get:JsonValue val value: kotlin.String) {
 
     ASCENDING("ASCENDING"),
@@ -28,9 +28,8 @@ enum class PinterestLibPaginationOrder(@get:JsonValue val value: kotlin.String) 
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PinterestLibPaginationOrder {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinterestLibPaginationOrder'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinterestLibPaginationOrder'")
         }
     }
 }
-

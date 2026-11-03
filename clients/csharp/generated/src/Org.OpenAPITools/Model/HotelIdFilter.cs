@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!hOTELID.IsSet)
-                throw new ArgumentException("Property is required for class HotelIdFilter.", nameof(hOTELID));
+                throw new JsonException("Property is required for class HotelIdFilter: HOTEL_ID.");
 
             if (hOTELID.IsSet && hOTELID.Value == null)
-                throw new ArgumentNullException(nameof(hOTELID), "Property is not nullable for class HotelIdFilter.");
+                throw new JsonException("Property is not nullable for class HotelIdFilter: HOTEL_ID.");
 
             return new HotelIdFilter(hOTELID.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="hotelIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, HotelIdFilter hotelIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="hotelIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, HotelIdFilter hotelIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (hotelIdFilter.HOTEL_ID == null)
-                throw new ArgumentNullException(nameof(hotelIdFilter.HOTEL_ID), "Property is required for class HotelIdFilter.");
-
             writer.WritePropertyName("HOTEL_ID");
             JsonSerializer.Serialize(writer, hotelIdFilter.HOTEL_ID, jsonSerializerOptions);
         }

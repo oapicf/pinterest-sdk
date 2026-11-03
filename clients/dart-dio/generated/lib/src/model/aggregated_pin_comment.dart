@@ -462,3 +462,4 @@ class _$AggregatedPinCommentSerializer implements PrimitiveSerializer<Aggregated
   }
 }
 
+

@@ -78,62 +78,42 @@ import {
 export interface CatalogsFeedsCreateRequest {
     /**
      * 
-     * @type {CatalogsFeedCredentials}
-     * @memberof CatalogsFeedsCreateRequest
      */
     credentials?: CatalogsFeedCredentials | null;
     /**
      * 
-     * @type {ProductAvailabilityType}
-     * @memberof CatalogsFeedsCreateRequest
      */
     defaultAvailability?: ProductAvailabilityType | null;
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsFeedsCreateRequest
      */
     defaultCountry?: Country;
     /**
      * 
-     * @type {NullableCurrency}
-     * @memberof CatalogsFeedsCreateRequest
      */
     defaultCurrency?: NullableCurrency | null;
     /**
      * 
-     * @type {CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale}
-     * @memberof CatalogsFeedsCreateRequest
      */
     defaultLocale?: CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale;
     /**
      * 
-     * @type {CatalogsFormat}
-     * @memberof CatalogsFeedsCreateRequest
      */
     format: CatalogsFormat;
     /**
      * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-     * @type {string}
-     * @memberof CatalogsFeedsCreateRequest
      */
     location: string;
     /**
      * A human-friendly name associated to a given feed.
-     * @type {string}
-     * @memberof CatalogsFeedsCreateRequest
      */
     name: string;
     /**
      * 
-     * @type {CatalogsFeedProcessingSchedule}
-     * @memberof CatalogsFeedsCreateRequest
      */
     preferredProcessingSchedule?: CatalogsFeedProcessingSchedule | null;
     /**
      * 
-     * @type {CatalogsStatus}
-     * @memberof CatalogsFeedsCreateRequest
      */
     status?: CatalogsStatus;
 }

@@ -205,7 +205,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the ad_accounts API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface AdAccountsApi  {
 
     @GET
@@ -572,7 +572,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid AdGroupCreateCreate> adGroupCreateCreate,@Context SecurityContext securityContext);
+    public Response adGroupsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid AdGroupCreateCreate> adGroupCreateCreate,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/ad_groups/{ad_group_id}/dynamic_titles/csv")
     
@@ -775,7 +775,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate,@Context SecurityContext securityContext);
+    public Response adGroupsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/pins/analytics")
     
@@ -906,7 +906,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid AdCreate> adCreate,@Context SecurityContext securityContext);
+    public Response adsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid AdCreate> adCreate,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/ads_credit/redeem")
     @Consumes({ "application/json" })
@@ -1036,7 +1036,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid AdBatchUpdate> adBatchUpdate,@Context SecurityContext securityContext);
+    public Response adsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid AdBatchUpdate> adBatchUpdate,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/advertiser_defined_events")
     @Consumes({ "application/json" })
@@ -1644,7 +1644,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response campaignAdPreviewCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate,@Context SecurityContext securityContext);
+    public Response campaignAdPreviewCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate,@Context SecurityContext securityContext);
     @DELETE
     @Path("/{ad_account_id}/campaign_ad_preview")
     
@@ -1772,7 +1772,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response campaignsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid CampaignCreateItem> campaignCreateItem,@Context SecurityContext securityContext);
+    public Response campaignsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid CampaignCreateItem> campaignCreateItem,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/campaigns/{campaign_id}")
     
@@ -1850,7 +1850,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response campaignsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem,@Context SecurityContext securityContext);
+    public Response campaignsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid CampaignBatchUpdateItem> campaignBatchUpdateItem,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/conversion_deletion_requests")
     @Consumes({ "application/json" })
@@ -2422,7 +2422,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 503, message = "The service is temporarily unavailable.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response getCampaignDeliveryEstimates( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign,@Context SecurityContext securityContext);
+    public Response getCampaignDeliveryEstimates( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/keywords")
     @Consumes({ "application/json" })
@@ -2689,7 +2689,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response leadFormsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid LeadFormCreate> leadFormCreate,@Context SecurityContext securityContext);
+    public Response leadFormsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid LeadFormCreate> leadFormCreate,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/lead_forms")
     
@@ -2737,7 +2737,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response leadFormsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate,@Context SecurityContext securityContext);
+    public Response leadFormsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate,@Context SecurityContext securityContext);
     @POST
     @Path("/{ad_account_id}/leads_export")
     @Consumes({ "application/json" })
@@ -3064,7 +3064,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response promotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid PromotionCreate> promotionCreate,@Context SecurityContext securityContext);
+    public Response promotionsCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid PromotionCreate> promotionCreate,@Context SecurityContext securityContext);
     @DELETE
     @Path("/{ad_account_id}/promotions/{promotion_id}")
     
@@ -3162,7 +3162,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response promotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid PromotionBatchUpdate> promotionBatchUpdate,@Context SecurityContext securityContext);
+    public Response promotionsUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid PromotionBatchUpdate> promotionBatchUpdate,@Context SecurityContext securityContext);
     @DELETE
     @Path("/{ad_account_id}/sandbox")
     
@@ -3212,7 +3212,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response schedulesCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid ScheduleCreate> scheduleCreate,@Context SecurityContext securityContext);
+    public Response schedulesCreate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid ScheduleCreate> scheduleCreate,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/schedules")
     
@@ -3260,7 +3260,7 @@ public interface AdAccountsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Response schedulesUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull @Valid List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate,@Context SecurityContext securityContext);
+    public Response schedulesUpdate( @Pattern(regexp="^\\d+$") @Size(max=18) @PathParam("ad_account_id") String adAccountId,@ApiParam(value = "" ,required=true) @NotNull List<@Valid ScheduleBatchUpdate> scheduleBatchUpdate,@Context SecurityContext securityContext);
     @GET
     @Path("/{ad_account_id}/ssio/accounts")
     

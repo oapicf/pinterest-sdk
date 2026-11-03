@@ -21,50 +21,34 @@ import { mapValues } from '../runtime';
 export interface MediaUploadParameters {
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     contentType?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     key?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     policy?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     xAmzAlgorithm?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     xAmzCredential?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     xAmzDate?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     xAmzSecurityToken?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaUploadParameters
      */
     xAmzSignature?: string;
 }

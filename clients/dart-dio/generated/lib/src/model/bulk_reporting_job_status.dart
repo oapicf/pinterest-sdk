@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'bulk_reporting_job_status.g.dart';
 
+/// Possible status for a bulk reporting job
 class BulkReportingJobStatus extends EnumClass {
 
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'DOES_NOT_EXIST')
   static const BulkReportingJobStatus DOES_NOT_EXIST = _$DOES_NOT_EXIST;
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'FINISHED')
   static const BulkReportingJobStatus FINISHED = _$FINISHED;
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'IN_PROGRESS')
   static const BulkReportingJobStatus IN_PROGRESS = _$IN_PROGRESS;
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'EXPIRED')
   static const BulkReportingJobStatus EXPIRED = _$EXPIRED;
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'FAILED')
   static const BulkReportingJobStatus FAILED = _$FAILED;
-  /// Possible status for a bulk reporting job
   @BuiltValueEnumConst(wireName: r'CANCELLED')
   static const BulkReportingJobStatus CANCELLED = _$CANCELLED;
 

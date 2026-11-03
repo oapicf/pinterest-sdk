@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BillingInvoiceDownloadResponse {
     /**
      * The download url for the billing invoice
-     * @type {string}
-     * @memberof BillingInvoiceDownloadResponse
      */
     downloadUrl?: string;
     /**
      * The billing invoice id
-     * @type {string}
-     * @memberof BillingInvoiceDownloadResponse
      */
     id?: string;
 }

@@ -15,7 +15,7 @@
 export const TokenGrantType = {
     AuthorizationCode: 'authorization_code',
     RefreshToken: 'refresh_token',
-    ClientCredentials: 'client_credentials'
+    ClientCredentials: 'client_credentials',
 } as const;
 export type TokenGrantType = typeof TokenGrantType[keyof typeof TokenGrantType];
 

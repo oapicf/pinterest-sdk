@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!retailerId.IsSet)
-                throw new ArgumentException("Property is required for class CartingRetailer.", nameof(retailerId));
+                throw new JsonException("Property is required for class CartingRetailer: retailer_id.");
 
             if (!retailerName.IsSet)
-                throw new ArgumentException("Property is required for class CartingRetailer.", nameof(retailerName));
+                throw new JsonException("Property is required for class CartingRetailer: retailer_name.");
 
             if (retailerId.IsSet && retailerId.Value == null)
-                throw new ArgumentNullException(nameof(retailerId), "Property is not nullable for class CartingRetailer.");
+                throw new JsonException("Property is not nullable for class CartingRetailer: retailer_id.");
 
             if (retailerName.IsSet && retailerName.Value == null)
-                throw new ArgumentNullException(nameof(retailerName), "Property is not nullable for class CartingRetailer.");
+                throw new JsonException("Property is not nullable for class CartingRetailer: retailer_name.");
 
             return new CartingRetailer(retailerId.Value!, retailerName.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cartingRetailer"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CartingRetailer cartingRetailer, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cartingRetailer"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CartingRetailer cartingRetailer, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (cartingRetailer.RetailerId == null)
-                throw new ArgumentNullException(nameof(cartingRetailer.RetailerId), "Property is required for class CartingRetailer.");
-
-            if (cartingRetailer.RetailerName == null)
-                throw new ArgumentNullException(nameof(cartingRetailer.RetailerName), "Property is required for class CartingRetailer.");
-
             writer.WriteString("retailer_id", cartingRetailer.RetailerId);
 
             writer.WriteString("retailer_name", cartingRetailer.RetailerName);

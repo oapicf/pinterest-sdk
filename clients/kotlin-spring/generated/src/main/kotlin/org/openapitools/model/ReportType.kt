@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: SYNC,ASYNC
-*/
+ * 
+ * Values: SYNC,ASYNC
+ */
 enum class ReportType(@get:JsonValue val value: kotlin.String) {
 
     SYNC("SYNC"),
@@ -28,9 +28,8 @@ enum class ReportType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ReportType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ReportType'")
         }
     }
 }
-

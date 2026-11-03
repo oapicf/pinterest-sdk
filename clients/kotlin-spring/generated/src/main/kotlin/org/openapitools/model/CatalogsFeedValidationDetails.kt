@@ -24,12 +24,12 @@ data class CatalogsFeedValidationDetails(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("errors")
+    @param:JsonProperty("errors", required = true)
     @get:JsonProperty("errors", required = true) val errors: CatalogsFeedValidationErrors,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("warnings")
+    @param:JsonProperty("warnings", required = true)
     @get:JsonProperty("warnings", required = true) val warnings: CatalogsFeedValidationWarnings
 ) {
 

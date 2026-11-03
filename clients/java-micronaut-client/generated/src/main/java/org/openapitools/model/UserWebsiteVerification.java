@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   UserWebsiteVerification.JSON_PROPERTY_VERIFICATION_CODE
 })
 @JsonTypeName("UserWebsiteVerification")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class UserWebsiteVerification {
     public static final String JSON_PROPERTY_DNS_TXT_RECORD = "dns_txt_record";

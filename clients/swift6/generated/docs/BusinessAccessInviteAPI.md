@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **assetAccessRequestsCreate**
 ```swift
-    open class func assetAccessRequestsCreate(businessId: String, createAssetAccessRequestBody: CreateAssetAccessRequestBody, completion: @escaping (_ data: CreateAssetAccessRequestResponse?, _ error: Error?) -> Void)
+    open class func assetAccessRequestsCreate(businessId: String, createAssetAccessRequestBody: CreateAssetAccessRequestBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CreateAssetAccessRequestResponse
 ```
 
 Create a request to access an existing partner's assets.
@@ -30,15 +30,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let createAssetAccessRequestBody = CreateAssetAccessRequestBody(assetRequests: [CreateAssetAccessRequestItem(assetIdToPermissions: "TODO", partnerId: "partnerId_example")]) // CreateAssetAccessRequestBody | 
 
 // Create a request to access an existing partner's assets.
-BusinessAccessInviteAPI.assetAccessRequestsCreate(businessId: businessId, createAssetAccessRequestBody: createAssetAccessRequestBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.assetAccessRequestsCreate(businessId: businessId, createAssetAccessRequestBody: createAssetAccessRequestBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -66,7 +62,7 @@ Name | Type | Description  | Notes
 
 # **cancelInvitesOrRequests**
 ```swift
-    open class func cancelInvitesOrRequests(businessId: String, cancelInvitesRequest: CancelInvitesRequest, completion: @escaping (_ data: CancelInvitesResponse?, _ error: Error?) -> Void)
+    open class func cancelInvitesOrRequests(businessId: String, cancelInvitesRequest: CancelInvitesRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CancelInvitesResponse
 ```
 
 Cancel invites/requests
@@ -82,15 +78,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let cancelInvitesRequest = CancelInvitesRequest(inviteIds: ["inviteIds_example"]) // CancelInvitesRequest | 
 
 // Cancel invites/requests
-BusinessAccessInviteAPI.cancelInvitesOrRequests(businessId: businessId, cancelInvitesRequest: cancelInvitesRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.cancelInvitesOrRequests(businessId: businessId, cancelInvitesRequest: cancelInvitesRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -118,7 +110,7 @@ Name | Type | Description  | Notes
 
 # **createAssetInvites**
 ```swift
-    open class func createAssetInvites(businessId: String, createAssetInvitesRequest: CreateAssetInvitesRequest, completion: @escaping (_ data: UpdateInvitesResultsResponseArray?, _ error: Error?) -> Void)
+    open class func createAssetInvites(businessId: String, createAssetInvitesRequest: CreateAssetInvitesRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> UpdateInvitesResultsResponseArray
 ```
 
 Update invite/request with an asset permission
@@ -134,15 +126,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let createAssetInvitesRequest = CreateAssetInvitesRequest(invites: [CreateAssetInvitesRequestItem(assetIdToPermissions: "TODO", inviteId: "inviteId_example", inviteType: InviteType())]) // CreateAssetInvitesRequest | 
 
 // Update invite/request with an asset permission
-BusinessAccessInviteAPI.createAssetInvites(businessId: businessId, createAssetInvitesRequest: createAssetInvitesRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.createAssetInvites(businessId: businessId, createAssetInvitesRequest: createAssetInvitesRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -170,7 +158,7 @@ Name | Type | Description  | Notes
 
 # **createMembershipOrPartnershipInvites**
 ```swift
-    open class func createMembershipOrPartnershipInvites(businessId: String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, completion: @escaping (_ data: CreateInvitesResultsResponseArray?, _ error: Error?) -> Void)
+    open class func createMembershipOrPartnershipInvites(businessId: String, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CreateInvitesResultsResponseArray
 ```
 
 Create invites or requests
@@ -186,15 +174,11 @@ let businessId = "businessId_example" // String | Unique identifier of the reque
 let createMembershipOrPartnershipInvitesBody = CreateMembershipOrPartnershipInvitesBody(businessRole: BusinessRoleForInvite(), inviteType: InviteType(), members: ["members_example"], partners: ["partners_example"]) // CreateMembershipOrPartnershipInvitesBody | 
 
 // Create invites or requests
-BusinessAccessInviteAPI.createMembershipOrPartnershipInvites(businessId: businessId, createMembershipOrPartnershipInvitesBody: createMembershipOrPartnershipInvitesBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.createMembershipOrPartnershipInvites(businessId: businessId, createMembershipOrPartnershipInvitesBody: createMembershipOrPartnershipInvitesBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -222,7 +206,7 @@ Name | Type | Description  | Notes
 
 # **getInvites**
 ```swift
-    open class func getInvites(businessId: String, isMember: Bool? = nil, inviteStatus: [InviteFilterStatus]? = nil, inviteType: InviteType? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: GetInvites200Response?, _ error: Error?) -> Void)
+    open class func getInvites(businessId: String, isMember: Bool? = nil, inviteStatus: [InviteFilterStatus]? = nil, inviteType: InviteType? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> GetInvites200Response
 ```
 
 Get invites/requests
@@ -242,15 +226,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // Get invites/requests
-BusinessAccessInviteAPI.getInvites(businessId: businessId, isMember: isMember, inviteStatus: inviteStatus, inviteType: inviteType, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.getInvites(businessId: businessId, isMember: isMember, inviteStatus: inviteStatus, inviteType: inviteType, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -282,7 +262,7 @@ Name | Type | Description  | Notes
 
 # **respondBusinessAccessInvites**
 ```swift
-    open class func respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, completion: @escaping (_ data: RespondToInvitesResponseArray?, _ error: Error?) -> Void)
+    open class func respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> RespondToInvitesResponseArray
 ```
 
 Accept or decline an invite/request
@@ -297,15 +277,11 @@ import OpenAPIClient
 let authRespondInvitesBody = AuthRespondInvitesBody(invites: [AuthRespondInvitesBodyItem(action: AuthRespondInviteAction(acceptInvite: false, assetIdToPermissions: "TODO"), inviteId: "inviteId_example")]) // AuthRespondInvitesBody | 
 
 // Accept or decline an invite/request
-BusinessAccessInviteAPI.respondBusinessAccessInvites(authRespondInvitesBody: authRespondInvitesBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await BusinessAccessInviteAPI.respondBusinessAccessInvites(authRespondInvitesBody: authRespondInvitesBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

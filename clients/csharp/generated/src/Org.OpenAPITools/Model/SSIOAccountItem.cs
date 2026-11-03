@@ -319,31 +319,31 @@ https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement</e
             }
 
             if (addresses.IsSet && addresses.Value == null)
-                throw new ArgumentNullException(nameof(addresses), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: addresses.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: id.");
 
             if (ioTerms.IsSet && ioTerms.Value == null)
-                throw new ArgumentNullException(nameof(ioTerms), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: io_terms.");
 
             if (ioTermsId.IsSet && ioTermsId.Value == null)
-                throw new ArgumentNullException(nameof(ioTermsId), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: io_terms_id.");
 
             if (ioType.IsSet && ioType.Value == null)
-                throw new ArgumentNullException(nameof(ioType), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: io_type.");
 
             if (rowTerms.IsSet && rowTerms.Value == null)
-                throw new ArgumentNullException(nameof(rowTerms), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: row_terms.");
 
             if (rowTermsId.IsSet && rowTermsId.Value == null)
-                throw new ArgumentNullException(nameof(rowTermsId), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: row_terms_id.");
 
             if (usTerms.IsSet && usTerms.Value == null)
-                throw new ArgumentNullException(nameof(usTerms), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: us_terms.");
 
             if (usTermsId.IsSet && usTermsId.Value == null)
-                throw new ArgumentNullException(nameof(usTermsId), "Property is not nullable for class SSIOAccountItem.");
+                throw new JsonException("Property is not nullable for class SSIOAccountItem: us_terms_id.");
 
             return new SSIOAccountItem(addresses, id, ioTerms, ioTermsId, ioType, rowTerms, rowTermsId, usTerms, usTermsId);
         }
@@ -354,7 +354,6 @@ https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement</e
         /// <param name="writer"></param>
         /// <param name="sSIOAccountItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOAccountItem sSIOAccountItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -369,35 +368,34 @@ https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement</e
         /// <param name="writer"></param>
         /// <param name="sSIOAccountItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOAccountItem sSIOAccountItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (sSIOAccountItem.AddressesOption.IsSet && sSIOAccountItem.Addresses == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.Addresses), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.Addresses to non-nullable JSON property 'addresses'.");
 
             if (sSIOAccountItem.IdOption.IsSet && sSIOAccountItem.Id == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.Id), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.Id to non-nullable JSON property 'id'.");
 
             if (sSIOAccountItem.IoTermsOption.IsSet && sSIOAccountItem.IoTerms == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.IoTerms), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.IoTerms to non-nullable JSON property 'io_terms'.");
 
             if (sSIOAccountItem.IoTermsIdOption.IsSet && sSIOAccountItem.IoTermsId == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.IoTermsId), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.IoTermsId to non-nullable JSON property 'io_terms_id'.");
 
             if (sSIOAccountItem.IoTypeOption.IsSet && sSIOAccountItem.IoType == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.IoType), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.IoType to non-nullable JSON property 'io_type'.");
 
             if (sSIOAccountItem.RowTermsOption.IsSet && sSIOAccountItem.RowTerms == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.RowTerms), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.RowTerms to non-nullable JSON property 'row_terms'.");
 
             if (sSIOAccountItem.RowTermsIdOption.IsSet && sSIOAccountItem.RowTermsId == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.RowTermsId), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.RowTermsId to non-nullable JSON property 'row_terms_id'.");
 
             if (sSIOAccountItem.UsTermsOption.IsSet && sSIOAccountItem.UsTerms == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.UsTerms), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.UsTerms to non-nullable JSON property 'us_terms'.");
 
             if (sSIOAccountItem.UsTermsIdOption.IsSet && sSIOAccountItem.UsTermsId == null)
-                throw new ArgumentNullException(nameof(sSIOAccountItem.UsTermsId), "Property is required for class SSIOAccountItem.");
+                throw new JsonException("Cannot write null property SSIOAccountItem.UsTermsId to non-nullable JSON property 'us_terms_id'.");
 
             if (sSIOAccountItem.AddressesOption.IsSet)
             {

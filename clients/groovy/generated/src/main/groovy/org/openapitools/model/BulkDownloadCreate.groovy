@@ -18,7 +18,7 @@ class BulkDownloadCreate {
     /* All entity types specified will be downloaded. Fewer types result in faster downloads. */
     List<BulkEntityType> entityTypes = new ArrayList<>()
     
-    BulkOutputFormat outputFormat
+    BulkOutputFormat outputFormat = BulkOutputFormat.JSON
     /* Unix UTC timestamp to retrieve all entities that have changed since this time. */
     String updatedSince
 }

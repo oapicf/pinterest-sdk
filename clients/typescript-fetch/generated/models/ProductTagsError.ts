@@ -29,20 +29,14 @@ import {
 export interface ProductTagsError {
     /**
      * 
-     * @type {number}
-     * @memberof ProductTagsError
      */
     code: number;
     /**
      * Details about which product tags failed eligibility check.
-     * @type {IneligibleProductTagsErrorDetails}
-     * @memberof ProductTagsError
      */
     details?: IneligibleProductTagsErrorDetails;
     /**
      * 
-     * @type {string}
-     * @memberof ProductTagsError
      */
     message: string;
 }

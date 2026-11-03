@@ -17,7 +17,7 @@ import TokenGrantType from './TokenGrantType';
 /**
  * The OauthAccessToken model module.
  * @module model/OauthAccessToken
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class OauthAccessToken {
     /**

@@ -17,7 +17,7 @@ export interface TargetingSpecOperationLocationExclude {
 }
 export namespace TargetingSpecOperationLocationExclude {
     export const FieldEnum = {
-        LocationExclude: 'LOCATION_EXCLUDE'
+        LocationExclude: 'LOCATION_EXCLUDE',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

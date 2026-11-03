@@ -157,13 +157,27 @@ class BidOptionsAgeBucketMultipliers {
       }());
 
       return BidOptionsAgeBucketMultipliers(
-        n1824: num.parse('${json[r'18-24']}'),
-        n2534: num.parse('${json[r'25-34']}'),
-        n3544: num.parse('${json[r'35-44']}'),
-        n4549: num.parse('${json[r'45-49']}'),
-        n5054: num.parse('${json[r'50-54']}'),
-        n5564: num.parse('${json[r'55-64']}'),
-        n65plus: num.parse('${json[r'65+']}'),
+        n1824: json[r'18-24'] == null
+            ? null
+            : num.parse('${json[r'18-24']}'),
+        n2534: json[r'25-34'] == null
+            ? null
+            : num.parse('${json[r'25-34']}'),
+        n3544: json[r'35-44'] == null
+            ? null
+            : num.parse('${json[r'35-44']}'),
+        n4549: json[r'45-49'] == null
+            ? null
+            : num.parse('${json[r'45-49']}'),
+        n5054: json[r'50-54'] == null
+            ? null
+            : num.parse('${json[r'50-54']}'),
+        n5564: json[r'55-64'] == null
+            ? null
+            : num.parse('${json[r'55-64']}'),
+        n65plus: json[r'65+'] == null
+            ? null
+            : num.parse('${json[r'65+']}'),
       );
     }
     return null;

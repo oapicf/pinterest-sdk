@@ -43,68 +43,46 @@ import {
 export interface AdPreviewShopping {
     /**
      * Catalog Product Group Id.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     catalogProductGroupId: string;
     /**
      * Ad format of the shopping ad preview.
-     * @type {AdShoppingPreviewCreativeType}
-     * @memberof AdPreviewShopping
      */
     creativeType: AdShoppingPreviewCreativeType;
     /**
      * Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`
-     * @type {CustomizableCTAType}
-     * @memberof AdPreviewShopping
      */
     customizableCtaType?: CustomizableCTAType | null;
     /**
      * Title displayed below ad.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     heroImageTitle?: string;
     /**
      * Hero image URL.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     heroImageUrl?: string;
     /**
      * Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     heroPinId?: string;
     /**
      * Multi image template tag.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     imageTag?: string;
     /**
      * Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     itemId?: string;
     /**
      * Preferred media type.
-     * @type {BasePreferredMediaType}
-     * @memberof AdPreviewShopping
      */
     preferredMediaType?: BasePreferredMediaType;
     /**
      * Include promotion data in preview when available on catalog item. Defaults to false.
-     * @type {boolean}
-     * @memberof AdPreviewShopping
      */
     showPromotion?: boolean;
     /**
      * Multi video template tag, image_tag and video_tag are mutual exclusive.
-     * @type {string}
-     * @memberof AdPreviewShopping
      */
     videoTag?: string;
 }

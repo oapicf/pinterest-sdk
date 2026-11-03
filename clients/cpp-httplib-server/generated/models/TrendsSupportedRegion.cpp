@@ -6,20 +6,3 @@
 */
 #include "Region.h"
 
-namespace models {
-
-Region::Region()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

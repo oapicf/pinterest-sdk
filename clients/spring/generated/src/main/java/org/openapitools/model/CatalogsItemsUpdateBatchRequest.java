@@ -29,7 +29,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsItemsUpdateBatchRequest", description = "Request object to update catalogs items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemsUpdateBatchRequest implements CatalogsItemsBatchRequest {
 
   private Country country;
@@ -370,7 +370,7 @@ public class CatalogsItemsUpdateBatchRequest implements CatalogsItemsBatchReques
    * Array with catalogs items
    * @return items
    */
-  @NotNull @Valid @Size(min = 1, max = 1000) 
+  @NotNull @Size(min = 1, max = 1000) 
   @Schema(name = "items", description = "Array with catalogs items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid ItemUpdateBatchRecord> getItems() {

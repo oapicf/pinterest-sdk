@@ -301,49 +301,49 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(adAccountId));
+                throw new JsonException("Property is required for class CustomerListUpload: ad_account_id.");
 
             if (!creationTime.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(creationTime));
+                throw new JsonException("Property is required for class CustomerListUpload: creation_time.");
 
             if (!customerListId.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(customerListId));
+                throw new JsonException("Property is required for class CustomerListUpload: customer_list_id.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(id));
+                throw new JsonException("Property is required for class CustomerListUpload: id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(operation));
+                throw new JsonException("Property is required for class CustomerListUpload: operation.");
 
             if (!state.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(state));
+                throw new JsonException("Property is required for class CustomerListUpload: state.");
 
             if (!updatedTime.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpload.", nameof(updatedTime));
+                throw new JsonException("Property is required for class CustomerListUpload: updated_time.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: ad_account_id.");
 
             if (creationTime.IsSet && creationTime.Value == null)
-                throw new ArgumentNullException(nameof(creationTime), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: creation_time.");
 
             if (customerListId.IsSet && customerListId.Value == null)
-                throw new ArgumentNullException(nameof(customerListId), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: customer_list_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: operation.");
 
             if (state.IsSet && state.Value == null)
-                throw new ArgumentNullException(nameof(state), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: state.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: updated_time.");
 
             if (recordCounts.IsSet && recordCounts.Value == null)
-                throw new ArgumentNullException(nameof(recordCounts), "Property is not nullable for class CustomerListUpload.");
+                throw new JsonException("Property is not nullable for class CustomerListUpload: record_counts.");
 
             return new CustomerListUpload(adAccountId.Value!, creationTime.Value!.Value!, customerListId.Value!, id.Value!, operation.Value!.Value!, state.Value!.Value!, updatedTime.Value!.Value!, errorCounts, recordCounts);
         }
@@ -354,7 +354,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUpload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListUpload customerListUpload, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -369,20 +368,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUpload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListUpload customerListUpload, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerListUpload.AdAccountId == null)
-                throw new ArgumentNullException(nameof(customerListUpload.AdAccountId), "Property is required for class CustomerListUpload.");
-
-            if (customerListUpload.CustomerListId == null)
-                throw new ArgumentNullException(nameof(customerListUpload.CustomerListId), "Property is required for class CustomerListUpload.");
-
-            if (customerListUpload.Id == null)
-                throw new ArgumentNullException(nameof(customerListUpload.Id), "Property is required for class CustomerListUpload.");
-
             if (customerListUpload.RecordCountsOption.IsSet && customerListUpload.RecordCounts == null)
-                throw new ArgumentNullException(nameof(customerListUpload.RecordCounts), "Property is required for class CustomerListUpload.");
+                throw new JsonException("Cannot write null property CustomerListUpload.RecordCounts to non-nullable JSON property 'record_counts'.");
 
             writer.WriteString("ad_account_id", customerListUpload.AdAccountId);
 

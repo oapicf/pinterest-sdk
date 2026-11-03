@@ -123,3 +123,4 @@ class _$ProductCategoriesDemographicSerializer implements PrimitiveSerializer<Pr
   }
 }
 
+

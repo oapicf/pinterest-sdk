@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class MatchType
-{
-public:
-
-    MatchType();
-    virtual ~MatchType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MatchType,
-        )
-
-private:
+enum class MatchType {
+    
+    BROAD,
+    
+    PHRASE,
+    
+    EXACT,
+    
+    EXACT_NEGATIVE,
+    
+    PHRASE_NEGATIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const MatchType& value)
+{
+    switch (value)
+    {
+        
+        case MatchType::BROAD: j = "BROAD"; break;
+        
+        case MatchType::PHRASE: j = "PHRASE"; break;
+        
+        case MatchType::EXACT: j = "EXACT"; break;
+        
+        case MatchType::EXACT_NEGATIVE: j = "EXACT_NEGATIVE"; break;
+        
+        case MatchType::PHRASE_NEGATIVE: j = "PHRASE_NEGATIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MatchType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MatchType& value)
+{
+    
+    if (j == "BROAD")
+    {
+        value = MatchType::BROAD;
+        return;
+    }
+    
+    if (j == "PHRASE")
+    {
+        value = MatchType::PHRASE;
+        return;
+    }
+    
+    if (j == "EXACT")
+    {
+        value = MatchType::EXACT;
+        return;
+    }
+    
+    if (j == "EXACT_NEGATIVE")
+    {
+        value = MatchType::EXACT_NEGATIVE;
+        return;
+    }
+    
+    if (j == "PHRASE_NEGATIVE")
+    {
+        value = MatchType::PHRASE_NEGATIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MatchType", &j);
+}
 
 } // namespace models
 

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CampaignBidOptions
 import org.openapitools.model.ConversionObjectiveType
 import org.openapitools.model.EntityStatus
@@ -51,32 +48,26 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CampaignCreateItem(
 
     @Schema(example = "ACME Tools", required = true, description = "Campaign name - 255 chars max.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("objective_type")
+    @param:JsonProperty("objective_type", required = true)
     @get:JsonProperty("objective_type", required = true) val objectiveType: ConversionObjectiveType,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Setting this field does nothing. The ad account ID gets set from the path parameter.")
     @Deprecated(message = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_account_id")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
     @Schema(example = "429047995", description = "[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  The store ID of the mobile app for `APP_INSTALL` campaigns.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("app_id")
     @get:JsonProperty("app_id") val appId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "IOS", description = "[Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Platform of the mobile app for `APP_INSTALL` campaigns.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("app_platform")
     @get:JsonProperty("app_platform") val appPlatform: MobileAppPlatform? = null,
 
@@ -100,8 +91,6 @@ data class CampaignCreateItem(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("intended_promotion_type")
     @get:JsonProperty("intended_promotion_type") val intendedPromotionType: IntendedPromotionType? = null,
 
@@ -118,20 +107,14 @@ data class CampaignCreateItem(
     @get:JsonProperty("is_flexible_daily_budgets") val isFlexibleDailyBudgets: kotlin.Boolean? = false,
 
     @Schema(example = "true", description = "Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_ltv_optimized")
     @get:JsonProperty("is_ltv_optimized") val isLtvOptimized: kotlin.Boolean? = null,
 
     @Schema(example = "true", description = "Note: This field is immutable unless the campaign is in draft status. You can only use this feature with the following objectives: - CONSIDERATION - WEB\\_CONVERSION - SALES - LEADS - CATALOG\\_SALES - APP\\_INSTALL Enable Pinterest Performance+ for your campaign. To learn more, see [Pinterest Performance+ Setup](https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/)")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_performance_plus")
     @get:JsonProperty("is_performance_plus") val isPerformancePlus: kotlin.Boolean? = false,
 
     @Schema(example = "true", description = "Note: This field is immutable unless the campaign is in draft status.  [Restricted](/docs/getting-started/using-beta-and-restricted-features/)  Have your ads and content appear at the top of search result lists in Pinterest.  You can only use this feature with the following objectives:  - CONSIDERATION  - WEB\\_CONVERSION  - SALES  - LEADS  - CATALOG\\_SALES  You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_top_of_search")
     @get:JsonProperty("is_top_of_search") val isTopOfSearch: kotlin.Boolean? = false,
 
@@ -150,8 +133,6 @@ data class CampaignCreateItem(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 

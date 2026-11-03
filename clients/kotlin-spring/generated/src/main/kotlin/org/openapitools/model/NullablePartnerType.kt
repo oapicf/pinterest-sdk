@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: INTERNAL,EXTERNAL
-*/
+ * 
+ * Values: INTERNAL,EXTERNAL
+ */
 enum class NullablePartnerType(@get:JsonValue val value: kotlin.String) {
 
     INTERNAL("INTERNAL"),
@@ -28,9 +28,8 @@ enum class NullablePartnerType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): NullablePartnerType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullablePartnerType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'NullablePartnerType'")
         }
     }
 }
-

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: ENGAGEMENT,ENGAGEMENT_RATE,IMPRESSION,OUTBOUND_CLICK,OUTBOUND_CLICK_RATE,PIN_CLICK,PIN_CLICK_RATE,SAVE,SAVE_RATE
-*/
+ * 
+ * Values: ENGAGEMENT,ENGAGEMENT_RATE,IMPRESSION,OUTBOUND_CLICK,OUTBOUND_CLICK_RATE,PIN_CLICK,PIN_CLICK_RATE,SAVE,SAVE_RATE
+ */
 enum class QuerymetrictypesItems(@get:JsonValue val value: kotlin.String) {
 
     ENGAGEMENT("ENGAGEMENT"),
@@ -35,9 +35,8 @@ enum class QuerymetrictypesItems(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): QuerymetrictypesItems {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QuerymetrictypesItems'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QuerymetrictypesItems'")
         }
     }
 }
-

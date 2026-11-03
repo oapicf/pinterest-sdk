@@ -276,7 +276,12 @@ namespace Org.OpenAPITools.Model
                         case "AGE_BUCKET":
                             string? aGEBUCKETRawValue = utf8JsonReader.GetString();
                             if (aGEBUCKETRawValue != null)
-                                aGEBUCKET = new Option<ScheduleAgeBucketMultipliers.AGEBUCKETEnum?>(ScheduleAgeBucketMultipliers.AGEBUCKETEnumFromStringOrDefault(aGEBUCKETRawValue));
+                            {
+                                ScheduleAgeBucketMultipliers.AGEBUCKETEnum? aGEBUCKETValue = ScheduleAgeBucketMultipliers.AGEBUCKETEnumFromStringOrDefault(aGEBUCKETRawValue);
+                                if (aGEBUCKETValue == null)
+                                    throw new JsonException();
+                                aGEBUCKET = new Option<ScheduleAgeBucketMultipliers.AGEBUCKETEnum?>(aGEBUCKETValue);
+                            }
                             break;
                         default:
                             break;
@@ -285,7 +290,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aGEBUCKET.IsSet && aGEBUCKET.Value == null)
-                throw new ArgumentNullException(nameof(aGEBUCKET), "Property is not nullable for class ScheduleAgeBucketMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleAgeBucketMultipliers: AGE_BUCKET.");
 
             return new ScheduleAgeBucketMultipliers(aGEBUCKET);
         }
@@ -296,7 +301,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAgeBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleAgeBucketMultipliers scheduleAgeBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -311,9 +315,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleAgeBucketMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleAgeBucketMultipliers scheduleAgeBucketMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (scheduleAgeBucketMultipliers.AGE_BUCKETOption.IsSet && scheduleAgeBucketMultipliers.AGE_BUCKET == null)
+                throw new JsonException("Cannot write null property ScheduleAgeBucketMultipliers.AGE_BUCKET to non-nullable JSON property 'AGE_BUCKET'.");
+
             var aGEBUCKETRawValue = ScheduleAgeBucketMultipliers.AGEBUCKETEnumToJsonValue(scheduleAgeBucketMultipliers.AGE_BUCKETOption.Value!.Value);
             writer.WriteString("AGE_BUCKET", aGEBUCKETRawValue);
         }

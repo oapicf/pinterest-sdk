@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Currency Codes from ISO 4217
-* Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP,INR,TRY
-*/
+ * Currency Codes from ISO 4217
+ * Values: UNK,USD,GBP,CAD,EUR,AUD,NZD,SEK,ILS,CHF,HKD,JPY,SGD,KRW,NOK,DKK,PLN,RON,HUF,CZK,BRL,MXN,ARS,CLP,COP,INR,TRY
+ */
 enum class Currency(@get:JsonValue val value: kotlin.String) {
 
     UNK("UNK"),
@@ -53,9 +53,8 @@ enum class Currency(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): Currency {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Currency'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Currency'")
         }
     }
 }
-

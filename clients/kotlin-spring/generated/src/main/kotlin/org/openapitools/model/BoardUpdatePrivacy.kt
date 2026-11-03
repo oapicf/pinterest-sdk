@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: PUBLIC,SECRET
-*/
+ * 
+ * Values: PUBLIC,SECRET
+ */
 enum class BoardUpdatePrivacy(@get:JsonValue val value: kotlin.String) {
 
     PUBLIC("PUBLIC"),
@@ -28,9 +28,8 @@ enum class BoardUpdatePrivacy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BoardUpdatePrivacy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BoardUpdatePrivacy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BoardUpdatePrivacy'")
         }
     }
 }
-

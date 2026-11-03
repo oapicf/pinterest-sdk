@@ -43,7 +43,7 @@ import javax.validation.Valid;
   TrendingTopic.JSON_PROPERTY_TIME_SERIES,
   TrendingTopic.JSON_PROPERTY_TITLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingTopic   {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
@@ -156,7 +156,7 @@ public class TrendingTopic   {
    **/
   @JsonProperty(value = "pins")
   @ApiModelProperty(required = true, value = "Array of pin images related to this trend (up to 6)")
-  @NotNull @Valid  @Size(max=6)
+  @NotNull  @Size(max=6)
   public List<@Valid TrendingPin> getPins() {
     return pins;
   }
@@ -240,7 +240,7 @@ public class TrendingTopic   {
    **/
   @JsonProperty(value = "time_series")
   @ApiModelProperty(required = true, value = "Time series data showing trend values over time, with dates as keys and values as numeric")
-  @NotNull @Valid 
+  @NotNull 
   public Map<String, BigDecimal> getTimeSeries() {
     return timeSeries;
   }

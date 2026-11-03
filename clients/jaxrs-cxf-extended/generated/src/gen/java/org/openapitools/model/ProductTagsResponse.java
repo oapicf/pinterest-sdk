@@ -23,7 +23,6 @@ public class ProductTagsResponse  {
   * List of product tags on the pin.
   */
   @ApiModelProperty(required = true, value = "List of product tags on the pin.")
-  @Valid
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
  /**
   * List of product tags on the pin.

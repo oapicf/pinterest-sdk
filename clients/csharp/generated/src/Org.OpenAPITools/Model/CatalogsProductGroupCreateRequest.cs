@@ -213,25 +213,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!feedId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupCreateRequest.", nameof(feedId));
+                throw new JsonException("Property is required for class CatalogsProductGroupCreateRequest: feed_id.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupCreateRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsProductGroupCreateRequest: filters.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsProductGroupCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsProductGroupCreateRequest: name.");
 
             if (feedId.IsSet && feedId.Value == null)
-                throw new ArgumentNullException(nameof(feedId), "Property is not nullable for class CatalogsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupCreateRequest: feed_id.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupCreateRequest: filters.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupCreateRequest: name.");
 
             if (isFeatured.IsSet && isFeatured.Value == null)
-                throw new ArgumentNullException(nameof(isFeatured), "Property is not nullable for class CatalogsProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsProductGroupCreateRequest: is_featured.");
 
             return new CatalogsProductGroupCreateRequest(feedId.Value!, filters.Value!, name.Value!, description, isFeatured);
         }
@@ -242,7 +242,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -257,17 +256,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsProductGroupCreateRequest catalogsProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsProductGroupCreateRequest.FeedId == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupCreateRequest.FeedId), "Property is required for class CatalogsProductGroupCreateRequest.");
-
-            if (catalogsProductGroupCreateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupCreateRequest.Filters), "Property is required for class CatalogsProductGroupCreateRequest.");
-
-            if (catalogsProductGroupCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsProductGroupCreateRequest.Name), "Property is required for class CatalogsProductGroupCreateRequest.");
+            if (catalogsProductGroupCreateRequest.IsFeaturedOption.IsSet && catalogsProductGroupCreateRequest.IsFeatured == null)
+                throw new JsonException("Cannot write null property CatalogsProductGroupCreateRequest.IsFeatured to non-nullable JSON property 'is_featured'.");
 
             writer.WriteString("feed_id", catalogsProductGroupCreateRequest.FeedId);
 

@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!productTags.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagsResponse.", nameof(productTags));
+                throw new JsonException("Property is required for class ProductTagsResponse: product_tags.");
 
             if (productTags.IsSet && productTags.Value == null)
-                throw new ArgumentNullException(nameof(productTags), "Property is not nullable for class ProductTagsResponse.");
+                throw new JsonException("Property is not nullable for class ProductTagsResponse: product_tags.");
 
             return new ProductTagsResponse(productTags.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductTagsResponse productTagsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductTagsResponse productTagsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productTagsResponse.ProductTags == null)
-                throw new ArgumentNullException(nameof(productTagsResponse.ProductTags), "Property is required for class ProductTagsResponse.");
-
             writer.WritePropertyName("product_tags");
             JsonSerializer.Serialize(writer, productTagsResponse.ProductTags, jsonSerializerOptions);
         }

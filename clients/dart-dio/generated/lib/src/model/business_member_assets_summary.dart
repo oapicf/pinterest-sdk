@@ -130,3 +130,4 @@ class _$BusinessMemberAssetsSummarySerializer implements PrimitiveSerializer<Bus
   }
 }
 
+

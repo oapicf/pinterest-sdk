@@ -6,20 +6,3 @@
 */
 #include "AdShoppingPreviewCreativeType.h"
 
-namespace models {
-
-AdShoppingPreviewCreativeType::AdShoppingPreviewCreativeType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

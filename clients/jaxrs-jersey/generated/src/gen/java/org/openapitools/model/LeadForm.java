@@ -46,7 +46,7 @@ import javax.validation.Valid;
   LeadForm.JSON_PROPERTY_STATUS,
   LeadForm.JSON_PROPERTY_UPDATED_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadForm   {
   public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNT_ID)
@@ -255,7 +255,7 @@ public class LeadForm   {
    **/
   @JsonProperty(value = "policy_links")
   @ApiModelProperty(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", value = "List of additional policy links to be displayed on the lead form.")
-  @Valid  @Size(min=0,max=3)
+   @Size(min=0,max=3)
   public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
     return policyLinks;
   }
@@ -303,7 +303,7 @@ public class LeadForm   {
    **/
   @JsonProperty(value = "questions")
   @ApiModelProperty(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", required = true, value = "List of questions to be displayed on the lead form.")
-  @NotNull @Valid  @Size(min=0,max=10)
+  @NotNull  @Size(min=0,max=10)
   public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
   }

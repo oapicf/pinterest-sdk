@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class PinterestLibPaginationOrder
-{
-public:
-
-    PinterestLibPaginationOrder();
-    virtual ~PinterestLibPaginationOrder() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PinterestLibPaginationOrder,
-        )
-
-private:
+enum class PinterestLibPaginationOrder {
+    
+    ASCENDING,
+    
+    DESCENDING
+    
 };
 
+inline void to_json(nlohmann::json& j, const PinterestLibPaginationOrder& value)
+{
+    switch (value)
+    {
+        
+        case PinterestLibPaginationOrder::ASCENDING: j = "ASCENDING"; break;
+        
+        case PinterestLibPaginationOrder::DESCENDING: j = "DESCENDING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PinterestLibPaginationOrder", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PinterestLibPaginationOrder& value)
+{
+    
+    if (j == "ASCENDING")
+    {
+        value = PinterestLibPaginationOrder::ASCENDING;
+        return;
+    }
+    
+    if (j == "DESCENDING")
+    {
+        value = PinterestLibPaginationOrder::DESCENDING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PinterestLibPaginationOrder", &j);
+}
 
 } // namespace models
 

@@ -18,7 +18,7 @@ import SupplementalOperationResult from './SupplementalOperationResult';
 /**
  * The LocalInventoryItemsBatch model module.
  * @module model/LocalInventoryItemsBatch
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalInventoryItemsBatch {
     /**

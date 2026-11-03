@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AttributionActionType
-{
-public:
-
-    AttributionActionType();
-    virtual ~AttributionActionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AttributionActionType,
-        )
-
-private:
+enum class AttributionActionType {
+    
+    VIEW,
+    
+    CLICK
+    
 };
 
+inline void to_json(nlohmann::json& j, const AttributionActionType& value)
+{
+    switch (value)
+    {
+        
+        case AttributionActionType::VIEW: j = "view"; break;
+        
+        case AttributionActionType::CLICK: j = "click"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AttributionActionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AttributionActionType& value)
+{
+    
+    if (j == "view")
+    {
+        value = AttributionActionType::VIEW;
+        return;
+    }
+    
+    if (j == "click")
+    {
+        value = AttributionActionType::CLICK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AttributionActionType", &j);
+}
 
 } // namespace models
 

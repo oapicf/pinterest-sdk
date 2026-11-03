@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class PlacementTrafficType
-{
-public:
-
-    PlacementTrafficType();
-    virtual ~PlacementTrafficType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PlacementTrafficType,
-        )
-
-private:
+enum class PlacementTrafficType {
+    
+    ALL,
+    
+    TWO_COLUMN_FEED,
+    
+    FULLSCREEN_FEED
+    
 };
 
+inline void to_json(nlohmann::json& j, const PlacementTrafficType& value)
+{
+    switch (value)
+    {
+        
+        case PlacementTrafficType::ALL: j = "ALL"; break;
+        
+        case PlacementTrafficType::TWO_COLUMN_FEED: j = "TWO_COLUMN_FEED"; break;
+        
+        case PlacementTrafficType::FULLSCREEN_FEED: j = "FULLSCREEN_FEED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PlacementTrafficType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PlacementTrafficType& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = PlacementTrafficType::ALL;
+        return;
+    }
+    
+    if (j == "TWO_COLUMN_FEED")
+    {
+        value = PlacementTrafficType::TWO_COLUMN_FEED;
+        return;
+    }
+    
+    if (j == "FULLSCREEN_FEED")
+    {
+        value = PlacementTrafficType::FULLSCREEN_FEED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PlacementTrafficType", &j);
+}
 
 } // namespace models
 

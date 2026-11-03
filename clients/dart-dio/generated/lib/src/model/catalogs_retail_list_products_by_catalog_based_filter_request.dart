@@ -177,9 +177,10 @@ class _$CatalogsRetailListProductsByCatalogBasedFilterRequestSerializer implemen
   }
 }
 
+
+/// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
 class CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum extends EnumClass {
 
-  /// Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
   @BuiltValueEnumConst(wireName: r'RETAIL')
   static const CatalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum RETAIL = _$catalogsRetailListProductsByCatalogBasedFilterRequestCatalogTypeEnum_RETAIL;
 

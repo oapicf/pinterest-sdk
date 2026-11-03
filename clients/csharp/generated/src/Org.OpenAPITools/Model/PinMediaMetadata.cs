@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMediaMetadata" /> class.
         /// </summary>
         /// <param name="imageMetadata"></param>
-        public PinMediaMetadata(ImageMetadata imageMetadata)
+        internal PinMediaMetadata(ImageMetadata imageMetadata)
         {
             ImageMetadata = imageMetadata;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="PinMediaMetadata" /> class.
         /// </summary>
         /// <param name="videoMetadataWithItemType"></param>
-        public PinMediaMetadata(VideoMetadataWithItemType videoMetadataWithItemType)
+        internal PinMediaMetadata(VideoMetadataWithItemType videoMetadataWithItemType)
         {
             VideoMetadataWithItemType = videoMetadataWithItemType;
             OnCreated();
@@ -234,7 +234,12 @@ namespace Org.OpenAPITools.Model
                         case "item_type":
                             string? itemTypeRawValue = utf8JsonReader.GetString();
                             if (itemTypeRawValue != null)
-                                itemType = new Option<PinMediaMetadata.ItemTypeEnum?>(PinMediaMetadata.ItemTypeEnumFromStringOrDefault(itemTypeRawValue));
+                            {
+                                PinMediaMetadata.ItemTypeEnum? itemTypeValue = PinMediaMetadata.ItemTypeEnumFromStringOrDefault(itemTypeRawValue);
+                                if (itemTypeValue == null)
+                                    throw new JsonException();
+                                itemType = new Option<PinMediaMetadata.ItemTypeEnum?>(itemTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -243,10 +248,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaMetadata.", nameof(itemType));
+                throw new JsonException("Property is required for class PinMediaMetadata: item_type.");
 
             if (itemType.IsSet && itemType.Value == null)
-                throw new ArgumentNullException(nameof(itemType), "Property is not nullable for class PinMediaMetadata.");
+                throw new JsonException("Property is not nullable for class PinMediaMetadata: item_type.");
 
             if (imageMetadata != null)
                 return new PinMediaMetadata(imageMetadata);
@@ -263,7 +268,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaMetadata pinMediaMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -290,7 +294,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaMetadata pinMediaMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
 

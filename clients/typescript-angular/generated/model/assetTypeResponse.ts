@@ -20,7 +20,7 @@ export const AssetTypeResponse = {
     PinnerList: 'PINNER_LIST',
     ConversionTag: 'CONVERSION_TAG',
     Catalog: 'CATALOG',
-    ConversionSegment: 'CONVERSION_SEGMENT'
+    ConversionSegment: 'CONVERSION_SEGMENT',
 } as const;
 export type AssetTypeResponse = typeof AssetTypeResponse[keyof typeof AssetTypeResponse];
 

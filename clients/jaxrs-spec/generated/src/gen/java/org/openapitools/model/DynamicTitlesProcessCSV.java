@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("DynamicTitlesProcessCSV")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DynamicTitlesProcessCSV   {
-  private @Valid List<@Valid DynamicTitlesProcessCSVError> errors = new ArrayList<>();
+  private List<@Valid DynamicTitlesProcessCSVError> errors = new ArrayList<>();
   private String status;
 
   public DynamicTitlesProcessCSV() {
@@ -39,7 +39,7 @@ public class DynamicTitlesProcessCSV   {
   
   @ApiModelProperty(value = "List of validation errors. Empty on success.")
   @JsonProperty("errors")
-  @Valid public List<@Valid DynamicTitlesProcessCSVError> getErrors() {
+  public List<@Valid DynamicTitlesProcessCSVError> getErrors() {
     return errors;
   }
 

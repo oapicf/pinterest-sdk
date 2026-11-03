@@ -35,7 +35,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface TrendsApiService {
       Response trendingKeywordsList(TrendsSupportedRegion region,TrendType trendType,List<TrendsL1Interest> interests,List<TrendsGenderFilter> genders,List<TrendsAgeBucket> ages,List<@Size(min = 1, max = 100)String> includeKeywords,Boolean normalizeAgainstGroup,Integer limit,Boolean includeDemographics,SecurityContext securityContext)
       throws NotFoundException;

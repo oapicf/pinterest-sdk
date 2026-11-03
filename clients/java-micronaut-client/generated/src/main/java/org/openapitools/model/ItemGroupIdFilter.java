@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   ItemGroupIdFilter.JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D
 })
 @JsonTypeName("ItemGroupIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ItemGroupIdFilter {
     public static final String JSON_PROPERTY_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";

@@ -743,76 +743,76 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AccountTemplate.", nameof(id));
+                throw new JsonException("Property is required for class AccountTemplate: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: id.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: ad_account_id.");
 
             if (adAccountIds.IsSet && adAccountIds.Value == null)
-                throw new ArgumentNullException(nameof(adAccountIds), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: ad_account_ids.");
 
             if (adeColumns.IsSet && adeColumns.Value == null)
-                throw new ArgumentNullException(nameof(adeColumns), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: ade_columns.");
 
             if (clickWindowDays.IsSet && clickWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(clickWindowDays), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: click_window_days.");
 
             if (columns.IsSet && columns.Value == null)
-                throw new ArgumentNullException(nameof(columns), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: columns.");
 
             if (conversionReportTimeType.IsSet && conversionReportTimeType.Value == null)
-                throw new ArgumentNullException(nameof(conversionReportTimeType), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: conversion_report_time_type.");
 
             if (creationSource.IsSet && creationSource.Value == null)
-                throw new ArgumentNullException(nameof(creationSource), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: creation_source.");
 
             if (displayMetadata.IsSet && displayMetadata.Value == null)
-                throw new ArgumentNullException(nameof(displayMetadata), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: display_metadata.");
 
             if (engagementWindowDays.IsSet && engagementWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(engagementWindowDays), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: engagement_window_days.");
 
             if (granularity.IsSet && granularity.Value == null)
-                throw new ArgumentNullException(nameof(granularity), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: granularity.");
 
             if (isDefault.IsSet && isDefault.Value == null)
-                throw new ArgumentNullException(nameof(isDefault), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: is_default.");
 
             if (isOwnedByUser.IsSet && isOwnedByUser.Value == null)
-                throw new ArgumentNullException(nameof(isOwnedByUser), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: is_owned_by_user.");
 
             if (isScheduled.IsSet && isScheduled.Value == null)
-                throw new ArgumentNullException(nameof(isScheduled), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: is_scheduled.");
 
             if (reportEndRelativeDaysInPast.IsSet && reportEndRelativeDaysInPast.Value == null)
-                throw new ArgumentNullException(nameof(reportEndRelativeDaysInPast), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: report_end_relative_days_in_past.");
 
             if (reportFormat.IsSet && reportFormat.Value == null)
-                throw new ArgumentNullException(nameof(reportFormat), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: report_format.");
 
             if (reportLevel.IsSet && reportLevel.Value == null)
-                throw new ArgumentNullException(nameof(reportLevel), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: report_level.");
 
             if (reportStartRelativeDaysInPast.IsSet && reportStartRelativeDaysInPast.Value == null)
-                throw new ArgumentNullException(nameof(reportStartRelativeDaysInPast), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: report_start_relative_days_in_past.");
 
             if (reportingTimeZone.IsSet && reportingTimeZone.Value == null)
-                throw new ArgumentNullException(nameof(reportingTimeZone), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: reporting_time_zone.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: type.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: updated_time.");
 
             if (userId.IsSet && userId.Value == null)
-                throw new ArgumentNullException(nameof(userId), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: user_id.");
 
             if (viewWindowDays.IsSet && viewWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(viewWindowDays), "Property is not nullable for class AccountTemplate.");
+                throw new JsonException("Property is not nullable for class AccountTemplate: view_window_days.");
 
             return new AccountTemplate(id.Value!, adAccountId, adAccountIds, adeColumns, attributionType, clickWindowDays, columns, conversionReportTimeType, creationSource, customColumnIds, displayMetadata, engagementWindowDays, filtersJson, granularity, ingestionSources, isDefault, isDeleted, isOwnedByUser, isScheduled, name, reportEndRelativeDaysInPast, reportFormat, reportLevel, reportStartRelativeDaysInPast, reportingTimeZone, sortBy, type, updatedTime, userId, viewWindowDays);
         }
@@ -823,7 +823,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="accountTemplate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AccountTemplate accountTemplate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -838,32 +837,73 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="accountTemplate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AccountTemplate accountTemplate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (accountTemplate.Id == null)
-                throw new ArgumentNullException(nameof(accountTemplate.Id), "Property is required for class AccountTemplate.");
-
             if (accountTemplate.AdAccountIdOption.IsSet && accountTemplate.AdAccountId == null)
-                throw new ArgumentNullException(nameof(accountTemplate.AdAccountId), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (accountTemplate.AdAccountIdsOption.IsSet && accountTemplate.AdAccountIds == null)
-                throw new ArgumentNullException(nameof(accountTemplate.AdAccountIds), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.AdAccountIds to non-nullable JSON property 'ad_account_ids'.");
 
             if (accountTemplate.AdeColumnsOption.IsSet && accountTemplate.AdeColumns == null)
-                throw new ArgumentNullException(nameof(accountTemplate.AdeColumns), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.AdeColumns to non-nullable JSON property 'ade_columns'.");
+
+            if (accountTemplate.ClickWindowDaysOption.IsSet && accountTemplate.ClickWindowDays == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ClickWindowDays to non-nullable JSON property 'click_window_days'.");
 
             if (accountTemplate.ColumnsOption.IsSet && accountTemplate.Columns == null)
-                throw new ArgumentNullException(nameof(accountTemplate.Columns), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.Columns to non-nullable JSON property 'columns'.");
+
+            if (accountTemplate.ConversionReportTimeTypeOption.IsSet && accountTemplate.ConversionReportTimeType == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ConversionReportTimeType to non-nullable JSON property 'conversion_report_time_type'.");
+
+            if (accountTemplate.CreationSourceOption.IsSet && accountTemplate.CreationSource == null)
+                throw new JsonException("Cannot write null property AccountTemplate.CreationSource to non-nullable JSON property 'creation_source'.");
 
             if (accountTemplate.DisplayMetadataOption.IsSet && accountTemplate.DisplayMetadata == null)
-                throw new ArgumentNullException(nameof(accountTemplate.DisplayMetadata), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.DisplayMetadata to non-nullable JSON property 'display_metadata'.");
+
+            if (accountTemplate.EngagementWindowDaysOption.IsSet && accountTemplate.EngagementWindowDays == null)
+                throw new JsonException("Cannot write null property AccountTemplate.EngagementWindowDays to non-nullable JSON property 'engagement_window_days'.");
+
+            if (accountTemplate.GranularityOption.IsSet && accountTemplate.Granularity == null)
+                throw new JsonException("Cannot write null property AccountTemplate.Granularity to non-nullable JSON property 'granularity'.");
+
+            if (accountTemplate.IsDefaultOption.IsSet && accountTemplate.IsDefault == null)
+                throw new JsonException("Cannot write null property AccountTemplate.IsDefault to non-nullable JSON property 'is_default'.");
+
+            if (accountTemplate.IsOwnedByUserOption.IsSet && accountTemplate.IsOwnedByUser == null)
+                throw new JsonException("Cannot write null property AccountTemplate.IsOwnedByUser to non-nullable JSON property 'is_owned_by_user'.");
+
+            if (accountTemplate.IsScheduledOption.IsSet && accountTemplate.IsScheduled == null)
+                throw new JsonException("Cannot write null property AccountTemplate.IsScheduled to non-nullable JSON property 'is_scheduled'.");
+
+            if (accountTemplate.ReportEndRelativeDaysInPastOption.IsSet && accountTemplate.ReportEndRelativeDaysInPast == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ReportEndRelativeDaysInPast to non-nullable JSON property 'report_end_relative_days_in_past'.");
+
+            if (accountTemplate.ReportFormatOption.IsSet && accountTemplate.ReportFormat == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ReportFormat to non-nullable JSON property 'report_format'.");
+
+            if (accountTemplate.ReportLevelOption.IsSet && accountTemplate.ReportLevel == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ReportLevel to non-nullable JSON property 'report_level'.");
+
+            if (accountTemplate.ReportStartRelativeDaysInPastOption.IsSet && accountTemplate.ReportStartRelativeDaysInPast == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ReportStartRelativeDaysInPast to non-nullable JSON property 'report_start_relative_days_in_past'.");
+
+            if (accountTemplate.ReportingTimeZoneOption.IsSet && accountTemplate.ReportingTimeZone == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ReportingTimeZone to non-nullable JSON property 'reporting_time_zone'.");
 
             if (accountTemplate.TypeOption.IsSet && accountTemplate.Type == null)
-                throw new ArgumentNullException(nameof(accountTemplate.Type), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.Type to non-nullable JSON property 'type'.");
+
+            if (accountTemplate.UpdatedTimeOption.IsSet && accountTemplate.UpdatedTime == null)
+                throw new JsonException("Cannot write null property AccountTemplate.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             if (accountTemplate.UserIdOption.IsSet && accountTemplate.UserId == null)
-                throw new ArgumentNullException(nameof(accountTemplate.UserId), "Property is required for class AccountTemplate.");
+                throw new JsonException("Cannot write null property AccountTemplate.UserId to non-nullable JSON property 'user_id'.");
+
+            if (accountTemplate.ViewWindowDaysOption.IsSet && accountTemplate.ViewWindowDays == null)
+                throw new JsonException("Cannot write null property AccountTemplate.ViewWindowDays to non-nullable JSON property 'view_window_days'.");
 
             writer.WriteString("id", accountTemplate.Id);
 

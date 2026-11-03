@@ -18,7 +18,7 @@ export const BulkReportingJobStatus = {
     InProgress: 'IN_PROGRESS',
     Expired: 'EXPIRED',
     Failed: 'FAILED',
-    Cancelled: 'CANCELLED'
+    Cancelled: 'CANCELLED',
 } as const;
 export type BulkReportingJobStatus = typeof BulkReportingJobStatus[keyof typeof BulkReportingJobStatus];
 

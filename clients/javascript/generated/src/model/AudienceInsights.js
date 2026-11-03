@@ -19,7 +19,7 @@ import AudienceInsightType from './AudienceInsightType';
 /**
  * The AudienceInsights model module.
  * @module model/AudienceInsights
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AudienceInsights {
     /**

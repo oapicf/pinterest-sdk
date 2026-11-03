@@ -9,30 +9,23 @@ import 'package:built_value/serializer.dart';
 
 part 'pin_promotion_summary_status.g.dart';
 
+/// Summary status for pin promotions
 class PinPromotionSummaryStatus extends EnumClass {
 
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'APPROVED')
   static const PinPromotionSummaryStatus APPROVED = _$APPROVED;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const PinPromotionSummaryStatus PAUSED = _$PAUSED;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const PinPromotionSummaryStatus PENDING = _$PENDING;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'REJECTED')
   static const PinPromotionSummaryStatus REJECTED = _$REJECTED;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'ADVERTISER_DISABLED')
   static const PinPromotionSummaryStatus ADVERTISER_DISABLED = _$ADVERTISER_DISABLED;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const PinPromotionSummaryStatus ARCHIVED = _$ARCHIVED;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const PinPromotionSummaryStatus DRAFT = _$DRAFT;
-  /// Summary status for pin promotions
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const PinPromotionSummaryStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

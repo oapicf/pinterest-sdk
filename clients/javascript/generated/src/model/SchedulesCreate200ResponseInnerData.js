@@ -24,7 +24,7 @@ import SchedulesCreate200ResponseInnerDataOneOf from './SchedulesCreate200Respon
 /**
  * The SchedulesCreate200ResponseInnerData model module.
  * @module model/SchedulesCreate200ResponseInnerData
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SchedulesCreate200ResponseInnerData {
     /**

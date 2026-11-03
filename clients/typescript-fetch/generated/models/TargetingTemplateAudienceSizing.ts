@@ -29,8 +29,6 @@ import {
 export interface TargetingTemplateAudienceSizing {
     /**
      * 
-     * @type {TargetingTemplateAudienceSizingReachEstimate}
-     * @memberof TargetingTemplateAudienceSizing
      */
     reachEstimate?: TargetingTemplateAudienceSizingReachEstimate;
 }

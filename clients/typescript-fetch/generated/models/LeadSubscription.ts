@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface LeadSubscription {
     /**
      * The Ad Account ID that this lead form belongs to.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     adAccountId?: string;
     /**
      * API version.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     apiVersion?: string;
     /**
      * Subscription creation time. Unix timestamp in milliseconds.
-     * @type {number}
-     * @memberof LeadSubscription
      */
     createdTime?: number;
     /**
      * Lead data encryption algorithm.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     cryptographicAlgorithm?: string | null;
     /**
      * Base64 encoded key for client to decrypt lead data.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     cryptographicKey?: string | null;
     /**
      * Subscription ID.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     id?: string;
     /**
      * Lead form ID.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     leadFormId?: string | null;
     /**
      * User account used to subscribe lead data.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     userAccountId?: string;
     /**
      * Standard HTTPS webhook URL.
-     * @type {string}
-     * @memberof LeadSubscription
      */
     webhookUrl?: string;
 }

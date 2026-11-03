@@ -21,1268 +21,846 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedValidationWarnings {
     /**
      * ad_image_0_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0LINKDUPLICATED?: number;
     /**
      * Ad image link 0 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 0 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0LINKREQUIRED?: number;
     /**
      * Ad image link 0 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0LINKWARNING?: number;
     /**
      * ad_image_0_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0TAGDUPLICATED?: number;
     /**
      * Ad image tag 0 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 0 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE0TAGREQUIRED?: number;
     /**
      * ad_image_10_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10LINKDUPLICATED?: number;
     /**
      * Ad image link 10 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 10 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10LINKREQUIRED?: number;
     /**
      * Ad image link 10 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10LINKWARNING?: number;
     /**
      * ad_image_10_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10TAGDUPLICATED?: number;
     /**
      * Ad image tag 10 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 10 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE10TAGREQUIRED?: number;
     /**
      * ad_image_11_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11LINKDUPLICATED?: number;
     /**
      * Ad image link 11 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 11 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11LINKREQUIRED?: number;
     /**
      * Ad image link 11 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11LINKWARNING?: number;
     /**
      * ad_image_11_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11TAGDUPLICATED?: number;
     /**
      * Ad image tag 11 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 11 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE11TAGREQUIRED?: number;
     /**
      * ad_image_12_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12LINKDUPLICATED?: number;
     /**
      * Ad image link 12 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 12 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12LINKREQUIRED?: number;
     /**
      * Ad image link 12 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12LINKWARNING?: number;
     /**
      * ad_image_12_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12TAGDUPLICATED?: number;
     /**
      * Ad image tag 12 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 12 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE12TAGREQUIRED?: number;
     /**
      * ad_image_13_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13LINKDUPLICATED?: number;
     /**
      * Ad image link 13 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 13 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13LINKREQUIRED?: number;
     /**
      * Ad image link 13 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13LINKWARNING?: number;
     /**
      * ad_image_13_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13TAGDUPLICATED?: number;
     /**
      * Ad image tag 13 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 13 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE13TAGREQUIRED?: number;
     /**
      * ad_image_14_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14LINKDUPLICATED?: number;
     /**
      * Ad image link 14 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 14 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14LINKREQUIRED?: number;
     /**
      * Ad image link 14 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14LINKWARNING?: number;
     /**
      * ad_image_14_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14TAGDUPLICATED?: number;
     /**
      * Ad image tag 14 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 14 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE14TAGREQUIRED?: number;
     /**
      * ad_image_15_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15LINKDUPLICATED?: number;
     /**
      * Ad image link 15 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 15 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15LINKREQUIRED?: number;
     /**
      * Ad image link 15 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15LINKWARNING?: number;
     /**
      * ad_image_15_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15TAGDUPLICATED?: number;
     /**
      * Ad image tag 15 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 15 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE15TAGREQUIRED?: number;
     /**
      * ad_image_16_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16LINKDUPLICATED?: number;
     /**
      * Ad image link 16 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 16 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16LINKREQUIRED?: number;
     /**
      * Ad image link 16 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16LINKWARNING?: number;
     /**
      * ad_image_16_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16TAGDUPLICATED?: number;
     /**
      * Ad image tag 16 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 16 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE16TAGREQUIRED?: number;
     /**
      * ad_image_17_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17LINKDUPLICATED?: number;
     /**
      * Ad image link 17 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 17 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17LINKREQUIRED?: number;
     /**
      * Ad image link 17 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17LINKWARNING?: number;
     /**
      * ad_image_17_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17TAGDUPLICATED?: number;
     /**
      * Ad image tag 17 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 17 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE17TAGREQUIRED?: number;
     /**
      * ad_image_18_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18LINKDUPLICATED?: number;
     /**
      * Ad image link 18 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 18 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18LINKREQUIRED?: number;
     /**
      * Ad image link 18 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18LINKWARNING?: number;
     /**
      * ad_image_18_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18TAGDUPLICATED?: number;
     /**
      * Ad image tag 18 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 18 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE18TAGREQUIRED?: number;
     /**
      * ad_image_19_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19LINKDUPLICATED?: number;
     /**
      * Ad image link 19 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 19 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19LINKREQUIRED?: number;
     /**
      * Ad image link 19 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19LINKWARNING?: number;
     /**
      * ad_image_19_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19TAGDUPLICATED?: number;
     /**
      * Ad image tag 19 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 19 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE19TAGREQUIRED?: number;
     /**
      * ad_image_1_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1LINKDUPLICATED?: number;
     /**
      * Ad image link 1 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 1 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1LINKREQUIRED?: number;
     /**
      * Ad image link 1 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1LINKWARNING?: number;
     /**
      * ad_image_1_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1TAGDUPLICATED?: number;
     /**
      * Ad image tag 1 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 1 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE1TAGREQUIRED?: number;
     /**
      * ad_image_2_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2LINKDUPLICATED?: number;
     /**
      * Ad image link 2 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 2 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2LINKREQUIRED?: number;
     /**
      * Ad image link 2 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2LINKWARNING?: number;
     /**
      * ad_image_2_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2TAGDUPLICATED?: number;
     /**
      * Ad image tag 2 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 2 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE2TAGREQUIRED?: number;
     /**
      * ad_image_3_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3LINKDUPLICATED?: number;
     /**
      * Ad image link 3 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 3 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3LINKREQUIRED?: number;
     /**
      * Ad image link 3 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3LINKWARNING?: number;
     /**
      * ad_image_3_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3TAGDUPLICATED?: number;
     /**
      * Ad image tag 3 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 3 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE3TAGREQUIRED?: number;
     /**
      * ad_image_4_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4LINKDUPLICATED?: number;
     /**
      * Ad image link 4 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 4 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4LINKREQUIRED?: number;
     /**
      * Ad image link 4 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4LINKWARNING?: number;
     /**
      * ad_image_4_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4TAGDUPLICATED?: number;
     /**
      * Ad image tag 4 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 4 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE4TAGREQUIRED?: number;
     /**
      * ad_image_5_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5LINKDUPLICATED?: number;
     /**
      * Ad image link 5 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 5 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5LINKREQUIRED?: number;
     /**
      * Ad image link 5 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5LINKWARNING?: number;
     /**
      * ad_image_5_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5TAGDUPLICATED?: number;
     /**
      * Ad image tag 5 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 5 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE5TAGREQUIRED?: number;
     /**
      * ad_image_6_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6LINKDUPLICATED?: number;
     /**
      * Ad image link 6 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 6 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6LINKREQUIRED?: number;
     /**
      * Ad image link 6 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6LINKWARNING?: number;
     /**
      * ad_image_6_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6TAGDUPLICATED?: number;
     /**
      * Ad image tag 6 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 6 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE6TAGREQUIRED?: number;
     /**
      * ad_image_7_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7LINKDUPLICATED?: number;
     /**
      * Ad image link 7 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 7 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7LINKREQUIRED?: number;
     /**
      * Ad image link 7 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7LINKWARNING?: number;
     /**
      * ad_image_7_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7TAGDUPLICATED?: number;
     /**
      * Ad image tag 7 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 7 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE7TAGREQUIRED?: number;
     /**
      * ad_image_8_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8LINKDUPLICATED?: number;
     /**
      * Ad image link 8 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 8 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8LINKREQUIRED?: number;
     /**
      * Ad image link 8 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8LINKWARNING?: number;
     /**
      * ad_image_8_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8TAGDUPLICATED?: number;
     /**
      * Ad image tag 8 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 8 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE8TAGREQUIRED?: number;
     /**
      * ad_image_9_link is duplicated with another ad image link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9LINKDUPLICATED?: number;
     /**
      * Ad image link 9 length is too long. The maximum length is 2047 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9LINKLENGTHTOOLONG?: number;
     /**
      * Ad image link 9 is required because an image tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9LINKREQUIRED?: number;
     /**
      * Ad image link 9 format is unsupported.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9LINKWARNING?: number;
     /**
      * ad_image_9_tag is duplicated with another ad image tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9TAGDUPLICATED?: number;
     /**
      * Ad image tag 9 length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9TAGLENGTHTOOLONG?: number;
     /**
      * Ad image tag 9 is required because an image link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDIMAGE9TAGREQUIRED?: number;
     /**
      * Some items have ad links that are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDLINKFORMATWARNING?: number;
     /**
      * Some items have ad link URLs that are duplicates of the link URLs for those items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDLINKSAMEASLINK?: number;
     /**
      * ad_video_0_link is duplicated with another ad video link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0LINKDUPLICATED?: number;
     /**
      * ad_video_0_link length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0LINKLENGTHTOOLONG?: number;
     /**
      * ad_video_0_link is required for this item because ad_video_0_tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0LINKREQUIRED?: number;
     /**
      * ad_video_0_link is formatted incorrectly and will not be published with your items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0LINKWARNING?: number;
     /**
      * ad_video_0_tag is duplicated with another ad video tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0TAGDUPLICATED?: number;
     /**
      * ad_video_0_tag length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0TAGLENGTHTOOLONG?: number;
     /**
      * ad_video_0_tag is required because ad_video_0_link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO0TAGREQUIRED?: number;
     /**
      * ad_video_1_link is duplicated with another ad video link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1LINKDUPLICATED?: number;
     /**
      * ad_video_1_link length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1LINKLENGTHTOOLONG?: number;
     /**
      * ad_video_1_link is required for this item because ad_video_1_tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1LINKREQUIRED?: number;
     /**
      * ad_video_1_link is formatted incorrectly and will not be published with your items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1LINKWARNING?: number;
     /**
      * ad_video_1_tag is duplicated with another ad video tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1TAGDUPLICATED?: number;
     /**
      * ad_video_1_tag length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1TAGLENGTHTOOLONG?: number;
     /**
      * ad_video_1_tag is required because ad_video_1_link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO1TAGREQUIRED?: number;
     /**
      * ad_video_2_link is duplicated with another ad video link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2LINKDUPLICATED?: number;
     /**
      * ad_video_2_link length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2LINKLENGTHTOOLONG?: number;
     /**
      * ad_video_2_link is required for this item because ad_video_2_tag was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2LINKREQUIRED?: number;
     /**
      * ad_video_2_link is formatted incorrectly and will not be published with your items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2LINKWARNING?: number;
     /**
      * ad_video_2_tag is duplicated with another ad video tag.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2TAGDUPLICATED?: number;
     /**
      * ad_video_2_tag length is too long. The maximum length is 511 characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2TAGLENGTHTOOLONG?: number;
     /**
      * ad_video_2_tag is required because ad_video_2_link was provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDVIDEO2TAGREQUIRED?: number;
     /**
      * Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDDITIONALIMAGELINKLENGTHTOOLONG?: number;
     /**
      * Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDDITIONALIMAGELINKWARNING?: number;
     /**
      * Some items have adwords_redirect links that are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDWORDSFORMATWARNING?: number;
     /**
      * Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aDWORDSSAMEASLINK?: number;
     /**
      * Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aGEGROUPINVALID?: number;
     /**
      * Some items include invalid android_deep_link.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aNDROIDDEEPLINKINVALID?: number;
     /**
      * Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     aVAILABILITYDATEINVALID?: number;
     /**
      * Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     cOUNTRYDOESNOTMAPTOCURRENCY?: number;
     /**
      * Some items have custom_label values that are too long, those items will be published without that custom label.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     cUSTOMLABELLENGTHTOOLONG?: number;
     /**
      * The description for some items were truncated because they contain too many characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     dESCRIPTIONLENGTHTOOLONG?: number;
     /**
      * Your feed contains duplicate headers.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     dUPLICATEHEADERS?: number;
     /**
      * Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     eXPIRATIONDATEINVALID?: number;
     /**
      * Ingestion completed early because there are no changes to your feed since the last successful update.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     fETCHSAMESIGNATURE?: number;
     /**
      * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     gENDERINVALID?: number;
     /**
      * Some items include incorrectly formatted GTINs.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     gTININVALID?: number;
     /**
      * Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iMAGELINKWARNING?: number;
     /**
      * Some items include inconsistent currencies in price fields.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iNCONSISTENTCURRENCYVALUES?: number;
     /**
      * The product count has increased or decreased significantly compared to the last successful ingestion.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iNDEXEDPRODUCTCOUNTLARGEDELTA?: number;
     /**
      * Some items include invalid ios_deep_link values.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iOSDEEPLINKINVALID?: number;
     /**
      * Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iSBUNDLEINVALID?: number;
     /**
      * Some items include additional_image_links that can't be found.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     iTEMADDITIONALIMAGEDOWNLOADFAILURE?: number;
     /**
      * Some items have an invalid product link which contains invalid UTM tracking paramaters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     lINKFORMATWARNING?: number;
     /**
      * Some items include min_ad_price values that are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     mINADPRICEINVALID?: number;
     /**
      * Some items include incorrectly formatted MPNs.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     mPNINVALID?: number;
     /**
      * Some items have invalid multipack values.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     mULTIPACKINVALID?: number;
     /**
      * Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     oPTIONALCONDITIONINVALID?: number;
     /**
      * Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     oPTIONALCONDITIONMISSING?: number;
     /**
      * Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     oPTIONALPRODUCTCATEGORYINVALID?: number;
     /**
      * Some items are missing a google_product_category.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     oPTIONALPRODUCTCATEGORYMISSING?: number;
     /**
      * Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     pRODUCTCATEGORYDEPTHWARNING?: number;
     /**
      * Some items have product_type values that are too long, those items will be published without that product type.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     pRODUCTTYPELENGTHTOOLONG?: number;
     /**
      * Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sALEDATEINVALID?: number;
     /**
      * Some items have sale price values that are higher than the original price of the item.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sALESPRICEINVALID?: number;
     /**
      * Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sALESPRICETOOHIGH?: number;
     /**
      * Some items include sales price that is much lower than the list price.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sALESPRICETOOLOW?: number;
     /**
      * Some items include incorrectly formatted shipping_height.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sHIPPINGHEIGHTINVALID?: number;
     /**
      * Some items have shipping values that are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sHIPPINGINVALID?: number;
     /**
      * Some items have invalid shipping_weight values.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sHIPPINGWEIGHTINVALID?: number;
     /**
      * Some items include incorrectly formatted shipping_width.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sHIPPINGWIDTHINVALID?: number;
     /**
      * Some items have size system values which are not one of the supported size systems.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sIZESYSTEMINVALID?: number;
     /**
      * Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     sIZETYPEINVALID?: number;
     /**
      * Some items have tax values that are formatted incorrectly.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     tAXINVALID?: number;
     /**
      * The title for some items were truncated because they contain too many characters.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     tITLELENGTHTOOLONG?: number;
     /**
      * Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     tOOMANYADDITIONALIMAGELINKS?: number;
     /**
      * Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     uPDATEDTIMEINVALID?: number;
     /**
      * Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     uTMSOURCEAUTOCORRECTED?: number;
     /**
      * A video is required in the item when ad_video fields are provided.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     vIDEOREQUIREDWHENADVIDEOPROVIDED?: number;
     /**
      * Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
-     * @type {number}
-     * @memberof CatalogsFeedValidationWarnings
      */
     wEIGHTUNITINVALID?: number;
 }

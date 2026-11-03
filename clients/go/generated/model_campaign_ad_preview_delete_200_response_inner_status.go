@@ -85,16 +85,11 @@ func (dst *CampaignAdPreviewDelete200ResponseInnerStatus) UnmarshalJSON(data []b
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(CampaignAdPreviewDelete200ResponseInnerStatus)")
 	}
 }
 

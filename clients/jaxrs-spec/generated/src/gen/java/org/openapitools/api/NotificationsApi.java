@@ -20,7 +20,7 @@ import javax.validation.Valid;
 */
 @Path("/notifications")
 @Api(description = "the notifications API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class NotificationsApi {
 
     @POST
@@ -37,7 +37,8 @@ public class NotificationsApi {
         @ApiResponse(code = 400, message = "The request could not be understood by the server due to unexpected data.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response notificationPost(@Valid NotificationPostRequest notificationPostRequest) {
+    public Response notificationPost(@Valid NotificationPostRequest notificationPostRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 }

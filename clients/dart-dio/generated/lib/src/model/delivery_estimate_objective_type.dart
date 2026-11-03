@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'delivery_estimate_objective_type.g.dart';
 
+/// Objective type for delivery estimates.
 class DeliveryEstimateObjectiveType extends EnumClass {
 
-  /// Objective type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'AWARENESS')
   static const DeliveryEstimateObjectiveType AWARENESS = _$AWARENESS;
-  /// Objective type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'CONSIDERATION')
   static const DeliveryEstimateObjectiveType CONSIDERATION = _$CONSIDERATION;
-  /// Objective type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'CATALOG_SALES')
   static const DeliveryEstimateObjectiveType CATALOG_SALES = _$CATALOG_SALES;
-  /// Objective type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'WEB_CONVERSION')
   static const DeliveryEstimateObjectiveType WEB_CONVERSION = _$WEB_CONVERSION;
 

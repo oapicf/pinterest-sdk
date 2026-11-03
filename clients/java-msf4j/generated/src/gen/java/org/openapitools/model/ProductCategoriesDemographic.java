@@ -14,7 +14,7 @@ import org.openapitools.model.GenderDemographics;
  * Age and gender distribution who engaged with this product category in the past 3 months
  */
 @ApiModel(description = "Age and gender distribution who engaged with this product category in the past 3 months")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoriesDemographic   {
   @JsonProperty("age")
   private Map<String, BigDecimal> age = new HashMap<>();

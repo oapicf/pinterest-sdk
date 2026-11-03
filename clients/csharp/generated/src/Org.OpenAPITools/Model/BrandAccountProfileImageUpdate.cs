@@ -226,7 +226,12 @@ namespace Org.OpenAPITools.Model
                         case "content_type":
                             string? contentTypeRawValue = utf8JsonReader.GetString();
                             if (contentTypeRawValue != null)
-                                contentType = new Option<BrandAccountProfileImageUpdate.ContentTypeEnum?>(BrandAccountProfileImageUpdate.ContentTypeEnumFromStringOrDefault(contentTypeRawValue));
+                            {
+                                BrandAccountProfileImageUpdate.ContentTypeEnum? contentTypeValue = BrandAccountProfileImageUpdate.ContentTypeEnumFromStringOrDefault(contentTypeRawValue);
+                                if (contentTypeValue == null)
+                                    throw new JsonException();
+                                contentType = new Option<BrandAccountProfileImageUpdate.ContentTypeEnum?>(contentTypeValue);
+                            }
                             break;
                         case "data":
                             data = new Option<string?>(utf8JsonReader.GetString()!);
@@ -238,10 +243,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (contentType.IsSet && contentType.Value == null)
-                throw new ArgumentNullException(nameof(contentType), "Property is not nullable for class BrandAccountProfileImageUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountProfileImageUpdate: content_type.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class BrandAccountProfileImageUpdate.");
+                throw new JsonException("Property is not nullable for class BrandAccountProfileImageUpdate: data.");
 
             return new BrandAccountProfileImageUpdate(contentType, data);
         }
@@ -252,7 +257,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountProfileImageUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BrandAccountProfileImageUpdate brandAccountProfileImageUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -267,11 +271,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="brandAccountProfileImageUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BrandAccountProfileImageUpdate brandAccountProfileImageUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (brandAccountProfileImageUpdate.ContentTypeOption.IsSet && brandAccountProfileImageUpdate.ContentType == null)
+                throw new JsonException("Cannot write null property BrandAccountProfileImageUpdate.ContentType to non-nullable JSON property 'content_type'.");
+
             if (brandAccountProfileImageUpdate.DataOption.IsSet && brandAccountProfileImageUpdate.Data == null)
-                throw new ArgumentNullException(nameof(brandAccountProfileImageUpdate.Data), "Property is required for class BrandAccountProfileImageUpdate.");
+                throw new JsonException("Cannot write null property BrandAccountProfileImageUpdate.Data to non-nullable JSON property 'data'.");
 
             var contentTypeRawValue = BrandAccountProfileImageUpdate.ContentTypeEnumToJsonValue(brandAccountProfileImageUpdate.ContentTypeOption.Value!.Value);
             writer.WriteString("content_type", contentTypeRawValue);

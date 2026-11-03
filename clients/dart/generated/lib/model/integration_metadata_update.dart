@@ -243,11 +243,15 @@ class IntegrationMetadataUpdate {
         connectedMerchantId: mapValueOfType<String>(json, r'connected_merchant_id'),
         connectedTagId: mapValueOfType<String>(json, r'connected_tag_id'),
         partnerAccessToken: mapValueOfType<String>(json, r'partner_access_token'),
-        partnerAccessTokenExpiry: num.parse('${json[r'partner_access_token_expiry']}'),
+        partnerAccessTokenExpiry: json[r'partner_access_token_expiry'] == null
+            ? null
+            : num.parse('${json[r'partner_access_token_expiry']}'),
         partnerMetadata: mapValueOfType<String>(json, r'partner_metadata'),
         partnerPrimaryEmail: mapValueOfType<String>(json, r'partner_primary_email'),
         partnerRefreshToken: mapValueOfType<String>(json, r'partner_refresh_token'),
-        partnerRefreshTokenExpiry: num.parse('${json[r'partner_refresh_token_expiry']}'),
+        partnerRefreshTokenExpiry: json[r'partner_refresh_token_expiry'] == null
+            ? null
+            : num.parse('${json[r'partner_refresh_token_expiry']}'),
         scopes: mapValueOfType<String>(json, r'scopes'),
       );
     }

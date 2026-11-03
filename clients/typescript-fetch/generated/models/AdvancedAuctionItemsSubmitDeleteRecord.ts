@@ -43,32 +43,22 @@ import {
 export interface AdvancedAuctionItemsSubmitDeleteRecord {
     /**
      * 
-     * @type {Country}
-     * @memberof AdvancedAuctionItemsSubmitDeleteRecord
      */
     country: Country;
     /**
      * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-     * @type {Array<AdvancedAuctionOperationError>}
-     * @memberof AdvancedAuctionItemsSubmitDeleteRecord
      */
     errors?: Array<AdvancedAuctionOperationError>;
     /**
      * The catalog retail item id in the merchant namespace
-     * @type {string}
-     * @memberof AdvancedAuctionItemsSubmitDeleteRecord
      */
     itemId: string;
     /**
      * 
-     * @type {Language}
-     * @memberof AdvancedAuctionItemsSubmitDeleteRecord
      */
     language: Language;
     /**
      * 
-     * @type {AdvancedAuctionItemsSubmitDeleteRecordOperationEnum}
-     * @memberof AdvancedAuctionItemsSubmitDeleteRecord
      */
     operation: AdvancedAuctionItemsSubmitDeleteRecordOperationEnum;
 }
@@ -78,7 +68,7 @@ export interface AdvancedAuctionItemsSubmitDeleteRecord {
  * @export
  */
 export const AdvancedAuctionItemsSubmitDeleteRecordOperationEnum = {
-    Delete: 'DELETE'
+    Delete: 'DELETE',
 } as const;
 export type AdvancedAuctionItemsSubmitDeleteRecordOperationEnum = typeof AdvancedAuctionItemsSubmitDeleteRecordOperationEnum[keyof typeof AdvancedAuctionItemsSubmitDeleteRecordOperationEnum];
 

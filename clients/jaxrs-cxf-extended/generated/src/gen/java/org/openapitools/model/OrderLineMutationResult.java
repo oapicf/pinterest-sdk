@@ -19,14 +19,12 @@ public class OrderLineMutationResult  {
   * Error list if update(s) fail.
   */
   @ApiModelProperty(value = "Error list if update(s) fail.")
-  @Valid
   private List<@Valid OrderLineMutationError> errors = new ArrayList<>();
 
  /**
   * Order Line object array.
   */
   @ApiModelProperty(value = "Order Line object array.")
-  @Valid
   private List<@Valid OrderLine> orderLine = new ArrayList<>();
  /**
   * Error list if update(s) fail.

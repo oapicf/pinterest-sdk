@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (clickWindowDays.IsSet && clickWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(clickWindowDays), "Property is not nullable for class CampaignPlanningConversionAttribution.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionAttribution: click_window_days.");
 
             if (engagementWindowDays.IsSet && engagementWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(engagementWindowDays), "Property is not nullable for class CampaignPlanningConversionAttribution.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionAttribution: engagement_window_days.");
 
             if (viewWindowDays.IsSet && viewWindowDays.Value == null)
-                throw new ArgumentNullException(nameof(viewWindowDays), "Property is not nullable for class CampaignPlanningConversionAttribution.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningConversionAttribution: view_window_days.");
 
             return new CampaignPlanningConversionAttribution(clickWindowDays, engagementWindowDays, viewWindowDays);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConversionAttribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningConversionAttribution campaignPlanningConversionAttribution, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,9 +214,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningConversionAttribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningConversionAttribution campaignPlanningConversionAttribution, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningConversionAttribution.ClickWindowDaysOption.IsSet && campaignPlanningConversionAttribution.ClickWindowDays == null)
+                throw new JsonException("Cannot write null property CampaignPlanningConversionAttribution.ClickWindowDays to non-nullable JSON property 'click_window_days'.");
+
+            if (campaignPlanningConversionAttribution.EngagementWindowDaysOption.IsSet && campaignPlanningConversionAttribution.EngagementWindowDays == null)
+                throw new JsonException("Cannot write null property CampaignPlanningConversionAttribution.EngagementWindowDays to non-nullable JSON property 'engagement_window_days'.");
+
+            if (campaignPlanningConversionAttribution.ViewWindowDaysOption.IsSet && campaignPlanningConversionAttribution.ViewWindowDays == null)
+                throw new JsonException("Cannot write null property CampaignPlanningConversionAttribution.ViewWindowDays to non-nullable JSON property 'view_window_days'.");
+
             if (campaignPlanningConversionAttribution.ClickWindowDaysOption.IsSet)
             {
                 var clickWindowDaysRawValue = CampaignPlanningConversionAttributionWindowDaysValueConverter.ToJsonValue(campaignPlanningConversionAttribution.ClickWindowDays!.Value);

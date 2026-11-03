@@ -17,7 +17,7 @@ import AdeColumnType from './AdeColumnType';
 /**
  * The CustomConversionEventMetrics model module.
  * @module model/CustomConversionEventMetrics
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomConversionEventMetrics {
     /**

@@ -162,3 +162,4 @@ class _$AssetIdPermissionsSerializer implements PrimitiveSerializer<AssetIdPermi
   }
 }
 
+

@@ -28,7 +28,7 @@ import play.api.libs.json._
   * @param PRODUCT_PRICE_INVALID Item has a price formatting error in its product metadata, this item will not be published.
   * @param TITLE_MISSING Item is missing title in its product metadata, this item will not be published.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsItemValidationErrors(
   ADULT_INVALID: Option[CatalogsItemValidationDetails],
   ADWORDS_FORMAT_INVALID: Option[CatalogsItemValidationDetails],

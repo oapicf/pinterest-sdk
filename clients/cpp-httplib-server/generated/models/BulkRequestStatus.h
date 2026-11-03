@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BulkRequestStatus
-{
-public:
-
-    BulkRequestStatus();
-    virtual ~BulkRequestStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BulkRequestStatus,
-        )
-
-private:
+enum class BulkRequestStatus {
+    
+    RUNNING,
+    
+    SUCCEEDED,
+    
+    FAILED
+    
 };
 
+inline void to_json(nlohmann::json& j, const BulkRequestStatus& value)
+{
+    switch (value)
+    {
+        
+        case BulkRequestStatus::RUNNING: j = "RUNNING"; break;
+        
+        case BulkRequestStatus::SUCCEEDED: j = "SUCCEEDED"; break;
+        
+        case BulkRequestStatus::FAILED: j = "FAILED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BulkRequestStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BulkRequestStatus& value)
+{
+    
+    if (j == "RUNNING")
+    {
+        value = BulkRequestStatus::RUNNING;
+        return;
+    }
+    
+    if (j == "SUCCEEDED")
+    {
+        value = BulkRequestStatus::SUCCEEDED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = BulkRequestStatus::FAILED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BulkRequestStatus", &j);
+}
 
 } // namespace models
 

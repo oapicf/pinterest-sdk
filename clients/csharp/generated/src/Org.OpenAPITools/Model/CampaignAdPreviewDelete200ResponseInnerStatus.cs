@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CampaignAdPreviewDelete200ResponseInnerStatus" /> class.
         /// </summary>
         /// <param name="pinterestLibStatus204"></param>
-        public CampaignAdPreviewDelete200ResponseInnerStatus(PinterestLibStatus204 pinterestLibStatus204)
+        internal CampaignAdPreviewDelete200ResponseInnerStatus(PinterestLibStatus204 pinterestLibStatus204)
         {
             PinterestLibStatus204 = pinterestLibStatus204;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CampaignAdPreviewDelete200ResponseInnerStatus" /> class.
         /// </summary>
         /// <param name="pinterestLibError"></param>
-        public CampaignAdPreviewDelete200ResponseInnerStatus(PinterestLibError pinterestLibError)
+        internal CampaignAdPreviewDelete200ResponseInnerStatus(PinterestLibError pinterestLibError)
         {
             PinterestLibError = pinterestLibError;
             OnCreated();
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewDelete200ResponseInnerStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreviewDelete200ResponseInnerStatus campaignAdPreviewDelete200ResponseInnerStatus, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewDelete200ResponseInnerStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreviewDelete200ResponseInnerStatus campaignAdPreviewDelete200ResponseInnerStatus, JsonSerializerOptions jsonSerializerOptions)
         {
 

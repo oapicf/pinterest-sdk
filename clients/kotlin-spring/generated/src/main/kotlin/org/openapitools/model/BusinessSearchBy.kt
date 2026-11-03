@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The names of fields that business accounts are searched by
-* Values: FULL_NAME,USERNAME,BUSINESS_ID,EMAIL
-*/
+ * The names of fields that business accounts are searched by
+ * Values: FULL_NAME,USERNAME,BUSINESS_ID,EMAIL
+ */
 enum class BusinessSearchBy(@get:JsonValue val value: kotlin.String) {
 
     FULL_NAME("FULL_NAME"),
@@ -30,9 +30,8 @@ enum class BusinessSearchBy(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BusinessSearchBy {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessSearchBy'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BusinessSearchBy'")
         }
     }
 }
-

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AssetGroupDeleteError {
     /**
      * Asset group id of the exception.
-     * @type {string}
-     * @memberof AssetGroupDeleteError
      */
     assetGroupId?: string;
     /**
      * Error code associated with the error deleting asset group.
-     * @type {number}
-     * @memberof AssetGroupDeleteError
      */
     code?: number;
     /**
      * Error message associated with the error deleting asset group.
-     * @type {string}
-     * @memberof AssetGroupDeleteError
      */
     message?: string;
 }

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface RecordCounts {
     /**
      * Number of invalid records processed
-     * @type {number}
-     * @memberof RecordCounts
      */
     invalid: number;
     /**
      * Number of records processed
-     * @type {number}
-     * @memberof RecordCounts
      */
     processed: number;
     /**
      * Number of valid records processed
-     * @type {number}
-     * @memberof RecordCounts
      */
     valid: number;
 }

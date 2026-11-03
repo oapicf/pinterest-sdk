@@ -17,8 +17,6 @@ public class LeadFormsCreate200Response  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid LeadFormsCreate200ResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items

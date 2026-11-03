@@ -29,14 +29,10 @@ import {
 export interface ConversionDeletionRequestList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof ConversionDeletionRequestList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<ConversionDeletionRequest>}
-     * @memberof ConversionDeletionRequestList200Response
      */
     items: Array<ConversionDeletionRequest>;
 }

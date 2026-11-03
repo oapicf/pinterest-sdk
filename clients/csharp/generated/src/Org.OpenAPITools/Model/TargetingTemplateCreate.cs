@@ -229,25 +229,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class TargetingTemplateCreate.", nameof(name));
+                throw new JsonException("Property is required for class TargetingTemplateCreate: name.");
 
             if (!targetingAttributes.IsSet)
-                throw new ArgumentException("Property is required for class TargetingTemplateCreate.", nameof(targetingAttributes));
+                throw new JsonException("Property is required for class TargetingTemplateCreate: targeting_attributes.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class TargetingTemplateCreate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateCreate: name.");
 
             if (targetingAttributes.IsSet && targetingAttributes.Value == null)
-                throw new ArgumentNullException(nameof(targetingAttributes), "Property is not nullable for class TargetingTemplateCreate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateCreate: targeting_attributes.");
 
             if (autoTargetingEnabled.IsSet && autoTargetingEnabled.Value == null)
-                throw new ArgumentNullException(nameof(autoTargetingEnabled), "Property is not nullable for class TargetingTemplateCreate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateCreate: auto_targeting_enabled.");
 
             if (keywords.IsSet && keywords.Value == null)
-                throw new ArgumentNullException(nameof(keywords), "Property is not nullable for class TargetingTemplateCreate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateCreate: keywords.");
 
             if (placementGroup.IsSet && placementGroup.Value == null)
-                throw new ArgumentNullException(nameof(placementGroup), "Property is not nullable for class TargetingTemplateCreate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateCreate: placement_group.");
 
             return new TargetingTemplateCreate(name.Value!, targetingAttributes.Value!, autoTargetingEnabled, keywords, placementGroup, trackingUrls);
         }
@@ -258,7 +258,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingTemplateCreate targetingTemplateCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -273,17 +272,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingTemplateCreate targetingTemplateCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingTemplateCreate.Name == null)
-                throw new ArgumentNullException(nameof(targetingTemplateCreate.Name), "Property is required for class TargetingTemplateCreate.");
-
-            if (targetingTemplateCreate.TargetingAttributes == null)
-                throw new ArgumentNullException(nameof(targetingTemplateCreate.TargetingAttributes), "Property is required for class TargetingTemplateCreate.");
+            if (targetingTemplateCreate.AutoTargetingEnabledOption.IsSet && targetingTemplateCreate.AutoTargetingEnabled == null)
+                throw new JsonException("Cannot write null property TargetingTemplateCreate.AutoTargetingEnabled to non-nullable JSON property 'auto_targeting_enabled'.");
 
             if (targetingTemplateCreate.KeywordsOption.IsSet && targetingTemplateCreate.Keywords == null)
-                throw new ArgumentNullException(nameof(targetingTemplateCreate.Keywords), "Property is required for class TargetingTemplateCreate.");
+                throw new JsonException("Cannot write null property TargetingTemplateCreate.Keywords to non-nullable JSON property 'keywords'.");
+
+            if (targetingTemplateCreate.PlacementGroupOption.IsSet && targetingTemplateCreate.PlacementGroup == null)
+                throw new JsonException("Cannot write null property TargetingTemplateCreate.PlacementGroup to non-nullable JSON property 'placement_group'.");
 
             writer.WriteString("name", targetingTemplateCreate.Name);
 

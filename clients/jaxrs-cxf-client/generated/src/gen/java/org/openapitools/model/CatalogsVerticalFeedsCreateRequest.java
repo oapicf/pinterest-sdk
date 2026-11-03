@@ -110,7 +110,7 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 
   @ApiModelProperty(value = "")
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
  /**
    * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
    * @return catalogId

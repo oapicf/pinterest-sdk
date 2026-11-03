@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ProductTagsResponse", description = "Response containing a list of product tags for a pin.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsResponse {
 
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
@@ -57,7 +57,7 @@ public class ProductTagsResponse {
    * List of product tags on the pin.
    * @return productTags
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "product_tags", description = "List of product tags on the pin.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("product_tags")
   public List<@Valid ProductTagItem> getProductTags() {

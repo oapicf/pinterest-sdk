@@ -21,7 +21,7 @@ export const CustomerListStatus = {
     Processing: 'PROCESSING',
     Ready: 'READY',
     TooSmall: 'TOO_SMALL',
-    Uploading: 'UPLOADING'
+    Uploading: 'UPLOADING',
 } as const;
 export type CustomerListStatus = typeof CustomerListStatus[keyof typeof CustomerListStatus];
 

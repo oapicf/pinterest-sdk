@@ -110,3 +110,4 @@ class _$TrendsAgeDistributionSerializer implements PrimitiveSerializer<TrendsAge
   }
 }
 
+

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -25,25 +24,19 @@ import jakarta.annotation.Generated;
  * AudienceCategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceCategory {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal index;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String key;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal ratio;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AudienceSubcategory> subcategories = new ArrayList<>();
 
   public AudienceCategory id(@Nullable String id) {
@@ -168,7 +161,7 @@ public class AudienceCategory {
    * Subcategory interest distribution
    * @return subcategories
    */
-  @Valid 
+  
   @Schema(name = "subcategories", description = "Subcategory interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("subcategories")
   public List<@Valid AudienceSubcategory> getSubcategories() {

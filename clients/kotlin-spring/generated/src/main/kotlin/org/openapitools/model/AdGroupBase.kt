@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ActionType
 import org.openapitools.model.AdGroupTrackingURLs
 import org.openapitools.model.AdgroupTrackingFeatures
@@ -72,50 +69,48 @@ data class AdGroupBase(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("billable_event")
+    @param:JsonProperty("billable_event", required = true)
     @get:JsonProperty("billable_event", required = true) val billableEvent: ActionType,
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(required = true, description = "Campaign ID of the ad group.")
-    @param:JsonProperty("campaign_id")
+    @param:JsonProperty("campaign_id", required = true)
     @get:JsonProperty("campaign_id", required = true) val campaignId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "oCPM learn mode")
-    @param:JsonProperty("conversion_learning_mode_type")
+    @param:JsonProperty("conversion_learning_mode_type", required = true)
     @get:JsonProperty("conversion_learning_mode_type", required = true) val conversionLearningModeType: ConversionLearningModeType?,
 
     @Schema(required = true, readOnly = true, description = "Ad group creation time. Unix timestamp in seconds.")
-    @param:JsonProperty("created_time")
+    @param:JsonProperty("created_time", required = true)
     @get:JsonProperty("created_time", required = true) val createdTime: kotlin.Int,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(required = true, description = "Ad group ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(required = true, description = "Ad group name.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
     @Schema(required = true, readOnly = true, description = "")
-    @param:JsonProperty("summary_status")
+    @param:JsonProperty("summary_status", required = true)
     @get:JsonProperty("summary_status", required = true) val summaryStatus: SummaryStatus,
 
     @Schema(required = true, readOnly = true, description = "Always \"adgroup\".")
-    @param:JsonProperty("type")
+    @param:JsonProperty("type", required = true)
     @get:JsonProperty("type", required = true) val type: kotlin.String = "adgroup",
 
     @Schema(required = true, readOnly = true, description = "Ad group last update time. Unix timestamp in seconds.")
-    @param:JsonProperty("updated_time")
+    @param:JsonProperty("updated_time", required = true)
     @get:JsonProperty("updated_time", required = true) val updatedTime: kotlin.Int,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(readOnly = true, description = "Advertiser ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_account_id")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
@@ -134,8 +129,6 @@ data class AdGroupBase(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "Customer segment ID applied to the ad group. We currently only support 1 customer segment per ad group. To use customer segments, do not set the `targeting_template_ids` field as well as the `AUDIENCE_INCLUDE` field of the `targeting_spec`. To clear the customer segment ID, set this field to '0'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("customer_segment_id")
     @get:JsonProperty("customer_segment_id") val customerSegmentId: kotlin.String? = null,
 
@@ -154,8 +147,6 @@ data class AdGroupBase(
     @get:JsonProperty("ext_features") val extFeatures: AdgroupTrackingFeatures? = null,
 
     @Schema(description = "Feed Profile ID associated to the adgroup.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("feed_profile_id")
     @get:JsonProperty("feed_profile_id") val feedProfileId: kotlin.String? = null,
 
@@ -164,20 +155,14 @@ data class AdGroupBase(
     @get:JsonProperty("is_creative_optimization") val isCreativeOptimization: kotlin.Boolean? = null,
 
     @Schema(description = "Indicates whether the ad group should use the local inventory.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_local_inventory")
     @get:JsonProperty("is_local_inventory") val isLocalInventory: kotlin.Boolean? = null,
 
     @Schema(description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION [billable_event](https://help.pinterest.com/en/business/article/billable-events) value. This field **REQUIRES** the `end_time` field.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("lifetime_frequency_cap")
     @get:JsonProperty("lifetime_frequency_cap") val lifetimeFrequencyCap: kotlin.Int? = null,
 
     @Schema(description = "The targeting radius of the local inventory ads in miles.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("local_inventory_radius_in_miles")
     @get:JsonProperty("local_inventory_radius_in_miles") val localInventoryRadiusInMiles: java.math.BigDecimal? = null,
 
@@ -193,8 +178,6 @@ data class AdGroupBase(
 
     @field:Valid
     @Schema(description = "[Placement group](https://help.pinterest.com/en/business/article/placement-groups).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("placement_group")
     @get:JsonProperty("placement_group") val placementGroup: PlacementGroupType? = null,
 
@@ -214,8 +197,6 @@ data class AdGroupBase(
     @get:JsonProperty("promotion_id") val promotionId: kotlin.String? = "0",
 
     @Schema(description = "Promotion IDs list. To clear this field, set to an empty array [].")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("promotion_ids")
     @get:JsonProperty("promotion_ids") val promotionIds: kotlin.collections.List<kotlin.String>? = null,
 
@@ -225,15 +206,11 @@ data class AdGroupBase(
 
     @field:Valid
     @Schema(description = "Ad group/entity status.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("targeting_spec")
     @get:JsonProperty("targeting_spec") val targetingSpec: TargetingSpecOptimal? = null,
 

@@ -29,20 +29,14 @@ import {
 export interface AdsAnalyticsGetAsyncResponse {
     /**
      * 
-     * @type {BulkReportingJobStatus}
-     * @memberof AdsAnalyticsGetAsyncResponse
      */
     reportStatus?: BulkReportingJobStatus;
     /**
      * 
-     * @type {number}
-     * @memberof AdsAnalyticsGetAsyncResponse
      */
     size?: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof AdsAnalyticsGetAsyncResponse
      */
     url?: string | null;
 }

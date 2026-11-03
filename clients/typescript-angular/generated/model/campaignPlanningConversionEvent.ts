@@ -16,7 +16,7 @@ export const CampaignPlanningConversionEvent = {
     Signup: 'SIGNUP',
     Checkout: 'CHECKOUT',
     AddToCart: 'ADD_TO_CART',
-    Lead: 'LEAD'
+    Lead: 'LEAD',
 } as const;
 export type CampaignPlanningConversionEvent = typeof CampaignPlanningConversionEvent[keyof typeof CampaignPlanningConversionEvent];
 

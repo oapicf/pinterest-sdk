@@ -26,18 +26,18 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("MMMReportCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MMMReportCreate   {
-  private @Valid List<String> advertiserIds = new ArrayList<>();
-  private @Valid List<MMMReportingColumn> columns = new ArrayList<>();
-  private @Valid List<TargetingAdvertiserCountry> countries = new ArrayList<>();
-  private @Valid List<String> customColumnIds = new ArrayList<>();
+  private List<String> advertiserIds = new ArrayList<>();
+  private List<MMMReportingColumn> columns = new ArrayList<>();
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+  private List<String> customColumnIds = new ArrayList<>();
   private String endDate;
   private MMMReportGranularity granularity;
   private MMMReportLevel level;
   private String reportName;
   private String startDate;
-  private @Valid List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
+  private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
 
   public MMMReportCreate() {
   }

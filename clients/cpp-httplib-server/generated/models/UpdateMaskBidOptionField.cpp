@@ -6,20 +6,3 @@
 */
 #include "UpdateMaskBidOptionField.h"
 
-namespace models {
-
-UpdateMaskBidOptionField::UpdateMaskBidOptionField()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

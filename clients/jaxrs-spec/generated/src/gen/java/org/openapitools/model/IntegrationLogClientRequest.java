@@ -21,13 +21,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "HTTP request details included in the log sent by the client.")
 @JsonTypeName("IntegrationLogClientRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogClientRequest   {
   private String host;
   private HttpMethod method;
   private String path;
-  private @Valid Map<String, String> requestHeaders = new HashMap<>();
-  private @Valid Map<String, String> responseHeaders = new HashMap<>();
+  private Map<String, String> requestHeaders = new HashMap<>();
+  private Map<String, String> responseHeaders = new HashMap<>();
   private Integer responseStatusCode;
 
   public IntegrationLogClientRequest() {

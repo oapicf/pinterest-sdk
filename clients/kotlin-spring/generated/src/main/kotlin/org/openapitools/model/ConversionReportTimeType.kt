@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Conversion report time type
-* Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
-*/
+ * Conversion report time type
+ * Values: TIME_OF_AD_ACTION,TIME_OF_CONVERSION
+ */
 enum class ConversionReportTimeType(@get:JsonValue val value: kotlin.String) {
 
     TIME_OF_AD_ACTION("TIME_OF_AD_ACTION"),
@@ -28,9 +28,8 @@ enum class ConversionReportTimeType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionReportTimeType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionReportTimeType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionReportTimeType'")
         }
     }
 }
-

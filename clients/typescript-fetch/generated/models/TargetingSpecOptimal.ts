@@ -57,32 +57,22 @@ import {
 export interface TargetingSpecOptimal {
     /**
      * **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted.
-     * @type {Array<TargetingSpecAgeBucket>}
-     * @memberof TargetingSpecOptimal
      */
     aGEBUCKET?: Array<TargetingSpecAgeBucket> | null;
     /**
      * Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-     * @type {Array<TargetingSpecAppType>}
-     * @memberof TargetingSpecOptimal
      */
     aPPTYPE?: Array<TargetingSpecAppType> | null;
     /**
      * Excluded customer list IDs. Used to drive new customer acquisition goals. For example: ["2542620905475"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     aUDIENCEEXCLUDE?: Array<string> | null;
     /**
      * Targeted customer list IDs. For example: ["2542620905473"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     aUDIENCEINCLUDE?: Array<string> | null;
     /**
      * Targeted genders. Values: ["unknown","male","female"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-     * @type {Array<TargetingSpecGender>}
-     * @memberof TargetingSpecOptimal
      */
     gENDER?: Array<TargetingSpecGender> | null;
     /**
@@ -115,8 +105,6 @@ export interface TargetingSpecOptimal {
      * If you do not specifiy a `GEO` code, only `LOCATION` values will be targeted (See `LOCATION` parameter in this targeting spec.).
      * 
      * Learn how to [get a current, complete list of codes](/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones).
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     gEO?: Array<string> | null;
     /**
@@ -125,20 +113,14 @@ export interface TargetingSpecOptimal {
      * Region codes or postal codes to exclude from the targeting inclusion area.
      * 
      * See `GEO` parameter in this targeting spec for rules, syntax, and other information.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     gEOEXCLUDE?: Array<string>;
     /**
      * Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     iNTEREST?: Array<string>;
     /**
      * 24 ISO 639-1 two-letter language codes. If the LOCALE field is not included in the request, all languages are targeted.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     lOCALE?: Array<string> | null;
     /**
@@ -158,8 +140,6 @@ export interface TargetingSpecOptimal {
      * If you do not specify a `LOCATION` code, only `GEO` values will be targeted (See `GEO` parameter in this targeting spec.).
      * 
      * Learn how to [get a current, complete list of codes](/docs/analytics-and-reports/ads-reporting/#get-all-available-codes-and-zones).
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     lOCATION?: Array<string> | null;
     /**
@@ -168,32 +148,22 @@ export interface TargetingSpecOptimal {
      * Metropolitan codes and/or ISO-Alpha-2, two-letter country codes to exclude from targeting.
      * 
      * See `LOCATION` parameter in this targeting spec for rules, syntax, and other information.
-     * @type {Array<string>}
-     * @memberof TargetingSpecOptimal
      */
     lOCATIONEXCLUDE?: Array<string>;
     /**
      * Maximum age to target (inclusive). Values: "18", "19", ..., "65", "65+". Must be used together with `MINIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-     * @type {string}
-     * @memberof TargetingSpecOptimal
      */
     mAXIMUMAGE?: string;
     /**
      * Minimum age to target (inclusive). Values: "18", "19", ..., "65". Note: 65+ is not allowed for minimum age. Must be used together with `MAXIMUM_AGE`. Cannot be combined with `AGE_BUCKET`. If neither `MINIMUM_AGE`/`MAXIMUM_AGE` nor `AGE_BUCKET` are specified, all ages will be targeted.
-     * @type {string}
-     * @memberof TargetingSpecOptimal
      */
     mINIMUMAGE?: string;
     /**
      * Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-     * @type {Array<TargetingSpecShoppingRetargeting>}
-     * @memberof TargetingSpecOptimal
      */
     sHOPPINGRETARGETING?: Array<TargetingSpecShoppingRetargeting> | null;
     /**
      * 
-     * @type {Array<TargetingStrategy>}
-     * @memberof TargetingSpecOptimal
      */
     tARGETINGSTRATEGY?: Array<TargetingStrategy> | null;
 }

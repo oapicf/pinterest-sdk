@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Specify if the promotion is applied at ad group or item level.
-* Values: NONE,ITEM,AD_GROUP
-*/
+ * Specify if the promotion is applied at ad group or item level.
+ * Values: NONE,ITEM,AD_GROUP
+ */
 enum class PromotionApplicationLevel(@get:JsonValue val value: kotlin.String) {
 
     NONE("NONE"),
@@ -29,9 +29,8 @@ enum class PromotionApplicationLevel(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PromotionApplicationLevel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PromotionApplicationLevel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PromotionApplicationLevel'")
         }
     }
 }
-

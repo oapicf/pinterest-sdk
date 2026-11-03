@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -30,26 +29,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LeadFormCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormCreate {
 
   private JsonNullable<String> completionMessage = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> disclosureLanguage = JsonNullable.<String>undefined();
 
   private Boolean hasAcceptedTerms;
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid LeadFormPolicyLink> policyLinks = new ArrayList<>();
 
   private JsonNullable<String> privacyPolicyLink = JsonNullable.<String>undefined();
 
   private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable LeadFormStatus status;
 
   public LeadFormCreate() {
@@ -76,8 +72,8 @@ public class LeadFormCreate {
    * A message for people who complete the form to let them know what happens next.
    * @return completionMessage
    */
-  @NotNull 
-  @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("completion_message")
   public JsonNullable<String> getCompletionMessage() {
     return completionMessage;
@@ -98,7 +94,7 @@ public class LeadFormCreate {
    * @return disclosureLanguage
    */
   
-  @Schema(name = "disclosure_language", example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "disclosure_language", example = "By entering your personal information, you agree that your data will be collected and used.", description = "Additional disclosure language to be included in the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("disclosure_language")
   public JsonNullable<String> getDisclosureLanguage() {
     return disclosureLanguage;
@@ -138,8 +134,8 @@ public class LeadFormCreate {
    * Internal name of the lead form.
    * @return name
    */
-  @NotNull 
-  @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -167,7 +163,7 @@ public class LeadFormCreate {
    * List of additional policy links to be displayed on the lead form.
    * @return policyLinks
    */
-  @Valid @Size(min = 0, max = 3) 
+  @Size(min = 0, max = 3) 
   @Schema(name = "policy_links", example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("policy_links")
   public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
@@ -188,8 +184,8 @@ public class LeadFormCreate {
    * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
    * @return privacyPolicyLink
    */
-  @NotNull 
-  @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("privacy_policy_link")
   public JsonNullable<String> getPrivacyPolicyLink() {
     return privacyPolicyLink;
@@ -217,7 +213,7 @@ public class LeadFormCreate {
    * List of questions to be displayed on the lead form.
    * @return questions
    */
-  @NotNull @Valid @Size(min = 0, max = 10) 
+  @NotNull @Size(min = 0, max = 10) 
   @Schema(name = "questions", example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("questions")
   public List<@Valid LeadFormQuestion> getQuestions() {

@@ -71,36 +71,26 @@ import {
 export interface Campaign {
     /**
      * Campaign's Advertiser ID.
-     * @type {string}
-     * @memberof Campaign
      */
     adAccountId?: string;
     /**
      * [Restricted](/docs/getting-started/using-beta-and-restricted-features/)
      * 
      * Object describing the campaign level bid multipliers.
-     * @type {CampaignBidOptions}
-     * @memberof Campaign
      */
     bidOptions?: CampaignBidOptions | null;
     /**
      * Campaign creation time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof Campaign
      */
     readonly createdTime?: number;
     /**
      * Note: The default for this field is null, which is treated the same as 0.
      * For campaign budget optimization, a daily or lifetime spend cap must be set, but not both.
      * For ad group level budgets, this field must be 0 or unset.
-     * @type {number}
-     * @memberof Campaign
      */
     dailySpendCap?: number | null;
     /**
      * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-     * @type {number}
-     * @memberof Campaign
      */
     defaultAdGroupBudgetInMicroCurrency?: number | null;
     /**
@@ -109,20 +99,14 @@ export interface Campaign {
      * Different end times can be set for the campaign's child ad groups, but they cannot occur after an `end_time` specified for the campaign.
      * - If your campaign has a child ad group with an end time specified, and if you update that campaign with an `end_time` that is earlier than that of the ad group, the campaign `end_time` will supersede the ad group `end_time`, and the request will not return an error.
      * - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
-     * @type {number}
-     * @memberof Campaign
      */
     endTime?: number | null;
     /**
      * Campaign ID, must be associated with the ad account ID provided in the path.
-     * @type {string}
-     * @memberof Campaign
      */
     id: string;
     /**
      * 
-     * @type {IntendedPromotionType}
-     * @memberof Campaign
      */
     intendedPromotionType?: IntendedPromotionType;
     /**
@@ -135,35 +119,25 @@ export interface Campaign {
      * - SALES
      * - LEADS
      * - CATALOG\_SALES
-     * @type {boolean}
-     * @memberof Campaign
      */
     isAutomatedCampaign?: boolean | null;
     /**
      * Note: This field is immutable unless the campaign is in draft status.
      * Determines if a campaign automatically generates ad-group level budgets given a campaign budget to maximize campaign outcome.
      * When using campaign budgets with a lifetime spend cap, the end time must be provided.
-     * @type {boolean}
-     * @memberof Campaign
      */
     isCampaignBudgetOptimization?: boolean | null;
     /**
      * Whether the campaign contains a carting(where-to-buy link) ad.
-     * @type {boolean}
-     * @memberof Campaign
      */
     readonly isCarting?: boolean;
     /**
      * Determine if a campaign has setup for flexible daily budgets, also known as "Pinterest Performance+ budgets".
      * Flexible daily budgets are only supported for campaign budget optimization with a daily spend cap, and not a lifetime spend cap.
-     * @type {boolean}
-     * @memberof Campaign
      */
     isFlexibleDailyBudgets?: boolean | null;
     /**
      * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
-     * @type {boolean}
-     * @memberof Campaign
      */
     isLtvOptimized?: boolean;
     /**
@@ -176,8 +150,6 @@ export interface Campaign {
      * - CATALOG\_SALES
      * - APP\_INSTALL
      * Enable Pinterest Performance+ for your campaign. To learn more, see [Pinterest Performance+ Setup](https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/)
-     * @type {boolean}
-     * @memberof Campaign
      */
     isPerformancePlus?: boolean;
     /**
@@ -191,41 +163,29 @@ export interface Campaign {
      *  - LEADS
      *  - CATALOG\_SALES
      *  You cannot use this feature with Pinterest Performance+ or Premiere Spotlight enabled.
-     * @type {boolean}
-     * @memberof Campaign
      */
     isTopOfSearch?: boolean;
     /**
      * Note: The default for this field is null, which is treated the same as 0.
      * For campaign budget optimization, a daily or lifetime spend cap must be set, but not both.
      * For ad group level budgets, this field must be 0 or unset.
-     * @type {number}
-     * @memberof Campaign
      */
     lifetimeSpendCap?: number | null;
     /**
      * Campaign name - 255 chars max.
-     * @type {string}
-     * @memberof Campaign
      */
     name?: string;
     /**
      * 
-     * @type {CampaignObjectiveType}
-     * @memberof Campaign
      */
     objectiveType: CampaignObjectiveType;
     /**
      * Note: To clear this field on update, set the order line ID to 0.
      * Order line ID that appears on the invoice. The order line must not be expired.
-     * @type {string}
-     * @memberof Campaign
      */
     orderLineId?: string | null;
     /**
      * Pinterest Performance+ campaign settings.
-     * @type {PerformancePlusCampaignSettings}
-     * @memberof Campaign
      */
     performancePlusCampaignSettings?: PerformancePlusCampaignSettings | null;
     /**
@@ -233,38 +193,26 @@ export interface Campaign {
      * Different start times can be set for the campaign's child ad groups, but they cannot occur before a `start_time` specified for the campaign.
      * - If your campaign has a child ad group with a start time specified, and if you update that campaign with a `start_time` that is later than that of the ad group, the campaign `start_time` will supersede the ad group `start_time`, and the request will not return an error.
      * - In this scenario, if you call [List campaigns](/docs/api/v5/campaigns-list) or [List ad groups](/docs/api/v5/ad_groups-list), the returned campaigns or ad groups are listed with the start and end times that you assigned them, regardless of supersedence.
-     * @type {number}
-     * @memberof Campaign
      */
     startTime?: number | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof Campaign
      */
     status?: EntityStatus;
     /**
      * 
-     * @type {SummaryStatus}
-     * @memberof Campaign
      */
     readonly summaryStatus?: SummaryStatus;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof Campaign
      */
     trackingUrls?: TrackingUrls | null;
     /**
      * Always "campaign".
-     * @type {string}
-     * @memberof Campaign
      */
     readonly type?: string;
     /**
      * UTC timestamp. Last update time.
-     * @type {number}
-     * @memberof Campaign
      */
     readonly updatedTime?: number;
 }

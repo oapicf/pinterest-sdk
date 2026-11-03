@@ -29,23 +29,23 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AccountTemplate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AccountTemplate   {
   private String adAccountId;
-  private @Valid List<String> adAccountIds = new ArrayList<>();
-  private @Valid List<@Pattern(regexp = "^ADE_[A-Z_]+-[a-zA-Z0-9 _-]*$")String> adeColumns = new ArrayList<>();
+  private List<String> adAccountIds = new ArrayList<>();
+  private List<@Pattern(regexp = "^ADE_[A-Z_]+-[a-zA-Z0-9 _-]*$")String> adeColumns = new ArrayList<>();
   private Object attributionType = null;
   private BigDecimal clickWindowDays;
-  private @Valid List<ReportingColumn> columns = new ArrayList<>();
+  private List<ReportingColumn> columns = new ArrayList<>();
   private ConversionReportTimeType conversionReportTimeType;
   private CreationSource creationSource;
-  private @Valid List<String> customColumnIds;
+  private List<String> customColumnIds;
   private String displayMetadata;
   private BigDecimal engagementWindowDays;
   private String filtersJson;
   private Granularity granularity;
   private String id;
-  private @Valid List<IngestionSource> ingestionSources;
+  private List<IngestionSource> ingestionSources;
   private Boolean isDefault;
   private Boolean isDeleted;
   private Boolean isOwnedByUser;

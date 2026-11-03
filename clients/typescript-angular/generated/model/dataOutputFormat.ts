@@ -14,7 +14,7 @@
  */
 export const DataOutputFormat = {
     Json: 'JSON',
-    Csv: 'CSV'
+    Csv: 'CSV',
 } as const;
 export type DataOutputFormat = typeof DataOutputFormat[keyof typeof DataOutputFormat];
 

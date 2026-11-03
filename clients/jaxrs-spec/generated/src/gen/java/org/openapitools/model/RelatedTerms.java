@@ -20,11 +20,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("RelatedTerms")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RelatedTerms   {
   private String id;
   private Integer relatedTermCount;
-  private @Valid List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
+  private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
 
   public RelatedTerms() {
   }
@@ -80,7 +80,7 @@ public class RelatedTerms   {
   
   @ApiModelProperty(value = "The id of the advertiser.")
   @JsonProperty("related_terms_list")
-  @Valid public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
+  public List<@Valid RelatedTermsRelatedTermsListItems> getRelatedTermsList() {
     return relatedTermsList;
   }
 

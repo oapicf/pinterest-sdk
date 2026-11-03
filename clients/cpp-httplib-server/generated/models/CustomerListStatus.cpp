@@ -6,20 +6,3 @@
 */
 #include "CustomerListStatus.h"
 
-namespace models {
-
-CustomerListStatus::CustomerListStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

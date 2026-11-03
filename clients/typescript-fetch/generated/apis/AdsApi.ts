@@ -130,82 +130,258 @@ import {
 } from '../models/ReportingTimeZone';
 
 export interface AdPreviewsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adPreviewRequest: AdPreviewRequest;
 }
 
 export interface AdTargetingAnalyticsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * List of Ad Ids to use to filter the results.
+     */
     adIds: Array<string>;
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. ["AGE_BUCKET_AND_GENDER"] is in BETA and not yet available to all users.
+     */
     targetingTypes: Array<AdsAnalyticsAdTargetingType>;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: ConversionAttributionWindowDays;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: ConversionAttributionWindowDays;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: ConversionAttributionWindowDays;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: ConversionReportTimeType;
+    /**
+     * List of types of attribution for the conversion report
+     */
     attributionTypes?: Array<ConversionReportAttributionType>;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
     reportingTimezone?: ReportingTimeZone;
+    /**
+     * Sort Columns.
+     */
     sortColumns?: Array<string>;
+    /**
+     * Sort ascending.
+     */
     sortAscending?: boolean;
 }
 
 export interface AdsAnalyticsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * List of Pin IDs.
+     */
     pinIds?: Array<string>;
+    /**
+     * List of Ad Ids to use to filter the results.
+     */
     adIds?: Array<string>;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: AdsAnalyticsClickWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: AdsAnalyticsEngagementWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: AdsAnalyticsViewWindowDaysEnum;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: AdsAnalyticsConversionReportTimeEnum;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds?: Array<string>;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
     reportingTimezone?: ReportingTimeZone;
 }
 
 export interface AdsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adCreate: Array<AdCreate>;
 }
 
 export interface AdsGetRequest {
+    /**
+     * The ID of this ad.
+     */
     adId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface AdsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * List of Campaign Ids to use to filter the results.
+     */
     campaignIds?: Array<string>;
+    /**
+     * List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
+     */
     adGroupIds?: Array<string>;
+    /**
+     * List of Ad Ids to use to filter the results.
+     */
     adIds?: Array<string>;
+    /**
+     * Entity status
+     */
     entityStatuses?: Array<EntityStatus>;
 }
 
 export interface AdsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     adBatchUpdate: Array<AdBatchUpdate>;
 }
 
 export interface CampaignAdPreviewCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     campaignAdPreviewCreate: Array<CampaignAdPreviewCreate>;
 }
 
 export interface CampaignAdPreviewDeleteRequest {
+    /**
+     * List of Ad group Ids to use to filter the results.
+     */
     adGroupIds: Array<string>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface CampaignAdPreviewReadRequest {
+    /**
+     * List of Ad group Ids to use to filter the results.
+     */
     adGroupIds: Array<string>;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
@@ -336,11 +512,11 @@ export class AdsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['targetingTypes'] != null) {
@@ -477,11 +653,11 @@ export class AdsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['adIds'] != null) {
@@ -1044,7 +1220,7 @@ export const AdsAnalyticsClickWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdsAnalyticsClickWindowDaysEnum = typeof AdsAnalyticsClickWindowDaysEnum[keyof typeof AdsAnalyticsClickWindowDaysEnum];
 /**
@@ -1056,7 +1232,7 @@ export const AdsAnalyticsEngagementWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdsAnalyticsEngagementWindowDaysEnum = typeof AdsAnalyticsEngagementWindowDaysEnum[keyof typeof AdsAnalyticsEngagementWindowDaysEnum];
 /**
@@ -1068,7 +1244,7 @@ export const AdsAnalyticsViewWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type AdsAnalyticsViewWindowDaysEnum = typeof AdsAnalyticsViewWindowDaysEnum[keyof typeof AdsAnalyticsViewWindowDaysEnum];
 /**
@@ -1076,6 +1252,6 @@ export type AdsAnalyticsViewWindowDaysEnum = typeof AdsAnalyticsViewWindowDaysEn
  */
 export const AdsAnalyticsConversionReportTimeEnum = {
     TimeOfAdAction: 'TIME_OF_AD_ACTION',
-    TimeOfConversion: 'TIME_OF_CONVERSION'
+    TimeOfConversion: 'TIME_OF_CONVERSION',
 } as const;
 export type AdsAnalyticsConversionReportTimeEnum = typeof AdsAnalyticsConversionReportTimeEnum[keyof typeof AdsAnalyticsConversionReportTimeEnum];

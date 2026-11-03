@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!anyOf.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProductGroupFiltersAnyOf.", nameof(anyOf));
+                throw new JsonException("Property is required for class CatalogsHotelProductGroupFiltersAnyOf: any_of.");
 
             if (anyOf.IsSet && anyOf.Value == null)
-                throw new ArgumentNullException(nameof(anyOf), "Property is not nullable for class CatalogsHotelProductGroupFiltersAnyOf.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProductGroupFiltersAnyOf: any_of.");
 
             return new CatalogsHotelProductGroupFiltersAnyOf(anyOf.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelProductGroupFiltersAnyOf catalogsHotelProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProductGroupFiltersAnyOf"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelProductGroupFiltersAnyOf catalogsHotelProductGroupFiltersAnyOf, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelProductGroupFiltersAnyOf.AnyOf == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProductGroupFiltersAnyOf.AnyOf), "Property is required for class CatalogsHotelProductGroupFiltersAnyOf.");
-
             writer.WritePropertyName("any_of");
             JsonSerializer.Serialize(writer, catalogsHotelProductGroupFiltersAnyOf.AnyOf, jsonSerializerOptions);
         }

@@ -44,52 +44,52 @@ data class CatalogsHotelProductGroupFilterKeys(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRICE")
+    @param:JsonProperty("PRICE", required = true)
     @get:JsonProperty("PRICE", required = true) val PRICE: PriceFilterPrice,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("HOTEL_ID")
+    @param:JsonProperty("HOTEL_ID", required = true)
     @get:JsonProperty("HOTEL_ID", required = true) val HOTEL_ID: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("BRAND")
+    @param:JsonProperty("BRAND", required = true)
     @get:JsonProperty("BRAND", required = true) val BRAND: CatalogsProductGroupMultipleStringCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_0")
+    @param:JsonProperty("CUSTOM_LABEL_0", required = true)
     @get:JsonProperty("CUSTOM_LABEL_0", required = true) val CUSTOM_LABEL_0: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_1")
+    @param:JsonProperty("CUSTOM_LABEL_1", required = true)
     @get:JsonProperty("CUSTOM_LABEL_1", required = true) val CUSTOM_LABEL_1: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_2")
+    @param:JsonProperty("CUSTOM_LABEL_2", required = true)
     @get:JsonProperty("CUSTOM_LABEL_2", required = true) val CUSTOM_LABEL_2: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_3")
+    @param:JsonProperty("CUSTOM_LABEL_3", required = true)
     @get:JsonProperty("CUSTOM_LABEL_3", required = true) val CUSTOM_LABEL_3: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("CUSTOM_LABEL_4")
+    @param:JsonProperty("CUSTOM_LABEL_4", required = true)
     @get:JsonProperty("CUSTOM_LABEL_4", required = true) val CUSTOM_LABEL_4: CatalogsProductGroupFilterOperatorTypeCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("COUNTRY")
+    @param:JsonProperty("COUNTRY", required = true)
     @get:JsonProperty("COUNTRY", required = true) val COUNTRY: CatalogsProductGroupMultipleCountriesCriteria,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("TITLE_KEYWORDS")
+    @param:JsonProperty("TITLE_KEYWORDS", required = true)
     @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 ) {
 

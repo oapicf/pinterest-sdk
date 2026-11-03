@@ -29,8 +29,6 @@ import {
 export interface UpdateBusinessMembershipsResponse {
     /**
      * List of members with updated business access role.
-     * @type {Array<BusinessMembershipMember>}
-     * @memberof UpdateBusinessMembershipsResponse
      */
     items?: Array<BusinessMembershipMember>;
 }

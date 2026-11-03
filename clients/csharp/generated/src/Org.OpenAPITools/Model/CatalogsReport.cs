@@ -235,7 +235,12 @@ namespace Org.OpenAPITools.Model
                         case "report_status":
                             string? reportStatusRawValue = utf8JsonReader.GetString();
                             if (reportStatusRawValue != null)
-                                reportStatus = new Option<CatalogsReport.ReportStatusEnum?>(CatalogsReport.ReportStatusEnumFromStringOrDefault(reportStatusRawValue));
+                            {
+                                CatalogsReport.ReportStatusEnum? reportStatusValue = CatalogsReport.ReportStatusEnumFromStringOrDefault(reportStatusRawValue);
+                                if (reportStatusValue == null)
+                                    throw new JsonException();
+                                reportStatus = new Option<CatalogsReport.ReportStatusEnum?>(reportStatusValue);
+                            }
                             break;
                         case "size":
                             size = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
@@ -250,7 +255,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (reportStatus.IsSet && reportStatus.Value == null)
-                throw new ArgumentNullException(nameof(reportStatus), "Property is not nullable for class CatalogsReport.");
+                throw new JsonException("Property is not nullable for class CatalogsReport: report_status.");
 
             return new CatalogsReport(reportStatus, size, url);
         }
@@ -261,7 +266,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsReport catalogsReport, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -276,9 +280,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReport"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsReport catalogsReport, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsReport.ReportStatusOption.IsSet && catalogsReport.ReportStatus == null)
+                throw new JsonException("Cannot write null property CatalogsReport.ReportStatus to non-nullable JSON property 'report_status'.");
+
             var reportStatusRawValue = CatalogsReport.ReportStatusEnumToJsonValue(catalogsReport.ReportStatusOption.Value!.Value);
             writer.WriteString("report_status", reportStatusRawValue);
             if (catalogsReport.SizeOption.IsSet)

@@ -25,13 +25,13 @@ data class CustomerListUploadCreateRequest(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("operation")
+    @param:JsonProperty("operation", required = true)
     @get:JsonProperty("operation", required = true) val operation: UserListOperationType,
 
     @get:Min(value=1)
     @get:Max(value=10)
     @Schema(example = "2", required = true, description = "Number of parts to upload the file in.")
-    @param:JsonProperty("total_parts")
+    @param:JsonProperty("total_parts", required = true)
     @get:JsonProperty("total_parts", required = true) val totalParts: kotlin.Int
 ) {
 

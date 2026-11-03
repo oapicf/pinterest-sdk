@@ -176,16 +176,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!coverage.IsSet)
-                throw new ArgumentException("Property is required for class QualityComponentDetails.", nameof(coverage));
+                throw new JsonException("Property is required for class QualityComponentDetails: coverage.");
 
             if (coverage.IsSet && coverage.Value == null)
-                throw new ArgumentNullException(nameof(coverage), "Property is not nullable for class QualityComponentDetails.");
+                throw new JsonException("Property is not nullable for class QualityComponentDetails: coverage.");
 
             if (issues.IsSet && issues.Value == null)
-                throw new ArgumentNullException(nameof(issues), "Property is not nullable for class QualityComponentDetails.");
+                throw new JsonException("Property is not nullable for class QualityComponentDetails: issues.");
 
             if (overlap.IsSet && overlap.Value == null)
-                throw new ArgumentNullException(nameof(overlap), "Property is not nullable for class QualityComponentDetails.");
+                throw new JsonException("Property is not nullable for class QualityComponentDetails: overlap.");
 
             return new QualityComponentDetails(coverage.Value!.Value!, issues, overlap);
         }
@@ -196,7 +196,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponentDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QualityComponentDetails qualityComponentDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -211,11 +210,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="qualityComponentDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QualityComponentDetails qualityComponentDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             if (qualityComponentDetails.IssuesOption.IsSet && qualityComponentDetails.Issues == null)
-                throw new ArgumentNullException(nameof(qualityComponentDetails.Issues), "Property is required for class QualityComponentDetails.");
+                throw new JsonException("Cannot write null property QualityComponentDetails.Issues to non-nullable JSON property 'issues'.");
+
+            if (qualityComponentDetails.OverlapOption.IsSet && qualityComponentDetails.Overlap == null)
+                throw new JsonException("Cannot write null property QualityComponentDetails.Overlap to non-nullable JSON property 'overlap'.");
 
             writer.WriteNumber("coverage", qualityComponentDetails.Coverage);
 

@@ -6,20 +6,3 @@
 */
 #include "ConversionProductReportingColumn.h"
 
-namespace models {
-
-ConversionProductReportingColumn::ConversionProductReportingColumn()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

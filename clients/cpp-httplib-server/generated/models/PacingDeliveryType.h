@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class PacingDeliveryType
-{
-public:
-
-    PacingDeliveryType();
-    virtual ~PacingDeliveryType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PacingDeliveryType,
-        )
-
-private:
+enum class PacingDeliveryType {
+    
+    STANDARD,
+    
+    ACCELERATED
+    
 };
 
+inline void to_json(nlohmann::json& j, const PacingDeliveryType& value)
+{
+    switch (value)
+    {
+        
+        case PacingDeliveryType::STANDARD: j = "STANDARD"; break;
+        
+        case PacingDeliveryType::ACCELERATED: j = "ACCELERATED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PacingDeliveryType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PacingDeliveryType& value)
+{
+    
+    if (j == "STANDARD")
+    {
+        value = PacingDeliveryType::STANDARD;
+        return;
+    }
+    
+    if (j == "ACCELERATED")
+    {
+        value = PacingDeliveryType::ACCELERATED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PacingDeliveryType", &j);
+}
 
 } // namespace models
 

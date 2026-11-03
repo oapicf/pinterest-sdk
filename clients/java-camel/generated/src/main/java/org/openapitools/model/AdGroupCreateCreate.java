@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -40,7 +39,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupCreateCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateCreate {
 
   private Boolean autoTargetingEnabled;
@@ -55,7 +54,7 @@ public class AdGroupCreateCreate {
 
   private JsonNullable<Integer> budgetInMicroCurrency = JsonNullable.<Integer>undefined();
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   private String campaignId;
 
@@ -79,7 +78,7 @@ public class AdGroupCreateCreate {
 
   private JsonNullable<NullableOptimizationGoalMetadata> optimizationGoalMetadata = JsonNullable.<NullableOptimizationGoalMetadata>undefined();
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   private JsonNullable<PerformancePlusCampaignSettings> performancePlusCampaignSettings = JsonNullable.<PerformancePlusCampaignSettings>undefined();
 
@@ -91,7 +90,6 @@ public class AdGroupCreateCreate {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> promotionId = JsonNullable.<String>undefined();
 
-  @Valid
   private List<String> promotionIds = new ArrayList<>();
 
   private JsonNullable<Integer> startTime = JsonNullable.<Integer>undefined();
@@ -100,7 +98,6 @@ public class AdGroupCreateCreate {
 
   private TargetingSpecOptimal targetingSpec;
 
-  @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
   private JsonNullable<AdGroupTrackingURLs> trackingUrls = JsonNullable.<AdGroupTrackingURLs>undefined();

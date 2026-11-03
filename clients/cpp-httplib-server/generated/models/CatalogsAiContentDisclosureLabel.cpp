@@ -6,20 +6,3 @@
 */
 #include "CatalogsAiContentDisclosureLabel.h"
 
-namespace models {
-
-CatalogsAiContentDisclosureLabel::CatalogsAiContentDisclosureLabel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

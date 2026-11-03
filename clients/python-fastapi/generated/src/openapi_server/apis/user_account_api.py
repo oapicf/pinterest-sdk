@@ -22,9 +22,8 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from datetime import date
-from pydantic import Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from openapi_server.models.account import Account
@@ -47,6 +46,7 @@ from openapi_server.models.user_website import UserWebsite
 from openapi_server.models.user_website_create import UserWebsiteCreate
 from openapi_server.models.user_website_verification import UserWebsiteVerification
 from openapi_server.models.user_websites_get200_response import UserWebsitesGet200Response
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -72,7 +72,7 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def user_account_get(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -102,16 +102,16 @@ async def user_account_get(
     response_model_by_alias=True,
 )
 async def user_account_analytics(
-    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
-    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
-    from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
-    pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
-    app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
-    content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
-    source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(..., description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(..., description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
+    pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
+    app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
+    content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
+    source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
     metric_types: Annotated[Optional[List[QuerymetrictypesItems]], Field(description="Metric types to get data for, default is all.")] = Query(None, description="Metric types to get data for, default is all.", alias="metric_types"),
-    split_field: Annotated[Optional[StrictStr], Field(description="How to split the data into groups. Not including this param means data won't be split.")] = Query('NO_SPLIT', description="How to split the data into groups. Not including this param means data won&#39;t be split.", alias="split_field"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    split_field: Annotated[Optional[str], Field(description="How to split the data into groups. Not including this param means data won't be split.")] = Query('NO_SPLIT', description="How to split the data into groups. Not including this param means data won&#39;t be split.", alias="split_field"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -138,18 +138,18 @@ async def user_account_analytics(
     response_model_by_alias=True,
 )
 async def user_account_analytics_top_pins(
-    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
-    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
-    sort_by: Annotated[TopPinsSortBy, Field(description="Specify sorting order for metrics")] = Query(None, description="Specify sorting order for metrics", alias="sort_by"),
-    from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
-    pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
-    app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
-    content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
-    source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(..., description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(..., description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    sort_by: Annotated[TopPinsSortBy, Field(description="Specify sorting order for metrics")] = Query(..., description="Specify sorting order for metrics", alias="sort_by"),
+    from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
+    pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
+    app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
+    content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
+    source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
     metric_types: Annotated[Optional[List[QuerymetrictypesItems]], Field(description="Metric types to get data for, default is all.")] = Query(None, description="Metric types to get data for, default is all.", alias="metric_types"),
-    num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")] = Query(10, description="Number of pins to include, default is 10. Max is 50.", alias="num_of_pins", ge=1, le=50),
-    created_in_last_n_days: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Get metrics for pins created in the last \"n\" days.")] = Query(None, description="Get metrics for pins created in the last \&quot;n\&quot; days.", alias="created_in_last_n_days"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")] = Query(10, description="Number of pins to include, default is 10. Max is 50.", alias="num_of_pins", ge=1, le=50),
+    created_in_last_n_days: Annotated[Optional[Union[float, int]], Field(description="Get metrics for pins created in the last \"n\" days.")] = Query(None, description="Get metrics for pins created in the last \&quot;n\&quot; days.", alias="created_in_last_n_days"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["pins:read", "user_accounts:read"]
     ),
@@ -179,18 +179,18 @@ async def user_account_analytics_top_pins(
     response_model_by_alias=True,
 )
 async def user_account_analytics_top_video_pins(
-    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(None, description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
-    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(None, description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
-    sort_by: Annotated[TopVideoPinsSortBy, Field(description="Specify sorting order for video metrics")] = Query(None, description="Specify sorting order for video metrics", alias="sort_by"),
-    from_claimed_content: Annotated[Optional[StrictStr], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
-    pin_format: Annotated[Optional[StrictStr], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
-    app_types: Annotated[Optional[StrictStr], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
-    content_type: Annotated[Optional[StrictStr], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
-    source: Annotated[Optional[StrictStr], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
+    start_date: Annotated[date, Field(description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")] = Query(..., description="Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", alias="start_date"),
+    end_date: Annotated[date, Field(description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")] = Query(..., description="Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", alias="end_date"),
+    sort_by: Annotated[TopVideoPinsSortBy, Field(description="Specify sorting order for video metrics")] = Query(..., description="Specify sorting order for video metrics", alias="sort_by"),
+    from_claimed_content: Annotated[Optional[str], Field(description="Filter on Pins that match your claimed domain.")] = Query('BOTH', description="Filter on Pins that match your claimed domain.", alias="from_claimed_content"),
+    pin_format: Annotated[Optional[str], Field(description="Pin formats to get data for, default is all.")] = Query('ALL', description="Pin formats to get data for, default is all.", alias="pin_format"),
+    app_types: Annotated[Optional[str], Field(description="Apps or devices to get data for, default is all.")] = Query('ALL', description="Apps or devices to get data for, default is all.", alias="app_types"),
+    content_type: Annotated[Optional[str], Field(description="Filter to paid or organic data. Default is all.")] = Query('ALL', description="Filter to paid or organic data. Default is all.", alias="content_type"),
+    source: Annotated[Optional[str], Field(description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts")] = Query('ALL', description="Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", alias="source"),
     metric_types: Annotated[Optional[List[QueryvideopinmetrictypesItems]], Field(description="Metric types to get video data for, default is all.")] = Query(None, description="Metric types to get video data for, default is all.", alias="metric_types"),
-    num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, strict=True, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")] = Query(10, description="Number of pins to include, default is 10. Max is 50.", alias="num_of_pins", ge=1, le=50),
-    created_in_last_n_days: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="Get metrics for pins created in the last \"n\" days.")] = Query(None, description="Get metrics for pins created in the last \&quot;n\&quot; days.", alias="created_in_last_n_days"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    num_of_pins: Annotated[Optional[Annotated[int, Field(le=50, ge=1)]], Field(description="Number of pins to include, default is 10. Max is 50.")] = Query(10, description="Number of pins to include, default is 10. Max is 50.", alias="num_of_pins", ge=1, le=50),
+    created_in_last_n_days: Annotated[Optional[Union[float, int]], Field(description="Get metrics for pins created in the last \"n\" days.")] = Query(None, description="Get metrics for pins created in the last \&quot;n\&quot; days.", alias="created_in_last_n_days"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["pins:read", "user_accounts:read"]
     ),
@@ -249,8 +249,8 @@ async def linked_business_accounts_get(
     response_model_by_alias=True,
 )
 async def followers_list(
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -280,11 +280,11 @@ async def followers_list(
     response_model_by_alias=True,
 )
 async def user_following_get(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    explicit_following: Annotated[Optional[StrictBool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")] = Query(False, description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", alias="explicit_following"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    explicit_following: Annotated[Optional[bool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")] = Query(False, description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", alias="explicit_following"),
     feed_type: Annotated[Optional[UserFollowingFeedType], Field(description="Thrift param specifying what type of followees will be kept. Default to include all followees.")] = Query('ALL', description="Thrift param specifying what type of followees will be kept. Default to include all followees.", alias="feed_type"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -314,10 +314,10 @@ async def user_following_get(
     response_model_by_alias=True,
 )
 async def boards_user_follows_list(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    explicit_following: Annotated[Optional[StrictBool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")] = Query(False, description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", alias="explicit_following"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    explicit_following: Annotated[Optional[bool], Field(description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.")] = Query(False, description="Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", alias="explicit_following"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -348,8 +348,8 @@ async def boards_user_follows_list(
     response_model_by_alias=True,
 )
 async def follow_user_update(
-    username: Annotated[str, Field(strict=True, description="A valid username")] = Path(..., description="A valid username", regex=r"(?!^\d+$)^.+$"),
-    follow_user_create: FollowUserCreate = Body(None, description=""),
+    username: Annotated[str, Field(description="A valid username")] = Path(..., description="A valid username", regex=r"(?!^\d+$)^.+$"),
+    follow_user_create: FollowUserCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:write"]
     ),
@@ -376,8 +376,8 @@ async def follow_user_update(
     response_model_by_alias=True,
 )
 async def user_websites_get(
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -405,8 +405,8 @@ async def user_websites_get(
     response_model_by_alias=True,
 )
 async def verify_website_update(
-    user_website_create: UserWebsiteCreate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    user_website_create: UserWebsiteCreate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:write"]
     ),
@@ -434,7 +434,7 @@ async def verify_website_update(
     response_model_by_alias=True,
 )
 async def unverify_website_delete(
-    website: Annotated[StrictStr, Field(description="Website with path or domain only")] = Query(None, description="Website with path or domain only", alias="website"),
+    website: Annotated[str, Field(description="Website with path or domain only")] = Query(..., description="Website with path or domain only", alias="website"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:write"]
     ),
@@ -461,7 +461,7 @@ async def unverify_website_delete(
     response_model_by_alias=True,
 )
 async def website_verification_get(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),
@@ -489,9 +489,9 @@ async def website_verification_get(
     response_model_by_alias=True,
 )
 async def user_account_followed_interests(
-    username: Annotated[str, Field(strict=True, description="A valid username")] = Path(..., description="A valid username", regex=r"(?!^\d+$)^.+$"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    username: Annotated[str, Field(description="A valid username")] = Path(..., description="A valid username", regex=r"(?!^\d+$)^.+$"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["user_accounts:read"]
     ),

@@ -101,6 +101,7 @@ class _$BaseBusinessAssetsSerializer implements PrimitiveSerializer<BaseBusiness
   }
 }
 
+
 /// a concrete implementation of [BaseBusinessAssets], since [BaseBusinessAssets] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $BaseBusinessAssets implements BaseBusinessAssets, Built<$BaseBusinessAssets, $BaseBusinessAssetsBuilder> {

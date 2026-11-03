@@ -205,7 +205,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<LocalInventoryDeleteOperation.OperationEnum?>(LocalInventoryDeleteOperation.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                LocalInventoryDeleteOperation.OperationEnum? operationValue = LocalInventoryDeleteOperation.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<LocalInventoryDeleteOperation.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "store_code":
                             storeCode = new Option<string?>(utf8JsonReader.GetString()!);
@@ -217,22 +222,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryDeleteOperation.", nameof(itemId));
+                throw new JsonException("Property is required for class LocalInventoryDeleteOperation: item_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryDeleteOperation.", nameof(operation));
+                throw new JsonException("Property is required for class LocalInventoryDeleteOperation: operation.");
 
             if (!storeCode.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryDeleteOperation.", nameof(storeCode));
+                throw new JsonException("Property is required for class LocalInventoryDeleteOperation: store_code.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class LocalInventoryDeleteOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryDeleteOperation: item_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class LocalInventoryDeleteOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryDeleteOperation: operation.");
 
             if (storeCode.IsSet && storeCode.Value == null)
-                throw new ArgumentNullException(nameof(storeCode), "Property is not nullable for class LocalInventoryDeleteOperation.");
+                throw new JsonException("Property is not nullable for class LocalInventoryDeleteOperation: store_code.");
 
             return new LocalInventoryDeleteOperation(itemId.Value!, operation.Value!.Value!, storeCode.Value!);
         }
@@ -243,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryDeleteOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryDeleteOperation localInventoryDeleteOperation, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,15 +262,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryDeleteOperation"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryDeleteOperation localInventoryDeleteOperation, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryDeleteOperation.ItemId == null)
-                throw new ArgumentNullException(nameof(localInventoryDeleteOperation.ItemId), "Property is required for class LocalInventoryDeleteOperation.");
-
-            if (localInventoryDeleteOperation.StoreCode == null)
-                throw new ArgumentNullException(nameof(localInventoryDeleteOperation.StoreCode), "Property is required for class LocalInventoryDeleteOperation.");
-
             writer.WriteString("item_id", localInventoryDeleteOperation.ItemId);
 
             var operationRawValue = LocalInventoryDeleteOperation.OperationEnumToJsonValue(localInventoryDeleteOperation.Operation);

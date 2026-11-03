@@ -21,7 +21,6 @@ public class ProductGroupPromotionUpdateRequest  {
   private String adGroupId;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
  /**
   * ID of the ad group the product group belongs to.

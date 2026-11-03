@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Error code returned for a campaign planning estimate failure.
-* Values: SERVER_ERROR,AUDIENCE_LIST_MISSING,INVALID_REQUEST,PRODUCT_GROUP_MISSING
-*/
+ * Error code returned for a campaign planning estimate failure.
+ * Values: SERVER_ERROR,AUDIENCE_LIST_MISSING,INVALID_REQUEST,PRODUCT_GROUP_MISSING
+ */
 enum class CampaignPlanningResponseErrorCode(@get:JsonValue val value: kotlin.String) {
 
     SERVER_ERROR("SERVER_ERROR"),
@@ -30,9 +30,8 @@ enum class CampaignPlanningResponseErrorCode(@get:JsonValue val value: kotlin.St
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CampaignPlanningResponseErrorCode {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningResponseErrorCode'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CampaignPlanningResponseErrorCode'")
         }
     }
 }
-

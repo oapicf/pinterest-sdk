@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -26,15 +25,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "QualityComponentDetails", description = "Metrics for a specific event type within a quality component.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponentDetails {
 
   private BigDecimal coverage;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid QualityComponentIssue> issues = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal overlap;
 
   public QualityComponentDetails() {
@@ -86,7 +83,7 @@ public class QualityComponentDetails {
    * List of issues detected for this event type, if any.
    * @return issues
    */
-  @Valid 
+  
   @Schema(name = "issues", description = "List of issues detected for this event type, if any.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("issues")
   public List<@Valid QualityComponentIssue> getIssues() {

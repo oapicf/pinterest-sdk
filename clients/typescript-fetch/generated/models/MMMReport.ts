@@ -29,38 +29,26 @@ import {
 export interface MMMReport {
     /**
      * 
-     * @type {string}
-     * @memberof MMMReport
      */
     readonly message?: string;
     /**
      * 
-     * @type {BulkReportingJobStatus}
-     * @memberof MMMReport
      */
     readonly reportStatus?: BulkReportingJobStatus;
     /**
      * 
-     * @type {number}
-     * @memberof MMMReport
      */
     readonly size?: number;
     /**
      * 
-     * @type {string}
-     * @memberof MMMReport
      */
     readonly status?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MMMReport
      */
     readonly token?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MMMReport
      */
     readonly url?: string;
 }

@@ -202,3 +202,4 @@ class _$BidOptionsAppTypeMultipliersSerializer implements PrimitiveSerializer<Bi
   }
 }
 
+

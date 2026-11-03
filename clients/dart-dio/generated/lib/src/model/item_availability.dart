@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'item_availability.g.dart';
 
+/// Availability of the item
 class ItemAvailability extends EnumClass {
 
-  /// Availability of the item
   @BuiltValueEnumConst(wireName: r'in stock')
   static const ItemAvailability inStock = _$inStock;
-  /// Availability of the item
   @BuiltValueEnumConst(wireName: r'out of stock')
   static const ItemAvailability outOfStock = _$outOfStock;
-  /// Availability of the item
   @BuiltValueEnumConst(wireName: r'preorder')
   static const ItemAvailability preorder = _$preorder;
 

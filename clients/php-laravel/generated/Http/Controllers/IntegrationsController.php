@@ -51,13 +51,13 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'externalBusinessId' => $externalBusinessId,
-                ],
                 $request->all(),
+                [
+                    'external_business_id' => $externalBusinessId,
+                ],
             ),
             [
-                'externalBusinessId' => [
+                'external_business_id' => [
                     'required',
                     'string',
                 ],
@@ -118,13 +118,13 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'externalBusinessId' => $externalBusinessId,
-                ],
                 $request->all(),
+                [
+                    'external_business_id' => $externalBusinessId,
+                ],
             ),
             [
-                'externalBusinessId' => [
+                'external_business_id' => [
                     'required',
                     'string',
                 ],
@@ -181,10 +181,10 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'externalBusinessId' => $externalBusinessId,
-                ],
                 $request->all(),
+                [
+                    'external_business_id' => $externalBusinessId,
+                ],
             ),
             [
             ],
@@ -242,10 +242,10 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -306,10 +306,10 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     'id' => $id,
                 ],
-                $request->all(),
             ),
             [
                 'id' => [
@@ -370,16 +370,16 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -393,7 +393,7 @@ class IntegrationsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->integrationsGetList($bookmark, $pageSize);
@@ -440,10 +440,10 @@ class IntegrationsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],

@@ -16,7 +16,7 @@ export const VideoPinMetricTypes = {
     VideoStart: 'VIDEO_START',
     VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME',
     TotalComments: 'TOTAL_COMMENTS',
-    TotalReactions: 'TOTAL_REACTIONS'
+    TotalReactions: 'TOTAL_REACTIONS',
 } as const;
 export type VideoPinMetricTypes = typeof VideoPinMetricTypes[keyof typeof VideoPinMetricTypes];
 

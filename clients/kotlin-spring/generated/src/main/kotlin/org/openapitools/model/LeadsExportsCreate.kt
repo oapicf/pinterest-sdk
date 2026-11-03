@@ -23,17 +23,17 @@ data class LeadsExportsCreate(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "687201361754", required = true, description = "ID for the ad collecting leads.")
-    @param:JsonProperty("ad_id")
+    @param:JsonProperty("ad_id", required = true)
     @get:JsonProperty("ad_id", required = true) val adId: kotlin.String,
 
     @get:Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")
     @Schema(example = "2020-12-20", required = true, description = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD.")
-    @param:JsonProperty("end_date")
+    @param:JsonProperty("end_date", required = true)
     @get:JsonProperty("end_date", required = true) val endDate: kotlin.String,
 
     @get:Pattern(regexp="^\\d{4}-\\d{2}-\\d{2}$")
     @Schema(example = "2020-12-20", required = true, description = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD.")
-    @param:JsonProperty("start_date")
+    @param:JsonProperty("start_date", required = true)
     @get:JsonProperty("start_date", required = true) val startDate: kotlin.String
 ) {
 

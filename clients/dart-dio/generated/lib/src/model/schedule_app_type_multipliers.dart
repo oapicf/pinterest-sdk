@@ -110,3 +110,4 @@ class _$ScheduleAppTypeMultipliersSerializer implements PrimitiveSerializer<Sche
   }
 }
 
+

@@ -17,7 +17,7 @@ import AdvertiserDefinedEventProcessingRecord from './AdvertiserDefinedEventProc
 /**
  * The AdvertiserDefinedEventsCreate200Response model module.
  * @module model/AdvertiserDefinedEventsCreate200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvertiserDefinedEventsCreate200Response {
     /**

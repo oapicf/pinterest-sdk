@@ -18,7 +18,7 @@ import CatalogsReportFeedIngestionFilter from './CatalogsReportFeedIngestionFilt
 /**
  * The CatalogsHotelReportParametersReport model module.
  * @module model/CatalogsHotelReportParametersReport
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelReportParametersReport {
     /**

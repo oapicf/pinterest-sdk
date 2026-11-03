@@ -29,8 +29,6 @@ import {
 export interface CatalogsCreativeAssetsProductGroupFiltersAnyOf {
     /**
      * 
-     * @type {Array<CatalogsCreativeAssetsProductGroupFilterKeys>}
-     * @memberof CatalogsCreativeAssetsProductGroupFiltersAnyOf
      */
     anyOf: Array<CatalogsCreativeAssetsProductGroupFilterKeys>;
 }

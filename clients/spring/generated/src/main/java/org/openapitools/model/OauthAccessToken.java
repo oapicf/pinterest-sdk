@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -23,26 +22,21 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "OauthAccessToken", description = "Describes the valid schema for possible OAuth access token requests.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OauthAccessToken {
 
   private String accessToken;
 
   private Integer expiresIn;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String refreshToken;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer refreshTokenExpiresAt;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer refreshTokenExpiresIn;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TokenGrantType responseType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String scope;
 
   private String tokenType = "bearer";

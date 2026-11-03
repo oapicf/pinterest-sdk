@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_event_ingestion_source.g.dart';
 
+/// The source of conversion events ingestion
 class ConversionEventIngestionSource extends EnumClass {
 
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'TAG')
   static const ConversionEventIngestionSource TAG = _$TAG;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'MMP')
   static const ConversionEventIngestionSource MMP = _$MMP;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'FILE_UPLOAD')
   static const ConversionEventIngestionSource FILE_UPLOAD = _$FILE_UPLOAD;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'CONVERSIONS_API')
   static const ConversionEventIngestionSource CONVERSIONS_API = _$CONVERSIONS_API;
-  /// The source of conversion events ingestion
   @BuiltValueEnumConst(wireName: r'NATIVE')
   static const ConversionEventIngestionSource NATIVE = _$NATIVE;
 

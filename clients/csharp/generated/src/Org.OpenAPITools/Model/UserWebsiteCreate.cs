@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (verificationMethod.IsSet && verificationMethod.Value == null)
-                throw new ArgumentNullException(nameof(verificationMethod), "Property is not nullable for class UserWebsiteCreate.");
+                throw new JsonException("Property is not nullable for class UserWebsiteCreate: verification_method.");
 
             if (website.IsSet && website.Value == null)
-                throw new ArgumentNullException(nameof(website), "Property is not nullable for class UserWebsiteCreate.");
+                throw new JsonException("Property is not nullable for class UserWebsiteCreate: website.");
 
             return new UserWebsiteCreate(verificationMethod, website);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsiteCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserWebsiteCreate userWebsiteCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,11 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsiteCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserWebsiteCreate userWebsiteCreate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (userWebsiteCreate.VerificationMethodOption.IsSet && userWebsiteCreate.VerificationMethod == null)
+                throw new JsonException("Cannot write null property UserWebsiteCreate.VerificationMethod to non-nullable JSON property 'verification_method'.");
+
             if (userWebsiteCreate.WebsiteOption.IsSet && userWebsiteCreate.Website == null)
-                throw new ArgumentNullException(nameof(userWebsiteCreate.Website), "Property is required for class UserWebsiteCreate.");
+                throw new JsonException("Cannot write null property UserWebsiteCreate.Website to non-nullable JSON property 'website'.");
 
             if (userWebsiteCreate.VerificationMethodOption.IsSet)
             {

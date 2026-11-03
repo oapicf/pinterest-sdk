@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pRODUCTGROUP.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupReferenceFilter.", nameof(pRODUCTGROUP));
+                throw new JsonException("Property is required for class ProductGroupReferenceFilter: PRODUCT_GROUP.");
 
             if (pRODUCTGROUP.IsSet && pRODUCTGROUP.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTGROUP), "Property is not nullable for class ProductGroupReferenceFilter.");
+                throw new JsonException("Property is not nullable for class ProductGroupReferenceFilter: PRODUCT_GROUP.");
 
             return new ProductGroupReferenceFilter(pRODUCTGROUP.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupReferenceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupReferenceFilter productGroupReferenceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupReferenceFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupReferenceFilter productGroupReferenceFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productGroupReferenceFilter.PRODUCT_GROUP == null)
-                throw new ArgumentNullException(nameof(productGroupReferenceFilter.PRODUCT_GROUP), "Property is required for class ProductGroupReferenceFilter.");
-
             writer.WritePropertyName("PRODUCT_GROUP");
             JsonSerializer.Serialize(writer, productGroupReferenceFilter.PRODUCT_GROUP, jsonSerializerOptions);
         }

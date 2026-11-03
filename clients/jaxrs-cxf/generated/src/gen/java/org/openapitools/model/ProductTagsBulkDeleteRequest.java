@@ -24,8 +24,6 @@ public class ProductTagsBulkDeleteRequest  {
   */
   @ApiModelProperty(required = true, value = "List of product tags to delete.")
 
-  @Valid
-
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
  /**
    * List of product tags to delete.

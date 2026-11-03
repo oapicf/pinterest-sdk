@@ -22,7 +22,7 @@ data class CatalogsProductGroupFiltersAnyOf(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("any_of")
+    @param:JsonProperty("any_of", required = true)
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsProductGroupFilterKeys>
 ) {
 

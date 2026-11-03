@@ -36,7 +36,7 @@ import javax.validation.Valid;
   AssetGroupModificationReadOrUpdate.JSON_PROPERTY_EXCEPTIONS,
   AssetGroupModificationReadOrUpdate.JSON_PROPERTY_UPDATED_ASSET_GROUPS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupModificationReadOrUpdate   {
   public static final String JSON_PROPERTY_ASSET_GROUPS_TO_UPDATE = "asset_groups_to_update";
   @JsonProperty(JSON_PROPERTY_ASSET_GROUPS_TO_UPDATE)
@@ -69,7 +69,7 @@ public class AssetGroupModificationReadOrUpdate   {
    **/
   @JsonProperty(value = "asset_groups_to_update")
   @ApiModelProperty(value = "A list of asset groups and the data that will be used to update them.")
-  @Valid 
+  
   public List<@Valid AssetGroupUpdateItemReadOrUpdateItem> getAssetGroupsToUpdate() {
     return assetGroupsToUpdate;
   }
@@ -97,7 +97,7 @@ public class AssetGroupModificationReadOrUpdate   {
    **/
   @JsonProperty(value = "exceptions", access = JsonProperty.Access.READ_ONLY)
   @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
-  @Valid 
+  
   public List<@Valid AssetGroupUpdateError> getExceptions() {
     return exceptions;
   }
@@ -125,7 +125,7 @@ public class AssetGroupModificationReadOrUpdate   {
    **/
   @JsonProperty(value = "updated_asset_groups", access = JsonProperty.Access.READ_ONLY)
   @ApiModelProperty(value = "A list of successfully edited asset groups.")
-  @Valid 
+  
   public List<@Valid AssetGroupBinding> getUpdatedAssetGroups() {
     return updatedAssetGroups;
   }

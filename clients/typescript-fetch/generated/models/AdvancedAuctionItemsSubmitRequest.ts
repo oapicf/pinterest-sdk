@@ -29,14 +29,10 @@ import {
 export interface AdvancedAuctionItemsSubmitRequest {
     /**
      * Catalog id pertaining to all items
-     * @type {string}
-     * @memberof AdvancedAuctionItemsSubmitRequest
      */
     catalogId: string;
     /**
      * Array of item bid option operations
-     * @type {Array<AdvancedAuctionItemsSubmitRecord>}
-     * @memberof AdvancedAuctionItemsSubmitRequest
      */
     items: Array<AdvancedAuctionItemsSubmitRecord>;
 }

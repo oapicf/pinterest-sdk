@@ -143,3 +143,4 @@ class _$CatalogsProductGroupPricingCriteriaSerializer implements PrimitiveSerial
   }
 }
 
+

@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!cUSTOMNUMBER3.IsSet)
-                throw new ArgumentException("Property is required for class CustomNumber3Filter.", nameof(cUSTOMNUMBER3));
+                throw new JsonException("Property is required for class CustomNumber3Filter: CUSTOM_NUMBER_3.");
 
             if (cUSTOMNUMBER3.IsSet && cUSTOMNUMBER3.Value == null)
-                throw new ArgumentNullException(nameof(cUSTOMNUMBER3), "Property is not nullable for class CustomNumber3Filter.");
+                throw new JsonException("Property is not nullable for class CustomNumber3Filter: CUSTOM_NUMBER_3.");
 
             return new CustomNumber3Filter(cUSTOMNUMBER3.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customNumber3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomNumber3Filter customNumber3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customNumber3Filter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomNumber3Filter customNumber3Filter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customNumber3Filter.CUSTOMNUMBER3 == null)
-                throw new ArgumentNullException(nameof(customNumber3Filter.CUSTOMNUMBER3), "Property is required for class CustomNumber3Filter.");
-
             writer.WritePropertyName("CUSTOM_NUMBER_3");
             JsonSerializer.Serialize(writer, customNumber3Filter.CUSTOMNUMBER3, jsonSerializerOptions);
         }

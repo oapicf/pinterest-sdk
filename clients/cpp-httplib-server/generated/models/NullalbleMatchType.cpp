@@ -6,20 +6,3 @@
 */
 #include "NullalbleMatchType.h"
 
-namespace models {
-
-NullalbleMatchType::NullalbleMatchType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

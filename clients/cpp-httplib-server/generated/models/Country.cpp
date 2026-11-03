@@ -6,20 +6,3 @@
 */
 #include "Country.h"
 
-namespace models {
-
-Country::Country()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

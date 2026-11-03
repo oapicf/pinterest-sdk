@@ -60,7 +60,7 @@ public class LabelsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter labelId is {}", labelId);
-        logger.debug("Parameter labeledEntitiesCreate is {}", labeledEntitiesCreate);
+        logger.debug("Parameter labeledEntitiesCreate is (body omitted)");
 
         api.labelsApply(adAccountId, labelId, labeledEntitiesCreate)
             .onSuccess(apiResponse -> {
@@ -85,7 +85,7 @@ public class LabelsApiHandler {
         LabelCreateRequest labelCreateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LabelCreateRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter labelCreateRequest is {}", labelCreateRequest);
+        logger.debug("Parameter labelCreateRequest is (body omitted)");
 
         api.labelsCreate(adAccountId, labelCreateRequest)
             .onSuccess(apiResponse -> {
@@ -146,7 +146,7 @@ public class LabelsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter labelId is {}", labelId);
-        logger.debug("Parameter labeledEntitiesCreate is {}", labeledEntitiesCreate);
+        logger.debug("Parameter labeledEntitiesCreate is (body omitted)");
 
         api.labelsRemove(adAccountId, labelId, labeledEntitiesCreate)
             .onSuccess(apiResponse -> {
@@ -171,7 +171,7 @@ public class LabelsApiHandler {
         LabelUpdateRequest labelUpdateRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<LabelUpdateRequest>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter labelUpdateRequest is {}", labelUpdateRequest);
+        logger.debug("Parameter labelUpdateRequest is (body omitted)");
 
         api.labelsUpdate(adAccountId, labelUpdateRequest)
             .onSuccess(apiResponse -> {

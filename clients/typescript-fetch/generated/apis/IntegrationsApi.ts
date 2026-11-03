@@ -60,32 +60,60 @@ import {
 } from '../models/PinterestLibError';
 
 export interface IntegrationsCommerceDelRequest {
+    /**
+     * External business ID for the integration.
+     */
     externalBusinessId: string;
 }
 
 export interface IntegrationsCommerceGetRequest {
+    /**
+     * External business ID for the integration.
+     */
     externalBusinessId: string;
 }
 
 export interface IntegrationsCommercePatchRequest {
+    /**
+     * External business ID for the integration.
+     */
     externalBusinessId: string;
+    /**
+     * 
+     */
     integrationMetadataUpdate: IntegrationMetadataUpdate;
 }
 
 export interface IntegrationsCommercePostRequest {
+    /**
+     * 
+     */
     integrationMetadataCreate: IntegrationMetadataCreate;
 }
 
 export interface IntegrationsGetByIdRequest {
+    /**
+     * Integration record ID.
+     */
     id: string;
 }
 
 export interface IntegrationsGetListRequest {
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface IntegrationsLogsPostRequest {
+    /**
+     * 
+     */
     integrationLogsRequestCreate: IntegrationLogsRequestCreate;
 }
 

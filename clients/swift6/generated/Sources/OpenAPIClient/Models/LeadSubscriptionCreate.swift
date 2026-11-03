@@ -9,7 +9,7 @@ import Foundation
 
 public struct LeadSubscriptionCreate: Sendable, Codable, Hashable {
 
-    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let leadFormIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Lead form ID. */
     public var leadFormId: String?
     /** Standard HTTPS webhook URL. */

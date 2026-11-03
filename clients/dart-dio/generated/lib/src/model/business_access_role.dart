@@ -9,57 +9,41 @@ import 'package:built_value/serializer.dart';
 
 part 'business_access_role.g.dart';
 
+/// Permission role for business access.
 class BusinessAccessRole extends EnumClass {
 
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'OWNER')
   static const BusinessAccessRole OWNER = _$OWNER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'ADMIN')
   static const BusinessAccessRole ADMIN = _$ADMIN;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'ANALYST')
   static const BusinessAccessRole ANALYST = _$ANALYST;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'SOS_READER')
   static const BusinessAccessRole SOS_READER = _$SOS_READER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'FINANCE_MANAGER')
   static const BusinessAccessRole FINANCE_MANAGER = _$FINANCE_MANAGER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'FINANCE_VIEW')
   static const BusinessAccessRole FINANCE_VIEW = _$FINANCE_VIEW;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'FINANCE_EDIT')
   static const BusinessAccessRole FINANCE_EDIT = _$FINANCE_EDIT;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'AUDIENCE_MANAGER')
   static const BusinessAccessRole AUDIENCE_MANAGER = _$AUDIENCE_MANAGER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'CAMPAIGN_MANAGER')
   static const BusinessAccessRole CAMPAIGN_MANAGER = _$CAMPAIGN_MANAGER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'CATALOGS_MANAGER')
   static const BusinessAccessRole CATALOGS_MANAGER = _$CATALOGS_MANAGER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'RESTRICTED_OWNER')
   static const BusinessAccessRole RESTRICTED_OWNER = _$RESTRICTED_OWNER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'PROFILE_MANAGER')
   static const BusinessAccessRole PROFILE_MANAGER = _$PROFILE_MANAGER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'PROFILE_PUBLISHER')
   static const BusinessAccessRole PROFILE_PUBLISHER = _$PROFILE_PUBLISHER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'RESOURCE_PINNER_LIST_OWNER')
   static const BusinessAccessRole RESOURCE_PINNER_LIST_OWNER = _$RESOURCE_PINNER_LIST_OWNER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'RESOURCE_PINNER_LIST_READER')
   static const BusinessAccessRole RESOURCE_PINNER_LIST_READER = _$RESOURCE_PINNER_LIST_READER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'BIZ_PINNER_LIST_SHARER')
   static const BusinessAccessRole BIZ_PINNER_LIST_SHARER = _$BIZ_PINNER_LIST_SHARER;
-  /// Permission role for business access.
   @BuiltValueEnumConst(wireName: r'RESOURCE_CONVERSION_TAGS_READER')
   static const BusinessAccessRole RESOURCE_CONVERSION_TAGS_READER = _$RESOURCE_CONVERSION_TAGS_READER;
 

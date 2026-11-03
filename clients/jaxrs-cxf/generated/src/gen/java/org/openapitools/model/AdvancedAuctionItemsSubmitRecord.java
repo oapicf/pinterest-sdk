@@ -52,8 +52,6 @@ public class AdvancedAuctionItemsSubmitRecord  {
   */
   @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
 
-  @Valid
-
   private List<@Valid AdvancedAuctionOperationError> errors = new ArrayList<>();
 
  /**
@@ -109,8 +107,6 @@ DELETE(String.valueOf("DELETE"));
   * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
   */
   @ApiModelProperty(example = "[BID, APP_TYPE_BID_MULTIPLIER_SET]", required = true, value = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
-
-  @Valid
 
   private List<UpdateMaskBidOptionField> updateMask;
  /**

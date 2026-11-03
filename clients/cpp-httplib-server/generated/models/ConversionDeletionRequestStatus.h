@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ConversionDeletionRequestStatus
-{
-public:
-
-    ConversionDeletionRequestStatus();
-    virtual ~ConversionDeletionRequestStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionDeletionRequestStatus,
-        )
-
-private:
+enum class ConversionDeletionRequestStatus {
+    
+    PENDING,
+    
+    SUBMITTED,
+    
+    CANCELLED
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionDeletionRequestStatus& value)
+{
+    switch (value)
+    {
+        
+        case ConversionDeletionRequestStatus::PENDING: j = "PENDING"; break;
+        
+        case ConversionDeletionRequestStatus::SUBMITTED: j = "SUBMITTED"; break;
+        
+        case ConversionDeletionRequestStatus::CANCELLED: j = "CANCELLED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionDeletionRequestStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionDeletionRequestStatus& value)
+{
+    
+    if (j == "PENDING")
+    {
+        value = ConversionDeletionRequestStatus::PENDING;
+        return;
+    }
+    
+    if (j == "SUBMITTED")
+    {
+        value = ConversionDeletionRequestStatus::SUBMITTED;
+        return;
+    }
+    
+    if (j == "CANCELLED")
+    {
+        value = ConversionDeletionRequestStatus::CANCELLED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionDeletionRequestStatus", &j);
+}
 
 } // namespace models
 

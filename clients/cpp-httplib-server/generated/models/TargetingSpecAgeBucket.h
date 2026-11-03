@@ -12,24 +12,124 @@
 
 namespace models {
 
-
-class TargetingSpecAgeBucket
-{
-public:
-
-    TargetingSpecAgeBucket();
-    virtual ~TargetingSpecAgeBucket() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingSpecAgeBucket,
-        )
-
-private:
+enum class TargetingSpecAgeBucket {
+    
+    _18_24,
+    
+    _19_,
+    
+    _20_,
+    
+    _21_,
+    
+    _25_34,
+    
+    _35_44,
+    
+    _45_49,
+    
+    _50_54,
+    
+    _55_64,
+    
+    _65_
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingSpecAgeBucket& value)
+{
+    switch (value)
+    {
+        
+        case TargetingSpecAgeBucket::_18_24: j = "18-24"; break;
+        
+        case TargetingSpecAgeBucket::_19_: j = "19+"; break;
+        
+        case TargetingSpecAgeBucket::_20_: j = "20+"; break;
+        
+        case TargetingSpecAgeBucket::_21_: j = "21+"; break;
+        
+        case TargetingSpecAgeBucket::_25_34: j = "25-34"; break;
+        
+        case TargetingSpecAgeBucket::_35_44: j = "35-44"; break;
+        
+        case TargetingSpecAgeBucket::_45_49: j = "45-49"; break;
+        
+        case TargetingSpecAgeBucket::_50_54: j = "50-54"; break;
+        
+        case TargetingSpecAgeBucket::_55_64: j = "55-64"; break;
+        
+        case TargetingSpecAgeBucket::_65_: j = "65+"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecAgeBucket", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingSpecAgeBucket& value)
+{
+    
+    if (j == "18-24")
+    {
+        value = TargetingSpecAgeBucket::_18_24;
+        return;
+    }
+    
+    if (j == "19+")
+    {
+        value = TargetingSpecAgeBucket::_19_;
+        return;
+    }
+    
+    if (j == "20+")
+    {
+        value = TargetingSpecAgeBucket::_20_;
+        return;
+    }
+    
+    if (j == "21+")
+    {
+        value = TargetingSpecAgeBucket::_21_;
+        return;
+    }
+    
+    if (j == "25-34")
+    {
+        value = TargetingSpecAgeBucket::_25_34;
+        return;
+    }
+    
+    if (j == "35-44")
+    {
+        value = TargetingSpecAgeBucket::_35_44;
+        return;
+    }
+    
+    if (j == "45-49")
+    {
+        value = TargetingSpecAgeBucket::_45_49;
+        return;
+    }
+    
+    if (j == "50-54")
+    {
+        value = TargetingSpecAgeBucket::_50_54;
+        return;
+    }
+    
+    if (j == "55-64")
+    {
+        value = TargetingSpecAgeBucket::_55_64;
+        return;
+    }
+    
+    if (j == "65+")
+    {
+        value = TargetingSpecAgeBucket::_65_;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingSpecAgeBucket", &j);
+}
 
 } // namespace models
 

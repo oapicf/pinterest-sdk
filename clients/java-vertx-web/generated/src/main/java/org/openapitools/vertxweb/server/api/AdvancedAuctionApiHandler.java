@@ -50,7 +50,7 @@ public class AdvancedAuctionApiHandler {
         AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdvancedAuctionItemsGetRequest>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter advancedAuctionItemsGetRequest is {}", advancedAuctionItemsGetRequest);
+        logger.debug("Parameter advancedAuctionItemsGetRequest is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest, adAccountId)
@@ -75,7 +75,7 @@ public class AdvancedAuctionApiHandler {
         AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdvancedAuctionItemsSubmitRequest>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter advancedAuctionItemsSubmitRequest is {}", advancedAuctionItemsSubmitRequest);
+        logger.debug("Parameter advancedAuctionItemsSubmitRequest is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest, adAccountId)

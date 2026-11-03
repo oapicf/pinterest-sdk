@@ -12,24 +12,204 @@
 
 namespace models {
 
-
-class Region
-{
-public:
-
-    Region();
-    virtual ~Region() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Region,
-        )
-
-private:
+enum class Region {
+    
+    US,
+    
+    CA,
+    
+    DE,
+    
+    FR,
+    
+    ES,
+    
+    IT,
+    
+    DE_AT_CH,
+    
+    GB_IE,
+    
+    IT_ES_PT_GR_MT,
+    
+    PL_RO_HU_SK_CZ,
+    
+    SE_DK_FI_NO,
+    
+    NL_BE_LU,
+    
+    AR,
+    
+    BR,
+    
+    CO,
+    
+    MX,
+    
+    MX_AR_CO_CL,
+    
+    AU_NZ
+    
 };
 
+inline void to_json(nlohmann::json& j, const Region& value)
+{
+    switch (value)
+    {
+        
+        case Region::US: j = "US"; break;
+        
+        case Region::CA: j = "CA"; break;
+        
+        case Region::DE: j = "DE"; break;
+        
+        case Region::FR: j = "FR"; break;
+        
+        case Region::ES: j = "ES"; break;
+        
+        case Region::IT: j = "IT"; break;
+        
+        case Region::DE_AT_CH: j = "DE+AT+CH"; break;
+        
+        case Region::GB_IE: j = "GB+IE"; break;
+        
+        case Region::IT_ES_PT_GR_MT: j = "IT+ES+PT+GR+MT"; break;
+        
+        case Region::PL_RO_HU_SK_CZ: j = "PL+RO+HU+SK+CZ"; break;
+        
+        case Region::SE_DK_FI_NO: j = "SE+DK+FI+NO"; break;
+        
+        case Region::NL_BE_LU: j = "NL+BE+LU"; break;
+        
+        case Region::AR: j = "AR"; break;
+        
+        case Region::BR: j = "BR"; break;
+        
+        case Region::CO: j = "CO"; break;
+        
+        case Region::MX: j = "MX"; break;
+        
+        case Region::MX_AR_CO_CL: j = "MX+AR+CO+CL"; break;
+        
+        case Region::AU_NZ: j = "AU+NZ"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Region", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Region& value)
+{
+    
+    if (j == "US")
+    {
+        value = Region::US;
+        return;
+    }
+    
+    if (j == "CA")
+    {
+        value = Region::CA;
+        return;
+    }
+    
+    if (j == "DE")
+    {
+        value = Region::DE;
+        return;
+    }
+    
+    if (j == "FR")
+    {
+        value = Region::FR;
+        return;
+    }
+    
+    if (j == "ES")
+    {
+        value = Region::ES;
+        return;
+    }
+    
+    if (j == "IT")
+    {
+        value = Region::IT;
+        return;
+    }
+    
+    if (j == "DE+AT+CH")
+    {
+        value = Region::DE_AT_CH;
+        return;
+    }
+    
+    if (j == "GB+IE")
+    {
+        value = Region::GB_IE;
+        return;
+    }
+    
+    if (j == "IT+ES+PT+GR+MT")
+    {
+        value = Region::IT_ES_PT_GR_MT;
+        return;
+    }
+    
+    if (j == "PL+RO+HU+SK+CZ")
+    {
+        value = Region::PL_RO_HU_SK_CZ;
+        return;
+    }
+    
+    if (j == "SE+DK+FI+NO")
+    {
+        value = Region::SE_DK_FI_NO;
+        return;
+    }
+    
+    if (j == "NL+BE+LU")
+    {
+        value = Region::NL_BE_LU;
+        return;
+    }
+    
+    if (j == "AR")
+    {
+        value = Region::AR;
+        return;
+    }
+    
+    if (j == "BR")
+    {
+        value = Region::BR;
+        return;
+    }
+    
+    if (j == "CO")
+    {
+        value = Region::CO;
+        return;
+    }
+    
+    if (j == "MX")
+    {
+        value = Region::MX;
+        return;
+    }
+    
+    if (j == "MX+AR+CO+CL")
+    {
+        value = Region::MX_AR_CO_CL;
+        return;
+    }
+    
+    if (j == "AU+NZ")
+    {
+        value = Region::AU_NZ;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Region", &j);
+}
 
 } // namespace models
 

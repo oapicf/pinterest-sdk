@@ -64,32 +64,22 @@ import {
 export interface ScheduleDeltaValue {
     /**
      * 
-     * @type {BidOptionsAgeBucketMultipliers}
-     * @memberof ScheduleDeltaValue
      */
     ageBucketMultipliers?: BidOptionsAgeBucketMultipliers;
     /**
      * 
-     * @type {BidOptionsAppTypeMultipliers}
-     * @memberof ScheduleDeltaValue
      */
     appTypeMultipliers?: BidOptionsAppTypeMultipliers;
     /**
      * 
-     * @type {Array<BidOptionsAudienceMultipliers>}
-     * @memberof ScheduleDeltaValue
      */
     audienceMultipliers?: Array<BidOptionsAudienceMultipliers>;
     /**
      * 
-     * @type {BidOptionsGenderMultipliers}
-     * @memberof ScheduleDeltaValue
      */
     genderMultipliers?: BidOptionsGenderMultipliers;
     /**
      * 
-     * @type {BidOptionsPlacementMultipliers}
-     * @memberof ScheduleDeltaValue
      */
     placementMultipliers?: BidOptionsPlacementMultipliers;
 }

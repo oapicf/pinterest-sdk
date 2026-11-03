@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   CurrencyFilter.JSON_PROPERTY_C_U_R_R_E_N_C_Y
 })
 @JsonTypeName("CurrencyFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CurrencyFilter {
     public static final String JSON_PROPERTY_C_U_R_R_E_N_C_Y = "CURRENCY";

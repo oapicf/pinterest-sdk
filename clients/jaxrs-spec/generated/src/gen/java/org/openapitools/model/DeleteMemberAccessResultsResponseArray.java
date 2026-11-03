@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("DeleteMemberAccessResultsResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteMemberAccessResultsResponseArray   {
-  private @Valid List<@Valid DeleteMemberAccessResult> items = new ArrayList<>();
+  private List<@Valid DeleteMemberAccessResult> items = new ArrayList<>();
 
   public DeleteMemberAccessResultsResponseArray() {
   }
@@ -38,7 +38,7 @@ public class DeleteMemberAccessResultsResponseArray   {
   
   @ApiModelProperty(value = "List of member asset permissions that were deleted.")
   @JsonProperty("items")
-  @Valid public List<@Valid DeleteMemberAccessResult> getItems() {
+  public List<@Valid DeleteMemberAccessResult> getItems() {
     return items;
   }
 

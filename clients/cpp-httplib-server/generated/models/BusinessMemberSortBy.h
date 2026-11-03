@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class BusinessMemberSortBy
-{
-public:
-
-    BusinessMemberSortBy();
-    virtual ~BusinessMemberSortBy() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BusinessMemberSortBy,
-        )
-
-private:
+enum class BusinessMemberSortBy {
+    
+    FULL_NAME,
+    
+    BUSINESS_ROLES,
+    
+    CREATED_TIME
+    
 };
 
+inline void to_json(nlohmann::json& j, const BusinessMemberSortBy& value)
+{
+    switch (value)
+    {
+        
+        case BusinessMemberSortBy::FULL_NAME: j = "FULL_NAME"; break;
+        
+        case BusinessMemberSortBy::BUSINESS_ROLES: j = "BUSINESS_ROLES"; break;
+        
+        case BusinessMemberSortBy::CREATED_TIME: j = "CREATED_TIME"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BusinessMemberSortBy", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BusinessMemberSortBy& value)
+{
+    
+    if (j == "FULL_NAME")
+    {
+        value = BusinessMemberSortBy::FULL_NAME;
+        return;
+    }
+    
+    if (j == "BUSINESS_ROLES")
+    {
+        value = BusinessMemberSortBy::BUSINESS_ROLES;
+        return;
+    }
+    
+    if (j == "CREATED_TIME")
+    {
+        value = BusinessMemberSortBy::CREATED_TIME;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BusinessMemberSortBy", &j);
+}
 
 } // namespace models
 

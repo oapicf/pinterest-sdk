@@ -40,9 +40,21 @@ import {
 } from '../models/SourcePlatformOptions';
 
 export interface ConversionEqsListRequest {
+    /**
+     * Lookback window (number of days).
+     */
     lookbackPeriod: LookbackPeriodOptions;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Source platform of event.
+     */
     sourcePlatform?: SourcePlatformOptions;
+    /**
+     * Ingestion source of event.
+     */
     ingestionSource?: IngestionSourceOptions;
 }
 

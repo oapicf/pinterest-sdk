@@ -29,14 +29,12 @@ public class CatalogsRetailFilterValuesMap  {
   private List<String> adVideoTags = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<ProductAvailability> availability = new ArrayList<>();
 
   @ApiModelProperty(value = "")
   private List<String> brand = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<ProductCondition> condition = new ArrayList<>();
 
   @ApiModelProperty(value = "")
@@ -55,7 +53,6 @@ public class CatalogsRetailFilterValuesMap  {
   private List<String> customLabel4 = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<Gender> gender = new ArrayList<>();
 
   @ApiModelProperty(value = "")
@@ -80,7 +77,6 @@ public class CatalogsRetailFilterValuesMap  {
   private List<String> googleProductCategory6 = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<MediaType> mediaType = new ArrayList<>();
 
   @ApiModelProperty(value = "")

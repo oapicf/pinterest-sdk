@@ -43,76 +43,52 @@ import {
 export interface LeadForm {
     /**
      * The Ad Account ID that this lead form belongs to.
-     * @type {string}
-     * @memberof LeadForm
      */
     readonly adAccountId?: string;
     /**
      * A message for people who complete the form to let them know what happens next.
-     * @type {string}
-     * @memberof LeadForm
      */
     completionMessage: string | null;
     /**
      * Lead form creation time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof LeadForm
      */
     readonly createdTime?: number;
     /**
      * Additional disclosure language to be included in the lead form.
-     * @type {string}
-     * @memberof LeadForm
      */
     disclosureLanguage?: string | null;
     /**
      * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
      * 
      * By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's [Lead Ad Terms](https://policy.pinterest.com/en/lead-ad-terms). As a reminder, all advertising on Pinterest is subject to the [Pinterest Advertising Services Agreement](https://business.pinterest.com/en/pinterest-advertising-services-agreement/) or an equivalent agreement as set forth on an IO
-     * @type {boolean}
-     * @memberof LeadForm
      */
     hasAcceptedTerms: boolean;
     /**
      * The ID of this lead form
-     * @type {string}
-     * @memberof LeadForm
      */
     id: string;
     /**
      * Internal name of the lead form.
-     * @type {string}
-     * @memberof LeadForm
      */
     name: string | null;
     /**
      * List of additional policy links to be displayed on the lead form.
-     * @type {Array<LeadFormPolicyLink>}
-     * @memberof LeadForm
      */
     policyLinks?: Array<LeadFormPolicyLink>;
     /**
      * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-     * @type {string}
-     * @memberof LeadForm
      */
     privacyPolicyLink: string | null;
     /**
      * List of questions to be displayed on the lead form.
-     * @type {Array<LeadFormQuestion>}
-     * @memberof LeadForm
      */
     questions: Array<LeadFormQuestion>;
     /**
      * 
-     * @type {LeadFormStatus}
-     * @memberof LeadForm
      */
     status?: LeadFormStatus;
     /**
      * Last update time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof LeadForm
      */
     readonly updatedTime?: number;
 }

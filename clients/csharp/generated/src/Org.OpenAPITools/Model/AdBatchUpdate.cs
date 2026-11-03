@@ -740,37 +740,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class AdBatchUpdate.", nameof(id));
+                throw new JsonException("Property is required for class AdBatchUpdate: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: id.");
 
             if (adGroupId.IsSet && adGroupId.Value == null)
-                throw new ArgumentNullException(nameof(adGroupId), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: ad_group_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: creative_type.");
 
             if (isCarting.IsSet && isCarting.Value == null)
-                throw new ArgumentNullException(nameof(isCarting), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: is_carting.");
 
             if (isCollageAcceptedTerms.IsSet && isCollageAcceptedTerms.Value == null)
-                throw new ArgumentNullException(nameof(isCollageAcceptedTerms), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: is_collage_accepted_terms.");
 
             if (isCollageSingleDestination.IsSet && isCollageSingleDestination.Value == null)
-                throw new ArgumentNullException(nameof(isCollageSingleDestination), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: is_collage_single_destination.");
 
             if (isPinDeleted.IsSet && isPinDeleted.Value == null)
-                throw new ArgumentNullException(nameof(isPinDeleted), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: is_pin_deleted.");
 
             if (isRemovable.IsSet && isRemovable.Value == null)
-                throw new ArgumentNullException(nameof(isRemovable), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: is_removable.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: pin_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class AdBatchUpdate.");
+                throw new JsonException("Property is not nullable for class AdBatchUpdate: status.");
 
             return new AdBatchUpdate(id.Value!, adGroupId, androidDeepLink, carouselAndroidDeepLinks, carouselDestinationUrls, carouselIosDeepLinks, clickTrackingUrl, collectionItemsDestinationUrlTemplate, collectionsHeaderType, creativeType, customizableCtaType, destinationUrl, disclosureType, disclosureUrl, gridClickType, iosDeepLink, isCarting, isCollageAcceptedTerms, isCollageSingleDestination, isPinDeleted, isRemovable, leadFormId, name, pinId, quizPinData, status, trackingUrls, viewTrackingUrl);
         }
@@ -781,7 +781,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdBatchUpdate adBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -796,17 +795,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdBatchUpdate adBatchUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adBatchUpdate.Id == null)
-                throw new ArgumentNullException(nameof(adBatchUpdate.Id), "Property is required for class AdBatchUpdate.");
-
             if (adBatchUpdate.AdGroupIdOption.IsSet && adBatchUpdate.AdGroupId == null)
-                throw new ArgumentNullException(nameof(adBatchUpdate.AdGroupId), "Property is required for class AdBatchUpdate.");
+                throw new JsonException("Cannot write null property AdBatchUpdate.AdGroupId to non-nullable JSON property 'ad_group_id'.");
+
+            if (adBatchUpdate.CreativeTypeOption.IsSet && adBatchUpdate.CreativeType == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.CreativeType to non-nullable JSON property 'creative_type'.");
+
+            if (adBatchUpdate.IsCartingOption.IsSet && adBatchUpdate.IsCarting == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.IsCarting to non-nullable JSON property 'is_carting'.");
+
+            if (adBatchUpdate.IsCollageAcceptedTermsOption.IsSet && adBatchUpdate.IsCollageAcceptedTerms == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.IsCollageAcceptedTerms to non-nullable JSON property 'is_collage_accepted_terms'.");
+
+            if (adBatchUpdate.IsCollageSingleDestinationOption.IsSet && adBatchUpdate.IsCollageSingleDestination == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.IsCollageSingleDestination to non-nullable JSON property 'is_collage_single_destination'.");
+
+            if (adBatchUpdate.IsPinDeletedOption.IsSet && adBatchUpdate.IsPinDeleted == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.IsPinDeleted to non-nullable JSON property 'is_pin_deleted'.");
+
+            if (adBatchUpdate.IsRemovableOption.IsSet && adBatchUpdate.IsRemovable == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.IsRemovable to non-nullable JSON property 'is_removable'.");
 
             if (adBatchUpdate.PinIdOption.IsSet && adBatchUpdate.PinId == null)
-                throw new ArgumentNullException(nameof(adBatchUpdate.PinId), "Property is required for class AdBatchUpdate.");
+                throw new JsonException("Cannot write null property AdBatchUpdate.PinId to non-nullable JSON property 'pin_id'.");
+
+            if (adBatchUpdate.StatusOption.IsSet && adBatchUpdate.Status == null)
+                throw new JsonException("Cannot write null property AdBatchUpdate.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("id", adBatchUpdate.Id);
 

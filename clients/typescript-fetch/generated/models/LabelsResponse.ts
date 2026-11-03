@@ -36,14 +36,10 @@ import {
 export interface LabelsResponse {
     /**
      * Labels that were not successfully applied.
-     * @type {Array<LabelError>}
-     * @memberof LabelsResponse
      */
     errors?: Array<LabelError>;
     /**
      * 
-     * @type {Array<Label>}
-     * @memberof LabelsResponse
      */
     labels?: Array<Label>;
 }

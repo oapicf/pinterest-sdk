@@ -326,7 +326,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelFeedsCreateRequest.CatalogTypeEnum?>(CatalogsHotelFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelFeedsCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsHotelFeedsCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelFeedsCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "default_locale":
                             defaultLocale = new Option<CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsFeedsCreateRequestDefaultLocale>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -362,40 +367,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelFeedsCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelFeedsCreateRequest: catalog_type.");
 
             if (!defaultLocale.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelFeedsCreateRequest.", nameof(defaultLocale));
+                throw new JsonException("Property is required for class CatalogsHotelFeedsCreateRequest: default_locale.");
 
             if (!format.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelFeedsCreateRequest.", nameof(format));
+                throw new JsonException("Property is required for class CatalogsHotelFeedsCreateRequest: format.");
 
             if (!location.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelFeedsCreateRequest.", nameof(location));
+                throw new JsonException("Property is required for class CatalogsHotelFeedsCreateRequest: location.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelFeedsCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsHotelFeedsCreateRequest: name.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: catalog_type.");
 
             if (defaultLocale.IsSet && defaultLocale.Value == null)
-                throw new ArgumentNullException(nameof(defaultLocale), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: default_locale.");
 
             if (format.IsSet && format.Value == null)
-                throw new ArgumentNullException(nameof(format), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: format.");
 
             if (location.IsSet && location.Value == null)
-                throw new ArgumentNullException(nameof(location), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: location.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: catalog_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFeedsCreateRequest: status.");
 
             return new CatalogsHotelFeedsCreateRequest(catalogType.Value!.Value!, defaultLocale.Value!, format.Value!.Value!, location.Value!, name.Value!, catalogId, credentials, defaultCurrency, preferredProcessingSchedule, status);
         }
@@ -406,7 +411,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -421,20 +425,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelFeedsCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelFeedsCreateRequest.DefaultLocale == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFeedsCreateRequest.DefaultLocale), "Property is required for class CatalogsHotelFeedsCreateRequest.");
-
-            if (catalogsHotelFeedsCreateRequest.Location == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFeedsCreateRequest.Location), "Property is required for class CatalogsHotelFeedsCreateRequest.");
-
-            if (catalogsHotelFeedsCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFeedsCreateRequest.Name), "Property is required for class CatalogsHotelFeedsCreateRequest.");
-
             if (catalogsHotelFeedsCreateRequest.CatalogIdOption.IsSet && catalogsHotelFeedsCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFeedsCreateRequest.CatalogId), "Property is required for class CatalogsHotelFeedsCreateRequest.");
+                throw new JsonException("Cannot write null property CatalogsHotelFeedsCreateRequest.CatalogId to non-nullable JSON property 'catalog_id'.");
+
+            if (catalogsHotelFeedsCreateRequest.StatusOption.IsSet && catalogsHotelFeedsCreateRequest.Status == null)
+                throw new JsonException("Cannot write null property CatalogsHotelFeedsCreateRequest.Status to non-nullable JSON property 'status'.");
 
             var catalogTypeRawValue = CatalogsHotelFeedsCreateRequest.CatalogTypeEnumToJsonValue(catalogsHotelFeedsCreateRequest.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

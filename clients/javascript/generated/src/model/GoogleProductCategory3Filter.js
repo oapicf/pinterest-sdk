@@ -17,7 +17,7 @@ import CatalogsProductGroupMultipleStringListCriteria from './CatalogsProductGro
 /**
  * The GoogleProductCategory3Filter model module.
  * @module model/GoogleProductCategory3Filter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class GoogleProductCategory3Filter {
     /**

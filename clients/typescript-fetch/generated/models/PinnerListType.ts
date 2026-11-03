@@ -23,7 +23,7 @@ export const PinnerListType = {
     Engagement: 'ENGAGEMENT',
     Lookalike: 'LOOKALIKE',
     Actalike: 'ACTALIKE',
-    Persona: 'PERSONA'
+    Persona: 'PERSONA',
 } as const;
 export type PinnerListType = typeof PinnerListType[keyof typeof PinnerListType];
 

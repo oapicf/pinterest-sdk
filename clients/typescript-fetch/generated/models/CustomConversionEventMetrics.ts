@@ -29,14 +29,10 @@ import {
 export interface CustomConversionEventMetrics {
     /**
      * 
-     * @type {AdeColumnType}
-     * @memberof CustomConversionEventMetrics
      */
     customEventMetricsType: AdeColumnType;
     /**
      * Name of the advertiser-defined custom conversion event
-     * @type {string}
-     * @memberof CustomConversionEventMetrics
      */
     customEventName: string;
 }

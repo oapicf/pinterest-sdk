@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CreateAssetInvitesRequest", description = "Request body for updating asset roles for existing invites.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetInvitesRequest {
 
   private List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
@@ -57,7 +57,7 @@ public class CreateAssetInvitesRequest {
    * Get invites
    * @return invites
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "invites", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("invites")
   public List<@Valid CreateAssetInvitesRequestItem> getInvites() {

@@ -127,7 +127,7 @@ function Invoke-AdAccountTargetingAnalyticsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccountTargetingAnalytics_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$StartDate) {
             throw "Error! The required parameter `StartDate` missing when calling adAccountTargetingAnalytics_get."
@@ -309,7 +309,7 @@ function Invoke-AdAccountAnalytics {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccount_analytics."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$StartDate) {
             throw "Error! The required parameter `StartDate` missing when calling adAccount_analytics."
@@ -503,7 +503,7 @@ function Invoke-AdAccountsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adAccounts_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -682,7 +682,7 @@ function Invoke-AnalyticsCreateConversionProductReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_createConversionProductReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ConversionProductReportCreate) {
             throw "Error! The required parameter `ConversionProductReportCreate` missing when calling analytics_createConversionProductReport."
@@ -771,7 +771,7 @@ function Invoke-AnalyticsCreateMmmReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_createMmmReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$MMMReportCreate) {
             throw "Error! The required parameter `MMMReportCreate` missing when calling analytics_createMmmReport."
@@ -860,7 +860,7 @@ function Invoke-AnalyticsCreateReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_createReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdsAnalyticsCreateAsyncRequest) {
             throw "Error! The required parameter `AdsAnalyticsCreateAsyncRequest` missing when calling analytics_createReport."
@@ -964,11 +964,11 @@ function Invoke-AnalyticsCreateTemplateReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_createTemplateReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$TemplateId) {
             throw "Error! The required parameter `TemplateId` missing when calling analytics_createTemplateReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{template_id}', [System.Web.HTTPUtility]::UrlEncode($TemplateId))
+        $LocalVarUri = $LocalVarUri.replace('{template_id}', [System.Uri]::EscapeDataString([string]$TemplateId))
 
         if ($StartDate) {
             $LocalVarQueryParameters['start_date'] = $StartDate
@@ -1060,7 +1060,7 @@ function Invoke-AnalyticsGetConversionProductReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_getConversionProductReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$Token) {
             throw "Error! The required parameter `Token` missing when calling analytics_getConversionProductReport."
@@ -1145,7 +1145,7 @@ function Invoke-AnalyticsGetMmmReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_getMmmReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$Token) {
             throw "Error! The required parameter `Token` missing when calling analytics_getMmmReport."
@@ -1230,7 +1230,7 @@ function Invoke-AnalyticsGetReport {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling analytics_getReport."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$Token) {
             throw "Error! The required parameter `Token` missing when calling analytics_getReport."
@@ -1309,7 +1309,7 @@ function Invoke-SandboxDelete {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling sandbox_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'DELETE' `
@@ -1401,7 +1401,7 @@ function Invoke-TemplatesList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling templates_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

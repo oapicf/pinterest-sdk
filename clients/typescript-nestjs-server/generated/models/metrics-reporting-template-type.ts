@@ -9,7 +9,7 @@ export const MetricsReportingTemplateType = {
     Overview: 'OVERVIEW',
     Table: 'TABLE',
     Mmm: 'MMM',
-    BrandCategory: 'BRAND_CATEGORY'
+    BrandCategory: 'BRAND_CATEGORY',
 } as const;
 export type MetricsReportingTemplateType = typeof MetricsReportingTemplateType[keyof typeof MetricsReportingTemplateType];
 

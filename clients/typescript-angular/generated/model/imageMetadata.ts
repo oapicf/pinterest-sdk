@@ -22,7 +22,7 @@ export interface ImageMetadata {
 }
 export namespace ImageMetadata {
     export const ItemTypeEnum = {
-        Image: 'image'
+        Image: 'image',
     } as const;
     export type ItemTypeEnum = typeof ItemTypeEnum[keyof typeof ItemTypeEnum];
 }

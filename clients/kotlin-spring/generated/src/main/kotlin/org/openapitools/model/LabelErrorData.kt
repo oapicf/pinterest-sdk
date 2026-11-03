@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.NullableLabelStatus
 import org.openapitools.model.NullableLabelType
 import javax.validation.constraints.DecimalMax
@@ -25,14 +22,12 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param id Label ID.
  * @param labelType 
  * @param status 
- * @param &#x60;value&#x60; Label name. 100-character limit.
+ * @param `value` Label name. 100-character limit.
  */
 data class LabelErrorData(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1106385754497", description = "Label ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
@@ -48,8 +43,6 @@ data class LabelErrorData(
 
     @get:Size(max=100)
     @Schema(description = "Label name. 100-character limit.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("value")
     @get:JsonProperty("value") val `value`: kotlin.String? = null
 ) {

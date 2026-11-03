@@ -90,11 +90,11 @@ class TargetingTemplateApiSimulation extends Simulation {
         .feed(targeting_template/listPATHFeeder)
         .exec(http("targetingTemplateList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/targeting_templates")
+        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("include_sizing","${include_sizing}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("order","${order}")
         .queryParam("search_query","${search_query}")
+        .queryParam("order","${order}")
 )
 
     // Run scntargetingTemplateList with warm up and reach a constant rate for entire duration

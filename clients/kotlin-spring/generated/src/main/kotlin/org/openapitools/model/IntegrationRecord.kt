@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -40,7 +37,7 @@ data class IntegrationRecord(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, readOnly = true, description = "Integration record ID.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @Schema(description = "")
@@ -64,14 +61,10 @@ data class IntegrationRecord(
     @get:JsonProperty("connected_tag_id") val connectedTagId: kotlin.String? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("connected_user_id")
     @get:JsonProperty("connected_user_id") val connectedUserId: kotlin.String? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_time")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
 
@@ -108,8 +101,6 @@ data class IntegrationRecord(
     @get:JsonProperty("scopes") val scopes: kotlin.String? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("updated_time")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
 ) {

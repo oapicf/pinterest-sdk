@@ -9,27 +9,21 @@ import 'package:built_value/serializer.dart';
 
 part 'billing_profile_status.g.dart';
 
+/// Billing profile status
 class BillingProfileStatus extends EnumClass {
 
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'UNSPECIFIED')
   static const BillingProfileStatus UNSPECIFIED = _$UNSPECIFIED;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'VALID')
   static const BillingProfileStatus VALID = _$VALID;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'INVALID')
   static const BillingProfileStatus INVALID = _$INVALID;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const BillingProfileStatus PENDING = _$PENDING;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'DELETED')
   static const BillingProfileStatus DELETED = _$DELETED;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'SECONDARY')
   static const BillingProfileStatus SECONDARY = _$SECONDARY;
-  /// Billing profile status
   @BuiltValueEnumConst(wireName: r'PENDING_SECONDARY')
   static const BillingProfileStatus PENDING_SECONDARY = _$PENDING_SECONDARY;
 

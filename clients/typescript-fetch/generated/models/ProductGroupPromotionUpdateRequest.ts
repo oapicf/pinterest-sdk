@@ -29,14 +29,10 @@ import {
 export interface ProductGroupPromotionUpdateRequest {
     /**
      * ID of the ad group the product group belongs to.
-     * @type {string}
-     * @memberof ProductGroupPromotionUpdateRequest
      */
     adGroupId: string;
     /**
      * 
-     * @type {Array<ProductGroupPromotion>}
-     * @memberof ProductGroupPromotionUpdateRequest
      */
     productGroupPromotion: Array<ProductGroupPromotion>;
 }

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Bulk file output format
-* Values: CSV,JSON
-*/
+ * Bulk file output format
+ * Values: CSV,JSON
+ */
 enum class BulkOutputFormat(@get:JsonValue val value: kotlin.String) {
 
     CSV("CSV"),
@@ -28,9 +28,8 @@ enum class BulkOutputFormat(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BulkOutputFormat {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkOutputFormat'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkOutputFormat'")
         }
     }
 }
-

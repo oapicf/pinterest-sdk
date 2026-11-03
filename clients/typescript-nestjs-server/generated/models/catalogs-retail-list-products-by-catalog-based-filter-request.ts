@@ -21,7 +21,7 @@ export interface CatalogsRetailListProductsByCatalogBasedFilterRequest {
 }
 export namespace CatalogsRetailListProductsByCatalogBasedFilterRequest {
   export const CatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

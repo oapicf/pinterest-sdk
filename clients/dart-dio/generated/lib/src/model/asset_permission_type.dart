@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'asset_permission_type.g.dart';
 
+/// Permission aggregation type for asset access
 class AssetPermissionType extends EnumClass {
 
-  /// Permission aggregation type for asset access
   @BuiltValueEnumConst(wireName: r'AGGREGATED_PERMISSION')
   static const AssetPermissionType AGGREGATED_PERMISSION = _$AGGREGATED_PERMISSION;
-  /// Permission aggregation type for asset access
   @BuiltValueEnumConst(wireName: r'DIRECT_PERMISSION')
   static const AssetPermissionType DIRECT_PERMISSION = _$DIRECT_PERMISSION;
 

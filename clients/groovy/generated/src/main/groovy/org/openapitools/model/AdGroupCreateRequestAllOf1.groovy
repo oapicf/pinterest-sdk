@@ -14,7 +14,7 @@ class AdGroupCreateRequestAllOf1 {
     /* <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>. */
     BigDecimal bidMultiplier
     
-    BudgetType budgetType
+    BudgetType budgetType = BudgetType.DAILY
     
-    PacingDeliveryType pacingDeliveryType
+    PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD
 }

@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'primary_sort.g.dart';
 
+/// Whether to first sort the report by date or by ID
 class PrimarySort extends EnumClass {
 
-  /// Whether to first sort the report by date or by ID
   @BuiltValueEnumConst(wireName: r'BY_ID')
   static const PrimarySort BY_ID = _$BY_ID;
-  /// Whether to first sort the report by date or by ID
   @BuiltValueEnumConst(wireName: r'BY_DATE')
   static const PrimarySort BY_DATE = _$BY_DATE;
 

@@ -122,7 +122,7 @@ public struct CatalogsRetailBatchRequest: Sendable, Codable, Hashable {
         case xx = "XX"
         case zh = "ZH"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let itemsRule = ArrayRule(minItems: 1, maxItems: 1000, uniqueItems: false)
     /** Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog */
     public var catalogId: String?

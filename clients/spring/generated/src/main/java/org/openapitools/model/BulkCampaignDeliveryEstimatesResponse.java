@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BulkCampaignDeliveryEstimatesResponse", description = "Bulk campaign delivery estimates response.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesResponse {
 
   private List<@Valid BulkCampaignDeliveryEstimatesItem> data = new ArrayList<>();
@@ -57,7 +57,7 @@ public class BulkCampaignDeliveryEstimatesResponse {
    * Per-campaign delivery estimate results, in the same order as the request.
    * @return data
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "data", description = "Per-campaign delivery estimate results, in the same order as the request.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("data")
   public List<@Valid BulkCampaignDeliveryEstimatesItem> getData() {

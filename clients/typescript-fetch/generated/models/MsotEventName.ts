@@ -21,7 +21,7 @@ export const MsotEventName = {
     AddToCart: 'add_to_cart',
     Checkout: 'checkout',
     Lead: 'lead',
-    Signup: 'signup'
+    Signup: 'signup',
 } as const;
 export type MsotEventName = typeof MsotEventName[keyof typeof MsotEventName];
 

@@ -296,12 +296,22 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsItemResponse.CatalogTypeEnum?>(CatalogsCreativeAssetsItemResponse.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsItemResponse.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsItemResponse.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsItemResponse.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "item_response_kind":
                             string? itemResponseKindRawValue = utf8JsonReader.GetString();
                             if (itemResponseKindRawValue != null)
-                                itemResponseKind = new Option<CatalogsCreativeAssetsItemResponse.ItemResponseKindEnum?>(CatalogsCreativeAssetsItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue));
+                            {
+                                CatalogsCreativeAssetsItemResponse.ItemResponseKindEnum? itemResponseKindValue = CatalogsCreativeAssetsItemResponse.ItemResponseKindEnumFromStringOrDefault(itemResponseKindRawValue);
+                                if (itemResponseKindValue == null)
+                                    throw new JsonException();
+                                itemResponseKind = new Option<CatalogsCreativeAssetsItemResponse.ItemResponseKindEnum?>(itemResponseKindValue);
+                            }
                             break;
                         case "attributes":
                             attributes = new Option<CatalogsCreativeAssetsAttributes?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -319,22 +329,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsItemResponse.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsItemResponse: catalog_type.");
 
             if (!itemResponseKind.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsItemResponse.", nameof(itemResponseKind));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsItemResponse: item_response_kind.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemResponse: catalog_type.");
 
             if (itemResponseKind.IsSet && itemResponseKind.Value == null)
-                throw new ArgumentNullException(nameof(itemResponseKind), "Property is not nullable for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemResponse: item_response_kind.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemResponse: attributes.");
 
             if (creativeAssetsId.IsSet && creativeAssetsId.Value == null)
-                throw new ArgumentNullException(nameof(creativeAssetsId), "Property is not nullable for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsItemResponse: creative_assets_id.");
 
             return new CatalogsCreativeAssetsItemResponse(catalogType.Value!.Value!, itemResponseKind.Value!.Value!, attributes, creativeAssetsId, pins);
         }
@@ -345,7 +355,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -360,14 +369,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsItemResponse catalogsCreativeAssetsItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsCreativeAssetsItemResponse.AttributesOption.IsSet && catalogsCreativeAssetsItemResponse.Attributes == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemResponse.Attributes), "Property is required for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemResponse.Attributes to non-nullable JSON property 'attributes'.");
 
             if (catalogsCreativeAssetsItemResponse.CreativeAssetsIdOption.IsSet && catalogsCreativeAssetsItemResponse.CreativeAssetsId == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsItemResponse.CreativeAssetsId), "Property is required for class CatalogsCreativeAssetsItemResponse.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsItemResponse.CreativeAssetsId to non-nullable JSON property 'creative_assets_id'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsItemResponse.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsItemResponse.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);

@@ -82,8 +82,8 @@ class KeywordsApiSimulation extends Simulation {
         .feed(country_keywords_metrics/getPATHFeeder)
         .exec(http("countryKeywordsMetricsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/keywords/metrics")
-        .queryParam("country_code","${country_code}")
         .queryParam("keywords","${keywords}")
+        .queryParam("country_code","${country_code}")
 )
 
     // Run scncountryKeywordsMetricsGet with warm up and reach a constant rate for entire duration
@@ -113,11 +113,11 @@ class KeywordsApiSimulation extends Simulation {
         .feed(keywords/getPATHFeeder)
         .exec(http("keywordsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/keywords")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("match_types","${match_types}")
-        .queryParam("campaign_id","${campaign_id}")
         .queryParam("page_size","${page_size}")
         .queryParam("ad_group_id","${ad_group_id}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("campaign_id","${campaign_id}")
+        .queryParam("match_types","${match_types}")
         .queryParam("ad_group_ids","${ad_group_ids}")
 )
 
@@ -148,13 +148,13 @@ class KeywordsApiSimulation extends Simulation {
         .feed(trending_keywords/listPATHFeeder)
         .exec(http("trendingKeywordsList")
         .httpRequest("GET","/trends/keywords/${region}/top/${trend_type}")
-        .queryParam("include_demographics","${include_demographics}")
-        .queryParam("normalize_against_group","${normalize_against_group}")
-        .queryParam("ages","${ages}")
-        .queryParam("include_keywords","${include_keywords}")
-        .queryParam("interests","${interests}")
         .queryParam("limit","${limit}")
         .queryParam("genders","${genders}")
+        .queryParam("interests","${interests}")
+        .queryParam("normalize_against_group","${normalize_against_group}")
+        .queryParam("include_demographics","${include_demographics}")
+        .queryParam("include_keywords","${include_keywords}")
+        .queryParam("ages","${ages}")
 )
 
     // Run scntrendingKeywordsList with warm up and reach a constant rate for entire duration

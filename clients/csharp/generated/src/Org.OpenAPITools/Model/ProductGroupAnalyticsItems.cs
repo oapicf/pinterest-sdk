@@ -170,13 +170,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pRODUCTGROUPID.IsSet)
-                throw new ArgumentException("Property is required for class ProductGroupAnalyticsItems.", nameof(pRODUCTGROUPID));
+                throw new JsonException("Property is required for class ProductGroupAnalyticsItems: PRODUCT_GROUP_ID.");
 
             if (pRODUCTGROUPID.IsSet && pRODUCTGROUPID.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTGROUPID), "Property is not nullable for class ProductGroupAnalyticsItems.");
+                throw new JsonException("Property is not nullable for class ProductGroupAnalyticsItems: PRODUCT_GROUP_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class ProductGroupAnalyticsItems.");
+                throw new JsonException("Property is not nullable for class ProductGroupAnalyticsItems: DATE.");
 
             return new ProductGroupAnalyticsItems(pRODUCTGROUPID.Value!, dATE);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupAnalyticsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupAnalyticsItems productGroupAnalyticsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,11 +201,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupAnalyticsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupAnalyticsItems productGroupAnalyticsItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productGroupAnalyticsItems.PRODUCT_GROUP_ID == null)
-                throw new ArgumentNullException(nameof(productGroupAnalyticsItems.PRODUCT_GROUP_ID), "Property is required for class ProductGroupAnalyticsItems.");
+            if (productGroupAnalyticsItems.DATEOption.IsSet && productGroupAnalyticsItems.DATE == null)
+                throw new JsonException("Cannot write null property ProductGroupAnalyticsItems.DATE to non-nullable JSON property 'DATE'.");
 
             writer.WriteString("PRODUCT_GROUP_ID", productGroupAnalyticsItems.PRODUCT_GROUP_ID);
 

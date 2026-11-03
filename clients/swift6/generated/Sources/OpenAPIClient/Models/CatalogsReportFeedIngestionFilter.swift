@@ -12,8 +12,8 @@ public struct CatalogsReportFeedIngestionFilter: Sendable, Codable, Hashable {
     public enum ReportType: String, Sendable, Codable, CaseIterable {
         case feedIngestionIssues = "FEED_INGESTION_ISSUES"
     }
-    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let processingResultIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let processingResultIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** ID of the feed entity. */
     public var feedId: String
     /** Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result. */

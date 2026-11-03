@@ -17,7 +17,7 @@ import ConversionEventsDataItemsCustomDataContentsItems from './ConversionEvents
 /**
  * The ConversionEventsDataItemsCustomData model module.
  * @module model/ConversionEventsDataItemsCustomData
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ConversionEventsDataItemsCustomData {
     /**

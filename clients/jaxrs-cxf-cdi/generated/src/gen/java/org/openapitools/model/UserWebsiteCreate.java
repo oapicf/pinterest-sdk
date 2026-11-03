@@ -19,7 +19,7 @@ import java.util.Objects;
 @ApiModel(description = "Resource create operation model.")
 public class UserWebsiteCreate   {
   
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
   private String website;
 

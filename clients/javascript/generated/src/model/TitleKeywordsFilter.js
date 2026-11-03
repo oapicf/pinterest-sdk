@@ -17,7 +17,7 @@ import CatalogsProductGroupMultipleStringCriteria from './CatalogsProductGroupMu
 /**
  * The TitleKeywordsFilter model module.
  * @module model/TitleKeywordsFilter
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TitleKeywordsFilter {
     /**

@@ -22,16 +22,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class DetailedError(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("code")
+    @param:JsonProperty("code", required = true)
     @get:JsonProperty("code", required = true) val code: kotlin.Int,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("details")
+    @param:JsonProperty("details", required = true)
     @get:JsonProperty("details", required = true) val details: kotlin.Any,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("message")
+    @param:JsonProperty("message", required = true)
     @get:JsonProperty("message", required = true) val message: kotlin.String
 ) {
 

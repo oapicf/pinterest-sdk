@@ -156,8 +156,8 @@ class CatalogSupplementalApiSimulation extends Simulation {
         .exec(http("catalogsLocalStoresList")
         .httpRequest("GET","/catalogs/${catalog_id}/local_stores")
         .queryParam("ids","${ids}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("ad_account_id","${ad_account_id}")
 )
 

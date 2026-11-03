@@ -19,7 +19,7 @@ import org.openapitools.model.TargetingSpecShoppingRetargeting;
  * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;MINIMUM_AGE\&quot;:\&quot;18\&quot;, \&quot;MAXIMUM_AGE\&quot;:\&quot;65+\&quot;}&#x60;
  */
 @ApiModel(description = "Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"MINIMUM_AGE\":\"18\", \"MAXIMUM_AGE\":\"65+\"}`")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpec   {
   @JsonProperty("AGE_BUCKET")
   private List<TargetingSpecAgeBucket> AGE_BUCKET = null;
@@ -106,7 +106,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addAGEBUCKETItem(TargetingSpecAgeBucket AGE_BUCKETItem) {
     if (this.AGE_BUCKET == null) {
-      this.AGE_BUCKET = ;
+      this.AGE_BUCKET = new ArrayList<>();
     }
     this.AGE_BUCKET.add(AGE_BUCKETItem);
     return this;
@@ -132,7 +132,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addAPPTYPEItem(TargetingSpecAppType APPTYPEItem) {
     if (this.APPTYPE == null) {
-      this.APPTYPE = ;
+      this.APPTYPE = new ArrayList<>();
     }
     this.APPTYPE.add(APPTYPEItem);
     return this;
@@ -158,7 +158,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addAUDIENCEEXCLUDEItem(String AUDIENCE_EXCLUDEItem) {
     if (this.AUDIENCE_EXCLUDE == null) {
-      this.AUDIENCE_EXCLUDE = ;
+      this.AUDIENCE_EXCLUDE = new ArrayList<>();
     }
     this.AUDIENCE_EXCLUDE.add(AUDIENCE_EXCLUDEItem);
     return this;
@@ -184,7 +184,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addAUDIENCEINCLUDEItem(String AUDIENCE_INCLUDEItem) {
     if (this.AUDIENCE_INCLUDE == null) {
-      this.AUDIENCE_INCLUDE = ;
+      this.AUDIENCE_INCLUDE = new ArrayList<>();
     }
     this.AUDIENCE_INCLUDE.add(AUDIENCE_INCLUDEItem);
     return this;
@@ -210,7 +210,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addGENDERItem(TargetingSpecGender GENDERItem) {
     if (this.GENDER == null) {
-      this.GENDER = ;
+      this.GENDER = new ArrayList<>();
     }
     this.GENDER.add(GENDERItem);
     return this;
@@ -236,7 +236,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addGEOItem(String GEOItem) {
     if (this.GEO == null) {
-      this.GEO = ;
+      this.GEO = new ArrayList<>();
     }
     this.GEO.add(GEOItem);
     return this;
@@ -314,7 +314,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addLOCALEItem(String LOCALEItem) {
     if (this.LOCALE == null) {
-      this.LOCALE = ;
+      this.LOCALE = new ArrayList<>();
     }
     this.LOCALE.add(LOCALEItem);
     return this;
@@ -340,7 +340,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addLOCATIONItem(String LOCATIONItem) {
     if (this.LOCATION == null) {
-      this.LOCATION = ;
+      this.LOCATION = new ArrayList<>();
     }
     this.LOCATION.add(LOCATIONItem);
     return this;
@@ -428,7 +428,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addSHOPPINGRETARGETINGItem(TargetingSpecShoppingRetargeting SHOPPING_RETARGETINGItem) {
     if (this.SHOPPING_RETARGETING == null) {
-      this.SHOPPING_RETARGETING = ;
+      this.SHOPPING_RETARGETING = new ArrayList<>();
     }
     this.SHOPPING_RETARGETING.add(SHOPPING_RETARGETINGItem);
     return this;
@@ -454,7 +454,7 @@ public class TargetingSpec   {
 
   public TargetingSpec addTARGETINGSTRATEGYItem(TARGETINGSTRATEGYEnum TARGETING_STRATEGYItem) {
     if (this.TARGETING_STRATEGY == null) {
-      this.TARGETING_STRATEGY = ;
+      this.TARGETING_STRATEGY = new ArrayList<>();
     }
     this.TARGETING_STRATEGY.add(TARGETING_STRATEGYItem);
     return this;

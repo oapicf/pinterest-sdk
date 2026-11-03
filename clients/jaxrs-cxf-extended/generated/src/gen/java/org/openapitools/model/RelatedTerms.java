@@ -30,7 +30,6 @@ public class RelatedTerms  {
   * The id of the advertiser.
   */
   @ApiModelProperty(value = "The id of the advertiser.")
-  @Valid
   private List<@Valid RelatedTermsRelatedTermsListItems> relatedTermsList = new ArrayList<>();
  /**
   * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;

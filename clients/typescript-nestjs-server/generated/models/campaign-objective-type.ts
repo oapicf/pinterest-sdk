@@ -14,7 +14,7 @@ export const CampaignObjectiveType = {
     AppInstall: 'APP_INSTALL',
     Sales: 'SALES',
     Leads: 'LEADS',
-    CtvConsideration: 'CTV_CONSIDERATION'
+    CtvConsideration: 'CTV_CONSIDERATION',
 } as const;
 export type CampaignObjectiveType = typeof CampaignObjectiveType[keyof typeof CampaignObjectiveType];
 

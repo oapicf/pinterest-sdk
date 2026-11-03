@@ -22,13 +22,13 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing_extensions import Annotated
 from openapi_server.models.audience_insight_type import AudienceInsightType
 from openapi_server.models.audience_insights import AudienceInsights
 from openapi_server.models.audience_insights_scope_and_type_get200_response import AudienceInsightsScopeAndTypeGet200Response
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -54,8 +54,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def audience_insights_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    audience_insight_type: Annotated[AudienceInsightType, Field(description="Type of audience insights.")] = Query(None, description="Type of audience insights.", alias="audience_insight_type"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    audience_insight_type: Annotated[AudienceInsightType, Field(description="Type of audience insights.")] = Query(..., description="Type of audience insights.", alias="audience_insight_type"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -85,7 +85,7 @@ async def audience_insights_get(
     response_model_by_alias=True,
 )
 async def audience_insights_scope_and_type_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

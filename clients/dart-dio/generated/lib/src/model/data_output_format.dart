@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'data_output_format.g.dart';
 
+/// Format of generated report
 class DataOutputFormat extends EnumClass {
 
-  /// Format of generated report
   @BuiltValueEnumConst(wireName: r'JSON')
   static const DataOutputFormat JSON = _$JSON;
-  /// Format of generated report
   @BuiltValueEnumConst(wireName: r'CSV')
   static const DataOutputFormat CSV = _$CSV;
 

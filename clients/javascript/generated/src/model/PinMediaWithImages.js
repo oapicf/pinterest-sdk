@@ -17,7 +17,7 @@ import ImageMetadata from './ImageMetadata';
 /**
  * The PinMediaWithImages model module.
  * @module model/PinMediaWithImages
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaWithImages {
     /**

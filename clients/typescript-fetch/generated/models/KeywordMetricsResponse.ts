@@ -29,14 +29,10 @@ import {
 export interface KeywordMetricsResponse {
     /**
      * Keyword name, e.g., "keyword":"fashion outfits"
-     * @type {string}
-     * @memberof KeywordMetricsResponse
      */
     keyword?: string;
     /**
      * 
-     * @type {KeywordMetrics}
-     * @memberof KeywordMetricsResponse
      */
     metrics?: KeywordMetrics;
 }

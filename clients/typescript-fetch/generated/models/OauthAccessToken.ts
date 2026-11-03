@@ -29,50 +29,34 @@ import {
 export interface OauthAccessToken {
     /**
      * 
-     * @type {string}
-     * @memberof OauthAccessToken
      */
     readonly accessToken: string;
     /**
      * 
-     * @type {number}
-     * @memberof OauthAccessToken
      */
     readonly expiresIn: number;
     /**
      * 
-     * @type {string}
-     * @memberof OauthAccessToken
      */
     refreshToken?: string;
     /**
      * 
-     * @type {number}
-     * @memberof OauthAccessToken
      */
     readonly refreshTokenExpiresAt?: number;
     /**
      * 
-     * @type {number}
-     * @memberof OauthAccessToken
      */
     readonly refreshTokenExpiresIn?: number;
     /**
      * 
-     * @type {TokenGrantType}
-     * @memberof OauthAccessToken
      */
     readonly responseType?: TokenGrantType;
     /**
      * 
-     * @type {string}
-     * @memberof OauthAccessToken
      */
     scope?: string;
     /**
      * 
-     * @type {string}
-     * @memberof OauthAccessToken
      */
     readonly tokenType: string;
 }

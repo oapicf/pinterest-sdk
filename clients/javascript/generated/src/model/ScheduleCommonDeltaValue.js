@@ -22,7 +22,7 @@ import ScheduleBidOptionsPlacementMultipliers from './ScheduleBidOptionsPlacemen
 /**
  * The ScheduleCommonDeltaValue model module.
  * @module model/ScheduleCommonDeltaValue
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScheduleCommonDeltaValue {
     /**

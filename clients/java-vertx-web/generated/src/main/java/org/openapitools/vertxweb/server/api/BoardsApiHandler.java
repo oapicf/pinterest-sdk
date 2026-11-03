@@ -69,7 +69,7 @@ public class BoardsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter boardId is {}", boardId);
-        logger.debug("Parameter boardSectionCreate is {}", boardSectionCreate);
+        logger.debug("Parameter boardSectionCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
@@ -182,7 +182,7 @@ public class BoardsApiHandler {
 
         logger.debug("Parameter boardId is {}", boardId);
         logger.debug("Parameter sectionId is {}", sectionId);
-        logger.debug("Parameter boardSectionUpdateWithRequiredBody is {}", boardSectionUpdateWithRequiredBody);
+        logger.debug("Parameter boardSectionUpdateWithRequiredBody is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
@@ -207,7 +207,7 @@ public class BoardsApiHandler {
         BoardCreate boardCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BoardCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter boardCreate is {}", boardCreate);
+        logger.debug("Parameter boardCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.boardsCreate(boardCreate, adAccountId)
@@ -342,7 +342,7 @@ public class BoardsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter boardId is {}", boardId);
-        logger.debug("Parameter boardWithUpdatePrivacyUpdate is {}", boardWithUpdatePrivacyUpdate);
+        logger.debug("Parameter boardWithUpdatePrivacyUpdate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.boardsUpdate(boardId, boardWithUpdatePrivacyUpdate, adAccountId)

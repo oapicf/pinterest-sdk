@@ -29,14 +29,10 @@ import {
 export interface KeywordsGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof KeywordsGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Keyword>}
-     * @memberof KeywordsGet200Response
      */
     items: Array<Keyword>;
 }

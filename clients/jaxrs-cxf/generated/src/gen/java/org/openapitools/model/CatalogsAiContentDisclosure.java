@@ -24,8 +24,6 @@ public class CatalogsAiContentDisclosure  {
   */
   @ApiModelProperty(example = "[\"ai_modified\"]", required = true, value = "Disclosure labels that apply to this asset.")
 
-  @Valid
-
   private List<CatalogsAiContentDisclosureLabel> disclosure = new ArrayList<>();
 
  /**

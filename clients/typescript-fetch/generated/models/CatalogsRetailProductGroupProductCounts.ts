@@ -21,38 +21,26 @@ import { mapValues } from '../runtime';
 export interface CatalogsRetailProductGroupProductCounts {
     /**
      * 
-     * @type {CatalogsRetailProductGroupProductCountsCatalogTypeEnum}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     catalogType: CatalogsRetailProductGroupProductCountsCatalogTypeEnum;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     inStock: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     outOfStock: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     preorder: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     total: number;
     /**
      * 
-     * @type {number}
-     * @memberof CatalogsRetailProductGroupProductCounts
      */
     videos?: number;
 }
@@ -62,7 +50,7 @@ export interface CatalogsRetailProductGroupProductCounts {
  * @export
  */
 export const CatalogsRetailProductGroupProductCountsCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailProductGroupProductCountsCatalogTypeEnum = typeof CatalogsRetailProductGroupProductCountsCatalogTypeEnum[keyof typeof CatalogsRetailProductGroupProductCountsCatalogTypeEnum];
 

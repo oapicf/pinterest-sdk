@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "An object with a list of member asset accesses to delete.")
 @JsonTypeName("BusinessMembersAssetAccessDeleteBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMembersAssetAccessDeleteBody   {
-  private @Valid List<@Valid DeleteMemberAssetAccessItem> accesses = new ArrayList<>();
+  private List<@Valid DeleteMemberAssetAccessItem> accesses = new ArrayList<>();
 
   public BusinessMembersAssetAccessDeleteBody() {
   }
@@ -47,7 +47,7 @@ public class BusinessMembersAssetAccessDeleteBody   {
   
   @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
   @JsonProperty(required = true, value = "accesses")
-  @NotNull @Valid  @Size(min=1,max=100)public List<@Valid DeleteMemberAssetAccessItem> getAccesses() {
+  @NotNull  @Size(min=1,max=100)public List<@Valid DeleteMemberAssetAccessItem> getAccesses() {
     return accesses;
   }
 

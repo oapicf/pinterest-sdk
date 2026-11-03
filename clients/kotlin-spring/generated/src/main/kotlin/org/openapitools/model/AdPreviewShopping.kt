@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AdShoppingPreviewCreativeType
 import org.openapitools.model.BasePreferredMediaType
 import org.openapitools.model.CustomizableCTAType
@@ -39,12 +36,12 @@ data class AdPreviewShopping(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "123456789", required = true, description = "Catalog Product Group Id.")
-    @param:JsonProperty("catalog_product_group_id")
+    @param:JsonProperty("catalog_product_group_id", required = true)
     @get:JsonProperty("catalog_product_group_id", required = true) val catalogProductGroupId: kotlin.String,
 
     @field:Valid
     @Schema(example = "SHOPPING", required = true, description = "Ad format of the shopping ad preview.")
-    @param:JsonProperty("creative_type")
+    @param:JsonProperty("creative_type", required = true)
     @get:JsonProperty("creative_type", required = true) val creativeType: AdShoppingPreviewCreativeType,
 
     @field:Valid
@@ -53,52 +50,36 @@ data class AdPreviewShopping(
     @get:JsonProperty("customizable_cta_type") val customizableCtaType: CustomizableCTAType? = null,
 
     @Schema(example = "My Preview Image", description = "Title displayed below ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("hero_image_title")
     @get:JsonProperty("hero_image_title") val heroImageTitle: kotlin.String? = null,
 
     @Schema(example = "https://somewebsite.com/someimage.jpg", description = "Hero image URL.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("hero_image_url")
     @get:JsonProperty("hero_image_url") val heroImageUrl: kotlin.String? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "987654321", description = "Pin id for the hero image. When creative type is COLLECTION, either hero_pin_id or (hero_image_url, hero_image_title) is required.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("hero_pin_id")
     @get:JsonProperty("hero_pin_id") val heroPinId: kotlin.String? = null,
 
     @Schema(example = "Christmas Sale", description = "Multi image template tag.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("image_tag")
     @get:JsonProperty("image_tag") val imageTag: kotlin.String? = null,
 
     @Schema(example = "111111111", description = "Item id for product to preview standard shopping ads, optional and only applicable when creative type is SHOPPING.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("item_id")
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 
     @field:Valid
     @Schema(example = "IMAGE", description = "Preferred media type.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("preferred_media_type")
     @get:JsonProperty("preferred_media_type") val preferredMediaType: BasePreferredMediaType? = null,
 
     @Schema(description = "Include promotion data in preview when available on catalog item. Defaults to false.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("show_promotion")
     @get:JsonProperty("show_promotion") val showPromotion: kotlin.Boolean? = null,
 
     @Schema(example = "Black Friday Sale", description = "Multi video template tag, image_tag and video_tag are mutual exclusive.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("video_tag")
     @get:JsonProperty("video_tag") val videoTag: kotlin.String? = null
 ) : AdPreviewRequest {

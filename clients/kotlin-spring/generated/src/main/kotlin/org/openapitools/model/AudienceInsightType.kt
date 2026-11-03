@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: YOUR_TOTAL_AUDIENCE,YOUR_ENGAGED_AUDIENCE,PINTEREST_TOTAL_AUDIENCE
-*/
+ * 
+ * Values: YOUR_TOTAL_AUDIENCE,YOUR_ENGAGED_AUDIENCE,PINTEREST_TOTAL_AUDIENCE
+ */
 enum class AudienceInsightType(@get:JsonValue val value: kotlin.String) {
 
     YOUR_TOTAL_AUDIENCE("YOUR_TOTAL_AUDIENCE"),
@@ -29,9 +29,8 @@ enum class AudienceInsightType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AudienceInsightType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceInsightType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceInsightType'")
         }
     }
 }
-

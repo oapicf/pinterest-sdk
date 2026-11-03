@@ -31,7 +31,7 @@ export const ConversionTagTypeOptimal = {
     FindLocation: 'FIND_LOCATION',
     CustomizeProduct: 'CUSTOMIZE_PRODUCT',
     SubmitApplication: 'SUBMIT_APPLICATION',
-    StartTrial: 'START_TRIAL'
+    StartTrial: 'START_TRIAL',
 } as const;
 export type ConversionTagTypeOptimal = typeof ConversionTagTypeOptimal[keyof typeof ConversionTagTypeOptimal];
 

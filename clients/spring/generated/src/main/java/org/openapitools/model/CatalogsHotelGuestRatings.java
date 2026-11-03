@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -24,19 +23,15 @@ import jakarta.annotation.Generated;
  * CatalogsHotelGuestRatings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelGuestRatings {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> maxScore = JsonNullable.<BigDecimal>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> numberOfReviewers = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> ratingSystem = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BigDecimal> score = JsonNullable.<BigDecimal>undefined();
 
   public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
@@ -49,7 +44,7 @@ public class CatalogsHotelGuestRatings {
    * @return maxScore
    */
   @Valid 
-  @Schema(name = "max_score", description = "Max value for the hotel rating score.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "max_score", description = "Max value for the hotel rating score.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("max_score")
   public JsonNullable<BigDecimal> getMaxScore() {
     return maxScore;
@@ -69,7 +64,7 @@ public class CatalogsHotelGuestRatings {
    * @return numberOfReviewers
    */
   
-  @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("number_of_reviewers")
   public JsonNullable<Integer> getNumberOfReviewers() {
     return numberOfReviewers;
@@ -89,7 +84,7 @@ public class CatalogsHotelGuestRatings {
    * @return ratingSystem
    */
   
-  @Schema(name = "rating_system", description = "System you use for guest reviews.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "rating_system", description = "System you use for guest reviews.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("rating_system")
   public JsonNullable<String> getRatingSystem() {
     return ratingSystem;
@@ -109,7 +104,7 @@ public class CatalogsHotelGuestRatings {
    * @return score
    */
   @Valid 
-  @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("score")
   public JsonNullable<BigDecimal> getScore() {
     return score;

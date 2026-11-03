@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,19 +25,16 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BoardCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BoardCreate {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean isAdsOnly = false;
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable BoardPrivacy privacy;
+  private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
   public BoardCreate() {
     super();
@@ -61,7 +57,7 @@ public class BoardCreate {
    * @return description
    */
   
-  @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", example = "My favorite summer recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("description")
   public JsonNullable<String> getDescription() {
     return description;
@@ -113,7 +109,7 @@ public class BoardCreate {
     this.name = name;
   }
 
-  public BoardCreate privacy(@Nullable BoardPrivacy privacy) {
+  public BoardCreate privacy(BoardPrivacy privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -125,12 +121,12 @@ public class BoardCreate {
   @Valid 
   @Schema(name = "privacy", description = "    Privacy setting for a board. Learn more about [secret](https://help.pinterest.com/en/article/secret-boards)     boards and [protected](https://help.pinterest.com/en/business/article/protected-boards) boards.      **Note:** If you create an ad-only board by setting `is_ads_only`     to `true`, the `privacy` settng automatically becomes `PROTECTED`. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")
-  public @Nullable BoardPrivacy getPrivacy() {
+  public BoardPrivacy getPrivacy() {
     return privacy;
   }
 
   @JsonProperty("privacy")
-  public void setPrivacy(@Nullable BoardPrivacy privacy) {
+  public void setPrivacy(BoardPrivacy privacy) {
     this.privacy = privacy;
   }
 

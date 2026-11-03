@@ -20,8 +20,6 @@ public class CatalogsProductGroupMultipleCountriesCriteria  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<Country> values = new ArrayList<>();
  /**
    * Get negated

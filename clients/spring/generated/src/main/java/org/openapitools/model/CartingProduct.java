@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,21 +23,17 @@ import jakarta.annotation.Generated;
  * CartingProduct
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CartingProduct {
 
   private String cartingProductId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean displayPreferredRetailersOnly;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean displayProductPrice;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CartingRetailer> preferredRetailers = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean randomizePreferredRetailers;
 
   public CartingProduct() {
@@ -132,7 +127,7 @@ public class CartingProduct {
    * A sorted array of preferred retailers for the carting product
    * @return preferredRetailers
    */
-  @Valid 
+  
   @Schema(name = "preferred_retailers", description = "A sorted array of preferred retailers for the carting product", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("preferred_retailers")
   public List<@Valid CartingRetailer> getPreferredRetailers() {

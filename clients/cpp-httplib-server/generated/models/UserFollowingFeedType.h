@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class UserFollowingFeedType
-{
-public:
-
-    UserFollowingFeedType();
-    virtual ~UserFollowingFeedType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(UserFollowingFeedType,
-        )
-
-private:
+enum class UserFollowingFeedType {
+    
+    ALL,
+    
+    RANKED,
+    
+    CREATOR_ONLY,
+    
+    RANKED_CREATOR_ONLY
+    
 };
 
+inline void to_json(nlohmann::json& j, const UserFollowingFeedType& value)
+{
+    switch (value)
+    {
+        
+        case UserFollowingFeedType::ALL: j = "ALL"; break;
+        
+        case UserFollowingFeedType::RANKED: j = "RANKED"; break;
+        
+        case UserFollowingFeedType::CREATOR_ONLY: j = "CREATOR_ONLY"; break;
+        
+        case UserFollowingFeedType::RANKED_CREATOR_ONLY: j = "RANKED_CREATOR_ONLY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for UserFollowingFeedType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, UserFollowingFeedType& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = UserFollowingFeedType::ALL;
+        return;
+    }
+    
+    if (j == "RANKED")
+    {
+        value = UserFollowingFeedType::RANKED;
+        return;
+    }
+    
+    if (j == "CREATOR_ONLY")
+    {
+        value = UserFollowingFeedType::CREATOR_ONLY;
+        return;
+    }
+    
+    if (j == "RANKED_CREATOR_ONLY")
+    {
+        value = UserFollowingFeedType::RANKED_CREATOR_ONLY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for UserFollowingFeedType", &j);
+}
 
 } // namespace models
 

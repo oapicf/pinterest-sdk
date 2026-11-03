@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.ItemAttributesRequest;
 import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsUpsertRetailItem", description = "An item to be upserted")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsUpsertRetailItem implements CatalogsRetailBatchRequestItemsItems {
 
   private ItemAttributesRequest attributes;

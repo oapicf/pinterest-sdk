@@ -76,8 +76,7 @@ class ProductTagsBulkDeleteRequest(BaseModel):
         _items = []
         if self.product_tags:
             for _item_product_tags in self.product_tags:
-                if _item_product_tags:
-                    _items.append(_item_product_tags.to_dict())
+                _items.append(_item_product_tags.to_dict() if _item_product_tags is not None else None)
             _dict['product_tags'] = _items
         return _dict
 

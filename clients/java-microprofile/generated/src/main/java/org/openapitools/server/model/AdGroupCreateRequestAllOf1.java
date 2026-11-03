@@ -47,10 +47,10 @@ public class AdGroupCreateRequestAllOf1  {
   protected BigDecimal bidMultiplier;
 
   @JsonbProperty("budget_type")
-  protected BudgetType budgetType;
+  protected BudgetType budgetType = BudgetType.DAILY;
 
   @JsonbProperty("pacing_delivery_type")
-  protected PacingDeliveryType pacingDeliveryType;
+  protected PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
 
   /**

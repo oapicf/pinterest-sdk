@@ -17,7 +17,7 @@ import AdvancedAuctionKey from './AdvancedAuctionKey';
 /**
  * The AdvancedAuctionItemsGetRequest model module.
  * @module model/AdvancedAuctionItemsGetRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvancedAuctionItemsGetRequest {
     /**

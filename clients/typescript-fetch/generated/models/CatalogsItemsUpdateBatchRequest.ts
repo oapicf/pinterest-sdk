@@ -36,26 +36,18 @@ import {
 export interface CatalogsItemsUpdateBatchRequest {
     /**
      * 
-     * @type {Country}
-     * @memberof CatalogsItemsUpdateBatchRequest
      */
     country: Country;
     /**
      * Array with catalogs items
-     * @type {Array<ItemUpdateBatchRecord>}
-     * @memberof CatalogsItemsUpdateBatchRequest
      */
     items: Array<ItemUpdateBatchRecord>;
     /**
      * We recommend using the CatalogsLocale values.
-     * @type {CatalogsItemsUpdateBatchRequestLanguageEnum}
-     * @memberof CatalogsItemsUpdateBatchRequest
      */
     language: CatalogsItemsUpdateBatchRequestLanguageEnum;
     /**
      * 
-     * @type {CatalogsItemsUpdateBatchRequestOperationEnum}
-     * @memberof CatalogsItemsUpdateBatchRequest
      */
     operation: CatalogsItemsUpdateBatchRequestOperationEnum;
 }
@@ -171,7 +163,7 @@ export const CatalogsItemsUpdateBatchRequestLanguageEnum = {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
 } as const;
 export type CatalogsItemsUpdateBatchRequestLanguageEnum = typeof CatalogsItemsUpdateBatchRequestLanguageEnum[keyof typeof CatalogsItemsUpdateBatchRequestLanguageEnum];
 
@@ -179,7 +171,7 @@ export type CatalogsItemsUpdateBatchRequestLanguageEnum = typeof CatalogsItemsUp
  * @export
  */
 export const CatalogsItemsUpdateBatchRequestOperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
 } as const;
 export type CatalogsItemsUpdateBatchRequestOperationEnum = typeof CatalogsItemsUpdateBatchRequestOperationEnum[keyof typeof CatalogsItemsUpdateBatchRequestOperationEnum];
 

@@ -16,7 +16,7 @@ import org.openapitools.model.LeadFormQuestionType;
 /**
  * LeadFormQuestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormQuestion   {
   @JsonProperty("custom_question_field_type")
   private LeadFormQuestionFieldType customQuestionFieldType;
@@ -73,7 +73,7 @@ public class LeadFormQuestion   {
 
   public LeadFormQuestion addCustomQuestionOptionsItem(String customQuestionOptionsItem) {
     if (this.customQuestionOptions == null) {
-      this.customQuestionOptions = ;
+      this.customQuestionOptions = new ArrayList<>();
     }
     this.customQuestionOptions.add(customQuestionOptionsItem);
     return this;

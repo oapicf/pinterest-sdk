@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface DynamicTitlesProcessCSVError {
     /**
      * The type of validation error: INVALID_FILE or ROW_VALIDATION_FAILED.
-     * @type {string}
-     * @memberof DynamicTitlesProcessCSVError
      */
     errorType?: string;
     /**
      * The row number with a validation error. -1 indicates a file-level error.
-     * @type {number}
-     * @memberof DynamicTitlesProcessCSVError
      */
     rowNumber?: number;
 }

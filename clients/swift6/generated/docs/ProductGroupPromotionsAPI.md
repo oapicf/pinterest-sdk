@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **productGroupPromotionsCreate**
 ```swift
-    open class func productGroupPromotionsCreate(adAccountId: String, productGroupPromotionsCreate: ProductGroupPromotionsCreate, completion: @escaping (_ data: ProductGroupPromotions?, _ error: Error?) -> Void)
+    open class func productGroupPromotionsCreate(adAccountId: String, productGroupPromotionsCreate: ProductGroupPromotionsCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductGroupPromotions
 ```
 
 Create product group promotions
@@ -29,15 +29,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let productGroupPromotionsCreate = ProductGroupPromotionsCreate(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotion(adGroupId: "adGroupId_example", bidInMicroCurrency: 123, catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", collectionsHeaderType: CollectionsHeaderType(), collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", collectionsHeroPinId: "collectionsHeroPinId_example", creativeType: CreativeType(), customizableCtaType: ProductGroupPromotionCustomizableCTAType(), definition: "definition_example", gridClickType: GridClickType(), id: "id_example", included: true, isGenerateBackground: true, isImageAutoResizing: true, isMdl: true, parentId: "parentId_example", preferredMediaType: PreferredMediaType(), relativeDefinition: "relativeDefinition_example", selectedImageTag: "selectedImageTag_example", selectedVideoTag: "selectedVideoTag_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", status: EntityStatus(), trackingUrl: "trackingUrl_example")]) // ProductGroupPromotionsCreate | 
 
 // Create product group promotions
-ProductGroupPromotionsAPI.productGroupPromotionsCreate(adAccountId: adAccountId, productGroupPromotionsCreate: productGroupPromotionsCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductGroupPromotionsAPI.productGroupPromotionsCreate(adAccountId: adAccountId, productGroupPromotionsCreate: productGroupPromotionsCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **productGroupPromotionsGet**
 ```swift
-    open class func productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String, completion: @escaping (_ data: ProductGroupPromotion?, _ error: Error?) -> Void)
+    open class func productGroupPromotionsGet(adAccountId: String, productGroupPromotionId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductGroupPromotion
 ```
 
 Get a product group promotion by id
@@ -81,15 +77,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let productGroupPromotionId = "productGroupPromotionId_example" // String | Unique identifier of a product group promotion
 
 // Get a product group promotion by id
-ProductGroupPromotionsAPI.productGroupPromotionsGet(adAccountId: adAccountId, productGroupPromotionId: productGroupPromotionId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductGroupPromotionsAPI.productGroupPromotionsGet(adAccountId: adAccountId, productGroupPromotionId: productGroupPromotionId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -117,7 +109,7 @@ Name | Type | Description  | Notes
 
 # **productGroupPromotionsList**
 ```swift
-    open class func productGroupPromotionsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, productGroupPromotionIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, adGroupId: String? = nil, completion: @escaping (_ data: ProductGroupPromotionsList200Response?, _ error: Error?) -> Void)
+    open class func productGroupPromotionsList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, productGroupPromotionIds: [String]? = nil, entityStatuses: [EntityStatus]? = nil, adGroupId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductGroupPromotionsList200Response
 ```
 
 Get product group promotions
@@ -138,15 +130,11 @@ let entityStatuses = [EntityStatus()] // [EntityStatus] | Entity status (optiona
 let adGroupId = "adGroupId_example" // String | Ad group Id. (optional)
 
 // Get product group promotions
-ProductGroupPromotionsAPI.productGroupPromotionsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, productGroupPromotionIds: productGroupPromotionIds, entityStatuses: entityStatuses, adGroupId: adGroupId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductGroupPromotionsAPI.productGroupPromotionsList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, productGroupPromotionIds: productGroupPromotionIds, entityStatuses: entityStatuses, adGroupId: adGroupId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -179,7 +167,7 @@ Name | Type | Description  | Notes
 
 # **productGroupPromotionsUpdate**
 ```swift
-    open class func productGroupPromotionsUpdate(adAccountId: String, productGroupPromotionsUpdateWithRequiredBody: ProductGroupPromotionsUpdateWithRequiredBody, completion: @escaping (_ data: ProductGroupPromotions?, _ error: Error?) -> Void)
+    open class func productGroupPromotionsUpdate(adAccountId: String, productGroupPromotionsUpdateWithRequiredBody: ProductGroupPromotionsUpdateWithRequiredBody, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ProductGroupPromotions
 ```
 
 Update product group promotions
@@ -195,15 +183,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let productGroupPromotionsUpdateWithRequiredBody = ProductGroupPromotionsUpdateWithRequiredBody(adGroupId: "adGroupId_example", productGroupPromotion: [ProductGroupPromotion(adGroupId: "adGroupId_example", bidInMicroCurrency: 123, catalogProductGroupId: "catalogProductGroupId_example", catalogProductGroupName: "catalogProductGroupName_example", collectionsHeaderType: CollectionsHeaderType(), collectionsHeroDestinationUrl: "collectionsHeroDestinationUrl_example", collectionsHeroPinId: "collectionsHeroPinId_example", creativeType: CreativeType(), customizableCtaType: ProductGroupPromotionCustomizableCTAType(), definition: "definition_example", gridClickType: GridClickType(), id: "id_example", included: true, isGenerateBackground: true, isImageAutoResizing: true, isMdl: true, parentId: "parentId_example", preferredMediaType: PreferredMediaType(), relativeDefinition: "relativeDefinition_example", selectedImageTag: "selectedImageTag_example", selectedVideoTag: "selectedVideoTag_example", slideshowCollectionsDescription: "slideshowCollectionsDescription_example", slideshowCollectionsTitle: "slideshowCollectionsTitle_example", status: EntityStatus(), trackingUrl: "trackingUrl_example")]) // ProductGroupPromotionsUpdateWithRequiredBody | 
 
 // Update product group promotions
-ProductGroupPromotionsAPI.productGroupPromotionsUpdate(adAccountId: adAccountId, productGroupPromotionsUpdateWithRequiredBody: productGroupPromotionsUpdateWithRequiredBody) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductGroupPromotionsAPI.productGroupPromotionsUpdate(adAccountId: adAccountId, productGroupPromotionsUpdateWithRequiredBody: productGroupPromotionsUpdateWithRequiredBody)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -231,7 +215,7 @@ Name | Type | Description  | Notes
 
 # **productGroupsAnalytics**
 ```swift
-    open class func productGroupsAnalytics(startDate: Date, endDate: Date, productGroupIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [ProductGroupAnalyticsItems]?, _ error: Error?) -> Void)
+    open class func productGroupsAnalytics(startDate: Date, endDate: Date, productGroupIds: [String], columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_productGroupsAnalytics? = nil, engagementWindowDays: EngagementWindowDays_productGroupsAnalytics? = nil, viewWindowDays: ViewWindowDays_productGroupsAnalytics? = nil, conversionReportTime: ConversionReportTime_productGroupsAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [ProductGroupAnalyticsItems]
 ```
 
 Get product group analytics
@@ -256,15 +240,11 @@ let conversionReportTime = "conversionReportTime_example" // String | The date b
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get product group analytics
-ProductGroupPromotionsAPI.productGroupsAnalytics(startDate: startDate, endDate: endDate, productGroupIds: productGroupIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await ProductGroupPromotionsAPI.productGroupsAnalytics(startDate: startDate, endDate: endDate, productGroupIds: productGroupIds, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reporting targeting type
-* Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,AGE_BUCKET_AND_GENDER
-*/
+ * Reporting targeting type
+ * Values: KEYWORD,APPTYPE,GENDER,LOCATION,PLACEMENT,COUNTRY,TARGETED_INTEREST,PINNER_INTEREST,AUDIENCE_INCLUDE,GEO,AGE_BUCKET,REGION,AGE_BUCKET_AND_GENDER
+ */
 enum class AdsAnalyticsAccountTargetingType(@get:JsonValue val value: kotlin.String) {
 
     KEYWORD("KEYWORD"),
@@ -39,9 +39,8 @@ enum class AdsAnalyticsAccountTargetingType(@get:JsonValue val value: kotlin.Str
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdsAnalyticsAccountTargetingType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsAccountTargetingType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsAccountTargetingType'")
         }
     }
 }
-

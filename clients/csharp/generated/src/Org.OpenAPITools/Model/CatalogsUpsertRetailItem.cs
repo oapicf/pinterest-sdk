@@ -206,7 +206,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsUpsertRetailItem.OperationEnum?>(CatalogsUpsertRetailItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsUpsertRetailItem.OperationEnum? operationValue = CatalogsUpsertRetailItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsUpsertRetailItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -215,22 +220,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!attributes.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertRetailItem.", nameof(attributes));
+                throw new JsonException("Property is required for class CatalogsUpsertRetailItem: attributes.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertRetailItem.", nameof(itemId));
+                throw new JsonException("Property is required for class CatalogsUpsertRetailItem: item_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsUpsertRetailItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsUpsertRetailItem: operation.");
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class CatalogsUpsertRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertRetailItem: attributes.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class CatalogsUpsertRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertRetailItem: item_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsUpsertRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsUpsertRetailItem: operation.");
 
             return new CatalogsUpsertRetailItem(attributes.Value!, itemId.Value!, operation.Value!.Value!);
         }
@@ -241,7 +246,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpsertRetailItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsUpsertRetailItem catalogsUpsertRetailItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -256,15 +260,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsUpsertRetailItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsUpsertRetailItem catalogsUpsertRetailItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsUpsertRetailItem.Attributes == null)
-                throw new ArgumentNullException(nameof(catalogsUpsertRetailItem.Attributes), "Property is required for class CatalogsUpsertRetailItem.");
-
-            if (catalogsUpsertRetailItem.ItemId == null)
-                throw new ArgumentNullException(nameof(catalogsUpsertRetailItem.ItemId), "Property is required for class CatalogsUpsertRetailItem.");
-
             writer.WritePropertyName("attributes");
             JsonSerializer.Serialize(writer, catalogsUpsertRetailItem.Attributes, jsonSerializerOptions);
             writer.WriteString("item_id", catalogsUpsertRetailItem.ItemId);

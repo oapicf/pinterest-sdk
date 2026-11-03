@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Reason why a product pin is ineligible for tagging.
-* Values: PIN_MISSING,PIN_IS_PRIVATE,PRODUCT_METADATA_MISSING,PIN_NOT_FROM_VERIFIED_DOMAIN,PIN_NOT_FROM_SAME_USER_AS_HERO_PIN
-*/
+ * Reason why a product pin is ineligible for tagging.
+ * Values: PIN_MISSING,PIN_IS_PRIVATE,PRODUCT_METADATA_MISSING,PIN_NOT_FROM_VERIFIED_DOMAIN,PIN_NOT_FROM_SAME_USER_AS_HERO_PIN
+ */
 enum class IneligibleProductTagReason(@get:JsonValue val value: kotlin.String) {
 
     PIN_MISSING("PIN_MISSING"),
@@ -31,9 +31,8 @@ enum class IneligibleProductTagReason(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): IneligibleProductTagReason {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IneligibleProductTagReason'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IneligibleProductTagReason'")
         }
     }
 }
-

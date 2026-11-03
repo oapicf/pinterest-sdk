@@ -32,8 +32,6 @@ export interface AppTypeMultipliers {
     [key: string]: number | any;
     /**
      * App type identifier.
-     * @type {TargetingSpecAppType}
-     * @memberof AppTypeMultipliers
      */
     aPPTYPE?: TargetingSpecAppType;
 }

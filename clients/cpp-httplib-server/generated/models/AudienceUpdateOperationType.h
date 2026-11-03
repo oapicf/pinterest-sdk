@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AudienceUpdateOperationType
-{
-public:
-
-    AudienceUpdateOperationType();
-    virtual ~AudienceUpdateOperationType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceUpdateOperationType,
-        )
-
-private:
+enum class AudienceUpdateOperationType {
+    
+    UPDATE,
+    
+    REMOVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceUpdateOperationType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceUpdateOperationType::UPDATE: j = "UPDATE"; break;
+        
+        case AudienceUpdateOperationType::REMOVE: j = "REMOVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceUpdateOperationType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceUpdateOperationType& value)
+{
+    
+    if (j == "UPDATE")
+    {
+        value = AudienceUpdateOperationType::UPDATE;
+        return;
+    }
+    
+    if (j == "REMOVE")
+    {
+        value = AudienceUpdateOperationType::REMOVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceUpdateOperationType", &j);
+}
 
 } // namespace models
 

@@ -62,8 +62,6 @@ HOTEL(String.valueOf("HOTEL"));
   */
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
 
-  @Valid
-
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
  /**

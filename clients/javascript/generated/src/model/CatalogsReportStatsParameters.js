@@ -19,7 +19,7 @@ import CatalogsRetailReportStatsParameters from './CatalogsRetailReportStatsPara
 /**
  * The CatalogsReportStatsParameters model module.
  * @module model/CatalogsReportStatsParameters
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsReportStatsParameters {
     /**

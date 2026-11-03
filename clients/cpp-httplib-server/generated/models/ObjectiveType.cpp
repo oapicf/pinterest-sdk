@@ -6,20 +6,3 @@
 */
 #include "ObjectiveType.h"
 
-namespace models {
-
-ObjectiveType::ObjectiveType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

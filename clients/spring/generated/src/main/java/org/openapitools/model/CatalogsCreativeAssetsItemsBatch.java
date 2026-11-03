@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -34,10 +33,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemsBatch", description = "Object describing the catalogs creative assets items batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String batchId;
 
   /**
@@ -75,18 +73,14 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
 
   private CatalogTypeEnum catalogType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private JsonNullable<OffsetDateTime> completedTime = JsonNullable.<OffsetDateTime>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CreativeAssetsProcessingRecord> items = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BatchOperationStatus status;
 
   public CatalogsCreativeAssetsItemsBatch() {
@@ -152,7 +146,7 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
    * @return completedTime
    */
   @Valid 
-  @Schema(name = "completed_time", example = "2024-01-01T20:20Z", description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "completed_time", example = "2024-01-01T20:20Z", description = "Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("completed_time")
   public JsonNullable<OffsetDateTime> getCompletedTime() {
     return completedTime;
@@ -200,7 +194,7 @@ public class CatalogsCreativeAssetsItemsBatch implements CatalogsItemsBatch {
    * Array with the catalogs items processing records part of the catalogs items batch
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", description = "Array with the catalogs items processing records part of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("items")
   public List<@Valid CreativeAssetsProcessingRecord> getItems() {

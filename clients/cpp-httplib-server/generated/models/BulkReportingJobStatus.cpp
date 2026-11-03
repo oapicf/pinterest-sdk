@@ -6,20 +6,3 @@
 */
 #include "BulkReportingJobStatus.h"
 
-namespace models {
-
-BulkReportingJobStatus::BulkReportingJobStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

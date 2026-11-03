@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Interest model module.
  * @module model/Interest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class Interest {
     /**

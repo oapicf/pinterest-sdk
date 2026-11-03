@@ -281,3 +281,4 @@ class _$AssetGroupBindingSerializer implements PrimitiveSerializer<AssetGroupBin
   }
 }
 
+

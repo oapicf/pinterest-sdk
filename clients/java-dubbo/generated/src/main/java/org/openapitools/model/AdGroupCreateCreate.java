@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 import java.time.*;
 import java.math.*;
-@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaDubboServerCodegen", comments = "Generator version: 7.26.0")
 
 /**
  * Resource create operation model.
@@ -61,7 +61,7 @@ public class AdGroupCreateCreate implements Serializable {
   private Integer budgetInMicroCurrency;
 
   @JsonProperty("budget_type")
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   /**
    * Campaign ID of the ad group.
@@ -127,7 +127,7 @@ public class AdGroupCreateCreate implements Serializable {
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
 
   @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   /**
    * Pinterest Performance+ campaign settings.

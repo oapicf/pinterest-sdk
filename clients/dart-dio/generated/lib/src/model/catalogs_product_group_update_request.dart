@@ -97,6 +97,7 @@ class _$CatalogsProductGroupUpdateRequestSerializer implements PrimitiveSerializ
   }
 }
 
+
 /// a concrete implementation of [CatalogsProductGroupUpdateRequest], since [CatalogsProductGroupUpdateRequest] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $CatalogsProductGroupUpdateRequest implements CatalogsProductGroupUpdateRequest, Built<$CatalogsProductGroupUpdateRequest, $CatalogsProductGroupUpdateRequestBuilder> {

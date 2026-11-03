@@ -126,3 +126,4 @@ class _$BidOptionsGenderMultipliersSerializer implements PrimitiveSerializer<Bid
   }
 }
 
+

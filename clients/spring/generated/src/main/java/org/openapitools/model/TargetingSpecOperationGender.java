@@ -28,7 +28,7 @@ import jakarta.annotation.Generated;
  * TargetingSpecOperationGender
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOperationGender implements TargetingSpecOperations {
 
   /**
@@ -142,7 +142,7 @@ public class TargetingSpecOperationGender implements TargetingSpecOperations {
    * Get values
    * @return values
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<TargetingSpecGender> getValues() {

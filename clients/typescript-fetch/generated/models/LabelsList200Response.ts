@@ -29,14 +29,10 @@ import {
 export interface LabelsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof LabelsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Label>}
-     * @memberof LabelsList200Response
      */
     items: Array<Label>;
 }

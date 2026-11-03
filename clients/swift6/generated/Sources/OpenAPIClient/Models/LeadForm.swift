@@ -9,8 +9,8 @@ import Foundation
 
 public struct LeadForm: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let policyLinksRule = ArrayRule(minItems: 0, maxItems: 3, uniqueItems: false)
     public static let questionsRule = ArrayRule(minItems: 0, maxItems: 10, uniqueItems: false)
     /** The Ad Account ID that this lead form belongs to. */

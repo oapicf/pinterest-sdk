@@ -27,16 +27,16 @@ data class CatalogsItemsRequest(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("country")
+    @param:JsonProperty("country", required = true)
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsItemsPostFilters,
 
     @Schema(required = true, description = "We recommend using the CatalogsLocale values.")
-    @param:JsonProperty("language")
+    @param:JsonProperty("language", required = true)
     @get:JsonProperty("language", required = true) val language: CatalogsItemsRequest.Language
 ) {
 
@@ -153,12 +153,12 @@ data class CatalogsItemsRequest(
         TR("TR"),
         XX("XX"),
         ZH("ZH");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Language {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Language'")
             }
         }

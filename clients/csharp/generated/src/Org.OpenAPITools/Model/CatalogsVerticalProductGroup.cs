@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsVerticalProductGroup" /> class.
         /// </summary>
         /// <param name="catalogsRetailProductGroup"></param>
-        public CatalogsVerticalProductGroup(CatalogsRetailProductGroup catalogsRetailProductGroup)
+        internal CatalogsVerticalProductGroup(CatalogsRetailProductGroup catalogsRetailProductGroup)
         {
             CatalogsRetailProductGroup = catalogsRetailProductGroup;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsVerticalProductGroup" /> class.
         /// </summary>
         /// <param name="catalogsHotelProductGroup"></param>
-        public CatalogsVerticalProductGroup(CatalogsHotelProductGroup catalogsHotelProductGroup)
+        internal CatalogsVerticalProductGroup(CatalogsHotelProductGroup catalogsHotelProductGroup)
         {
             CatalogsHotelProductGroup = catalogsHotelProductGroup;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsVerticalProductGroup" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsProductGroup"></param>
-        public CatalogsVerticalProductGroup(CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup)
+        internal CatalogsVerticalProductGroup(CatalogsCreativeAssetsProductGroup catalogsCreativeAssetsProductGroup)
         {
             CatalogsCreativeAssetsProductGroup = catalogsCreativeAssetsProductGroup;
             OnCreated();
@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsVerticalProductGroup.CatalogTypeEnum?>(CatalogsVerticalProductGroup.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsVerticalProductGroup.CatalogTypeEnum? catalogTypeValue = CatalogsVerticalProductGroup.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsVerticalProductGroup.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsVerticalProductGroup.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsVerticalProductGroup: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalProductGroup.");
+                throw new JsonException("Property is not nullable for class CatalogsVerticalProductGroup: catalog_type.");
 
             if (catalogsCreativeAssetsProductGroup != null)
                 return new CatalogsVerticalProductGroup(catalogsCreativeAssetsProductGroup);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalProductGroup"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsVerticalProductGroup catalogsVerticalProductGroup, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalProductGroup"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsVerticalProductGroup catalogsVerticalProductGroup, JsonSerializerOptions jsonSerializerOptions)
         {
 

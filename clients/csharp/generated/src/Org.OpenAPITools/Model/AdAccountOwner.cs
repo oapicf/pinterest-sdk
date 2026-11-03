@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class AdAccountOwner.");
+                throw new JsonException("Property is not nullable for class AdAccountOwner: id.");
 
             if (username.IsSet && username.Value == null)
-                throw new ArgumentNullException(nameof(username), "Property is not nullable for class AdAccountOwner.");
+                throw new JsonException("Property is not nullable for class AdAccountOwner: username.");
 
             return new AdAccountOwner(id, username);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountOwner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountOwner adAccountOwner, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountOwner"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountOwner adAccountOwner, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adAccountOwner.IdOption.IsSet && adAccountOwner.Id == null)
-                throw new ArgumentNullException(nameof(adAccountOwner.Id), "Property is required for class AdAccountOwner.");
+                throw new JsonException("Cannot write null property AdAccountOwner.Id to non-nullable JSON property 'id'.");
 
             if (adAccountOwner.UsernameOption.IsSet && adAccountOwner.Username == null)
-                throw new ArgumentNullException(nameof(adAccountOwner.Username), "Property is required for class AdAccountOwner.");
+                throw new JsonException("Cannot write null property AdAccountOwner.Username to non-nullable JSON property 'username'.");
 
             if (adAccountOwner.IdOption.IsSet)
                 writer.WriteString("id", adAccountOwner.Id);

@@ -35,7 +35,7 @@ import javax.validation.Valid;
   CreateAssetAccessRequestResponse.JSON_PROPERTY_EXCEPTIONS,
   CreateAssetAccessRequestResponse.JSON_PROPERTY_INVITES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestResponse   {
   public static final String JSON_PROPERTY_EXCEPTIONS = "exceptions";
   @JsonProperty(JSON_PROPERTY_EXCEPTIONS)
@@ -43,7 +43,7 @@ public class CreateAssetAccessRequestResponse   {
 
   public static final String JSON_PROPERTY_INVITES = "invites";
   @JsonProperty(JSON_PROPERTY_INVITES)
-  private Map<String, String> invites = new HashMap<>();
+  private Map<String, @Pattern(regexp = "^\\d+$")String> invites = new HashMap<>();
 
   public CreateAssetAccessRequestResponse exceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
@@ -64,7 +64,7 @@ public class CreateAssetAccessRequestResponse   {
    **/
   @JsonProperty(value = "exceptions")
   @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
-  @Valid 
+  
   public List<@Valid AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
@@ -73,7 +73,7 @@ public class CreateAssetAccessRequestResponse   {
     this.exceptions = exceptions;
   }
 
-  public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse invites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
     return this;
   }
@@ -93,11 +93,11 @@ public class CreateAssetAccessRequestResponse   {
   @JsonProperty(value = "invites")
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   
-  public Map<String, String> getInvites() {
+  public Map<String, @Pattern(regexp = "^\\d+$")String> getInvites() {
     return invites;
   }
 
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
   }
 

@@ -21,50 +21,34 @@ import { mapValues } from '../runtime';
 export interface CatalogsReportDistributionStats {
     /**
      * ID of the catalog entity.
-     * @type {string}
-     * @memberof CatalogsReportDistributionStats
      */
     catalogId?: string;
     /**
      * The event code that a diagnostics aggregated number references
-     * @type {number}
-     * @memberof CatalogsReportDistributionStats
      */
     code?: number;
     /**
      * A human-friendly label for the event code (e.g, 'SPAM')
-     * @type {string}
-     * @memberof CatalogsReportDistributionStats
      */
     codeLabel?: string;
     /**
      * Indicates if issue makes items ineligible for ads distribution
-     * @type {boolean}
-     * @memberof CatalogsReportDistributionStats
      */
     ineligibleForAds?: boolean;
     /**
      * Indicates if issue makes items ineligible for organic distribution
-     * @type {boolean}
-     * @memberof CatalogsReportDistributionStats
      */
     ineligibleForOrganic?: boolean;
     /**
      * Title message describing the diagnostic issue
-     * @type {string}
-     * @memberof CatalogsReportDistributionStats
      */
     message?: string;
     /**
      * Number of occurrences of the issue
-     * @type {number}
-     * @memberof CatalogsReportDistributionStats
      */
     occurrences?: number;
     /**
      * 
-     * @type {CatalogsReportDistributionStatsReportTypeEnum}
-     * @memberof CatalogsReportDistributionStats
      */
     reportType?: CatalogsReportDistributionStatsReportTypeEnum;
 }
@@ -74,7 +58,7 @@ export interface CatalogsReportDistributionStats {
  * @export
  */
 export const CatalogsReportDistributionStatsReportTypeEnum = {
-    DistributionIssues: 'DISTRIBUTION_ISSUES'
+    DistributionIssues: 'DISTRIBUTION_ISSUES',
 } as const;
 export type CatalogsReportDistributionStatsReportTypeEnum = typeof CatalogsReportDistributionStatsReportTypeEnum[keyof typeof CatalogsReportDistributionStatsReportTypeEnum];
 

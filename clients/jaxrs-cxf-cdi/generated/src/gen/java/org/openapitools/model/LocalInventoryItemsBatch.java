@@ -29,7 +29,7 @@ public class LocalInventoryItemsBatch   {
 
   private java.util.Date createdTime;
 
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   private SupplementalItemBatchOperationStatus status;
 
@@ -95,7 +95,7 @@ public class LocalInventoryItemsBatch   {
   /**
    * Array of operation results
    **/
-  public LocalInventoryItemsBatch operationResults(List<SupplementalOperationResult> operationResults) {
+  public LocalInventoryItemsBatch operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -104,10 +104,10 @@ public class LocalInventoryItemsBatch   {
   @ApiModelProperty(required = true, value = "Array of operation results")
   @JsonProperty("operation_results")
   @NotNull
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

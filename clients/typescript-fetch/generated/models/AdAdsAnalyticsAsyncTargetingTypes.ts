@@ -34,7 +34,7 @@ export const AdAdsAnalyticsAsyncTargetingTypes = {
     AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER',
     AudienceMultiplier: 'AUDIENCE_MULTIPLIER',
     CreativeEnhancements: 'CREATIVE_ENHANCEMENTS',
-    LocalAdsStoreCode: 'LOCAL_ADS_STORE_CODE'
+    LocalAdsStoreCode: 'LOCAL_ADS_STORE_CODE',
 } as const;
 export type AdAdsAnalyticsAsyncTargetingTypes = typeof AdAdsAnalyticsAsyncTargetingTypes[keyof typeof AdAdsAnalyticsAsyncTargetingTypes];
 

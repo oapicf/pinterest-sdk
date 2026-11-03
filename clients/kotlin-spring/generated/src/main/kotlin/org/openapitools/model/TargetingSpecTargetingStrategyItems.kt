@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: CHOOSE_YOUR_OWN,FIND_NEW_CUSTOMERS,RECONNECT_WITH_USERS
-*/
+ * 
+ * Values: CHOOSE_YOUR_OWN,FIND_NEW_CUSTOMERS,RECONNECT_WITH_USERS
+ */
 enum class TargetingSpecTargetingStrategyItems(@get:JsonValue val value: kotlin.String) {
 
     CHOOSE_YOUR_OWN("CHOOSE_YOUR_OWN"),
@@ -29,9 +29,8 @@ enum class TargetingSpecTargetingStrategyItems(@get:JsonValue val value: kotlin.
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TargetingSpecTargetingStrategyItems {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecTargetingStrategyItems'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecTargetingStrategyItems'")
         }
     }
 }
-

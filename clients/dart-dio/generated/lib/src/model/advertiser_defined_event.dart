@@ -130,3 +130,4 @@ class _$AdvertiserDefinedEventSerializer implements PrimitiveSerializer<Advertis
   }
 }
 
+

@@ -107,3 +107,4 @@ class _$IneligibleProductTagsErrorDetailsSerializer implements PrimitiveSerializ
   }
 }
 
+

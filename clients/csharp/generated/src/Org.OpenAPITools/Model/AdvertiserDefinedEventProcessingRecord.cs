@@ -171,19 +171,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventProcessingRecord.", nameof(name));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventProcessingRecord: name.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class AdvertiserDefinedEventProcessingRecord.", nameof(status));
+                throw new JsonException("Property is required for class AdvertiserDefinedEventProcessingRecord: status.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class AdvertiserDefinedEventProcessingRecord.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventProcessingRecord: name.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class AdvertiserDefinedEventProcessingRecord.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventProcessingRecord: status.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class AdvertiserDefinedEventProcessingRecord.");
+                throw new JsonException("Property is not nullable for class AdvertiserDefinedEventProcessingRecord: exceptions.");
 
             return new AdvertiserDefinedEventProcessingRecord(name.Value!, status.Value!, exceptions);
         }
@@ -194,7 +194,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvertiserDefinedEventProcessingRecord advertiserDefinedEventProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -209,17 +208,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advertiserDefinedEventProcessingRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvertiserDefinedEventProcessingRecord advertiserDefinedEventProcessingRecord, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (advertiserDefinedEventProcessingRecord.Name == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventProcessingRecord.Name), "Property is required for class AdvertiserDefinedEventProcessingRecord.");
-
-            if (advertiserDefinedEventProcessingRecord.Status == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventProcessingRecord.Status), "Property is required for class AdvertiserDefinedEventProcessingRecord.");
-
             if (advertiserDefinedEventProcessingRecord.ExceptionsOption.IsSet && advertiserDefinedEventProcessingRecord.Exceptions == null)
-                throw new ArgumentNullException(nameof(advertiserDefinedEventProcessingRecord.Exceptions), "Property is required for class AdvertiserDefinedEventProcessingRecord.");
+                throw new JsonException("Cannot write null property AdvertiserDefinedEventProcessingRecord.Exceptions to non-nullable JSON property 'exceptions'.");
 
             writer.WriteString("name", advertiserDefinedEventProcessingRecord.Name);
 

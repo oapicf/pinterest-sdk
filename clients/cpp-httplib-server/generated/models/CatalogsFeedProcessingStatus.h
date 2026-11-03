@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class CatalogsFeedProcessingStatus
-{
-public:
-
-    CatalogsFeedProcessingStatus();
-    virtual ~CatalogsFeedProcessingStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsFeedProcessingStatus,
-        )
-
-private:
+enum class CatalogsFeedProcessingStatus {
+    
+    COMPLETED,
+    
+    FAILED,
+    
+    PROCESSING
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsFeedProcessingStatus& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsFeedProcessingStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case CatalogsFeedProcessingStatus::FAILED: j = "FAILED"; break;
+        
+        case CatalogsFeedProcessingStatus::PROCESSING: j = "PROCESSING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFeedProcessingStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsFeedProcessingStatus& value)
+{
+    
+    if (j == "COMPLETED")
+    {
+        value = CatalogsFeedProcessingStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "FAILED")
+    {
+        value = CatalogsFeedProcessingStatus::FAILED;
+        return;
+    }
+    
+    if (j == "PROCESSING")
+    {
+        value = CatalogsFeedProcessingStatus::PROCESSING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFeedProcessingStatus", &j);
+}
 
 } // namespace models
 

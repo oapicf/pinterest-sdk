@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (estimate.IsSet && estimate.Value == null)
-                throw new ArgumentNullException(nameof(estimate), "Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate: estimate.");
 
             if (lowerBound.IsSet && lowerBound.Value == null)
-                throw new ArgumentNullException(nameof(lowerBound), "Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate: lower_bound.");
 
             if (upperBound.IsSet && upperBound.Value == null)
-                throw new ArgumentNullException(nameof(upperBound), "Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate.");
+                throw new JsonException("Property is not nullable for class TargetingTemplateAudienceSizingReachEstimate: upper_bound.");
 
             return new TargetingTemplateAudienceSizingReachEstimate(estimate, lowerBound, upperBound);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateAudienceSizingReachEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingTemplateAudienceSizingReachEstimate targetingTemplateAudienceSizingReachEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,9 +211,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingTemplateAudienceSizingReachEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingTemplateAudienceSizingReachEstimate targetingTemplateAudienceSizingReachEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (targetingTemplateAudienceSizingReachEstimate.EstimateOption.IsSet && targetingTemplateAudienceSizingReachEstimate.Estimate == null)
+                throw new JsonException("Cannot write null property TargetingTemplateAudienceSizingReachEstimate.Estimate to non-nullable JSON property 'estimate'.");
+
+            if (targetingTemplateAudienceSizingReachEstimate.LowerBoundOption.IsSet && targetingTemplateAudienceSizingReachEstimate.LowerBound == null)
+                throw new JsonException("Cannot write null property TargetingTemplateAudienceSizingReachEstimate.LowerBound to non-nullable JSON property 'lower_bound'.");
+
+            if (targetingTemplateAudienceSizingReachEstimate.UpperBoundOption.IsSet && targetingTemplateAudienceSizingReachEstimate.UpperBound == null)
+                throw new JsonException("Cannot write null property TargetingTemplateAudienceSizingReachEstimate.UpperBound to non-nullable JSON property 'upper_bound'.");
+
             if (targetingTemplateAudienceSizingReachEstimate.EstimateOption.IsSet)
                 writer.WriteNumber("estimate", targetingTemplateAudienceSizingReachEstimate.EstimateOption.Value!.Value);
 

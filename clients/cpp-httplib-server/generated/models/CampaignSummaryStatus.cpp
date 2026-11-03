@@ -6,20 +6,3 @@
 */
 #include "CampaignSummaryStatus.h"
 
-namespace models {
-
-CampaignSummaryStatus::CampaignSummaryStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

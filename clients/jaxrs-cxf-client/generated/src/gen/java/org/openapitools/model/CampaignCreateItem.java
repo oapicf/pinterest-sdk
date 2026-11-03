@@ -149,7 +149,7 @@ public class CampaignCreateItem  {
 
   @ApiModelProperty(value = "")
 
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   @ApiModelProperty(value = "")
 

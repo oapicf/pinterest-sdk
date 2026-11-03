@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class ScheduleAction
-{
-public:
-
-    ScheduleAction();
-    virtual ~ScheduleAction() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ScheduleAction,
-        )
-
-private:
+enum class ScheduleAction {
+    
+    INCREASE_BY_VALUE,
+    
+    INCREASE_BY_PERCENT
+    
 };
 
+inline void to_json(nlohmann::json& j, const ScheduleAction& value)
+{
+    switch (value)
+    {
+        
+        case ScheduleAction::INCREASE_BY_VALUE: j = "INCREASE_BY_VALUE"; break;
+        
+        case ScheduleAction::INCREASE_BY_PERCENT: j = "INCREASE_BY_PERCENT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleAction", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ScheduleAction& value)
+{
+    
+    if (j == "INCREASE_BY_VALUE")
+    {
+        value = ScheduleAction::INCREASE_BY_VALUE;
+        return;
+    }
+    
+    if (j == "INCREASE_BY_PERCENT")
+    {
+        value = ScheduleAction::INCREASE_BY_PERCENT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ScheduleAction", &j);
+}
 
 } // namespace models
 

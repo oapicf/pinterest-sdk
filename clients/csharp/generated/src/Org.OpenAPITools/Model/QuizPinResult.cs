@@ -220,19 +220,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (androidDeepLink.IsSet && androidDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(androidDeepLink), "Property is not nullable for class QuizPinResult.");
+                throw new JsonException("Property is not nullable for class QuizPinResult: android_deep_link.");
 
             if (destinationUrl.IsSet && destinationUrl.Value == null)
-                throw new ArgumentNullException(nameof(destinationUrl), "Property is not nullable for class QuizPinResult.");
+                throw new JsonException("Property is not nullable for class QuizPinResult: destination_url.");
 
             if (iosDeepLink.IsSet && iosDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(iosDeepLink), "Property is not nullable for class QuizPinResult.");
+                throw new JsonException("Property is not nullable for class QuizPinResult: ios_deep_link.");
 
             if (organicPinId.IsSet && organicPinId.Value == null)
-                throw new ArgumentNullException(nameof(organicPinId), "Property is not nullable for class QuizPinResult.");
+                throw new JsonException("Property is not nullable for class QuizPinResult: organic_pin_id.");
 
             if (resultId.IsSet && resultId.Value == null)
-                throw new ArgumentNullException(nameof(resultId), "Property is not nullable for class QuizPinResult.");
+                throw new JsonException("Property is not nullable for class QuizPinResult: result_id.");
 
             return new QuizPinResult(androidDeepLink, destinationUrl, iosDeepLink, organicPinId, resultId);
         }
@@ -243,7 +243,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QuizPinResult quizPinResult, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -258,20 +257,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="quizPinResult"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, QuizPinResult quizPinResult, JsonSerializerOptions jsonSerializerOptions)
         {
             if (quizPinResult.AndroidDeepLinkOption.IsSet && quizPinResult.AndroidDeepLink == null)
-                throw new ArgumentNullException(nameof(quizPinResult.AndroidDeepLink), "Property is required for class QuizPinResult.");
+                throw new JsonException("Cannot write null property QuizPinResult.AndroidDeepLink to non-nullable JSON property 'android_deep_link'.");
 
             if (quizPinResult.DestinationUrlOption.IsSet && quizPinResult.DestinationUrl == null)
-                throw new ArgumentNullException(nameof(quizPinResult.DestinationUrl), "Property is required for class QuizPinResult.");
+                throw new JsonException("Cannot write null property QuizPinResult.DestinationUrl to non-nullable JSON property 'destination_url'.");
 
             if (quizPinResult.IosDeepLinkOption.IsSet && quizPinResult.IosDeepLink == null)
-                throw new ArgumentNullException(nameof(quizPinResult.IosDeepLink), "Property is required for class QuizPinResult.");
+                throw new JsonException("Cannot write null property QuizPinResult.IosDeepLink to non-nullable JSON property 'ios_deep_link'.");
 
             if (quizPinResult.OrganicPinIdOption.IsSet && quizPinResult.OrganicPinId == null)
-                throw new ArgumentNullException(nameof(quizPinResult.OrganicPinId), "Property is required for class QuizPinResult.");
+                throw new JsonException("Cannot write null property QuizPinResult.OrganicPinId to non-nullable JSON property 'organic_pin_id'.");
+
+            if (quizPinResult.ResultIdOption.IsSet && quizPinResult.ResultId == null)
+                throw new JsonException("Cannot write null property QuizPinResult.ResultId to non-nullable JSON property 'result_id'.");
 
             if (quizPinResult.AndroidDeepLinkOption.IsSet)
                 writer.WriteString("android_deep_link", quizPinResult.AndroidDeepLink);

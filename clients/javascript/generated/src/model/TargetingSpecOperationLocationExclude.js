@@ -17,7 +17,7 @@ import TargetingSpecListOperation from './TargetingSpecListOperation';
 /**
  * The TargetingSpecOperationLocationExclude model module.
  * @module model/TargetingSpecOperationLocationExclude
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOperationLocationExclude {
     /**

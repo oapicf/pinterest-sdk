@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -24,16 +23,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdsCreditRedeem", description = "Ads credit redemption")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsCreditRedeem {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> errorCode = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean success;
 
   public AdsCreditRedeem errorCode(Integer errorCode) {
@@ -46,7 +42,7 @@ public class AdsCreditRedeem {
    * @return errorCode
    */
   
-  @Schema(name = "errorCode", accessMode = Schema.AccessMode.READ_ONLY, example = "2708", description = "Error code type if error occurs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "errorCode", accessMode = Schema.AccessMode.READ_ONLY, example = "2708", description = "Error code type if error occurs", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("errorCode")
   public JsonNullable<Integer> getErrorCode() {
     return errorCode;
@@ -66,7 +62,7 @@ public class AdsCreditRedeem {
    * @return errorMessage
    */
   
-  @Schema(name = "errorMessage", accessMode = Schema.AccessMode.READ_ONLY, example = "The offer has already been redeemed by this advertiser", description = "Reason for failure", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "errorMessage", accessMode = Schema.AccessMode.READ_ONLY, example = "The offer has already been redeemed by this advertiser", description = "Reason for failure", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("errorMessage")
   public JsonNullable<String> getErrorMessage() {
     return errorMessage;

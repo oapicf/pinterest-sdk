@@ -135,10 +135,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!data.IsSet)
-                throw new ArgumentException("Property is required for class ConversionEventsCreate.", nameof(data));
+                throw new JsonException("Property is required for class ConversionEventsCreate: data.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class ConversionEventsCreate.");
+                throw new JsonException("Property is not nullable for class ConversionEventsCreate: data.");
 
             return new ConversionEventsCreate(data.Value!);
         }
@@ -149,7 +149,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventsCreate conversionEventsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -164,12 +163,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventsCreate conversionEventsCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionEventsCreate.Data == null)
-                throw new ArgumentNullException(nameof(conversionEventsCreate.Data), "Property is required for class ConversionEventsCreate.");
-
             writer.WritePropertyName("data");
             JsonSerializer.Serialize(writer, conversionEventsCreate.Data, jsonSerializerOptions);
         }

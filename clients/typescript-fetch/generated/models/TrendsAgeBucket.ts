@@ -24,7 +24,7 @@ export const TrendsAgeBucket = {
     _4549: '45-49',
     _5054: '50-54',
     _5564: '55-64',
-    _65: '65+'
+    _65: '65+',
 } as const;
 export type TrendsAgeBucket = typeof TrendsAgeBucket[keyof typeof TrendsAgeBucket];
 

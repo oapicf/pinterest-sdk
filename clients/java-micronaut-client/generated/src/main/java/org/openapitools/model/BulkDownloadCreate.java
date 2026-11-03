@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   BulkDownloadCreate.JSON_PROPERTY_UPDATED_SINCE
 })
 @JsonTypeName("BulkDownloadCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BulkDownloadCreate {
     public static final String JSON_PROPERTY_CAMPAIGN_FILTER = "campaign_filter";
@@ -51,7 +51,7 @@ public class BulkDownloadCreate {
     private List<BulkEntityType> entityTypes = null;
 
     public static final String JSON_PROPERTY_OUTPUT_FORMAT = "output_format";
-    private BulkOutputFormat outputFormat;
+    private BulkOutputFormat outputFormat = BulkOutputFormat.JSON;
 
     public static final String JSON_PROPERTY_UPDATED_SINCE = "updated_since";
     private String updatedSince;

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Order Line Status
-* Values: ACTIVE,PAUSED,DELETED
-*/
+ * Order Line Status
+ * Values: ACTIVE,PAUSED,DELETED
+ */
 enum class OrderLineStatus(@get:JsonValue val value: kotlin.String) {
 
     ACTIVE("ACTIVE"),
@@ -29,9 +29,8 @@ enum class OrderLineStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): OrderLineStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OrderLineStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OrderLineStatus'")
         }
     }
 }
-

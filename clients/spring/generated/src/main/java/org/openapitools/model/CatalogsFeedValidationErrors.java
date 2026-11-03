@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -20,106 +19,73 @@ import jakarta.annotation.Generated;
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedValidationErrors {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADULT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_FORMAT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AVAILABILITY_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DELIMITER_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DESCRIPTION_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DUPLICATE_PRODUCTS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ENCODING_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FEED_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FEED_TOO_SMALL;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_INACTIVE_FEED_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INTERNAL_SERVICE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INVALID_DOMAIN;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEMID_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_FORMAT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LIST_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MALFORMED_XML;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer NO_VERIFIED_DOMAIN;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PARSE_LINE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PINJOIN_CONTENT_UNSAFE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRICE_CANNOT_BE_DETERMINED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRICE_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_LINK_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer REQUIRED_COLUMNS_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TITLE_MISSING;
 
   public CatalogsFeedValidationErrors ADULT_INVALID(@Nullable Integer ADULT_INVALID) {

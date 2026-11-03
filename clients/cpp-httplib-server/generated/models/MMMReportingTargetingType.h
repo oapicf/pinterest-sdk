@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class MMMReportingTargetingType
-{
-public:
-
-    MMMReportingTargetingType();
-    virtual ~MMMReportingTargetingType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MMMReportingTargetingType,
-        )
-
-private:
+enum class MMMReportingTargetingType {
+    
+    APPTYPE,
+    
+    COUNTRY,
+    
+    CREATIVE_TYPE,
+    
+    GENDER,
+    
+    LOCATION,
+    
+    PLACEMENT,
+    
+    AUDIENCE_INCLUDE
+    
 };
 
+inline void to_json(nlohmann::json& j, const MMMReportingTargetingType& value)
+{
+    switch (value)
+    {
+        
+        case MMMReportingTargetingType::APPTYPE: j = "APPTYPE"; break;
+        
+        case MMMReportingTargetingType::COUNTRY: j = "COUNTRY"; break;
+        
+        case MMMReportingTargetingType::CREATIVE_TYPE: j = "CREATIVE_TYPE"; break;
+        
+        case MMMReportingTargetingType::GENDER: j = "GENDER"; break;
+        
+        case MMMReportingTargetingType::LOCATION: j = "LOCATION"; break;
+        
+        case MMMReportingTargetingType::PLACEMENT: j = "PLACEMENT"; break;
+        
+        case MMMReportingTargetingType::AUDIENCE_INCLUDE: j = "AUDIENCE_INCLUDE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportingTargetingType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MMMReportingTargetingType& value)
+{
+    
+    if (j == "APPTYPE")
+    {
+        value = MMMReportingTargetingType::APPTYPE;
+        return;
+    }
+    
+    if (j == "COUNTRY")
+    {
+        value = MMMReportingTargetingType::COUNTRY;
+        return;
+    }
+    
+    if (j == "CREATIVE_TYPE")
+    {
+        value = MMMReportingTargetingType::CREATIVE_TYPE;
+        return;
+    }
+    
+    if (j == "GENDER")
+    {
+        value = MMMReportingTargetingType::GENDER;
+        return;
+    }
+    
+    if (j == "LOCATION")
+    {
+        value = MMMReportingTargetingType::LOCATION;
+        return;
+    }
+    
+    if (j == "PLACEMENT")
+    {
+        value = MMMReportingTargetingType::PLACEMENT;
+        return;
+    }
+    
+    if (j == "AUDIENCE_INCLUDE")
+    {
+        value = MMMReportingTargetingType::AUDIENCE_INCLUDE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportingTargetingType", &j);
+}
 
 } // namespace models
 

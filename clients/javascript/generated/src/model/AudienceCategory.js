@@ -17,7 +17,7 @@ import AudienceSubcategory from './AudienceSubcategory';
 /**
  * The AudienceCategory model module.
  * @module model/AudienceCategory
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AudienceCategory {
     /**

@@ -17,7 +17,7 @@ import CampaignAdPreviewCreate200ResponseInnerData from './CampaignAdPreviewCrea
 /**
  * The CampaignAdPreviewCreate200ResponseInner model module.
  * @module model/CampaignAdPreviewCreate200ResponseInner
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CampaignAdPreviewCreate200ResponseInner {
     /**

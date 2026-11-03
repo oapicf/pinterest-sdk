@@ -21,68 +21,46 @@ import { mapValues } from '../runtime';
 export interface CampaignAdPreview {
     /**
      * Advertiser ID for this preview.
-     * @type {string}
-     * @memberof CampaignAdPreview
      */
     readonly adAccountId: string;
     /**
      * Ad group ID to create a preview record for.
-     * @type {string}
-     * @memberof CampaignAdPreview
      */
     adGroupId: string;
     /**
      * Client ID that created preview.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly clientId?: number;
     /**
      * Unix timestamp in milliseconds for preview expiration.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly expiresAt: number;
     /**
      * Whether preview link is active.
-     * @type {boolean}
-     * @memberof CampaignAdPreview
      */
     readonly isActive: boolean;
     /**
      * Pin ID for pin promotion preview.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly pinId?: number;
     /**
      * Pin promotion ID for this preview.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly pinPromotionId?: number;
     /**
      * Promoted product group ID for catalog previews.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly promotedProductGroupId?: number;
     /**
      * Campaign ad preview URL.
-     * @type {string}
-     * @memberof CampaignAdPreview
      */
     readonly url: string;
     /**
      * User ID that created preview.
-     * @type {number}
-     * @memberof CampaignAdPreview
      */
     readonly userId: number;
     /**
      * Pin promotion preview key.
-     * @type {string}
-     * @memberof CampaignAdPreview
      */
     readonly uuid: string;
 }

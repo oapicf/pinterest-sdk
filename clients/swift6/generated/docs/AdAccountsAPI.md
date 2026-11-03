@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 # **adAccountAnalytics**
 ```swift
-    open class func adAccountAnalytics(startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adAccountAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adAccountAnalytics? = nil, viewWindowDays: ViewWindowDays_adAccountAnalytics? = nil, conversionReportTime: ConversionReportTime_adAccountAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: [AdAccountAnalyticsItems]?, _ error: Error?) -> Void)
+    open class func adAccountAnalytics(startDate: Date, endDate: Date, columns: [ReportingColumnSync], granularity: Granularity, adAccountId: String, clickWindowDays: ClickWindowDays_adAccountAnalytics? = nil, engagementWindowDays: EngagementWindowDays_adAccountAnalytics? = nil, viewWindowDays: ViewWindowDays_adAccountAnalytics? = nil, conversionReportTime: ConversionReportTime_adAccountAnalytics? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [AdAccountAnalyticsItems]
 ```
 
 Get ad account analytics
@@ -46,15 +46,11 @@ let conversionReportTime = "conversionReportTime_example" // String | The date b
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get ad account analytics
-AdAccountsAPI.adAccountAnalytics(startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.adAccountAnalytics(startDate: startDate, endDate: endDate, columns: columns, granularity: granularity, adAccountId: adAccountId, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -90,7 +86,7 @@ Name | Type | Description  | Notes
 
 # **adAccountTargetingAnalyticsGet**
 ```swift
-    open class func adAccountTargetingAnalyticsGet(adAccountId: String, startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAccountTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_adAccountTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adAccountTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adAccountTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adAccountTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, completion: @escaping (_ data: MetricsResponse?, _ error: Error?) -> Void)
+    open class func adAccountTargetingAnalyticsGet(adAccountId: String, startDate: Date, endDate: Date, targetingTypes: [AdsAnalyticsAccountTargetingType], columns: [ReportingColumnSync], granularity: Granularity, clickWindowDays: ClickWindowDays_adAccountTargetingAnalyticsGet? = nil, engagementWindowDays: EngagementWindowDays_adAccountTargetingAnalyticsGet? = nil, viewWindowDays: ViewWindowDays_adAccountTargetingAnalyticsGet? = nil, conversionReportTime: ConversionReportTime_adAccountTargetingAnalyticsGet? = nil, attributionTypes: [ConversionReportAttributionType]? = nil, reportingTimezone: ReportingTimeZone? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MetricsResponse
 ```
 
 Get targeting analytics for an ad account
@@ -116,15 +112,11 @@ let attributionTypes = [ConversionReportAttributionType()] // [ConversionReportA
 let reportingTimezone = ReportingTimeZone() // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
 
 // Get targeting analytics for an ad account
-AdAccountsAPI.adAccountTargetingAnalyticsGet(adAccountId: adAccountId, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.adAccountTargetingAnalyticsGet(adAccountId: adAccountId, startDate: startDate, endDate: endDate, targetingTypes: targetingTypes, columns: columns, granularity: granularity, clickWindowDays: clickWindowDays, engagementWindowDays: engagementWindowDays, viewWindowDays: viewWindowDays, conversionReportTime: conversionReportTime, attributionTypes: attributionTypes, reportingTimezone: reportingTimezone)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -162,7 +154,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsCreate**
 ```swift
-    open class func adAccountsCreate(adAccountCreate: AdAccountCreate, completion: @escaping (_ data: AdAccount?, _ error: Error?) -> Void)
+    open class func adAccountsCreate(adAccountCreate: AdAccountCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccount
 ```
 
 Create ad account
@@ -177,15 +169,11 @@ import OpenAPIClient
 let adAccountCreate = AdAccountCreate(country: Country(), currency: Currency(), name: "name_example", ownerUserId: "ownerUserId_example", timeZone: "timeZone_example") // AdAccountCreate | 
 
 // Create ad account
-AdAccountsAPI.adAccountsCreate(adAccountCreate: adAccountCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.adAccountsCreate(adAccountCreate: adAccountCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -212,7 +200,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsGet**
 ```swift
-    open class func adAccountsGet(adAccountId: String, completion: @escaping (_ data: AdAccount?, _ error: Error?) -> Void)
+    open class func adAccountsGet(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccount
 ```
 
 Get ad account
@@ -227,15 +215,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | 
 
 // Get ad account
-AdAccountsAPI.adAccountsGet(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.adAccountsGet(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -262,7 +246,7 @@ Name | Type | Description  | Notes
 
 # **adAccountsList**
 ```swift
-    open class func adAccountsList(includeSharedAccounts: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: AdAccountsList200Response?, _ error: Error?) -> Void)
+    open class func adAccountsList(includeSharedAccounts: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdAccountsList200Response
 ```
 
 List ad accounts
@@ -279,15 +263,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List ad accounts
-AdAccountsAPI.adAccountsList(includeSharedAccounts: includeSharedAccounts, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.adAccountsList(includeSharedAccounts: includeSharedAccounts, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -316,7 +296,7 @@ Name | Type | Description  | Notes
 
 # **analyticsCreateConversionProductReport**
 ```swift
-    open class func analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportCreate: ConversionProductReportCreate, completion: @escaping (_ data: ConversionProductReport?, _ error: Error?) -> Void)
+    open class func analyticsCreateConversionProductReport(adAccountId: String, conversionProductReportCreate: ConversionProductReportCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionProductReport
 ```
 
 Create a request for a brand, category, SKU report
@@ -332,15 +312,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let conversionProductReportCreate = ConversionProductReportCreate(adGroupIds: ["adGroupIds_example"], campaignIds: ["campaignIds_example"], campaignObjectiveTypes: [ConversionObjectiveType()], clickWindowDays: ConversionAttributionWindowDays(), columns: [ConversionProductReportingColumn()], conversionProductAttributionType: ConversionProductAttributionType(), conversionProductBreakdown: ConversionProductReportBreakdownType(), conversionReportTime: ConversionReportTimeType(), endDate: "endDate_example", granularity: ConversionProductReportGranularity(), level: ConversionProductReportLevel(), productSkuIds: ["productSkuIds_example"], reportName: "reportName_example", startDate: "startDate_example", viewWindowDays: nil) // ConversionProductReportCreate | 
 
 // Create a request for a brand, category, SKU report
-AdAccountsAPI.analyticsCreateConversionProductReport(adAccountId: adAccountId, conversionProductReportCreate: conversionProductReportCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsCreateConversionProductReport(adAccountId: adAccountId, conversionProductReportCreate: conversionProductReportCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -368,7 +344,7 @@ Name | Type | Description  | Notes
 
 # **analyticsCreateMmmReport**
 ```swift
-    open class func analyticsCreateMmmReport(adAccountId: String, mMMReportCreate: MMMReportCreate, completion: @escaping (_ data: MMMReport?, _ error: Error?) -> Void)
+    open class func analyticsCreateMmmReport(adAccountId: String, mMMReportCreate: MMMReportCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MMMReport
 ```
 
 Create a request for a Marketing Mix Modeling (MMM) report
@@ -384,15 +360,11 @@ let adAccountId = "adAccountId_example" // String |
 let mMMReportCreate = MMMReportCreate(advertiserIds: ["advertiserIds_example"], columns: [MMMReportingColumn()], countries: [TargetingAdvertiserCountry()], customColumnIds: ["customColumnIds_example"], endDate: "endDate_example", granularity: MMMReportGranularity(), level: MMMReportLevel(), reportName: "reportName_example", startDate: "startDate_example", targetingTypes: [MMMReportingTargetingType()]) // MMMReportCreate | 
 
 // Create a request for a Marketing Mix Modeling (MMM) report
-AdAccountsAPI.analyticsCreateMmmReport(adAccountId: adAccountId, mMMReportCreate: mMMReportCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsCreateMmmReport(adAccountId: adAccountId, mMMReportCreate: mMMReportCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -420,7 +392,7 @@ Name | Type | Description  | Notes
 
 # **analyticsCreateReport**
 ```swift
-    open class func analyticsCreateReport(adAccountId: String, adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest, completion: @escaping (_ data: AdsAnalyticsCreateAsyncResponse?, _ error: Error?) -> Void)
+    open class func analyticsCreateReport(adAccountId: String, adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdsAnalyticsCreateAsyncResponse
 ```
 
 Create async request for an account analytics report
@@ -436,15 +408,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let adsAnalyticsCreateAsyncRequest = AdsAnalyticsCreateAsyncRequest(adGroupIds: ["adGroupIds_example"], adGroupStatuses: [AdGroupSummaryStatus()], adIds: ["adIds_example"], adStatuses: [PinPromotionSummaryStatus()], attributionTypes: [ConversionReportAttributionType()], campaignBrandLabel: "campaignBrandLabel_example", campaignCustomLabel: "campaignCustomLabel_example", campaignIds: ["campaignIds_example"], campaignObjectiveTypes: [CampaignObjectiveType()], campaignStatuses: [CampaignSummaryStatus()], clickWindowDays: ConversionAttributionWindowDays(), columns: [ReportingColumnAsync()], combineTargetingTypes: false, conversionReportTime: ConversionReportTimeType(), customConversionEventMetrics: [CustomConversionEventMetrics(customEventMetricsType: AdeColumnType(), customEventName: "customEventName_example")], endDate: "endDate_example", endHour: 123, engagementWindowDays: nil, granularity: Granularity(), level: MetricsReportingLevel(), metricsFilters: [AdsAnalyticsMetricsFilter(field: AdsAnalyticsFilterColumn(), _operator: AdsAnalyticsFilterOperator(), values: [123])], primarySort: PrimarySort(), productGroupIds: ["productGroupIds_example"], productGroupStatuses: [ProductGroupSummaryStatus()], productItemIds: ["productItemIds_example"], reportFormat: DataOutputFormat(), reportingTimezone: ReportingTimeZone(), startDate: "startDate_example", startHour: 123, targetingTypes: [AdAdsAnalyticsAsyncTargetingTypes()], viewWindowDays: nil) // AdsAnalyticsCreateAsyncRequest | 
 
 // Create async request for an account analytics report
-AdAccountsAPI.analyticsCreateReport(adAccountId: adAccountId, adsAnalyticsCreateAsyncRequest: adsAnalyticsCreateAsyncRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsCreateReport(adAccountId: adAccountId, adsAnalyticsCreateAsyncRequest: adsAnalyticsCreateAsyncRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -472,7 +440,7 @@ Name | Type | Description  | Notes
 
 # **analyticsCreateTemplateReport**
 ```swift
-    open class func analyticsCreateTemplateReport(adAccountId: String, templateId: String, startDate: Date? = nil, endDate: Date? = nil, granularity: Granularity? = nil, completion: @escaping (_ data: TemplateBasedReport?, _ error: Error?) -> Void)
+    open class func analyticsCreateTemplateReport(adAccountId: String, templateId: String, startDate: Date? = nil, endDate: Date? = nil, granularity: Granularity? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TemplateBasedReport
 ```
 
 Create async request for an analytics report using a template
@@ -491,15 +459,11 @@ let endDate = Date() // Date | Metric report end date (UTC). Format: YYYY-MM-DD.
 let granularity = Granularity() // Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly (optional)
 
 // Create async request for an analytics report using a template
-AdAccountsAPI.analyticsCreateTemplateReport(adAccountId: adAccountId, templateId: templateId, startDate: startDate, endDate: endDate, granularity: granularity) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsCreateTemplateReport(adAccountId: adAccountId, templateId: templateId, startDate: startDate, endDate: endDate, granularity: granularity)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -530,7 +494,7 @@ Name | Type | Description  | Notes
 
 # **analyticsGetConversionProductReport**
 ```swift
-    open class func analyticsGetConversionProductReport(adAccountId: String, token: String, completion: @escaping (_ data: ConversionProductReport?, _ error: Error?) -> Void)
+    open class func analyticsGetConversionProductReport(adAccountId: String, token: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ConversionProductReport
 ```
 
 Get advertiser brand, category, SKU report
@@ -546,15 +510,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let token = "token_example" // String | Token returned from the post request creation call
 
 // Get advertiser brand, category, SKU report
-AdAccountsAPI.analyticsGetConversionProductReport(adAccountId: adAccountId, token: token) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsGetConversionProductReport(adAccountId: adAccountId, token: token)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -582,7 +542,7 @@ Name | Type | Description  | Notes
 
 # **analyticsGetMmmReport**
 ```swift
-    open class func analyticsGetMmmReport(adAccountId: String, token: String, completion: @escaping (_ data: MMMReport?, _ error: Error?) -> Void)
+    open class func analyticsGetMmmReport(adAccountId: String, token: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> MMMReport
 ```
 
 Get advertiser Marketing Mix Modeling (MMM) report.
@@ -598,15 +558,11 @@ let adAccountId = "adAccountId_example" // String |
 let token = "token_example" // String | Token returned from the post request creation call
 
 // Get advertiser Marketing Mix Modeling (MMM) report.
-AdAccountsAPI.analyticsGetMmmReport(adAccountId: adAccountId, token: token) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsGetMmmReport(adAccountId: adAccountId, token: token)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -634,7 +590,7 @@ Name | Type | Description  | Notes
 
 # **analyticsGetReport**
 ```swift
-    open class func analyticsGetReport(adAccountId: String, token: String, completion: @escaping (_ data: AdsAnalyticsGetAsyncResponse?, _ error: Error?) -> Void)
+    open class func analyticsGetReport(adAccountId: String, token: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> AdsAnalyticsGetAsyncResponse
 ```
 
 Get the account analytics report created by the async call
@@ -650,15 +606,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let token = "token_example" // String | Token returned from the post request creation call
 
 // Get the account analytics report created by the async call
-AdAccountsAPI.analyticsGetReport(adAccountId: adAccountId, token: token) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.analyticsGetReport(adAccountId: adAccountId, token: token)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -686,7 +638,7 @@ Name | Type | Description  | Notes
 
 # **sandboxDelete**
 ```swift
-    open class func sandboxDelete(adAccountId: String, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func sandboxDelete(adAccountId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> String
 ```
 
 Delete ads data for ad account in API Sandbox
@@ -701,15 +653,11 @@ import OpenAPIClient
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
 
 // Delete ads data for ad account in API Sandbox
-AdAccountsAPI.sandboxDelete(adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.sandboxDelete(adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -736,7 +684,7 @@ Name | Type | Description  | Notes
 
 # **templatesList**
 ```swift
-    open class func templatesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, completion: @escaping (_ data: TemplatesList200Response?, _ error: Error?) -> Void)
+    open class func templatesList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TemplatesList200Response
 ```
 
 List templates
@@ -754,15 +702,11 @@ let pageSize = 987 // Int | Maximum number of items to include in a single page.
 let order = Pinterest.Lib.PaginationOrder() // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 
 // List templates
-AdAccountsAPI.templatesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await AdAccountsAPI.templatesList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

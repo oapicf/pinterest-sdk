@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CampaignAdPreviewCreate {
     /**
      * Ad group ID to create a preview record for.
-     * @type {string}
-     * @memberof CampaignAdPreviewCreate
      */
     adGroupId: string;
 }

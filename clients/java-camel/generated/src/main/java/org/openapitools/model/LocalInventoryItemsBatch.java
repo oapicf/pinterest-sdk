@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,7 +27,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LocalInventoryItemsBatch", description = "Unified model for local inventory items batch operation")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsBatch {
 
   private String batchId;
@@ -39,8 +38,7 @@ public class LocalInventoryItemsBatch {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date createdTime;
 
-  @Valid
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   private SupplementalItemBatchOperationStatus status;
 
@@ -51,7 +49,7 @@ public class LocalInventoryItemsBatch {
   /**
    * Constructor with only required parameters
    */
-  public LocalInventoryItemsBatch(String batchId, Date createdTime, List<SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
+  public LocalInventoryItemsBatch(String batchId, Date createdTime, List<@Valid SupplementalOperationResult> operationResults, SupplementalItemBatchOperationStatus status) {
     this.batchId = batchId;
     this.createdTime = createdTime;
     this.operationResults = operationResults;
@@ -118,7 +116,7 @@ public class LocalInventoryItemsBatch {
     this.createdTime = createdTime;
   }
 
-  public LocalInventoryItemsBatch operationResults(List<SupplementalOperationResult> operationResults) {
+  public LocalInventoryItemsBatch operationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
     return this;
   }
@@ -135,14 +133,14 @@ public class LocalInventoryItemsBatch {
    * Array of operation results
    * @return operationResults
    */
-  @Valid 
+  
   @Schema(name = "operation_results", accessMode = Schema.AccessMode.READ_ONLY, description = "Array of operation results", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("operation_results")
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 
-  public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+  public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
     this.operationResults = operationResults;
   }
 

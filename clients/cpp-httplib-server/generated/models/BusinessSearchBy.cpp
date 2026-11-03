@@ -6,20 +6,3 @@
 */
 #include "BusinessSearchBy.h"
 
-namespace models {
-
-BusinessSearchBy::BusinessSearchBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

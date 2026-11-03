@@ -10,7 +10,7 @@ import Foundation
 /** Conversion deletion request */
 public struct ConversionDeletionRequest: Sendable, Codable, Hashable {
 
-    public static let requestIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let requestIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     /** Timestamp when the conversion deletion request was succesfully created. */
     public var createdTime: Date
     /** Timestamp when the conversion deletion request was processed. */

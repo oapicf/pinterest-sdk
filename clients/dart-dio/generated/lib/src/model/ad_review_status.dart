@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'ad_review_status.g.dart';
 
+/// Ad review status
 class AdReviewStatus extends EnumClass {
 
-  /// Ad review status
   @BuiltValueEnumConst(wireName: r'OTHER')
   static const AdReviewStatus OTHER = _$OTHER;
-  /// Ad review status
   @BuiltValueEnumConst(wireName: r'PENDING')
   static const AdReviewStatus PENDING = _$PENDING;
-  /// Ad review status
   @BuiltValueEnumConst(wireName: r'REJECTED')
   static const AdReviewStatus REJECTED = _$REJECTED;
-  /// Ad review status
   @BuiltValueEnumConst(wireName: r'APPROVED')
   static const AdReviewStatus APPROVED = _$APPROVED;
 

@@ -53,5 +53,5 @@ class CatalogsHotelFeedsCreateRequest {
     
     CatalogsFeedProcessingSchedule preferredProcessingSchedule
     
-    CatalogsStatus status
+    CatalogsStatus status = CatalogsStatus.ACTIVE
 }

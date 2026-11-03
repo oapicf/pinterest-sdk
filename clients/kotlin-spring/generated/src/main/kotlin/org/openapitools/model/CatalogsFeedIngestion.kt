@@ -26,22 +26,22 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsFeedIngestion(
 
     @Schema(example = "2022-03-14T15:15:22Z", required = true, description = "Timestamp of the feed ingestion.")
-    @param:JsonProperty("created_at")
+    @param:JsonProperty("created_at", required = true)
     @get:JsonProperty("created_at", required = true) val createdAt: java.time.OffsetDateTime,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the feed ingestion.")
-    @param:JsonProperty("feed_id")
+    @param:JsonProperty("feed_id", required = true)
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Unique identifier of a feed ingestion.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "Status of the feed ingestion.")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: CatalogsFeedProcessingStatus
 ) {
 

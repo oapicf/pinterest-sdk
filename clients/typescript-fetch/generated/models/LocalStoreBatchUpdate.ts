@@ -29,68 +29,46 @@ import {
 export interface LocalStoreBatchUpdate {
     /**
      * Primary address line of the store.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     addressPrimary?: string;
     /**
      * Secondary address line of the store.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     addressSecondary?: string;
     /**
      * City where the store is located.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     city?: string;
     /**
      * Country code where the store is located.
-     * @type {Country}
-     * @memberof LocalStoreBatchUpdate
      */
     country?: Country;
     /**
      * The ID of the local store.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     id: string;
     /**
      * Geographic latitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStoreBatchUpdate
      */
     latitude?: number;
     /**
      * Geographic longitude coordinate of the store.
-     * @type {number}
-     * @memberof LocalStoreBatchUpdate
      */
     longitude?: number;
     /**
      * The name of the local store.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     name?: string;
     /**
      * Postal or ZIP code of the store.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     postalCode?: string;
     /**
      * State or region code where the store is located.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     region?: string;
     /**
      * Merchant provided code for the local store. Unique within the merchant's catalog.
-     * @type {string}
-     * @memberof LocalStoreBatchUpdate
      */
     storeCode?: string;
 }

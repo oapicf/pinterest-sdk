@@ -25,13 +25,13 @@ data class DeleteBusinessMembershipMember(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("business_role")
+    @param:JsonProperty("business_role", required = true)
     @get:JsonProperty("business_role", required = true) val businessRole: BusinessRoleForMembers,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(example = "140943737684417", required = true, description = "Unique identifier of the member")
-    @param:JsonProperty("member_id")
+    @param:JsonProperty("member_id", required = true)
     @get:JsonProperty("member_id", required = true) val memberId: kotlin.String
 ) {
 

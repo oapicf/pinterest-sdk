@@ -47,7 +47,7 @@ public class MsotEventsApiHandler {
         ConversionMSOTEventsCreate conversionMSOTEventsCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionMSOTEventsCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionMSOTEventsCreate is {}", conversionMSOTEventsCreate);
+        logger.debug("Parameter conversionMSOTEventsCreate is (body omitted)");
 
         api.msotEventsCreate(adAccountId, conversionMSOTEventsCreate)
             .onSuccess(apiResponse -> {

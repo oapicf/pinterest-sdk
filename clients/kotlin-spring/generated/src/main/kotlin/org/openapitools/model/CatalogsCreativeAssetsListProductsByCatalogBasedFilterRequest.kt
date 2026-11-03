@@ -29,16 +29,16 @@ data class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog ID pertaining to the product group.")
-    @param:JsonProperty("catalog_id")
+    @param:JsonProperty("catalog_id", required = true)
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsCreativeAssetsProductGroupFilters
 ) : CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
@@ -49,12 +49,12 @@ data class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         CREATIVE_ASSETS("CREATIVE_ASSETS");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

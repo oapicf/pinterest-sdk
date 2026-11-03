@@ -66,7 +66,7 @@ function Invoke-ConversionDeletionRequestCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionDeletionRequest_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ConversionDeletionRequestCreate) {
             throw "Error! The required parameter `ConversionDeletionRequestCreate` missing when calling conversionDeletionRequest_create."
@@ -153,11 +153,11 @@ function Invoke-ConversionDeletionRequestDelete {
         if (!$RequestId) {
             throw "Error! The required parameter `RequestId` missing when calling conversionDeletionRequest_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{request_id}', [System.Web.HTTPUtility]::UrlEncode($RequestId))
+        $LocalVarUri = $LocalVarUri.replace('{request_id}', [System.Uri]::EscapeDataString([string]$RequestId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionDeletionRequest_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -238,11 +238,11 @@ function Invoke-ConversionDeletionRequestGet {
         if (!$RequestId) {
             throw "Error! The required parameter `RequestId` missing when calling conversionDeletionRequest_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{request_id}', [System.Web.HTTPUtility]::UrlEncode($RequestId))
+        $LocalVarUri = $LocalVarUri.replace('{request_id}', [System.Uri]::EscapeDataString([string]$RequestId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionDeletionRequest_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -335,7 +335,7 @@ function Invoke-ConversionDeletionRequestList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionDeletionRequest_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

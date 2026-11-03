@@ -25,7 +25,13 @@ import {
 } from '../models/PinterestLibError';
 
 export interface MsotEventsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     conversionMSOTEventsCreate: ConversionMSOTEventsCreate;
 }
 

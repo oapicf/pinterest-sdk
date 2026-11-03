@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* AI disclosure declaration the creator has made about the Pin.
-* Values: AI_MODIFIED,SYNTHETIC_PERFORMER
-*/
+ * AI disclosure declaration the creator has made about the Pin.
+ * Values: AI_MODIFIED,SYNTHETIC_PERFORMER
+ */
 enum class AiDisclosureItem(@get:JsonValue val value: kotlin.String) {
 
     AI_MODIFIED("AI_MODIFIED"),
@@ -28,9 +28,8 @@ enum class AiDisclosureItem(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AiDisclosureItem {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AiDisclosureItem'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AiDisclosureItem'")
         }
     }
 }
-

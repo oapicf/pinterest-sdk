@@ -25,11 +25,11 @@ data class CustomConversionEventMetrics(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("custom_event_metrics_type")
+    @param:JsonProperty("custom_event_metrics_type", required = true)
     @get:JsonProperty("custom_event_metrics_type", required = true) val customEventMetricsType: AdeColumnType,
 
     @Schema(required = true, description = "Name of the advertiser-defined custom conversion event")
-    @param:JsonProperty("custom_event_name")
+    @param:JsonProperty("custom_event_name", required = true)
     @get:JsonProperty("custom_event_name", required = true) val customEventName: kotlin.String
 ) {
 

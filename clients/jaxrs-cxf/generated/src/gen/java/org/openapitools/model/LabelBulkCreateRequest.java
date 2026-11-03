@@ -19,8 +19,6 @@ public class LabelBulkCreateRequest  {
   */
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
 
-  @Valid
-
   private List<@Valid LabelCreateItem> labels = new ArrayList<>();
 
  /**

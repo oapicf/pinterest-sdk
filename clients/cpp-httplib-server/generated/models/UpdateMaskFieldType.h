@@ -12,24 +12,514 @@
 
 namespace models {
 
-
-class UpdateMaskFieldType
-{
-public:
-
-    UpdateMaskFieldType();
-    virtual ~UpdateMaskFieldType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(UpdateMaskFieldType,
-        )
-
-private:
+enum class UpdateMaskFieldType {
+    
+    AD_LINK,
+    
+    ADULT,
+    
+    AGE_GROUP,
+    
+    AVAILABILITY,
+    
+    AVERAGE_REVIEW_RATING,
+    
+    BRAND,
+    
+    CHECKOUT_ENABLED,
+    
+    COLOR,
+    
+    CONDITION,
+    
+    CUSTOM_LABEL_0,
+    
+    CUSTOM_LABEL_1,
+    
+    CUSTOM_LABEL_2,
+    
+    CUSTOM_LABEL_3,
+    
+    CUSTOM_LABEL_4,
+    
+    CUSTOM_NUMBER_0,
+    
+    CUSTOM_NUMBER_1,
+    
+    CUSTOM_NUMBER_2,
+    
+    CUSTOM_NUMBER_3,
+    
+    CUSTOM_NUMBER_4,
+    
+    DESCRIPTION,
+    
+    FREE_SHIPPING_LABEL,
+    
+    FREE_SHIPPING_LIMIT,
+    
+    GENDER,
+    
+    GOOGLE_PRODUCT_CATEGORY,
+    
+    GTIN,
+    
+    ITEM_GROUP_ID,
+    
+    LAST_UPDATED_TIME,
+    
+    LINK,
+    
+    MATERIAL,
+    
+    MIN_AD_PRICE,
+    
+    MPN,
+    
+    NUMBER_OF_RATINGS,
+    
+    NUMBER_OF_REVIEWS,
+    
+    PATTERN,
+    
+    PRICE,
+    
+    PRODUCT_TYPE,
+    
+    SALE_PRICE,
+    
+    SHIPPING,
+    
+    SHIPPING_HEIGHT,
+    
+    SHIPPING_WEIGHT,
+    
+    SHIPPING_WIDTH,
+    
+    SIZE,
+    
+    SIZE_SYSTEM,
+    
+    SIZE_TYPE,
+    
+    TAX,
+    
+    TITLE,
+    
+    VARIANT_NAMES,
+    
+    VARIANT_VALUES,
+    
+    PROMOTION_ID
+    
 };
 
+inline void to_json(nlohmann::json& j, const UpdateMaskFieldType& value)
+{
+    switch (value)
+    {
+        
+        case UpdateMaskFieldType::AD_LINK: j = "ad_link"; break;
+        
+        case UpdateMaskFieldType::ADULT: j = "adult"; break;
+        
+        case UpdateMaskFieldType::AGE_GROUP: j = "age_group"; break;
+        
+        case UpdateMaskFieldType::AVAILABILITY: j = "availability"; break;
+        
+        case UpdateMaskFieldType::AVERAGE_REVIEW_RATING: j = "average_review_rating"; break;
+        
+        case UpdateMaskFieldType::BRAND: j = "brand"; break;
+        
+        case UpdateMaskFieldType::CHECKOUT_ENABLED: j = "checkout_enabled"; break;
+        
+        case UpdateMaskFieldType::COLOR: j = "color"; break;
+        
+        case UpdateMaskFieldType::CONDITION: j = "condition"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_LABEL_0: j = "custom_label_0"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_LABEL_1: j = "custom_label_1"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_LABEL_2: j = "custom_label_2"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_LABEL_3: j = "custom_label_3"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_LABEL_4: j = "custom_label_4"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_NUMBER_0: j = "custom_number_0"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_NUMBER_1: j = "custom_number_1"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_NUMBER_2: j = "custom_number_2"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_NUMBER_3: j = "custom_number_3"; break;
+        
+        case UpdateMaskFieldType::CUSTOM_NUMBER_4: j = "custom_number_4"; break;
+        
+        case UpdateMaskFieldType::DESCRIPTION: j = "description"; break;
+        
+        case UpdateMaskFieldType::FREE_SHIPPING_LABEL: j = "free_shipping_label"; break;
+        
+        case UpdateMaskFieldType::FREE_SHIPPING_LIMIT: j = "free_shipping_limit"; break;
+        
+        case UpdateMaskFieldType::GENDER: j = "gender"; break;
+        
+        case UpdateMaskFieldType::GOOGLE_PRODUCT_CATEGORY: j = "google_product_category"; break;
+        
+        case UpdateMaskFieldType::GTIN: j = "gtin"; break;
+        
+        case UpdateMaskFieldType::ITEM_GROUP_ID: j = "item_group_id"; break;
+        
+        case UpdateMaskFieldType::LAST_UPDATED_TIME: j = "last_updated_time"; break;
+        
+        case UpdateMaskFieldType::LINK: j = "link"; break;
+        
+        case UpdateMaskFieldType::MATERIAL: j = "material"; break;
+        
+        case UpdateMaskFieldType::MIN_AD_PRICE: j = "min_ad_price"; break;
+        
+        case UpdateMaskFieldType::MPN: j = "mpn"; break;
+        
+        case UpdateMaskFieldType::NUMBER_OF_RATINGS: j = "number_of_ratings"; break;
+        
+        case UpdateMaskFieldType::NUMBER_OF_REVIEWS: j = "number_of_reviews"; break;
+        
+        case UpdateMaskFieldType::PATTERN: j = "pattern"; break;
+        
+        case UpdateMaskFieldType::PRICE: j = "price"; break;
+        
+        case UpdateMaskFieldType::PRODUCT_TYPE: j = "product_type"; break;
+        
+        case UpdateMaskFieldType::SALE_PRICE: j = "sale_price"; break;
+        
+        case UpdateMaskFieldType::SHIPPING: j = "shipping"; break;
+        
+        case UpdateMaskFieldType::SHIPPING_HEIGHT: j = "shipping_height"; break;
+        
+        case UpdateMaskFieldType::SHIPPING_WEIGHT: j = "shipping_weight"; break;
+        
+        case UpdateMaskFieldType::SHIPPING_WIDTH: j = "shipping_width"; break;
+        
+        case UpdateMaskFieldType::SIZE: j = "size"; break;
+        
+        case UpdateMaskFieldType::SIZE_SYSTEM: j = "size_system"; break;
+        
+        case UpdateMaskFieldType::SIZE_TYPE: j = "size_type"; break;
+        
+        case UpdateMaskFieldType::TAX: j = "tax"; break;
+        
+        case UpdateMaskFieldType::TITLE: j = "title"; break;
+        
+        case UpdateMaskFieldType::VARIANT_NAMES: j = "variant_names"; break;
+        
+        case UpdateMaskFieldType::VARIANT_VALUES: j = "variant_values"; break;
+        
+        case UpdateMaskFieldType::PROMOTION_ID: j = "promotion_id"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for UpdateMaskFieldType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, UpdateMaskFieldType& value)
+{
+    
+    if (j == "ad_link")
+    {
+        value = UpdateMaskFieldType::AD_LINK;
+        return;
+    }
+    
+    if (j == "adult")
+    {
+        value = UpdateMaskFieldType::ADULT;
+        return;
+    }
+    
+    if (j == "age_group")
+    {
+        value = UpdateMaskFieldType::AGE_GROUP;
+        return;
+    }
+    
+    if (j == "availability")
+    {
+        value = UpdateMaskFieldType::AVAILABILITY;
+        return;
+    }
+    
+    if (j == "average_review_rating")
+    {
+        value = UpdateMaskFieldType::AVERAGE_REVIEW_RATING;
+        return;
+    }
+    
+    if (j == "brand")
+    {
+        value = UpdateMaskFieldType::BRAND;
+        return;
+    }
+    
+    if (j == "checkout_enabled")
+    {
+        value = UpdateMaskFieldType::CHECKOUT_ENABLED;
+        return;
+    }
+    
+    if (j == "color")
+    {
+        value = UpdateMaskFieldType::COLOR;
+        return;
+    }
+    
+    if (j == "condition")
+    {
+        value = UpdateMaskFieldType::CONDITION;
+        return;
+    }
+    
+    if (j == "custom_label_0")
+    {
+        value = UpdateMaskFieldType::CUSTOM_LABEL_0;
+        return;
+    }
+    
+    if (j == "custom_label_1")
+    {
+        value = UpdateMaskFieldType::CUSTOM_LABEL_1;
+        return;
+    }
+    
+    if (j == "custom_label_2")
+    {
+        value = UpdateMaskFieldType::CUSTOM_LABEL_2;
+        return;
+    }
+    
+    if (j == "custom_label_3")
+    {
+        value = UpdateMaskFieldType::CUSTOM_LABEL_3;
+        return;
+    }
+    
+    if (j == "custom_label_4")
+    {
+        value = UpdateMaskFieldType::CUSTOM_LABEL_4;
+        return;
+    }
+    
+    if (j == "custom_number_0")
+    {
+        value = UpdateMaskFieldType::CUSTOM_NUMBER_0;
+        return;
+    }
+    
+    if (j == "custom_number_1")
+    {
+        value = UpdateMaskFieldType::CUSTOM_NUMBER_1;
+        return;
+    }
+    
+    if (j == "custom_number_2")
+    {
+        value = UpdateMaskFieldType::CUSTOM_NUMBER_2;
+        return;
+    }
+    
+    if (j == "custom_number_3")
+    {
+        value = UpdateMaskFieldType::CUSTOM_NUMBER_3;
+        return;
+    }
+    
+    if (j == "custom_number_4")
+    {
+        value = UpdateMaskFieldType::CUSTOM_NUMBER_4;
+        return;
+    }
+    
+    if (j == "description")
+    {
+        value = UpdateMaskFieldType::DESCRIPTION;
+        return;
+    }
+    
+    if (j == "free_shipping_label")
+    {
+        value = UpdateMaskFieldType::FREE_SHIPPING_LABEL;
+        return;
+    }
+    
+    if (j == "free_shipping_limit")
+    {
+        value = UpdateMaskFieldType::FREE_SHIPPING_LIMIT;
+        return;
+    }
+    
+    if (j == "gender")
+    {
+        value = UpdateMaskFieldType::GENDER;
+        return;
+    }
+    
+    if (j == "google_product_category")
+    {
+        value = UpdateMaskFieldType::GOOGLE_PRODUCT_CATEGORY;
+        return;
+    }
+    
+    if (j == "gtin")
+    {
+        value = UpdateMaskFieldType::GTIN;
+        return;
+    }
+    
+    if (j == "item_group_id")
+    {
+        value = UpdateMaskFieldType::ITEM_GROUP_ID;
+        return;
+    }
+    
+    if (j == "last_updated_time")
+    {
+        value = UpdateMaskFieldType::LAST_UPDATED_TIME;
+        return;
+    }
+    
+    if (j == "link")
+    {
+        value = UpdateMaskFieldType::LINK;
+        return;
+    }
+    
+    if (j == "material")
+    {
+        value = UpdateMaskFieldType::MATERIAL;
+        return;
+    }
+    
+    if (j == "min_ad_price")
+    {
+        value = UpdateMaskFieldType::MIN_AD_PRICE;
+        return;
+    }
+    
+    if (j == "mpn")
+    {
+        value = UpdateMaskFieldType::MPN;
+        return;
+    }
+    
+    if (j == "number_of_ratings")
+    {
+        value = UpdateMaskFieldType::NUMBER_OF_RATINGS;
+        return;
+    }
+    
+    if (j == "number_of_reviews")
+    {
+        value = UpdateMaskFieldType::NUMBER_OF_REVIEWS;
+        return;
+    }
+    
+    if (j == "pattern")
+    {
+        value = UpdateMaskFieldType::PATTERN;
+        return;
+    }
+    
+    if (j == "price")
+    {
+        value = UpdateMaskFieldType::PRICE;
+        return;
+    }
+    
+    if (j == "product_type")
+    {
+        value = UpdateMaskFieldType::PRODUCT_TYPE;
+        return;
+    }
+    
+    if (j == "sale_price")
+    {
+        value = UpdateMaskFieldType::SALE_PRICE;
+        return;
+    }
+    
+    if (j == "shipping")
+    {
+        value = UpdateMaskFieldType::SHIPPING;
+        return;
+    }
+    
+    if (j == "shipping_height")
+    {
+        value = UpdateMaskFieldType::SHIPPING_HEIGHT;
+        return;
+    }
+    
+    if (j == "shipping_weight")
+    {
+        value = UpdateMaskFieldType::SHIPPING_WEIGHT;
+        return;
+    }
+    
+    if (j == "shipping_width")
+    {
+        value = UpdateMaskFieldType::SHIPPING_WIDTH;
+        return;
+    }
+    
+    if (j == "size")
+    {
+        value = UpdateMaskFieldType::SIZE;
+        return;
+    }
+    
+    if (j == "size_system")
+    {
+        value = UpdateMaskFieldType::SIZE_SYSTEM;
+        return;
+    }
+    
+    if (j == "size_type")
+    {
+        value = UpdateMaskFieldType::SIZE_TYPE;
+        return;
+    }
+    
+    if (j == "tax")
+    {
+        value = UpdateMaskFieldType::TAX;
+        return;
+    }
+    
+    if (j == "title")
+    {
+        value = UpdateMaskFieldType::TITLE;
+        return;
+    }
+    
+    if (j == "variant_names")
+    {
+        value = UpdateMaskFieldType::VARIANT_NAMES;
+        return;
+    }
+    
+    if (j == "variant_values")
+    {
+        value = UpdateMaskFieldType::VARIANT_VALUES;
+        return;
+    }
+    
+    if (j == "promotion_id")
+    {
+        value = UpdateMaskFieldType::PROMOTION_ID;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for UpdateMaskFieldType", &j);
+}
 
 } // namespace models
 

@@ -9,7 +9,7 @@ import Foundation
 
 public struct BusinessAssets: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: 1, maxLength: 20, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: 1, maxLength: 20, pattern: "^\\d+$")
     /** An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'. */
     public var assetGroupInfo: AssetGroupBinding?
     /** Unique identifier of a business asset. */

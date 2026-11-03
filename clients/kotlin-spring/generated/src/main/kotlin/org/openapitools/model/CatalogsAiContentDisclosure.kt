@@ -24,12 +24,12 @@ data class CatalogsAiContentDisclosure(
     @field:Valid
     @get:Size(min=1)
     @Schema(example = "[\"ai_modified\"]", required = true, description = "Disclosure labels that apply to this asset.")
-    @param:JsonProperty("disclosure")
+    @param:JsonProperty("disclosure", required = true)
     @get:JsonProperty("disclosure", required = true) val disclosure: kotlin.collections.List<CatalogsAiContentDisclosureLabel>,
 
     @get:Size(max=2000)
     @Schema(example = "https://scene.example.com/image/image_v2.jpg", required = true, description = "URL of the asset. Must match one of image_link, additional_image_link, or video_link.")
-    @param:JsonProperty("url")
+    @param:JsonProperty("url", required = true)
     @get:JsonProperty("url", required = true) val url: kotlin.String
 ) {
 

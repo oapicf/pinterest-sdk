@@ -41,7 +41,7 @@ import javax.annotation.Generated;
   AdGroupAudienceSizingCreate.JSON_PROPERTY_TARGETING_SPEC
 })
 @JsonTypeName("AdGroupAudienceSizingCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupAudienceSizingCreate {
     public static final String JSON_PROPERTY_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
@@ -54,7 +54,7 @@ public class AdGroupAudienceSizingCreate {
     private List<@Valid AdGroupAudienceSizingKeyword> keywords = null;
 
     public static final String JSON_PROPERTY_PLACEMENT_GROUP = "placement_group";
-    private AdgroupPlacementGroupType placementGroup;
+    private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
     public static final String JSON_PROPERTY_PRODUCT_GROUP_IDS = "product_group_ids";
     private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = null;

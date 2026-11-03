@@ -113,7 +113,7 @@ import javax.annotation.Generated;
   CatalogsFeedIngestionWarnings.JSON_PROPERTY_V_I_D_E_O_M_A_L_F_O_R_M_E_D_U_R_L
 })
 @JsonTypeName("CatalogsFeedIngestionWarnings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsFeedIngestionWarnings {
     public static final String JSON_PROPERTY_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R = "AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR";

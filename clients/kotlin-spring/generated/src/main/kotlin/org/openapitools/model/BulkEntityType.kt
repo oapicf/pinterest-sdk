@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Refers ads entity type.
-* Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE,ENTITY_HISTORY
-*/
+ * Refers ads entity type.
+ * Values: CAMPAIGN,AD_GROUP,PRODUCT_GROUP,AD,KEYWORD,LABEL,SCHEDULE,ENTITY_HISTORY
+ */
 enum class BulkEntityType(@get:JsonValue val value: kotlin.String) {
 
     CAMPAIGN("CAMPAIGN"),
@@ -34,9 +34,8 @@ enum class BulkEntityType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): BulkEntityType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkEntityType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BulkEntityType'")
         }
     }
 }
-

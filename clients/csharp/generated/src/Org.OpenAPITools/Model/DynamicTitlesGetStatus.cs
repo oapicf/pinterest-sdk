@@ -186,13 +186,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (generatedCount.IsSet && generatedCount.Value == null)
-                throw new ArgumentNullException(nameof(generatedCount), "Property is not nullable for class DynamicTitlesGetStatus.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesGetStatus: generated_count.");
 
             if (isReady.IsSet && isReady.Value == null)
-                throw new ArgumentNullException(nameof(isReady), "Property is not nullable for class DynamicTitlesGetStatus.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesGetStatus: is_ready.");
 
             if (reviewedCount.IsSet && reviewedCount.Value == null)
-                throw new ArgumentNullException(nameof(reviewedCount), "Property is not nullable for class DynamicTitlesGetStatus.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesGetStatus: reviewed_count.");
 
             return new DynamicTitlesGetStatus(generatedCount, isReady, reviewedCount);
         }
@@ -203,7 +203,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesGetStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesGetStatus dynamicTitlesGetStatus, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -218,9 +217,17 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesGetStatus"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesGetStatus dynamicTitlesGetStatus, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (dynamicTitlesGetStatus.GeneratedCountOption.IsSet && dynamicTitlesGetStatus.GeneratedCount == null)
+                throw new JsonException("Cannot write null property DynamicTitlesGetStatus.GeneratedCount to non-nullable JSON property 'generated_count'.");
+
+            if (dynamicTitlesGetStatus.IsReadyOption.IsSet && dynamicTitlesGetStatus.IsReady == null)
+                throw new JsonException("Cannot write null property DynamicTitlesGetStatus.IsReady to non-nullable JSON property 'is_ready'.");
+
+            if (dynamicTitlesGetStatus.ReviewedCountOption.IsSet && dynamicTitlesGetStatus.ReviewedCount == null)
+                throw new JsonException("Cannot write null property DynamicTitlesGetStatus.ReviewedCount to non-nullable JSON property 'reviewed_count'.");
+
             if (dynamicTitlesGetStatus.GeneratedCountOption.IsSet)
                 writer.WriteNumber("generated_count", dynamicTitlesGetStatus.GeneratedCountOption.Value!.Value);
 

@@ -42,7 +42,7 @@ import javax.validation.Valid;
   AssetGroupBinding.JSON_PROPERTY_PROFILES_IDS,
   AssetGroupBinding.JSON_PROPERTY_UPDATED_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupBinding   {
   public static final String JSON_PROPERTY_AD_ACCOUNTS_IDS = "ad_accounts_ids";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNTS_IDS)

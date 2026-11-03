@@ -10,7 +10,7 @@ import Foundation
 /** Response object containing item bid options */
 public struct AdvancedAuctionItems: Sendable, Codable, Hashable {
 
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Response object of item bid options */
     public var catalogId: String?
     /** Array with item bid options */

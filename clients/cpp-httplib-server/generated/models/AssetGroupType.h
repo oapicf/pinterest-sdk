@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AssetGroupType
-{
-public:
-
-    AssetGroupType();
-    virtual ~AssetGroupType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AssetGroupType,
-        )
-
-private:
+enum class AssetGroupType {
+    
+    BRAND,
+    
+    LOCATION_OR_LANGUAGE,
+    
+    PRODUCT_LINE,
+    
+    OTHER
+    
 };
 
+inline void to_json(nlohmann::json& j, const AssetGroupType& value)
+{
+    switch (value)
+    {
+        
+        case AssetGroupType::BRAND: j = "BRAND"; break;
+        
+        case AssetGroupType::LOCATION_OR_LANGUAGE: j = "LOCATION_OR_LANGUAGE"; break;
+        
+        case AssetGroupType::PRODUCT_LINE: j = "PRODUCT_LINE"; break;
+        
+        case AssetGroupType::OTHER: j = "OTHER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AssetGroupType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AssetGroupType& value)
+{
+    
+    if (j == "BRAND")
+    {
+        value = AssetGroupType::BRAND;
+        return;
+    }
+    
+    if (j == "LOCATION_OR_LANGUAGE")
+    {
+        value = AssetGroupType::LOCATION_OR_LANGUAGE;
+        return;
+    }
+    
+    if (j == "PRODUCT_LINE")
+    {
+        value = AssetGroupType::PRODUCT_LINE;
+        return;
+    }
+    
+    if (j == "OTHER")
+    {
+        value = AssetGroupType::OTHER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AssetGroupType", &j);
+}
 
 } // namespace models
 

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsLocale
 import org.openapitools.model.CatalogsProductGroupFiltersRequest
 import org.openapitools.model.Country
@@ -36,13 +33,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsRetailProductGroupUpdateRequest(
 
     @Schema(required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailProductGroupUpdateRequest.CatalogType = kotlin.String.RETAIL,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("country")
     @get:JsonProperty("country") val country: Country? = null,
 
@@ -52,21 +47,15 @@ data class CatalogsRetailProductGroupUpdateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("filters")
     @get:JsonProperty("filters") val filters: CatalogsProductGroupFiltersRequest? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("locale")
     @get:JsonProperty("locale") val locale: CatalogsLocale? = null,
 
     @Schema(example = "Most Popular", description = "Name of catalog product group")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null
 ) : CatalogsVerticalProductGroupUpdateRequest {
@@ -78,12 +67,12 @@ data class CatalogsRetailProductGroupUpdateRequest(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         RETAIL("RETAIL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailProduct.CatalogTypeEnum?>(CatalogsRetailProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailProduct.CatalogTypeEnum? catalogTypeValue = CatalogsRetailProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailProduct.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "metadata":
                             metadata = new Option<CatalogsRetailProductMetadata?>(JsonSerializer.Deserialize<CatalogsRetailProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProduct.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailProduct: catalog_type.");
 
             if (!metadata.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProduct.", nameof(metadata));
+                throw new JsonException("Property is required for class CatalogsRetailProduct: metadata.");
 
             if (!pin.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProduct.", nameof(pin));
+                throw new JsonException("Property is required for class CatalogsRetailProduct: pin.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProduct: catalog_type.");
 
             if (metadata.IsSet && metadata.Value == null)
-                throw new ArgumentNullException(nameof(metadata), "Property is not nullable for class CatalogsRetailProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProduct: metadata.");
 
             if (pin.IsSet && pin.Value == null)
-                throw new ArgumentNullException(nameof(pin), "Property is not nullable for class CatalogsRetailProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProduct: pin.");
 
             return new CatalogsRetailProduct(catalogType.Value!.Value!, metadata.Value!, pin.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailProduct catalogsRetailProduct, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,15 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailProduct catalogsRetailProduct, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailProduct.Metadata == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProduct.Metadata), "Property is required for class CatalogsRetailProduct.");
-
-            if (catalogsRetailProduct.Pin == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProduct.Pin), "Property is required for class CatalogsRetailProduct.");
-
             var catalogTypeRawValue = CatalogsRetailProduct.CatalogTypeEnumToJsonValue(catalogsRetailProduct.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WritePropertyName("metadata");

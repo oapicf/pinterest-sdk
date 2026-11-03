@@ -122,3 +122,4 @@ class _$BookClosedSerializer implements PrimitiveSerializer<BookClosed> {
   }
 }
 
+

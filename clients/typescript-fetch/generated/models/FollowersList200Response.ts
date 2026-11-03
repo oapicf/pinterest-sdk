@@ -29,14 +29,10 @@ import {
 export interface FollowersList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof FollowersList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<FollowUser>}
-     * @memberof FollowersList200Response
      */
     items: Array<FollowUser>;
 }

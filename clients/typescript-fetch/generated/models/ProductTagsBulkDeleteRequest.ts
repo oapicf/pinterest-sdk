@@ -29,8 +29,6 @@ import {
 export interface ProductTagsBulkDeleteRequest {
     /**
      * List of product tags to delete.
-     * @type {Array<ProductTagItem>}
-     * @memberof ProductTagsBulkDeleteRequest
      */
     productTags: Array<ProductTagItem>;
 }

@@ -160,6 +160,7 @@ class _$CatalogsItemsUpsertBatchRequestSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsItemsUpsertBatchRequestOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPSERT')

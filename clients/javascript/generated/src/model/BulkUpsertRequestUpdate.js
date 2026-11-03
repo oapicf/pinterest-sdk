@@ -24,7 +24,7 @@ import ScheduleUpdateRequest from './ScheduleUpdateRequest';
 /**
  * The BulkUpsertRequestUpdate model module.
  * @module model/BulkUpsertRequestUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BulkUpsertRequestUpdate {
     /**

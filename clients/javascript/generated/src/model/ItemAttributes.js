@@ -19,7 +19,7 @@ import UpdatableItemAttributesGtin from './UpdatableItemAttributesGtin';
 /**
  * The ItemAttributes model module.
  * @module model/ItemAttributes
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ItemAttributes {
     /**

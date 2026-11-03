@@ -309,3 +309,4 @@ class _$PromotionBatchUpdateSerializer implements PrimitiveSerializer<PromotionB
   }
 }
 
+

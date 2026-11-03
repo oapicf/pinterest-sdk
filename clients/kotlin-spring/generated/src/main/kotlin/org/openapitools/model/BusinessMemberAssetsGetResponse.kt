@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AssetIdPermissions
 import org.openapitools.model.TotalCountByEntityStatus
 import javax.validation.constraints.DecimalMax
@@ -29,11 +26,11 @@ data class BusinessMemberAssetsGetResponse(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("items")
+    @param:JsonProperty("items", required = true)
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AssetIdPermissions>,
 
     @Schema(required = true, description = "Total number of assets matching the query")
-    @param:JsonProperty("total_data_count")
+    @param:JsonProperty("total_data_count", required = true)
     @get:JsonProperty("total_data_count", required = true) val totalDataCount: kotlin.Int,
 
     @Schema(description = "")
@@ -42,8 +39,6 @@ data class BusinessMemberAssetsGetResponse(
 
     @field:Valid
     @Schema(description = "Breakdown of asset counts by entity status (ad accounts only)")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("total_data_count_by_status")
     @get:JsonProperty("total_data_count_by_status") val totalDataCountByStatus: TotalCountByEntityStatus? = null
 ) {

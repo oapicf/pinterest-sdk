@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsFeed" /> class.
         /// </summary>
         /// <param name="catalogsRetailFeed"></param>
-        public CatalogsFeed(CatalogsRetailFeed catalogsRetailFeed)
+        internal CatalogsFeed(CatalogsRetailFeed catalogsRetailFeed)
         {
             CatalogsRetailFeed = catalogsRetailFeed;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsFeed" /> class.
         /// </summary>
         /// <param name="catalogsHotelFeed"></param>
-        public CatalogsFeed(CatalogsHotelFeed catalogsHotelFeed)
+        internal CatalogsFeed(CatalogsHotelFeed catalogsHotelFeed)
         {
             CatalogsHotelFeed = catalogsHotelFeed;
             OnCreated();
@@ -55,7 +55,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsFeed" /> class.
         /// </summary>
         /// <param name="catalogsCreativeAssetsFeed"></param>
-        public CatalogsFeed(CatalogsCreativeAssetsFeed catalogsCreativeAssetsFeed)
+        internal CatalogsFeed(CatalogsCreativeAssetsFeed catalogsCreativeAssetsFeed)
         {
             CatalogsCreativeAssetsFeed = catalogsCreativeAssetsFeed;
             OnCreated();
@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsFeed.CatalogTypeEnum?>(CatalogsFeed.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsFeed.CatalogTypeEnum? catalogTypeValue = CatalogsFeed.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsFeed.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeed.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsFeed: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsFeed.");
+                throw new JsonException("Property is not nullable for class CatalogsFeed: catalog_type.");
 
             if (catalogsCreativeAssetsFeed != null)
                 return new CatalogsFeed(catalogsCreativeAssetsFeed);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeed"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeed catalogsFeed, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeed"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeed catalogsFeed, JsonSerializerOptions jsonSerializerOptions)
         {
 

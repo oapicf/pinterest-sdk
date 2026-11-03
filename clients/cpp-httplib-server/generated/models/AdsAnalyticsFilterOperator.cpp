@@ -6,20 +6,3 @@
 */
 #include "AdsAnalyticsFilterOperator.h"
 
-namespace models {
-
-AdsAnalyticsFilterOperator::AdsAnalyticsFilterOperator()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

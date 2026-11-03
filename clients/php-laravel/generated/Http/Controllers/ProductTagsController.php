@@ -51,10 +51,10 @@ class ProductTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
             ],
@@ -108,10 +108,10 @@ class ProductTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
             ],
@@ -169,13 +169,13 @@ class ProductTagsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'pinId' => $pinId,
-                ],
                 $request->all(),
+                [
+                    'pin_id' => $pinId,
+                ],
             ),
             [
-                'pinId' => [
+                'pin_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',

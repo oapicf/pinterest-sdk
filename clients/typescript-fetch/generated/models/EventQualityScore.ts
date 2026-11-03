@@ -57,32 +57,22 @@ import {
 export interface EventQualityScore {
     /**
      * 
-     * @type {IngestionSourceOptions}
-     * @memberof EventQualityScore
      */
     ingestionSource: IngestionSourceOptions;
     /**
      * 
-     * @type {LookbackPeriodOptions}
-     * @memberof EventQualityScore
      */
     lookbackPeriod: LookbackPeriodOptions;
     /**
      * 
-     * @type {OverallStatusOptions}
-     * @memberof EventQualityScore
      */
     overallStatus: OverallStatusOptions;
     /**
      * 
-     * @type {QualityComponents}
-     * @memberof EventQualityScore
      */
     qualityComponents: QualityComponents;
     /**
      * 
-     * @type {SourcePlatformOptions}
-     * @memberof EventQualityScore
      */
     sourcePlatform: SourcePlatformOptions;
 }

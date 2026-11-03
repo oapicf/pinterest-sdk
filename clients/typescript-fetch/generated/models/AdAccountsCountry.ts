@@ -29,26 +29,18 @@ import {
 export interface AdAccountsCountry {
     /**
      * 
-     * @type {Country}
-     * @memberof AdAccountsCountry
      */
     code: Country;
     /**
      * Country currency.
-     * @type {string}
-     * @memberof AdAccountsCountry
      */
     currency: string;
     /**
      * Country index
-     * @type {number}
-     * @memberof AdAccountsCountry
      */
     index: number;
     /**
      * Country name
-     * @type {string}
-     * @memberof AdAccountsCountry
      */
     name: string;
 }

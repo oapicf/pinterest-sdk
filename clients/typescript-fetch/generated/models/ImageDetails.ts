@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ImageDetails {
     /**
      * 
-     * @type {number}
-     * @memberof ImageDetails
      */
     height: number | null;
     /**
      * 
-     * @type {string}
-     * @memberof ImageDetails
      */
     url: string;
     /**
      * 
-     * @type {number}
-     * @memberof ImageDetails
      */
     width: number | null;
 }

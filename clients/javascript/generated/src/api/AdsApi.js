@@ -40,7 +40,7 @@ import ReportingTimeZone from '../model/ReportingTimeZone';
 /**
 * Ads service.
 * @module api/AdsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class AdsApi {
 

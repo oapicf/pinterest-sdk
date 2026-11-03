@@ -17,7 +17,7 @@ import AnalyticsDailyMetrics from './AnalyticsDailyMetrics';
 /**
  * The AnalyticsMetricsResponse model module.
  * @module model/AnalyticsMetricsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AnalyticsMetricsResponse {
     /**

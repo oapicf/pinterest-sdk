@@ -18,7 +18,7 @@ import org.openapitools.model.HotelProcessingRecord;
  * Object describing the catalogs hotel items batch. If specified, you must provide all properties.
  */
 @ApiModel(description = "Object describing the catalogs hotel items batch. If specified, you must provide all properties.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelItemsBatch   {
   @JsonProperty("batch_id")
   private String batchId;

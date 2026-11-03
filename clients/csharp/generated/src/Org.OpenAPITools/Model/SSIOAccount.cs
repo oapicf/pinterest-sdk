@@ -248,22 +248,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (billtoInfos.IsSet && billtoInfos.Value == null)
-                throw new ArgumentNullException(nameof(billtoInfos), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: billto_infos.");
 
             if (canEdit.IsSet && canEdit.Value == null)
-                throw new ArgumentNullException(nameof(canEdit), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: can_edit.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: currency.");
 
             if (eligible.IsSet && eligible.Value == null)
-                throw new ArgumentNullException(nameof(eligible), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: eligible.");
 
             if (error.IsSet && error.Value == null)
-                throw new ArgumentNullException(nameof(error), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: error.");
 
             if (pmpNames.IsSet && pmpNames.Value == null)
-                throw new ArgumentNullException(nameof(pmpNames), "Property is not nullable for class SSIOAccount.");
+                throw new JsonException("Property is not nullable for class SSIOAccount: pmp_names.");
 
             return new SSIOAccount(billtoInfos, canEdit, currency, eligible, error, pmpNames);
         }
@@ -274,7 +274,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SSIOAccount sSIOAccount, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -289,20 +288,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sSIOAccount"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SSIOAccount sSIOAccount, JsonSerializerOptions jsonSerializerOptions)
         {
             if (sSIOAccount.BilltoInfosOption.IsSet && sSIOAccount.BilltoInfos == null)
-                throw new ArgumentNullException(nameof(sSIOAccount.BilltoInfos), "Property is required for class SSIOAccount.");
+                throw new JsonException("Cannot write null property SSIOAccount.BilltoInfos to non-nullable JSON property 'billto_infos'.");
+
+            if (sSIOAccount.CanEditOption.IsSet && sSIOAccount.CanEdit == null)
+                throw new JsonException("Cannot write null property SSIOAccount.CanEdit to non-nullable JSON property 'can_edit'.");
 
             if (sSIOAccount.CurrencyOption.IsSet && sSIOAccount.Currency == null)
-                throw new ArgumentNullException(nameof(sSIOAccount.Currency), "Property is required for class SSIOAccount.");
+                throw new JsonException("Cannot write null property SSIOAccount.Currency to non-nullable JSON property 'currency'.");
+
+            if (sSIOAccount.EligibleOption.IsSet && sSIOAccount.Eligible == null)
+                throw new JsonException("Cannot write null property SSIOAccount.Eligible to non-nullable JSON property 'eligible'.");
 
             if (sSIOAccount.ErrorOption.IsSet && sSIOAccount.Error == null)
-                throw new ArgumentNullException(nameof(sSIOAccount.Error), "Property is required for class SSIOAccount.");
+                throw new JsonException("Cannot write null property SSIOAccount.Error to non-nullable JSON property 'error'.");
 
             if (sSIOAccount.PmpNamesOption.IsSet && sSIOAccount.PmpNames == null)
-                throw new ArgumentNullException(nameof(sSIOAccount.PmpNames), "Property is required for class SSIOAccount.");
+                throw new JsonException("Cannot write null property SSIOAccount.PmpNames to non-nullable JSON property 'pmp_names'.");
 
             if (sSIOAccount.BilltoInfosOption.IsSet)
             {

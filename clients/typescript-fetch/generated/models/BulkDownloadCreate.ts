@@ -43,32 +43,22 @@ import {
 export interface BulkDownloadCreate {
     /**
      * 
-     * @type {BulkDownloadCampaignFilter}
-     * @memberof BulkDownloadCreate
      */
     campaignFilter?: BulkDownloadCampaignFilter;
     /**
      * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
-     * @type {Array<string>}
-     * @memberof BulkDownloadCreate
      */
     entityIds?: Array<string>;
     /**
      * All entity types specified will be downloaded. Fewer types result in faster downloads.
-     * @type {Array<BulkEntityType>}
-     * @memberof BulkDownloadCreate
      */
     entityTypes?: Array<BulkEntityType>;
     /**
      * 
-     * @type {BulkOutputFormat}
-     * @memberof BulkDownloadCreate
      */
     outputFormat?: BulkOutputFormat;
     /**
      * Unix UTC timestamp to retrieve all entities that have changed since this time.
-     * @type {string}
-     * @memberof BulkDownloadCreate
      */
     updatedSince?: string;
 }

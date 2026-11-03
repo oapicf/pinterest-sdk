@@ -24,7 +24,7 @@ data class MediaUploadCreate(
 
     @field:Valid
     @Schema(example = "video", required = true, description = "")
-    @param:JsonProperty("media_type")
+    @param:JsonProperty("media_type", required = true)
     @get:JsonProperty("media_type", required = true) val mediaType: MediaUploadType
 ) {
 

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsReport {
     /**
      * 
-     * @type {CatalogsReportReportStatusEnum}
-     * @memberof CatalogsReport
      */
     reportStatus?: CatalogsReportReportStatusEnum;
     /**
      * Size of the report in bytes
-     * @type {number}
-     * @memberof CatalogsReport
      */
     size?: number | null;
     /**
      * URL to download the report
-     * @type {string}
-     * @memberof CatalogsReport
      */
     url?: string | null;
 }
@@ -45,7 +39,7 @@ export interface CatalogsReport {
  */
 export const CatalogsReportReportStatusEnum = {
     Finished: 'FINISHED',
-    InProgress: 'IN_PROGRESS'
+    InProgress: 'IN_PROGRESS',
 } as const;
 export type CatalogsReportReportStatusEnum = typeof CatalogsReportReportStatusEnum[keyof typeof CatalogsReportReportStatusEnum];
 

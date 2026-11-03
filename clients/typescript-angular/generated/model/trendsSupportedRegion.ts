@@ -27,7 +27,7 @@ export const TrendsSupportedRegion = {
     Co: 'CO',
     Mx: 'MX',
     Mxarcocl: 'MX+AR+CO+CL',
-    Aunz: 'AU+NZ'
+    Aunz: 'AU+NZ',
 } as const;
 export type TrendsSupportedRegion = typeof TrendsSupportedRegion[keyof typeof TrendsSupportedRegion];
 

@@ -12,7 +12,7 @@ export const TopVideoPinsSortBy = {
     VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
     Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
     Video10SView: 'VIDEO_10S_VIEW',
-    VideoStart: 'VIDEO_START'
+    VideoStart: 'VIDEO_START',
 } as const;
 export type TopVideoPinsSortBy = typeof TopVideoPinsSortBy[keyof typeof TopVideoPinsSortBy];
 

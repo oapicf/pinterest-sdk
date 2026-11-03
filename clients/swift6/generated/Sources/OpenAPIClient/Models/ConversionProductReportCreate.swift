@@ -13,9 +13,9 @@ public struct ConversionProductReportCreate: Sendable, Codable, Hashable {
     public static let adGroupIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
     public static let campaignIdsRule = ArrayRule(minItems: 1, maxItems: 500, uniqueItems: false)
     public static let campaignObjectiveTypesRule = ArrayRule(minItems: 1, maxItems: 7, uniqueItems: false)
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     public static let productSkuIdsRule = ArrayRule(minItems: 2, maxItems: 30000, uniqueItems: false)
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     /**   List of ad group ids.   Only support ad_group_ids field when level of the report is AD_GROUP. */
     public var adGroupIds: [String]?
     /**   List of campaign ids.   Only support campaign_ids field when level of the report is CAMPAIGN. */

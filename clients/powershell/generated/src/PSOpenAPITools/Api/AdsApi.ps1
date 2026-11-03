@@ -66,7 +66,7 @@ function Invoke-AdPreviewsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adPreviews_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdPreviewRequest) {
             throw "Error! The required parameter `AdPreviewRequest` missing when calling adPreviews_create."
@@ -230,7 +230,7 @@ function Invoke-AdTargetingAnalyticsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adTargetingAnalytics_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdIds) {
             throw "Error! The required parameter `AdIds` missing when calling adTargetingAnalytics_get."
@@ -443,7 +443,7 @@ function Invoke-AdsAnalytics {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ads_analytics."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($PinIds) {
             $LocalVarQueryParameters['pin_ids'] = $PinIds
@@ -579,7 +579,7 @@ function Invoke-AdsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ads_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdCreate) {
             throw "Error! The required parameter `AdCreate` missing when calling ads_create."
@@ -665,11 +665,11 @@ function Invoke-AdsGet {
         if (!$AdId) {
             throw "Error! The required parameter `AdId` missing when calling ads_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_id}', [System.Web.HTTPUtility]::UrlEncode($AdId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_id}', [System.Uri]::EscapeDataString([string]$AdId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ads_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -786,7 +786,7 @@ function Invoke-AdsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ads_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -898,7 +898,7 @@ function Invoke-AdsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ads_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdBatchUpdate) {
             throw "Error! The required parameter `AdBatchUpdate` missing when calling ads_update."
@@ -987,7 +987,7 @@ function Invoke-CampaignAdPreviewCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling campaignAdPreview_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$CampaignAdPreviewCreate) {
             throw "Error! The required parameter `CampaignAdPreviewCreate` missing when calling campaignAdPreview_create."
@@ -1073,7 +1073,7 @@ function Invoke-CampaignAdPreviewDelete {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling campaignAdPreview_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupIds) {
             throw "Error! The required parameter `AdGroupIds` missing when calling campaignAdPreview_delete."
@@ -1158,7 +1158,7 @@ function Invoke-CampaignAdPreviewRead {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling campaignAdPreview_read."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupIds) {
             throw "Error! The required parameter `AdGroupIds` missing when calling campaignAdPreview_read."

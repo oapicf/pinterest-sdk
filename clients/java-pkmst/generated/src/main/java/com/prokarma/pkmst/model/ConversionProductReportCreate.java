@@ -27,7 +27,7 @@ import java.util.List;
  */
 @ApiModel(description = "Resource create operation model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionProductReportCreate   {
   @JsonProperty("ad_group_ids")
   
@@ -42,20 +42,20 @@ public class ConversionProductReportCreate   {
   private List<ConversionObjectiveType> campaignObjectiveTypes = null;
 
   @JsonProperty("click_window_days")
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
   @JsonProperty("columns")
   
   private List<ConversionProductReportingColumn> columns = new ArrayList<>();
 
   @JsonProperty("conversion_product_attribution_type")
-  private ConversionProductAttributionType conversionProductAttributionType;
+  private ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT;
 
   @JsonProperty("conversion_product_breakdown")
-  private ConversionProductReportBreakdownType conversionProductBreakdown;
+  private ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND;
 
   @JsonProperty("conversion_report_time")
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
   @JsonProperty("end_date")
   private String endDate;
@@ -77,7 +77,7 @@ public class ConversionProductReportCreate   {
   private String startDate;
 
   @JsonProperty("view_window_days")
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 30;
 
   public ConversionProductReportCreate adGroupIds(List<String> adGroupIds) {
     this.adGroupIds = adGroupIds;

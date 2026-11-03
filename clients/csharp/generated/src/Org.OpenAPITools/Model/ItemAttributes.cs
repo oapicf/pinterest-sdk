@@ -2780,34 +2780,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (androidDeepLink.IsSet && androidDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(androidDeepLink), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: android_deep_link.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: availability.");
 
             if (description.IsSet && description.Value == null)
-                throw new ArgumentNullException(nameof(description), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: description.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: id.");
 
             if (iosDeepLink.IsSet && iosDeepLink.Value == null)
-                throw new ArgumentNullException(nameof(iosDeepLink), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: ios_deep_link.");
 
             if (link.IsSet && link.Value == null)
-                throw new ArgumentNullException(nameof(link), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: link.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: price.");
 
             if (title.IsSet && title.Value == null)
-                throw new ArgumentNullException(nameof(title), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: title.");
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: ai_disclosures.");
 
             if (imageLink.IsSet && imageLink.Value == null)
-                throw new ArgumentNullException(nameof(imageLink), "Property is not nullable for class ItemAttributes.");
+                throw new JsonException("Property is not nullable for class ItemAttributes: image_link.");
 
             return new ItemAttributes(adImage0Link, adImage0Tag, adImage10Link, adImage10Tag, adImage11Link, adImage11Tag, adImage12Link, adImage12Tag, adImage13Link, adImage13Tag, adImage14Link, adImage14Tag, adImage15Link, adImage15Tag, adImage16Link, adImage16Tag, adImage17Link, adImage17Tag, adImage18Link, adImage18Tag, adImage19Link, adImage19Tag, adImage1Link, adImage1Tag, adImage2Link, adImage2Tag, adImage3Link, adImage3Tag, adImage4Link, adImage4Tag, adImage5Link, adImage5Tag, adImage6Link, adImage6Tag, adImage7Link, adImage7Tag, adImage8Link, adImage8Tag, adImage9Link, adImage9Tag, adLink, adVideo0Link, adVideo0Tag, adVideo1Link, adVideo1Tag, adVideo2Link, adVideo2Tag, adult, ageGroup, androidDeepLink, availability, averageReviewRating, brand, checkoutEnabled, color, condition, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, customNumber0, customNumber1, customNumber2, customNumber3, customNumber4, description, freeShippingLabel, freeShippingLimit, gender, googleProductCategory, gtin, id, installmentPrice, iosDeepLink, itemGroupId, lastUpdatedTime, link, material, minAdPrice, mobileLink, mpn, numberOfRatings, numberOfReviews, pattern, price, productType, promotionId, salePrice, salePriceEffectiveDate, shipping, shippingHeight, shippingWeight, shippingWidth, size, sizeSystem, sizeType, tax, title, unitPricingBaseMeasure, unitPricingMeasure, variantNames, variantValues, additionalImageLink, aiDisclosures, imageLink, videoLink);
         }
@@ -2818,7 +2818,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemAttributes itemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -2833,38 +2832,37 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemAttributes itemAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemAttributes.AndroidDeepLinkOption.IsSet && itemAttributes.AndroidDeepLink == null)
-                throw new ArgumentNullException(nameof(itemAttributes.AndroidDeepLink), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.AndroidDeepLink to non-nullable JSON property 'android_deep_link'.");
 
             if (itemAttributes.AvailabilityOption.IsSet && itemAttributes.Availability == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Availability), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Availability to non-nullable JSON property 'availability'.");
 
             if (itemAttributes.DescriptionOption.IsSet && itemAttributes.Description == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Description), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Description to non-nullable JSON property 'description'.");
 
             if (itemAttributes.IdOption.IsSet && itemAttributes.Id == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Id), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Id to non-nullable JSON property 'id'.");
 
             if (itemAttributes.IosDeepLinkOption.IsSet && itemAttributes.IosDeepLink == null)
-                throw new ArgumentNullException(nameof(itemAttributes.IosDeepLink), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.IosDeepLink to non-nullable JSON property 'ios_deep_link'.");
 
             if (itemAttributes.LinkOption.IsSet && itemAttributes.Link == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Link), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Link to non-nullable JSON property 'link'.");
 
             if (itemAttributes.PriceOption.IsSet && itemAttributes.Price == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Price), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Price to non-nullable JSON property 'price'.");
 
             if (itemAttributes.TitleOption.IsSet && itemAttributes.Title == null)
-                throw new ArgumentNullException(nameof(itemAttributes.Title), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.Title to non-nullable JSON property 'title'.");
 
             if (itemAttributes.AiDisclosuresOption.IsSet && itemAttributes.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(itemAttributes.AiDisclosures), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (itemAttributes.ImageLinkOption.IsSet && itemAttributes.ImageLink == null)
-                throw new ArgumentNullException(nameof(itemAttributes.ImageLink), "Property is required for class ItemAttributes.");
+                throw new JsonException("Cannot write null property ItemAttributes.ImageLink to non-nullable JSON property 'image_link'.");
 
             if (itemAttributes.AdImage0LinkOption.IsSet)
                 if (itemAttributes.AdImage0LinkOption.Value != null)

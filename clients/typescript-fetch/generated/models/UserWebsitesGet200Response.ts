@@ -29,14 +29,10 @@ import {
 export interface UserWebsitesGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof UserWebsitesGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<UserWebsite>}
-     * @memberof UserWebsitesGet200Response
      */
     items: Array<UserWebsite>;
 }

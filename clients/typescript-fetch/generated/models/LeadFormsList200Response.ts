@@ -29,14 +29,10 @@ import {
 export interface LeadFormsList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof LeadFormsList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<LeadForm>}
-     * @memberof LeadFormsList200Response
      */
     items: Array<LeadForm>;
 }

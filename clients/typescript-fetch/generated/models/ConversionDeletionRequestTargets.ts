@@ -36,14 +36,10 @@ import {
 export interface ConversionDeletionRequestTargets {
     /**
      * Array of plain text user emails.
-     * @type {Array<string>}
-     * @memberof ConversionDeletionRequestTargets
      */
     userEmails: Array<string>;
     /**
      * Array of EPIKs (Encrypted Pinterest ID Keys). An EPIK is a user match type that utilizes 3P browser localStorage (similar to a third-party cookie).
-     * @type {Array<string>}
-     * @memberof ConversionDeletionRequestTargets
      */
     epiks: Array<string>;
 }

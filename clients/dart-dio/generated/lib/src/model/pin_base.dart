@@ -229,6 +229,7 @@ class _$PinBaseSerializer implements PrimitiveSerializer<PinBase> {
   }
 }
 
+
 /// a concrete implementation of [PinBase], since [PinBase] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $PinBase implements PinBase, Built<$PinBase, $PinBaseBuilder> {

@@ -480,7 +480,9 @@ class AccountTemplate {
             ? (json[r'ade_columns'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         attributionType: mapValueOfType<Object>(json, r'attribution_type'),
-        clickWindowDays: num.parse('${json[r'click_window_days']}'),
+        clickWindowDays: json[r'click_window_days'] == null
+            ? null
+            : num.parse('${json[r'click_window_days']}'),
         columns: ReportingColumn.listFromJson(json[r'columns']),
         conversionReportTimeType: ConversionReportTimeType.fromJson(json[r'conversion_report_time_type']),
         creationSource: CreationSource.fromJson(json[r'creation_source']),
@@ -488,7 +490,9 @@ class AccountTemplate {
             ? (json[r'custom_column_ids'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         displayMetadata: mapValueOfType<String>(json, r'display_metadata'),
-        engagementWindowDays: num.parse('${json[r'engagement_window_days']}'),
+        engagementWindowDays: json[r'engagement_window_days'] == null
+            ? null
+            : num.parse('${json[r'engagement_window_days']}'),
         filtersJson: mapValueOfType<String>(json, r'filters_json'),
         granularity: Granularity.fromJson(json[r'granularity']),
         id: mapValueOfType<String>(json, r'id')!,
@@ -498,16 +502,24 @@ class AccountTemplate {
         isOwnedByUser: mapValueOfType<bool>(json, r'is_owned_by_user'),
         isScheduled: mapValueOfType<bool>(json, r'is_scheduled'),
         name: mapValueOfType<String>(json, r'name'),
-        reportEndRelativeDaysInPast: num.parse('${json[r'report_end_relative_days_in_past']}'),
+        reportEndRelativeDaysInPast: json[r'report_end_relative_days_in_past'] == null
+            ? null
+            : num.parse('${json[r'report_end_relative_days_in_past']}'),
         reportFormat: DataOutputFormat.fromJson(json[r'report_format']),
         reportLevel: MetricsReportingLevel.fromJson(json[r'report_level']),
-        reportStartRelativeDaysInPast: num.parse('${json[r'report_start_relative_days_in_past']}'),
+        reportStartRelativeDaysInPast: json[r'report_start_relative_days_in_past'] == null
+            ? null
+            : num.parse('${json[r'report_start_relative_days_in_past']}'),
         reportingTimeZone: ReportingTimeZone.fromJson(json[r'reporting_time_zone']),
         sortBy: mapValueOfType<Object>(json, r'sort_by'),
         type: mapValueOfType<String>(json, r'type'),
-        updatedTime: num.parse('${json[r'updated_time']}'),
+        updatedTime: json[r'updated_time'] == null
+            ? null
+            : num.parse('${json[r'updated_time']}'),
         userId: mapValueOfType<String>(json, r'user_id'),
-        viewWindowDays: num.parse('${json[r'view_window_days']}'),
+        viewWindowDays: json[r'view_window_days'] == null
+            ? null
+            : num.parse('${json[r'view_window_days']}'),
       );
     }
     return null;

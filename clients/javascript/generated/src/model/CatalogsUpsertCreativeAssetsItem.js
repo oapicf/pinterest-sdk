@@ -17,7 +17,7 @@ import CatalogsCreativeAssetsAttributes from './CatalogsCreativeAssetsAttributes
 /**
  * The CatalogsUpsertCreativeAssetsItem model module.
  * @module model/CatalogsUpsertCreativeAssetsItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsUpsertCreativeAssetsItem {
     /**

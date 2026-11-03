@@ -123,6 +123,7 @@ class _$CatalogsHotelAvailableFilterValuesSerializer implements PrimitiveSeriali
   }
 }
 
+
 class CatalogsHotelAvailableFilterValuesCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

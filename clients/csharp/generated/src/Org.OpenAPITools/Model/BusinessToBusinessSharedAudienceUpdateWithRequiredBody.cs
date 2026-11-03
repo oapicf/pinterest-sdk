@@ -172,22 +172,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!audienceId.IsSet)
-                throw new ArgumentException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.", nameof(audienceId));
+                throw new JsonException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: audience_id.");
 
             if (!operationType.IsSet)
-                throw new ArgumentException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.", nameof(operationType));
+                throw new JsonException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: operation_type.");
 
             if (!recipientBusinessIds.IsSet)
-                throw new ArgumentException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.", nameof(recipientBusinessIds));
+                throw new JsonException("Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: recipient_business_ids.");
 
             if (audienceId.IsSet && audienceId.Value == null)
-                throw new ArgumentNullException(nameof(audienceId), "Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: audience_id.");
 
             if (operationType.IsSet && operationType.Value == null)
-                throw new ArgumentNullException(nameof(operationType), "Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: operation_type.");
 
             if (recipientBusinessIds.IsSet && recipientBusinessIds.Value == null)
-                throw new ArgumentNullException(nameof(recipientBusinessIds), "Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody: recipient_business_ids.");
 
             return new BusinessToBusinessSharedAudienceUpdateWithRequiredBody(audienceId.Value!, operationType.Value!.Value!, recipientBusinessIds.Value!);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessToBusinessSharedAudienceUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,15 +212,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessToBusinessSharedAudienceUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (businessToBusinessSharedAudienceUpdateWithRequiredBody.AudienceId == null)
-                throw new ArgumentNullException(nameof(businessToBusinessSharedAudienceUpdateWithRequiredBody.AudienceId), "Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.");
-
-            if (businessToBusinessSharedAudienceUpdateWithRequiredBody.RecipientBusinessIds == null)
-                throw new ArgumentNullException(nameof(businessToBusinessSharedAudienceUpdateWithRequiredBody.RecipientBusinessIds), "Property is required for class BusinessToBusinessSharedAudienceUpdateWithRequiredBody.");
-
             writer.WriteString("audience_id", businessToBusinessSharedAudienceUpdateWithRequiredBody.AudienceId);
 
             var operationTypeRawValue = OperationTypeValueConverter.ToJsonValue(businessToBusinessSharedAudienceUpdateWithRequiredBody.OperationType);

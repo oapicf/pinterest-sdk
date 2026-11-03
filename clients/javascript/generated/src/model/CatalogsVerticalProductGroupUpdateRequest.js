@@ -22,7 +22,7 @@ import Country from './Country';
 /**
  * The CatalogsVerticalProductGroupUpdateRequest model module.
  * @module model/CatalogsVerticalProductGroupUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsVerticalProductGroupUpdateRequest {
     /**

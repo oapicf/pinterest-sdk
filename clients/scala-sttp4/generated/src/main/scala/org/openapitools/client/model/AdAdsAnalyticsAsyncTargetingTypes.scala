@@ -18,23 +18,23 @@ package org.openapitools.client.model
 sealed trait AdAdsAnalyticsAsyncTargetingTypes
 
 object AdAdsAnalyticsAsyncTargetingTypes {
-  case object KEYWORD extends AdAdsAnalyticsAsyncTargetingTypes
-  case object APPTYPE extends AdAdsAnalyticsAsyncTargetingTypes
-  case object GENDER extends AdAdsAnalyticsAsyncTargetingTypes
-  case object LOCATION extends AdAdsAnalyticsAsyncTargetingTypes
-  case object PLACEMENT extends AdAdsAnalyticsAsyncTargetingTypes
-  case object COUNTRY extends AdAdsAnalyticsAsyncTargetingTypes
-  case object TARGETEDINTEREST extends AdAdsAnalyticsAsyncTargetingTypes
-  case object PINNERINTEREST extends AdAdsAnalyticsAsyncTargetingTypes
-  case object AUDIENCEINCLUDE extends AdAdsAnalyticsAsyncTargetingTypes
-  case object GEO extends AdAdsAnalyticsAsyncTargetingTypes
-  case object AGEBUCKET extends AdAdsAnalyticsAsyncTargetingTypes
-  case object REGION extends AdAdsAnalyticsAsyncTargetingTypes
-  case object MEDIATYPE extends AdAdsAnalyticsAsyncTargetingTypes
-  case object AGEBUCKETANDGENDER extends AdAdsAnalyticsAsyncTargetingTypes
-  case object AUDIENCEMULTIPLIER extends AdAdsAnalyticsAsyncTargetingTypes
-  case object CREATIVEENHANCEMENTS extends AdAdsAnalyticsAsyncTargetingTypes
-  case object LOCALADSSTORECODE extends AdAdsAnalyticsAsyncTargetingTypes
+  case object KEYWORD extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "KEYWORD" }
+  case object APPTYPE extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "APPTYPE" }
+  case object GENDER extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "GENDER" }
+  case object LOCATION extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "LOCATION" }
+  case object PLACEMENT extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "PLACEMENT" }
+  case object COUNTRY extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "COUNTRY" }
+  case object TARGETEDINTEREST extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "TARGETED_INTEREST" }
+  case object PINNERINTEREST extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "PINNER_INTEREST" }
+  case object AUDIENCEINCLUDE extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "AUDIENCE_INCLUDE" }
+  case object GEO extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "GEO" }
+  case object AGEBUCKET extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "AGE_BUCKET" }
+  case object REGION extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "REGION" }
+  case object MEDIATYPE extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "MEDIA_TYPE" }
+  case object AGEBUCKETANDGENDER extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "AGE_BUCKET_AND_GENDER" }
+  case object AUDIENCEMULTIPLIER extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "AUDIENCE_MULTIPLIER" }
+  case object CREATIVEENHANCEMENTS extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "CREATIVE_ENHANCEMENTS" }
+  case object LOCALADSSTORECODE extends AdAdsAnalyticsAsyncTargetingTypes { override def toString: String = "LOCAL_ADS_STORE_CODE" }
 
   import org.json4s._
 

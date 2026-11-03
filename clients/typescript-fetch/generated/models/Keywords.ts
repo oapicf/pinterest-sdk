@@ -36,14 +36,10 @@ import {
 export interface Keywords {
     /**
      * Keyword error
-     * @type {Array<KeywordError>}
-     * @memberof Keywords
      */
     readonly errors: Array<KeywordError>;
     /**
      * Keywords
-     * @type {Array<Keyword>}
-     * @memberof Keywords
      */
     keywords: Array<Keyword>;
 }

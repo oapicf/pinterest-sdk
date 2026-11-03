@@ -144,3 +144,4 @@ class _$ScheduleUpdateRequestAllOf1Serializer implements PrimitiveSerializer<Sch
   }
 }
 
+

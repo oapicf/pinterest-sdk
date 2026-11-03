@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Salesforce account details including bill-to information.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Salesforce account details including bill-to information.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOAccount   {
   
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
@@ -31,7 +31,6 @@ public class SSIOAccount   {
   
   @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
   @JsonProperty("billto_infos")
-  @Valid
   public List<@Valid SSIOAccountItem> getBilltoInfos() {
     return billtoInfos;
   }
@@ -95,7 +94,6 @@ public class SSIOAccount   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pmp_names")
-  @Valid
   public List<@Valid SSIOAccountPMPName> getPmpNames() {
     return pmpNames;
   }

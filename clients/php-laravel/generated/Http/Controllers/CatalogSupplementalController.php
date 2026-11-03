@@ -51,10 +51,10 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
             ],
@@ -67,7 +67,7 @@ class CatalogSupplementalController extends Controller
 
         $localInventoryItemsBatchCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\LocalInventoryItemsBatchCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsLocalInventoryItemsBatchOperate($catalogId, $localInventoryItemsBatchCreate, $adAccountId);
@@ -118,10 +118,10 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
             ],
@@ -134,7 +134,7 @@ class CatalogSupplementalController extends Controller
 
         $localInventoryItemsGetCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\LocalInventoryItemsGetCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsLocalInventoryItemsPost($catalogId, $localInventoryItemsGetCreate, $adAccountId);
@@ -185,10 +185,10 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
             ],
@@ -201,7 +201,7 @@ class CatalogSupplementalController extends Controller
 
         $localStoreCreate = $request->get('localStoreCreate');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsLocalStoresCreate($catalogId, $localStoreCreate, $adAccountId);
@@ -254,13 +254,13 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
-                'catalogId' => [
+                'catalog_id' => [
                     'required',
                     'max:19',
                     'regex:/^\\d+$/',
@@ -270,7 +270,7 @@ class CatalogSupplementalController extends Controller
                     'required',
                     'array',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -285,7 +285,7 @@ class CatalogSupplementalController extends Controller
 
         $ids = $request->get('ids');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsLocalStoresDelete($catalogId, $ids, $adAccountId);
@@ -337,13 +337,13 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
-                'catalogId' => [
+                'catalog_id' => [
                     'required',
                     'max:19',
                     'regex:/^\\d+$/',
@@ -352,7 +352,7 @@ class CatalogSupplementalController extends Controller
                 'ids' => [
                     'array',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -360,7 +360,7 @@ class CatalogSupplementalController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -375,11 +375,11 @@ class CatalogSupplementalController extends Controller
 
         $ids = $request->get('ids');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->catalogsLocalStoresList($catalogId, $ids, $adAccountId, $bookmark, $pageSize);
@@ -426,10 +426,10 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,
+                ],
             ),
             [
             ],
@@ -442,7 +442,7 @@ class CatalogSupplementalController extends Controller
 
         $localStoreBatchUpdate = $request->get('localStoreBatchUpdate');
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsLocalStoresUpdate($catalogId, $localStoreBatchUpdate, $adAccountId);
@@ -490,24 +490,24 @@ class CatalogSupplementalController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'catalogId' => $catalogId,'batchId' => $batchId,
-                ],
                 $request->all(),
+                [
+                    'catalog_id' => $catalogId,'batch_id' => $batchId,
+                ],
             ),
             [
-                'catalogId' => [
+                'catalog_id' => [
                     'required',
                     'max:19',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'batchId' => [
+                'batch_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -521,7 +521,7 @@ class CatalogSupplementalController extends Controller
 
 
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->catalogsSupplementalItemsBatchGet($catalogId, $batchId, $adAccountId);

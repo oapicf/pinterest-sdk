@@ -18,7 +18,7 @@ import Permissions from './Permissions';
 /**
  * The CreateAssetInvitesRequestItem model module.
  * @module model/CreateAssetInvitesRequestItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CreateAssetInvitesRequestItem {
     /**

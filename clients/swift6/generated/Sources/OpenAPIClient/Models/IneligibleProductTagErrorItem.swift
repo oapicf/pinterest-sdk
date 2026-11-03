@@ -10,7 +10,7 @@ import Foundation
 /** Error item for a product tag that failed eligibility check. */
 public struct IneligibleProductTagErrorItem: Sendable, Codable, Hashable {
 
-    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let pinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Reason why the pin is ineligible for tagging. */
     public var errorMessage: IneligibleProductTagReason
     /** Pin ID that failed eligibility check. */

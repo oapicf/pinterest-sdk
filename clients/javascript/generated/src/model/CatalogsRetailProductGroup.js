@@ -19,7 +19,7 @@ import CatalogsProductGroupType from './CatalogsProductGroupType';
 /**
  * The CatalogsRetailProductGroup model module.
  * @module model/CatalogsRetailProductGroup
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailProductGroup {
     /**

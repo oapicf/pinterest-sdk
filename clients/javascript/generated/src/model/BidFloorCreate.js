@@ -18,7 +18,7 @@ import TargetingSpecOptimal from './TargetingSpecOptimal';
 /**
  * The BidFloorCreate model module.
  * @module model/BidFloorCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BidFloorCreate {
     /**

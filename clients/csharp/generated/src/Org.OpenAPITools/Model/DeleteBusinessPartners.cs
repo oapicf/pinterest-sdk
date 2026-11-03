@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (deletedPartners.IsSet && deletedPartners.Value == null)
-                throw new ArgumentNullException(nameof(deletedPartners), "Property is not nullable for class DeleteBusinessPartners.");
+                throw new JsonException("Property is not nullable for class DeleteBusinessPartners: deleted_partners.");
 
             return new DeleteBusinessPartners(deletedPartners);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessPartners"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DeleteBusinessPartners deleteBusinessPartners, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="deleteBusinessPartners"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DeleteBusinessPartners deleteBusinessPartners, JsonSerializerOptions jsonSerializerOptions)
         {
             if (deleteBusinessPartners.DeletedPartnersOption.IsSet && deleteBusinessPartners.DeletedPartners == null)
-                throw new ArgumentNullException(nameof(deleteBusinessPartners.DeletedPartners), "Property is required for class DeleteBusinessPartners.");
+                throw new JsonException("Cannot write null property DeleteBusinessPartners.DeletedPartners to non-nullable JSON property 'deleted_partners'.");
 
             if (deleteBusinessPartners.DeletedPartnersOption.IsSet)
             {

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class OrderLineStatus
-{
-public:
-
-    OrderLineStatus();
-    virtual ~OrderLineStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(OrderLineStatus,
-        )
-
-private:
+enum class OrderLineStatus {
+    
+    ACTIVE,
+    
+    PAUSED,
+    
+    DELETED
+    
 };
 
+inline void to_json(nlohmann::json& j, const OrderLineStatus& value)
+{
+    switch (value)
+    {
+        
+        case OrderLineStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case OrderLineStatus::PAUSED: j = "PAUSED"; break;
+        
+        case OrderLineStatus::DELETED: j = "DELETED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for OrderLineStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, OrderLineStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = OrderLineStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = OrderLineStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "DELETED")
+    {
+        value = OrderLineStatus::DELETED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for OrderLineStatus", &j);
+}
 
 } // namespace models
 

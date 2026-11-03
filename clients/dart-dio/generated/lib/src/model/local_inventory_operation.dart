@@ -158,6 +158,7 @@ class _$LocalInventoryOperationSerializer implements PrimitiveSerializer<LocalIn
   }
 }
 
+
 class LocalInventoryOperationOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DELETE')

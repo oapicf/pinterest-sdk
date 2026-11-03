@@ -29,8 +29,6 @@ import {
 export interface KeywordsMetricsArrayResponse {
     /**
      * 
-     * @type {Array<KeywordMetricsResponse>}
-     * @memberof KeywordsMetricsArrayResponse
      */
     data?: Array<KeywordMetricsResponse>;
 }

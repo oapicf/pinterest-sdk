@@ -105,3 +105,4 @@ class _$PriceFilterSerializer implements PrimitiveSerializer<PriceFilter> {
   }
 }
 
+

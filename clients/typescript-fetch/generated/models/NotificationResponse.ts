@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface NotificationResponse {
     /**
      * error message when success is false
-     * @type {string}
-     * @memberof NotificationResponse
      */
     errorMsg?: string;
     /**
      * Received time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof NotificationResponse
      */
     receivedAt?: number;
     /**
      * Returns true if the notification accepted.
-     * @type {boolean}
-     * @memberof NotificationResponse
      */
     success?: boolean;
 }

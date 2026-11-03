@@ -76,8 +76,7 @@ class IntegrationLogsRequestCreate(BaseModel):
         _items = []
         if self.logs:
             for _item_logs in self.logs:
-                if _item_logs:
-                    _items.append(_item_logs.to_dict())
+                _items.append(_item_logs.to_dict() if _item_logs is not None else None)
             _dict['logs'] = _items
         return _dict
 

@@ -53,7 +53,7 @@ public class CustomerListUploadsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter customerListId is {}", customerListId);
-        logger.debug("Parameter customerListUploadCreateRequest is {}", customerListUploadCreateRequest);
+        logger.debug("Parameter customerListUploadCreateRequest is (body omitted)");
 
         api.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest)
             .onSuccess(apiResponse -> {

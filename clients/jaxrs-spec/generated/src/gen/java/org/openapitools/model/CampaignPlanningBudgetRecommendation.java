@@ -23,12 +23,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Budget recommendation response containing recommended budget, estimated days, and point estimations.")
 @JsonTypeName("CampaignPlanningBudgetRecommendation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation   {
   private Integer budgetRecommendation;
-  private @Valid List<@Valid CampaignPlanningExperimentBudgetRecommendation> experimentCampaignBudgetRecommendation = new ArrayList<>();
+  private List<@Valid CampaignPlanningExperimentBudgetRecommendation> experimentCampaignBudgetRecommendation = new ArrayList<>();
   private Integer lifetimeDaysRecommendation;
-  private @Valid List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
+  private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
 
   public CampaignPlanningBudgetRecommendation() {
   }
@@ -64,7 +64,7 @@ public class CampaignPlanningBudgetRecommendation   {
   
   @ApiModelProperty(value = "List of experimental budget recommendations.")
   @JsonProperty("experiment_campaign_budget_recommendation")
-  @Valid public List<@Valid CampaignPlanningExperimentBudgetRecommendation> getExperimentCampaignBudgetRecommendation() {
+  public List<@Valid CampaignPlanningExperimentBudgetRecommendation> getExperimentCampaignBudgetRecommendation() {
     return experimentCampaignBudgetRecommendation;
   }
 
@@ -120,7 +120,7 @@ public class CampaignPlanningBudgetRecommendation   {
   
   @ApiModelProperty(value = "List of point estimations for different budget scenarios.")
   @JsonProperty("point_estimations")
-  @Valid public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
+  public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
     return pointEstimations;
   }
 

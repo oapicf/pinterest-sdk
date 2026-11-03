@@ -148,16 +148,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!errors.IsSet)
-                throw new ArgumentException("Property is required for class Keywords.", nameof(errors));
+                throw new JsonException("Property is required for class Keywords: errors.");
 
             if (!varKeywords.IsSet)
-                throw new ArgumentException("Property is required for class Keywords.", nameof(varKeywords));
+                throw new JsonException("Property is required for class Keywords: keywords.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class Keywords.");
+                throw new JsonException("Property is not nullable for class Keywords: errors.");
 
             if (varKeywords.IsSet && varKeywords.Value == null)
-                throw new ArgumentNullException(nameof(varKeywords), "Property is not nullable for class Keywords.");
+                throw new JsonException("Property is not nullable for class Keywords: keywords.");
 
             return new Keywords(errors.Value!, varKeywords.Value!);
         }
@@ -168,7 +168,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywords"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Keywords keywords, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -183,15 +182,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywords"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Keywords keywords, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (keywords.Errors == null)
-                throw new ArgumentNullException(nameof(keywords.Errors), "Property is required for class Keywords.");
-
-            if (keywords.VarKeywords == null)
-                throw new ArgumentNullException(nameof(keywords.VarKeywords), "Property is required for class Keywords.");
-
             writer.WritePropertyName("errors");
             JsonSerializer.Serialize(writer, keywords.Errors, jsonSerializerOptions);
             writer.WritePropertyName("keywords");

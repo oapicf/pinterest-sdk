@@ -29,8 +29,6 @@ import {
 export interface ProductGroupPromotions {
     /**
      * Response-only: created or updated product group promotions, or exceptions.
-     * @type {Array<ProductGroupPromotionResponseItem>}
-     * @memberof ProductGroupPromotions
      */
     readonly items?: Array<ProductGroupPromotionResponseItem>;
 }

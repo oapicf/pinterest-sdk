@@ -9,11 +9,11 @@ import Foundation
 
 public struct AdGroup: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
-    public static let customerSegmentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
-    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[C]?\\d+$")
+    public static let customerSegmentIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
+    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
     public static let bidMultiplierRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 10, exclusiveMaximum: false, multipleOf: nil)
     /** Advertiser ID. */

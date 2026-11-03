@@ -186,13 +186,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (attribute.IsSet && attribute.Value == null)
-                throw new ArgumentNullException(nameof(attribute), "Property is not nullable for class ItemValidationEvent.");
+                throw new JsonException("Property is not nullable for class ItemValidationEvent: attribute.");
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class ItemValidationEvent.");
+                throw new JsonException("Property is not nullable for class ItemValidationEvent: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class ItemValidationEvent.");
+                throw new JsonException("Property is not nullable for class ItemValidationEvent: message.");
 
             return new ItemValidationEvent(attribute, code, message);
         }
@@ -203,7 +203,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemValidationEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemValidationEvent itemValidationEvent, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -218,14 +217,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemValidationEvent"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemValidationEvent itemValidationEvent, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemValidationEvent.AttributeOption.IsSet && itemValidationEvent.Attribute == null)
-                throw new ArgumentNullException(nameof(itemValidationEvent.Attribute), "Property is required for class ItemValidationEvent.");
+                throw new JsonException("Cannot write null property ItemValidationEvent.Attribute to non-nullable JSON property 'attribute'.");
+
+            if (itemValidationEvent.CodeOption.IsSet && itemValidationEvent.Code == null)
+                throw new JsonException("Cannot write null property ItemValidationEvent.Code to non-nullable JSON property 'code'.");
 
             if (itemValidationEvent.MessageOption.IsSet && itemValidationEvent.Message == null)
-                throw new ArgumentNullException(nameof(itemValidationEvent.Message), "Property is required for class ItemValidationEvent.");
+                throw new JsonException("Cannot write null property ItemValidationEvent.Message to non-nullable JSON property 'message'.");
 
             if (itemValidationEvent.AttributeOption.IsSet)
                 writer.WriteString("attribute", itemValidationEvent.Attribute);

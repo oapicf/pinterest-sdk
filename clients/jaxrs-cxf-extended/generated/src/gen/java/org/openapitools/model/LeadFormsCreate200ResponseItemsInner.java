@@ -21,7 +21,6 @@ public class LeadFormsCreate200ResponseItemsInner  {
   private LeadForm data;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid PinterestLibBatchItemException> exceptions = new ArrayList<>();
  /**
   * Get data

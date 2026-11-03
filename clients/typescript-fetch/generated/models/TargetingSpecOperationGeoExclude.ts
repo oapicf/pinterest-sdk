@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationGeoExclude {
     /**
      * 
-     * @type {TargetingSpecOperationGeoExcludeFieldEnum}
-     * @memberof TargetingSpecOperationGeoExclude
      */
     field: TargetingSpecOperationGeoExcludeFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationGeoExclude
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationGeoExclude
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationGeoExclude {
  * @export
  */
 export const TargetingSpecOperationGeoExcludeFieldEnum = {
-    GeoExclude: 'GEO_EXCLUDE'
+    GeoExclude: 'GEO_EXCLUDE',
 } as const;
 export type TargetingSpecOperationGeoExcludeFieldEnum = typeof TargetingSpecOperationGeoExcludeFieldEnum[keyof typeof TargetingSpecOperationGeoExcludeFieldEnum];
 

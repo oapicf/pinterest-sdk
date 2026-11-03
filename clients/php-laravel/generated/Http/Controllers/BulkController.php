@@ -51,10 +51,10 @@ class BulkController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -116,23 +116,23 @@ class BulkController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'bulkRequestId' => $bulkRequestId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'bulk_request_id' => $bulkRequestId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'bulkRequestId' => [
+                'bulk_request_id' => [
                     'required',
                     'string',
                 ],
-                'includeDetails' => [
+                'include_details' => [
                     'boolean',
                 ],
             ],
@@ -144,7 +144,7 @@ class BulkController extends Controller
 
 
 
-        $includeDetails = $request->boolean('includeDetails');
+        $includeDetails = $request->boolean('include_details');
 
 
         $apiResult = $this->api->bulkRequestGet($adAccountId, $bulkRequestId, $includeDetails);
@@ -191,10 +191,10 @@ class BulkController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

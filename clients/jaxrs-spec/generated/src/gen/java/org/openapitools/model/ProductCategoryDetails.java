@@ -27,15 +27,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Product category details")
 @JsonTypeName("ProductCategoryDetails")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoryDetails   {
   private ProductCategoriesDemographic demographics;
   private Boolean hasPrediction;
   private ProductCategoriesMetricsHighlights metricsHighlights;
-  private @Valid Map<String, BigDecimal> predictedTimeSeries = new HashMap<>();
+  private Map<String, BigDecimal> predictedTimeSeries = new HashMap<>();
   private ProductCategoryEnum productCategory;
-  private @Valid List<String> relatedSearches = new ArrayList<>();
-  private @Valid Map<String, BigDecimal> timeSeries = new HashMap<>();
+  private List<String> relatedSearches = new ArrayList<>();
+  private Map<String, BigDecimal> timeSeries = new HashMap<>();
 
   public ProductCategoryDetails() {
   }
@@ -118,7 +118,7 @@ public class ProductCategoryDetails   {
   
   @ApiModelProperty(value = "    A sequence of weekly observations of the predicted relative search volume for this keyword over the next 3 months.     These values are normalized to a [0-100] range, and can be used to visualize the forecasted user interest in this keyword.     Similar to the historical time_series, normalization is applied independently to the predicted time series of each keyword, but the normalize_against_group query parameter can be used in cases where you wish to compare relative predicted volume between keywords.     **Note**: The cut-off date between historical and predicted time series depends on Pinterest data availability. Usually the data needs a few days to be calculated, so the predicted time series may contain some past dates compared to today.     **Note**: The date of each observation is in ISO-8601 format and represents the end of the week. For example, a value of 2024-01-07 would include predicted searches for the week ending on 2024-01-07.")
   @JsonProperty("predicted_time_series")
-  @Valid public Map<String, BigDecimal> getPredictedTimeSeries() {
+  public Map<String, BigDecimal> getPredictedTimeSeries() {
     return predictedTimeSeries;
   }
 
@@ -209,7 +209,7 @@ public class ProductCategoryDetails   {
   
   @ApiModelProperty(value = "Time series data showing trend values over time, indexed between 0 and 100")
   @JsonProperty("time_series")
-  @Valid public Map<String, BigDecimal> getTimeSeries() {
+  public Map<String, BigDecimal> getTimeSeries() {
     return timeSeries;
   }
 

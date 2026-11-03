@@ -35,23 +35,61 @@ import {
 } from '../models/SearchPartnerPins200Response';
 
 export interface SearchPartnerPinsRequest {
+    /**
+     * Search term to look up pins.
+     */
     term: string;
+    /**
+     * Two letter country code (ISO 3166-1 alpha-2)
+     */
     countryCode: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Search locale.
+     */
     locale?: string;
+    /**
+     * Max search result size
+     */
     limit?: number;
 }
 
 export interface SearchUserBoardsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Search query. Can contain pin description keywords or comma-separated
+     * pin IDs.
+     */
     query?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface SearchUserPinsListRequest {
+    /**
+     * Search query. Can contain pin description keywords or comma-separated pin IDs.
+     */
     query: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
 }
 

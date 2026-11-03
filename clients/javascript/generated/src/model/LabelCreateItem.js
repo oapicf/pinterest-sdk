@@ -17,7 +17,7 @@ import LabelType from './LabelType';
 /**
  * The LabelCreateItem model module.
  * @module model/LabelCreateItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LabelCreateItem {
     /**

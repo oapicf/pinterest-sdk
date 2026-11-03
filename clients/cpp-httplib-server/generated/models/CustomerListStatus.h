@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CustomerListStatus
-{
-public:
-
-    CustomerListStatus();
-    virtual ~CustomerListStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CustomerListStatus,
-        )
-
-private:
+enum class CustomerListStatus {
+    
+    PROCESSING,
+    
+    READY,
+    
+    TOO_SMALL,
+    
+    UPLOADING
+    
 };
 
+inline void to_json(nlohmann::json& j, const CustomerListStatus& value)
+{
+    switch (value)
+    {
+        
+        case CustomerListStatus::PROCESSING: j = "PROCESSING"; break;
+        
+        case CustomerListStatus::READY: j = "READY"; break;
+        
+        case CustomerListStatus::TOO_SMALL: j = "TOO_SMALL"; break;
+        
+        case CustomerListStatus::UPLOADING: j = "UPLOADING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CustomerListStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CustomerListStatus& value)
+{
+    
+    if (j == "PROCESSING")
+    {
+        value = CustomerListStatus::PROCESSING;
+        return;
+    }
+    
+    if (j == "READY")
+    {
+        value = CustomerListStatus::READY;
+        return;
+    }
+    
+    if (j == "TOO_SMALL")
+    {
+        value = CustomerListStatus::TOO_SMALL;
+        return;
+    }
+    
+    if (j == "UPLOADING")
+    {
+        value = CustomerListStatus::UPLOADING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CustomerListStatus", &j);
+}
 
 } // namespace models
 

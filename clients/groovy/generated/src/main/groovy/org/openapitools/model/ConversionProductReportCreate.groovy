@@ -23,15 +23,15 @@ class ConversionProductReportCreate {
     /* List of values for filtering. Default is ['CONSIDERATION','AWARENESS','WEB_CONVERSION','VIDEO_COMPLETION']. */
     List<ConversionObjectiveType> campaignObjectiveTypes = new ArrayList<>()
     /* Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. */
-    ConversionAttributionWindowDays clickWindowDays
+    ConversionAttributionWindowDays clickWindowDays = 30
     /* Metric and entity columns */
     List<ConversionProductReportingColumn> columns = new ArrayList<>()
     /*   Required attribution type of the B/C/S report.   When the attribution type is BRAND_ATTRIBUTION, start_date for the report must be after 2025-04-01. */
-    ConversionProductAttributionType conversionProductAttributionType
+    ConversionProductAttributionType conversionProductAttributionType = ConversionProductAttributionType.DEFAULT
     /* Report breakdown type. This is used to specify the breakdown of the report by brand, category, or SKU. */
-    ConversionProductReportBreakdownType conversionProductBreakdown
+    ConversionProductReportBreakdownType conversionProductBreakdown = ConversionProductReportBreakdownType.PRODUCT_BRAND
     /* The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. */
-    ConversionReportTimeType conversionReportTime
+    ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION
     /*   Metric report end date (UTC). Format: YYYY-MM-DD.   A max of 1 year is allowed between the start and end date for reports. */
     String endDate
     /* Report granularity for time-based metric aggregation */
@@ -45,5 +45,5 @@ class ConversionProductReportCreate {
     /*   Metric report start date (UTC). Format: YYYY-MM-DD.   Start date must be after 2024-03-16. 7 day minimum time window for report is required. */
     String startDate
     /* Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. */
-    ConversionAttributionWindowDays viewWindowDays
+    ConversionAttributionWindowDays viewWindowDays = 30
 }

@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormCreate   {
   
   private String completionMessage;
@@ -91,8 +91,7 @@ public class LeadFormCreate   {
   
   @ApiModelProperty(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", value = "List of additional policy links to be displayed on the lead form.")
   @JsonProperty("policy_links")
- @Size(min=0,max=3)  @Valid
-  public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
+ @Size(min=0,max=3)  public List<@Valid LeadFormPolicyLink> getPolicyLinks() {
     return policyLinks;
   }
   public void setPolicyLinks(List<@Valid LeadFormPolicyLink> policyLinks) {
@@ -120,8 +119,7 @@ public class LeadFormCreate   {
   @ApiModelProperty(example = "[{\"question_type\":\"CUSTOM\",\"custom_question_field_type\":\"CHECKBOX\",\"custom_question_label\":\"What is your favorite animal?\",\"custom_question_options\":[\"Dog\",\"Cat\",\"Bird\",\"Turtle\"]}]", required = true, value = "List of questions to be displayed on the lead form.")
   @JsonProperty("questions")
   @NotNull
- @Size(min=0,max=10)  @Valid
-  public List<@Valid LeadFormQuestion> getQuestions() {
+ @Size(min=0,max=10)  public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
   }
   public void setQuestions(List<@Valid LeadFormQuestion> questions) {

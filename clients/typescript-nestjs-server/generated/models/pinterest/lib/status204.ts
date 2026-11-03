@@ -8,7 +8,7 @@ export interface PinterestLibStatus204 {
 }
 export namespace PinterestLibStatus204 {
   export const StatusCodeEnum = {
-    NUMBER_204: 204
+    NUMBER_204: 204,
   } as const;
   export type StatusCodeEnum = typeof StatusCodeEnum[keyof typeof StatusCodeEnum];
 }

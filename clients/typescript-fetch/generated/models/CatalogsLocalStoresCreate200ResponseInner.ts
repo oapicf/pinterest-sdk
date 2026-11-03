@@ -29,8 +29,6 @@ import {
 export interface CatalogsLocalStoresCreate200ResponseInner {
     /**
      * 
-     * @type {CatalogsLocalStoresCreate200ResponseInnerData}
-     * @memberof CatalogsLocalStoresCreate200ResponseInner
      */
     data: CatalogsLocalStoresCreate200ResponseInnerData;
 }

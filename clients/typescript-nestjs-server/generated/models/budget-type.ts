@@ -6,7 +6,7 @@
 export const BudgetType = {
     Daily: 'DAILY',
     Lifetime: 'LIFETIME',
-    CboAdgroup: 'CBO_ADGROUP'
+    CboAdgroup: 'CBO_ADGROUP',
 } as const;
 export type BudgetType = typeof BudgetType[keyof typeof BudgetType];
 

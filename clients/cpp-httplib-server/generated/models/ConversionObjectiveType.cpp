@@ -6,20 +6,3 @@
 */
 #include "ConversionObjectiveType.h"
 
-namespace models {
-
-ConversionObjectiveType::ConversionObjectiveType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

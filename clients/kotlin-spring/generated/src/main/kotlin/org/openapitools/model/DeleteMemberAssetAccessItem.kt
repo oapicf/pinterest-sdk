@@ -23,13 +23,13 @@ data class DeleteMemberAssetAccessItem(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Id of the asset on which to remove member permissions.")
-    @param:JsonProperty("asset_id")
+    @param:JsonProperty("asset_id", required = true)
     @get:JsonProperty("asset_id", required = true) val assetId: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=25)
     @Schema(required = true, description = "Unique identifier of the member on which to perform the asset permission removal")
-    @param:JsonProperty("member_id")
+    @param:JsonProperty("member_id", required = true)
     @get:JsonProperty("member_id", required = true) val memberId: kotlin.String
 ) {
 

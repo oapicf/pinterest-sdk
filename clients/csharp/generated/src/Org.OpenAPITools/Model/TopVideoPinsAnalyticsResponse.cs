@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dateAvailability.IsSet && dateAvailability.Value == null)
-                throw new ArgumentNullException(nameof(dateAvailability), "Property is not nullable for class TopVideoPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponse: date_availability.");
 
             if (pins.IsSet && pins.Value == null)
-                throw new ArgumentNullException(nameof(pins), "Property is not nullable for class TopVideoPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponse: pins.");
 
             if (sortBy.IsSet && sortBy.Value == null)
-                throw new ArgumentNullException(nameof(sortBy), "Property is not nullable for class TopVideoPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponse: sort_by.");
 
             return new TopVideoPinsAnalyticsResponse(dateAvailability, pins, sortBy);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponse topVideoPinsAnalyticsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,14 +211,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponse topVideoPinsAnalyticsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (topVideoPinsAnalyticsResponse.DateAvailabilityOption.IsSet && topVideoPinsAnalyticsResponse.DateAvailability == null)
-                throw new ArgumentNullException(nameof(topVideoPinsAnalyticsResponse.DateAvailability), "Property is required for class TopVideoPinsAnalyticsResponse.");
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponse.DateAvailability to non-nullable JSON property 'date_availability'.");
 
             if (topVideoPinsAnalyticsResponse.PinsOption.IsSet && topVideoPinsAnalyticsResponse.Pins == null)
-                throw new ArgumentNullException(nameof(topVideoPinsAnalyticsResponse.Pins), "Property is required for class TopVideoPinsAnalyticsResponse.");
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponse.Pins to non-nullable JSON property 'pins'.");
+
+            if (topVideoPinsAnalyticsResponse.SortByOption.IsSet && topVideoPinsAnalyticsResponse.SortBy == null)
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponse.SortBy to non-nullable JSON property 'sort_by'.");
 
             if (topVideoPinsAnalyticsResponse.DateAvailabilityOption.IsSet)
             {

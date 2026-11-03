@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class BrandAccount(
 
     @Schema(required = true, readOnly = true, description = "")
-    @param:JsonProperty("brand_account_id")
+    @param:JsonProperty("brand_account_id", required = true)
     @get:JsonProperty("brand_account_id", required = true) val brandAccountId: kotlin.String
 ) {
 

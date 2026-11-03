@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CatalogsCreativeAssetsItemsPostFilter {
     /**
      * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsItemsPostFilter
      */
     catalogId?: string;
     /**
      * 
-     * @type {CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsItemsPostFilter
      */
     catalogType: CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CatalogsCreativeAssetsItemsPostFilter
      */
     creativeAssetsIds: Array<string>;
 }
@@ -44,7 +38,7 @@ export interface CatalogsCreativeAssetsItemsPostFilter {
  * @export
  */
 export const CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum = typeof CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum];
 

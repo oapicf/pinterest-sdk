@@ -29,14 +29,10 @@ import {
 export interface CatalogsProductGroupCurrencyCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupCurrencyCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {NonNullableCatalogsCurrency}
-     * @memberof CatalogsProductGroupCurrencyCriteria
      */
     values: NonNullableCatalogsCurrency;
 }

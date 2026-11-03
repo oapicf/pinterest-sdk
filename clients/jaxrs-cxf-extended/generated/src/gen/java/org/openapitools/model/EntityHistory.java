@@ -27,7 +27,6 @@ public class EntityHistory  {
   * Properties associated with a particular change to an entity's data
   */
   @ApiModelProperty(value = "Properties associated with a particular change to an entity's data")
-  @Valid
   private List<@Valid EntityDataChangeHistory> dataChanges = new ArrayList<>();
 
  /**

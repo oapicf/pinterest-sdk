@@ -104,7 +104,7 @@ $apiInstance = new OpenAPI\Client\Api\CatalogItemsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$catalogs_items_batch_post_request = new \OpenAPI\Client\Model\CatalogsVerticalBatchRequest(); // \OpenAPI\Client\Model\CatalogsItemsBatchPostRequest
+$catalogs_items_batch_post_request = new \OpenAPI\Client\Model\CatalogsRetailBatchRequest(); // \OpenAPI\Client\Model\CatalogsItemsBatchPostRequest
 $ad_account_id = 'ad_account_id_example'; // string | Unique identifier of an ad account.
 
 try {

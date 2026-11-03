@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -27,31 +26,23 @@ import jakarta.annotation.Generated;
  * UserBusinessRoleBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UserBusinessRoleBinding {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BusinessMemberAssetsSummary> assetsSummary = JsonNullable.<BusinessMemberAssetsSummary>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> businessRoles = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BusinessAccessUserSummary> createdByBusiness = JsonNullable.<BusinessAccessUserSummary>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BusinessAccessUserSummary> createdByUser = JsonNullable.<BusinessAccessUserSummary>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> createdTime = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isSharedPartner;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BusinessAccessUserSummary> user = JsonNullable.<BusinessAccessUserSummary>undefined();
 
   public UserBusinessRoleBinding assetsSummary(BusinessMemberAssetsSummary assetsSummary) {
@@ -64,7 +55,7 @@ public class UserBusinessRoleBinding {
    * @return assetsSummary
    */
   @Valid 
-  @Schema(name = "assets_summary", description = "Ad accounts and profiles the business member/partner has access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "assets_summary", description = "Ad accounts and profiles the business member/partner has access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("assets_summary")
   public JsonNullable<BusinessMemberAssetsSummary> getAssetsSummary() {
     return assetsSummary;
@@ -113,7 +104,7 @@ public class UserBusinessRoleBinding {
    * @return createdByBusiness
    */
   @Valid 
-  @Schema(name = "created_by_business", description = "Metadata for the business that created the business relationship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_by_business", description = "Metadata for the business that created the business relationship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_by_business")
   public JsonNullable<BusinessAccessUserSummary> getCreatedByBusiness() {
     return createdByBusiness;
@@ -133,7 +124,7 @@ public class UserBusinessRoleBinding {
    * @return createdByUser
    */
   @Valid 
-  @Schema(name = "created_by_user", description = "Metadata for the user that created the business relationship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_by_user", description = "Metadata for the user that created the business relationship.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_by_user")
   public JsonNullable<BusinessAccessUserSummary> getCreatedByUser() {
     return createdByUser;
@@ -153,7 +144,7 @@ public class UserBusinessRoleBinding {
    * @return createdTime
    */
   
-  @Schema(name = "created_time", example = "1646767577816", description = "The time the business relationship was created. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "created_time", example = "1646767577816", description = "The time the business relationship was created. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("created_time")
   public JsonNullable<Integer> getCreatedTime() {
     return createdTime;
@@ -215,7 +206,7 @@ public class UserBusinessRoleBinding {
    * @return user
    */
   @Valid 
-  @Schema(name = "user", description = "Metadata for the business member/business partner/employer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "user", description = "Metadata for the business member/business partner/employer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("user")
   public JsonNullable<BusinessAccessUserSummary> getUser() {
     return user;

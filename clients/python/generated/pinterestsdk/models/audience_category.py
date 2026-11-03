@@ -80,8 +80,7 @@ class AudienceCategory(BaseModel):
         _items = []
         if self.subcategories:
             for _item_subcategories in self.subcategories:
-                if _item_subcategories:
-                    _items.append(_item_subcategories.to_dict())
+                _items.append(_item_subcategories.to_dict() if _item_subcategories is not None else None)
             _dict['subcategories'] = _items
         return _dict
 

@@ -9,8 +9,8 @@ import Foundation
 
 public struct TargetingSpecOptimal: Sendable, Codable, Hashable {
 
-    public static let MAXIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+\\+?$/")
-    public static let MINIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let MAXIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+\\+?$")
+    public static let MINIMUM_AGERule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** **Legacy field.** Predefined age ranges. We recommend using MINIMUM_AGE and MAXIMUM_AGE instead for more flexible targeting. Cannot be combined with MINIMUM_AGE/MAXIMUM_AGE. If neither AGE_BUCKET nor MINIMUM_AGE/MAXIMUM_AGE are specified, all ages will be targeted. */
     public var AGE_BUCKET: [TargetingSpecAgeBucket]?
     /** Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted. */

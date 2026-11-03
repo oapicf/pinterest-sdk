@@ -140,6 +140,7 @@ class _$CatalogsUpsertHotelItemSerializer implements PrimitiveSerializer<Catalog
   }
 }
 
+
 class CatalogsUpsertHotelItemOperationEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'UPSERT')

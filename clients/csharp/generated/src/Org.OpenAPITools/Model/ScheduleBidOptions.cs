@@ -220,7 +220,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (audienceMultipliers.IsSet && audienceMultipliers.Value == null)
-                throw new ArgumentNullException(nameof(audienceMultipliers), "Property is not nullable for class ScheduleBidOptions.");
+                throw new JsonException("Property is not nullable for class ScheduleBidOptions: audience_multipliers.");
 
             return new ScheduleBidOptions(ageBucketMultipliers, appTypeMultipliers, audienceMultipliers, genderMultipliers, placementMultipliers);
         }
@@ -231,7 +231,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleBidOptions scheduleBidOptions, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -246,11 +245,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptions"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleBidOptions scheduleBidOptions, JsonSerializerOptions jsonSerializerOptions)
         {
             if (scheduleBidOptions.AudienceMultipliersOption.IsSet && scheduleBidOptions.AudienceMultipliers == null)
-                throw new ArgumentNullException(nameof(scheduleBidOptions.AudienceMultipliers), "Property is required for class ScheduleBidOptions.");
+                throw new JsonException("Cannot write null property ScheduleBidOptions.AudienceMultipliers to non-nullable JSON property 'audience_multipliers'.");
 
             if (scheduleBidOptions.AgeBucketMultipliersOption.IsSet)
                 if (scheduleBidOptions.AgeBucketMultipliersOption.Value != null)

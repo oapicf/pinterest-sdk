@@ -36,68 +36,46 @@ import {
 export interface PinCreate {
     /**
      * AI disclosure declarations the creator has made about this Pin.
-     * @type {AiDisclosures}
-     * @memberof PinCreate
      */
     aiDisclosures?: AiDisclosures;
     /**
      * 
-     * @type {string}
-     * @memberof PinCreate
      */
     altText?: string | null;
     /**
      * The board to which this Pin belongs.
-     * @type {string}
-     * @memberof PinCreate
      */
     boardId?: string;
     /**
      * The board section to which this Pin belongs.
-     * @type {string}
-     * @memberof PinCreate
      */
     boardSectionId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof PinCreate
      */
     description?: string | null;
     /**
      * Dominant pin color. Hex number, e.g. `#6E7874`.
-     * @type {string}
-     * @memberof PinCreate
      */
     dominantColor?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof PinCreate
      */
     link?: string | null;
     /**
      * 
-     * @type {PinMediaSource}
-     * @memberof PinCreate
      */
     mediaSource?: PinMediaSource;
     /**
      * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
-     * @type {string}
-     * @memberof PinCreate
      */
     parentPinId?: string | null;
     /**
      * The sponsor account id to request paid partnership from.  Currently the field is only available to a list of users in a closed beta.
-     * @type {string}
-     * @memberof PinCreate
      */
     sponsorId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof PinCreate
      */
     title?: string | null;
 }

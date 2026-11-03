@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,10 +28,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImagesBase64", description = "Multiple Base64-based images media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourceImagesBase64 implements PinMediaSource {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer index;
 
   private List<@Valid PinMediaSourceImagesBase64Item> items = new ArrayList<>();
@@ -123,7 +121,7 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
    * Array with image objects.
    * @return items
    */
-  @NotNull @Valid @Size(min = 2, max = 5) 
+  @NotNull @Size(min = 2, max = 5) 
   @Schema(name = "items", description = "Array with image objects.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid PinMediaSourceImagesBase64Item> getItems() {

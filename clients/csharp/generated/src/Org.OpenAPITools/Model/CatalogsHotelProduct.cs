@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsHotelProduct.CatalogTypeEnum?>(CatalogsHotelProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsHotelProduct.CatalogTypeEnum? catalogTypeValue = CatalogsHotelProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsHotelProduct.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "metadata":
                             metadata = new Option<CatalogsHotelProductMetadata?>(JsonSerializer.Deserialize<CatalogsHotelProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProduct.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsHotelProduct: catalog_type.");
 
             if (!metadata.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProduct.", nameof(metadata));
+                throw new JsonException("Property is required for class CatalogsHotelProduct: metadata.");
 
             if (!pin.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsHotelProduct.", nameof(pin));
+                throw new JsonException("Property is required for class CatalogsHotelProduct: pin.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsHotelProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProduct: catalog_type.");
 
             if (metadata.IsSet && metadata.Value == null)
-                throw new ArgumentNullException(nameof(metadata), "Property is not nullable for class CatalogsHotelProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProduct: metadata.");
 
             if (pin.IsSet && pin.Value == null)
-                throw new ArgumentNullException(nameof(pin), "Property is not nullable for class CatalogsHotelProduct.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelProduct: pin.");
 
             return new CatalogsHotelProduct(catalogType.Value!.Value!, metadata.Value!, pin.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelProduct catalogsHotelProduct, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,15 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelProduct"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelProduct catalogsHotelProduct, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsHotelProduct.Metadata == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProduct.Metadata), "Property is required for class CatalogsHotelProduct.");
-
-            if (catalogsHotelProduct.Pin == null)
-                throw new ArgumentNullException(nameof(catalogsHotelProduct.Pin), "Property is required for class CatalogsHotelProduct.");
-
             var catalogTypeRawValue = CatalogsHotelProduct.CatalogTypeEnumToJsonValue(catalogsHotelProduct.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
             writer.WritePropertyName("metadata");

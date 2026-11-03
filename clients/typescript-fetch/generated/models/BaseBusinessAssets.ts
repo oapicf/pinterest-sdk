@@ -36,26 +36,18 @@ import {
 export interface BaseBusinessAssets {
     /**
      * An object containing all the information specific to the provided asset group. This field will be populated only if asset_type equals 'ASSET_GROUP'.
-     * @type {AssetGroupBinding}
-     * @memberof BaseBusinessAssets
      */
     assetGroupInfo?: AssetGroupBinding;
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof BaseBusinessAssets
      */
     assetId?: string;
     /**
      * 
-     * @type {AssetTypeResponse}
-     * @memberof BaseBusinessAssets
      */
     assetType?: AssetTypeResponse;
     /**
      * Permission levels the requesting business has on an asset.
-     * @type {Array<string>}
-     * @memberof BaseBusinessAssets
      */
     permissions?: Array<string>;
 }

@@ -44,10 +44,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **localInventoryItemsBatchCreate** | [**LocalInventoryItemsBatchCreate**](LocalInventoryItemsBatchCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **localInventoryItemsBatchCreate** | [**LocalInventoryItemsBatchCreate**](LocalInventoryItemsBatchCreate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -102,10 +102,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **localInventoryItemsGetCreate** | [**LocalInventoryItemsGetCreate**](LocalInventoryItemsGetCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **localInventoryItemsGetCreate** | [**LocalInventoryItemsGetCreate**](LocalInventoryItemsGetCreate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -160,10 +160,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **localStoreCreate** | [**kotlin.collections.List&lt;LocalStoreCreate&gt;**](LocalStoreCreate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **localStoreCreate** | [**kotlin.collections.List&lt;LocalStoreCreate&gt;**](LocalStoreCreate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -218,10 +218,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **ids** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of local store IDs to filter by. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **ids** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of local store IDs to filter by. | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -278,12 +278,12 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
 | **ids** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| List of local store IDs to filter by. | [optional] |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -338,10 +338,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **localStoreBatchUpdate** | [**kotlin.collections.List&lt;LocalStoreBatchUpdate&gt;**](LocalStoreBatchUpdate.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **localStoreBatchUpdate** | [**kotlin.collections.List&lt;LocalStoreBatchUpdate&gt;**](LocalStoreBatchUpdate.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -396,10 +396,10 @@ try {
 ```
 
 ### Parameters
-| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
-| **batchId** | **kotlin.String**| Unique identifier of an items batch operation. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogId** | **kotlin.String**| Unique identifier of a catalog. | |
+| **batchId** | **kotlin.String**| Unique identifier of an items batch operation. | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type

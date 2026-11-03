@@ -149,6 +149,7 @@ class _$CatalogsReportSerializer implements PrimitiveSerializer<CatalogsReport> 
   }
 }
 
+
 class CatalogsReportReportStatusEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'FINISHED')

@@ -29,14 +29,10 @@ import {
 export interface UserAccountFollowedInterests200Response {
     /**
      * 
-     * @type {string}
-     * @memberof UserAccountFollowedInterests200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Interest>}
-     * @memberof UserAccountFollowedInterests200Response
      */
     items: Array<Interest>;
 }

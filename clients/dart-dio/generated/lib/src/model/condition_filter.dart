@@ -105,3 +105,4 @@ class _$ConditionFilterSerializer implements PrimitiveSerializer<ConditionFilter
   }
 }
 
+

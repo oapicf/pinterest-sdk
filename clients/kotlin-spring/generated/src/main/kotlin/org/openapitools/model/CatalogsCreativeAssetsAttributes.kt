@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsAiContentDisclosure
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -62,8 +59,6 @@ data class CatalogsCreativeAssetsAttributes(
     @get:JsonProperty("custom_label_4") val customLabel4: kotlin.String? = null,
 
     @Schema(description = "Brief description of the creative assets.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
@@ -76,14 +71,10 @@ data class CatalogsCreativeAssetsAttributes(
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(description = "Link to the creative assets page.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
     @Schema(description = "The name of the creative assets.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null,
 
@@ -93,20 +84,14 @@ data class CatalogsCreativeAssetsAttributes(
 
     @field:Valid
     @Schema(example = "[{\"url\":\"https://scene.example.com/image/image_v2.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link or video_link) on this creative assets item. Each entry declares which disclosure types apply to a single asset URL.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
 
     @Schema(example = "https://scene.example.com/image/image_v2.jpg", description = "The creative assets image.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("image_link")
     @get:JsonProperty("image_link") val imageLink: kotlin.String? = null,
 
     @Schema(example = "https://scene.example.com/image/image_v2.mp4", description = "The creative assets video.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("video_link")
     @get:JsonProperty("video_link") val videoLink: kotlin.String? = null
 ) {

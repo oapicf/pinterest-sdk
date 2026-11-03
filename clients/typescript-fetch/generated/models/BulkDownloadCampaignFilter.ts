@@ -36,32 +36,22 @@ import {
 export interface BulkDownloadCampaignFilter {
     /**
      * 
-     * @type {Array<SummaryStatus>}
-     * @memberof BulkDownloadCampaignFilter
      */
     campaignStatus?: Array<SummaryStatus>;
     /**
      * Unix UTC timestamp.
-     * @type {string}
-     * @memberof BulkDownloadCampaignFilter
      */
     endTime?: string;
     /**
      * Campaign name
-     * @type {string}
-     * @memberof BulkDownloadCampaignFilter
      */
     name?: string;
     /**
      * 
-     * @type {Array<ConversionObjectiveType>}
-     * @memberof BulkDownloadCampaignFilter
      */
     objectiveType?: Array<ConversionObjectiveType>;
     /**
      * Unix UTC timestamp.
-     * @type {string}
-     * @memberof BulkDownloadCampaignFilter
      */
     startTime?: string;
 }

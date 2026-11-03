@@ -23,7 +23,6 @@ public class LocalInventoryItemsGet  {
   * Array of local inventory items
   */
   @ApiModelProperty(required = true, value = "Array of local inventory items")
-  @Valid
   private List<@Valid LocalInventoryItemResponse> items = new ArrayList<>();
  /**
   * Array of local inventory items

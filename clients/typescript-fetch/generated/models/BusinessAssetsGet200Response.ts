@@ -29,14 +29,10 @@ import {
 export interface BusinessAssetsGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof BusinessAssetsGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<BusinessAssets>}
-     * @memberof BusinessAssetsGet200Response
      */
     items: Array<BusinessAssets>;
 }

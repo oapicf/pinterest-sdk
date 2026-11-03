@@ -21,10 +21,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LabeledEntities")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabeledEntities   {
-  private @Valid List<@Valid EntityLabel> entitiesLabels = new ArrayList<>();
-  private @Valid List<@Valid EntityLabelError> errors = new ArrayList<>();
+  private List<@Valid EntityLabel> entitiesLabels = new ArrayList<>();
+  private List<@Valid EntityLabelError> errors = new ArrayList<>();
 
   public LabeledEntities() {
   }
@@ -39,7 +39,7 @@ public class LabeledEntities   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("entities_labels")
-  @Valid public List<@Valid EntityLabel> getEntitiesLabels() {
+  public List<@Valid EntityLabel> getEntitiesLabels() {
     return entitiesLabels;
   }
 
@@ -75,7 +75,7 @@ public class LabeledEntities   {
   
   @ApiModelProperty(value = "Labels that were not successfully applied.")
   @JsonProperty("errors")
-  @Valid public List<@Valid EntityLabelError> getErrors() {
+  public List<@Valid EntityLabelError> getErrors() {
     return errors;
   }
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Creative assets visibility.
-* Values: VISIBLE,HIDDEN
-*/
+ * Creative assets visibility.
+ * Values: VISIBLE,HIDDEN
+ */
 enum class CreativeAssetsVisibilityType(@get:JsonValue val value: kotlin.String) {
 
     VISIBLE("VISIBLE"),
@@ -28,9 +28,8 @@ enum class CreativeAssetsVisibilityType(@get:JsonValue val value: kotlin.String)
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): CreativeAssetsVisibilityType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreativeAssetsVisibilityType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreativeAssetsVisibilityType'")
         }
     }
 }
-

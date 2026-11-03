@@ -125,3 +125,4 @@ class _$SearchPartnerPins200ResponseSerializer implements PrimitiveSerializer<Se
   }
 }
 
+

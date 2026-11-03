@@ -19,8 +19,6 @@ public class CatalogsProductGroupMultipleStringListCriteria  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<List<String>> values = new ArrayList<>();
  /**
    * Get negated

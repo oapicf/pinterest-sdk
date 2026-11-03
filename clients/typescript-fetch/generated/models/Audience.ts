@@ -43,80 +43,54 @@ import {
 export interface Audience {
     /**
      * Ad account ID.
-     * @type {string}
-     * @memberof Audience
      */
     adAccountId?: string;
     /**
      * [Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-     * @type {PinnerListType}
-     * @memberof Audience
      */
     audienceType?: PinnerListType;
     /**
      * The company that created this audience.
-     * @type {string}
-     * @memberof Audience
      */
     createdByCompanyName?: string | null;
     /**
      * Creation time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof Audience
      */
     createdTimestamp?: number | null;
     /**
      * Audience description.
-     * @type {string}
-     * @memberof Audience
      */
     description?: string | null;
     /**
      * Audience ID.
-     * @type {string}
-     * @memberof Audience
      */
     id?: string;
     /**
      * Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.
-     * @type {boolean}
-     * @memberof Audience
      */
     isNca?: boolean;
     /**
      * Audience name.
-     * @type {string}
-     * @memberof Audience
      */
     name?: string;
     /**
      * 
-     * @type {AudienceRule}
-     * @memberof Audience
      */
     rule?: AudienceRule;
     /**
      * Audience size.
-     * @type {number}
-     * @memberof Audience
      */
     size?: number | null;
     /**
      * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-     * @type {AudienceStatus}
-     * @memberof Audience
      */
     status?: AudienceStatus;
     /**
      * Always "audience".
-     * @type {string}
-     * @memberof Audience
      */
     type?: string;
     /**
      * Last update time. Unix timestamp in seconds.
-     * @type {number}
-     * @memberof Audience
      */
     updatedTimestamp?: number | null;
 }

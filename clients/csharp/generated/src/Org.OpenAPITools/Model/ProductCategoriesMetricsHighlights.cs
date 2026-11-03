@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (engagement.IsSet && engagement.Value == null)
-                throw new ArgumentNullException(nameof(engagement), "Property is not nullable for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Property is not nullable for class ProductCategoriesMetricsHighlights: engagement.");
 
             if (outboundClicks.IsSet && outboundClicks.Value == null)
-                throw new ArgumentNullException(nameof(outboundClicks), "Property is not nullable for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Property is not nullable for class ProductCategoriesMetricsHighlights: outbound_clicks.");
 
             if (pinSaves.IsSet && pinSaves.Value == null)
-                throw new ArgumentNullException(nameof(pinSaves), "Property is not nullable for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Property is not nullable for class ProductCategoriesMetricsHighlights: pin_saves.");
 
             return new ProductCategoriesMetricsHighlights(engagement, outboundClicks, pinSaves);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoriesMetricsHighlights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductCategoriesMetricsHighlights productCategoriesMetricsHighlights, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,17 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productCategoriesMetricsHighlights"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductCategoriesMetricsHighlights productCategoriesMetricsHighlights, JsonSerializerOptions jsonSerializerOptions)
         {
             if (productCategoriesMetricsHighlights.EngagementOption.IsSet && productCategoriesMetricsHighlights.Engagement == null)
-                throw new ArgumentNullException(nameof(productCategoriesMetricsHighlights.Engagement), "Property is required for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Cannot write null property ProductCategoriesMetricsHighlights.Engagement to non-nullable JSON property 'engagement'.");
 
             if (productCategoriesMetricsHighlights.OutboundClicksOption.IsSet && productCategoriesMetricsHighlights.OutboundClicks == null)
-                throw new ArgumentNullException(nameof(productCategoriesMetricsHighlights.OutboundClicks), "Property is required for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Cannot write null property ProductCategoriesMetricsHighlights.OutboundClicks to non-nullable JSON property 'outbound_clicks'.");
 
             if (productCategoriesMetricsHighlights.PinSavesOption.IsSet && productCategoriesMetricsHighlights.PinSaves == null)
-                throw new ArgumentNullException(nameof(productCategoriesMetricsHighlights.PinSaves), "Property is required for class ProductCategoriesMetricsHighlights.");
+                throw new JsonException("Cannot write null property ProductCategoriesMetricsHighlights.PinSaves to non-nullable JSON property 'pin_saves'.");
 
             if (productCategoriesMetricsHighlights.EngagementOption.IsSet)
             {

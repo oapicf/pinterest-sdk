@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationGeo {
     /**
      * 
-     * @type {TargetingSpecOperationGeoFieldEnum}
-     * @memberof TargetingSpecOperationGeo
      */
     field: TargetingSpecOperationGeoFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationGeo
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationGeo
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationGeo {
  * @export
  */
 export const TargetingSpecOperationGeoFieldEnum = {
-    Geo: 'GEO'
+    Geo: 'GEO',
 } as const;
 export type TargetingSpecOperationGeoFieldEnum = typeof TargetingSpecOperationGeoFieldEnum[keyof typeof TargetingSpecOperationGeoFieldEnum];
 

@@ -36,20 +36,14 @@ import {
 export interface CampaignDeliveryEstimatesResponse {
     /**
      * Estimated curves. Each curve will pertain to a single estimation type.
-     * @type {Array<CampaignPlanningCurveEstimate>}
-     * @memberof CampaignDeliveryEstimatesResponse
      */
     curves?: Array<CampaignPlanningCurveEstimate>;
     /**
      * 
-     * @type {CampaignDeliveryEstimatesDerivedMetrics}
-     * @memberof CampaignDeliveryEstimatesResponse
      */
     derivedMetrics?: CampaignDeliveryEstimatesDerivedMetrics;
     /**
      * Maximum potential spend estimate.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesResponse
      */
     maxPotentialSpend?: number;
 }

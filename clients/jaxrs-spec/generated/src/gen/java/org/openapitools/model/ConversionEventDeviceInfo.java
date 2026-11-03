@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object containing information about the device where event occurred.")
 @JsonTypeName("ConversionEventDeviceInfo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventDeviceInfo   {
   private Integer batteryLevel;
   private String brand;
@@ -34,7 +34,7 @@ public class ConversionEventDeviceInfo   {
   private Integer externalStorageSize;
   private FormFactor formFactor;
   private String kernelVersion;
-  private @Valid List<String> languages = new ArrayList<>();
+  private List<String> languages = new ArrayList<>();
   private String locale;
   private String model;
   private NetworkType networkType;

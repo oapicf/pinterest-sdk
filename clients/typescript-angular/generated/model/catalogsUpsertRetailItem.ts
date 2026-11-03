@@ -23,7 +23,7 @@ export interface CatalogsUpsertRetailItem {
 }
 export namespace CatalogsUpsertRetailItem {
     export const OperationEnum = {
-        Upsert: 'UPSERT'
+        Upsert: 'UPSERT',
     } as const;
     export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

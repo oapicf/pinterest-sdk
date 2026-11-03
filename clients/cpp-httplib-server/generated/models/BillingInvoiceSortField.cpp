@@ -6,20 +6,3 @@
 */
 #include "BillingInvoiceSortField.h"
 
-namespace models {
-
-BillingInvoiceSortField::BillingInvoiceSortField()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

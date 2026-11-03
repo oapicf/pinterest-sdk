@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'audience_update_operation_type.g.dart';
 
+/// Audience operation type (update or remove).
 class AudienceUpdateOperationType extends EnumClass {
 
-  /// Audience operation type (update or remove).
   @BuiltValueEnumConst(wireName: r'UPDATE')
   static const AudienceUpdateOperationType UPDATE = _$UPDATE;
-  /// Audience operation type (update or remove).
   @BuiltValueEnumConst(wireName: r'REMOVE')
   static const AudienceUpdateOperationType REMOVE = _$REMOVE;
 

@@ -16,11 +16,11 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestResponse   {
   
   private List<@Valid AssetAccessRequestError> exceptions = new ArrayList<>();
-  private Map<String, String> invites = new HashMap<>();
+  private Map<String, @Pattern(regexp = "^\\d+$")String> invites = new HashMap<>();
 
   /**
    * A list of errors associated with the asset access requests. Will be returned if there is an error.
@@ -41,10 +41,10 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   @JsonProperty("invites")
-  public Map<String, String> getInvites() {
+  public Map<String, @Pattern(regexp = "^\\d+$")String> getInvites() {
     return invites;
   }
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
   }
 

@@ -559,34 +559,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!adAccountId.IsSet)
-                throw new ArgumentException("Property is required for class CampaignUpdateRequest.", nameof(adAccountId));
+                throw new JsonException("Property is required for class CampaignUpdateRequest: ad_account_id.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class CampaignUpdateRequest.", nameof(id));
+                throw new JsonException("Property is required for class CampaignUpdateRequest: id.");
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: ad_account_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: id.");
 
             if (intendedPromotionType.IsSet && intendedPromotionType.Value == null)
-                throw new ArgumentNullException(nameof(intendedPromotionType), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: intended_promotion_type.");
 
             if (isLtvOptimized.IsSet && isLtvOptimized.Value == null)
-                throw new ArgumentNullException(nameof(isLtvOptimized), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: is_ltv_optimized.");
 
             if (isPerformancePlus.IsSet && isPerformancePlus.Value == null)
-                throw new ArgumentNullException(nameof(isPerformancePlus), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: is_performance_plus.");
 
             if (isTopOfSearch.IsSet && isTopOfSearch.Value == null)
-                throw new ArgumentNullException(nameof(isTopOfSearch), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: is_top_of_search.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: name.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class CampaignUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequest: status.");
 
             return new CampaignUpdateRequest(adAccountId.Value!, id.Value!, bidOptions, intendedPromotionType, isLtvOptimized, isPerformancePlus, isTopOfSearch, objectiveType, dailySpendCap, defaultAdGroupBudgetInMicroCurrency, endTime, isAutomatedCampaign, isCampaignBudgetOptimization, isFlexibleDailyBudgets, lifetimeSpendCap, name, orderLineId, startTime, status, trackingUrls);
         }
@@ -597,7 +597,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignUpdateRequest campaignUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -612,17 +611,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignUpdateRequest campaignUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (campaignUpdateRequest.AdAccountId == null)
-                throw new ArgumentNullException(nameof(campaignUpdateRequest.AdAccountId), "Property is required for class CampaignUpdateRequest.");
+            if (campaignUpdateRequest.IntendedPromotionTypeOption.IsSet && campaignUpdateRequest.IntendedPromotionType == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.IntendedPromotionType to non-nullable JSON property 'intended_promotion_type'.");
 
-            if (campaignUpdateRequest.Id == null)
-                throw new ArgumentNullException(nameof(campaignUpdateRequest.Id), "Property is required for class CampaignUpdateRequest.");
+            if (campaignUpdateRequest.IsLtvOptimizedOption.IsSet && campaignUpdateRequest.IsLtvOptimized == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.IsLtvOptimized to non-nullable JSON property 'is_ltv_optimized'.");
+
+            if (campaignUpdateRequest.IsPerformancePlusOption.IsSet && campaignUpdateRequest.IsPerformancePlus == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.IsPerformancePlus to non-nullable JSON property 'is_performance_plus'.");
+
+            if (campaignUpdateRequest.IsTopOfSearchOption.IsSet && campaignUpdateRequest.IsTopOfSearch == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.IsTopOfSearch to non-nullable JSON property 'is_top_of_search'.");
 
             if (campaignUpdateRequest.NameOption.IsSet && campaignUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(campaignUpdateRequest.Name), "Property is required for class CampaignUpdateRequest.");
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.Name to non-nullable JSON property 'name'.");
+
+            if (campaignUpdateRequest.StatusOption.IsSet && campaignUpdateRequest.Status == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequest.Status to non-nullable JSON property 'status'.");
 
             writer.WriteString("ad_account_id", campaignUpdateRequest.AdAccountId);
 

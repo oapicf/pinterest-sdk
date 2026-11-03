@@ -24,7 +24,7 @@ export const BillingProfileStatus = {
     Pending: 'PENDING',
     Deleted: 'DELETED',
     Secondary: 'SECONDARY',
-    PendingSecondary: 'PENDING_SECONDARY'
+    PendingSecondary: 'PENDING_SECONDARY',
 } as const;
 export type BillingProfileStatus = typeof BillingProfileStatus[keyof typeof BillingProfileStatus];
 

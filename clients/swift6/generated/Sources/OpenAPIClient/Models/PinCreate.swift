@@ -11,12 +11,12 @@ import Foundation
 public struct PinCreate: Sendable, Codable, Hashable {
 
     public static let altTextRule = StringRule(minLength: nil, maxLength: 500, pattern: nil)
-    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let boardIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let boardSectionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let descriptionRule = StringRule(minLength: nil, maxLength: 800, pattern: nil)
     public static let linkRule = StringRule(minLength: nil, maxLength: 2048, pattern: nil)
-    public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let sponsorIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let parentPinIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let sponsorIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let titleRule = StringRule(minLength: nil, maxLength: 100, pattern: nil)
     /** AI disclosure declarations the creator has made about this Pin. */
     public var aiDisclosures: AiDisclosures?

@@ -136,7 +136,7 @@ function Invoke-MediaGet {
         if (!$MediaId) {
             throw "Error! The required parameter `MediaId` missing when calling media_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{media_id}', [System.Web.HTTPUtility]::UrlEncode($MediaId))
+        $LocalVarUri = $LocalVarUri.replace('{media_id}', [System.Uri]::EscapeDataString([string]$MediaId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `

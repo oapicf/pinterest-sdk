@@ -25,15 +25,15 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Individual trending topic within an interest category")
 @JsonTypeName("TrendingTopic")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendingTopic   {
   private String description;
   private String id;
   private Integer percentGrowthMom;
-  private @Valid List<@Valid TrendingPin> pins = new ArrayList<>();
-  private @Valid List<String> relatedInterests = new ArrayList<>();
-  private @Valid List<String> relatedSearches = new ArrayList<>();
-  private @Valid Map<String, BigDecimal> timeSeries = new HashMap<>();
+  private List<@Valid TrendingPin> pins = new ArrayList<>();
+  private List<String> relatedInterests = new ArrayList<>();
+  private List<String> relatedSearches = new ArrayList<>();
+  private Map<String, BigDecimal> timeSeries = new HashMap<>();
   private String title;
 
   public TrendingTopic() {
@@ -129,7 +129,7 @@ public class TrendingTopic   {
   
   @ApiModelProperty(required = true, value = "Array of pin images related to this trend (up to 6)")
   @JsonProperty(required = true, value = "pins")
-  @NotNull @Valid  @Size(max=6)public List<@Valid TrendingPin> getPins() {
+  @NotNull  @Size(max=6)public List<@Valid TrendingPin> getPins() {
     return pins;
   }
 
@@ -237,7 +237,7 @@ public class TrendingTopic   {
   
   @ApiModelProperty(required = true, value = "Time series data showing trend values over time, with dates as keys and values as numeric")
   @JsonProperty(required = true, value = "time_series")
-  @NotNull @Valid public Map<String, BigDecimal> getTimeSeries() {
+  @NotNull public Map<String, BigDecimal> getTimeSeries() {
     return timeSeries;
   }
 

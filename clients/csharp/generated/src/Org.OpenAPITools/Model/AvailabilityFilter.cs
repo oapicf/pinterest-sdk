@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!aVAILABILITY.IsSet)
-                throw new ArgumentException("Property is required for class AvailabilityFilter.", nameof(aVAILABILITY));
+                throw new JsonException("Property is required for class AvailabilityFilter: AVAILABILITY.");
 
             if (aVAILABILITY.IsSet && aVAILABILITY.Value == null)
-                throw new ArgumentNullException(nameof(aVAILABILITY), "Property is not nullable for class AvailabilityFilter.");
+                throw new JsonException("Property is not nullable for class AvailabilityFilter: AVAILABILITY.");
 
             return new AvailabilityFilter(aVAILABILITY.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="availabilityFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AvailabilityFilter availabilityFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="availabilityFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AvailabilityFilter availabilityFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (availabilityFilter.AVAILABILITY == null)
-                throw new ArgumentNullException(nameof(availabilityFilter.AVAILABILITY), "Property is required for class AvailabilityFilter.");
-
             writer.WritePropertyName("AVAILABILITY");
             JsonSerializer.Serialize(writer, availabilityFilter.AVAILABILITY, jsonSerializerOptions);
         }

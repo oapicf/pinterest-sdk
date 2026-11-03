@@ -6,20 +6,3 @@
 */
 #include "FrequencyGoalMetadataTimerange.h"
 
-namespace models {
-
-FrequencyGoalMetadataTimerange::FrequencyGoalMetadataTimerange()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

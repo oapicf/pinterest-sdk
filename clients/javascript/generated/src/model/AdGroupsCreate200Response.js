@@ -17,7 +17,7 @@ import AdGroupsCreate200ResponseItemsInner from './AdGroupsCreate200ResponseItem
 /**
  * The AdGroupsCreate200Response model module.
  * @module model/AdGroupsCreate200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupsCreate200Response {
     /**

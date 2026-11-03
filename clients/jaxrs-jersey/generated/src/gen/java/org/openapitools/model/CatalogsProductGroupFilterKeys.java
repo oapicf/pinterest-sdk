@@ -73,7 +73,7 @@ import javax.validation.Valid;
   CatalogsProductGroupFilterKeys.JSON_PROPERTY_P_I_N_T_E_R_E_S_T_P_R_O_D_U_C_T_C_A_T_E_G_O_R_I_E_S,
   CatalogsProductGroupFilterKeys.JSON_PROPERTY_P_R_O_D_U_C_T_G_R_O_U_P
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFilterKeys   {
   public static final String JSON_PROPERTY_M_I_N_P_R_I_C_E = "MIN_PRICE";
   @JsonProperty(JSON_PROPERTY_M_I_N_P_R_I_C_E)

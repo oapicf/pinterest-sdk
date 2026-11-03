@@ -36,20 +36,14 @@ import {
 export interface CatalogsHotelProduct {
     /**
      * 
-     * @type {CatalogsHotelProductCatalogTypeEnum}
-     * @memberof CatalogsHotelProduct
      */
     catalogType: CatalogsHotelProductCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsHotelProductMetadata}
-     * @memberof CatalogsHotelProduct
      */
     metadata: CatalogsHotelProductMetadata;
     /**
      * 
-     * @type {Pin}
-     * @memberof CatalogsHotelProduct
      */
     pin: Pin;
 }
@@ -59,7 +53,7 @@ export interface CatalogsHotelProduct {
  * @export
  */
 export const CatalogsHotelProductCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelProductCatalogTypeEnum = typeof CatalogsHotelProductCatalogTypeEnum[keyof typeof CatalogsHotelProductCatalogTypeEnum];
 

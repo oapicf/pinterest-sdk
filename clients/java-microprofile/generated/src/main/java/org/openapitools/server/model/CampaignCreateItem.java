@@ -149,7 +149,7 @@ public class CampaignCreateItem  {
   protected Integer startTime;
 
   @JsonbProperty("status")
-  protected EntityStatus status;
+  protected EntityStatus status = EntityStatus.ACTIVE;
 
   @JsonbProperty("tracking_urls")
   protected TrackingUrls trackingUrls;

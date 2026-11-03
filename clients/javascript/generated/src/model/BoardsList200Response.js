@@ -17,7 +17,7 @@ import Board from './Board';
 /**
  * The BoardsList200Response model module.
  * @module model/BoardsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BoardsList200Response {
     /**

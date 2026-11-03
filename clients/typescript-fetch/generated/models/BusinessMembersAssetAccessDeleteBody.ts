@@ -29,8 +29,6 @@ import {
 export interface BusinessMembersAssetAccessDeleteBody {
     /**
      * List of members asset access to be deleted
-     * @type {Array<DeleteMemberAssetAccessItem>}
-     * @memberof BusinessMembersAssetAccessDeleteBody
      */
     accesses: Array<DeleteMemberAssetAccessItem>;
 }

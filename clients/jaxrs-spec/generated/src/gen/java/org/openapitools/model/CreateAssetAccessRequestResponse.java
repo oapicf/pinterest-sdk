@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("CreateAssetAccessRequestResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestResponse   {
-  private @Valid List<@Valid AssetAccessRequestError> exceptions = new ArrayList<>();
-  private @Valid Map<String, String> invites = new HashMap<>();
+  private List<@Valid AssetAccessRequestError> exceptions = new ArrayList<>();
+  private Map<String, @Pattern(regexp = "^\\d+$")String> invites = new HashMap<>();
 
   public CreateAssetAccessRequestResponse() {
   }
@@ -41,7 +41,7 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
   @JsonProperty("exceptions")
-  @Valid public List<@Valid AssetAccessRequestError> getExceptions() {
+  public List<@Valid AssetAccessRequestError> getExceptions() {
     return exceptions;
   }
 
@@ -69,7 +69,7 @@ public class CreateAssetAccessRequestResponse   {
   /**
    * An object mapping each partner id to the asset access request id. Only one request id is returned per partner.
    **/
-  public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse invites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
     return this;
   }
@@ -77,12 +77,12 @@ public class CreateAssetAccessRequestResponse   {
   
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
   @JsonProperty("invites")
-  public Map<String, String> getInvites() {
+  public Map<String, @Pattern(regexp = "^\\d+$")String> getInvites() {
     return invites;
   }
 
   @JsonProperty("invites")
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
   }
 

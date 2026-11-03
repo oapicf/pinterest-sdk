@@ -11,7 +11,7 @@ import jakarta.validation.Valid;
 
 public class CatalogsHotelProductGroupFiltersAnyOf   {
 
-    private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
     /**
      * Default constructor.
@@ -26,7 +26,7 @@ public class CatalogsHotelProductGroupFiltersAnyOf   {
      * @param anyOf anyOf
      */
     public CatalogsHotelProductGroupFiltersAnyOf(
-        List<CatalogsHotelProductGroupFilterKeys> anyOf
+        List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf
     ) {
         this.anyOf = anyOf;
     }
@@ -37,11 +37,11 @@ public class CatalogsHotelProductGroupFiltersAnyOf   {
      * Get anyOf
      * @return anyOf
      */
-    public List<CatalogsHotelProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsHotelProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
-    public void setAnyOf(List<CatalogsHotelProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 

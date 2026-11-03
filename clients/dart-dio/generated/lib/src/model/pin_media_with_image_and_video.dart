@@ -126,6 +126,7 @@ class _$PinMediaWithImageAndVideoSerializer implements PrimitiveSerializer<PinMe
   }
 }
 
+
 class PinMediaWithImageAndVideoMediaTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'multiple_mixed')

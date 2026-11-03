@@ -29,14 +29,10 @@ import {
 export interface CatalogsRetailAvailableFilterValues {
     /**
      * 
-     * @type {CatalogsRetailAvailableFilterValuesCatalogTypeEnum}
-     * @memberof CatalogsRetailAvailableFilterValues
      */
     catalogType: CatalogsRetailAvailableFilterValuesCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsRetailFilterValuesMap}
-     * @memberof CatalogsRetailAvailableFilterValues
      */
     filterValues: CatalogsRetailFilterValuesMap;
 }
@@ -46,7 +42,7 @@ export interface CatalogsRetailAvailableFilterValues {
  * @export
  */
 export const CatalogsRetailAvailableFilterValuesCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailAvailableFilterValuesCatalogTypeEnum = typeof CatalogsRetailAvailableFilterValuesCatalogTypeEnum[keyof typeof CatalogsRetailAvailableFilterValuesCatalogTypeEnum];
 

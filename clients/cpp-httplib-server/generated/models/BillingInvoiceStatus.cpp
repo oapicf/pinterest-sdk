@@ -6,20 +6,3 @@
 */
 #include "BillingInvoiceStatus.h"
 
-namespace models {
-
-BillingInvoiceStatus::BillingInvoiceStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

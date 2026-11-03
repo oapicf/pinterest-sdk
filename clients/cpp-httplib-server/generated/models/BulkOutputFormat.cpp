@@ -6,20 +6,3 @@
 */
 #include "BulkOutputFormat.h"
 
-namespace models {
-
-BulkOutputFormat::BulkOutputFormat()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

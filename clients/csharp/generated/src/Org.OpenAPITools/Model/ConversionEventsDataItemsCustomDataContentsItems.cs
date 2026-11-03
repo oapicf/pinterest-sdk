@@ -273,25 +273,25 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: id.");
 
             if (itemBrand.IsSet && itemBrand.Value == null)
-                throw new ArgumentNullException(nameof(itemBrand), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: item_brand.");
 
             if (itemBrandId.IsSet && itemBrandId.Value == null)
-                throw new ArgumentNullException(nameof(itemBrandId), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: item_brand_id.");
 
             if (itemCategory.IsSet && itemCategory.Value == null)
-                throw new ArgumentNullException(nameof(itemCategory), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: item_category.");
 
             if (itemName.IsSet && itemName.Value == null)
-                throw new ArgumentNullException(nameof(itemName), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: item_name.");
 
             if (itemPrice.IsSet && itemPrice.Value == null)
-                throw new ArgumentNullException(nameof(itemPrice), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: item_price.");
 
             if (quantity.IsSet && quantity.Value == null)
-                throw new ArgumentNullException(nameof(quantity), "Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Property is not nullable for class ConversionEventsDataItemsCustomDataContentsItems: quantity.");
 
             return new ConversionEventsDataItemsCustomDataContentsItems(id, itemBrand, itemBrandId, itemCategory, itemName, itemPrice, quantity);
         }
@@ -302,7 +302,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItemsCustomDataContentsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventsDataItemsCustomDataContentsItems conversionEventsDataItemsCustomDataContentsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -317,26 +316,28 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsDataItemsCustomDataContentsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventsDataItemsCustomDataContentsItems conversionEventsDataItemsCustomDataContentsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionEventsDataItemsCustomDataContentsItems.IdOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.Id == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.Id), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.Id to non-nullable JSON property 'id'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.ItemBrandOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.ItemBrand == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.ItemBrand), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.ItemBrand to non-nullable JSON property 'item_brand'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.ItemBrandIdOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.ItemBrandId == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.ItemBrandId), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.ItemBrandId to non-nullable JSON property 'item_brand_id'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.ItemCategoryOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.ItemCategory == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.ItemCategory), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.ItemCategory to non-nullable JSON property 'item_category'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.ItemNameOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.ItemName == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.ItemName), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.ItemName to non-nullable JSON property 'item_name'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.ItemPriceOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.ItemPrice == null)
-                throw new ArgumentNullException(nameof(conversionEventsDataItemsCustomDataContentsItems.ItemPrice), "Property is required for class ConversionEventsDataItemsCustomDataContentsItems.");
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.ItemPrice to non-nullable JSON property 'item_price'.");
+
+            if (conversionEventsDataItemsCustomDataContentsItems.QuantityOption.IsSet && conversionEventsDataItemsCustomDataContentsItems.Quantity == null)
+                throw new JsonException("Cannot write null property ConversionEventsDataItemsCustomDataContentsItems.Quantity to non-nullable JSON property 'quantity'.");
 
             if (conversionEventsDataItemsCustomDataContentsItems.IdOption.IsSet)
                 writer.WriteString("id", conversionEventsDataItemsCustomDataContentsItems.Id);

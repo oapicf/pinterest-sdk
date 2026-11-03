@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -41,98 +40,70 @@ import jakarta.annotation.Generated;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsAnalyticsCreateAsyncRequest {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String campaignBrandLabel;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String campaignCustomLabel;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<CampaignObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean combineTargetingTypes = false;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid CustomConversionEventMetrics> customConversionEventMetrics = new ArrayList<>();
 
   private String endDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer endHour;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
   private Granularity granularity;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable MetricsReportingLevel level;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ReportingTimeZone reportingTimezone;
 
   private String startDate;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer startHour;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AdAdsAnalyticsAsyncTargetingTypes> targetingTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  private @Nullable ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
 
   public AdsAnalyticsCreateAsyncRequest() {
     super();
@@ -193,7 +164,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering
    * @return adGroupStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "ad_group_statuses", description = "List of values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_statuses")
   public List<AdGroupSummaryStatus> getAdGroupStatuses() {
@@ -251,7 +222,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering. This parameter is not supported for Product Item level reports.
    * @return adStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "ad_statuses", description = "List of values for filtering. This parameter is not supported for Product Item level reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_statuses")
   public List<PinPromotionSummaryStatus> getAdStatuses() {
@@ -280,7 +251,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of attribution types for the conversion report.
    * @return attributionTypes
    */
-  @Valid 
+  
   @Schema(name = "attribution_types", description = "List of attribution types for the conversion report.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribution_types")
   public List<ConversionReportAttributionType> getAttributionTypes() {
@@ -380,7 +351,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.
    * @return campaignObjectiveTypes
    */
-  @Valid @Size(min = 1, max = 7) 
+  @Size(min = 1, max = 7) 
   @Schema(name = "campaign_objective_types", description = "List of values for filtering. [\"WEB_SESSIONS\"] is in BETA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_objective_types")
   public List<CampaignObjectiveType> getCampaignObjectiveTypes() {
@@ -409,7 +380,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of status values for filtering
    * @return campaignStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "campaign_statuses", description = "List of status values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_statuses")
   public List<CampaignSummaryStatus> getCampaignStatuses() {
@@ -421,7 +392,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.campaignStatuses = campaignStatuses;
   }
 
-  public AdsAnalyticsCreateAsyncRequest clickWindowDays(@Nullable ConversionAttributionWindowDays clickWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest clickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -433,12 +404,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "click_window_days", description = "Number of days to use as the conversion attribution window for a pin click action.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_window_days")
-  public @Nullable ConversionAttributionWindowDays getClickWindowDays() {
+  public ConversionAttributionWindowDays getClickWindowDays() {
     return clickWindowDays;
   }
 
   @JsonProperty("click_window_days")
-  public void setClickWindowDays(@Nullable ConversionAttributionWindowDays clickWindowDays) {
+  public void setClickWindowDays(ConversionAttributionWindowDays clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
@@ -459,7 +430,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
    * @return columns
    */
-  @Valid 
+  
   @Schema(name = "columns", description = "Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("columns")
   public List<ReportingColumnAsync> getColumns() {
@@ -492,7 +463,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.combineTargetingTypes = combineTargetingTypes;
   }
 
-  public AdsAnalyticsCreateAsyncRequest conversionReportTime(@Nullable ConversionReportTimeType conversionReportTime) {
+  public AdsAnalyticsCreateAsyncRequest conversionReportTime(ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
     return this;
   }
@@ -504,12 +475,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "conversion_report_time", description = "Date dimension for conversion metrics.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_report_time")
-  public @Nullable ConversionReportTimeType getConversionReportTime() {
+  public ConversionReportTimeType getConversionReportTime() {
     return conversionReportTime;
   }
 
   @JsonProperty("conversion_report_time")
-  public void setConversionReportTime(@Nullable ConversionReportTimeType conversionReportTime) {
+  public void setConversionReportTime(ConversionReportTimeType conversionReportTime) {
     this.conversionReportTime = conversionReportTime;
   }
 
@@ -530,7 +501,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of advertiser-defined custom conversion event metrics to include in the report
    * @return customConversionEventMetrics
    */
-  @Valid 
+  
   @Schema(name = "custom_conversion_event_metrics", description = "List of advertiser-defined custom conversion event metrics to include in the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_conversion_event_metrics")
   public List<@Valid CustomConversionEventMetrics> getCustomConversionEventMetrics() {
@@ -586,7 +557,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.endHour = endHour;
   }
 
-  public AdsAnalyticsCreateAsyncRequest engagementWindowDays(@Nullable ConversionAttributionWindowDays engagementWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest engagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -598,12 +569,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "engagement_window_days", description = "Number of days to use as the conversion attribution window for an engagement action.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement_window_days")
-  public @Nullable ConversionAttributionWindowDays getEngagementWindowDays() {
+  public ConversionAttributionWindowDays getEngagementWindowDays() {
     return engagementWindowDays;
   }
 
   @JsonProperty("engagement_window_days")
-  public void setEngagementWindowDays(@Nullable ConversionAttributionWindowDays engagementWindowDays) {
+  public void setEngagementWindowDays(ConversionAttributionWindowDays engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
@@ -666,7 +637,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of metrics filters
    * @return metricsFilters
    */
-  @Valid @Size(min = 1) 
+  @Size(min = 1) 
   @Schema(name = "metrics_filters", description = "List of metrics filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metrics_filters")
   public List<@Valid AdsAnalyticsMetricsFilter> getMetricsFilters() {
@@ -678,7 +649,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.metricsFilters = metricsFilters;
   }
 
-  public AdsAnalyticsCreateAsyncRequest primarySort(@Nullable PrimarySort primarySort) {
+  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySort primarySort) {
     this.primarySort = primarySort;
     return this;
   }
@@ -690,12 +661,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "primary_sort", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("primary_sort")
-  public @Nullable PrimarySort getPrimarySort() {
+  public PrimarySort getPrimarySort() {
     return primarySort;
   }
 
   @JsonProperty("primary_sort")
-  public void setPrimarySort(@Nullable PrimarySort primarySort) {
+  public void setPrimarySort(PrimarySort primarySort) {
     this.primarySort = primarySort;
   }
 
@@ -745,7 +716,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of values for filtering
    * @return productGroupStatuses
    */
-  @Valid @Size(min = 1, max = 6) 
+  @Size(min = 1, max = 6) 
   @Schema(name = "product_group_statuses", description = "List of values for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_group_statuses")
   public List<ProductGroupSummaryStatus> getProductGroupStatuses() {
@@ -786,7 +757,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.productItemIds = productItemIds;
   }
 
-  public AdsAnalyticsCreateAsyncRequest reportFormat(@Nullable DataOutputFormat reportFormat) {
+  public AdsAnalyticsCreateAsyncRequest reportFormat(DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
     return this;
   }
@@ -798,12 +769,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "report_format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_format")
-  public @Nullable DataOutputFormat getReportFormat() {
+  public DataOutputFormat getReportFormat() {
     return reportFormat;
   }
 
   @JsonProperty("report_format")
-  public void setReportFormat(@Nullable DataOutputFormat reportFormat) {
+  public void setReportFormat(DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
   }
 
@@ -889,7 +860,7 @@ public class AdsAnalyticsCreateAsyncRequest {
    * List of targeting types. Requires `level` to be a value ending in `_TARGETING`.
    * @return targetingTypes
    */
-  @Valid @Size(min = 1, max = 5) 
+  @Size(min = 1, max = 5) 
   @Schema(name = "targeting_types", description = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_types")
   public List<AdAdsAnalyticsAsyncTargetingTypes> getTargetingTypes() {
@@ -901,7 +872,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.targetingTypes = targetingTypes;
   }
 
-  public AdsAnalyticsCreateAsyncRequest viewWindowDays(@Nullable ConversionAttributionWindowDays viewWindowDays) {
+  public AdsAnalyticsCreateAsyncRequest viewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -913,12 +884,12 @@ public class AdsAnalyticsCreateAsyncRequest {
   @Valid 
   @Schema(name = "view_window_days", description = "Number of days to use as the conversion attribution window for a view action.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_window_days")
-  public @Nullable ConversionAttributionWindowDays getViewWindowDays() {
+  public ConversionAttributionWindowDays getViewWindowDays() {
     return viewWindowDays;
   }
 
   @JsonProperty("view_window_days")
-  public void setViewWindowDays(@Nullable ConversionAttributionWindowDays viewWindowDays) {
+  public void setViewWindowDays(ConversionAttributionWindowDays viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 

@@ -25,10 +25,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "A user's username or email OR a partner id that caused the error.")
 @JsonTypeName("InviteResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteResponse   {
   private InviteAssetsSummary assetsSummary;
-  private @Valid List<String> businessRoles = new ArrayList<>();
+  private List<String> businessRoles = new ArrayList<>();
   private BusinessAccessUserSummary createdByBusiness;
   private BusinessAccessUserSummary createdByUser;
   private Integer createdTime;

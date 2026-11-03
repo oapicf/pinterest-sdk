@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsAiContentDisclosure
 import org.openapitools.model.ItemAttributesRequestImageLink
 import org.openapitools.model.UpdatableItemAttributesGtin
@@ -380,20 +377,14 @@ data class ItemAttributesRequest(
 
     @field:Valid
     @Schema(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
 
     @Schema(example = "pinterest://item/1234567890", description = "The deep link to the product on the Android app.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("android_deep_link")
     @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
 
     @Schema(example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("availability")
     @get:JsonProperty("availability") val availability: kotlin.String? = null,
 
@@ -464,8 +455,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("custom_number_4") val customNumber4: kotlin.Int? = null,
 
     @Schema(example = "Casual fit denim shirt made with the finest quality Japanese denim.", description = "<= 10000 characters. The description of the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
@@ -492,15 +481,11 @@ data class ItemAttributesRequest(
 
     @Schema(example = "DS0294-L", description = "<= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.")
     @Deprecated(message = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("image_link")
     @get:JsonProperty("image_link") val imageLink: ItemAttributesRequestImageLink? = null,
 
@@ -509,8 +494,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("installment_price") val installmentPrice: kotlin.String? = null,
 
     @Schema(example = "pinterest://item/1234567890", description = "The deep link to the product on the iOS app.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ios_deep_link")
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
@@ -523,8 +506,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("last_updated_time") val lastUpdatedTime: kotlin.Long? = null,
 
     @Schema(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", description = "<= 511 characters. The landing page for the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
@@ -557,8 +538,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("pattern") val pattern: kotlin.String? = null,
 
     @Schema(example = "24.99 USD", description = "The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("price")
     @get:JsonProperty("price") val price: kotlin.String? = null,
 
@@ -579,8 +558,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("sale_price_effective_date") val salePriceEffectiveDate: kotlin.String? = null,
 
     @Schema(description = "By default, product pins created from a catalog are able to be saved by Pinners. If you want to disable the save pin feature, set this attribute to true. This feature is only available for allowlisted merchants. Please contact your account manager to enable this feature.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("save_pin_disabled")
     @get:JsonProperty("save_pin_disabled") val savePinDisabled: kotlin.Boolean? = false,
 
@@ -617,8 +594,6 @@ data class ItemAttributesRequest(
     @get:JsonProperty("tax") val tax: kotlin.String? = null,
 
     @Schema(example = "Women's denim shirt, large", description = "<= 500 characters. The name of the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null,
 

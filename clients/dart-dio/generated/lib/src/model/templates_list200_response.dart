@@ -125,3 +125,4 @@ class _$TemplatesList200ResponseSerializer implements PrimitiveSerializer<Templa
   }
 }
 
+

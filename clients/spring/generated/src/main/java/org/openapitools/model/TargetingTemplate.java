@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -32,44 +31,33 @@ import jakarta.annotation.Generated;
  * TargetingTemplate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplate {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private Boolean autoTargetingEnabled = true;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TargetingTemplateAudienceSizing> sizing = JsonNullable.<TargetingTemplateAudienceSizing>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingTemplateStatus status;
 
   private TargetingSpecOptimal targetingAttributes;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer updatedTime;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> valid = JsonNullable.<Boolean>undefined();
 
   public TargetingTemplate() {
@@ -185,7 +173,7 @@ public class TargetingTemplate {
    * Get keywords
    * @return keywords
    */
-  @Valid 
+  
   @Schema(name = "keywords", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid TargetingTemplateKeyword> getKeywords() {
@@ -249,7 +237,7 @@ public class TargetingTemplate {
    * @return sizing
    */
   @Valid 
-  @Schema(name = "sizing", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "sizing", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("sizing")
   public JsonNullable<TargetingTemplateAudienceSizing> getSizing() {
     return sizing;
@@ -311,7 +299,7 @@ public class TargetingTemplate {
    * @return trackingUrls
    */
   @Valid 
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tracking_urls")
   public JsonNullable<TrackingUrls> getTrackingUrls() {
     return trackingUrls;
@@ -352,7 +340,7 @@ public class TargetingTemplate {
    * @return valid
    */
   
-  @Schema(name = "valid", accessMode = Schema.AccessMode.READ_ONLY, description = "Inform if the targeting template is valid (ex. would be false if has revoked audience)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "valid", accessMode = Schema.AccessMode.READ_ONLY, description = "Inform if the targeting template is valid (ex. would be false if has revoked audience)", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("valid")
   public JsonNullable<Boolean> getValid() {
     return valid;

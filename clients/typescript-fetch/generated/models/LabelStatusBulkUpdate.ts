@@ -18,7 +18,7 @@
  * @export
  */
 export const LabelStatusBulkUpdate = {
-    Archived: 'ARCHIVED'
+    Archived: 'ARCHIVED',
 } as const;
 export type LabelStatusBulkUpdate = typeof LabelStatusBulkUpdate[keyof typeof LabelStatusBulkUpdate];
 

@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Resource create operation model.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateCreate   {
   
   private Boolean autoTargetingEnabled;
@@ -38,7 +38,7 @@ public class AdGroupCreateCreate   {
   private BidStrategyType bidStrategyType;
   private ActionType billableEvent;
   private Integer budgetInMicroCurrency;
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
   private String campaignId;
   private String customerSegmentId;
   private Integer endTime;
@@ -50,7 +50,7 @@ public class AdGroupCreateCreate   {
   private BigDecimal localInventoryRadiusInMiles;
   private String name;
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;
   private PlacementGroupType placementGroup;
   private PlacementTrafficType placementTrafficType;

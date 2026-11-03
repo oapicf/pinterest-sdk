@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class AssetTypeResponse
-{
-public:
-
-    AssetTypeResponse();
-    virtual ~AssetTypeResponse() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AssetTypeResponse,
-        )
-
-private:
+enum class AssetTypeResponse {
+    
+    AD_ACCOUNT,
+    
+    MERCHANT,
+    
+    PROFILE,
+    
+    ASSET_GROUP,
+    
+    PINNER_LIST,
+    
+    CONVERSION_TAG,
+    
+    CATALOG,
+    
+    CONVERSION_SEGMENT
+    
 };
 
+inline void to_json(nlohmann::json& j, const AssetTypeResponse& value)
+{
+    switch (value)
+    {
+        
+        case AssetTypeResponse::AD_ACCOUNT: j = "AD_ACCOUNT"; break;
+        
+        case AssetTypeResponse::MERCHANT: j = "MERCHANT"; break;
+        
+        case AssetTypeResponse::PROFILE: j = "PROFILE"; break;
+        
+        case AssetTypeResponse::ASSET_GROUP: j = "ASSET_GROUP"; break;
+        
+        case AssetTypeResponse::PINNER_LIST: j = "PINNER_LIST"; break;
+        
+        case AssetTypeResponse::CONVERSION_TAG: j = "CONVERSION_TAG"; break;
+        
+        case AssetTypeResponse::CATALOG: j = "CATALOG"; break;
+        
+        case AssetTypeResponse::CONVERSION_SEGMENT: j = "CONVERSION_SEGMENT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AssetTypeResponse", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AssetTypeResponse& value)
+{
+    
+    if (j == "AD_ACCOUNT")
+    {
+        value = AssetTypeResponse::AD_ACCOUNT;
+        return;
+    }
+    
+    if (j == "MERCHANT")
+    {
+        value = AssetTypeResponse::MERCHANT;
+        return;
+    }
+    
+    if (j == "PROFILE")
+    {
+        value = AssetTypeResponse::PROFILE;
+        return;
+    }
+    
+    if (j == "ASSET_GROUP")
+    {
+        value = AssetTypeResponse::ASSET_GROUP;
+        return;
+    }
+    
+    if (j == "PINNER_LIST")
+    {
+        value = AssetTypeResponse::PINNER_LIST;
+        return;
+    }
+    
+    if (j == "CONVERSION_TAG")
+    {
+        value = AssetTypeResponse::CONVERSION_TAG;
+        return;
+    }
+    
+    if (j == "CATALOG")
+    {
+        value = AssetTypeResponse::CATALOG;
+        return;
+    }
+    
+    if (j == "CONVERSION_SEGMENT")
+    {
+        value = AssetTypeResponse::CONVERSION_SEGMENT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AssetTypeResponse", &j);
+}
 
 } // namespace models
 

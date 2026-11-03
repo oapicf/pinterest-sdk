@@ -21,7 +21,7 @@ data class CancelInvitesRequest(
 
     @get:Size(min=1,max=50) 
     @Schema(required = true, description = "A list of invite/request ids to cancel.")
-    @param:JsonProperty("invite_ids")
+    @param:JsonProperty("invite_ids", required = true)
     @get:JsonProperty("invite_ids", required = true) val inviteIds: kotlin.collections.List<kotlin.String>
 ) {
 

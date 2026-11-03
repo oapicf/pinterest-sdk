@@ -29,16 +29,16 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Request for creation of entities in bulk.")
 @JsonTypeName("BulkUpsertRequestUpdate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestUpdate   {
-  private @Valid List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
-  private @Valid List<@Valid AdUpdateRequest> ads = new ArrayList<>();
-  private @Valid List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
-  private @Valid List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
-  private @Valid List<@Valid KeywordUpdateGenerated> keywords = new ArrayList<>();
-  private @Valid List<@Valid LabelBulkUpdateRequest> labels = new ArrayList<>();
-  private @Valid List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
-  private @Valid List<@Valid ScheduleUpdateRequest> schedules = new ArrayList<>();
+  private List<@Valid AdGroupUpdateRequest> adGroups = new ArrayList<>();
+  private List<@Valid AdUpdateRequest> ads = new ArrayList<>();
+  private List<@Valid CampaignUpdateRequest> campaigns = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid KeywordUpdateGenerated> keywords = new ArrayList<>();
+  private List<@Valid LabelBulkUpdateRequest> labels = new ArrayList<>();
+  private List<@Valid ProductGroupPromotionUpdateRequest> productGroups = new ArrayList<>();
+  private List<@Valid ScheduleUpdateRequest> schedules = new ArrayList<>();
 
   public BulkUpsertRequestUpdate() {
   }
@@ -53,7 +53,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ad_groups")
-  @Valid public List<@Valid AdGroupUpdateRequest> getAdGroups() {
+  public List<@Valid AdGroupUpdateRequest> getAdGroups() {
     return adGroups;
   }
 
@@ -88,7 +88,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("ads")
-  @Valid public List<@Valid AdUpdateRequest> getAds() {
+  public List<@Valid AdUpdateRequest> getAds() {
     return ads;
   }
 
@@ -123,7 +123,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("campaigns")
-  @Valid public List<@Valid CampaignUpdateRequest> getCampaigns() {
+  public List<@Valid CampaignUpdateRequest> getCampaigns() {
     return campaigns;
   }
 
@@ -150,7 +150,7 @@ public class BulkUpsertRequestUpdate   {
   }
   /**
    **/
-  public BulkUpsertRequestUpdate catalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestUpdate catalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -158,12 +158,12 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("catalog_product_groups")
-  @Valid public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
   @JsonProperty("catalog_product_groups")
-  public void setCatalogProductGroups(List<BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestUpdateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
@@ -193,7 +193,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("keywords")
-  @Valid public List<@Valid KeywordUpdateGenerated> getKeywords() {
+  public List<@Valid KeywordUpdateGenerated> getKeywords() {
     return keywords;
   }
 
@@ -228,7 +228,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("labels")
-  @Valid public List<@Valid LabelBulkUpdateRequest> getLabels() {
+  public List<@Valid LabelBulkUpdateRequest> getLabels() {
     return labels;
   }
 
@@ -263,7 +263,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("product_groups")
-  @Valid public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
+  public List<@Valid ProductGroupPromotionUpdateRequest> getProductGroups() {
     return productGroups;
   }
 
@@ -298,7 +298,7 @@ public class BulkUpsertRequestUpdate   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("schedules")
-  @Valid public List<@Valid ScheduleUpdateRequest> getSchedules() {
+  public List<@Valid ScheduleUpdateRequest> getSchedules() {
     return schedules;
   }
 

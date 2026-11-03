@@ -23,7 +23,7 @@ data class CreateAssetAccessRequestBody(
     @field:Valid
     @get:Size(min=1,max=100) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("asset_requests")
+    @param:JsonProperty("asset_requests", required = true)
     @get:JsonProperty("asset_requests", required = true) val assetRequests: kotlin.collections.List<CreateAssetAccessRequestItem>
 ) {
 

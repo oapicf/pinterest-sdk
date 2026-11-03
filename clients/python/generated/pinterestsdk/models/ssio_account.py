@@ -81,15 +81,13 @@ class SSIOAccount(BaseModel):
         _items = []
         if self.billto_infos:
             for _item_billto_infos in self.billto_infos:
-                if _item_billto_infos:
-                    _items.append(_item_billto_infos.to_dict())
+                _items.append(_item_billto_infos.to_dict() if _item_billto_infos is not None else None)
             _dict['billto_infos'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in pmp_names (list)
         _items = []
         if self.pmp_names:
             for _item_pmp_names in self.pmp_names:
-                if _item_pmp_names:
-                    _items.append(_item_pmp_names.to_dict())
+                _items.append(_item_pmp_names.to_dict() if _item_pmp_names is not None else None)
             _dict['pmp_names'] = _items
         return _dict
 

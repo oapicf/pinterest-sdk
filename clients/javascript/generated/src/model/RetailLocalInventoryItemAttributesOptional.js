@@ -17,7 +17,7 @@ import ItemAvailability from './ItemAvailability';
 /**
  * The RetailLocalInventoryItemAttributesOptional model module.
  * @module model/RetailLocalInventoryItemAttributesOptional
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class RetailLocalInventoryItemAttributesOptional {
     /**

@@ -35,21 +35,21 @@ import javax.annotation.Generated;
   CatalogsCreativeAssetsProductGroupFilters.JSON_PROPERTY_ALL_OF
 })
 @JsonTypeName("CatalogsCreativeAssetsProductGroupFilters")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsCreativeAssetsProductGroupFilters {
     public static final String JSON_PROPERTY_ANY_OF = "any_of";
-    private List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
     public static final String JSON_PROPERTY_ALL_OF = "all_of";
-    private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
-    public CatalogsCreativeAssetsProductGroupFilters(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf, List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+    public CatalogsCreativeAssetsProductGroupFilters(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf, List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
         this.anyOf = anyOf;
         this.allOf = allOf;
     }
 
-    public CatalogsCreativeAssetsProductGroupFilters anyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+    public CatalogsCreativeAssetsProductGroupFilters anyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
         return this;
     }
@@ -66,17 +66,17 @@ public class CatalogsCreativeAssetsProductGroupFilters {
     @NotNull
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ANY_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAnyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
-    public CatalogsCreativeAssetsProductGroupFilters allOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+    public CatalogsCreativeAssetsProductGroupFilters allOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
         return this;
     }
@@ -93,13 +93,13 @@ public class CatalogsCreativeAssetsProductGroupFilters {
     @NotNull
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

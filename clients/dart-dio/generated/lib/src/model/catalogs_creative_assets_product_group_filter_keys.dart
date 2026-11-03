@@ -85,7 +85,7 @@ class _$CatalogsCreativeAssetsProductGroupFilterKeysSerializer implements Primit
     FullType specifiedType = FullType.unspecified,
   }) {
     final anyOf = object.anyOf;
-    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.types.map((type) => FullType(type)).toList()))!;
   }
 
   @override
@@ -102,4 +102,5 @@ class _$CatalogsCreativeAssetsProductGroupFilterKeysSerializer implements Primit
     return result.build();
   }
 }
+
 

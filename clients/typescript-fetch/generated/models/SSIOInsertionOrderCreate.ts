@@ -36,134 +36,90 @@ import {
 export interface SSIOInsertionOrderCreate {
     /**
      * The SFDC id for the terms
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     acceptedTermsId: string;
     /**
      * The UTC timestamp (to the nearest sec) of when terms were accepted
-     * @type {number}
-     * @memberof SSIOInsertionOrderCreate
      */
     acceptedTermsTime?: number;
     /**
      * URL link for agency
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     agencyLink?: string;
     /**
      * The billing contact email
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billingContactEmail: string;
     /**
      * The billing contact first name
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billingContactFirstname: string;
     /**
      * The billing contact last name
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billingContactLastname: string;
     /**
      * The bill-to billing address id
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billtoBillingAddressId: string;
     /**
      * The bill-to business address id
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billtoBusinessAddressId: string;
     /**
      * The bill-to company id
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     billtoCompanyId: string;
     /**
      * If Budget order line, the budget amount.
-     * @type {number}
-     * @memberof SSIOInsertionOrderCreate
      */
     budgetAmount?: number;
     /**
      * 
-     * @type {Currency}
-     * @memberof SSIOInsertionOrderCreate
      */
     currencyInfo: Currency;
     /**
      * End date of time period. Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     endDate?: string;
     /**
      * If Ongoing (perpetual) order line, the estimated monthly spend
-     * @type {number}
-     * @memberof SSIOInsertionOrderCreate
      */
     estimatedMonthlySpend?: number;
     /**
      * The media contact email
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     mediaContactEmail: string;
     /**
      * The media contact first name
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     mediaContactFirstname: string;
     /**
      * The media contact last name
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     mediaContactLastname: string;
     /**
      * Type can be Budget or Perpetual
-     * @type {SSIOOrderLineType}
-     * @memberof SSIOInsertionOrderCreate
      */
     orderLineType: SSIOOrderLineType;
     /**
      * The order name
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     orderName: string;
     /**
      * The pmp id
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     pmpId: string;
     /**
      * The po number
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     poNumber: string;
     /**
      * Starting date of time period. Format: YYYY-MM-DD
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     startDate: string;
     /**
      * The email of user submitting the insertion order
-     * @type {string}
-     * @memberof SSIOInsertionOrderCreate
      */
     userEmail?: string;
 }

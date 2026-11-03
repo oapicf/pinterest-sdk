@@ -40,15 +40,29 @@ import {
 } from '../models/PinterestLibError';
 
 export interface MediaCreateRequest {
+    /**
+     * 
+     */
     mediaUploadCreate: MediaUploadCreate;
 }
 
 export interface MediaGetRequest {
+    /**
+     * Unique identifier for this media upload. Used to track status
+     * and for attaching during Pin creation.
+     */
     mediaId: string;
 }
 
 export interface MediaListRequest {
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 

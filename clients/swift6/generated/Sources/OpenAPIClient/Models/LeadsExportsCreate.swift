@@ -10,9 +10,9 @@ import Foundation
 /** Resource create operation model. */
 public struct LeadsExportsCreate: Sendable, Codable, Hashable {
 
-    public static let adIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let adIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     /** ID for the ad collecting leads. */
     public var adId: String
     /** Export leads collected on and before end date (UTC). Format: YYYY-MM-DD. */

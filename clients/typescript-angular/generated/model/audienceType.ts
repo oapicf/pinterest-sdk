@@ -17,7 +17,7 @@ export const AudienceType = {
     Visitor: 'VISITOR',
     Engagement: 'ENGAGEMENT',
     Actalike: 'ACTALIKE',
-    Persona: 'PERSONA'
+    Persona: 'PERSONA',
 } as const;
 export type AudienceType = typeof AudienceType[keyof typeof AudienceType];
 

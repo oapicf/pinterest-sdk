@@ -8,7 +8,7 @@ export interface TargetingSpecOperationGeoExclude {
 }
 export namespace TargetingSpecOperationGeoExclude {
   export const FieldEnum = {
-    GeoExclude: 'GEO_EXCLUDE'
+    GeoExclude: 'GEO_EXCLUDE',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

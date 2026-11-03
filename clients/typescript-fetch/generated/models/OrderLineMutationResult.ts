@@ -36,14 +36,10 @@ import {
 export interface OrderLineMutationResult {
     /**
      * Error list if update(s) fail.
-     * @type {Array<OrderLineMutationError>}
-     * @memberof OrderLineMutationResult
      */
     errors?: Array<OrderLineMutationError>;
     /**
      * Order Line object array.
-     * @type {Array<OrderLine>}
-     * @memberof OrderLineMutationResult
      */
     orderLine?: Array<OrderLine>;
 }

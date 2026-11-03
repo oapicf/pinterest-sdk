@@ -29,20 +29,14 @@ import {
 export interface ProductCategoriesMetricsHighlights {
     /**
      * Engagement metric value
-     * @type {InnerProductCategoriesMetricsHighlights}
-     * @memberof ProductCategoriesMetricsHighlights
      */
     engagement?: InnerProductCategoriesMetricsHighlights;
     /**
      * Number of outbound clicks
-     * @type {InnerProductCategoriesMetricsHighlights}
-     * @memberof ProductCategoriesMetricsHighlights
      */
     outboundClicks?: InnerProductCategoriesMetricsHighlights;
     /**
      * Number of pin saves
-     * @type {InnerProductCategoriesMetricsHighlights}
-     * @memberof ProductCategoriesMetricsHighlights
      */
     pinSaves?: InnerProductCategoriesMetricsHighlights;
 }

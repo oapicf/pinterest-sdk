@@ -146,3 +146,4 @@ class _$LabelUpdateItemSerializer implements PrimitiveSerializer<LabelUpdateItem
   }
 }
 
+

@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_response_kind", visible = true)
+@ApiModel(description="Object describing an item record or error. Discriminated by `item_response_kind` (one unique value per leaf).")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "item_response_kind", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemResponse.class, name = "creative_assets_item"),
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsItemErrorResponse.class, name = "creative_assets_item_error"),
@@ -145,8 +145,7 @@ public class ItemResponse   {
   
   @ApiModelProperty(value = "The pins mapped to the item")
   @JsonProperty("pins")
- @Size(max=11)  @Valid
-  public List<@Valid Pin> getPins() {
+ @Size(max=11)  public List<@Valid Pin> getPins() {
     return pins;
   }
   public void setPins(List<@Valid Pin> pins) {
@@ -186,7 +185,6 @@ public class ItemResponse   {
   @ApiModelProperty(required = true, value = "Array with the errors for the item id requested")
   @JsonProperty("errors")
   @NotNull
-  @Valid
   public List<@Valid ItemValidationEvent> getErrors() {
     return errors;
   }

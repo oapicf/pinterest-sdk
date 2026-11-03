@@ -317,7 +317,12 @@ namespace Org.OpenAPITools.Model
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
                             if (sourceTypeRawValue != null)
-                                sourceType = new Option<PinMediaSource.SourceTypeEnum?>(PinMediaSource.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
+                            {
+                                PinMediaSource.SourceTypeEnum? sourceTypeValue = PinMediaSource.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue);
+                                if (sourceTypeValue == null)
+                                    throw new JsonException();
+                                sourceType = new Option<PinMediaSource.SourceTypeEnum?>(sourceTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -326,10 +331,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!sourceType.IsSet)
-                throw new ArgumentException("Property is required for class PinMediaSource.", nameof(sourceType));
+                throw new JsonException("Property is required for class PinMediaSource: source_type.");
 
             if (sourceType.IsSet && sourceType.Value == null)
-                throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSource.");
+                throw new JsonException("Property is not nullable for class PinMediaSource: source_type.");
 
             if (pinMediaSourceImageBase64 != null)
                 return new PinMediaSource(pinMediaSourceImageBase64);
@@ -358,7 +363,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSource"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, PinMediaSource pinMediaSource, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -409,7 +413,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="pinMediaSource"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, PinMediaSource pinMediaSource, JsonSerializerOptions jsonSerializerOptions)
         {
 

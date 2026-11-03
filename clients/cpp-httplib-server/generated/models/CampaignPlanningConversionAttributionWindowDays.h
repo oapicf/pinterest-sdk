@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class CampaignPlanningConversionAttributionWindowDays
-{
-public:
-
-    CampaignPlanningConversionAttributionWindowDays();
-    virtual ~CampaignPlanningConversionAttributionWindowDays() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningConversionAttributionWindowDays,
-        )
-
-private:
+enum class CampaignPlanningConversionAttributionWindowDays {
+    
+    DAYS_0,
+    
+    DAYS_1,
+    
+    DAYS_7,
+    
+    DAYS_30,
+    
+    DAYS_60
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningConversionAttributionWindowDays& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningConversionAttributionWindowDays::DAYS_0: j = "DAYS_0"; break;
+        
+        case CampaignPlanningConversionAttributionWindowDays::DAYS_1: j = "DAYS_1"; break;
+        
+        case CampaignPlanningConversionAttributionWindowDays::DAYS_7: j = "DAYS_7"; break;
+        
+        case CampaignPlanningConversionAttributionWindowDays::DAYS_30: j = "DAYS_30"; break;
+        
+        case CampaignPlanningConversionAttributionWindowDays::DAYS_60: j = "DAYS_60"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConversionAttributionWindowDays", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningConversionAttributionWindowDays& value)
+{
+    
+    if (j == "DAYS_0")
+    {
+        value = CampaignPlanningConversionAttributionWindowDays::DAYS_0;
+        return;
+    }
+    
+    if (j == "DAYS_1")
+    {
+        value = CampaignPlanningConversionAttributionWindowDays::DAYS_1;
+        return;
+    }
+    
+    if (j == "DAYS_7")
+    {
+        value = CampaignPlanningConversionAttributionWindowDays::DAYS_7;
+        return;
+    }
+    
+    if (j == "DAYS_30")
+    {
+        value = CampaignPlanningConversionAttributionWindowDays::DAYS_30;
+        return;
+    }
+    
+    if (j == "DAYS_60")
+    {
+        value = CampaignPlanningConversionAttributionWindowDays::DAYS_60;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConversionAttributionWindowDays", &j);
+}
 
 } // namespace models
 

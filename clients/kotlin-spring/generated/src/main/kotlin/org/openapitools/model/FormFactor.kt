@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Device form factor
-* Values: desktop,laptop,cellphone,tablet,smartwatch,tv,vr,console,other
-*/
+ * Device form factor
+ * Values: desktop,laptop,cellphone,tablet,smartwatch,tv,vr,console,other
+ */
 enum class FormFactor(@get:JsonValue val value: kotlin.String) {
 
     desktop("desktop"),
@@ -35,9 +35,8 @@ enum class FormFactor(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): FormFactor {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FormFactor'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'FormFactor'")
         }
     }
 }
-

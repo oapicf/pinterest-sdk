@@ -448,7 +448,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<AdAccountSlashAnalyticsResponse, ApiError>
     {
-        info!("ad_account_slash_analytics({}, {}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, reporting_timezone, context.get().0.clone());
+        info!("ad_account_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -469,7 +469,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<AdAccountTargetingAnalyticsSlashGetResponse, ApiError>
     {
-        info!("ad_account_targeting_analytics_slash_get(\"{}\", {}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, context.get().0.clone());
+        info!("ad_account_targeting_analytics_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -479,7 +479,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AdAccountsSlashGetResponse, ApiError>
     {
-        info!("ad_accounts_slash_get(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("ad_accounts_slash_get({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -490,7 +490,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_product_report_create: models::ConversionProductReportCreate,
         context: &C) -> Result<AnalyticsSlashCreateConversionProductReportResponse, ApiError>
     {
-        info!("analytics_slash_create_conversion_product_report(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_product_report_create, context.get().0.clone());
+        info!("analytics_slash_create_conversion_product_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_product_report_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -501,7 +501,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         mmm_report_create: models::MmmReportCreate,
         context: &C) -> Result<AnalyticsSlashCreateMmmReportResponse, ApiError>
     {
-        info!("analytics_slash_create_mmm_report(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, mmm_report_create, context.get().0.clone());
+        info!("analytics_slash_create_mmm_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, mmm_report_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -512,7 +512,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ads_analytics_create_async_request: models::AdsAnalyticsCreateAsyncRequest,
         context: &C) -> Result<AnalyticsSlashCreateReportResponse, ApiError>
     {
-        info!("analytics_slash_create_report(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ads_analytics_create_async_request, context.get().0.clone());
+        info!("analytics_slash_create_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ads_analytics_create_async_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -523,7 +523,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         token: String,
         context: &C) -> Result<AnalyticsSlashGetConversionProductReportResponse, ApiError>
     {
-        info!("analytics_slash_get_conversion_product_report(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
+        info!("analytics_slash_get_conversion_product_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -534,7 +534,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         token: String,
         context: &C) -> Result<AnalyticsSlashGetMmmReportResponse, ApiError>
     {
-        info!("analytics_slash_get_mmm_report(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
+        info!("analytics_slash_get_mmm_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -545,7 +545,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         token: String,
         context: &C) -> Result<AnalyticsSlashGetReportResponse, ApiError>
     {
-        info!("analytics_slash_get_report(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
+        info!("analytics_slash_get_report({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, token, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -555,7 +555,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<SandboxSlashDeleteResponse, ApiError>
     {
-        info!("sandbox_slash_delete(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("sandbox_slash_delete({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -568,7 +568,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<TemplatesSlashListResponse, ApiError>
     {
-        info!("templates_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("templates_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -582,7 +582,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         granularity: Option<models::Granularity>,
         context: &C) -> Result<AnalyticsSlashCreateTemplateReportResponse, ApiError>
     {
-        info!("analytics_slash_create_template_report(\"{}\", \"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, template_id, start_date, end_date, granularity, context.get().0.clone());
+        info!("analytics_slash_create_template_report({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, template_id, start_date, end_date, granularity, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -593,7 +593,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         bid_floor_create: models::BidFloorCreate,
         context: &C) -> Result<AdGroupsBidFloorSlashGetResponse, ApiError>
     {
-        info!("ad_groups_bid_floor_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, bid_floor_create, context.get().0.clone());
+        info!("ad_groups_bid_floor_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bid_floor_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -614,7 +614,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<AdGroupsSlashAnalyticsResponse, ApiError>
     {
-        info!("ad_groups_slash_analytics({}, {}, {:?}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, ad_group_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, aggregate_report_rows, reporting_timezone, context.get().0.clone());
+        info!("ad_groups_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, ad_group_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, aggregate_report_rows, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -625,7 +625,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_audience_sizing_create: models::AdGroupAudienceSizingCreate,
         context: &C) -> Result<AdGroupsSlashAudienceSizingResponse, ApiError>
     {
-        info!("ad_groups_slash_audience_sizing(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_audience_sizing_create, context.get().0.clone());
+        info!("ad_groups_slash_audience_sizing({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_audience_sizing_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -636,7 +636,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_create_create: models::AdGroupBatchCreateRequest,
         context: &C) -> Result<AdGroupsSlashCreateResponse, ApiError>
     {
-        info!("ad_groups_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_create_create, context.get().0.clone());
+        info!("ad_groups_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_create_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -653,7 +653,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         translate_interests_to_names: Option<bool>,
         context: &C) -> Result<AdGroupsSlashListResponse, ApiError>
     {
-        info!("ad_groups_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, ad_group_ids, entity_statuses, translate_interests_to_names, context.get().0.clone());
+        info!("ad_groups_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, ad_group_ids, entity_statuses, translate_interests_to_names, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -664,7 +664,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_update_batch_update: models::AdGroupBatchUpdateRequest,
         context: &C) -> Result<AdGroupsSlashUpdateResponse, ApiError>
     {
-        info!("ad_groups_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_update_batch_update, context.get().0.clone());
+        info!("ad_groups_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_update_batch_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -688,7 +688,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         sort_ascending: Option<bool>,
         context: &C) -> Result<AdGroupsTargetingAnalyticsSlashGetResponse, ApiError>
     {
-        info!("ad_groups_targeting_analytics_slash_get(\"{}\", {:?}, {}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, sort_columns, sort_ascending, context.get().0.clone());
+        info!("ad_groups_targeting_analytics_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, sort_columns, sort_ascending, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -702,7 +702,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<GetAdGroupsByPromotionIdsSlashListResponse, ApiError>
     {
-        info!("get_ad_groups_by_promotion_ids_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_ids, bookmark, page_size, order, context.get().0.clone());
+        info!("get_ad_groups_by_promotion_ids_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_ids, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -713,7 +713,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_id: String,
         context: &C) -> Result<AdGroupsDynamicTitlesSlashDownloadCsvResponse, ApiError>
     {
-        info!("ad_groups_dynamic_titles_slash_download_csv(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
+        info!("ad_groups_dynamic_titles_slash_download_csv({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -724,7 +724,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_id: String,
         context: &C) -> Result<AdGroupsDynamicTitlesSlashGetStatusResponse, ApiError>
     {
-        info!("ad_groups_dynamic_titles_slash_get_status(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
+        info!("ad_groups_dynamic_titles_slash_get_status({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -735,7 +735,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_id: String,
         context: &C) -> Result<AdGroupsDynamicTitlesSlashGetUploadUrlResponse, ApiError>
     {
-        info!("ad_groups_dynamic_titles_slash_get_upload_url(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
+        info!("ad_groups_dynamic_titles_slash_get_upload_url({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -747,7 +747,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         dynamic_titles_process_csv_create: models::DynamicTitlesProcessCsvCreate,
         context: &C) -> Result<AdGroupsDynamicTitlesSlashProcessCsvResponse, ApiError>
     {
-        info!("ad_groups_dynamic_titles_slash_process_csv(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_id, dynamic_titles_process_csv_create, context.get().0.clone());
+        info!("ad_groups_dynamic_titles_slash_process_csv({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_group_id, dynamic_titles_process_csv_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -758,7 +758,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AdGroupsSlashGetResponse, ApiError>
     {
-        info!("ad_groups_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_group_id, ad_account_id, context.get().0.clone());
+        info!("ad_groups_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_group_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -769,7 +769,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_preview_request: models::AdPreviewRequest,
         context: &C) -> Result<AdPreviewsSlashCreateResponse, ApiError>
     {
-        info!("ad_previews_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_preview_request, context.get().0.clone());
+        info!("ad_previews_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_preview_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -793,7 +793,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         sort_ascending: Option<bool>,
         context: &C) -> Result<AdTargetingAnalyticsSlashGetResponse, ApiError>
     {
-        info!("ad_targeting_analytics_slash_get(\"{}\", {:?}, {}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, sort_columns, sort_ascending, context.get().0.clone());
+        info!("ad_targeting_analytics_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, sort_columns, sort_ascending, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -815,7 +815,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<AdsSlashAnalyticsResponse, ApiError>
     {
-        info!("ads_slash_analytics({}, {}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, columns, granularity, ad_account_id, pin_ids, ad_ids, click_window_days, engagement_window_days, view_window_days, conversion_report_time, campaign_ids, reporting_timezone, context.get().0.clone());
+        info!("ads_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, columns, granularity, ad_account_id, pin_ids, ad_ids, click_window_days, engagement_window_days, view_window_days, conversion_report_time, campaign_ids, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -826,7 +826,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_create: models::AdBatchCreateRequest,
         context: &C) -> Result<AdsSlashCreateResponse, ApiError>
     {
-        info!("ads_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_create, context.get().0.clone());
+        info!("ads_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -843,7 +843,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         entity_statuses: Option<&'a Vec<models::EntityStatus>>,
         context: &C) -> Result<AdsSlashListResponse, ApiError>
     {
-        info!("ads_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, ad_group_ids, ad_ids, entity_statuses, context.get().0.clone());
+        info!("ads_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, ad_group_ids, ad_ids, entity_statuses, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -854,7 +854,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_batch_update: models::AdBatchUpdateRequest,
         context: &C) -> Result<AdsSlashUpdateResponse, ApiError>
     {
-        info!("ads_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_batch_update, context.get().0.clone());
+        info!("ads_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_batch_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -865,7 +865,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         campaign_ad_preview_create: &'a Vec<models::CampaignAdPreviewCreate>,
         context: &C) -> Result<CampaignAdPreviewSlashCreateResponse, ApiError>
     {
-        info!("campaign_ad_preview_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ad_preview_create, context.get().0.clone());
+        info!("campaign_ad_preview_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ad_preview_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -876,7 +876,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<CampaignAdPreviewSlashDeleteResponse, ApiError>
     {
-        info!("campaign_ad_preview_slash_delete({:?}, \"{}\") - X-Span-ID: {:?}", ad_group_ids, ad_account_id, context.get().0.clone());
+        info!("campaign_ad_preview_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", ad_group_ids, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -887,7 +887,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<CampaignAdPreviewSlashReadResponse, ApiError>
     {
-        info!("campaign_ad_preview_slash_read({:?}, \"{}\") - X-Span-ID: {:?}", ad_group_ids, ad_account_id, context.get().0.clone());
+        info!("campaign_ad_preview_slash_read({:?}, {:?}) - X-Span-ID: {:?}", ad_group_ids, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -898,7 +898,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AdsSlashGetResponse, ApiError>
     {
-        info!("ads_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_id, ad_account_id, context.get().0.clone());
+        info!("ads_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -930,7 +930,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AudienceInsightsScopeAndTypeSlashGetResponse, ApiError>
     {
-        info!("audience_insights_scope_and_type_slash_get(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("audience_insights_scope_and_type_slash_get({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -941,7 +941,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         audience_insight_type: models::AudienceInsightType,
         context: &C) -> Result<AudienceInsightsSlashGetResponse, ApiError>
     {
-        info!("audience_insights_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, audience_insight_type, context.get().0.clone());
+        info!("audience_insights_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, audience_insight_type, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -955,7 +955,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<AdAccountsAudiencesSharedAccountsSlashListResponse, ApiError>
     {
-        info!("ad_accounts_audiences_shared_accounts_slash_list(\"{}\", {:?}, \"{}\", {:?}, {:?}) - X-Span-ID: {:?}", audience_id, account_type, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("ad_accounts_audiences_shared_accounts_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", audience_id, account_type, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -969,7 +969,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessAccountAudiencesSharedAccountsSlashListResponse, ApiError>
     {
-        info!("business_account_audiences_shared_accounts_slash_list(\"{}\", \"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, audience_id, account_type, bookmark, page_size, context.get().0.clone());
+        info!("business_account_audiences_shared_accounts_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, audience_id, account_type, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -982,7 +982,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<SharedAudiencesForBusinessSlashListResponse, ApiError>
     {
-        info!("shared_audiences_for_business_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, order, bookmark, page_size, context.get().0.clone());
+        info!("shared_audiences_for_business_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, order, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -993,7 +993,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_to_ad_account_shared_audience_update_with_required_body: models::AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody,
         context: &C) -> Result<UpdateAdAccountToAdAccountSharedAudienceResponse, ApiError>
     {
-        info!("update_ad_account_to_ad_account_shared_audience(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body, context.get().0.clone());
+        info!("update_ad_account_to_ad_account_shared_audience({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_account_to_ad_account_shared_audience_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1004,7 +1004,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_to_business_shared_audience_update_with_required_body: models::AdAccountToBusinessSharedAudienceUpdateWithRequiredBody,
         context: &C) -> Result<UpdateAdAccountToBusinessSharedAudienceResponse, ApiError>
     {
-        info!("update_ad_account_to_business_shared_audience(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_account_to_business_shared_audience_update_with_required_body, context.get().0.clone());
+        info!("update_ad_account_to_business_shared_audience({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_account_to_business_shared_audience_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1015,7 +1015,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         business_to_ad_account_shared_audience_update_with_required_body: models::BusinessToAdAccountSharedAudienceUpdateWithRequiredBody,
         context: &C) -> Result<UpdateBusinessToAdAccountSharedAudienceResponse, ApiError>
     {
-        info!("update_business_to_ad_account_shared_audience(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, business_to_ad_account_shared_audience_update_with_required_body, context.get().0.clone());
+        info!("update_business_to_ad_account_shared_audience({:?}, {:?}) - X-Span-ID: {:?}", business_id, business_to_ad_account_shared_audience_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1026,7 +1026,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         business_to_business_shared_audience_update_with_required_body: models::BusinessToBusinessSharedAudienceUpdateWithRequiredBody,
         context: &C) -> Result<UpdateBusinessToBusinessSharedAudienceResponse, ApiError>
     {
-        info!("update_business_to_business_shared_audience(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, business_to_business_shared_audience_update_with_required_body, context.get().0.clone());
+        info!("update_business_to_business_shared_audience({:?}, {:?}) - X-Span-ID: {:?}", business_id, business_to_business_shared_audience_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1037,7 +1037,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_accounts_audience_create: models::AdAccountsAudienceCreate,
         context: &C) -> Result<AudiencesSlashCreateResponse, ApiError>
     {
-        info!("audiences_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ad_accounts_audience_create, context.get().0.clone());
+        info!("audiences_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ad_accounts_audience_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1052,7 +1052,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         exclude_nca: Option<bool>,
         context: &C) -> Result<AudiencesSlashListResponse, ApiError>
     {
-        info!("audiences_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, ownership_type, exclude_nca, context.get().0.clone());
+        info!("audiences_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, ownership_type, exclude_nca, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1063,7 +1063,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AudiencesSlashGetResponse, ApiError>
     {
-        info!("audiences_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", audience_id, ad_account_id, context.get().0.clone());
+        info!("audiences_slash_get({:?}, {:?}) - X-Span-ID: {:?}", audience_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1075,7 +1075,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_accounts_audience_update: models::AdAccountsAudienceUpdate,
         context: &C) -> Result<AudiencesSlashUpdateResponse, ApiError>
     {
-        info!("audiences_slash_update(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", audience_id, ad_account_id, ad_accounts_audience_update, context.get().0.clone());
+        info!("audiences_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", audience_id, ad_account_id, ad_accounts_audience_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1086,7 +1086,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ads_credit_redeem_create: models::AdsCreditRedeemCreate,
         context: &C) -> Result<AdsCreditSlashRedeemResponse, ApiError>
     {
-        info!("ads_credit_slash_redeem(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ads_credit_redeem_create, context.get().0.clone());
+        info!("ads_credit_slash_redeem({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ads_credit_redeem_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1098,7 +1098,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<AdsCreditsDiscountsSlashGetResponse, ApiError>
     {
-        info!("ads_credits_discounts_slash_get(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("ads_credits_discounts_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1116,7 +1116,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         end_due_date: Option<chrono::naive::NaiveDate>,
         context: &C) -> Result<BillingInvoicesSlashGetResponse, ApiError>
     {
-        info!("billing_invoices_slash_get(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, sort, status, document_type, start_due_date, end_due_date, context.get().0.clone());
+        info!("billing_invoices_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, sort, status, document_type, start_due_date, end_due_date, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1129,7 +1129,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BillingProfilesSlashGetResponse, ApiError>
     {
-        info!("billing_profiles_slash_get({}, \"{}\", {:?}, {:?}) - X-Span-ID: {:?}", is_active, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("billing_profiles_slash_get({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", is_active, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1139,7 +1139,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<SsioAccountsSlashGetResponse, ApiError>
     {
-        info!("ssio_accounts_slash_get(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("ssio_accounts_slash_get({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1150,7 +1150,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ssio_insertion_order_create: models::SsioInsertionOrderCreate,
         context: &C) -> Result<SsioInsertionOrderSlashCreateResponse, ApiError>
     {
-        info!("ssio_insertion_order_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ssio_insertion_order_create, context.get().0.clone());
+        info!("ssio_insertion_order_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ssio_insertion_order_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1161,7 +1161,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ssio_insertion_order_update: models::SsioInsertionOrderUpdate,
         context: &C) -> Result<SsioInsertionOrderSlashEditResponse, ApiError>
     {
-        info!("ssio_insertion_order_slash_edit(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, ssio_insertion_order_update, context.get().0.clone());
+        info!("ssio_insertion_order_slash_edit({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, ssio_insertion_order_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1173,7 +1173,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<SsioInsertionOrdersStatusSlashGetByAdAccountResponse, ApiError>
     {
-        info!("ssio_insertion_orders_status_slash_get_by_ad_account(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("ssio_insertion_orders_status_slash_get_by_ad_account({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1186,7 +1186,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<SsioOrderLinesSlashGetByAdAccountResponse, ApiError>
     {
-        info!("ssio_order_lines_slash_get_by_ad_account(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, pin_order_id, bookmark, page_size, context.get().0.clone());
+        info!("ssio_order_lines_slash_get_by_ad_account({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, pin_order_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1197,7 +1197,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         billing_invoice_id: String,
         context: &C) -> Result<BillingInvoiceDownloadSlashGetResponse, ApiError>
     {
-        info!("billing_invoice_download_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, billing_invoice_id, context.get().0.clone());
+        info!("billing_invoice_download_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, billing_invoice_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1208,7 +1208,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         pin_order_id: String,
         context: &C) -> Result<SsioInsertionOrdersStatusSlashGetByPinOrderIdResponse, ApiError>
     {
-        info!("ssio_insertion_orders_status_slash_get_by_pin_order_id(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, pin_order_id, context.get().0.clone());
+        info!("ssio_insertion_orders_status_slash_get_by_pin_order_id({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, pin_order_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1244,7 +1244,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardSectionsSlashCreateResponse, ApiError>
     {
-        info!("board_sections_slash_create(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", board_id, board_section_create, ad_account_id, context.get().0.clone());
+        info!("board_sections_slash_create({:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, board_section_create, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1257,7 +1257,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BoardSectionsSlashListResponse, ApiError>
     {
-        info!("board_sections_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("board_sections_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1268,7 +1268,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardsSlashDeleteResponse, ApiError>
     {
-        info!("boards_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, context.get().0.clone());
+        info!("boards_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1279,7 +1279,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardsSlashGetResponse, ApiError>
     {
-        info!("boards_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, context.get().0.clone());
+        info!("boards_slash_get({:?}, {:?}) - X-Span-ID: {:?}", board_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1294,7 +1294,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BoardsSlashListPinsResponse, ApiError>
     {
-        info!("boards_slash_list_pins(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, creative_types, ad_account_id, pin_metrics, bookmark, page_size, context.get().0.clone());
+        info!("boards_slash_list_pins({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, creative_types, ad_account_id, pin_metrics, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1306,7 +1306,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardsSlashUpdateResponse, ApiError>
     {
-        info!("boards_slash_update(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", board_id, board_with_update_privacy_update, ad_account_id, context.get().0.clone());
+        info!("boards_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, board_with_update_privacy_update, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1318,7 +1318,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardSectionsSlashDeleteResponse, ApiError>
     {
-        info!("board_sections_slash_delete(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", board_id, section_id, ad_account_id, context.get().0.clone());
+        info!("board_sections_slash_delete({:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, section_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1332,7 +1332,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BoardSectionsSlashListPinsResponse, ApiError>
     {
-        info!("board_sections_slash_list_pins(\"{}\", \"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, section_id, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("board_sections_slash_list_pins({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, section_id, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1345,7 +1345,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<BoardSectionsSlashUpdateResponse, ApiError>
     {
-        info!("board_sections_slash_update(\"{}\", \"{}\", {:?}, {:?}) - X-Span-ID: {:?}", board_id, section_id, board_section_update_with_required_body, ad_account_id, context.get().0.clone());
+        info!("board_sections_slash_update({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", board_id, section_id, board_section_update_with_required_body, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1356,7 +1356,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         bulk_download_create: models::BulkDownloadCreate,
         context: &C) -> Result<BulkDownloadSlashCreateResponse, ApiError>
     {
-        info!("bulk_download_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_download_create, context.get().0.clone());
+        info!("bulk_download_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_download_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1367,7 +1367,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         bulk_upsert_request: models::BulkUpsertRequest,
         context: &C) -> Result<BulkUpsertSlashCreateResponse, ApiError>
     {
-        info!("bulk_upsert_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_upsert_request, context.get().0.clone());
+        info!("bulk_upsert_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_upsert_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1379,7 +1379,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         include_details: Option<bool>,
         context: &C) -> Result<BulkRequestSlashGetResponse, ApiError>
     {
-        info!("bulk_request_slash_get(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_request_id, include_details, context.get().0.clone());
+        info!("bulk_request_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bulk_request_id, include_details, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1390,7 +1390,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         asset_group_input_create: models::AssetGroupInputCreate,
         context: &C) -> Result<AssetGroupSlashCreateResponse, ApiError>
     {
-        info!("asset_group_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, asset_group_input_create, context.get().0.clone());
+        info!("asset_group_slash_create({:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_group_input_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1401,7 +1401,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         asset_group_deletion_delete: models::AssetGroupDeletionDelete,
         context: &C) -> Result<AssetGroupSlashDeleteResponse, ApiError>
     {
-        info!("asset_group_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, asset_group_deletion_delete, context.get().0.clone());
+        info!("asset_group_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_group_deletion_delete, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1412,7 +1412,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         asset_group_modification_read_or_update: models::AssetGroupModificationReadOrUpdate,
         context: &C) -> Result<AssetGroupSlashUpdateResponse, ApiError>
     {
-        info!("asset_group_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, asset_group_modification_read_or_update, context.get().0.clone());
+        info!("asset_group_slash_update({:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_group_modification_read_or_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1429,7 +1429,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessAssetsSlashGetResponse, ApiError>
     {
-        info!("business_assets_slash_get(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, permissions, child_asset_id, asset_group_id, asset_type, start_index, bookmark, page_size, context.get().0.clone());
+        info!("business_assets_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, permissions, child_asset_id, asset_group_id, asset_type, start_index, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1440,7 +1440,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         business_members_asset_access_delete_body: models::BusinessMembersAssetAccessDeleteBody,
         context: &C) -> Result<BusinessMembersAssetAccessSlashDeleteResponse, ApiError>
     {
-        info!("business_members_asset_access_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, business_members_asset_access_delete_body, context.get().0.clone());
+        info!("business_members_asset_access_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", business_id, business_members_asset_access_delete_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1451,7 +1451,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         update_member_asset_access_body: models::UpdateMemberAssetAccessBody,
         context: &C) -> Result<BusinessMembersAssetAccessSlashUpdateResponse, ApiError>
     {
-        info!("business_members_asset_access_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, update_member_asset_access_body, context.get().0.clone());
+        info!("business_members_asset_access_slash_update({:?}, {:?}) - X-Span-ID: {:?}", business_id, update_member_asset_access_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1462,7 +1462,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         delete_partner_asset_access_body: models::DeletePartnerAssetAccessBody,
         context: &C) -> Result<DeletePartnerAssetAccessHandlerImplResponse, ApiError>
     {
-        info!("delete_partner_asset_access_handler_impl(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, delete_partner_asset_access_body, context.get().0.clone());
+        info!("delete_partner_asset_access_handler_impl({:?}, {:?}) - X-Span-ID: {:?}", business_id, delete_partner_asset_access_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1473,7 +1473,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         update_partner_asset_access_body: models::UpdatePartnerAssetAccessBody,
         context: &C) -> Result<UpdatePartnerAssetAccessHandlerImplResponse, ApiError>
     {
-        info!("update_partner_asset_access_handler_impl(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, update_partner_asset_access_body, context.get().0.clone());
+        info!("update_partner_asset_access_handler_impl({:?}, {:?}) - X-Span-ID: {:?}", business_id, update_partner_asset_access_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1488,7 +1488,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessAssetMembersSlashGetResponse, ApiError>
     {
-        info!("business_asset_members_slash_get(\"{}\", \"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_id, start_index, fetch_system_users, bookmark, page_size, context.get().0.clone());
+        info!("business_asset_members_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_id, start_index, fetch_system_users, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1502,7 +1502,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessAssetPartnersSlashGetResponse, ApiError>
     {
-        info!("business_asset_partners_slash_get(\"{}\", \"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_id, start_index, bookmark, page_size, context.get().0.clone());
+        info!("business_asset_partners_slash_get({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, asset_id, start_index, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1523,7 +1523,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessMemberAssetsSlashGetResponse, ApiError>
     {
-        info!("business_member_assets_slash_get(\"{}\", \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, member_id, asset_type, start_index, sort_by, sort_ascending, search_by, search_value, asset_permission_type, ad_account_statuses, bookmark, page_size, context.get().0.clone());
+        info!("business_member_assets_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, member_id, asset_type, start_index, sort_by, sort_ascending, search_by, search_value, asset_permission_type, ad_account_statuses, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1543,7 +1543,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<BusinessPartnerAssetAccessSlashGetResponse, ApiError>
     {
-        info!("business_partner_asset_access_slash_get(\"{}\", \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, partner_id, partner_type, asset_type, start_index, sort_by, sort_ascending, search_by, search_value, bookmark, page_size, context.get().0.clone());
+        info!("business_partner_asset_access_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, partner_id, partner_type, asset_type, start_index, sort_by, sort_ascending, search_by, search_value, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1564,7 +1564,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         create_asset_access_request_body: models::CreateAssetAccessRequestBody,
         context: &C) -> Result<AssetAccessRequestsSlashCreateResponse, ApiError>
     {
-        info!("asset_access_requests_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, create_asset_access_request_body, context.get().0.clone());
+        info!("asset_access_requests_slash_create({:?}, {:?}) - X-Span-ID: {:?}", business_id, create_asset_access_request_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1575,7 +1575,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         cancel_invites_request: models::CancelInvitesRequest,
         context: &C) -> Result<CancelInvitesOrRequestsResponse, ApiError>
     {
-        info!("cancel_invites_or_requests(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, cancel_invites_request, context.get().0.clone());
+        info!("cancel_invites_or_requests({:?}, {:?}) - X-Span-ID: {:?}", business_id, cancel_invites_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1586,7 +1586,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         create_asset_invites_request: models::CreateAssetInvitesRequest,
         context: &C) -> Result<CreateAssetInvitesResponse, ApiError>
     {
-        info!("create_asset_invites(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, create_asset_invites_request, context.get().0.clone());
+        info!("create_asset_invites({:?}, {:?}) - X-Span-ID: {:?}", business_id, create_asset_invites_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1597,7 +1597,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         create_membership_or_partnership_invites_body: models::CreateMembershipOrPartnershipInvitesBody,
         context: &C) -> Result<CreateMembershipOrPartnershipInvitesResponse, ApiError>
     {
-        info!("create_membership_or_partnership_invites(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, create_membership_or_partnership_invites_body, context.get().0.clone());
+        info!("create_membership_or_partnership_invites({:?}, {:?}) - X-Span-ID: {:?}", business_id, create_membership_or_partnership_invites_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1612,7 +1612,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<GetSlashInvitesResponse, ApiError>
     {
-        info!("get_slash_invites(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, is_member, invite_status, invite_type, bookmark, page_size, context.get().0.clone());
+        info!("get_slash_invites({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, is_member, invite_status, invite_type, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1635,7 +1635,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         brand_account_create: models::BrandAccountCreate,
         context: &C) -> Result<BrandAccountsSlashCreateResponse, ApiError>
     {
-        info!("brand_accounts_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", business_hierarchy_id, brand_account_create, context.get().0.clone());
+        info!("brand_accounts_slash_create({:?}, {:?}) - X-Span-ID: {:?}", business_hierarchy_id, brand_account_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1646,7 +1646,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         delete_business_membership_body: models::DeleteBusinessMembershipBody,
         context: &C) -> Result<DeleteBusinessMembershipResponse, ApiError>
     {
-        info!("delete_business_membership(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, delete_business_membership_body, context.get().0.clone());
+        info!("delete_business_membership({:?}, {:?}) - X-Span-ID: {:?}", business_id, delete_business_membership_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1657,7 +1657,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         delete_business_partners_delete: models::DeleteBusinessPartnersDelete,
         context: &C) -> Result<DeleteBusinessPartnersResponse, ApiError>
     {
-        info!("delete_business_partners(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, delete_business_partners_delete, context.get().0.clone());
+        info!("delete_business_partners({:?}, {:?}) - X-Span-ID: {:?}", business_id, delete_business_partners_delete, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1674,7 +1674,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<GetSlashBusinessMembersResponse, ApiError>
     {
-        info!("get_slash_business_members(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, fetch_system_users, assets_summary, business_roles, member_ids, start_index, bookmark, page_size, context.get().0.clone());
+        info!("get_slash_business_members({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, fetch_system_users, assets_summary, business_roles, member_ids, start_index, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1691,7 +1691,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<GetSlashBusinessPartnersResponse, ApiError>
     {
-        info!("get_slash_business_partners(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, assets_summary, partner_type, partner_ids, start_index, sort_ascending, bookmark, page_size, context.get().0.clone());
+        info!("get_slash_business_partners({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, assets_summary, partner_type, partner_ids, start_index, sort_ascending, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1702,7 +1702,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         business_membership_member: models::UpdateBusinessMembershipsBody,
         context: &C) -> Result<UpdateSlashBusinessMembershipsResponse, ApiError>
     {
-        info!("update_slash_business_memberships(\"{}\", {:?}) - X-Span-ID: {:?}", business_id, business_membership_member, context.get().0.clone());
+        info!("update_slash_business_memberships({:?}, {:?}) - X-Span-ID: {:?}", business_id, business_membership_member, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1714,7 +1714,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         brand_account_update: models::BrandAccountUpdate,
         context: &C) -> Result<BrandAccountsSlashUpdateResponse, ApiError>
     {
-        info!("brand_accounts_slash_update(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", brand_account_id, business_hierarchy_id, brand_account_update, context.get().0.clone());
+        info!("brand_accounts_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", brand_account_id, business_hierarchy_id, brand_account_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1726,7 +1726,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         system_user_update_with_required_body: models::SystemUserUpdateWithRequiredBody,
         context: &C) -> Result<SystemUserSlashUpdateResponse, ApiError>
     {
-        info!("system_user_slash_update(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", business_id, system_user_id, system_user_update_with_required_body, context.get().0.clone());
+        info!("system_user_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", business_id, system_user_id, system_user_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1746,7 +1746,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_report_time: Option<models::AdGroupsAnalyticsConversionReportTimeParameter>,
         context: &C) -> Result<AdPinsSlashAnalyticsResponse, ApiError>
     {
-        info!("ad_pins_slash_analytics(\"{}\", {:?}, {}, {}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, context.get().0.clone());
+        info!("ad_pins_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", campaign_id, pin_ids, start_date, end_date, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1768,7 +1768,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<CampaignTargetingAnalyticsSlashGetResponse, ApiError>
     {
-        info!("campaign_targeting_analytics_slash_get(\"{}\", {:?}, {}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, context.get().0.clone());
+        info!("campaign_targeting_analytics_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ids, start_date, end_date, targeting_types, columns, granularity, click_window_days, engagement_window_days, view_window_days, conversion_report_time, attribution_types, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1789,7 +1789,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<CampaignsSlashAnalyticsResponse, ApiError>
     {
-        info!("campaigns_slash_analytics({}, {}, {:?}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, campaign_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, aggregate_report_rows, reporting_timezone, context.get().0.clone());
+        info!("campaigns_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, campaign_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, aggregate_report_rows, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1800,7 +1800,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         campaign_create_item: models::CampaignBatchCreateRequest,
         context: &C) -> Result<CampaignsSlashCreateResponse, ApiError>
     {
-        info!("campaigns_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_create_item, context.get().0.clone());
+        info!("campaigns_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_create_item, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1815,7 +1815,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         entity_statuses: Option<&'a Vec<models::EntityStatus>>,
         context: &C) -> Result<CampaignsSlashListResponse, ApiError>
     {
-        info!("campaigns_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, entity_statuses, context.get().0.clone());
+        info!("campaigns_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, campaign_ids, entity_statuses, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1826,7 +1826,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         campaign_batch_update_item: models::CampaignBatchUpdateRequest,
         context: &C) -> Result<CampaignsSlashUpdateResponse, ApiError>
     {
-        info!("campaigns_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_batch_update_item, context.get().0.clone());
+        info!("campaigns_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_batch_update_item, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1837,7 +1837,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         campaign_delivery_estimates_campaign: models::CampaignDeliveryEstimatesCampaignRequest,
         context: &C) -> Result<GetCampaignDeliveryEstimatesResponse, ApiError>
     {
-        info!("get_campaign_delivery_estimates(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_delivery_estimates_campaign, context.get().0.clone());
+        info!("get_campaign_delivery_estimates({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_delivery_estimates_campaign, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1848,7 +1848,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<CampaignsSlashGetResponse, ApiError>
     {
-        info!("campaigns_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", campaign_id, ad_account_id, context.get().0.clone());
+        info!("campaigns_slash_get({:?}, {:?}) - X-Span-ID: {:?}", campaign_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1885,7 +1885,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<FeedProcessingResultsSlashListResponse, ApiError>
     {
-        info!("feed_processing_results_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("feed_processing_results_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1896,7 +1896,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<FeedsSlashDeleteResponse, ApiError>
     {
-        info!("feeds_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
+        info!("feeds_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1907,7 +1907,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<FeedsSlashGetResponse, ApiError>
     {
-        info!("feeds_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
+        info!("feeds_slash_get({:?}, {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1918,7 +1918,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<FeedsSlashIngestResponse, ApiError>
     {
-        info!("feeds_slash_ingest(\"{}\", {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
+        info!("feeds_slash_ingest({:?}, {:?}) - X-Span-ID: {:?}", feed_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1930,7 +1930,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<FeedsSlashUpdateResponse, ApiError>
     {
-        info!("feeds_slash_update(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", feed_id, catalogs_feed_update_request_schema, ad_account_id, context.get().0.clone());
+        info!("feeds_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", feed_id, catalogs_feed_update_request_schema, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1945,7 +1945,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<ItemsIssuesSlashListResponse, ApiError>
     {
-        info!("items_issues_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", processing_result_id, item_numbers, item_validation_issue, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("items_issues_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", processing_result_id, item_numbers, item_validation_issue, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -1978,7 +1978,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<ItemsBatchSlashGetResponse, ApiError>
     {
-        info!("items_batch_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", batch_id, ad_account_id, context.get().0.clone());
+        info!("items_batch_slash_get({:?}, {:?}) - X-Span-ID: {:?}", batch_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2054,7 +2054,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<CatalogsProductGroupPinsSlashListResponse, ApiError>
     {
-        info!("catalogs_product_group_pins_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, pin_metrics, bookmark, page_size, context.get().0.clone());
+        info!("catalogs_product_group_pins_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, pin_metrics, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2065,7 +2065,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsProductGroupsSlashDeleteResponse, ApiError>
     {
-        info!("catalogs_product_groups_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
+        info!("catalogs_product_groups_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2076,7 +2076,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsProductGroupsSlashGetResponse, ApiError>
     {
-        info!("catalogs_product_groups_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
+        info!("catalogs_product_groups_slash_get({:?}, {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2087,7 +2087,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsProductGroupsSlashProductCountsGetResponse, ApiError>
     {
-        info!("catalogs_product_groups_slash_product_counts_get(\"{}\", {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
+        info!("catalogs_product_groups_slash_product_counts_get({:?}, {:?}) - X-Span-ID: {:?}", product_group_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2099,7 +2099,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsProductGroupsSlashUpdateResponse, ApiError>
     {
-        info!("catalogs_product_groups_slash_update(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", product_group_id, catalogs_product_groups_update_request_schema, ad_account_id, context.get().0.clone());
+        info!("catalogs_product_groups_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", product_group_id, catalogs_product_groups_update_request_schema, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2121,7 +2121,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<ReportsSlashGetResponse, ApiError>
     {
-        info!("reports_slash_get(\"{}\", {:?}) - X-Span-ID: {:?}", token, ad_account_id, context.get().0.clone());
+        info!("reports_slash_get({:?}, {:?}) - X-Span-ID: {:?}", token, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2146,7 +2146,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsLocalInventoryItemsBatchSlashOperateResponse, ApiError>
     {
-        info!("catalogs_local_inventory_items_batch_slash_operate(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_inventory_items_batch_create, ad_account_id, context.get().0.clone());
+        info!("catalogs_local_inventory_items_batch_slash_operate({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_inventory_items_batch_create, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2158,7 +2158,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsLocalInventoryItemsSlashPostResponse, ApiError>
     {
-        info!("catalogs_local_inventory_items_slash_post(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_inventory_items_get_create, ad_account_id, context.get().0.clone());
+        info!("catalogs_local_inventory_items_slash_post({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_inventory_items_get_create, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2170,7 +2170,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsLocalStoresSlashCreateResponse, ApiError>
     {
-        info!("catalogs_local_stores_slash_create(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_store_create, ad_account_id, context.get().0.clone());
+        info!("catalogs_local_stores_slash_create({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_store_create, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2182,7 +2182,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsLocalStoresSlashDeleteResponse, ApiError>
     {
-        info!("catalogs_local_stores_slash_delete(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, ids, ad_account_id, context.get().0.clone());
+        info!("catalogs_local_stores_slash_delete({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, ids, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2196,7 +2196,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<CatalogsLocalStoresSlashListResponse, ApiError>
     {
-        info!("catalogs_local_stores_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, ids, ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("catalogs_local_stores_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, ids, ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2208,7 +2208,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsLocalStoresSlashUpdateResponse, ApiError>
     {
-        info!("catalogs_local_stores_slash_update(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_store_batch_update, ad_account_id, context.get().0.clone());
+        info!("catalogs_local_stores_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, local_store_batch_update, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2220,7 +2220,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsSupplementalItemsBatchSlashGetResponse, ApiError>
     {
-        info!("catalogs_supplemental_items_batch_slash_get(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", catalog_id, batch_id, ad_account_id, context.get().0.clone());
+        info!("catalogs_supplemental_items_batch_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, batch_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2234,7 +2234,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<CatalogsSlashAvailableFilterValuesResponse, ApiError>
     {
-        info!("catalogs_slash_available_filter_values(\"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, feed_id, country, language, ad_account_id, context.get().0.clone());
+        info!("catalogs_slash_available_filter_values({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", catalog_id, feed_id, country, language, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2268,7 +2268,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_deletion_request_create: models::ConversionDeletionRequestCreate,
         context: &C) -> Result<ConversionDeletionRequestSlashCreateResponse, ApiError>
     {
-        info!("conversion_deletion_request_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_deletion_request_create, context.get().0.clone());
+        info!("conversion_deletion_request_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_deletion_request_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2281,7 +2281,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<ConversionDeletionRequestSlashListResponse, ApiError>
     {
-        info!("conversion_deletion_request_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("conversion_deletion_request_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2292,7 +2292,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<ConversionDeletionRequestSlashDeleteResponse, ApiError>
     {
-        info!("conversion_deletion_request_slash_delete(\"{}\", \"{}\") - X-Span-ID: {:?}", request_id, ad_account_id, context.get().0.clone());
+        info!("conversion_deletion_request_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", request_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2303,7 +2303,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<ConversionDeletionRequestSlashGetResponse, ApiError>
     {
-        info!("conversion_deletion_request_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", request_id, ad_account_id, context.get().0.clone());
+        info!("conversion_deletion_request_slash_get({:?}, {:?}) - X-Span-ID: {:?}", request_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2316,7 +2316,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ingestion_source: Option<models::IngestionSourceOptions>,
         context: &C) -> Result<ConversionEqsSlashListResponse, ApiError>
     {
-        info!("conversion_eqs_slash_list({:?}, \"{}\", {:?}, {:?}) - X-Span-ID: {:?}", lookback_period, ad_account_id, source_platform, ingestion_source, context.get().0.clone());
+        info!("conversion_eqs_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", lookback_period, ad_account_id, source_platform, ingestion_source, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2328,7 +2328,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         test: Option<bool>,
         context: &C) -> Result<EventsSlashCreateResponse, ApiError>
     {
-        info!("events_slash_create(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_events_create, test, context.get().0.clone());
+        info!("events_slash_create({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_events_create, test, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2339,7 +2339,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_tag_create: models::ConversionTagCreate,
         context: &C) -> Result<ConversionTagsSlashCreateResponse, ApiError>
     {
-        info!("conversion_tags_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_tag_create, context.get().0.clone());
+        info!("conversion_tags_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_tag_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2350,7 +2350,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         filter_deleted: Option<bool>,
         context: &C) -> Result<ConversionTagsSlashListResponse, ApiError>
     {
-        info!("conversion_tags_slash_list(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, filter_deleted, context.get().0.clone());
+        info!("conversion_tags_slash_list({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, filter_deleted, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2360,7 +2360,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<OcpmEligibleConversionTagsSlashGetResponse, ApiError>
     {
-        info!("ocpm_eligible_conversion_tags_slash_get(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("ocpm_eligible_conversion_tags_slash_get({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2373,7 +2373,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<PageVisitConversionTagsSlashGetResponse, ApiError>
     {
-        info!("page_visit_conversion_tags_slash_get(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("page_visit_conversion_tags_slash_get({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2384,7 +2384,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_tag_id: String,
         context: &C) -> Result<ConversionTagsSlashGetResponse, ApiError>
     {
-        info!("conversion_tags_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, conversion_tag_id, context.get().0.clone());
+        info!("conversion_tags_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_tag_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2395,7 +2395,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         advertiser_defined_events_create_request: models::AdvertiserDefinedEventsCreateRequest,
         context: &C) -> Result<AdvertiserDefinedEventsSlashCreateResponse, ApiError>
     {
-        info!("advertiser_defined_events_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, advertiser_defined_events_create_request, context.get().0.clone());
+        info!("advertiser_defined_events_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, advertiser_defined_events_create_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2406,7 +2406,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         event_names: &'a Vec<String>,
         context: &C) -> Result<AdvertiserDefinedEventsSlashDeleteResponse, ApiError>
     {
-        info!("advertiser_defined_events_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, event_names, context.get().0.clone());
+        info!("advertiser_defined_events_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, event_names, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2416,7 +2416,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<AdvertiserDefinedEventsSlashGetResponse, ApiError>
     {
-        info!("advertiser_defined_events_slash_get(\"{}\") - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
+        info!("advertiser_defined_events_slash_get({:?}) - X-Span-ID: {:?}", ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2427,7 +2427,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         advertiser_defined_events_create_request: models::AdvertiserDefinedEventsCreateRequest,
         context: &C) -> Result<AdvertiserDefinedEventsSlashUpdateResponse, ApiError>
     {
-        info!("advertiser_defined_events_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, advertiser_defined_events_create_request, context.get().0.clone());
+        info!("advertiser_defined_events_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, advertiser_defined_events_create_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2439,7 +2439,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_upload_create_request: models::CustomerListUploadCreateRequest,
         context: &C) -> Result<CustomerListUploadsSlashCreateResponse, ApiError>
     {
-        info!("customer_list_uploads_slash_create(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_create_request, context.get().0.clone());
+        info!("customer_list_uploads_slash_create({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_create_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2451,7 +2451,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_upload_id: String,
         context: &C) -> Result<CustomerListUploadsSlashGetResponse, ApiError>
     {
-        info!("customer_list_uploads_slash_get(\"{}\", \"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_id, context.get().0.clone());
+        info!("customer_list_uploads_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2463,7 +2463,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_upload_id: String,
         context: &C) -> Result<CustomerListUploadsSlashRunResponse, ApiError>
     {
-        info!("customer_list_uploads_slash_run(\"{}\", \"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_id, context.get().0.clone());
+        info!("customer_list_uploads_slash_run({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_upload_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2474,7 +2474,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_create: models::CustomerListCreate,
         context: &C) -> Result<CustomerListsSlashCreateResponse, ApiError>
     {
-        info!("customer_lists_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_create, context.get().0.clone());
+        info!("customer_lists_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2488,7 +2488,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         exclude_nca: Option<bool>,
         context: &C) -> Result<CustomerListsSlashListResponse, ApiError>
     {
-        info!("customer_lists_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, exclude_nca, context.get().0.clone());
+        info!("customer_lists_slash_list({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, exclude_nca, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2499,7 +2499,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_id: String,
         context: &C) -> Result<CustomerListsSlashGetResponse, ApiError>
     {
-        info!("customer_lists_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, customer_list_id, context.get().0.clone());
+        info!("customer_lists_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2511,7 +2511,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_list_update_with_required_body: models::CustomerListUpdateWithRequiredBody,
         context: &C) -> Result<CustomerListsSlashUpdateResponse, ApiError>
     {
-        info!("customer_lists_slash_update(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_update_with_required_body, context.get().0.clone());
+        info!("customer_lists_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_list_id, customer_list_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2522,7 +2522,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_segment_create: models::CustomerSegmentCreate,
         context: &C) -> Result<CustomerSegmentSlashCreateResponse, ApiError>
     {
-        info!("customer_segment_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, customer_segment_create, context.get().0.clone());
+        info!("customer_segment_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_segment_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2537,7 +2537,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         search_query: Option<String>,
         context: &C) -> Result<CustomerSegmentSlashListResponse, ApiError>
     {
-        info!("customer_segment_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, include_sizing, search_query, context.get().0.clone());
+        info!("customer_segment_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, include_sizing, search_query, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2548,7 +2548,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         customer_segment_update_request_update_with_required_body: models::CustomerSegmentUpdateRequestUpdateWithRequiredBody,
         context: &C) -> Result<CustomerSegmentSlashUpdateResponse, ApiError>
     {
-        info!("customer_segment_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, customer_segment_update_request_update_with_required_body, context.get().0.clone());
+        info!("customer_segment_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, customer_segment_update_request_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2589,7 +2589,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         external_business_id: String,
         context: &C) -> Result<IntegrationsCommerceSlashDelResponse, ApiError>
     {
-        info!("integrations_commerce_slash_del(\"{}\") - X-Span-ID: {:?}", external_business_id, context.get().0.clone());
+        info!("integrations_commerce_slash_del({:?}) - X-Span-ID: {:?}", external_business_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2599,7 +2599,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         external_business_id: String,
         context: &C) -> Result<IntegrationsCommerceSlashGetResponse, ApiError>
     {
-        info!("integrations_commerce_slash_get(\"{}\") - X-Span-ID: {:?}", external_business_id, context.get().0.clone());
+        info!("integrations_commerce_slash_get({:?}) - X-Span-ID: {:?}", external_business_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2610,7 +2610,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         integration_metadata_update: models::IntegrationMetadataUpdate,
         context: &C) -> Result<IntegrationsCommerceSlashPatchResponse, ApiError>
     {
-        info!("integrations_commerce_slash_patch(\"{}\", {:?}) - X-Span-ID: {:?}", external_business_id, integration_metadata_update, context.get().0.clone());
+        info!("integrations_commerce_slash_patch({:?}, {:?}) - X-Span-ID: {:?}", external_business_id, integration_metadata_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2620,7 +2620,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         id: String,
         context: &C) -> Result<IntegrationsSlashGetByIdResponse, ApiError>
     {
-        info!("integrations_slash_get_by_id(\"{}\") - X-Span-ID: {:?}", id, context.get().0.clone());
+        info!("integrations_slash_get_by_id({:?}) - X-Span-ID: {:?}", id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2632,7 +2632,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         keywords: &'a Vec<String>,
         context: &C) -> Result<CountryKeywordsMetricsSlashGetResponse, ApiError>
     {
-        info!("country_keywords_metrics_slash_get(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, country_code, keywords, context.get().0.clone());
+        info!("country_keywords_metrics_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, country_code, keywords, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2643,7 +2643,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         keywords_create: models::KeywordsCreate,
         context: &C) -> Result<KeywordsSlashCreateResponse, ApiError>
     {
-        info!("keywords_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, keywords_create, context.get().0.clone());
+        info!("keywords_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, keywords_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2659,7 +2659,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<KeywordsSlashGetResponse, ApiError>
     {
-        info!("keywords_slash_get(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_id, ad_group_id, ad_group_ids, match_types, bookmark, page_size, context.get().0.clone());
+        info!("keywords_slash_get({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_id, ad_group_id, ad_group_ids, match_types, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2670,7 +2670,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         keywords_update: models::KeywordsUpdate,
         context: &C) -> Result<KeywordsSlashUpdateResponse, ApiError>
     {
-        info!("keywords_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, keywords_update, context.get().0.clone());
+        info!("keywords_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, keywords_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2699,7 +2699,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         label_create_request: models::LabelCreateRequest,
         context: &C) -> Result<LabelsSlashCreateResponse, ApiError>
     {
-        info!("labels_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, label_create_request, context.get().0.clone());
+        info!("labels_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, label_create_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2715,7 +2715,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<LabelsSlashListResponse, ApiError>
     {
-        info!("labels_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ids, label_ids, entity_statuses, label_types, bookmark, page_size, context.get().0.clone());
+        info!("labels_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, campaign_ids, label_ids, entity_statuses, label_types, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2726,7 +2726,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         label_update_request: models::LabelUpdateRequest,
         context: &C) -> Result<LabelsSlashUpdateResponse, ApiError>
     {
-        info!("labels_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, label_update_request, context.get().0.clone());
+        info!("labels_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, label_update_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2738,7 +2738,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         labeled_entities_create: models::LabeledEntitiesCreate,
         context: &C) -> Result<LabelsSlashApplyResponse, ApiError>
     {
-        info!("labels_slash_apply(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, label_id, labeled_entities_create, context.get().0.clone());
+        info!("labels_slash_apply({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, label_id, labeled_entities_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2750,7 +2750,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         labeled_entities_create: models::LabeledEntitiesCreate,
         context: &C) -> Result<LabelsSlashRemoveResponse, ApiError>
     {
-        info!("labels_slash_remove(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, label_id, labeled_entities_create, context.get().0.clone());
+        info!("labels_slash_remove({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, label_id, labeled_entities_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2762,7 +2762,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<AdAccountsSubscriptionsSlashGetListResponse, ApiError>
     {
-        info!("ad_accounts_subscriptions_slash_get_list(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
+        info!("ad_accounts_subscriptions_slash_get_list({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2773,7 +2773,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         lead_subscription_post_params_create: models::LeadSubscriptionPostParamsCreate,
         context: &C) -> Result<AdAccountsSubscriptionsSlashPostResponse, ApiError>
     {
-        info!("ad_accounts_subscriptions_slash_post(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, lead_subscription_post_params_create, context.get().0.clone());
+        info!("ad_accounts_subscriptions_slash_post({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, lead_subscription_post_params_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2784,7 +2784,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         subscription_id: String,
         context: &C) -> Result<AdAccountsSubscriptionsSlashDelByIdResponse, ApiError>
     {
-        info!("ad_accounts_subscriptions_slash_del_by_id(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, subscription_id, context.get().0.clone());
+        info!("ad_accounts_subscriptions_slash_del_by_id({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, subscription_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2795,7 +2795,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         subscription_id: String,
         context: &C) -> Result<AdAccountsSubscriptionsSlashGetByIdResponse, ApiError>
     {
-        info!("ad_accounts_subscriptions_slash_get_by_id(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, subscription_id, context.get().0.clone());
+        info!("ad_accounts_subscriptions_slash_get_by_id({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, subscription_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2806,7 +2806,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         lead_form_create: models::LeadFormsCreateBody,
         context: &C) -> Result<LeadFormsSlashCreateResponse, ApiError>
     {
-        info!("lead_forms_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_create, context.get().0.clone());
+        info!("lead_forms_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2819,7 +2819,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<LeadFormsSlashListResponse, ApiError>
     {
-        info!("lead_forms_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("lead_forms_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2830,7 +2830,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         lead_form_batch_update: models::LeadFormsUpdateBody,
         context: &C) -> Result<LeadFormsSlashUpdateResponse, ApiError>
     {
-        info!("lead_forms_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_batch_update, context.get().0.clone());
+        info!("lead_forms_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_batch_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2841,7 +2841,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<LeadFormSlashGetResponse, ApiError>
     {
-        info!("lead_form_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", lead_form_id, ad_account_id, context.get().0.clone());
+        info!("lead_form_slash_get({:?}, {:?}) - X-Span-ID: {:?}", lead_form_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2853,7 +2853,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         lead_form_test_create: models::LeadFormTestCreate,
         context: &C) -> Result<LeadFormTestSlashCreateResponse, ApiError>
     {
-        info!("lead_form_test_slash_create(\"{}\", \"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_id, lead_form_test_create, context.get().0.clone());
+        info!("lead_form_test_slash_create({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, lead_form_id, lead_form_test_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2864,7 +2864,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         leads_exports_create: models::LeadsExportsCreate,
         context: &C) -> Result<LeadsExportSlashCreateResponse, ApiError>
     {
-        info!("leads_export_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, leads_exports_create, context.get().0.clone());
+        info!("leads_export_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, leads_exports_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2875,7 +2875,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         leads_export_id: String,
         context: &C) -> Result<LeadsExportSlashGetResponse, ApiError>
     {
-        info!("leads_export_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, leads_export_id, context.get().0.clone());
+        info!("leads_export_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, leads_export_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2906,7 +2906,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         media_id: String,
         context: &C) -> Result<MediaSlashGetResponse, ApiError>
     {
-        info!("media_slash_get(\"{}\") - X-Span-ID: {:?}", media_id, context.get().0.clone());
+        info!("media_slash_get({:?}) - X-Span-ID: {:?}", media_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2917,7 +2917,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         conversion_msot_events_create: models::ConversionMsotEventsCreate,
         context: &C) -> Result<MsotEventsSlashCreateResponse, ApiError>
     {
-        info!("msot_events_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_msot_events_create, context.get().0.clone());
+        info!("msot_events_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, conversion_msot_events_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2962,7 +2962,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         token_type_hint: Option<models::TokenTypeHint>,
         context: &C) -> Result<TokenSlashRevokeResponse, ApiError>
     {
-        info!("token_slash_revoke(\"{}\", {:?}) - X-Span-ID: {:?}", token, token_type_hint, context.get().0.clone());
+        info!("token_slash_revoke({:?}, {:?}) - X-Span-ID: {:?}", token, token_type_hint, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2975,7 +2975,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<OrderLinesSlashListResponse, ApiError>
     {
-        info!("order_lines_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("order_lines_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -2986,7 +2986,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<OrderLinesSlashGetResponse, ApiError>
     {
-        info!("order_lines_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", order_line_id, ad_account_id, context.get().0.clone());
+        info!("order_lines_slash_get({:?}, {:?}) - X-Span-ID: {:?}", order_line_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3001,7 +3001,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<MultiPinsSlashAnalyticsResponse, ApiError>
     {
-        info!("multi_pins_slash_analytics({:?}, {}, {}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_ids, start_date, end_date, metric_types, app_types, ad_account_id, context.get().0.clone());
+        info!("multi_pins_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_ids, start_date, end_date, metric_types, app_types, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3048,7 +3048,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<PinsSlashAnalyticsResponse, ApiError>
     {
-        info!("pins_slash_analytics(\"{}\", {}, {}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_id, start_date, end_date, metric_types, app_types, split_field, ad_account_id, context.get().0.clone());
+        info!("pins_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_id, start_date, end_date, metric_types, app_types, split_field, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3059,7 +3059,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<PinsSlashDeleteResponse, ApiError>
     {
-        info!("pins_slash_delete(\"{}\", {:?}) - X-Span-ID: {:?}", pin_id, ad_account_id, context.get().0.clone());
+        info!("pins_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", pin_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3071,7 +3071,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         pin_metrics: Option<bool>,
         context: &C) -> Result<PinsSlashGetResponse, ApiError>
     {
-        info!("pins_slash_get(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", pin_id, ad_account_id, pin_metrics, context.get().0.clone());
+        info!("pins_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_id, ad_account_id, pin_metrics, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3083,7 +3083,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<PinsSlashSaveResponse, ApiError>
     {
-        info!("pins_slash_save(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", pin_id, pins_save_request_create, ad_account_id, context.get().0.clone());
+        info!("pins_slash_save({:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_id, pins_save_request_create, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3095,7 +3095,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<PinsSlashUpdateResponse, ApiError>
     {
-        info!("pins_slash_update(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", pin_id, pin_update, ad_account_id, context.get().0.clone());
+        info!("pins_slash_update({:?}, {:?}, {:?}) - X-Span-ID: {:?}", pin_id, pin_update, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3106,7 +3106,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         product_group_promotions_create: models::ProductGroupPromotionsCreate,
         context: &C) -> Result<ProductGroupPromotionsSlashCreateResponse, ApiError>
     {
-        info!("product_group_promotions_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, product_group_promotions_create, context.get().0.clone());
+        info!("product_group_promotions_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, product_group_promotions_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3122,7 +3122,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_group_id: Option<String>,
         context: &C) -> Result<ProductGroupPromotionsSlashListResponse, ApiError>
     {
-        info!("product_group_promotions_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, product_group_promotion_ids, entity_statuses, ad_group_id, context.get().0.clone());
+        info!("product_group_promotions_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, product_group_promotion_ids, entity_statuses, ad_group_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3133,7 +3133,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         product_group_promotions_update_with_required_body: models::ProductGroupPromotionsUpdateWithRequiredBody,
         context: &C) -> Result<ProductGroupPromotionsSlashUpdateResponse, ApiError>
     {
-        info!("product_group_promotions_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, product_group_promotions_update_with_required_body, context.get().0.clone());
+        info!("product_group_promotions_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, product_group_promotions_update_with_required_body, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3153,7 +3153,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         reporting_timezone: Option<models::ReportingTimeZone>,
         context: &C) -> Result<ProductGroupsSlashAnalyticsResponse, ApiError>
     {
-        info!("product_groups_slash_analytics({}, {}, {:?}, {:?}, {:?}, \"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, product_group_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, reporting_timezone, context.get().0.clone());
+        info!("product_groups_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, product_group_ids, columns, granularity, ad_account_id, click_window_days, engagement_window_days, view_window_days, conversion_report_time, reporting_timezone, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3164,7 +3164,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         product_group_promotion_id: String,
         context: &C) -> Result<ProductGroupPromotionsSlashGetResponse, ApiError>
     {
-        info!("product_group_promotions_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", ad_account_id, product_group_promotion_id, context.get().0.clone());
+        info!("product_group_promotions_slash_get({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, product_group_promotion_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3175,7 +3175,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         product_tags_bulk_add_request: models::ProductTagsBulkAddRequest,
         context: &C) -> Result<ProductTagsSlashBulkAddResponse, ApiError>
     {
-        info!("product_tags_slash_bulk_add(\"{}\", {:?}) - X-Span-ID: {:?}", pin_id, product_tags_bulk_add_request, context.get().0.clone());
+        info!("product_tags_slash_bulk_add({:?}, {:?}) - X-Span-ID: {:?}", pin_id, product_tags_bulk_add_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3186,7 +3186,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         product_tags_bulk_delete_request: models::ProductTagsBulkDeleteRequest,
         context: &C) -> Result<ProductTagsSlashBulkDeleteResponse, ApiError>
     {
-        info!("product_tags_slash_bulk_delete(\"{}\", {:?}) - X-Span-ID: {:?}", pin_id, product_tags_bulk_delete_request, context.get().0.clone());
+        info!("product_tags_slash_bulk_delete({:?}, {:?}) - X-Span-ID: {:?}", pin_id, product_tags_bulk_delete_request, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3196,7 +3196,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         pin_id: String,
         context: &C) -> Result<ProductTagsSlashListResponse, ApiError>
     {
-        info!("product_tags_slash_list(\"{}\") - X-Span-ID: {:?}", pin_id, context.get().0.clone());
+        info!("product_tags_slash_list({:?}) - X-Span-ID: {:?}", pin_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3207,7 +3207,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         promotion_create: models::PromotionCreateBatch,
         context: &C) -> Result<PromotionsSlashCreateResponse, ApiError>
     {
-        info!("promotions_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_create, context.get().0.clone());
+        info!("promotions_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3220,7 +3220,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         order: Option<models::PinterestLibPaginationOrder>,
         context: &C) -> Result<PromotionsSlashListResponse, ApiError>
     {
-        info!("promotions_slash_list(\"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
+        info!("promotions_slash_list({:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3231,7 +3231,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         promotion_batch_update: models::PromotionUpdateBatch,
         context: &C) -> Result<PromotionsSlashUpdateResponse, ApiError>
     {
-        info!("promotions_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_batch_update, context.get().0.clone());
+        info!("promotions_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, promotion_batch_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3242,7 +3242,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<PromotionsSlashDeleteResponse, ApiError>
     {
-        info!("promotions_slash_delete(\"{}\", \"{}\") - X-Span-ID: {:?}", promotion_id, ad_account_id, context.get().0.clone());
+        info!("promotions_slash_delete({:?}, {:?}) - X-Span-ID: {:?}", promotion_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3253,7 +3253,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: String,
         context: &C) -> Result<PromotionsSlashGetResponse, ApiError>
     {
-        info!("promotions_slash_get(\"{}\", \"{}\") - X-Span-ID: {:?}", promotion_id, ad_account_id, context.get().0.clone());
+        info!("promotions_slash_get({:?}, {:?}) - X-Span-ID: {:?}", promotion_id, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3291,7 +3291,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         date: String,
         context: &C) -> Result<MetricsReadyStateSlashGetResponse, ApiError>
     {
-        info!("metrics_ready_state_slash_get(\"{}\") - X-Span-ID: {:?}", date, context.get().0.clone());
+        info!("metrics_ready_state_slash_get({:?}) - X-Span-ID: {:?}", date, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3301,7 +3301,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         interest_id: String,
         context: &C) -> Result<InterestTargetingOptionsSlashGetResponse, ApiError>
     {
-        info!("interest_targeting_options_slash_get(\"{}\") - X-Span-ID: {:?}", interest_id, context.get().0.clone());
+        info!("interest_targeting_options_slash_get({:?}) - X-Span-ID: {:?}", interest_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3326,7 +3326,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         schedule_create: &'a Vec<models::ScheduleCreate>,
         context: &C) -> Result<SchedulesSlashCreateResponse, ApiError>
     {
-        info!("schedules_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, schedule_create, context.get().0.clone());
+        info!("schedules_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, schedule_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3342,7 +3342,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         schedule_type: Option<models::ScheduleType>,
         context: &C) -> Result<SchedulesSlashListResponse, ApiError>
     {
-        info!("schedules_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, entity_ids, bookmark, page_size, order, schedule_statuses, schedule_type, context.get().0.clone());
+        info!("schedules_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, entity_ids, bookmark, page_size, order, schedule_statuses, schedule_type, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3353,7 +3353,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         schedule_batch_update: &'a Vec<models::ScheduleBatchUpdate>,
         context: &C) -> Result<SchedulesSlashUpdateResponse, ApiError>
     {
-        info!("schedules_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, schedule_batch_update, context.get().0.clone());
+        info!("schedules_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, schedule_batch_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3367,7 +3367,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         limit: Option<u8>,
         context: &C) -> Result<SearchPartnerPinsResponse, ApiError>
     {
-        info!("search_partner_pins(\"{}\", \"{}\", {:?}, {:?}, {:?}) - X-Span-ID: {:?}", term, country_code, bookmark, locale, limit, context.get().0.clone());
+        info!("search_partner_pins({:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", term, country_code, bookmark, locale, limit, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3392,7 +3392,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         bookmark: Option<String>,
         context: &C) -> Result<SearchUserPinsSlashListResponse, ApiError>
     {
-        info!("search_user_pins_slash_list(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", query, ad_account_id, bookmark, context.get().0.clone());
+        info!("search_user_pins_slash_list({:?}, {:?}, {:?}) - X-Span-ID: {:?}", query, ad_account_id, bookmark, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3403,7 +3403,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         targeting_template_create: models::TargetingTemplateCreate,
         context: &C) -> Result<TargetingTemplateSlashCreateResponse, ApiError>
     {
-        info!("targeting_template_slash_create(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, targeting_template_create, context.get().0.clone());
+        info!("targeting_template_slash_create({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, targeting_template_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3418,7 +3418,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         search_query: Option<String>,
         context: &C) -> Result<TargetingTemplateSlashListResponse, ApiError>
     {
-        info!("targeting_template_slash_list(\"{}\", {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, include_sizing, search_query, context.get().0.clone());
+        info!("targeting_template_slash_list({:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, bookmark, page_size, order, include_sizing, search_query, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3429,7 +3429,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         targeting_template_update_request_read_or_update: models::TargetingTemplateUpdateRequestReadOrUpdate,
         context: &C) -> Result<TargetingTemplateSlashUpdateResponse, ApiError>
     {
-        info!("targeting_template_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", ad_account_id, targeting_template_update_request_read_or_update, context.get().0.clone());
+        info!("targeting_template_slash_update({:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, targeting_template_update_request_read_or_update, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3450,7 +3450,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         limit: Option<u8>,
         context: &C) -> Result<TermsSuggestedSlashListResponse, ApiError>
     {
-        info!("terms_suggested_slash_list(\"{}\", {:?}) - X-Span-ID: {:?}", term, limit, context.get().0.clone());
+        info!("terms_suggested_slash_list({:?}, {:?}) - X-Span-ID: {:?}", term, limit, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3462,7 +3462,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         tos_type: Option<String>,
         context: &C) -> Result<TermsOfServiceSlashGetResponse, ApiError>
     {
-        info!("terms_of_service_slash_get(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, include_html, tos_type, context.get().0.clone());
+        info!("terms_of_service_slash_get({:?}, {:?}, {:?}) - X-Span-ID: {:?}", ad_account_id, include_html, tos_type, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3553,7 +3553,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         website: String,
         context: &C) -> Result<UnverifyWebsiteSlashDeleteResponse, ApiError>
     {
-        info!("unverify_website_slash_delete(\"{}\") - X-Span-ID: {:?}", website, context.get().0.clone());
+        info!("unverify_website_slash_delete({:?}) - X-Span-ID: {:?}", website, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3572,7 +3572,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<UserAccountSlashAnalyticsResponse, ApiError>
     {
-        info!("user_account_slash_analytics({}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, from_claimed_content, pin_format, app_types, content_type, source, metric_types, split_field, ad_account_id, context.get().0.clone());
+        info!("user_account_slash_analytics({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, from_claimed_content, pin_format, app_types, content_type, source, metric_types, split_field, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3593,7 +3593,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<UserAccountSlashAnalyticsSlashTopPinsResponse, ApiError>
     {
-        info!("user_account_slash_analytics_slash_top_pins({}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, sort_by, from_claimed_content, pin_format, app_types, content_type, source, metric_types, num_of_pins, created_in_last_n_days, ad_account_id, context.get().0.clone());
+        info!("user_account_slash_analytics_slash_top_pins({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, sort_by, from_claimed_content, pin_format, app_types, content_type, source, metric_types, num_of_pins, created_in_last_n_days, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3614,7 +3614,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         ad_account_id: Option<String>,
         context: &C) -> Result<UserAccountSlashAnalyticsSlashTopVideoPinsResponse, ApiError>
     {
-        info!("user_account_slash_analytics_slash_top_video_pins({}, {}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, sort_by, from_claimed_content, pin_format, app_types, content_type, source, metric_types, num_of_pins, created_in_last_n_days, ad_account_id, context.get().0.clone());
+        info!("user_account_slash_analytics_slash_top_video_pins({:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}, {:?}) - X-Span-ID: {:?}", start_date, end_date, sort_by, from_claimed_content, pin_format, app_types, content_type, source, metric_types, num_of_pins, created_in_last_n_days, ad_account_id, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3681,7 +3681,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         follow_user_create: models::FollowUserCreate,
         context: &C) -> Result<FollowUserSlashUpdateResponse, ApiError>
     {
-        info!("follow_user_slash_update(\"{}\", {:?}) - X-Span-ID: {:?}", username, follow_user_create, context.get().0.clone());
+        info!("follow_user_slash_update({:?}, {:?}) - X-Span-ID: {:?}", username, follow_user_create, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 
@@ -3693,7 +3693,7 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
         page_size: Option<u8>,
         context: &C) -> Result<UserAccountSlashFollowedInterestsResponse, ApiError>
     {
-        info!("user_account_slash_followed_interests(\"{}\", {:?}, {:?}) - X-Span-ID: {:?}", username, bookmark, page_size, context.get().0.clone());
+        info!("user_account_slash_followed_interests({:?}, {:?}, {:?}) - X-Span-ID: {:?}", username, bookmark, page_size, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 

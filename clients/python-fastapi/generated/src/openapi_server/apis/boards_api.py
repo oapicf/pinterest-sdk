@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.board import Board
@@ -39,6 +38,7 @@ from openapi_server.models.boards_list200_response import BoardsList200Response
 from openapi_server.models.boards_list_pins200_response import BoardsListPins200Response
 from openapi_server.models.creative_type import CreativeType
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -64,10 +64,10 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def boards_list(
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     privacy: Annotated[Optional[BoardPrivacyFilter], Field(description="The privacy level of the board")] = Query(None, description="The privacy level of the board", alias="privacy"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read"]
     ),
@@ -98,8 +98,8 @@ async def boards_list(
     response_model_by_alias=True,
 )
 async def boards_create(
-    board_create: BoardCreate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_create: BoardCreate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -129,8 +129,8 @@ async def boards_create(
     response_model_by_alias=True,
 )
 async def boards_get(
-    board_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: str = Path(..., description="", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read"]
     ),
@@ -161,8 +161,8 @@ async def boards_get(
     response_model_by_alias=True,
 )
 async def boards_delete(
-    board_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: str = Path(..., description="", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -189,9 +189,9 @@ async def boards_delete(
     response_model_by_alias=True,
 )
 async def boards_update(
-    board_id: Annotated[str, Field(strict=True)] = Path(..., description="", regex=r"^\d+$"),
-    board_with_update_privacy_update: BoardWithUpdatePrivacyUpdate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: str = Path(..., description="", regex=r"^\d+$"),
+    board_with_update_privacy_update: BoardWithUpdatePrivacyUpdate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -221,12 +221,12 @@ async def boards_update(
     response_model_by_alias=True,
 )
 async def boards_list_pins(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
     creative_types: Annotated[Optional[List[CreativeType]], Field(description="Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")] = Query(None, description="Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", alias="creative_types"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    pin_metrics: Annotated[Optional[StrictBool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    pin_metrics: Annotated[Optional[bool], Field(description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.")] = Query(False, description="Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", alias="pin_metrics"),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),
@@ -256,10 +256,10 @@ async def boards_list_pins(
     response_model_by_alias=True,
 )
 async def board_sections_list(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read"]
     ),
@@ -290,9 +290,9 @@ async def board_sections_list(
     response_model_by_alias=True,
 )
 async def board_sections_create(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
-    board_section_create: BoardSectionCreate = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    board_section_create: BoardSectionCreate = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -320,9 +320,9 @@ async def board_sections_create(
     response_model_by_alias=True,
 )
 async def board_sections_delete(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
-    section_id: Annotated[str, Field(strict=True, description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    section_id: Annotated[str, Field(description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -349,10 +349,10 @@ async def board_sections_delete(
     response_model_by_alias=True,
 )
 async def board_sections_update(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
-    section_id: Annotated[str, Field(strict=True, description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
-    board_section_update_with_required_body: BoardSectionUpdateWithRequiredBody = Body(None, description=""),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    section_id: Annotated[str, Field(description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
+    board_section_update_with_required_body: BoardSectionUpdateWithRequiredBody = Body(..., description=""),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "boards:write"]
     ),
@@ -379,11 +379,11 @@ async def board_sections_update(
     response_model_by_alias=True,
 )
 async def board_sections_list_pins(
-    board_id: Annotated[str, Field(strict=True, description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
-    section_id: Annotated[str, Field(strict=True, description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
-    page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
+    board_id: Annotated[str, Field(description="Unique identifier of a board.")] = Path(..., description="Unique identifier of a board.", regex=r"^\d+$"),
+    section_id: Annotated[str, Field(description="Unique identifier of a board section.")] = Path(..., description="Unique identifier of a board section.", regex=r"^\d+$"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")] = Query(None, description="Cursor used to fetch the next page of items", alias="bookmark"),
+    page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")] = Query(25, description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.", alias="page_size", ge=1, le=250),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["boards:read", "pins:read"]
     ),

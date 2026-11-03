@@ -169,3 +169,4 @@ class _$QuizPinDataSerializer implements PrimitiveSerializer<QuizPinData> {
   }
 }
 
+

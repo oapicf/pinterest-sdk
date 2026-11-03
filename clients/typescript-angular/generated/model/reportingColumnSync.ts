@@ -197,7 +197,7 @@ export const ReportingColumnSync = {
     InappSkanAppInstall: 'INAPP_SKAN_APP_INSTALL',
     InappSkanAssistedAppInstall: 'INAPP_SKAN_ASSISTED_APP_INSTALL',
     InappSkanAppInstallCostPerAction: 'INAPP_SKAN_APP_INSTALL_COST_PER_ACTION',
-    InappSkanAppInstallConversionRate: 'INAPP_SKAN_APP_INSTALL_CONVERSION_RATE'
+    InappSkanAppInstallConversionRate: 'INAPP_SKAN_APP_INSTALL_CONVERSION_RATE',
 } as const;
 export type ReportingColumnSync = typeof ReportingColumnSync[keyof typeof ReportingColumnSync];
 

@@ -204,7 +204,7 @@ public class CampaignsApiHandler {
         List<CampaignCreateItem> campaignCreateItem = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CampaignCreateItem>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter campaignCreateItem is {}", campaignCreateItem);
+        logger.debug("Parameter campaignCreateItem is (body omitted)");
 
         api.campaignsCreate(adAccountId, campaignCreateItem)
             .onSuccess(apiResponse -> {
@@ -285,7 +285,7 @@ public class CampaignsApiHandler {
         List<CampaignBatchUpdateItem> campaignBatchUpdateItem = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CampaignBatchUpdateItem>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter campaignBatchUpdateItem is {}", campaignBatchUpdateItem);
+        logger.debug("Parameter campaignBatchUpdateItem is (body omitted)");
 
         api.campaignsUpdate(adAccountId, campaignBatchUpdateItem)
             .onSuccess(apiResponse -> {
@@ -310,7 +310,7 @@ public class CampaignsApiHandler {
         List<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<CampaignDeliveryEstimatesCampaign>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter campaignDeliveryEstimatesCampaign is {}", campaignDeliveryEstimatesCampaign);
+        logger.debug("Parameter campaignDeliveryEstimatesCampaign is (body omitted)");
 
         api.getCampaignDeliveryEstimates(adAccountId, campaignDeliveryEstimatesCampaign)
             .onSuccess(apiResponse -> {

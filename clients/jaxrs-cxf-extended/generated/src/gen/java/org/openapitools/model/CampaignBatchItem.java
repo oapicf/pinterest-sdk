@@ -31,7 +31,6 @@ public class CampaignBatchItem  {
   * Exceptions on failure.
   */
   @ApiModelProperty(value = "Exceptions on failure.")
-  @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();
  /**
   * Campaign data on success.

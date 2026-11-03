@@ -21,7 +21,7 @@ data class ProductTagItem(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Pin ID of the product pin to tag onto the hero pin.")
-    @param:JsonProperty("pin_id")
+    @param:JsonProperty("pin_id", required = true)
     @get:JsonProperty("pin_id", required = true) val pinId: kotlin.String
 ) {
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: US,GBPlusIE,CA
-*/
+ * 
+ * Values: US,GBPlusIE,CA
+ */
 enum class ProductCategoryRegion(@get:JsonValue val value: kotlin.String) {
 
     US("US"),
@@ -29,9 +29,8 @@ enum class ProductCategoryRegion(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ProductCategoryRegion {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoryRegion'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ProductCategoryRegion'")
         }
     }
 }
-

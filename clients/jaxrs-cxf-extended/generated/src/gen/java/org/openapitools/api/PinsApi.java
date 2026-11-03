@@ -80,7 +80,7 @@ public interface PinsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(@PathParam("pin_id") String pinId, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("metric_types") @NotNull List<QuerypinanalyticsmetrictypesItems> metricTypes, @QueryParam("app_types") @DefaultValue("ALL") String appTypes, @QueryParam("split_field") @DefaultValue("NO_SPLIT") String splitField, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
+    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(@PathParam("pin_id") String pinId, @QueryParam("start_date") @NotNull LocalDate startDate, @QueryParam("end_date") @NotNull LocalDate endDate, @QueryParam("metric_types") @NotNull List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes, @QueryParam("app_types") @DefaultValue("ALL") String appTypes, @QueryParam("split_field") @DefaultValue("NO_SPLIT") String splitField, @QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId);
 
     /**
      * Create Pin

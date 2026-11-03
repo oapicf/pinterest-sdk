@@ -12,24 +12,254 @@
 
 namespace models {
 
-
-class PromotionType
-{
-public:
-
-    PromotionType();
-    virtual ~PromotionType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PromotionType,
-        )
-
-private:
+enum class PromotionType {
+    
+    VARIABLE,
+    
+    SITEWIDE,
+    
+    CHECKOUT,
+    
+    SAVE_X_ON_Y,
+    
+    BUY_X_GET_Y,
+    
+    SPEND_X_SAVE_Y,
+    
+    FREE_SHIPPING,
+    
+    FREE_SHIPPING_MINIMUM,
+    
+    FREE_SHIPPING_WITH_DISCOUNT,
+    
+    SITEWIDE_IN_STORES,
+    
+    EXTRA_PERCENT_OFF,
+    
+    GIFT_WITH_PURCHASE,
+    
+    GIFT_WITH_PURCHASE_MINIMUM,
+    
+    FIXED,
+    
+    PERCENT_OFF_CLEARANCE,
+    
+    X_OFF_Y,
+    
+    GIFT_WITH_FIRST_PURCHASE,
+    
+    BUY_X_GET_ONE_FREE,
+    
+    CASH_BACK,
+    
+    POINTS_ON_ALL_PURCHASES,
+    
+    BONUS,
+    
+    POINTS_WITH_PURCHASE,
+    
+    CUSTOM
+    
 };
 
+inline void to_json(nlohmann::json& j, const PromotionType& value)
+{
+    switch (value)
+    {
+        
+        case PromotionType::VARIABLE: j = "VARIABLE"; break;
+        
+        case PromotionType::SITEWIDE: j = "SITEWIDE"; break;
+        
+        case PromotionType::CHECKOUT: j = "CHECKOUT"; break;
+        
+        case PromotionType::SAVE_X_ON_Y: j = "SAVE_X_ON_Y"; break;
+        
+        case PromotionType::BUY_X_GET_Y: j = "BUY_X_GET_Y"; break;
+        
+        case PromotionType::SPEND_X_SAVE_Y: j = "SPEND_X_SAVE_Y"; break;
+        
+        case PromotionType::FREE_SHIPPING: j = "FREE_SHIPPING"; break;
+        
+        case PromotionType::FREE_SHIPPING_MINIMUM: j = "FREE_SHIPPING_MINIMUM"; break;
+        
+        case PromotionType::FREE_SHIPPING_WITH_DISCOUNT: j = "FREE_SHIPPING_WITH_DISCOUNT"; break;
+        
+        case PromotionType::SITEWIDE_IN_STORES: j = "SITEWIDE_IN_STORES"; break;
+        
+        case PromotionType::EXTRA_PERCENT_OFF: j = "EXTRA_PERCENT_OFF"; break;
+        
+        case PromotionType::GIFT_WITH_PURCHASE: j = "GIFT_WITH_PURCHASE"; break;
+        
+        case PromotionType::GIFT_WITH_PURCHASE_MINIMUM: j = "GIFT_WITH_PURCHASE_MINIMUM"; break;
+        
+        case PromotionType::FIXED: j = "FIXED"; break;
+        
+        case PromotionType::PERCENT_OFF_CLEARANCE: j = "PERCENT_OFF_CLEARANCE"; break;
+        
+        case PromotionType::X_OFF_Y: j = "X_OFF_Y"; break;
+        
+        case PromotionType::GIFT_WITH_FIRST_PURCHASE: j = "GIFT_WITH_FIRST_PURCHASE"; break;
+        
+        case PromotionType::BUY_X_GET_ONE_FREE: j = "BUY_X_GET_ONE_FREE"; break;
+        
+        case PromotionType::CASH_BACK: j = "CASH_BACK"; break;
+        
+        case PromotionType::POINTS_ON_ALL_PURCHASES: j = "POINTS_ON_ALL_PURCHASES"; break;
+        
+        case PromotionType::BONUS: j = "BONUS"; break;
+        
+        case PromotionType::POINTS_WITH_PURCHASE: j = "POINTS_WITH_PURCHASE"; break;
+        
+        case PromotionType::CUSTOM: j = "CUSTOM"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PromotionType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PromotionType& value)
+{
+    
+    if (j == "VARIABLE")
+    {
+        value = PromotionType::VARIABLE;
+        return;
+    }
+    
+    if (j == "SITEWIDE")
+    {
+        value = PromotionType::SITEWIDE;
+        return;
+    }
+    
+    if (j == "CHECKOUT")
+    {
+        value = PromotionType::CHECKOUT;
+        return;
+    }
+    
+    if (j == "SAVE_X_ON_Y")
+    {
+        value = PromotionType::SAVE_X_ON_Y;
+        return;
+    }
+    
+    if (j == "BUY_X_GET_Y")
+    {
+        value = PromotionType::BUY_X_GET_Y;
+        return;
+    }
+    
+    if (j == "SPEND_X_SAVE_Y")
+    {
+        value = PromotionType::SPEND_X_SAVE_Y;
+        return;
+    }
+    
+    if (j == "FREE_SHIPPING")
+    {
+        value = PromotionType::FREE_SHIPPING;
+        return;
+    }
+    
+    if (j == "FREE_SHIPPING_MINIMUM")
+    {
+        value = PromotionType::FREE_SHIPPING_MINIMUM;
+        return;
+    }
+    
+    if (j == "FREE_SHIPPING_WITH_DISCOUNT")
+    {
+        value = PromotionType::FREE_SHIPPING_WITH_DISCOUNT;
+        return;
+    }
+    
+    if (j == "SITEWIDE_IN_STORES")
+    {
+        value = PromotionType::SITEWIDE_IN_STORES;
+        return;
+    }
+    
+    if (j == "EXTRA_PERCENT_OFF")
+    {
+        value = PromotionType::EXTRA_PERCENT_OFF;
+        return;
+    }
+    
+    if (j == "GIFT_WITH_PURCHASE")
+    {
+        value = PromotionType::GIFT_WITH_PURCHASE;
+        return;
+    }
+    
+    if (j == "GIFT_WITH_PURCHASE_MINIMUM")
+    {
+        value = PromotionType::GIFT_WITH_PURCHASE_MINIMUM;
+        return;
+    }
+    
+    if (j == "FIXED")
+    {
+        value = PromotionType::FIXED;
+        return;
+    }
+    
+    if (j == "PERCENT_OFF_CLEARANCE")
+    {
+        value = PromotionType::PERCENT_OFF_CLEARANCE;
+        return;
+    }
+    
+    if (j == "X_OFF_Y")
+    {
+        value = PromotionType::X_OFF_Y;
+        return;
+    }
+    
+    if (j == "GIFT_WITH_FIRST_PURCHASE")
+    {
+        value = PromotionType::GIFT_WITH_FIRST_PURCHASE;
+        return;
+    }
+    
+    if (j == "BUY_X_GET_ONE_FREE")
+    {
+        value = PromotionType::BUY_X_GET_ONE_FREE;
+        return;
+    }
+    
+    if (j == "CASH_BACK")
+    {
+        value = PromotionType::CASH_BACK;
+        return;
+    }
+    
+    if (j == "POINTS_ON_ALL_PURCHASES")
+    {
+        value = PromotionType::POINTS_ON_ALL_PURCHASES;
+        return;
+    }
+    
+    if (j == "BONUS")
+    {
+        value = PromotionType::BONUS;
+        return;
+    }
+    
+    if (j == "POINTS_WITH_PURCHASE")
+    {
+        value = PromotionType::POINTS_WITH_PURCHASE;
+        return;
+    }
+    
+    if (j == "CUSTOM")
+    {
+        value = PromotionType::CUSTOM;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PromotionType", &j);
+}
 
 } // namespace models
 

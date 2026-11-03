@@ -34,7 +34,7 @@ import javax.validation.Valid;
   RetailLocalInventoryItemAttributes.JSON_PROPERTY_PRICE,
   RetailLocalInventoryItemAttributes.JSON_PROPERTY_SALE_PRICE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RetailLocalInventoryItemAttributes   {
   public static final String JSON_PROPERTY_AD_LINK = "ad_link";
   @JsonProperty(JSON_PROPERTY_AD_LINK)

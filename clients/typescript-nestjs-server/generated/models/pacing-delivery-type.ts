@@ -5,7 +5,7 @@
  */
 export const PacingDeliveryType = {
     Standard: 'STANDARD',
-    Accelerated: 'ACCELERATED'
+    Accelerated: 'ACCELERATED',
 } as const;
 export type PacingDeliveryType = typeof PacingDeliveryType[keyof typeof PacingDeliveryType];
 

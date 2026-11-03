@@ -238,7 +238,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum?>(CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "description":
                             description = new Option<string?>(utf8JsonReader.GetString());
@@ -256,13 +261,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest: catalog_type.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest: filters.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupUpdateRequest: name.");
 
             return new CatalogsCreativeAssetsProductGroupUpdateRequest(catalogType, description, filters, name);
         }
@@ -273,7 +278,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -288,14 +292,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupUpdateRequest catalogsCreativeAssetsProductGroupUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeOption.IsSet && catalogsCreativeAssetsProductGroupUpdateRequest.CatalogType == null)
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogType to non-nullable JSON property 'catalog_type'.");
+
             if (catalogsCreativeAssetsProductGroupUpdateRequest.FiltersOption.IsSet && catalogsCreativeAssetsProductGroupUpdateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupUpdateRequest.Filters), "Property is required for class CatalogsCreativeAssetsProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsProductGroupUpdateRequest.Filters to non-nullable JSON property 'filters'.");
 
             if (catalogsCreativeAssetsProductGroupUpdateRequest.NameOption.IsSet && catalogsCreativeAssetsProductGroupUpdateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsCreativeAssetsProductGroupUpdateRequest.Name), "Property is required for class CatalogsCreativeAssetsProductGroupUpdateRequest.");
+                throw new JsonException("Cannot write null property CatalogsCreativeAssetsProductGroupUpdateRequest.Name to non-nullable JSON property 'name'.");
 
             var catalogTypeRawValue = CatalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsProductGroupUpdateRequest.CatalogTypeOption.Value!.Value);
             writer.WriteString("catalog_type", catalogTypeRawValue);

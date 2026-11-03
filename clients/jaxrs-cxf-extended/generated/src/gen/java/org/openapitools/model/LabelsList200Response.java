@@ -20,7 +20,6 @@ public class LabelsList200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid Label> items = new ArrayList<>();
  /**
   * Get bookmark

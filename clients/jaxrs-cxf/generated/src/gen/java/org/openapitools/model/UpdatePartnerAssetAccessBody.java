@@ -24,8 +24,6 @@ public class UpdatePartnerAssetAccessBody  {
   */
   @ApiModelProperty(required = true, value = "List of partner asset accesses to assign or update.")
 
-  @Valid
-
   private List<@Valid UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
  /**
    * List of partner asset accesses to assign or update.

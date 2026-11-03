@@ -34,7 +34,7 @@ import org.wso2.msf4j.formparam.FileInfo;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApiServiceImpl extends PinsApiService {
     @Override
     public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds
@@ -51,7 +51,7 @@ public class PinsApiServiceImpl extends PinsApiService {
     public Response pinsAnalytics(String pinId
 , Date startDate
 , Date endDate
-, List<QuerypinanalyticsmetrictypesItems> metricTypes
+, List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes
 , String appTypes
 , String splitField
 , String adAccountId

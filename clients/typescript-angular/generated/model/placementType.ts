@@ -15,7 +15,7 @@
 export const PlacementType = {
     Search: 'SEARCH',
     Browse: 'BROWSE',
-    RelatedPins: 'RELATED_PINS'
+    RelatedPins: 'RELATED_PINS',
 } as const;
 export type PlacementType = typeof PlacementType[keyof typeof PlacementType];
 

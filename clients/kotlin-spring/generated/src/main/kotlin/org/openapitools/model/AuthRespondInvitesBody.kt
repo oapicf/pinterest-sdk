@@ -23,7 +23,7 @@ data class AuthRespondInvitesBody(
     @field:Valid
     @get:Size(min=1,max=100) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("invites")
+    @param:JsonProperty("invites", required = true)
     @get:JsonProperty("invites", required = true) val invites: kotlin.collections.List<AuthRespondInvitesBodyItem>
 ) {
 

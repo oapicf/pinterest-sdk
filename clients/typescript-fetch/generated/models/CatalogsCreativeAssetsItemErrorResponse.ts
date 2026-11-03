@@ -29,26 +29,18 @@ import {
 export interface CatalogsCreativeAssetsItemErrorResponse {
     /**
      * 
-     * @type {CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsItemErrorResponse
      */
     catalogType: CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum;
     /**
      * The catalog creative assets id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsCreativeAssetsItemErrorResponse
      */
     creativeAssetsId?: string;
     /**
      * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
-     * @memberof CatalogsCreativeAssetsItemErrorResponse
      */
     errors: Array<ItemValidationEvent>;
     /**
      * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
-     * @type {CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum}
-     * @memberof CatalogsCreativeAssetsItemErrorResponse
      */
     itemResponseKind: CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum;
 }
@@ -58,7 +50,7 @@ export interface CatalogsCreativeAssetsItemErrorResponse {
  * @export
  */
 export const CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum = typeof CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum];
 
@@ -66,7 +58,7 @@ export type CatalogsCreativeAssetsItemErrorResponseCatalogTypeEnum = typeof Cata
  * @export
  */
 export const CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum = {
-    CreativeAssetsItemError: 'creative_assets_item_error'
+    CreativeAssetsItemError: 'creative_assets_item_error',
 } as const;
 export type CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum = typeof CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum[keyof typeof CatalogsCreativeAssetsItemErrorResponseItemResponseKindEnum];
 

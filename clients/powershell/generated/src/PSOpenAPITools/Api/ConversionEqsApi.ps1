@@ -75,7 +75,7 @@ function Invoke-ConversionEqsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionEqs_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$LookbackPeriod) {
             throw "Error! The required parameter `LookbackPeriod` missing when calling conversionEqs_list."

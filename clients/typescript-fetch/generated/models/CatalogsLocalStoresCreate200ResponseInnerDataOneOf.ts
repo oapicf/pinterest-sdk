@@ -29,14 +29,10 @@ import {
 export interface CatalogsLocalStoresCreate200ResponseInnerDataOneOf {
     /**
      * The ID of the local store.
-     * @type {string}
-     * @memberof CatalogsLocalStoresCreate200ResponseInnerDataOneOf
      */
     id: string;
     /**
      * 
-     * @type {PinterestLibError}
-     * @memberof CatalogsLocalStoresCreate200ResponseInnerDataOneOf
      */
     exceptions: PinterestLibError;
 }

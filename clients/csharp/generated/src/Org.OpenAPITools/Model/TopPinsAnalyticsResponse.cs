@@ -180,13 +180,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dateAvailability.IsSet && dateAvailability.Value == null)
-                throw new ArgumentNullException(nameof(dateAvailability), "Property is not nullable for class TopPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponse: date_availability.");
 
             if (pins.IsSet && pins.Value == null)
-                throw new ArgumentNullException(nameof(pins), "Property is not nullable for class TopPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponse: pins.");
 
             if (sortBy.IsSet && sortBy.Value == null)
-                throw new ArgumentNullException(nameof(sortBy), "Property is not nullable for class TopPinsAnalyticsResponse.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponse: sort_by.");
 
             return new TopPinsAnalyticsResponse(dateAvailability, pins, sortBy);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopPinsAnalyticsResponse topPinsAnalyticsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,14 +211,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopPinsAnalyticsResponse topPinsAnalyticsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (topPinsAnalyticsResponse.DateAvailabilityOption.IsSet && topPinsAnalyticsResponse.DateAvailability == null)
-                throw new ArgumentNullException(nameof(topPinsAnalyticsResponse.DateAvailability), "Property is required for class TopPinsAnalyticsResponse.");
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponse.DateAvailability to non-nullable JSON property 'date_availability'.");
 
             if (topPinsAnalyticsResponse.PinsOption.IsSet && topPinsAnalyticsResponse.Pins == null)
-                throw new ArgumentNullException(nameof(topPinsAnalyticsResponse.Pins), "Property is required for class TopPinsAnalyticsResponse.");
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponse.Pins to non-nullable JSON property 'pins'.");
+
+            if (topPinsAnalyticsResponse.SortByOption.IsSet && topPinsAnalyticsResponse.SortBy == null)
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponse.SortBy to non-nullable JSON property 'sort_by'.");
 
             if (topPinsAnalyticsResponse.DateAvailabilityOption.IsSet)
             {

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -29,34 +28,25 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteResponse", description = "A user's username or email OR a partner id that caused the error.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteResponse {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<InviteAssetsSummary> assetsSummary = JsonNullable.<InviteAssetsSummary>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> businessRoles = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BusinessAccessUserSummary createdByBusiness;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BusinessAccessUserSummary createdByUser;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String id;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable InviteDataResponse inviteData;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isReceivedInvite;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BusinessAccessUserSummary user;
 
   public InviteResponse assetsSummary(InviteAssetsSummary assetsSummary) {
@@ -69,7 +59,7 @@ public class InviteResponse {
    * @return assetsSummary
    */
   @Valid 
-  @Schema(name = "assets_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "assets_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("assets_summary")
   public JsonNullable<InviteAssetsSummary> getAssetsSummary() {
     return assetsSummary;
@@ -312,7 +302,7 @@ public class InviteResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **trendsEditorialArticlesList**
 ```swift
-    open class func trendsEditorialArticlesList(region: ProductCategoryRegion, completion: @escaping (_ data: [TrendsEditorial]?, _ error: Error?) -> Void)
+    open class func trendsEditorialArticlesList(region: ProductCategoryRegion, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [TrendsEditorial]
 ```
 
 Returns editorial articles for a given region
@@ -27,15 +27,11 @@ import OpenAPIClient
 let region = ProductCategoryRegion() // ProductCategoryRegion |      The geographic region of interest. Only top product categories within the specified region will be returned.      The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`.      - `US` - United States     - `GB+IE` - Great Britain & Ireland     - `CA` - Canada
 
 // Returns editorial articles for a given region
-TrendsAPI.trendsEditorialArticlesList(region: region) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TrendsAPI.trendsEditorialArticlesList(region: region)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -62,7 +58,7 @@ Name | Type | Description  | Notes
 
 # **trendsFeaturedTopicsList**
 ```swift
-    open class func trendsFeaturedTopicsList(region: ProductCategoryRegion, interest: InterestsEnum? = nil, completion: @escaping (_ data: [FeaturedTrend]?, _ error: Error?) -> Void)
+    open class func trendsFeaturedTopicsList(region: ProductCategoryRegion, interest: InterestsEnum? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [FeaturedTrend]
 ```
 
 Get featured topics
@@ -78,15 +74,11 @@ let region = ProductCategoryRegion() // ProductCategoryRegion |      The geograp
 let interest = InterestsEnum() // InterestsEnum | Interest to filter by (optional)
 
 // Get featured topics
-TrendsAPI.trendsFeaturedTopicsList(region: region, interest: interest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TrendsAPI.trendsFeaturedTopicsList(region: region, interest: interest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -114,7 +106,7 @@ Name | Type | Description  | Notes
 
 # **trendsProductCategoriesDetailsList**
 ```swift
-    open class func trendsProductCategoriesDetailsList(productCategories: [ProductCategoryEnum], region: ProductCategoryRegion, lookbackWindow: ProductCategoryDetailLookbackWindow? = nil, engagementType: ProductCategoriesEngagementType? = nil, completion: @escaping (_ data: [ProductCategoryDetails]?, _ error: Error?) -> Void)
+    open class func trendsProductCategoriesDetailsList(productCategories: [ProductCategoryEnum], region: ProductCategoryRegion, lookbackWindow: ProductCategoryDetailLookbackWindow? = nil, engagementType: ProductCategoriesEngagementType? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [ProductCategoryDetails]
 ```
 
 Get product category details
@@ -132,15 +124,11 @@ let lookbackWindow = ProductCategoryDetailLookbackWindow() // ProductCategoryDet
 let engagementType = ProductCategoriesEngagementType() // ProductCategoriesEngagementType |     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves (optional)
 
 // Get product category details
-TrendsAPI.trendsProductCategoriesDetailsList(productCategories: productCategories, region: region, lookbackWindow: lookbackWindow, engagementType: engagementType) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TrendsAPI.trendsProductCategoriesDetailsList(productCategories: productCategories, region: region, lookbackWindow: lookbackWindow, engagementType: engagementType)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -170,7 +158,7 @@ Name | Type | Description  | Notes
 
 # **trendsProductCategoriesTrendingList**
 ```swift
-    open class func trendsProductCategoriesTrendingList(region: ProductCategoryRegion, verticals: [VerticalProductCategory]? = nil, ages: [AgeTrendsBucket]? = nil, genders: [GenderBucket]? = nil, engagementType: ProductCategoriesEngagementType? = nil, completion: @escaping (_ data: [TrendingProductCategory]?, _ error: Error?) -> Void)
+    open class func trendsProductCategoriesTrendingList(region: ProductCategoryRegion, verticals: [VerticalProductCategory]? = nil, ages: [AgeTrendsBucket]? = nil, genders: [GenderBucket]? = nil, engagementType: ProductCategoriesEngagementType? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [TrendingProductCategory]
 ```
 
 Get a list of growing Shopping Product Categories
@@ -189,15 +177,11 @@ let genders = [GenderBucket()] // [GenderBucket] | Gender to filter by, If not p
 let engagementType = ProductCategoriesEngagementType() // ProductCategoriesEngagementType |     Type of engagement metric to analyze. - `ENGAGEMENT` - Overall engagement metric - `OUTBOUND_CLICK` - Number of outbound clicks - `SAVE` - Number of pin saves (optional)
 
 // Get a list of growing Shopping Product Categories
-TrendsAPI.trendsProductCategoriesTrendingList(region: region, verticals: verticals, ages: ages, genders: genders, engagementType: engagementType) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TrendsAPI.trendsProductCategoriesTrendingList(region: region, verticals: verticals, ages: ages, genders: genders, engagementType: engagementType)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

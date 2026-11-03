@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CreativeType
 import org.openapitools.model.CustomizableCTAType
 import org.openapitools.model.DisclosureType
@@ -54,7 +51,7 @@ data class AdUpdateRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "The ID of this ad.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
@@ -64,8 +61,6 @@ data class AdUpdateRequest(
 
     @get:Pattern(regexp="^(AG)?\\d+$")
     @Schema(description = "ID of the ad group that contains the ad.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_group_id")
     @get:JsonProperty("ad_group_id") val adGroupId: kotlin.String? = null,
 
@@ -91,8 +86,6 @@ data class AdUpdateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("creative_type")
     @get:JsonProperty("creative_type") val creativeType: CreativeType? = null,
 
@@ -124,20 +117,14 @@ data class AdUpdateRequest(
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
     @Schema(description = "Is the ad a carting/WTB ad?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_carting")
     @get:JsonProperty("is_carting") val isCarting: kotlin.Boolean? = null,
 
     @Schema(example = "false", description = "Is original pin deleted?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_pin_deleted")
     @get:JsonProperty("is_pin_deleted") val isPinDeleted: kotlin.Boolean? = null,
 
     @Schema(example = "false", description = "Is pin repinnable?")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_removable")
     @get:JsonProperty("is_removable") val isRemovable: kotlin.Boolean? = null,
 
@@ -157,8 +144,6 @@ data class AdUpdateRequest(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 

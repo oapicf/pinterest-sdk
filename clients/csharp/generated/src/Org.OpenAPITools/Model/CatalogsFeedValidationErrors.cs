@@ -813,103 +813,103 @@ namespace Org.OpenAPITools.Model
             }
 
             if (aDULTINVALID.IsSet && aDULTINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aDULTINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: ADULT_INVALID.");
 
             if (aDWORDSFORMATINVALID.IsSet && aDWORDSFORMATINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aDWORDSFORMATINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: ADWORDS_FORMAT_INVALID.");
 
             if (aVAILABILITYINVALID.IsSet && aVAILABILITYINVALID.Value == null)
-                throw new ArgumentNullException(nameof(aVAILABILITYINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: AVAILABILITY_INVALID.");
 
             if (bLOCKLISTEDIMAGESIGNATURE.IsSet && bLOCKLISTEDIMAGESIGNATURE.Value == null)
-                throw new ArgumentNullException(nameof(bLOCKLISTEDIMAGESIGNATURE), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: BLOCKLISTED_IMAGE_SIGNATURE.");
 
             if (dELIMITERERROR.IsSet && dELIMITERERROR.Value == null)
-                throw new ArgumentNullException(nameof(dELIMITERERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: DELIMITER_ERROR.");
 
             if (dESCRIPTIONMISSING.IsSet && dESCRIPTIONMISSING.Value == null)
-                throw new ArgumentNullException(nameof(dESCRIPTIONMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: DESCRIPTION_MISSING.");
 
             if (dUPLICATEPRODUCTS.IsSet && dUPLICATEPRODUCTS.Value == null)
-                throw new ArgumentNullException(nameof(dUPLICATEPRODUCTS), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: DUPLICATE_PRODUCTS.");
 
             if (eNCODINGERROR.IsSet && eNCODINGERROR.Value == null)
-                throw new ArgumentNullException(nameof(eNCODINGERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: ENCODING_ERROR.");
 
             if (fEEDLENGTHTOOLONG.IsSet && fEEDLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(fEEDLENGTHTOOLONG), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: FEED_LENGTH_TOO_LONG.");
 
             if (fEEDTOOSMALL.IsSet && fEEDTOOSMALL.Value == null)
-                throw new ArgumentNullException(nameof(fEEDTOOSMALL), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: FEED_TOO_SMALL.");
 
             if (fETCHERROR.IsSet && fETCHERROR.Value == null)
-                throw new ArgumentNullException(nameof(fETCHERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: FETCH_ERROR.");
 
             if (fETCHINACTIVEFEEDERROR.IsSet && fETCHINACTIVEFEEDERROR.Value == null)
-                throw new ArgumentNullException(nameof(fETCHINACTIVEFEEDERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: FETCH_INACTIVE_FEED_ERROR.");
 
             if (iMAGELINKINVALID.IsSet && iMAGELINKINVALID.Value == null)
-                throw new ArgumentNullException(nameof(iMAGELINKINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: IMAGE_LINK_INVALID.");
 
             if (iMAGELINKLENGTHTOOLONG.IsSet && iMAGELINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(iMAGELINKLENGTHTOOLONG), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: IMAGE_LINK_LENGTH_TOO_LONG.");
 
             if (iMAGELINKMISSING.IsSet && iMAGELINKMISSING.Value == null)
-                throw new ArgumentNullException(nameof(iMAGELINKMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: IMAGE_LINK_MISSING.");
 
             if (iNTERNALSERVICEERROR.IsSet && iNTERNALSERVICEERROR.Value == null)
-                throw new ArgumentNullException(nameof(iNTERNALSERVICEERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: INTERNAL_SERVICE_ERROR.");
 
             if (iNVALIDDOMAIN.IsSet && iNVALIDDOMAIN.Value == null)
-                throw new ArgumentNullException(nameof(iNVALIDDOMAIN), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: INVALID_DOMAIN.");
 
             if (iTEMMAINIMAGEDOWNLOADFAILURE.IsSet && iTEMMAINIMAGEDOWNLOADFAILURE.Value == null)
-                throw new ArgumentNullException(nameof(iTEMMAINIMAGEDOWNLOADFAILURE), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE.");
 
             if (iTEMIDMISSING.IsSet && iTEMIDMISSING.Value == null)
-                throw new ArgumentNullException(nameof(iTEMIDMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: ITEMID_MISSING.");
 
             if (lINKFORMATINVALID.IsSet && lINKFORMATINVALID.Value == null)
-                throw new ArgumentNullException(nameof(lINKFORMATINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: LINK_FORMAT_INVALID.");
 
             if (lINKLENGTHTOOLONG.IsSet && lINKLENGTHTOOLONG.Value == null)
-                throw new ArgumentNullException(nameof(lINKLENGTHTOOLONG), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: LINK_LENGTH_TOO_LONG.");
 
             if (lISTPRICEINVALID.IsSet && lISTPRICEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(lISTPRICEINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: LIST_PRICE_INVALID.");
 
             if (mALFORMEDXML.IsSet && mALFORMEDXML.Value == null)
-                throw new ArgumentNullException(nameof(mALFORMEDXML), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: MALFORMED_XML.");
 
             if (mAXITEMSPERITEMGROUPEXCEEDED.IsSet && mAXITEMSPERITEMGROUPEXCEEDED.Value == null)
-                throw new ArgumentNullException(nameof(mAXITEMSPERITEMGROUPEXCEEDED), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED.");
 
             if (nOVERIFIEDDOMAIN.IsSet && nOVERIFIEDDOMAIN.Value == null)
-                throw new ArgumentNullException(nameof(nOVERIFIEDDOMAIN), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: NO_VERIFIED_DOMAIN.");
 
             if (pARSELINEERROR.IsSet && pARSELINEERROR.Value == null)
-                throw new ArgumentNullException(nameof(pARSELINEERROR), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PARSE_LINE_ERROR.");
 
             if (pINJOINCONTENTUNSAFE.IsSet && pINJOINCONTENTUNSAFE.Value == null)
-                throw new ArgumentNullException(nameof(pINJOINCONTENTUNSAFE), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PINJOIN_CONTENT_UNSAFE.");
 
             if (pRICECANNOTBEDETERMINED.IsSet && pRICECANNOTBEDETERMINED.Value == null)
-                throw new ArgumentNullException(nameof(pRICECANNOTBEDETERMINED), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PRICE_CANNOT_BE_DETERMINED.");
 
             if (pRICEMISSING.IsSet && pRICEMISSING.Value == null)
-                throw new ArgumentNullException(nameof(pRICEMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PRICE_MISSING.");
 
             if (pRODUCTLINKMISSING.IsSet && pRODUCTLINKMISSING.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTLINKMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PRODUCT_LINK_MISSING.");
 
             if (pRODUCTPRICEINVALID.IsSet && pRODUCTPRICEINVALID.Value == null)
-                throw new ArgumentNullException(nameof(pRODUCTPRICEINVALID), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: PRODUCT_PRICE_INVALID.");
 
             if (rEQUIREDCOLUMNSMISSING.IsSet && rEQUIREDCOLUMNSMISSING.Value == null)
-                throw new ArgumentNullException(nameof(rEQUIREDCOLUMNSMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: REQUIRED_COLUMNS_MISSING.");
 
             if (tITLEMISSING.IsSet && tITLEMISSING.Value == null)
-                throw new ArgumentNullException(nameof(tITLEMISSING), "Property is not nullable for class CatalogsFeedValidationErrors.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationErrors: TITLE_MISSING.");
 
             return new CatalogsFeedValidationErrors(aDULTINVALID, aDWORDSFORMATINVALID, aVAILABILITYINVALID, bLOCKLISTEDIMAGESIGNATURE, dELIMITERERROR, dESCRIPTIONMISSING, dUPLICATEPRODUCTS, eNCODINGERROR, fEEDLENGTHTOOLONG, fEEDTOOSMALL, fETCHERROR, fETCHINACTIVEFEEDERROR, iMAGELINKINVALID, iMAGELINKLENGTHTOOLONG, iMAGELINKMISSING, iNTERNALSERVICEERROR, iNVALIDDOMAIN, iTEMMAINIMAGEDOWNLOADFAILURE, iTEMIDMISSING, lINKFORMATINVALID, lINKLENGTHTOOLONG, lISTPRICEINVALID, mALFORMEDXML, mAXITEMSPERITEMGROUPEXCEEDED, nOVERIFIEDDOMAIN, pARSELINEERROR, pINJOINCONTENTUNSAFE, pRICECANNOTBEDETERMINED, pRICEMISSING, pRODUCTLINKMISSING, pRODUCTPRICEINVALID, rEQUIREDCOLUMNSMISSING, tITLEMISSING);
         }
@@ -920,7 +920,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedValidationErrors"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedValidationErrors catalogsFeedValidationErrors, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -935,9 +934,107 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedValidationErrors"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedValidationErrors catalogsFeedValidationErrors, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (catalogsFeedValidationErrors.ADULT_INVALIDOption.IsSet && catalogsFeedValidationErrors.ADULT_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.ADULT_INVALID to non-nullable JSON property 'ADULT_INVALID'.");
+
+            if (catalogsFeedValidationErrors.ADWORDS_FORMAT_INVALIDOption.IsSet && catalogsFeedValidationErrors.ADWORDS_FORMAT_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.ADWORDS_FORMAT_INVALID to non-nullable JSON property 'ADWORDS_FORMAT_INVALID'.");
+
+            if (catalogsFeedValidationErrors.AVAILABILITY_INVALIDOption.IsSet && catalogsFeedValidationErrors.AVAILABILITY_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.AVAILABILITY_INVALID to non-nullable JSON property 'AVAILABILITY_INVALID'.");
+
+            if (catalogsFeedValidationErrors.BLOCKLISTED_IMAGE_SIGNATUREOption.IsSet && catalogsFeedValidationErrors.BLOCKLISTED_IMAGE_SIGNATURE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.BLOCKLISTED_IMAGE_SIGNATURE to non-nullable JSON property 'BLOCKLISTED_IMAGE_SIGNATURE'.");
+
+            if (catalogsFeedValidationErrors.DELIMITER_ERROROption.IsSet && catalogsFeedValidationErrors.DELIMITER_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.DELIMITER_ERROR to non-nullable JSON property 'DELIMITER_ERROR'.");
+
+            if (catalogsFeedValidationErrors.DESCRIPTION_MISSINGOption.IsSet && catalogsFeedValidationErrors.DESCRIPTION_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.DESCRIPTION_MISSING to non-nullable JSON property 'DESCRIPTION_MISSING'.");
+
+            if (catalogsFeedValidationErrors.DUPLICATE_PRODUCTSOption.IsSet && catalogsFeedValidationErrors.DUPLICATE_PRODUCTS == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.DUPLICATE_PRODUCTS to non-nullable JSON property 'DUPLICATE_PRODUCTS'.");
+
+            if (catalogsFeedValidationErrors.ENCODING_ERROROption.IsSet && catalogsFeedValidationErrors.ENCODING_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.ENCODING_ERROR to non-nullable JSON property 'ENCODING_ERROR'.");
+
+            if (catalogsFeedValidationErrors.FEED_LENGTH_TOO_LONGOption.IsSet && catalogsFeedValidationErrors.FEED_LENGTH_TOO_LONG == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.FEED_LENGTH_TOO_LONG to non-nullable JSON property 'FEED_LENGTH_TOO_LONG'.");
+
+            if (catalogsFeedValidationErrors.FEED_TOO_SMALLOption.IsSet && catalogsFeedValidationErrors.FEED_TOO_SMALL == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.FEED_TOO_SMALL to non-nullable JSON property 'FEED_TOO_SMALL'.");
+
+            if (catalogsFeedValidationErrors.FETCH_ERROROption.IsSet && catalogsFeedValidationErrors.FETCH_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.FETCH_ERROR to non-nullable JSON property 'FETCH_ERROR'.");
+
+            if (catalogsFeedValidationErrors.FETCH_INACTIVE_FEED_ERROROption.IsSet && catalogsFeedValidationErrors.FETCH_INACTIVE_FEED_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.FETCH_INACTIVE_FEED_ERROR to non-nullable JSON property 'FETCH_INACTIVE_FEED_ERROR'.");
+
+            if (catalogsFeedValidationErrors.IMAGE_LINK_INVALIDOption.IsSet && catalogsFeedValidationErrors.IMAGE_LINK_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.IMAGE_LINK_INVALID to non-nullable JSON property 'IMAGE_LINK_INVALID'.");
+
+            if (catalogsFeedValidationErrors.IMAGE_LINK_LENGTH_TOO_LONGOption.IsSet && catalogsFeedValidationErrors.IMAGE_LINK_LENGTH_TOO_LONG == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.IMAGE_LINK_LENGTH_TOO_LONG to non-nullable JSON property 'IMAGE_LINK_LENGTH_TOO_LONG'.");
+
+            if (catalogsFeedValidationErrors.IMAGE_LINK_MISSINGOption.IsSet && catalogsFeedValidationErrors.IMAGE_LINK_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.IMAGE_LINK_MISSING to non-nullable JSON property 'IMAGE_LINK_MISSING'.");
+
+            if (catalogsFeedValidationErrors.INTERNAL_SERVICE_ERROROption.IsSet && catalogsFeedValidationErrors.INTERNAL_SERVICE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.INTERNAL_SERVICE_ERROR to non-nullable JSON property 'INTERNAL_SERVICE_ERROR'.");
+
+            if (catalogsFeedValidationErrors.INVALID_DOMAINOption.IsSet && catalogsFeedValidationErrors.INVALID_DOMAIN == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.INVALID_DOMAIN to non-nullable JSON property 'INVALID_DOMAIN'.");
+
+            if (catalogsFeedValidationErrors.ITEM_MAIN_IMAGE_DOWNLOAD_FAILUREOption.IsSet && catalogsFeedValidationErrors.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE to non-nullable JSON property 'ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE'.");
+
+            if (catalogsFeedValidationErrors.ITEMID_MISSINGOption.IsSet && catalogsFeedValidationErrors.ITEMID_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.ITEMID_MISSING to non-nullable JSON property 'ITEMID_MISSING'.");
+
+            if (catalogsFeedValidationErrors.LINK_FORMAT_INVALIDOption.IsSet && catalogsFeedValidationErrors.LINK_FORMAT_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.LINK_FORMAT_INVALID to non-nullable JSON property 'LINK_FORMAT_INVALID'.");
+
+            if (catalogsFeedValidationErrors.LINK_LENGTH_TOO_LONGOption.IsSet && catalogsFeedValidationErrors.LINK_LENGTH_TOO_LONG == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.LINK_LENGTH_TOO_LONG to non-nullable JSON property 'LINK_LENGTH_TOO_LONG'.");
+
+            if (catalogsFeedValidationErrors.LIST_PRICE_INVALIDOption.IsSet && catalogsFeedValidationErrors.LIST_PRICE_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.LIST_PRICE_INVALID to non-nullable JSON property 'LIST_PRICE_INVALID'.");
+
+            if (catalogsFeedValidationErrors.MALFORMED_XMLOption.IsSet && catalogsFeedValidationErrors.MALFORMED_XML == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.MALFORMED_XML to non-nullable JSON property 'MALFORMED_XML'.");
+
+            if (catalogsFeedValidationErrors.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDEDOption.IsSet && catalogsFeedValidationErrors.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED to non-nullable JSON property 'MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED'.");
+
+            if (catalogsFeedValidationErrors.NO_VERIFIED_DOMAINOption.IsSet && catalogsFeedValidationErrors.NO_VERIFIED_DOMAIN == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.NO_VERIFIED_DOMAIN to non-nullable JSON property 'NO_VERIFIED_DOMAIN'.");
+
+            if (catalogsFeedValidationErrors.PARSE_LINE_ERROROption.IsSet && catalogsFeedValidationErrors.PARSE_LINE_ERROR == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PARSE_LINE_ERROR to non-nullable JSON property 'PARSE_LINE_ERROR'.");
+
+            if (catalogsFeedValidationErrors.PINJOIN_CONTENT_UNSAFEOption.IsSet && catalogsFeedValidationErrors.PINJOIN_CONTENT_UNSAFE == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PINJOIN_CONTENT_UNSAFE to non-nullable JSON property 'PINJOIN_CONTENT_UNSAFE'.");
+
+            if (catalogsFeedValidationErrors.PRICE_CANNOT_BE_DETERMINEDOption.IsSet && catalogsFeedValidationErrors.PRICE_CANNOT_BE_DETERMINED == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PRICE_CANNOT_BE_DETERMINED to non-nullable JSON property 'PRICE_CANNOT_BE_DETERMINED'.");
+
+            if (catalogsFeedValidationErrors.PRICE_MISSINGOption.IsSet && catalogsFeedValidationErrors.PRICE_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PRICE_MISSING to non-nullable JSON property 'PRICE_MISSING'.");
+
+            if (catalogsFeedValidationErrors.PRODUCT_LINK_MISSINGOption.IsSet && catalogsFeedValidationErrors.PRODUCT_LINK_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PRODUCT_LINK_MISSING to non-nullable JSON property 'PRODUCT_LINK_MISSING'.");
+
+            if (catalogsFeedValidationErrors.PRODUCT_PRICE_INVALIDOption.IsSet && catalogsFeedValidationErrors.PRODUCT_PRICE_INVALID == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.PRODUCT_PRICE_INVALID to non-nullable JSON property 'PRODUCT_PRICE_INVALID'.");
+
+            if (catalogsFeedValidationErrors.REQUIRED_COLUMNS_MISSINGOption.IsSet && catalogsFeedValidationErrors.REQUIRED_COLUMNS_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.REQUIRED_COLUMNS_MISSING to non-nullable JSON property 'REQUIRED_COLUMNS_MISSING'.");
+
+            if (catalogsFeedValidationErrors.TITLE_MISSINGOption.IsSet && catalogsFeedValidationErrors.TITLE_MISSING == null)
+                throw new JsonException("Cannot write null property CatalogsFeedValidationErrors.TITLE_MISSING to non-nullable JSON property 'TITLE_MISSING'.");
+
             if (catalogsFeedValidationErrors.ADULT_INVALIDOption.IsSet)
                 writer.WriteNumber("ADULT_INVALID", catalogsFeedValidationErrors.ADULT_INVALIDOption.Value!.Value);
 

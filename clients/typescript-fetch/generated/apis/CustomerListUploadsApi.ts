@@ -35,20 +35,47 @@ import {
 } from '../models/PinterestLibError';
 
 export interface CustomerListUploadsCreateRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Customer list ID.
+     */
     customerListId: string;
+    /**
+     * 
+     */
     customerListUploadCreateRequest: CustomerListUploadCreateRequest;
 }
 
 export interface CustomerListUploadsGetRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Customer list ID.
+     */
     customerListId: string;
+    /**
+     * Customer List Upload ID.
+     */
     customerListUploadId: string;
 }
 
 export interface CustomerListUploadsRunRequest {
+    /**
+     * 
+     */
     adAccountId: string;
+    /**
+     * Customer list ID.
+     */
     customerListId: string;
+    /**
+     * Customer List Upload ID.
+     */
     customerListUploadId: string;
 }
 

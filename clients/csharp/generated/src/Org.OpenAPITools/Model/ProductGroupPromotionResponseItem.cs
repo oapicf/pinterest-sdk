@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class ProductGroupPromotionResponseItem.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionResponseItem: data.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class ProductGroupPromotionResponseItem.");
+                throw new JsonException("Property is not nullable for class ProductGroupPromotionResponseItem: exceptions.");
 
             return new ProductGroupPromotionResponseItem(data, exceptions);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionResponseItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductGroupPromotionResponseItem productGroupPromotionResponseItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productGroupPromotionResponseItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductGroupPromotionResponseItem productGroupPromotionResponseItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (productGroupPromotionResponseItem.DataOption.IsSet && productGroupPromotionResponseItem.Data == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionResponseItem.Data), "Property is required for class ProductGroupPromotionResponseItem.");
+                throw new JsonException("Cannot write null property ProductGroupPromotionResponseItem.Data to non-nullable JSON property 'data'.");
 
             if (productGroupPromotionResponseItem.ExceptionsOption.IsSet && productGroupPromotionResponseItem.Exceptions == null)
-                throw new ArgumentNullException(nameof(productGroupPromotionResponseItem.Exceptions), "Property is required for class ProductGroupPromotionResponseItem.");
+                throw new JsonException("Cannot write null property ProductGroupPromotionResponseItem.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (productGroupPromotionResponseItem.DataOption.IsSet)
             {

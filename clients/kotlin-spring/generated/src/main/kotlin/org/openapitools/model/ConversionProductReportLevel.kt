@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Level of the report
-* Values: ADVERTISER,CAMPAIGN,AD_GROUP
-*/
+ * Level of the report
+ * Values: ADVERTISER,CAMPAIGN,AD_GROUP
+ */
 enum class ConversionProductReportLevel(@get:JsonValue val value: kotlin.String) {
 
     ADVERTISER("ADVERTISER"),
@@ -29,9 +29,8 @@ enum class ConversionProductReportLevel(@get:JsonValue val value: kotlin.String)
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionProductReportLevel {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportLevel'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportLevel'")
         }
     }
 }
-

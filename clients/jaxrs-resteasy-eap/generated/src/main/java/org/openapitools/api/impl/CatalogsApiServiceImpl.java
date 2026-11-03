@@ -57,7 +57,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-08-30T09:54:43.403996865Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsApiServiceImpl implements CatalogsApi {
       public Response catalogsAvailableFilterValues(String catalogId,String feedId,Country country,CatalogsLocale language,String adAccountId,SecurityContext securityContext) {
       // do some magic!
@@ -103,7 +103,7 @@ public class CatalogsApiServiceImpl implements CatalogsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response catalogsProductGroupsCreateMany(List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,String adAccountId,SecurityContext securityContext) {
+      public Response catalogsProductGroupsCreateMany(List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,String adAccountId,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

@@ -267,40 +267,40 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!createdAt.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemResponse.", nameof(createdAt));
+                throw new JsonException("Property is required for class LocalInventoryItemResponse: created_at.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemResponse.", nameof(itemId));
+                throw new JsonException("Property is required for class LocalInventoryItemResponse: item_id.");
 
             if (!lastUpdatedTime.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemResponse.", nameof(lastUpdatedTime));
+                throw new JsonException("Property is required for class LocalInventoryItemResponse: last_updated_time.");
 
             if (!storeMetadata.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemResponse.", nameof(storeMetadata));
+                throw new JsonException("Property is required for class LocalInventoryItemResponse: store_metadata.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: created_at.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: item_id.");
 
             if (lastUpdatedTime.IsSet && lastUpdatedTime.Value == null)
-                throw new ArgumentNullException(nameof(lastUpdatedTime), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: last_updated_time.");
 
             if (storeMetadata.IsSet && storeMetadata.Value == null)
-                throw new ArgumentNullException(nameof(storeMetadata), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: store_metadata.");
 
             if (adLink.IsSet && adLink.Value == null)
-                throw new ArgumentNullException(nameof(adLink), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: ad_link.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: availability.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: price.");
 
             if (salePrice.IsSet && salePrice.Value == null)
-                throw new ArgumentNullException(nameof(salePrice), "Property is not nullable for class LocalInventoryItemResponse.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemResponse: sale_price.");
 
             return new LocalInventoryItemResponse(createdAt.Value!.Value!, itemId.Value!, lastUpdatedTime.Value!.Value!, storeMetadata.Value!, adLink, availability, price, salePrice);
         }
@@ -311,7 +311,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryItemResponse localInventoryItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -326,23 +325,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryItemResponse localInventoryItemResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryItemResponse.ItemId == null)
-                throw new ArgumentNullException(nameof(localInventoryItemResponse.ItemId), "Property is required for class LocalInventoryItemResponse.");
-
-            if (localInventoryItemResponse.StoreMetadata == null)
-                throw new ArgumentNullException(nameof(localInventoryItemResponse.StoreMetadata), "Property is required for class LocalInventoryItemResponse.");
-
             if (localInventoryItemResponse.AdLinkOption.IsSet && localInventoryItemResponse.AdLink == null)
-                throw new ArgumentNullException(nameof(localInventoryItemResponse.AdLink), "Property is required for class LocalInventoryItemResponse.");
+                throw new JsonException("Cannot write null property LocalInventoryItemResponse.AdLink to non-nullable JSON property 'ad_link'.");
+
+            if (localInventoryItemResponse.AvailabilityOption.IsSet && localInventoryItemResponse.Availability == null)
+                throw new JsonException("Cannot write null property LocalInventoryItemResponse.Availability to non-nullable JSON property 'availability'.");
 
             if (localInventoryItemResponse.PriceOption.IsSet && localInventoryItemResponse.Price == null)
-                throw new ArgumentNullException(nameof(localInventoryItemResponse.Price), "Property is required for class LocalInventoryItemResponse.");
+                throw new JsonException("Cannot write null property LocalInventoryItemResponse.Price to non-nullable JSON property 'price'.");
 
             if (localInventoryItemResponse.SalePriceOption.IsSet && localInventoryItemResponse.SalePrice == null)
-                throw new ArgumentNullException(nameof(localInventoryItemResponse.SalePrice), "Property is required for class LocalInventoryItemResponse.");
+                throw new JsonException("Cannot write null property LocalInventoryItemResponse.SalePrice to non-nullable JSON property 'sale_price'.");
 
             writer.WriteNumber("created_at", localInventoryItemResponse.CreatedAt);
 

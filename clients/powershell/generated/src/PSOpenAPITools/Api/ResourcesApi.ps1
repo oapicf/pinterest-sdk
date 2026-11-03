@@ -197,7 +197,7 @@ function ConvertTo-terestTargetingOptionsGet {
         if (!$InterestId) {
             throw "Error! The required parameter `InterestId` missing when calling interestTargetingOptions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{interest_id}', [System.Web.HTTPUtility]::UrlEncode($InterestId))
+        $LocalVarUri = $LocalVarUri.replace('{interest_id}', [System.Uri]::EscapeDataString([string]$InterestId))
 
 
 
@@ -435,7 +435,7 @@ function Invoke-TargetingOptionsGet {
         if (!$TargetingType) {
             throw "Error! The required parameter `TargetingType` missing when calling targetingOptions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{targeting_type}', [System.Web.HTTPUtility]::UrlEncode($TargetingType))
+        $LocalVarUri = $LocalVarUri.replace('{targeting_type}', [System.Uri]::EscapeDataString([string]$TargetingType))
 
         if ($AdAccountId) {
             $LocalVarQueryParameters['ad_account_id'] = $AdAccountId

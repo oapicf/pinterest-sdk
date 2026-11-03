@@ -60,51 +60,129 @@ import {
 } from '../models/PinterestLibError';
 
 export interface FeedProcessingResultsListRequest {
+    /**
+     * Unique identifier of a feed.
+     */
     feedId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface FeedsCreateRequest {
+    /**
+     * 
+     */
     catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface FeedsDeleteRequest {
+    /**
+     * Unique identifier of a feed.
+     */
     feedId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface FeedsGetRequest {
+    /**
+     * Unique identifier of a feed.
+     */
     feedId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface FeedsIngestRequest {
+    /**
+     * Unique identifier of a feed.
+     */
     feedId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface FeedsListRequest {
+    /**
+     * Filter entities for a given catalog_id. If not given, all catalogs are considered.
+     */
     catalogId?: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
 export interface FeedsUpdateRequest {
+    /**
+     * Unique identifier of a feed.
+     */
     feedId: string;
+    /**
+     * 
+     */
     catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ItemsIssuesListRequest {
+    /**
+     * Unique identifier of a feed processing result. It can be acquired from the "id" field of the "items" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
+     */
     processingResultId: string;
+    /**
+     * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+     */
     itemNumbers?: Array<number>;
+    /**
+     * Filter item validation issues that have a given type of item validation issue.
+     */
     itemValidationIssue?: CatalogsItemValidationIssue;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 

@@ -29,7 +29,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object describing an item bid option operation")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AdvancedAuctionItemsSubmitDeleteRecord.class, name = "DELETE"),
@@ -87,7 +87,7 @@ public class AdvancedAuctionItemsSubmitRecord   {
 
   @JsonProperty("update_mask")
   
-  private List<UpdateMaskBidOptionField> updateMask = ;
+  private List<UpdateMaskBidOptionField> updateMask = null;
 
   public AdvancedAuctionItemsSubmitRecord bidOptions(AdvancedAuctionBidOptions bidOptions) {
     this.bidOptions = bidOptions;

@@ -9,8 +9,8 @@ import Foundation
 
 public struct UpdatePartnerAssetAccessItem: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: 25, pattern: "^\\d+$")
     public static let permissionsRule = ArrayRule(minItems: 1, maxItems: 50, uniqueItems: false)
     /** Unique identifier of the business asset. */
     public var assetId: String

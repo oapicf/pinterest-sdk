@@ -384,31 +384,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (appId.IsSet && appId.Value == null)
-                throw new ArgumentNullException(nameof(appId), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: app_id.");
 
             if (appName.IsSet && appName.Value == null)
-                throw new ArgumentNullException(nameof(appName), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: app_name.");
 
             if (appPackageName.IsSet && appPackageName.Value == null)
-                throw new ArgumentNullException(nameof(appPackageName), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: app_package_name.");
 
             if (appStore.IsSet && appStore.Value == null)
-                throw new ArgumentNullException(nameof(appStore), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: app_store.");
 
             if (appVersion.IsSet && appVersion.Value == null)
-                throw new ArgumentNullException(nameof(appVersion), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: app_version.");
 
             if (installTime.IsSet && installTime.Value == null)
-                throw new ArgumentNullException(nameof(installTime), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: install_time.");
 
             if (userAgent.IsSet && userAgent.Value == null)
-                throw new ArgumentNullException(nameof(userAgent), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: user_agent.");
 
             if (windowHeight.IsSet && windowHeight.Value == null)
-                throw new ArgumentNullException(nameof(windowHeight), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: window_height.");
 
             if (windowWidth.IsSet && windowWidth.Value == null)
-                throw new ArgumentNullException(nameof(windowWidth), "Property is not nullable for class ConversionEventAppInfo.");
+                throw new JsonException("Property is not nullable for class ConversionEventAppInfo: window_width.");
 
             return new ConversionEventAppInfo(appId, appName, appPackageName, appStore, appVersion, installTime, userAgent, windowHeight, windowWidth);
         }
@@ -419,7 +419,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventAppInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventAppInfo conversionEventAppInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -434,26 +433,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventAppInfo"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventAppInfo conversionEventAppInfo, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionEventAppInfo.AppIdOption.IsSet && conversionEventAppInfo.AppId == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.AppId), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.AppId to non-nullable JSON property 'app_id'.");
 
             if (conversionEventAppInfo.AppNameOption.IsSet && conversionEventAppInfo.AppName == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.AppName), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.AppName to non-nullable JSON property 'app_name'.");
 
             if (conversionEventAppInfo.AppPackageNameOption.IsSet && conversionEventAppInfo.AppPackageName == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.AppPackageName), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.AppPackageName to non-nullable JSON property 'app_package_name'.");
 
             if (conversionEventAppInfo.AppStoreOption.IsSet && conversionEventAppInfo.AppStore == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.AppStore), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.AppStore to non-nullable JSON property 'app_store'.");
 
             if (conversionEventAppInfo.AppVersionOption.IsSet && conversionEventAppInfo.AppVersion == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.AppVersion), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.AppVersion to non-nullable JSON property 'app_version'.");
+
+            if (conversionEventAppInfo.InstallTimeOption.IsSet && conversionEventAppInfo.InstallTime == null)
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.InstallTime to non-nullable JSON property 'install_time'.");
 
             if (conversionEventAppInfo.UserAgentOption.IsSet && conversionEventAppInfo.UserAgent == null)
-                throw new ArgumentNullException(nameof(conversionEventAppInfo.UserAgent), "Property is required for class ConversionEventAppInfo.");
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.UserAgent to non-nullable JSON property 'user_agent'.");
+
+            if (conversionEventAppInfo.WindowHeightOption.IsSet && conversionEventAppInfo.WindowHeight == null)
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.WindowHeight to non-nullable JSON property 'window_height'.");
+
+            if (conversionEventAppInfo.WindowWidthOption.IsSet && conversionEventAppInfo.WindowWidth == null)
+                throw new JsonException("Cannot write null property ConversionEventAppInfo.WindowWidth to non-nullable JSON property 'window_width'.");
 
             if (conversionEventAppInfo.AppIdOption.IsSet)
                 writer.WriteString("app_id", conversionEventAppInfo.AppId);

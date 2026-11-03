@@ -37,7 +37,6 @@ public class BidFloorSpec  {
   * List of ISO 3166-1 alpha-2 country codes.
   */
   @ApiModelProperty(value = "List of ISO 3166-1 alpha-2 country codes.")
-  @Valid
   private List<Country> countries = new ArrayList<>();
 
  /**

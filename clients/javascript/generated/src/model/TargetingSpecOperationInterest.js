@@ -17,7 +17,7 @@ import TargetingSpecListOperation from './TargetingSpecListOperation';
 /**
  * The TargetingSpecOperationInterest model module.
  * @module model/TargetingSpecOperationInterest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class TargetingSpecOperationInterest {
     /**

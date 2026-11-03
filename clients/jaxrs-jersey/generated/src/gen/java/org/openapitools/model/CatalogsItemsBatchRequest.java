@@ -46,7 +46,7 @@ import javax.validation.Valid;
   CatalogsItemsBatchRequest.JSON_PROPERTY_LANGUAGE,
   CatalogsItemsBatchRequest.JSON_PROPERTY_OPERATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsItemsCreateBatchRequest.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsItemsDeleteBatchRequest.class, name = "DELETE"),
@@ -389,7 +389,7 @@ public class CatalogsItemsBatchRequest   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with catalogs items")
-  @NotNull @Valid 
+  @NotNull 
   public List<@Valid ItemDeleteBatchRecord> getItems() {
     return items;
   }

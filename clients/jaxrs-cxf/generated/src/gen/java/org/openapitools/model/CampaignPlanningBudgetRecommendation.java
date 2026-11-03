@@ -32,8 +32,6 @@ public class CampaignPlanningBudgetRecommendation  {
   */
   @ApiModelProperty(value = "List of experimental budget recommendations.")
 
-  @Valid
-
   private List<@Valid CampaignPlanningExperimentBudgetRecommendation> experimentCampaignBudgetRecommendation = new ArrayList<>();
 
  /**
@@ -47,8 +45,6 @@ public class CampaignPlanningBudgetRecommendation  {
   * List of point estimations for different budget scenarios.
   */
   @ApiModelProperty(value = "List of point estimations for different budget scenarios.")
-
-  @Valid
 
   private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
  /**

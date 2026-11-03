@@ -6,20 +6,3 @@
 */
 #include "AttributionModel.h"
 
-namespace models {
-
-AttributionModel::AttributionModel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

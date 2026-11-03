@@ -152,7 +152,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (subscriptionId.IsSet && subscriptionId.Value == null)
-                throw new ArgumentNullException(nameof(subscriptionId), "Property is not nullable for class LeadFormTest.");
+                throw new JsonException("Property is not nullable for class LeadFormTest: subscription_id.");
 
             return new LeadFormTest(subscriptionId);
         }
@@ -163,7 +163,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormTest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormTest leadFormTest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -178,11 +177,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormTest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormTest leadFormTest, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadFormTest.SubscriptionIdOption.IsSet && leadFormTest.SubscriptionId == null)
-                throw new ArgumentNullException(nameof(leadFormTest.SubscriptionId), "Property is required for class LeadFormTest.");
+                throw new JsonException("Cannot write null property LeadFormTest.SubscriptionId to non-nullable JSON property 'subscription_id'.");
 
             if (leadFormTest.SubscriptionIdOption.IsSet)
                 writer.WriteString("subscription_id", leadFormTest.SubscriptionId);

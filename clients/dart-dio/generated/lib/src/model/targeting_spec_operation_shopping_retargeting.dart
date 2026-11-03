@@ -140,6 +140,7 @@ class _$TargetingSpecOperationShoppingRetargetingSerializer implements Primitive
   }
 }
 
+
 class TargetingSpecOperationShoppingRetargetingFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'SHOPPING_RETARGETING')

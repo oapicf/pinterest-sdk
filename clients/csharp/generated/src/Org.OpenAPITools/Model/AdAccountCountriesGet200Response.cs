@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountCountriesGet200Response.", nameof(items));
+                throw new JsonException("Property is required for class AdAccountCountriesGet200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class AdAccountCountriesGet200Response.");
+                throw new JsonException("Property is not nullable for class AdAccountCountriesGet200Response: items.");
 
             return new AdAccountCountriesGet200Response(items.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountCountriesGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountCountriesGet200Response adAccountCountriesGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountCountriesGet200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountCountriesGet200Response adAccountCountriesGet200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adAccountCountriesGet200Response.Items == null)
-                throw new ArgumentNullException(nameof(adAccountCountriesGet200Response.Items), "Property is required for class AdAccountCountriesGet200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, adAccountCountriesGet200Response.Items, jsonSerializerOptions);
         }

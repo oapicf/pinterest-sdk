@@ -12,24 +12,34 @@
 
 namespace models {
 
-
-class LabelParentType
-{
-public:
-
-    LabelParentType();
-    virtual ~LabelParentType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(LabelParentType,
-        )
-
-private:
+enum class LabelParentType {
+    
+    CAMPAIGN
+    
 };
 
+inline void to_json(nlohmann::json& j, const LabelParentType& value)
+{
+    switch (value)
+    {
+        
+        case LabelParentType::CAMPAIGN: j = "CAMPAIGN"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for LabelParentType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, LabelParentType& value)
+{
+    
+    if (j == "CAMPAIGN")
+    {
+        value = LabelParentType::CAMPAIGN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for LabelParentType", &j);
+}
 
 } // namespace models
 

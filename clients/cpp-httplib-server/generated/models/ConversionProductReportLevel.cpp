@@ -6,20 +6,3 @@
 */
 #include "ConversionProductReportLevel.h"
 
-namespace models {
-
-ConversionProductReportLevel::ConversionProductReportLevel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

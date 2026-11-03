@@ -125,3 +125,4 @@ class _$BoardSectionsList200ResponseSerializer implements PrimitiveSerializer<Bo
   }
 }
 
+

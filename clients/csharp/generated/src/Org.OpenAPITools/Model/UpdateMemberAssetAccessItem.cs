@@ -194,22 +194,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetId.IsSet)
-                throw new ArgumentException("Property is required for class UpdateMemberAssetAccessItem.", nameof(assetId));
+                throw new JsonException("Property is required for class UpdateMemberAssetAccessItem: asset_id.");
 
             if (!memberId.IsSet)
-                throw new ArgumentException("Property is required for class UpdateMemberAssetAccessItem.", nameof(memberId));
+                throw new JsonException("Property is required for class UpdateMemberAssetAccessItem: member_id.");
 
             if (!permissions.IsSet)
-                throw new ArgumentException("Property is required for class UpdateMemberAssetAccessItem.", nameof(permissions));
+                throw new JsonException("Property is required for class UpdateMemberAssetAccessItem: permissions.");
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class UpdateMemberAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdateMemberAssetAccessItem: asset_id.");
 
             if (memberId.IsSet && memberId.Value == null)
-                throw new ArgumentNullException(nameof(memberId), "Property is not nullable for class UpdateMemberAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdateMemberAssetAccessItem: member_id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class UpdateMemberAssetAccessItem.");
+                throw new JsonException("Property is not nullable for class UpdateMemberAssetAccessItem: permissions.");
 
             return new UpdateMemberAssetAccessItem(assetId.Value!, memberId.Value!, permissions.Value!);
         }
@@ -220,7 +220,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateMemberAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UpdateMemberAssetAccessItem updateMemberAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -235,18 +234,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="updateMemberAssetAccessItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdateMemberAssetAccessItem updateMemberAssetAccessItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (updateMemberAssetAccessItem.AssetId == null)
-                throw new ArgumentNullException(nameof(updateMemberAssetAccessItem.AssetId), "Property is required for class UpdateMemberAssetAccessItem.");
-
-            if (updateMemberAssetAccessItem.MemberId == null)
-                throw new ArgumentNullException(nameof(updateMemberAssetAccessItem.MemberId), "Property is required for class UpdateMemberAssetAccessItem.");
-
-            if (updateMemberAssetAccessItem.Permissions == null)
-                throw new ArgumentNullException(nameof(updateMemberAssetAccessItem.Permissions), "Property is required for class UpdateMemberAssetAccessItem.");
-
             writer.WriteString("asset_id", updateMemberAssetAccessItem.AssetId);
 
             writer.WriteString("member_id", updateMemberAssetAccessItem.MemberId);

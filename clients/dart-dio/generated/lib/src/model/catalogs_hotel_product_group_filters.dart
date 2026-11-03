@@ -55,7 +55,7 @@ class _$CatalogsHotelProductGroupFiltersSerializer implements PrimitiveSerialize
     FullType specifiedType = FullType.unspecified,
   }) {
     final anyOf = object.anyOf;
-    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
+    return serializers.serialize(anyOf, specifiedType: FullType(AnyOf, anyOf.types.map((type) => FullType(type)).toList()))!;
   }
 
   @override
@@ -72,4 +72,5 @@ class _$CatalogsHotelProductGroupFiltersSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
+
 

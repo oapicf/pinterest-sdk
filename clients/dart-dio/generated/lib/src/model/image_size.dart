@@ -165,3 +165,4 @@ class _$ImageSizeSerializer implements PrimitiveSerializer<ImageSize> {
   }
 }
 
+

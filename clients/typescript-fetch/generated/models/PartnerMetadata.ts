@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface PartnerMetadata {
     /**
      * Text field value that uniquely identifies a subscriber.
-     * @type {string}
-     * @memberof PartnerMetadata
      */
     subscriberKey?: string;
 }

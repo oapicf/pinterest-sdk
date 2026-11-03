@@ -185,28 +185,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!childInterests.IsSet)
-                throw new ArgumentException("Property is required for class SingleInterestTargetingOption.", nameof(childInterests));
+                throw new JsonException("Property is required for class SingleInterestTargetingOption: child_interests.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class SingleInterestTargetingOption.", nameof(id));
+                throw new JsonException("Property is required for class SingleInterestTargetingOption: id.");
 
             if (!level.IsSet)
-                throw new ArgumentException("Property is required for class SingleInterestTargetingOption.", nameof(level));
+                throw new JsonException("Property is required for class SingleInterestTargetingOption: level.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class SingleInterestTargetingOption.", nameof(name));
+                throw new JsonException("Property is required for class SingleInterestTargetingOption: name.");
 
             if (childInterests.IsSet && childInterests.Value == null)
-                throw new ArgumentNullException(nameof(childInterests), "Property is not nullable for class SingleInterestTargetingOption.");
+                throw new JsonException("Property is not nullable for class SingleInterestTargetingOption: child_interests.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class SingleInterestTargetingOption.");
+                throw new JsonException("Property is not nullable for class SingleInterestTargetingOption: id.");
 
             if (level.IsSet && level.Value == null)
-                throw new ArgumentNullException(nameof(level), "Property is not nullable for class SingleInterestTargetingOption.");
+                throw new JsonException("Property is not nullable for class SingleInterestTargetingOption: level.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class SingleInterestTargetingOption.");
+                throw new JsonException("Property is not nullable for class SingleInterestTargetingOption: name.");
 
             return new SingleInterestTargetingOption(childInterests.Value!, id.Value!, level.Value!.Value!, name.Value!);
         }
@@ -217,7 +217,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="singleInterestTargetingOption"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SingleInterestTargetingOption singleInterestTargetingOption, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -232,18 +231,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="singleInterestTargetingOption"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SingleInterestTargetingOption singleInterestTargetingOption, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (singleInterestTargetingOption.ChildInterests == null)
-                throw new ArgumentNullException(nameof(singleInterestTargetingOption.ChildInterests), "Property is required for class SingleInterestTargetingOption.");
-
-            if (singleInterestTargetingOption.Id == null)
-                throw new ArgumentNullException(nameof(singleInterestTargetingOption.Id), "Property is required for class SingleInterestTargetingOption.");
-
-            if (singleInterestTargetingOption.Name == null)
-                throw new ArgumentNullException(nameof(singleInterestTargetingOption.Name), "Property is required for class SingleInterestTargetingOption.");
-
             writer.WritePropertyName("child_interests");
             JsonSerializer.Serialize(writer, singleInterestTargetingOption.ChildInterests, jsonSerializerOptions);
             writer.WriteString("id", singleInterestTargetingOption.Id);

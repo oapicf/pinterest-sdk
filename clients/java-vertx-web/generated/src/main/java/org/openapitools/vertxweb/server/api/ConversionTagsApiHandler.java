@@ -56,7 +56,7 @@ public class ConversionTagsApiHandler {
         ConversionTagCreate conversionTagCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<ConversionTagCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter conversionTagCreate is {}", conversionTagCreate);
+        logger.debug("Parameter conversionTagCreate is (body omitted)");
 
         api.conversionTagsCreate(adAccountId, conversionTagCreate)
             .onSuccess(apiResponse -> {

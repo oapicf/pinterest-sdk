@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CampaignPlanningResponseErrorCode
-{
-public:
-
-    CampaignPlanningResponseErrorCode();
-    virtual ~CampaignPlanningResponseErrorCode() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningResponseErrorCode,
-        )
-
-private:
+enum class CampaignPlanningResponseErrorCode {
+    
+    SERVER_ERROR,
+    
+    AUDIENCE_LIST_MISSING,
+    
+    INVALID_REQUEST,
+    
+    PRODUCT_GROUP_MISSING
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningResponseErrorCode& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningResponseErrorCode::SERVER_ERROR: j = "SERVER_ERROR"; break;
+        
+        case CampaignPlanningResponseErrorCode::AUDIENCE_LIST_MISSING: j = "AUDIENCE_LIST_MISSING"; break;
+        
+        case CampaignPlanningResponseErrorCode::INVALID_REQUEST: j = "INVALID_REQUEST"; break;
+        
+        case CampaignPlanningResponseErrorCode::PRODUCT_GROUP_MISSING: j = "PRODUCT_GROUP_MISSING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningResponseErrorCode", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningResponseErrorCode& value)
+{
+    
+    if (j == "SERVER_ERROR")
+    {
+        value = CampaignPlanningResponseErrorCode::SERVER_ERROR;
+        return;
+    }
+    
+    if (j == "AUDIENCE_LIST_MISSING")
+    {
+        value = CampaignPlanningResponseErrorCode::AUDIENCE_LIST_MISSING;
+        return;
+    }
+    
+    if (j == "INVALID_REQUEST")
+    {
+        value = CampaignPlanningResponseErrorCode::INVALID_REQUEST;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP_MISSING")
+    {
+        value = CampaignPlanningResponseErrorCode::PRODUCT_GROUP_MISSING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningResponseErrorCode", &j);
+}
 
 } // namespace models
 

@@ -27,19 +27,19 @@ data class AdAccountsCountry(
 
     @field:Valid
     @Schema(example = "US", required = true, description = "")
-    @param:JsonProperty("code")
+    @param:JsonProperty("code", required = true)
     @get:JsonProperty("code", required = true) val code: Country,
 
     @Schema(example = "Dollars", required = true, description = "Country currency.")
-    @param:JsonProperty("currency")
+    @param:JsonProperty("currency", required = true)
     @get:JsonProperty("currency", required = true) val currency: kotlin.String,
 
     @Schema(example = "1", required = true, description = "Country index")
-    @param:JsonProperty("index")
+    @param:JsonProperty("index", required = true)
     @get:JsonProperty("index", required = true) val index: java.math.BigDecimal,
 
     @Schema(example = "United States of America", required = true, description = "Country name")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
 

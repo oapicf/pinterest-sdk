@@ -29,8 +29,6 @@ import {
 export interface DeleteMemberAccessResultsResponseArray {
     /**
      * List of member asset permissions that were deleted.
-     * @type {Array<DeleteMemberAccessResult>}
-     * @memberof DeleteMemberAccessResultsResponseArray
      */
     items?: Array<DeleteMemberAccessResult>;
 }

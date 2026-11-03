@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **customerListUploadsCreate**
 ```swift
-    open class func customerListUploadsCreate(adAccountId: String, customerListId: String, customerListUploadCreateRequest: CustomerListUploadCreateRequest, completion: @escaping (_ data: CustomerListUploadCreateResponse?, _ error: Error?) -> Void)
+    open class func customerListUploadsCreate(adAccountId: String, customerListId: String, customerListUploadCreateRequest: CustomerListUploadCreateRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerListUploadCreateResponse
 ```
 
 Create customer list upload
@@ -28,15 +28,11 @@ let customerListId = "customerListId_example" // String | Customer list ID.
 let customerListUploadCreateRequest = CustomerListUploadCreateRequest(operation: UserListOperationType(), totalParts: 123) // CustomerListUploadCreateRequest | 
 
 // Create customer list upload
-CustomerListUploadsAPI.customerListUploadsCreate(adAccountId: adAccountId, customerListId: customerListId, customerListUploadCreateRequest: customerListUploadCreateRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListUploadsAPI.customerListUploadsCreate(adAccountId: adAccountId, customerListId: customerListId, customerListUploadCreateRequest: customerListUploadCreateRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -65,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **customerListUploadsGet**
 ```swift
-    open class func customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String, completion: @escaping (_ data: CustomerListUpload?, _ error: Error?) -> Void)
+    open class func customerListUploadsGet(adAccountId: String, customerListId: String, customerListUploadId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerListUpload
 ```
 
 Get customer list upload
@@ -82,15 +78,11 @@ let customerListId = "customerListId_example" // String | Customer list ID.
 let customerListUploadId = "customerListUploadId_example" // String | Customer List Upload ID.
 
 // Get customer list upload
-CustomerListUploadsAPI.customerListUploadsGet(adAccountId: adAccountId, customerListId: customerListId, customerListUploadId: customerListUploadId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListUploadsAPI.customerListUploadsGet(adAccountId: adAccountId, customerListId: customerListId, customerListUploadId: customerListUploadId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -119,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **customerListUploadsRun**
 ```swift
-    open class func customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String, completion: @escaping (_ data: CustomerListUpload?, _ error: Error?) -> Void)
+    open class func customerListUploadsRun(adAccountId: String, customerListId: String, customerListUploadId: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CustomerListUpload
 ```
 
 Run customer list upload
@@ -136,15 +128,11 @@ let customerListId = "customerListId_example" // String | Customer list ID.
 let customerListUploadId = "customerListUploadId_example" // String | Customer List Upload ID.
 
 // Run customer list upload
-CustomerListUploadsAPI.customerListUploadsRun(adAccountId: adAccountId, customerListId: customerListId, customerListUploadId: customerListUploadId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CustomerListUploadsAPI.customerListUploadsRun(adAccountId: adAccountId, customerListId: customerListId, customerListUploadId: customerListUploadId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

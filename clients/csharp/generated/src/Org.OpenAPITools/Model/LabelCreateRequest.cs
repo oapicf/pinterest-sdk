@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!labels.IsSet)
-                throw new ArgumentException("Property is required for class LabelCreateRequest.", nameof(labels));
+                throw new JsonException("Property is required for class LabelCreateRequest: labels.");
 
             if (labels.IsSet && labels.Value == null)
-                throw new ArgumentNullException(nameof(labels), "Property is not nullable for class LabelCreateRequest.");
+                throw new JsonException("Property is not nullable for class LabelCreateRequest: labels.");
 
             return new LabelCreateRequest(labels.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelCreateRequest labelCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelCreateRequest labelCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (labelCreateRequest.Labels == null)
-                throw new ArgumentNullException(nameof(labelCreateRequest.Labels), "Property is required for class LabelCreateRequest.");
-
             writer.WritePropertyName("labels");
             JsonSerializer.Serialize(writer, labelCreateRequest.Labels, jsonSerializerOptions);
         }

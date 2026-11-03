@@ -17,7 +17,7 @@ import FrequencyGoalMetadataTimerange from './FrequencyGoalMetadataTimerange';
 /**
  * The FrequencyGoalMetadata model module.
  * @module model/FrequencyGoalMetadata
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class FrequencyGoalMetadata {
     /**

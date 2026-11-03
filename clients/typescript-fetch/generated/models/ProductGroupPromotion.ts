@@ -64,152 +64,102 @@ import {
 export interface ProductGroupPromotion {
     /**
      * ID of the ad group the product group belongs to.
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     adGroupId?: string;
     /**
      * The bid in micro currency.
-     * @type {number}
-     * @memberof ProductGroupPromotion
      */
     bidInMicroCurrency?: number;
     /**
      * ID of the catalogs product group that this product group promotion references (required for create operations)
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     catalogProductGroupId?: string;
     /**
      * Catalogs product group name
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     catalogProductGroupName?: string;
     /**
      * 
-     * @type {CollectionsHeaderType}
-     * @memberof ProductGroupPromotion
      */
     collectionsHeaderType?: CollectionsHeaderType | null;
     /**
      * Collections Hero Destination Url
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     collectionsHeroDestinationUrl?: string | null;
     /**
      * Hero Pin ID if this PG is promoted as a Collection
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     collectionsHeroPinId?: string | null;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof ProductGroupPromotion
      */
     creativeType?: CreativeType;
     /**
      * 
-     * @type {ProductGroupPromotionCustomizableCTAType}
-     * @memberof ProductGroupPromotion
      */
     customizableCtaType?: ProductGroupPromotionCustomizableCTAType;
     /**
      * The full product group definition path
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     definition?: string;
     /**
      * 
-     * @type {GridClickType}
-     * @memberof ProductGroupPromotion
      */
     gridClickType?: GridClickType | null;
     /**
      * ID of the product group promotion (required for update operations).
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     id?: string;
     /**
      * True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-     * @type {boolean}
-     * @memberof ProductGroupPromotion
      */
     included?: boolean;
     /**
      * Enable generate backgrounds for the product group, default value is FALSE. When enabled, Pinterest will use generative AI to apply backgrounds for your product images that help drive user inspiration and engagement.
-     * @type {boolean}
-     * @memberof ProductGroupPromotion
      */
     isGenerateBackground?: boolean | null;
     /**
      * Set to `TRUE` to automatically resize your product images with generative AI. This ensures that images have optimal appearance for better performance.
-     * @type {boolean}
-     * @memberof ProductGroupPromotion
      */
     isImageAutoResizing?: boolean | null;
     /**
      * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-     * @type {boolean}
-     * @memberof ProductGroupPromotion
      */
     isMdl?: boolean;
     /**
      * The parent Product Group ID of this Product Group
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     parentId?: string;
     /**
      * 
-     * @type {PreferredMediaType}
-     * @memberof ProductGroupPromotion
      */
     preferredMediaType?: PreferredMediaType | null;
     /**
      * The definition of the product group, relative to its parent - an attribute name/value pair
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     relativeDefinition?: string;
     /**
      * The ad image tag selected for the product group promotion.
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     selectedImageTag?: string | null;
     /**
      * The ad video tag selected for the product group promotion.
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     selectedVideoTag?: string | null;
     /**
      * Slideshow Collections Description
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     slideshowCollectionsDescription?: string | null;
     /**
      * Slideshow Collections Title
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     slideshowCollectionsTitle?: string | null;
     /**
      * 
-     * @type {EntityStatus}
-     * @memberof ProductGroupPromotion
      */
     status?: EntityStatus;
     /**
      * Tracking template for proudct group promotions. 4000 limit
-     * @type {string}
-     * @memberof ProductGroupPromotion
      */
     trackingUrl?: string;
 }

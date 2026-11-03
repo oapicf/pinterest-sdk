@@ -29,14 +29,10 @@ import {
 export interface SchedulesList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof SchedulesList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Schedule>}
-     * @memberof SchedulesList200Response
      */
     items: Array<Schedule>;
 }

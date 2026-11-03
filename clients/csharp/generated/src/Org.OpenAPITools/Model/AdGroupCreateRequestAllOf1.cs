@@ -214,16 +214,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (autoTargetingEnabled.IsSet && autoTargetingEnabled.Value == null)
-                throw new ArgumentNullException(nameof(autoTargetingEnabled), "Property is not nullable for class AdGroupCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupCreateRequestAllOf1: auto_targeting_enabled.");
 
             if (bidMultiplier.IsSet && bidMultiplier.Value == null)
-                throw new ArgumentNullException(nameof(bidMultiplier), "Property is not nullable for class AdGroupCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupCreateRequestAllOf1: bid_multiplier.");
 
             if (budgetType.IsSet && budgetType.Value == null)
-                throw new ArgumentNullException(nameof(budgetType), "Property is not nullable for class AdGroupCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupCreateRequestAllOf1: budget_type.");
 
             if (pacingDeliveryType.IsSet && pacingDeliveryType.Value == null)
-                throw new ArgumentNullException(nameof(pacingDeliveryType), "Property is not nullable for class AdGroupCreateRequestAllOf1.");
+                throw new JsonException("Property is not nullable for class AdGroupCreateRequestAllOf1: pacing_delivery_type.");
 
             return new AdGroupCreateRequestAllOf1(autoTargetingEnabled, bidMultiplier, budgetType, pacingDeliveryType);
         }
@@ -234,7 +234,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupCreateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupCreateRequestAllOf1 adGroupCreateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -249,9 +248,20 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupCreateRequestAllOf1"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupCreateRequestAllOf1 adGroupCreateRequestAllOf1, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adGroupCreateRequestAllOf1.AutoTargetingEnabledOption.IsSet && adGroupCreateRequestAllOf1.AutoTargetingEnabled == null)
+                throw new JsonException("Cannot write null property AdGroupCreateRequestAllOf1.AutoTargetingEnabled to non-nullable JSON property 'auto_targeting_enabled'.");
+
+            if (adGroupCreateRequestAllOf1.BidMultiplierOption.IsSet && adGroupCreateRequestAllOf1.BidMultiplier == null)
+                throw new JsonException("Cannot write null property AdGroupCreateRequestAllOf1.BidMultiplier to non-nullable JSON property 'bid_multiplier'.");
+
+            if (adGroupCreateRequestAllOf1.BudgetTypeOption.IsSet && adGroupCreateRequestAllOf1.BudgetType == null)
+                throw new JsonException("Cannot write null property AdGroupCreateRequestAllOf1.BudgetType to non-nullable JSON property 'budget_type'.");
+
+            if (adGroupCreateRequestAllOf1.PacingDeliveryTypeOption.IsSet && adGroupCreateRequestAllOf1.PacingDeliveryType == null)
+                throw new JsonException("Cannot write null property AdGroupCreateRequestAllOf1.PacingDeliveryType to non-nullable JSON property 'pacing_delivery_type'.");
+
             if (adGroupCreateRequestAllOf1.AutoTargetingEnabledOption.IsSet)
                 writer.WriteBoolean("auto_targeting_enabled", adGroupCreateRequestAllOf1.AutoTargetingEnabledOption.Value!.Value);
 

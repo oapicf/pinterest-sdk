@@ -25,16 +25,16 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AppsflyerAudience(
 
     @Schema(required = true, readOnly = true, description = "The ID of the audience container")
-    @param:JsonProperty("container_id")
+    @param:JsonProperty("container_id", required = true)
     @get:JsonProperty("container_id", required = true) val containerId: kotlin.String,
 
     @Schema(required = true, description = "The name of the audience")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "The platform of the audience")
-    @param:JsonProperty("platform")
+    @param:JsonProperty("platform", required = true)
     @get:JsonProperty("platform", required = true) val platform: AppsflyerPlatform
 ) {
 

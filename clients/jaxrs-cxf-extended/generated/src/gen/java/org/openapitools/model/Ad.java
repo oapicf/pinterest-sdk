@@ -80,7 +80,6 @@ public class Ad  {
   * Array of carting/WTB products for the ad.
   */
   @ApiModelProperty(value = "Array of carting/WTB products for the ad.")
-  @Valid
   private List<@Valid CartingProduct> cartingProducts = new ArrayList<>();
 
  /**
@@ -204,7 +203,6 @@ public class Ad  {
   * Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".
   */
   @ApiModelProperty(required = true, value = "Enum reason why the pin was rejected. Returned if `review_status` is \"REJECTED\".")
-  @Valid
   private List<AdDisapprovalReasons> rejectedReasons = new ArrayList<>();
 
  /**

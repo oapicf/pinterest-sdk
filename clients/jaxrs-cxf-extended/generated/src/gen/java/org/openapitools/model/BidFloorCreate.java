@@ -24,7 +24,6 @@ public class BidFloorCreate  {
   * List of bid floor specifications.
   */
   @ApiModelProperty(required = true, value = "List of bid floor specifications.")
-  @Valid
   private List<@Valid BidFloorSpec> bidFloorSpecs = new ArrayList<>();
 
  /**

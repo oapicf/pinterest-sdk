@@ -20,7 +20,7 @@
 export const OverallStatusOptions = {
     NeedsImprovement: 'NEEDS_IMPROVEMENT',
     Fair: 'FAIR',
-    Good: 'GOOD'
+    Good: 'GOOD',
 } as const;
 export type OverallStatusOptions = typeof OverallStatusOptions[keyof typeof OverallStatusOptions];
 

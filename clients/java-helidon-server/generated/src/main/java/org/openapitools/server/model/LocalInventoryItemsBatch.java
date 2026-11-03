@@ -20,7 +20,7 @@ public class LocalInventoryItemsBatch   {
     private String batchId;
     private OffsetDateTime completedTime;
     private OffsetDateTime createdTime;
-    private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+    private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
     private SupplementalItemBatchOperationStatus status;
 
     /**
@@ -43,7 +43,7 @@ public class LocalInventoryItemsBatch   {
         String batchId, 
         OffsetDateTime completedTime, 
         OffsetDateTime createdTime, 
-        List<SupplementalOperationResult> operationResults, 
+        List<@Valid SupplementalOperationResult> operationResults, 
         SupplementalItemBatchOperationStatus status
     ) {
         this.batchId = batchId;
@@ -95,11 +95,11 @@ public class LocalInventoryItemsBatch   {
      * Array of operation results
      * @return operationResults
      */
-    public List<SupplementalOperationResult> getOperationResults() {
+    public List<@Valid SupplementalOperationResult> getOperationResults() {
         return operationResults;
     }
 
-    public void setOperationResults(List<SupplementalOperationResult> operationResults) {
+    public void setOperationResults(List<@Valid SupplementalOperationResult> operationResults) {
         this.operationResults = operationResults;
     }
 

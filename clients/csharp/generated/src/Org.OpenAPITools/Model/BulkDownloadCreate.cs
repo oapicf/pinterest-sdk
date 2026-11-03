@@ -235,19 +235,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (campaignFilter.IsSet && campaignFilter.Value == null)
-                throw new ArgumentNullException(nameof(campaignFilter), "Property is not nullable for class BulkDownloadCreate.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCreate: campaign_filter.");
 
             if (entityIds.IsSet && entityIds.Value == null)
-                throw new ArgumentNullException(nameof(entityIds), "Property is not nullable for class BulkDownloadCreate.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCreate: entity_ids.");
 
             if (entityTypes.IsSet && entityTypes.Value == null)
-                throw new ArgumentNullException(nameof(entityTypes), "Property is not nullable for class BulkDownloadCreate.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCreate: entity_types.");
 
             if (outputFormat.IsSet && outputFormat.Value == null)
-                throw new ArgumentNullException(nameof(outputFormat), "Property is not nullable for class BulkDownloadCreate.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCreate: output_format.");
 
             if (updatedSince.IsSet && updatedSince.Value == null)
-                throw new ArgumentNullException(nameof(updatedSince), "Property is not nullable for class BulkDownloadCreate.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCreate: updated_since.");
 
             return new BulkDownloadCreate(campaignFilter, entityIds, entityTypes, outputFormat, updatedSince);
         }
@@ -258,7 +258,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownloadCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkDownloadCreate bulkDownloadCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -273,20 +272,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownloadCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkDownloadCreate bulkDownloadCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkDownloadCreate.CampaignFilterOption.IsSet && bulkDownloadCreate.CampaignFilter == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCreate.CampaignFilter), "Property is required for class BulkDownloadCreate.");
+                throw new JsonException("Cannot write null property BulkDownloadCreate.CampaignFilter to non-nullable JSON property 'campaign_filter'.");
 
             if (bulkDownloadCreate.EntityIdsOption.IsSet && bulkDownloadCreate.EntityIds == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCreate.EntityIds), "Property is required for class BulkDownloadCreate.");
+                throw new JsonException("Cannot write null property BulkDownloadCreate.EntityIds to non-nullable JSON property 'entity_ids'.");
 
             if (bulkDownloadCreate.EntityTypesOption.IsSet && bulkDownloadCreate.EntityTypes == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCreate.EntityTypes), "Property is required for class BulkDownloadCreate.");
+                throw new JsonException("Cannot write null property BulkDownloadCreate.EntityTypes to non-nullable JSON property 'entity_types'.");
+
+            if (bulkDownloadCreate.OutputFormatOption.IsSet && bulkDownloadCreate.OutputFormat == null)
+                throw new JsonException("Cannot write null property BulkDownloadCreate.OutputFormat to non-nullable JSON property 'output_format'.");
 
             if (bulkDownloadCreate.UpdatedSinceOption.IsSet && bulkDownloadCreate.UpdatedSince == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCreate.UpdatedSince), "Property is required for class BulkDownloadCreate.");
+                throw new JsonException("Cannot write null property BulkDownloadCreate.UpdatedSince to non-nullable JSON property 'updated_since'.");
 
             if (bulkDownloadCreate.CampaignFilterOption.IsSet)
             {

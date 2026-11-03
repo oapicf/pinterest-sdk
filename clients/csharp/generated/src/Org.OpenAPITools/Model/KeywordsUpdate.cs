@@ -141,7 +141,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (keywords.IsSet && keywords.Value == null)
-                throw new ArgumentNullException(nameof(keywords), "Property is not nullable for class KeywordsUpdate.");
+                throw new JsonException("Property is not nullable for class KeywordsUpdate: keywords.");
 
             return new KeywordsUpdate(keywords);
         }
@@ -152,7 +152,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, KeywordsUpdate keywordsUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -167,11 +166,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="keywordsUpdate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, KeywordsUpdate keywordsUpdate, JsonSerializerOptions jsonSerializerOptions)
         {
             if (keywordsUpdate.KeywordsOption.IsSet && keywordsUpdate.Keywords == null)
-                throw new ArgumentNullException(nameof(keywordsUpdate.Keywords), "Property is required for class KeywordsUpdate.");
+                throw new JsonException("Cannot write null property KeywordsUpdate.Keywords to non-nullable JSON property 'keywords'.");
 
             if (keywordsUpdate.KeywordsOption.IsSet)
             {

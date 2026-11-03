@@ -109,3 +109,4 @@ class _$FrequencyMultipliersSerializer implements PrimitiveSerializer<FrequencyM
   }
 }
 
+

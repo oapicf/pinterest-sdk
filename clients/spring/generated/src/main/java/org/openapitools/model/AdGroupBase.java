@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -40,21 +39,17 @@ import jakarta.annotation.Generated;
  * AdGroupBase
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupBase {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String adAccountId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> bidInMicroCurrency = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<BidStrategyType> bidStrategyType = JsonNullable.<BidStrategyType>undefined();
 
   private ActionType billableEvent;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> budgetInMicroCurrency = JsonNullable.<Integer>undefined();
 
   private String campaignId;
@@ -63,73 +58,52 @@ public class AdGroupBase {
 
   private Integer createdTime;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String customerSegmentId;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Object> dcaAssets = JsonNullable.<Object>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> endTime = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AdgroupTrackingFeatures> extFeatures = JsonNullable.<AdgroupTrackingFeatures>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String feedProfileId;
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Boolean> isCreativeOptimization = JsonNullable.<Boolean>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean isLocalInventory;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer lifetimeFrequencyCap;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BigDecimal localInventoryRadiusInMiles;
 
   private String name;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableOptimizationGoalMetadata> optimizationGoalMetadata = JsonNullable.<NullableOptimizationGoalMetadata>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PerformancePlusCampaignSettings> performancePlusCampaignSettings = JsonNullable.<PerformancePlusCampaignSettings>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable PlacementGroupType placementGroup;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PlacementTrafficType> placementTrafficType = JsonNullable.<PlacementTrafficType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PromotionApplicationLevel> promotionApplicationLevel = JsonNullable.<PromotionApplicationLevel>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> promotionId = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> promotionIds = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Integer> startTime = JsonNullable.<Integer>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable EntityStatus status;
 
   private SummaryStatus summaryStatus;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable TargetingSpecOptimal targetingSpec;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AdGroupTrackingURLs> trackingUrls = JsonNullable.<AdGroupTrackingURLs>undefined();
 
   private String type = "adgroup";
@@ -186,7 +160,7 @@ public class AdGroupBase {
    * @return bidInMicroCurrency
    */
   
-  @Schema(name = "bid_in_micro_currency", description = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_in_micro_currency", description = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_in_micro_currency")
   public JsonNullable<Integer> getBidInMicroCurrency() {
     return bidInMicroCurrency;
@@ -206,7 +180,7 @@ public class AdGroupBase {
    * @return bidStrategyType
    */
   @Valid 
-  @Schema(name = "bid_strategy_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_strategy_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_strategy_type")
   public JsonNullable<BidStrategyType> getBidStrategyType() {
     return bidStrategyType;
@@ -247,7 +221,7 @@ public class AdGroupBase {
    * @return budgetInMicroCurrency
    */
   
-  @Schema(name = "budget_in_micro_currency", description = "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "budget_in_micro_currency", description = "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("budget_in_micro_currency")
   public JsonNullable<Integer> getBudgetInMicroCurrency() {
     return budgetInMicroCurrency;
@@ -288,7 +262,7 @@ public class AdGroupBase {
    * @return conversionLearningModeType
    */
   @Valid 
-  @Schema(name = "conversion_learning_mode_type", accessMode = Schema.AccessMode.READ_ONLY, description = "oCPM learn mode", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "conversion_learning_mode_type", accessMode = Schema.AccessMode.READ_ONLY, description = "oCPM learn mode", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("conversion_learning_mode_type")
   public JsonNullable<ConversionLearningModeType> getConversionLearningModeType() {
     return conversionLearningModeType;
@@ -351,7 +325,7 @@ public class AdGroupBase {
    * @return dcaAssets
    */
   
-  @Schema(name = "dca_assets", accessMode = Schema.AccessMode.READ_ONLY, description = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "dca_assets", accessMode = Schema.AccessMode.READ_ONLY, description = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("dca_assets")
   public JsonNullable<Object> getDcaAssets() {
     return dcaAssets;
@@ -371,7 +345,7 @@ public class AdGroupBase {
    * @return endTime
    */
   
-  @Schema(name = "end_time", description = "Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about [scheduling ads](https://help.pinterest.com/en/business/article/ads-manager-schedule-ads).  For certain organizations ([Closed beta](https://help.pinterest.com/en/business/article/beta-features)): Supported for campaigns with Campaign Budget Optimization (CBO).  For all organizations: Supported for campaigns without CBO.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "end_time", description = "Timestamp in Unix format for scheduling when ads in the ad group stop appearing. If not specified, ads run indefinitely unless you update the ad group by changing their status to `paused`. Cannot occur after `end_time` for parent campaign (if specified). Learn about [scheduling ads](https://help.pinterest.com/en/business/article/ads-manager-schedule-ads).  For certain organizations ([Closed beta](https://help.pinterest.com/en/business/article/beta-features)): Supported for campaigns with Campaign Budget Optimization (CBO).  For all organizations: Supported for campaigns without CBO.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("end_time")
   public JsonNullable<Integer> getEndTime() {
     return endTime;
@@ -391,7 +365,7 @@ public class AdGroupBase {
    * @return extFeatures
    */
   @Valid 
-  @Schema(name = "ext_features", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "ext_features", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("ext_features")
   public JsonNullable<AdgroupTrackingFeatures> getExtFeatures() {
     return extFeatures;
@@ -453,7 +427,7 @@ public class AdGroupBase {
    * @return isCreativeOptimization
    */
   
-  @Schema(name = "is_creative_optimization", description = "Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "is_creative_optimization", description = "Enable creative optimization for the ad group, default value is FALSE. When enabled, you allow Pinterest to automatically turn your product Pins into ads in different formats (collections and shopping) and deliver those ads to users at scale.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("is_creative_optimization")
   public JsonNullable<Boolean> getIsCreativeOptimization() {
     return isCreativeOptimization;
@@ -557,7 +531,7 @@ public class AdGroupBase {
    * @return optimizationGoalMetadata
    */
   @Valid 
-  @Schema(name = "optimization_goal_metadata", description = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "optimization_goal_metadata", description = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("optimization_goal_metadata")
   public JsonNullable<NullableOptimizationGoalMetadata> getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
@@ -577,7 +551,7 @@ public class AdGroupBase {
    * @return performancePlusCampaignSettings
    */
   @Valid 
-  @Schema(name = "performance_plus_campaign_settings", description = "Pinterest Performance+ campaign settings.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "performance_plus_campaign_settings", description = "Pinterest Performance+ campaign settings.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("performance_plus_campaign_settings")
   public JsonNullable<PerformancePlusCampaignSettings> getPerformancePlusCampaignSettings() {
     return performancePlusCampaignSettings;
@@ -618,7 +592,7 @@ public class AdGroupBase {
    * @return placementTrafficType
    */
   @Valid 
-  @Schema(name = "placement_traffic_type", description = "A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_traffic_type", description = "A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("placement_traffic_type")
   public JsonNullable<PlacementTrafficType> getPlacementTrafficType() {
     return placementTrafficType;
@@ -638,7 +612,7 @@ public class AdGroupBase {
    * @return promotionApplicationLevel
    */
   @Valid 
-  @Schema(name = "promotion_application_level", example = "ITEM", description = "Specify if the promotion is applied at ad group or item level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "promotion_application_level", example = "ITEM", description = "Specify if the promotion is applied at ad group or item level", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("promotion_application_level")
   public JsonNullable<PromotionApplicationLevel> getPromotionApplicationLevel() {
     return promotionApplicationLevel;
@@ -658,7 +632,7 @@ public class AdGroupBase {
    * @return promotionId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "promotion_id", description = "Promotion ID. To clear this field, set to null.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "promotion_id", description = "Promotion ID. To clear this field, set to null.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("promotion_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getPromotionId() {
     return promotionId;
@@ -707,7 +681,7 @@ public class AdGroupBase {
    * @return startTime
    */
   
-  @Schema(name = "start_time", description = "Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about [scheduling ads](/docs/api-features/managing-ads/#step-2-create-an-ad-group). For certain organizations ([Closed beta](/docs/getting-started/using-beta-and-restricted-features/)): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "start_time", description = "Timestamp in Unix format for scheduling when ads in the ad group start to appear. If not specified, ads appear during parent campaign's `start_time`. Cannot precede `start_time` for parent campaign (if specified). Learn about [scheduling ads](/docs/api-features/managing-ads/#step-2-create-an-ad-group). For certain organizations ([Closed beta](/docs/getting-started/using-beta-and-restricted-features/)): Supported for campaigns with Campaign Budget Optimization (CBO). For all organizations: Supported for campaigns without CBO.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("start_time")
   public JsonNullable<Integer> getStartTime() {
     return startTime;
@@ -786,7 +760,7 @@ public class AdGroupBase {
   }
 
   public AdGroupBase addTargetingTemplateIdsItem(String targetingTemplateIdsItem) {
-    if (this.targetingTemplateIds == null || !this.targetingTemplateIds.isPresent()) {
+    if (this.targetingTemplateIds == null || !this.targetingTemplateIds.isPresent() || this.targetingTemplateIds.get() == null) {
       this.targetingTemplateIds = JsonNullable.of(new ArrayList<>());
     }
     this.targetingTemplateIds.get().add(targetingTemplateIdsItem);
@@ -798,7 +772,7 @@ public class AdGroupBase {
    * @return targetingTemplateIds
    */
   @Size(max = 1) 
-  @Schema(name = "targeting_template_ids", description = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "targeting_template_ids", description = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("targeting_template_ids")
   public JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> getTargetingTemplateIds() {
     return targetingTemplateIds;
@@ -818,7 +792,7 @@ public class AdGroupBase {
    * @return trackingUrls
    */
   @Valid 
-  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "tracking_urls", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("tracking_urls")
   public JsonNullable<AdGroupTrackingURLs> getTrackingUrls() {
     return trackingUrls;

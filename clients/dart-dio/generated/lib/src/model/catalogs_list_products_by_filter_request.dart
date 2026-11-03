@@ -79,6 +79,7 @@ class _$CatalogsListProductsByFilterRequestSerializer implements PrimitiveSerial
   }
 }
 
+
 class CatalogsListProductsByFilterRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { BoardOwner } from './BoardOwner';
 import {
     BoardOwnerFromJSON,
@@ -36,50 +36,34 @@ import {
 export interface BoardBase {
     /**
      * Date and time of last board pins modified.
-     * @type {Date}
-     * @memberof BoardBase
      */
     readonly boardPinsModifiedAt?: Date;
     /**
      * Count of collaborators on the board.
-     * @type {number}
-     * @memberof BoardBase
      */
     readonly collaboratorCount?: number;
     /**
      * Date and time of board creation.
-     * @type {Date}
-     * @memberof BoardBase
      */
     readonly createdAt?: Date;
     /**
      * 
-     * @type {string}
-     * @memberof BoardBase
      */
     description?: string | null;
     /**
      * Board follower count.
-     * @type {number}
-     * @memberof BoardBase
      */
     readonly followerCount?: number;
     /**
      * 
-     * @type {string}
-     * @memberof BoardBase
      */
     readonly id: string;
     /**
      * If set to `true`, the board will be ad-only and can store ad-only Pins.
-     * @type {boolean}
-     * @memberof BoardBase
      */
     isAdsOnly?: boolean;
     /**
      * Board media.
-     * @type {BoardMedia}
-     * @memberof BoardBase
      */
     readonly media?: BoardMedia;
     /**
@@ -87,20 +71,14 @@ export interface BoardBase {
      * 
      *     **Note:** If you create an ad-only board by setting `is_ads_only`
      *     to `true`, the board name automatically becomes "Ad-only Pins".
-     * @type {string}
-     * @memberof BoardBase
      */
     name: string;
     /**
      * 
-     * @type {BoardOwner}
-     * @memberof BoardBase
      */
     readonly owner?: BoardOwner;
     /**
      * Count of Pins on the board.
-     * @type {number}
-     * @memberof BoardBase
      */
     readonly pinCount?: number;
 }
@@ -124,9 +102,9 @@ export function BoardBaseFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (new Date(json['board_pins_modified_at'])),
+        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (parseDateTime(json['board_pins_modified_at'])),
         'collaboratorCount': json['collaborator_count'] == null ? undefined : json['collaborator_count'],
-        'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
+        'createdAt': json['created_at'] == null ? undefined : (parseDateTime(json['created_at'])),
         'description': json['description'] === undefined ? undefined : json['description'] === null ? null : json['description'],
         'followerCount': json['follower_count'] == null ? undefined : json['follower_count'],
         'id': json['id'],

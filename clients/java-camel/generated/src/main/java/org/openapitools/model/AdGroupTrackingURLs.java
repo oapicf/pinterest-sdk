@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -23,22 +22,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupTrackingURLs", description = "  Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupTrackingURLs {
 
-  @Valid
   private List<String> audienceVerification = new ArrayList<>();
 
-  @Valid
   private List<String> buyableButton = new ArrayList<>();
 
-  @Valid
   private List<String> click = new ArrayList<>();
 
-  @Valid
   private List<String> engagement = new ArrayList<>();
 
-  @Valid
   private List<String> impression = new ArrayList<>();
 
   public AdGroupTrackingURLs audienceVerification(List<String> audienceVerification) {

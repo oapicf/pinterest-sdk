@@ -17,7 +17,7 @@ import MatchTypeResponse from './MatchTypeResponse';
 /**
  * The KeywordsCommon model module.
  * @module model/KeywordsCommon
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class KeywordsCommon {
     /**

@@ -33,17 +33,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsBaseFiltersAllOf.JSON_PROPERTY_ALL_OF
 })
 @JsonTypeName("CatalogsBaseFiltersAllOf")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsBaseFiltersAllOf {
     public static final String JSON_PROPERTY_ALL_OF = "all_of";
-    private List<CatalogsBaseFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsBaseFilterKeys> allOf = new ArrayList<>();
 
-    public CatalogsBaseFiltersAllOf(List<CatalogsBaseFilterKeys> allOf) {
+    public CatalogsBaseFiltersAllOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
         this.allOf = allOf;
     }
 
-    public CatalogsBaseFiltersAllOf allOf(List<CatalogsBaseFilterKeys> allOf) {
+    public CatalogsBaseFiltersAllOf allOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
         this.allOf = allOf;
         return this;
     }
@@ -62,13 +62,13 @@ public class CatalogsBaseFiltersAllOf {
     @Schema(name = "all_of", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public List<CatalogsBaseFilterKeys> getAllOf() {
+    public List<@Valid CatalogsBaseFilterKeys> getAllOf() {
         return allOf;
     }
 
     @JsonProperty(JSON_PROPERTY_ALL_OF)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAllOf(List<CatalogsBaseFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

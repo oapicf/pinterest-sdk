@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface LeadFormTestCreate {
     /**
      * Test lead answers. Should follow the creation order.
-     * @type {Array<string>}
-     * @memberof LeadFormTestCreate
      */
     answers: Array<string>;
 }

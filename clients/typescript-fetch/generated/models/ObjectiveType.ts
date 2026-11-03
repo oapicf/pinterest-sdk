@@ -28,7 +28,7 @@ export const ObjectiveType = {
     VideoCompletion: 'VIDEO_COMPLETION',
     Sales: 'SALES',
     AppInstall: 'APP_INSTALL',
-    CtvConsideration: 'CTV_CONSIDERATION'
+    CtvConsideration: 'CTV_CONSIDERATION',
 } as const;
 export type ObjectiveType = typeof ObjectiveType[keyof typeof ObjectiveType];
 

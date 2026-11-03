@@ -47,7 +47,6 @@ public class PinUpdate  {
   * Carousel Pin slots data.
   */
   @ApiModelProperty(value = "Carousel Pin slots data.")
-  @Valid
   private List<@Valid CarouselSlot> carouselSlots = new ArrayList<>();
 
   @ApiModelProperty(value = "")

@@ -21,48 +21,34 @@ import { mapValues } from '../runtime';
 export interface VideoMetadataWithItemType {
     /**
      * 
-     * @type {string}
-     * @memberof VideoMetadataWithItemType
      */
     coverImageUrl?: string;
     /**
      * Duration (in miliseconds). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof VideoMetadataWithItemType
      */
     duration?: number | null;
     /**
      * Height (in pixels). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof VideoMetadataWithItemType
      */
     height?: number | null;
     /**
      * Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.
-     * @type {VideoMetadataWithItemTypeItemTypeEnum}
-     * @memberof VideoMetadataWithItemType
      */
     itemType: VideoMetadataWithItemTypeItemTypeEnum;
     /**
      * Video url (720p).
      * 
      * **Note:** This field is limited and not available to all apps.
-     * @type {string}
-     * @memberof VideoMetadataWithItemType
      */
     videoUrl?: string | null;
     /**
      * Video url (HLS).
      * 
      * **Note:** This field is limited and not available to all apps.
-     * @type {string}
-     * @memberof VideoMetadataWithItemType
      */
     videoUrlHls?: string | null;
     /**
      * Width (in pixels). Field maybe null after creation due to video processing time.
-     * @type {number}
-     * @memberof VideoMetadataWithItemType
      */
     width?: number | null;
 }
@@ -72,7 +58,7 @@ export interface VideoMetadataWithItemType {
  * @export
  */
 export const VideoMetadataWithItemTypeItemTypeEnum = {
-    Video: 'video'
+    Video: 'video',
 } as const;
 export type VideoMetadataWithItemTypeItemTypeEnum = typeof VideoMetadataWithItemTypeItemTypeEnum[keyof typeof VideoMetadataWithItemTypeItemTypeEnum];
 

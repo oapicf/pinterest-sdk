@@ -22,8 +22,6 @@ public class IntegrationsGetList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid IntegrationRecord> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -21,74 +21,50 @@ import { mapValues } from '../runtime';
 export interface IntegrationMetadataUpdate {
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     additionalId1?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     connectedAdvertiserId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     connectedLbaId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     connectedMerchantId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     connectedTagId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerAccessToken?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerAccessTokenExpiry?: number;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerMetadata?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerPrimaryEmail?: string;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerRefreshToken?: string;
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationMetadataUpdate
      */
     partnerRefreshTokenExpiry?: number;
     /**
      * 
-     * @type {string}
-     * @memberof IntegrationMetadataUpdate
      */
     scopes?: string;
 }

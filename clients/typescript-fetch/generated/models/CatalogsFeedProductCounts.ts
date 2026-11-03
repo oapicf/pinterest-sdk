@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface CatalogsFeedProductCounts {
     /**
      * The number of products successfully ingested from the feed file.
-     * @type {number}
-     * @memberof CatalogsFeedProductCounts
      */
     ingested?: number;
     /**
      * The number of products in the feed file.
-     * @type {number}
-     * @memberof CatalogsFeedProductCounts
      */
     original?: number;
 }

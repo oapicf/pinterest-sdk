@@ -254,7 +254,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum? catalogTypeValue = CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsVerticalsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -263,10 +268,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsVerticalsListProductsByCatalogBasedFilterRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsVerticalsListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalsListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsVerticalsListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest != null)
                 return new CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest);
@@ -286,7 +291,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalsListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogsVerticalsListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -319,7 +323,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsVerticalsListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsVerticalsListProductsByCatalogBasedFilterRequest catalogsVerticalsListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
 

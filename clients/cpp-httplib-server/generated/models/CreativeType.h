@@ -12,24 +12,164 @@
 
 namespace models {
 
-
-class CreativeTypeEnumUsedAds
-{
-public:
-
-    CreativeTypeEnumUsedAds();
-    virtual ~CreativeTypeEnumUsedAds() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreativeTypeEnumUsedAds,
-        )
-
-private:
+enum class CreativeTypeEnumUsedAds {
+    
+    REGULAR,
+    
+    VIDEO,
+    
+    SHOPPING,
+    
+    CAROUSEL,
+    
+    MAX_VIDEO,
+    
+    SHOP_THE_PIN,
+    
+    COLLECTION,
+    
+    IDEA,
+    
+    SHOWCASE,
+    
+    QUIZ,
+    
+    COLLAGE,
+    
+    MAX_WIDTH_REGULAR_COLLECTION,
+    
+    MAX_WIDTH_VIDEO_COLLECTION,
+    
+    APP
+    
 };
 
+inline void to_json(nlohmann::json& j, const CreativeTypeEnumUsedAds& value)
+{
+    switch (value)
+    {
+        
+        case CreativeTypeEnumUsedAds::REGULAR: j = "REGULAR"; break;
+        
+        case CreativeTypeEnumUsedAds::VIDEO: j = "VIDEO"; break;
+        
+        case CreativeTypeEnumUsedAds::SHOPPING: j = "SHOPPING"; break;
+        
+        case CreativeTypeEnumUsedAds::CAROUSEL: j = "CAROUSEL"; break;
+        
+        case CreativeTypeEnumUsedAds::MAX_VIDEO: j = "MAX_VIDEO"; break;
+        
+        case CreativeTypeEnumUsedAds::SHOP_THE_PIN: j = "SHOP_THE_PIN"; break;
+        
+        case CreativeTypeEnumUsedAds::COLLECTION: j = "COLLECTION"; break;
+        
+        case CreativeTypeEnumUsedAds::IDEA: j = "IDEA"; break;
+        
+        case CreativeTypeEnumUsedAds::SHOWCASE: j = "SHOWCASE"; break;
+        
+        case CreativeTypeEnumUsedAds::QUIZ: j = "QUIZ"; break;
+        
+        case CreativeTypeEnumUsedAds::COLLAGE: j = "COLLAGE"; break;
+        
+        case CreativeTypeEnumUsedAds::MAX_WIDTH_REGULAR_COLLECTION: j = "MAX_WIDTH_REGULAR_COLLECTION"; break;
+        
+        case CreativeTypeEnumUsedAds::MAX_WIDTH_VIDEO_COLLECTION: j = "MAX_WIDTH_VIDEO_COLLECTION"; break;
+        
+        case CreativeTypeEnumUsedAds::APP: j = "APP"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CreativeTypeEnumUsedAds", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CreativeTypeEnumUsedAds& value)
+{
+    
+    if (j == "REGULAR")
+    {
+        value = CreativeTypeEnumUsedAds::REGULAR;
+        return;
+    }
+    
+    if (j == "VIDEO")
+    {
+        value = CreativeTypeEnumUsedAds::VIDEO;
+        return;
+    }
+    
+    if (j == "SHOPPING")
+    {
+        value = CreativeTypeEnumUsedAds::SHOPPING;
+        return;
+    }
+    
+    if (j == "CAROUSEL")
+    {
+        value = CreativeTypeEnumUsedAds::CAROUSEL;
+        return;
+    }
+    
+    if (j == "MAX_VIDEO")
+    {
+        value = CreativeTypeEnumUsedAds::MAX_VIDEO;
+        return;
+    }
+    
+    if (j == "SHOP_THE_PIN")
+    {
+        value = CreativeTypeEnumUsedAds::SHOP_THE_PIN;
+        return;
+    }
+    
+    if (j == "COLLECTION")
+    {
+        value = CreativeTypeEnumUsedAds::COLLECTION;
+        return;
+    }
+    
+    if (j == "IDEA")
+    {
+        value = CreativeTypeEnumUsedAds::IDEA;
+        return;
+    }
+    
+    if (j == "SHOWCASE")
+    {
+        value = CreativeTypeEnumUsedAds::SHOWCASE;
+        return;
+    }
+    
+    if (j == "QUIZ")
+    {
+        value = CreativeTypeEnumUsedAds::QUIZ;
+        return;
+    }
+    
+    if (j == "COLLAGE")
+    {
+        value = CreativeTypeEnumUsedAds::COLLAGE;
+        return;
+    }
+    
+    if (j == "MAX_WIDTH_REGULAR_COLLECTION")
+    {
+        value = CreativeTypeEnumUsedAds::MAX_WIDTH_REGULAR_COLLECTION;
+        return;
+    }
+    
+    if (j == "MAX_WIDTH_VIDEO_COLLECTION")
+    {
+        value = CreativeTypeEnumUsedAds::MAX_WIDTH_VIDEO_COLLECTION;
+        return;
+    }
+    
+    if (j == "APP")
+    {
+        value = CreativeTypeEnumUsedAds::APP;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CreativeTypeEnumUsedAds", &j);
+}
 
 } // namespace models
 

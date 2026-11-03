@@ -162,98 +162,66 @@ import {
 export interface CatalogsCreativeAssetsProductGroupFilterKeys {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cREATIVEASSETSID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleMediaTypesCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     mEDIATYPE: CatalogsProductGroupMultipleMediaTypesCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     tITLEKEYWORDS: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsCreativeAssetsProductGroupFilterKeys
      */
     lINK: CatalogsProductGroupFilterOperatorTypeCriteria;
 }

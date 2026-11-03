@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface AssetAccessRequestError {
     /**
      * Error code associated with the error in requesting asset access.
-     * @type {number}
-     * @memberof AssetAccessRequestError
      */
     code?: number;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof AssetAccessRequestError
      */
     messages?: Array<string>;
 }

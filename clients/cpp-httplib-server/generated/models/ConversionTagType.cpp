@@ -6,20 +6,3 @@
 */
 #include "ConversionTagType.h"
 
-namespace models {
-
-ConversionTagType::ConversionTagType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

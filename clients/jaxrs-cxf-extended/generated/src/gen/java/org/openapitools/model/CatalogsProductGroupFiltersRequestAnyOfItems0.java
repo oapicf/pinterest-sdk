@@ -15,29 +15,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupFiltersRequestAnyOfItems0  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
  /**
   * Get anyOf
   * @return anyOf
   */
   @JsonProperty("any_of")
   @NotNull
- @Size(min=1)  public List<CatalogsProductGroupFilterKeys> getAnyOf() {
+ @Size(min=1)  public List<@Valid CatalogsProductGroupFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   /**
    * Sets the <code>anyOf</code> property.
    */
- public void setAnyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+ public void setAnyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
   /**
    * Sets the <code>anyOf</code> property.
    */
-  public CatalogsProductGroupFiltersRequestAnyOfItems0 anyOf(List<CatalogsProductGroupFilterKeys> anyOf) {
+  public CatalogsProductGroupFiltersRequestAnyOfItems0 anyOf(List<@Valid CatalogsProductGroupFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }

@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class TokenGrantType
-{
-public:
-
-    TokenGrantType();
-    virtual ~TokenGrantType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TokenGrantType,
-        )
-
-private:
+enum class TokenGrantType {
+    
+    AUTHORIZATION_CODE,
+    
+    REFRESH_TOKEN,
+    
+    CLIENT_CREDENTIALS
+    
 };
 
+inline void to_json(nlohmann::json& j, const TokenGrantType& value)
+{
+    switch (value)
+    {
+        
+        case TokenGrantType::AUTHORIZATION_CODE: j = "authorization_code"; break;
+        
+        case TokenGrantType::REFRESH_TOKEN: j = "refresh_token"; break;
+        
+        case TokenGrantType::CLIENT_CREDENTIALS: j = "client_credentials"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TokenGrantType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TokenGrantType& value)
+{
+    
+    if (j == "authorization_code")
+    {
+        value = TokenGrantType::AUTHORIZATION_CODE;
+        return;
+    }
+    
+    if (j == "refresh_token")
+    {
+        value = TokenGrantType::REFRESH_TOKEN;
+        return;
+    }
+    
+    if (j == "client_credentials")
+    {
+        value = TokenGrantType::CLIENT_CREDENTIALS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TokenGrantType", &j);
+}
 
 } // namespace models
 

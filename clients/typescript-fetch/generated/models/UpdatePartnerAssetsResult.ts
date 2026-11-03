@@ -29,26 +29,18 @@ import {
 export interface UpdatePartnerAssetsResult {
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof UpdatePartnerAssetsResult
      */
     assetId?: string;
     /**
      * 
-     * @type {AssetTypeResponse}
-     * @memberof UpdatePartnerAssetsResult
      */
     assetType?: AssetTypeResponse;
     /**
      * Unique identifier of a business partner.
-     * @type {string}
-     * @memberof UpdatePartnerAssetsResult
      */
     partnerId?: string;
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof UpdatePartnerAssetsResult
      */
     permissions?: Array<string>;
 }

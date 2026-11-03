@@ -700,43 +700,43 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: ad_account_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: id.");
 
             if (intendedPromotionType.IsSet && intendedPromotionType.Value == null)
-                throw new ArgumentNullException(nameof(intendedPromotionType), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: intended_promotion_type.");
 
             if (isCarting.IsSet && isCarting.Value == null)
-                throw new ArgumentNullException(nameof(isCarting), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: is_carting.");
 
             if (isLtvOptimized.IsSet && isLtvOptimized.Value == null)
-                throw new ArgumentNullException(nameof(isLtvOptimized), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: is_ltv_optimized.");
 
             if (isPerformancePlus.IsSet && isPerformancePlus.Value == null)
-                throw new ArgumentNullException(nameof(isPerformancePlus), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: is_performance_plus.");
 
             if (isTopOfSearch.IsSet && isTopOfSearch.Value == null)
-                throw new ArgumentNullException(nameof(isTopOfSearch), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: is_top_of_search.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: name.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: objective_type.");
 
             if (summaryStatus.IsSet && summaryStatus.Value == null)
-                throw new ArgumentNullException(nameof(summaryStatus), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: summary_status.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: type.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class CampaignBatchResponseData.");
+                throw new JsonException("Property is not nullable for class CampaignBatchResponseData: updated_time.");
 
             return new CampaignBatchResponseData(adAccountId, bidOptions, createdTime, dailySpendCap, defaultAdGroupBudgetInMicroCurrency, endTime, id, intendedPromotionType, isAutomatedCampaign, isCampaignBudgetOptimization, isCarting, isFlexibleDailyBudgets, isLtvOptimized, isPerformancePlus, isTopOfSearch, lifetimeSpendCap, name, objectiveType, orderLineId, performancePlusCampaignSettings, startTime, status, summaryStatus, trackingUrls, type, updatedTime);
         }
@@ -747,7 +747,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchResponseData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignBatchResponseData campaignBatchResponseData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -762,20 +761,46 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignBatchResponseData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignBatchResponseData campaignBatchResponseData, JsonSerializerOptions jsonSerializerOptions)
         {
             if (campaignBatchResponseData.AdAccountIdOption.IsSet && campaignBatchResponseData.AdAccountId == null)
-                throw new ArgumentNullException(nameof(campaignBatchResponseData.AdAccountId), "Property is required for class CampaignBatchResponseData.");
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (campaignBatchResponseData.CreatedTimeOption.IsSet && campaignBatchResponseData.CreatedTime == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (campaignBatchResponseData.IdOption.IsSet && campaignBatchResponseData.Id == null)
-                throw new ArgumentNullException(nameof(campaignBatchResponseData.Id), "Property is required for class CampaignBatchResponseData.");
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.Id to non-nullable JSON property 'id'.");
+
+            if (campaignBatchResponseData.IntendedPromotionTypeOption.IsSet && campaignBatchResponseData.IntendedPromotionType == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.IntendedPromotionType to non-nullable JSON property 'intended_promotion_type'.");
+
+            if (campaignBatchResponseData.IsCartingOption.IsSet && campaignBatchResponseData.IsCarting == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.IsCarting to non-nullable JSON property 'is_carting'.");
+
+            if (campaignBatchResponseData.IsLtvOptimizedOption.IsSet && campaignBatchResponseData.IsLtvOptimized == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.IsLtvOptimized to non-nullable JSON property 'is_ltv_optimized'.");
+
+            if (campaignBatchResponseData.IsPerformancePlusOption.IsSet && campaignBatchResponseData.IsPerformancePlus == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.IsPerformancePlus to non-nullable JSON property 'is_performance_plus'.");
+
+            if (campaignBatchResponseData.IsTopOfSearchOption.IsSet && campaignBatchResponseData.IsTopOfSearch == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.IsTopOfSearch to non-nullable JSON property 'is_top_of_search'.");
 
             if (campaignBatchResponseData.NameOption.IsSet && campaignBatchResponseData.Name == null)
-                throw new ArgumentNullException(nameof(campaignBatchResponseData.Name), "Property is required for class CampaignBatchResponseData.");
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.Name to non-nullable JSON property 'name'.");
+
+            if (campaignBatchResponseData.ObjectiveTypeOption.IsSet && campaignBatchResponseData.ObjectiveType == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.ObjectiveType to non-nullable JSON property 'objective_type'.");
+
+            if (campaignBatchResponseData.SummaryStatusOption.IsSet && campaignBatchResponseData.SummaryStatus == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.SummaryStatus to non-nullable JSON property 'summary_status'.");
 
             if (campaignBatchResponseData.TypeOption.IsSet && campaignBatchResponseData.Type == null)
-                throw new ArgumentNullException(nameof(campaignBatchResponseData.Type), "Property is required for class CampaignBatchResponseData.");
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.Type to non-nullable JSON property 'type'.");
+
+            if (campaignBatchResponseData.UpdatedTimeOption.IsSet && campaignBatchResponseData.UpdatedTime == null)
+                throw new JsonException("Cannot write null property CampaignBatchResponseData.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             if (campaignBatchResponseData.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", campaignBatchResponseData.AdAccountId);

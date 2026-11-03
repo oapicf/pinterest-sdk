@@ -73,7 +73,7 @@ public abstract class CatalogProductGroupsApiControllerImpInterface {
 
     public abstract CatalogsVerticalProductGroup catalogsProductGroupsCreate(Http.Request request, CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
-    public Result catalogsProductGroupsCreateManyHttp(Http.Request request, List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
+    public Result catalogsProductGroupsCreateManyHttp(Http.Request request, List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {
             return unauthorized();
         }
@@ -85,7 +85,7 @@ public abstract class CatalogProductGroupsApiControllerImpInterface {
 
     }
 
-    public abstract List<String> catalogsProductGroupsCreateMany(Http.Request request, List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
+    public abstract List<String> catalogsProductGroupsCreateMany(Http.Request request, List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception;
 
     public Result catalogsProductGroupsDeleteHttp(Http.Request request,  @Pattern(regexp="^\\d+$")String productGroupId,  @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId) throws Exception {
         if (!securityAPIUtils.isRequestTokenValid(request, "pinterest_oauth2")) {

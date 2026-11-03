@@ -29,14 +29,10 @@ import {
 export interface AdGroupDeliveryEstimatesKeywordsItems {
     /**
      * 
-     * @type {NullalbleMatchType}
-     * @memberof AdGroupDeliveryEstimatesKeywordsItems
      */
     matchType: NullalbleMatchType | null;
     /**
      * Keyword value (120 chars max).
-     * @type {string}
-     * @memberof AdGroupDeliveryEstimatesKeywordsItems
      */
     value: string;
 }

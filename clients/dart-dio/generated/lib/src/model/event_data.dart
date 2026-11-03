@@ -310,3 +310,4 @@ class _$EventDataSerializer implements PrimitiveSerializer<EventData> {
   }
 }
 
+

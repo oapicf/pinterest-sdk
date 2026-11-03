@@ -46,7 +46,7 @@ import javax.annotation.Generated;
   BulkUpsertRequestCreate.JSON_PROPERTY_SCHEDULES
 })
 @JsonTypeName("BulkUpsertRequestCreate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BulkUpsertRequestCreate {
     public static final String JSON_PROPERTY_AD_GROUPS = "ad_groups";
@@ -59,7 +59,7 @@ public class BulkUpsertRequestCreate {
     private List<@Valid CampaignCreateRequest> campaigns = null;
 
     public static final String JSON_PROPERTY_CATALOG_PRODUCT_GROUPS = "catalog_product_groups";
-    private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = null;
+    private List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = null;
 
     public static final String JSON_PROPERTY_KEYWORDS = "keywords";
     private List<@Valid KeywordsRequest> keywords = null;
@@ -166,7 +166,7 @@ public class BulkUpsertRequestCreate {
         this.campaigns = campaigns;
     }
 
-    public BulkUpsertRequestCreate catalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+    public BulkUpsertRequestCreate catalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
         this.catalogProductGroups = catalogProductGroups;
         return this;
     }
@@ -186,13 +186,13 @@ public class BulkUpsertRequestCreate {
     @Nullable
     @JsonProperty(JSON_PROPERTY_CATALOG_PRODUCT_GROUPS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
+    public List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
         return catalogProductGroups;
     }
 
     @JsonProperty(JSON_PROPERTY_CATALOG_PRODUCT_GROUPS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+    public void setCatalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
         this.catalogProductGroups = catalogProductGroups;
     }
 

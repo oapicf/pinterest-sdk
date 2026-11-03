@@ -29,14 +29,10 @@ import {
 export interface AdsCreditsDiscountsGet200Response {
     /**
      * 
-     * @type {string}
-     * @memberof AdsCreditsDiscountsGet200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<AdsCreditDiscountsResponse>}
-     * @memberof AdsCreditsDiscountsGet200Response
      */
     items: Array<AdsCreditDiscountsResponse>;
 }

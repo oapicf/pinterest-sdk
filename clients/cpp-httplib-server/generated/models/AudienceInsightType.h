@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class AudienceInsightType
-{
-public:
-
-    AudienceInsightType();
-    virtual ~AudienceInsightType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceInsightType,
-        )
-
-private:
+enum class AudienceInsightType {
+    
+    YOUR_TOTAL_AUDIENCE,
+    
+    YOUR_ENGAGED_AUDIENCE,
+    
+    PINTEREST_TOTAL_AUDIENCE
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceInsightType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceInsightType::YOUR_TOTAL_AUDIENCE: j = "YOUR_TOTAL_AUDIENCE"; break;
+        
+        case AudienceInsightType::YOUR_ENGAGED_AUDIENCE: j = "YOUR_ENGAGED_AUDIENCE"; break;
+        
+        case AudienceInsightType::PINTEREST_TOTAL_AUDIENCE: j = "PINTEREST_TOTAL_AUDIENCE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceInsightType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceInsightType& value)
+{
+    
+    if (j == "YOUR_TOTAL_AUDIENCE")
+    {
+        value = AudienceInsightType::YOUR_TOTAL_AUDIENCE;
+        return;
+    }
+    
+    if (j == "YOUR_ENGAGED_AUDIENCE")
+    {
+        value = AudienceInsightType::YOUR_ENGAGED_AUDIENCE;
+        return;
+    }
+    
+    if (j == "PINTEREST_TOTAL_AUDIENCE")
+    {
+        value = AudienceInsightType::PINTEREST_TOTAL_AUDIENCE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceInsightType", &j);
+}
 
 } // namespace models
 

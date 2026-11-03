@@ -97,8 +97,6 @@ public class CampaignBidOptionsUpdate  {
   */
   @ApiModelProperty(required = true, value = "List of fields to update. Only the fields in the list will be updated.")
 
-  @Valid
-
   private List<CampaignBidOptionsUpdateMaskItems> updateMask = new ArrayList<>();
  /**
    * Age bucket multipliers for bid adjustments.

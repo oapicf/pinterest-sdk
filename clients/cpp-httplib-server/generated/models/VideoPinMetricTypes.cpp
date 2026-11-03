@@ -6,20 +6,3 @@
 */
 #include "VideoPinMetricTypes.h"
 
-namespace models {
-
-VideoPinMetricTypes::VideoPinMetricTypes()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

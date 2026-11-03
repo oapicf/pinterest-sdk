@@ -111,3 +111,4 @@ class _$AppTypeMultipliersSerializer implements PrimitiveSerializer<AppTypeMulti
   }
 }
 
+

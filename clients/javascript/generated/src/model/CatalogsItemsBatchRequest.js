@@ -23,7 +23,7 @@ import ItemDeleteBatchRecord from './ItemDeleteBatchRecord';
 /**
  * The CatalogsItemsBatchRequest model module.
  * @module model/CatalogsItemsBatchRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemsBatchRequest {
     /**

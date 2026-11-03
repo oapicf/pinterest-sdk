@@ -653,3 +653,4 @@ class _$AdBatchUpdateSerializer implements PrimitiveSerializer<AdBatchUpdate> {
   }
 }
 
+

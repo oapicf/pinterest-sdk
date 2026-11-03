@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class UserWebsite.");
+                throw new JsonException("Property is not nullable for class UserWebsite: status.");
 
             if (verifiedAt.IsSet && verifiedAt.Value == null)
-                throw new ArgumentNullException(nameof(verifiedAt), "Property is not nullable for class UserWebsite.");
+                throw new JsonException("Property is not nullable for class UserWebsite: verified_at.");
 
             if (website.IsSet && website.Value == null)
-                throw new ArgumentNullException(nameof(website), "Property is not nullable for class UserWebsite.");
+                throw new JsonException("Property is not nullable for class UserWebsite: website.");
 
             return new UserWebsite(status, verifiedAt, website);
         }
@@ -200,7 +200,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsite"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, UserWebsite userWebsite, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -215,17 +214,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="userWebsite"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UserWebsite userWebsite, JsonSerializerOptions jsonSerializerOptions)
         {
             if (userWebsite.StatusOption.IsSet && userWebsite.Status == null)
-                throw new ArgumentNullException(nameof(userWebsite.Status), "Property is required for class UserWebsite.");
+                throw new JsonException("Cannot write null property UserWebsite.Status to non-nullable JSON property 'status'.");
 
             if (userWebsite.VerifiedAtOption.IsSet && userWebsite.VerifiedAt == null)
-                throw new ArgumentNullException(nameof(userWebsite.VerifiedAt), "Property is required for class UserWebsite.");
+                throw new JsonException("Cannot write null property UserWebsite.VerifiedAt to non-nullable JSON property 'verified_at'.");
 
             if (userWebsite.WebsiteOption.IsSet && userWebsite.Website == null)
-                throw new ArgumentNullException(nameof(userWebsite.Website), "Property is required for class UserWebsite.");
+                throw new JsonException("Cannot write null property UserWebsite.Website to non-nullable JSON property 'website'.");
 
             if (userWebsite.StatusOption.IsSet)
                 writer.WriteString("status", userWebsite.Status);

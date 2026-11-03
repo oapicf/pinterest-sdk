@@ -6,20 +6,3 @@
 */
 #include "BillingProfileStatus.h"
 
-namespace models {
-
-BillingProfileStatus::BillingProfileStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

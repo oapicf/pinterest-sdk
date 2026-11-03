@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: android_mobile,android_tablet,ipad,iphone,web,web_mobile
-*/
+ * 
+ * Values: android_mobile,android_tablet,ipad,iphone,web,web_mobile
+ */
 enum class TargetingSpecAppType(@get:JsonValue val value: kotlin.String) {
 
     android_mobile("android_mobile"),
@@ -32,9 +32,8 @@ enum class TargetingSpecAppType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TargetingSpecAppType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecAppType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpecAppType'")
         }
     }
 }
-

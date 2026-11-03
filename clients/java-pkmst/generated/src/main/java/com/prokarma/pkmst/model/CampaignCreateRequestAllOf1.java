@@ -20,7 +20,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * CampaignCreateRequestAllOf1
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1   {
   @JsonProperty("bid_options")
   private CampaignBidOptionsCreate bidOptions;
@@ -29,13 +29,13 @@ public class CampaignCreateRequestAllOf1   {
   private IntendedPromotionType intendedPromotionType;
 
   @JsonProperty("is_automated_campaign")
-  private Boolean isAutomatedCampaign;
+  private Boolean isAutomatedCampaign = false;
 
   @JsonProperty("is_campaign_budget_optimization")
-  private Boolean isCampaignBudgetOptimization;
+  private Boolean isCampaignBudgetOptimization = true;
 
   @JsonProperty("is_flexible_daily_budgets")
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isFlexibleDailyBudgets = false;
 
   @JsonProperty("is_ltv_optimized")
   private Boolean isLtvOptimized;
@@ -50,7 +50,7 @@ public class CampaignCreateRequestAllOf1   {
   private ObjectiveType objectiveType;
 
   @JsonProperty("status")
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   public CampaignCreateRequestAllOf1 bidOptions(CampaignBidOptionsCreate bidOptions) {
     this.bidOptions = bidOptions;

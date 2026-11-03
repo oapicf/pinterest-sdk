@@ -36,7 +36,7 @@ import javax.validation.Valid;
   CampaignPlanningExperimentBudgetRecommendation.JSON_PROPERTY_POINT_ESTIMATIONS,
   CampaignPlanningExperimentBudgetRecommendation.JSON_PROPERTY_VERSION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningExperimentBudgetRecommendation   {
   public static final String JSON_PROPERTY_BUDGET_RECOMMENDATION = "budget_recommendation";
   @JsonProperty(JSON_PROPERTY_BUDGET_RECOMMENDATION)
@@ -113,7 +113,7 @@ public class CampaignPlanningExperimentBudgetRecommendation   {
    **/
   @JsonProperty(value = "point_estimations")
   @ApiModelProperty(value = "Point estimations for this experiment version.")
-  @Valid 
+  
   public List<@Valid CampaignPlanningBudgetRecommendationPoint> getPointEstimations() {
     return pointEstimations;
   }

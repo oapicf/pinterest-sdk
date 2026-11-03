@@ -6,20 +6,3 @@
 */
 #include "BasePreferredMediaType.h"
 
-namespace models {
-
-BasePreferredMediaType::BasePreferredMediaType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

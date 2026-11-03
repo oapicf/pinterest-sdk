@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,10 +26,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LocalInventoryOperationResult", description = "Result model for local inventory operation")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryOperationResult {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid SupplementalItemValidationEvent> errors = new ArrayList<>();
 
   private String itemId;
@@ -74,7 +72,6 @@ public class LocalInventoryOperationResult {
 
   private SupplementalTypeEnum supplementalType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid SupplementalItemValidationEvent> warnings = new ArrayList<>();
 
   public LocalInventoryOperationResult() {
@@ -108,7 +105,7 @@ public class LocalInventoryOperationResult {
    * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
    * @return errors
    */
-  @Valid 
+  
   @Schema(name = "errors", description = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errors")
   public List<@Valid SupplementalItemValidationEvent> getErrors() {
@@ -221,7 +218,7 @@ public class LocalInventoryOperationResult {
    * Array with the validation warnings for the item processing record
    * @return warnings
    */
-  @Valid 
+  
   @Schema(name = "warnings", description = "Array with the validation warnings for the item processing record", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("warnings")
   public List<@Valid SupplementalItemValidationEvent> getWarnings() {

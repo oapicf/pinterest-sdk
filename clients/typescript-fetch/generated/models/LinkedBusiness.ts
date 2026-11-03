@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface LinkedBusiness {
     /**
      * image_large_url
-     * @type {string}
-     * @memberof LinkedBusiness
      */
     imageLargeUrl?: string;
     /**
      * image_medium_url
-     * @type {string}
-     * @memberof LinkedBusiness
      */
     imageMediumUrl?: string;
     /**
      * image_small_url
-     * @type {string}
-     * @memberof LinkedBusiness
      */
     imageSmallUrl?: string;
     /**
      * image_xlarge_url
-     * @type {string}
-     * @memberof LinkedBusiness
      */
     imageXlargeUrl?: string;
     /**
      * Username
-     * @type {string}
-     * @memberof LinkedBusiness
      */
     username?: string;
 }

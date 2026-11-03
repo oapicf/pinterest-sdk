@@ -192,8 +192,7 @@ class Ad(BaseModel):
         _items = []
         if self.carting_products:
             for _item_carting_products in self.carting_products:
-                if _item_carting_products:
-                    _items.append(_item_carting_products.to_dict())
+                _items.append(_item_carting_products.to_dict() if _item_carting_products is not None else None)
             _dict['carting_products'] = _items
         # override the default output from pydantic by calling `to_dict()` of quiz_pin_data
         if self.quiz_pin_data:

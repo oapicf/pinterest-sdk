@@ -51,10 +51,10 @@ class CatalogReportsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -66,7 +66,7 @@ class CatalogReportsController extends Controller
 
         $catalogsReportParameters = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsReportParameters::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->reportsCreate($catalogsReportParameters, $adAccountId);
@@ -117,17 +117,17 @@ class CatalogReportsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'token' => [
                     'required',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -141,7 +141,7 @@ class CatalogReportsController extends Controller
 
         $token = $request->string('token')->value();
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->reportsGet($token, $adAccountId);
@@ -188,16 +188,16 @@ class CatalogReportsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'parameters' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -205,7 +205,7 @@ class CatalogReportsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -220,11 +220,11 @@ class CatalogReportsController extends Controller
         $parameters = $request->get('parameters');
         $parameters = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsRetailReportStatsParameters|\OpenAPI\Server\Model\CatalogsHotelReportStatsParameters::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->reportsStats($parameters, $adAccountId, $bookmark, $pageSize);

@@ -82,6 +82,7 @@ class _$BulkUpsertRequestCreateCatalogProductGroupsItemsSerializer implements Pr
   }
 }
 
+
 class BulkUpsertRequestCreateCatalogProductGroupsItemsCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

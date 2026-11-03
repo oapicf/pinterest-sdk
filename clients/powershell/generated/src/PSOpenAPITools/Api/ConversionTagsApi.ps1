@@ -66,7 +66,7 @@ function Invoke-ConversionTagsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionTags_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$ConversionTagCreate) {
             throw "Error! The required parameter `ConversionTagCreate` missing when calling conversionTags_create."
@@ -152,11 +152,11 @@ function Invoke-ConversionTagsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionTags_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$ConversionTagId) {
             throw "Error! The required parameter `ConversionTagId` missing when calling conversionTags_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{conversion_tag_id}', [System.Web.HTTPUtility]::UrlEncode($ConversionTagId))
+        $LocalVarUri = $LocalVarUri.replace('{conversion_tag_id}', [System.Uri]::EscapeDataString([string]$ConversionTagId))
 
 
 
@@ -237,7 +237,7 @@ function Invoke-ConversionTagsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling conversionTags_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($FilterDeleted) {
             $LocalVarQueryParameters['filter_deleted'] = $FilterDeleted
@@ -316,7 +316,7 @@ function Invoke-OcpmEligibleConversionTagsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling ocpmEligibleConversionTags_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -409,7 +409,7 @@ function Invoke-PageVisitConversionTagsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling pageVisitConversionTags_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

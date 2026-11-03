@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: PRODUCT_BRAND,PRODUCT_CATEGORY,PRODUCT_BRAND_AND_CATEGORY,PRODUCT_SKU,PRODUCT_SKU_GROUP
-*/
+ * 
+ * Values: PRODUCT_BRAND,PRODUCT_CATEGORY,PRODUCT_BRAND_AND_CATEGORY,PRODUCT_SKU,PRODUCT_SKU_GROUP
+ */
 enum class ConversionProductReportBreakdownType(@get:JsonValue val value: kotlin.String) {
 
     PRODUCT_BRAND("PRODUCT_BRAND"),
@@ -31,9 +31,8 @@ enum class ConversionProductReportBreakdownType(@get:JsonValue val value: kotlin
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionProductReportBreakdownType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportBreakdownType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionProductReportBreakdownType'")
         }
     }
 }
-

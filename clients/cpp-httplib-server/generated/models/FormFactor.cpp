@@ -6,20 +6,3 @@
 */
 #include "FormFactor.h"
 
-namespace models {
-
-FormFactor::FormFactor()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -51,10 +51,10 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -116,10 +116,10 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -157,10 +157,10 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -222,10 +222,10 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
             ],
@@ -287,31 +287,31 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'businessId' => $businessId,
-                ],
                 $request->all(),
+                [
+                    'business_id' => $businessId,
+                ],
             ),
             [
-                'businessId' => [
+                'business_id' => [
                     'required',
                     'min:1',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'isMember' => [
+                'is_member' => [
                     'boolean',
                 ],
-                'inviteStatus' => [
+                'invite_status' => [
                     'min:1',
                     'array',
                 ],
-                'inviteType' => [
+                'invite_type' => [
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -324,15 +324,15 @@ class BusinessAccessInviteController extends Controller
         }
 
 
-        $isMember = $request->boolean('isMember');
+        $isMember = $request->boolean('is_member');
 
-        $inviteStatus = $request->get('inviteStatus');
+        $inviteStatus = $request->get('invite_status');
 
         $inviteType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\InviteType::class);
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->getInvites($businessId, $isMember, $inviteStatus, $inviteType, $bookmark, $pageSize);
@@ -379,10 +379,10 @@ class BusinessAccessInviteController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],

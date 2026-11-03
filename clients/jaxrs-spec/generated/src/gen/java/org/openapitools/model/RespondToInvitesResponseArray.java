@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("RespondToInvitesResponseArray")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class RespondToInvitesResponseArray   {
-  private @Valid List<@Valid RespondToInviteResultItem> items = new ArrayList<>();
+  private List<@Valid RespondToInviteResultItem> items = new ArrayList<>();
 
   public RespondToInvitesResponseArray() {
   }
@@ -38,7 +38,7 @@ public class RespondToInvitesResponseArray   {
   
   @ApiModelProperty(value = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
   @JsonProperty("items")
-  @Valid public List<@Valid RespondToInviteResultItem> getItems() {
+  public List<@Valid RespondToInviteResultItem> getItems() {
     return items;
   }
 

@@ -6,20 +6,3 @@
 */
 #include "Permissions.h"
 
-namespace models {
-
-Permissions::Permissions()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

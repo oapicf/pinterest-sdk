@@ -20,7 +20,7 @@ import WorkloadState from './WorkloadState';
 /**
  * The CustomerListUpload model module.
  * @module model/CustomerListUpload
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomerListUpload {
     /**

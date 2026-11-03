@@ -311,7 +311,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (noCodeCapiDomains.IsSet && noCodeCapiDomains.Value == null)
-                throw new ArgumentNullException(nameof(noCodeCapiDomains), "Property is not nullable for class ConversionTagConfigs.");
+                throw new JsonException("Property is not nullable for class ConversionTagConfigs: no_code_capi_domains.");
 
             return new ConversionTagConfigs(aemDbEnabled, aemEnabled, aemExternalIdEnabled, aemFnlnEnabled, aemGeEnabled, aemLocEnabled, aemPhEnabled, mdFrequency, noCodeCapiDomains);
         }
@@ -322,7 +322,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagConfigs"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionTagConfigs conversionTagConfigs, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -337,11 +336,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagConfigs"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionTagConfigs conversionTagConfigs, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionTagConfigs.NoCodeCapiDomainsOption.IsSet && conversionTagConfigs.NoCodeCapiDomains == null)
-                throw new ArgumentNullException(nameof(conversionTagConfigs.NoCodeCapiDomains), "Property is required for class ConversionTagConfigs.");
+                throw new JsonException("Cannot write null property ConversionTagConfigs.NoCodeCapiDomains to non-nullable JSON property 'no_code_capi_domains'.");
 
             if (conversionTagConfigs.AemDbEnabledOption.IsSet)
                 if (conversionTagConfigs.AemDbEnabledOption.Value != null)

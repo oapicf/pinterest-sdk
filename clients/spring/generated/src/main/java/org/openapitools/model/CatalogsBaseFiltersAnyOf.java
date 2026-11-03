@@ -23,10 +23,10 @@ import jakarta.annotation.Generated;
  * CatalogsBaseFiltersAnyOf
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsBaseFiltersAnyOf {
 
-  private List<CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> anyOf = new ArrayList<>();
 
   public CatalogsBaseFiltersAnyOf() {
     super();
@@ -35,11 +35,11 @@ public class CatalogsBaseFiltersAnyOf {
   /**
    * Constructor with only required parameters
    */
-  public CatalogsBaseFiltersAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public CatalogsBaseFiltersAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 
-  public CatalogsBaseFiltersAnyOf anyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public CatalogsBaseFiltersAnyOf anyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
     return this;
   }
@@ -56,15 +56,15 @@ public class CatalogsBaseFiltersAnyOf {
    * Get anyOf
    * @return anyOf
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Size(min = 1) 
   @Schema(name = "any_of", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("any_of")
-  public List<CatalogsBaseFilterKeys> getAnyOf() {
+  public List<@Valid CatalogsBaseFilterKeys> getAnyOf() {
     return anyOf;
   }
 
   @JsonProperty("any_of")
-  public void setAnyOf(List<CatalogsBaseFilterKeys> anyOf) {
+  public void setAnyOf(List<@Valid CatalogsBaseFilterKeys> anyOf) {
     this.anyOf = anyOf;
   }
 

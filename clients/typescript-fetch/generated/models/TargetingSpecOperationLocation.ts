@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationLocation {
     /**
      * 
-     * @type {TargetingSpecOperationLocationFieldEnum}
-     * @memberof TargetingSpecOperationLocation
      */
     field: TargetingSpecOperationLocationFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationLocation
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationLocation
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationLocation {
  * @export
  */
 export const TargetingSpecOperationLocationFieldEnum = {
-    Location: 'LOCATION'
+    Location: 'LOCATION',
 } as const;
 export type TargetingSpecOperationLocationFieldEnum = typeof TargetingSpecOperationLocationFieldEnum[keyof typeof TargetingSpecOperationLocationFieldEnum];
 

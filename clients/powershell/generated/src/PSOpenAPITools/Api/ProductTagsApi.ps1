@@ -66,7 +66,7 @@ function Invoke-ProductTagsBulkAdd {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling productTags_bulkAdd."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if (!$ProductTagsBulkAddRequest) {
             throw "Error! The required parameter `ProductTagsBulkAddRequest` missing when calling productTags_bulkAdd."
@@ -155,7 +155,7 @@ function Invoke-ProductTagsBulkDelete {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling productTags_bulkDelete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
         if (!$ProductTagsBulkDeleteRequest) {
             throw "Error! The required parameter `ProductTagsBulkDeleteRequest` missing when calling productTags_bulkDelete."
@@ -235,7 +235,7 @@ function Invoke-ProductTagsList {
         if (!$PinId) {
             throw "Error! The required parameter `PinId` missing when calling productTags_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Web.HTTPUtility]::UrlEncode($PinId))
+        $LocalVarUri = $LocalVarUri.replace('{pin_id}', [System.Uri]::EscapeDataString([string]$PinId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `

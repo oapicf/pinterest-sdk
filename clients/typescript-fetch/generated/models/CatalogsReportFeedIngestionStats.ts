@@ -21,44 +21,30 @@ import { mapValues } from '../runtime';
 export interface CatalogsReportFeedIngestionStats {
     /**
      * ID of the catalog entity.
-     * @type {string}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     catalogId?: string;
     /**
      * The event code that a diagnostics aggregated number references
-     * @type {number}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     code?: number;
     /**
      * A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
-     * @type {string}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     codeLabel?: string;
     /**
      * Title message describing the diagnostic issue
-     * @type {string}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     message?: string;
     /**
      * Number of occurrences of the issue
-     * @type {number}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     occurrences?: number;
     /**
      * 
-     * @type {CatalogsReportFeedIngestionStatsReportTypeEnum}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     reportType?: CatalogsReportFeedIngestionStatsReportTypeEnum;
     /**
      * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
-     * @type {CatalogsReportFeedIngestionStatsSeverityEnum}
-     * @memberof CatalogsReportFeedIngestionStats
      */
     severity?: CatalogsReportFeedIngestionStatsSeverityEnum;
 }
@@ -68,7 +54,7 @@ export interface CatalogsReportFeedIngestionStats {
  * @export
  */
 export const CatalogsReportFeedIngestionStatsReportTypeEnum = {
-    FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+    FeedIngestionIssues: 'FEED_INGESTION_ISSUES',
 } as const;
 export type CatalogsReportFeedIngestionStatsReportTypeEnum = typeof CatalogsReportFeedIngestionStatsReportTypeEnum[keyof typeof CatalogsReportFeedIngestionStatsReportTypeEnum];
 
@@ -77,7 +63,7 @@ export type CatalogsReportFeedIngestionStatsReportTypeEnum = typeof CatalogsRepo
  */
 export const CatalogsReportFeedIngestionStatsSeverityEnum = {
     Warn: 'WARN',
-    Error: 'ERROR'
+    Error: 'ERROR',
 } as const;
 export type CatalogsReportFeedIngestionStatsSeverityEnum = typeof CatalogsReportFeedIngestionStatsSeverityEnum[keyof typeof CatalogsReportFeedIngestionStatsSeverityEnum];
 

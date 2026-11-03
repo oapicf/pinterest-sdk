@@ -22,9 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create operation model.")
 @JsonTypeName("IntegrationLogsRequestCreate")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsRequestCreate   {
-  private @Valid List<@Valid IntegrationLog> logs = new ArrayList<>();
+  private List<@Valid IntegrationLog> logs = new ArrayList<>();
 
   public IntegrationLogsRequestCreate() {
   }
@@ -46,7 +46,7 @@ public class IntegrationLogsRequestCreate   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "logs")
-  @NotNull @Valid  @Size(min=1,max=250)public List<@Valid IntegrationLog> getLogs() {
+  @NotNull  @Size(min=1,max=250)public List<@Valid IntegrationLog> getLogs() {
     return logs;
   }
 

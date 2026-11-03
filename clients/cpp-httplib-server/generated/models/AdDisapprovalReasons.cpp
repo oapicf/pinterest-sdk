@@ -6,20 +6,3 @@
 */
 #include "AdDisapprovalReasons.h"
 
-namespace models {
-
-AdDisapprovalReasons::AdDisapprovalReasons()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

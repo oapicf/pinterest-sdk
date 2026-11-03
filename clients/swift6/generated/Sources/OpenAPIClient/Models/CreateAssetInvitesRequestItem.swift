@@ -10,7 +10,7 @@ import Foundation
 /** Object declaring an asset role update to an invite. */
 public struct CreateAssetInvitesRequestItem: Sendable, Codable, Hashable {
 
-    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let inviteIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. */
     public var assetIdToPermissions: [String: [Permissions]]
     /** Unique identifier of an invite. */

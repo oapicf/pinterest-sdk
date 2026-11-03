@@ -38,7 +38,7 @@ import TemplatesList200Response from '../model/TemplatesList200Response';
 /**
 * AdAccounts service.
 * @module api/AdAccountsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class AdAccountsApi {
 

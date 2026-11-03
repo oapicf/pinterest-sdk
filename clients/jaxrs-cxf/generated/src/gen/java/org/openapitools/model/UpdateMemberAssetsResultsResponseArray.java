@@ -19,8 +19,6 @@ public class UpdateMemberAssetsResultsResponseArray  {
   */
   @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
 
-  @Valid
-
   private List<@Valid UpdateMemberAssetResultItem> items = new ArrayList<>();
  /**
    * List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.

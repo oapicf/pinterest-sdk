@@ -18,7 +18,7 @@ import ProductAvailability from './ProductAvailability';
 /**
  * The CatalogsRetailProductMetadata model module.
  * @module model/CatalogsRetailProductMetadata
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsRetailProductMetadata {
     /**

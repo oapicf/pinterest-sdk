@@ -6,20 +6,3 @@
 */
 #include "ActionType.h"
 
-namespace models {
-
-ActionType::ActionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

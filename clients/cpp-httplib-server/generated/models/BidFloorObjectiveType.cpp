@@ -6,20 +6,3 @@
 */
 #include "BidFloorObjectiveType.h"
 
-namespace models {
-
-BidFloorObjectiveType::BidFloorObjectiveType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

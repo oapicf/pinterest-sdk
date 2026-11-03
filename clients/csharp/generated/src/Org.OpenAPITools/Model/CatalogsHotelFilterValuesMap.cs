@@ -240,22 +240,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (brand.IsSet && brand.Value == null)
-                throw new ArgumentNullException(nameof(brand), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: brand.");
 
             if (customLabel0.IsSet && customLabel0.Value == null)
-                throw new ArgumentNullException(nameof(customLabel0), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: custom_label_0.");
 
             if (customLabel1.IsSet && customLabel1.Value == null)
-                throw new ArgumentNullException(nameof(customLabel1), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: custom_label_1.");
 
             if (customLabel2.IsSet && customLabel2.Value == null)
-                throw new ArgumentNullException(nameof(customLabel2), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: custom_label_2.");
 
             if (customLabel3.IsSet && customLabel3.Value == null)
-                throw new ArgumentNullException(nameof(customLabel3), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: custom_label_3.");
 
             if (customLabel4.IsSet && customLabel4.Value == null)
-                throw new ArgumentNullException(nameof(customLabel4), "Property is not nullable for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelFilterValuesMap: custom_label_4.");
 
             return new CatalogsHotelFilterValuesMap(brand, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4);
         }
@@ -266,7 +266,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelFilterValuesMap catalogsHotelFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -281,26 +280,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelFilterValuesMap"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelFilterValuesMap catalogsHotelFilterValuesMap, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsHotelFilterValuesMap.BrandOption.IsSet && catalogsHotelFilterValuesMap.Brand == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.Brand), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.Brand to non-nullable JSON property 'brand'.");
 
             if (catalogsHotelFilterValuesMap.CustomLabel0Option.IsSet && catalogsHotelFilterValuesMap.CustomLabel0 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.CustomLabel0), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.CustomLabel0 to non-nullable JSON property 'custom_label_0'.");
 
             if (catalogsHotelFilterValuesMap.CustomLabel1Option.IsSet && catalogsHotelFilterValuesMap.CustomLabel1 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.CustomLabel1), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.CustomLabel1 to non-nullable JSON property 'custom_label_1'.");
 
             if (catalogsHotelFilterValuesMap.CustomLabel2Option.IsSet && catalogsHotelFilterValuesMap.CustomLabel2 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.CustomLabel2), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.CustomLabel2 to non-nullable JSON property 'custom_label_2'.");
 
             if (catalogsHotelFilterValuesMap.CustomLabel3Option.IsSet && catalogsHotelFilterValuesMap.CustomLabel3 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.CustomLabel3), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.CustomLabel3 to non-nullable JSON property 'custom_label_3'.");
 
             if (catalogsHotelFilterValuesMap.CustomLabel4Option.IsSet && catalogsHotelFilterValuesMap.CustomLabel4 == null)
-                throw new ArgumentNullException(nameof(catalogsHotelFilterValuesMap.CustomLabel4), "Property is required for class CatalogsHotelFilterValuesMap.");
+                throw new JsonException("Cannot write null property CatalogsHotelFilterValuesMap.CustomLabel4 to non-nullable JSON property 'custom_label_4'.");
 
             if (catalogsHotelFilterValuesMap.BrandOption.IsSet)
             {

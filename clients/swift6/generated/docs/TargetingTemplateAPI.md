@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **targetingTemplateCreate**
 ```swift
-    open class func targetingTemplateCreate(adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate, completion: @escaping (_ data: TargetingTemplate?, _ error: Error?) -> Void)
+    open class func targetingTemplateCreate(adAccountId: String, targetingTemplateCreate: TargetingTemplateCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TargetingTemplate
 ```
 
 Create targeting templates
@@ -27,15 +27,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let targetingTemplateCreate = TargetingTemplateCreate(autoTargetingEnabled: false, keywords: [TargetingTemplateKeyword(matchType: MatchType(), value: "value_example")], name: "name_example", placementGroup: PlacementGroupType(), targetingAttributes: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()]), trackingUrls: TrackingUrls(audienceVerification: ["audienceVerification_example"], buyableButton: ["buyableButton_example"], click: ["click_example"], engagement: ["engagement_example"], impression: ["impression_example"])) // TargetingTemplateCreate | 
 
 // Create targeting templates
-TargetingTemplateAPI.targetingTemplateCreate(adAccountId: adAccountId, targetingTemplateCreate: targetingTemplateCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TargetingTemplateAPI.targetingTemplateCreate(adAccountId: adAccountId, targetingTemplateCreate: targetingTemplateCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -63,7 +59,7 @@ Name | Type | Description  | Notes
 
 # **targetingTemplateList**
 ```swift
-    open class func targetingTemplateList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, includeSizing: Bool? = nil, searchQuery: String? = nil, completion: @escaping (_ data: TargetingTemplateList200Response?, _ error: Error?) -> Void)
+    open class func targetingTemplateList(adAccountId: String, bookmark: String? = nil, pageSize: Int? = nil, order: PinterestLibPaginationOrder? = nil, includeSizing: Bool? = nil, searchQuery: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> TargetingTemplateList200Response
 ```
 
 List targeting templates
@@ -83,15 +79,11 @@ let includeSizing = true // Bool | Include audience sizing in result or not (opt
 let searchQuery = "searchQuery_example" // String | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional)
 
 // List targeting templates
-TargetingTemplateAPI.targetingTemplateList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, includeSizing: includeSizing, searchQuery: searchQuery) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await TargetingTemplateAPI.targetingTemplateList(adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize, order: order, includeSizing: includeSizing, searchQuery: searchQuery)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -123,7 +115,7 @@ Name | Type | Description  | Notes
 
 # **targetingTemplateUpdate**
 ```swift
-    open class func targetingTemplateUpdate(adAccountId: String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func targetingTemplateUpdate(adAccountId: String, targetingTemplateUpdateRequestReadOrUpdate: TargetingTemplateUpdateRequestReadOrUpdate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Update targeting templates
@@ -139,15 +131,10 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let targetingTemplateUpdateRequestReadOrUpdate = TargetingTemplateUpdateRequestReadOrUpdate(id: "id_example", operationType: AudienceUpdateOperationType(), targetingAttributes: TargetingSpecOptimal(AGE_BUCKET: [TargetingSpecAgeBucket()], APPTYPE: [TargetingSpecAppType()], AUDIENCE_EXCLUDE: ["AUDIENCE_EXCLUDE_example"], AUDIENCE_INCLUDE: ["AUDIENCE_INCLUDE_example"], GENDER: [TargetingSpecGender()], GEO: ["GEO_example"], GEO_EXCLUDE: ["GEO_EXCLUDE_example"], INTEREST: ["INTEREST_example"], LOCALE: ["LOCALE_example"], LOCATION: ["LOCATION_example"], LOCATION_EXCLUDE: ["LOCATION_EXCLUDE_example"], MAXIMUM_AGE: "MAXIMUM_AGE_example", MINIMUM_AGE: "MINIMUM_AGE_example", SHOPPING_RETARGETING: [TargetingSpecShoppingRetargeting(exclusionWindow: 123, lookbackWindow: 123, tagTypes: [123])], TARGETING_STRATEGY: [TargetingStrategy()])) // TargetingTemplateUpdateRequestReadOrUpdate | 
 
 // Update targeting templates
-TargetingTemplateAPI.targetingTemplateUpdate(adAccountId: adAccountId, targetingTemplateUpdateRequestReadOrUpdate: targetingTemplateUpdateRequestReadOrUpdate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await TargetingTemplateAPI.targetingTemplateUpdate(adAccountId: adAccountId, targetingTemplateUpdateRequestReadOrUpdate: targetingTemplateUpdateRequestReadOrUpdate)
+} catch {
+    print(error)
 }
 ```
 

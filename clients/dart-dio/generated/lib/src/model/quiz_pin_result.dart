@@ -183,3 +183,4 @@ class _$QuizPinResultSerializer implements PrimitiveSerializer<QuizPinResult> {
   }
 }
 
+

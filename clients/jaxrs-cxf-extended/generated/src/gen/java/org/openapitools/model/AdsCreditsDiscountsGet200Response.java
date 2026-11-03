@@ -20,7 +20,6 @@ public class AdsCreditsDiscountsGet200Response  {
   private String bookmark;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid AdsCreditDiscountsResponse> items = new ArrayList<>();
  /**
   * Get bookmark

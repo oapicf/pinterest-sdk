@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CampaignAdPreviewCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="campaignAdPreview"></param>
-        public CampaignAdPreviewCreate200ResponseInnerData(CampaignAdPreview campaignAdPreview)
+        internal CampaignAdPreviewCreate200ResponseInnerData(CampaignAdPreview campaignAdPreview)
         {
             CampaignAdPreview = campaignAdPreview;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CampaignAdPreviewCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="campaignAdPreviewCreate200ResponseInnerDataOneOf"></param>
-        public CampaignAdPreviewCreate200ResponseInnerData(CampaignAdPreviewCreate200ResponseInnerDataOneOf campaignAdPreviewCreate200ResponseInnerDataOneOf)
+        internal CampaignAdPreviewCreate200ResponseInnerData(CampaignAdPreviewCreate200ResponseInnerDataOneOf campaignAdPreviewCreate200ResponseInnerDataOneOf)
         {
             CampaignAdPreviewCreate200ResponseInnerDataOneOf = campaignAdPreviewCreate200ResponseInnerDataOneOf;
             OnCreated();
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignAdPreviewCreate200ResponseInnerData campaignAdPreviewCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignAdPreviewCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignAdPreviewCreate200ResponseInnerData campaignAdPreviewCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
 

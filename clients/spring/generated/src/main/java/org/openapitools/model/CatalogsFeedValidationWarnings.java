@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -20,640 +19,429 @@ import jakarta.annotation.Generated;
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedValidationWarnings {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_0_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_10_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_11_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_12_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_13_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_14_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_15_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_16_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_17_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_18_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_19_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_1_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_2_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_3_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_4_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_5_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_6_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_7_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_8_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_IMAGE_9_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_LINK_FORMAT_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_LINK_SAME_AS_LINK;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_0_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_1_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_DUPLICATED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AD_VIDEO_2_TAG_REQUIRED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADDITIONAL_IMAGE_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_FORMAT_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ADWORDS_SAME_AS_LINK;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AGE_GROUP_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ANDROID_DEEP_LINK_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer AVAILABILITY_DATE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DESCRIPTION_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer DUPLICATE_HEADERS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer EXPIRATION_DATE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer FETCH_SAME_SIGNATURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer GENDER_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer GTIN_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IMAGE_LINK_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INCONSISTENT_CURRENCY_VALUES;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IOS_DEEP_LINK_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer IS_BUNDLE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer LINK_FORMAT_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MIN_AD_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MPN_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer MULTIPACK_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_CONDITION_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_CONDITION_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_CATEGORY_DEPTH_WARNING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALE_DATE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_TOO_HIGH;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SALES_PRICE_TOO_LOW;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_HEIGHT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_WEIGHT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SHIPPING_WIDTH_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SIZE_SYSTEM_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer SIZE_TYPE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TAX_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TITLE_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer UPDATED_TIME_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer UTM_SOURCE_AUTO_CORRECTED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer VIDEO_REQUIRED_WHEN_AD_VIDEO_PROVIDED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Integer WEIGHT_UNIT_INVALID;
 
   public CatalogsFeedValidationWarnings AD_IMAGE_0_LINK_DUPLICATED(@Nullable Integer AD_IMAGE_0_LINK_DUPLICATED) {

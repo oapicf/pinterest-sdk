@@ -23,7 +23,7 @@ import PinterestLibPaginationOrder from '../model/PinterestLibPaginationOrder';
 /**
 * CustomerSegment service.
 * @module api/CustomerSegmentApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class CustomerSegmentApi {
 

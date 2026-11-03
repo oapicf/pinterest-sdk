@@ -35,7 +35,7 @@ import javax.annotation.Generated;
   CustomerListRecordRow.JSON_PROPERTY_USER_AGENT
 })
 @JsonTypeName("CustomerListRecordRow")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CustomerListRecordRow {
     public static final String JSON_PROPERTY_EMAIL = "email";

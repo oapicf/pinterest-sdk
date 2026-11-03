@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'freq_bid_multiplier_time_window.g.dart';
 
+/// The time window for frequency bid multipliers.
 class FreqBidMultiplierTimeWindow extends EnumClass {
 
-  /// The time window for frequency bid multipliers.
   @BuiltValueEnumConst(wireName: r'WEEK')
   static const FreqBidMultiplierTimeWindow WEEK = _$WEEK;
-  /// The time window for frequency bid multipliers.
   @BuiltValueEnumConst(wireName: r'MONTH')
   static const FreqBidMultiplierTimeWindow MONTH = _$MONTH;
 

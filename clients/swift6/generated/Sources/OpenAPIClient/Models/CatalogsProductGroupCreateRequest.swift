@@ -10,7 +10,7 @@ import Foundation
 /** Request object for creating a product group. */
 public struct CatalogsProductGroupCreateRequest: Sendable, Codable, Hashable {
 
-    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let feedIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var description: String?
     /** Catalog Feed id pertaining to the catalog product group. */
     public var feedId: String

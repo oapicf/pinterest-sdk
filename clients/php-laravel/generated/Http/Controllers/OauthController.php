@@ -51,10 +51,10 @@ class OauthController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -109,25 +109,25 @@ class OauthController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'grantType' => [
+                'grant_type' => [
                     'required',
                 ],
                 'code' => [
                     'string',
                 ],
-                'continuousRefresh' => [
+                'continuous_refresh' => [
                     'string',
                 ],
-                'redirectUri' => [
+                'redirect_uri' => [
                     'string',
                 ],
-                'refreshToken' => [
+                'refresh_token' => [
                     'string',
                 ],
                 'scope' => [
@@ -144,11 +144,11 @@ class OauthController extends Controller
 
         $code = $request->string('code')->value();
 
-        $continuousRefresh = $request->string('continuousRefresh')->value();
+        $continuousRefresh = $request->string('continuous_refresh')->value();
 
-        $redirectUri = $request->string('redirectUri')->value();
+        $redirectUri = $request->string('redirect_uri')->value();
 
-        $refreshToken = $request->string('refreshToken')->value();
+        $refreshToken = $request->string('refresh_token')->value();
 
         $scope = $request->string('scope')->value();
 
@@ -201,17 +201,17 @@ class OauthController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'token' => [
                     'required',
                     'string',
                 ],
-                'tokenTypeHint' => [
+                'token_type_hint' => [
                 ],
             ],
         );

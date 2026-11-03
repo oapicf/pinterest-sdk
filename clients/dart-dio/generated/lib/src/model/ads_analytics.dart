@@ -124,3 +124,4 @@ class _$AdsAnalyticsSerializer implements PrimitiveSerializer<AdsAnalytics> {
   }
 }
 
+

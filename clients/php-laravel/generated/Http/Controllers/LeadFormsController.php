@@ -51,18 +51,18 @@ class LeadFormsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'leadFormId' => $leadFormId,'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'lead_form_id' => $leadFormId,'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'leadFormId' => [
+                'lead_form_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -122,10 +122,10 @@ class LeadFormsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'leadFormId' => $leadFormId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'lead_form_id' => $leadFormId,
+                ],
             ),
             [
             ],
@@ -172,10 +172,10 @@ class LeadFormsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -233,13 +233,13 @@ class LeadFormsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -248,7 +248,7 @@ class LeadFormsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -265,7 +265,7 @@ class LeadFormsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 
@@ -314,10 +314,10 @@ class LeadFormsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],

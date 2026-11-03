@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsReportStats" /> class.
         /// </summary>
         /// <param name="catalogsReportFeedIngestionStats"></param>
-        public CatalogsReportStats(CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats)
+        internal CatalogsReportStats(CatalogsReportFeedIngestionStats catalogsReportFeedIngestionStats)
         {
             CatalogsReportFeedIngestionStats = catalogsReportFeedIngestionStats;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsReportStats" /> class.
         /// </summary>
         /// <param name="catalogsReportDistributionStats"></param>
-        public CatalogsReportStats(CatalogsReportDistributionStats catalogsReportDistributionStats)
+        internal CatalogsReportStats(CatalogsReportDistributionStats catalogsReportDistributionStats)
         {
             CatalogsReportDistributionStats = catalogsReportDistributionStats;
             OnCreated();
@@ -233,7 +233,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsReportStats.ReportTypeEnum?>(CatalogsReportStats.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsReportStats.ReportTypeEnum? reportTypeValue = CatalogsReportStats.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsReportStats.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         default:
                             break;
@@ -242,7 +247,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsReportStats.");
+                throw new JsonException("Property is not nullable for class CatalogsReportStats: report_type.");
 
             if (catalogsReportDistributionStats != null)
                 return new CatalogsReportStats(catalogsReportDistributionStats);
@@ -259,7 +264,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportStats"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsReportStats catalogsReportStats, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -286,7 +290,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportStats"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsReportStats catalogsReportStats, JsonSerializerOptions jsonSerializerOptions)
         {
 

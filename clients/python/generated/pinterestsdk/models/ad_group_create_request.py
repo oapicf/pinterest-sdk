@@ -213,7 +213,7 @@ class AdGroupCreateRequest(BaseModel):
             "optimization_goal_metadata": obj.get("optimization_goal_metadata"),
             "placement_group": obj.get("placement_group"),
             "promotion_application_level": obj.get("promotion_application_level"),
-            "promotion_id": obj.get("promotion_id") if obj.get("promotion_id") is not None else '0',
+            "promotion_id": obj.get("promotion_id") if "promotion_id" in obj else '0',
             "promotion_ids": obj.get("promotion_ids"),
             "start_time": obj.get("start_time"),
             "status": obj.get("status"),

@@ -104,3 +104,4 @@ class _$BrandAccountSerializer implements PrimitiveSerializer<BrandAccount> {
   }
 }
 
+

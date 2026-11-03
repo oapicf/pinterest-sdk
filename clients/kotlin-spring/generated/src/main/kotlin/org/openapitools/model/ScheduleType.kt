@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The schedule type
-* Values: CAMPAIGN_BUDGET_CHANGE,CAMPAIGN_BID_MULTIPLIERS
-*/
+ * The schedule type
+ * Values: CAMPAIGN_BUDGET_CHANGE,CAMPAIGN_BID_MULTIPLIERS
+ */
 enum class ScheduleType(@get:JsonValue val value: kotlin.String) {
 
     CAMPAIGN_BUDGET_CHANGE("CAMPAIGN_BUDGET_CHANGE"),
@@ -28,9 +28,8 @@ enum class ScheduleType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ScheduleType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ScheduleType'")
         }
     }
 }
-

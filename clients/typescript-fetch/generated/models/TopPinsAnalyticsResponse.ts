@@ -43,20 +43,14 @@ import {
 export interface TopPinsAnalyticsResponse {
     /**
      * 
-     * @type {TopPinsAnalyticsResponseDateAvailability}
-     * @memberof TopPinsAnalyticsResponse
      */
     dateAvailability?: TopPinsAnalyticsResponseDateAvailability;
     /**
      * 
-     * @type {Array<TopPinsAnalyticsResponsePinsItems>}
-     * @memberof TopPinsAnalyticsResponse
      */
     pins?: Array<TopPinsAnalyticsResponsePinsItems>;
     /**
      * 
-     * @type {TopPinsSortBy}
-     * @memberof TopPinsAnalyticsResponse
      */
     sortBy?: TopPinsSortBy;
 }

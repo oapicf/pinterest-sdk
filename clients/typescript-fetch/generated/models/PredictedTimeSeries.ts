@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 /**
  * 
  * @export
@@ -22,8 +22,6 @@ export interface PredictedTimeSeries {
     [key: string]: number | any;
     /**
      * 
-     * @type {Date}
-     * @memberof PredictedTimeSeries
      */
     date?: Date;
 }
@@ -46,7 +44,7 @@ export function PredictedTimeSeriesFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
             ...json,
-        'date': json['date'] == null ? undefined : (new Date(json['date'])),
+        'date': json['date'] == null ? undefined : (parseDate(json['date'])),
     };
 }
 
@@ -62,7 +60,7 @@ export function PredictedTimeSeriesToJSONTyped(value?: PredictedTimeSeries | nul
     return {
         
             ...value,
-        'date': value['date'] == null ? value['date'] : value['date'].toISOString().substring(0,10),
+        'date': value['date'] == null ? value['date'] : serializeDate(value['date']),
     };
 }
 

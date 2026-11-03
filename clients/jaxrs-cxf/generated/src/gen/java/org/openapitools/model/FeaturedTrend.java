@@ -46,8 +46,6 @@ public class FeaturedTrend  {
   */
   @ApiModelProperty(value = "List of trending topics within this interest category")
 
-  @Valid
-
   private List<@Valid TrendingTopic> trends = new ArrayList<>();
  /**
    * The main interest category

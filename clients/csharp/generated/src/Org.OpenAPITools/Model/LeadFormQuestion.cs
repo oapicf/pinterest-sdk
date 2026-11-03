@@ -202,7 +202,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (questionType.IsSet && questionType.Value == null)
-                throw new ArgumentNullException(nameof(questionType), "Property is not nullable for class LeadFormQuestion.");
+                throw new JsonException("Property is not nullable for class LeadFormQuestion: question_type.");
 
             return new LeadFormQuestion(customQuestionFieldType, customQuestionLabel, customQuestionOptions, questionType);
         }
@@ -213,7 +213,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormQuestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadFormQuestion leadFormQuestion, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -228,9 +227,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadFormQuestion"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormQuestion leadFormQuestion, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (leadFormQuestion.QuestionTypeOption.IsSet && leadFormQuestion.QuestionType == null)
+                throw new JsonException("Cannot write null property LeadFormQuestion.QuestionType to non-nullable JSON property 'question_type'.");
+
             if (leadFormQuestion.CustomQuestionFieldTypeOption.IsSet)
                 if (leadFormQuestion.CustomQuestionFieldTypeOption!.Value != null)
                 {

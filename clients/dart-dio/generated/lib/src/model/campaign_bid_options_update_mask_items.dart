@@ -9,24 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_bid_options_update_mask_items.g.dart';
 
+/// Fields that can be updated in campaign bid options.
 class CampaignBidOptionsUpdateMaskItems extends EnumClass {
 
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'AUDIENCE')
   static const CampaignBidOptionsUpdateMaskItems AUDIENCE = _$AUDIENCE;
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'APP_TYPE')
   static const CampaignBidOptionsUpdateMaskItems APP_TYPE = _$APP_TYPE;
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'PLACEMENT')
   static const CampaignBidOptionsUpdateMaskItems PLACEMENT = _$PLACEMENT;
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'GENDER')
   static const CampaignBidOptionsUpdateMaskItems GENDER = _$GENDER;
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'AGE_BUCKET')
   static const CampaignBidOptionsUpdateMaskItems AGE_BUCKET = _$AGE_BUCKET;
-  /// Fields that can be updated in campaign bid options.
   @BuiltValueEnumConst(wireName: r'FREQUENCY')
   static const CampaignBidOptionsUpdateMaskItems FREQUENCY = _$FREQUENCY;
 

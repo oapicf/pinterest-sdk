@@ -29,20 +29,14 @@ import {
 export interface CatalogsUpsertCreativeAssetsItem {
     /**
      * 
-     * @type {CatalogsCreativeAssetsAttributes}
-     * @memberof CatalogsUpsertCreativeAssetsItem
      */
     attributes: CatalogsCreativeAssetsAttributes;
     /**
      * The catalog creative assets id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsUpsertCreativeAssetsItem
      */
     creativeAssetsId: string;
     /**
      * 
-     * @type {CatalogsUpsertCreativeAssetsItemOperationEnum}
-     * @memberof CatalogsUpsertCreativeAssetsItem
      */
     operation: CatalogsUpsertCreativeAssetsItemOperationEnum;
 }
@@ -52,7 +46,7 @@ export interface CatalogsUpsertCreativeAssetsItem {
  * @export
  */
 export const CatalogsUpsertCreativeAssetsItemOperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
 } as const;
 export type CatalogsUpsertCreativeAssetsItemOperationEnum = typeof CatalogsUpsertCreativeAssetsItemOperationEnum[keyof typeof CatalogsUpsertCreativeAssetsItemOperationEnum];
 

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface BulkDownload {
     /**
      * ID of the bulk request.
-     * @type {string}
-     * @memberof BulkDownload
      */
     readonly requestId?: string;
 }

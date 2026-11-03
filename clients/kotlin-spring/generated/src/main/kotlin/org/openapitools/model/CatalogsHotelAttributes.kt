@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsAiContentDisclosure
 import org.openapitools.model.CatalogsHotelAddress
 import org.openapitools.model.CatalogsHotelGuestRatings
@@ -47,8 +44,6 @@ data class CatalogsHotelAttributes(
 
     @field:Valid
     @Schema(description = "Hotel address")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("address")
     @get:JsonProperty("address") val address: CatalogsHotelAddress? = null,
 
@@ -90,14 +85,10 @@ data class CatalogsHotelAttributes(
 
     @field:Valid
     @Schema(description = "If specified, you must provide all properties")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("guest_ratings")
     @get:JsonProperty("guest_ratings") val guestRatings: CatalogsHotelGuestRatings? = null,
 
     @Schema(description = "Latitude of the hotel.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("latitude")
     @get:JsonProperty("latitude") val latitude: java.math.BigDecimal? = null,
 
@@ -127,15 +118,11 @@ data class CatalogsHotelAttributes(
 
     @field:Valid
     @Schema(example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (main_image.link or additional_image_link) on this hotel item. Each entry declares which disclosure types apply to a single asset URL.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ai_disclosures")
     @get:JsonProperty("ai_disclosures") val aiDisclosures: kotlin.collections.List<CatalogsAiContentDisclosure>? = null,
 
     @field:Valid
     @Schema(description = "The main hotel image")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("main_image")
     @get:JsonProperty("main_image") val mainImage: CatalogsHotelMainImage? = null
 ) {

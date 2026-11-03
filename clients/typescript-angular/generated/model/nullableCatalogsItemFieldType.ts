@@ -117,7 +117,7 @@ export const NullableCatalogsItemFieldType = {
     InstallmentPrice: 'INSTALLMENT_PRICE',
     UnitPriceTotalMeasure: 'UNIT_PRICE_TOTAL_MEASURE',
     UnitPriceBaseMeasure: 'UNIT_PRICE_BASE_MEASURE',
-    SalePriceEffectiveDate: 'SALE_PRICE_EFFECTIVE_DATE'
+    SalePriceEffectiveDate: 'SALE_PRICE_EFFECTIVE_DATE',
 } as const;
 export type NullableCatalogsItemFieldType = typeof NullableCatalogsItemFieldType[keyof typeof NullableCatalogsItemFieldType];
 

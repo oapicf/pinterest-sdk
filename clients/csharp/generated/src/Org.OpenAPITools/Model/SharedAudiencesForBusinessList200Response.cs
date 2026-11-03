@@ -153,10 +153,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!items.IsSet)
-                throw new ArgumentException("Property is required for class SharedAudiencesForBusinessList200Response.", nameof(items));
+                throw new JsonException("Property is required for class SharedAudiencesForBusinessList200Response: items.");
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class SharedAudiencesForBusinessList200Response.");
+                throw new JsonException("Property is not nullable for class SharedAudiencesForBusinessList200Response: items.");
 
             return new SharedAudiencesForBusinessList200Response(items.Value!, bookmark);
         }
@@ -167,7 +167,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sharedAudiencesForBusinessList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -182,12 +181,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="sharedAudiencesForBusinessList200Response"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList200Response, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (sharedAudiencesForBusinessList200Response.Items == null)
-                throw new ArgumentNullException(nameof(sharedAudiencesForBusinessList200Response.Items), "Property is required for class SharedAudiencesForBusinessList200Response.");
-
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, sharedAudiencesForBusinessList200Response.Items, jsonSerializerOptions);
             if (sharedAudiencesForBusinessList200Response.BookmarkOption.IsSet)

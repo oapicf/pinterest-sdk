@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OrderLineMutationResult   {
   
   private List<@Valid OrderLineMutationError> errors = new ArrayList<>();
@@ -27,7 +27,6 @@ public class OrderLineMutationResult   {
   
   @ApiModelProperty(value = "Error list if update(s) fail.")
   @JsonProperty("errors")
-  @Valid
   public List<@Valid OrderLineMutationError> getErrors() {
     return errors;
   }
@@ -41,7 +40,6 @@ public class OrderLineMutationResult   {
   
   @ApiModelProperty(value = "Order Line object array.")
   @JsonProperty("order_line")
-  @Valid
   public List<@Valid OrderLine> getOrderLine() {
     return orderLine;
   }

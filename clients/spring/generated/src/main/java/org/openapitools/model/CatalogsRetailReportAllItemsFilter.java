@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,13 +24,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailReportAllItemsFilter", description = "ALL_ITEMS filter for retail catalogs. Optional product_group_id scopes the report to items in that product group. If omitted, all items are included.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailReportAllItemsFilter implements CatalogsRetailReportParametersReport {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String catalogId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String productGroupId;
 
   /**

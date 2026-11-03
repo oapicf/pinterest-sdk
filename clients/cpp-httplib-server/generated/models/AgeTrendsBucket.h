@@ -12,24 +12,94 @@
 
 namespace models {
 
-
-class AgeTrendsBucket
-{
-public:
-
-    AgeTrendsBucket();
-    virtual ~AgeTrendsBucket() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AgeTrendsBucket,
-        )
-
-private:
+enum class AgeTrendsBucket {
+    
+    _18_24,
+    
+    _25_34,
+    
+    _35_44,
+    
+    _45_49,
+    
+    _50_54,
+    
+    _55_64,
+    
+    _65_
+    
 };
 
+inline void to_json(nlohmann::json& j, const AgeTrendsBucket& value)
+{
+    switch (value)
+    {
+        
+        case AgeTrendsBucket::_18_24: j = "18-24"; break;
+        
+        case AgeTrendsBucket::_25_34: j = "25-34"; break;
+        
+        case AgeTrendsBucket::_35_44: j = "35-44"; break;
+        
+        case AgeTrendsBucket::_45_49: j = "45-49"; break;
+        
+        case AgeTrendsBucket::_50_54: j = "50-54"; break;
+        
+        case AgeTrendsBucket::_55_64: j = "55-64"; break;
+        
+        case AgeTrendsBucket::_65_: j = "65+"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AgeTrendsBucket", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AgeTrendsBucket& value)
+{
+    
+    if (j == "18-24")
+    {
+        value = AgeTrendsBucket::_18_24;
+        return;
+    }
+    
+    if (j == "25-34")
+    {
+        value = AgeTrendsBucket::_25_34;
+        return;
+    }
+    
+    if (j == "35-44")
+    {
+        value = AgeTrendsBucket::_35_44;
+        return;
+    }
+    
+    if (j == "45-49")
+    {
+        value = AgeTrendsBucket::_45_49;
+        return;
+    }
+    
+    if (j == "50-54")
+    {
+        value = AgeTrendsBucket::_50_54;
+        return;
+    }
+    
+    if (j == "55-64")
+    {
+        value = AgeTrendsBucket::_55_64;
+        return;
+    }
+    
+    if (j == "65+")
+    {
+        value = AgeTrendsBucket::_65_;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AgeTrendsBucket", &j);
+}
 
 } // namespace models
 

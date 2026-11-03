@@ -230,7 +230,12 @@ namespace Org.OpenAPITools.Model
                         case "report_type":
                             string? reportTypeRawValue = utf8JsonReader.GetString();
                             if (reportTypeRawValue != null)
-                                reportType = new Option<CatalogsReportFeedIngestionFilter.ReportTypeEnum?>(CatalogsReportFeedIngestionFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue));
+                            {
+                                CatalogsReportFeedIngestionFilter.ReportTypeEnum? reportTypeValue = CatalogsReportFeedIngestionFilter.ReportTypeEnumFromStringOrDefault(reportTypeRawValue);
+                                if (reportTypeValue == null)
+                                    throw new JsonException();
+                                reportType = new Option<CatalogsReportFeedIngestionFilter.ReportTypeEnum?>(reportTypeValue);
+                            }
                             break;
                         case "processing_result_id":
                             processingResultId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -242,19 +247,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!feedId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsReportFeedIngestionFilter.", nameof(feedId));
+                throw new JsonException("Property is required for class CatalogsReportFeedIngestionFilter: feed_id.");
 
             if (!reportType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsReportFeedIngestionFilter.", nameof(reportType));
+                throw new JsonException("Property is required for class CatalogsReportFeedIngestionFilter: report_type.");
 
             if (feedId.IsSet && feedId.Value == null)
-                throw new ArgumentNullException(nameof(feedId), "Property is not nullable for class CatalogsReportFeedIngestionFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsReportFeedIngestionFilter: feed_id.");
 
             if (reportType.IsSet && reportType.Value == null)
-                throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsReportFeedIngestionFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsReportFeedIngestionFilter: report_type.");
 
             if (processingResultId.IsSet && processingResultId.Value == null)
-                throw new ArgumentNullException(nameof(processingResultId), "Property is not nullable for class CatalogsReportFeedIngestionFilter.");
+                throw new JsonException("Property is not nullable for class CatalogsReportFeedIngestionFilter: processing_result_id.");
 
             return new CatalogsReportFeedIngestionFilter(feedId.Value!, reportType.Value!.Value!, processingResultId);
         }
@@ -265,7 +270,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportFeedIngestionFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -280,14 +284,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsReportFeedIngestionFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsReportFeedIngestionFilter catalogsReportFeedIngestionFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsReportFeedIngestionFilter.FeedId == null)
-                throw new ArgumentNullException(nameof(catalogsReportFeedIngestionFilter.FeedId), "Property is required for class CatalogsReportFeedIngestionFilter.");
-
             if (catalogsReportFeedIngestionFilter.ProcessingResultIdOption.IsSet && catalogsReportFeedIngestionFilter.ProcessingResultId == null)
-                throw new ArgumentNullException(nameof(catalogsReportFeedIngestionFilter.ProcessingResultId), "Property is required for class CatalogsReportFeedIngestionFilter.");
+                throw new JsonException("Cannot write null property CatalogsReportFeedIngestionFilter.ProcessingResultId to non-nullable JSON property 'processing_result_id'.");
 
             writer.WriteString("feed_id", catalogsReportFeedIngestionFilter.FeedId);
 

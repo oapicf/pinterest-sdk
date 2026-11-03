@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CollectionsHeaderType
 import org.openapitools.model.CreativeType
 import org.openapitools.model.EntityStatus
@@ -56,27 +53,19 @@ data class ProductGroupPromotion(
 
     @get:Pattern(regexp="^(AG)?\\d+$")
     @Schema(example = "2680059592705", description = "ID of the ad group the product group belongs to.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_group_id")
     @get:JsonProperty("ad_group_id") val adGroupId: kotlin.String? = null,
 
     @Schema(example = "14000000", description = "The bid in micro currency.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("bid_in_micro_currency")
     @get:JsonProperty("bid_in_micro_currency") val bidInMicroCurrency: kotlin.Int? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1231235", description = "ID of the catalogs product group that this product group promotion references (required for create operations)")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_product_group_id")
     @get:JsonProperty("catalog_product_group_id") val catalogProductGroupId: kotlin.String? = null,
 
     @Schema(example = "catalogProductGroupName", description = "Catalogs product group name")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("catalog_product_group_name")
     @get:JsonProperty("catalog_product_group_name") val catalogProductGroupName: kotlin.String? = null,
 
@@ -96,21 +85,15 @@ data class ProductGroupPromotion(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("creative_type")
     @get:JsonProperty("creative_type") val creativeType: CreativeType? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("customizable_cta_type")
     @get:JsonProperty("customizable_cta_type") val customizableCtaType: ProductGroupPromotionCustomizableCTAType? = null,
 
     @Schema(example = "*/product_type_0='kitchen'/product_type_1='beverage appliances'", description = "The full product group definition path")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("definition")
     @get:JsonProperty("definition") val definition: kotlin.String? = null,
 
@@ -121,14 +104,10 @@ data class ProductGroupPromotion(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", description = "ID of the product group promotion (required for update operations).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @Schema(example = "true", description = "True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("included")
     @get:JsonProperty("included") val included: kotlin.Boolean? = null,
 
@@ -141,15 +120,11 @@ data class ProductGroupPromotion(
     @get:JsonProperty("is_image_auto_resizing") val isImageAutoResizing: kotlin.Boolean? = null,
 
     @Schema(example = "true", description = "If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_mdl")
     @get:JsonProperty("is_mdl") val isMdl: kotlin.Boolean? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1231234", description = "The parent Product Group ID of this Product Group")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("parent_id")
     @get:JsonProperty("parent_id") val parentId: kotlin.String? = null,
 
@@ -159,8 +134,6 @@ data class ProductGroupPromotion(
     @get:JsonProperty("preferred_media_type") val preferredMediaType: PreferredMediaType? = null,
 
     @Schema(example = "product_type_1='beverage appliances'", description = "The definition of the product group, relative to its parent - an attribute name/value pair")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("relative_definition")
     @get:JsonProperty("relative_definition") val relativeDefinition: kotlin.String? = null,
 
@@ -182,14 +155,10 @@ data class ProductGroupPromotion(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 
     @Schema(example = "https://www.pinterest.com", description = "Tracking template for proudct group promotions. 4000 limit")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("tracking_url")
     @get:JsonProperty("tracking_url") val trackingUrl: kotlin.String? = null
 ) {

@@ -175,6 +175,7 @@ class _$CatalogsHotelProductGroupCreateRequestSerializer implements PrimitiveSer
   }
 }
 
+
 class CatalogsHotelProductGroupCreateRequestCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'HOTEL')

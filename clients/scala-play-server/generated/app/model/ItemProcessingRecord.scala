@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param itemId The catalog item id in the merchant namespace
   * @param warnings Array with the validation warnings for the item processing record
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class ItemProcessingRecord(
   errors: Option[List[ItemValidationEvent]],
   itemId: Option[String],

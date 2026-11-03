@@ -23,12 +23,11 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionItemsSubmitRequest", description = "Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitRequest {
 
   private String catalogId;
 
-  @Valid
   private List<@Valid AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
 
   public AdvancedAuctionItemsSubmitRequest() {
@@ -80,7 +79,7 @@ public class AdvancedAuctionItemsSubmitRequest {
    * Array of item bid option operations
    * @return items
    */
-  @NotNull @Valid @Size(min = 1, max = 10000) 
+  @NotNull @Size(min = 1, max = 10000) 
   @Schema(name = "items", description = "Array of item bid option operations", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid AdvancedAuctionItemsSubmitRecord> getItems() {

@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (inviteExpiration.IsSet && inviteExpiration.Value == null)
-                throw new ArgumentNullException(nameof(inviteExpiration), "Property is not nullable for class InviteDataResponse.");
+                throw new JsonException("Property is not nullable for class InviteDataResponse: invite_expiration.");
 
             if (inviteStatus.IsSet && inviteStatus.Value == null)
-                throw new ArgumentNullException(nameof(inviteStatus), "Property is not nullable for class InviteDataResponse.");
+                throw new JsonException("Property is not nullable for class InviteDataResponse: invite_status.");
 
             if (inviteType.IsSet && inviteType.Value == null)
-                throw new ArgumentNullException(nameof(inviteType), "Property is not nullable for class InviteDataResponse.");
+                throw new JsonException("Property is not nullable for class InviteDataResponse: invite_type.");
 
             if (lastUpdatedTime.IsSet && lastUpdatedTime.Value == null)
-                throw new ArgumentNullException(nameof(lastUpdatedTime), "Property is not nullable for class InviteDataResponse.");
+                throw new JsonException("Property is not nullable for class InviteDataResponse: last_updated_time.");
 
             if (sentAt.IsSet && sentAt.Value == null)
-                throw new ArgumentNullException(nameof(sentAt), "Property is not nullable for class InviteDataResponse.");
+                throw new JsonException("Property is not nullable for class InviteDataResponse: sent_at.");
 
             return new InviteDataResponse(inviteExpiration, inviteStatus, inviteType, lastUpdatedTime, sentAt);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteDataResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteDataResponse inviteDataResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,14 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteDataResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteDataResponse inviteDataResponse, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (inviteDataResponse.InviteExpirationOption.IsSet && inviteDataResponse.InviteExpiration == null)
+                throw new JsonException("Cannot write null property InviteDataResponse.InviteExpiration to non-nullable JSON property 'invite_expiration'.");
+
             if (inviteDataResponse.InviteStatusOption.IsSet && inviteDataResponse.InviteStatus == null)
-                throw new ArgumentNullException(nameof(inviteDataResponse.InviteStatus), "Property is required for class InviteDataResponse.");
+                throw new JsonException("Cannot write null property InviteDataResponse.InviteStatus to non-nullable JSON property 'invite_status'.");
 
             if (inviteDataResponse.InviteTypeOption.IsSet && inviteDataResponse.InviteType == null)
-                throw new ArgumentNullException(nameof(inviteDataResponse.InviteType), "Property is required for class InviteDataResponse.");
+                throw new JsonException("Cannot write null property InviteDataResponse.InviteType to non-nullable JSON property 'invite_type'.");
+
+            if (inviteDataResponse.LastUpdatedTimeOption.IsSet && inviteDataResponse.LastUpdatedTime == null)
+                throw new JsonException("Cannot write null property InviteDataResponse.LastUpdatedTime to non-nullable JSON property 'last_updated_time'.");
+
+            if (inviteDataResponse.SentAtOption.IsSet && inviteDataResponse.SentAt == null)
+                throw new JsonException("Cannot write null property InviteDataResponse.SentAt to non-nullable JSON property 'sent_at'.");
 
             if (inviteDataResponse.InviteExpirationOption.IsSet)
                 writer.WriteNumber("invite_expiration", inviteDataResponse.InviteExpirationOption.Value!.Value);

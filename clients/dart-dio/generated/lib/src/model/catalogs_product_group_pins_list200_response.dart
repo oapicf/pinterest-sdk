@@ -125,3 +125,4 @@ class _$CatalogsProductGroupPinsList200ResponseSerializer implements PrimitiveSe
   }
 }
 
+

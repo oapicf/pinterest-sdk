@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Multiple Base64-based images media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Multiple Base64-based images media source")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourceImagesBase64   {
   
   private Integer index;
@@ -61,8 +61,7 @@ public class PinMediaSourceImagesBase64   {
   @ApiModelProperty(required = true, value = "Array with image objects.")
   @JsonProperty("items")
   @NotNull
- @Size(min=2,max=5)  @Valid
-  public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
+ @Size(min=2,max=5)  public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
     return items;
   }
   public void setItems(List<@Valid PinMediaSourceImagesBase64Item> items) {

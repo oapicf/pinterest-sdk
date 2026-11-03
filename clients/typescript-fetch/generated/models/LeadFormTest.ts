@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface LeadFormTest {
     /**
      * Subscription ID.
-     * @type {string}
-     * @memberof LeadFormTest
      */
     readonly subscriptionId?: string;
 }

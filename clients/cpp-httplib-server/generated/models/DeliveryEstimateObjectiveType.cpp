@@ -6,20 +6,3 @@
 */
 #include "DeliveryEstimateObjectiveType.h"
 
-namespace models {
-
-DeliveryEstimateObjectiveType::DeliveryEstimateObjectiveType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

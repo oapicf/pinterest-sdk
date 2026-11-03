@@ -51,24 +51,24 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'explicitFollowing' => [
+                'explicit_following' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -80,13 +80,13 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $explicitFollowing = $request->boolean('explicitFollowing');
+        $explicitFollowing = $request->boolean('explicit_following');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->boardsUserFollowsList($adAccountId, $explicitFollowing, $bookmark, $pageSize);
@@ -133,10 +133,10 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     'username' => $username,
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -198,16 +198,16 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -221,7 +221,7 @@ class UserAccountController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->followersList($bookmark, $pageSize);
@@ -268,10 +268,10 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -327,10 +327,10 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'website' => [
@@ -395,34 +395,34 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'fromClaimedContent' => [
+                'from_claimed_content' => [
                 ],
-                'pinFormat' => [
+                'pin_format' => [
                 ],
-                'appTypes' => [
+                'app_types' => [
                 ],
-                'contentType' => [
+                'content_type' => [
                 ],
                 'source' => [
                 ],
-                'metricTypes' => [
+                'metric_types' => [
                     'array',
                 ],
-                'splitField' => [
+                'split_field' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -434,9 +434,9 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $fromClaimedContent = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsFromClaimedContentParameter::class);
 
@@ -448,11 +448,11 @@ class UserAccountController extends Controller
 
         $source = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsSourceParameter::class);
 
-        $metricTypes = $request->get('metricTypes');
+        $metricTypes = $request->get('metric_types');
 
         $splitField = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsSplitFieldParameter::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->userAccountAnalytics($startDate, $endDate, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $splitField, $adAccountId);
@@ -500,42 +500,42 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'sortBy' => [
+                'sort_by' => [
                     'required',
                 ],
-                'fromClaimedContent' => [
+                'from_claimed_content' => [
                 ],
-                'pinFormat' => [
+                'pin_format' => [
                 ],
-                'appTypes' => [
+                'app_types' => [
                 ],
-                'contentType' => [
+                'content_type' => [
                 ],
                 'source' => [
                 ],
-                'metricTypes' => [
+                'metric_types' => [
                     'array',
                 ],
-                'numOfPins' => [
+                'num_of_pins' => [
                     'gte:1',
                     'lte:50',
                     'integer',
                 ],
-                'createdInLastNDays' => [
+                'created_in_last_n_days' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -547,9 +547,9 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $sortBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\TopPinsSortBy::class);
 
@@ -563,13 +563,13 @@ class UserAccountController extends Controller
 
         $source = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsSourceParameter::class);
 
-        $metricTypes = $request->get('metricTypes');
+        $metricTypes = $request->get('metric_types');
 
-        $numOfPins = $request->integer('numOfPins');
+        $numOfPins = $request->integer('num_of_pins');
 
         $createdInLastNDays = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsTopPinsCreatedInLastNDaysParameter::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->userAccountAnalyticsTopPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
@@ -616,42 +616,42 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'sortBy' => [
+                'sort_by' => [
                     'required',
                 ],
-                'fromClaimedContent' => [
+                'from_claimed_content' => [
                 ],
-                'pinFormat' => [
+                'pin_format' => [
                 ],
-                'appTypes' => [
+                'app_types' => [
                 ],
-                'contentType' => [
+                'content_type' => [
                 ],
                 'source' => [
                 ],
-                'metricTypes' => [
+                'metric_types' => [
                     'array',
                 ],
-                'numOfPins' => [
+                'num_of_pins' => [
                     'gte:1',
                     'lte:50',
                     'integer',
                 ],
-                'createdInLastNDays' => [
+                'created_in_last_n_days' => [
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -663,9 +663,9 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $sortBy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\TopVideoPinsSortBy::class);
 
@@ -679,13 +679,13 @@ class UserAccountController extends Controller
 
         $source = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsSourceParameter::class);
 
-        $metricTypes = $request->get('metricTypes');
+        $metricTypes = $request->get('metric_types');
 
-        $numOfPins = $request->integer('numOfPins');
+        $numOfPins = $request->integer('num_of_pins');
 
         $createdInLastNDays = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserAccountAnalyticsTopPinsCreatedInLastNDaysParameter::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->userAccountAnalyticsTopVideoPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
@@ -732,10 +732,10 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     'username' => $username,
                 ],
-                $request->all(),
             ),
             [
                 'username' => [
@@ -746,7 +746,7 @@ class UserAccountController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -761,7 +761,7 @@ class UserAccountController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->userAccountFollowedInterests($username, $bookmark, $pageSize);
@@ -800,13 +800,13 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -818,7 +818,7 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->userAccountGet($adAccountId);
@@ -865,26 +865,26 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'explicitFollowing' => [
+                'explicit_following' => [
                     'boolean',
                 ],
-                'feedType' => [
+                'feed_type' => [
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -896,15 +896,15 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
-        $explicitFollowing = $request->boolean('explicitFollowing');
+        $explicitFollowing = $request->boolean('explicit_following');
 
         $feedType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserFollowingFeedType::class);
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->userFollowingGet($adAccountId, $explicitFollowing, $feedType, $bookmark, $pageSize);
@@ -951,16 +951,16 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -974,7 +974,7 @@ class UserAccountController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->userWebsitesGet($bookmark, $pageSize);
@@ -1021,10 +1021,10 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -1036,7 +1036,7 @@ class UserAccountController extends Controller
 
         $userWebsiteCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UserWebsiteCreate::class);
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->verifyWebsiteUpdate($userWebsiteCreate, $adAccountId);
@@ -1087,13 +1087,13 @@ class UserAccountController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
@@ -1105,7 +1105,7 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $adAccountId = $request->string('adAccountId')->value();
+        $adAccountId = $request->string('ad_account_id')->value();
 
 
         $apiResult = $this->api->websiteVerificationGet($adAccountId);

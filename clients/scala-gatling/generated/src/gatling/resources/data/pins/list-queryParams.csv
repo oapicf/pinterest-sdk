@@ -1,1 +1,1 @@
-domain,pin_metrics,pin_type,pin_filter,domains,bookmark,include_protected_pins,creative_types,page_size,ad_account_id,include_product_tag_obj
+pin_metrics,include_product_tag_obj,pin_type,page_size,domain,pin_filter,bookmark,domains,ad_account_id,include_protected_pins,creative_types

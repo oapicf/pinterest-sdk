@@ -19,7 +19,7 @@ import javax.validation.Valid;
 */
 @Path("/users/{username}/interests/follow")
 @Api(description = "the users API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UsersApi {
 
     @GET
@@ -37,7 +37,10 @@ public class UsersApi {
         @ApiResponse(code = 404, message = "The server cannot find the requested resource.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = PinterestLibError.class)
     })
-    public Response userAccountFollowedInterests(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response userAccountFollowedInterests(@PathParam("username") @Pattern(regexp="(?!^\\d+$)^.+$") @ApiParam("A valid username") String username
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 }

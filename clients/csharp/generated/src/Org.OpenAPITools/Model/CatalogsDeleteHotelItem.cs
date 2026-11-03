@@ -193,7 +193,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsDeleteHotelItem.OperationEnum?>(CatalogsDeleteHotelItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsDeleteHotelItem.OperationEnum? operationValue = CatalogsDeleteHotelItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsDeleteHotelItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         default:
                             break;
@@ -202,16 +207,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!hotelId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteHotelItem.", nameof(hotelId));
+                throw new JsonException("Property is required for class CatalogsDeleteHotelItem: hotel_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteHotelItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsDeleteHotelItem: operation.");
 
             if (hotelId.IsSet && hotelId.Value == null)
-                throw new ArgumentNullException(nameof(hotelId), "Property is not nullable for class CatalogsDeleteHotelItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteHotelItem: hotel_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsDeleteHotelItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteHotelItem: operation.");
 
             return new CatalogsDeleteHotelItem(hotelId.Value!, operation.Value!.Value!);
         }
@@ -222,7 +227,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteHotelItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsDeleteHotelItem catalogsDeleteHotelItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -237,12 +241,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteHotelItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsDeleteHotelItem catalogsDeleteHotelItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsDeleteHotelItem.HotelId == null)
-                throw new ArgumentNullException(nameof(catalogsDeleteHotelItem.HotelId), "Property is required for class CatalogsDeleteHotelItem.");
-
             writer.WriteString("hotel_id", catalogsDeleteHotelItem.HotelId);
 
             var operationRawValue = CatalogsDeleteHotelItem.OperationEnumToJsonValue(catalogsDeleteHotelItem.Operation);

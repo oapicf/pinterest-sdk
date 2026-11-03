@@ -6,20 +6,3 @@
 */
 #include "HttpMethod.h"
 
-namespace models {
-
-HttpMethod::HttpMethod()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

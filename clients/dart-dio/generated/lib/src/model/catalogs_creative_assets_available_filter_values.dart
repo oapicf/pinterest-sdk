@@ -123,6 +123,7 @@ class _$CatalogsCreativeAssetsAvailableFilterValuesSerializer implements Primiti
   }
 }
 
+
 class CatalogsCreativeAssetsAvailableFilterValuesCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'CREATIVE_ASSETS')

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.lang.Nullable;
@@ -21,88 +20,61 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CampaignDeliveryEstimatesDerivedMetrics", description = "Derived metrics for an ad campaign.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignDeliveryEstimatesDerivedMetrics {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpc;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpcLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpcUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpm;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpmLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float cpmUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeFrequency;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeFrequencyLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeFrequencyUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeImpression;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeImpressionLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeImpressionUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeReach;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeReachLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float lifetimeReachUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyClick;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyClickLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyClickUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyFrequency;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyFrequencyLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyFrequencyUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyImpression;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyImpressionLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyImpressionUpper;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyReach;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyReachLower;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Float weeklyReachUpper;
 
   public CampaignDeliveryEstimatesDerivedMetrics cpc(@Nullable Float cpc) {

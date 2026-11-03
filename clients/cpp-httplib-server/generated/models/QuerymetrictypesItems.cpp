@@ -6,20 +6,3 @@
 */
 #include "QuerymetrictypesItems.h"
 
-namespace models {
-
-QuerymetrictypesItems::QuerymetrictypesItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

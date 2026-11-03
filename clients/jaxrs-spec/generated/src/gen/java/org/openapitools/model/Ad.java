@@ -32,17 +32,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("Ad")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class Ad   {
   private String adAccountId;
   private String adGroupId;
   private String androidDeepLink;
   private String campaignId;
-  private @Valid List<String> carouselAndroidDeepLinks;
-  private @Valid List<String> carouselDestinationUrls;
-  private @Valid List<String> carouselIosDeepLinks;
+  private List<String> carouselAndroidDeepLinks;
+  private List<String> carouselDestinationUrls;
+  private List<String> carouselIosDeepLinks;
   private Integer cartingPlatformType;
-  private @Valid List<@Valid CartingProduct> cartingProducts = new ArrayList<>();
+  private List<@Valid CartingProduct> cartingProducts = new ArrayList<>();
   private String clickTrackingUrl;
   private String collectionItemsDestinationUrlTemplate;
   private AdCollectionsHeaderType collectionsHeaderType;
@@ -64,8 +64,8 @@ public class Ad   {
   private String name;
   private String pinId;
   private QuizPinData quizPinData;
-  private @Valid List<AdDisapprovalReasons> rejectedReasons = new ArrayList<>();
-  private @Valid List<String> rejectionLabels = new ArrayList<>();
+  private List<AdDisapprovalReasons> rejectedReasons = new ArrayList<>();
+  private List<String> rejectionLabels = new ArrayList<>();
   private AdReviewStatus reviewStatus;
   private EntityStatus status;
   private PinPromotionSummaryStatus summaryStatus;
@@ -325,7 +325,7 @@ public class Ad   {
   
   @ApiModelProperty(value = "Array of carting/WTB products for the ad.")
   @JsonProperty("carting_products")
-  @Valid public List<@Valid CartingProduct> getCartingProducts() {
+  public List<@Valid CartingProduct> getCartingProducts() {
     return cartingProducts;
   }
 

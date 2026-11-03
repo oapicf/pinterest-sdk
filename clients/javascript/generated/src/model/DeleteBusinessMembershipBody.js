@@ -17,7 +17,7 @@ import DeleteBusinessMembershipMember from './DeleteBusinessMembershipMember';
 /**
  * The DeleteBusinessMembershipBody model module.
  * @module model/DeleteBusinessMembershipBody
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class DeleteBusinessMembershipBody {
     /**

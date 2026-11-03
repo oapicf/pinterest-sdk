@@ -50,29 +50,67 @@ import {
 } from '../models/PromotionsResponse';
 
 export interface PromotionsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     promotionCreate: Array<PromotionCreate>;
 }
 
 export interface PromotionsDeleteRequest {
+    /**
+     * Promotion ID
+     */
     promotionId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface PromotionsGetRequest {
+    /**
+     * Promotion ID
+     */
     promotionId: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface PromotionsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
 }
 
 export interface PromotionsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     promotionBatchUpdate: Array<PromotionBatchUpdate>;
 }
 

@@ -146,16 +146,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!errors.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedValidationDetails.", nameof(errors));
+                throw new JsonException("Property is required for class CatalogsFeedValidationDetails: errors.");
 
             if (!warnings.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsFeedValidationDetails.", nameof(warnings));
+                throw new JsonException("Property is required for class CatalogsFeedValidationDetails: warnings.");
 
             if (errors.IsSet && errors.Value == null)
-                throw new ArgumentNullException(nameof(errors), "Property is not nullable for class CatalogsFeedValidationDetails.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationDetails: errors.");
 
             if (warnings.IsSet && warnings.Value == null)
-                throw new ArgumentNullException(nameof(warnings), "Property is not nullable for class CatalogsFeedValidationDetails.");
+                throw new JsonException("Property is not nullable for class CatalogsFeedValidationDetails: warnings.");
 
             return new CatalogsFeedValidationDetails(errors.Value!, warnings.Value!);
         }
@@ -166,7 +166,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedValidationDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedValidationDetails catalogsFeedValidationDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -181,15 +180,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsFeedValidationDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsFeedValidationDetails catalogsFeedValidationDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsFeedValidationDetails.Errors == null)
-                throw new ArgumentNullException(nameof(catalogsFeedValidationDetails.Errors), "Property is required for class CatalogsFeedValidationDetails.");
-
-            if (catalogsFeedValidationDetails.Warnings == null)
-                throw new ArgumentNullException(nameof(catalogsFeedValidationDetails.Warnings), "Property is required for class CatalogsFeedValidationDetails.");
-
             writer.WritePropertyName("errors");
             JsonSerializer.Serialize(writer, catalogsFeedValidationDetails.Errors, jsonSerializerOptions);
             writer.WritePropertyName("warnings");

@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @ApiModel(description = "Age and gender distribution who engaged with this product category in the past 3 months")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoriesDemographic   {
   @JsonProperty("age")
   
@@ -35,7 +35,7 @@ public class ProductCategoriesDemographic   {
 
   public ProductCategoriesDemographic putAgeItem(String key, BigDecimal ageItem) {
     if (this.age == null) {
-      this.age = new HashMap<>());
+      this.age = new HashMap<>();
     }
     this.age.put(key, ageItem);
     return this;

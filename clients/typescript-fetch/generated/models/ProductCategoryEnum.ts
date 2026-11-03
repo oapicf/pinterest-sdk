@@ -400,7 +400,7 @@ export const ProductCategoryEnum = {
     WoodworkingMaterials: 'WOODWORKING_MATERIALS',
     WoodworkingPlans: 'WOODWORKING_PLANS',
     WorkBenches: 'WORK_BENCHES',
-    WreathsAndGarlands: 'WREATHS_AND_GARLANDS'
+    WreathsAndGarlands: 'WREATHS_AND_GARLANDS',
 } as const;
 export type ProductCategoryEnum = typeof ProductCategoryEnum[keyof typeof ProductCategoryEnum];
 

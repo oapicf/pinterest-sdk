@@ -516,3 +516,4 @@ class _$CampaignCreateItemSerializer implements PrimitiveSerializer<CampaignCrea
   }
 }
 
+

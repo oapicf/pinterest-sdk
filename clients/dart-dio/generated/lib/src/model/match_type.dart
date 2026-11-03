@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'match_type.g.dart';
 
+/// Keyword match type
 class MatchType extends EnumClass {
 
-  /// Keyword match type
   @BuiltValueEnumConst(wireName: r'BROAD')
   static const MatchType BROAD = _$BROAD;
-  /// Keyword match type
   @BuiltValueEnumConst(wireName: r'PHRASE')
   static const MatchType PHRASE = _$PHRASE;
-  /// Keyword match type
   @BuiltValueEnumConst(wireName: r'EXACT')
   static const MatchType EXACT = _$EXACT;
-  /// Keyword match type
   @BuiltValueEnumConst(wireName: r'EXACT_NEGATIVE')
   static const MatchType EXACT_NEGATIVE = _$EXACT_NEGATIVE;
-  /// Keyword match type
   @BuiltValueEnumConst(wireName: r'PHRASE_NEGATIVE')
   static const MatchType PHRASE_NEGATIVE = _$PHRASE_NEGATIVE;
 

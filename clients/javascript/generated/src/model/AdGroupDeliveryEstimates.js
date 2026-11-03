@@ -22,7 +22,7 @@ import TargetingSpecOptimal from './TargetingSpecOptimal';
 /**
  * The AdGroupDeliveryEstimates model module.
  * @module model/AdGroupDeliveryEstimates
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupDeliveryEstimates {
     /**

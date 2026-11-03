@@ -29,32 +29,22 @@ import {
 export interface LeadSubscriptionPostParamsCreate {
     /**
      * Lead form ID.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParamsCreate
      */
     leadFormId?: string;
     /**
      * Standard HTTPS webhook URL.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParamsCreate
      */
     webhookUrl: string;
     /**
      * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParamsCreate
      */
     partnerAccessToken?: string;
     /**
      * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
-     * @type {PartnerMetadata}
-     * @memberof LeadSubscriptionPostParamsCreate
      */
     partnerMetadata?: PartnerMetadata;
     /**
      * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-     * @type {string}
-     * @memberof LeadSubscriptionPostParamsCreate
      */
     partnerRefreshToken?: string;
 }

@@ -47,10 +47,11 @@ open class KeywordsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "country_code": (wrappedValue: countryCode.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "keywords": (wrappedValue: keywords.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: false),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -154,14 +155,15 @@ open class KeywordsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "campaign_id": (wrappedValue: campaignId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "ad_group_id": (wrappedValue: adGroupId?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "ad_group_ids": (wrappedValue: adGroupIds?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "match_types": (wrappedValue: matchTypes?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "bookmark": (wrappedValue: bookmark?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "page_size": (wrappedValue: pageSize?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :
@@ -269,7 +271,7 @@ open class KeywordsAPI {
         let localVariableParameters: [String: any Sendable]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        let localVariableQueryParameters: [String: (wrappedValue: (any Sendable)?, isExplode: Bool)] = [
             "interests": (wrappedValue: interests?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "genders": (wrappedValue: genders?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "ages": (wrappedValue: ages?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
@@ -277,7 +279,8 @@ open class KeywordsAPI {
             "normalize_against_group": (wrappedValue: normalizeAgainstGroup?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "limit": (wrappedValue: limit?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "include_demographics": (wrappedValue: includeDemographics?.asParameter(codableHelper: apiConfiguration.codableHelper), isExplode: true),
-        ])
+        ]
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems(localVariableQueryParameters)
 
         let localVariableNillableHeaders: [String: (any Sendable)?] = [
             :

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,15 +27,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "FeaturedTrend", description = "Featured trending topics for a specific interest and market")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FeaturedTrend {
 
   private InterestsEnum interest;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ProductCategoryRegion market;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid TrendingTopic> trends = new ArrayList<>();
 
   public FeaturedTrend() {
@@ -109,7 +106,7 @@ public class FeaturedTrend {
    * List of trending topics within this interest category
    * @return trends
    */
-  @Valid 
+  
   @Schema(name = "trends", description = "List of trending topics within this interest category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("trends")
   public List<@Valid TrendingTopic> getTrends() {

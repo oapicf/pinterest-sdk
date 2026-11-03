@@ -22,8 +22,6 @@ public class BoardsListPins200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid PinRead> items = new ArrayList<>();
  /**
    * Get bookmark

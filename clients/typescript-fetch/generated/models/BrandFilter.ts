@@ -29,8 +29,6 @@ import {
 export interface BrandFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof BrandFilter
      */
     bRAND: CatalogsProductGroupMultipleStringCriteria;
 }

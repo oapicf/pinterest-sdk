@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
-* Values: VARIABLE,SITEWIDE,CHECKOUT,SAVE_X_ON_Y,BUY_X_GET_Y,SPEND_X_SAVE_Y,FREE_SHIPPING,FREE_SHIPPING_MINIMUM,FREE_SHIPPING_WITH_DISCOUNT,SITEWIDE_IN_STORES,EXTRA_PERCENT_OFF,GIFT_WITH_PURCHASE,GIFT_WITH_PURCHASE_MINIMUM,FIXED,PERCENT_OFF_CLEARANCE,X_OFF_Y,GIFT_WITH_FIRST_PURCHASE,BUY_X_GET_ONE_FREE,CASH_BACK,POINTS_ON_ALL_PURCHASES,BONUS,POINTS_WITH_PURCHASE,CUSTOM
-*/
+ * Determines the displayed promotion text along with what parameters (if any) are needed to complete the template.
+ * Values: VARIABLE,SITEWIDE,CHECKOUT,SAVE_X_ON_Y,BUY_X_GET_Y,SPEND_X_SAVE_Y,FREE_SHIPPING,FREE_SHIPPING_MINIMUM,FREE_SHIPPING_WITH_DISCOUNT,SITEWIDE_IN_STORES,EXTRA_PERCENT_OFF,GIFT_WITH_PURCHASE,GIFT_WITH_PURCHASE_MINIMUM,FIXED,PERCENT_OFF_CLEARANCE,X_OFF_Y,GIFT_WITH_FIRST_PURCHASE,BUY_X_GET_ONE_FREE,CASH_BACK,POINTS_ON_ALL_PURCHASES,BONUS,POINTS_WITH_PURCHASE,CUSTOM
+ */
 enum class PromotionType(@get:JsonValue val value: kotlin.String) {
 
     VARIABLE("VARIABLE"),
@@ -49,9 +49,8 @@ enum class PromotionType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PromotionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PromotionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PromotionType'")
         }
     }
 }
-

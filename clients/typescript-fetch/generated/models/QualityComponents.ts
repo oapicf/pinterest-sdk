@@ -29,68 +29,46 @@ import {
 export interface QualityComponents {
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     advertiserExternalId?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     clickIdEpik?: { [key: string]: QualityComponentDetails; };
     /**
      * Dedup components.
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     externalEventId?: { [key: string]: QualityComponentDetails; };
     /**
      * User matching identifiers.
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     hashedEmail?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     hashedMaid?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     ipAddress?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     orderId?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     orderValue?: { [key: string]: QualityComponentDetails; };
     /**
      * Product/event metadata.
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     productId?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     sourceUrl?: { [key: string]: QualityComponentDetails; };
     /**
      * 
-     * @type {{ [key: string]: QualityComponentDetails; }}
-     * @memberof QualityComponents
      */
     userAgent?: { [key: string]: QualityComponentDetails; };
 }

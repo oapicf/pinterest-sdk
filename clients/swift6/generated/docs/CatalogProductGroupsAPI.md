@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 # **catalogsProductGroupPinsList**
 ```swift
-    open class func catalogsProductGroupPinsList(productGroupId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupPinsList(productGroupId: String, adAccountId: String? = nil, pinMetrics: Bool? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsProductGroupPinsList200Response
 ```
 
 List products by product group
@@ -37,15 +37,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List products by product group
-CatalogProductGroupsAPI.catalogsProductGroupPinsList(productGroupId: productGroupId, adAccountId: adAccountId, pinMetrics: pinMetrics, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupPinsList(productGroupId: productGroupId, adAccountId: adAccountId, pinMetrics: pinMetrics, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -76,7 +72,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsCreate**
 ```swift
-    open class func catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: CatalogsProductGroupsCreateRequestSchema, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsVerticalProductGroup
 ```
 
 Create product group
@@ -92,15 +88,11 @@ let catalogsProductGroupsCreateRequestSchema = CatalogsProductGroupsCreateReques
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create product group
-CatalogProductGroupsAPI.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: catalogsProductGroupsCreateRequestSchema, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema: catalogsProductGroupsCreateRequestSchema, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -128,7 +120,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsCreateMany**
 ```swift
-    open class func catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: [CatalogsProductGroupsCreateManyRequestItems], adAccountId: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: [CatalogsProductGroupsCreateManyRequestItems], adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> [String]
 ```
 
 Create product groups
@@ -144,15 +136,11 @@ let catalogsProductGroupsCreateManyRequestItems = [CatalogsProductGroupsCreateMa
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create product groups
-CatalogProductGroupsAPI.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: catalogsProductGroupsCreateManyRequestItems, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems: catalogsProductGroupsCreateManyRequestItems, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -180,7 +168,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsDelete**
 ```swift
-    open class func catalogsProductGroupsDelete(productGroupId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsDelete(productGroupId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsVerticalProductGroup?
 ```
 
 Delete product group
@@ -196,15 +184,11 @@ let productGroupId = "productGroupId_example" // String | Unique identifier of a
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete product group
-CatalogProductGroupsAPI.catalogsProductGroupsDelete(productGroupId: productGroupId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsDelete(productGroupId: productGroupId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -232,7 +216,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsDeleteMany**
 ```swift
-    open class func catalogsProductGroupsDeleteMany(id: [Int], adAccountId: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsDeleteMany(id: [Int], adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse)
 ```
 
 Delete product groups
@@ -248,15 +232,10 @@ let id = [123] // [Int] | Comma-separated list of product group ids
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete product groups
-CatalogProductGroupsAPI.catalogsProductGroupsDeleteMany(id: id, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    try await CatalogProductGroupsAPI.catalogsProductGroupsDeleteMany(id: id, adAccountId: adAccountId)
+} catch {
+    print(error)
 }
 ```
 
@@ -284,7 +263,7 @@ Void (empty response body)
 
 # **catalogsProductGroupsGet**
 ```swift
-    open class func catalogsProductGroupsGet(productGroupId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsGet(productGroupId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsVerticalProductGroup
 ```
 
 Get product group
@@ -300,15 +279,11 @@ let productGroupId = "productGroupId_example" // String | Unique identifier of a
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get product group
-CatalogProductGroupsAPI.catalogsProductGroupsGet(productGroupId: productGroupId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsGet(productGroupId: productGroupId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -336,7 +311,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsList**
 ```swift
-    open class func catalogsProductGroupsList(id: [Int]? = nil, feedId: String? = nil, catalogId: String? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: CatalogsProductGroupsList200Response?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsList(id: [Int]? = nil, feedId: String? = nil, catalogId: String? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsProductGroupsList200Response
 ```
 
 List product groups
@@ -356,15 +331,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List product groups
-CatalogProductGroupsAPI.catalogsProductGroupsList(id: id, feedId: feedId, catalogId: catalogId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsList(id: id, feedId: feedId, catalogId: catalogId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -396,7 +367,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsProductCountsGet**
 ```swift
-    open class func catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsProductGroupProductCountsVertical?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsProductCountsGet(productGroupId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsProductGroupProductCountsVertical
 ```
 
 Get product counts
@@ -412,15 +383,11 @@ let productGroupId = "productGroupId_example" // String | Unique identifier of a
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get product counts
-CatalogProductGroupsAPI.catalogsProductGroupsProductCountsGet(productGroupId: productGroupId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsProductCountsGet(productGroupId: productGroupId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -448,7 +415,7 @@ Name | Type | Description  | Notes
 
 # **catalogsProductGroupsUpdate**
 ```swift
-    open class func catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsVerticalProductGroup?, _ error: Error?) -> Void)
+    open class func catalogsProductGroupsUpdate(productGroupId: String, catalogsProductGroupsUpdateRequestSchema: CatalogsProductGroupsUpdateRequestSchema, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsVerticalProductGroup
 ```
 
 Update single product group
@@ -465,15 +432,11 @@ let catalogsProductGroupsUpdateRequestSchema = CatalogsProductGroupsUpdateReques
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update single product group
-CatalogProductGroupsAPI.catalogsProductGroupsUpdate(productGroupId: productGroupId, catalogsProductGroupsUpdateRequestSchema: catalogsProductGroupsUpdateRequestSchema, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.catalogsProductGroupsUpdate(productGroupId: productGroupId, catalogsProductGroupsUpdateRequestSchema: catalogsProductGroupsUpdateRequestSchema, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -502,7 +465,7 @@ Name | Type | Description  | Notes
 
 # **productsByProductGroupFilterList**
 ```swift
-    open class func productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, completion: @escaping (_ data: CatalogsProductGroupPinsList200Response?, _ error: Error?) -> Void)
+    open class func productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: String? = nil, pageSize: Int? = nil, adAccountId: String? = nil, pinMetrics: Bool? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsProductGroupPinsList200Response
 ```
 
 List products by filter
@@ -521,15 +484,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let pinMetrics = true // Bool | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional) (default to false)
 
 // List products by filter
-CatalogProductGroupsAPI.productsByProductGroupFilterList(catalogsListProductsByFilterRequest: catalogsListProductsByFilterRequest, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId, pinMetrics: pinMetrics) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogProductGroupsAPI.productsByProductGroupFilterList(catalogsListProductsByFilterRequest: catalogsListProductsByFilterRequest, bookmark: bookmark, pageSize: pageSize, adAccountId: adAccountId, pinMetrics: pinMetrics)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

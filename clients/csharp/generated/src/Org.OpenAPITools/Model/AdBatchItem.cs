@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class AdBatchItem.");
+                throw new JsonException("Property is not nullable for class AdBatchItem: data.");
 
             if (exceptions.IsSet && exceptions.Value == null)
-                throw new ArgumentNullException(nameof(exceptions), "Property is not nullable for class AdBatchItem.");
+                throw new JsonException("Property is not nullable for class AdBatchItem: exceptions.");
 
             return new AdBatchItem(data, exceptions);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdBatchItem adBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,14 +188,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adBatchItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdBatchItem adBatchItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adBatchItem.DataOption.IsSet && adBatchItem.Data == null)
-                throw new ArgumentNullException(nameof(adBatchItem.Data), "Property is required for class AdBatchItem.");
+                throw new JsonException("Cannot write null property AdBatchItem.Data to non-nullable JSON property 'data'.");
 
             if (adBatchItem.ExceptionsOption.IsSet && adBatchItem.Exceptions == null)
-                throw new ArgumentNullException(nameof(adBatchItem.Exceptions), "Property is required for class AdBatchItem.");
+                throw new JsonException("Cannot write null property AdBatchItem.Exceptions to non-nullable JSON property 'exceptions'.");
 
             if (adBatchItem.DataOption.IsSet)
             {

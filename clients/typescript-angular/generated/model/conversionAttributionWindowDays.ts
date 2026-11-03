@@ -15,7 +15,7 @@ export const ConversionAttributionWindowDays = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type ConversionAttributionWindowDays = typeof ConversionAttributionWindowDays[keyof typeof ConversionAttributionWindowDays];
 

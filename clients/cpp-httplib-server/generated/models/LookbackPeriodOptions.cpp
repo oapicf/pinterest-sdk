@@ -6,20 +6,3 @@
 */
 #include "LookbackPeriodOptions.h"
 
-namespace models {
-
-LookbackPeriodOptions::LookbackPeriodOptions()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

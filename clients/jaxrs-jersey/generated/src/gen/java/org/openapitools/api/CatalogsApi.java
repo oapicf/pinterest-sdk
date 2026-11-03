@@ -71,7 +71,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the catalogs API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsApi  {
    private final CatalogsApiService delegate;
 
@@ -228,7 +228,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresCreate(@ApiParam(value = "Unique identifier of a catalog.", required = true) @PathParam("catalog_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId,@ApiParam(value = "", required = true) @NotNull @Valid  List<@Valid LocalStoreCreate> localStoreCreate,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsLocalStoresCreate(@ApiParam(value = "Unique identifier of a catalog.", required = true) @PathParam("catalog_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId,@ApiParam(value = "", required = true) @NotNull  List<@Valid LocalStoreCreate> localStoreCreate,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.catalogsLocalStoresCreate(catalogId, localStoreCreate, adAccountId, securityContext);
     }
@@ -295,7 +295,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsLocalStoresUpdate(@ApiParam(value = "Unique identifier of a catalog.", required = true) @PathParam("catalog_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId,@ApiParam(value = "", required = true) @NotNull @Valid  List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsLocalStoresUpdate(@ApiParam(value = "Unique identifier of a catalog.", required = true) @PathParam("catalog_id") @NotNull  @Pattern(regexp="^\\d+$") @Size(max=19) String catalogId,@ApiParam(value = "", required = true) @NotNull  List<@Valid LocalStoreBatchUpdate> localStoreBatchUpdate,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.catalogsLocalStoresUpdate(catalogId, localStoreBatchUpdate, adAccountId, securityContext);
     }
@@ -369,7 +369,7 @@ public class CatalogsApi  {
         @io.swagger.annotations.ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @io.swagger.annotations.ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "", required = true) @NotNull @Valid  @Size(min=1,max=1000) List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
+    public Response catalogsProductGroupsCreateMany(@ApiParam(value = "", required = true) @NotNull  @Size(min=1,max=1000) List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems,@ApiParam(value = "Unique identifier of an ad account.") @QueryParam("ad_account_id")  @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId, securityContext);
     }

@@ -124,3 +124,4 @@ class _$IneligibleProductTagErrorItemSerializer implements PrimitiveSerializer<I
   }
 }
 
+

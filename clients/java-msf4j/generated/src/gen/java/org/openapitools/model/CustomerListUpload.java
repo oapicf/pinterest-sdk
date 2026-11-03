@@ -18,7 +18,7 @@ import org.openapitools.model.WorkloadState;
 /**
  * CustomerListUpload
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpload   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -108,7 +108,7 @@ public class CustomerListUpload   {
 
   public CustomerListUpload addErrorCountsItem(ErrorDetail errorCountsItem) {
     if (this.errorCounts == null) {
-      this.errorCounts = ;
+      this.errorCounts = new ArrayList<>();
     }
     this.errorCounts.add(errorCountsItem);
     return this;

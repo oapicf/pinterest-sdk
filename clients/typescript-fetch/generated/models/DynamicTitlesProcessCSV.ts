@@ -29,14 +29,10 @@ import {
 export interface DynamicTitlesProcessCSV {
     /**
      * List of validation errors. Empty on success.
-     * @type {Array<DynamicTitlesProcessCSVError>}
-     * @memberof DynamicTitlesProcessCSV
      */
     readonly errors?: Array<DynamicTitlesProcessCSVError>;
     /**
      * Processing status. Present on success.
-     * @type {string}
-     * @memberof DynamicTitlesProcessCSV
      */
     readonly status?: string;
 }

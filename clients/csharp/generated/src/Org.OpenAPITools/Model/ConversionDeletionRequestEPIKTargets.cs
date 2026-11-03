@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!epiks.IsSet)
-                throw new ArgumentException("Property is required for class ConversionDeletionRequestEPIKTargets.", nameof(epiks));
+                throw new JsonException("Property is required for class ConversionDeletionRequestEPIKTargets: epiks.");
 
             if (epiks.IsSet && epiks.Value == null)
-                throw new ArgumentNullException(nameof(epiks), "Property is not nullable for class ConversionDeletionRequestEPIKTargets.");
+                throw new JsonException("Property is not nullable for class ConversionDeletionRequestEPIKTargets: epiks.");
 
             return new ConversionDeletionRequestEPIKTargets(epiks.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestEPIKTargets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionDeletionRequestEPIKTargets conversionDeletionRequestEPIKTargets, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionDeletionRequestEPIKTargets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionDeletionRequestEPIKTargets conversionDeletionRequestEPIKTargets, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionDeletionRequestEPIKTargets.Epiks == null)
-                throw new ArgumentNullException(nameof(conversionDeletionRequestEPIKTargets.Epiks), "Property is required for class ConversionDeletionRequestEPIKTargets.");
-
             writer.WritePropertyName("epiks");
             JsonSerializer.Serialize(writer, conversionDeletionRequestEPIKTargets.Epiks, jsonSerializerOptions);
         }

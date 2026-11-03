@@ -332,12 +332,12 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **targetingType** | [**PublicTargetingType**](.md)| Public targeting type | [enum: APPTYPE, GENDER, LOCALE, AGE_BUCKET, LOCATION, GEO, INTEREST, KEYWORD, AUDIENCE_INCLUDE, AUDIENCE_EXCLUDE] |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **clientId** | **kotlin.String**| Client ID | [optional] |
 | **oauthSignature** | **kotlin.String**| Oauth signature | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **timestamp** | **kotlin.String**| Timestamp. | [optional] |
 
 ### Return type

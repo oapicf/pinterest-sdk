@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -26,19 +25,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ConversionEventsDataItemsCustomData", description = "Object containing other custom data.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsDataItemsCustomData {
 
   private JsonNullable<String> contentBrand = JsonNullable.<String>undefined();
 
   private JsonNullable<String> contentCategory = JsonNullable.<String>undefined();
 
-  @Valid
   private List<String> contentIds = new ArrayList<>();
 
   private JsonNullable<String> contentName = JsonNullable.<String>undefined();
 
-  @Valid
   private List<@Valid ConversionEventsDataItemsCustomDataContentsItems> contents = new ArrayList<>();
 
   private JsonNullable<String> currency = JsonNullable.<String>undefined();
@@ -166,7 +163,7 @@ public class ConversionEventsDataItemsCustomData {
    * A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).
    * @return contents
    */
-  @Valid 
+  
   @Schema(name = "contents", description = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("contents")
   public List<@Valid ConversionEventsDataItemsCustomDataContentsItems> getContents() {

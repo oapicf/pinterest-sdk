@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Advertiser's ISO two character country code.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum TargetingAdvertiserCountry {
   
   US("US"),

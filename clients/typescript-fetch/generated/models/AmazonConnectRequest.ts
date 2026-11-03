@@ -21,44 +21,30 @@ import { mapValues } from '../runtime';
 export interface AmazonConnectRequest {
     /**
      * The Amazon storefront id
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     amazonStorefrontId?: string;
     /**
      * The Amazon storefront name
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     amazonStorefrontName: string;
     /**
      * The Amazon storefront url
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     amazonStorefrontUrl: string;
     /**
      * The Amazon user id
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     amazonUserId?: string;
     /**
      * The Amazon account linking status
-     * @type {boolean}
-     * @memberof AmazonConnectRequest
      */
     isAmazonAccountLinked: boolean;
     /**
      * The one time passcode for Pinterest-initiated linking requests
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     oneTimePasscode?: string;
     /**
      * The Pinterest user id for Amazon-initiated linking requests
-     * @type {string}
-     * @memberof AmazonConnectRequest
      */
     pinterestUserId?: string;
 }

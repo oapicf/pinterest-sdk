@@ -24,8 +24,6 @@ public class DeletePartnerAssetAccessBody  {
   */
   @ApiModelProperty(required = true, value = "List of partner asset accesses to delete.")
 
-  @Valid
-
   private List<@Valid DeletePartnerAssetAccessItem> accesses = new ArrayList<>();
  /**
    * List of partner asset accesses to delete.

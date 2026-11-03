@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (gENDER.IsSet && gENDER.Value == null)
-                throw new ArgumentNullException(nameof(gENDER), "Property is not nullable for class ScheduleBidOptionsGenderMultipliers.");
+                throw new JsonException("Property is not nullable for class ScheduleBidOptionsGenderMultipliers: GENDER.");
 
             return new ScheduleBidOptionsGenderMultipliers(gENDER);
         }
@@ -158,7 +158,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptionsGenderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ScheduleBidOptionsGenderMultipliers scheduleBidOptionsGenderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -173,9 +172,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="scheduleBidOptionsGenderMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ScheduleBidOptionsGenderMultipliers scheduleBidOptionsGenderMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (scheduleBidOptionsGenderMultipliers.GENDEROption.IsSet && scheduleBidOptionsGenderMultipliers.GENDER == null)
+                throw new JsonException("Cannot write null property ScheduleBidOptionsGenderMultipliers.GENDER to non-nullable JSON property 'GENDER'.");
+
             if (scheduleBidOptionsGenderMultipliers.GENDEROption.IsSet)
             {
                 var gENDERRawValue = TargetingSpecGenderValueConverter.ToJsonValue(scheduleBidOptionsGenderMultipliers.GENDER!.Value);

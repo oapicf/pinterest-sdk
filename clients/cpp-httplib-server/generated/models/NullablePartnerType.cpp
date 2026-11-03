@@ -6,20 +6,3 @@
 */
 #include "NullablePartnerType.h"
 
-namespace models {
-
-NullablePartnerType::NullablePartnerType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

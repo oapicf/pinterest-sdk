@@ -30,11 +30,11 @@ public class AdGroupCreateRequestAllOf1  {
 
   @ApiModelProperty(value = "")
   @Valid
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @ApiModelProperty(value = "")
   @Valid
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
  /**
   * Enable auto-targeting for ad group. Default value is True. Also known as &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/performance-plus-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;\&quot;Pinterest Performance+ targeting\&quot;&lt;/a&gt;.
   * @return autoTargetingEnabled

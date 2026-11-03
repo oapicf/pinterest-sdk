@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -34,29 +33,25 @@ import jakarta.annotation.Generated;
  * AccountTemplate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AccountTemplate {
 
   private String adAccountId;
 
-  @Valid
   private List<String> adAccountIds = new ArrayList<>();
 
-  @Valid
   private List<@Pattern(regexp = "^ADE_[A-Z_]+-[a-zA-Z0-9 _-]*$")String> adeColumns = new ArrayList<>();
 
   private JsonNullable<Object> attributionType = JsonNullable.<Object>undefined();
 
   private BigDecimal clickWindowDays;
 
-  @Valid
   private List<ReportingColumn> columns = new ArrayList<>();
 
   private ConversionReportTimeType conversionReportTimeType;
 
   private CreationSource creationSource;
 
-  @Valid
   private JsonNullable<List<String>> customColumnIds = JsonNullable.<List<String>>undefined();
 
   private String displayMetadata;
@@ -69,7 +64,6 @@ public class AccountTemplate {
 
   private String id;
 
-  @Valid
   private JsonNullable<List<IngestionSource>> ingestionSources = JsonNullable.<List<IngestionSource>>undefined();
 
   private Boolean isDefault;
@@ -246,7 +240,7 @@ public class AccountTemplate {
    * A list of columns to be included in the report
    * @return columns
    */
-  @Valid 
+  
   @Schema(name = "columns", description = "A list of columns to be included in the report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("columns")
   public List<ReportingColumn> getColumns() {
@@ -442,7 +436,7 @@ public class AccountTemplate {
    * The filter on the conversion ingestion source method for conversion metrics
    * @return ingestionSources
    */
-  @Valid 
+  
   @Schema(name = "ingestion_sources", description = "The filter on the conversion ingestion source method for conversion metrics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ingestion_sources")
   public JsonNullable<List<IngestionSource>> getIngestionSources() {

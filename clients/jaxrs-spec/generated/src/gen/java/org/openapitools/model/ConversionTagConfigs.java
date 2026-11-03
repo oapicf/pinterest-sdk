@@ -21,7 +21,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("ConversionTagConfigs")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionTagConfigs   {
   private Boolean aemDbEnabled = false;
   private Boolean aemEnabled = false;
@@ -31,7 +31,7 @@ public class ConversionTagConfigs   {
   private Boolean aemLocEnabled = false;
   private Boolean aemPhEnabled = false;
   private BigDecimal mdFrequency = new BigDecimal("1");
-  private @Valid List<String> noCodeCapiDomains = new ArrayList<>();
+  private List<String> noCodeCapiDomains = new ArrayList<>();
 
   public ConversionTagConfigs() {
   }

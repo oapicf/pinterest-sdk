@@ -11,7 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.Role._
 
 case class AdAccountToBusinessSharedAudience(
   /* Unique identifier of an audience */

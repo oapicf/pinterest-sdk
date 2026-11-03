@@ -22,13 +22,13 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, field_validator
 from typing_extensions import Annotated
 from openapi_server.models.customer_list_upload import CustomerListUpload
 from openapi_server.models.customer_list_upload_create_request import CustomerListUploadCreateRequest
 from openapi_server.models.customer_list_upload_create_response import CustomerListUploadCreateResponse
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -54,9 +54,9 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def customer_list_uploads_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
-    customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
-    customer_list_upload_create_request: CustomerListUploadCreateRequest = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
+    customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
+    customer_list_upload_create_request: CustomerListUploadCreateRequest = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -83,9 +83,9 @@ async def customer_list_uploads_create(
     response_model_by_alias=True,
 )
 async def customer_list_uploads_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
-    customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
-    customer_list_upload_id: Annotated[str, Field(strict=True, description="Customer List Upload ID.")] = Path(..., description="Customer List Upload ID.", regex=r"^\d+$"),
+    ad_account_id: Annotated[str, Field(max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
+    customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
+    customer_list_upload_id: Annotated[str, Field(description="Customer List Upload ID.")] = Path(..., description="Customer List Upload ID.", regex=r"^\d+$"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -112,9 +112,9 @@ async def customer_list_uploads_get(
     response_model_by_alias=True,
 )
 async def customer_list_uploads_run(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
-    customer_list_id: Annotated[str, Field(strict=True, max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
-    customer_list_upload_id: Annotated[str, Field(strict=True, description="Customer List Upload ID.")] = Path(..., description="Customer List Upload ID.", regex=r"^\d+$"),
+    ad_account_id: Annotated[str, Field(max_length=18)] = Path(..., description="", regex=r"^\d+$", max_length=18),
+    customer_list_id: Annotated[str, Field(max_length=18, description="Customer list ID.")] = Path(..., description="Customer list ID.", regex=r"^\d+$", max_length=18),
+    customer_list_upload_id: Annotated[str, Field(description="Customer List Upload ID.")] = Path(..., description="Customer List Upload ID.", regex=r"^\d+$"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),

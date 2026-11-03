@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!iTEMGROUPID.IsSet)
-                throw new ArgumentException("Property is required for class ItemGroupIdFilter.", nameof(iTEMGROUPID));
+                throw new JsonException("Property is required for class ItemGroupIdFilter: ITEM_GROUP_ID.");
 
             if (iTEMGROUPID.IsSet && iTEMGROUPID.Value == null)
-                throw new ArgumentNullException(nameof(iTEMGROUPID), "Property is not nullable for class ItemGroupIdFilter.");
+                throw new JsonException("Property is not nullable for class ItemGroupIdFilter: ITEM_GROUP_ID.");
 
             return new ItemGroupIdFilter(iTEMGROUPID.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemGroupIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemGroupIdFilter itemGroupIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemGroupIdFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemGroupIdFilter itemGroupIdFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (itemGroupIdFilter.ITEM_GROUP_ID == null)
-                throw new ArgumentNullException(nameof(itemGroupIdFilter.ITEM_GROUP_ID), "Property is required for class ItemGroupIdFilter.");
-
             writer.WritePropertyName("ITEM_GROUP_ID");
             JsonSerializer.Serialize(writer, itemGroupIdFilter.ITEM_GROUP_ID, jsonSerializerOptions);
         }

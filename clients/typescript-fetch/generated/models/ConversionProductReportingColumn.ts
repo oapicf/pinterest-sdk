@@ -189,7 +189,7 @@ export const ConversionProductReportingColumn = {
     TotalInappViewContentConversionProductValueInUsd: 'TOTAL_INAPP_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD',
     TotalOfflineViewContentConversionProductQuantity: 'TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_QUANTITY',
     TotalOfflineViewContentConversionProductValue: 'TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE',
-    TotalOfflineViewContentConversionProductValueInUsd: 'TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD'
+    TotalOfflineViewContentConversionProductValueInUsd: 'TOTAL_OFFLINE_VIEW_CONTENT_CONVERSION_PRODUCT_VALUE_IN_USD',
 } as const;
 export type ConversionProductReportingColumn = typeof ConversionProductReportingColumn[keyof typeof ConversionProductReportingColumn];
 

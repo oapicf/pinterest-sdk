@@ -128,3 +128,4 @@ class _$PromotionArrayElementSerializer implements PrimitiveSerializer<Promotion
   }
 }
 
+

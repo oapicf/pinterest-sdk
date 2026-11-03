@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.AudienceRule
 import org.openapitools.model.AudienceStatus
 import org.openapitools.model.PinnerListType
@@ -41,15 +38,11 @@ data class Audience(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Ad account ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_account_id")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "[Audience types](/docs/reference/glossary/#Audience Types): ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("audience_type")
     @get:JsonProperty("audience_type") val audienceType: PinnerListType? = null,
 
@@ -67,27 +60,19 @@ data class Audience(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1234", description = "Audience ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
     @Schema(description = "Whether the audience derives from a new customer acquisition (expanded matching) customer list. Read-only.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_nca")
     @get:JsonProperty("is_nca") val isNca: kotlin.Boolean? = null,
 
     @Schema(example = "ACME Tools", description = "Audience name.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("rule")
     @get:JsonProperty("rule") val rule: AudienceRule? = null,
 
@@ -97,14 +82,10 @@ data class Audience(
 
     @field:Valid
     @Schema(description = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: AudienceStatus? = null,
 
     @Schema(example = "audience", description = "Always \"audience\".")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("type")
     @get:JsonProperty("type") val type: kotlin.String? = null,
 

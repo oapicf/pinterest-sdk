@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsHotelProductGroupFilters
 import org.openapitools.model.CatalogsHotelProductGroupType
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
@@ -39,31 +36,29 @@ data class CatalogsHotelProductGroup(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog ID pertaining to the product group.")
-    @param:JsonProperty("catalog_id")
+    @param:JsonProperty("catalog_id", required = true)
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsHotelProductGroup.CatalogType = kotlin.String.HOTEL,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsHotelProductGroupFilters,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "443727193917", required = true, description = "ID of the catalog product group.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("type")
+    @param:JsonProperty("type", required = true)
     @get:JsonProperty("type", required = true) val type: CatalogsHotelProductGroupType,
 
     @Schema(example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_at")
     @get:JsonProperty("created_at") val createdAt: kotlin.Int? = null,
 
@@ -72,14 +67,10 @@ data class CatalogsHotelProductGroup(
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
     @Schema(example = "Most Popular", description = "Name of catalog product group")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("name")
     @get:JsonProperty("name") val name: kotlin.String? = null,
 
     @Schema(example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("updated_at")
     @get:JsonProperty("updated_at") val updatedAt: kotlin.Int? = null
 ) : CatalogsVerticalProductGroup {
@@ -91,12 +82,12 @@ data class CatalogsHotelProductGroup(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         HOTEL("HOTEL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

@@ -21,33 +21,23 @@ import { mapValues } from '../runtime';
 export interface DeletePartnerAssetAccessResult {
     /**
      * Unique identifier of a business asset.
-     * @type {string}
-     * @memberof DeletePartnerAssetAccessResult
      */
     assetId?: string;
     /**
      * Type of asset. Currently we only support AD_ACCOUNT, PROFILE, ASSET_GROUP and CATALOG.
-     * @type {string}
-     * @memberof DeletePartnerAssetAccessResult
      */
     assetType?: string;
     /**
      * If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.
      * If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
-     * @type {boolean}
-     * @memberof DeletePartnerAssetAccessResult
      */
     isSharedPartner?: boolean;
     /**
      * Unique identifier of a business partner.
-     * @type {string}
-     * @memberof DeletePartnerAssetAccessResult
      */
     partnerId?: string;
     /**
      * Permission levels member or partner has on an asset.
-     * @type {Array<string>}
-     * @memberof DeletePartnerAssetAccessResult
      */
     permissions?: Array<string>;
 }

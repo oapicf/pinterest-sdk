@@ -34,7 +34,7 @@ import javax.validation.Valid;
   LabelsResponse.JSON_PROPERTY_ERRORS,
   LabelsResponse.JSON_PROPERTY_LABELS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelsResponse   {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @JsonProperty(JSON_PROPERTY_ERRORS)
@@ -63,7 +63,7 @@ public class LabelsResponse   {
    **/
   @JsonProperty(value = "errors")
   @ApiModelProperty(value = "Labels that were not successfully applied.")
-  @Valid 
+  
   public List<@Valid LabelError> getErrors() {
     return errors;
   }
@@ -91,7 +91,7 @@ public class LabelsResponse   {
    **/
   @JsonProperty(value = "labels")
   @ApiModelProperty(value = "")
-  @Valid 
+  
   public List<@Valid Label> getLabels() {
     return labels;
   }

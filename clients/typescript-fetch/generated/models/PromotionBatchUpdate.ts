@@ -43,68 +43,46 @@ import {
 export interface PromotionBatchUpdate {
     /**
      * 
-     * @type {DiscountStatus}
-     * @memberof PromotionBatchUpdate
      */
     discountStatus?: DiscountStatus;
     /**
      * Promotion end time. Unix timestamp in seconds. Independent of campaign end time.
-     * @type {number}
-     * @memberof PromotionBatchUpdate
      */
     endTime?: number;
     /**
      * Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     externalId?: string;
     /**
      * Promotion ID
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     id: string;
     /**
      * The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     platformType?: string;
     /**
      * Code that can be used to redeem a promotion.
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     promotionCode?: string;
     /**
      * An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     promotionCustomId?: string;
     /**
      * Internal name for the promotion.
-     * @type {string}
-     * @memberof PromotionBatchUpdate
      */
     promotionTitle?: string;
     /**
      * 
-     * @type {PromotionType}
-     * @memberof PromotionBatchUpdate
      */
     promotionType?: PromotionType;
     /**
      * Promotion start time. Unix timestamp in seconds. Independent of campaign start time.
-     * @type {number}
-     * @memberof PromotionBatchUpdate
      */
     startTime?: number;
     /**
      * List of values to be inserted in the promotion type-specific template.
-     * @type {Array<PromotionTemplateValue>}
-     * @memberof PromotionBatchUpdate
      */
     templateValues?: Array<PromotionTemplateValue>;
 }

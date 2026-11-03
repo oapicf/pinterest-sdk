@@ -36,26 +36,18 @@ import {
 export interface Label {
     /**
      * Label ID.
-     * @type {string}
-     * @memberof Label
      */
     id: string;
     /**
      * 
-     * @type {NullableLabelType}
-     * @memberof Label
      */
     labelType: NullableLabelType | null;
     /**
      * 
-     * @type {NullableLabelStatus}
-     * @memberof Label
      */
     status?: NullableLabelStatus | null;
     /**
      * Label name. 100-character limit.
-     * @type {string}
-     * @memberof Label
      */
     value: string;
 }

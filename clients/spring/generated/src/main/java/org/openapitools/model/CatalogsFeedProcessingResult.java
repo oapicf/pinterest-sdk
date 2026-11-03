@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,7 +27,7 @@ import jakarta.annotation.Generated;
  * CatalogsFeedProcessingResult
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedProcessingResult {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -47,7 +46,6 @@ public class CatalogsFeedProcessingResult {
 
   private CatalogsFeedValidationDetails validationDetails;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsFeedVideoCounts videoCounts;
 
   public CatalogsFeedProcessingResult() {
@@ -139,8 +137,8 @@ public class CatalogsFeedProcessingResult {
    * Get productCounts
    * @return productCounts
    */
-  @NotNull @Valid 
-  @Schema(name = "product_counts", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ @Valid 
+  @Schema(name = "product_counts", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("product_counts")
   public JsonNullable<CatalogsFeedProductCounts> getProductCounts() {
     return productCounts;

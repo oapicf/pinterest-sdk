@@ -12,24 +12,134 @@
 
 namespace models {
 
-
-class CampaignObjectiveType
-{
-public:
-
-    CampaignObjectiveType();
-    virtual ~CampaignObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignObjectiveType,
-        )
-
-private:
+enum class CampaignObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    VIDEO_VIEW,
+    
+    WEB_CONVERSION,
+    
+    CATALOG_SALES,
+    
+    WEB_SESSIONS,
+    
+    VIDEO_COMPLETION,
+    
+    APP_INSTALL,
+    
+    SALES,
+    
+    LEADS,
+    
+    CTV_CONSIDERATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case CampaignObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case CampaignObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case CampaignObjectiveType::VIDEO_VIEW: j = "VIDEO_VIEW"; break;
+        
+        case CampaignObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case CampaignObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case CampaignObjectiveType::WEB_SESSIONS: j = "WEB_SESSIONS"; break;
+        
+        case CampaignObjectiveType::VIDEO_COMPLETION: j = "VIDEO_COMPLETION"; break;
+        
+        case CampaignObjectiveType::APP_INSTALL: j = "APP_INSTALL"; break;
+        
+        case CampaignObjectiveType::SALES: j = "SALES"; break;
+        
+        case CampaignObjectiveType::LEADS: j = "LEADS"; break;
+        
+        case CampaignObjectiveType::CTV_CONSIDERATION: j = "CTV_CONSIDERATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = CampaignObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = CampaignObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "VIDEO_VIEW")
+    {
+        value = CampaignObjectiveType::VIDEO_VIEW;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = CampaignObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = CampaignObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "WEB_SESSIONS")
+    {
+        value = CampaignObjectiveType::WEB_SESSIONS;
+        return;
+    }
+    
+    if (j == "VIDEO_COMPLETION")
+    {
+        value = CampaignObjectiveType::VIDEO_COMPLETION;
+        return;
+    }
+    
+    if (j == "APP_INSTALL")
+    {
+        value = CampaignObjectiveType::APP_INSTALL;
+        return;
+    }
+    
+    if (j == "SALES")
+    {
+        value = CampaignObjectiveType::SALES;
+        return;
+    }
+    
+    if (j == "LEADS")
+    {
+        value = CampaignObjectiveType::LEADS;
+        return;
+    }
+    
+    if (j == "CTV_CONSIDERATION")
+    {
+        value = CampaignObjectiveType::CTV_CONSIDERATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignObjectiveType", &j);
+}
 
 } // namespace models
 

@@ -6,20 +6,3 @@
 */
 #include "AdReviewStatus.h"
 
-namespace models {
-
-AdReviewStatus::AdReviewStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

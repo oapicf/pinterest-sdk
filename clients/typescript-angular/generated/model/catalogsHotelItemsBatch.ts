@@ -36,7 +36,7 @@ export interface CatalogsHotelItemsBatch {
 }
 export namespace CatalogsHotelItemsBatch {
     export const CatalogTypeEnum = {
-        Hotel: 'HOTEL'
+        Hotel: 'HOTEL',
     } as const;
     export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }

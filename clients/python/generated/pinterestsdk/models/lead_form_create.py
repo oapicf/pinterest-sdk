@@ -85,15 +85,13 @@ class LeadFormCreate(BaseModel):
         _items = []
         if self.policy_links:
             for _item_policy_links in self.policy_links:
-                if _item_policy_links:
-                    _items.append(_item_policy_links.to_dict())
+                _items.append(_item_policy_links.to_dict() if _item_policy_links is not None else None)
             _dict['policy_links'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in questions (list)
         _items = []
         if self.questions:
             for _item_questions in self.questions:
-                if _item_questions:
-                    _items.append(_item_questions.to_dict())
+                _items.append(_item_questions.to_dict() if _item_questions is not None else None)
             _dict['questions'] = _items
         # set to None if completion_message (nullable) is None
         # and model_fields_set contains the field

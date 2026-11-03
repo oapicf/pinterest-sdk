@@ -12,24 +12,214 @@
 
 namespace models {
 
-
-class Role
-{
-public:
-
-    Role();
-    virtual ~Role() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Role,
-        )
-
-private:
+enum class Role {
+    
+    UNKNOWN,
+    
+    OWNER,
+    
+    ADMIN,
+    
+    ANALYST,
+    
+    SOS_READER,
+    
+    FINANCE_MANAGER,
+    
+    FINANCE_EDIT,
+    
+    FINANCE_VIEW,
+    
+    AUDIENCE_MANAGER,
+    
+    CAMPAIGN_MANAGER,
+    
+    CATALOGS_MANAGER,
+    
+    CATALOGS_VIEWER,
+    
+    RESTRICTED_OWNER,
+    
+    PROFILE_MANAGER,
+    
+    PROFILE_PUBLISHER,
+    
+    RESOURCE_PINNER_LIST_OWNER,
+    
+    RESOURCE_PINNER_LIST_READER,
+    
+    BIZ_PINNER_LIST_SHARER,
+    
+    RESOURCE_CONVERSION_TAGS_READER
+    
 };
 
+inline void to_json(nlohmann::json& j, const Role& value)
+{
+    switch (value)
+    {
+        
+        case Role::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case Role::OWNER: j = "OWNER"; break;
+        
+        case Role::ADMIN: j = "ADMIN"; break;
+        
+        case Role::ANALYST: j = "ANALYST"; break;
+        
+        case Role::SOS_READER: j = "SOS_READER"; break;
+        
+        case Role::FINANCE_MANAGER: j = "FINANCE_MANAGER"; break;
+        
+        case Role::FINANCE_EDIT: j = "FINANCE_EDIT"; break;
+        
+        case Role::FINANCE_VIEW: j = "FINANCE_VIEW"; break;
+        
+        case Role::AUDIENCE_MANAGER: j = "AUDIENCE_MANAGER"; break;
+        
+        case Role::CAMPAIGN_MANAGER: j = "CAMPAIGN_MANAGER"; break;
+        
+        case Role::CATALOGS_MANAGER: j = "CATALOGS_MANAGER"; break;
+        
+        case Role::CATALOGS_VIEWER: j = "CATALOGS_VIEWER"; break;
+        
+        case Role::RESTRICTED_OWNER: j = "RESTRICTED_OWNER"; break;
+        
+        case Role::PROFILE_MANAGER: j = "PROFILE_MANAGER"; break;
+        
+        case Role::PROFILE_PUBLISHER: j = "PROFILE_PUBLISHER"; break;
+        
+        case Role::RESOURCE_PINNER_LIST_OWNER: j = "RESOURCE_PINNER_LIST_OWNER"; break;
+        
+        case Role::RESOURCE_PINNER_LIST_READER: j = "RESOURCE_PINNER_LIST_READER"; break;
+        
+        case Role::BIZ_PINNER_LIST_SHARER: j = "BIZ_PINNER_LIST_SHARER"; break;
+        
+        case Role::RESOURCE_CONVERSION_TAGS_READER: j = "RESOURCE_CONVERSION_TAGS_READER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Role", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Role& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = Role::UNKNOWN;
+        return;
+    }
+    
+    if (j == "OWNER")
+    {
+        value = Role::OWNER;
+        return;
+    }
+    
+    if (j == "ADMIN")
+    {
+        value = Role::ADMIN;
+        return;
+    }
+    
+    if (j == "ANALYST")
+    {
+        value = Role::ANALYST;
+        return;
+    }
+    
+    if (j == "SOS_READER")
+    {
+        value = Role::SOS_READER;
+        return;
+    }
+    
+    if (j == "FINANCE_MANAGER")
+    {
+        value = Role::FINANCE_MANAGER;
+        return;
+    }
+    
+    if (j == "FINANCE_EDIT")
+    {
+        value = Role::FINANCE_EDIT;
+        return;
+    }
+    
+    if (j == "FINANCE_VIEW")
+    {
+        value = Role::FINANCE_VIEW;
+        return;
+    }
+    
+    if (j == "AUDIENCE_MANAGER")
+    {
+        value = Role::AUDIENCE_MANAGER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_MANAGER")
+    {
+        value = Role::CAMPAIGN_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_MANAGER")
+    {
+        value = Role::CATALOGS_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_VIEWER")
+    {
+        value = Role::CATALOGS_VIEWER;
+        return;
+    }
+    
+    if (j == "RESTRICTED_OWNER")
+    {
+        value = Role::RESTRICTED_OWNER;
+        return;
+    }
+    
+    if (j == "PROFILE_MANAGER")
+    {
+        value = Role::PROFILE_MANAGER;
+        return;
+    }
+    
+    if (j == "PROFILE_PUBLISHER")
+    {
+        value = Role::PROFILE_PUBLISHER;
+        return;
+    }
+    
+    if (j == "RESOURCE_PINNER_LIST_OWNER")
+    {
+        value = Role::RESOURCE_PINNER_LIST_OWNER;
+        return;
+    }
+    
+    if (j == "RESOURCE_PINNER_LIST_READER")
+    {
+        value = Role::RESOURCE_PINNER_LIST_READER;
+        return;
+    }
+    
+    if (j == "BIZ_PINNER_LIST_SHARER")
+    {
+        value = Role::BIZ_PINNER_LIST_SHARER;
+        return;
+    }
+    
+    if (j == "RESOURCE_CONVERSION_TAGS_READER")
+    {
+        value = Role::RESOURCE_CONVERSION_TAGS_READER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Role", &j);
+}
 
 } // namespace models
 

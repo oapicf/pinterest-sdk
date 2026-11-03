@@ -9,27 +9,21 @@ import 'package:built_value/serializer.dart';
 
 part 'schedule_status.g.dart';
 
+/// Schedule status
 class ScheduleStatus extends EnumClass {
 
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const ScheduleStatus DRAFT = _$DRAFT;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'CREATED')
   static const ScheduleStatus CREATED = _$CREATED;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'SCHEDULED')
   static const ScheduleStatus SCHEDULED = _$SCHEDULED;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'ACTIVE')
   static const ScheduleStatus ACTIVE = _$ACTIVE;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'COMPLETED')
   static const ScheduleStatus COMPLETED = _$COMPLETED;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'FAILED')
   static const ScheduleStatus FAILED = _$FAILED;
-  /// Schedule status
   @BuiltValueEnumConst(wireName: r'CANCELED')
   static const ScheduleStatus CANCELED = _$CANCELED;
 

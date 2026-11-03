@@ -40,12 +40,24 @@ import {
 } from '../models/PinterestLibError';
 
 export interface AdvancedAuctionItemsGetPostRequest {
+    /**
+     * 
+     */
     advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface AdvancedAuctionItemsSubmitPostRequest {
+    /**
+     * 
+     */
     advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 

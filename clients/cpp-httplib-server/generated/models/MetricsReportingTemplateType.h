@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class MetricsReportingTemplateType
-{
-public:
-
-    MetricsReportingTemplateType();
-    virtual ~MetricsReportingTemplateType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MetricsReportingTemplateType,
-        )
-
-private:
+enum class MetricsReportingTemplateType {
+    
+    UNSPECIFIED,
+    
+    BULK,
+    
+    OVERVIEW,
+    
+    TABLE,
+    
+    MMM,
+    
+    BRAND_CATEGORY
+    
 };
 
+inline void to_json(nlohmann::json& j, const MetricsReportingTemplateType& value)
+{
+    switch (value)
+    {
+        
+        case MetricsReportingTemplateType::UNSPECIFIED: j = "UNSPECIFIED"; break;
+        
+        case MetricsReportingTemplateType::BULK: j = "BULK"; break;
+        
+        case MetricsReportingTemplateType::OVERVIEW: j = "OVERVIEW"; break;
+        
+        case MetricsReportingTemplateType::TABLE: j = "TABLE"; break;
+        
+        case MetricsReportingTemplateType::MMM: j = "MMM"; break;
+        
+        case MetricsReportingTemplateType::BRAND_CATEGORY: j = "BRAND_CATEGORY"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MetricsReportingTemplateType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MetricsReportingTemplateType& value)
+{
+    
+    if (j == "UNSPECIFIED")
+    {
+        value = MetricsReportingTemplateType::UNSPECIFIED;
+        return;
+    }
+    
+    if (j == "BULK")
+    {
+        value = MetricsReportingTemplateType::BULK;
+        return;
+    }
+    
+    if (j == "OVERVIEW")
+    {
+        value = MetricsReportingTemplateType::OVERVIEW;
+        return;
+    }
+    
+    if (j == "TABLE")
+    {
+        value = MetricsReportingTemplateType::TABLE;
+        return;
+    }
+    
+    if (j == "MMM")
+    {
+        value = MetricsReportingTemplateType::MMM;
+        return;
+    }
+    
+    if (j == "BRAND_CATEGORY")
+    {
+        value = MetricsReportingTemplateType::BRAND_CATEGORY;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MetricsReportingTemplateType", &j);
+}
 
 } // namespace models
 

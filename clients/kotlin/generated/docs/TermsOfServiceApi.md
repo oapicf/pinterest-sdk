@@ -38,10 +38,10 @@ try {
 ```
 
 ### Parameters
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
-| **includeHtml** | **kotlin.Boolean**| Return HTML in TOS text. | [optional] [default to false] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
+| **includeHtml** | **kotlin.Boolean**| Return HTML in TOS text. | [optional] [default to false] |
 | **tosType** | **kotlin.String**| Request type. | [optional] |
 
 ### Return type

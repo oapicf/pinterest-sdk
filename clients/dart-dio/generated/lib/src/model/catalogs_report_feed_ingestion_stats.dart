@@ -230,6 +230,7 @@ class _$CatalogsReportFeedIngestionStatsSerializer implements PrimitiveSerialize
   }
 }
 
+
 class CatalogsReportFeedIngestionStatsReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'FEED_INGESTION_ISSUES')
@@ -243,12 +244,11 @@ class CatalogsReportFeedIngestionStatsReportTypeEnum extends EnumClass {
   static CatalogsReportFeedIngestionStatsReportTypeEnum valueOf(String name) => _$catalogsReportFeedIngestionStatsReportTypeEnumValueOf(name);
 }
 
+/// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 class CatalogsReportFeedIngestionStatsSeverityEnum extends EnumClass {
 
-  /// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
   @BuiltValueEnumConst(wireName: r'WARN')
   static const CatalogsReportFeedIngestionStatsSeverityEnum WARN = _$catalogsReportFeedIngestionStatsSeverityEnum_WARN;
-  /// An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
   @BuiltValueEnumConst(wireName: r'ERROR')
   static const CatalogsReportFeedIngestionStatsSeverityEnum ERROR = _$catalogsReportFeedIngestionStatsSeverityEnum_ERROR;
 

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AdvertiserDefinedEventProcessingRecord {
     /**
      * List of exception messages if the operation failed
-     * @type {Array<string>}
-     * @memberof AdvertiserDefinedEventProcessingRecord
      */
     exceptions?: Array<string>;
     /**
      * Name of the advertiser defined event
-     * @type {string}
-     * @memberof AdvertiserDefinedEventProcessingRecord
      */
     name: string;
     /**
      * Processing status (success or failure)
-     * @type {string}
-     * @memberof AdvertiserDefinedEventProcessingRecord
      */
     status: string;
 }

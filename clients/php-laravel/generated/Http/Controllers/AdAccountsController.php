@@ -51,16 +51,16 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
                 'columns' => [
@@ -70,21 +70,21 @@ class AdAccountsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -93,9 +93,9 @@ class AdAccountsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $columns = $request->get('columns');
 
@@ -158,25 +158,25 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'startDate' => [
+                'start_date' => [
                     'required',
                 ],
-                'endDate' => [
+                'end_date' => [
                     'required',
                 ],
-                'targetingTypes' => [
+                'targeting_types' => [
                     'required',
                     'min:1',
                     'max:15',
@@ -189,19 +189,19 @@ class AdAccountsController extends Controller
                 'granularity' => [
                     'required',
                 ],
-                'clickWindowDays' => [
+                'click_window_days' => [
                 ],
-                'engagementWindowDays' => [
+                'engagement_window_days' => [
                 ],
-                'viewWindowDays' => [
+                'view_window_days' => [
                 ],
-                'conversionReportTime' => [
+                'conversion_report_time' => [
                 ],
-                'attributionTypes' => [
+                'attribution_types' => [
                     'max:2',
                     'array',
                 ],
-                'reportingTimezone' => [
+                'reporting_timezone' => [
                 ],
             ],
         );
@@ -211,11 +211,11 @@ class AdAccountsController extends Controller
         }
 
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
-        $targetingTypes = $request->get('targetingTypes');
+        $targetingTypes = $request->get('targeting_types');
 
         $columns = $request->get('columns');
 
@@ -229,7 +229,7 @@ class AdAccountsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        $attributionTypes = $request->get('attributionTypes');
+        $attributionTypes = $request->get('attribution_types');
 
         $reportingTimezone = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ReportingTimeZone::class);
 
@@ -278,10 +278,10 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -342,13 +342,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -407,19 +407,19 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
-                'includeSharedAccounts' => [
+                'include_shared_accounts' => [
                     'boolean',
                 ],
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -431,11 +431,11 @@ class AdAccountsController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        $includeSharedAccounts = $request->boolean('includeSharedAccounts');
+        $includeSharedAccounts = $request->boolean('include_shared_accounts');
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->adAccountsList($includeSharedAccounts, $bookmark, $pageSize);
@@ -482,10 +482,10 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -547,10 +547,10 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -612,10 +612,10 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
             ],
@@ -673,26 +673,26 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,'templateId' => $templateId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,'template_id' => $templateId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'templateId' => [
+                'template_id' => [
                     'required',
                     'max:18',
                     'string',
                 ],
-                'startDate' => [
+                'start_date' => [
                 ],
-                'endDate' => [
+                'end_date' => [
                 ],
                 'granularity' => [
                 ],
@@ -705,9 +705,9 @@ class AdAccountsController extends Controller
 
 
 
-        $startDate = $request->date('startDate');
+        $startDate = $request->date('start_date');
 
-        $endDate = $request->date('endDate');
+        $endDate = $request->date('end_date');
 
         $granularity = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Granularity::class);
 
@@ -760,13 +760,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -831,13 +831,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -902,13 +902,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -973,13 +973,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -1038,13 +1038,13 @@ class AdAccountsController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
@@ -1053,7 +1053,7 @@ class AdAccountsController extends Controller
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -1070,7 +1070,7 @@ class AdAccountsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinterestLibPaginationOrder::class);
 

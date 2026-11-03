@@ -81,15 +81,13 @@ class LabeledEntities(BaseModel):
         _items = []
         if self.entities_labels:
             for _item_entities_labels in self.entities_labels:
-                if _item_entities_labels:
-                    _items.append(_item_entities_labels.to_dict())
+                _items.append(_item_entities_labels.to_dict() if _item_entities_labels is not None else None)
             _dict['entities_labels'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
             for _item_errors in self.errors:
-                if _item_errors:
-                    _items.append(_item_errors.to_dict())
+                _items.append(_item_errors.to_dict() if _item_errors is not None else None)
             _dict['errors'] = _items
         return _dict
 

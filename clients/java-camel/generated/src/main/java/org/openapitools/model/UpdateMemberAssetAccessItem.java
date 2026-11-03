@@ -22,14 +22,13 @@ import jakarta.annotation.Generated;
  * UpdateMemberAssetAccessItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdateMemberAssetAccessItem {
 
   private String assetId;
 
   private String memberId;
 
-  @Valid
   private List<Permissions> permissions = new ArrayList<>();
 
   public UpdateMemberAssetAccessItem() {
@@ -102,7 +101,7 @@ public class UpdateMemberAssetAccessItem {
    * A non-empty array of permissions to assign to the member.
    * @return permissions
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "permissions", description = "A non-empty array of permissions to assign to the member.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("permissions")
   public List<Permissions> getPermissions() {

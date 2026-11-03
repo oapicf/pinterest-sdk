@@ -198,7 +198,12 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationGeoExclude.FieldEnum?>(TargetingSpecOperationGeoExclude.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationGeoExclude.FieldEnum? fieldValue = TargetingSpecOperationGeoExclude.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationGeoExclude.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             operation = new Option<TargetingSpecListOperation?>(JsonSerializer.Deserialize<TargetingSpecListOperation?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -213,22 +218,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGeoExclude.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationGeoExclude: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGeoExclude.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationGeoExclude: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationGeoExclude.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationGeoExclude: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationGeoExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGeoExclude: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationGeoExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGeoExclude: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationGeoExclude.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationGeoExclude: values.");
 
             return new TargetingSpecOperationGeoExclude(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -239,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationGeoExclude"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationGeoExclude targetingSpecOperationGeoExclude, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -254,12 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationGeoExclude"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationGeoExclude targetingSpecOperationGeoExclude, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationGeoExclude.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationGeoExclude.Values), "Property is required for class TargetingSpecOperationGeoExclude.");
-
             var fieldRawValue = TargetingSpecOperationGeoExclude.FieldEnumToJsonValue(targetingSpecOperationGeoExclude.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecListOperationValueConverter.ToJsonValue(targetingSpecOperationGeoExclude.Operation);

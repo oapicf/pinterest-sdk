@@ -245,13 +245,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (autoTargetingEnabled.IsSet && autoTargetingEnabled.Value == null)
-                throw new ArgumentNullException(nameof(autoTargetingEnabled), "Property is not nullable for class AdGroupAudienceSizingCreate.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizingCreate: auto_targeting_enabled.");
 
             if (placementGroup.IsSet && placementGroup.Value == null)
-                throw new ArgumentNullException(nameof(placementGroup), "Property is not nullable for class AdGroupAudienceSizingCreate.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizingCreate: placement_group.");
 
             if (targetingSpec.IsSet && targetingSpec.Value == null)
-                throw new ArgumentNullException(nameof(targetingSpec), "Property is not nullable for class AdGroupAudienceSizingCreate.");
+                throw new JsonException("Property is not nullable for class AdGroupAudienceSizingCreate: targeting_spec.");
 
             return new AdGroupAudienceSizingCreate(autoTargetingEnabled, creativeTypes, keywords, placementGroup, productGroupIds, targetingSpec);
         }
@@ -262,7 +262,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizingCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdGroupAudienceSizingCreate adGroupAudienceSizingCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -277,11 +276,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adGroupAudienceSizingCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdGroupAudienceSizingCreate adGroupAudienceSizingCreate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (adGroupAudienceSizingCreate.AutoTargetingEnabledOption.IsSet && adGroupAudienceSizingCreate.AutoTargetingEnabled == null)
+                throw new JsonException("Cannot write null property AdGroupAudienceSizingCreate.AutoTargetingEnabled to non-nullable JSON property 'auto_targeting_enabled'.");
+
+            if (adGroupAudienceSizingCreate.PlacementGroupOption.IsSet && adGroupAudienceSizingCreate.PlacementGroup == null)
+                throw new JsonException("Cannot write null property AdGroupAudienceSizingCreate.PlacementGroup to non-nullable JSON property 'placement_group'.");
+
             if (adGroupAudienceSizingCreate.TargetingSpecOption.IsSet && adGroupAudienceSizingCreate.TargetingSpec == null)
-                throw new ArgumentNullException(nameof(adGroupAudienceSizingCreate.TargetingSpec), "Property is required for class AdGroupAudienceSizingCreate.");
+                throw new JsonException("Cannot write null property AdGroupAudienceSizingCreate.TargetingSpec to non-nullable JSON property 'targeting_spec'.");
 
             if (adGroupAudienceSizingCreate.AutoTargetingEnabledOption.IsSet)
                 writer.WriteBoolean("auto_targeting_enabled", adGroupAudienceSizingCreate.AutoTargetingEnabledOption.Value!.Value);

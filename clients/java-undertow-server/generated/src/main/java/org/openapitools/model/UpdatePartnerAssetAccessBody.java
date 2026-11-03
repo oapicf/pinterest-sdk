@@ -27,7 +27,7 @@ import org.openapitools.model.UpdatePartnerAssetAccessItem;
  */
 
 @ApiModel(description = "An object with a list of partner asset accesses to assign or update.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdatePartnerAssetAccessBody   {
   
   private List<UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();

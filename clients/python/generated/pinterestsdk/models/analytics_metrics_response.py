@@ -76,8 +76,7 @@ class AnalyticsMetricsResponse(BaseModel):
         _items = []
         if self.daily_metrics:
             for _item_daily_metrics in self.daily_metrics:
-                if _item_daily_metrics:
-                    _items.append(_item_daily_metrics.to_dict())
+                _items.append(_item_daily_metrics.to_dict() if _item_daily_metrics is not None else None)
             _dict['daily_metrics'] = _items
         return _dict
 

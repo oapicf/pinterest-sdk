@@ -40,7 +40,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   ScheduleBidOptions.JSON_PROPERTY_PLACEMENT_MULTIPLIERS
 })
 @JsonTypeName("ScheduleBidOptions")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-08-30T09:52:36.122580083Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ScheduleBidOptions {
     public static final String JSON_PROPERTY_AGE_BUCKET_MULTIPLIERS = "age_bucket_multipliers";

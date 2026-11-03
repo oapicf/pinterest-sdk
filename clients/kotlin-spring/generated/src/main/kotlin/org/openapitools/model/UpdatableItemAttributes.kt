@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.UpdatableItemAttributesGtin
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -368,14 +365,10 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("age_group") val ageGroup: kotlin.String? = null,
 
     @Schema(example = "pinterest://item/1234567890", description = "The deep link to the product on the Android app.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("android_deep_link")
     @get:JsonProperty("android_deep_link") val androidDeepLink: kotlin.String? = null,
 
     @Schema(example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): 'in stock', 'out of stock', 'preorder'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("availability")
     @get:JsonProperty("availability") val availability: kotlin.String? = null,
 
@@ -446,8 +439,6 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("custom_number_4") val customNumber4: kotlin.Int? = null,
 
     @Schema(example = "Casual fit denim shirt made with the finest quality Japanese denim.", description = "<= 10000 characters. The description of the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("description")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
@@ -474,8 +465,6 @@ data class UpdatableItemAttributes(
 
     @Schema(example = "DS0294-L", description = "<= 127 characters. The user-created unique ID that represents the product. Only Unicode characters are accepted.")
     @Deprecated(message = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
@@ -484,8 +473,6 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("installment_price") val installmentPrice: kotlin.String? = null,
 
     @Schema(example = "pinterest://item/1234567890", description = "The deep link to the product on the iOS app.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ios_deep_link")
     @get:JsonProperty("ios_deep_link") val iosDeepLink: kotlin.String? = null,
 
@@ -498,8 +485,6 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("last_updated_time") val lastUpdatedTime: kotlin.Long? = null,
 
     @Schema(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", description = "<= 511 characters. The landing page for the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("link")
     @get:JsonProperty("link") val link: kotlin.String? = null,
 
@@ -532,8 +517,6 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("pattern") val pattern: kotlin.String? = null,
 
     @Schema(example = "24.99 USD", description = "The price of the product. It supports the following formats: \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("price")
     @get:JsonProperty("price") val price: kotlin.String? = null,
 
@@ -586,8 +569,6 @@ data class UpdatableItemAttributes(
     @get:JsonProperty("tax") val tax: kotlin.String? = null,
 
     @Schema(example = "Women's denim shirt, large", description = "<= 500 characters. The name of the product.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("title")
     @get:JsonProperty("title") val title: kotlin.String? = null,
 

@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!entityIds.IsSet)
-                throw new ArgumentException("Property is required for class LabeledEntitiesCreate.", nameof(entityIds));
+                throw new JsonException("Property is required for class LabeledEntitiesCreate: entity_ids.");
 
             if (entityIds.IsSet && entityIds.Value == null)
-                throw new ArgumentNullException(nameof(entityIds), "Property is not nullable for class LabeledEntitiesCreate.");
+                throw new JsonException("Property is not nullable for class LabeledEntitiesCreate: entity_ids.");
 
             return new LabeledEntitiesCreate(entityIds.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labeledEntitiesCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabeledEntitiesCreate labeledEntitiesCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labeledEntitiesCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabeledEntitiesCreate labeledEntitiesCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (labeledEntitiesCreate.EntityIds == null)
-                throw new ArgumentNullException(nameof(labeledEntitiesCreate.EntityIds), "Property is required for class LabeledEntitiesCreate.");
-
             writer.WritePropertyName("entity_ids");
             JsonSerializer.Serialize(writer, labeledEntitiesCreate.EntityIds, jsonSerializerOptions);
         }

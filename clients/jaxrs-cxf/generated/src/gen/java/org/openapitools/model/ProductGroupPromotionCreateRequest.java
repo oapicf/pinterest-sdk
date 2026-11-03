@@ -23,8 +23,6 @@ public class ProductGroupPromotionCreateRequest  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
  /**
    * ID of the Ad Group the Product Group Promotion belongs to.

@@ -24,11 +24,11 @@ public class CampaignCreateRequestAllOf1   {
 
   private IntendedPromotionType intendedPromotionType;
 
-  private Boolean isAutomatedCampaign;
+  private Boolean isAutomatedCampaign = false;
 
-  private Boolean isCampaignBudgetOptimization;
+  private Boolean isCampaignBudgetOptimization = true;
 
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isFlexibleDailyBudgets = false;
 
   private Boolean isLtvOptimized;
 
@@ -38,7 +38,7 @@ public class CampaignCreateRequestAllOf1   {
 
   private ObjectiveType objectiveType;
 
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   /**
    **/

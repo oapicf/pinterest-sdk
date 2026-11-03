@@ -29,20 +29,14 @@ import {
 export interface KeywordsCommon {
     /**
      * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-     * @type {number}
-     * @memberof KeywordsCommon
      */
     bid?: number | null;
     /**
      * 
-     * @type {MatchTypeResponse}
-     * @memberof KeywordsCommon
      */
     matchType: MatchTypeResponse | null;
     /**
      * Keyword value (120 chars max).
-     * @type {string}
-     * @memberof KeywordsCommon
      */
     value: string;
 }

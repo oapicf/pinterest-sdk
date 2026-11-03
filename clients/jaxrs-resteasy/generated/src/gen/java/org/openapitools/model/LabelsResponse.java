@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelsResponse   {
   
   private List<@Valid LabelError> errors = new ArrayList<>();
@@ -27,7 +27,6 @@ public class LabelsResponse   {
   
   @ApiModelProperty(value = "Labels that were not successfully applied.")
   @JsonProperty("errors")
-  @Valid
   public List<@Valid LabelError> getErrors() {
     return errors;
   }
@@ -40,7 +39,6 @@ public class LabelsResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("labels")
-  @Valid
   public List<@Valid Label> getLabels() {
     return labels;
   }

@@ -108,3 +108,4 @@ class _$FollowUserCreateSerializer implements PrimitiveSerializer<FollowUserCrea
   }
 }
 
+

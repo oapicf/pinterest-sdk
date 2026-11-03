@@ -140,7 +140,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (items.IsSet && items.Value == null)
-                throw new ArgumentNullException(nameof(items), "Property is not nullable for class CancelInvitesResponse.");
+                throw new JsonException("Property is not nullable for class CancelInvitesResponse: items.");
 
             return new CancelInvitesResponse(items);
         }
@@ -151,7 +151,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInvitesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CancelInvitesResponse cancelInvitesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -166,11 +165,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="cancelInvitesResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CancelInvitesResponse cancelInvitesResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (cancelInvitesResponse.ItemsOption.IsSet && cancelInvitesResponse.Items == null)
-                throw new ArgumentNullException(nameof(cancelInvitesResponse.Items), "Property is required for class CancelInvitesResponse.");
+                throw new JsonException("Cannot write null property CancelInvitesResponse.Items to non-nullable JSON property 'items'.");
 
             if (cancelInvitesResponse.ItemsOption.IsSet)
             {

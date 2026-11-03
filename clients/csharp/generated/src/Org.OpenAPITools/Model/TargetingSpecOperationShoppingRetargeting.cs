@@ -250,12 +250,22 @@ namespace Org.OpenAPITools.Model
                         case "field":
                             string? fieldRawValue = utf8JsonReader.GetString();
                             if (fieldRawValue != null)
-                                field = new Option<TargetingSpecOperationShoppingRetargeting.FieldEnum?>(TargetingSpecOperationShoppingRetargeting.FieldEnumFromStringOrDefault(fieldRawValue));
+                            {
+                                TargetingSpecOperationShoppingRetargeting.FieldEnum? fieldValue = TargetingSpecOperationShoppingRetargeting.FieldEnumFromStringOrDefault(fieldRawValue);
+                                if (fieldValue == null)
+                                    throw new JsonException();
+                                field = new Option<TargetingSpecOperationShoppingRetargeting.FieldEnum?>(fieldValue);
+                            }
                             break;
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<TargetingSpecOperationShoppingRetargeting.OperationEnum?>(TargetingSpecOperationShoppingRetargeting.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                TargetingSpecOperationShoppingRetargeting.OperationEnum? operationValue = TargetingSpecOperationShoppingRetargeting.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<TargetingSpecOperationShoppingRetargeting.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "values":
                             values = new Option<List<TargetingSpecShoppingRetargeting>?>(JsonSerializer.Deserialize<List<TargetingSpecShoppingRetargeting>>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -267,22 +277,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!field.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationShoppingRetargeting.", nameof(field));
+                throw new JsonException("Property is required for class TargetingSpecOperationShoppingRetargeting: field.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationShoppingRetargeting.", nameof(operation));
+                throw new JsonException("Property is required for class TargetingSpecOperationShoppingRetargeting: operation.");
 
             if (!values.IsSet)
-                throw new ArgumentException("Property is required for class TargetingSpecOperationShoppingRetargeting.", nameof(values));
+                throw new JsonException("Property is required for class TargetingSpecOperationShoppingRetargeting: values.");
 
             if (field.IsSet && field.Value == null)
-                throw new ArgumentNullException(nameof(field), "Property is not nullable for class TargetingSpecOperationShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationShoppingRetargeting: field.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class TargetingSpecOperationShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationShoppingRetargeting: operation.");
 
             if (values.IsSet && values.Value == null)
-                throw new ArgumentNullException(nameof(values), "Property is not nullable for class TargetingSpecOperationShoppingRetargeting.");
+                throw new JsonException("Property is not nullable for class TargetingSpecOperationShoppingRetargeting: values.");
 
             return new TargetingSpecOperationShoppingRetargeting(field.Value!.Value!, operation.Value!.Value!, values.Value!);
         }
@@ -293,7 +303,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationShoppingRetargeting"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TargetingSpecOperationShoppingRetargeting targetingSpecOperationShoppingRetargeting, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -308,12 +317,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="targetingSpecOperationShoppingRetargeting"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TargetingSpecOperationShoppingRetargeting targetingSpecOperationShoppingRetargeting, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (targetingSpecOperationShoppingRetargeting.Values == null)
-                throw new ArgumentNullException(nameof(targetingSpecOperationShoppingRetargeting.Values), "Property is required for class TargetingSpecOperationShoppingRetargeting.");
-
             var fieldRawValue = TargetingSpecOperationShoppingRetargeting.FieldEnumToJsonValue(targetingSpecOperationShoppingRetargeting.Field);
             writer.WriteString("field", fieldRawValue);
             var operationRawValue = TargetingSpecOperationShoppingRetargeting.OperationEnumToJsonValue(targetingSpecOperationShoppingRetargeting.Operation);

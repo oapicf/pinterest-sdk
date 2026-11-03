@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CreateAssetAccessRequestBody", description = "An object containing a list of all the asset access requests")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestBody {
 
   private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();
@@ -57,7 +57,7 @@ public class CreateAssetAccessRequestBody {
    * Get assetRequests
    * @return assetRequests
    */
-  @NotNull @Valid @Size(min = 1, max = 100) 
+  @NotNull @Size(min = 1, max = 100) 
   @Schema(name = "asset_requests", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_requests")
   public List<@Valid CreateAssetAccessRequestItem> getAssetRequests() {

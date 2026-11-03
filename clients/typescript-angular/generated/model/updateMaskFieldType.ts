@@ -61,7 +61,7 @@ export const UpdateMaskFieldType = {
     Title: 'title',
     VariantNames: 'variant_names',
     VariantValues: 'variant_values',
-    PromotionId: 'promotion_id'
+    PromotionId: 'promotion_id',
 } as const;
 export type UpdateMaskFieldType = typeof UpdateMaskFieldType[keyof typeof UpdateMaskFieldType];
 

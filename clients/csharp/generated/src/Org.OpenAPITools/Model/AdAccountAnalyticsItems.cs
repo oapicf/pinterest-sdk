@@ -168,13 +168,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!aDACCOUNTID.IsSet)
-                throw new ArgumentException("Property is required for class AdAccountAnalyticsItems.", nameof(aDACCOUNTID));
+                throw new JsonException("Property is required for class AdAccountAnalyticsItems: AD_ACCOUNT_ID.");
 
             if (aDACCOUNTID.IsSet && aDACCOUNTID.Value == null)
-                throw new ArgumentNullException(nameof(aDACCOUNTID), "Property is not nullable for class AdAccountAnalyticsItems.");
+                throw new JsonException("Property is not nullable for class AdAccountAnalyticsItems: AD_ACCOUNT_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class AdAccountAnalyticsItems.");
+                throw new JsonException("Property is not nullable for class AdAccountAnalyticsItems: DATE.");
 
             return new AdAccountAnalyticsItems(aDACCOUNTID.Value!, dATE);
         }
@@ -185,7 +185,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountAnalyticsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdAccountAnalyticsItems adAccountAnalyticsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -200,11 +199,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adAccountAnalyticsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdAccountAnalyticsItems adAccountAnalyticsItems, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adAccountAnalyticsItems.AD_ACCOUNT_ID == null)
-                throw new ArgumentNullException(nameof(adAccountAnalyticsItems.AD_ACCOUNT_ID), "Property is required for class AdAccountAnalyticsItems.");
+            if (adAccountAnalyticsItems.DATEOption.IsSet && adAccountAnalyticsItems.DATE == null)
+                throw new JsonException("Cannot write null property AdAccountAnalyticsItems.DATE to non-nullable JSON property 'DATE'.");
 
             writer.WriteString("AD_ACCOUNT_ID", adAccountAnalyticsItems.AD_ACCOUNT_ID);
 

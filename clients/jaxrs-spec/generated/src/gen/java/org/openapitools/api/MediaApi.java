@@ -22,7 +22,7 @@ import javax.validation.Valid;
 */
 @Path("/media")
 @Api(description = "the media API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MediaApi {
 
     @POST
@@ -43,7 +43,8 @@ public class MediaApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response mediaCreate(@Valid @NotNull MediaUploadCreate mediaUploadCreate) {
+    public Response mediaCreate(@Valid @NotNull MediaUploadCreate mediaUploadCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -63,7 +64,8 @@ public class MediaApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response mediaGet(@PathParam("media_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier for this media upload. Used to track status and for attaching during Pin creation.") String mediaId) {
+    public Response mediaGet(@PathParam("media_id") @Pattern(regexp="^\\d+$") @ApiParam("Unique identifier for this media upload. Used to track status and for attaching during Pin creation.") String mediaId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -82,7 +84,9 @@ public class MediaApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response mediaList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response mediaList(@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 }

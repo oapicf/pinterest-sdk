@@ -17,7 +17,7 @@ import Gender from './Gender';
 /**
  * The CatalogsProductGroupMultipleGenderCriteria model module.
  * @module model/CatalogsProductGroupMultipleGenderCriteria
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsProductGroupMultipleGenderCriteria {
     /**

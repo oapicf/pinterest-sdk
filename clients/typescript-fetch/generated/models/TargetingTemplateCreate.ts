@@ -50,38 +50,26 @@ import {
 export interface TargetingTemplateCreate {
     /**
      * Enable auto-targeting for ad group. Also known as ["expanded targeting"](https://help.pinterest.com/en/business/article/expanded-targeting).
-     * @type {boolean}
-     * @memberof TargetingTemplateCreate
      */
     autoTargetingEnabled?: boolean;
     /**
      * 
-     * @type {Array<TargetingTemplateKeyword>}
-     * @memberof TargetingTemplateCreate
      */
     keywords?: Array<TargetingTemplateKeyword>;
     /**
      * targeting template name
-     * @type {string}
-     * @memberof TargetingTemplateCreate
      */
     name: string;
     /**
      * 
-     * @type {PlacementGroupType}
-     * @memberof TargetingTemplateCreate
      */
     placementGroup?: PlacementGroupType;
     /**
      * targeting profile attributes
-     * @type {TargetingSpecOptimal}
-     * @memberof TargetingTemplateCreate
      */
     targetingAttributes: TargetingSpecOptimal;
     /**
      * 
-     * @type {TrackingUrls}
-     * @memberof TargetingTemplateCreate
      */
     trackingUrls?: TrackingUrls | null;
 }

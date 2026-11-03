@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!invites.IsSet)
-                throw new ArgumentException("Property is required for class CreateAssetInvitesRequest.", nameof(invites));
+                throw new JsonException("Property is required for class CreateAssetInvitesRequest: invites.");
 
             if (invites.IsSet && invites.Value == null)
-                throw new ArgumentNullException(nameof(invites), "Property is not nullable for class CreateAssetInvitesRequest.");
+                throw new JsonException("Property is not nullable for class CreateAssetInvitesRequest: invites.");
 
             return new CreateAssetInvitesRequest(invites.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetInvitesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateAssetInvitesRequest createAssetInvitesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetInvitesRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateAssetInvitesRequest createAssetInvitesRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (createAssetInvitesRequest.Invites == null)
-                throw new ArgumentNullException(nameof(createAssetInvitesRequest.Invites), "Property is required for class CreateAssetInvitesRequest.");
-
             writer.WritePropertyName("invites");
             JsonSerializer.Serialize(writer, createAssetInvitesRequest.Invites, jsonSerializerOptions);
         }

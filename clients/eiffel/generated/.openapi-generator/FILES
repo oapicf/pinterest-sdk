@@ -2332,10 +2332,4 @@ src/framework/serialization/api_serializer.e
 src/framework/serialization/json_basic_reflector_deserializer.e
 src/framework/serialization/json_type_utilities_ext.e
 test/api_test.ecf
-test/apis/catalogsupplemental_api_test.e
-test/apis/conversiondeletionrequests_api_test.e
-test/apis/customersegment_api_test.e
-test/apis/producttags_api_test.e
-test/apis/schedules_api_test.e
-test/apis/trends_api_test.e
 test/application.e

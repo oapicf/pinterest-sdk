@@ -23,12 +23,12 @@ data class KeywordsRequest(
 
     @field:Valid
     @Schema(required = true, description = "Keyword JSON array. Each array element has 3 fields")
-    @param:JsonProperty("keywords")
+    @param:JsonProperty("keywords", required = true)
     @get:JsonProperty("keywords", required = true) val keywords: kotlin.collections.List<KeywordsCommon>,
 
     @get:Pattern(regexp="^((AG)|C)?\\d+$")
     @Schema(required = true, description = "Keyword parent entity ID (advertiser, campaign, ad group).")
-    @param:JsonProperty("parent_id")
+    @param:JsonProperty("parent_id", required = true)
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
 ) {
 

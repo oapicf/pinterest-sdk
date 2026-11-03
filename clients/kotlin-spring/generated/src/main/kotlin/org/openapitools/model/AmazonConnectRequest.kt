@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -29,39 +26,31 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class AmazonConnectRequest(
 
     @Schema(required = true, description = "The Amazon storefront name")
-    @param:JsonProperty("amazon_storefront_name")
+    @param:JsonProperty("amazon_storefront_name", required = true)
     @get:JsonProperty("amazon_storefront_name", required = true) val amazonStorefrontName: kotlin.String,
 
     @Schema(required = true, description = "The Amazon storefront url")
-    @param:JsonProperty("amazon_storefront_url")
+    @param:JsonProperty("amazon_storefront_url", required = true)
     @get:JsonProperty("amazon_storefront_url", required = true) val amazonStorefrontUrl: kotlin.String,
 
     @Schema(required = true, description = "The Amazon account linking status")
-    @param:JsonProperty("is_amazon_account_linked")
+    @param:JsonProperty("is_amazon_account_linked", required = true)
     @get:JsonProperty("is_amazon_account_linked", required = true) val isAmazonAccountLinked: kotlin.Boolean,
 
     @Schema(description = "The Amazon storefront id")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("amazon_storefront_id")
     @get:JsonProperty("amazon_storefront_id") val amazonStorefrontId: kotlin.String? = null,
 
     @Schema(description = "The Amazon user id")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("amazon_user_id")
     @get:JsonProperty("amazon_user_id") val amazonUserId: kotlin.String? = null,
 
     @Schema(example = "089aee0d-92d3-4f8f-a947-6dc016d85bf0", description = "The one time passcode for Pinterest-initiated linking requests")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("one_time_passcode")
     @get:JsonProperty("one_time_passcode") val oneTimePasscode: kotlin.String? = null,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "902057137772013006", description = "The Pinterest user id for Amazon-initiated linking requests")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("pinterest_user_id")
     @get:JsonProperty("pinterest_user_id") val pinterestUserId: kotlin.String? = null
 ) {

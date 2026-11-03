@@ -457,6 +457,7 @@ class _$AdGroupBaseSerializer implements PrimitiveSerializer<AdGroupBase> {
   }
 }
 
+
 /// a concrete implementation of [AdGroupBase], since [AdGroupBase] is not instantiable
 @BuiltValue(instantiable: true)
 abstract class $AdGroupBase implements AdGroupBase, Built<$AdGroupBase, $AdGroupBaseBuilder> {

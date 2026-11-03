@@ -39,9 +39,9 @@ try {
 ```
 
 ### Parameters
-| **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **catalogsReportParameters** | [**CatalogsReportParameters**](CatalogsReportParameters.md)|  | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -95,9 +95,9 @@ try {
 ```
 
 ### Parameters
-| **token** | **kotlin.String**| Token returned from the post request creation call | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **token** | **kotlin.String**| Token returned from the post request creation call | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 
 ### Return type
@@ -153,11 +153,11 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **parameters** | [**CatalogsReportStatsParameters**](.md)| Contains the parameters for report identification. | |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type

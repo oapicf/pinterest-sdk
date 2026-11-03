@@ -66,3 +66,4 @@ class _$UpdatableItemAttributesGtinSerializer implements PrimitiveSerializer<Upd
   }
 }
 
+

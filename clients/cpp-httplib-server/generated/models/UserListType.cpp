@@ -6,20 +6,3 @@
 */
 #include "UserListType.h"
 
-namespace models {
-
-UserListType::UserListType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

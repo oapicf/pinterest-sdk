@@ -17,16 +17,12 @@ public class LabeledEntities  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid EntityLabel> entitiesLabels = new ArrayList<>();
 
  /**
   * Labels that were not successfully applied.
   */
   @ApiModelProperty(value = "Labels that were not successfully applied.")
-
-  @Valid
 
   private List<@Valid EntityLabelError> errors = new ArrayList<>();
  /**

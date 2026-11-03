@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface DeleteMemberAssetAccessItem {
     /**
      * Id of the asset on which to remove member permissions.
-     * @type {string}
-     * @memberof DeleteMemberAssetAccessItem
      */
     assetId: string;
     /**
      * Unique identifier of the member on which to perform the asset permission removal
-     * @type {string}
-     * @memberof DeleteMemberAssetAccessItem
      */
     memberId: string;
 }

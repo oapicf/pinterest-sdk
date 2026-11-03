@@ -16,8 +16,6 @@ public class AdBatchWriteResponseModel  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid AdBatchItem> items = new ArrayList<>();
  /**
    * Get items

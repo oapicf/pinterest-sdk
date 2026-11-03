@@ -17,7 +17,7 @@ import AdvancedAuctionItemsSubmitRecord from './AdvancedAuctionItemsSubmitRecord
 /**
  * The AdvancedAuctionItemsSubmitRequest model module.
  * @module model/AdvancedAuctionItemsSubmitRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdvancedAuctionItemsSubmitRequest {
     /**

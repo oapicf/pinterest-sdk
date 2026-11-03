@@ -43,38 +43,26 @@ import {
 export interface CampaignUpdateRequestAllOf2 {
     /**
      * 
-     * @type {CampaignBidOptionsUpdate}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     bidOptions?: CampaignBidOptionsUpdate | null;
     /**
      * 
-     * @type {IntendedPromotionType}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     intendedPromotionType?: IntendedPromotionType;
     /**
      * Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers.
-     * @type {boolean}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     isLtvOptimized?: boolean;
     /**
      * Enable Pinterest Performance+ for your campaign. To learn more, see <a href="https://developers.pinterest.com/docs/api-features/pinterest-performance-plus-setup/">Pinterest Performance+ Setup</a>. This field is immutable, except only for campaigns in draft status which may update this field.
-     * @type {boolean}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     isPerformancePlus?: boolean;
     /**
      * Enable Top Of Search for your campaign. This field is immutable, except only for campaigns in draft status which may update this field.
-     * @type {boolean}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     isTopOfSearch?: boolean;
     /**
      * 
-     * @type {ObjectiveType}
-     * @memberof CampaignUpdateRequestAllOf2
      */
     objectiveType?: ObjectiveType | null;
 }

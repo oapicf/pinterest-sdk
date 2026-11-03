@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'product_availability_type.g.dart';
 
+/// Default availability for products in a feed.
 class ProductAvailabilityType extends EnumClass {
 
-  /// Default availability for products in a feed.
   @BuiltValueEnumConst(wireName: r'IN_STOCK')
   static const ProductAvailabilityType IN_STOCK = _$IN_STOCK;
-  /// Default availability for products in a feed.
   @BuiltValueEnumConst(wireName: r'OUT_OF_STOCK')
   static const ProductAvailabilityType OUT_OF_STOCK = _$OUT_OF_STOCK;
-  /// Default availability for products in a feed.
   @BuiltValueEnumConst(wireName: r'PREORDER')
   static const ProductAvailabilityType PREORDER = _$PREORDER;
 

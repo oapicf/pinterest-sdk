@@ -40,16 +40,31 @@ import {
 } from '../models/ProductTagsResponse';
 
 export interface ProductTagsBulkAddOperationRequest {
+    /**
+     * Unique identifier of the hero pin that will receive product tags.
+     */
     pinId: string;
+    /**
+     * 
+     */
     productTagsBulkAddRequest: ProductTagsBulkAddRequest;
 }
 
 export interface ProductTagsBulkDeleteOperationRequest {
+    /**
+     * Unique identifier of the hero pin that will receive product tags.
+     */
     pinId: string;
+    /**
+     * 
+     */
     productTagsBulkDeleteRequest: ProductTagsBulkDeleteRequest;
 }
 
 export interface ProductTagsListRequest {
+    /**
+     * Unique identifier of the hero pin that will receive product tags.
+     */
     pinId: string;
 }
 

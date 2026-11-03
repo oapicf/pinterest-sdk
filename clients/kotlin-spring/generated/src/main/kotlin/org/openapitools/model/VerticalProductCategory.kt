@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* List of verticals for product categories.
-* Values: FASHION,HOME_DECOR,BEAUTY
-*/
+ * List of verticals for product categories.
+ * Values: FASHION,HOME_DECOR,BEAUTY
+ */
 enum class VerticalProductCategory(@get:JsonValue val value: kotlin.String) {
 
     FASHION("FASHION"),
@@ -29,9 +29,8 @@ enum class VerticalProductCategory(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): VerticalProductCategory {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'VerticalProductCategory'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'VerticalProductCategory'")
         }
     }
 }
-

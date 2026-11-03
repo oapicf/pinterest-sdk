@@ -67,8 +67,6 @@ public class AccountTemplate  {
   */
   @ApiModelProperty(value = "A list of columns to be included in the report")
 
-  @Valid
-
   private List<ReportingColumn> columns = new ArrayList<>();
 
  /**
@@ -136,8 +134,6 @@ public class AccountTemplate  {
   * The filter on the conversion ingestion source method for conversion metrics
   */
   @ApiModelProperty(value = "The filter on the conversion ingestion source method for conversion metrics")
-
-  @Valid
 
   private List<IngestionSource> ingestionSources;
 

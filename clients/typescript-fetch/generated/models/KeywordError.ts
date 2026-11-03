@@ -29,14 +29,10 @@ import {
 export interface KeywordError {
     /**
      * 
-     * @type {Keyword}
-     * @memberof KeywordError
      */
     data?: Keyword;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof KeywordError
      */
     errorMessages?: Array<string>;
 }

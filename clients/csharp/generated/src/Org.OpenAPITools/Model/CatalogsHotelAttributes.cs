@@ -544,19 +544,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (address.IsSet && address.Value == null)
-                throw new ArgumentNullException(nameof(address), "Property is not nullable for class CatalogsHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAttributes: address.");
 
             if (guestRatings.IsSet && guestRatings.Value == null)
-                throw new ArgumentNullException(nameof(guestRatings), "Property is not nullable for class CatalogsHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAttributes: guest_ratings.");
 
             if (latitude.IsSet && latitude.Value == null)
-                throw new ArgumentNullException(nameof(latitude), "Property is not nullable for class CatalogsHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAttributes: latitude.");
 
             if (aiDisclosures.IsSet && aiDisclosures.Value == null)
-                throw new ArgumentNullException(nameof(aiDisclosures), "Property is not nullable for class CatalogsHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAttributes: ai_disclosures.");
 
             if (mainImage.IsSet && mainImage.Value == null)
-                throw new ArgumentNullException(nameof(mainImage), "Property is not nullable for class CatalogsHotelAttributes.");
+                throw new JsonException("Property is not nullable for class CatalogsHotelAttributes: main_image.");
 
             return new CatalogsHotelAttributes(address, basePrice, brand, category, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, description, guestRatings, latitude, link, longitude, name, neighborhood, salePrice, additionalImageLink, aiDisclosures, mainImage);
         }
@@ -567,7 +567,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsHotelAttributes catalogsHotelAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -582,20 +581,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsHotelAttributes"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsHotelAttributes catalogsHotelAttributes, JsonSerializerOptions jsonSerializerOptions)
         {
             if (catalogsHotelAttributes.AddressOption.IsSet && catalogsHotelAttributes.Address == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAttributes.Address), "Property is required for class CatalogsHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsHotelAttributes.Address to non-nullable JSON property 'address'.");
 
             if (catalogsHotelAttributes.GuestRatingsOption.IsSet && catalogsHotelAttributes.GuestRatings == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAttributes.GuestRatings), "Property is required for class CatalogsHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsHotelAttributes.GuestRatings to non-nullable JSON property 'guest_ratings'.");
+
+            if (catalogsHotelAttributes.LatitudeOption.IsSet && catalogsHotelAttributes.Latitude == null)
+                throw new JsonException("Cannot write null property CatalogsHotelAttributes.Latitude to non-nullable JSON property 'latitude'.");
 
             if (catalogsHotelAttributes.AiDisclosuresOption.IsSet && catalogsHotelAttributes.AiDisclosures == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAttributes.AiDisclosures), "Property is required for class CatalogsHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsHotelAttributes.AiDisclosures to non-nullable JSON property 'ai_disclosures'.");
 
             if (catalogsHotelAttributes.MainImageOption.IsSet && catalogsHotelAttributes.MainImage == null)
-                throw new ArgumentNullException(nameof(catalogsHotelAttributes.MainImage), "Property is required for class CatalogsHotelAttributes.");
+                throw new JsonException("Cannot write null property CatalogsHotelAttributes.MainImage to non-nullable JSON property 'main_image'.");
 
             if (catalogsHotelAttributes.AddressOption.IsSet)
             {

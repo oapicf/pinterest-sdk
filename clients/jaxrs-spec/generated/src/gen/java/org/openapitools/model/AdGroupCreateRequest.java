@@ -28,7 +28,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("AdGroupCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateRequest   {
   private Boolean autoTargetingEnabled;
   private BigDecimal bidMultiplier;
@@ -94,11 +94,11 @@ public class AdGroupCreateRequest   {
 
   private PromotionApplicationLevelEnum promotionApplicationLevel;
   private String promotionId = "0";
-  private @Valid List<String> promotionIds = new ArrayList<>();
+  private List<String> promotionIds = new ArrayList<>();
   private Integer startTime;
   private EntityStatus status;
   private TargetingSpec targetingSpec;
-  private @Valid List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
+  private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
   private Object trackingUrls;
 
   public AdGroupCreateRequest() {

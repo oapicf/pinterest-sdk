@@ -29,8 +29,6 @@ import {
 export interface CurrencyFilter {
     /**
      * 
-     * @type {CatalogsProductGroupCurrencyCriteria}
-     * @memberof CurrencyFilter
      */
     cURRENCY: CatalogsProductGroupCurrencyCriteria;
 }

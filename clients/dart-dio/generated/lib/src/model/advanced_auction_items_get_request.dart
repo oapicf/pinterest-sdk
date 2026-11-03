@@ -124,3 +124,4 @@ class _$AdvancedAuctionItemsGetRequestSerializer implements PrimitiveSerializer<
   }
 }
 
+

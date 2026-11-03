@@ -69,7 +69,7 @@ function Invoke-TermsOfServiceGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling termsOfService_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($IncludeHtml) {
             $LocalVarQueryParameters['include_html'] = $IncludeHtml

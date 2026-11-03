@@ -18,7 +18,7 @@ import ProductGroupPromotion from './ProductGroupPromotion';
 /**
  * The ProductGroupPromotionResponseItem model module.
  * @module model/ProductGroupPromotionResponseItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductGroupPromotionResponseItem {
     /**

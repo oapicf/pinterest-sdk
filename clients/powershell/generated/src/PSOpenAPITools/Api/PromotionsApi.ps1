@@ -66,7 +66,7 @@ function Invoke-PromotionsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling promotions_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$PromotionCreate) {
             throw "Error! The required parameter `PromotionCreate` missing when calling promotions_create."
@@ -152,11 +152,11 @@ function Invoke-PromotionsDelete {
         if (!$PromotionId) {
             throw "Error! The required parameter `PromotionId` missing when calling promotions_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{promotion_id}', [System.Web.HTTPUtility]::UrlEncode($PromotionId))
+        $LocalVarUri = $LocalVarUri.replace('{promotion_id}', [System.Uri]::EscapeDataString([string]$PromotionId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling promotions_delete."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'DELETE' `
@@ -236,11 +236,11 @@ function Invoke-PromotionsGet {
         if (!$PromotionId) {
             throw "Error! The required parameter `PromotionId` missing when calling promotions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{promotion_id}', [System.Web.HTTPUtility]::UrlEncode($PromotionId))
+        $LocalVarUri = $LocalVarUri.replace('{promotion_id}', [System.Uri]::EscapeDataString([string]$PromotionId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling promotions_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -332,7 +332,7 @@ function Invoke-PromotionsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling promotions_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -427,7 +427,7 @@ function Invoke-PromotionsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling promotions_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$PromotionBatchUpdate) {
             throw "Error! The required parameter `PromotionBatchUpdate` missing when calling promotions_update."

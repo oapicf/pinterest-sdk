@@ -17,7 +17,7 @@ export const CampaignSummaryStatus = {
     AdvertiserDisabled: 'ADVERTISER_DISABLED',
     Archived: 'ARCHIVED',
     Draft: 'DRAFT',
-    DeletedDraft: 'DELETED_DRAFT'
+    DeletedDraft: 'DELETED_DRAFT',
 } as const;
 export type CampaignSummaryStatus = typeof CampaignSummaryStatus[keyof typeof CampaignSummaryStatus];
 

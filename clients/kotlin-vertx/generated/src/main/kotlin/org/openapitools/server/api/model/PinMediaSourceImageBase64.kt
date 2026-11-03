@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 /**
  * Image Base64-based media source.
  * @param contentType 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  * @param sourceType The source type of the media.
  * @param isStandard Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
  */

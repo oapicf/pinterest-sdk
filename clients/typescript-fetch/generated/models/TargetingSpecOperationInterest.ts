@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationInterest {
     /**
      * 
-     * @type {TargetingSpecOperationInterestFieldEnum}
-     * @memberof TargetingSpecOperationInterest
      */
     field: TargetingSpecOperationInterestFieldEnum;
     /**
      * 
-     * @type {TargetingSpecListOperation}
-     * @memberof TargetingSpecOperationInterest
      */
     operation: TargetingSpecListOperation;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TargetingSpecOperationInterest
      */
     values: Array<string>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationInterest {
  * @export
  */
 export const TargetingSpecOperationInterestFieldEnum = {
-    Interest: 'INTEREST'
+    Interest: 'INTEREST',
 } as const;
 export type TargetingSpecOperationInterestFieldEnum = typeof TargetingSpecOperationInterestFieldEnum[keyof typeof TargetingSpecOperationInterestFieldEnum];
 

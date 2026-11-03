@@ -125,11 +125,11 @@ export namespace CatalogsItemsUpsertBatchRequest {
     Th: 'TH',
     Tr2: 'TR',
     Xx: 'XX',
-    Zh: 'ZH'
+    Zh: 'ZH',
   } as const;
   export type LanguageEnum = typeof LanguageEnum[keyof typeof LanguageEnum];
   export const OperationEnum = {
-    Upsert: 'UPSERT'
+    Upsert: 'UPSERT',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

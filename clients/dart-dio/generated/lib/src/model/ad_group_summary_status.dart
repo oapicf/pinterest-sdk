@@ -9,30 +9,23 @@ import 'package:built_value/serializer.dart';
 
 part 'ad_group_summary_status.g.dart';
 
+/// Summary status for ad group
 class AdGroupSummaryStatus extends EnumClass {
 
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const AdGroupSummaryStatus RUNNING = _$RUNNING;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const AdGroupSummaryStatus PAUSED = _$PAUSED;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'NOT_STARTED')
   static const AdGroupSummaryStatus NOT_STARTED = _$NOT_STARTED;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'COMPLETED')
   static const AdGroupSummaryStatus COMPLETED = _$COMPLETED;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'ADVERTISER_DISABLED')
   static const AdGroupSummaryStatus ADVERTISER_DISABLED = _$ADVERTISER_DISABLED;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const AdGroupSummaryStatus ARCHIVED = _$ARCHIVED;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const AdGroupSummaryStatus DRAFT = _$DRAFT;
-  /// Summary status for ad group
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const AdGroupSummaryStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

@@ -195,22 +195,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!budget.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningPointEstimate.", nameof(budget));
+                throw new JsonException("Property is required for class CampaignPlanningPointEstimate: budget.");
 
             if (!doubleY.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningPointEstimate.", nameof(doubleY));
+                throw new JsonException("Property is required for class CampaignPlanningPointEstimate: double_y.");
 
             if (!maxY.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningPointEstimate.", nameof(maxY));
+                throw new JsonException("Property is required for class CampaignPlanningPointEstimate: max_y.");
 
             if (!minY.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningPointEstimate.", nameof(minY));
+                throw new JsonException("Property is required for class CampaignPlanningPointEstimate: min_y.");
 
             if (!y.IsSet)
-                throw new ArgumentException("Property is required for class CampaignPlanningPointEstimate.", nameof(y));
+                throw new JsonException("Property is required for class CampaignPlanningPointEstimate: y.");
 
             if (budget.IsSet && budget.Value == null)
-                throw new ArgumentNullException(nameof(budget), "Property is not nullable for class CampaignPlanningPointEstimate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningPointEstimate: budget.");
 
             return new CampaignPlanningPointEstimate(budget.Value!.Value!, doubleY.Value!, maxY.Value!, minY.Value!, y.Value!);
         }
@@ -221,7 +221,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningPointEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningPointEstimate campaignPlanningPointEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -236,7 +235,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningPointEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningPointEstimate campaignPlanningPointEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("budget", campaignPlanningPointEstimate.Budget);

@@ -58,7 +58,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("TargetingSpecOperations")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOperations   {
   public enum FieldEnum {
 
@@ -156,7 +156,7 @@ public class TargetingSpecOperations   {
 }
 
   private OperationEnum operation;
-  private @Valid List<@Valid TargetingSpecShoppingRetargeting> values = new ArrayList<>();
+  private List<@Valid TargetingSpecShoppingRetargeting> values = new ArrayList<>();
   private String value;
 
   public TargetingSpecOperations() {
@@ -223,7 +223,7 @@ public class TargetingSpecOperations   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "values")
-  @NotNull @Valid public List<@Valid TargetingSpecShoppingRetargeting> getValues() {
+  @NotNull public List<@Valid TargetingSpecShoppingRetargeting> getValues() {
     return values;
   }
 

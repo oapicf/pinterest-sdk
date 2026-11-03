@@ -45,19 +45,44 @@ import {
 } from '../models/ReportsStats200Response';
 
 export interface ReportsCreateRequest {
+    /**
+     * 
+     */
     catalogsReportParameters: CatalogsReportParameters;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ReportsGetRequest {
+    /**
+     * Token returned from the post request creation call
+     */
     token: string;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
 }
 
 export interface ReportsStatsRequest {
+    /**
+     * Contains the parameters for report identification.
+     */
     parameters: CatalogsReportStatsParameters;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId?: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
 }
 
@@ -201,7 +226,12 @@ export class CatalogReportsApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['parameters'] != null) {
-            queryParameters['parameters'] = requestParameters['parameters'];
+            for (let key of Object.keys(requestParameters['parameters'])) {
+                const value = (requestParameters['parameters'] as any)[key];
+                if (value != null) {
+                    Object.defineProperty(queryParameters, key, { value, enumerable: true, writable: true, configurable: true });
+                }
+            }
         }
 
         if (requestParameters['bookmark'] != null) {

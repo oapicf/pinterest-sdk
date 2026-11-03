@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class BillingType
-{
-public:
-
-    BillingType();
-    virtual ~BillingType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BillingType,
-        )
-
-private:
+enum class BillingType {
+    
+    CREDIT_CARD,
+    
+    INVOICE,
+    
+    INTERNAL,
+    
+    RECURRING,
+    
+    PREPAID
+    
 };
 
+inline void to_json(nlohmann::json& j, const BillingType& value)
+{
+    switch (value)
+    {
+        
+        case BillingType::CREDIT_CARD: j = "CREDIT_CARD"; break;
+        
+        case BillingType::INVOICE: j = "INVOICE"; break;
+        
+        case BillingType::INTERNAL: j = "INTERNAL"; break;
+        
+        case BillingType::RECURRING: j = "RECURRING"; break;
+        
+        case BillingType::PREPAID: j = "PREPAID"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BillingType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BillingType& value)
+{
+    
+    if (j == "CREDIT_CARD")
+    {
+        value = BillingType::CREDIT_CARD;
+        return;
+    }
+    
+    if (j == "INVOICE")
+    {
+        value = BillingType::INVOICE;
+        return;
+    }
+    
+    if (j == "INTERNAL")
+    {
+        value = BillingType::INTERNAL;
+        return;
+    }
+    
+    if (j == "RECURRING")
+    {
+        value = BillingType::RECURRING;
+        return;
+    }
+    
+    if (j == "PREPAID")
+    {
+        value = BillingType::PREPAID;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BillingType", &j);
+}
 
 } // namespace models
 

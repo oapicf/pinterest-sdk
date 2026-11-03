@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.DiscountStatus
 import org.openapitools.model.PromotionTemplateValue
 import org.openapitools.model.PromotionType
@@ -37,64 +34,48 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PromotionCreate(
 
     @Schema(required = true, description = "Internal name for the promotion.")
-    @param:JsonProperty("promotion_title")
+    @param:JsonProperty("promotion_title", required = true)
     @get:JsonProperty("promotion_title", required = true) val promotionTitle: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("promotion_type")
+    @param:JsonProperty("promotion_type", required = true)
     @get:JsonProperty("promotion_type", required = true) val promotionType: PromotionType,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("discount_status")
     @get:JsonProperty("discount_status") val discountStatus: DiscountStatus? = null,
 
     @Schema(description = "Promotion end time. Unix timestamp in seconds. Independent of campaign end time.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("end_time")
     @get:JsonProperty("end_time") val endTime: kotlin.Int? = null,
 
     @get:Size(max=64)
     @Schema(description = "Platform-specific ID for this promotion. Will be null for promotions first created within Pinterest.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("external_id")
     @get:JsonProperty("external_id") val externalId: kotlin.String? = null,
 
     @Schema(description = "The source integration platform used when creating the promotion. Currently supported values are 'DEFAULT' and 'SHOPIFY'.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("platform_type")
     @get:JsonProperty("platform_type") val platformType: kotlin.String? = null,
 
     @Schema(description = "Code that can be used to redeem a promotion.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("promotion_code")
     @get:JsonProperty("promotion_code") val promotionCode: kotlin.String? = null,
 
     @get:Size(max=50)
     @Schema(description = "An optional field for user defined promotion ID for this promotion. Will copy from Pinterest system generated ID if user did not provide one.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("promotion_custom_id")
     @get:JsonProperty("promotion_custom_id") val promotionCustomId: kotlin.String? = null,
 
     @Schema(description = "Promotion start time. Unix timestamp in seconds. Independent of campaign start time.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("start_time")
     @get:JsonProperty("start_time") val startTime: kotlin.Int? = null,
 
     @field:Valid
     @get:Size(min=0,max=2) 
     @Schema(description = "List of values to be inserted in the promotion type-specific template.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("template_values")
     @get:JsonProperty("template_values") val templateValues: kotlin.collections.List<PromotionTemplateValue>? = null
 ) {

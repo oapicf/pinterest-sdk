@@ -22,7 +22,7 @@ import javax.validation.Valid;
 */
 @Path("/advanced_auction/items")
 @Api(description = "the advanced_auction API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionApi {
 
     @POST
@@ -44,7 +44,9 @@ public class AdvancedAuctionApi {
         @ApiResponse(code = 500, message = "The server encountered an unexpected condition that prevented it from fulfilling the request.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advancedAuctionItemsGetPost(@Valid @NotNull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response advancedAuctionItemsGetPost(@Valid @NotNull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -68,7 +70,9 @@ public class AdvancedAuctionApi {
         @ApiResponse(code = 500, message = "The server encountered an unexpected condition that prevented it from fulfilling the request.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response advancedAuctionItemsSubmitPost(@Valid @NotNull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response advancedAuctionItemsSubmitPost(@Valid @NotNull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest
+,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId
+) {
         return Response.ok().entity("magic!").build();
     }
 }

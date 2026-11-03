@@ -169,3 +169,4 @@ class _$BaseInviteDataResponseSerializer implements PrimitiveSerializer<BaseInvi
   }
 }
 
+

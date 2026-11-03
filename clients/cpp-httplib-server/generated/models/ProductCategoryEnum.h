@@ -12,24 +12,3854 @@
 
 namespace models {
 
-
-class ProductCategoryEnum
-{
-public:
-
-    ProductCategoryEnum();
-    virtual ~ProductCategoryEnum() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductCategoryEnum,
-        )
-
-private:
+enum class ProductCategoryEnum {
+    
+    ACCENT_TABLES,
+    
+    ACCESSORIES,
+    
+    ANKLETS,
+    
+    APRONS,
+    
+    AREA_RUGS,
+    
+    ARMOIRES_AND_WARDROBES,
+    
+    ART_AND_CRAFT_PAINTS,
+    
+    ART_BRUSHES,
+    
+    ARTIFICIAL_FLORA,
+    
+    ARTWORK,
+    
+    AUDIO,
+    
+    AUDIO_ACCESSORIES,
+    
+    BACKPACKS,
+    
+    BAG_AND_LUGGAGE_ACCESSORIES,
+    
+    BAGS_AND_LUGGAGE,
+    
+    BAKEWARE,
+    
+    BANDANAS,
+    
+    BAR_CARTS,
+    
+    BARWARE,
+    
+    BASKETS,
+    
+    BATH_AND_BODY,
+    
+    BATH_AND_SHOWER,
+    
+    BATH_MATS_AND_RUGS,
+    
+    BATH_TOWELS_AND_WASHCLOTHS,
+    
+    BATHROOM_ACCESSORIES,
+    
+    BATHROOM_ACCESSORY_SETS,
+    
+    BATHROOM_VANITIES,
+    
+    BEACH_TOWELS,
+    
+    BEADS_AND_JEWELRY_MAKING_SUPPLIES,
+    
+    BEAUTY_SUPPLEMENTS,
+    
+    BED_SHEETS,
+    
+    BEDDING,
+    
+    BEDROOM_VANITIES,
+    
+    BEDS_AND_ACCESSORIES,
+    
+    BEDS_AND_BED_FRAMES,
+    
+    BELT_BAGS,
+    
+    BELTS_AND_SUSPENDERS,
+    
+    BENCHES,
+    
+    BEVERAGES,
+    
+    BIRD_SUPPLIES,
+    
+    BLANKETS,
+    
+    BLOUSES,
+    
+    BLUSHES_AND_BRONZERS,
+    
+    BODY_CARE,
+    
+    BODY_JEWELRY,
+    
+    BODY_MAKEUP,
+    
+    BODY_MOISTURIZERS,
+    
+    BODY_WASHES,
+    
+    BOOKCASES_AND_STANDING_SHELVES,
+    
+    BOOKENDS,
+    
+    BOOKS,
+    
+    BOOTS,
+    
+    BRACELETS,
+    
+    BRIDESMAID_DRESSES,
+    
+    BROOCHES_AND_LAPEL_PINS,
+    
+    BROW_MAKEUP,
+    
+    BUFFETS_AND_SIDEBOARDS,
+    
+    BUTTON_DOWN_SHIRTS,
+    
+    CABINET_HARDWARE,
+    
+    CABINETS_AND_STORAGE_FURNITURE,
+    
+    CAKE_DECORATING_SUPPLIES,
+    
+    CAMPING_AND_HIKING,
+    
+    CANDLE_HOLDERS,
+    
+    CANDLES,
+    
+    CARDSTOCK_PAPERS,
+    
+    CASUAL_PANTS,
+    
+    CAT_SUPPLIES,
+    
+    CHAIRS,
+    
+    CHANDELIERS,
+    
+    CHARMS_AND_PENDANTS,
+    
+    CHINA_CABINETS_AND_HUTCHES,
+    
+    CLOGS_AND_MULES,
+    
+    CLOTH_NAPKINS,
+    
+    CLOTHING,
+    
+    CLOTHING_AND_CLOSET_STORAGE,
+    
+    CLOTHING_SETS,
+    
+    COASTERS,
+    
+    COATS_AND_JACKETS,
+    
+    COFFEE_AND_TEA_CUPS,
+    
+    COFFEE_MAKERS_AND_ESPRESSO_MACHINES,
+    
+    COLORING_BOOKS,
+    
+    COMMUNICATIONS,
+    
+    COMPUTER_ACCESSORIES,
+    
+    COOKIE_CUTTERS,
+    
+    COOKWARE,
+    
+    COOKWARE_AND_BAKEWARE,
+    
+    COSMETIC_AND_TOILETRY_BAGS,
+    
+    COSTUMES_AND_ACCESSORIES,
+    
+    CRAFT_ADHESIVES_AND_MAGNETS,
+    
+    CRAFT_CUTTING_TOOLS,
+    
+    CRAFT_MOLDS,
+    
+    CRIBS_AND_TODDLER_BEDS,
+    
+    CURTAIN_AND_DRAPE_RODS,
+    
+    CURTAINS_AND_DRAPES,
+    
+    CUTTING_BOARDS,
+    
+    CYCLING,
+    
+    DECORATIVE_BOWLS,
+    
+    DECORATIVE_JARS,
+    
+    DECORATIVE_TAPESTRIES,
+    
+    DECORATIVE_TRAYS,
+    
+    DEODORANTS_AND_ANTIPERSPIRANTS,
+    
+    DESK_AND_SHELF_CLOCKS,
+    
+    DESKS,
+    
+    DIAPER_BAGS,
+    
+    DINNERWARE,
+    
+    DISHWASHERS,
+    
+    DOG_SUPPLIES,
+    
+    DOOR_MATS,
+    
+    DRAWING_AND_PAINTING,
+    
+    DRESS_PANTS,
+    
+    DRESSERS,
+    
+    DRESSES,
+    
+    DRILLS_AND_SCREWDRIVERS,
+    
+    DRINKWARE,
+    
+    DUFFEL_BAGS,
+    
+    DUVET_COVERS,
+    
+    DVDS_AND_VIDEOS,
+    
+    EARRINGS,
+    
+    ELECTRONICS_ACCESSORIES,
+    
+    ENGAGEMENT_AND_WEDDING_RINGS,
+    
+    ENTERTAINMENT_CENTERS_AND_TV_STANDS,
+    
+    ERASERS,
+    
+    EYE_MAKEUP,
+    
+    EYE_SHADOW,
+    
+    EYELINERS,
+    
+    FABRIC,
+    
+    FACE_COVERINGS,
+    
+    FACE_LOTIONS_AND_CREAMS,
+    
+    FACE_MAKEUP,
+    
+    FACIAL_CLEANSERS,
+    
+    FACIAL_MOISTURIZERS,
+    
+    FALSE_EYELASHES,
+    
+    FIGURINES,
+    
+    FIREPLACE_AND_WOOD_STOVE_ACCESSORIES,
+    
+    FIREPLACES,
+    
+    FISHING,
+    
+    FLAGS_AND_WINDSOCKS,
+    
+    FLATS,
+    
+    FLATWARE,
+    
+    FLOOR_LAMPS,
+    
+    FLOWER_GIRL_DRESSES,
+    
+    FOOD_AND_BEVERAGE_CARRIERS,
+    
+    FOOD_COOKERS_AND_STEAMERS,
+    
+    FOOD_ITEMS,
+    
+    FOOD_MIXERS_AND_BLENDERS,
+    
+    FOOD_STORAGE_CONTAINERS,
+    
+    FOOD_STORAGE_SUPPLIES,
+    
+    FOUNDATIONS_AND_CONCEALERS,
+    
+    FOUNTAINS_AND_PONDS,
+    
+    FRAGRANCE,
+    
+    FURNITURE,
+    
+    FURNITURE_SETS,
+    
+    GAMES,
+    
+    GARDENING,
+    
+    GARDENING_TOOLS,
+    
+    GLOVES_AND_MITTENS,
+    
+    GLUES_AND_TAPES,
+    
+    GROOM_AND_GROOMSMEN_SUITS,
+    
+    HAIR,
+    
+    HAIR_ACCESSORIES,
+    
+    HAIR_CARE,
+    
+    HAIR_COLOR,
+    
+    HAIR_COMBS,
+    
+    HAIR_PINS_CLAWS_AND_CLIPS,
+    
+    HAIR_REMOVAL,
+    
+    HAIR_TOOLS,
+    
+    HAIR_TREATMENT,
+    
+    HAIR_WREATHS,
+    
+    HAND_AND_FOOT_CARE,
+    
+    HAND_SOAPS_AND_SANITIZERS,
+    
+    HANDBAGS,
+    
+    HANDKERCHIEFS,
+    
+    HARDWARE_SUPPLIES,
+    
+    HATS,
+    
+    HEADBOARDS_AND_FOOTBOARDS,
+    
+    HEADWEAR,
+    
+    HIGHLIGHTERS,
+    
+    HOBBIES_AND_CREATIVE_ARTS,
+    
+    HOME_ACCESSORIES,
+    
+    HOME_DECOR_DECALS,
+    
+    HOME_FRAGRANCE_ACCESSORIES,
+    
+    HOME_FRAGRANCES,
+    
+    HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES,
+    
+    HOSIERY,
+    
+    HOUSEHOLD_APPLIANCES,
+    
+    HOUSEHOLD_SUPPLIES,
+    
+    INCENSE,
+    
+    INDOOR_GAMES,
+    
+    JEANS,
+    
+    JEWELRY_AND_WATCH_ACCESSORIES,
+    
+    JEWELRY_AND_WATCHES,
+    
+    JEWELRY_SETS,
+    
+    JUMPSUITS_AND_ROMPERS,
+    
+    KEYCHAINS,
+    
+    KITCHEN_AND_DINING,
+    
+    KITCHEN_AND_DINING_ROOM_TABLES,
+    
+    KITCHEN_APPLIANCES,
+    
+    KITCHEN_KNIVES,
+    
+    KITCHEN_LINENS,
+    
+    KITCHEN_MATS,
+    
+    KITCHEN_ORGANIZERS,
+    
+    KITCHEN_TOOLS_AND_UTENSILS,
+    
+    KITCHEN_TOWELS,
+    
+    KNITTING_AND_CROCHET,
+    
+    KNITTING_AND_CROCHET_TOOLS,
+    
+    LAMP_SHADES,
+    
+    LAMPS,
+    
+    LANYARDS,
+    
+    LAUNDRY_HAMPERS_AND_SUPPLIES,
+    
+    LAWN_AND_GARDEN,
+    
+    LAWN_AND_GARDEN_DECOR,
+    
+    LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES,
+    
+    LEGGINGS,
+    
+    LEOTARDS_AND_UNITARDS,
+    
+    LIGHTING,
+    
+    LIGHTING_ACCESSORIES,
+    
+    LIGHTING_FIXTURES,
+    
+    LIP_BALMS,
+    
+    LIP_CARE,
+    
+    LIP_MAKEUP,
+    
+    LIPSTICKS_AND_LIP_GLOSSES,
+    
+    MAGAZINES_AND_NEWSPAPERS,
+    
+    MAGNETS,
+    
+    MAKEUP,
+    
+    MAKEUP_TOOLS,
+    
+    MASCARAS,
+    
+    MATTRESSES,
+    
+    MEASURES_AND_RULERS,
+    
+    MEASURING_TOOLS_AND_SENSORS,
+    
+    MESSENGER_BAGS,
+    
+    MIRRORS,
+    
+    MUSIC_AND_SOUND_RECORDINGS,
+    
+    NAIL_ART,
+    
+    NAIL_ART_KIT_AND_TOOLS,
+    
+    NAIL_CARE,
+    
+    NAIL_POLISHES,
+    
+    NAILS,
+    
+    NECKLACES,
+    
+    NECKTIES,
+    
+    NIGHT_LIGHTS_AND_AMBIENT_LIGHTING,
+    
+    NIGHTSTANDS,
+    
+    NOVELTY_SIGNS,
+    
+    ONE_PIECES,
+    
+    ONESIES,
+    
+    OTTOMANS,
+    
+    OUTDOOR_FURNITURE,
+    
+    OUTDOOR_FURNITURE_SETS,
+    
+    OUTDOOR_GAMES,
+    
+    OUTDOOR_GRILLS,
+    
+    OUTDOOR_LIVING,
+    
+    OUTDOOR_PLAY_EQUIPMENT,
+    
+    OUTDOOR_RECREATION,
+    
+    OUTDOOR_RUGS,
+    
+    OUTDOOR_SEATING,
+    
+    OUTDOOR_STRUCTURES,
+    
+    OUTDOOR_TABLES,
+    
+    OUTERWEAR,
+    
+    OVENS_AND_COOKTOPS,
+    
+    OVERALLS,
+    
+    OXFORDS_AND_LOAFERS,
+    
+    PAINT_AND_PAINT_TOOLS,
+    
+    PANTS,
+    
+    PAPER_CRAFTS,
+    
+    PARASOLS_AND_RAIN_UMBRELLAS,
+    
+    PARTY_AND_CELEBRATION,
+    
+    PENDANT_LIGHTS,
+    
+    PENS_AND_PENCILS,
+    
+    PERFUMES_AND_COLOGNES,
+    
+    PET_CARRIERS_AND_CRATES,
+    
+    PET_COLLARS_AND_HARNESSES,
+    
+    PET_SUPPLIES,
+    
+    PHOTO_ALBUMS_AND_STORAGE,
+    
+    PICTURE_FRAMES,
+    
+    PILLOWCASES_AND_SHAMS,
+    
+    PINBACK_BUTTONS,
+    
+    PLACEMATS,
+    
+    PLANTS,
+    
+    PONYTAIL_HOLDERS,
+    
+    POOL_AND_SPA_ACCESSORIES,
+    
+    POSTERS_PRINTS_AND_VISUAL_ARTWORK,
+    
+    POTS_AND_PLANTERS,
+    
+    POTTERY_AND_SCULPTING,
+    
+    PRIMERS_AND_MAKEUP_SETTERS,
+    
+    PUMPS,
+    
+    PUZZLES,
+    
+    QUILTS_AND_COMFORTERS,
+    
+    RAZORS_AND_SHAVING_TOOLS,
+    
+    RINGS,
+    
+    RUGS,
+    
+    RUNNER_RUGS,
+    
+    SANDALS,
+    
+    SASHES,
+    
+    SAWS,
+    
+    SCARVES_AND_SHAWLS,
+    
+    SCULPTURES_AND_STATUES,
+    
+    SEASONAL_AND_HOLIDAY_DECORATIONS,
+    
+    SEATING,
+    
+    SERUMS_AND_ESSENCES,
+    
+    SERVEWARE,
+    
+    SEWING_MACHINES,
+    
+    SEWING_PATTERNS,
+    
+    SHAMPOO_AND_CONDITIONER,
+    
+    SHOE_ACCESSORIES,
+    
+    SHOES,
+    
+    SHOPPING_TOTES,
+    
+    SHORTS,
+    
+    SHOWER_CURTAINS,
+    
+    SKINCARE,
+    
+    SKINCARE_MASKS_AND_PEELS,
+    
+    SKIRTS,
+    
+    SLEEPWEAR_AND_LOUNGEWEAR,
+    
+    SLIPCOVERS_AND_CUSHIONS,
+    
+    SLIPPERS,
+    
+    SNEAKERS_AND_ATHLETIC_SHOES,
+    
+    SOCKS_AND_TIGHTS,
+    
+    SOFAS,
+    
+    SPORTS_UNIFORMS,
+    
+    STEMWARE,
+    
+    STOCKINGS,
+    
+    STORAGE_AND_ORGANIZATION,
+    
+    STORAGE_CABINETS_AND_LOCKERS,
+    
+    STORAGE_HOOKS_AND_RACKS,
+    
+    SUITCASES,
+    
+    SUITS,
+    
+    SUITS_AND_SUIT_SEPARATES,
+    
+    GLASSES_AND_SUNGLASSES,
+    
+    SUNSCREEN,
+    
+    SWEATERS_AND_CARDIGANS,
+    
+    SWEATSHIRTS_AND_HOODIES,
+    
+    SWIMWEAR,
+    
+    T_SHIRTS,
+    
+    TABLE_LAMPS,
+    
+    TABLE_RUNNERS,
+    
+    TABLECLOTHS,
+    
+    TABLES,
+    
+    TABLEWARE,
+    
+    TANK_TOPS,
+    
+    TANNING_OILS_AND_LOTIONS,
+    
+    TEETH_WHITENING,
+    
+    TEETH_WHITENING_TOOLS,
+    
+    TELEPHONY,
+    
+    TEXTILE_AND_SEWING,
+    
+    THREAD_AND_YARN,
+    
+    THROW_PILLOWS,
+    
+    TIARAS,
+    
+    TOILET_PAPER_HOLDERS,
+    
+    TONERS_AND_ASTRINGENTS,
+    
+    TOOL_STORAGE_AND_ORGANIZATION,
+    
+    TOOLS,
+    
+    TOPS,
+    
+    TOWEL_RACKS_AND_HOLDERS,
+    
+    TOYS,
+    
+    TRADITIONAL_AND_CEREMONIAL_CLOTHING,
+    
+    TUMBLERS_AND_WATER_BOTTLES,
+    
+    UNIFORMS,
+    
+    VASES,
+    
+    VEHICLE_PARTS_AND_ACCESSORIES,
+    
+    VEILS,
+    
+    WALL_CLOCKS,
+    
+    WALL_LIGHT_FIXTURES,
+    
+    WALL_PAINTS,
+    
+    WALL_SHELVES_AND_LEDGES,
+    
+    WALLETS_AND_CARD_CASES,
+    
+    WALLPAPERS,
+    
+    WATCHES,
+    
+    WATERING_AND_IRRIGATION,
+    
+    WEDDING_CEREMONY_DECOR,
+    
+    WEDDING_CLOTHING,
+    
+    WEDDING_DECOR,
+    
+    WEDDING_DRESS,
+    
+    WEDDING_GIFTS,
+    
+    WEDDING_STATIONERY,
+    
+    WEDDING_TABLE_DECOR,
+    
+    WIGS_AND_HAIR_EXTENSIONS,
+    
+    WINDOW_BLINDS_AND_SHADES,
+    
+    WINDOW_TREATMENT_ACCESSORIES,
+    
+    WINDOW_TREATMENTS,
+    
+    WINE_RACKS,
+    
+    WOOD_BOARDS_AND_PLANKS,
+    
+    WOODWORKING_MATERIALS,
+    
+    WOODWORKING_PLANS,
+    
+    WORK_BENCHES,
+    
+    WREATHS_AND_GARLANDS
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductCategoryEnum& value)
+{
+    switch (value)
+    {
+        
+        case ProductCategoryEnum::ACCENT_TABLES: j = "ACCENT_TABLES"; break;
+        
+        case ProductCategoryEnum::ACCESSORIES: j = "ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::ANKLETS: j = "ANKLETS"; break;
+        
+        case ProductCategoryEnum::APRONS: j = "APRONS"; break;
+        
+        case ProductCategoryEnum::AREA_RUGS: j = "AREA_RUGS"; break;
+        
+        case ProductCategoryEnum::ARMOIRES_AND_WARDROBES: j = "ARMOIRES_AND_WARDROBES"; break;
+        
+        case ProductCategoryEnum::ART_AND_CRAFT_PAINTS: j = "ART_AND_CRAFT_PAINTS"; break;
+        
+        case ProductCategoryEnum::ART_BRUSHES: j = "ART_BRUSHES"; break;
+        
+        case ProductCategoryEnum::ARTIFICIAL_FLORA: j = "ARTIFICIAL_FLORA"; break;
+        
+        case ProductCategoryEnum::ARTWORK: j = "ARTWORK"; break;
+        
+        case ProductCategoryEnum::AUDIO: j = "AUDIO"; break;
+        
+        case ProductCategoryEnum::AUDIO_ACCESSORIES: j = "AUDIO_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::BACKPACKS: j = "BACKPACKS"; break;
+        
+        case ProductCategoryEnum::BAG_AND_LUGGAGE_ACCESSORIES: j = "BAG_AND_LUGGAGE_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::BAGS_AND_LUGGAGE: j = "BAGS_AND_LUGGAGE"; break;
+        
+        case ProductCategoryEnum::BAKEWARE: j = "BAKEWARE"; break;
+        
+        case ProductCategoryEnum::BANDANAS: j = "BANDANAS"; break;
+        
+        case ProductCategoryEnum::BAR_CARTS: j = "BAR_CARTS"; break;
+        
+        case ProductCategoryEnum::BARWARE: j = "BARWARE"; break;
+        
+        case ProductCategoryEnum::BASKETS: j = "BASKETS"; break;
+        
+        case ProductCategoryEnum::BATH_AND_BODY: j = "BATH_AND_BODY"; break;
+        
+        case ProductCategoryEnum::BATH_AND_SHOWER: j = "BATH_AND_SHOWER"; break;
+        
+        case ProductCategoryEnum::BATH_MATS_AND_RUGS: j = "BATH_MATS_AND_RUGS"; break;
+        
+        case ProductCategoryEnum::BATH_TOWELS_AND_WASHCLOTHS: j = "BATH_TOWELS_AND_WASHCLOTHS"; break;
+        
+        case ProductCategoryEnum::BATHROOM_ACCESSORIES: j = "BATHROOM_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::BATHROOM_ACCESSORY_SETS: j = "BATHROOM_ACCESSORY_SETS"; break;
+        
+        case ProductCategoryEnum::BATHROOM_VANITIES: j = "BATHROOM_VANITIES"; break;
+        
+        case ProductCategoryEnum::BEACH_TOWELS: j = "BEACH_TOWELS"; break;
+        
+        case ProductCategoryEnum::BEADS_AND_JEWELRY_MAKING_SUPPLIES: j = "BEADS_AND_JEWELRY_MAKING_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::BEAUTY_SUPPLEMENTS: j = "BEAUTY_SUPPLEMENTS"; break;
+        
+        case ProductCategoryEnum::BED_SHEETS: j = "BED_SHEETS"; break;
+        
+        case ProductCategoryEnum::BEDDING: j = "BEDDING"; break;
+        
+        case ProductCategoryEnum::BEDROOM_VANITIES: j = "BEDROOM_VANITIES"; break;
+        
+        case ProductCategoryEnum::BEDS_AND_ACCESSORIES: j = "BEDS_AND_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::BEDS_AND_BED_FRAMES: j = "BEDS_AND_BED_FRAMES"; break;
+        
+        case ProductCategoryEnum::BELT_BAGS: j = "BELT_BAGS"; break;
+        
+        case ProductCategoryEnum::BELTS_AND_SUSPENDERS: j = "BELTS_AND_SUSPENDERS"; break;
+        
+        case ProductCategoryEnum::BENCHES: j = "BENCHES"; break;
+        
+        case ProductCategoryEnum::BEVERAGES: j = "BEVERAGES"; break;
+        
+        case ProductCategoryEnum::BIRD_SUPPLIES: j = "BIRD_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::BLANKETS: j = "BLANKETS"; break;
+        
+        case ProductCategoryEnum::BLOUSES: j = "BLOUSES"; break;
+        
+        case ProductCategoryEnum::BLUSHES_AND_BRONZERS: j = "BLUSHES_AND_BRONZERS"; break;
+        
+        case ProductCategoryEnum::BODY_CARE: j = "BODY_CARE"; break;
+        
+        case ProductCategoryEnum::BODY_JEWELRY: j = "BODY_JEWELRY"; break;
+        
+        case ProductCategoryEnum::BODY_MAKEUP: j = "BODY_MAKEUP"; break;
+        
+        case ProductCategoryEnum::BODY_MOISTURIZERS: j = "BODY_MOISTURIZERS"; break;
+        
+        case ProductCategoryEnum::BODY_WASHES: j = "BODY_WASHES"; break;
+        
+        case ProductCategoryEnum::BOOKCASES_AND_STANDING_SHELVES: j = "BOOKCASES_AND_STANDING_SHELVES"; break;
+        
+        case ProductCategoryEnum::BOOKENDS: j = "BOOKENDS"; break;
+        
+        case ProductCategoryEnum::BOOKS: j = "BOOKS"; break;
+        
+        case ProductCategoryEnum::BOOTS: j = "BOOTS"; break;
+        
+        case ProductCategoryEnum::BRACELETS: j = "BRACELETS"; break;
+        
+        case ProductCategoryEnum::BRIDESMAID_DRESSES: j = "BRIDESMAID_DRESSES"; break;
+        
+        case ProductCategoryEnum::BROOCHES_AND_LAPEL_PINS: j = "BROOCHES_AND_LAPEL_PINS"; break;
+        
+        case ProductCategoryEnum::BROW_MAKEUP: j = "BROW_MAKEUP"; break;
+        
+        case ProductCategoryEnum::BUFFETS_AND_SIDEBOARDS: j = "BUFFETS_AND_SIDEBOARDS"; break;
+        
+        case ProductCategoryEnum::BUTTON_DOWN_SHIRTS: j = "BUTTON_DOWN_SHIRTS"; break;
+        
+        case ProductCategoryEnum::CABINET_HARDWARE: j = "CABINET_HARDWARE"; break;
+        
+        case ProductCategoryEnum::CABINETS_AND_STORAGE_FURNITURE: j = "CABINETS_AND_STORAGE_FURNITURE"; break;
+        
+        case ProductCategoryEnum::CAKE_DECORATING_SUPPLIES: j = "CAKE_DECORATING_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::CAMPING_AND_HIKING: j = "CAMPING_AND_HIKING"; break;
+        
+        case ProductCategoryEnum::CANDLE_HOLDERS: j = "CANDLE_HOLDERS"; break;
+        
+        case ProductCategoryEnum::CANDLES: j = "CANDLES"; break;
+        
+        case ProductCategoryEnum::CARDSTOCK_PAPERS: j = "CARDSTOCK_PAPERS"; break;
+        
+        case ProductCategoryEnum::CASUAL_PANTS: j = "CASUAL_PANTS"; break;
+        
+        case ProductCategoryEnum::CAT_SUPPLIES: j = "CAT_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::CHAIRS: j = "CHAIRS"; break;
+        
+        case ProductCategoryEnum::CHANDELIERS: j = "CHANDELIERS"; break;
+        
+        case ProductCategoryEnum::CHARMS_AND_PENDANTS: j = "CHARMS_AND_PENDANTS"; break;
+        
+        case ProductCategoryEnum::CHINA_CABINETS_AND_HUTCHES: j = "CHINA_CABINETS_AND_HUTCHES"; break;
+        
+        case ProductCategoryEnum::CLOGS_AND_MULES: j = "CLOGS_AND_MULES"; break;
+        
+        case ProductCategoryEnum::CLOTH_NAPKINS: j = "CLOTH_NAPKINS"; break;
+        
+        case ProductCategoryEnum::CLOTHING: j = "CLOTHING"; break;
+        
+        case ProductCategoryEnum::CLOTHING_AND_CLOSET_STORAGE: j = "CLOTHING_AND_CLOSET_STORAGE"; break;
+        
+        case ProductCategoryEnum::CLOTHING_SETS: j = "CLOTHING_SETS"; break;
+        
+        case ProductCategoryEnum::COASTERS: j = "COASTERS"; break;
+        
+        case ProductCategoryEnum::COATS_AND_JACKETS: j = "COATS_AND_JACKETS"; break;
+        
+        case ProductCategoryEnum::COFFEE_AND_TEA_CUPS: j = "COFFEE_AND_TEA_CUPS"; break;
+        
+        case ProductCategoryEnum::COFFEE_MAKERS_AND_ESPRESSO_MACHINES: j = "COFFEE_MAKERS_AND_ESPRESSO_MACHINES"; break;
+        
+        case ProductCategoryEnum::COLORING_BOOKS: j = "COLORING_BOOKS"; break;
+        
+        case ProductCategoryEnum::COMMUNICATIONS: j = "COMMUNICATIONS"; break;
+        
+        case ProductCategoryEnum::COMPUTER_ACCESSORIES: j = "COMPUTER_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::COOKIE_CUTTERS: j = "COOKIE_CUTTERS"; break;
+        
+        case ProductCategoryEnum::COOKWARE: j = "COOKWARE"; break;
+        
+        case ProductCategoryEnum::COOKWARE_AND_BAKEWARE: j = "COOKWARE_AND_BAKEWARE"; break;
+        
+        case ProductCategoryEnum::COSMETIC_AND_TOILETRY_BAGS: j = "COSMETIC_AND_TOILETRY_BAGS"; break;
+        
+        case ProductCategoryEnum::COSTUMES_AND_ACCESSORIES: j = "COSTUMES_AND_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::CRAFT_ADHESIVES_AND_MAGNETS: j = "CRAFT_ADHESIVES_AND_MAGNETS"; break;
+        
+        case ProductCategoryEnum::CRAFT_CUTTING_TOOLS: j = "CRAFT_CUTTING_TOOLS"; break;
+        
+        case ProductCategoryEnum::CRAFT_MOLDS: j = "CRAFT_MOLDS"; break;
+        
+        case ProductCategoryEnum::CRIBS_AND_TODDLER_BEDS: j = "CRIBS_AND_TODDLER_BEDS"; break;
+        
+        case ProductCategoryEnum::CURTAIN_AND_DRAPE_RODS: j = "CURTAIN_AND_DRAPE_RODS"; break;
+        
+        case ProductCategoryEnum::CURTAINS_AND_DRAPES: j = "CURTAINS_AND_DRAPES"; break;
+        
+        case ProductCategoryEnum::CUTTING_BOARDS: j = "CUTTING_BOARDS"; break;
+        
+        case ProductCategoryEnum::CYCLING: j = "CYCLING"; break;
+        
+        case ProductCategoryEnum::DECORATIVE_BOWLS: j = "DECORATIVE_BOWLS"; break;
+        
+        case ProductCategoryEnum::DECORATIVE_JARS: j = "DECORATIVE_JARS"; break;
+        
+        case ProductCategoryEnum::DECORATIVE_TAPESTRIES: j = "DECORATIVE_TAPESTRIES"; break;
+        
+        case ProductCategoryEnum::DECORATIVE_TRAYS: j = "DECORATIVE_TRAYS"; break;
+        
+        case ProductCategoryEnum::DEODORANTS_AND_ANTIPERSPIRANTS: j = "DEODORANTS_AND_ANTIPERSPIRANTS"; break;
+        
+        case ProductCategoryEnum::DESK_AND_SHELF_CLOCKS: j = "DESK_AND_SHELF_CLOCKS"; break;
+        
+        case ProductCategoryEnum::DESKS: j = "DESKS"; break;
+        
+        case ProductCategoryEnum::DIAPER_BAGS: j = "DIAPER_BAGS"; break;
+        
+        case ProductCategoryEnum::DINNERWARE: j = "DINNERWARE"; break;
+        
+        case ProductCategoryEnum::DISHWASHERS: j = "DISHWASHERS"; break;
+        
+        case ProductCategoryEnum::DOG_SUPPLIES: j = "DOG_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::DOOR_MATS: j = "DOOR_MATS"; break;
+        
+        case ProductCategoryEnum::DRAWING_AND_PAINTING: j = "DRAWING_AND_PAINTING"; break;
+        
+        case ProductCategoryEnum::DRESS_PANTS: j = "DRESS_PANTS"; break;
+        
+        case ProductCategoryEnum::DRESSERS: j = "DRESSERS"; break;
+        
+        case ProductCategoryEnum::DRESSES: j = "DRESSES"; break;
+        
+        case ProductCategoryEnum::DRILLS_AND_SCREWDRIVERS: j = "DRILLS_AND_SCREWDRIVERS"; break;
+        
+        case ProductCategoryEnum::DRINKWARE: j = "DRINKWARE"; break;
+        
+        case ProductCategoryEnum::DUFFEL_BAGS: j = "DUFFEL_BAGS"; break;
+        
+        case ProductCategoryEnum::DUVET_COVERS: j = "DUVET_COVERS"; break;
+        
+        case ProductCategoryEnum::DVDS_AND_VIDEOS: j = "DVDS_AND_VIDEOS"; break;
+        
+        case ProductCategoryEnum::EARRINGS: j = "EARRINGS"; break;
+        
+        case ProductCategoryEnum::ELECTRONICS_ACCESSORIES: j = "ELECTRONICS_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::ENGAGEMENT_AND_WEDDING_RINGS: j = "ENGAGEMENT_AND_WEDDING_RINGS"; break;
+        
+        case ProductCategoryEnum::ENTERTAINMENT_CENTERS_AND_TV_STANDS: j = "ENTERTAINMENT_CENTERS_AND_TV_STANDS"; break;
+        
+        case ProductCategoryEnum::ERASERS: j = "ERASERS"; break;
+        
+        case ProductCategoryEnum::EYE_MAKEUP: j = "EYE_MAKEUP"; break;
+        
+        case ProductCategoryEnum::EYE_SHADOW: j = "EYE_SHADOW"; break;
+        
+        case ProductCategoryEnum::EYELINERS: j = "EYELINERS"; break;
+        
+        case ProductCategoryEnum::FABRIC: j = "FABRIC"; break;
+        
+        case ProductCategoryEnum::FACE_COVERINGS: j = "FACE_COVERINGS"; break;
+        
+        case ProductCategoryEnum::FACE_LOTIONS_AND_CREAMS: j = "FACE_LOTIONS_AND_CREAMS"; break;
+        
+        case ProductCategoryEnum::FACE_MAKEUP: j = "FACE_MAKEUP"; break;
+        
+        case ProductCategoryEnum::FACIAL_CLEANSERS: j = "FACIAL_CLEANSERS"; break;
+        
+        case ProductCategoryEnum::FACIAL_MOISTURIZERS: j = "FACIAL_MOISTURIZERS"; break;
+        
+        case ProductCategoryEnum::FALSE_EYELASHES: j = "FALSE_EYELASHES"; break;
+        
+        case ProductCategoryEnum::FIGURINES: j = "FIGURINES"; break;
+        
+        case ProductCategoryEnum::FIREPLACE_AND_WOOD_STOVE_ACCESSORIES: j = "FIREPLACE_AND_WOOD_STOVE_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::FIREPLACES: j = "FIREPLACES"; break;
+        
+        case ProductCategoryEnum::FISHING: j = "FISHING"; break;
+        
+        case ProductCategoryEnum::FLAGS_AND_WINDSOCKS: j = "FLAGS_AND_WINDSOCKS"; break;
+        
+        case ProductCategoryEnum::FLATS: j = "FLATS"; break;
+        
+        case ProductCategoryEnum::FLATWARE: j = "FLATWARE"; break;
+        
+        case ProductCategoryEnum::FLOOR_LAMPS: j = "FLOOR_LAMPS"; break;
+        
+        case ProductCategoryEnum::FLOWER_GIRL_DRESSES: j = "FLOWER_GIRL_DRESSES"; break;
+        
+        case ProductCategoryEnum::FOOD_AND_BEVERAGE_CARRIERS: j = "FOOD_AND_BEVERAGE_CARRIERS"; break;
+        
+        case ProductCategoryEnum::FOOD_COOKERS_AND_STEAMERS: j = "FOOD_COOKERS_AND_STEAMERS"; break;
+        
+        case ProductCategoryEnum::FOOD_ITEMS: j = "FOOD_ITEMS"; break;
+        
+        case ProductCategoryEnum::FOOD_MIXERS_AND_BLENDERS: j = "FOOD_MIXERS_AND_BLENDERS"; break;
+        
+        case ProductCategoryEnum::FOOD_STORAGE_CONTAINERS: j = "FOOD_STORAGE_CONTAINERS"; break;
+        
+        case ProductCategoryEnum::FOOD_STORAGE_SUPPLIES: j = "FOOD_STORAGE_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::FOUNDATIONS_AND_CONCEALERS: j = "FOUNDATIONS_AND_CONCEALERS"; break;
+        
+        case ProductCategoryEnum::FOUNTAINS_AND_PONDS: j = "FOUNTAINS_AND_PONDS"; break;
+        
+        case ProductCategoryEnum::FRAGRANCE: j = "FRAGRANCE"; break;
+        
+        case ProductCategoryEnum::FURNITURE: j = "FURNITURE"; break;
+        
+        case ProductCategoryEnum::FURNITURE_SETS: j = "FURNITURE_SETS"; break;
+        
+        case ProductCategoryEnum::GAMES: j = "GAMES"; break;
+        
+        case ProductCategoryEnum::GARDENING: j = "GARDENING"; break;
+        
+        case ProductCategoryEnum::GARDENING_TOOLS: j = "GARDENING_TOOLS"; break;
+        
+        case ProductCategoryEnum::GLOVES_AND_MITTENS: j = "GLOVES_AND_MITTENS"; break;
+        
+        case ProductCategoryEnum::GLUES_AND_TAPES: j = "GLUES_AND_TAPES"; break;
+        
+        case ProductCategoryEnum::GROOM_AND_GROOMSMEN_SUITS: j = "GROOM_AND_GROOMSMEN_SUITS"; break;
+        
+        case ProductCategoryEnum::HAIR: j = "HAIR"; break;
+        
+        case ProductCategoryEnum::HAIR_ACCESSORIES: j = "HAIR_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::HAIR_CARE: j = "HAIR_CARE"; break;
+        
+        case ProductCategoryEnum::HAIR_COLOR: j = "HAIR_COLOR"; break;
+        
+        case ProductCategoryEnum::HAIR_COMBS: j = "HAIR_COMBS"; break;
+        
+        case ProductCategoryEnum::HAIR_PINS_CLAWS_AND_CLIPS: j = "HAIR_PINS_CLAWS_AND_CLIPS"; break;
+        
+        case ProductCategoryEnum::HAIR_REMOVAL: j = "HAIR_REMOVAL"; break;
+        
+        case ProductCategoryEnum::HAIR_TOOLS: j = "HAIR_TOOLS"; break;
+        
+        case ProductCategoryEnum::HAIR_TREATMENT: j = "HAIR_TREATMENT"; break;
+        
+        case ProductCategoryEnum::HAIR_WREATHS: j = "HAIR_WREATHS"; break;
+        
+        case ProductCategoryEnum::HAND_AND_FOOT_CARE: j = "HAND_AND_FOOT_CARE"; break;
+        
+        case ProductCategoryEnum::HAND_SOAPS_AND_SANITIZERS: j = "HAND_SOAPS_AND_SANITIZERS"; break;
+        
+        case ProductCategoryEnum::HANDBAGS: j = "HANDBAGS"; break;
+        
+        case ProductCategoryEnum::HANDKERCHIEFS: j = "HANDKERCHIEFS"; break;
+        
+        case ProductCategoryEnum::HARDWARE_SUPPLIES: j = "HARDWARE_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::HATS: j = "HATS"; break;
+        
+        case ProductCategoryEnum::HEADBOARDS_AND_FOOTBOARDS: j = "HEADBOARDS_AND_FOOTBOARDS"; break;
+        
+        case ProductCategoryEnum::HEADWEAR: j = "HEADWEAR"; break;
+        
+        case ProductCategoryEnum::HIGHLIGHTERS: j = "HIGHLIGHTERS"; break;
+        
+        case ProductCategoryEnum::HOBBIES_AND_CREATIVE_ARTS: j = "HOBBIES_AND_CREATIVE_ARTS"; break;
+        
+        case ProductCategoryEnum::HOME_ACCESSORIES: j = "HOME_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::HOME_DECOR_DECALS: j = "HOME_DECOR_DECALS"; break;
+        
+        case ProductCategoryEnum::HOME_FRAGRANCE_ACCESSORIES: j = "HOME_FRAGRANCE_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::HOME_FRAGRANCES: j = "HOME_FRAGRANCES"; break;
+        
+        case ProductCategoryEnum::HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES: j = "HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::HOSIERY: j = "HOSIERY"; break;
+        
+        case ProductCategoryEnum::HOUSEHOLD_APPLIANCES: j = "HOUSEHOLD_APPLIANCES"; break;
+        
+        case ProductCategoryEnum::HOUSEHOLD_SUPPLIES: j = "HOUSEHOLD_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::INCENSE: j = "INCENSE"; break;
+        
+        case ProductCategoryEnum::INDOOR_GAMES: j = "INDOOR_GAMES"; break;
+        
+        case ProductCategoryEnum::JEANS: j = "JEANS"; break;
+        
+        case ProductCategoryEnum::JEWELRY_AND_WATCH_ACCESSORIES: j = "JEWELRY_AND_WATCH_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::JEWELRY_AND_WATCHES: j = "JEWELRY_AND_WATCHES"; break;
+        
+        case ProductCategoryEnum::JEWELRY_SETS: j = "JEWELRY_SETS"; break;
+        
+        case ProductCategoryEnum::JUMPSUITS_AND_ROMPERS: j = "JUMPSUITS_AND_ROMPERS"; break;
+        
+        case ProductCategoryEnum::KEYCHAINS: j = "KEYCHAINS"; break;
+        
+        case ProductCategoryEnum::KITCHEN_AND_DINING: j = "KITCHEN_AND_DINING"; break;
+        
+        case ProductCategoryEnum::KITCHEN_AND_DINING_ROOM_TABLES: j = "KITCHEN_AND_DINING_ROOM_TABLES"; break;
+        
+        case ProductCategoryEnum::KITCHEN_APPLIANCES: j = "KITCHEN_APPLIANCES"; break;
+        
+        case ProductCategoryEnum::KITCHEN_KNIVES: j = "KITCHEN_KNIVES"; break;
+        
+        case ProductCategoryEnum::KITCHEN_LINENS: j = "KITCHEN_LINENS"; break;
+        
+        case ProductCategoryEnum::KITCHEN_MATS: j = "KITCHEN_MATS"; break;
+        
+        case ProductCategoryEnum::KITCHEN_ORGANIZERS: j = "KITCHEN_ORGANIZERS"; break;
+        
+        case ProductCategoryEnum::KITCHEN_TOOLS_AND_UTENSILS: j = "KITCHEN_TOOLS_AND_UTENSILS"; break;
+        
+        case ProductCategoryEnum::KITCHEN_TOWELS: j = "KITCHEN_TOWELS"; break;
+        
+        case ProductCategoryEnum::KNITTING_AND_CROCHET: j = "KNITTING_AND_CROCHET"; break;
+        
+        case ProductCategoryEnum::KNITTING_AND_CROCHET_TOOLS: j = "KNITTING_AND_CROCHET_TOOLS"; break;
+        
+        case ProductCategoryEnum::LAMP_SHADES: j = "LAMP_SHADES"; break;
+        
+        case ProductCategoryEnum::LAMPS: j = "LAMPS"; break;
+        
+        case ProductCategoryEnum::LANYARDS: j = "LANYARDS"; break;
+        
+        case ProductCategoryEnum::LAUNDRY_HAMPERS_AND_SUPPLIES: j = "LAUNDRY_HAMPERS_AND_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::LAWN_AND_GARDEN: j = "LAWN_AND_GARDEN"; break;
+        
+        case ProductCategoryEnum::LAWN_AND_GARDEN_DECOR: j = "LAWN_AND_GARDEN_DECOR"; break;
+        
+        case ProductCategoryEnum::LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES: j = "LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES"; break;
+        
+        case ProductCategoryEnum::LEGGINGS: j = "LEGGINGS"; break;
+        
+        case ProductCategoryEnum::LEOTARDS_AND_UNITARDS: j = "LEOTARDS_AND_UNITARDS"; break;
+        
+        case ProductCategoryEnum::LIGHTING: j = "LIGHTING"; break;
+        
+        case ProductCategoryEnum::LIGHTING_ACCESSORIES: j = "LIGHTING_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::LIGHTING_FIXTURES: j = "LIGHTING_FIXTURES"; break;
+        
+        case ProductCategoryEnum::LIP_BALMS: j = "LIP_BALMS"; break;
+        
+        case ProductCategoryEnum::LIP_CARE: j = "LIP_CARE"; break;
+        
+        case ProductCategoryEnum::LIP_MAKEUP: j = "LIP_MAKEUP"; break;
+        
+        case ProductCategoryEnum::LIPSTICKS_AND_LIP_GLOSSES: j = "LIPSTICKS_AND_LIP_GLOSSES"; break;
+        
+        case ProductCategoryEnum::MAGAZINES_AND_NEWSPAPERS: j = "MAGAZINES_AND_NEWSPAPERS"; break;
+        
+        case ProductCategoryEnum::MAGNETS: j = "MAGNETS"; break;
+        
+        case ProductCategoryEnum::MAKEUP: j = "MAKEUP"; break;
+        
+        case ProductCategoryEnum::MAKEUP_TOOLS: j = "MAKEUP_TOOLS"; break;
+        
+        case ProductCategoryEnum::MASCARAS: j = "MASCARAS"; break;
+        
+        case ProductCategoryEnum::MATTRESSES: j = "MATTRESSES"; break;
+        
+        case ProductCategoryEnum::MEASURES_AND_RULERS: j = "MEASURES_AND_RULERS"; break;
+        
+        case ProductCategoryEnum::MEASURING_TOOLS_AND_SENSORS: j = "MEASURING_TOOLS_AND_SENSORS"; break;
+        
+        case ProductCategoryEnum::MESSENGER_BAGS: j = "MESSENGER_BAGS"; break;
+        
+        case ProductCategoryEnum::MIRRORS: j = "MIRRORS"; break;
+        
+        case ProductCategoryEnum::MUSIC_AND_SOUND_RECORDINGS: j = "MUSIC_AND_SOUND_RECORDINGS"; break;
+        
+        case ProductCategoryEnum::NAIL_ART: j = "NAIL_ART"; break;
+        
+        case ProductCategoryEnum::NAIL_ART_KIT_AND_TOOLS: j = "NAIL_ART_KIT_AND_TOOLS"; break;
+        
+        case ProductCategoryEnum::NAIL_CARE: j = "NAIL_CARE"; break;
+        
+        case ProductCategoryEnum::NAIL_POLISHES: j = "NAIL_POLISHES"; break;
+        
+        case ProductCategoryEnum::NAILS: j = "NAILS"; break;
+        
+        case ProductCategoryEnum::NECKLACES: j = "NECKLACES"; break;
+        
+        case ProductCategoryEnum::NECKTIES: j = "NECKTIES"; break;
+        
+        case ProductCategoryEnum::NIGHT_LIGHTS_AND_AMBIENT_LIGHTING: j = "NIGHT_LIGHTS_AND_AMBIENT_LIGHTING"; break;
+        
+        case ProductCategoryEnum::NIGHTSTANDS: j = "NIGHTSTANDS"; break;
+        
+        case ProductCategoryEnum::NOVELTY_SIGNS: j = "NOVELTY_SIGNS"; break;
+        
+        case ProductCategoryEnum::ONE_PIECES: j = "ONE_PIECES"; break;
+        
+        case ProductCategoryEnum::ONESIES: j = "ONESIES"; break;
+        
+        case ProductCategoryEnum::OTTOMANS: j = "OTTOMANS"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_FURNITURE: j = "OUTDOOR_FURNITURE"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_FURNITURE_SETS: j = "OUTDOOR_FURNITURE_SETS"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_GAMES: j = "OUTDOOR_GAMES"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_GRILLS: j = "OUTDOOR_GRILLS"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_LIVING: j = "OUTDOOR_LIVING"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_PLAY_EQUIPMENT: j = "OUTDOOR_PLAY_EQUIPMENT"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_RECREATION: j = "OUTDOOR_RECREATION"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_RUGS: j = "OUTDOOR_RUGS"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_SEATING: j = "OUTDOOR_SEATING"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_STRUCTURES: j = "OUTDOOR_STRUCTURES"; break;
+        
+        case ProductCategoryEnum::OUTDOOR_TABLES: j = "OUTDOOR_TABLES"; break;
+        
+        case ProductCategoryEnum::OUTERWEAR: j = "OUTERWEAR"; break;
+        
+        case ProductCategoryEnum::OVENS_AND_COOKTOPS: j = "OVENS_AND_COOKTOPS"; break;
+        
+        case ProductCategoryEnum::OVERALLS: j = "OVERALLS"; break;
+        
+        case ProductCategoryEnum::OXFORDS_AND_LOAFERS: j = "OXFORDS_AND_LOAFERS"; break;
+        
+        case ProductCategoryEnum::PAINT_AND_PAINT_TOOLS: j = "PAINT_AND_PAINT_TOOLS"; break;
+        
+        case ProductCategoryEnum::PANTS: j = "PANTS"; break;
+        
+        case ProductCategoryEnum::PAPER_CRAFTS: j = "PAPER_CRAFTS"; break;
+        
+        case ProductCategoryEnum::PARASOLS_AND_RAIN_UMBRELLAS: j = "PARASOLS_AND_RAIN_UMBRELLAS"; break;
+        
+        case ProductCategoryEnum::PARTY_AND_CELEBRATION: j = "PARTY_AND_CELEBRATION"; break;
+        
+        case ProductCategoryEnum::PENDANT_LIGHTS: j = "PENDANT_LIGHTS"; break;
+        
+        case ProductCategoryEnum::PENS_AND_PENCILS: j = "PENS_AND_PENCILS"; break;
+        
+        case ProductCategoryEnum::PERFUMES_AND_COLOGNES: j = "PERFUMES_AND_COLOGNES"; break;
+        
+        case ProductCategoryEnum::PET_CARRIERS_AND_CRATES: j = "PET_CARRIERS_AND_CRATES"; break;
+        
+        case ProductCategoryEnum::PET_COLLARS_AND_HARNESSES: j = "PET_COLLARS_AND_HARNESSES"; break;
+        
+        case ProductCategoryEnum::PET_SUPPLIES: j = "PET_SUPPLIES"; break;
+        
+        case ProductCategoryEnum::PHOTO_ALBUMS_AND_STORAGE: j = "PHOTO_ALBUMS_AND_STORAGE"; break;
+        
+        case ProductCategoryEnum::PICTURE_FRAMES: j = "PICTURE_FRAMES"; break;
+        
+        case ProductCategoryEnum::PILLOWCASES_AND_SHAMS: j = "PILLOWCASES_AND_SHAMS"; break;
+        
+        case ProductCategoryEnum::PINBACK_BUTTONS: j = "PINBACK_BUTTONS"; break;
+        
+        case ProductCategoryEnum::PLACEMATS: j = "PLACEMATS"; break;
+        
+        case ProductCategoryEnum::PLANTS: j = "PLANTS"; break;
+        
+        case ProductCategoryEnum::PONYTAIL_HOLDERS: j = "PONYTAIL_HOLDERS"; break;
+        
+        case ProductCategoryEnum::POOL_AND_SPA_ACCESSORIES: j = "POOL_AND_SPA_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::POSTERS_PRINTS_AND_VISUAL_ARTWORK: j = "POSTERS_PRINTS_AND_VISUAL_ARTWORK"; break;
+        
+        case ProductCategoryEnum::POTS_AND_PLANTERS: j = "POTS_AND_PLANTERS"; break;
+        
+        case ProductCategoryEnum::POTTERY_AND_SCULPTING: j = "POTTERY_AND_SCULPTING"; break;
+        
+        case ProductCategoryEnum::PRIMERS_AND_MAKEUP_SETTERS: j = "PRIMERS_AND_MAKEUP_SETTERS"; break;
+        
+        case ProductCategoryEnum::PUMPS: j = "PUMPS"; break;
+        
+        case ProductCategoryEnum::PUZZLES: j = "PUZZLES"; break;
+        
+        case ProductCategoryEnum::QUILTS_AND_COMFORTERS: j = "QUILTS_AND_COMFORTERS"; break;
+        
+        case ProductCategoryEnum::RAZORS_AND_SHAVING_TOOLS: j = "RAZORS_AND_SHAVING_TOOLS"; break;
+        
+        case ProductCategoryEnum::RINGS: j = "RINGS"; break;
+        
+        case ProductCategoryEnum::RUGS: j = "RUGS"; break;
+        
+        case ProductCategoryEnum::RUNNER_RUGS: j = "RUNNER_RUGS"; break;
+        
+        case ProductCategoryEnum::SANDALS: j = "SANDALS"; break;
+        
+        case ProductCategoryEnum::SASHES: j = "SASHES"; break;
+        
+        case ProductCategoryEnum::SAWS: j = "SAWS"; break;
+        
+        case ProductCategoryEnum::SCARVES_AND_SHAWLS: j = "SCARVES_AND_SHAWLS"; break;
+        
+        case ProductCategoryEnum::SCULPTURES_AND_STATUES: j = "SCULPTURES_AND_STATUES"; break;
+        
+        case ProductCategoryEnum::SEASONAL_AND_HOLIDAY_DECORATIONS: j = "SEASONAL_AND_HOLIDAY_DECORATIONS"; break;
+        
+        case ProductCategoryEnum::SEATING: j = "SEATING"; break;
+        
+        case ProductCategoryEnum::SERUMS_AND_ESSENCES: j = "SERUMS_AND_ESSENCES"; break;
+        
+        case ProductCategoryEnum::SERVEWARE: j = "SERVEWARE"; break;
+        
+        case ProductCategoryEnum::SEWING_MACHINES: j = "SEWING_MACHINES"; break;
+        
+        case ProductCategoryEnum::SEWING_PATTERNS: j = "SEWING_PATTERNS"; break;
+        
+        case ProductCategoryEnum::SHAMPOO_AND_CONDITIONER: j = "SHAMPOO_AND_CONDITIONER"; break;
+        
+        case ProductCategoryEnum::SHOE_ACCESSORIES: j = "SHOE_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::SHOES: j = "SHOES"; break;
+        
+        case ProductCategoryEnum::SHOPPING_TOTES: j = "SHOPPING_TOTES"; break;
+        
+        case ProductCategoryEnum::SHORTS: j = "SHORTS"; break;
+        
+        case ProductCategoryEnum::SHOWER_CURTAINS: j = "SHOWER_CURTAINS"; break;
+        
+        case ProductCategoryEnum::SKINCARE: j = "SKINCARE"; break;
+        
+        case ProductCategoryEnum::SKINCARE_MASKS_AND_PEELS: j = "SKINCARE_MASKS_AND_PEELS"; break;
+        
+        case ProductCategoryEnum::SKIRTS: j = "SKIRTS"; break;
+        
+        case ProductCategoryEnum::SLEEPWEAR_AND_LOUNGEWEAR: j = "SLEEPWEAR_AND_LOUNGEWEAR"; break;
+        
+        case ProductCategoryEnum::SLIPCOVERS_AND_CUSHIONS: j = "SLIPCOVERS_AND_CUSHIONS"; break;
+        
+        case ProductCategoryEnum::SLIPPERS: j = "SLIPPERS"; break;
+        
+        case ProductCategoryEnum::SNEAKERS_AND_ATHLETIC_SHOES: j = "SNEAKERS_AND_ATHLETIC_SHOES"; break;
+        
+        case ProductCategoryEnum::SOCKS_AND_TIGHTS: j = "SOCKS_AND_TIGHTS"; break;
+        
+        case ProductCategoryEnum::SOFAS: j = "SOFAS"; break;
+        
+        case ProductCategoryEnum::SPORTS_UNIFORMS: j = "SPORTS_UNIFORMS"; break;
+        
+        case ProductCategoryEnum::STEMWARE: j = "STEMWARE"; break;
+        
+        case ProductCategoryEnum::STOCKINGS: j = "STOCKINGS"; break;
+        
+        case ProductCategoryEnum::STORAGE_AND_ORGANIZATION: j = "STORAGE_AND_ORGANIZATION"; break;
+        
+        case ProductCategoryEnum::STORAGE_CABINETS_AND_LOCKERS: j = "STORAGE_CABINETS_AND_LOCKERS"; break;
+        
+        case ProductCategoryEnum::STORAGE_HOOKS_AND_RACKS: j = "STORAGE_HOOKS_AND_RACKS"; break;
+        
+        case ProductCategoryEnum::SUITCASES: j = "SUITCASES"; break;
+        
+        case ProductCategoryEnum::SUITS: j = "SUITS"; break;
+        
+        case ProductCategoryEnum::SUITS_AND_SUIT_SEPARATES: j = "SUITS_AND_SUIT_SEPARATES"; break;
+        
+        case ProductCategoryEnum::GLASSES_AND_SUNGLASSES: j = "GLASSES_AND_SUNGLASSES"; break;
+        
+        case ProductCategoryEnum::SUNSCREEN: j = "SUNSCREEN"; break;
+        
+        case ProductCategoryEnum::SWEATERS_AND_CARDIGANS: j = "SWEATERS_AND_CARDIGANS"; break;
+        
+        case ProductCategoryEnum::SWEATSHIRTS_AND_HOODIES: j = "SWEATSHIRTS_AND_HOODIES"; break;
+        
+        case ProductCategoryEnum::SWIMWEAR: j = "SWIMWEAR"; break;
+        
+        case ProductCategoryEnum::T_SHIRTS: j = "T_SHIRTS"; break;
+        
+        case ProductCategoryEnum::TABLE_LAMPS: j = "TABLE_LAMPS"; break;
+        
+        case ProductCategoryEnum::TABLE_RUNNERS: j = "TABLE_RUNNERS"; break;
+        
+        case ProductCategoryEnum::TABLECLOTHS: j = "TABLECLOTHS"; break;
+        
+        case ProductCategoryEnum::TABLES: j = "TABLES"; break;
+        
+        case ProductCategoryEnum::TABLEWARE: j = "TABLEWARE"; break;
+        
+        case ProductCategoryEnum::TANK_TOPS: j = "TANK_TOPS"; break;
+        
+        case ProductCategoryEnum::TANNING_OILS_AND_LOTIONS: j = "TANNING_OILS_AND_LOTIONS"; break;
+        
+        case ProductCategoryEnum::TEETH_WHITENING: j = "TEETH_WHITENING"; break;
+        
+        case ProductCategoryEnum::TEETH_WHITENING_TOOLS: j = "TEETH_WHITENING_TOOLS"; break;
+        
+        case ProductCategoryEnum::TELEPHONY: j = "TELEPHONY"; break;
+        
+        case ProductCategoryEnum::TEXTILE_AND_SEWING: j = "TEXTILE_AND_SEWING"; break;
+        
+        case ProductCategoryEnum::THREAD_AND_YARN: j = "THREAD_AND_YARN"; break;
+        
+        case ProductCategoryEnum::THROW_PILLOWS: j = "THROW_PILLOWS"; break;
+        
+        case ProductCategoryEnum::TIARAS: j = "TIARAS"; break;
+        
+        case ProductCategoryEnum::TOILET_PAPER_HOLDERS: j = "TOILET_PAPER_HOLDERS"; break;
+        
+        case ProductCategoryEnum::TONERS_AND_ASTRINGENTS: j = "TONERS_AND_ASTRINGENTS"; break;
+        
+        case ProductCategoryEnum::TOOL_STORAGE_AND_ORGANIZATION: j = "TOOL_STORAGE_AND_ORGANIZATION"; break;
+        
+        case ProductCategoryEnum::TOOLS: j = "TOOLS"; break;
+        
+        case ProductCategoryEnum::TOPS: j = "TOPS"; break;
+        
+        case ProductCategoryEnum::TOWEL_RACKS_AND_HOLDERS: j = "TOWEL_RACKS_AND_HOLDERS"; break;
+        
+        case ProductCategoryEnum::TOYS: j = "TOYS"; break;
+        
+        case ProductCategoryEnum::TRADITIONAL_AND_CEREMONIAL_CLOTHING: j = "TRADITIONAL_AND_CEREMONIAL_CLOTHING"; break;
+        
+        case ProductCategoryEnum::TUMBLERS_AND_WATER_BOTTLES: j = "TUMBLERS_AND_WATER_BOTTLES"; break;
+        
+        case ProductCategoryEnum::UNIFORMS: j = "UNIFORMS"; break;
+        
+        case ProductCategoryEnum::VASES: j = "VASES"; break;
+        
+        case ProductCategoryEnum::VEHICLE_PARTS_AND_ACCESSORIES: j = "VEHICLE_PARTS_AND_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::VEILS: j = "VEILS"; break;
+        
+        case ProductCategoryEnum::WALL_CLOCKS: j = "WALL_CLOCKS"; break;
+        
+        case ProductCategoryEnum::WALL_LIGHT_FIXTURES: j = "WALL_LIGHT_FIXTURES"; break;
+        
+        case ProductCategoryEnum::WALL_PAINTS: j = "WALL_PAINTS"; break;
+        
+        case ProductCategoryEnum::WALL_SHELVES_AND_LEDGES: j = "WALL_SHELVES_AND_LEDGES"; break;
+        
+        case ProductCategoryEnum::WALLETS_AND_CARD_CASES: j = "WALLETS_AND_CARD_CASES"; break;
+        
+        case ProductCategoryEnum::WALLPAPERS: j = "WALLPAPERS"; break;
+        
+        case ProductCategoryEnum::WATCHES: j = "WATCHES"; break;
+        
+        case ProductCategoryEnum::WATERING_AND_IRRIGATION: j = "WATERING_AND_IRRIGATION"; break;
+        
+        case ProductCategoryEnum::WEDDING_CEREMONY_DECOR: j = "WEDDING_CEREMONY_DECOR"; break;
+        
+        case ProductCategoryEnum::WEDDING_CLOTHING: j = "WEDDING_CLOTHING"; break;
+        
+        case ProductCategoryEnum::WEDDING_DECOR: j = "WEDDING_DECOR"; break;
+        
+        case ProductCategoryEnum::WEDDING_DRESS: j = "WEDDING_DRESS"; break;
+        
+        case ProductCategoryEnum::WEDDING_GIFTS: j = "WEDDING_GIFTS"; break;
+        
+        case ProductCategoryEnum::WEDDING_STATIONERY: j = "WEDDING_STATIONERY"; break;
+        
+        case ProductCategoryEnum::WEDDING_TABLE_DECOR: j = "WEDDING_TABLE_DECOR"; break;
+        
+        case ProductCategoryEnum::WIGS_AND_HAIR_EXTENSIONS: j = "WIGS_AND_HAIR_EXTENSIONS"; break;
+        
+        case ProductCategoryEnum::WINDOW_BLINDS_AND_SHADES: j = "WINDOW_BLINDS_AND_SHADES"; break;
+        
+        case ProductCategoryEnum::WINDOW_TREATMENT_ACCESSORIES: j = "WINDOW_TREATMENT_ACCESSORIES"; break;
+        
+        case ProductCategoryEnum::WINDOW_TREATMENTS: j = "WINDOW_TREATMENTS"; break;
+        
+        case ProductCategoryEnum::WINE_RACKS: j = "WINE_RACKS"; break;
+        
+        case ProductCategoryEnum::WOOD_BOARDS_AND_PLANKS: j = "WOOD_BOARDS_AND_PLANKS"; break;
+        
+        case ProductCategoryEnum::WOODWORKING_MATERIALS: j = "WOODWORKING_MATERIALS"; break;
+        
+        case ProductCategoryEnum::WOODWORKING_PLANS: j = "WOODWORKING_PLANS"; break;
+        
+        case ProductCategoryEnum::WORK_BENCHES: j = "WORK_BENCHES"; break;
+        
+        case ProductCategoryEnum::WREATHS_AND_GARLANDS: j = "WREATHS_AND_GARLANDS"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryEnum", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductCategoryEnum& value)
+{
+    
+    if (j == "ACCENT_TABLES")
+    {
+        value = ProductCategoryEnum::ACCENT_TABLES;
+        return;
+    }
+    
+    if (j == "ACCESSORIES")
+    {
+        value = ProductCategoryEnum::ACCESSORIES;
+        return;
+    }
+    
+    if (j == "ANKLETS")
+    {
+        value = ProductCategoryEnum::ANKLETS;
+        return;
+    }
+    
+    if (j == "APRONS")
+    {
+        value = ProductCategoryEnum::APRONS;
+        return;
+    }
+    
+    if (j == "AREA_RUGS")
+    {
+        value = ProductCategoryEnum::AREA_RUGS;
+        return;
+    }
+    
+    if (j == "ARMOIRES_AND_WARDROBES")
+    {
+        value = ProductCategoryEnum::ARMOIRES_AND_WARDROBES;
+        return;
+    }
+    
+    if (j == "ART_AND_CRAFT_PAINTS")
+    {
+        value = ProductCategoryEnum::ART_AND_CRAFT_PAINTS;
+        return;
+    }
+    
+    if (j == "ART_BRUSHES")
+    {
+        value = ProductCategoryEnum::ART_BRUSHES;
+        return;
+    }
+    
+    if (j == "ARTIFICIAL_FLORA")
+    {
+        value = ProductCategoryEnum::ARTIFICIAL_FLORA;
+        return;
+    }
+    
+    if (j == "ARTWORK")
+    {
+        value = ProductCategoryEnum::ARTWORK;
+        return;
+    }
+    
+    if (j == "AUDIO")
+    {
+        value = ProductCategoryEnum::AUDIO;
+        return;
+    }
+    
+    if (j == "AUDIO_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::AUDIO_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "BACKPACKS")
+    {
+        value = ProductCategoryEnum::BACKPACKS;
+        return;
+    }
+    
+    if (j == "BAG_AND_LUGGAGE_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::BAG_AND_LUGGAGE_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "BAGS_AND_LUGGAGE")
+    {
+        value = ProductCategoryEnum::BAGS_AND_LUGGAGE;
+        return;
+    }
+    
+    if (j == "BAKEWARE")
+    {
+        value = ProductCategoryEnum::BAKEWARE;
+        return;
+    }
+    
+    if (j == "BANDANAS")
+    {
+        value = ProductCategoryEnum::BANDANAS;
+        return;
+    }
+    
+    if (j == "BAR_CARTS")
+    {
+        value = ProductCategoryEnum::BAR_CARTS;
+        return;
+    }
+    
+    if (j == "BARWARE")
+    {
+        value = ProductCategoryEnum::BARWARE;
+        return;
+    }
+    
+    if (j == "BASKETS")
+    {
+        value = ProductCategoryEnum::BASKETS;
+        return;
+    }
+    
+    if (j == "BATH_AND_BODY")
+    {
+        value = ProductCategoryEnum::BATH_AND_BODY;
+        return;
+    }
+    
+    if (j == "BATH_AND_SHOWER")
+    {
+        value = ProductCategoryEnum::BATH_AND_SHOWER;
+        return;
+    }
+    
+    if (j == "BATH_MATS_AND_RUGS")
+    {
+        value = ProductCategoryEnum::BATH_MATS_AND_RUGS;
+        return;
+    }
+    
+    if (j == "BATH_TOWELS_AND_WASHCLOTHS")
+    {
+        value = ProductCategoryEnum::BATH_TOWELS_AND_WASHCLOTHS;
+        return;
+    }
+    
+    if (j == "BATHROOM_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::BATHROOM_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "BATHROOM_ACCESSORY_SETS")
+    {
+        value = ProductCategoryEnum::BATHROOM_ACCESSORY_SETS;
+        return;
+    }
+    
+    if (j == "BATHROOM_VANITIES")
+    {
+        value = ProductCategoryEnum::BATHROOM_VANITIES;
+        return;
+    }
+    
+    if (j == "BEACH_TOWELS")
+    {
+        value = ProductCategoryEnum::BEACH_TOWELS;
+        return;
+    }
+    
+    if (j == "BEADS_AND_JEWELRY_MAKING_SUPPLIES")
+    {
+        value = ProductCategoryEnum::BEADS_AND_JEWELRY_MAKING_SUPPLIES;
+        return;
+    }
+    
+    if (j == "BEAUTY_SUPPLEMENTS")
+    {
+        value = ProductCategoryEnum::BEAUTY_SUPPLEMENTS;
+        return;
+    }
+    
+    if (j == "BED_SHEETS")
+    {
+        value = ProductCategoryEnum::BED_SHEETS;
+        return;
+    }
+    
+    if (j == "BEDDING")
+    {
+        value = ProductCategoryEnum::BEDDING;
+        return;
+    }
+    
+    if (j == "BEDROOM_VANITIES")
+    {
+        value = ProductCategoryEnum::BEDROOM_VANITIES;
+        return;
+    }
+    
+    if (j == "BEDS_AND_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::BEDS_AND_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "BEDS_AND_BED_FRAMES")
+    {
+        value = ProductCategoryEnum::BEDS_AND_BED_FRAMES;
+        return;
+    }
+    
+    if (j == "BELT_BAGS")
+    {
+        value = ProductCategoryEnum::BELT_BAGS;
+        return;
+    }
+    
+    if (j == "BELTS_AND_SUSPENDERS")
+    {
+        value = ProductCategoryEnum::BELTS_AND_SUSPENDERS;
+        return;
+    }
+    
+    if (j == "BENCHES")
+    {
+        value = ProductCategoryEnum::BENCHES;
+        return;
+    }
+    
+    if (j == "BEVERAGES")
+    {
+        value = ProductCategoryEnum::BEVERAGES;
+        return;
+    }
+    
+    if (j == "BIRD_SUPPLIES")
+    {
+        value = ProductCategoryEnum::BIRD_SUPPLIES;
+        return;
+    }
+    
+    if (j == "BLANKETS")
+    {
+        value = ProductCategoryEnum::BLANKETS;
+        return;
+    }
+    
+    if (j == "BLOUSES")
+    {
+        value = ProductCategoryEnum::BLOUSES;
+        return;
+    }
+    
+    if (j == "BLUSHES_AND_BRONZERS")
+    {
+        value = ProductCategoryEnum::BLUSHES_AND_BRONZERS;
+        return;
+    }
+    
+    if (j == "BODY_CARE")
+    {
+        value = ProductCategoryEnum::BODY_CARE;
+        return;
+    }
+    
+    if (j == "BODY_JEWELRY")
+    {
+        value = ProductCategoryEnum::BODY_JEWELRY;
+        return;
+    }
+    
+    if (j == "BODY_MAKEUP")
+    {
+        value = ProductCategoryEnum::BODY_MAKEUP;
+        return;
+    }
+    
+    if (j == "BODY_MOISTURIZERS")
+    {
+        value = ProductCategoryEnum::BODY_MOISTURIZERS;
+        return;
+    }
+    
+    if (j == "BODY_WASHES")
+    {
+        value = ProductCategoryEnum::BODY_WASHES;
+        return;
+    }
+    
+    if (j == "BOOKCASES_AND_STANDING_SHELVES")
+    {
+        value = ProductCategoryEnum::BOOKCASES_AND_STANDING_SHELVES;
+        return;
+    }
+    
+    if (j == "BOOKENDS")
+    {
+        value = ProductCategoryEnum::BOOKENDS;
+        return;
+    }
+    
+    if (j == "BOOKS")
+    {
+        value = ProductCategoryEnum::BOOKS;
+        return;
+    }
+    
+    if (j == "BOOTS")
+    {
+        value = ProductCategoryEnum::BOOTS;
+        return;
+    }
+    
+    if (j == "BRACELETS")
+    {
+        value = ProductCategoryEnum::BRACELETS;
+        return;
+    }
+    
+    if (j == "BRIDESMAID_DRESSES")
+    {
+        value = ProductCategoryEnum::BRIDESMAID_DRESSES;
+        return;
+    }
+    
+    if (j == "BROOCHES_AND_LAPEL_PINS")
+    {
+        value = ProductCategoryEnum::BROOCHES_AND_LAPEL_PINS;
+        return;
+    }
+    
+    if (j == "BROW_MAKEUP")
+    {
+        value = ProductCategoryEnum::BROW_MAKEUP;
+        return;
+    }
+    
+    if (j == "BUFFETS_AND_SIDEBOARDS")
+    {
+        value = ProductCategoryEnum::BUFFETS_AND_SIDEBOARDS;
+        return;
+    }
+    
+    if (j == "BUTTON_DOWN_SHIRTS")
+    {
+        value = ProductCategoryEnum::BUTTON_DOWN_SHIRTS;
+        return;
+    }
+    
+    if (j == "CABINET_HARDWARE")
+    {
+        value = ProductCategoryEnum::CABINET_HARDWARE;
+        return;
+    }
+    
+    if (j == "CABINETS_AND_STORAGE_FURNITURE")
+    {
+        value = ProductCategoryEnum::CABINETS_AND_STORAGE_FURNITURE;
+        return;
+    }
+    
+    if (j == "CAKE_DECORATING_SUPPLIES")
+    {
+        value = ProductCategoryEnum::CAKE_DECORATING_SUPPLIES;
+        return;
+    }
+    
+    if (j == "CAMPING_AND_HIKING")
+    {
+        value = ProductCategoryEnum::CAMPING_AND_HIKING;
+        return;
+    }
+    
+    if (j == "CANDLE_HOLDERS")
+    {
+        value = ProductCategoryEnum::CANDLE_HOLDERS;
+        return;
+    }
+    
+    if (j == "CANDLES")
+    {
+        value = ProductCategoryEnum::CANDLES;
+        return;
+    }
+    
+    if (j == "CARDSTOCK_PAPERS")
+    {
+        value = ProductCategoryEnum::CARDSTOCK_PAPERS;
+        return;
+    }
+    
+    if (j == "CASUAL_PANTS")
+    {
+        value = ProductCategoryEnum::CASUAL_PANTS;
+        return;
+    }
+    
+    if (j == "CAT_SUPPLIES")
+    {
+        value = ProductCategoryEnum::CAT_SUPPLIES;
+        return;
+    }
+    
+    if (j == "CHAIRS")
+    {
+        value = ProductCategoryEnum::CHAIRS;
+        return;
+    }
+    
+    if (j == "CHANDELIERS")
+    {
+        value = ProductCategoryEnum::CHANDELIERS;
+        return;
+    }
+    
+    if (j == "CHARMS_AND_PENDANTS")
+    {
+        value = ProductCategoryEnum::CHARMS_AND_PENDANTS;
+        return;
+    }
+    
+    if (j == "CHINA_CABINETS_AND_HUTCHES")
+    {
+        value = ProductCategoryEnum::CHINA_CABINETS_AND_HUTCHES;
+        return;
+    }
+    
+    if (j == "CLOGS_AND_MULES")
+    {
+        value = ProductCategoryEnum::CLOGS_AND_MULES;
+        return;
+    }
+    
+    if (j == "CLOTH_NAPKINS")
+    {
+        value = ProductCategoryEnum::CLOTH_NAPKINS;
+        return;
+    }
+    
+    if (j == "CLOTHING")
+    {
+        value = ProductCategoryEnum::CLOTHING;
+        return;
+    }
+    
+    if (j == "CLOTHING_AND_CLOSET_STORAGE")
+    {
+        value = ProductCategoryEnum::CLOTHING_AND_CLOSET_STORAGE;
+        return;
+    }
+    
+    if (j == "CLOTHING_SETS")
+    {
+        value = ProductCategoryEnum::CLOTHING_SETS;
+        return;
+    }
+    
+    if (j == "COASTERS")
+    {
+        value = ProductCategoryEnum::COASTERS;
+        return;
+    }
+    
+    if (j == "COATS_AND_JACKETS")
+    {
+        value = ProductCategoryEnum::COATS_AND_JACKETS;
+        return;
+    }
+    
+    if (j == "COFFEE_AND_TEA_CUPS")
+    {
+        value = ProductCategoryEnum::COFFEE_AND_TEA_CUPS;
+        return;
+    }
+    
+    if (j == "COFFEE_MAKERS_AND_ESPRESSO_MACHINES")
+    {
+        value = ProductCategoryEnum::COFFEE_MAKERS_AND_ESPRESSO_MACHINES;
+        return;
+    }
+    
+    if (j == "COLORING_BOOKS")
+    {
+        value = ProductCategoryEnum::COLORING_BOOKS;
+        return;
+    }
+    
+    if (j == "COMMUNICATIONS")
+    {
+        value = ProductCategoryEnum::COMMUNICATIONS;
+        return;
+    }
+    
+    if (j == "COMPUTER_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::COMPUTER_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "COOKIE_CUTTERS")
+    {
+        value = ProductCategoryEnum::COOKIE_CUTTERS;
+        return;
+    }
+    
+    if (j == "COOKWARE")
+    {
+        value = ProductCategoryEnum::COOKWARE;
+        return;
+    }
+    
+    if (j == "COOKWARE_AND_BAKEWARE")
+    {
+        value = ProductCategoryEnum::COOKWARE_AND_BAKEWARE;
+        return;
+    }
+    
+    if (j == "COSMETIC_AND_TOILETRY_BAGS")
+    {
+        value = ProductCategoryEnum::COSMETIC_AND_TOILETRY_BAGS;
+        return;
+    }
+    
+    if (j == "COSTUMES_AND_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::COSTUMES_AND_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "CRAFT_ADHESIVES_AND_MAGNETS")
+    {
+        value = ProductCategoryEnum::CRAFT_ADHESIVES_AND_MAGNETS;
+        return;
+    }
+    
+    if (j == "CRAFT_CUTTING_TOOLS")
+    {
+        value = ProductCategoryEnum::CRAFT_CUTTING_TOOLS;
+        return;
+    }
+    
+    if (j == "CRAFT_MOLDS")
+    {
+        value = ProductCategoryEnum::CRAFT_MOLDS;
+        return;
+    }
+    
+    if (j == "CRIBS_AND_TODDLER_BEDS")
+    {
+        value = ProductCategoryEnum::CRIBS_AND_TODDLER_BEDS;
+        return;
+    }
+    
+    if (j == "CURTAIN_AND_DRAPE_RODS")
+    {
+        value = ProductCategoryEnum::CURTAIN_AND_DRAPE_RODS;
+        return;
+    }
+    
+    if (j == "CURTAINS_AND_DRAPES")
+    {
+        value = ProductCategoryEnum::CURTAINS_AND_DRAPES;
+        return;
+    }
+    
+    if (j == "CUTTING_BOARDS")
+    {
+        value = ProductCategoryEnum::CUTTING_BOARDS;
+        return;
+    }
+    
+    if (j == "CYCLING")
+    {
+        value = ProductCategoryEnum::CYCLING;
+        return;
+    }
+    
+    if (j == "DECORATIVE_BOWLS")
+    {
+        value = ProductCategoryEnum::DECORATIVE_BOWLS;
+        return;
+    }
+    
+    if (j == "DECORATIVE_JARS")
+    {
+        value = ProductCategoryEnum::DECORATIVE_JARS;
+        return;
+    }
+    
+    if (j == "DECORATIVE_TAPESTRIES")
+    {
+        value = ProductCategoryEnum::DECORATIVE_TAPESTRIES;
+        return;
+    }
+    
+    if (j == "DECORATIVE_TRAYS")
+    {
+        value = ProductCategoryEnum::DECORATIVE_TRAYS;
+        return;
+    }
+    
+    if (j == "DEODORANTS_AND_ANTIPERSPIRANTS")
+    {
+        value = ProductCategoryEnum::DEODORANTS_AND_ANTIPERSPIRANTS;
+        return;
+    }
+    
+    if (j == "DESK_AND_SHELF_CLOCKS")
+    {
+        value = ProductCategoryEnum::DESK_AND_SHELF_CLOCKS;
+        return;
+    }
+    
+    if (j == "DESKS")
+    {
+        value = ProductCategoryEnum::DESKS;
+        return;
+    }
+    
+    if (j == "DIAPER_BAGS")
+    {
+        value = ProductCategoryEnum::DIAPER_BAGS;
+        return;
+    }
+    
+    if (j == "DINNERWARE")
+    {
+        value = ProductCategoryEnum::DINNERWARE;
+        return;
+    }
+    
+    if (j == "DISHWASHERS")
+    {
+        value = ProductCategoryEnum::DISHWASHERS;
+        return;
+    }
+    
+    if (j == "DOG_SUPPLIES")
+    {
+        value = ProductCategoryEnum::DOG_SUPPLIES;
+        return;
+    }
+    
+    if (j == "DOOR_MATS")
+    {
+        value = ProductCategoryEnum::DOOR_MATS;
+        return;
+    }
+    
+    if (j == "DRAWING_AND_PAINTING")
+    {
+        value = ProductCategoryEnum::DRAWING_AND_PAINTING;
+        return;
+    }
+    
+    if (j == "DRESS_PANTS")
+    {
+        value = ProductCategoryEnum::DRESS_PANTS;
+        return;
+    }
+    
+    if (j == "DRESSERS")
+    {
+        value = ProductCategoryEnum::DRESSERS;
+        return;
+    }
+    
+    if (j == "DRESSES")
+    {
+        value = ProductCategoryEnum::DRESSES;
+        return;
+    }
+    
+    if (j == "DRILLS_AND_SCREWDRIVERS")
+    {
+        value = ProductCategoryEnum::DRILLS_AND_SCREWDRIVERS;
+        return;
+    }
+    
+    if (j == "DRINKWARE")
+    {
+        value = ProductCategoryEnum::DRINKWARE;
+        return;
+    }
+    
+    if (j == "DUFFEL_BAGS")
+    {
+        value = ProductCategoryEnum::DUFFEL_BAGS;
+        return;
+    }
+    
+    if (j == "DUVET_COVERS")
+    {
+        value = ProductCategoryEnum::DUVET_COVERS;
+        return;
+    }
+    
+    if (j == "DVDS_AND_VIDEOS")
+    {
+        value = ProductCategoryEnum::DVDS_AND_VIDEOS;
+        return;
+    }
+    
+    if (j == "EARRINGS")
+    {
+        value = ProductCategoryEnum::EARRINGS;
+        return;
+    }
+    
+    if (j == "ELECTRONICS_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::ELECTRONICS_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT_AND_WEDDING_RINGS")
+    {
+        value = ProductCategoryEnum::ENGAGEMENT_AND_WEDDING_RINGS;
+        return;
+    }
+    
+    if (j == "ENTERTAINMENT_CENTERS_AND_TV_STANDS")
+    {
+        value = ProductCategoryEnum::ENTERTAINMENT_CENTERS_AND_TV_STANDS;
+        return;
+    }
+    
+    if (j == "ERASERS")
+    {
+        value = ProductCategoryEnum::ERASERS;
+        return;
+    }
+    
+    if (j == "EYE_MAKEUP")
+    {
+        value = ProductCategoryEnum::EYE_MAKEUP;
+        return;
+    }
+    
+    if (j == "EYE_SHADOW")
+    {
+        value = ProductCategoryEnum::EYE_SHADOW;
+        return;
+    }
+    
+    if (j == "EYELINERS")
+    {
+        value = ProductCategoryEnum::EYELINERS;
+        return;
+    }
+    
+    if (j == "FABRIC")
+    {
+        value = ProductCategoryEnum::FABRIC;
+        return;
+    }
+    
+    if (j == "FACE_COVERINGS")
+    {
+        value = ProductCategoryEnum::FACE_COVERINGS;
+        return;
+    }
+    
+    if (j == "FACE_LOTIONS_AND_CREAMS")
+    {
+        value = ProductCategoryEnum::FACE_LOTIONS_AND_CREAMS;
+        return;
+    }
+    
+    if (j == "FACE_MAKEUP")
+    {
+        value = ProductCategoryEnum::FACE_MAKEUP;
+        return;
+    }
+    
+    if (j == "FACIAL_CLEANSERS")
+    {
+        value = ProductCategoryEnum::FACIAL_CLEANSERS;
+        return;
+    }
+    
+    if (j == "FACIAL_MOISTURIZERS")
+    {
+        value = ProductCategoryEnum::FACIAL_MOISTURIZERS;
+        return;
+    }
+    
+    if (j == "FALSE_EYELASHES")
+    {
+        value = ProductCategoryEnum::FALSE_EYELASHES;
+        return;
+    }
+    
+    if (j == "FIGURINES")
+    {
+        value = ProductCategoryEnum::FIGURINES;
+        return;
+    }
+    
+    if (j == "FIREPLACE_AND_WOOD_STOVE_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::FIREPLACE_AND_WOOD_STOVE_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "FIREPLACES")
+    {
+        value = ProductCategoryEnum::FIREPLACES;
+        return;
+    }
+    
+    if (j == "FISHING")
+    {
+        value = ProductCategoryEnum::FISHING;
+        return;
+    }
+    
+    if (j == "FLAGS_AND_WINDSOCKS")
+    {
+        value = ProductCategoryEnum::FLAGS_AND_WINDSOCKS;
+        return;
+    }
+    
+    if (j == "FLATS")
+    {
+        value = ProductCategoryEnum::FLATS;
+        return;
+    }
+    
+    if (j == "FLATWARE")
+    {
+        value = ProductCategoryEnum::FLATWARE;
+        return;
+    }
+    
+    if (j == "FLOOR_LAMPS")
+    {
+        value = ProductCategoryEnum::FLOOR_LAMPS;
+        return;
+    }
+    
+    if (j == "FLOWER_GIRL_DRESSES")
+    {
+        value = ProductCategoryEnum::FLOWER_GIRL_DRESSES;
+        return;
+    }
+    
+    if (j == "FOOD_AND_BEVERAGE_CARRIERS")
+    {
+        value = ProductCategoryEnum::FOOD_AND_BEVERAGE_CARRIERS;
+        return;
+    }
+    
+    if (j == "FOOD_COOKERS_AND_STEAMERS")
+    {
+        value = ProductCategoryEnum::FOOD_COOKERS_AND_STEAMERS;
+        return;
+    }
+    
+    if (j == "FOOD_ITEMS")
+    {
+        value = ProductCategoryEnum::FOOD_ITEMS;
+        return;
+    }
+    
+    if (j == "FOOD_MIXERS_AND_BLENDERS")
+    {
+        value = ProductCategoryEnum::FOOD_MIXERS_AND_BLENDERS;
+        return;
+    }
+    
+    if (j == "FOOD_STORAGE_CONTAINERS")
+    {
+        value = ProductCategoryEnum::FOOD_STORAGE_CONTAINERS;
+        return;
+    }
+    
+    if (j == "FOOD_STORAGE_SUPPLIES")
+    {
+        value = ProductCategoryEnum::FOOD_STORAGE_SUPPLIES;
+        return;
+    }
+    
+    if (j == "FOUNDATIONS_AND_CONCEALERS")
+    {
+        value = ProductCategoryEnum::FOUNDATIONS_AND_CONCEALERS;
+        return;
+    }
+    
+    if (j == "FOUNTAINS_AND_PONDS")
+    {
+        value = ProductCategoryEnum::FOUNTAINS_AND_PONDS;
+        return;
+    }
+    
+    if (j == "FRAGRANCE")
+    {
+        value = ProductCategoryEnum::FRAGRANCE;
+        return;
+    }
+    
+    if (j == "FURNITURE")
+    {
+        value = ProductCategoryEnum::FURNITURE;
+        return;
+    }
+    
+    if (j == "FURNITURE_SETS")
+    {
+        value = ProductCategoryEnum::FURNITURE_SETS;
+        return;
+    }
+    
+    if (j == "GAMES")
+    {
+        value = ProductCategoryEnum::GAMES;
+        return;
+    }
+    
+    if (j == "GARDENING")
+    {
+        value = ProductCategoryEnum::GARDENING;
+        return;
+    }
+    
+    if (j == "GARDENING_TOOLS")
+    {
+        value = ProductCategoryEnum::GARDENING_TOOLS;
+        return;
+    }
+    
+    if (j == "GLOVES_AND_MITTENS")
+    {
+        value = ProductCategoryEnum::GLOVES_AND_MITTENS;
+        return;
+    }
+    
+    if (j == "GLUES_AND_TAPES")
+    {
+        value = ProductCategoryEnum::GLUES_AND_TAPES;
+        return;
+    }
+    
+    if (j == "GROOM_AND_GROOMSMEN_SUITS")
+    {
+        value = ProductCategoryEnum::GROOM_AND_GROOMSMEN_SUITS;
+        return;
+    }
+    
+    if (j == "HAIR")
+    {
+        value = ProductCategoryEnum::HAIR;
+        return;
+    }
+    
+    if (j == "HAIR_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::HAIR_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "HAIR_CARE")
+    {
+        value = ProductCategoryEnum::HAIR_CARE;
+        return;
+    }
+    
+    if (j == "HAIR_COLOR")
+    {
+        value = ProductCategoryEnum::HAIR_COLOR;
+        return;
+    }
+    
+    if (j == "HAIR_COMBS")
+    {
+        value = ProductCategoryEnum::HAIR_COMBS;
+        return;
+    }
+    
+    if (j == "HAIR_PINS_CLAWS_AND_CLIPS")
+    {
+        value = ProductCategoryEnum::HAIR_PINS_CLAWS_AND_CLIPS;
+        return;
+    }
+    
+    if (j == "HAIR_REMOVAL")
+    {
+        value = ProductCategoryEnum::HAIR_REMOVAL;
+        return;
+    }
+    
+    if (j == "HAIR_TOOLS")
+    {
+        value = ProductCategoryEnum::HAIR_TOOLS;
+        return;
+    }
+    
+    if (j == "HAIR_TREATMENT")
+    {
+        value = ProductCategoryEnum::HAIR_TREATMENT;
+        return;
+    }
+    
+    if (j == "HAIR_WREATHS")
+    {
+        value = ProductCategoryEnum::HAIR_WREATHS;
+        return;
+    }
+    
+    if (j == "HAND_AND_FOOT_CARE")
+    {
+        value = ProductCategoryEnum::HAND_AND_FOOT_CARE;
+        return;
+    }
+    
+    if (j == "HAND_SOAPS_AND_SANITIZERS")
+    {
+        value = ProductCategoryEnum::HAND_SOAPS_AND_SANITIZERS;
+        return;
+    }
+    
+    if (j == "HANDBAGS")
+    {
+        value = ProductCategoryEnum::HANDBAGS;
+        return;
+    }
+    
+    if (j == "HANDKERCHIEFS")
+    {
+        value = ProductCategoryEnum::HANDKERCHIEFS;
+        return;
+    }
+    
+    if (j == "HARDWARE_SUPPLIES")
+    {
+        value = ProductCategoryEnum::HARDWARE_SUPPLIES;
+        return;
+    }
+    
+    if (j == "HATS")
+    {
+        value = ProductCategoryEnum::HATS;
+        return;
+    }
+    
+    if (j == "HEADBOARDS_AND_FOOTBOARDS")
+    {
+        value = ProductCategoryEnum::HEADBOARDS_AND_FOOTBOARDS;
+        return;
+    }
+    
+    if (j == "HEADWEAR")
+    {
+        value = ProductCategoryEnum::HEADWEAR;
+        return;
+    }
+    
+    if (j == "HIGHLIGHTERS")
+    {
+        value = ProductCategoryEnum::HIGHLIGHTERS;
+        return;
+    }
+    
+    if (j == "HOBBIES_AND_CREATIVE_ARTS")
+    {
+        value = ProductCategoryEnum::HOBBIES_AND_CREATIVE_ARTS;
+        return;
+    }
+    
+    if (j == "HOME_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::HOME_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "HOME_DECOR_DECALS")
+    {
+        value = ProductCategoryEnum::HOME_DECOR_DECALS;
+        return;
+    }
+    
+    if (j == "HOME_FRAGRANCE_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::HOME_FRAGRANCE_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "HOME_FRAGRANCES")
+    {
+        value = ProductCategoryEnum::HOME_FRAGRANCES;
+        return;
+    }
+    
+    if (j == "HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES")
+    {
+        value = ProductCategoryEnum::HOME_IMPROVEMENT_TOOLS_AND_SUPPLIES;
+        return;
+    }
+    
+    if (j == "HOSIERY")
+    {
+        value = ProductCategoryEnum::HOSIERY;
+        return;
+    }
+    
+    if (j == "HOUSEHOLD_APPLIANCES")
+    {
+        value = ProductCategoryEnum::HOUSEHOLD_APPLIANCES;
+        return;
+    }
+    
+    if (j == "HOUSEHOLD_SUPPLIES")
+    {
+        value = ProductCategoryEnum::HOUSEHOLD_SUPPLIES;
+        return;
+    }
+    
+    if (j == "INCENSE")
+    {
+        value = ProductCategoryEnum::INCENSE;
+        return;
+    }
+    
+    if (j == "INDOOR_GAMES")
+    {
+        value = ProductCategoryEnum::INDOOR_GAMES;
+        return;
+    }
+    
+    if (j == "JEANS")
+    {
+        value = ProductCategoryEnum::JEANS;
+        return;
+    }
+    
+    if (j == "JEWELRY_AND_WATCH_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::JEWELRY_AND_WATCH_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "JEWELRY_AND_WATCHES")
+    {
+        value = ProductCategoryEnum::JEWELRY_AND_WATCHES;
+        return;
+    }
+    
+    if (j == "JEWELRY_SETS")
+    {
+        value = ProductCategoryEnum::JEWELRY_SETS;
+        return;
+    }
+    
+    if (j == "JUMPSUITS_AND_ROMPERS")
+    {
+        value = ProductCategoryEnum::JUMPSUITS_AND_ROMPERS;
+        return;
+    }
+    
+    if (j == "KEYCHAINS")
+    {
+        value = ProductCategoryEnum::KEYCHAINS;
+        return;
+    }
+    
+    if (j == "KITCHEN_AND_DINING")
+    {
+        value = ProductCategoryEnum::KITCHEN_AND_DINING;
+        return;
+    }
+    
+    if (j == "KITCHEN_AND_DINING_ROOM_TABLES")
+    {
+        value = ProductCategoryEnum::KITCHEN_AND_DINING_ROOM_TABLES;
+        return;
+    }
+    
+    if (j == "KITCHEN_APPLIANCES")
+    {
+        value = ProductCategoryEnum::KITCHEN_APPLIANCES;
+        return;
+    }
+    
+    if (j == "KITCHEN_KNIVES")
+    {
+        value = ProductCategoryEnum::KITCHEN_KNIVES;
+        return;
+    }
+    
+    if (j == "KITCHEN_LINENS")
+    {
+        value = ProductCategoryEnum::KITCHEN_LINENS;
+        return;
+    }
+    
+    if (j == "KITCHEN_MATS")
+    {
+        value = ProductCategoryEnum::KITCHEN_MATS;
+        return;
+    }
+    
+    if (j == "KITCHEN_ORGANIZERS")
+    {
+        value = ProductCategoryEnum::KITCHEN_ORGANIZERS;
+        return;
+    }
+    
+    if (j == "KITCHEN_TOOLS_AND_UTENSILS")
+    {
+        value = ProductCategoryEnum::KITCHEN_TOOLS_AND_UTENSILS;
+        return;
+    }
+    
+    if (j == "KITCHEN_TOWELS")
+    {
+        value = ProductCategoryEnum::KITCHEN_TOWELS;
+        return;
+    }
+    
+    if (j == "KNITTING_AND_CROCHET")
+    {
+        value = ProductCategoryEnum::KNITTING_AND_CROCHET;
+        return;
+    }
+    
+    if (j == "KNITTING_AND_CROCHET_TOOLS")
+    {
+        value = ProductCategoryEnum::KNITTING_AND_CROCHET_TOOLS;
+        return;
+    }
+    
+    if (j == "LAMP_SHADES")
+    {
+        value = ProductCategoryEnum::LAMP_SHADES;
+        return;
+    }
+    
+    if (j == "LAMPS")
+    {
+        value = ProductCategoryEnum::LAMPS;
+        return;
+    }
+    
+    if (j == "LANYARDS")
+    {
+        value = ProductCategoryEnum::LANYARDS;
+        return;
+    }
+    
+    if (j == "LAUNDRY_HAMPERS_AND_SUPPLIES")
+    {
+        value = ProductCategoryEnum::LAUNDRY_HAMPERS_AND_SUPPLIES;
+        return;
+    }
+    
+    if (j == "LAWN_AND_GARDEN")
+    {
+        value = ProductCategoryEnum::LAWN_AND_GARDEN;
+        return;
+    }
+    
+    if (j == "LAWN_AND_GARDEN_DECOR")
+    {
+        value = ProductCategoryEnum::LAWN_AND_GARDEN_DECOR;
+        return;
+    }
+    
+    if (j == "LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES")
+    {
+        value = ProductCategoryEnum::LAWN_ORNAMENTS_AND_GARDEN_SCULPTURES;
+        return;
+    }
+    
+    if (j == "LEGGINGS")
+    {
+        value = ProductCategoryEnum::LEGGINGS;
+        return;
+    }
+    
+    if (j == "LEOTARDS_AND_UNITARDS")
+    {
+        value = ProductCategoryEnum::LEOTARDS_AND_UNITARDS;
+        return;
+    }
+    
+    if (j == "LIGHTING")
+    {
+        value = ProductCategoryEnum::LIGHTING;
+        return;
+    }
+    
+    if (j == "LIGHTING_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::LIGHTING_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "LIGHTING_FIXTURES")
+    {
+        value = ProductCategoryEnum::LIGHTING_FIXTURES;
+        return;
+    }
+    
+    if (j == "LIP_BALMS")
+    {
+        value = ProductCategoryEnum::LIP_BALMS;
+        return;
+    }
+    
+    if (j == "LIP_CARE")
+    {
+        value = ProductCategoryEnum::LIP_CARE;
+        return;
+    }
+    
+    if (j == "LIP_MAKEUP")
+    {
+        value = ProductCategoryEnum::LIP_MAKEUP;
+        return;
+    }
+    
+    if (j == "LIPSTICKS_AND_LIP_GLOSSES")
+    {
+        value = ProductCategoryEnum::LIPSTICKS_AND_LIP_GLOSSES;
+        return;
+    }
+    
+    if (j == "MAGAZINES_AND_NEWSPAPERS")
+    {
+        value = ProductCategoryEnum::MAGAZINES_AND_NEWSPAPERS;
+        return;
+    }
+    
+    if (j == "MAGNETS")
+    {
+        value = ProductCategoryEnum::MAGNETS;
+        return;
+    }
+    
+    if (j == "MAKEUP")
+    {
+        value = ProductCategoryEnum::MAKEUP;
+        return;
+    }
+    
+    if (j == "MAKEUP_TOOLS")
+    {
+        value = ProductCategoryEnum::MAKEUP_TOOLS;
+        return;
+    }
+    
+    if (j == "MASCARAS")
+    {
+        value = ProductCategoryEnum::MASCARAS;
+        return;
+    }
+    
+    if (j == "MATTRESSES")
+    {
+        value = ProductCategoryEnum::MATTRESSES;
+        return;
+    }
+    
+    if (j == "MEASURES_AND_RULERS")
+    {
+        value = ProductCategoryEnum::MEASURES_AND_RULERS;
+        return;
+    }
+    
+    if (j == "MEASURING_TOOLS_AND_SENSORS")
+    {
+        value = ProductCategoryEnum::MEASURING_TOOLS_AND_SENSORS;
+        return;
+    }
+    
+    if (j == "MESSENGER_BAGS")
+    {
+        value = ProductCategoryEnum::MESSENGER_BAGS;
+        return;
+    }
+    
+    if (j == "MIRRORS")
+    {
+        value = ProductCategoryEnum::MIRRORS;
+        return;
+    }
+    
+    if (j == "MUSIC_AND_SOUND_RECORDINGS")
+    {
+        value = ProductCategoryEnum::MUSIC_AND_SOUND_RECORDINGS;
+        return;
+    }
+    
+    if (j == "NAIL_ART")
+    {
+        value = ProductCategoryEnum::NAIL_ART;
+        return;
+    }
+    
+    if (j == "NAIL_ART_KIT_AND_TOOLS")
+    {
+        value = ProductCategoryEnum::NAIL_ART_KIT_AND_TOOLS;
+        return;
+    }
+    
+    if (j == "NAIL_CARE")
+    {
+        value = ProductCategoryEnum::NAIL_CARE;
+        return;
+    }
+    
+    if (j == "NAIL_POLISHES")
+    {
+        value = ProductCategoryEnum::NAIL_POLISHES;
+        return;
+    }
+    
+    if (j == "NAILS")
+    {
+        value = ProductCategoryEnum::NAILS;
+        return;
+    }
+    
+    if (j == "NECKLACES")
+    {
+        value = ProductCategoryEnum::NECKLACES;
+        return;
+    }
+    
+    if (j == "NECKTIES")
+    {
+        value = ProductCategoryEnum::NECKTIES;
+        return;
+    }
+    
+    if (j == "NIGHT_LIGHTS_AND_AMBIENT_LIGHTING")
+    {
+        value = ProductCategoryEnum::NIGHT_LIGHTS_AND_AMBIENT_LIGHTING;
+        return;
+    }
+    
+    if (j == "NIGHTSTANDS")
+    {
+        value = ProductCategoryEnum::NIGHTSTANDS;
+        return;
+    }
+    
+    if (j == "NOVELTY_SIGNS")
+    {
+        value = ProductCategoryEnum::NOVELTY_SIGNS;
+        return;
+    }
+    
+    if (j == "ONE_PIECES")
+    {
+        value = ProductCategoryEnum::ONE_PIECES;
+        return;
+    }
+    
+    if (j == "ONESIES")
+    {
+        value = ProductCategoryEnum::ONESIES;
+        return;
+    }
+    
+    if (j == "OTTOMANS")
+    {
+        value = ProductCategoryEnum::OTTOMANS;
+        return;
+    }
+    
+    if (j == "OUTDOOR_FURNITURE")
+    {
+        value = ProductCategoryEnum::OUTDOOR_FURNITURE;
+        return;
+    }
+    
+    if (j == "OUTDOOR_FURNITURE_SETS")
+    {
+        value = ProductCategoryEnum::OUTDOOR_FURNITURE_SETS;
+        return;
+    }
+    
+    if (j == "OUTDOOR_GAMES")
+    {
+        value = ProductCategoryEnum::OUTDOOR_GAMES;
+        return;
+    }
+    
+    if (j == "OUTDOOR_GRILLS")
+    {
+        value = ProductCategoryEnum::OUTDOOR_GRILLS;
+        return;
+    }
+    
+    if (j == "OUTDOOR_LIVING")
+    {
+        value = ProductCategoryEnum::OUTDOOR_LIVING;
+        return;
+    }
+    
+    if (j == "OUTDOOR_PLAY_EQUIPMENT")
+    {
+        value = ProductCategoryEnum::OUTDOOR_PLAY_EQUIPMENT;
+        return;
+    }
+    
+    if (j == "OUTDOOR_RECREATION")
+    {
+        value = ProductCategoryEnum::OUTDOOR_RECREATION;
+        return;
+    }
+    
+    if (j == "OUTDOOR_RUGS")
+    {
+        value = ProductCategoryEnum::OUTDOOR_RUGS;
+        return;
+    }
+    
+    if (j == "OUTDOOR_SEATING")
+    {
+        value = ProductCategoryEnum::OUTDOOR_SEATING;
+        return;
+    }
+    
+    if (j == "OUTDOOR_STRUCTURES")
+    {
+        value = ProductCategoryEnum::OUTDOOR_STRUCTURES;
+        return;
+    }
+    
+    if (j == "OUTDOOR_TABLES")
+    {
+        value = ProductCategoryEnum::OUTDOOR_TABLES;
+        return;
+    }
+    
+    if (j == "OUTERWEAR")
+    {
+        value = ProductCategoryEnum::OUTERWEAR;
+        return;
+    }
+    
+    if (j == "OVENS_AND_COOKTOPS")
+    {
+        value = ProductCategoryEnum::OVENS_AND_COOKTOPS;
+        return;
+    }
+    
+    if (j == "OVERALLS")
+    {
+        value = ProductCategoryEnum::OVERALLS;
+        return;
+    }
+    
+    if (j == "OXFORDS_AND_LOAFERS")
+    {
+        value = ProductCategoryEnum::OXFORDS_AND_LOAFERS;
+        return;
+    }
+    
+    if (j == "PAINT_AND_PAINT_TOOLS")
+    {
+        value = ProductCategoryEnum::PAINT_AND_PAINT_TOOLS;
+        return;
+    }
+    
+    if (j == "PANTS")
+    {
+        value = ProductCategoryEnum::PANTS;
+        return;
+    }
+    
+    if (j == "PAPER_CRAFTS")
+    {
+        value = ProductCategoryEnum::PAPER_CRAFTS;
+        return;
+    }
+    
+    if (j == "PARASOLS_AND_RAIN_UMBRELLAS")
+    {
+        value = ProductCategoryEnum::PARASOLS_AND_RAIN_UMBRELLAS;
+        return;
+    }
+    
+    if (j == "PARTY_AND_CELEBRATION")
+    {
+        value = ProductCategoryEnum::PARTY_AND_CELEBRATION;
+        return;
+    }
+    
+    if (j == "PENDANT_LIGHTS")
+    {
+        value = ProductCategoryEnum::PENDANT_LIGHTS;
+        return;
+    }
+    
+    if (j == "PENS_AND_PENCILS")
+    {
+        value = ProductCategoryEnum::PENS_AND_PENCILS;
+        return;
+    }
+    
+    if (j == "PERFUMES_AND_COLOGNES")
+    {
+        value = ProductCategoryEnum::PERFUMES_AND_COLOGNES;
+        return;
+    }
+    
+    if (j == "PET_CARRIERS_AND_CRATES")
+    {
+        value = ProductCategoryEnum::PET_CARRIERS_AND_CRATES;
+        return;
+    }
+    
+    if (j == "PET_COLLARS_AND_HARNESSES")
+    {
+        value = ProductCategoryEnum::PET_COLLARS_AND_HARNESSES;
+        return;
+    }
+    
+    if (j == "PET_SUPPLIES")
+    {
+        value = ProductCategoryEnum::PET_SUPPLIES;
+        return;
+    }
+    
+    if (j == "PHOTO_ALBUMS_AND_STORAGE")
+    {
+        value = ProductCategoryEnum::PHOTO_ALBUMS_AND_STORAGE;
+        return;
+    }
+    
+    if (j == "PICTURE_FRAMES")
+    {
+        value = ProductCategoryEnum::PICTURE_FRAMES;
+        return;
+    }
+    
+    if (j == "PILLOWCASES_AND_SHAMS")
+    {
+        value = ProductCategoryEnum::PILLOWCASES_AND_SHAMS;
+        return;
+    }
+    
+    if (j == "PINBACK_BUTTONS")
+    {
+        value = ProductCategoryEnum::PINBACK_BUTTONS;
+        return;
+    }
+    
+    if (j == "PLACEMATS")
+    {
+        value = ProductCategoryEnum::PLACEMATS;
+        return;
+    }
+    
+    if (j == "PLANTS")
+    {
+        value = ProductCategoryEnum::PLANTS;
+        return;
+    }
+    
+    if (j == "PONYTAIL_HOLDERS")
+    {
+        value = ProductCategoryEnum::PONYTAIL_HOLDERS;
+        return;
+    }
+    
+    if (j == "POOL_AND_SPA_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::POOL_AND_SPA_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "POSTERS_PRINTS_AND_VISUAL_ARTWORK")
+    {
+        value = ProductCategoryEnum::POSTERS_PRINTS_AND_VISUAL_ARTWORK;
+        return;
+    }
+    
+    if (j == "POTS_AND_PLANTERS")
+    {
+        value = ProductCategoryEnum::POTS_AND_PLANTERS;
+        return;
+    }
+    
+    if (j == "POTTERY_AND_SCULPTING")
+    {
+        value = ProductCategoryEnum::POTTERY_AND_SCULPTING;
+        return;
+    }
+    
+    if (j == "PRIMERS_AND_MAKEUP_SETTERS")
+    {
+        value = ProductCategoryEnum::PRIMERS_AND_MAKEUP_SETTERS;
+        return;
+    }
+    
+    if (j == "PUMPS")
+    {
+        value = ProductCategoryEnum::PUMPS;
+        return;
+    }
+    
+    if (j == "PUZZLES")
+    {
+        value = ProductCategoryEnum::PUZZLES;
+        return;
+    }
+    
+    if (j == "QUILTS_AND_COMFORTERS")
+    {
+        value = ProductCategoryEnum::QUILTS_AND_COMFORTERS;
+        return;
+    }
+    
+    if (j == "RAZORS_AND_SHAVING_TOOLS")
+    {
+        value = ProductCategoryEnum::RAZORS_AND_SHAVING_TOOLS;
+        return;
+    }
+    
+    if (j == "RINGS")
+    {
+        value = ProductCategoryEnum::RINGS;
+        return;
+    }
+    
+    if (j == "RUGS")
+    {
+        value = ProductCategoryEnum::RUGS;
+        return;
+    }
+    
+    if (j == "RUNNER_RUGS")
+    {
+        value = ProductCategoryEnum::RUNNER_RUGS;
+        return;
+    }
+    
+    if (j == "SANDALS")
+    {
+        value = ProductCategoryEnum::SANDALS;
+        return;
+    }
+    
+    if (j == "SASHES")
+    {
+        value = ProductCategoryEnum::SASHES;
+        return;
+    }
+    
+    if (j == "SAWS")
+    {
+        value = ProductCategoryEnum::SAWS;
+        return;
+    }
+    
+    if (j == "SCARVES_AND_SHAWLS")
+    {
+        value = ProductCategoryEnum::SCARVES_AND_SHAWLS;
+        return;
+    }
+    
+    if (j == "SCULPTURES_AND_STATUES")
+    {
+        value = ProductCategoryEnum::SCULPTURES_AND_STATUES;
+        return;
+    }
+    
+    if (j == "SEASONAL_AND_HOLIDAY_DECORATIONS")
+    {
+        value = ProductCategoryEnum::SEASONAL_AND_HOLIDAY_DECORATIONS;
+        return;
+    }
+    
+    if (j == "SEATING")
+    {
+        value = ProductCategoryEnum::SEATING;
+        return;
+    }
+    
+    if (j == "SERUMS_AND_ESSENCES")
+    {
+        value = ProductCategoryEnum::SERUMS_AND_ESSENCES;
+        return;
+    }
+    
+    if (j == "SERVEWARE")
+    {
+        value = ProductCategoryEnum::SERVEWARE;
+        return;
+    }
+    
+    if (j == "SEWING_MACHINES")
+    {
+        value = ProductCategoryEnum::SEWING_MACHINES;
+        return;
+    }
+    
+    if (j == "SEWING_PATTERNS")
+    {
+        value = ProductCategoryEnum::SEWING_PATTERNS;
+        return;
+    }
+    
+    if (j == "SHAMPOO_AND_CONDITIONER")
+    {
+        value = ProductCategoryEnum::SHAMPOO_AND_CONDITIONER;
+        return;
+    }
+    
+    if (j == "SHOE_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::SHOE_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "SHOES")
+    {
+        value = ProductCategoryEnum::SHOES;
+        return;
+    }
+    
+    if (j == "SHOPPING_TOTES")
+    {
+        value = ProductCategoryEnum::SHOPPING_TOTES;
+        return;
+    }
+    
+    if (j == "SHORTS")
+    {
+        value = ProductCategoryEnum::SHORTS;
+        return;
+    }
+    
+    if (j == "SHOWER_CURTAINS")
+    {
+        value = ProductCategoryEnum::SHOWER_CURTAINS;
+        return;
+    }
+    
+    if (j == "SKINCARE")
+    {
+        value = ProductCategoryEnum::SKINCARE;
+        return;
+    }
+    
+    if (j == "SKINCARE_MASKS_AND_PEELS")
+    {
+        value = ProductCategoryEnum::SKINCARE_MASKS_AND_PEELS;
+        return;
+    }
+    
+    if (j == "SKIRTS")
+    {
+        value = ProductCategoryEnum::SKIRTS;
+        return;
+    }
+    
+    if (j == "SLEEPWEAR_AND_LOUNGEWEAR")
+    {
+        value = ProductCategoryEnum::SLEEPWEAR_AND_LOUNGEWEAR;
+        return;
+    }
+    
+    if (j == "SLIPCOVERS_AND_CUSHIONS")
+    {
+        value = ProductCategoryEnum::SLIPCOVERS_AND_CUSHIONS;
+        return;
+    }
+    
+    if (j == "SLIPPERS")
+    {
+        value = ProductCategoryEnum::SLIPPERS;
+        return;
+    }
+    
+    if (j == "SNEAKERS_AND_ATHLETIC_SHOES")
+    {
+        value = ProductCategoryEnum::SNEAKERS_AND_ATHLETIC_SHOES;
+        return;
+    }
+    
+    if (j == "SOCKS_AND_TIGHTS")
+    {
+        value = ProductCategoryEnum::SOCKS_AND_TIGHTS;
+        return;
+    }
+    
+    if (j == "SOFAS")
+    {
+        value = ProductCategoryEnum::SOFAS;
+        return;
+    }
+    
+    if (j == "SPORTS_UNIFORMS")
+    {
+        value = ProductCategoryEnum::SPORTS_UNIFORMS;
+        return;
+    }
+    
+    if (j == "STEMWARE")
+    {
+        value = ProductCategoryEnum::STEMWARE;
+        return;
+    }
+    
+    if (j == "STOCKINGS")
+    {
+        value = ProductCategoryEnum::STOCKINGS;
+        return;
+    }
+    
+    if (j == "STORAGE_AND_ORGANIZATION")
+    {
+        value = ProductCategoryEnum::STORAGE_AND_ORGANIZATION;
+        return;
+    }
+    
+    if (j == "STORAGE_CABINETS_AND_LOCKERS")
+    {
+        value = ProductCategoryEnum::STORAGE_CABINETS_AND_LOCKERS;
+        return;
+    }
+    
+    if (j == "STORAGE_HOOKS_AND_RACKS")
+    {
+        value = ProductCategoryEnum::STORAGE_HOOKS_AND_RACKS;
+        return;
+    }
+    
+    if (j == "SUITCASES")
+    {
+        value = ProductCategoryEnum::SUITCASES;
+        return;
+    }
+    
+    if (j == "SUITS")
+    {
+        value = ProductCategoryEnum::SUITS;
+        return;
+    }
+    
+    if (j == "SUITS_AND_SUIT_SEPARATES")
+    {
+        value = ProductCategoryEnum::SUITS_AND_SUIT_SEPARATES;
+        return;
+    }
+    
+    if (j == "GLASSES_AND_SUNGLASSES")
+    {
+        value = ProductCategoryEnum::GLASSES_AND_SUNGLASSES;
+        return;
+    }
+    
+    if (j == "SUNSCREEN")
+    {
+        value = ProductCategoryEnum::SUNSCREEN;
+        return;
+    }
+    
+    if (j == "SWEATERS_AND_CARDIGANS")
+    {
+        value = ProductCategoryEnum::SWEATERS_AND_CARDIGANS;
+        return;
+    }
+    
+    if (j == "SWEATSHIRTS_AND_HOODIES")
+    {
+        value = ProductCategoryEnum::SWEATSHIRTS_AND_HOODIES;
+        return;
+    }
+    
+    if (j == "SWIMWEAR")
+    {
+        value = ProductCategoryEnum::SWIMWEAR;
+        return;
+    }
+    
+    if (j == "T_SHIRTS")
+    {
+        value = ProductCategoryEnum::T_SHIRTS;
+        return;
+    }
+    
+    if (j == "TABLE_LAMPS")
+    {
+        value = ProductCategoryEnum::TABLE_LAMPS;
+        return;
+    }
+    
+    if (j == "TABLE_RUNNERS")
+    {
+        value = ProductCategoryEnum::TABLE_RUNNERS;
+        return;
+    }
+    
+    if (j == "TABLECLOTHS")
+    {
+        value = ProductCategoryEnum::TABLECLOTHS;
+        return;
+    }
+    
+    if (j == "TABLES")
+    {
+        value = ProductCategoryEnum::TABLES;
+        return;
+    }
+    
+    if (j == "TABLEWARE")
+    {
+        value = ProductCategoryEnum::TABLEWARE;
+        return;
+    }
+    
+    if (j == "TANK_TOPS")
+    {
+        value = ProductCategoryEnum::TANK_TOPS;
+        return;
+    }
+    
+    if (j == "TANNING_OILS_AND_LOTIONS")
+    {
+        value = ProductCategoryEnum::TANNING_OILS_AND_LOTIONS;
+        return;
+    }
+    
+    if (j == "TEETH_WHITENING")
+    {
+        value = ProductCategoryEnum::TEETH_WHITENING;
+        return;
+    }
+    
+    if (j == "TEETH_WHITENING_TOOLS")
+    {
+        value = ProductCategoryEnum::TEETH_WHITENING_TOOLS;
+        return;
+    }
+    
+    if (j == "TELEPHONY")
+    {
+        value = ProductCategoryEnum::TELEPHONY;
+        return;
+    }
+    
+    if (j == "TEXTILE_AND_SEWING")
+    {
+        value = ProductCategoryEnum::TEXTILE_AND_SEWING;
+        return;
+    }
+    
+    if (j == "THREAD_AND_YARN")
+    {
+        value = ProductCategoryEnum::THREAD_AND_YARN;
+        return;
+    }
+    
+    if (j == "THROW_PILLOWS")
+    {
+        value = ProductCategoryEnum::THROW_PILLOWS;
+        return;
+    }
+    
+    if (j == "TIARAS")
+    {
+        value = ProductCategoryEnum::TIARAS;
+        return;
+    }
+    
+    if (j == "TOILET_PAPER_HOLDERS")
+    {
+        value = ProductCategoryEnum::TOILET_PAPER_HOLDERS;
+        return;
+    }
+    
+    if (j == "TONERS_AND_ASTRINGENTS")
+    {
+        value = ProductCategoryEnum::TONERS_AND_ASTRINGENTS;
+        return;
+    }
+    
+    if (j == "TOOL_STORAGE_AND_ORGANIZATION")
+    {
+        value = ProductCategoryEnum::TOOL_STORAGE_AND_ORGANIZATION;
+        return;
+    }
+    
+    if (j == "TOOLS")
+    {
+        value = ProductCategoryEnum::TOOLS;
+        return;
+    }
+    
+    if (j == "TOPS")
+    {
+        value = ProductCategoryEnum::TOPS;
+        return;
+    }
+    
+    if (j == "TOWEL_RACKS_AND_HOLDERS")
+    {
+        value = ProductCategoryEnum::TOWEL_RACKS_AND_HOLDERS;
+        return;
+    }
+    
+    if (j == "TOYS")
+    {
+        value = ProductCategoryEnum::TOYS;
+        return;
+    }
+    
+    if (j == "TRADITIONAL_AND_CEREMONIAL_CLOTHING")
+    {
+        value = ProductCategoryEnum::TRADITIONAL_AND_CEREMONIAL_CLOTHING;
+        return;
+    }
+    
+    if (j == "TUMBLERS_AND_WATER_BOTTLES")
+    {
+        value = ProductCategoryEnum::TUMBLERS_AND_WATER_BOTTLES;
+        return;
+    }
+    
+    if (j == "UNIFORMS")
+    {
+        value = ProductCategoryEnum::UNIFORMS;
+        return;
+    }
+    
+    if (j == "VASES")
+    {
+        value = ProductCategoryEnum::VASES;
+        return;
+    }
+    
+    if (j == "VEHICLE_PARTS_AND_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::VEHICLE_PARTS_AND_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "VEILS")
+    {
+        value = ProductCategoryEnum::VEILS;
+        return;
+    }
+    
+    if (j == "WALL_CLOCKS")
+    {
+        value = ProductCategoryEnum::WALL_CLOCKS;
+        return;
+    }
+    
+    if (j == "WALL_LIGHT_FIXTURES")
+    {
+        value = ProductCategoryEnum::WALL_LIGHT_FIXTURES;
+        return;
+    }
+    
+    if (j == "WALL_PAINTS")
+    {
+        value = ProductCategoryEnum::WALL_PAINTS;
+        return;
+    }
+    
+    if (j == "WALL_SHELVES_AND_LEDGES")
+    {
+        value = ProductCategoryEnum::WALL_SHELVES_AND_LEDGES;
+        return;
+    }
+    
+    if (j == "WALLETS_AND_CARD_CASES")
+    {
+        value = ProductCategoryEnum::WALLETS_AND_CARD_CASES;
+        return;
+    }
+    
+    if (j == "WALLPAPERS")
+    {
+        value = ProductCategoryEnum::WALLPAPERS;
+        return;
+    }
+    
+    if (j == "WATCHES")
+    {
+        value = ProductCategoryEnum::WATCHES;
+        return;
+    }
+    
+    if (j == "WATERING_AND_IRRIGATION")
+    {
+        value = ProductCategoryEnum::WATERING_AND_IRRIGATION;
+        return;
+    }
+    
+    if (j == "WEDDING_CEREMONY_DECOR")
+    {
+        value = ProductCategoryEnum::WEDDING_CEREMONY_DECOR;
+        return;
+    }
+    
+    if (j == "WEDDING_CLOTHING")
+    {
+        value = ProductCategoryEnum::WEDDING_CLOTHING;
+        return;
+    }
+    
+    if (j == "WEDDING_DECOR")
+    {
+        value = ProductCategoryEnum::WEDDING_DECOR;
+        return;
+    }
+    
+    if (j == "WEDDING_DRESS")
+    {
+        value = ProductCategoryEnum::WEDDING_DRESS;
+        return;
+    }
+    
+    if (j == "WEDDING_GIFTS")
+    {
+        value = ProductCategoryEnum::WEDDING_GIFTS;
+        return;
+    }
+    
+    if (j == "WEDDING_STATIONERY")
+    {
+        value = ProductCategoryEnum::WEDDING_STATIONERY;
+        return;
+    }
+    
+    if (j == "WEDDING_TABLE_DECOR")
+    {
+        value = ProductCategoryEnum::WEDDING_TABLE_DECOR;
+        return;
+    }
+    
+    if (j == "WIGS_AND_HAIR_EXTENSIONS")
+    {
+        value = ProductCategoryEnum::WIGS_AND_HAIR_EXTENSIONS;
+        return;
+    }
+    
+    if (j == "WINDOW_BLINDS_AND_SHADES")
+    {
+        value = ProductCategoryEnum::WINDOW_BLINDS_AND_SHADES;
+        return;
+    }
+    
+    if (j == "WINDOW_TREATMENT_ACCESSORIES")
+    {
+        value = ProductCategoryEnum::WINDOW_TREATMENT_ACCESSORIES;
+        return;
+    }
+    
+    if (j == "WINDOW_TREATMENTS")
+    {
+        value = ProductCategoryEnum::WINDOW_TREATMENTS;
+        return;
+    }
+    
+    if (j == "WINE_RACKS")
+    {
+        value = ProductCategoryEnum::WINE_RACKS;
+        return;
+    }
+    
+    if (j == "WOOD_BOARDS_AND_PLANKS")
+    {
+        value = ProductCategoryEnum::WOOD_BOARDS_AND_PLANKS;
+        return;
+    }
+    
+    if (j == "WOODWORKING_MATERIALS")
+    {
+        value = ProductCategoryEnum::WOODWORKING_MATERIALS;
+        return;
+    }
+    
+    if (j == "WOODWORKING_PLANS")
+    {
+        value = ProductCategoryEnum::WOODWORKING_PLANS;
+        return;
+    }
+    
+    if (j == "WORK_BENCHES")
+    {
+        value = ProductCategoryEnum::WORK_BENCHES;
+        return;
+    }
+    
+    if (j == "WREATHS_AND_GARLANDS")
+    {
+        value = ProductCategoryEnum::WREATHS_AND_GARLANDS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryEnum", &j);
+}
 
 } // namespace models
 

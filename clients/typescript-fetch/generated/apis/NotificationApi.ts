@@ -30,6 +30,9 @@ import {
 } from '../models/PinterestLibError';
 
 export interface NotificationPostOperationRequest {
+    /**
+     * 
+     */
     arrayObject: Array | object | null;
 }
 

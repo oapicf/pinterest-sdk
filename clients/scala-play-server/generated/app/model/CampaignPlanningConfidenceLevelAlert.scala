@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param reason Reason for the confidence level alert.
   * @param severity Severity of the confidence level alert.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-08-30T10:17:18.040485445Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CampaignPlanningConfidenceLevelAlert(
   description: Option[String],
   reason: Option[CampaignPlanningConfidenceLevelAlertReason],

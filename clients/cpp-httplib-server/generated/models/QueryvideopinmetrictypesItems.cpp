@@ -6,20 +6,3 @@
 */
 #include "QueryvideopinmetrictypesItems.h"
 
-namespace models {
-
-QueryvideopinmetrictypesItems::QueryvideopinmetrictypesItems()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

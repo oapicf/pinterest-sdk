@@ -15,13 +15,13 @@ import org.openapitools.model.AssetAccessRequestError;
 /**
  * CreateAssetAccessRequestResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestResponse   {
   @JsonProperty("exceptions")
   private List<@Valid AssetAccessRequestError> exceptions = null;
 
   @JsonProperty("invites")
-  private Map<String, String> invites = null;
+  private Map<String, @Pattern(regexp = "^\\d+$")String> invites = null;
 
   public CreateAssetAccessRequestResponse exceptions(List<@Valid AssetAccessRequestError> exceptions) {
     this.exceptions = exceptions;
@@ -49,7 +49,7 @@ public class CreateAssetAccessRequestResponse   {
     this.exceptions = exceptions;
   }
 
-  public CreateAssetAccessRequestResponse invites(Map<String, String> invites) {
+  public CreateAssetAccessRequestResponse invites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
     return this;
   }
@@ -67,11 +67,11 @@ public class CreateAssetAccessRequestResponse   {
    * @return invites
   **/
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "An object mapping each partner id to the asset access request id. Only one request id is returned per partner.")
-  public Map<String, String> getInvites() {
+  public Map<String, @Pattern(regexp = "^\\d+$")String> getInvites() {
     return invites;
   }
 
-  public void setInvites(Map<String, String> invites) {
+  public void setInvites(Map<String, @Pattern(regexp = "^\\d+$")String> invites) {
     this.invites = invites;
   }
 

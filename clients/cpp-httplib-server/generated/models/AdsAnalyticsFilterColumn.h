@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AdsAnalyticsFilterColumn
-{
-public:
-
-    AdsAnalyticsFilterColumn();
-    virtual ~AdsAnalyticsFilterColumn() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdsAnalyticsFilterColumn,
-        )
-
-private:
+enum class AdsAnalyticsFilterColumn {
+    
+    SPEND_IN_DOLLAR,
+    
+    TOTAL_IMPRESSION
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdsAnalyticsFilterColumn& value)
+{
+    switch (value)
+    {
+        
+        case AdsAnalyticsFilterColumn::SPEND_IN_DOLLAR: j = "SPEND_IN_DOLLAR"; break;
+        
+        case AdsAnalyticsFilterColumn::TOTAL_IMPRESSION: j = "TOTAL_IMPRESSION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsFilterColumn", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdsAnalyticsFilterColumn& value)
+{
+    
+    if (j == "SPEND_IN_DOLLAR")
+    {
+        value = AdsAnalyticsFilterColumn::SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_IMPRESSION")
+    {
+        value = AdsAnalyticsFilterColumn::TOTAL_IMPRESSION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdsAnalyticsFilterColumn", &j);
+}
 
 } // namespace models
 

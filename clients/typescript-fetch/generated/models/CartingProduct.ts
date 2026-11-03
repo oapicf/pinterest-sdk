@@ -29,32 +29,22 @@ import {
 export interface CartingProduct {
     /**
      * the internal Pinterest carting product id (different from industry product id)
-     * @type {string}
-     * @memberof CartingProduct
      */
     cartingProductId: string;
     /**
      * Whether to display only the preferred retailers for the carting product
-     * @type {boolean}
-     * @memberof CartingProduct
      */
     displayPreferredRetailersOnly?: boolean;
     /**
      * Whether to display the price for the carting product
-     * @type {boolean}
-     * @memberof CartingProduct
      */
     displayProductPrice?: boolean;
     /**
      * A sorted array of preferred retailers for the carting product
-     * @type {Array<CartingRetailer>}
-     * @memberof CartingProduct
      */
     preferredRetailers?: Array<CartingRetailer>;
     /**
      * Whether to randomize preferred retailers for the carting product
-     * @type {boolean}
-     * @memberof CartingProduct
      */
     randomizePreferredRetailers?: boolean;
 }

@@ -47,7 +47,6 @@ public class TargetingTemplate  {
   private String id;
 
   @ApiModelProperty(value = "")
-  @Valid
   private List<@Valid TargetingTemplateKeyword> keywords = new ArrayList<>();
 
  /**

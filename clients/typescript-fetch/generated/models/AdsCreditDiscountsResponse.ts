@@ -29,44 +29,30 @@ import {
 export interface AdsCreditDiscountsResponse {
     /**
      * True if the offer code is currently active.
-     * @type {boolean}
-     * @memberof AdsCreditDiscountsResponse
      */
     active?: boolean;
     /**
      * Advertiser ID the offer was applied to.
-     * @type {string}
-     * @memberof AdsCreditDiscountsResponse
      */
     advertiserId?: string;
     /**
      * Currency value for the discount.
-     * @type {string}
-     * @memberof AdsCreditDiscountsResponse
      */
     discountCurrency?: string | null;
     /**
      * The discount applied in the offer's currency value.
-     * @type {number}
-     * @memberof AdsCreditDiscountsResponse
      */
     discountInMicroCurrency?: number | null;
     /**
      * The type of discount of this credit
-     * @type {AdsCreditDiscountType}
-     * @memberof AdsCreditDiscountsResponse
      */
     discountType?: AdsCreditDiscountType | null;
     /**
      * The credits left to spend.
-     * @type {number}
-     * @memberof AdsCreditDiscountsResponse
      */
     remainingDiscountInMicroCurrency?: number | null;
     /**
      * Human readable title of the offer code.
-     * @type {string}
-     * @memberof AdsCreditDiscountsResponse
      */
     title?: string | null;
 }

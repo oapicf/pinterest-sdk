@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogsRequestCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLogsRequestCreate {
 
-  @Valid
   private List<@Valid IntegrationLog> logs = new ArrayList<>();
 
   public IntegrationLogsRequestCreate() {
@@ -57,7 +56,7 @@ public class IntegrationLogsRequestCreate {
    * Get logs
    * @return logs
    */
-  @NotNull @Valid @Size(min = 1, max = 250) 
+  @NotNull @Size(min = 1, max = 250) 
   @Schema(name = "logs", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("logs")
   public List<@Valid IntegrationLog> getLogs() {

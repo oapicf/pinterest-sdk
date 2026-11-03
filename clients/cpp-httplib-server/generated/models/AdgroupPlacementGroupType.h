@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AdgroupPlacementGroupType
-{
-public:
-
-    AdgroupPlacementGroupType();
-    virtual ~AdgroupPlacementGroupType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdgroupPlacementGroupType,
-        )
-
-private:
+enum class AdgroupPlacementGroupType {
+    
+    ALL,
+    
+    SEARCH,
+    
+    BROWSE,
+    
+    OTHER
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdgroupPlacementGroupType& value)
+{
+    switch (value)
+    {
+        
+        case AdgroupPlacementGroupType::ALL: j = "ALL"; break;
+        
+        case AdgroupPlacementGroupType::SEARCH: j = "SEARCH"; break;
+        
+        case AdgroupPlacementGroupType::BROWSE: j = "BROWSE"; break;
+        
+        case AdgroupPlacementGroupType::OTHER: j = "OTHER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdgroupPlacementGroupType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdgroupPlacementGroupType& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = AdgroupPlacementGroupType::ALL;
+        return;
+    }
+    
+    if (j == "SEARCH")
+    {
+        value = AdgroupPlacementGroupType::SEARCH;
+        return;
+    }
+    
+    if (j == "BROWSE")
+    {
+        value = AdgroupPlacementGroupType::BROWSE;
+        return;
+    }
+    
+    if (j == "OTHER")
+    {
+        value = AdgroupPlacementGroupType::OTHER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdgroupPlacementGroupType", &j);
+}
 
 } // namespace models
 

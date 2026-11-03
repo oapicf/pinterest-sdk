@@ -28,7 +28,7 @@ public class CatalogsFeedCreateRequestSchema   {
   private String location;
   private String name;
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
 
   public CatalogsFeedCreateRequestSchema () {
 

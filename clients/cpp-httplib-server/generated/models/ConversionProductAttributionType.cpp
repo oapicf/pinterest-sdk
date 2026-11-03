@@ -6,20 +6,3 @@
 */
 #include "ConversionProductAttributionType.h"
 
-namespace models {
-
-ConversionProductAttributionType::ConversionProductAttributionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

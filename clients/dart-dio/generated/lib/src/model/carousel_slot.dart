@@ -148,3 +148,4 @@ class _$CarouselSlotSerializer implements PrimitiveSerializer<CarouselSlot> {
   }
 }
 
+

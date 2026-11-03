@@ -36,7 +36,7 @@ import javax.validation.Valid;
   PinMediaSourceImagesBase64.JSON_PROPERTY_ITEMS,
   PinMediaSourceImagesBase64.JSON_PROPERTY_SOURCE_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourceImagesBase64   {
   public static final String JSON_PROPERTY_INDEX = "index";
   @JsonProperty(JSON_PROPERTY_INDEX)
@@ -123,7 +123,7 @@ public class PinMediaSourceImagesBase64   {
    **/
   @JsonProperty(value = "items")
   @ApiModelProperty(required = true, value = "Array with image objects.")
-  @NotNull @Valid  @Size(min=2,max=5)
+  @NotNull  @Size(min=2,max=5)
   public List<@Valid PinMediaSourceImagesBase64Item> getItems() {
     return items;
   }

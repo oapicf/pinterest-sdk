@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ImageDetails model module.
  * @module model/ImageDetails
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ImageDetails {
     /**

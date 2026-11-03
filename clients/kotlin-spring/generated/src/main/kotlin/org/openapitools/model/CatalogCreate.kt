@@ -25,11 +25,11 @@ data class CatalogCreate(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType,
 
     @Schema(required = true, description = "A human-friendly name associated to a catalog entity.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String
 ) {
 

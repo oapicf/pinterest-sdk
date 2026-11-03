@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'campaign_planning_confidence_level_alert_severity.g.dart';
 
+/// Severity of a confidence level alert on delivery estimates.
 class CampaignPlanningConfidenceLevelAlertSeverity extends EnumClass {
 
-  /// Severity of a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'UNKNOWN')
   static const CampaignPlanningConfidenceLevelAlertSeverity UNKNOWN = _$UNKNOWN;
-  /// Severity of a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'LOW_MILD')
   static const CampaignPlanningConfidenceLevelAlertSeverity LOW_MILD = _$LOW_MILD;
-  /// Severity of a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'LOW_MODERATE')
   static const CampaignPlanningConfidenceLevelAlertSeverity LOW_MODERATE = _$LOW_MODERATE;
-  /// Severity of a confidence level alert on delivery estimates.
   @BuiltValueEnumConst(wireName: r'LOW_SEVERE')
   static const CampaignPlanningConfidenceLevelAlertSeverity LOW_SEVERE = _$LOW_SEVERE;
 

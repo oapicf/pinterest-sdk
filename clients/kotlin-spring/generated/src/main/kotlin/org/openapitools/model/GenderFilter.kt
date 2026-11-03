@@ -22,7 +22,7 @@ data class GenderFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("GENDER")
+    @param:JsonProperty("GENDER", required = true)
     @get:JsonProperty("GENDER", required = true) val GENDER: CatalogsProductGroupMultipleGenderCriteria
 ) {
 

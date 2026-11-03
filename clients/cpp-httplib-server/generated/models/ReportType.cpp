@@ -6,20 +6,3 @@
 */
 #include "ReportType.h"
 
-namespace models {
-
-ReportType::ReportType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

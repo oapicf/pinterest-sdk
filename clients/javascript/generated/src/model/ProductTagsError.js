@@ -17,7 +17,7 @@ import IneligibleProductTagsErrorDetails from './IneligibleProductTagsErrorDetai
 /**
  * The ProductTagsError model module.
  * @module model/ProductTagsError
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ProductTagsError {
     /**

@@ -30,7 +30,7 @@ import TrendsSupportedRegion from '../model/TrendsSupportedRegion';
 /**
 * Keywords service.
 * @module api/KeywordsApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class KeywordsApi {
 

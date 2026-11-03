@@ -33,7 +33,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public abstract class TrendsApiService {
     public abstract Response trendingKeywordsList(TrendsSupportedRegion region,TrendType trendType,List<TrendsL1Interest> interests,List<TrendsGenderFilter> genders,List<TrendsAgeBucket> ages, @Size(min=1,max=50)List<@Size(min = 1, max = 100)String> includeKeywords,Boolean normalizeAgainstGroup, @Min(1) @Max(50)Integer limit,Boolean includeDemographics,SecurityContext securityContext) throws NotFoundException;
     public abstract Response trendsEditorialArticlesList( @NotNull ProductCategoryRegion region,SecurityContext securityContext) throws NotFoundException;

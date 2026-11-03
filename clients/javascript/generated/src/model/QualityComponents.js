@@ -17,7 +17,7 @@ import QualityComponentDetails from './QualityComponentDetails';
 /**
  * The QualityComponents model module.
  * @module model/QualityComponents
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class QualityComponents {
     /**

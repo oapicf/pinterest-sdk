@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CatalogsFormat
-{
-public:
-
-    CatalogsFormat();
-    virtual ~CatalogsFormat() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CatalogsFormat,
-        )
-
-private:
+enum class CatalogsFormat {
+    
+    TSV,
+    
+    CSV,
+    
+    XML,
+    
+    INTEGRATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const CatalogsFormat& value)
+{
+    switch (value)
+    {
+        
+        case CatalogsFormat::TSV: j = "TSV"; break;
+        
+        case CatalogsFormat::CSV: j = "CSV"; break;
+        
+        case CatalogsFormat::XML: j = "XML"; break;
+        
+        case CatalogsFormat::INTEGRATION: j = "INTEGRATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFormat", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CatalogsFormat& value)
+{
+    
+    if (j == "TSV")
+    {
+        value = CatalogsFormat::TSV;
+        return;
+    }
+    
+    if (j == "CSV")
+    {
+        value = CatalogsFormat::CSV;
+        return;
+    }
+    
+    if (j == "XML")
+    {
+        value = CatalogsFormat::XML;
+        return;
+    }
+    
+    if (j == "INTEGRATION")
+    {
+        value = CatalogsFormat::INTEGRATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CatalogsFormat", &j);
+}
 
 } // namespace models
 

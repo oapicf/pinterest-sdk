@@ -287,3 +287,4 @@ class _$CampaignAdPreviewSerializer implements PrimitiveSerializer<CampaignAdPre
   }
 }
 
+

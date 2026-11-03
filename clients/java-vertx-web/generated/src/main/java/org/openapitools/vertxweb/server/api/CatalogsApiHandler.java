@@ -83,7 +83,7 @@ public class CatalogsApiHandler {
         CatalogCreate catalogCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogCreate>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogCreate is {}", catalogCreate);
+        logger.debug("Parameter catalogCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsCreate(catalogCreate, adAccountId)

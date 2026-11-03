@@ -188,16 +188,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!entityId.IsSet)
-                throw new ArgumentException("Property is required for class EntityLabel.", nameof(entityId));
+                throw new JsonException("Property is required for class EntityLabel: entity_id.");
 
             if (!labelId.IsSet)
-                throw new ArgumentException("Property is required for class EntityLabel.", nameof(labelId));
+                throw new JsonException("Property is required for class EntityLabel: label_id.");
 
             if (entityId.IsSet && entityId.Value == null)
-                throw new ArgumentNullException(nameof(entityId), "Property is not nullable for class EntityLabel.");
+                throw new JsonException("Property is not nullable for class EntityLabel: entity_id.");
 
             if (labelId.IsSet && labelId.Value == null)
-                throw new ArgumentNullException(nameof(labelId), "Property is not nullable for class EntityLabel.");
+                throw new JsonException("Property is not nullable for class EntityLabel: label_id.");
 
             return new EntityLabel(entityId.Value!, labelId.Value!, entityType, status);
         }
@@ -208,7 +208,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityLabel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, EntityLabel entityLabel, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -223,15 +222,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="entityLabel"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EntityLabel entityLabel, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (entityLabel.EntityId == null)
-                throw new ArgumentNullException(nameof(entityLabel.EntityId), "Property is required for class EntityLabel.");
-
-            if (entityLabel.LabelId == null)
-                throw new ArgumentNullException(nameof(entityLabel.LabelId), "Property is required for class EntityLabel.");
-
             writer.WriteString("entity_id", entityLabel.EntityId);
 
             writer.WriteString("label_id", entityLabel.LabelId);

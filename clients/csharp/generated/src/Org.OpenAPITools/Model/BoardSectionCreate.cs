@@ -167,13 +167,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class BoardSectionCreate.", nameof(name));
+                throw new JsonException("Property is required for class BoardSectionCreate: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BoardSectionCreate.");
+                throw new JsonException("Property is not nullable for class BoardSectionCreate: name.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class BoardSectionCreate.");
+                throw new JsonException("Property is not nullable for class BoardSectionCreate: id.");
 
             return new BoardSectionCreate(name.Value!, id);
         }
@@ -184,7 +184,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSectionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BoardSectionCreate boardSectionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -199,14 +198,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="boardSectionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BoardSectionCreate boardSectionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (boardSectionCreate.Name == null)
-                throw new ArgumentNullException(nameof(boardSectionCreate.Name), "Property is required for class BoardSectionCreate.");
-
             if (boardSectionCreate.IdOption.IsSet && boardSectionCreate.Id == null)
-                throw new ArgumentNullException(nameof(boardSectionCreate.Id), "Property is required for class BoardSectionCreate.");
+                throw new JsonException("Cannot write null property BoardSectionCreate.Id to non-nullable JSON property 'id'.");
 
             writer.WriteString("name", boardSectionCreate.Name);
 

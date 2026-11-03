@@ -63,7 +63,7 @@ import javax.annotation.Generated;
   CatalogsCreativeAssetsProductGroupFilterKeys.JSON_PROPERTY_L_I_N_K
 })
 @JsonTypeName("CatalogsCreativeAssetsProductGroupFilterKeys")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsCreativeAssetsProductGroupFilterKeys {
     public static final String JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D = "CREATIVE_ASSETS_ID";

@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.IntegrationLogClientError
 import org.openapitools.model.IntegrationLogClientRequest
 import org.openapitools.model.IntegrationLogEventType
@@ -41,17 +38,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class IntegrationLog(
 
     @Schema(required = true, description = "Timestamp in milliseconds of when the log was executed at the client.")
-    @param:JsonProperty("client_timestamp")
+    @param:JsonProperty("client_timestamp", required = true)
     @get:JsonProperty("client_timestamp", required = true) val clientTimestamp: kotlin.Int,
 
     @field:Valid
     @Schema(required = true, description = "Log event type")
-    @param:JsonProperty("event_type")
+    @param:JsonProperty("event_type", required = true)
     @get:JsonProperty("event_type", required = true) val eventType: IntegrationLogEventType,
 
     @field:Valid
     @Schema(required = true, description = "Log level type")
-    @param:JsonProperty("log_level")
+    @param:JsonProperty("log_level", required = true)
     @get:JsonProperty("log_level", required = true) val logLevel: IntegrationLogLevel,
 
     @get:Size(max=128)
@@ -61,15 +58,11 @@ data class IntegrationLog(
 
     @get:Size(max=20)
     @Schema(description = "Version number of the integration application.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("app_version_number")
     @get:JsonProperty("app_version_number") val appVersionNumber: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("error")
     @get:JsonProperty("error") val error: IntegrationLogClientError? = null,
 
@@ -90,22 +83,16 @@ data class IntegrationLog(
 
     @get:Size(max=8192)
     @Schema(description = "Explanation of the event that occured.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("message")
     @get:JsonProperty("message") val message: kotlin.String? = null,
 
     @get:Size(max=20)
     @Schema(description = "Version number of the platform the integration application is running on.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("platform_version_number")
     @get:JsonProperty("platform_version_number") val platformVersionNumber: kotlin.String? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("request")
     @get:JsonProperty("request") val request: IntegrationLogClientRequest? = null,
 

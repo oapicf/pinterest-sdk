@@ -130,7 +130,7 @@ public interface AdsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public AdBatchWriteResponseModel adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid AdCreate> adCreate);
+    public AdBatchWriteResponseModel adsCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid AdCreate> adCreate);
 
     /**
      * Get ad
@@ -191,7 +191,7 @@ public interface AdsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public AdBatchWriteResponseModel adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid AdBatchUpdate> adBatchUpdate);
+    public AdBatchWriteResponseModel adsUpdate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid AdBatchUpdate> adBatchUpdate);
 
     /**
      * Create ad preview records for one or more ad groups
@@ -213,7 +213,7 @@ public interface AdsApi  {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class) })
-    public List<CampaignAdPreviewCreate200ResponseInner> campaignAdPreviewCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @Valid @NotNull List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate);
+    public List<CampaignAdPreviewCreate200ResponseInner> campaignAdPreviewCreate(@PathParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId, @NotNull List<@Valid CampaignAdPreviewCreate> campaignAdPreviewCreate);
 
     /**
      * Delete ad preview records for one or more ad groups

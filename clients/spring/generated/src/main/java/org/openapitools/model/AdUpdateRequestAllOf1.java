@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -23,12 +22,11 @@ import jakarta.annotation.Generated;
  * AdUpdateRequestAllOf1
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdUpdateRequestAllOf1 {
 
   private String id;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> pinId = JsonNullable.<String>undefined();
 
   public AdUpdateRequestAllOf1() {
@@ -73,7 +71,7 @@ public class AdUpdateRequestAllOf1 {
    * @return pinId
    */
   @Pattern(regexp = "^\\d+$") 
-  @Schema(name = "pin_id", description = "Pin ID. This field may only be updated for draft ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "pin_id", description = "Pin ID. This field may only be updated for draft ads.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("pin_id")
   public JsonNullable<@Pattern(regexp = "^\\d+$") String> getPinId() {
     return pinId;

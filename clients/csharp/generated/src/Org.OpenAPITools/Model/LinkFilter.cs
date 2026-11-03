@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!lINK.IsSet)
-                throw new ArgumentException("Property is required for class LinkFilter.", nameof(lINK));
+                throw new JsonException("Property is required for class LinkFilter: LINK.");
 
             if (lINK.IsSet && lINK.Value == null)
-                throw new ArgumentNullException(nameof(lINK), "Property is not nullable for class LinkFilter.");
+                throw new JsonException("Property is not nullable for class LinkFilter: LINK.");
 
             return new LinkFilter(lINK.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="linkFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LinkFilter linkFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="linkFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LinkFilter linkFilter, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (linkFilter.LINK == null)
-                throw new ArgumentNullException(nameof(linkFilter.LINK), "Property is required for class LinkFilter.");
-
             writer.WritePropertyName("LINK");
             JsonSerializer.Serialize(writer, linkFilter.LINK, jsonSerializerOptions);
         }

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,24 +23,19 @@ import jakarta.annotation.Generated;
  * AssetGroupUpdateItemReadOrUpdateItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupUpdateItemReadOrUpdateItem {
 
   private String assetGroupId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> assetsToAdd = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> assetsToRemove = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String description;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String name;
 
   public AssetGroupUpdateItemReadOrUpdateItem() {
@@ -93,7 +87,7 @@ public class AssetGroupUpdateItemReadOrUpdateItem {
    * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
    * @return assetGroupTypes
    */
-  @Valid 
+  
   @Schema(name = "asset_group_types", example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_group_types")
   public List<AssetGroupType> getAssetGroupTypes() {

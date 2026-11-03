@@ -608,3 +608,4 @@ class _$CampaignSerializer implements PrimitiveSerializer<Campaign> {
   }
 }
 
+

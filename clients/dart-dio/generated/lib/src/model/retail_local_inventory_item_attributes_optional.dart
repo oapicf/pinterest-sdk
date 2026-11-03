@@ -170,3 +170,4 @@ class _$RetailLocalInventoryItemAttributesOptionalSerializer implements Primitiv
   }
 }
 
+

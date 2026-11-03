@@ -29,14 +29,10 @@ import {
 export interface PinMediaWithImageAndVideo {
     /**
      * 
-     * @type {Array<PinMediaMetadata>}
-     * @memberof PinMediaWithImageAndVideo
      */
     items?: Array<PinMediaMetadata>;
     /**
      * 
-     * @type {PinMediaWithImageAndVideoMediaTypeEnum}
-     * @memberof PinMediaWithImageAndVideo
      */
     mediaType: PinMediaWithImageAndVideoMediaTypeEnum;
 }
@@ -46,7 +42,7 @@ export interface PinMediaWithImageAndVideo {
  * @export
  */
 export const PinMediaWithImageAndVideoMediaTypeEnum = {
-    MultipleMixed: 'multiple_mixed'
+    MultipleMixed: 'multiple_mixed',
 } as const;
 export type PinMediaWithImageAndVideoMediaTypeEnum = typeof PinMediaWithImageAndVideoMediaTypeEnum[keyof typeof PinMediaWithImageAndVideoMediaTypeEnum];
 

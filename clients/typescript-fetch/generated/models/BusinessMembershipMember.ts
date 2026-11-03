@@ -29,14 +29,10 @@ import {
 export interface BusinessMembershipMember {
     /**
      * 
-     * @type {BusinessRoleForMembers}
-     * @memberof BusinessMembershipMember
      */
     businessRole: BusinessRoleForMembers;
     /**
      * Unique identifier of the member.
-     * @type {string}
-     * @memberof BusinessMembershipMember
      */
     memberId: string;
 }

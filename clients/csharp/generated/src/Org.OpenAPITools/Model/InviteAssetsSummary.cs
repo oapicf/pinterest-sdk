@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccounts.IsSet && adAccounts.Value == null)
-                throw new ArgumentNullException(nameof(adAccounts), "Property is not nullable for class InviteAssetsSummary.");
+                throw new JsonException("Property is not nullable for class InviteAssetsSummary: ad_accounts.");
 
             if (profiles.IsSet && profiles.Value == null)
-                throw new ArgumentNullException(nameof(profiles), "Property is not nullable for class InviteAssetsSummary.");
+                throw new JsonException("Property is not nullable for class InviteAssetsSummary: profiles.");
 
             return new InviteAssetsSummary(adAccounts, profiles);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteAssetsSummary"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteAssetsSummary inviteAssetsSummary, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteAssetsSummary"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteAssetsSummary inviteAssetsSummary, JsonSerializerOptions jsonSerializerOptions)
         {
             if (inviteAssetsSummary.AdAccountsOption.IsSet && inviteAssetsSummary.AdAccounts == null)
-                throw new ArgumentNullException(nameof(inviteAssetsSummary.AdAccounts), "Property is required for class InviteAssetsSummary.");
+                throw new JsonException("Cannot write null property InviteAssetsSummary.AdAccounts to non-nullable JSON property 'ad_accounts'.");
 
             if (inviteAssetsSummary.ProfilesOption.IsSet && inviteAssetsSummary.Profiles == null)
-                throw new ArgumentNullException(nameof(inviteAssetsSummary.Profiles), "Property is required for class InviteAssetsSummary.");
+                throw new JsonException("Cannot write null property InviteAssetsSummary.Profiles to non-nullable JSON property 'profiles'.");
 
             if (inviteAssetsSummary.AdAccountsOption.IsSet)
             {

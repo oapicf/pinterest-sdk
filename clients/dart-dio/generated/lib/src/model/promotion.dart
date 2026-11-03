@@ -341,3 +341,4 @@ class _$PromotionSerializer implements PrimitiveSerializer<Promotion> {
   }
 }
 
+

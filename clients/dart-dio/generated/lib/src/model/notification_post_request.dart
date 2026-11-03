@@ -67,3 +67,4 @@ class _$NotificationPostRequestSerializer implements PrimitiveSerializer<Notific
   }
 }
 
+

@@ -22,7 +22,7 @@ data class TitleKeywordsFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("TITLE_KEYWORDS")
+    @param:JsonProperty("TITLE_KEYWORDS", required = true)
     @get:JsonProperty("TITLE_KEYWORDS", required = true) val TITLE_KEYWORDS: CatalogsProductGroupMultipleStringCriteria
 ) {
 

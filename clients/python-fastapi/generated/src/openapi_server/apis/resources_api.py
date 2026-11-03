@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.ad_account_countries_get200_response import AdAccountCountriesGet200Response
@@ -33,6 +32,7 @@ from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.public_targeting_type import PublicTargetingType
 from openapi_server.models.report_type import ReportType
 from openapi_server.models.single_interest_targeting_option import SingleInterestTargetingOption
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -143,7 +143,7 @@ async def lead_form_questions_get(
     response_model_by_alias=True,
 )
 async def metrics_ready_state_get(
-    var_date: Annotated[str, Field(strict=True, description="Analytics reports request date (UTC). Format: YYYY-MM-DD")] = Query(None, description="Analytics reports request date (UTC). Format: YYYY-MM-DD", alias="date", regex=r"^\d{4}-\d{2}-\d{2}$"),
+    var_date: Annotated[str, Field(description="Analytics reports request date (UTC). Format: YYYY-MM-DD")] = Query(..., description="Analytics reports request date (UTC). Format: YYYY-MM-DD", alias="date", regex=r"^\d{4}-\d{2}-\d{2}$"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -170,7 +170,7 @@ async def metrics_ready_state_get(
     response_model_by_alias=True,
 )
 async def interest_targeting_options_get(
-    interest_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an interest.")] = Path(..., description="Unique identifier of an interest.", regex=r"^\d+$", max_length=18),
+    interest_id: Annotated[str, Field(max_length=18, description="Unique identifier of an interest.")] = Path(..., description="Unique identifier of an interest.", regex=r"^\d+$", max_length=18),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -201,10 +201,10 @@ async def interest_targeting_options_get(
 )
 async def targeting_options_get(
     targeting_type: Annotated[PublicTargetingType, Field(description="Public targeting type")] = Path(..., description="Public targeting type"),
-    ad_account_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
-    client_id: Annotated[Optional[Annotated[str, Field(strict=True, max_length=18)]], Field(description="Client ID")] = Query(None, description="Client ID", alias="client_id", regex=r"^\d+$", max_length=18),
-    oauth_signature: Annotated[Optional[StrictStr], Field(description="Oauth signature")] = Query(None, description="Oauth signature", alias="oauth_signature"),
-    timestamp: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Timestamp.")] = Query(None, description="Timestamp.", alias="timestamp", regex=r"\d+"),
+    ad_account_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Unique identifier of an ad account.")] = Query(None, description="Unique identifier of an ad account.", alias="ad_account_id", regex=r"^\d+$", max_length=18),
+    client_id: Annotated[Optional[Annotated[str, Field(max_length=18)]], Field(description="Client ID")] = Query(None, description="Client ID", alias="client_id", regex=r"^\d+$", max_length=18),
+    oauth_signature: Annotated[Optional[str], Field(description="Oauth signature")] = Query(None, description="Oauth signature", alias="oauth_signature"),
+    timestamp: Annotated[Optional[str], Field(description="Timestamp.")] = Query(None, description="Timestamp.", alias="timestamp", regex=r"\d+"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

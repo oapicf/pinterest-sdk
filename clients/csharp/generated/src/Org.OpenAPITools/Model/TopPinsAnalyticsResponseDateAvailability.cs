@@ -160,10 +160,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (isRealtime.IsSet && isRealtime.Value == null)
-                throw new ArgumentNullException(nameof(isRealtime), "Property is not nullable for class TopPinsAnalyticsResponseDateAvailability.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponseDateAvailability: is_realtime.");
 
             if (latestAvailableTimestamp.IsSet && latestAvailableTimestamp.Value == null)
-                throw new ArgumentNullException(nameof(latestAvailableTimestamp), "Property is not nullable for class TopPinsAnalyticsResponseDateAvailability.");
+                throw new JsonException("Property is not nullable for class TopPinsAnalyticsResponseDateAvailability: latest_available_timestamp.");
 
             return new TopPinsAnalyticsResponseDateAvailability(isRealtime, latestAvailableTimestamp);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponseDateAvailability"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopPinsAnalyticsResponseDateAvailability topPinsAnalyticsResponseDateAvailability, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,9 +188,14 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topPinsAnalyticsResponseDateAvailability"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopPinsAnalyticsResponseDateAvailability topPinsAnalyticsResponseDateAvailability, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (topPinsAnalyticsResponseDateAvailability.IsRealtimeOption.IsSet && topPinsAnalyticsResponseDateAvailability.IsRealtime == null)
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponseDateAvailability.IsRealtime to non-nullable JSON property 'is_realtime'.");
+
+            if (topPinsAnalyticsResponseDateAvailability.LatestAvailableTimestampOption.IsSet && topPinsAnalyticsResponseDateAvailability.LatestAvailableTimestamp == null)
+                throw new JsonException("Cannot write null property TopPinsAnalyticsResponseDateAvailability.LatestAvailableTimestamp to non-nullable JSON property 'latest_available_timestamp'.");
+
             if (topPinsAnalyticsResponseDateAvailability.IsRealtimeOption.IsSet)
                 writer.WriteBoolean("is_realtime", topPinsAnalyticsResponseDateAvailability.IsRealtimeOption.Value!.Value);
 

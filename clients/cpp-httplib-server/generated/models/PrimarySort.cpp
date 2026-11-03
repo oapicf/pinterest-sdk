@@ -6,20 +6,3 @@
 */
 #include "PrimarySort.h"
 
-namespace models {
-
-PrimarySort::PrimarySort()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -75,41 +75,127 @@ import {
 } from '../models/ReportingTimeZone';
 
 export interface ProductGroupPromotionsCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     productGroupPromotionsCreate: ProductGroupPromotionsCreate;
 }
 
 export interface ProductGroupPromotionsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Unique identifier of a product group promotion
+     */
     productGroupPromotionId: string;
 }
 
 export interface ProductGroupPromotionsListRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Cursor used to fetch the next page of items
+     */
     bookmark?: string;
+    /**
+     * Maximum number of items to include in a single page.
+     * See documentation on [Pagination](/docs/reference/pagination/) for more information.
+     */
     pageSize?: number;
+    /**
+     * The order in which to sort the items returned: "ASCENDING" or "DESCENDING" by ID.
+     * Note that higher-value IDs are associated with more-recently added items.
+     */
     order?: PinterestLibPaginationOrder;
+    /**
+     * List of Product group promotion Ids.
+     */
     productGroupPromotionIds?: Array<string>;
+    /**
+     * Entity status
+     */
     entityStatuses?: Array<EntityStatus>;
+    /**
+     * Ad group Id.
+     */
     adGroupId?: string;
 }
 
 export interface ProductGroupPromotionsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     productGroupPromotionsUpdateWithRequiredBody: ProductGroupPromotionsUpdateWithRequiredBody;
 }
 
 export interface ProductGroupsAnalyticsRequest {
+    /**
+     * Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
+     */
     startDate: Date;
+    /**
+     * Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
+     */
     endDate: Date;
+    /**
+     * List of Product group Ids to use to filter the results.
+     */
     productGroupIds: Array<string>;
+    /**
+     * Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.
+     * 
+     * For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).
+     * 
+     * If a column has no value, it may not be returned.
+     */
     columns: Array<ReportingColumnSync>;
+    /**
+     *   TOTAL - metrics are aggregated over the specified date range.
+     * 
+     *   DAY - metrics are broken down daily.
+     * 
+     *   HOUR - metrics are broken down hourly.
+     * 
+     *   WEEK - metrics are broken down weekly.
+     * 
+     *   MONTH - metrics are broken down monthly
+     */
     granularity: Granularity;
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+     */
     clickWindowDays?: ProductGroupsAnalyticsClickWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+     */
     engagementWindowDays?: ProductGroupsAnalyticsEngagementWindowDaysEnum;
+    /**
+     * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+     */
     viewWindowDays?: ProductGroupsAnalyticsViewWindowDaysEnum;
+    /**
+     * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+     */
     conversionReportTime?: ProductGroupsAnalyticsConversionReportTimeEnum;
+    /**
+     * Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
+     */
     reportingTimezone?: ReportingTimeZone;
 }
 
@@ -427,11 +513,11 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         if (requestParameters['startDate'] != null) {
-            queryParameters['start_date'] = (requestParameters['startDate'] as any).toISOString().substring(0,10);
+            queryParameters['start_date'] = runtime.serializeDate(requestParameters['startDate'] as any);
         }
 
         if (requestParameters['endDate'] != null) {
-            queryParameters['end_date'] = (requestParameters['endDate'] as any).toISOString().substring(0,10);
+            queryParameters['end_date'] = runtime.serializeDate(requestParameters['endDate'] as any);
         }
 
         if (requestParameters['productGroupIds'] != null) {
@@ -521,7 +607,7 @@ export const ProductGroupsAnalyticsClickWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type ProductGroupsAnalyticsClickWindowDaysEnum = typeof ProductGroupsAnalyticsClickWindowDaysEnum[keyof typeof ProductGroupsAnalyticsClickWindowDaysEnum];
 /**
@@ -533,7 +619,7 @@ export const ProductGroupsAnalyticsEngagementWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type ProductGroupsAnalyticsEngagementWindowDaysEnum = typeof ProductGroupsAnalyticsEngagementWindowDaysEnum[keyof typeof ProductGroupsAnalyticsEngagementWindowDaysEnum];
 /**
@@ -545,7 +631,7 @@ export const ProductGroupsAnalyticsViewWindowDaysEnum = {
     NUMBER_7: 7,
     NUMBER_14: 14,
     NUMBER_30: 30,
-    NUMBER_60: 60
+    NUMBER_60: 60,
 } as const;
 export type ProductGroupsAnalyticsViewWindowDaysEnum = typeof ProductGroupsAnalyticsViewWindowDaysEnum[keyof typeof ProductGroupsAnalyticsViewWindowDaysEnum];
 /**
@@ -553,6 +639,6 @@ export type ProductGroupsAnalyticsViewWindowDaysEnum = typeof ProductGroupsAnaly
  */
 export const ProductGroupsAnalyticsConversionReportTimeEnum = {
     TimeOfAdAction: 'TIME_OF_AD_ACTION',
-    TimeOfConversion: 'TIME_OF_CONVERSION'
+    TimeOfConversion: 'TIME_OF_CONVERSION',
 } as const;
 export type ProductGroupsAnalyticsConversionReportTimeEnum = typeof ProductGroupsAnalyticsConversionReportTimeEnum[keyof typeof ProductGroupsAnalyticsConversionReportTimeEnum];

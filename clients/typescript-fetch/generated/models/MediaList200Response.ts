@@ -29,14 +29,10 @@ import {
 export interface MediaList200Response {
     /**
      * 
-     * @type {string}
-     * @memberof MediaList200Response
      */
     bookmark?: string | null;
     /**
      * 
-     * @type {Array<Media>}
-     * @memberof MediaList200Response
      */
     items: Array<Media>;
 }

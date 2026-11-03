@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class AdShoppingPreviewCreativeType
-{
-public:
-
-    AdShoppingPreviewCreativeType();
-    virtual ~AdShoppingPreviewCreativeType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AdShoppingPreviewCreativeType,
-        )
-
-private:
+enum class AdShoppingPreviewCreativeType {
+    
+    SHOPPING,
+    
+    COLLECTION,
+    
+    CAROUSEL,
+    
+    MAX_WIDTH_COLLECTION
+    
 };
 
+inline void to_json(nlohmann::json& j, const AdShoppingPreviewCreativeType& value)
+{
+    switch (value)
+    {
+        
+        case AdShoppingPreviewCreativeType::SHOPPING: j = "SHOPPING"; break;
+        
+        case AdShoppingPreviewCreativeType::COLLECTION: j = "COLLECTION"; break;
+        
+        case AdShoppingPreviewCreativeType::CAROUSEL: j = "CAROUSEL"; break;
+        
+        case AdShoppingPreviewCreativeType::MAX_WIDTH_COLLECTION: j = "MAX_WIDTH_COLLECTION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AdShoppingPreviewCreativeType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AdShoppingPreviewCreativeType& value)
+{
+    
+    if (j == "SHOPPING")
+    {
+        value = AdShoppingPreviewCreativeType::SHOPPING;
+        return;
+    }
+    
+    if (j == "COLLECTION")
+    {
+        value = AdShoppingPreviewCreativeType::COLLECTION;
+        return;
+    }
+    
+    if (j == "CAROUSEL")
+    {
+        value = AdShoppingPreviewCreativeType::CAROUSEL;
+        return;
+    }
+    
+    if (j == "MAX_WIDTH_COLLECTION")
+    {
+        value = AdShoppingPreviewCreativeType::MAX_WIDTH_COLLECTION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AdShoppingPreviewCreativeType", &j);
+}
 
 } // namespace models
 

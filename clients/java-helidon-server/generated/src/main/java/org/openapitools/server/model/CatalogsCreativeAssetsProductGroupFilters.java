@@ -15,8 +15,8 @@ import jakarta.validation.Valid;
  */
 public class CatalogsCreativeAssetsProductGroupFilters   {
 
-    private List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
-    private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
+    private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
     /**
      * Default constructor.
@@ -32,8 +32,8 @@ public class CatalogsCreativeAssetsProductGroupFilters   {
      * @param allOf allOf
      */
     public CatalogsCreativeAssetsProductGroupFilters(
-        List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf, 
-        List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf
+        List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf, 
+        List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf
     ) {
         this.anyOf = anyOf;
         this.allOf = allOf;
@@ -45,11 +45,11 @@ public class CatalogsCreativeAssetsProductGroupFilters   {
      * Get anyOf
      * @return anyOf
      */
-    public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
+    public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAnyOf() {
         return anyOf;
     }
 
-    public void setAnyOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
+    public void setAnyOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf) {
         this.anyOf = anyOf;
     }
 
@@ -57,11 +57,11 @@ public class CatalogsCreativeAssetsProductGroupFilters   {
      * Get allOf
      * @return allOf
      */
-    public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
-    public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

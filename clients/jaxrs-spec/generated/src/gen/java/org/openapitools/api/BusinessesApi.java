@@ -72,7 +72,7 @@ import javax.validation.Valid;
 */
 @Path("/businesses")
 @Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessesApi {
 
     @POST
@@ -94,7 +94,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response assetAccessRequestsCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CreateAssetAccessRequestBody createAssetAccessRequestBody) {
+    public Response assetAccessRequestsCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull CreateAssetAccessRequestBody createAssetAccessRequestBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -117,7 +119,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response assetGroupCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull AssetGroupInputCreate assetGroupInputCreate) {
+    public Response assetGroupCreate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull AssetGroupInputCreate assetGroupInputCreate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -134,7 +138,9 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = AssetGroupDeletion.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response assetGroupDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull AssetGroupDeletionDelete assetGroupDeletionDelete) {
+    public Response assetGroupDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull AssetGroupDeletionDelete assetGroupDeletionDelete
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -156,7 +162,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response assetGroupUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate) {
+    public Response assetGroupUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -176,7 +184,12 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessAccountAudiencesSharedAccountsList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of the audience to use to filter the results.")  String audienceId,@QueryParam("account_type") @NotNull  @ApiParam("Filter accounts by account type.")  AudienceAccountType accountType,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessAccountAudiencesSharedAccountsList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("audience_id") @NotNull @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of the audience to use to filter the results.")  String audienceId
+,@QueryParam("account_type") @NotNull  @ApiParam("Filter accounts by account type.")  AudienceAccountType accountType
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -196,7 +209,13 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessAssetMembersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -216,7 +235,12 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessAssetPartnersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessAssetPartnersGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@PathParam("asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a business asset.") String assetId
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -236,7 +260,15 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("permissions")  @ApiParam("A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.")  List<PermissionsWithOwner> permissions,@QueryParam("child_asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20)  @ApiParam("A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.")  String childAssetId,@QueryParam("asset_group_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20)  @ApiParam("An asset group unique identifier. Used to fetch assets contained within the specified asset group.")  String assetGroupId,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("permissions")  @ApiParam("A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.")  List<PermissionsWithOwner> permissions
+,@QueryParam("child_asset_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20)  @ApiParam("A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.")  String childAssetId
+,@QueryParam("asset_group_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20)  @ApiParam("An asset group unique identifier. Used to fetch assets contained within the specified asset group.")  String assetGroupId
+,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -256,7 +288,19 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessMemberAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("member_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("The member id to fetch assets for.") String memberId,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("sort_by")  @ApiParam("The field to sort member assets by")  AssetSortBy sortBy,@QueryParam("sort_ascending") @DefaultValue("true")  @ApiParam("Sort assets in ascending order")  Boolean sortAscending,@QueryParam("search_by")  @ApiParam("The field to search member assets by")  AssetSearchBy searchBy,@QueryParam("search_value")  @ApiParam("The value to search for")  String searchValue,@QueryParam("asset_permission_type")  @ApiParam("The type of asset permission to filter by")  AssetPermissionType assetPermissionType,@QueryParam("ad_account_statuses")  @ApiParam("A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.")  List<NonDraftEntityStatus> adAccountStatuses,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessMemberAssetsGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@PathParam("member_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("The member id to fetch assets for.") String memberId
+,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("sort_by")  @ApiParam("The field to sort member assets by")  AssetSortBy sortBy
+,@QueryParam("sort_ascending") @DefaultValue("true")  @ApiParam("Sort assets in ascending order")  Boolean sortAscending
+,@QueryParam("search_by")  @ApiParam("The field to search member assets by")  AssetSearchBy searchBy
+,@QueryParam("search_value")  @ApiParam("The value to search for")  String searchValue
+,@QueryParam("asset_permission_type")  @ApiParam("The type of asset permission to filter by")  AssetPermissionType assetPermissionType
+,@QueryParam("ad_account_statuses")  @ApiParam("A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.")  List<NonDraftEntityStatus> adAccountStatuses
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -272,7 +316,9 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = DeleteMemberAccessResultsResponseArray.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessMembersAssetAccessDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody) {
+    public Response businessMembersAssetAccessDelete(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -293,7 +339,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessMembersAssetAccessUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull UpdateMemberAssetAccessBody updateMemberAssetAccessBody) {
+    public Response businessMembersAssetAccessUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull UpdateMemberAssetAccessBody updateMemberAssetAccessBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -313,7 +361,18 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("The partner id to be bound to the Business") String partnerId,@QueryParam("partner_type") @DefaultValue("INTERNAL")  @ApiParam("Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.")  String partnerType,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("sort_by")  @ApiParam("The field to sort member assets by")  AssetSortBy sortBy,@QueryParam("sort_ascending") @DefaultValue("true")  @ApiParam("Sort assets in ascending order")  Boolean sortAscending,@QueryParam("search_by")  @ApiParam("The field to search member assets by")  AssetSearchBy searchBy,@QueryParam("search_value")  @ApiParam("The value to search for")  String searchValue,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("The partner id to be bound to the Business") String partnerId
+,@QueryParam("partner_type") @DefaultValue("INTERNAL")  @ApiParam("Specifies whether to fetch internal or external (shared) partners.  If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.")  String partnerType
+,@QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")  @ApiParam("A resource type to filter the assets by. Only assets of the specified type will be returned.")  String assetType
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("sort_by")  @ApiParam("The field to sort member assets by")  AssetSortBy sortBy
+,@QueryParam("sort_ascending") @DefaultValue("true")  @ApiParam("Sort assets in ascending order")  Boolean sortAscending
+,@QueryParam("search_by")  @ApiParam("The field to search member assets by")  AssetSearchBy searchBy
+,@QueryParam("search_value")  @ApiParam("The value to search for")  String searchValue
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -329,7 +388,9 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = CancelInvitesResponse.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CancelInvitesRequest cancelInvitesRequest) {
+    public Response cancelInvitesOrRequests(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull CancelInvitesRequest cancelInvitesRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -352,7 +413,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response createAssetInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CreateAssetInvitesRequest createAssetInvitesRequest) {
+    public Response createAssetInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull CreateAssetInvitesRequest createAssetInvitesRequest
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -374,7 +437,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody) {
+    public Response createMembershipOrPartnershipInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -391,7 +456,9 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = DeleteBusinessMembership200Response.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response deleteBusinessMembership(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId,@Valid @NotNull DeleteBusinessMembershipBody deleteBusinessMembershipBody) {
+    public Response deleteBusinessMembership(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId
+,@Valid @NotNull DeleteBusinessMembershipBody deleteBusinessMembershipBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -408,7 +475,9 @@ public class BusinessesApi {
         @ApiResponse(code = 404, message = "The requested resource could not be found on this server.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response deleteBusinessPartners(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) {
+    public Response deleteBusinessPartners(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull DeleteBusinessPartnersDelete deleteBusinessPartnersDelete
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -424,7 +493,9 @@ public class BusinessesApi {
         @ApiResponse(code = 200, message = "The request has succeeded.", response = DeletePartnerAssetAccessResultsResponseArray.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response deletePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) {
+    public Response deletePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -444,7 +515,10 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getBusinessEmployers(@QueryParam("assets_summary") @DefaultValue("true")  @ApiParam("Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response getBusinessEmployers(@QueryParam("assets_summary") @DefaultValue("true")  @ApiParam("Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -464,7 +538,15 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getBusinessMembers(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary,@QueryParam("business_roles")  @ApiParam("A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  List<MemberBusinessRole> businessRoles,@QueryParam("member_ids") @Size(max=500)  @ApiParam("A list of business members ids separated by comma.")  String memberIds,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response getBusinessMembers(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("fetch_system_users") @DefaultValue("false")  @ApiParam("Fetches system users if True. Fetches regular user employees if False.")  Boolean fetchSystemUsers
+,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary
+,@QueryParam("business_roles")  @ApiParam("A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.")  List<MemberBusinessRole> businessRoles
+,@QueryParam("member_ids") @Size(max=500)  @ApiParam("A list of business members ids separated by comma.")  String memberIds
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -484,7 +566,15 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getBusinessPartners(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary,@QueryParam("partner_type")  @ApiParam("Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.")  PartnerType partnerType,@QueryParam("partner_ids") @Size(max=500)  @ApiParam("A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.")  String partnerIds,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response getBusinessPartners(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("assets_summary") @DefaultValue("false")  @ApiParam("Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are")  Boolean assetsSummary
+,@QueryParam("partner_type")  @ApiParam("Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.")  PartnerType partnerType
+,@QueryParam("partner_ids") @Size(max=500)  @ApiParam("A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.")  String partnerIds
+,@QueryParam("start_index") @Min(0) @DefaultValue("0")  @ApiParam("An index to start fetching the results from. Only the results starting from this index will be returned.")  Integer startIndex
+,@QueryParam("sort_ascending")  @ApiParam("Sort ascending.")  Boolean sortAscending
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -504,7 +594,13 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("is_member") @DefaultValue("true")  @ApiParam("A boolean field to indicate whether the invite is to create a partnership or a membership.")  Boolean isMember,@QueryParam("invite_status") @Size(min=1)  @ApiParam("A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")  List<InviteFilterStatus> inviteStatus,@QueryParam("invite_type")  @ApiParam("Invite type to filter invites by. Only invites of the specified type will be returned.")  InviteType inviteType,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response getInvites(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("is_member") @DefaultValue("true")  @ApiParam("A boolean field to indicate whether the invite is to create a partnership or a membership.")  Boolean isMember
+,@QueryParam("invite_status") @Size(min=1)  @ApiParam("A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.")  List<InviteFilterStatus> inviteStatus
+,@QueryParam("invite_type")  @ApiParam("Invite type to filter invites by. Only invites of the specified type will be returned.")  InviteType inviteType
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -526,7 +622,8 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response respondBusinessAccessInvites(@Valid @NotNull AuthRespondInvitesBody authRespondInvitesBody) {
+    public Response respondBusinessAccessInvites(@Valid @NotNull AuthRespondInvitesBody authRespondInvitesBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -546,7 +643,11 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response sharedAudiencesForBusinessList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  Order order,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize) {
+    public Response sharedAudiencesForBusinessList(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@QueryParam("order")  @ApiParam("The order in which to sort the items returned: \&quot;ASCENDING\&quot; or \&quot;DESCENDING\&quot; by ID. Note that higher-value IDs are associated with more-recently added items.")  Order order
+,@QueryParam("bookmark")  @ApiParam("Cursor used to fetch the next page of items")  String bookmark
+,@QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25")  @ApiParam("Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")  Integer pageSize
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -568,7 +669,10 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response systemUserUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@PathParam("system_user_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a system user.") String systemUserId,@Valid @NotNull SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) {
+    public Response systemUserUpdate(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@PathParam("system_user_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of a system user.") String systemUserId
+,@Valid @NotNull SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -589,7 +693,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateBusinessMemberships(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId,@Valid @NotNull List<@Valid BusinessMembershipMember> businessMembershipMember) {
+    public Response updateBusinessMemberships(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Business id") String businessId
+,@NotNull List<@Valid BusinessMembershipMember> businessMembershipMember
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -610,7 +716,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateBusinessToAdAccountSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) {
+    public Response updateBusinessToAdAccountSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -631,7 +739,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updateBusinessToBusinessSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) {
+    public Response updateBusinessToBusinessSharedAudience(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody
+) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -652,7 +762,9 @@ public class BusinessesApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response updatePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId,@Valid @NotNull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody) {
+    public Response updatePartnerAssetAccessHandlerImpl(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @ApiParam("Unique identifier of the requesting business.") String businessId
+,@Valid @NotNull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody
+) {
         return Response.ok().entity("magic!").build();
     }
 }

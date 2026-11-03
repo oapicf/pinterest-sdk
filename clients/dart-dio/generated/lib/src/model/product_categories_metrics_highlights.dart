@@ -149,3 +149,4 @@ class _$ProductCategoriesMetricsHighlightsSerializer implements PrimitiveSeriali
   }
 }
 
+

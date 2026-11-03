@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.OrderLine
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -19,21 +16,17 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 /**
  * 
- * @param &#x60;data&#x60; 
+ * @param `data` 
  * @param errorMessages Error messages.
  */
 data class OrderLineMutationError(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("data")
     @get:JsonProperty("data") val `data`: OrderLine? = null,
 
     @Schema(description = "Error messages.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("error_messages")
     @get:JsonProperty("error_messages") val errorMessages: kotlin.collections.List<kotlin.String>? = null
 ) {

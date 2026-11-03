@@ -145,3 +145,4 @@ class _$CatalogsProductGroupFilterOperatorTypeCriteriaSerializer implements Prim
   }
 }
 
+

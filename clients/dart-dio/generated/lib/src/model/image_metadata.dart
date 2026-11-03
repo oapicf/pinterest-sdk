@@ -184,9 +184,10 @@ class _$ImageMetadataSerializer implements PrimitiveSerializer<ImageMetadata> {
   }
 }
 
+
+/// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
 class ImageMetadataItemTypeEnum extends EnumClass {
 
-  /// Discriminator literal identifying this as image metadata inside a `PinMediaMetadata` payload.
   @BuiltValueEnumConst(wireName: r'image')
   static const ImageMetadataItemTypeEnum image = _$imageMetadataItemTypeEnum_image;
 

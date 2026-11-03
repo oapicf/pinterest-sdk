@@ -12,24 +12,1874 @@
 
 namespace models {
 
-
-class ReportingColumnSync
-{
-public:
-
-    ReportingColumnSync();
-    virtual ~ReportingColumnSync() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ReportingColumnSync,
-        )
-
-private:
+enum class ReportingColumnSync {
+    
+    SPEND_IN_MICRO_DOLLAR,
+    
+    PAID_IMPRESSION,
+    
+    SPEND_IN_DOLLAR,
+    
+    CPC_IN_MICRO_DOLLAR,
+    
+    ECPC_IN_MICRO_DOLLAR,
+    
+    ECPC_IN_DOLLAR,
+    
+    CTR,
+    
+    ECTR,
+    
+    OUTBOUND_CTR_1,
+    
+    CAMPAIGN_NAME,
+    
+    CAMPAIGN_BRAND_LABEL,
+    
+    PIN_ID,
+    
+    TOTAL_ENGAGEMENT,
+    
+    ENGAGEMENT_1,
+    
+    ENGAGEMENT_2,
+    
+    ECPE_IN_DOLLAR,
+    
+    ENGAGEMENT_RATE,
+    
+    EENGAGEMENT_RATE,
+    
+    ECPM_IN_MICRO_DOLLAR,
+    
+    REPIN_RATE,
+    
+    CTR_2,
+    
+    CAMPAIGN_ID,
+    
+    ADVERTISER_ID,
+    
+    AD_ACCOUNT_ID,
+    
+    PIN_PROMOTION_ID,
+    
+    AD_ID,
+    
+    AD_GROUP_ID,
+    
+    CAMPAIGN_ENTITY_STATUS,
+    
+    CAMPAIGN_OBJECTIVE_TYPE,
+    
+    CPM_IN_MICRO_DOLLAR,
+    
+    CPM_IN_DOLLAR,
+    
+    AD_GROUP_NAME,
+    
+    AD_GROUP_BUDGET_TYPE,
+    
+    AD_GROUP_BUDGET_IN_LOCAL_CURRENCY,
+    
+    AD_GROUP_ENTITY_STATUS,
+    
+    AD_GROUP_BID_MULTIPLIER,
+    
+    PROMO_ID,
+    
+    PROMO_NAME,
+    
+    ORDER_LINE_ID,
+    
+    ORDER_LINE_NAME,
+    
+    CLICKTHROUGH_1,
+    
+    REPIN_1,
+    
+    IMPRESSION_1,
+    
+    IMPRESSION_1_GROSS,
+    
+    CLICKTHROUGH_1_GROSS,
+    
+    OUTBOUND_CLICK_1,
+    
+    CLICKTHROUGH_2,
+    
+    REPIN_2,
+    
+    IMPRESSION_2,
+    
+    OUTBOUND_CLICK_2,
+    
+    COLLECTION_PIN_ITEM_IMPRESSION_1,
+    
+    COLLECTION_PIN_ITEM_IMPRESSION_2,
+    
+    TOTAL_COLLECTION_PIN_ITEM_IMPRESSION,
+    
+    COLLECTION_PIN_ITEM_CLICKTHROUGH_1,
+    
+    COLLECTION_PIN_ITEM_CLICKTHROUGH_2,
+    
+    TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH,
+    
+    TOTAL_CLICKTHROUGH,
+    
+    TOTAL_IMPRESSION,
+    
+    TOTAL_IMPRESSION_USER,
+    
+    TOTAL_IMPRESSION_FREQUENCY,
+    
+    COST_PER_OUTBOUND_CLICK_IN_DOLLAR,
+    
+    COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1,
+    
+    TOTAL_ENGAGEMENT_SIGNUP,
+    
+    TOTAL_ENGAGEMENT_CHECKOUT,
+    
+    TOTAL_ENGAGEMENT_LEAD,
+    
+    TOTAL_CLICK_SIGNUP,
+    
+    TOTAL_CLICK_CHECKOUT,
+    
+    TOTAL_CLICK_ADD_TO_CART,
+    
+    TOTAL_CLICK_LEAD,
+    
+    TOTAL_VIEW_SIGNUP,
+    
+    TOTAL_VIEW_CHECKOUT,
+    
+    TOTAL_VIEW_ADD_TO_CART,
+    
+    TOTAL_VIEW_LEAD,
+    
+    TOTAL_CONVERSIONS,
+    
+    TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_WEB_SESSIONS,
+    
+    WEB_SESSIONS_1,
+    
+    WEB_SESSIONS_2,
+    
+    AD_NAME,
+    
+    CAMPAIGN_LIFETIME_SPEND_CAP,
+    
+    AD_GROUP_OPTIMIZATION,
+    
+    CAMPAIGN_DAILY_SPEND_CAP,
+    
+    CAMPAIGN_BUDGET_OPTIMIZATION,
+    
+    IS_PREMIERE_CAMPAIGN,
+    
+    TOTAL_PAGE_VISIT,
+    
+    TOTAL_SIGNUP,
+    
+    TOTAL_CHECKOUT,
+    
+    TOTAL_CUSTOM,
+    
+    TOTAL_LEAD,
+    
+    TOTAL_ADD_TO_WISHLIST,
+    
+    TOTAL_SUBSCRIBE,
+    
+    TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR,
+    
+    PAGE_VISIT_COST_PER_ACTION,
+    
+    PAGE_VISIT_ROAS,
+    
+    CHECKOUT_ROAS,
+    
+    CUSTOM_ROAS,
+    
+    PRODUCT_GROUP_AD_IMAGE_TAG,
+    
+    PRODUCT_GROUP_AD_VIDEO_TAG,
+    
+    VIDEO_3SEC_VIEWS_1,
+    
+    VIDEO_15SEC_UNIQUE_VIEWS_1,
+    
+    VIDEO_MRC_VIEWS_1,
+    
+    VIDEO_3SEC_VIEWS_2,
+    
+    VIDEO_15SEC_UNIQUE_VIEWS_2,
+    
+    VIDEO_P100_COMPLETE_2,
+    
+    VIDEO_P0_COMBINED_2,
+    
+    VIDEO_P25_COMBINED_2,
+    
+    VIDEO_P50_COMBINED_2,
+    
+    VIDEO_P75_COMBINED_2,
+    
+    VIDEO_P95_COMBINED_2,
+    
+    VIDEO_MRC_VIEWS_2,
+    
+    PAID_VIDEO_VIEWABLE_RATE,
+    
+    VIDEO_LENGTH,
+    
+    VIDEO_SPEND_IN_DOLLAR,
+    
+    ECPV_IN_DOLLAR,
+    
+    ECPCV_IN_DOLLAR,
+    
+    ECPCV_P95_IN_DOLLAR,
+    
+    TOTAL_VIDEO_3SEC_VIEWS,
+    
+    TOTAL_VIDEO_15SEC_UNIQUE_VIEWS,
+    
+    TOTAL_VIDEO_P100_COMPLETE,
+    
+    TOTAL_VIDEO_P0_COMBINED,
+    
+    TOTAL_VIDEO_P25_COMBINED,
+    
+    TOTAL_VIDEO_P50_COMBINED,
+    
+    TOTAL_VIDEO_P75_COMBINED,
+    
+    TOTAL_VIDEO_P95_COMBINED,
+    
+    TOTAL_VIDEO_MRC_VIEWS,
+    
+    TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND,
+    
+    TOTAL_REPIN_RATE,
+    
+    WEB_CHECKOUT_COST_PER_ACTION,
+    
+    WEB_CHECKOUT_ROAS,
+    
+    TOTAL_WEB_CHECKOUT,
+    
+    TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_WEB_CLICK_CHECKOUT,
+    
+    TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_WEB_ENGAGEMENT_CHECKOUT,
+    
+    TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    TOTAL_WEB_VIEW_CHECKOUT,
+    
+    TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR,
+    
+    INAPP_CHECKOUT_COST_PER_ACTION,
+    
+    TOTAL_OFFLINE_CHECKOUT,
+    
+    TOTAL_APP_INSTALL_CONVERSION_RATE,
+    
+    TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE,
+    
+    IDEA_PIN_PRODUCT_TAG_VISIT_1,
+    
+    IDEA_PIN_PRODUCT_TAG_VISIT_2,
+    
+    TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT,
+    
+    LEADS,
+    
+    COST_PER_LEAD,
+    
+    QUIZ_COMPLETED,
+    
+    QUIZ_PIN_RESULT_OPEN,
+    
+    QUIZ_COMPLETION_RATE,
+    
+    SHOWCASE_PIN_CLICKTHROUGH,
+    
+    SHOWCASE_SUBPAGE_CLICKTHROUGH,
+    
+    SHOWCASE_SUBPIN_CLICKTHROUGH,
+    
+    SHOWCASE_SUBPAGE_IMPRESSION,
+    
+    SHOWCASE_SUBPIN_IMPRESSION,
+    
+    SHOWCASE_SUBPAGE_SWIPE_LEFT,
+    
+    SHOWCASE_SUBPAGE_SWIPE_RIGHT,
+    
+    SHOWCASE_SUBPIN_SWIPE_LEFT,
+    
+    SHOWCASE_SUBPIN_SWIPE_RIGHT,
+    
+    SHOWCASE_SUBPAGE_REPIN,
+    
+    SHOWCASE_SUBPIN_REPIN,
+    
+    SHOWCASE_SUBPAGE_CLOSEUP,
+    
+    SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD,
+    
+    SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD,
+    
+    SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION,
+    
+    TOTAL_CHECKOUT_CONVERSION_RATE,
+    
+    TOTAL_VIEW_CATEGORY_CONVERSION_RATE,
+    
+    TOTAL_ADD_TO_CART_CONVERSION_RATE,
+    
+    TOTAL_SIGNUP_CONVERSION_RATE,
+    
+    TOTAL_PAGE_VISIT_CONVERSION_RATE,
+    
+    TOTAL_LEAD_CONVERSION_RATE,
+    
+    TOTAL_SEARCH_CONVERSION_RATE,
+    
+    TOTAL_WATCH_VIDEO_CONVERSION_RATE,
+    
+    TOTAL_UNKNOWN_CONVERSION_RATE,
+    
+    TOTAL_CUSTOM_CONVERSION_RATE,
+    
+    INAPP_SKAN_APP_INSTALL,
+    
+    INAPP_SKAN_ASSISTED_APP_INSTALL,
+    
+    INAPP_SKAN_APP_INSTALL_COST_PER_ACTION,
+    
+    INAPP_SKAN_APP_INSTALL_CONVERSION_RATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ReportingColumnSync& value)
+{
+    switch (value)
+    {
+        
+        case ReportingColumnSync::SPEND_IN_MICRO_DOLLAR: j = "SPEND_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::PAID_IMPRESSION: j = "PAID_IMPRESSION"; break;
+        
+        case ReportingColumnSync::SPEND_IN_DOLLAR: j = "SPEND_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::CPC_IN_MICRO_DOLLAR: j = "CPC_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::ECPC_IN_MICRO_DOLLAR: j = "ECPC_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::ECPC_IN_DOLLAR: j = "ECPC_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::CTR: j = "CTR"; break;
+        
+        case ReportingColumnSync::ECTR: j = "ECTR"; break;
+        
+        case ReportingColumnSync::OUTBOUND_CTR_1: j = "OUTBOUND_CTR_1"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_NAME: j = "CAMPAIGN_NAME"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_BRAND_LABEL: j = "CAMPAIGN_BRAND_LABEL"; break;
+        
+        case ReportingColumnSync::PIN_ID: j = "PIN_ID"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT: j = "TOTAL_ENGAGEMENT"; break;
+        
+        case ReportingColumnSync::ENGAGEMENT_1: j = "ENGAGEMENT_1"; break;
+        
+        case ReportingColumnSync::ENGAGEMENT_2: j = "ENGAGEMENT_2"; break;
+        
+        case ReportingColumnSync::ECPE_IN_DOLLAR: j = "ECPE_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::ENGAGEMENT_RATE: j = "ENGAGEMENT_RATE"; break;
+        
+        case ReportingColumnSync::EENGAGEMENT_RATE: j = "EENGAGEMENT_RATE"; break;
+        
+        case ReportingColumnSync::ECPM_IN_MICRO_DOLLAR: j = "ECPM_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::REPIN_RATE: j = "REPIN_RATE"; break;
+        
+        case ReportingColumnSync::CTR_2: j = "CTR_2"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_ID: j = "CAMPAIGN_ID"; break;
+        
+        case ReportingColumnSync::ADVERTISER_ID: j = "ADVERTISER_ID"; break;
+        
+        case ReportingColumnSync::AD_ACCOUNT_ID: j = "AD_ACCOUNT_ID"; break;
+        
+        case ReportingColumnSync::PIN_PROMOTION_ID: j = "PIN_PROMOTION_ID"; break;
+        
+        case ReportingColumnSync::AD_ID: j = "AD_ID"; break;
+        
+        case ReportingColumnSync::AD_GROUP_ID: j = "AD_GROUP_ID"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_ENTITY_STATUS: j = "CAMPAIGN_ENTITY_STATUS"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_OBJECTIVE_TYPE: j = "CAMPAIGN_OBJECTIVE_TYPE"; break;
+        
+        case ReportingColumnSync::CPM_IN_MICRO_DOLLAR: j = "CPM_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::CPM_IN_DOLLAR: j = "CPM_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::AD_GROUP_NAME: j = "AD_GROUP_NAME"; break;
+        
+        case ReportingColumnSync::AD_GROUP_BUDGET_TYPE: j = "AD_GROUP_BUDGET_TYPE"; break;
+        
+        case ReportingColumnSync::AD_GROUP_BUDGET_IN_LOCAL_CURRENCY: j = "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY"; break;
+        
+        case ReportingColumnSync::AD_GROUP_ENTITY_STATUS: j = "AD_GROUP_ENTITY_STATUS"; break;
+        
+        case ReportingColumnSync::AD_GROUP_BID_MULTIPLIER: j = "AD_GROUP_BID_MULTIPLIER"; break;
+        
+        case ReportingColumnSync::PROMO_ID: j = "PROMO_ID"; break;
+        
+        case ReportingColumnSync::PROMO_NAME: j = "PROMO_NAME"; break;
+        
+        case ReportingColumnSync::ORDER_LINE_ID: j = "ORDER_LINE_ID"; break;
+        
+        case ReportingColumnSync::ORDER_LINE_NAME: j = "ORDER_LINE_NAME"; break;
+        
+        case ReportingColumnSync::CLICKTHROUGH_1: j = "CLICKTHROUGH_1"; break;
+        
+        case ReportingColumnSync::REPIN_1: j = "REPIN_1"; break;
+        
+        case ReportingColumnSync::IMPRESSION_1: j = "IMPRESSION_1"; break;
+        
+        case ReportingColumnSync::IMPRESSION_1_GROSS: j = "IMPRESSION_1_GROSS"; break;
+        
+        case ReportingColumnSync::CLICKTHROUGH_1_GROSS: j = "CLICKTHROUGH_1_GROSS"; break;
+        
+        case ReportingColumnSync::OUTBOUND_CLICK_1: j = "OUTBOUND_CLICK_1"; break;
+        
+        case ReportingColumnSync::CLICKTHROUGH_2: j = "CLICKTHROUGH_2"; break;
+        
+        case ReportingColumnSync::REPIN_2: j = "REPIN_2"; break;
+        
+        case ReportingColumnSync::IMPRESSION_2: j = "IMPRESSION_2"; break;
+        
+        case ReportingColumnSync::OUTBOUND_CLICK_2: j = "OUTBOUND_CLICK_2"; break;
+        
+        case ReportingColumnSync::COLLECTION_PIN_ITEM_IMPRESSION_1: j = "COLLECTION_PIN_ITEM_IMPRESSION_1"; break;
+        
+        case ReportingColumnSync::COLLECTION_PIN_ITEM_IMPRESSION_2: j = "COLLECTION_PIN_ITEM_IMPRESSION_2"; break;
+        
+        case ReportingColumnSync::TOTAL_COLLECTION_PIN_ITEM_IMPRESSION: j = "TOTAL_COLLECTION_PIN_ITEM_IMPRESSION"; break;
+        
+        case ReportingColumnSync::COLLECTION_PIN_ITEM_CLICKTHROUGH_1: j = "COLLECTION_PIN_ITEM_CLICKTHROUGH_1"; break;
+        
+        case ReportingColumnSync::COLLECTION_PIN_ITEM_CLICKTHROUGH_2: j = "COLLECTION_PIN_ITEM_CLICKTHROUGH_2"; break;
+        
+        case ReportingColumnSync::TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH: j = "TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICKTHROUGH: j = "TOTAL_CLICKTHROUGH"; break;
+        
+        case ReportingColumnSync::TOTAL_IMPRESSION: j = "TOTAL_IMPRESSION"; break;
+        
+        case ReportingColumnSync::TOTAL_IMPRESSION_USER: j = "TOTAL_IMPRESSION_USER"; break;
+        
+        case ReportingColumnSync::TOTAL_IMPRESSION_FREQUENCY: j = "TOTAL_IMPRESSION_FREQUENCY"; break;
+        
+        case ReportingColumnSync::COST_PER_OUTBOUND_CLICK_IN_DOLLAR: j = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1: j = "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT_SIGNUP: j = "TOTAL_ENGAGEMENT_SIGNUP"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT_CHECKOUT: j = "TOTAL_ENGAGEMENT_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT_LEAD: j = "TOTAL_ENGAGEMENT_LEAD"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_SIGNUP: j = "TOTAL_CLICK_SIGNUP"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_CHECKOUT: j = "TOTAL_CLICK_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_ADD_TO_CART: j = "TOTAL_CLICK_ADD_TO_CART"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_LEAD: j = "TOTAL_CLICK_LEAD"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_SIGNUP: j = "TOTAL_VIEW_SIGNUP"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_CHECKOUT: j = "TOTAL_VIEW_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_ADD_TO_CART: j = "TOTAL_VIEW_ADD_TO_CART"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_LEAD: j = "TOTAL_VIEW_LEAD"; break;
+        
+        case ReportingColumnSync::TOTAL_CONVERSIONS: j = "TOTAL_CONVERSIONS"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_SESSIONS: j = "TOTAL_WEB_SESSIONS"; break;
+        
+        case ReportingColumnSync::WEB_SESSIONS_1: j = "WEB_SESSIONS_1"; break;
+        
+        case ReportingColumnSync::WEB_SESSIONS_2: j = "WEB_SESSIONS_2"; break;
+        
+        case ReportingColumnSync::AD_NAME: j = "AD_NAME"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_LIFETIME_SPEND_CAP: j = "CAMPAIGN_LIFETIME_SPEND_CAP"; break;
+        
+        case ReportingColumnSync::AD_GROUP_OPTIMIZATION: j = "AD_GROUP_OPTIMIZATION"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_DAILY_SPEND_CAP: j = "CAMPAIGN_DAILY_SPEND_CAP"; break;
+        
+        case ReportingColumnSync::CAMPAIGN_BUDGET_OPTIMIZATION: j = "CAMPAIGN_BUDGET_OPTIMIZATION"; break;
+        
+        case ReportingColumnSync::IS_PREMIERE_CAMPAIGN: j = "IS_PREMIERE_CAMPAIGN"; break;
+        
+        case ReportingColumnSync::TOTAL_PAGE_VISIT: j = "TOTAL_PAGE_VISIT"; break;
+        
+        case ReportingColumnSync::TOTAL_SIGNUP: j = "TOTAL_SIGNUP"; break;
+        
+        case ReportingColumnSync::TOTAL_CHECKOUT: j = "TOTAL_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_CUSTOM: j = "TOTAL_CUSTOM"; break;
+        
+        case ReportingColumnSync::TOTAL_LEAD: j = "TOTAL_LEAD"; break;
+        
+        case ReportingColumnSync::TOTAL_ADD_TO_WISHLIST: j = "TOTAL_ADD_TO_WISHLIST"; break;
+        
+        case ReportingColumnSync::TOTAL_SUBSCRIBE: j = "TOTAL_SUBSCRIBE"; break;
+        
+        case ReportingColumnSync::TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::PAGE_VISIT_COST_PER_ACTION: j = "PAGE_VISIT_COST_PER_ACTION"; break;
+        
+        case ReportingColumnSync::PAGE_VISIT_ROAS: j = "PAGE_VISIT_ROAS"; break;
+        
+        case ReportingColumnSync::CHECKOUT_ROAS: j = "CHECKOUT_ROAS"; break;
+        
+        case ReportingColumnSync::CUSTOM_ROAS: j = "CUSTOM_ROAS"; break;
+        
+        case ReportingColumnSync::PRODUCT_GROUP_AD_IMAGE_TAG: j = "PRODUCT_GROUP_AD_IMAGE_TAG"; break;
+        
+        case ReportingColumnSync::PRODUCT_GROUP_AD_VIDEO_TAG: j = "PRODUCT_GROUP_AD_VIDEO_TAG"; break;
+        
+        case ReportingColumnSync::VIDEO_3SEC_VIEWS_1: j = "VIDEO_3SEC_VIEWS_1"; break;
+        
+        case ReportingColumnSync::VIDEO_15SEC_UNIQUE_VIEWS_1: j = "VIDEO_15SEC_UNIQUE_VIEWS_1"; break;
+        
+        case ReportingColumnSync::VIDEO_MRC_VIEWS_1: j = "VIDEO_MRC_VIEWS_1"; break;
+        
+        case ReportingColumnSync::VIDEO_3SEC_VIEWS_2: j = "VIDEO_3SEC_VIEWS_2"; break;
+        
+        case ReportingColumnSync::VIDEO_15SEC_UNIQUE_VIEWS_2: j = "VIDEO_15SEC_UNIQUE_VIEWS_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P100_COMPLETE_2: j = "VIDEO_P100_COMPLETE_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P0_COMBINED_2: j = "VIDEO_P0_COMBINED_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P25_COMBINED_2: j = "VIDEO_P25_COMBINED_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P50_COMBINED_2: j = "VIDEO_P50_COMBINED_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P75_COMBINED_2: j = "VIDEO_P75_COMBINED_2"; break;
+        
+        case ReportingColumnSync::VIDEO_P95_COMBINED_2: j = "VIDEO_P95_COMBINED_2"; break;
+        
+        case ReportingColumnSync::VIDEO_MRC_VIEWS_2: j = "VIDEO_MRC_VIEWS_2"; break;
+        
+        case ReportingColumnSync::PAID_VIDEO_VIEWABLE_RATE: j = "PAID_VIDEO_VIEWABLE_RATE"; break;
+        
+        case ReportingColumnSync::VIDEO_LENGTH: j = "VIDEO_LENGTH"; break;
+        
+        case ReportingColumnSync::VIDEO_SPEND_IN_DOLLAR: j = "VIDEO_SPEND_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::ECPV_IN_DOLLAR: j = "ECPV_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::ECPCV_IN_DOLLAR: j = "ECPCV_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::ECPCV_P95_IN_DOLLAR: j = "ECPCV_P95_IN_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_3SEC_VIEWS: j = "TOTAL_VIDEO_3SEC_VIEWS"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_15SEC_UNIQUE_VIEWS: j = "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P100_COMPLETE: j = "TOTAL_VIDEO_P100_COMPLETE"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P0_COMBINED: j = "TOTAL_VIDEO_P0_COMBINED"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P25_COMBINED: j = "TOTAL_VIDEO_P25_COMBINED"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P50_COMBINED: j = "TOTAL_VIDEO_P50_COMBINED"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P75_COMBINED: j = "TOTAL_VIDEO_P75_COMBINED"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_P95_COMBINED: j = "TOTAL_VIDEO_P95_COMBINED"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_MRC_VIEWS: j = "TOTAL_VIDEO_MRC_VIEWS"; break;
+        
+        case ReportingColumnSync::TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND: j = "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND"; break;
+        
+        case ReportingColumnSync::TOTAL_REPIN_RATE: j = "TOTAL_REPIN_RATE"; break;
+        
+        case ReportingColumnSync::WEB_CHECKOUT_COST_PER_ACTION: j = "WEB_CHECKOUT_COST_PER_ACTION"; break;
+        
+        case ReportingColumnSync::WEB_CHECKOUT_ROAS: j = "WEB_CHECKOUT_ROAS"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_CHECKOUT: j = "TOTAL_WEB_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_CLICK_CHECKOUT: j = "TOTAL_WEB_CLICK_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_ENGAGEMENT_CHECKOUT: j = "TOTAL_WEB_ENGAGEMENT_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_VIEW_CHECKOUT: j = "TOTAL_WEB_VIEW_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR: j = "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR"; break;
+        
+        case ReportingColumnSync::INAPP_CHECKOUT_COST_PER_ACTION: j = "INAPP_CHECKOUT_COST_PER_ACTION"; break;
+        
+        case ReportingColumnSync::TOTAL_OFFLINE_CHECKOUT: j = "TOTAL_OFFLINE_CHECKOUT"; break;
+        
+        case ReportingColumnSync::TOTAL_APP_INSTALL_CONVERSION_RATE: j = "TOTAL_APP_INSTALL_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE: j = "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::IDEA_PIN_PRODUCT_TAG_VISIT_1: j = "IDEA_PIN_PRODUCT_TAG_VISIT_1"; break;
+        
+        case ReportingColumnSync::IDEA_PIN_PRODUCT_TAG_VISIT_2: j = "IDEA_PIN_PRODUCT_TAG_VISIT_2"; break;
+        
+        case ReportingColumnSync::TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT: j = "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT"; break;
+        
+        case ReportingColumnSync::LEADS: j = "LEADS"; break;
+        
+        case ReportingColumnSync::COST_PER_LEAD: j = "COST_PER_LEAD"; break;
+        
+        case ReportingColumnSync::QUIZ_COMPLETED: j = "QUIZ_COMPLETED"; break;
+        
+        case ReportingColumnSync::QUIZ_PIN_RESULT_OPEN: j = "QUIZ_PIN_RESULT_OPEN"; break;
+        
+        case ReportingColumnSync::QUIZ_COMPLETION_RATE: j = "QUIZ_COMPLETION_RATE"; break;
+        
+        case ReportingColumnSync::SHOWCASE_PIN_CLICKTHROUGH: j = "SHOWCASE_PIN_CLICKTHROUGH"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_CLICKTHROUGH: j = "SHOWCASE_SUBPAGE_CLICKTHROUGH"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPIN_CLICKTHROUGH: j = "SHOWCASE_SUBPIN_CLICKTHROUGH"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_IMPRESSION: j = "SHOWCASE_SUBPAGE_IMPRESSION"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPIN_IMPRESSION: j = "SHOWCASE_SUBPIN_IMPRESSION"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_SWIPE_LEFT: j = "SHOWCASE_SUBPAGE_SWIPE_LEFT"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_SWIPE_RIGHT: j = "SHOWCASE_SUBPAGE_SWIPE_RIGHT"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPIN_SWIPE_LEFT: j = "SHOWCASE_SUBPIN_SWIPE_LEFT"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPIN_SWIPE_RIGHT: j = "SHOWCASE_SUBPIN_SWIPE_RIGHT"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_REPIN: j = "SHOWCASE_SUBPAGE_REPIN"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPIN_REPIN: j = "SHOWCASE_SUBPIN_REPIN"; break;
+        
+        case ReportingColumnSync::SHOWCASE_SUBPAGE_CLOSEUP: j = "SHOWCASE_SUBPAGE_CLOSEUP"; break;
+        
+        case ReportingColumnSync::SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD: j = "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD"; break;
+        
+        case ReportingColumnSync::SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD: j = "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD"; break;
+        
+        case ReportingColumnSync::SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION: j = "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION"; break;
+        
+        case ReportingColumnSync::TOTAL_CHECKOUT_CONVERSION_RATE: j = "TOTAL_CHECKOUT_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_VIEW_CATEGORY_CONVERSION_RATE: j = "TOTAL_VIEW_CATEGORY_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_ADD_TO_CART_CONVERSION_RATE: j = "TOTAL_ADD_TO_CART_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_SIGNUP_CONVERSION_RATE: j = "TOTAL_SIGNUP_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_PAGE_VISIT_CONVERSION_RATE: j = "TOTAL_PAGE_VISIT_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_LEAD_CONVERSION_RATE: j = "TOTAL_LEAD_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_SEARCH_CONVERSION_RATE: j = "TOTAL_SEARCH_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_WATCH_VIDEO_CONVERSION_RATE: j = "TOTAL_WATCH_VIDEO_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_UNKNOWN_CONVERSION_RATE: j = "TOTAL_UNKNOWN_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::TOTAL_CUSTOM_CONVERSION_RATE: j = "TOTAL_CUSTOM_CONVERSION_RATE"; break;
+        
+        case ReportingColumnSync::INAPP_SKAN_APP_INSTALL: j = "INAPP_SKAN_APP_INSTALL"; break;
+        
+        case ReportingColumnSync::INAPP_SKAN_ASSISTED_APP_INSTALL: j = "INAPP_SKAN_ASSISTED_APP_INSTALL"; break;
+        
+        case ReportingColumnSync::INAPP_SKAN_APP_INSTALL_COST_PER_ACTION: j = "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION"; break;
+        
+        case ReportingColumnSync::INAPP_SKAN_APP_INSTALL_CONVERSION_RATE: j = "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ReportingColumnSync", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ReportingColumnSync& value)
+{
+    
+    if (j == "SPEND_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::SPEND_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "PAID_IMPRESSION")
+    {
+        value = ReportingColumnSync::PAID_IMPRESSION;
+        return;
+    }
+    
+    if (j == "SPEND_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "CPC_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::CPC_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPC_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPC_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPC_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPC_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "CTR")
+    {
+        value = ReportingColumnSync::CTR;
+        return;
+    }
+    
+    if (j == "ECTR")
+    {
+        value = ReportingColumnSync::ECTR;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CTR_1")
+    {
+        value = ReportingColumnSync::OUTBOUND_CTR_1;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_NAME")
+    {
+        value = ReportingColumnSync::CAMPAIGN_NAME;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_BRAND_LABEL")
+    {
+        value = ReportingColumnSync::CAMPAIGN_BRAND_LABEL;
+        return;
+    }
+    
+    if (j == "PIN_ID")
+    {
+        value = ReportingColumnSync::PIN_ID;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT_1")
+    {
+        value = ReportingColumnSync::ENGAGEMENT_1;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT_2")
+    {
+        value = ReportingColumnSync::ENGAGEMENT_2;
+        return;
+    }
+    
+    if (j == "ECPE_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPE_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ENGAGEMENT_RATE")
+    {
+        value = ReportingColumnSync::ENGAGEMENT_RATE;
+        return;
+    }
+    
+    if (j == "EENGAGEMENT_RATE")
+    {
+        value = ReportingColumnSync::EENGAGEMENT_RATE;
+        return;
+    }
+    
+    if (j == "ECPM_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPM_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "REPIN_RATE")
+    {
+        value = ReportingColumnSync::REPIN_RATE;
+        return;
+    }
+    
+    if (j == "CTR_2")
+    {
+        value = ReportingColumnSync::CTR_2;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_ID")
+    {
+        value = ReportingColumnSync::CAMPAIGN_ID;
+        return;
+    }
+    
+    if (j == "ADVERTISER_ID")
+    {
+        value = ReportingColumnSync::ADVERTISER_ID;
+        return;
+    }
+    
+    if (j == "AD_ACCOUNT_ID")
+    {
+        value = ReportingColumnSync::AD_ACCOUNT_ID;
+        return;
+    }
+    
+    if (j == "PIN_PROMOTION_ID")
+    {
+        value = ReportingColumnSync::PIN_PROMOTION_ID;
+        return;
+    }
+    
+    if (j == "AD_ID")
+    {
+        value = ReportingColumnSync::AD_ID;
+        return;
+    }
+    
+    if (j == "AD_GROUP_ID")
+    {
+        value = ReportingColumnSync::AD_GROUP_ID;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_ENTITY_STATUS")
+    {
+        value = ReportingColumnSync::CAMPAIGN_ENTITY_STATUS;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_OBJECTIVE_TYPE")
+    {
+        value = ReportingColumnSync::CAMPAIGN_OBJECTIVE_TYPE;
+        return;
+    }
+    
+    if (j == "CPM_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::CPM_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "CPM_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::CPM_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "AD_GROUP_NAME")
+    {
+        value = ReportingColumnSync::AD_GROUP_NAME;
+        return;
+    }
+    
+    if (j == "AD_GROUP_BUDGET_TYPE")
+    {
+        value = ReportingColumnSync::AD_GROUP_BUDGET_TYPE;
+        return;
+    }
+    
+    if (j == "AD_GROUP_BUDGET_IN_LOCAL_CURRENCY")
+    {
+        value = ReportingColumnSync::AD_GROUP_BUDGET_IN_LOCAL_CURRENCY;
+        return;
+    }
+    
+    if (j == "AD_GROUP_ENTITY_STATUS")
+    {
+        value = ReportingColumnSync::AD_GROUP_ENTITY_STATUS;
+        return;
+    }
+    
+    if (j == "AD_GROUP_BID_MULTIPLIER")
+    {
+        value = ReportingColumnSync::AD_GROUP_BID_MULTIPLIER;
+        return;
+    }
+    
+    if (j == "PROMO_ID")
+    {
+        value = ReportingColumnSync::PROMO_ID;
+        return;
+    }
+    
+    if (j == "PROMO_NAME")
+    {
+        value = ReportingColumnSync::PROMO_NAME;
+        return;
+    }
+    
+    if (j == "ORDER_LINE_ID")
+    {
+        value = ReportingColumnSync::ORDER_LINE_ID;
+        return;
+    }
+    
+    if (j == "ORDER_LINE_NAME")
+    {
+        value = ReportingColumnSync::ORDER_LINE_NAME;
+        return;
+    }
+    
+    if (j == "CLICKTHROUGH_1")
+    {
+        value = ReportingColumnSync::CLICKTHROUGH_1;
+        return;
+    }
+    
+    if (j == "REPIN_1")
+    {
+        value = ReportingColumnSync::REPIN_1;
+        return;
+    }
+    
+    if (j == "IMPRESSION_1")
+    {
+        value = ReportingColumnSync::IMPRESSION_1;
+        return;
+    }
+    
+    if (j == "IMPRESSION_1_GROSS")
+    {
+        value = ReportingColumnSync::IMPRESSION_1_GROSS;
+        return;
+    }
+    
+    if (j == "CLICKTHROUGH_1_GROSS")
+    {
+        value = ReportingColumnSync::CLICKTHROUGH_1_GROSS;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK_1")
+    {
+        value = ReportingColumnSync::OUTBOUND_CLICK_1;
+        return;
+    }
+    
+    if (j == "CLICKTHROUGH_2")
+    {
+        value = ReportingColumnSync::CLICKTHROUGH_2;
+        return;
+    }
+    
+    if (j == "REPIN_2")
+    {
+        value = ReportingColumnSync::REPIN_2;
+        return;
+    }
+    
+    if (j == "IMPRESSION_2")
+    {
+        value = ReportingColumnSync::IMPRESSION_2;
+        return;
+    }
+    
+    if (j == "OUTBOUND_CLICK_2")
+    {
+        value = ReportingColumnSync::OUTBOUND_CLICK_2;
+        return;
+    }
+    
+    if (j == "COLLECTION_PIN_ITEM_IMPRESSION_1")
+    {
+        value = ReportingColumnSync::COLLECTION_PIN_ITEM_IMPRESSION_1;
+        return;
+    }
+    
+    if (j == "COLLECTION_PIN_ITEM_IMPRESSION_2")
+    {
+        value = ReportingColumnSync::COLLECTION_PIN_ITEM_IMPRESSION_2;
+        return;
+    }
+    
+    if (j == "TOTAL_COLLECTION_PIN_ITEM_IMPRESSION")
+    {
+        value = ReportingColumnSync::TOTAL_COLLECTION_PIN_ITEM_IMPRESSION;
+        return;
+    }
+    
+    if (j == "COLLECTION_PIN_ITEM_CLICKTHROUGH_1")
+    {
+        value = ReportingColumnSync::COLLECTION_PIN_ITEM_CLICKTHROUGH_1;
+        return;
+    }
+    
+    if (j == "COLLECTION_PIN_ITEM_CLICKTHROUGH_2")
+    {
+        value = ReportingColumnSync::COLLECTION_PIN_ITEM_CLICKTHROUGH_2;
+        return;
+    }
+    
+    if (j == "TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH")
+    {
+        value = ReportingColumnSync::TOTAL_COLLECTION_PIN_ITEM_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICKTHROUGH")
+    {
+        value = ReportingColumnSync::TOTAL_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "TOTAL_IMPRESSION")
+    {
+        value = ReportingColumnSync::TOTAL_IMPRESSION;
+        return;
+    }
+    
+    if (j == "TOTAL_IMPRESSION_USER")
+    {
+        value = ReportingColumnSync::TOTAL_IMPRESSION_USER;
+        return;
+    }
+    
+    if (j == "TOTAL_IMPRESSION_FREQUENCY")
+    {
+        value = ReportingColumnSync::TOTAL_IMPRESSION_FREQUENCY;
+        return;
+    }
+    
+    if (j == "COST_PER_OUTBOUND_CLICK_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::COST_PER_OUTBOUND_CLICK_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1")
+    {
+        value = ReportingColumnSync::COST_PER_OUTBOUND_CLICK_IN_DOLLAR_1;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT_SIGNUP")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT_SIGNUP;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT_LEAD")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT_LEAD;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_SIGNUP")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_SIGNUP;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_ADD_TO_CART")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_LEAD")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_LEAD;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_SIGNUP")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_SIGNUP;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_ADD_TO_CART")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_ADD_TO_CART;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_LEAD")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_LEAD;
+        return;
+    }
+    
+    if (j == "TOTAL_CONVERSIONS")
+    {
+        value = ReportingColumnSync::TOTAL_CONVERSIONS;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_SESSIONS")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_SESSIONS;
+        return;
+    }
+    
+    if (j == "WEB_SESSIONS_1")
+    {
+        value = ReportingColumnSync::WEB_SESSIONS_1;
+        return;
+    }
+    
+    if (j == "WEB_SESSIONS_2")
+    {
+        value = ReportingColumnSync::WEB_SESSIONS_2;
+        return;
+    }
+    
+    if (j == "AD_NAME")
+    {
+        value = ReportingColumnSync::AD_NAME;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_LIFETIME_SPEND_CAP")
+    {
+        value = ReportingColumnSync::CAMPAIGN_LIFETIME_SPEND_CAP;
+        return;
+    }
+    
+    if (j == "AD_GROUP_OPTIMIZATION")
+    {
+        value = ReportingColumnSync::AD_GROUP_OPTIMIZATION;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_DAILY_SPEND_CAP")
+    {
+        value = ReportingColumnSync::CAMPAIGN_DAILY_SPEND_CAP;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_BUDGET_OPTIMIZATION")
+    {
+        value = ReportingColumnSync::CAMPAIGN_BUDGET_OPTIMIZATION;
+        return;
+    }
+    
+    if (j == "IS_PREMIERE_CAMPAIGN")
+    {
+        value = ReportingColumnSync::IS_PREMIERE_CAMPAIGN;
+        return;
+    }
+    
+    if (j == "TOTAL_PAGE_VISIT")
+    {
+        value = ReportingColumnSync::TOTAL_PAGE_VISIT;
+        return;
+    }
+    
+    if (j == "TOTAL_SIGNUP")
+    {
+        value = ReportingColumnSync::TOTAL_SIGNUP;
+        return;
+    }
+    
+    if (j == "TOTAL_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_CUSTOM")
+    {
+        value = ReportingColumnSync::TOTAL_CUSTOM;
+        return;
+    }
+    
+    if (j == "TOTAL_LEAD")
+    {
+        value = ReportingColumnSync::TOTAL_LEAD;
+        return;
+    }
+    
+    if (j == "TOTAL_ADD_TO_WISHLIST")
+    {
+        value = ReportingColumnSync::TOTAL_ADD_TO_WISHLIST;
+        return;
+    }
+    
+    if (j == "TOTAL_SUBSCRIBE")
+    {
+        value = ReportingColumnSync::TOTAL_SUBSCRIBE;
+        return;
+    }
+    
+    if (j == "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "PAGE_VISIT_COST_PER_ACTION")
+    {
+        value = ReportingColumnSync::PAGE_VISIT_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "PAGE_VISIT_ROAS")
+    {
+        value = ReportingColumnSync::PAGE_VISIT_ROAS;
+        return;
+    }
+    
+    if (j == "CHECKOUT_ROAS")
+    {
+        value = ReportingColumnSync::CHECKOUT_ROAS;
+        return;
+    }
+    
+    if (j == "CUSTOM_ROAS")
+    {
+        value = ReportingColumnSync::CUSTOM_ROAS;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP_AD_IMAGE_TAG")
+    {
+        value = ReportingColumnSync::PRODUCT_GROUP_AD_IMAGE_TAG;
+        return;
+    }
+    
+    if (j == "PRODUCT_GROUP_AD_VIDEO_TAG")
+    {
+        value = ReportingColumnSync::PRODUCT_GROUP_AD_VIDEO_TAG;
+        return;
+    }
+    
+    if (j == "VIDEO_3SEC_VIEWS_1")
+    {
+        value = ReportingColumnSync::VIDEO_3SEC_VIEWS_1;
+        return;
+    }
+    
+    if (j == "VIDEO_15SEC_UNIQUE_VIEWS_1")
+    {
+        value = ReportingColumnSync::VIDEO_15SEC_UNIQUE_VIEWS_1;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEWS_1")
+    {
+        value = ReportingColumnSync::VIDEO_MRC_VIEWS_1;
+        return;
+    }
+    
+    if (j == "VIDEO_3SEC_VIEWS_2")
+    {
+        value = ReportingColumnSync::VIDEO_3SEC_VIEWS_2;
+        return;
+    }
+    
+    if (j == "VIDEO_15SEC_UNIQUE_VIEWS_2")
+    {
+        value = ReportingColumnSync::VIDEO_15SEC_UNIQUE_VIEWS_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P100_COMPLETE_2")
+    {
+        value = ReportingColumnSync::VIDEO_P100_COMPLETE_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P0_COMBINED_2")
+    {
+        value = ReportingColumnSync::VIDEO_P0_COMBINED_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P25_COMBINED_2")
+    {
+        value = ReportingColumnSync::VIDEO_P25_COMBINED_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P50_COMBINED_2")
+    {
+        value = ReportingColumnSync::VIDEO_P50_COMBINED_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P75_COMBINED_2")
+    {
+        value = ReportingColumnSync::VIDEO_P75_COMBINED_2;
+        return;
+    }
+    
+    if (j == "VIDEO_P95_COMBINED_2")
+    {
+        value = ReportingColumnSync::VIDEO_P95_COMBINED_2;
+        return;
+    }
+    
+    if (j == "VIDEO_MRC_VIEWS_2")
+    {
+        value = ReportingColumnSync::VIDEO_MRC_VIEWS_2;
+        return;
+    }
+    
+    if (j == "PAID_VIDEO_VIEWABLE_RATE")
+    {
+        value = ReportingColumnSync::PAID_VIDEO_VIEWABLE_RATE;
+        return;
+    }
+    
+    if (j == "VIDEO_LENGTH")
+    {
+        value = ReportingColumnSync::VIDEO_LENGTH;
+        return;
+    }
+    
+    if (j == "VIDEO_SPEND_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::VIDEO_SPEND_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPV_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPV_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPCV_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPCV_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "ECPCV_P95_IN_DOLLAR")
+    {
+        value = ReportingColumnSync::ECPCV_P95_IN_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_3SEC_VIEWS")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_3SEC_VIEWS;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_15SEC_UNIQUE_VIEWS")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_15SEC_UNIQUE_VIEWS;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P100_COMPLETE")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P100_COMPLETE;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P0_COMBINED")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P0_COMBINED;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P25_COMBINED")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P25_COMBINED;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P50_COMBINED")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P50_COMBINED;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P75_COMBINED")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P75_COMBINED;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_P95_COMBINED")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_P95_COMBINED;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_MRC_VIEWS")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_MRC_VIEWS;
+        return;
+    }
+    
+    if (j == "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND")
+    {
+        value = ReportingColumnSync::TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND;
+        return;
+    }
+    
+    if (j == "TOTAL_REPIN_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_REPIN_RATE;
+        return;
+    }
+    
+    if (j == "WEB_CHECKOUT_COST_PER_ACTION")
+    {
+        value = ReportingColumnSync::WEB_CHECKOUT_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "WEB_CHECKOUT_ROAS")
+    {
+        value = ReportingColumnSync::WEB_CHECKOUT_ROAS;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_CLICK_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_CLICK_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_ENGAGEMENT_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_ENGAGEMENT_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_VIEW_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_VIEW_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR")
+    {
+        value = ReportingColumnSync::TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR;
+        return;
+    }
+    
+    if (j == "INAPP_CHECKOUT_COST_PER_ACTION")
+    {
+        value = ReportingColumnSync::INAPP_CHECKOUT_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "TOTAL_OFFLINE_CHECKOUT")
+    {
+        value = ReportingColumnSync::TOTAL_OFFLINE_CHECKOUT;
+        return;
+    }
+    
+    if (j == "TOTAL_APP_INSTALL_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_APP_INSTALL_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_INAPP_APP_INSTALL_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "IDEA_PIN_PRODUCT_TAG_VISIT_1")
+    {
+        value = ReportingColumnSync::IDEA_PIN_PRODUCT_TAG_VISIT_1;
+        return;
+    }
+    
+    if (j == "IDEA_PIN_PRODUCT_TAG_VISIT_2")
+    {
+        value = ReportingColumnSync::IDEA_PIN_PRODUCT_TAG_VISIT_2;
+        return;
+    }
+    
+    if (j == "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT")
+    {
+        value = ReportingColumnSync::TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT;
+        return;
+    }
+    
+    if (j == "LEADS")
+    {
+        value = ReportingColumnSync::LEADS;
+        return;
+    }
+    
+    if (j == "COST_PER_LEAD")
+    {
+        value = ReportingColumnSync::COST_PER_LEAD;
+        return;
+    }
+    
+    if (j == "QUIZ_COMPLETED")
+    {
+        value = ReportingColumnSync::QUIZ_COMPLETED;
+        return;
+    }
+    
+    if (j == "QUIZ_PIN_RESULT_OPEN")
+    {
+        value = ReportingColumnSync::QUIZ_PIN_RESULT_OPEN;
+        return;
+    }
+    
+    if (j == "QUIZ_COMPLETION_RATE")
+    {
+        value = ReportingColumnSync::QUIZ_COMPLETION_RATE;
+        return;
+    }
+    
+    if (j == "SHOWCASE_PIN_CLICKTHROUGH")
+    {
+        value = ReportingColumnSync::SHOWCASE_PIN_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_CLICKTHROUGH")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPIN_CLICKTHROUGH")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPIN_CLICKTHROUGH;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_IMPRESSION")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_IMPRESSION;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPIN_IMPRESSION")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPIN_IMPRESSION;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_SWIPE_LEFT")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_SWIPE_LEFT;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_SWIPE_RIGHT")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_SWIPE_RIGHT;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPIN_SWIPE_LEFT")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPIN_SWIPE_LEFT;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPIN_SWIPE_RIGHT")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPIN_SWIPE_RIGHT;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_REPIN")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_REPIN;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPIN_REPIN")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPIN_REPIN;
+        return;
+    }
+    
+    if (j == "SHOWCASE_SUBPAGE_CLOSEUP")
+    {
+        value = ReportingColumnSync::SHOWCASE_SUBPAGE_CLOSEUP;
+        return;
+    }
+    
+    if (j == "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD")
+    {
+        value = ReportingColumnSync::SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD;
+        return;
+    }
+    
+    if (j == "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD")
+    {
+        value = ReportingColumnSync::SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD;
+        return;
+    }
+    
+    if (j == "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION")
+    {
+        value = ReportingColumnSync::SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION;
+        return;
+    }
+    
+    if (j == "TOTAL_CHECKOUT_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_CHECKOUT_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_VIEW_CATEGORY_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_VIEW_CATEGORY_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_ADD_TO_CART_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_ADD_TO_CART_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_SIGNUP_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_SIGNUP_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_PAGE_VISIT_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_PAGE_VISIT_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_LEAD_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_LEAD_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_SEARCH_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_SEARCH_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_WATCH_VIDEO_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_WATCH_VIDEO_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_UNKNOWN_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_UNKNOWN_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "TOTAL_CUSTOM_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::TOTAL_CUSTOM_CONVERSION_RATE;
+        return;
+    }
+    
+    if (j == "INAPP_SKAN_APP_INSTALL")
+    {
+        value = ReportingColumnSync::INAPP_SKAN_APP_INSTALL;
+        return;
+    }
+    
+    if (j == "INAPP_SKAN_ASSISTED_APP_INSTALL")
+    {
+        value = ReportingColumnSync::INAPP_SKAN_ASSISTED_APP_INSTALL;
+        return;
+    }
+    
+    if (j == "INAPP_SKAN_APP_INSTALL_COST_PER_ACTION")
+    {
+        value = ReportingColumnSync::INAPP_SKAN_APP_INSTALL_COST_PER_ACTION;
+        return;
+    }
+    
+    if (j == "INAPP_SKAN_APP_INSTALL_CONVERSION_RATE")
+    {
+        value = ReportingColumnSync::INAPP_SKAN_APP_INSTALL_CONVERSION_RATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ReportingColumnSync", &j);
+}
 
 } // namespace models
 

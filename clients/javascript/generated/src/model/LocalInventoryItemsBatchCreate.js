@@ -17,7 +17,7 @@ import LocalInventoryOperation from './LocalInventoryOperation';
 /**
  * The LocalInventoryItemsBatchCreate model module.
  * @module model/LocalInventoryItemsBatchCreate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class LocalInventoryItemsBatchCreate {
     /**

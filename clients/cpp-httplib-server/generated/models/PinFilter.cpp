@@ -6,20 +6,3 @@
 */
 #include "PinFilter.h"
 
-namespace models {
-
-PinFilter::PinFilter()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

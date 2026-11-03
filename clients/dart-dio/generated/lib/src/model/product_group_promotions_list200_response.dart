@@ -125,3 +125,4 @@ class _$ProductGroupPromotionsList200ResponseSerializer implements PrimitiveSeri
   }
 }
 
+

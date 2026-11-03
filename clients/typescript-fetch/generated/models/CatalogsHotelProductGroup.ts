@@ -36,56 +36,38 @@ import {
 export interface CatalogsHotelProductGroup {
     /**
      * Catalog ID pertaining to the product group.
-     * @type {string}
-     * @memberof CatalogsHotelProductGroup
      */
     catalogId: string;
     /**
      * 
-     * @type {CatalogsHotelProductGroupCatalogTypeEnum}
-     * @memberof CatalogsHotelProductGroup
      */
     catalogType: CatalogsHotelProductGroupCatalogTypeEnum;
     /**
      * Unix timestamp in seconds of when catalog product group was created.
-     * @type {number}
-     * @memberof CatalogsHotelProductGroup
      */
     createdAt?: number;
     /**
      * 
-     * @type {string}
-     * @memberof CatalogsHotelProductGroup
      */
     description?: string | null;
     /**
      * 
-     * @type {CatalogsHotelProductGroupFilters}
-     * @memberof CatalogsHotelProductGroup
      */
     filters: CatalogsHotelProductGroupFilters;
     /**
      * ID of the catalog product group.
-     * @type {string}
-     * @memberof CatalogsHotelProductGroup
      */
     id: string;
     /**
      * Name of catalog product group
-     * @type {string}
-     * @memberof CatalogsHotelProductGroup
      */
     name?: string;
     /**
      * 
-     * @type {CatalogsHotelProductGroupType}
-     * @memberof CatalogsHotelProductGroup
      */
     type: CatalogsHotelProductGroupType;
     /**
      * Unix timestamp in seconds of last time catalog product group was updated.
-     * @type {number}
-     * @memberof CatalogsHotelProductGroup
      */
     updatedAt?: number;
 }
@@ -95,7 +77,7 @@ export interface CatalogsHotelProductGroup {
  * @export
  */
 export const CatalogsHotelProductGroupCatalogTypeEnum = {
-    Hotel: 'HOTEL'
+    Hotel: 'HOTEL',
 } as const;
 export type CatalogsHotelProductGroupCatalogTypeEnum = typeof CatalogsHotelProductGroupCatalogTypeEnum[keyof typeof CatalogsHotelProductGroupCatalogTypeEnum];
 

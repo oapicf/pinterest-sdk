@@ -22,11 +22,11 @@ data class BidOptionsAudienceMultipliers(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "")
-    @param:JsonProperty("audience_id")
+    @param:JsonProperty("audience_id", required = true)
     @get:JsonProperty("audience_id", required = true) val audienceId: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("multiplier")
+    @param:JsonProperty("multiplier", required = true)
     @get:JsonProperty("multiplier", required = true) val multiplier: java.math.BigDecimal
 ) {
 

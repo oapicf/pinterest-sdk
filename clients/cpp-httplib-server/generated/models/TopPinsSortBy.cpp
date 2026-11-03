@@ -6,20 +6,3 @@
 */
 #include "TopPinsSortBy.h"
 
-namespace models {
-
-TopPinsSortBy::TopPinsSortBy()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

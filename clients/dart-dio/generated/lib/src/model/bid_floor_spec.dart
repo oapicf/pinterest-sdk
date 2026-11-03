@@ -213,3 +213,4 @@ class _$BidFloorSpecSerializer implements PrimitiveSerializer<BidFloorSpec> {
   }
 }
 
+

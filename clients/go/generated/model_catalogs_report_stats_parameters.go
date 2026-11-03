@@ -85,16 +85,11 @@ func (dst *CatalogsReportStatsParameters) UnmarshalJSON(data []byte) error {
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters)")
-        }
-        if err != nil {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters): %v", err)
-        } else {
-            return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters)")
-        }
+		if err != nil {
+			return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters): %v", err)
+		}
+
+		return fmt.Errorf("data failed to match schemas in oneOf(CatalogsReportStatsParameters)")
 	}
 }
 

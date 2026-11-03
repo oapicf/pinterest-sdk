@@ -194,3 +194,4 @@ class _$CatalogsRetailProductMetadataSerializer implements PrimitiveSerializer<C
   }
 }
 
+

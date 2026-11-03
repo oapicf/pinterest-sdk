@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class MMMReportLevel
-{
-public:
-
-    MMMReportLevel();
-    virtual ~MMMReportLevel() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MMMReportLevel,
-        )
-
-private:
+enum class MMMReportLevel {
+    
+    CAMPAIGN_TARGETING,
+    
+    AD_GROUP_TARGETING
+    
 };
 
+inline void to_json(nlohmann::json& j, const MMMReportLevel& value)
+{
+    switch (value)
+    {
+        
+        case MMMReportLevel::CAMPAIGN_TARGETING: j = "CAMPAIGN_TARGETING"; break;
+        
+        case MMMReportLevel::AD_GROUP_TARGETING: j = "AD_GROUP_TARGETING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportLevel", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MMMReportLevel& value)
+{
+    
+    if (j == "CAMPAIGN_TARGETING")
+    {
+        value = MMMReportLevel::CAMPAIGN_TARGETING;
+        return;
+    }
+    
+    if (j == "AD_GROUP_TARGETING")
+    {
+        value = MMMReportLevel::AD_GROUP_TARGETING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportLevel", &j);
+}
 
 } // namespace models
 

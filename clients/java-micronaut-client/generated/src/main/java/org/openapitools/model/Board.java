@@ -44,7 +44,7 @@ import javax.annotation.Generated;
   Board.JSON_PROPERTY_PRIVACY
 })
 @JsonTypeName("Board")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class Board {
     public static final String JSON_PROPERTY_BOARD_PINS_MODIFIED_AT = "board_pins_modified_at";
@@ -81,7 +81,7 @@ public class Board {
     private Integer pinCount;
 
     public static final String JSON_PROPERTY_PRIVACY = "privacy";
-    private BoardPrivacy privacy;
+    private BoardPrivacy privacy = BoardPrivacy.PUBLIC;
 
     public Board(String id, String name) {
         this.id = id;

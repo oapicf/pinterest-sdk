@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LocalInventoryItemsGet", description = "Model for getting local inventory items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsGet {
 
   private List<@Valid LocalInventoryItemResponse> items = new ArrayList<>();
@@ -57,7 +57,7 @@ public class LocalInventoryItemsGet {
    * Array of local inventory items
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", accessMode = Schema.AccessMode.READ_ONLY, description = "Array of local inventory items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid LocalInventoryItemResponse> getItems() {

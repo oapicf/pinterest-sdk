@@ -157,13 +157,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!pinId.IsSet)
-                throw new ArgumentException("Property is required for class AdPreviewSourcePinId.", nameof(pinId));
+                throw new JsonException("Property is required for class AdPreviewSourcePinId: pin_id.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class AdPreviewSourcePinId.");
+                throw new JsonException("Property is not nullable for class AdPreviewSourcePinId: pin_id.");
 
             if (creativeType.IsSet && creativeType.Value == null)
-                throw new ArgumentNullException(nameof(creativeType), "Property is not nullable for class AdPreviewSourcePinId.");
+                throw new JsonException("Property is not nullable for class AdPreviewSourcePinId: creative_type.");
 
             return new AdPreviewSourcePinId(pinId.Value!, creativeType);
         }
@@ -174,7 +174,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewSourcePinId"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdPreviewSourcePinId adPreviewSourcePinId, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -189,11 +188,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewSourcePinId"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdPreviewSourcePinId adPreviewSourcePinId, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adPreviewSourcePinId.PinId == null)
-                throw new ArgumentNullException(nameof(adPreviewSourcePinId.PinId), "Property is required for class AdPreviewSourcePinId.");
+            if (adPreviewSourcePinId.CreativeTypeOption.IsSet && adPreviewSourcePinId.CreativeType == null)
+                throw new JsonException("Cannot write null property AdPreviewSourcePinId.CreativeType to non-nullable JSON property 'creative_type'.");
 
             writer.WriteString("pin_id", adPreviewSourcePinId.PinId);
 

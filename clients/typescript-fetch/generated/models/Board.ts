@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { BoardPrivacy } from './BoardPrivacy';
 import {
     BoardPrivacyFromJSON,
@@ -43,50 +43,34 @@ import {
 export interface Board {
     /**
      * Date and time of last board pins modified.
-     * @type {Date}
-     * @memberof Board
      */
     readonly boardPinsModifiedAt?: Date;
     /**
      * Count of collaborators on the board.
-     * @type {number}
-     * @memberof Board
      */
     readonly collaboratorCount?: number;
     /**
      * Date and time of board creation.
-     * @type {Date}
-     * @memberof Board
      */
     readonly createdAt?: Date;
     /**
      * 
-     * @type {string}
-     * @memberof Board
      */
     description?: string | null;
     /**
      * Board follower count.
-     * @type {number}
-     * @memberof Board
      */
     readonly followerCount?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Board
      */
     readonly id: string;
     /**
      * If set to `true`, the board will be ad-only and can store ad-only Pins.
-     * @type {boolean}
-     * @memberof Board
      */
     isAdsOnly?: boolean;
     /**
      * Board media.
-     * @type {BoardMedia}
-     * @memberof Board
      */
     readonly media?: BoardMedia;
     /**
@@ -94,20 +78,14 @@ export interface Board {
      * 
      *     **Note:** If you create an ad-only board by setting `is_ads_only`
      *     to `true`, the board name automatically becomes "Ad-only Pins".
-     * @type {string}
-     * @memberof Board
      */
     name: string;
     /**
      * 
-     * @type {BoardOwner}
-     * @memberof Board
      */
     readonly owner?: BoardOwner;
     /**
      * Count of Pins on the board.
-     * @type {number}
-     * @memberof Board
      */
     readonly pinCount?: number;
     /**
@@ -116,8 +94,6 @@ export interface Board {
      * 
      *     **Note:** If you create an ad-only board by setting `is_ads_only`
      *     to `true`, the `privacy` settng automatically becomes `PROTECTED`. 
-     * @type {BoardPrivacy}
-     * @memberof Board
      */
     privacy?: BoardPrivacy;
 }
@@ -143,9 +119,9 @@ export function BoardFromJSONTyped(json: any, ignoreDiscriminator: boolean): Boa
     }
     return {
         
-        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (new Date(json['board_pins_modified_at'])),
+        'boardPinsModifiedAt': json['board_pins_modified_at'] == null ? undefined : (parseDateTime(json['board_pins_modified_at'])),
         'collaboratorCount': json['collaborator_count'] == null ? undefined : json['collaborator_count'],
-        'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
+        'createdAt': json['created_at'] == null ? undefined : (parseDateTime(json['created_at'])),
         'description': json['description'] === undefined ? undefined : json['description'] === null ? null : json['description'],
         'followerCount': json['follower_count'] == null ? undefined : json['follower_count'],
         'id': json['id'],

@@ -225,19 +225,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (ages.IsSet && ages.Value == null)
-                throw new ArgumentNullException(nameof(ages), "Property is not nullable for class AudienceDemographics.");
+                throw new JsonException("Property is not nullable for class AudienceDemographics: ages.");
 
             if (countries.IsSet && countries.Value == null)
-                throw new ArgumentNullException(nameof(countries), "Property is not nullable for class AudienceDemographics.");
+                throw new JsonException("Property is not nullable for class AudienceDemographics: countries.");
 
             if (devices.IsSet && devices.Value == null)
-                throw new ArgumentNullException(nameof(devices), "Property is not nullable for class AudienceDemographics.");
+                throw new JsonException("Property is not nullable for class AudienceDemographics: devices.");
 
             if (genders.IsSet && genders.Value == null)
-                throw new ArgumentNullException(nameof(genders), "Property is not nullable for class AudienceDemographics.");
+                throw new JsonException("Property is not nullable for class AudienceDemographics: genders.");
 
             if (metros.IsSet && metros.Value == null)
-                throw new ArgumentNullException(nameof(metros), "Property is not nullable for class AudienceDemographics.");
+                throw new JsonException("Property is not nullable for class AudienceDemographics: metros.");
 
             return new AudienceDemographics(ages, countries, devices, genders, metros);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceDemographics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AudienceDemographics audienceDemographics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,23 +262,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audienceDemographics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AudienceDemographics audienceDemographics, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audienceDemographics.AgesOption.IsSet && audienceDemographics.Ages == null)
-                throw new ArgumentNullException(nameof(audienceDemographics.Ages), "Property is required for class AudienceDemographics.");
+                throw new JsonException("Cannot write null property AudienceDemographics.Ages to non-nullable JSON property 'ages'.");
 
             if (audienceDemographics.CountriesOption.IsSet && audienceDemographics.Countries == null)
-                throw new ArgumentNullException(nameof(audienceDemographics.Countries), "Property is required for class AudienceDemographics.");
+                throw new JsonException("Cannot write null property AudienceDemographics.Countries to non-nullable JSON property 'countries'.");
 
             if (audienceDemographics.DevicesOption.IsSet && audienceDemographics.Devices == null)
-                throw new ArgumentNullException(nameof(audienceDemographics.Devices), "Property is required for class AudienceDemographics.");
+                throw new JsonException("Cannot write null property AudienceDemographics.Devices to non-nullable JSON property 'devices'.");
 
             if (audienceDemographics.GendersOption.IsSet && audienceDemographics.Genders == null)
-                throw new ArgumentNullException(nameof(audienceDemographics.Genders), "Property is required for class AudienceDemographics.");
+                throw new JsonException("Cannot write null property AudienceDemographics.Genders to non-nullable JSON property 'genders'.");
 
             if (audienceDemographics.MetrosOption.IsSet && audienceDemographics.Metros == null)
-                throw new ArgumentNullException(nameof(audienceDemographics.Metros), "Property is required for class AudienceDemographics.");
+                throw new JsonException("Cannot write null property AudienceDemographics.Metros to non-nullable JSON property 'metros'.");
 
             if (audienceDemographics.AgesOption.IsSet)
             {

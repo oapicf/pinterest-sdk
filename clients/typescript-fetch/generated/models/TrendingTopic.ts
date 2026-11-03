@@ -29,50 +29,34 @@ import {
 export interface TrendingTopic {
     /**
      * Description of the trending topic
-     * @type {string}
-     * @memberof TrendingTopic
      */
     description: string;
     /**
      * Unique identifier for the trending topic
-     * @type {string}
-     * @memberof TrendingTopic
      */
     id: string;
     /**
      * Month-over-month growth percentage
-     * @type {number}
-     * @memberof TrendingTopic
      */
     percentGrowthMom?: number;
     /**
      * Array of pin images related to this trend (up to 6)
-     * @type {Array<TrendingPin>}
-     * @memberof TrendingTopic
      */
     pins: Array<TrendingPin>;
     /**
      * List of related interest categories
-     * @type {Array<string>}
-     * @memberof TrendingTopic
      */
     relatedInterests: Array<string>;
     /**
      * List of related search terms
-     * @type {Array<string>}
-     * @memberof TrendingTopic
      */
     relatedSearches: Array<string>;
     /**
      * Time series data showing trend values over time, with dates as keys and values as numeric
-     * @type {{ [key: string]: number; }}
-     * @memberof TrendingTopic
      */
     timeSeries: { [key: string]: number; };
     /**
      * Title of the trending topic
-     * @type {string}
-     * @memberof TrendingTopic
      */
     title: string;
 }

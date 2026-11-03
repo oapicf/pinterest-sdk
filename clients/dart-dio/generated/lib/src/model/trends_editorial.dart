@@ -192,3 +192,4 @@ class _$TrendsEditorialSerializer implements PrimitiveSerializer<TrendsEditorial
   }
 }
 
+

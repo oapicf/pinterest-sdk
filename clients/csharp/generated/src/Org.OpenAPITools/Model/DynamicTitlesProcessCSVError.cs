@@ -164,10 +164,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (errorType.IsSet && errorType.Value == null)
-                throw new ArgumentNullException(nameof(errorType), "Property is not nullable for class DynamicTitlesProcessCSVError.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesProcessCSVError: error_type.");
 
             if (rowNumber.IsSet && rowNumber.Value == null)
-                throw new ArgumentNullException(nameof(rowNumber), "Property is not nullable for class DynamicTitlesProcessCSVError.");
+                throw new JsonException("Property is not nullable for class DynamicTitlesProcessCSVError: row_number.");
 
             return new DynamicTitlesProcessCSVError(errorType, rowNumber);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSVError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, DynamicTitlesProcessCSVError dynamicTitlesProcessCSVError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,11 +192,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="dynamicTitlesProcessCSVError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, DynamicTitlesProcessCSVError dynamicTitlesProcessCSVError, JsonSerializerOptions jsonSerializerOptions)
         {
             if (dynamicTitlesProcessCSVError.ErrorTypeOption.IsSet && dynamicTitlesProcessCSVError.ErrorType == null)
-                throw new ArgumentNullException(nameof(dynamicTitlesProcessCSVError.ErrorType), "Property is required for class DynamicTitlesProcessCSVError.");
+                throw new JsonException("Cannot write null property DynamicTitlesProcessCSVError.ErrorType to non-nullable JSON property 'error_type'.");
+
+            if (dynamicTitlesProcessCSVError.RowNumberOption.IsSet && dynamicTitlesProcessCSVError.RowNumber == null)
+                throw new JsonException("Cannot write null property DynamicTitlesProcessCSVError.RowNumber to non-nullable JSON property 'row_number'.");
 
             if (dynamicTitlesProcessCSVError.ErrorTypeOption.IsSet)
                 writer.WriteString("error_type", dynamicTitlesProcessCSVError.ErrorType);

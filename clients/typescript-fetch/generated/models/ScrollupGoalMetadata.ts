@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ScrollupGoalMetadata {
     /**
      * 
-     * @type {string}
-     * @memberof ScrollupGoalMetadata
      */
     scrollupGoalValueInMicroCurrency?: string | null;
 }

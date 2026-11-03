@@ -36,20 +36,14 @@ import {
 export interface CampaignPlanningConversionRate {
     /**
      * 
-     * @type {CampaignPlanningConversionAttribution}
-     * @memberof CampaignPlanningConversionRate
      */
     attributionWindows: CampaignPlanningConversionAttribution;
     /**
      * 
-     * @type {CampaignPlanningConversionEvent}
-     * @memberof CampaignPlanningConversionRate
      */
     conversionEvent: CampaignPlanningConversionEvent;
     /**
      * Conversion rate estimate. Used to translate impressions into conversions for oCPM ads.
-     * @type {number}
-     * @memberof CampaignPlanningConversionRate
      */
     conversionRate: number;
 }

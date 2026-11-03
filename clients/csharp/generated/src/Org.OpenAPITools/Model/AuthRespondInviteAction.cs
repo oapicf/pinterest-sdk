@@ -156,13 +156,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!acceptInvite.IsSet)
-                throw new ArgumentException("Property is required for class AuthRespondInviteAction.", nameof(acceptInvite));
+                throw new JsonException("Property is required for class AuthRespondInviteAction: accept_invite.");
 
             if (acceptInvite.IsSet && acceptInvite.Value == null)
-                throw new ArgumentNullException(nameof(acceptInvite), "Property is not nullable for class AuthRespondInviteAction.");
+                throw new JsonException("Property is not nullable for class AuthRespondInviteAction: accept_invite.");
 
             if (assetIdToPermissions.IsSet && assetIdToPermissions.Value == null)
-                throw new ArgumentNullException(nameof(assetIdToPermissions), "Property is not nullable for class AuthRespondInviteAction.");
+                throw new JsonException("Property is not nullable for class AuthRespondInviteAction: asset_id_to_permissions.");
 
             return new AuthRespondInviteAction(acceptInvite.Value!.Value!, assetIdToPermissions);
         }
@@ -173,7 +173,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="authRespondInviteAction"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AuthRespondInviteAction authRespondInviteAction, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -188,11 +187,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="authRespondInviteAction"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AuthRespondInviteAction authRespondInviteAction, JsonSerializerOptions jsonSerializerOptions)
         {
             if (authRespondInviteAction.AssetIdToPermissionsOption.IsSet && authRespondInviteAction.AssetIdToPermissions == null)
-                throw new ArgumentNullException(nameof(authRespondInviteAction.AssetIdToPermissions), "Property is required for class AuthRespondInviteAction.");
+                throw new JsonException("Cannot write null property AuthRespondInviteAction.AssetIdToPermissions to non-nullable JSON property 'asset_id_to_permissions'.");
 
             writer.WriteBoolean("accept_invite", authRespondInviteAction.AcceptInvite);
 

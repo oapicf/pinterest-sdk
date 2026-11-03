@@ -220,22 +220,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListCreate.", nameof(name));
+                throw new JsonException("Property is required for class CustomerListCreate: name.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CustomerListCreate.");
+                throw new JsonException("Property is not nullable for class CustomerListCreate: name.");
 
             if (isNca.IsSet && isNca.Value == null)
-                throw new ArgumentNullException(nameof(isNca), "Property is not nullable for class CustomerListCreate.");
+                throw new JsonException("Property is not nullable for class CustomerListCreate: is_nca.");
 
             if (listType.IsSet && listType.Value == null)
-                throw new ArgumentNullException(nameof(listType), "Property is not nullable for class CustomerListCreate.");
+                throw new JsonException("Property is not nullable for class CustomerListCreate: list_type.");
 
             if (records.IsSet && records.Value == null)
-                throw new ArgumentNullException(nameof(records), "Property is not nullable for class CustomerListCreate.");
+                throw new JsonException("Property is not nullable for class CustomerListCreate: records.");
 
             if (recordsV2.IsSet && recordsV2.Value == null)
-                throw new ArgumentNullException(nameof(recordsV2), "Property is not nullable for class CustomerListCreate.");
+                throw new JsonException("Property is not nullable for class CustomerListCreate: records_v2.");
 
             return new CustomerListCreate(name.Value!, isNca, listType, records, recordsV2);
         }
@@ -246,7 +246,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListCreate customerListCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -261,17 +260,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListCreate customerListCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (customerListCreate.Name == null)
-                throw new ArgumentNullException(nameof(customerListCreate.Name), "Property is required for class CustomerListCreate.");
+            if (customerListCreate.IsNcaOption.IsSet && customerListCreate.IsNca == null)
+                throw new JsonException("Cannot write null property CustomerListCreate.IsNca to non-nullable JSON property 'is_nca'.");
+
+            if (customerListCreate.ListTypeOption.IsSet && customerListCreate.ListType == null)
+                throw new JsonException("Cannot write null property CustomerListCreate.ListType to non-nullable JSON property 'list_type'.");
 
             if (customerListCreate.RecordsOption.IsSet && customerListCreate.Records == null)
-                throw new ArgumentNullException(nameof(customerListCreate.Records), "Property is required for class CustomerListCreate.");
+                throw new JsonException("Cannot write null property CustomerListCreate.Records to non-nullable JSON property 'records'.");
 
             if (customerListCreate.RecordsV2Option.IsSet && customerListCreate.RecordsV2 == null)
-                throw new ArgumentNullException(nameof(customerListCreate.RecordsV2), "Property is required for class CustomerListCreate.");
+                throw new JsonException("Cannot write null property CustomerListCreate.RecordsV2 to non-nullable JSON property 'records_v2'.");
 
             writer.WriteString("name", customerListCreate.Name);
 

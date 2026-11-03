@@ -17,7 +17,7 @@ import org.openapitools.model.SupplementalOperationResult;
  * Response model for supplemental items batch operation
  */
 @ApiModel(description = "Response model for supplemental items batch operation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SupplementalItemsBatchResponse   {
   @JsonProperty("batch_id")
   private String batchId;
@@ -29,7 +29,7 @@ public class SupplementalItemsBatchResponse   {
   private Date createdTime;
 
   @JsonProperty("operation_results")
-  private List<SupplementalOperationResult> operationResults = new ArrayList<>();
+  private List<@Valid SupplementalOperationResult> operationResults = new ArrayList<>();
 
   @JsonProperty("status")
   private SupplementalItemBatchOperationStatus status;
@@ -66,7 +66,7 @@ public class SupplementalItemsBatchResponse   {
    * @return operationResults
   **/
   @ApiModelProperty(required = true, value = "Array of operation results")
-  public List<SupplementalOperationResult> getOperationResults() {
+  public List<@Valid SupplementalOperationResult> getOperationResults() {
     return operationResults;
   }
 

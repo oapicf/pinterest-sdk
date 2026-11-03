@@ -51,7 +51,7 @@ import javax.validation.Valid;
   TargetingSpec.JSON_PROPERTY_S_H_O_P_P_I_N_G_R_E_T_A_R_G_E_T_I_N_G,
   TargetingSpec.JSON_PROPERTY_T_A_R_G_E_T_I_N_G_S_T_R_A_T_E_G_Y
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpec   {
   public static final String JSON_PROPERTY_A_G_E_B_U_C_K_E_T = "AGE_BUCKET";
   @JsonProperty(JSON_PROPERTY_A_G_E_B_U_C_K_E_T)
@@ -517,7 +517,7 @@ public class TargetingSpec   {
    **/
   @JsonProperty(value = "SHOPPING_RETARGETING")
   @ApiModelProperty(value = "Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting")
-  @Valid 
+  
   public List<@Valid TargetingSpecShoppingRetargeting> getSHOPPINGRETARGETING() {
     return SHOPPING_RETARGETING;
   }

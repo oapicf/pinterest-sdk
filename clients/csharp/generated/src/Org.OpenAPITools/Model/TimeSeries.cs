@@ -152,7 +152,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (date.IsSet && date.Value == null)
-                throw new ArgumentNullException(nameof(date), "Property is not nullable for class TimeSeries.");
+                throw new JsonException("Property is not nullable for class TimeSeries: date.");
 
             return new TimeSeries(date);
         }
@@ -163,7 +163,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="timeSeries"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TimeSeries timeSeries, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -178,9 +177,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="timeSeries"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TimeSeries timeSeries, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (timeSeries.DateOption.IsSet && timeSeries.Date == null)
+                throw new JsonException("Cannot write null property TimeSeries.Date to non-nullable JSON property 'date'.");
+
             if (timeSeries.DateOption.IsSet)
                 writer.WriteString("date", timeSeries.DateOption.Value!.Value.ToString(DateFormat));
         }

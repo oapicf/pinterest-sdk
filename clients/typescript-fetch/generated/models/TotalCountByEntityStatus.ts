@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TotalCountByEntityStatus {
     /**
      * Count of ACTIVE assets
-     * @type {number}
-     * @memberof TotalCountByEntityStatus
      */
     aCTIVE?: number;
     /**
      * Count of ARCHIVED assets
-     * @type {number}
-     * @memberof TotalCountByEntityStatus
      */
     aRCHIVED?: number;
     /**
      * Count of PAUSED assets
-     * @type {number}
-     * @memberof TotalCountByEntityStatus
      */
     pAUSED?: number;
 }

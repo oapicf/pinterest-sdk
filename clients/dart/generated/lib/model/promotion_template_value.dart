@@ -112,10 +112,14 @@ class PromotionTemplateValue {
       }());
 
       return PromotionTemplateValue(
-        amount: num.parse('${json[r'amount']}'),
+        amount: json[r'amount'] == null
+            ? null
+            : num.parse('${json[r'amount']}'),
         currencyCode: Currency.fromJson(json[r'currency_code']),
         customText: mapValueOfType<String>(json, r'custom_text'),
-        percent: num.parse('${json[r'percent']}'),
+        percent: json[r'percent'] == null
+            ? null
+            : num.parse('${json[r'percent']}'),
       );
     }
     return null;

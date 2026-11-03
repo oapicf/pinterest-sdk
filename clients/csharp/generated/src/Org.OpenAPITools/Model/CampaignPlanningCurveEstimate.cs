@@ -163,10 +163,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (estimationType.IsSet && estimationType.Value == null)
-                throw new ArgumentNullException(nameof(estimationType), "Property is not nullable for class CampaignPlanningCurveEstimate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningCurveEstimate: estimation_type.");
 
             if (points.IsSet && points.Value == null)
-                throw new ArgumentNullException(nameof(points), "Property is not nullable for class CampaignPlanningCurveEstimate.");
+                throw new JsonException("Property is not nullable for class CampaignPlanningCurveEstimate: points.");
 
             return new CampaignPlanningCurveEstimate(estimationType, points);
         }
@@ -177,7 +177,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningCurveEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignPlanningCurveEstimate campaignPlanningCurveEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -192,11 +191,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignPlanningCurveEstimate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignPlanningCurveEstimate campaignPlanningCurveEstimate, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignPlanningCurveEstimate.EstimationTypeOption.IsSet && campaignPlanningCurveEstimate.EstimationType == null)
+                throw new JsonException("Cannot write null property CampaignPlanningCurveEstimate.EstimationType to non-nullable JSON property 'estimation_type'.");
+
             if (campaignPlanningCurveEstimate.PointsOption.IsSet && campaignPlanningCurveEstimate.Points == null)
-                throw new ArgumentNullException(nameof(campaignPlanningCurveEstimate.Points), "Property is required for class CampaignPlanningCurveEstimate.");
+                throw new JsonException("Cannot write null property CampaignPlanningCurveEstimate.Points to non-nullable JSON property 'points'.");
 
             if (campaignPlanningCurveEstimate.EstimationTypeOption.IsSet)
             {

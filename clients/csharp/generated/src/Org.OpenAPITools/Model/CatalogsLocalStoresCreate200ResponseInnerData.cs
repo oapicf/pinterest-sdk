@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsLocalStoresCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="localStore"></param>
-        public CatalogsLocalStoresCreate200ResponseInnerData(LocalStore localStore)
+        internal CatalogsLocalStoresCreate200ResponseInnerData(LocalStore localStore)
         {
             LocalStore = localStore;
             OnCreated();
@@ -45,7 +45,7 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="CatalogsLocalStoresCreate200ResponseInnerData" /> class.
         /// </summary>
         /// <param name="catalogsLocalStoresCreate200ResponseInnerDataOneOf"></param>
-        public CatalogsLocalStoresCreate200ResponseInnerData(CatalogsLocalStoresCreate200ResponseInnerDataOneOf catalogsLocalStoresCreate200ResponseInnerDataOneOf)
+        internal CatalogsLocalStoresCreate200ResponseInnerData(CatalogsLocalStoresCreate200ResponseInnerDataOneOf catalogsLocalStoresCreate200ResponseInnerDataOneOf)
         {
             CatalogsLocalStoresCreate200ResponseInnerDataOneOf = catalogsLocalStoresCreate200ResponseInnerDataOneOf;
             OnCreated();
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInnerData catalogsLocalStoresCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,7 +190,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsLocalStoresCreate200ResponseInnerData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsLocalStoresCreate200ResponseInnerData catalogsLocalStoresCreate200ResponseInnerData, JsonSerializerOptions jsonSerializerOptions)
         {
 

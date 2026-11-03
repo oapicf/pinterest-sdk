@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.BatchOperationStatus
 import org.openapitools.model.CreativeAssetsProcessingRecord
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
@@ -35,13 +32,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class CatalogsCreativeAssetsItemsBatch(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsCreativeAssetsItemsBatch.CatalogType = kotlin.String.CREATIVE_ASSETS,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "595953100599279259", description = "Id of the catalogs items batch")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("batch_id")
     @get:JsonProperty("batch_id") val batchId: kotlin.String? = null,
 
@@ -50,22 +45,16 @@ data class CatalogsCreativeAssetsItemsBatch(
     @get:JsonProperty("completed_time") val completedTime: java.time.OffsetDateTime? = null,
 
     @Schema(example = "2024-01-01T20:10:40Z", description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_time")
     @get:JsonProperty("created_time") val createdTime: java.time.OffsetDateTime? = null,
 
     @field:Valid
     @Schema(description = "Array with the catalogs items processing records part of the catalogs items batch")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("items")
     @get:JsonProperty("items") val items: kotlin.collections.List<CreativeAssetsProcessingRecord>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: BatchOperationStatus? = null
 ) : CatalogsItemsBatch {
@@ -77,12 +66,12 @@ data class CatalogsCreativeAssetsItemsBatch(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         CREATIVE_ASSETS("CREATIVE_ASSETS");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

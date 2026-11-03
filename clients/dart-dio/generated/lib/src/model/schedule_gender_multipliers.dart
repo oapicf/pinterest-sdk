@@ -110,3 +110,4 @@ class _$ScheduleGenderMultipliersSerializer implements PrimitiveSerializer<Sched
   }
 }
 
+

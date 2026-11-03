@@ -125,3 +125,4 @@ class _$IntegrationsGetList200ResponseSerializer implements PrimitiveSerializer<
   }
 }
 
+

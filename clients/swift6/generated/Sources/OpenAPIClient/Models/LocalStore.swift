@@ -10,7 +10,7 @@ import Foundation
 /** Local store entity */
 public struct LocalStore: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Primary address line of the store. */
     public var addressPrimary: String?
     /** Secondary address line of the store. */

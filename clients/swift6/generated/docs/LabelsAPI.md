@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **labelsApply**
 ```swift
-    open class func labelsApply(adAccountId: String, labelId: String, labeledEntitiesCreate: LabeledEntitiesCreate, completion: @escaping (_ data: LabeledEntities?, _ error: Error?) -> Void)
+    open class func labelsApply(adAccountId: String, labelId: String, labeledEntitiesCreate: LabeledEntitiesCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LabeledEntities
 ```
 
 Apply label to entity
@@ -30,15 +30,11 @@ let labelId = "labelId_example" // String | Label ID.
 let labeledEntitiesCreate = LabeledEntitiesCreate(entityIds: ["entityIds_example"]) // LabeledEntitiesCreate | 
 
 // Apply label to entity
-LabelsAPI.labelsApply(adAccountId: adAccountId, labelId: labelId, labeledEntitiesCreate: labeledEntitiesCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LabelsAPI.labelsApply(adAccountId: adAccountId, labelId: labelId, labeledEntitiesCreate: labeledEntitiesCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -67,7 +63,7 @@ Name | Type | Description  | Notes
 
 # **labelsCreate**
 ```swift
-    open class func labelsCreate(adAccountId: String, labelCreateRequest: LabelCreateRequest, completion: @escaping (_ data: LabelsResponse?, _ error: Error?) -> Void)
+    open class func labelsCreate(adAccountId: String, labelCreateRequest: LabelCreateRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LabelsResponse
 ```
 
 Create labels
@@ -83,15 +79,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let labelCreateRequest = LabelCreateRequest(labels: [LabelCreateItem(labelType: LabelType(), value: "value_example")]) // LabelCreateRequest | 
 
 // Create labels
-LabelsAPI.labelsCreate(adAccountId: adAccountId, labelCreateRequest: labelCreateRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LabelsAPI.labelsCreate(adAccountId: adAccountId, labelCreateRequest: labelCreateRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -119,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **labelsList**
 ```swift
-    open class func labelsList(adAccountId: String, campaignIds: [String]? = nil, labelIds: [String]? = nil, entityStatuses: [QueryLabelEntityStatusesItems]? = nil, labelTypes: [QueryLabelTypesItems]? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: LabelsList200Response?, _ error: Error?) -> Void)
+    open class func labelsList(adAccountId: String, campaignIds: [String]? = nil, labelIds: [String]? = nil, entityStatuses: [QueryLabelEntityStatusesItems]? = nil, labelTypes: [QueryLabelTypesItems]? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LabelsList200Response
 ```
 
 List labels
@@ -140,15 +132,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List labels
-LabelsAPI.labelsList(adAccountId: adAccountId, campaignIds: campaignIds, labelIds: labelIds, entityStatuses: entityStatuses, labelTypes: labelTypes, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LabelsAPI.labelsList(adAccountId: adAccountId, campaignIds: campaignIds, labelIds: labelIds, entityStatuses: entityStatuses, labelTypes: labelTypes, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -181,7 +169,7 @@ Name | Type | Description  | Notes
 
 # **labelsRemove**
 ```swift
-    open class func labelsRemove(adAccountId: String, labelId: String, labeledEntitiesCreate: LabeledEntitiesCreate, completion: @escaping (_ data: LabeledEntities?, _ error: Error?) -> Void)
+    open class func labelsRemove(adAccountId: String, labelId: String, labeledEntitiesCreate: LabeledEntitiesCreate, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LabeledEntities
 ```
 
 Remove label from entities
@@ -198,15 +186,11 @@ let labelId = "labelId_example" // String | Label ID.
 let labeledEntitiesCreate = LabeledEntitiesCreate(entityIds: ["entityIds_example"]) // LabeledEntitiesCreate | 
 
 // Remove label from entities
-LabelsAPI.labelsRemove(adAccountId: adAccountId, labelId: labelId, labeledEntitiesCreate: labeledEntitiesCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LabelsAPI.labelsRemove(adAccountId: adAccountId, labelId: labelId, labeledEntitiesCreate: labeledEntitiesCreate)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -235,7 +219,7 @@ Name | Type | Description  | Notes
 
 # **labelsUpdate**
 ```swift
-    open class func labelsUpdate(adAccountId: String, labelUpdateRequest: LabelUpdateRequest, completion: @escaping (_ data: LabelsResponse?, _ error: Error?) -> Void)
+    open class func labelsUpdate(adAccountId: String, labelUpdateRequest: LabelUpdateRequest, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> LabelsResponse
 ```
 
 Update labels
@@ -251,15 +235,11 @@ let adAccountId = "adAccountId_example" // String | Unique identifier of an ad a
 let labelUpdateRequest = LabelUpdateRequest(labels: [LabelUpdateItem(id: "id_example", status: LabelStatus(), value: "value_example")]) // LabelUpdateRequest | 
 
 // Update labels
-LabelsAPI.labelsUpdate(adAccountId: adAccountId, labelUpdateRequest: labelUpdateRequest) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await LabelsAPI.labelsUpdate(adAccountId: adAccountId, labelUpdateRequest: labelUpdateRequest)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

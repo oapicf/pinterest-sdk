@@ -23,12 +23,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Body to be used on path to send Members or Partners Invite or Request")
 @JsonTypeName("CreateMembershipOrPartnershipInvitesBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateMembershipOrPartnershipInvitesBody   {
   private BusinessRoleForInvite businessRole;
   private InviteType inviteType;
-  private @Valid List<String> members = new ArrayList<>();
-  private @Valid List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
+  private List<String> members = new ArrayList<>();
+  private List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
 
   public CreateMembershipOrPartnershipInvitesBody() {
   }

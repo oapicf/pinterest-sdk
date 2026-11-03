@@ -6,20 +6,3 @@
 */
 #include "AdgroupTrackingFeatureType.h"
 
-namespace models {
-
-AdgroupTrackingFeatureType::AdgroupTrackingFeatureType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

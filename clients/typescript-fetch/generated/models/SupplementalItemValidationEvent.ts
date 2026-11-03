@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface SupplementalItemValidationEvent {
     /**
      * The item attribute referenced by the validation event eg. price, availability, ad_link
-     * @type {string}
-     * @memberof SupplementalItemValidationEvent
      */
     attribute: string;
     /**
      * The event code that the item validation event references
-     * @type {number}
-     * @memberof SupplementalItemValidationEvent
      */
     code: number;
     /**
      * Title message describing the item validation event
-     * @type {string}
-     * @memberof SupplementalItemValidationEvent
      */
     message: string;
 }

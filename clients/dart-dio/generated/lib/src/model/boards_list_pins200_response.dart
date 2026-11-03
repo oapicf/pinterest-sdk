@@ -125,3 +125,4 @@ class _$BoardsListPins200ResponseSerializer implements PrimitiveSerializer<Board
   }
 }
 
+

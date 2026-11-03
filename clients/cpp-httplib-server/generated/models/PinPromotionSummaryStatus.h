@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class PinPromotionSummaryStatus
-{
-public:
-
-    PinPromotionSummaryStatus();
-    virtual ~PinPromotionSummaryStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PinPromotionSummaryStatus,
-        )
-
-private:
+enum class PinPromotionSummaryStatus {
+    
+    APPROVED,
+    
+    PAUSED,
+    
+    PENDING,
+    
+    REJECTED,
+    
+    ADVERTISER_DISABLED,
+    
+    ARCHIVED,
+    
+    DRAFT,
+    
+    DELETED_DRAFT
+    
 };
 
+inline void to_json(nlohmann::json& j, const PinPromotionSummaryStatus& value)
+{
+    switch (value)
+    {
+        
+        case PinPromotionSummaryStatus::APPROVED: j = "APPROVED"; break;
+        
+        case PinPromotionSummaryStatus::PAUSED: j = "PAUSED"; break;
+        
+        case PinPromotionSummaryStatus::PENDING: j = "PENDING"; break;
+        
+        case PinPromotionSummaryStatus::REJECTED: j = "REJECTED"; break;
+        
+        case PinPromotionSummaryStatus::ADVERTISER_DISABLED: j = "ADVERTISER_DISABLED"; break;
+        
+        case PinPromotionSummaryStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case PinPromotionSummaryStatus::DRAFT: j = "DRAFT"; break;
+        
+        case PinPromotionSummaryStatus::DELETED_DRAFT: j = "DELETED_DRAFT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PinPromotionSummaryStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PinPromotionSummaryStatus& value)
+{
+    
+    if (j == "APPROVED")
+    {
+        value = PinPromotionSummaryStatus::APPROVED;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = PinPromotionSummaryStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "PENDING")
+    {
+        value = PinPromotionSummaryStatus::PENDING;
+        return;
+    }
+    
+    if (j == "REJECTED")
+    {
+        value = PinPromotionSummaryStatus::REJECTED;
+        return;
+    }
+    
+    if (j == "ADVERTISER_DISABLED")
+    {
+        value = PinPromotionSummaryStatus::ADVERTISER_DISABLED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = PinPromotionSummaryStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "DRAFT")
+    {
+        value = PinPromotionSummaryStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "DELETED_DRAFT")
+    {
+        value = PinPromotionSummaryStatus::DELETED_DRAFT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PinPromotionSummaryStatus", &j);
+}
 
 } // namespace models
 

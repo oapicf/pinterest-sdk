@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,38 +27,29 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdPreviewShopping", description = "Ad preview from a catalog product group (shopping).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdPreviewShopping implements AdPreviewRequest {
 
   private String catalogProductGroupId;
 
   private AdShoppingPreviewCreativeType creativeType;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CustomizableCTAType> customizableCtaType = JsonNullable.<CustomizableCTAType>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String heroImageTitle;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String heroImageUrl;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String heroPinId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String imageTag;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String itemId;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BasePreferredMediaType preferredMediaType;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable Boolean showPromotion;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable String videoTag;
 
   public AdPreviewShopping() {
@@ -126,7 +116,7 @@ public class AdPreviewShopping implements AdPreviewRequest {
    * @return customizableCtaType
    */
   @Valid 
-  @Schema(name = "customizable_cta_type", description = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "customizable_cta_type", description = "Select a call to action (CTA) to display below your ad. CTA options for catalog sales campaigns are `SHOP_NOW`, `BOOK_NOW`, `ON_SALE`, `GET_DEAL`, `BUY_ONLINE_PICKUP_IN_STORE`", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("customizable_cta_type")
   public JsonNullable<CustomizableCTAType> getCustomizableCtaType() {
     return customizableCtaType;

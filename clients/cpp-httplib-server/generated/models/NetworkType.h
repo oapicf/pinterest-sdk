@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class NetworkType
-{
-public:
-
-    NetworkType();
-    virtual ~NetworkType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(NetworkType,
-        )
-
-private:
+enum class NetworkType {
+    
+    WIFI,
+    
+    CELLULAR_2G,
+    
+    CELLULAR_3G,
+    
+    CELLULAR_4G,
+    
+    CELLULAR_5G,
+    
+    CELLULAR_6G,
+    
+    ETHERNET,
+    
+    UNKNOWN
+    
 };
 
+inline void to_json(nlohmann::json& j, const NetworkType& value)
+{
+    switch (value)
+    {
+        
+        case NetworkType::WIFI: j = "wifi"; break;
+        
+        case NetworkType::CELLULAR_2G: j = "cellular_2g"; break;
+        
+        case NetworkType::CELLULAR_3G: j = "cellular_3g"; break;
+        
+        case NetworkType::CELLULAR_4G: j = "cellular_4g"; break;
+        
+        case NetworkType::CELLULAR_5G: j = "cellular_5g"; break;
+        
+        case NetworkType::CELLULAR_6G: j = "cellular_6g"; break;
+        
+        case NetworkType::ETHERNET: j = "ethernet"; break;
+        
+        case NetworkType::UNKNOWN: j = "unknown"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for NetworkType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, NetworkType& value)
+{
+    
+    if (j == "wifi")
+    {
+        value = NetworkType::WIFI;
+        return;
+    }
+    
+    if (j == "cellular_2g")
+    {
+        value = NetworkType::CELLULAR_2G;
+        return;
+    }
+    
+    if (j == "cellular_3g")
+    {
+        value = NetworkType::CELLULAR_3G;
+        return;
+    }
+    
+    if (j == "cellular_4g")
+    {
+        value = NetworkType::CELLULAR_4G;
+        return;
+    }
+    
+    if (j == "cellular_5g")
+    {
+        value = NetworkType::CELLULAR_5G;
+        return;
+    }
+    
+    if (j == "cellular_6g")
+    {
+        value = NetworkType::CELLULAR_6G;
+        return;
+    }
+    
+    if (j == "ethernet")
+    {
+        value = NetworkType::ETHERNET;
+        return;
+    }
+    
+    if (j == "unknown")
+    {
+        value = NetworkType::UNKNOWN;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for NetworkType", &j);
+}
 
 } // namespace models
 

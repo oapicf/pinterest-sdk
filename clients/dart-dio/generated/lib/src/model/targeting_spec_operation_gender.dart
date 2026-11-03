@@ -141,6 +141,7 @@ class _$TargetingSpecOperationGenderSerializer implements PrimitiveSerializer<Ta
   }
 }
 
+
 class TargetingSpecOperationGenderFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'GENDER')

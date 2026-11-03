@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,10 +28,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AudienceInsights", description = "Audience interests and demographics.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsights {
 
-  @Valid
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
   private JsonNullable<@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") String> date = JsonNullable.<String>undefined();
@@ -62,7 +60,7 @@ public class AudienceInsights {
    * Category interest distribution
    * @return categories
    */
-  @Valid 
+  
   @Schema(name = "categories", description = "Category interest distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("categories")
   public List<@Valid AudienceCategory> getCategories() {

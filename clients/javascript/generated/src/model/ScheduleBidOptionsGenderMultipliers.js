@@ -17,7 +17,7 @@ import TargetingSpecGender from './TargetingSpecGender';
 /**
  * The ScheduleBidOptionsGenderMultipliers model module.
  * @module model/ScheduleBidOptionsGenderMultipliers
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScheduleBidOptionsGenderMultipliers {
     /**

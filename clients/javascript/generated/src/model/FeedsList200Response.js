@@ -17,7 +17,7 @@ import CatalogsFeed from './CatalogsFeed';
 /**
  * The FeedsList200Response model module.
  * @module model/FeedsList200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class FeedsList200Response {
     /**

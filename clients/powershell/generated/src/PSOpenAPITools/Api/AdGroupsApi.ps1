@@ -66,7 +66,7 @@ function Invoke-AdGroupsBidFloorGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsBidFloor_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$BidFloorCreate) {
             throw "Error! The required parameter `BidFloorCreate` missing when calling adGroupsBidFloor_get."
@@ -153,11 +153,11 @@ function Invoke-AdGroupsDynamicTitlesDownloadCsv {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsDynamicTitles_downloadCsv."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$AdGroupId) {
             throw "Error! The required parameter `AdGroupId` missing when calling adGroupsDynamicTitles_downloadCsv."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Web.HTTPUtility]::UrlEncode($AdGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Uri]::EscapeDataString([string]$AdGroupId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -237,11 +237,11 @@ function Invoke-AdGroupsDynamicTitlesGetStatus {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsDynamicTitles_getStatus."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$AdGroupId) {
             throw "Error! The required parameter `AdGroupId` missing when calling adGroupsDynamicTitles_getStatus."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Web.HTTPUtility]::UrlEncode($AdGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Uri]::EscapeDataString([string]$AdGroupId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -321,11 +321,11 @@ function Invoke-AdGroupsDynamicTitlesGetUploadUrl {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsDynamicTitles_getUploadUrl."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$AdGroupId) {
             throw "Error! The required parameter `AdGroupId` missing when calling adGroupsDynamicTitles_getUploadUrl."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Web.HTTPUtility]::UrlEncode($AdGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Uri]::EscapeDataString([string]$AdGroupId))
 
 
         $LocalVarResult = Invoke-ApiClient -Method 'GET' `
@@ -414,11 +414,11 @@ function Invoke-AdGroupsDynamicTitlesProcessCsv {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsDynamicTitles_processCsv."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
         if (!$AdGroupId) {
             throw "Error! The required parameter `AdGroupId` missing when calling adGroupsDynamicTitles_processCsv."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Web.HTTPUtility]::UrlEncode($AdGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Uri]::EscapeDataString([string]$AdGroupId))
 
         if (!$DynamicTitlesProcessCSVCreate) {
             throw "Error! The required parameter `DynamicTitlesProcessCSVCreate` missing when calling adGroupsDynamicTitles_processCsv."
@@ -586,7 +586,7 @@ function Invoke-AdGroupsTargetingAnalyticsGet {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroupsTargetingAnalytics_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupIds) {
             throw "Error! The required parameter `AdGroupIds` missing when calling adGroupsTargetingAnalytics_get."
@@ -793,7 +793,7 @@ function Invoke-AdGroupsAnalytics {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_analytics."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$StartDate) {
             throw "Error! The required parameter `StartDate` missing when calling adGroups_analytics."
@@ -926,7 +926,7 @@ function Invoke-AdGroupsAudienceSizing {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_audienceSizing."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupAudienceSizingCreate) {
             throw "Error! The required parameter `AdGroupAudienceSizingCreate` missing when calling adGroups_audienceSizing."
@@ -1016,7 +1016,7 @@ function Invoke-AdGroupsCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupCreateCreate) {
             throw "Error! The required parameter `AdGroupCreateCreate` missing when calling adGroups_create."
@@ -1102,11 +1102,11 @@ function Invoke-AdGroupsGet {
         if (!$AdGroupId) {
             throw "Error! The required parameter `AdGroupId` missing when calling adGroups_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Web.HTTPUtility]::UrlEncode($AdGroupId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_group_id}', [System.Uri]::EscapeDataString([string]$AdGroupId))
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_get."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
 
 
@@ -1223,7 +1223,7 @@ function Invoke-AdGroupsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -1335,7 +1335,7 @@ function Invoke-AdGroupsUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling adGroups_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$AdGroupUpdateBatchUpdate) {
             throw "Error! The required parameter `AdGroupUpdateBatchUpdate` missing when calling adGroups_update."
@@ -1439,7 +1439,7 @@ function Get-AdGroupsByPromotionIdsList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling getAdGroupsByPromotionIds_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark

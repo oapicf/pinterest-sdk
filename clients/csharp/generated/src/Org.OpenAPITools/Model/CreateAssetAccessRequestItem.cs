@@ -159,16 +159,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!assetIdToPermissions.IsSet)
-                throw new ArgumentException("Property is required for class CreateAssetAccessRequestItem.", nameof(assetIdToPermissions));
+                throw new JsonException("Property is required for class CreateAssetAccessRequestItem: asset_id_to_permissions.");
 
             if (!partnerId.IsSet)
-                throw new ArgumentException("Property is required for class CreateAssetAccessRequestItem.", nameof(partnerId));
+                throw new JsonException("Property is required for class CreateAssetAccessRequestItem: partner_id.");
 
             if (assetIdToPermissions.IsSet && assetIdToPermissions.Value == null)
-                throw new ArgumentNullException(nameof(assetIdToPermissions), "Property is not nullable for class CreateAssetAccessRequestItem.");
+                throw new JsonException("Property is not nullable for class CreateAssetAccessRequestItem: asset_id_to_permissions.");
 
             if (partnerId.IsSet && partnerId.Value == null)
-                throw new ArgumentNullException(nameof(partnerId), "Property is not nullable for class CreateAssetAccessRequestItem.");
+                throw new JsonException("Property is not nullable for class CreateAssetAccessRequestItem: partner_id.");
 
             return new CreateAssetAccessRequestItem(assetIdToPermissions.Value!, partnerId.Value!);
         }
@@ -179,7 +179,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateAssetAccessRequestItem createAssetAccessRequestItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -194,15 +193,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="createAssetAccessRequestItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateAssetAccessRequestItem createAssetAccessRequestItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (createAssetAccessRequestItem.AssetIdToPermissions == null)
-                throw new ArgumentNullException(nameof(createAssetAccessRequestItem.AssetIdToPermissions), "Property is required for class CreateAssetAccessRequestItem.");
-
-            if (createAssetAccessRequestItem.PartnerId == null)
-                throw new ArgumentNullException(nameof(createAssetAccessRequestItem.PartnerId), "Property is required for class CreateAssetAccessRequestItem.");
-
             writer.WritePropertyName("asset_id_to_permissions");
             JsonSerializer.Serialize(writer, createAssetAccessRequestItem.AssetIdToPermissions, jsonSerializerOptions);
             writer.WriteString("partner_id", createAssetAccessRequestItem.PartnerId);

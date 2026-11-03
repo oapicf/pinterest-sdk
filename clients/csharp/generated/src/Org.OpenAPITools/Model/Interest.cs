@@ -213,16 +213,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (canonicalUrl.IsSet && canonicalUrl.Value == null)
-                throw new ArgumentNullException(nameof(canonicalUrl), "Property is not nullable for class Interest.");
+                throw new JsonException("Property is not nullable for class Interest: canonical_url.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Interest.");
+                throw new JsonException("Property is not nullable for class Interest: id.");
 
             if (key.IsSet && key.Value == null)
-                throw new ArgumentNullException(nameof(key), "Property is not nullable for class Interest.");
+                throw new JsonException("Property is not nullable for class Interest: key.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class Interest.");
+                throw new JsonException("Property is not nullable for class Interest: name.");
 
             return new Interest(canonicalUrl, id, key, name);
         }
@@ -233,7 +233,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="interest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Interest interest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -248,20 +247,19 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="interest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Interest interest, JsonSerializerOptions jsonSerializerOptions)
         {
             if (interest.CanonicalUrlOption.IsSet && interest.CanonicalUrl == null)
-                throw new ArgumentNullException(nameof(interest.CanonicalUrl), "Property is required for class Interest.");
+                throw new JsonException("Cannot write null property Interest.CanonicalUrl to non-nullable JSON property 'canonical_url'.");
 
             if (interest.IdOption.IsSet && interest.Id == null)
-                throw new ArgumentNullException(nameof(interest.Id), "Property is required for class Interest.");
+                throw new JsonException("Cannot write null property Interest.Id to non-nullable JSON property 'id'.");
 
             if (interest.KeyOption.IsSet && interest.Key == null)
-                throw new ArgumentNullException(nameof(interest.Key), "Property is required for class Interest.");
+                throw new JsonException("Cannot write null property Interest.Key to non-nullable JSON property 'key'.");
 
             if (interest.NameOption.IsSet && interest.Name == null)
-                throw new ArgumentNullException(nameof(interest.Name), "Property is required for class Interest.");
+                throw new JsonException("Cannot write null property Interest.Name to non-nullable JSON property 'name'.");
 
             if (interest.CanonicalUrlOption.IsSet)
                 writer.WriteString("canonical_url", interest.CanonicalUrl);

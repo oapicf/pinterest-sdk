@@ -25,7 +25,7 @@ public class UserWebsiteCreate  {
 
   @Valid
 
-  private WebsiteVerificationMethod verificationMethod;
+  private WebsiteVerificationMethod verificationMethod = WebsiteVerificationMethod.METATAG;
 
  /**
   * Website with path or domain only

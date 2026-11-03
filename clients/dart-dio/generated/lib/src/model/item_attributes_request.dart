@@ -2253,3 +2253,4 @@ class _$ItemAttributesRequestSerializer implements PrimitiveSerializer<ItemAttri
   }
 }
 
+

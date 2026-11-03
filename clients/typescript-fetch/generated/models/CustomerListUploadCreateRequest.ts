@@ -29,14 +29,10 @@ import {
 export interface CustomerListUploadCreateRequest {
     /**
      * 
-     * @type {UserListOperationType}
-     * @memberof CustomerListUploadCreateRequest
      */
     operation: UserListOperationType;
     /**
      * Number of parts to upload the file in.
-     * @type {number}
-     * @memberof CustomerListUploadCreateRequest
      */
     totalParts: number;
 }

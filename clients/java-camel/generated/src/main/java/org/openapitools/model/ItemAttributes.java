@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.math.BigDecimal;
@@ -27,7 +26,7 @@ import jakarta.annotation.Generated;
  * ItemAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemAttributes {
 
   private JsonNullable<@Size(max = 2000) String> adImage0Link = JsonNullable.<String>undefined();
@@ -234,19 +233,14 @@ public class ItemAttributes {
 
   private JsonNullable<String> unitPricingMeasure = JsonNullable.<String>undefined();
 
-  @Valid
   private JsonNullable<List<String>> variantNames = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> variantValues = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private JsonNullable<List<String>> additionalImageLink = JsonNullable.<List<String>>undefined();
 
-  @Valid
   private List<@Valid CatalogsAiContentDisclosure> aiDisclosures = new ArrayList<>();
 
-  @Valid
   private List<String> imageLink = new ArrayList<>();
 
   private JsonNullable<String> videoLink = JsonNullable.<String>undefined();
@@ -2384,7 +2378,7 @@ public class ItemAttributes {
    * AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.
    * @return aiDisclosures
    */
-  @Valid 
+  
   @Schema(name = "ai_disclosures", example = "[{\"url\":\"https://scene.example.com/image/image_v3.jpg\",\"disclosure\":[\"ai_modified\"]}]", description = "AI content disclosures for individual assets (image_link, additional_image_link, or video_link) on this item. Each entry declares which disclosure types apply to a single asset URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ai_disclosures")
   public List<@Valid CatalogsAiContentDisclosure> getAiDisclosures() {

@@ -29,8 +29,6 @@ import {
 export interface GoogleProductCategory0Filter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof GoogleProductCategory0Filter
      */
     gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria;
 }

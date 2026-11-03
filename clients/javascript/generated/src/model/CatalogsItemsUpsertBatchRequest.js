@@ -18,7 +18,7 @@ import ItemUpsertBatchRecord from './ItemUpsertBatchRecord';
 /**
  * The CatalogsItemsUpsertBatchRequest model module.
  * @module model/CatalogsItemsUpsertBatchRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsItemsUpsertBatchRequest {
     /**

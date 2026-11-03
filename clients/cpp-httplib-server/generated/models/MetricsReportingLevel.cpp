@@ -6,20 +6,3 @@
 */
 #include "MetricsReportingLevel.h"
 
-namespace models {
-
-MetricsReportingLevel::MetricsReportingLevel()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

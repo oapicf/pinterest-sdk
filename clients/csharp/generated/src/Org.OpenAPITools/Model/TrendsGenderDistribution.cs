@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (genderDistribution.IsSet && genderDistribution.Value == null)
-                throw new ArgumentNullException(nameof(genderDistribution), "Property is not nullable for class TrendsGenderDistribution.");
+                throw new JsonException("Property is not nullable for class TrendsGenderDistribution: gender_distribution.");
 
             return new TrendsGenderDistribution(genderDistribution);
         }
@@ -158,7 +158,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsGenderDistribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TrendsGenderDistribution trendsGenderDistribution, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -173,9 +172,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="trendsGenderDistribution"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TrendsGenderDistribution trendsGenderDistribution, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (trendsGenderDistribution.GenderDistributionOption.IsSet && trendsGenderDistribution.GenderDistribution == null)
+                throw new JsonException("Cannot write null property TrendsGenderDistribution.GenderDistribution to non-nullable JSON property 'gender_distribution'.");
+
             if (trendsGenderDistribution.GenderDistributionOption.IsSet)
             {
                 var genderDistributionRawValue = TrendsGenderValueConverter.ToJsonValue(trendsGenderDistribution.GenderDistribution!.Value);

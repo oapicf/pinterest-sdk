@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.TopVideoPinsAnalyticsResponseDateAvailability
 import org.openapitools.model.TopVideoPinsAnalyticsResponsePinsItems
 import org.openapitools.model.TopVideoPinsSortBy
@@ -31,22 +28,16 @@ data class TopVideoPinsAnalyticsResponse(
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("date_availability")
     @get:JsonProperty("date_availability") val dateAvailability: TopVideoPinsAnalyticsResponseDateAvailability? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("pins")
     @get:JsonProperty("pins") val pins: kotlin.collections.List<TopVideoPinsAnalyticsResponsePinsItems>? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("sort_by")
     @get:JsonProperty("sort_by") val sortBy: TopVideoPinsSortBy? = null
 ) {

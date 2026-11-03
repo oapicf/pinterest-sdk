@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface AudienceDemographicValue {
     /**
      * Unique key for demographic item
-     * @type {string}
-     * @memberof AudienceDemographicValue
      */
     key?: string;
     /**
      * Display name for demographic
-     * @type {string}
-     * @memberof AudienceDemographicValue
      */
     name?: string;
     /**
      * Value of demographic item as a percent of total audience
-     * @type {number}
-     * @memberof AudienceDemographicValue
      */
     ratio?: number;
 }

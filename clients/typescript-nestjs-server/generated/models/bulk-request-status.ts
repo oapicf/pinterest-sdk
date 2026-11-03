@@ -6,7 +6,7 @@
 export const BulkRequestStatus = {
     Running: 'RUNNING',
     Succeeded: 'SUCCEEDED',
-    Failed: 'FAILED'
+    Failed: 'FAILED',
 } as const;
 export type BulkRequestStatus = typeof BulkRequestStatus[keyof typeof BulkRequestStatus];
 

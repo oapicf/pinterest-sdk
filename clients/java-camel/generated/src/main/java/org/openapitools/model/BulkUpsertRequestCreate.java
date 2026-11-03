@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -31,31 +30,23 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertRequestCreate", description = "Request for creation of entities in bulk.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertRequestCreate {
 
-  @Valid
   private List<@Valid AdGroupCreateRequest> adGroups = new ArrayList<>();
 
-  @Valid
   private List<@Valid AdCreateRequest> ads = new ArrayList<>();
 
-  @Valid
   private List<@Valid CampaignCreateRequest> campaigns = new ArrayList<>();
 
-  @Valid
-  private List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
+  private List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups = new ArrayList<>();
 
-  @Valid
   private List<@Valid KeywordsRequest> keywords = new ArrayList<>();
 
-  @Valid
   private List<@Valid LabelBulkCreateRequest> labels = new ArrayList<>();
 
-  @Valid
   private List<@Valid ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
 
-  @Valid
   private List<@Valid ScheduleCreateRequest> schedules = new ArrayList<>();
 
   public BulkUpsertRequestCreate adGroups(List<@Valid AdGroupCreateRequest> adGroups) {
@@ -75,7 +66,7 @@ public class BulkUpsertRequestCreate {
    * Get adGroups
    * @return adGroups
    */
-  @Valid 
+  
   @Schema(name = "ad_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_groups")
   public List<@Valid AdGroupCreateRequest> getAdGroups() {
@@ -103,7 +94,7 @@ public class BulkUpsertRequestCreate {
    * Get ads
    * @return ads
    */
-  @Valid 
+  
   @Schema(name = "ads", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads")
   public List<@Valid AdCreateRequest> getAds() {
@@ -131,7 +122,7 @@ public class BulkUpsertRequestCreate {
    * Get campaigns
    * @return campaigns
    */
-  @Valid 
+  
   @Schema(name = "campaigns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaigns")
   public List<@Valid CampaignCreateRequest> getCampaigns() {
@@ -142,7 +133,7 @@ public class BulkUpsertRequestCreate {
     this.campaigns = campaigns;
   }
 
-  public BulkUpsertRequestCreate catalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+  public BulkUpsertRequestCreate catalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
     return this;
   }
@@ -159,14 +150,14 @@ public class BulkUpsertRequestCreate {
    * Get catalogProductGroups
    * @return catalogProductGroups
    */
-  @Valid 
+  
   @Schema(name = "catalog_product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_product_groups")
-  public List<BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
+  public List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> getCatalogProductGroups() {
     return catalogProductGroups;
   }
 
-  public void setCatalogProductGroups(List<BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
+  public void setCatalogProductGroups(List<@Valid BulkUpsertRequestCreateCatalogProductGroupsItems> catalogProductGroups) {
     this.catalogProductGroups = catalogProductGroups;
   }
 
@@ -187,7 +178,7 @@ public class BulkUpsertRequestCreate {
    * Get keywords
    * @return keywords
    */
-  @Valid 
+  
   @Schema(name = "keywords", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keywords")
   public List<@Valid KeywordsRequest> getKeywords() {
@@ -215,7 +206,7 @@ public class BulkUpsertRequestCreate {
    * Get labels
    * @return labels
    */
-  @Valid 
+  
   @Schema(name = "labels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("labels")
   public List<@Valid LabelBulkCreateRequest> getLabels() {
@@ -243,7 +234,7 @@ public class BulkUpsertRequestCreate {
    * Get productGroups
    * @return productGroups
    */
-  @Valid 
+  
   @Schema(name = "product_groups", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_groups")
   public List<@Valid ProductGroupPromotionCreateRequest> getProductGroups() {
@@ -271,7 +262,7 @@ public class BulkUpsertRequestCreate {
    * Get schedules
    * @return schedules
    */
-  @Valid 
+  
   @Schema(name = "schedules", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("schedules")
   public List<@Valid ScheduleCreateRequest> getSchedules() {

@@ -10,8 +10,8 @@ import Foundation
 /** Campaign ad preview record. */
 public struct CampaignAdPreview: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let adGroupIdRule = StringRule(minLength: nil, maxLength: 18, pattern: "^\\d+$")
     /** Advertiser ID for this preview. */
     public var adAccountId: String
     /** Ad group ID to create a preview record for. */

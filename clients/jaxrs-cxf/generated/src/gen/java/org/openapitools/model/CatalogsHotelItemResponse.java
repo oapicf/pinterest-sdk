@@ -116,8 +116,6 @@ HOTEL_ITEM(String.valueOf("hotel_item"));
   */
   @ApiModelProperty(value = "The pins mapped to the item")
 
-  @Valid
-
   private List<@Valid Pin> pins;
  /**
    * Get attributes

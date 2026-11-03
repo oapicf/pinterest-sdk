@@ -23,11 +23,11 @@ data class KeywordsCreate(
 
     @field:Valid
     @Schema(required = true, description = "Keywords")
-    @param:JsonProperty("keywords")
+    @param:JsonProperty("keywords", required = true)
     @get:JsonProperty("keywords", required = true) val keywords: kotlin.collections.List<KeywordCreateItem>,
 
     @Schema(required = true, description = "Keyword data")
-    @param:JsonProperty("parent_id")
+    @param:JsonProperty("parent_id", required = true)
     @get:JsonProperty("parent_id", required = true) val parentId: kotlin.String
 ) {
 

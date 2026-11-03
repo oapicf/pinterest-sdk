@@ -12,24 +12,254 @@
 
 namespace models {
 
-
-class DataStatus
-{
-public:
-
-    DataStatus();
-    virtual ~DataStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(DataStatus,
-        )
-
-private:
+enum class DataStatus {
+    
+    PROCESSING,
+    
+    READY,
+    
+    ESTIMATE,
+    
+    BEFORE_BUSINESS_CREATED,
+    
+    BEFORE_DATA_RETENTION_PERIOD,
+    
+    BEFORE_PIN_DATA_RETENTION_PERIOD,
+    
+    BEFORE_METRIC_START_DATE,
+    
+    BEFORE_CORE_METRIC_START_DATE,
+    
+    BEFORE_PIN_FORMAT_METRIC_START_DATE,
+    
+    BEFORE_AUDIENCE_METRIC_START_DATE,
+    
+    BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE,
+    
+    BEFORE_VIDEO_METRIC_START_DATE,
+    
+    BEFORE_CONVERSION_METRIC_START_DATE,
+    
+    PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD,
+    
+    IN_BAD_TAG_DATE,
+    
+    BEFORE_PUBLISHED_METRIC_START_DATE,
+    
+    BEFORE_ASSIST_METRIC_START_DATE,
+    
+    BEFORE_PIN_CREATED,
+    
+    BEFORE_ACCOUNT_CLAIMED,
+    
+    BEFORE_DEMOGRAPHIC_FILTERS_START_DATE,
+    
+    AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD,
+    
+    AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD,
+    
+    BEFORE_PRODUCT_GROUP_FILTER_START_DATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const DataStatus& value)
+{
+    switch (value)
+    {
+        
+        case DataStatus::PROCESSING: j = "PROCESSING"; break;
+        
+        case DataStatus::READY: j = "READY"; break;
+        
+        case DataStatus::ESTIMATE: j = "ESTIMATE"; break;
+        
+        case DataStatus::BEFORE_BUSINESS_CREATED: j = "BEFORE_BUSINESS_CREATED"; break;
+        
+        case DataStatus::BEFORE_DATA_RETENTION_PERIOD: j = "BEFORE_DATA_RETENTION_PERIOD"; break;
+        
+        case DataStatus::BEFORE_PIN_DATA_RETENTION_PERIOD: j = "BEFORE_PIN_DATA_RETENTION_PERIOD"; break;
+        
+        case DataStatus::BEFORE_METRIC_START_DATE: j = "BEFORE_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_CORE_METRIC_START_DATE: j = "BEFORE_CORE_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_PIN_FORMAT_METRIC_START_DATE: j = "BEFORE_PIN_FORMAT_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_AUDIENCE_METRIC_START_DATE: j = "BEFORE_AUDIENCE_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE: j = "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_VIDEO_METRIC_START_DATE: j = "BEFORE_VIDEO_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_CONVERSION_METRIC_START_DATE: j = "BEFORE_CONVERSION_METRIC_START_DATE"; break;
+        
+        case DataStatus::PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD: j = "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD"; break;
+        
+        case DataStatus::IN_BAD_TAG_DATE: j = "IN_BAD_TAG_DATE"; break;
+        
+        case DataStatus::BEFORE_PUBLISHED_METRIC_START_DATE: j = "BEFORE_PUBLISHED_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_ASSIST_METRIC_START_DATE: j = "BEFORE_ASSIST_METRIC_START_DATE"; break;
+        
+        case DataStatus::BEFORE_PIN_CREATED: j = "BEFORE_PIN_CREATED"; break;
+        
+        case DataStatus::BEFORE_ACCOUNT_CLAIMED: j = "BEFORE_ACCOUNT_CLAIMED"; break;
+        
+        case DataStatus::BEFORE_DEMOGRAPHIC_FILTERS_START_DATE: j = "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE"; break;
+        
+        case DataStatus::AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD: j = "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD"; break;
+        
+        case DataStatus::AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD: j = "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD"; break;
+        
+        case DataStatus::BEFORE_PRODUCT_GROUP_FILTER_START_DATE: j = "BEFORE_PRODUCT_GROUP_FILTER_START_DATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for DataStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, DataStatus& value)
+{
+    
+    if (j == "PROCESSING")
+    {
+        value = DataStatus::PROCESSING;
+        return;
+    }
+    
+    if (j == "READY")
+    {
+        value = DataStatus::READY;
+        return;
+    }
+    
+    if (j == "ESTIMATE")
+    {
+        value = DataStatus::ESTIMATE;
+        return;
+    }
+    
+    if (j == "BEFORE_BUSINESS_CREATED")
+    {
+        value = DataStatus::BEFORE_BUSINESS_CREATED;
+        return;
+    }
+    
+    if (j == "BEFORE_DATA_RETENTION_PERIOD")
+    {
+        value = DataStatus::BEFORE_DATA_RETENTION_PERIOD;
+        return;
+    }
+    
+    if (j == "BEFORE_PIN_DATA_RETENTION_PERIOD")
+    {
+        value = DataStatus::BEFORE_PIN_DATA_RETENTION_PERIOD;
+        return;
+    }
+    
+    if (j == "BEFORE_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_CORE_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_CORE_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_PIN_FORMAT_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_PIN_FORMAT_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_AUDIENCE_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_AUDIENCE_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_VIDEO_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_VIDEO_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_CONVERSION_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_CONVERSION_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD")
+    {
+        value = DataStatus::PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD;
+        return;
+    }
+    
+    if (j == "IN_BAD_TAG_DATE")
+    {
+        value = DataStatus::IN_BAD_TAG_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_PUBLISHED_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_PUBLISHED_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_ASSIST_METRIC_START_DATE")
+    {
+        value = DataStatus::BEFORE_ASSIST_METRIC_START_DATE;
+        return;
+    }
+    
+    if (j == "BEFORE_PIN_CREATED")
+    {
+        value = DataStatus::BEFORE_PIN_CREATED;
+        return;
+    }
+    
+    if (j == "BEFORE_ACCOUNT_CLAIMED")
+    {
+        value = DataStatus::BEFORE_ACCOUNT_CLAIMED;
+        return;
+    }
+    
+    if (j == "BEFORE_DEMOGRAPHIC_FILTERS_START_DATE")
+    {
+        value = DataStatus::BEFORE_DEMOGRAPHIC_FILTERS_START_DATE;
+        return;
+    }
+    
+    if (j == "AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD")
+    {
+        value = DataStatus::AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD;
+        return;
+    }
+    
+    if (j == "AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD")
+    {
+        value = DataStatus::AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD;
+        return;
+    }
+    
+    if (j == "BEFORE_PRODUCT_GROUP_FILTER_START_DATE")
+    {
+        value = DataStatus::BEFORE_PRODUCT_GROUP_FILTER_START_DATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for DataStatus", &j);
+}
 
 } // namespace models
 

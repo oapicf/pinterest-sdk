@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: video
-*/
+ * 
+ * Values: video
+ */
 enum class MediaUploadType(@get:JsonValue val value: kotlin.String) {
 
     video("video");
@@ -27,9 +27,8 @@ enum class MediaUploadType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): MediaUploadType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MediaUploadType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'MediaUploadType'")
         }
     }
 }
-

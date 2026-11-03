@@ -22,12 +22,12 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from pydantic import Field, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from openapi_server.models.pinterest_lib_error import PinterestLibError
 from openapi_server.models.related_terms import RelatedTerms
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2
 
 router = APIRouter()
@@ -53,7 +53,7 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def terms_related_list(
-    terms: Annotated[List[StrictStr], Field(description="List of input terms.")] = Query(None, description="List of input terms.", alias="terms"),
+    terms: Annotated[List[str], Field(description="List of input terms.")] = Query(..., description="List of input terms.", alias="terms"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -80,8 +80,8 @@ async def terms_related_list(
     response_model_by_alias=True,
 )
 async def terms_suggested_list(
-    term: Annotated[StrictStr, Field(description="Input term.")] = Query(None, description="Input term.", alias="term"),
-    limit: Annotated[Optional[Annotated[int, Field(le=10, strict=True, ge=1)]], Field(description="Max suggested terms to return.")] = Query(4, description="Max suggested terms to return.", alias="limit", ge=1, le=10),
+    term: Annotated[str, Field(description="Input term.")] = Query(..., description="Input term.", alias="term"),
+    limit: Annotated[Optional[Annotated[int, Field(le=10, ge=1)]], Field(description="Max suggested terms to return.")] = Query(4, description="Max suggested terms to return.", alias="limit", ge=1, le=10),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

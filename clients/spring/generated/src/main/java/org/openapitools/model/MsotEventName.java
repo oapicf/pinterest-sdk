@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Type of user conversion event.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum MsotEventName {
   
   ADD_TO_CART("add_to_cart"),

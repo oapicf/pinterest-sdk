@@ -29,8 +29,6 @@ import {
 export interface UpdateMemberAssetAccessBody {
     /**
      * List of member asset accesses to assign or update.
-     * @type {Array<UpdateMemberAssetAccessItem>}
-     * @memberof UpdateMemberAssetAccessBody
      */
     accesses: Array<UpdateMemberAssetAccessItem>;
 }

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ import jakarta.annotation.Generated;
  * AssetGroupInputCreate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetGroupInputCreate {
 
   private AssetGroupBinding assetGroup;
@@ -33,7 +32,6 @@ public class AssetGroupInputCreate {
 
   private String assetGroupName;
 
-  @Valid
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
   public AssetGroupInputCreate() {
@@ -126,7 +124,7 @@ public class AssetGroupInputCreate {
    * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
    * @return assetGroupTypes
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "asset_group_types", example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("asset_group_types")
   public List<AssetGroupType> getAssetGroupTypes() {

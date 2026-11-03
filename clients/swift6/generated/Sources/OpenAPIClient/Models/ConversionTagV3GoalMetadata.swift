@@ -9,8 +9,8 @@ import Foundation
 
 public struct ConversionTagV3GoalMetadata: Sendable, Codable, Hashable {
 
-    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let cpaGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let conversionTagIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let cpaGoalValueInMicroCurrencyRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var attributionWindows: AttributionWindows?
     public var conversionEvent: ConversionEvent?
     public var conversionTagId: String?

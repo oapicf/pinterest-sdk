@@ -29,8 +29,6 @@ import {
 export interface LocalInventoryItemsBatchCreate {
     /**
      * Array of inventory operations. Up to 1000 items per request.
-     * @type {Array<LocalInventoryOperation>}
-     * @memberof LocalInventoryItemsBatchCreate
      */
     operations: Array<LocalInventoryOperation>;
 }

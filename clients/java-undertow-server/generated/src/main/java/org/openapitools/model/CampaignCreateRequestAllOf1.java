@@ -26,19 +26,19 @@ import org.openapitools.model.ObjectiveType;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignCreateRequestAllOf1   {
   
   private CampaignBidOptionsCreate bidOptions;
   private IntendedPromotionType intendedPromotionType;
-  private Boolean isAutomatedCampaign;
-  private Boolean isCampaignBudgetOptimization;
-  private Boolean isFlexibleDailyBudgets;
+  private Boolean isAutomatedCampaign = false;
+  private Boolean isCampaignBudgetOptimization = true;
+  private Boolean isFlexibleDailyBudgets = false;
   private Boolean isLtvOptimized;
   private Boolean isPerformancePlus = false;
   private Boolean isTopOfSearch = false;
   private ObjectiveType objectiveType;
-  private EntityStatus status;
+  private EntityStatus status = EntityStatus.ACTIVE;
 
   /**
    */

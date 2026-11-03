@@ -276,7 +276,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailProductGroupCreateRequest.CatalogTypeEnum?>(CatalogsRetailProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailProductGroupCreateRequest.CatalogTypeEnum? catalogTypeValue = CatalogsRetailProductGroupCreateRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailProductGroupCreateRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "filters":
                             filters = new Option<CatalogsProductGroupFiltersRequest?>(JsonSerializer.Deserialize<CatalogsProductGroupFiltersRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -300,34 +305,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupCreateRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupCreateRequest: catalog_id.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupCreateRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupCreateRequest: catalog_type.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupCreateRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupCreateRequest: filters.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductGroupCreateRequest.", nameof(name));
+                throw new JsonException("Property is required for class CatalogsRetailProductGroupCreateRequest: name.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: catalog_id.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: catalog_type.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: filters.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: name.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: country.");
 
             if (locale.IsSet && locale.Value == null)
-                throw new ArgumentNullException(nameof(locale), "Property is not nullable for class CatalogsRetailProductGroupCreateRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductGroupCreateRequest: locale.");
 
             return new CatalogsRetailProductGroupCreateRequest(catalogId.Value!, catalogType.Value!.Value!, filters.Value!, name.Value!, country, description, locale);
         }
@@ -338,7 +343,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -353,17 +357,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductGroupCreateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailProductGroupCreateRequest catalogsRetailProductGroupCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailProductGroupCreateRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductGroupCreateRequest.CatalogId), "Property is required for class CatalogsRetailProductGroupCreateRequest.");
+            if (catalogsRetailProductGroupCreateRequest.CountryOption.IsSet && catalogsRetailProductGroupCreateRequest.Country == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupCreateRequest.Country to non-nullable JSON property 'country'.");
 
-            if (catalogsRetailProductGroupCreateRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductGroupCreateRequest.Filters), "Property is required for class CatalogsRetailProductGroupCreateRequest.");
-
-            if (catalogsRetailProductGroupCreateRequest.Name == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductGroupCreateRequest.Name), "Property is required for class CatalogsRetailProductGroupCreateRequest.");
+            if (catalogsRetailProductGroupCreateRequest.LocaleOption.IsSet && catalogsRetailProductGroupCreateRequest.Locale == null)
+                throw new JsonException("Cannot write null property CatalogsRetailProductGroupCreateRequest.Locale to non-nullable JSON property 'locale'.");
 
             writer.WriteString("catalog_id", catalogsRetailProductGroupCreateRequest.CatalogId);
 

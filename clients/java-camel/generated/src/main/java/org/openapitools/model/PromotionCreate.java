@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "PromotionCreate", description = "Resource create operation model.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PromotionCreate {
 
   private DiscountStatus discountStatus;
@@ -48,7 +47,6 @@ public class PromotionCreate {
 
   private Integer startTime;
 
-  @Valid
   private List<@Valid PromotionTemplateValue> templateValues = new ArrayList<>();
 
   public PromotionCreate() {
@@ -260,7 +258,7 @@ public class PromotionCreate {
    * List of values to be inserted in the promotion type-specific template.
    * @return templateValues
    */
-  @Valid @Size(min = 0, max = 2) 
+  @Size(min = 0, max = 2) 
   @Schema(name = "template_values", description = "List of values to be inserted in the promotion type-specific template.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("template_values")
   public List<@Valid PromotionTemplateValue> getTemplateValues() {

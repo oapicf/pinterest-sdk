@@ -6,6 +6,8 @@ It is never instantiated directly — use one of the concrete types.
 ## oneOf
 
 - [**\OpenAPI\Client\Model\CatalogsProductGroupUpdateRequest**](CatalogsProductGroupUpdateRequest.md)
-- [**\OpenAPI\Client\Model\CatalogsVerticalProductGroupUpdateRequest**](CatalogsVerticalProductGroupUpdateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsRetailProductGroupUpdateRequest**](CatalogsRetailProductGroupUpdateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsHotelProductGroupUpdateRequest**](CatalogsHotelProductGroupUpdateRequest.md)
+- [**\OpenAPI\Client\Model\CatalogsCreativeAssetsProductGroupUpdateRequest**](CatalogsCreativeAssetsProductGroupUpdateRequest.md)
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

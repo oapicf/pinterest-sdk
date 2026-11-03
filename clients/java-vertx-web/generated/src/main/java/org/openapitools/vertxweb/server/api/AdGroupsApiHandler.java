@@ -127,7 +127,7 @@ public class AdGroupsApiHandler {
         AdGroupAudienceSizingCreate adGroupAudienceSizingCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<AdGroupAudienceSizingCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adGroupAudienceSizingCreate is {}", adGroupAudienceSizingCreate);
+        logger.debug("Parameter adGroupAudienceSizingCreate is (body omitted)");
 
         api.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingCreate)
             .onSuccess(apiResponse -> {
@@ -152,7 +152,7 @@ public class AdGroupsApiHandler {
         BidFloorCreate bidFloorCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<BidFloorCreate>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter bidFloorCreate is {}", bidFloorCreate);
+        logger.debug("Parameter bidFloorCreate is (body omitted)");
 
         api.adGroupsBidFloorGet(adAccountId, bidFloorCreate)
             .onSuccess(apiResponse -> {
@@ -177,7 +177,7 @@ public class AdGroupsApiHandler {
         List<AdGroupCreateCreate> adGroupCreateCreate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<AdGroupCreateCreate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adGroupCreateCreate is {}", adGroupCreateCreate);
+        logger.debug("Parameter adGroupCreateCreate is (body omitted)");
 
         api.adGroupsCreate(adAccountId, adGroupCreateCreate)
             .onSuccess(apiResponse -> {
@@ -276,7 +276,7 @@ public class AdGroupsApiHandler {
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
         logger.debug("Parameter adGroupId is {}", adGroupId);
-        logger.debug("Parameter dynamicTitlesProcessCSVCreate is {}", dynamicTitlesProcessCSVCreate);
+        logger.debug("Parameter dynamicTitlesProcessCSVCreate is (body omitted)");
 
         api.adGroupsDynamicTitlesProcessCsv(adAccountId, adGroupId, dynamicTitlesProcessCSVCreate)
             .onSuccess(apiResponse -> {
@@ -411,7 +411,7 @@ public class AdGroupsApiHandler {
         List<AdGroupUpdateBatchUpdate> adGroupUpdateBatchUpdate = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<List<AdGroupUpdateBatchUpdate>>(){}) : null;
 
         logger.debug("Parameter adAccountId is {}", adAccountId);
-        logger.debug("Parameter adGroupUpdateBatchUpdate is {}", adGroupUpdateBatchUpdate);
+        logger.debug("Parameter adGroupUpdateBatchUpdate is (body omitted)");
 
         api.adGroupsUpdate(adAccountId, adGroupUpdateBatchUpdate)
             .onSuccess(apiResponse -> {

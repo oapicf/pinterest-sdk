@@ -13,12 +13,12 @@ import org.openapitools.model.CatalogsBaseFilterKeys;
 /**
  * CatalogsBaseFiltersAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsBaseFiltersAllOf   {
   @JsonProperty("all_of")
-  private List<CatalogsBaseFilterKeys> allOf = new ArrayList<>();
+  private List<@Valid CatalogsBaseFilterKeys> allOf = new ArrayList<>();
 
-  public CatalogsBaseFiltersAllOf allOf(List<CatalogsBaseFilterKeys> allOf) {
+  public CatalogsBaseFiltersAllOf allOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
     this.allOf = allOf;
     return this;
   }
@@ -33,11 +33,11 @@ public class CatalogsBaseFiltersAllOf   {
    * @return allOf
   **/
   @ApiModelProperty(required = true, value = "")
-  public List<CatalogsBaseFilterKeys> getAllOf() {
+  public List<@Valid CatalogsBaseFilterKeys> getAllOf() {
     return allOf;
   }
 
-  public void setAllOf(List<CatalogsBaseFilterKeys> allOf) {
+  public void setAllOf(List<@Valid CatalogsBaseFilterKeys> allOf) {
     this.allOf = allOf;
   }
 

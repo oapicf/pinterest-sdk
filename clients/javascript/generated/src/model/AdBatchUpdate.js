@@ -24,7 +24,7 @@ import TrackingUrls from './TrackingUrls';
 /**
  * The AdBatchUpdate model module.
  * @module model/AdBatchUpdate
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdBatchUpdate {
     /**

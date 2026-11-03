@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class PinterestLibStatus204(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("statusCode")
+    @param:JsonProperty("statusCode", required = true)
     @get:JsonProperty("statusCode", required = true) val statusCode: PinterestLibStatus204.StatusCode
 ) : CampaignAdPreviewDelete200ResponseInnerStatus {
 
@@ -33,12 +33,12 @@ data class PinterestLibStatus204(
     enum class StatusCode(@get:JsonValue val value: java.math.BigDecimal) {
 
         _204("204");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: java.math.BigDecimal): StatusCode {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'StatusCode'")
             }
         }

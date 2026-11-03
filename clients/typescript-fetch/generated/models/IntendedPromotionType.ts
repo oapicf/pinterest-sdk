@@ -41,7 +41,7 @@
 export const IntendedPromotionType = {
     Legacy: 'LEGACY',
     StandardAd: 'STANDARD_AD',
-    Catalog: 'CATALOG'
+    Catalog: 'CATALOG',
 } as const;
 export type IntendedPromotionType = typeof IntendedPromotionType[keyof typeof IntendedPromotionType];
 

@@ -212,7 +212,12 @@ namespace Org.OpenAPITools.Model
                         case "operation":
                             string? operationRawValue = utf8JsonReader.GetString();
                             if (operationRawValue != null)
-                                operation = new Option<CatalogsDeleteRetailItem.OperationEnum?>(CatalogsDeleteRetailItem.OperationEnumFromStringOrDefault(operationRawValue));
+                            {
+                                CatalogsDeleteRetailItem.OperationEnum? operationValue = CatalogsDeleteRetailItem.OperationEnumFromStringOrDefault(operationRawValue);
+                                if (operationValue == null)
+                                    throw new JsonException();
+                                operation = new Option<CatalogsDeleteRetailItem.OperationEnum?>(operationValue);
+                            }
                             break;
                         case "last_updated_time":
                             lastUpdatedTime = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
@@ -224,19 +229,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteRetailItem.", nameof(itemId));
+                throw new JsonException("Property is required for class CatalogsDeleteRetailItem: item_id.");
 
             if (!operation.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsDeleteRetailItem.", nameof(operation));
+                throw new JsonException("Property is required for class CatalogsDeleteRetailItem: operation.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class CatalogsDeleteRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteRetailItem: item_id.");
 
             if (operation.IsSet && operation.Value == null)
-                throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsDeleteRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteRetailItem: operation.");
 
             if (lastUpdatedTime.IsSet && lastUpdatedTime.Value == null)
-                throw new ArgumentNullException(nameof(lastUpdatedTime), "Property is not nullable for class CatalogsDeleteRetailItem.");
+                throw new JsonException("Property is not nullable for class CatalogsDeleteRetailItem: last_updated_time.");
 
             return new CatalogsDeleteRetailItem(itemId.Value!, operation.Value!.Value!, lastUpdatedTime);
         }
@@ -247,7 +252,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteRetailItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsDeleteRetailItem catalogsDeleteRetailItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -262,11 +266,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsDeleteRetailItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsDeleteRetailItem catalogsDeleteRetailItem, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsDeleteRetailItem.ItemId == null)
-                throw new ArgumentNullException(nameof(catalogsDeleteRetailItem.ItemId), "Property is required for class CatalogsDeleteRetailItem.");
+            if (catalogsDeleteRetailItem.LastUpdatedTimeOption.IsSet && catalogsDeleteRetailItem.LastUpdatedTime == null)
+                throw new JsonException("Cannot write null property CatalogsDeleteRetailItem.LastUpdatedTime to non-nullable JSON property 'last_updated_time'.");
 
             writer.WriteString("item_id", catalogsDeleteRetailItem.ItemId);
 

@@ -5,7 +5,7 @@
  */
 export const CatalogsStatus = {
     Active: 'ACTIVE',
-    Inactive: 'INACTIVE'
+    Inactive: 'INACTIVE',
 } as const;
 export type CatalogsStatus = typeof CatalogsStatus[keyof typeof CatalogsStatus];
 

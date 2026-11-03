@@ -18,7 +18,6 @@ public class CatalogsProductGroupMultipleGenderCriteria  {
   private Boolean negated;
 
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<Gender> values = new ArrayList<>();
  /**
   * Get negated

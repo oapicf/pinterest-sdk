@@ -17,7 +17,7 @@ import CatalogsHotelProductGroupFilterKeys from './CatalogsHotelProductGroupFilt
 /**
  * The CatalogsHotelProductGroupFiltersAnyOf model module.
  * @module model/CatalogsHotelProductGroupFiltersAnyOf
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsHotelProductGroupFiltersAnyOf {
     /**

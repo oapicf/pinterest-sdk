@@ -36,32 +36,22 @@ import {
 export interface CatalogsRetailItemResponse {
     /**
      * 
-     * @type {ItemAttributes}
-     * @memberof CatalogsRetailItemResponse
      */
     attributes?: ItemAttributes;
     /**
      * 
-     * @type {CatalogsRetailItemResponseCatalogTypeEnum}
-     * @memberof CatalogsRetailItemResponse
      */
     catalogType: CatalogsRetailItemResponseCatalogTypeEnum;
     /**
      * The catalog retail item id in the merchant namespace
-     * @type {string}
-     * @memberof CatalogsRetailItemResponse
      */
     itemId?: string;
     /**
      * Discriminator literal identifying this leaf inside an `ItemResponse` payload.
-     * @type {CatalogsRetailItemResponseItemResponseKindEnum}
-     * @memberof CatalogsRetailItemResponse
      */
     itemResponseKind: CatalogsRetailItemResponseItemResponseKindEnum;
     /**
      * The pins mapped to the item
-     * @type {Array<Pin>}
-     * @memberof CatalogsRetailItemResponse
      */
     pins?: Array<Pin> | null;
 }
@@ -71,7 +61,7 @@ export interface CatalogsRetailItemResponse {
  * @export
  */
 export const CatalogsRetailItemResponseCatalogTypeEnum = {
-    Retail: 'RETAIL'
+    Retail: 'RETAIL',
 } as const;
 export type CatalogsRetailItemResponseCatalogTypeEnum = typeof CatalogsRetailItemResponseCatalogTypeEnum[keyof typeof CatalogsRetailItemResponseCatalogTypeEnum];
 
@@ -79,7 +69,7 @@ export type CatalogsRetailItemResponseCatalogTypeEnum = typeof CatalogsRetailIte
  * @export
  */
 export const CatalogsRetailItemResponseItemResponseKindEnum = {
-    RetailItem: 'retail_item'
+    RetailItem: 'retail_item',
 } as const;
 export type CatalogsRetailItemResponseItemResponseKindEnum = typeof CatalogsRetailItemResponseItemResponseKindEnum[keyof typeof CatalogsRetailItemResponseItemResponseKindEnum];
 

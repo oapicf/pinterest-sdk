@@ -210,34 +210,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class Catalog.", nameof(catalogType));
+                throw new JsonException("Property is required for class Catalog: catalog_type.");
 
             if (!createdAt.IsSet)
-                throw new ArgumentException("Property is required for class Catalog.", nameof(createdAt));
+                throw new JsonException("Property is required for class Catalog: created_at.");
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class Catalog.", nameof(id));
+                throw new JsonException("Property is required for class Catalog: id.");
 
             if (!name.IsSet)
-                throw new ArgumentException("Property is required for class Catalog.", nameof(name));
+                throw new JsonException("Property is required for class Catalog: name.");
 
             if (!updatedAt.IsSet)
-                throw new ArgumentException("Property is required for class Catalog.", nameof(updatedAt));
+                throw new JsonException("Property is required for class Catalog: updated_at.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class Catalog.");
+                throw new JsonException("Property is not nullable for class Catalog: catalog_type.");
 
             if (createdAt.IsSet && createdAt.Value == null)
-                throw new ArgumentNullException(nameof(createdAt), "Property is not nullable for class Catalog.");
+                throw new JsonException("Property is not nullable for class Catalog: created_at.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Catalog.");
+                throw new JsonException("Property is not nullable for class Catalog: id.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class Catalog.");
+                throw new JsonException("Property is not nullable for class Catalog: name.");
 
             if (updatedAt.IsSet && updatedAt.Value == null)
-                throw new ArgumentNullException(nameof(updatedAt), "Property is not nullable for class Catalog.");
+                throw new JsonException("Property is not nullable for class Catalog: updated_at.");
 
             return new Catalog(catalogType.Value!.Value!, createdAt.Value!.Value!, id.Value!, name.Value!, updatedAt.Value!.Value!);
         }
@@ -248,7 +248,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalog"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Catalog catalog, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -263,15 +262,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalog"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Catalog catalog, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalog.Id == null)
-                throw new ArgumentNullException(nameof(catalog.Id), "Property is required for class Catalog.");
-
-            if (catalog.Name == null)
-                throw new ArgumentNullException(nameof(catalog.Name), "Property is required for class Catalog.");
-
             var catalogTypeRawValue = CatalogsTypeValueConverter.ToJsonValue(catalog.CatalogType);
             writer.WriteString("catalog_type", catalogTypeRawValue);
 

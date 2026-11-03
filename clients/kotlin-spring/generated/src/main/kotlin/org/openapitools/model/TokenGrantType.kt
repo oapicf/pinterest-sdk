@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The type of OAuth grant being requested.
-* Values: authorization_code,refresh_token,client_credentials
-*/
+ * The type of OAuth grant being requested.
+ * Values: authorization_code,refresh_token,client_credentials
+ */
 enum class TokenGrantType(@get:JsonValue val value: kotlin.String) {
 
     authorization_code("authorization_code"),
@@ -29,9 +29,8 @@ enum class TokenGrantType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): TokenGrantType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TokenGrantType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TokenGrantType'")
         }
     }
 }
-

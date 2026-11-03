@@ -359,37 +359,37 @@ namespace Org.OpenAPITools.Model
             }
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: currency.");
 
             if (leadType.IsSet && leadType.Value == null)
-                throw new ArgumentNullException(nameof(leadType), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: lead_type.");
 
             if (lineItems.IsSet && lineItems.Value == null)
-                throw new ArgumentNullException(nameof(lineItems), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: line_items.");
 
             if (orderId.IsSet && orderId.Value == null)
-                throw new ArgumentNullException(nameof(orderId), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: order_id.");
 
             if (orderQuantity.IsSet && orderQuantity.Value == null)
-                throw new ArgumentNullException(nameof(orderQuantity), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: order_quantity.");
 
             if (pageName.IsSet && pageName.Value == null)
-                throw new ArgumentNullException(nameof(pageName), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: page_name.");
 
             if (promoCode.IsSet && promoCode.Value == null)
-                throw new ArgumentNullException(nameof(promoCode), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: promo_code.");
 
             if (property.IsSet && property.Value == null)
-                throw new ArgumentNullException(nameof(property), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: property.");
 
             if (searchQuery.IsSet && searchQuery.Value == null)
-                throw new ArgumentNullException(nameof(searchQuery), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: search_query.");
 
             if (value.IsSet && value.Value == null)
-                throw new ArgumentNullException(nameof(value), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: value.");
 
             if (videoTitle.IsSet && videoTitle.Value == null)
-                throw new ArgumentNullException(nameof(videoTitle), "Property is not nullable for class EventData.");
+                throw new JsonException("Property is not nullable for class EventData: video_title.");
 
             return new EventData(currency, leadType, lineItems, orderId, orderQuantity, pageName, promoCode, property, searchQuery, value, videoTitle);
         }
@@ -400,7 +400,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="eventData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, EventData eventData, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -415,35 +414,40 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="eventData"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EventData eventData, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (eventData.CurrencyOption.IsSet && eventData.Currency == null)
+                throw new JsonException("Cannot write null property EventData.Currency to non-nullable JSON property 'currency'.");
+
             if (eventData.LeadTypeOption.IsSet && eventData.LeadType == null)
-                throw new ArgumentNullException(nameof(eventData.LeadType), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.LeadType to non-nullable JSON property 'lead_type'.");
 
             if (eventData.LineItemsOption.IsSet && eventData.LineItems == null)
-                throw new ArgumentNullException(nameof(eventData.LineItems), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.LineItems to non-nullable JSON property 'line_items'.");
 
             if (eventData.OrderIdOption.IsSet && eventData.OrderId == null)
-                throw new ArgumentNullException(nameof(eventData.OrderId), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.OrderId to non-nullable JSON property 'order_id'.");
+
+            if (eventData.OrderQuantityOption.IsSet && eventData.OrderQuantity == null)
+                throw new JsonException("Cannot write null property EventData.OrderQuantity to non-nullable JSON property 'order_quantity'.");
 
             if (eventData.PageNameOption.IsSet && eventData.PageName == null)
-                throw new ArgumentNullException(nameof(eventData.PageName), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.PageName to non-nullable JSON property 'page_name'.");
 
             if (eventData.PromoCodeOption.IsSet && eventData.PromoCode == null)
-                throw new ArgumentNullException(nameof(eventData.PromoCode), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.PromoCode to non-nullable JSON property 'promo_code'.");
 
             if (eventData.PropertyOption.IsSet && eventData.Property == null)
-                throw new ArgumentNullException(nameof(eventData.Property), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.Property to non-nullable JSON property 'property'.");
 
             if (eventData.SearchQueryOption.IsSet && eventData.SearchQuery == null)
-                throw new ArgumentNullException(nameof(eventData.SearchQuery), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.SearchQuery to non-nullable JSON property 'search_query'.");
 
             if (eventData.ValueOption.IsSet && eventData.Value == null)
-                throw new ArgumentNullException(nameof(eventData.Value), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.Value to non-nullable JSON property 'value'.");
 
             if (eventData.VideoTitleOption.IsSet && eventData.VideoTitle == null)
-                throw new ArgumentNullException(nameof(eventData.VideoTitle), "Property is required for class EventData.");
+                throw new JsonException("Cannot write null property EventData.VideoTitle to non-nullable JSON property 'video_title'.");
 
             if (eventData.CurrencyOption.IsSet)
             {

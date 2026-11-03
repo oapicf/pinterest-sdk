@@ -36,14 +36,10 @@ import {
 export interface AdGroupsCreate200ResponseItemsInner {
     /**
      * 
-     * @type {AdGroup}
-     * @memberof AdGroupsCreate200ResponseItemsInner
      */
     data?: AdGroup;
     /**
      * 
-     * @type {Array<PinterestLibBatchItemException>}
-     * @memberof AdGroupsCreate200ResponseItemsInner
      */
     exceptions?: Array<PinterestLibBatchItemException>;
 }

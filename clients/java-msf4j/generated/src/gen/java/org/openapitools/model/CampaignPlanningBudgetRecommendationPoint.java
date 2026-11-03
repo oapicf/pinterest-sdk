@@ -13,7 +13,7 @@ import org.openapitools.model.CampaignPlanningPointEstimate;
  * A point estimation containing the estimate data and estimation type for a budget recommendation.
  */
 @ApiModel(description = "A point estimation containing the estimate data and estimation type for a budget recommendation.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendationPoint   {
   @JsonProperty("estimation_type")
   private CampaignPlanningEstimationType estimationType;

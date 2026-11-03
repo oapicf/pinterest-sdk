@@ -29,8 +29,6 @@ import {
 export interface LocalInventoryItemsGet {
     /**
      * Array of local inventory items
-     * @type {Array<LocalInventoryItemResponse>}
-     * @memberof LocalInventoryItemsGet
      */
     readonly items: Array<LocalInventoryItemResponse>;
 }

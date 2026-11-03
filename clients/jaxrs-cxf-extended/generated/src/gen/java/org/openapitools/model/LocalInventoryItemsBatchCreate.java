@@ -23,7 +23,6 @@ public class LocalInventoryItemsBatchCreate  {
   * Array of inventory operations. Up to 1000 items per request.
   */
   @ApiModelProperty(required = true, value = "Array of inventory operations. Up to 1000 items per request.")
-  @Valid
   private List<@Valid LocalInventoryOperation> operations = new ArrayList<>();
  /**
   * Array of inventory operations. Up to 1000 items per request.

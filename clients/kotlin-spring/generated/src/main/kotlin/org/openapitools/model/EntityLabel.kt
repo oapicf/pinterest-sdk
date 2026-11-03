@@ -27,11 +27,11 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class EntityLabel(
 
     @Schema(required = true, description = "Entity ID to apply label to.")
-    @param:JsonProperty("entity_id")
+    @param:JsonProperty("entity_id", required = true)
     @get:JsonProperty("entity_id", required = true) val entityId: kotlin.String,
 
     @Schema(required = true, description = "Label ID.")
-    @param:JsonProperty("label_id")
+    @param:JsonProperty("label_id", required = true)
     @get:JsonProperty("label_id", required = true) val labelId: kotlin.String,
 
     @field:Valid

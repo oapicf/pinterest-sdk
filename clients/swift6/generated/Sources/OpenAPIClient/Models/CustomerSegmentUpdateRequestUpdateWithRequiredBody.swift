@@ -10,7 +10,7 @@ import Foundation
 /** Resource create or update operation model with required body fields (no OptionalProperties). */
 public struct CustomerSegmentUpdateRequestUpdateWithRequiredBody: Sendable, Codable, Hashable {
 
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Audience IDs to update the customer segment to. Only applicable for UPDATE operations. */
     public var audienceIds: [String]?
     /** Customer segment ID. */

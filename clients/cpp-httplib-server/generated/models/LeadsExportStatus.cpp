@@ -6,20 +6,3 @@
 */
 #include "LeadsExportStatus.h"
 
-namespace models {
-
-LeadsExportStatus::LeadsExportStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

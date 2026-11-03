@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductMetadata", description = "Retail product metadata entity")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailProductMetadata {
 
   private ProductAvailability availability;
@@ -103,7 +103,7 @@ public class CatalogsRetailProductMetadata {
    * The parent ID of the product.
    * @return itemGroupId
    */
-  @NotNull 
+  /* @Present */ 
   @Schema(name = "item_group_id", example = "DS0294", description = "The parent ID of the product.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("item_group_id")
   public JsonNullable<String> getItemGroupId() {
@@ -163,7 +163,7 @@ public class CatalogsRetailProductMetadata {
    * The discounted price of the product.
    * @return salePrice
    */
-  @NotNull @Valid 
+  /* @Present */ @Valid 
   @Schema(name = "sale_price", example = "14.99", description = "The discounted price of the product.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("sale_price")
   public JsonNullable<BigDecimal> getSalePrice() {

@@ -248,19 +248,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (assetGroupInfo.IsSet && assetGroupInfo.Value == null)
-                throw new ArgumentNullException(nameof(assetGroupInfo), "Property is not nullable for class BusinessAssets.");
+                throw new JsonException("Property is not nullable for class BusinessAssets: asset_group_info.");
 
             if (assetId.IsSet && assetId.Value == null)
-                throw new ArgumentNullException(nameof(assetId), "Property is not nullable for class BusinessAssets.");
+                throw new JsonException("Property is not nullable for class BusinessAssets: asset_id.");
 
             if (assetType.IsSet && assetType.Value == null)
-                throw new ArgumentNullException(nameof(assetType), "Property is not nullable for class BusinessAssets.");
+                throw new JsonException("Property is not nullable for class BusinessAssets: asset_type.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class BusinessAssets.");
+                throw new JsonException("Property is not nullable for class BusinessAssets: permissions.");
 
             if (catalogInfo.IsSet && catalogInfo.Value == null)
-                throw new ArgumentNullException(nameof(catalogInfo), "Property is not nullable for class BusinessAssets.");
+                throw new JsonException("Property is not nullable for class BusinessAssets: catalog_info.");
 
             return new BusinessAssets(assetGroupInfo, assetId, assetType, permissions, catalogInfo);
         }
@@ -271,7 +271,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessAssets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BusinessAssets businessAssets, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -286,20 +285,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="businessAssets"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BusinessAssets businessAssets, JsonSerializerOptions jsonSerializerOptions)
         {
             if (businessAssets.AssetGroupInfoOption.IsSet && businessAssets.AssetGroupInfo == null)
-                throw new ArgumentNullException(nameof(businessAssets.AssetGroupInfo), "Property is required for class BusinessAssets.");
+                throw new JsonException("Cannot write null property BusinessAssets.AssetGroupInfo to non-nullable JSON property 'asset_group_info'.");
 
             if (businessAssets.AssetIdOption.IsSet && businessAssets.AssetId == null)
-                throw new ArgumentNullException(nameof(businessAssets.AssetId), "Property is required for class BusinessAssets.");
+                throw new JsonException("Cannot write null property BusinessAssets.AssetId to non-nullable JSON property 'asset_id'.");
+
+            if (businessAssets.AssetTypeOption.IsSet && businessAssets.AssetType == null)
+                throw new JsonException("Cannot write null property BusinessAssets.AssetType to non-nullable JSON property 'asset_type'.");
 
             if (businessAssets.PermissionsOption.IsSet && businessAssets.Permissions == null)
-                throw new ArgumentNullException(nameof(businessAssets.Permissions), "Property is required for class BusinessAssets.");
+                throw new JsonException("Cannot write null property BusinessAssets.Permissions to non-nullable JSON property 'permissions'.");
 
             if (businessAssets.CatalogInfoOption.IsSet && businessAssets.CatalogInfo == null)
-                throw new ArgumentNullException(nameof(businessAssets.CatalogInfo), "Property is required for class BusinessAssets.");
+                throw new JsonException("Cannot write null property BusinessAssets.CatalogInfo to non-nullable JSON property 'catalog_info'.");
 
             if (businessAssets.AssetGroupInfoOption.IsSet)
             {

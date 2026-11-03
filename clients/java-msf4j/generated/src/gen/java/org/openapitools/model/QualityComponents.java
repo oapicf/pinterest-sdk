@@ -13,42 +13,42 @@ import org.openapitools.model.QualityComponentDetails;
  * Set of quality components, with each component containing a event coverage and details.
  */
 @ApiModel(description = "Set of quality components, with each component containing a event coverage and details.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponents   {
   @JsonProperty("advertiser_external_id")
-  private Map<String, QualityComponentDetails> advertiserExternalId = null;
+  private Map<String, @Valid QualityComponentDetails> advertiserExternalId = null;
 
   @JsonProperty("click_id_epik")
-  private Map<String, QualityComponentDetails> clickIdEpik = null;
+  private Map<String, @Valid QualityComponentDetails> clickIdEpik = null;
 
   @JsonProperty("external_event_id")
-  private Map<String, QualityComponentDetails> externalEventId = null;
+  private Map<String, @Valid QualityComponentDetails> externalEventId = null;
 
   @JsonProperty("hashed_email")
-  private Map<String, QualityComponentDetails> hashedEmail = null;
+  private Map<String, @Valid QualityComponentDetails> hashedEmail = null;
 
   @JsonProperty("hashed_maid")
-  private Map<String, QualityComponentDetails> hashedMaid = null;
+  private Map<String, @Valid QualityComponentDetails> hashedMaid = null;
 
   @JsonProperty("ip_address")
-  private Map<String, QualityComponentDetails> ipAddress = null;
+  private Map<String, @Valid QualityComponentDetails> ipAddress = null;
 
   @JsonProperty("order_id")
-  private Map<String, QualityComponentDetails> orderId = null;
+  private Map<String, @Valid QualityComponentDetails> orderId = null;
 
   @JsonProperty("order_value")
-  private Map<String, QualityComponentDetails> orderValue = null;
+  private Map<String, @Valid QualityComponentDetails> orderValue = null;
 
   @JsonProperty("product_id")
-  private Map<String, QualityComponentDetails> productId = null;
+  private Map<String, @Valid QualityComponentDetails> productId = null;
 
   @JsonProperty("source_url")
-  private Map<String, QualityComponentDetails> sourceUrl = null;
+  private Map<String, @Valid QualityComponentDetails> sourceUrl = null;
 
   @JsonProperty("user_agent")
-  private Map<String, QualityComponentDetails> userAgent = null;
+  private Map<String, @Valid QualityComponentDetails> userAgent = null;
 
-  public QualityComponents advertiserExternalId(Map<String, QualityComponentDetails> advertiserExternalId) {
+  public QualityComponents advertiserExternalId(Map<String, @Valid QualityComponentDetails> advertiserExternalId) {
     this.advertiserExternalId = advertiserExternalId;
     return this;
   }
@@ -66,15 +66,15 @@ public class QualityComponents   {
    * @return advertiserExternalId
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getAdvertiserExternalId() {
+  public Map<String, @Valid QualityComponentDetails> getAdvertiserExternalId() {
     return advertiserExternalId;
   }
 
-  public void setAdvertiserExternalId(Map<String, QualityComponentDetails> advertiserExternalId) {
+  public void setAdvertiserExternalId(Map<String, @Valid QualityComponentDetails> advertiserExternalId) {
     this.advertiserExternalId = advertiserExternalId;
   }
 
-  public QualityComponents clickIdEpik(Map<String, QualityComponentDetails> clickIdEpik) {
+  public QualityComponents clickIdEpik(Map<String, @Valid QualityComponentDetails> clickIdEpik) {
     this.clickIdEpik = clickIdEpik;
     return this;
   }
@@ -92,15 +92,15 @@ public class QualityComponents   {
    * @return clickIdEpik
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getClickIdEpik() {
+  public Map<String, @Valid QualityComponentDetails> getClickIdEpik() {
     return clickIdEpik;
   }
 
-  public void setClickIdEpik(Map<String, QualityComponentDetails> clickIdEpik) {
+  public void setClickIdEpik(Map<String, @Valid QualityComponentDetails> clickIdEpik) {
     this.clickIdEpik = clickIdEpik;
   }
 
-  public QualityComponents externalEventId(Map<String, QualityComponentDetails> externalEventId) {
+  public QualityComponents externalEventId(Map<String, @Valid QualityComponentDetails> externalEventId) {
     this.externalEventId = externalEventId;
     return this;
   }
@@ -118,15 +118,15 @@ public class QualityComponents   {
    * @return externalEventId
   **/
   @ApiModelProperty(value = "Dedup components.")
-  public Map<String, QualityComponentDetails> getExternalEventId() {
+  public Map<String, @Valid QualityComponentDetails> getExternalEventId() {
     return externalEventId;
   }
 
-  public void setExternalEventId(Map<String, QualityComponentDetails> externalEventId) {
+  public void setExternalEventId(Map<String, @Valid QualityComponentDetails> externalEventId) {
     this.externalEventId = externalEventId;
   }
 
-  public QualityComponents hashedEmail(Map<String, QualityComponentDetails> hashedEmail) {
+  public QualityComponents hashedEmail(Map<String, @Valid QualityComponentDetails> hashedEmail) {
     this.hashedEmail = hashedEmail;
     return this;
   }
@@ -144,15 +144,15 @@ public class QualityComponents   {
    * @return hashedEmail
   **/
   @ApiModelProperty(value = "User matching identifiers.")
-  public Map<String, QualityComponentDetails> getHashedEmail() {
+  public Map<String, @Valid QualityComponentDetails> getHashedEmail() {
     return hashedEmail;
   }
 
-  public void setHashedEmail(Map<String, QualityComponentDetails> hashedEmail) {
+  public void setHashedEmail(Map<String, @Valid QualityComponentDetails> hashedEmail) {
     this.hashedEmail = hashedEmail;
   }
 
-  public QualityComponents hashedMaid(Map<String, QualityComponentDetails> hashedMaid) {
+  public QualityComponents hashedMaid(Map<String, @Valid QualityComponentDetails> hashedMaid) {
     this.hashedMaid = hashedMaid;
     return this;
   }
@@ -170,15 +170,15 @@ public class QualityComponents   {
    * @return hashedMaid
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getHashedMaid() {
+  public Map<String, @Valid QualityComponentDetails> getHashedMaid() {
     return hashedMaid;
   }
 
-  public void setHashedMaid(Map<String, QualityComponentDetails> hashedMaid) {
+  public void setHashedMaid(Map<String, @Valid QualityComponentDetails> hashedMaid) {
     this.hashedMaid = hashedMaid;
   }
 
-  public QualityComponents ipAddress(Map<String, QualityComponentDetails> ipAddress) {
+  public QualityComponents ipAddress(Map<String, @Valid QualityComponentDetails> ipAddress) {
     this.ipAddress = ipAddress;
     return this;
   }
@@ -196,15 +196,15 @@ public class QualityComponents   {
    * @return ipAddress
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getIpAddress() {
+  public Map<String, @Valid QualityComponentDetails> getIpAddress() {
     return ipAddress;
   }
 
-  public void setIpAddress(Map<String, QualityComponentDetails> ipAddress) {
+  public void setIpAddress(Map<String, @Valid QualityComponentDetails> ipAddress) {
     this.ipAddress = ipAddress;
   }
 
-  public QualityComponents orderId(Map<String, QualityComponentDetails> orderId) {
+  public QualityComponents orderId(Map<String, @Valid QualityComponentDetails> orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -222,15 +222,15 @@ public class QualityComponents   {
    * @return orderId
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getOrderId() {
+  public Map<String, @Valid QualityComponentDetails> getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(Map<String, QualityComponentDetails> orderId) {
+  public void setOrderId(Map<String, @Valid QualityComponentDetails> orderId) {
     this.orderId = orderId;
   }
 
-  public QualityComponents orderValue(Map<String, QualityComponentDetails> orderValue) {
+  public QualityComponents orderValue(Map<String, @Valid QualityComponentDetails> orderValue) {
     this.orderValue = orderValue;
     return this;
   }
@@ -248,15 +248,15 @@ public class QualityComponents   {
    * @return orderValue
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getOrderValue() {
+  public Map<String, @Valid QualityComponentDetails> getOrderValue() {
     return orderValue;
   }
 
-  public void setOrderValue(Map<String, QualityComponentDetails> orderValue) {
+  public void setOrderValue(Map<String, @Valid QualityComponentDetails> orderValue) {
     this.orderValue = orderValue;
   }
 
-  public QualityComponents productId(Map<String, QualityComponentDetails> productId) {
+  public QualityComponents productId(Map<String, @Valid QualityComponentDetails> productId) {
     this.productId = productId;
     return this;
   }
@@ -274,15 +274,15 @@ public class QualityComponents   {
    * @return productId
   **/
   @ApiModelProperty(value = "Product/event metadata.")
-  public Map<String, QualityComponentDetails> getProductId() {
+  public Map<String, @Valid QualityComponentDetails> getProductId() {
     return productId;
   }
 
-  public void setProductId(Map<String, QualityComponentDetails> productId) {
+  public void setProductId(Map<String, @Valid QualityComponentDetails> productId) {
     this.productId = productId;
   }
 
-  public QualityComponents sourceUrl(Map<String, QualityComponentDetails> sourceUrl) {
+  public QualityComponents sourceUrl(Map<String, @Valid QualityComponentDetails> sourceUrl) {
     this.sourceUrl = sourceUrl;
     return this;
   }
@@ -300,15 +300,15 @@ public class QualityComponents   {
    * @return sourceUrl
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getSourceUrl() {
+  public Map<String, @Valid QualityComponentDetails> getSourceUrl() {
     return sourceUrl;
   }
 
-  public void setSourceUrl(Map<String, QualityComponentDetails> sourceUrl) {
+  public void setSourceUrl(Map<String, @Valid QualityComponentDetails> sourceUrl) {
     this.sourceUrl = sourceUrl;
   }
 
-  public QualityComponents userAgent(Map<String, QualityComponentDetails> userAgent) {
+  public QualityComponents userAgent(Map<String, @Valid QualityComponentDetails> userAgent) {
     this.userAgent = userAgent;
     return this;
   }
@@ -326,11 +326,11 @@ public class QualityComponents   {
    * @return userAgent
   **/
   @ApiModelProperty(value = "")
-  public Map<String, QualityComponentDetails> getUserAgent() {
+  public Map<String, @Valid QualityComponentDetails> getUserAgent() {
     return userAgent;
   }
 
-  public void setUserAgent(Map<String, QualityComponentDetails> userAgent) {
+  public void setUserAgent(Map<String, @Valid QualityComponentDetails> userAgent) {
     this.userAgent = userAgent;
   }
 

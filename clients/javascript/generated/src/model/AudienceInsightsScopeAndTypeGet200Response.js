@@ -17,7 +17,7 @@ import AudienceDefinition from './AudienceDefinition';
 /**
  * The AudienceInsightsScopeAndTypeGet200Response model module.
  * @module model/AudienceInsightsScopeAndTypeGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AudienceInsightsScopeAndTypeGet200Response {
     /**

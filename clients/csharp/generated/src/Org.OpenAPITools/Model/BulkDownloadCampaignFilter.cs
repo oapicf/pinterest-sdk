@@ -246,19 +246,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (campaignStatus.IsSet && campaignStatus.Value == null)
-                throw new ArgumentNullException(nameof(campaignStatus), "Property is not nullable for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCampaignFilter: campaign_status.");
 
             if (endTime.IsSet && endTime.Value == null)
-                throw new ArgumentNullException(nameof(endTime), "Property is not nullable for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCampaignFilter: end_time.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCampaignFilter: name.");
 
             if (objectiveType.IsSet && objectiveType.Value == null)
-                throw new ArgumentNullException(nameof(objectiveType), "Property is not nullable for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCampaignFilter: objective_type.");
 
             if (startTime.IsSet && startTime.Value == null)
-                throw new ArgumentNullException(nameof(startTime), "Property is not nullable for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Property is not nullable for class BulkDownloadCampaignFilter: start_time.");
 
             return new BulkDownloadCampaignFilter(campaignStatus, endTime, name, objectiveType, startTime);
         }
@@ -269,7 +269,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownloadCampaignFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkDownloadCampaignFilter bulkDownloadCampaignFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -284,23 +283,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownloadCampaignFilter"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkDownloadCampaignFilter bulkDownloadCampaignFilter, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkDownloadCampaignFilter.CampaignStatusOption.IsSet && bulkDownloadCampaignFilter.CampaignStatus == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCampaignFilter.CampaignStatus), "Property is required for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Cannot write null property BulkDownloadCampaignFilter.CampaignStatus to non-nullable JSON property 'campaign_status'.");
 
             if (bulkDownloadCampaignFilter.EndTimeOption.IsSet && bulkDownloadCampaignFilter.EndTime == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCampaignFilter.EndTime), "Property is required for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Cannot write null property BulkDownloadCampaignFilter.EndTime to non-nullable JSON property 'end_time'.");
 
             if (bulkDownloadCampaignFilter.NameOption.IsSet && bulkDownloadCampaignFilter.Name == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCampaignFilter.Name), "Property is required for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Cannot write null property BulkDownloadCampaignFilter.Name to non-nullable JSON property 'name'.");
 
             if (bulkDownloadCampaignFilter.ObjectiveTypeOption.IsSet && bulkDownloadCampaignFilter.ObjectiveType == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCampaignFilter.ObjectiveType), "Property is required for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Cannot write null property BulkDownloadCampaignFilter.ObjectiveType to non-nullable JSON property 'objective_type'.");
 
             if (bulkDownloadCampaignFilter.StartTimeOption.IsSet && bulkDownloadCampaignFilter.StartTime == null)
-                throw new ArgumentNullException(nameof(bulkDownloadCampaignFilter.StartTime), "Property is required for class BulkDownloadCampaignFilter.");
+                throw new JsonException("Cannot write null property BulkDownloadCampaignFilter.StartTime to non-nullable JSON property 'start_time'.");
 
             if (bulkDownloadCampaignFilter.CampaignStatusOption.IsSet)
             {

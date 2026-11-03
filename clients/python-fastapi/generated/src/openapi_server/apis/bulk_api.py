@@ -22,8 +22,7 @@ from fastapi import (  # noqa: F401
     status,
 )
 
-from openapi_server.models.extra_models import TokenModel  # noqa: F401
-from pydantic import Field, StrictBool, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.bulk_download import BulkDownload
@@ -32,6 +31,7 @@ from openapi_server.models.bulk_job_data import BulkJobData
 from openapi_server.models.bulk_upsert_request import BulkUpsertRequest
 from openapi_server.models.bulk_upsert_response import BulkUpsertResponse
 from openapi_server.models.pinterest_lib_error import PinterestLibError
+from openapi_server.models.extra_models import TokenModel  # noqa: F401
 from openapi_server.security_api import get_token_pinterest_oauth2, get_token_client_credentials
 
 router = APIRouter()
@@ -58,8 +58,8 @@ for _, name, _ in pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + "."):
     response_model_by_alias=True,
 )
 async def bulk_download_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bulk_download_create: BulkDownloadCreate = Body(None, description=""),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bulk_download_create: BulkDownloadCreate = Body(..., description=""),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),
@@ -81,8 +81,8 @@ async def bulk_download_create(
     response_model_by_alias=True,
 )
 async def bulk_upsert_create(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bulk_upsert_request: Annotated[BulkUpsertRequest, Field(description="Parameters to get create/update ad entities in bulk")] = Body(None, description="Parameters to get create/update ad entities in bulk"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bulk_upsert_request: Annotated[BulkUpsertRequest, Field(description="Parameters to get create/update ad entities in bulk")] = Body(..., description="Parameters to get create/update ad entities in bulk"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:write"]
     ),
@@ -109,9 +109,9 @@ async def bulk_upsert_create(
     response_model_by_alias=True,
 )
 async def bulk_request_get(
-    ad_account_id: Annotated[str, Field(strict=True, max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
-    bulk_request_id: Annotated[StrictStr, Field(description="Bulk request ID that is from one of the entities bulk endpoints")] = Path(..., description="Bulk request ID that is from one of the entities bulk endpoints"),
-    include_details: Annotated[Optional[StrictBool], Field(description="If set to True then attach the errors/details to all the requests")] = Query(False, description="If set to True then attach the errors/details to all the requests", alias="include_details"),
+    ad_account_id: Annotated[str, Field(max_length=18, description="Unique identifier of an ad account.")] = Path(..., description="Unique identifier of an ad account.", regex=r"^\d+$", max_length=18),
+    bulk_request_id: Annotated[str, Field(description="Bulk request ID that is from one of the entities bulk endpoints")] = Path(..., description="Bulk request ID that is from one of the entities bulk endpoints"),
+    include_details: Annotated[Optional[bool], Field(description="If set to True then attach the errors/details to all the requests")] = Query(False, description="If set to True then attach the errors/details to all the requests", alias="include_details"),
     token_pinterest_oauth2: TokenModel = Security(
         get_token_pinterest_oauth2, scopes=["ads:read"]
     ),

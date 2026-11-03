@@ -12,24 +12,194 @@
 
 namespace models {
 
-
-class BusinessAccessRole
-{
-public:
-
-    BusinessAccessRole();
-    virtual ~BusinessAccessRole() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(BusinessAccessRole,
-        )
-
-private:
+enum class BusinessAccessRole {
+    
+    OWNER,
+    
+    ADMIN,
+    
+    ANALYST,
+    
+    SOS_READER,
+    
+    FINANCE_MANAGER,
+    
+    FINANCE_VIEW,
+    
+    FINANCE_EDIT,
+    
+    AUDIENCE_MANAGER,
+    
+    CAMPAIGN_MANAGER,
+    
+    CATALOGS_MANAGER,
+    
+    RESTRICTED_OWNER,
+    
+    PROFILE_MANAGER,
+    
+    PROFILE_PUBLISHER,
+    
+    RESOURCE_PINNER_LIST_OWNER,
+    
+    RESOURCE_PINNER_LIST_READER,
+    
+    BIZ_PINNER_LIST_SHARER,
+    
+    RESOURCE_CONVERSION_TAGS_READER
+    
 };
 
+inline void to_json(nlohmann::json& j, const BusinessAccessRole& value)
+{
+    switch (value)
+    {
+        
+        case BusinessAccessRole::OWNER: j = "OWNER"; break;
+        
+        case BusinessAccessRole::ADMIN: j = "ADMIN"; break;
+        
+        case BusinessAccessRole::ANALYST: j = "ANALYST"; break;
+        
+        case BusinessAccessRole::SOS_READER: j = "SOS_READER"; break;
+        
+        case BusinessAccessRole::FINANCE_MANAGER: j = "FINANCE_MANAGER"; break;
+        
+        case BusinessAccessRole::FINANCE_VIEW: j = "FINANCE_VIEW"; break;
+        
+        case BusinessAccessRole::FINANCE_EDIT: j = "FINANCE_EDIT"; break;
+        
+        case BusinessAccessRole::AUDIENCE_MANAGER: j = "AUDIENCE_MANAGER"; break;
+        
+        case BusinessAccessRole::CAMPAIGN_MANAGER: j = "CAMPAIGN_MANAGER"; break;
+        
+        case BusinessAccessRole::CATALOGS_MANAGER: j = "CATALOGS_MANAGER"; break;
+        
+        case BusinessAccessRole::RESTRICTED_OWNER: j = "RESTRICTED_OWNER"; break;
+        
+        case BusinessAccessRole::PROFILE_MANAGER: j = "PROFILE_MANAGER"; break;
+        
+        case BusinessAccessRole::PROFILE_PUBLISHER: j = "PROFILE_PUBLISHER"; break;
+        
+        case BusinessAccessRole::RESOURCE_PINNER_LIST_OWNER: j = "RESOURCE_PINNER_LIST_OWNER"; break;
+        
+        case BusinessAccessRole::RESOURCE_PINNER_LIST_READER: j = "RESOURCE_PINNER_LIST_READER"; break;
+        
+        case BusinessAccessRole::BIZ_PINNER_LIST_SHARER: j = "BIZ_PINNER_LIST_SHARER"; break;
+        
+        case BusinessAccessRole::RESOURCE_CONVERSION_TAGS_READER: j = "RESOURCE_CONVERSION_TAGS_READER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for BusinessAccessRole", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, BusinessAccessRole& value)
+{
+    
+    if (j == "OWNER")
+    {
+        value = BusinessAccessRole::OWNER;
+        return;
+    }
+    
+    if (j == "ADMIN")
+    {
+        value = BusinessAccessRole::ADMIN;
+        return;
+    }
+    
+    if (j == "ANALYST")
+    {
+        value = BusinessAccessRole::ANALYST;
+        return;
+    }
+    
+    if (j == "SOS_READER")
+    {
+        value = BusinessAccessRole::SOS_READER;
+        return;
+    }
+    
+    if (j == "FINANCE_MANAGER")
+    {
+        value = BusinessAccessRole::FINANCE_MANAGER;
+        return;
+    }
+    
+    if (j == "FINANCE_VIEW")
+    {
+        value = BusinessAccessRole::FINANCE_VIEW;
+        return;
+    }
+    
+    if (j == "FINANCE_EDIT")
+    {
+        value = BusinessAccessRole::FINANCE_EDIT;
+        return;
+    }
+    
+    if (j == "AUDIENCE_MANAGER")
+    {
+        value = BusinessAccessRole::AUDIENCE_MANAGER;
+        return;
+    }
+    
+    if (j == "CAMPAIGN_MANAGER")
+    {
+        value = BusinessAccessRole::CAMPAIGN_MANAGER;
+        return;
+    }
+    
+    if (j == "CATALOGS_MANAGER")
+    {
+        value = BusinessAccessRole::CATALOGS_MANAGER;
+        return;
+    }
+    
+    if (j == "RESTRICTED_OWNER")
+    {
+        value = BusinessAccessRole::RESTRICTED_OWNER;
+        return;
+    }
+    
+    if (j == "PROFILE_MANAGER")
+    {
+        value = BusinessAccessRole::PROFILE_MANAGER;
+        return;
+    }
+    
+    if (j == "PROFILE_PUBLISHER")
+    {
+        value = BusinessAccessRole::PROFILE_PUBLISHER;
+        return;
+    }
+    
+    if (j == "RESOURCE_PINNER_LIST_OWNER")
+    {
+        value = BusinessAccessRole::RESOURCE_PINNER_LIST_OWNER;
+        return;
+    }
+    
+    if (j == "RESOURCE_PINNER_LIST_READER")
+    {
+        value = BusinessAccessRole::RESOURCE_PINNER_LIST_READER;
+        return;
+    }
+    
+    if (j == "BIZ_PINNER_LIST_SHARER")
+    {
+        value = BusinessAccessRole::BIZ_PINNER_LIST_SHARER;
+        return;
+    }
+    
+    if (j == "RESOURCE_CONVERSION_TAGS_READER")
+    {
+        value = BusinessAccessRole::RESOURCE_CONVERSION_TAGS_READER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for BusinessAccessRole", &j);
+}
 
 } // namespace models
 

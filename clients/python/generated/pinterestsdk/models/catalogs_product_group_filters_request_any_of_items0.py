@@ -76,8 +76,7 @@ class CatalogsProductGroupFiltersRequestAnyOfItems0(BaseModel):
         _items = []
         if self.any_of:
             for _item_any_of in self.any_of:
-                if _item_any_of:
-                    _items.append(_item_any_of.to_dict())
+                _items.append(_item_any_of.to_dict() if _item_any_of is not None else None)
             _dict['any_of'] = _items
         return _dict
 

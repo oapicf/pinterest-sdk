@@ -323,206 +323,138 @@ import {
 export interface CatalogsBaseFilterKeys {
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     mINPRICE: CatalogsProductGroupPricingCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupPricingCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     mAXPRICE: CatalogsProductGroupPricingCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupCurrencyCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cURRENCY: CatalogsProductGroupCurrencyCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     iTEMID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     aVAILABILITY: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     bRAND: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cONDITION: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMLABEL0: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMLABEL1: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMLABEL2: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMLABEL3: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupFilterOperatorTypeCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMLABEL4: CatalogsProductGroupFilterOperatorTypeCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     iTEMGROUPID: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleGenderCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gENDER: CatalogsProductGroupMultipleGenderCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleMediaTypesCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     mEDIATYPE: CatalogsProductGroupMultipleMediaTypesCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pRODUCTTYPE4: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pRODUCTTYPE3: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pRODUCTTYPE2: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pRODUCTTYPE1: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pRODUCTTYPE0: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY6: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY5: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY4: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY3: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY2: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY1: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringListCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     gOOGLEPRODUCTCATEGORY0: CatalogsProductGroupMultipleStringListCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMNUMBER0: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMNUMBER1: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMNUMBER2: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMNUMBER3: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupUint32Criteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     cUSTOMNUMBER4: CatalogsProductGroupUint32Criteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     tITLEKEYWORDS: CatalogsProductGroupMultipleStringCriteria;
     /**
      * 
-     * @type {CatalogsProductGroupMultiplePinterestProductCategoryCriteria}
-     * @memberof CatalogsBaseFilterKeys
      */
     pINTERESTPRODUCTCATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
 }

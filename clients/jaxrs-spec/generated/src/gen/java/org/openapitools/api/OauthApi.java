@@ -22,7 +22,7 @@ import javax.validation.Valid;
 */
 @Path("/oauth")
 @Api(description = "the oauth API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OauthApi {
 
     @POST
@@ -63,7 +63,13 @@ public class OauthApi {
         @ApiResponse(code = 429, message = "The user has sent too many requests in a given amount of time and is being rate limited.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response oauthToken(@FormParam(value = "grant_type")  TokenGrantType grantType,@FormParam(value = "code")  String code,@FormParam(value = "continuous_refresh")  String continuousRefresh,@FormParam(value = "redirect_uri")  String redirectUri,@FormParam(value = "refresh_token")  String refreshToken,@FormParam(value = "scope")  String scope) {
+    public Response oauthToken(
+@FormParam(value = "grant_type")  TokenGrantType grantType,
+@FormParam(value = "code")  String code,
+@FormParam(value = "continuous_refresh")  String continuousRefresh,
+@FormParam(value = "redirect_uri")  String redirectUri,
+@FormParam(value = "refresh_token")  String refreshToken,
+@FormParam(value = "scope")  String scope) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -81,7 +87,9 @@ public class OauthApi {
         @ApiResponse(code = 403, message = "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.", response = PinterestLibError.class),
         @ApiResponse(code = 200, message = "An unexpected error response.", response = PinterestLibError.class)
     })
-    public Response tokenRevoke(@FormParam(value = "token")  String token,@FormParam(value = "token_type_hint")  TokenTypeHint tokenTypeHint) {
+    public Response tokenRevoke(
+@FormParam(value = "token")  String token,
+@FormParam(value = "token_type_hint")  TokenTypeHint tokenTypeHint) {
         return Response.ok().entity("magic!").build();
     }
 }

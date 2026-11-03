@@ -22,7 +22,7 @@ data class BrandFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("BRAND")
+    @param:JsonProperty("BRAND", required = true)
     @get:JsonProperty("BRAND", required = true) val BRAND: CatalogsProductGroupMultipleStringCriteria
 ) {
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { PinMedia } from './PinMedia';
 import {
     PinMediaFromJSON,
@@ -50,92 +50,62 @@ import {
 export interface PinBase {
     /**
      * AI disclosure declarations the creator has made about this Pin.
-     * @type {AiDisclosures}
-     * @memberof PinBase
      */
     aiDisclosures?: AiDisclosures;
     /**
      * The board to which this Pin belongs.
-     * @type {string}
-     * @memberof PinBase
      */
     boardId?: string;
     /**
      * 
-     * @type {BoardOwner}
-     * @memberof PinBase
      */
     readonly boardOwner?: BoardOwner;
     /**
      * The board section to which this Pin belongs.
-     * @type {string}
-     * @memberof PinBase
      */
     boardSectionId?: string | null;
     /**
      * 
-     * @type {Date}
-     * @memberof PinBase
      */
     readonly createdAt?: Date;
     /**
      * 
-     * @type {CreativeType}
-     * @memberof PinBase
      */
     readonly creativeType?: CreativeType | null;
     /**
      * Dominant pin color. Hex number, e.g. `#6E7874`.
-     * @type {string}
-     * @memberof PinBase
      */
     dominantColor?: string | null;
     /**
      * Whether the Pin has been promoted or not.
-     * @type {boolean}
-     * @memberof PinBase
      */
     readonly hasBeenPromoted?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof PinBase
      */
     id: string;
     /**
      * Whether the "operation user_account" is the Pin owner.
-     * @type {boolean}
-     * @memberof PinBase
      */
     readonly isOwner?: boolean;
     /**
      * Whether the Pin is a product Pin.
-     * @type {boolean}
-     * @memberof PinBase
      */
     readonly isProduct?: boolean;
     /**
      * Whether the Pin is standard or not. See documentation on [Changes to Pin creation](/docs/api-features/content-overview/) for more information.
-     * @type {boolean}
-     * @memberof PinBase
      */
     readonly isStandard?: boolean;
     /**
      * 
-     * @type {PinMedia}
-     * @memberof PinBase
      */
     readonly media?: PinMedia;
     /**
      * The source pin id if this pin was saved from another pin. [Learn more](https://help.pinterest.com/article/save-pins-on-pinterest).
-     * @type {string}
-     * @memberof PinBase
      */
     parentPinId?: string | null;
     /**
      * Pin metrics with associated time intervals if any.
-     * @type {object}
-     * @memberof PinBase
      */
     readonly pinMetrics?: object | null;
 }
@@ -164,7 +134,7 @@ export function PinBaseFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'boardId': json['board_id'] == null ? undefined : json['board_id'],
         'boardOwner': json['board_owner'] == null ? undefined : BoardOwnerFromJSON(json['board_owner']),
         'boardSectionId': json['board_section_id'] === undefined ? undefined : json['board_section_id'] === null ? null : json['board_section_id'],
-        'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
+        'createdAt': json['created_at'] == null ? undefined : (parseDateTime(json['created_at'])),
         'creativeType': json['creative_type'] === undefined ? undefined : json['creative_type'] === null ? null : CreativeTypeFromJSON(json['creative_type']),
         'dominantColor': json['dominant_color'] === undefined ? undefined : json['dominant_color'] === null ? null : json['dominant_color'],
         'hasBeenPromoted': json['has_been_promoted'] == null ? undefined : json['has_been_promoted'],

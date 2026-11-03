@@ -141,3 +141,4 @@ class _$CatalogsProductGroupUint32CriteriaSerializer implements PrimitiveSeriali
   }
 }
 
+

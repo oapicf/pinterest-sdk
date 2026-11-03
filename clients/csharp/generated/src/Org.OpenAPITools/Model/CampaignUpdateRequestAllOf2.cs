@@ -243,16 +243,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (intendedPromotionType.IsSet && intendedPromotionType.Value == null)
-                throw new ArgumentNullException(nameof(intendedPromotionType), "Property is not nullable for class CampaignUpdateRequestAllOf2.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequestAllOf2: intended_promotion_type.");
 
             if (isLtvOptimized.IsSet && isLtvOptimized.Value == null)
-                throw new ArgumentNullException(nameof(isLtvOptimized), "Property is not nullable for class CampaignUpdateRequestAllOf2.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequestAllOf2: is_ltv_optimized.");
 
             if (isPerformancePlus.IsSet && isPerformancePlus.Value == null)
-                throw new ArgumentNullException(nameof(isPerformancePlus), "Property is not nullable for class CampaignUpdateRequestAllOf2.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequestAllOf2: is_performance_plus.");
 
             if (isTopOfSearch.IsSet && isTopOfSearch.Value == null)
-                throw new ArgumentNullException(nameof(isTopOfSearch), "Property is not nullable for class CampaignUpdateRequestAllOf2.");
+                throw new JsonException("Property is not nullable for class CampaignUpdateRequestAllOf2: is_top_of_search.");
 
             return new CampaignUpdateRequestAllOf2(bidOptions, intendedPromotionType, isLtvOptimized, isPerformancePlus, isTopOfSearch, objectiveType);
         }
@@ -263,7 +263,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignUpdateRequestAllOf2"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CampaignUpdateRequestAllOf2 campaignUpdateRequestAllOf2, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -278,9 +277,20 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="campaignUpdateRequestAllOf2"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CampaignUpdateRequestAllOf2 campaignUpdateRequestAllOf2, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (campaignUpdateRequestAllOf2.IntendedPromotionTypeOption.IsSet && campaignUpdateRequestAllOf2.IntendedPromotionType == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequestAllOf2.IntendedPromotionType to non-nullable JSON property 'intended_promotion_type'.");
+
+            if (campaignUpdateRequestAllOf2.IsLtvOptimizedOption.IsSet && campaignUpdateRequestAllOf2.IsLtvOptimized == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequestAllOf2.IsLtvOptimized to non-nullable JSON property 'is_ltv_optimized'.");
+
+            if (campaignUpdateRequestAllOf2.IsPerformancePlusOption.IsSet && campaignUpdateRequestAllOf2.IsPerformancePlus == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequestAllOf2.IsPerformancePlus to non-nullable JSON property 'is_performance_plus'.");
+
+            if (campaignUpdateRequestAllOf2.IsTopOfSearchOption.IsSet && campaignUpdateRequestAllOf2.IsTopOfSearch == null)
+                throw new JsonException("Cannot write null property CampaignUpdateRequestAllOf2.IsTopOfSearch to non-nullable JSON property 'is_top_of_search'.");
+
             if (campaignUpdateRequestAllOf2.BidOptionsOption.IsSet)
                 if (campaignUpdateRequestAllOf2.BidOptionsOption.Value != null)
                 {

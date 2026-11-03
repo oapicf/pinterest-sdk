@@ -12,24 +12,34 @@
 
 namespace models {
 
-
-class PinType
-{
-public:
-
-    PinType();
-    virtual ~PinType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PinType,
-        )
-
-private:
+enum class PinType {
+    
+    PRIVATE
+    
 };
 
+inline void to_json(nlohmann::json& j, const PinType& value)
+{
+    switch (value)
+    {
+        
+        case PinType::PRIVATE: j = "PRIVATE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PinType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PinType& value)
+{
+    
+    if (j == "PRIVATE")
+    {
+        value = PinType::PRIVATE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PinType", &j);
+}
 
 } // namespace models
 

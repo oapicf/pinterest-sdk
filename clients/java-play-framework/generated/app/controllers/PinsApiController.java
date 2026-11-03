@@ -37,7 +37,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-08-30T09:53:05.195757851Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApiController extends Controller {
     private final PinsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -135,7 +135,7 @@ public class PinsApiController extends Controller {
             throw new IllegalArgumentException("'metric_types' parameter is required");
         }
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<QuerypinanalyticsmetrictypesItems> metricTypes = new ArrayList<>();
+        List<@Valid QuerypinanalyticsmetrictypesItems> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation

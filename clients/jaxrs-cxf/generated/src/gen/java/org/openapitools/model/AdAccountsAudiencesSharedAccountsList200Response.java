@@ -22,8 +22,6 @@ public class AdAccountsAudiencesSharedAccountsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid SharedAudienceAccount> items = new ArrayList<>();
  /**
    * Get bookmark

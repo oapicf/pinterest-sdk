@@ -17,7 +17,7 @@ export interface TargetingSpecOperationLocation {
 }
 export namespace TargetingSpecOperationLocation {
     export const FieldEnum = {
-        Location: 'LOCATION'
+        Location: 'LOCATION',
     } as const;
     export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
 }

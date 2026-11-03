@@ -168,13 +168,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!aDID.IsSet)
-                throw new ArgumentException("Property is required for class AdsAnalytics.", nameof(aDID));
+                throw new JsonException("Property is required for class AdsAnalytics: AD_ID.");
 
             if (aDID.IsSet && aDID.Value == null)
-                throw new ArgumentNullException(nameof(aDID), "Property is not nullable for class AdsAnalytics.");
+                throw new JsonException("Property is not nullable for class AdsAnalytics: AD_ID.");
 
             if (dATE.IsSet && dATE.Value == null)
-                throw new ArgumentNullException(nameof(dATE), "Property is not nullable for class AdsAnalytics.");
+                throw new JsonException("Property is not nullable for class AdsAnalytics: DATE.");
 
             return new AdsAnalytics(aDID.Value!, dATE);
         }
@@ -185,7 +185,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalytics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdsAnalytics adsAnalytics, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -200,11 +199,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adsAnalytics"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdsAnalytics adsAnalytics, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (adsAnalytics.AD_ID == null)
-                throw new ArgumentNullException(nameof(adsAnalytics.AD_ID), "Property is required for class AdsAnalytics.");
+            if (adsAnalytics.DATEOption.IsSet && adsAnalytics.DATE == null)
+                throw new JsonException("Cannot write null property AdsAnalytics.DATE to non-nullable JSON property 'DATE'.");
 
             writer.WriteString("AD_ID", adsAnalytics.AD_ID);
 

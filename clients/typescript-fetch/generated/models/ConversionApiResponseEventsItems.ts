@@ -29,20 +29,14 @@ import {
 export interface ConversionApiResponseEventsItems {
     /**
      * Error message containing more information about why the event failed to be processed.
-     * @type {string}
-     * @memberof ConversionApiResponseEventsItems
      */
     errorMessage?: string | null;
     /**
      * Whether the event was processed successfully.
-     * @type {EventProcessingStatus}
-     * @memberof ConversionApiResponseEventsItems
      */
     status: EventProcessingStatus;
     /**
      * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
-     * @type {string}
-     * @memberof ConversionApiResponseEventsItems
      */
     warningMessage?: string | null;
 }

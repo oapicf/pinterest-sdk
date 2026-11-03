@@ -17,7 +17,7 @@ import PinterestLibError from './PinterestLibError';
 /**
  * The SchedulesCreate200ResponseInnerDataOneOf model module.
  * @module model/SchedulesCreate200ResponseInnerDataOneOf
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class SchedulesCreate200ResponseInnerDataOneOf {
     /**

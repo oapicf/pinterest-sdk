@@ -6,20 +6,3 @@
 */
 #include "ConversionReportAttributionType.h"
 
-namespace models {
-
-ConversionReportAttributionType::ConversionReportAttributionType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

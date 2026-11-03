@@ -44,7 +44,7 @@ import javax.validation.Valid;
   CustomerListUpload.JSON_PROPERTY_STATE,
   CustomerListUpload.JSON_PROPERTY_UPDATED_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpload   {
   public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
   @JsonProperty(JSON_PROPERTY_AD_ACCOUNT_ID)
@@ -161,7 +161,7 @@ public class CustomerListUpload   {
    **/
   @JsonProperty(value = "error_counts")
   @ApiModelProperty(example = "[{\"error_code\":42,\"message\":\"Invalid email\",\"count\":20}]", value = "Error counts by error code")
-  @Valid 
+  
   public List<@Valid ErrorDetail> getErrorCounts() {
     return errorCounts;
   }

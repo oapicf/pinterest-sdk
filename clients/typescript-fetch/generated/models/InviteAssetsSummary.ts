@@ -29,14 +29,10 @@ import {
 export interface InviteAssetsSummary {
     /**
      * List of ad account IDs and respective permission levels that will be assigned.
-     * @type {Array<InviteAssetsSummaryItem>}
-     * @memberof InviteAssetsSummary
      */
     adAccounts?: Array<InviteAssetsSummaryItem>;
     /**
      * List of profile IDs and respective permission levels that will be assigned.
-     * @type {Array<InviteAssetsSummaryItem>}
-     * @memberof InviteAssetsSummary
      */
     profiles?: Array<InviteAssetsSummaryItem>;
 }

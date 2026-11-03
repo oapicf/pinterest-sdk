@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface InviteDataResponse {
     /**
      * The date and time when the invite/request will expire. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteDataResponse
      */
     inviteExpiration?: number;
     /**
      * The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.
-     * @type {string}
-     * @memberof InviteDataResponse
      */
     inviteStatus?: string;
     /**
@@ -36,20 +32,14 @@ export interface InviteDataResponse {
      * - 'MEMBER_INVITE' is to invite a member to access your business assets.
      * - 'PARTNER_INVITE' is to invite a partner to access your business assets.
      * - 'PARTNER_REQUEST' is to request access a partner's business assets.
-     * @type {string}
-     * @memberof InviteDataResponse
      */
     inviteType?: string;
     /**
      * The date and time the invite/request was last updated. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteDataResponse
      */
     lastUpdatedTime?: number;
     /**
      * The date and time the invite/request was sent/created. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteDataResponse
      */
     sentAt?: number;
 }

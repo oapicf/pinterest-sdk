@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AudienceAccountType
-{
-public:
-
-    AudienceAccountType();
-    virtual ~AudienceAccountType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceAccountType,
-        )
-
-private:
+enum class AudienceAccountType {
+    
+    AD_ACCOUNT,
+    
+    BUSINESS_ACCOUNT
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceAccountType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceAccountType::AD_ACCOUNT: j = "AD_ACCOUNT"; break;
+        
+        case AudienceAccountType::BUSINESS_ACCOUNT: j = "BUSINESS_ACCOUNT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceAccountType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceAccountType& value)
+{
+    
+    if (j == "AD_ACCOUNT")
+    {
+        value = AudienceAccountType::AD_ACCOUNT;
+        return;
+    }
+    
+    if (j == "BUSINESS_ACCOUNT")
+    {
+        value = AudienceAccountType::BUSINESS_ACCOUNT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceAccountType", &j);
+}
 
 } // namespace models
 

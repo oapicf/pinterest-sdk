@@ -12,7 +12,7 @@ public struct CatalogsReportDistributionStats: Sendable, Codable, Hashable {
     public enum ReportType: String, Sendable, Codable, CaseIterable {
         case distributionIssues = "DISTRIBUTION_ISSUES"
     }
-    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let catalogIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** ID of the catalog entity. */
     public var catalogId: String?
     /** The event code that a diagnostics aggregated number references */

@@ -188,3 +188,4 @@ class _$InviteDataResponseSerializer implements PrimitiveSerializer<InviteDataRe
   }
 }
 
+

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -29,22 +28,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ScheduleBidMultipliers", description = "The value of the bid changes. This must be provided when the schedule type is CAMPAIGN_BID_MULTIPLIERS.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleBidMultipliers {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BidOptionsAgeBucketMultipliers ageBucketMultipliers;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BidOptionsAppTypeMultipliers appTypeMultipliers;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<@Valid BidOptionsAudienceMultipliers> audienceMultipliers = new ArrayList<>();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BidOptionsGenderMultipliers genderMultipliers;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable BidOptionsPlacementMultipliers placementMultipliers;
 
   public ScheduleBidMultipliers ageBucketMultipliers(@Nullable BidOptionsAgeBucketMultipliers ageBucketMultipliers) {
@@ -106,7 +100,7 @@ public class ScheduleBidMultipliers {
    * Get audienceMultipliers
    * @return audienceMultipliers
    */
-  @Valid 
+  
   @Schema(name = "audience_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_multipliers")
   public List<@Valid BidOptionsAudienceMultipliers> getAudienceMultipliers() {

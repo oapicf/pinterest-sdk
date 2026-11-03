@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class CreationSource
-{
-public:
-
-    CreationSource();
-    virtual ~CreationSource() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreationSource,
-        )
-
-private:
+enum class CreationSource {
+    
+    ADS_API,
+    
+    ADS_MANAGER_REPORTING_PAGE,
+    
+    ADS_MANAGER_REPORT_BUILDER
+    
 };
 
+inline void to_json(nlohmann::json& j, const CreationSource& value)
+{
+    switch (value)
+    {
+        
+        case CreationSource::ADS_API: j = "ADS_API"; break;
+        
+        case CreationSource::ADS_MANAGER_REPORTING_PAGE: j = "ADS_MANAGER_REPORTING_PAGE"; break;
+        
+        case CreationSource::ADS_MANAGER_REPORT_BUILDER: j = "ADS_MANAGER_REPORT_BUILDER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CreationSource", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CreationSource& value)
+{
+    
+    if (j == "ADS_API")
+    {
+        value = CreationSource::ADS_API;
+        return;
+    }
+    
+    if (j == "ADS_MANAGER_REPORTING_PAGE")
+    {
+        value = CreationSource::ADS_MANAGER_REPORTING_PAGE;
+        return;
+    }
+    
+    if (j == "ADS_MANAGER_REPORT_BUILDER")
+    {
+        value = CreationSource::ADS_MANAGER_REPORT_BUILDER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CreationSource", &j);
+}
 
 } // namespace models
 

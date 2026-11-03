@@ -285,3 +285,4 @@ class _$CatalogsFeedsCreateRequestSerializer implements PrimitiveSerializer<Cata
   }
 }
 
+

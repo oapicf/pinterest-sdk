@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'conversion_product_report_granularity.g.dart';
 
+/// Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
 class ConversionProductReportGranularity extends EnumClass {
 
-  /// Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
   @BuiltValueEnumConst(wireName: r'TOTAL')
   static const ConversionProductReportGranularity TOTAL = _$TOTAL;
-  /// Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
   @BuiltValueEnumConst(wireName: r'WEEK')
   static const ConversionProductReportGranularity WEEK = _$WEEK;
-  /// Report granularity for time-based aggregation: - TOTAL: Metrics are aggregated over the specified date range - WEEK: Metrics are broken down weekly - MONTH: Metrics are broken down monthly
   @BuiltValueEnumConst(wireName: r'MONTH')
   static const ConversionProductReportGranularity MONTH = _$MONTH;
 

@@ -21,50 +21,34 @@ import { mapValues } from '../runtime';
 export interface CustomerListRecordRow {
     /**
      * Email address (plain or hashed with SHA1, SHA256, or MD5).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     email?: string;
     /**
      * External ID identifier (not hashed).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     externalId?: string;
     /**
      * Hashed phone number (hashed with SHA1, SHA256, or MD5).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     hashedPhoneNumber?: string;
     /**
      * Hashed pinner ID (hashed with SHA1, SHA256, or MD5).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     hashedPinnerId?: string;
     /**
      * IP address (not hashed).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     ipAddress?: string;
     /**
      * LiveRamp envelope identifier (Base64-encoded, not hashed).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     liverampEnvelope?: string;
     /**
      * Mobile advertising ID (plain or hashed with SHA1, SHA256, or MD5).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     maid?: string;
     /**
      * User agent string (not hashed).
-     * @type {string}
-     * @memberof CustomerListRecordRow
      */
     userAgent?: string;
 }

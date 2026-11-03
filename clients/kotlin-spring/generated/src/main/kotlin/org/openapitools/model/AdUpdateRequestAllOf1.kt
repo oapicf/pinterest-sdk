@@ -22,7 +22,7 @@ data class AdUpdateRequestAllOf1(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "The ID of this ad.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")

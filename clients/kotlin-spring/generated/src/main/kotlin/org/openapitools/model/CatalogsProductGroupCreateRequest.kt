@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.CatalogsProductGroupFiltersRequest
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
@@ -31,16 +28,16 @@ data class CatalogsProductGroupCreateRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog Feed id pertaining to the catalog product group.")
-    @param:JsonProperty("feed_id")
+    @param:JsonProperty("feed_id", required = true)
     @get:JsonProperty("feed_id", required = true) val feedId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFiltersRequest,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(description = "")
@@ -49,8 +46,6 @@ data class CatalogsProductGroupCreateRequest(
 
     @Schema(description = "boolean indicator of whether the product group is being featured or not")
     @Deprecated(message = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("is_featured")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = null
 ) : BulkUpsertRequestCreateCatalogProductGroupsItems, CatalogsProductGroupsCreateManyRequestItems, CatalogsProductGroupsCreateRequestSchema {

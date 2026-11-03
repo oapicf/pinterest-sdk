@@ -6,20 +6,3 @@
 */
 #include "MMMReportingColumn.h"
 
-namespace models {
-
-MMMReportingColumn::MMMReportingColumn()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

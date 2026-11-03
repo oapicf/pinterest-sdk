@@ -18,7 +18,7 @@ import CancelInviteResult from './CancelInviteResult';
 /**
  * The CancelInviteResultItem model module.
  * @module model/CancelInviteResultItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CancelInviteResultItem {
     /**

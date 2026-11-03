@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -34,12 +31,10 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class VideoMetadataWithItemType(
 
     @Schema(required = true, description = "Discriminator literal identifying this as video metadata inside a `PinMediaMetadata` payload.")
-    @param:JsonProperty("item_type")
+    @param:JsonProperty("item_type", required = true)
     @get:JsonProperty("item_type", required = true) override val itemType: VideoMetadataWithItemType.ItemType = kotlin.String.video,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("cover_image_url")
     @get:JsonProperty("cover_image_url") val coverImageUrl: kotlin.String? = null,
 
@@ -71,12 +66,12 @@ data class VideoMetadataWithItemType(
     enum class ItemType(@get:JsonValue val value: kotlin.String) {
 
         video("video");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ItemType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ItemType'")
             }
         }

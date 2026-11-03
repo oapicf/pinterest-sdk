@@ -23,7 +23,7 @@ data class IntegrationLogsRequestCreate(
     @field:Valid
     @get:Size(min=1,max=250) 
     @Schema(required = true, description = "")
-    @param:JsonProperty("logs")
+    @param:JsonProperty("logs", required = true)
     @get:JsonProperty("logs", required = true) val logs: kotlin.collections.List<IntegrationLog>
 ) {
 

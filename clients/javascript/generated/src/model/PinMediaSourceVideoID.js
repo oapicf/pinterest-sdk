@@ -17,7 +17,7 @@ import ContentType from './ContentType';
 /**
  * The PinMediaSourceVideoID model module.
  * @module model/PinMediaSourceVideoID
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaSourceVideoID {
     /**

@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class PlacementGroupType
-{
-public:
-
-    PlacementGroupType();
-    virtual ~PlacementGroupType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(PlacementGroupType,
-        )
-
-private:
+enum class PlacementGroupType {
+    
+    ALL,
+    
+    SEARCH,
+    
+    BROWSE,
+    
+    OTHER
+    
 };
 
+inline void to_json(nlohmann::json& j, const PlacementGroupType& value)
+{
+    switch (value)
+    {
+        
+        case PlacementGroupType::ALL: j = "ALL"; break;
+        
+        case PlacementGroupType::SEARCH: j = "SEARCH"; break;
+        
+        case PlacementGroupType::BROWSE: j = "BROWSE"; break;
+        
+        case PlacementGroupType::OTHER: j = "OTHER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for PlacementGroupType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, PlacementGroupType& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = PlacementGroupType::ALL;
+        return;
+    }
+    
+    if (j == "SEARCH")
+    {
+        value = PlacementGroupType::SEARCH;
+        return;
+    }
+    
+    if (j == "BROWSE")
+    {
+        value = PlacementGroupType::BROWSE;
+        return;
+    }
+    
+    if (j == "OTHER")
+    {
+        value = PlacementGroupType::OTHER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for PlacementGroupType", &j);
+}
 
 } // namespace models
 

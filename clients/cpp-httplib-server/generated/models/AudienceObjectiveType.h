@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class AudienceObjectiveType
-{
-public:
-
-    AudienceObjectiveType();
-    virtual ~AudienceObjectiveType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceObjectiveType,
-        )
-
-private:
+enum class AudienceObjectiveType {
+    
+    AWARENESS,
+    
+    CONSIDERATION,
+    
+    WEB_CONVERSION,
+    
+    CATALOG_SALES,
+    
+    VIDEO_COMPLETION,
+    
+    SALES
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceObjectiveType& value)
+{
+    switch (value)
+    {
+        
+        case AudienceObjectiveType::AWARENESS: j = "AWARENESS"; break;
+        
+        case AudienceObjectiveType::CONSIDERATION: j = "CONSIDERATION"; break;
+        
+        case AudienceObjectiveType::WEB_CONVERSION: j = "WEB_CONVERSION"; break;
+        
+        case AudienceObjectiveType::CATALOG_SALES: j = "CATALOG_SALES"; break;
+        
+        case AudienceObjectiveType::VIDEO_COMPLETION: j = "VIDEO_COMPLETION"; break;
+        
+        case AudienceObjectiveType::SALES: j = "SALES"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceObjectiveType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceObjectiveType& value)
+{
+    
+    if (j == "AWARENESS")
+    {
+        value = AudienceObjectiveType::AWARENESS;
+        return;
+    }
+    
+    if (j == "CONSIDERATION")
+    {
+        value = AudienceObjectiveType::CONSIDERATION;
+        return;
+    }
+    
+    if (j == "WEB_CONVERSION")
+    {
+        value = AudienceObjectiveType::WEB_CONVERSION;
+        return;
+    }
+    
+    if (j == "CATALOG_SALES")
+    {
+        value = AudienceObjectiveType::CATALOG_SALES;
+        return;
+    }
+    
+    if (j == "VIDEO_COMPLETION")
+    {
+        value = AudienceObjectiveType::VIDEO_COMPLETION;
+        return;
+    }
+    
+    if (j == "SALES")
+    {
+        value = AudienceObjectiveType::SALES;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceObjectiveType", &j);
+}
 
 } // namespace models
 

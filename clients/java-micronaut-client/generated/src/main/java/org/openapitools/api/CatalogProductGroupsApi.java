@@ -34,7 +34,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-08-30T09:52:25.786802743Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface CatalogProductGroupsApi {
     /**
@@ -86,7 +86,7 @@ public interface CatalogProductGroupsApi {
     @Consumes({"application/json"})
     @Produces({"application/json"})
     Mono<List<String>> catalogsProductGroupsCreateMany(
-        @Body @NotNull @Size(min=1, max=1000) List<CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, 
+        @Body @NotNull @Size(min=1, max=1000) List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
     );
 

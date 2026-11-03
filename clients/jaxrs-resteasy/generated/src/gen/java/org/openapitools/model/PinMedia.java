@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin media that can be an image, video, or a mix of both.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
+@ApiModel(description="Pin media that can be an image, video, or a mix of both.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaWithImage.class, name = "image"),
   @JsonSubTypes.Type(value = PinMediaWithImages.class, name = "multiple_images"),
@@ -175,7 +175,6 @@ public class PinMedia   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("items")
-  @Valid
   public List<@Valid PinMediaMetadata> getItems() {
     return items;
   }

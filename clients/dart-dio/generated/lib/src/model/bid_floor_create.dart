@@ -128,3 +128,4 @@ class _$BidFloorCreateSerializer implements PrimitiveSerializer<BidFloorCreate> 
   }
 }
 
+

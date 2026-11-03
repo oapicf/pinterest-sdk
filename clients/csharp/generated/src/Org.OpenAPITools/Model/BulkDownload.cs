@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (requestId.IsSet && requestId.Value == null)
-                throw new ArgumentNullException(nameof(requestId), "Property is not nullable for class BulkDownload.");
+                throw new JsonException("Property is not nullable for class BulkDownload: request_id.");
 
             return new BulkDownload(requestId);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BulkDownload bulkDownload, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bulkDownload"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BulkDownload bulkDownload, JsonSerializerOptions jsonSerializerOptions)
         {
             if (bulkDownload.RequestIdOption.IsSet && bulkDownload.RequestId == null)
-                throw new ArgumentNullException(nameof(bulkDownload.RequestId), "Property is required for class BulkDownload.");
+                throw new JsonException("Cannot write null property BulkDownload.RequestId to non-nullable JSON property 'request_id'.");
 
             if (bulkDownload.RequestIdOption.IsSet)
                 writer.WriteString("request_id", bulkDownload.RequestId);

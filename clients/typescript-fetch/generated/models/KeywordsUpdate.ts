@@ -29,8 +29,6 @@ import {
 export interface KeywordsUpdate {
     /**
      * Keywords
-     * @type {Array<KeywordUpdateItem>}
-     * @memberof KeywordsUpdate
      */
     keywords?: Array<KeywordUpdateItem>;
 }

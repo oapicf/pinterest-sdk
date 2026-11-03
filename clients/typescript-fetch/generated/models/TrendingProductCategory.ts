@@ -29,38 +29,26 @@ import {
 export interface TrendingProductCategory {
     /**
      * Engagement type
-     * @type {ProductCategoriesEngagementType}
-     * @memberof TrendingProductCategory
      */
     engagementType: ProductCategoriesEngagementType;
     /**
      * Month-over-month change percentage
-     * @type {number}
-     * @memberof TrendingProductCategory
      */
     pctChangeMom: number;
     /**
      * Relative volume percentage
-     * @type {number}
-     * @memberof TrendingProductCategory
      */
     percentRelativeVolume: number;
     /**
      * Pinterest Product Category Id
-     * @type {number}
-     * @memberof TrendingProductCategory
      */
     pinterestProductCategoryId: number;
     /**
      * Product Category Name
-     * @type {string}
-     * @memberof TrendingProductCategory
      */
     productCategory: string;
     /**
      * Vertical name associated with the product category
-     * @type {Array<string>}
-     * @memberof TrendingProductCategory
      */
     verticals?: Array<string>;
 }

@@ -23,12 +23,12 @@ data class CatalogsLocalStoresDelete200ResponseInner(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "1234567890", required = true, description = "The ID of the local store.")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("status")
+    @param:JsonProperty("status", required = true)
     @get:JsonProperty("status", required = true) val status: CampaignAdPreviewDelete200ResponseInnerStatus
 ) {
 

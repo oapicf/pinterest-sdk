@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
+import { mapValues, parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { Currency } from './Currency';
 import {
     CurrencyFromJSON,
@@ -29,134 +29,90 @@ import {
 export interface SSIOOrderLine {
     /**
      * The SFDC id for the terms
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     acceptedTermsId?: string | null;
     /**
      * The UTC timestamp (to the nearest second) when terms were accepted.
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     acceptedTermsTime?: string | null;
     /**
      * Ads manager order line id
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     adsManagerOrderLineId?: string | null;
     /**
      * Agency link
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     agencyLink?: string | null;
     /**
      * Bill-to company name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     billToCompanyName?: string | null;
     /**
      * Billing contact email
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     billingContactEmail?: string | null;
     /**
      * Billing contact first name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     billingContactFirstname?: string | null;
     /**
      * Billing contact last name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     billingContactLastname?: string | null;
     /**
      * If budget order line, the budget amount.
-     * @type {number}
-     * @memberof SSIOOrderLine
      */
     budgetAmount?: number | null;
     /**
      * 
-     * @type {Currency}
-     * @memberof SSIOOrderLine
      */
     currencyInfo?: Currency;
     /**
      * End date of the order line.
-     * @type {Date}
-     * @memberof SSIOOrderLine
      */
     endDate?: Date | null;
     /**
      * If ongoing (perpetual) order line, the estimated monthly spend.
-     * @type {number}
-     * @memberof SSIOOrderLine
      */
     estimatedMonthlySpend?: number | null;
     /**
      * Last modified date.
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     lastModifiedDateTime?: string | null;
     /**
      * Billing media email
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     mediaContactEmail?: string | null;
     /**
      * Billing media contact first name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     mediaContactFirstname?: string | null;
     /**
      * Billing media contact last name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     mediaContactLastname?: string | null;
     /**
      * The order name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     orderName?: string | null;
     /**
      * The pin order id associated with the order line in SFDC
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     pinOrderId?: string | null;
     /**
      * The Pinterest marketing partner name
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     pmpName?: string | null;
     /**
      * The PO number
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     poNumber?: string | null;
     /**
      * Order line id in SFDC
-     * @type {string}
-     * @memberof SSIOOrderLine
      */
     salesforceOrderLineId?: string | null;
     /**
      * Start date of the order line.
-     * @type {Date}
-     * @memberof SSIOOrderLine
      */
     startDate?: Date | null;
 }
@@ -190,7 +146,7 @@ export function SSIOOrderLineFromJSONTyped(json: any, ignoreDiscriminator: boole
         'billingContactLastname': json['billing_contact_lastname'] === undefined ? undefined : json['billing_contact_lastname'] === null ? null : json['billing_contact_lastname'],
         'budgetAmount': json['budget_amount'] === undefined ? undefined : json['budget_amount'] === null ? null : json['budget_amount'],
         'currencyInfo': json['currency_info'] == null ? undefined : CurrencyFromJSON(json['currency_info']),
-        'endDate': json['end_date'] === undefined ? undefined : json['end_date'] === null ? null : (new Date(json['end_date'])),
+        'endDate': json['end_date'] === undefined ? undefined : json['end_date'] === null ? null : (parseDate(json['end_date'])),
         'estimatedMonthlySpend': json['estimated_monthly_spend'] === undefined ? undefined : json['estimated_monthly_spend'] === null ? null : json['estimated_monthly_spend'],
         'lastModifiedDateTime': json['last_modified_date_time'] === undefined ? undefined : json['last_modified_date_time'] === null ? null : json['last_modified_date_time'],
         'mediaContactEmail': json['media_contact_email'] === undefined ? undefined : json['media_contact_email'] === null ? null : json['media_contact_email'],
@@ -201,7 +157,7 @@ export function SSIOOrderLineFromJSONTyped(json: any, ignoreDiscriminator: boole
         'pmpName': json['pmp_name'] === undefined ? undefined : json['pmp_name'] === null ? null : json['pmp_name'],
         'poNumber': json['po_number'] === undefined ? undefined : json['po_number'] === null ? null : json['po_number'],
         'salesforceOrderLineId': json['salesforce_order_line_id'] === undefined ? undefined : json['salesforce_order_line_id'] === null ? null : json['salesforce_order_line_id'],
-        'startDate': json['start_date'] === undefined ? undefined : json['start_date'] === null ? null : (new Date(json['start_date'])),
+        'startDate': json['start_date'] === undefined ? undefined : json['start_date'] === null ? null : (parseDate(json['start_date'])),
     };
 }
 
@@ -226,7 +182,7 @@ export function SSIOOrderLineToJSONTyped(value?: SSIOOrderLine | null, ignoreDis
         'billing_contact_lastname': value['billingContactLastname'],
         'budget_amount': value['budgetAmount'],
         'currency_info': CurrencyToJSON(value['currencyInfo']),
-        'end_date': value['endDate'] == null ? value['endDate'] : value['endDate'].toISOString().substring(0,10),
+        'end_date': value['endDate'] == null ? value['endDate'] : serializeDate(value['endDate']),
         'estimated_monthly_spend': value['estimatedMonthlySpend'],
         'last_modified_date_time': value['lastModifiedDateTime'],
         'media_contact_email': value['mediaContactEmail'],
@@ -237,7 +193,7 @@ export function SSIOOrderLineToJSONTyped(value?: SSIOOrderLine | null, ignoreDis
         'pmp_name': value['pmpName'],
         'po_number': value['poNumber'],
         'salesforce_order_line_id': value['salesforceOrderLineId'],
-        'start_date': value['startDate'] == null ? value['startDate'] : value['startDate'].toISOString().substring(0,10),
+        'start_date': value['startDate'] == null ? value['startDate'] : serializeDate(value['startDate']),
     };
 }
 

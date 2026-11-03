@@ -153,13 +153,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!accessToken.IsSet)
-                throw new ArgumentException("Property is required for class ConversionAccessToken.", nameof(accessToken));
+                throw new JsonException("Property is required for class ConversionAccessToken: access_token.");
 
             if (accessToken.IsSet && accessToken.Value == null)
-                throw new ArgumentNullException(nameof(accessToken), "Property is not nullable for class ConversionAccessToken.");
+                throw new JsonException("Property is not nullable for class ConversionAccessToken: access_token.");
 
             if (tokenType.IsSet && tokenType.Value == null)
-                throw new ArgumentNullException(nameof(tokenType), "Property is not nullable for class ConversionAccessToken.");
+                throw new JsonException("Property is not nullable for class ConversionAccessToken: token_type.");
 
             return new ConversionAccessToken(accessToken.Value!, tokenType);
         }
@@ -170,7 +170,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionAccessToken"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionAccessToken conversionAccessToken, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -185,14 +184,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionAccessToken"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionAccessToken conversionAccessToken, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (conversionAccessToken.AccessToken == null)
-                throw new ArgumentNullException(nameof(conversionAccessToken.AccessToken), "Property is required for class ConversionAccessToken.");
-
             if (conversionAccessToken.TokenTypeOption.IsSet && conversionAccessToken.TokenType == null)
-                throw new ArgumentNullException(nameof(conversionAccessToken.TokenType), "Property is required for class ConversionAccessToken.");
+                throw new JsonException("Cannot write null property ConversionAccessToken.TokenType to non-nullable JSON property 'token_type'.");
 
             writer.WriteString("access_token", conversionAccessToken.AccessToken);
 

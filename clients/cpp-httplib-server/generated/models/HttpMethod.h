@@ -12,24 +12,114 @@
 
 namespace models {
 
-
-class HttpMethod
-{
-public:
-
-    HttpMethod();
-    virtual ~HttpMethod() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(HttpMethod,
-        )
-
-private:
+enum class HttpMethod {
+    
+    GET,
+    
+    HEAD,
+    
+    POST,
+    
+    PUT,
+    
+    DELETE,
+    
+    CONNECT,
+    
+    OPTIONS,
+    
+    TRACE,
+    
+    PATCH
+    
 };
 
+inline void to_json(nlohmann::json& j, const HttpMethod& value)
+{
+    switch (value)
+    {
+        
+        case HttpMethod::GET: j = "GET"; break;
+        
+        case HttpMethod::HEAD: j = "HEAD"; break;
+        
+        case HttpMethod::POST: j = "POST"; break;
+        
+        case HttpMethod::PUT: j = "PUT"; break;
+        
+        case HttpMethod::DELETE: j = "DELETE"; break;
+        
+        case HttpMethod::CONNECT: j = "CONNECT"; break;
+        
+        case HttpMethod::OPTIONS: j = "OPTIONS"; break;
+        
+        case HttpMethod::TRACE: j = "TRACE"; break;
+        
+        case HttpMethod::PATCH: j = "PATCH"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for HttpMethod", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, HttpMethod& value)
+{
+    
+    if (j == "GET")
+    {
+        value = HttpMethod::GET;
+        return;
+    }
+    
+    if (j == "HEAD")
+    {
+        value = HttpMethod::HEAD;
+        return;
+    }
+    
+    if (j == "POST")
+    {
+        value = HttpMethod::POST;
+        return;
+    }
+    
+    if (j == "PUT")
+    {
+        value = HttpMethod::PUT;
+        return;
+    }
+    
+    if (j == "DELETE")
+    {
+        value = HttpMethod::DELETE;
+        return;
+    }
+    
+    if (j == "CONNECT")
+    {
+        value = HttpMethod::CONNECT;
+        return;
+    }
+    
+    if (j == "OPTIONS")
+    {
+        value = HttpMethod::OPTIONS;
+        return;
+    }
+    
+    if (j == "TRACE")
+    {
+        value = HttpMethod::TRACE;
+        return;
+    }
+    
+    if (j == "PATCH")
+    {
+        value = HttpMethod::PATCH;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for HttpMethod", &j);
+}
 
 } // namespace models
 

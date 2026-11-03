@@ -22,10 +22,10 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("boards_list_pins_200_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BoardsListPins200Response   {
   private String bookmark;
-  private @Valid List<@Valid PinRead> items = new ArrayList<>();
+  private List<@Valid PinRead> items = new ArrayList<>();
 
   public BoardsListPins200Response() {
   }
@@ -66,7 +66,7 @@ public class BoardsListPins200Response   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(required = true, value = "items")
-  @NotNull @Valid public List<@Valid PinRead> getItems() {
+  @NotNull public List<@Valid PinRead> getItems() {
     return items;
   }
 

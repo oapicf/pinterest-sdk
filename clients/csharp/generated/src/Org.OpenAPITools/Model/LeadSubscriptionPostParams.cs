@@ -412,31 +412,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: ad_account_id.");
 
             if (apiVersion.IsSet && apiVersion.Value == null)
-                throw new ArgumentNullException(nameof(apiVersion), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: api_version.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: created_time.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: id.");
 
             if (userAccountId.IsSet && userAccountId.Value == null)
-                throw new ArgumentNullException(nameof(userAccountId), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: user_account_id.");
 
             if (webhookUrl.IsSet && webhookUrl.Value == null)
-                throw new ArgumentNullException(nameof(webhookUrl), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: webhook_url.");
 
             if (partnerAccessToken.IsSet && partnerAccessToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerAccessToken), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: partner_access_token.");
 
             if (partnerMetadata.IsSet && partnerMetadata.Value == null)
-                throw new ArgumentNullException(nameof(partnerMetadata), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: partner_metadata.");
 
             if (partnerRefreshToken.IsSet && partnerRefreshToken.Value == null)
-                throw new ArgumentNullException(nameof(partnerRefreshToken), "Property is not nullable for class LeadSubscriptionPostParams.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionPostParams: partner_refresh_token.");
 
             return new LeadSubscriptionPostParams(adAccountId, apiVersion, createdTime, cryptographicAlgorithm, cryptographicKey, id, leadFormId, userAccountId, webhookUrl, partnerAccessToken, partnerMetadata, partnerRefreshToken);
         }
@@ -447,7 +447,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionPostParams"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadSubscriptionPostParams leadSubscriptionPostParams, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -462,32 +461,34 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionPostParams"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadSubscriptionPostParams leadSubscriptionPostParams, JsonSerializerOptions jsonSerializerOptions)
         {
             if (leadSubscriptionPostParams.AdAccountIdOption.IsSet && leadSubscriptionPostParams.AdAccountId == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.AdAccountId), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.AdAccountId to non-nullable JSON property 'ad_account_id'.");
 
             if (leadSubscriptionPostParams.ApiVersionOption.IsSet && leadSubscriptionPostParams.ApiVersion == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.ApiVersion), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.ApiVersion to non-nullable JSON property 'api_version'.");
+
+            if (leadSubscriptionPostParams.CreatedTimeOption.IsSet && leadSubscriptionPostParams.CreatedTime == null)
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.CreatedTime to non-nullable JSON property 'created_time'.");
 
             if (leadSubscriptionPostParams.IdOption.IsSet && leadSubscriptionPostParams.Id == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.Id), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.Id to non-nullable JSON property 'id'.");
 
             if (leadSubscriptionPostParams.UserAccountIdOption.IsSet && leadSubscriptionPostParams.UserAccountId == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.UserAccountId), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.UserAccountId to non-nullable JSON property 'user_account_id'.");
 
             if (leadSubscriptionPostParams.WebhookUrlOption.IsSet && leadSubscriptionPostParams.WebhookUrl == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.WebhookUrl), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.WebhookUrl to non-nullable JSON property 'webhook_url'.");
 
             if (leadSubscriptionPostParams.PartnerAccessTokenOption.IsSet && leadSubscriptionPostParams.PartnerAccessToken == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.PartnerAccessToken), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.PartnerAccessToken to non-nullable JSON property 'partner_access_token'.");
 
             if (leadSubscriptionPostParams.PartnerMetadataOption.IsSet && leadSubscriptionPostParams.PartnerMetadata == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.PartnerMetadata), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.PartnerMetadata to non-nullable JSON property 'partner_metadata'.");
 
             if (leadSubscriptionPostParams.PartnerRefreshTokenOption.IsSet && leadSubscriptionPostParams.PartnerRefreshToken == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionPostParams.PartnerRefreshToken), "Property is required for class LeadSubscriptionPostParams.");
+                throw new JsonException("Cannot write null property LeadSubscriptionPostParams.PartnerRefreshToken to non-nullable JSON property 'partner_refresh_token'.");
 
             if (leadSubscriptionPostParams.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", leadSubscriptionPostParams.AdAccountId);

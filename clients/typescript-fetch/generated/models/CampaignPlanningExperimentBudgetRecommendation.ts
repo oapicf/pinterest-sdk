@@ -29,26 +29,18 @@ import {
 export interface CampaignPlanningExperimentBudgetRecommendation {
     /**
      * Recommended budget for this experiment version.
-     * @type {number}
-     * @memberof CampaignPlanningExperimentBudgetRecommendation
      */
     budgetRecommendation?: number;
     /**
      * Recommended lifetime days for this experiment.
-     * @type {number}
-     * @memberof CampaignPlanningExperimentBudgetRecommendation
      */
     lifetimeDaysRecommendation?: number;
     /**
      * Point estimations for this experiment version.
-     * @type {Array<CampaignPlanningBudgetRecommendationPoint>}
-     * @memberof CampaignPlanningExperimentBudgetRecommendation
      */
     pointEstimations?: Array<CampaignPlanningBudgetRecommendationPoint>;
     /**
      * Version identifier for the experiment.
-     * @type {string}
-     * @memberof CampaignPlanningExperimentBudgetRecommendation
      */
     versionId?: string;
 }

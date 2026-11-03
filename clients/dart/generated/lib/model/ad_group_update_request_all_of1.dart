@@ -81,7 +81,9 @@ class AdGroupUpdateRequestAllOf1 {
       }());
 
       return AdGroupUpdateRequestAllOf1(
-        bidMultiplier: num.parse('${json[r'bid_multiplier']}'),
+        bidMultiplier: json[r'bid_multiplier'] == null
+            ? null
+            : num.parse('${json[r'bid_multiplier']}'),
         id: mapValueOfType<String>(json, r'id')!,
         targetingSpecOperations: TargetingSpecOperations.listFromJson(json[r'targeting_spec_operations']),
       );

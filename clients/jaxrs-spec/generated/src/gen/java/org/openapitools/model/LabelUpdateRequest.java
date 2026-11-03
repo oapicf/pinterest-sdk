@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("LabelUpdateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LabelUpdateRequest   {
-  private @Valid List<@Valid LabelUpdateItem> labels = new ArrayList<>();
+  private List<@Valid LabelUpdateItem> labels = new ArrayList<>();
 
   public LabelUpdateRequest() {
   }
@@ -45,7 +45,7 @@ public class LabelUpdateRequest   {
   
   @ApiModelProperty(required = true, value = "Labels that you are applying to the campaign.")
   @JsonProperty(required = true, value = "labels")
-  @NotNull @Valid public List<@Valid LabelUpdateItem> getLabels() {
+  @NotNull public List<@Valid LabelUpdateItem> getLabels() {
     return labels;
   }
 

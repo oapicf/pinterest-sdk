@@ -64,7 +64,7 @@ public class CatalogSupplementalApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter catalogId is {}", catalogId);
-        logger.debug("Parameter localInventoryItemsBatchCreate is {}", localInventoryItemsBatchCreate);
+        logger.debug("Parameter localInventoryItemsBatchCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsLocalInventoryItemsBatchOperate(catalogId, localInventoryItemsBatchCreate, adAccountId)
@@ -91,7 +91,7 @@ public class CatalogSupplementalApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter catalogId is {}", catalogId);
-        logger.debug("Parameter localInventoryItemsGetCreate is {}", localInventoryItemsGetCreate);
+        logger.debug("Parameter localInventoryItemsGetCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsLocalInventoryItemsPost(catalogId, localInventoryItemsGetCreate, adAccountId)
@@ -118,7 +118,7 @@ public class CatalogSupplementalApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter catalogId is {}", catalogId);
-        logger.debug("Parameter localStoreCreate is {}", localStoreCreate);
+        logger.debug("Parameter localStoreCreate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsLocalStoresCreate(catalogId, localStoreCreate, adAccountId)
@@ -201,7 +201,7 @@ public class CatalogSupplementalApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter catalogId is {}", catalogId);
-        logger.debug("Parameter localStoreBatchUpdate is {}", localStoreBatchUpdate);
+        logger.debug("Parameter localStoreBatchUpdate is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.catalogsLocalStoresUpdate(catalogId, localStoreBatchUpdate, adAccountId)

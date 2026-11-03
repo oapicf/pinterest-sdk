@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Attribution type. Refers to the Pinterest Tag endpoints
-* Values: INDIVIDUAL,HOUSEHOLD
-*/
+ * Attribution type. Refers to the Pinterest Tag endpoints
+ * Values: INDIVIDUAL,HOUSEHOLD
+ */
 enum class ConversionReportAttributionType(@get:JsonValue val value: kotlin.String) {
 
     INDIVIDUAL("INDIVIDUAL"),
@@ -28,9 +28,8 @@ enum class ConversionReportAttributionType(@get:JsonValue val value: kotlin.Stri
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ConversionReportAttributionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionReportAttributionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionReportAttributionType'")
         }
     }
 }
-

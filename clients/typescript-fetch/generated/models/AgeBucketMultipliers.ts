@@ -32,8 +32,6 @@ export interface AgeBucketMultipliers {
     [key: string]: number | any;
     /**
      * Age bucket identifier.
-     * @type {TargetingSpecAgeBucket}
-     * @memberof AgeBucketMultipliers
      */
     aGEBUCKET?: TargetingSpecAgeBucket;
 }

@@ -63,7 +63,7 @@ public class CatalogsFeedCreateRequestSchema  {
 
   @ApiModelProperty(value = "")
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = CatalogsStatus.ACTIVE;
  /**
    * Get credentials
    * @return credentials

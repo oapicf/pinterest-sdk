@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -24,49 +21,35 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param _45_49 
  * @param _50_54 
  * @param _55_64 
- * @param &#x60;65plus&#x60; 
+ * @param `65plus` 
  */
 data class BidOptionsAgeBucketMultipliers(
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("18-24")
     @get:JsonProperty("18-24") val _18_24: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("25-34")
     @get:JsonProperty("25-34") val _25_34: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("35-44")
     @get:JsonProperty("35-44") val _35_44: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("45-49")
     @get:JsonProperty("45-49") val _45_49: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("50-54")
     @get:JsonProperty("50-54") val _50_54: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("55-64")
     @get:JsonProperty("55-64") val _55_64: java.math.BigDecimal? = null,
 
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("65+")
     @get:JsonProperty("65+") val `65plus`: java.math.BigDecimal? = null
 ) {

@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IntegrationLogsRequestCreate  {
   
   @ApiModelProperty(required = true, value = "")
-  @Valid
   private List<@Valid IntegrationLog> logs = new ArrayList<>();
  /**
   * Get logs

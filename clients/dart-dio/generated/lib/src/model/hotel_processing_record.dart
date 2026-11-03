@@ -171,3 +171,4 @@ class _$HotelProcessingRecordSerializer implements PrimitiveSerializer<HotelProc
   }
 }
 
+

@@ -6,20 +6,3 @@
 */
 #include "CatalogsType.h"
 
-namespace models {
-
-CatalogsType::CatalogsType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

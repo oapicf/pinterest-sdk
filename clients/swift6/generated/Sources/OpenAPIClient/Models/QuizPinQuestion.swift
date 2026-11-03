@@ -10,11 +10,11 @@ import Foundation
 /** A specific quiz inquiry. */
 public struct QuizPinQuestion: Sendable, Codable, Hashable {
 
-    public var options: [QuizPinOption]?
+    public var options: [QuizPinOption?]?
     public var questionId: Double?
     public var questionText: String?
 
-    public init(options: [QuizPinOption]? = nil, questionId: Double? = nil, questionText: String? = nil) {
+    public init(options: [QuizPinOption?]? = nil, questionId: Double? = nil, questionText: String? = nil) {
         self.options = options
         self.questionId = questionId
         self.questionText = questionText

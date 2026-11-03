@@ -125,3 +125,4 @@ class _$CatalogsProductGroupsList200ResponseSerializer implements PrimitiveSeria
   }
 }
 
+

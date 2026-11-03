@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "UpdatePartnerAssetAccessBody", description = "An object with a list of partner asset accesses to assign or update.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdatePartnerAssetAccessBody {
 
   private List<@Valid UpdatePartnerAssetAccessItem> accesses = new ArrayList<>();
@@ -57,7 +57,7 @@ public class UpdatePartnerAssetAccessBody {
    * List of partner asset accesses to assign or update.
    * @return accesses
    */
-  @NotNull @Valid @Size(min = 1, max = 50) 
+  @NotNull @Size(min = 1, max = 50) 
   @Schema(name = "accesses", description = "List of partner asset accesses to assign or update.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("accesses")
   public List<@Valid UpdatePartnerAssetAccessItem> getAccesses() {

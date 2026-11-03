@@ -206,34 +206,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!availability.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(availability));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: availability.");
 
             if (!currency.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(currency));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: currency.");
 
             if (!itemId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(itemId));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: item_id.");
 
             if (!price.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(price));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: price.");
 
             if (!itemGroupId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(itemGroupId));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: item_group_id.");
 
             if (!salePrice.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailProductMetadata.", nameof(salePrice));
+                throw new JsonException("Property is required for class CatalogsRetailProductMetadata: sale_price.");
 
             if (availability.IsSet && availability.Value == null)
-                throw new ArgumentNullException(nameof(availability), "Property is not nullable for class CatalogsRetailProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductMetadata: availability.");
 
             if (currency.IsSet && currency.Value == null)
-                throw new ArgumentNullException(nameof(currency), "Property is not nullable for class CatalogsRetailProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductMetadata: currency.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class CatalogsRetailProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductMetadata: item_id.");
 
             if (price.IsSet && price.Value == null)
-                throw new ArgumentNullException(nameof(price), "Property is not nullable for class CatalogsRetailProductMetadata.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailProductMetadata: price.");
 
             return new CatalogsRetailProductMetadata(availability.Value!.Value!, currency.Value!.Value!, itemId.Value!, price.Value!.Value!, itemGroupId.Value!, salePrice.Value!);
         }
@@ -244,7 +244,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailProductMetadata catalogsRetailProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -259,12 +258,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailProductMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailProductMetadata catalogsRetailProductMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailProductMetadata.ItemId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailProductMetadata.ItemId), "Property is required for class CatalogsRetailProductMetadata.");
-
             var availabilityRawValue = ProductAvailabilityValueConverter.ToJsonValue(catalogsRetailProductMetadata.Availability);
             writer.WriteString("availability", availabilityRawValue);
 

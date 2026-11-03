@@ -35,21 +35,42 @@ import {
 } from '../models/PinterestLibError';
 
 export interface AdvertiserDefinedEventsCreateOperationRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest;
 }
 
 export interface AdvertiserDefinedEventsDeleteRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * List of event names to delete
+     */
     eventNames: Array<string>;
 }
 
 export interface AdvertiserDefinedEventsGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
 }
 
 export interface AdvertiserDefinedEventsUpdateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     advertiserDefinedEventsCreateRequest: AdvertiserDefinedEventsCreateRequest;
 }
 

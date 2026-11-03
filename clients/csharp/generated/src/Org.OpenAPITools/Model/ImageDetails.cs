@@ -159,16 +159,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!url.IsSet)
-                throw new ArgumentException("Property is required for class ImageDetails.", nameof(url));
+                throw new JsonException("Property is required for class ImageDetails: url.");
 
             if (!height.IsSet)
-                throw new ArgumentException("Property is required for class ImageDetails.", nameof(height));
+                throw new JsonException("Property is required for class ImageDetails: height.");
 
             if (!width.IsSet)
-                throw new ArgumentException("Property is required for class ImageDetails.", nameof(width));
+                throw new JsonException("Property is required for class ImageDetails: width.");
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class ImageDetails.");
+                throw new JsonException("Property is not nullable for class ImageDetails: url.");
 
             return new ImageDetails(url.Value!, height.Value!, width.Value!);
         }
@@ -179,7 +179,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ImageDetails imageDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -194,12 +193,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="imageDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ImageDetails imageDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (imageDetails.Url == null)
-                throw new ArgumentNullException(nameof(imageDetails.Url), "Property is required for class ImageDetails.");
-
             writer.WriteString("url", imageDetails.Url);
 
             if (imageDetails.Height != null)

@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AiDisclosureItem
-{
-public:
-
-    AiDisclosureItem();
-    virtual ~AiDisclosureItem() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AiDisclosureItem,
-        )
-
-private:
+enum class AiDisclosureItem {
+    
+    AI_MODIFIED,
+    
+    SYNTHETIC_PERFORMER
+    
 };
 
+inline void to_json(nlohmann::json& j, const AiDisclosureItem& value)
+{
+    switch (value)
+    {
+        
+        case AiDisclosureItem::AI_MODIFIED: j = "AI_MODIFIED"; break;
+        
+        case AiDisclosureItem::SYNTHETIC_PERFORMER: j = "SYNTHETIC_PERFORMER"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AiDisclosureItem", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AiDisclosureItem& value)
+{
+    
+    if (j == "AI_MODIFIED")
+    {
+        value = AiDisclosureItem::AI_MODIFIED;
+        return;
+    }
+    
+    if (j == "SYNTHETIC_PERFORMER")
+    {
+        value = AiDisclosureItem::SYNTHETIC_PERFORMER;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AiDisclosureItem", &j);
+}
 
 } // namespace models
 

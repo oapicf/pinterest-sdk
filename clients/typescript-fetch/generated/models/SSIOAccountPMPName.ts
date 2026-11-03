@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface SSIOAccountPMPName {
     /**
      * Salesforce id for PMP
-     * @type {string}
-     * @memberof SSIOAccountPMPName
      */
     id?: string;
     /**
      * Display name
-     * @type {string}
-     * @memberof SSIOAccountPMPName
      */
     name?: string;
 }

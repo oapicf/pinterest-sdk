@@ -11,8 +11,8 @@ import Foundation
 public struct CampaignDeliveryEstimatesCampaign: Sendable, Codable, Hashable {
 
     public static let adGroupsRule = ArrayRule(minItems: 1, maxItems: 10, uniqueItems: false)
-    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
-    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d{4}-\\d{2}-\\d{2}$/")
+    public static let endDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
+    public static let startDateRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d{4}-\\d{2}-\\d{2}$")
     public var adGroups: [AdGroupDeliveryEstimates]
     /** Duration type of the budget */
     public var budgetDurationType: BudgetDurationType

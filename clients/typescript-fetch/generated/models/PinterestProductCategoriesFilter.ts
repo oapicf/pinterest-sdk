@@ -29,8 +29,6 @@ import {
 export interface PinterestProductCategoriesFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultiplePinterestProductCategoryCriteria}
-     * @memberof PinterestProductCategoriesFilter
      */
     pINTERESTPRODUCTCATEGORIES: CatalogsProductGroupMultiplePinterestProductCategoryCriteria;
 }

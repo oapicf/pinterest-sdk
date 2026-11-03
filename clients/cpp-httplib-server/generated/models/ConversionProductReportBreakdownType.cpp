@@ -6,20 +6,3 @@
 */
 #include "ConversionProductReportBreakdownType.h"
 
-namespace models {
-
-ConversionProductReportBreakdownType::ConversionProductReportBreakdownType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

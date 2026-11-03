@@ -22,15 +22,15 @@ import io.swagger.v3.oas.annotations.media.Schema
 data class ImageDetails(
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("height")
+    @param:JsonProperty("height", required = true)
     @get:JsonProperty("height", required = true) val height: kotlin.Int?,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("url")
+    @param:JsonProperty("url", required = true)
     @get:JsonProperty("url", required = true) val url: kotlin.String,
 
     @Schema(required = true, description = "")
-    @param:JsonProperty("width")
+    @param:JsonProperty("width", required = true)
     @get:JsonProperty("width", required = true) val width: kotlin.Int?
 ) {
 

@@ -33,26 +33,26 @@ data class CatalogsRetailListProductsByCatalogBasedFilterRequest(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "2680059592705", required = true, description = "Catalog ID pertaining to the product group.")
-    @param:JsonProperty("catalog_id")
+    @param:JsonProperty("catalog_id", required = true)
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String,
 
     @Schema(required = true, description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
-    @param:JsonProperty("catalog_type")
+    @param:JsonProperty("catalog_type", required = true)
     @get:JsonProperty("catalog_type", required = true) override val catalogType: CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType = kotlin.String.RETAIL,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("country")
+    @param:JsonProperty("country", required = true)
     @get:JsonProperty("country", required = true) val country: Country,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("filters")
+    @param:JsonProperty("filters", required = true)
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("locale")
+    @param:JsonProperty("locale", required = true)
     @get:JsonProperty("locale", required = true) val locale: CatalogsLocale
 ) : CatalogsVerticalsListProductsByCatalogBasedFilterRequest {
 
@@ -63,12 +63,12 @@ data class CatalogsRetailListProductsByCatalogBasedFilterRequest(
     enum class CatalogType(@get:JsonValue val value: kotlin.String) {
 
         RETAIL("RETAIL");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogType'")
             }
         }

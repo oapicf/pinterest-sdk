@@ -224,3 +224,4 @@ class _$ProductCategoryDetailsSerializer implements PrimitiveSerializer<ProductC
   }
 }
 
+

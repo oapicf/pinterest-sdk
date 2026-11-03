@@ -29,14 +29,10 @@ import {
 export interface CatalogsProductGroupMultipleGenderCriteria {
     /**
      * 
-     * @type {boolean}
-     * @memberof CatalogsProductGroupMultipleGenderCriteria
      */
     negated?: boolean;
     /**
      * 
-     * @type {Array<Gender>}
-     * @memberof CatalogsProductGroupMultipleGenderCriteria
      */
     values: Array<Gender>;
 }

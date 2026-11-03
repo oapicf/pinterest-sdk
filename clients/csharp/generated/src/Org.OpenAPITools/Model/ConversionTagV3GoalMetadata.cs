@@ -262,19 +262,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (attributionWindows.IsSet && attributionWindows.Value == null)
-                throw new ArgumentNullException(nameof(attributionWindows), "Property is not nullable for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Property is not nullable for class ConversionTagV3GoalMetadata: attribution_windows.");
 
             if (conversionEvent.IsSet && conversionEvent.Value == null)
-                throw new ArgumentNullException(nameof(conversionEvent), "Property is not nullable for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Property is not nullable for class ConversionTagV3GoalMetadata: conversion_event.");
 
             if (conversionTagId.IsSet && conversionTagId.Value == null)
-                throw new ArgumentNullException(nameof(conversionTagId), "Property is not nullable for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Property is not nullable for class ConversionTagV3GoalMetadata: conversion_tag_id.");
 
             if (cpaGoalValueInMicroCurrency.IsSet && cpaGoalValueInMicroCurrency.Value == null)
-                throw new ArgumentNullException(nameof(cpaGoalValueInMicroCurrency), "Property is not nullable for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Property is not nullable for class ConversionTagV3GoalMetadata: cpa_goal_value_in_micro_currency.");
 
             if (reportingEvent.IsSet && reportingEvent.Value == null)
-                throw new ArgumentNullException(nameof(reportingEvent), "Property is not nullable for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Property is not nullable for class ConversionTagV3GoalMetadata: reporting_event.");
 
             return new ConversionTagV3GoalMetadata(attributionWindows, conversionEvent, conversionTagId, cpaGoalValueInMicroCurrency, isRoasOptimized, reportingEvent);
         }
@@ -285,7 +285,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagV3GoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionTagV3GoalMetadata conversionTagV3GoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -300,20 +299,22 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionTagV3GoalMetadata"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionTagV3GoalMetadata conversionTagV3GoalMetadata, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionTagV3GoalMetadata.AttributionWindowsOption.IsSet && conversionTagV3GoalMetadata.AttributionWindows == null)
-                throw new ArgumentNullException(nameof(conversionTagV3GoalMetadata.AttributionWindows), "Property is required for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Cannot write null property ConversionTagV3GoalMetadata.AttributionWindows to non-nullable JSON property 'attribution_windows'.");
+
+            if (conversionTagV3GoalMetadata.ConversionEventOption.IsSet && conversionTagV3GoalMetadata.ConversionEvent == null)
+                throw new JsonException("Cannot write null property ConversionTagV3GoalMetadata.ConversionEvent to non-nullable JSON property 'conversion_event'.");
 
             if (conversionTagV3GoalMetadata.ConversionTagIdOption.IsSet && conversionTagV3GoalMetadata.ConversionTagId == null)
-                throw new ArgumentNullException(nameof(conversionTagV3GoalMetadata.ConversionTagId), "Property is required for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Cannot write null property ConversionTagV3GoalMetadata.ConversionTagId to non-nullable JSON property 'conversion_tag_id'.");
 
             if (conversionTagV3GoalMetadata.CpaGoalValueInMicroCurrencyOption.IsSet && conversionTagV3GoalMetadata.CpaGoalValueInMicroCurrency == null)
-                throw new ArgumentNullException(nameof(conversionTagV3GoalMetadata.CpaGoalValueInMicroCurrency), "Property is required for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Cannot write null property ConversionTagV3GoalMetadata.CpaGoalValueInMicroCurrency to non-nullable JSON property 'cpa_goal_value_in_micro_currency'.");
 
             if (conversionTagV3GoalMetadata.ReportingEventOption.IsSet && conversionTagV3GoalMetadata.ReportingEvent == null)
-                throw new ArgumentNullException(nameof(conversionTagV3GoalMetadata.ReportingEvent), "Property is required for class ConversionTagV3GoalMetadata.");
+                throw new JsonException("Cannot write null property ConversionTagV3GoalMetadata.ReportingEvent to non-nullable JSON property 'reporting_event'.");
 
             if (conversionTagV3GoalMetadata.AttributionWindowsOption.IsSet)
             {

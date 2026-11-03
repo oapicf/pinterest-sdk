@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Model
             }
 
             if (url.IsSet && url.Value == null)
-                throw new ArgumentNullException(nameof(url), "Property is not nullable for class AdPreviewURLResponse.");
+                throw new JsonException("Property is not nullable for class AdPreviewURLResponse: url.");
 
             return new AdPreviewURLResponse(url);
         }
@@ -153,7 +153,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewURLResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdPreviewURLResponse adPreviewURLResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -168,11 +167,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="adPreviewURLResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdPreviewURLResponse adPreviewURLResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             if (adPreviewURLResponse.UrlOption.IsSet && adPreviewURLResponse.Url == null)
-                throw new ArgumentNullException(nameof(adPreviewURLResponse.Url), "Property is required for class AdPreviewURLResponse.");
+                throw new JsonException("Cannot write null property AdPreviewURLResponse.Url to non-nullable JSON property 'url'.");
 
             if (adPreviewURLResponse.UrlOption.IsSet)
                 writer.WriteString("url", adPreviewURLResponse.Url);

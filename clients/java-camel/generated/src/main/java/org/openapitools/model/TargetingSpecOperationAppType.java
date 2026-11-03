@@ -27,7 +27,7 @@ import jakarta.annotation.Generated;
  * TargetingSpecOperationAppType
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingSpecOperationAppType implements TargetingSpecOperations {
 
   /**
@@ -67,7 +67,6 @@ public class TargetingSpecOperationAppType implements TargetingSpecOperations {
 
   private TargetingSpecListOperation operation;
 
-  @Valid
   private List<TargetingSpecAppType> values = new ArrayList<>();
 
   public TargetingSpecOperationAppType() {
@@ -140,7 +139,7 @@ public class TargetingSpecOperationAppType implements TargetingSpecOperations {
    * Get values
    * @return values
    */
-  @NotNull @Valid 
+  @NotNull 
   @Schema(name = "values", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("values")
   public List<TargetingSpecAppType> getValues() {

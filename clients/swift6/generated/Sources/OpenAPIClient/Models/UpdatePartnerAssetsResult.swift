@@ -10,8 +10,8 @@ import Foundation
 /** An object containing the permissions a business partner has on the asset. */
 public struct UpdatePartnerAssetsResult: Sendable, Codable, Hashable {
 
-    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let assetIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let partnerIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     /** Unique identifier of a business asset. */
     public var assetId: String?
     public var assetType: AssetTypeResponse?

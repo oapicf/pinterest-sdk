@@ -22,7 +22,7 @@ data class AiDisclosures(
 
     @field:Valid
     @Schema(required = true, description = "List of AI disclosure declarations the creator has made about this Pin.")
-    @param:JsonProperty("values")
+    @param:JsonProperty("values", required = true)
     @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<AiDisclosureItem>
 ) {
 

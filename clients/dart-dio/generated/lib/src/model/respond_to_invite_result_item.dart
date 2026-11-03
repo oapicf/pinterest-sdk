@@ -129,3 +129,4 @@ class _$RespondToInviteResultItemSerializer implements PrimitiveSerializer<Respo
   }
 }
 
+

@@ -6,20 +6,3 @@
 */
 #include "MediaType.h"
 
-namespace models {
-
-MediaType::MediaType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

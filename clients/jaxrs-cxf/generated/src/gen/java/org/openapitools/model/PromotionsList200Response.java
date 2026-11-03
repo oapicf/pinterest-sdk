@@ -22,8 +22,6 @@ public class PromotionsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Promotion> items = new ArrayList<>();
  /**
    * Get bookmark

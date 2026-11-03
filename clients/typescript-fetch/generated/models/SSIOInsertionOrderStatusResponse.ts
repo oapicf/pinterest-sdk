@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface SSIOInsertionOrderStatusResponse {
     /**
      * Salesforce insertion order creation time
-     * @type {string}
-     * @memberof SSIOInsertionOrderStatusResponse
      */
     creationTime?: string | null;
     /**
      * Salesforce order id
-     * @type {string}
-     * @memberof SSIOInsertionOrderStatusResponse
      */
     pinOrderId?: string;
     /**
      * Salesforce insertion order status
-     * @type {string}
-     * @memberof SSIOInsertionOrderStatusResponse
      */
     status?: string;
 }

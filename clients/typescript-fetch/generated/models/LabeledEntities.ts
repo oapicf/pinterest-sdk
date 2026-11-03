@@ -36,14 +36,10 @@ import {
 export interface LabeledEntities {
     /**
      * 
-     * @type {Array<EntityLabel>}
-     * @memberof LabeledEntities
      */
     readonly entitiesLabels?: Array<EntityLabel>;
     /**
      * Labels that were not successfully applied.
-     * @type {Array<EntityLabelError>}
-     * @memberof LabeledEntities
      */
     readonly errors?: Array<EntityLabelError>;
 }

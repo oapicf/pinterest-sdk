@@ -13,7 +13,7 @@ import org.openapitools.model.PacingDeliveryType;
 /**
  * AdGroupCreateRequestAllOf1
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-08-30T09:52:46.198627651Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateRequestAllOf1   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled;
@@ -22,10 +22,10 @@ public class AdGroupCreateRequestAllOf1   {
   private BigDecimal bidMultiplier;
 
   @JsonProperty("budget_type")
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @JsonProperty("pacing_delivery_type")
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
 
   public AdGroupCreateRequestAllOf1 autoTargetingEnabled(Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;

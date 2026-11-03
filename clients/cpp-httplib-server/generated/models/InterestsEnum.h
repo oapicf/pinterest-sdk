@@ -12,24 +12,184 @@
 
 namespace models {
 
-
-class InterestsEnum
-{
-public:
-
-    InterestsEnum();
-    virtual ~InterestsEnum() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(InterestsEnum,
-        )
-
-private:
+enum class InterestsEnum {
+    
+    ALL,
+    
+    ANIMALS,
+    
+    ARCHITECTURE,
+    
+    ART,
+    
+    BEAUTY,
+    
+    DIY_AND_CRAFTS,
+    
+    EDUCATION,
+    
+    EVENT_PLANNING,
+    
+    FASHION,
+    
+    FOOD_AND_DRINKS,
+    
+    GARDENING,
+    
+    HEALTH,
+    
+    HOME_DECOR,
+    
+    PARENTING,
+    
+    TRAVEL,
+    
+    WEDDING
+    
 };
 
+inline void to_json(nlohmann::json& j, const InterestsEnum& value)
+{
+    switch (value)
+    {
+        
+        case InterestsEnum::ALL: j = "ALL"; break;
+        
+        case InterestsEnum::ANIMALS: j = "ANIMALS"; break;
+        
+        case InterestsEnum::ARCHITECTURE: j = "ARCHITECTURE"; break;
+        
+        case InterestsEnum::ART: j = "ART"; break;
+        
+        case InterestsEnum::BEAUTY: j = "BEAUTY"; break;
+        
+        case InterestsEnum::DIY_AND_CRAFTS: j = "DIY_AND_CRAFTS"; break;
+        
+        case InterestsEnum::EDUCATION: j = "EDUCATION"; break;
+        
+        case InterestsEnum::EVENT_PLANNING: j = "EVENT_PLANNING"; break;
+        
+        case InterestsEnum::FASHION: j = "FASHION"; break;
+        
+        case InterestsEnum::FOOD_AND_DRINKS: j = "FOOD_AND_DRINKS"; break;
+        
+        case InterestsEnum::GARDENING: j = "GARDENING"; break;
+        
+        case InterestsEnum::HEALTH: j = "HEALTH"; break;
+        
+        case InterestsEnum::HOME_DECOR: j = "HOME_DECOR"; break;
+        
+        case InterestsEnum::PARENTING: j = "PARENTING"; break;
+        
+        case InterestsEnum::TRAVEL: j = "TRAVEL"; break;
+        
+        case InterestsEnum::WEDDING: j = "WEDDING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for InterestsEnum", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, InterestsEnum& value)
+{
+    
+    if (j == "ALL")
+    {
+        value = InterestsEnum::ALL;
+        return;
+    }
+    
+    if (j == "ANIMALS")
+    {
+        value = InterestsEnum::ANIMALS;
+        return;
+    }
+    
+    if (j == "ARCHITECTURE")
+    {
+        value = InterestsEnum::ARCHITECTURE;
+        return;
+    }
+    
+    if (j == "ART")
+    {
+        value = InterestsEnum::ART;
+        return;
+    }
+    
+    if (j == "BEAUTY")
+    {
+        value = InterestsEnum::BEAUTY;
+        return;
+    }
+    
+    if (j == "DIY_AND_CRAFTS")
+    {
+        value = InterestsEnum::DIY_AND_CRAFTS;
+        return;
+    }
+    
+    if (j == "EDUCATION")
+    {
+        value = InterestsEnum::EDUCATION;
+        return;
+    }
+    
+    if (j == "EVENT_PLANNING")
+    {
+        value = InterestsEnum::EVENT_PLANNING;
+        return;
+    }
+    
+    if (j == "FASHION")
+    {
+        value = InterestsEnum::FASHION;
+        return;
+    }
+    
+    if (j == "FOOD_AND_DRINKS")
+    {
+        value = InterestsEnum::FOOD_AND_DRINKS;
+        return;
+    }
+    
+    if (j == "GARDENING")
+    {
+        value = InterestsEnum::GARDENING;
+        return;
+    }
+    
+    if (j == "HEALTH")
+    {
+        value = InterestsEnum::HEALTH;
+        return;
+    }
+    
+    if (j == "HOME_DECOR")
+    {
+        value = InterestsEnum::HOME_DECOR;
+        return;
+    }
+    
+    if (j == "PARENTING")
+    {
+        value = InterestsEnum::PARENTING;
+        return;
+    }
+    
+    if (j == "TRAVEL")
+    {
+        value = InterestsEnum::TRAVEL;
+        return;
+    }
+    
+    if (j == "WEDDING")
+    {
+        value = InterestsEnum::WEDDING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for InterestsEnum", &j);
+}
 
 } // namespace models
 

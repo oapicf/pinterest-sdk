@@ -125,3 +125,4 @@ class _$PromotionsList200ResponseSerializer implements PrimitiveSerializer<Promo
   }
 }
 
+

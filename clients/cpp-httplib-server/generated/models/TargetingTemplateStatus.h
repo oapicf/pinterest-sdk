@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class TargetingTemplateStatus
-{
-public:
-
-    TargetingTemplateStatus();
-    virtual ~TargetingTemplateStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingTemplateStatus,
-        )
-
-private:
+enum class TargetingTemplateStatus {
+    
+    ACTIVE,
+    
+    DELETED
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingTemplateStatus& value)
+{
+    switch (value)
+    {
+        
+        case TargetingTemplateStatus::ACTIVE: j = "ACTIVE"; break;
+        
+        case TargetingTemplateStatus::DELETED: j = "DELETED"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingTemplateStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingTemplateStatus& value)
+{
+    
+    if (j == "ACTIVE")
+    {
+        value = TargetingTemplateStatus::ACTIVE;
+        return;
+    }
+    
+    if (j == "DELETED")
+    {
+        value = TargetingTemplateStatus::DELETED;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingTemplateStatus", &j);
+}
 
 } // namespace models
 

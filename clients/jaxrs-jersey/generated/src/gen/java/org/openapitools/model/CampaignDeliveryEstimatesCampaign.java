@@ -42,7 +42,7 @@ import javax.validation.Valid;
   CampaignDeliveryEstimatesCampaign.JSON_PROPERTY_OBJECTIVE_TYPE,
   CampaignDeliveryEstimatesCampaign.JSON_PROPERTY_START_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignDeliveryEstimatesCampaign   {
   public static final String JSON_PROPERTY_AD_GROUPS = "ad_groups";
   @JsonProperty(JSON_PROPERTY_AD_GROUPS)
@@ -91,7 +91,7 @@ public class CampaignDeliveryEstimatesCampaign   {
    **/
   @JsonProperty(value = "ad_groups")
   @ApiModelProperty(required = true, value = "")
-  @NotNull @Valid  @Size(min=1,max=10)
+  @NotNull  @Size(min=1,max=10)
   public List<@Valid AdGroupDeliveryEstimates> getAdGroups() {
     return adGroups;
   }

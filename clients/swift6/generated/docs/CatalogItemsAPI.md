@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **itemsBatchGet**
 ```swift
-    open class func itemsBatchGet(batchId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsItemsBatch?, _ error: Error?) -> Void)
+    open class func itemsBatchGet(batchId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsItemsBatch
 ```
 
 Get item batch status
@@ -27,15 +27,11 @@ let batchId = "batchId_example" // String | Id of a catalogs items batch to fetc
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get item batch status
-CatalogItemsAPI.itemsBatchGet(batchId: batchId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogItemsAPI.itemsBatchGet(batchId: batchId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -63,7 +59,7 @@ Name | Type | Description  | Notes
 
 # **itemsBatchPost**
 ```swift
-    open class func itemsBatchPost(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsItemsBatch?, _ error: Error?) -> Void)
+    open class func itemsBatchPost(catalogsItemsBatchPostRequest: CatalogsItemsBatchPostRequest, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsItemsBatch
 ```
 
 Operate on item batch
@@ -79,15 +75,11 @@ let catalogsItemsBatchPostRequest = CatalogsItemsBatchPostRequest(catalogId: "ca
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Operate on item batch
-CatalogItemsAPI.itemsBatchPost(catalogsItemsBatchPostRequest: catalogsItemsBatchPostRequest, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogItemsAPI.itemsBatchPost(catalogsItemsBatchPostRequest: catalogsItemsBatchPostRequest, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -115,7 +107,7 @@ Name | Type | Description  | Notes
 
 # **itemsPost**
 ```swift
-    open class func itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String? = nil, completion: @escaping (_ data: ItemsPost200Response?, _ error: Error?) -> Void)
+    open class func itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ItemsPost200Response
 ```
 
 Get catalogs items (POST)
@@ -131,15 +123,11 @@ let catalogsItemsRequest = CatalogsItemsRequest(country: Country(), filters: Cat
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get catalogs items (POST)
-CatalogItemsAPI.itemsPost(catalogsItemsRequest: catalogsItemsRequest, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogItemsAPI.itemsPost(catalogsItemsRequest: catalogsItemsRequest, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

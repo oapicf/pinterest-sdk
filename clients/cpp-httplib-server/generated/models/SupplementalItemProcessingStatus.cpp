@@ -6,20 +6,3 @@
 */
 #include "SupplementalItemProcessingStatus.h"
 
-namespace models {
-
-SupplementalItemProcessingStatus::SupplementalItemProcessingStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

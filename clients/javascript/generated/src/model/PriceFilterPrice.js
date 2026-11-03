@@ -18,7 +18,7 @@ import NumericFilterOperatorType from './NumericFilterOperatorType';
 /**
  * The PriceFilterPrice model module.
  * @module model/PriceFilterPrice
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PriceFilterPrice {
     /**

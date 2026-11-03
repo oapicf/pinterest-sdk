@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* 
-* Values: PRIVATE
-*/
+ * 
+ * Values: PRIVATE
+ */
 enum class PinType(@get:JsonValue val value: kotlin.String) {
 
     PRIVATE("PRIVATE");
@@ -27,9 +27,8 @@ enum class PinType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): PinType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinType'")
         }
     }
 }
-

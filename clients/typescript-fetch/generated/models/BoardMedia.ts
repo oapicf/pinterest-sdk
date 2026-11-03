@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface BoardMedia {
     /**
      * Board cover image
-     * @type {string}
-     * @memberof BoardMedia
      */
     imageCoverUrl?: string | null;
     /**
      * Board pin thumbnail urls.
-     * @type {Array<string>}
-     * @memberof BoardMedia
      */
     pinThumbnailUrls?: Array<string>;
 }

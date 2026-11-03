@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class AppsflyerPlatform
-{
-public:
-
-    AppsflyerPlatform();
-    virtual ~AppsflyerPlatform() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AppsflyerPlatform,
-        )
-
-private:
+enum class AppsflyerPlatform {
+    
+    ANDROID,
+    
+    IOS
+    
 };
 
+inline void to_json(nlohmann::json& j, const AppsflyerPlatform& value)
+{
+    switch (value)
+    {
+        
+        case AppsflyerPlatform::ANDROID: j = "android"; break;
+        
+        case AppsflyerPlatform::IOS: j = "ios"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AppsflyerPlatform", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AppsflyerPlatform& value)
+{
+    
+    if (j == "android")
+    {
+        value = AppsflyerPlatform::ANDROID;
+        return;
+    }
+    
+    if (j == "ios")
+    {
+        value = AppsflyerPlatform::IOS;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AppsflyerPlatform", &j);
+}
 
 } // namespace models
 

@@ -42,7 +42,7 @@ import org.openapitools.model.TargetingSpecOptimal;
  */
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-08-30T09:53:14.631547469Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupCreateCreate   {
   
   private Boolean autoTargetingEnabled;
@@ -51,7 +51,7 @@ public class AdGroupCreateCreate   {
   private BidStrategyType bidStrategyType;
   private ActionType billableEvent;
   private Integer budgetInMicroCurrency;
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
   private String campaignId;
   private String customerSegmentId;
   private Integer endTime;
@@ -63,7 +63,7 @@ public class AdGroupCreateCreate   {
   private BigDecimal localInventoryRadiusInMiles;
   private String name;
   private NullableOptimizationGoalMetadata optimizationGoalMetadata;
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
   private PerformancePlusCampaignSettings performancePlusCampaignSettings;
   private PlacementGroupType placementGroup;
   private PlacementTrafficType placementTrafficType;

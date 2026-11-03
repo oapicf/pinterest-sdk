@@ -24,7 +24,6 @@ public class AdAccountToAdAccountSharedAudience  {
   * Permissions granted to the recipients.
   */
   @ApiModelProperty(example = "[\"RESOURCE_PINNER_LIST_READER\",\"RESOURCE_PINNER_LIST_OWNER\"]", value = "Permissions granted to the recipients.")
-  @Valid
   private List<Role> permissions = new ArrayList<>();
 
  /**

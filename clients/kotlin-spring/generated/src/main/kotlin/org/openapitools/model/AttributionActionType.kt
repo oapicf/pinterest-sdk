@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Type of an attributed action.
-* Values: view,click
-*/
+ * Type of an attributed action.
+ * Values: view,click
+ */
 enum class AttributionActionType(@get:JsonValue val value: kotlin.String) {
 
     view("view"),
@@ -28,9 +28,8 @@ enum class AttributionActionType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AttributionActionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionActionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AttributionActionType'")
         }
     }
 }
-

@@ -22,8 +22,6 @@ public class FollowersList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid FollowUser> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -36,7 +35,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsFeed", description = "Catalogs Creative Asset Feed object")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
 
   private String catalogId;
@@ -79,12 +78,10 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime createdAt;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedCredentials> credentials = JsonNullable.<CatalogsFeedCredentials>undefined();
 
   private Country defaultCountry;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
 
   private String defaultLocale;
@@ -97,7 +94,6 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<CatalogsFeedProcessingSchedule> preferredProcessingSchedule = JsonNullable.<CatalogsFeedProcessingSchedule>undefined();
 
   private CatalogsStatus status;
@@ -199,7 +195,7 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
    * @return credentials
    */
   @Valid 
-  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "credentials", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("credentials")
   public JsonNullable<CatalogsFeedCredentials> getCredentials() {
     return credentials;
@@ -240,7 +236,7 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
    * @return defaultCurrency
    */
   @Valid 
-  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "default_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("default_currency")
   public JsonNullable<NullableCurrency> getDefaultCurrency() {
     return defaultCurrency;
@@ -343,8 +339,8 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
    * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
    * @return name
    */
-  @NotNull 
-  @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED)
+  /* @Present */ 
+  @Schema(name = "name", description = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.", requiredMode = Schema.RequiredMode.REQUIRED, nullable = true)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -365,7 +361,7 @@ public class CatalogsCreativeAssetsFeed implements CatalogsFeed {
    * @return preferredProcessingSchedule
    */
   @Valid 
-  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "preferred_processing_schedule", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("preferred_processing_schedule")
   public JsonNullable<CatalogsFeedProcessingSchedule> getPreferredProcessingSchedule() {
     return preferredProcessingSchedule;

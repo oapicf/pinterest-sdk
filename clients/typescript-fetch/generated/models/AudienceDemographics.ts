@@ -29,32 +29,22 @@ import {
 export interface AudienceDemographics {
     /**
      * Ages distribution.
-     * @type {Array<AudienceDemographicValue>}
-     * @memberof AudienceDemographics
      */
     ages?: Array<AudienceDemographicValue>;
     /**
      * Country area distribution.
-     * @type {Array<AudienceDemographicValue>}
-     * @memberof AudienceDemographics
      */
     countries?: Array<AudienceDemographicValue>;
     /**
      * Device usage distribution.
-     * @type {Array<AudienceDemographicValue>}
-     * @memberof AudienceDemographics
      */
     devices?: Array<AudienceDemographicValue>;
     /**
      * Gender distribution.
-     * @type {Array<AudienceDemographicValue>}
-     * @memberof AudienceDemographics
      */
     genders?: Array<AudienceDemographicValue>;
     /**
      * Geographic metro area distribution.
-     * @type {Array<AudienceDemographicValue>}
-     * @memberof AudienceDemographics
      */
     metros?: Array<AudienceDemographicValue>;
 }

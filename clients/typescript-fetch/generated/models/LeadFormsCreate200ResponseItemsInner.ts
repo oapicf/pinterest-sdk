@@ -36,14 +36,10 @@ import {
 export interface LeadFormsCreate200ResponseItemsInner {
     /**
      * 
-     * @type {LeadForm}
-     * @memberof LeadFormsCreate200ResponseItemsInner
      */
     data?: LeadForm;
     /**
      * 
-     * @type {Array<PinterestLibBatchItemException>}
-     * @memberof LeadFormsCreate200ResponseItemsInner
      */
     exceptions?: Array<PinterestLibBatchItemException>;
 }

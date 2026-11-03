@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -29,22 +28,17 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "ScheduleBidOptions", description = "Object describing the schedule level bid level changes.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ScheduleAgeBucketMultipliers> ageBucketMultipliers = JsonNullable.<ScheduleAgeBucketMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ScheduleAppTypeMultipliers> appTypeMultipliers = JsonNullable.<ScheduleAppTypeMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable ScheduleAudienceMultipliers audienceMultipliers;
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ScheduleBidOptionsGenderMultipliers> genderMultipliers = JsonNullable.<ScheduleBidOptionsGenderMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<ScheduleBidOptionsPlacementMultipliers> placementMultipliers = JsonNullable.<ScheduleBidOptionsPlacementMultipliers>undefined();
 
   public ScheduleBidOptions ageBucketMultipliers(ScheduleAgeBucketMultipliers ageBucketMultipliers) {
@@ -57,7 +51,7 @@ public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
    * @return ageBucketMultipliers
    */
   @Valid 
-  @Schema(name = "age_bucket_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "age_bucket_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("age_bucket_multipliers")
   public JsonNullable<ScheduleAgeBucketMultipliers> getAgeBucketMultipliers() {
     return ageBucketMultipliers;
@@ -77,7 +71,7 @@ public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
    * @return appTypeMultipliers
    */
   @Valid 
-  @Schema(name = "app_type_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_type_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_type_multipliers")
   public JsonNullable<ScheduleAppTypeMultipliers> getAppTypeMultipliers() {
     return appTypeMultipliers;
@@ -118,7 +112,7 @@ public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
    * @return genderMultipliers
    */
   @Valid 
-  @Schema(name = "gender_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "gender_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("gender_multipliers")
   public JsonNullable<ScheduleBidOptionsGenderMultipliers> getGenderMultipliers() {
     return genderMultipliers;
@@ -138,7 +132,7 @@ public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
    * @return placementMultipliers
    */
   @Valid 
-  @Schema(name = "placement_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("placement_multipliers")
   public JsonNullable<ScheduleBidOptionsPlacementMultipliers> getPlacementMultipliers() {
     return placementMultipliers;
@@ -197,7 +191,7 @@ public class ScheduleBidOptions implements ScheduleCommonDeltaValue {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 }

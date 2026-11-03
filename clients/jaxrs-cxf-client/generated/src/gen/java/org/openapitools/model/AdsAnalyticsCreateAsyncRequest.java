@@ -103,7 +103,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a pin click action.")
 
-  private ConversionAttributionWindowDays clickWindowDays;
+  private ConversionAttributionWindowDays clickWindowDays = 30;
 
  /**
   * Metric and entity columns. Pin promotion and ad related columns are not supported for Product Item level reports.
@@ -124,7 +124,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "Date dimension for conversion metrics.")
 
-  private ConversionReportTimeType conversionReportTime;
+  private ConversionReportTimeType conversionReportTime = ConversionReportTimeType.TIME_OF_AD_ACTION;
 
  /**
   * List of advertiser-defined custom conversion event metrics to include in the report
@@ -152,7 +152,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "Number of days to use as the conversion attribution window for an engagement action.")
 
-  private ConversionAttributionWindowDays engagementWindowDays;
+  private ConversionAttributionWindowDays engagementWindowDays = 30;
 
  /**
   *   TOTAL - metrics are aggregated over the specified date range.   DAY - metrics are broken down daily.   HOUR - metrics are broken down hourly.   WEEKLY - metrics are broken down weekly.   MONTHLY - metrics are broken down monthly.
@@ -177,7 +177,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @ApiModelProperty(value = "")
 
-  private PrimarySort primarySort;
+  private PrimarySort primarySort = PrimarySort.BY_ID;
 
  /**
   * List of product group ids
@@ -202,7 +202,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
 
   @ApiModelProperty(value = "")
 
-  private DataOutputFormat reportFormat;
+  private DataOutputFormat reportFormat = DataOutputFormat.JSON;
 
  /**
   * Specify the timezone to be applied for the reporting.
@@ -237,7 +237,7 @@ public class AdsAnalyticsCreateAsyncRequest  {
   */
   @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a view action.")
 
-  private ConversionAttributionWindowDays viewWindowDays;
+  private ConversionAttributionWindowDays viewWindowDays = 1;
  /**
    * List of ad group ids
    * @return adGroupIds

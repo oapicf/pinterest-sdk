@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'product_group_summary_status.g.dart';
 
+/// Summary status for product group
 class ProductGroupSummaryStatus extends EnumClass {
 
-  /// Summary status for product group
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const ProductGroupSummaryStatus RUNNING = _$RUNNING;
-  /// Summary status for product group
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const ProductGroupSummaryStatus PAUSED = _$PAUSED;
-  /// Summary status for product group
   @BuiltValueEnumConst(wireName: r'EXCLUDED')
   static const ProductGroupSummaryStatus EXCLUDED = _$EXCLUDED;
-  /// Summary status for product group
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const ProductGroupSummaryStatus ARCHIVED = _$ARCHIVED;
 

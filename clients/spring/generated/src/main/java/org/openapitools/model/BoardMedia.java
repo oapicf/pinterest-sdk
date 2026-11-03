@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
@@ -25,13 +24,11 @@ import jakarta.annotation.Generated;
  * BoardMedia
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BoardMedia {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<String> imageCoverUrl = JsonNullable.<String>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private List<String> pinThumbnailUrls = new ArrayList<>();
 
   public BoardMedia imageCoverUrl(String imageCoverUrl) {
@@ -44,7 +41,7 @@ public class BoardMedia {
    * @return imageCoverUrl
    */
   
-  @Schema(name = "image_cover_url", example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", description = "Board cover image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "image_cover_url", example = "https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg", description = "Board cover image", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("image_cover_url")
   public JsonNullable<String> getImageCoverUrl() {
     return imageCoverUrl;

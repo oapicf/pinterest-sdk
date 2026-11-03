@@ -109,3 +109,4 @@ class _$PromotionsResponseSerializer implements PrimitiveSerializer<PromotionsRe
   }
 }
 
+

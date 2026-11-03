@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Resource create operation model.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-08-30T09:52:55.641133752Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupAudienceSizingCreate   {
   @JsonProperty("auto_targeting_enabled")
   private Boolean autoTargetingEnabled = true;
@@ -38,7 +38,7 @@ public class AdGroupAudienceSizingCreate   {
   private List<AdGroupAudienceSizingKeyword> keywords = null;
 
   @JsonProperty("placement_group")
-  private AdgroupPlacementGroupType placementGroup;
+  private AdgroupPlacementGroupType placementGroup = AdgroupPlacementGroupType.ALL;
 
   @JsonProperty("product_group_ids")
   

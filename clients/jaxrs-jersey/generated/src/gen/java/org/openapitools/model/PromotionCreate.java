@@ -45,7 +45,7 @@ import javax.validation.Valid;
   PromotionCreate.JSON_PROPERTY_START_TIME,
   PromotionCreate.JSON_PROPERTY_TEMPLATE_VALUES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PromotionCreate   {
   public static final String JSON_PROPERTY_DISCOUNT_STATUS = "discount_status";
   @JsonProperty(JSON_PROPERTY_DISCOUNT_STATUS)
@@ -286,7 +286,7 @@ public class PromotionCreate   {
    **/
   @JsonProperty(value = "template_values")
   @ApiModelProperty(value = "List of values to be inserted in the promotion type-specific template.")
-  @Valid  @Size(min=0,max=2)
+   @Size(min=0,max=2)
   public List<@Valid PromotionTemplateValue> getTemplateValues() {
     return templateValues;
   }

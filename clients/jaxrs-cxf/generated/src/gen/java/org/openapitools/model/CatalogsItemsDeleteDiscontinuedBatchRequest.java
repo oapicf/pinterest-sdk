@@ -33,8 +33,6 @@ public class CatalogsItemsDeleteDiscontinuedBatchRequest  {
   */
   @ApiModelProperty(required = true, value = "Array with catalogs items")
 
-  @Valid
-
   private List<@Valid ItemDeleteDiscontinuedBatchRecord> items = new ArrayList<>();
 
 public enum LanguageEnum {

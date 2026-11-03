@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* The status of the batch operation
-* Values: PROCESSING,COMPLETED,FAILED
-*/
+ * The status of the batch operation
+ * Values: PROCESSING,COMPLETED,FAILED
+ */
 enum class SupplementalItemBatchOperationStatus(@get:JsonValue val value: kotlin.String) {
 
     PROCESSING("PROCESSING"),
@@ -29,9 +29,8 @@ enum class SupplementalItemBatchOperationStatus(@get:JsonValue val value: kotlin
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): SupplementalItemBatchOperationStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SupplementalItemBatchOperationStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SupplementalItemBatchOperationStatus'")
         }
     }
 }
-

@@ -246,8 +246,6 @@ public class AdGroupUpdateBatchUpdate  {
 
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid TargetingSpecOperations> targetingSpecOperations = new ArrayList<>();
 
  /**

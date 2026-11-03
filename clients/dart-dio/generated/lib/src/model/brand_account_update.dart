@@ -209,3 +209,4 @@ class _$BrandAccountUpdateSerializer implements PrimitiveSerializer<BrandAccount
   }
 }
 
+

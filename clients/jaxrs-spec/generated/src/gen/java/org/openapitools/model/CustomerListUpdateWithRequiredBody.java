@@ -23,11 +23,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Resource create or update operation model with required body fields (no OptionalProperties).")
 @JsonTypeName("CustomerListUpdateWithRequiredBody")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUpdateWithRequiredBody   {
   private UserListOperationType operationType;
   private String records;
-  private @Valid List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();
+  private List<@Valid CustomerListRecordRow> recordsV2 = new ArrayList<>();
 
   public CustomerListUpdateWithRequiredBody() {
   }
@@ -90,7 +90,7 @@ public class CustomerListUpdateWithRequiredBody   {
   
   @ApiModelProperty(value = "Multi-field record format. Array of objects with optional email, maid, ip_address, user_agent, external_id, hashed_pinner_id, hashed_phone_number, and liveramp_envelope per row. Provide exactly one of records or records_v2.")
   @JsonProperty("records_v2")
-  @Valid public List<@Valid CustomerListRecordRow> getRecordsV2() {
+  public List<@Valid CustomerListRecordRow> getRecordsV2() {
     return recordsV2;
   }
 

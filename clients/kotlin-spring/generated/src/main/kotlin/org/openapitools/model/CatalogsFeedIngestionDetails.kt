@@ -26,17 +26,17 @@ data class CatalogsFeedIngestionDetails(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("errors")
+    @param:JsonProperty("errors", required = true)
     @get:JsonProperty("errors", required = true) val errors: CatalogsFeedIngestionErrors,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("info")
+    @param:JsonProperty("info", required = true)
     @get:JsonProperty("info", required = true) val info: CatalogsFeedIngestionInfo,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("warnings")
+    @param:JsonProperty("warnings", required = true)
     @get:JsonProperty("warnings", required = true) val warnings: CatalogsFeedIngestionWarnings
 ) {
 

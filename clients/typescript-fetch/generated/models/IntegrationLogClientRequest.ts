@@ -29,38 +29,26 @@ import {
 export interface IntegrationLogClientRequest {
     /**
      * HTTP request host from host header.
-     * @type {string}
-     * @memberof IntegrationLogClientRequest
      */
     host: string;
     /**
      * 
-     * @type {HttpMethod}
-     * @memberof IntegrationLogClientRequest
      */
     method: HttpMethod;
     /**
      * HTTP request path.
-     * @type {string}
-     * @memberof IntegrationLogClientRequest
      */
     path: string;
     /**
      * HTTP request headers as key-value pairs.
-     * @type {{ [key: string]: string; }}
-     * @memberof IntegrationLogClientRequest
      */
     requestHeaders?: { [key: string]: string; };
     /**
      * HTTP response headers as key-value pairs.
-     * @type {{ [key: string]: string; }}
-     * @memberof IntegrationLogClientRequest
      */
     responseHeaders?: { [key: string]: string; };
     /**
      * 
-     * @type {number}
-     * @memberof IntegrationLogClientRequest
      */
     responseStatusCode?: number;
 }

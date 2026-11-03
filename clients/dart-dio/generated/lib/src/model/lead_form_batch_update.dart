@@ -269,3 +269,4 @@ class _$LeadFormBatchUpdateSerializer implements PrimitiveSerializer<LeadFormBat
   }
 }
 
+

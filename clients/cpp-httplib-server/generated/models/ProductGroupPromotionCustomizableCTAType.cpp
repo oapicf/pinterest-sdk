@@ -6,20 +6,3 @@
 */
 #include "ProductGroupPromotionCustomizableCTAType.h"
 
-namespace models {
-
-ProductGroupPromotionCustomizableCTAType::ProductGroupPromotionCustomizableCTAType()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -6,20 +6,3 @@
 */
 #include "EventProcessingStatus.h"
 
-namespace models {
-
-EventProcessingStatus::EventProcessingStatus()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -93,9 +93,15 @@ class BidOptionsPlacementMultipliers {
       }());
 
       return BidOptionsPlacementMultipliers(
-        browse: num.parse('${json[r'browse']}'),
-        relatedPins: num.parse('${json[r'related_pins']}'),
-        search: num.parse('${json[r'search']}'),
+        browse: json[r'browse'] == null
+            ? null
+            : num.parse('${json[r'browse']}'),
+        relatedPins: json[r'related_pins'] == null
+            ? null
+            : num.parse('${json[r'related_pins']}'),
+        search: json[r'search'] == null
+            ? null
+            : num.parse('${json[r'search']}'),
       );
     }
     return null;

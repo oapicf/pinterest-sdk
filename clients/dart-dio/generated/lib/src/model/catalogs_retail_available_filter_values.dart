@@ -123,6 +123,7 @@ class _$CatalogsRetailAvailableFilterValuesSerializer implements PrimitiveSerial
   }
 }
 
+
 class CatalogsRetailAvailableFilterValuesCatalogTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RETAIL')

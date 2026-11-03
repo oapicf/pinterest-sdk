@@ -29,8 +29,6 @@ import {
 export interface CampaignAdPreviewCreate200ResponseInner {
     /**
      * 
-     * @type {CampaignAdPreviewCreate200ResponseInnerData}
-     * @memberof CampaignAdPreviewCreate200ResponseInner
      */
     data: CampaignAdPreviewCreate200ResponseInnerData;
 }

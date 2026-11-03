@@ -76,8 +76,7 @@ class LocalInventoryItemsGetCreate(BaseModel):
         _items = []
         if self.item_filters:
             for _item_item_filters in self.item_filters:
-                if _item_item_filters:
-                    _items.append(_item_item_filters.to_dict())
+                _items.append(_item_item_filters.to_dict() if _item_item_filters is not None else None)
             _dict['item_filters'] = _items
         return _dict
 

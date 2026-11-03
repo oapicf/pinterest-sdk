@@ -15,8 +15,8 @@ public struct AdGroupCreateRequest: Sendable, Codable, Hashable {
         case adGroup = "AD_GROUP"
     }
     public static let bidMultiplierRule = NumericRule<Double>(minimum: 0, exclusiveMinimum: false, maximum: 10, exclusiveMaximum: false, multipleOf: nil)
-    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[C]?\\d+$/")
-    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let campaignIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^[C]?\\d+$")
+    public static let promotionIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public static let targetingTemplateIdsRule = ArrayRule(minItems: nil, maxItems: 1, uniqueItems: false)
     /** Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>. */
     public var autoTargetingEnabled: Bool?

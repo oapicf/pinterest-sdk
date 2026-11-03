@@ -151,3 +151,4 @@ class _$FeaturedTrendSerializer implements PrimitiveSerializer<FeaturedTrend> {
   }
 }
 
+

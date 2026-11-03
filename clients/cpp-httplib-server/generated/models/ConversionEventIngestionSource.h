@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class ConversionEventIngestionSource
-{
-public:
-
-    ConversionEventIngestionSource();
-    virtual ~ConversionEventIngestionSource() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionEventIngestionSource,
-        )
-
-private:
+enum class ConversionEventIngestionSource {
+    
+    TAG,
+    
+    MMP,
+    
+    FILE_UPLOAD,
+    
+    CONVERSIONS_API,
+    
+    NATIVE
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionEventIngestionSource& value)
+{
+    switch (value)
+    {
+        
+        case ConversionEventIngestionSource::TAG: j = "TAG"; break;
+        
+        case ConversionEventIngestionSource::MMP: j = "MMP"; break;
+        
+        case ConversionEventIngestionSource::FILE_UPLOAD: j = "FILE_UPLOAD"; break;
+        
+        case ConversionEventIngestionSource::CONVERSIONS_API: j = "CONVERSIONS_API"; break;
+        
+        case ConversionEventIngestionSource::NATIVE: j = "NATIVE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionEventIngestionSource", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionEventIngestionSource& value)
+{
+    
+    if (j == "TAG")
+    {
+        value = ConversionEventIngestionSource::TAG;
+        return;
+    }
+    
+    if (j == "MMP")
+    {
+        value = ConversionEventIngestionSource::MMP;
+        return;
+    }
+    
+    if (j == "FILE_UPLOAD")
+    {
+        value = ConversionEventIngestionSource::FILE_UPLOAD;
+        return;
+    }
+    
+    if (j == "CONVERSIONS_API")
+    {
+        value = ConversionEventIngestionSource::CONVERSIONS_API;
+        return;
+    }
+    
+    if (j == "NATIVE")
+    {
+        value = ConversionEventIngestionSource::NATIVE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionEventIngestionSource", &j);
+}
 
 } // namespace models
 

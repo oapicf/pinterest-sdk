@@ -18,7 +18,7 @@ import PacingDeliveryType from './PacingDeliveryType';
 /**
  * The AdGroupCreateRequestAllOf1 model module.
  * @module model/AdGroupCreateRequestAllOf1
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class AdGroupCreateRequestAllOf1 {
     /**

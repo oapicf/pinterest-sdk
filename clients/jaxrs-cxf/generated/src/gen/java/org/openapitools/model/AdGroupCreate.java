@@ -300,13 +300,13 @@ public class AdGroupCreate  {
 
   @Valid
 
-  private BudgetType budgetType;
+  private BudgetType budgetType = BudgetType.DAILY;
 
   @ApiModelProperty(value = "")
 
   @Valid
 
-  private PacingDeliveryType pacingDeliveryType;
+  private PacingDeliveryType pacingDeliveryType = PacingDeliveryType.STANDARD;
  /**
    * Advertiser ID.
    * @return adAccountId

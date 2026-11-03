@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import org.openapitools.model.CatalogsItemValidationDetails;
@@ -21,76 +20,53 @@ import jakarta.annotation.Generated;
  * CatalogsItemValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemValidationErrors {
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails ADULT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails AVAILABILITY_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails DESCRIPTION_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails DUPLICATE_PRODUCTS;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails IMAGE_LINK_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails IMAGE_LINK_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails INVALID_DOMAIN;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails ITEMID_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails LINK_FORMAT_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails LIST_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PARSE_LINE_ERROR;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PRICE_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PRODUCT_LINK_MISSING;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails PRODUCT_PRICE_INVALID;
 
-  @JsonInclude(JsonInclude.Include.NON_NULL)
   private @Nullable CatalogsItemValidationDetails TITLE_MISSING;
 
   public CatalogsItemValidationErrors ADULT_INVALID(@Nullable CatalogsItemValidationDetails ADULT_INVALID) {

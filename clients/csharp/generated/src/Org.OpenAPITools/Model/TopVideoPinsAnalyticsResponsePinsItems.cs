@@ -181,13 +181,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (dataStatus.IsSet && dataStatus.Value == null)
-                throw new ArgumentNullException(nameof(dataStatus), "Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems: data_status.");
 
             if (metrics.IsSet && metrics.Value == null)
-                throw new ArgumentNullException(nameof(metrics), "Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems: metrics.");
 
             if (pinId.IsSet && pinId.Value == null)
-                throw new ArgumentNullException(nameof(pinId), "Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Property is not nullable for class TopVideoPinsAnalyticsResponsePinsItems: pin_id.");
 
             return new TopVideoPinsAnalyticsResponsePinsItems(dataStatus, metrics, pinId);
         }
@@ -198,7 +198,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponsePinsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponsePinsItems topVideoPinsAnalyticsResponsePinsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -213,17 +212,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="topVideoPinsAnalyticsResponsePinsItems"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, TopVideoPinsAnalyticsResponsePinsItems topVideoPinsAnalyticsResponsePinsItems, JsonSerializerOptions jsonSerializerOptions)
         {
             if (topVideoPinsAnalyticsResponsePinsItems.DataStatusOption.IsSet && topVideoPinsAnalyticsResponsePinsItems.DataStatus == null)
-                throw new ArgumentNullException(nameof(topVideoPinsAnalyticsResponsePinsItems.DataStatus), "Property is required for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponsePinsItems.DataStatus to non-nullable JSON property 'data_status'.");
 
             if (topVideoPinsAnalyticsResponsePinsItems.MetricsOption.IsSet && topVideoPinsAnalyticsResponsePinsItems.Metrics == null)
-                throw new ArgumentNullException(nameof(topVideoPinsAnalyticsResponsePinsItems.Metrics), "Property is required for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponsePinsItems.Metrics to non-nullable JSON property 'metrics'.");
 
             if (topVideoPinsAnalyticsResponsePinsItems.PinIdOption.IsSet && topVideoPinsAnalyticsResponsePinsItems.PinId == null)
-                throw new ArgumentNullException(nameof(topVideoPinsAnalyticsResponsePinsItems.PinId), "Property is required for class TopVideoPinsAnalyticsResponsePinsItems.");
+                throw new JsonException("Cannot write null property TopVideoPinsAnalyticsResponsePinsItems.PinId to non-nullable JSON property 'pin_id'.");
 
             if (topVideoPinsAnalyticsResponsePinsItems.DataStatusOption.IsSet)
             {

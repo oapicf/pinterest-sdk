@@ -36,20 +36,14 @@ import {
 export interface AdvancedAuctionKey {
     /**
      * 
-     * @type {Country}
-     * @memberof AdvancedAuctionKey
      */
     country: Country;
     /**
      * The catalog retail item id in the merchant namespace
-     * @type {string}
-     * @memberof AdvancedAuctionKey
      */
     itemId: string;
     /**
      * 
-     * @type {Language}
-     * @memberof AdvancedAuctionKey
      */
     language: Language;
 }

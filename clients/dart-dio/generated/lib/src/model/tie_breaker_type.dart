@@ -9,12 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'tie_breaker_type.g.dart';
 
+/// Quiz ad tie breaker type, default is RANDOM
 class TieBreakerType extends EnumClass {
 
-  /// Quiz ad tie breaker type, default is RANDOM
   @BuiltValueEnumConst(wireName: r'RANDOM')
   static const TieBreakerType RANDOM = _$RANDOM;
-  /// Quiz ad tie breaker type, default is RANDOM
   @BuiltValueEnumConst(wireName: r'CUSTOM')
   static const TieBreakerType CUSTOM = _$CUSTOM;
 

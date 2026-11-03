@@ -11,7 +11,7 @@ import Foundation
 public struct BulkDownloadCreate: Sendable, Codable, Hashable {
 
     public static let entityTypesRule = ArrayRule(minItems: 1, maxItems: 6, uniqueItems: false)
-    public static let updatedSinceRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let updatedSinceRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var campaignFilter: BulkDownloadCampaignFilter?
     /** All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded. */
     public var entityIds: [String]?

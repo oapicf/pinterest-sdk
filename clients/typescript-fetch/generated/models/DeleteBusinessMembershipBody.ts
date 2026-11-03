@@ -29,8 +29,6 @@ import {
 export interface DeleteBusinessMembershipBody {
     /**
      * 
-     * @type {Array<DeleteBusinessMembershipMember>}
-     * @memberof DeleteBusinessMembershipBody
      */
     members: Array<DeleteBusinessMembershipMember>;
 }

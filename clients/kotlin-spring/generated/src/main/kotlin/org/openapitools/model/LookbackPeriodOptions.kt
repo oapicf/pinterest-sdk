@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Days in lookback window in the GET Conversion EQS response.
-* Values: _1d,_14d
-*/
+ * Days in lookback window in the GET Conversion EQS response.
+ * Values: _1d,_14d
+ */
 enum class LookbackPeriodOptions(@get:JsonValue val value: kotlin.String) {
 
     _1d("1d"),
@@ -28,9 +28,8 @@ enum class LookbackPeriodOptions(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): LookbackPeriodOptions {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LookbackPeriodOptions'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'LookbackPeriodOptions'")
         }
     }
 }
-

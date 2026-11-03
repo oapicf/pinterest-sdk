@@ -17,7 +17,7 @@ import BillingInvoice from './BillingInvoice';
 /**
  * The BillingInvoicesGet200Response model module.
  * @module model/BillingInvoicesGet200Response
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class BillingInvoicesGet200Response {
     /**

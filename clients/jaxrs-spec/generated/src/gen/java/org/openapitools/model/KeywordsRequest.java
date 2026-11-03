@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 @JsonTypeName("KeywordsRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class KeywordsRequest   {
-  private @Valid List<@Valid KeywordsCommon> keywords = new ArrayList<>();
+  private List<@Valid KeywordsCommon> keywords = new ArrayList<>();
   private String parentId;
 
   public KeywordsRequest() {
@@ -48,7 +48,7 @@ public class KeywordsRequest   {
   
   @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
   @JsonProperty(required = true, value = "keywords")
-  @NotNull @Valid public List<@Valid KeywordsCommon> getKeywords() {
+  @NotNull public List<@Valid KeywordsCommon> getKeywords() {
     return keywords;
   }
 

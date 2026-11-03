@@ -12,24 +12,104 @@
 
 namespace models {
 
-
-class CampaignSummaryStatus
-{
-public:
-
-    CampaignSummaryStatus();
-    virtual ~CampaignSummaryStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignSummaryStatus,
-        )
-
-private:
+enum class CampaignSummaryStatus {
+    
+    RUNNING,
+    
+    PAUSED,
+    
+    NOT_STARTED,
+    
+    COMPLETED,
+    
+    ADVERTISER_DISABLED,
+    
+    ARCHIVED,
+    
+    DRAFT,
+    
+    DELETED_DRAFT
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignSummaryStatus& value)
+{
+    switch (value)
+    {
+        
+        case CampaignSummaryStatus::RUNNING: j = "RUNNING"; break;
+        
+        case CampaignSummaryStatus::PAUSED: j = "PAUSED"; break;
+        
+        case CampaignSummaryStatus::NOT_STARTED: j = "NOT_STARTED"; break;
+        
+        case CampaignSummaryStatus::COMPLETED: j = "COMPLETED"; break;
+        
+        case CampaignSummaryStatus::ADVERTISER_DISABLED: j = "ADVERTISER_DISABLED"; break;
+        
+        case CampaignSummaryStatus::ARCHIVED: j = "ARCHIVED"; break;
+        
+        case CampaignSummaryStatus::DRAFT: j = "DRAFT"; break;
+        
+        case CampaignSummaryStatus::DELETED_DRAFT: j = "DELETED_DRAFT"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignSummaryStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignSummaryStatus& value)
+{
+    
+    if (j == "RUNNING")
+    {
+        value = CampaignSummaryStatus::RUNNING;
+        return;
+    }
+    
+    if (j == "PAUSED")
+    {
+        value = CampaignSummaryStatus::PAUSED;
+        return;
+    }
+    
+    if (j == "NOT_STARTED")
+    {
+        value = CampaignSummaryStatus::NOT_STARTED;
+        return;
+    }
+    
+    if (j == "COMPLETED")
+    {
+        value = CampaignSummaryStatus::COMPLETED;
+        return;
+    }
+    
+    if (j == "ADVERTISER_DISABLED")
+    {
+        value = CampaignSummaryStatus::ADVERTISER_DISABLED;
+        return;
+    }
+    
+    if (j == "ARCHIVED")
+    {
+        value = CampaignSummaryStatus::ARCHIVED;
+        return;
+    }
+    
+    if (j == "DRAFT")
+    {
+        value = CampaignSummaryStatus::DRAFT;
+        return;
+    }
+    
+    if (j == "DELETED_DRAFT")
+    {
+        value = CampaignSummaryStatus::DELETED_DRAFT;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignSummaryStatus", &j);
+}
 
 } // namespace models
 

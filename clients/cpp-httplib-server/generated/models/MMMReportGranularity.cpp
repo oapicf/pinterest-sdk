@@ -6,20 +6,3 @@
 */
 #include "MMMReportGranularity.h"
 
-namespace models {
-
-MMMReportGranularity::MMMReportGranularity()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

@@ -4,10 +4,7 @@ import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.model.PinterestLibError
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -30,17 +27,17 @@ data class SchedulesCreate200ResponseInnerDataOneOf(
     @get:Pattern(regexp="^\\d+$")
     @get:Size(max=18)
     @Schema(required = true, description = "")
-    @param:JsonProperty("id")
+    @param:JsonProperty("id", required = true)
     @get:JsonProperty("id", required = true) val id: kotlin.String,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(required = true, description = "Schedule ID.")
-    @param:JsonProperty("schedule_id")
+    @param:JsonProperty("schedule_id", required = true)
     @get:JsonProperty("schedule_id", required = true) val scheduleId: kotlin.String,
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("exceptions")
+    @param:JsonProperty("exceptions", required = true)
     @get:JsonProperty("exceptions", required = true) val exceptions: PinterestLibError
 ) : SchedulesCreate200ResponseInnerData {
 

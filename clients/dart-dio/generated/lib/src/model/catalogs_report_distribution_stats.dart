@@ -249,6 +249,7 @@ class _$CatalogsReportDistributionStatsSerializer implements PrimitiveSerializer
   }
 }
 
+
 class CatalogsReportDistributionStatsReportTypeEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'DISTRIBUTION_ISSUES')

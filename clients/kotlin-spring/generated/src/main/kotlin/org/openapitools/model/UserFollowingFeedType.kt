@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Specifies the type of followees to be kept when filtering them.
-* Values: ALL,RANKED,CREATOR_ONLY,RANKED_CREATOR_ONLY
-*/
+ * Specifies the type of followees to be kept when filtering them.
+ * Values: ALL,RANKED,CREATOR_ONLY,RANKED_CREATOR_ONLY
+ */
 enum class UserFollowingFeedType(@get:JsonValue val value: kotlin.String) {
 
     ALL("ALL"),
@@ -30,9 +30,8 @@ enum class UserFollowingFeedType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): UserFollowingFeedType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserFollowingFeedType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserFollowingFeedType'")
         }
     }
 }
-

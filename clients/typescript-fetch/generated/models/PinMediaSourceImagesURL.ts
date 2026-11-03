@@ -29,20 +29,14 @@ import {
 export interface PinMediaSourceImagesURL {
     /**
      * 
-     * @type {number}
-     * @memberof PinMediaSourceImagesURL
      */
     index?: number;
     /**
      * Array with image objects.
-     * @type {Array<PinMediaSourceImagesURLItem>}
-     * @memberof PinMediaSourceImagesURL
      */
     items: Array<PinMediaSourceImagesURLItem>;
     /**
      * The source type of the media.
-     * @type {PinMediaSourceImagesURLSourceTypeEnum}
-     * @memberof PinMediaSourceImagesURL
      */
     sourceType: PinMediaSourceImagesURLSourceTypeEnum;
 }
@@ -52,7 +46,7 @@ export interface PinMediaSourceImagesURL {
  * @export
  */
 export const PinMediaSourceImagesURLSourceTypeEnum = {
-    MultipleImageUrls: 'multiple_image_urls'
+    MultipleImageUrls: 'multiple_image_urls',
 } as const;
 export type PinMediaSourceImagesURLSourceTypeEnum = typeof PinMediaSourceImagesURLSourceTypeEnum[keyof typeof PinMediaSourceImagesURLSourceTypeEnum];
 

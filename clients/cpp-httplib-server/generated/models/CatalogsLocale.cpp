@@ -6,20 +6,3 @@
 */
 #include "CatalogsLocale.h"
 
-namespace models {
-
-CatalogsLocale::CatalogsLocale()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

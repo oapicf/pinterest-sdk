@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'business_search_by.g.dart';
 
+/// The names of fields that business accounts are searched by
 class BusinessSearchBy extends EnumClass {
 
-  /// The names of fields that business accounts are searched by
   @BuiltValueEnumConst(wireName: r'FULL_NAME')
   static const BusinessSearchBy FULL_NAME = _$FULL_NAME;
-  /// The names of fields that business accounts are searched by
   @BuiltValueEnumConst(wireName: r'USERNAME')
   static const BusinessSearchBy USERNAME = _$USERNAME;
-  /// The names of fields that business accounts are searched by
   @BuiltValueEnumConst(wireName: r'BUSINESS_ID')
   static const BusinessSearchBy BUSINESS_ID = _$BUSINESS_ID;
-  /// The names of fields that business accounts are searched by
   @BuiltValueEnumConst(wireName: r'EMAIL')
   static const BusinessSearchBy EMAIL = _$EMAIL;
 

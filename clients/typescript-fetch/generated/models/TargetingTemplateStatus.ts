@@ -19,7 +19,7 @@
  */
 export const TargetingTemplateStatus = {
     Active: 'ACTIVE',
-    Deleted: 'DELETED'
+    Deleted: 'DELETED',
 } as const;
 export type TargetingTemplateStatus = typeof TargetingTemplateStatus[keyof typeof TargetingTemplateStatus];
 

@@ -35,12 +35,24 @@ import {
 } from '../models/PinterestLibError';
 
 export interface LeadsExportCreateRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * 
+     */
     leadsExportsCreate: LeadsExportsCreate;
 }
 
 export interface LeadsExportGetRequest {
+    /**
+     * Unique identifier of an ad account.
+     */
     adAccountId: string;
+    /**
+     * lead_export_id token returned from the create a lead export endpoint
+     */
     leadsExportId: string;
 }
 

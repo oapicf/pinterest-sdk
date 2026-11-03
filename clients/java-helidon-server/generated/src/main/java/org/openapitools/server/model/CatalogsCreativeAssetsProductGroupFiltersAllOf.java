@@ -11,7 +11,7 @@ import jakarta.validation.Valid;
 
 public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
 
-    private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
+    private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
 
     /**
      * Default constructor.
@@ -26,7 +26,7 @@ public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
      * @param allOf allOf
      */
     public CatalogsCreativeAssetsProductGroupFiltersAllOf(
-        List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf
+        List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf
     ) {
         this.allOf = allOf;
     }
@@ -37,11 +37,11 @@ public class CatalogsCreativeAssetsProductGroupFiltersAllOf   {
      * Get allOf
      * @return allOf
      */
-    public List<CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
+    public List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> getAllOf() {
         return allOf;
     }
 
-    public void setAllOf(List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
+    public void setAllOf(List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> allOf) {
         this.allOf = allOf;
     }
 

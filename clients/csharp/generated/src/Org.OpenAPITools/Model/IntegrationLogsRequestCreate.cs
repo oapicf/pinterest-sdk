@@ -133,10 +133,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!logs.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationLogsRequestCreate.", nameof(logs));
+                throw new JsonException("Property is required for class IntegrationLogsRequestCreate: logs.");
 
             if (logs.IsSet && logs.Value == null)
-                throw new ArgumentNullException(nameof(logs), "Property is not nullable for class IntegrationLogsRequestCreate.");
+                throw new JsonException("Property is not nullable for class IntegrationLogsRequestCreate: logs.");
 
             return new IntegrationLogsRequestCreate(logs.Value!);
         }
@@ -147,7 +147,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsRequestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationLogsRequestCreate integrationLogsRequestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -162,12 +161,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationLogsRequestCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationLogsRequestCreate integrationLogsRequestCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (integrationLogsRequestCreate.Logs == null)
-                throw new ArgumentNullException(nameof(integrationLogsRequestCreate.Logs), "Property is required for class IntegrationLogsRequestCreate.");
-
             writer.WritePropertyName("logs");
             JsonSerializer.Serialize(writer, integrationLogsRequestCreate.Logs, jsonSerializerOptions);
         }

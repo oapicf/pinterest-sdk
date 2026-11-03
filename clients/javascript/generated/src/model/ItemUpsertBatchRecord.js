@@ -17,7 +17,7 @@ import ItemAttributesRequest from './ItemAttributesRequest';
 /**
  * The ItemUpsertBatchRecord model module.
  * @module model/ItemUpsertBatchRecord
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ItemUpsertBatchRecord {
     /**

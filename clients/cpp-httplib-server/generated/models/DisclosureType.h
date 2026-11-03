@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class DisclosureType
-{
-public:
-
-    DisclosureType();
-    virtual ~DisclosureType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(DisclosureType,
-        )
-
-private:
+enum class DisclosureType {
+    
+    NO_DISCLOSURE,
+    
+    PRESCRIBING_INFORMATION,
+    
+    PRESCRIBING_INFORMATION_BOX_WARNING,
+    
+    IMPORTANT_SAFETY_INFO,
+    
+    MED_GUIDE,
+    
+    PATIENT_INFORMATION
+    
 };
 
+inline void to_json(nlohmann::json& j, const DisclosureType& value)
+{
+    switch (value)
+    {
+        
+        case DisclosureType::NO_DISCLOSURE: j = "NO_DISCLOSURE"; break;
+        
+        case DisclosureType::PRESCRIBING_INFORMATION: j = "PRESCRIBING_INFORMATION"; break;
+        
+        case DisclosureType::PRESCRIBING_INFORMATION_BOX_WARNING: j = "PRESCRIBING_INFORMATION_BOX_WARNING"; break;
+        
+        case DisclosureType::IMPORTANT_SAFETY_INFO: j = "IMPORTANT_SAFETY_INFO"; break;
+        
+        case DisclosureType::MED_GUIDE: j = "MED_GUIDE"; break;
+        
+        case DisclosureType::PATIENT_INFORMATION: j = "PATIENT_INFORMATION"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for DisclosureType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, DisclosureType& value)
+{
+    
+    if (j == "NO_DISCLOSURE")
+    {
+        value = DisclosureType::NO_DISCLOSURE;
+        return;
+    }
+    
+    if (j == "PRESCRIBING_INFORMATION")
+    {
+        value = DisclosureType::PRESCRIBING_INFORMATION;
+        return;
+    }
+    
+    if (j == "PRESCRIBING_INFORMATION_BOX_WARNING")
+    {
+        value = DisclosureType::PRESCRIBING_INFORMATION_BOX_WARNING;
+        return;
+    }
+    
+    if (j == "IMPORTANT_SAFETY_INFO")
+    {
+        value = DisclosureType::IMPORTANT_SAFETY_INFO;
+        return;
+    }
+    
+    if (j == "MED_GUIDE")
+    {
+        value = DisclosureType::MED_GUIDE;
+        return;
+    }
+    
+    if (j == "PATIENT_INFORMATION")
+    {
+        value = DisclosureType::PATIENT_INFORMATION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for DisclosureType", &j);
+}
 
 } // namespace models
 

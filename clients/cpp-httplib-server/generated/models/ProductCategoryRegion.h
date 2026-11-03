@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class ProductCategoryRegion
-{
-public:
-
-    ProductCategoryRegion();
-    virtual ~ProductCategoryRegion() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ProductCategoryRegion,
-        )
-
-private:
+enum class ProductCategoryRegion {
+    
+    US,
+    
+    GB_IE,
+    
+    CA
+    
 };
 
+inline void to_json(nlohmann::json& j, const ProductCategoryRegion& value)
+{
+    switch (value)
+    {
+        
+        case ProductCategoryRegion::US: j = "US"; break;
+        
+        case ProductCategoryRegion::GB_IE: j = "GB+IE"; break;
+        
+        case ProductCategoryRegion::CA: j = "CA"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryRegion", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ProductCategoryRegion& value)
+{
+    
+    if (j == "US")
+    {
+        value = ProductCategoryRegion::US;
+        return;
+    }
+    
+    if (j == "GB+IE")
+    {
+        value = ProductCategoryRegion::GB_IE;
+        return;
+    }
+    
+    if (j == "CA")
+    {
+        value = ProductCategoryRegion::CA;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ProductCategoryRegion", &j);
+}
 
 } // namespace models
 

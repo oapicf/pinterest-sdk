@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class FreqBidMultiplierTimeWindow
-{
-public:
-
-    FreqBidMultiplierTimeWindow();
-    virtual ~FreqBidMultiplierTimeWindow() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FreqBidMultiplierTimeWindow,
-        )
-
-private:
+enum class FreqBidMultiplierTimeWindow {
+    
+    WEEK,
+    
+    MONTH
+    
 };
 
+inline void to_json(nlohmann::json& j, const FreqBidMultiplierTimeWindow& value)
+{
+    switch (value)
+    {
+        
+        case FreqBidMultiplierTimeWindow::WEEK: j = "WEEK"; break;
+        
+        case FreqBidMultiplierTimeWindow::MONTH: j = "MONTH"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for FreqBidMultiplierTimeWindow", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, FreqBidMultiplierTimeWindow& value)
+{
+    
+    if (j == "WEEK")
+    {
+        value = FreqBidMultiplierTimeWindow::WEEK;
+        return;
+    }
+    
+    if (j == "MONTH")
+    {
+        value = FreqBidMultiplierTimeWindow::MONTH;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for FreqBidMultiplierTimeWindow", &j);
+}
 
 } // namespace models
 

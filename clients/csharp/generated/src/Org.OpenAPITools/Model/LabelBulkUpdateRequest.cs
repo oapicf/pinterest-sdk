@@ -161,22 +161,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class LabelBulkUpdateRequest.", nameof(id));
+                throw new JsonException("Property is required for class LabelBulkUpdateRequest: id.");
 
             if (!parentId.IsSet)
-                throw new ArgumentException("Property is required for class LabelBulkUpdateRequest.", nameof(parentId));
+                throw new JsonException("Property is required for class LabelBulkUpdateRequest: parent_id.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class LabelBulkUpdateRequest.", nameof(status));
+                throw new JsonException("Property is required for class LabelBulkUpdateRequest: status.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class LabelBulkUpdateRequest.");
+                throw new JsonException("Property is not nullable for class LabelBulkUpdateRequest: id.");
 
             if (parentId.IsSet && parentId.Value == null)
-                throw new ArgumentNullException(nameof(parentId), "Property is not nullable for class LabelBulkUpdateRequest.");
+                throw new JsonException("Property is not nullable for class LabelBulkUpdateRequest: parent_id.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class LabelBulkUpdateRequest.");
+                throw new JsonException("Property is not nullable for class LabelBulkUpdateRequest: status.");
 
             return new LabelBulkUpdateRequest(id.Value!, parentId.Value!, status.Value!.Value!);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelBulkUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LabelBulkUpdateRequest labelBulkUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,15 +201,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="labelBulkUpdateRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LabelBulkUpdateRequest labelBulkUpdateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (labelBulkUpdateRequest.Id == null)
-                throw new ArgumentNullException(nameof(labelBulkUpdateRequest.Id), "Property is required for class LabelBulkUpdateRequest.");
-
-            if (labelBulkUpdateRequest.ParentId == null)
-                throw new ArgumentNullException(nameof(labelBulkUpdateRequest.ParentId), "Property is required for class LabelBulkUpdateRequest.");
-
             writer.WriteString("id", labelBulkUpdateRequest.Id);
 
             writer.WriteString("parent_id", labelBulkUpdateRequest.ParentId);

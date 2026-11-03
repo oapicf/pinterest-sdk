@@ -33,8 +33,6 @@ public class UpdatePartnerAssetAccessItem  {
   */
   @ApiModelProperty(required = true, value = "A non-empty array of permissions to assign to the partner.")
 
-  @Valid
-
   private List<Permissions> permissions = new ArrayList<>();
  /**
    * Unique identifier of the business asset.

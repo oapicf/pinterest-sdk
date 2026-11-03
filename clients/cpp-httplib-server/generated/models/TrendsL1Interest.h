@@ -12,24 +12,264 @@
 
 namespace models {
 
-
-class Interest
-{
-public:
-
-    Interest();
-    virtual ~Interest() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Interest,
-        )
-
-private:
+enum class Interest {
+    
+    ANIMALS,
+    
+    ARCHITECTURE,
+    
+    ART,
+    
+    BEAUTY,
+    
+    CHILDRENS_FASHION,
+    
+    DESIGN,
+    
+    DIY_AND_CRAFTS,
+    
+    EDUCATION,
+    
+    ELECTRONICS,
+    
+    ENTERTAINMENT,
+    
+    EVENT_PLANNING,
+    
+    FINANCE,
+    
+    FOOD_AND_DRINKS,
+    
+    GARDENING,
+    
+    HEALTH,
+    
+    HOME_DECOR,
+    
+    MENS_FASHION,
+    
+    PARENTING,
+    
+    QUOTES,
+    
+    SPORT,
+    
+    TRAVEL,
+    
+    VEHICLES,
+    
+    WEDDING,
+    
+    WOMENS_FASHION
+    
 };
 
+inline void to_json(nlohmann::json& j, const Interest& value)
+{
+    switch (value)
+    {
+        
+        case Interest::ANIMALS: j = "animals"; break;
+        
+        case Interest::ARCHITECTURE: j = "architecture"; break;
+        
+        case Interest::ART: j = "art"; break;
+        
+        case Interest::BEAUTY: j = "beauty"; break;
+        
+        case Interest::CHILDRENS_FASHION: j = "childrens_fashion"; break;
+        
+        case Interest::DESIGN: j = "design"; break;
+        
+        case Interest::DIY_AND_CRAFTS: j = "diy_and_crafts"; break;
+        
+        case Interest::EDUCATION: j = "education"; break;
+        
+        case Interest::ELECTRONICS: j = "electronics"; break;
+        
+        case Interest::ENTERTAINMENT: j = "entertainment"; break;
+        
+        case Interest::EVENT_PLANNING: j = "event_planning"; break;
+        
+        case Interest::FINANCE: j = "finance"; break;
+        
+        case Interest::FOOD_AND_DRINKS: j = "food_and_drinks"; break;
+        
+        case Interest::GARDENING: j = "gardening"; break;
+        
+        case Interest::HEALTH: j = "health"; break;
+        
+        case Interest::HOME_DECOR: j = "home_decor"; break;
+        
+        case Interest::MENS_FASHION: j = "mens_fashion"; break;
+        
+        case Interest::PARENTING: j = "parenting"; break;
+        
+        case Interest::QUOTES: j = "quotes"; break;
+        
+        case Interest::SPORT: j = "sport"; break;
+        
+        case Interest::TRAVEL: j = "travel"; break;
+        
+        case Interest::VEHICLES: j = "vehicles"; break;
+        
+        case Interest::WEDDING: j = "wedding"; break;
+        
+        case Interest::WOMENS_FASHION: j = "womens_fashion"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for Interest", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, Interest& value)
+{
+    
+    if (j == "animals")
+    {
+        value = Interest::ANIMALS;
+        return;
+    }
+    
+    if (j == "architecture")
+    {
+        value = Interest::ARCHITECTURE;
+        return;
+    }
+    
+    if (j == "art")
+    {
+        value = Interest::ART;
+        return;
+    }
+    
+    if (j == "beauty")
+    {
+        value = Interest::BEAUTY;
+        return;
+    }
+    
+    if (j == "childrens_fashion")
+    {
+        value = Interest::CHILDRENS_FASHION;
+        return;
+    }
+    
+    if (j == "design")
+    {
+        value = Interest::DESIGN;
+        return;
+    }
+    
+    if (j == "diy_and_crafts")
+    {
+        value = Interest::DIY_AND_CRAFTS;
+        return;
+    }
+    
+    if (j == "education")
+    {
+        value = Interest::EDUCATION;
+        return;
+    }
+    
+    if (j == "electronics")
+    {
+        value = Interest::ELECTRONICS;
+        return;
+    }
+    
+    if (j == "entertainment")
+    {
+        value = Interest::ENTERTAINMENT;
+        return;
+    }
+    
+    if (j == "event_planning")
+    {
+        value = Interest::EVENT_PLANNING;
+        return;
+    }
+    
+    if (j == "finance")
+    {
+        value = Interest::FINANCE;
+        return;
+    }
+    
+    if (j == "food_and_drinks")
+    {
+        value = Interest::FOOD_AND_DRINKS;
+        return;
+    }
+    
+    if (j == "gardening")
+    {
+        value = Interest::GARDENING;
+        return;
+    }
+    
+    if (j == "health")
+    {
+        value = Interest::HEALTH;
+        return;
+    }
+    
+    if (j == "home_decor")
+    {
+        value = Interest::HOME_DECOR;
+        return;
+    }
+    
+    if (j == "mens_fashion")
+    {
+        value = Interest::MENS_FASHION;
+        return;
+    }
+    
+    if (j == "parenting")
+    {
+        value = Interest::PARENTING;
+        return;
+    }
+    
+    if (j == "quotes")
+    {
+        value = Interest::QUOTES;
+        return;
+    }
+    
+    if (j == "sport")
+    {
+        value = Interest::SPORT;
+        return;
+    }
+    
+    if (j == "travel")
+    {
+        value = Interest::TRAVEL;
+        return;
+    }
+    
+    if (j == "vehicles")
+    {
+        value = Interest::VEHICLES;
+        return;
+    }
+    
+    if (j == "wedding")
+    {
+        value = Interest::WEDDING;
+        return;
+    }
+    
+    if (j == "womens_fashion")
+    {
+        value = Interest::WOMENS_FASHION;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for Interest", &j);
+}
 
 } // namespace models
 

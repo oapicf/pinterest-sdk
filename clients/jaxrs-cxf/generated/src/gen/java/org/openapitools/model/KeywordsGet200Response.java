@@ -22,8 +22,6 @@ public class KeywordsGet200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid Keyword> items = new ArrayList<>();
  /**
    * Get bookmark

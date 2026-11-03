@@ -12,24 +12,64 @@
 
 namespace models {
 
-
-class CampaignPlanningConfidenceLevelAlertSeverity
-{
-public:
-
-    CampaignPlanningConfidenceLevelAlertSeverity();
-    virtual ~CampaignPlanningConfidenceLevelAlertSeverity() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CampaignPlanningConfidenceLevelAlertSeverity,
-        )
-
-private:
+enum class CampaignPlanningConfidenceLevelAlertSeverity {
+    
+    UNKNOWN,
+    
+    LOW_MILD,
+    
+    LOW_MODERATE,
+    
+    LOW_SEVERE
+    
 };
 
+inline void to_json(nlohmann::json& j, const CampaignPlanningConfidenceLevelAlertSeverity& value)
+{
+    switch (value)
+    {
+        
+        case CampaignPlanningConfidenceLevelAlertSeverity::UNKNOWN: j = "UNKNOWN"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertSeverity::LOW_MILD: j = "LOW_MILD"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertSeverity::LOW_MODERATE: j = "LOW_MODERATE"; break;
+        
+        case CampaignPlanningConfidenceLevelAlertSeverity::LOW_SEVERE: j = "LOW_SEVERE"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConfidenceLevelAlertSeverity", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CampaignPlanningConfidenceLevelAlertSeverity& value)
+{
+    
+    if (j == "UNKNOWN")
+    {
+        value = CampaignPlanningConfidenceLevelAlertSeverity::UNKNOWN;
+        return;
+    }
+    
+    if (j == "LOW_MILD")
+    {
+        value = CampaignPlanningConfidenceLevelAlertSeverity::LOW_MILD;
+        return;
+    }
+    
+    if (j == "LOW_MODERATE")
+    {
+        value = CampaignPlanningConfidenceLevelAlertSeverity::LOW_MODERATE;
+        return;
+    }
+    
+    if (j == "LOW_SEVERE")
+    {
+        value = CampaignPlanningConfidenceLevelAlertSeverity::LOW_SEVERE;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CampaignPlanningConfidenceLevelAlertSeverity", &j);
+}
 
 } // namespace models
 

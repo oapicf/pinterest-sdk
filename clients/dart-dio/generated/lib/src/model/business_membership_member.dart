@@ -123,3 +123,4 @@ class _$BusinessMembershipMemberSerializer implements PrimitiveSerializer<Busine
   }
 }
 
+

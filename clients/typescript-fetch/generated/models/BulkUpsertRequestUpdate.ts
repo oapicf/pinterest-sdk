@@ -78,50 +78,34 @@ import {
 export interface BulkUpsertRequestUpdate {
     /**
      * 
-     * @type {Array<AdGroupUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     adGroups?: Array<AdGroupUpdateRequest>;
     /**
      * 
-     * @type {Array<AdUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     ads?: Array<AdUpdateRequest>;
     /**
      * 
-     * @type {Array<CampaignUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     campaigns?: Array<CampaignUpdateRequest>;
     /**
      * 
-     * @type {Array<BulkUpsertRequestUpdateCatalogProductGroupsItems>}
-     * @memberof BulkUpsertRequestUpdate
      */
     catalogProductGroups?: Array<BulkUpsertRequestUpdateCatalogProductGroupsItems>;
     /**
      * 
-     * @type {Array<KeywordUpdateGenerated>}
-     * @memberof BulkUpsertRequestUpdate
      */
     keywords?: Array<KeywordUpdateGenerated>;
     /**
      * 
-     * @type {Array<LabelBulkUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     labels?: Array<LabelBulkUpdateRequest>;
     /**
      * 
-     * @type {Array<ProductGroupPromotionUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     productGroups?: Array<ProductGroupPromotionUpdateRequest>;
     /**
      * 
-     * @type {Array<ScheduleUpdateRequest>}
-     * @memberof BulkUpsertRequestUpdate
      */
     schedules?: Array<ScheduleUpdateRequest>;
 }

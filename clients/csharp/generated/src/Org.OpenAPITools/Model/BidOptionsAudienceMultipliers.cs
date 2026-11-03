@@ -156,16 +156,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!audienceId.IsSet)
-                throw new ArgumentException("Property is required for class BidOptionsAudienceMultipliers.", nameof(audienceId));
+                throw new JsonException("Property is required for class BidOptionsAudienceMultipliers: audience_id.");
 
             if (!multiplier.IsSet)
-                throw new ArgumentException("Property is required for class BidOptionsAudienceMultipliers.", nameof(multiplier));
+                throw new JsonException("Property is required for class BidOptionsAudienceMultipliers: multiplier.");
 
             if (audienceId.IsSet && audienceId.Value == null)
-                throw new ArgumentNullException(nameof(audienceId), "Property is not nullable for class BidOptionsAudienceMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAudienceMultipliers: audience_id.");
 
             if (multiplier.IsSet && multiplier.Value == null)
-                throw new ArgumentNullException(nameof(multiplier), "Property is not nullable for class BidOptionsAudienceMultipliers.");
+                throw new JsonException("Property is not nullable for class BidOptionsAudienceMultipliers: multiplier.");
 
             return new BidOptionsAudienceMultipliers(audienceId.Value!, multiplier.Value!.Value!);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, BidOptionsAudienceMultipliers bidOptionsAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,12 +190,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="bidOptionsAudienceMultipliers"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, BidOptionsAudienceMultipliers bidOptionsAudienceMultipliers, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (bidOptionsAudienceMultipliers.AudienceId == null)
-                throw new ArgumentNullException(nameof(bidOptionsAudienceMultipliers.AudienceId), "Property is required for class BidOptionsAudienceMultipliers.");
-
             writer.WriteString("audience_id", bidOptionsAudienceMultipliers.AudienceId);
 
             writer.WriteNumber("multiplier", bidOptionsAudienceMultipliers.Multiplier);

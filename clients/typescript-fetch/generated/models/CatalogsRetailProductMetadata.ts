@@ -36,38 +36,26 @@ import {
 export interface CatalogsRetailProductMetadata {
     /**
      * 
-     * @type {ProductAvailability}
-     * @memberof CatalogsRetailProductMetadata
      */
     availability: ProductAvailability;
     /**
      * 
-     * @type {NonNullableCatalogsCurrency}
-     * @memberof CatalogsRetailProductMetadata
      */
     currency: NonNullableCatalogsCurrency;
     /**
      * The parent ID of the product.
-     * @type {string}
-     * @memberof CatalogsRetailProductMetadata
      */
     itemGroupId: string | null;
     /**
      * The user-created unique ID that represents the product.
-     * @type {string}
-     * @memberof CatalogsRetailProductMetadata
      */
     itemId: string;
     /**
      * The price of the product.
-     * @type {number}
-     * @memberof CatalogsRetailProductMetadata
      */
     price: number;
     /**
      * The discounted price of the product.
-     * @type {number}
-     * @memberof CatalogsRetailProductMetadata
      */
     salePrice: number | null;
 }

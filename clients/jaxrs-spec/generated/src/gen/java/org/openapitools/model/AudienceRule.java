@@ -23,27 +23,27 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "JSON object defining targeted audience users. Example rule formats per audience type:  CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}  ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" } (Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10. The targeted audience should be this % size across Pinterest.)  VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}} (Retention days should be 1-540. Retention applies to specific customers.)  ENGAGEMENT: {\"engagement_domain\": [\"www.example.com\"], \"engager_type\": 1} Learn more about [engagement audiences](/docs/work-with-targets-and-audiences/create-audiences/#engagement-audience).")
 @JsonTypeName("AudienceRule")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-08-30T09:54:53.087121019Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceRule   {
   private String adAccountId;
-  private @Valid List<String> adId = new ArrayList<>();
-  private @Valid List<String> campaignId = new ArrayList<>();
+  private List<String> adId = new ArrayList<>();
+  private List<String> campaignId = new ArrayList<>();
   private String country;
   private String customerListId;
-  private @Valid List<String> engagementDomain = new ArrayList<>();
+  private List<String> engagementDomain = new ArrayList<>();
   private String engagementType;
   private Integer engagerType;
   private String event;
   private EventData eventData;
   private Object eventSource;
   private Object ingestionSource;
-  private @Valid List<ObjectiveType> objectiveType = new ArrayList<>();
+  private List<ObjectiveType> objectiveType = new ArrayList<>();
   private Integer percentage;
-  private @Valid List<String> pinId = new ArrayList<>();
+  private List<String> pinId = new ArrayList<>();
   private Boolean prefill;
   private Integer retentionDays;
-  private @Valid List<String> seedId = new ArrayList<>();
-  private @Valid List<String> url = new ArrayList<>();
+  private List<String> seedId = new ArrayList<>();
+  private List<String> url = new ArrayList<>();
   private String visitorSourceId;
 
   public AudienceRule() {

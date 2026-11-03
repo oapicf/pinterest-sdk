@@ -18,7 +18,6 @@ public class S3MultipartUploadData  {
   * Array of file parts with pre-signed URLs.
   */
   @ApiModelProperty(value = "Array of file parts with pre-signed URLs.")
-  @Valid
   private List<@Valid S3FilePart> fileParts = new ArrayList<>();
  /**
   * Array of file parts with pre-signed URLs.

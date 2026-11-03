@@ -21,50 +21,34 @@ import { mapValues } from '../runtime';
 export interface LineItem {
     /**
      * Product brand. For example, 'Parker'.
-     * @type {string}
-     * @memberof LineItem
      */
     productBrand?: string;
     /**
      * Product category. For example, 'Shoes'.
-     * @type {string}
-     * @memberof LineItem
      */
     productCategory?: string;
     /**
      * Product ID. For example, 1414.
-     * @type {number}
-     * @memberof LineItem
      */
     productId?: number;
     /**
      * Product name. For example, 'Parker Boots'.
-     * @type {string}
-     * @memberof LineItem
      */
     productName?: string;
     /**
      * Product price. For example, '99.99'.
-     * @type {string}
-     * @memberof LineItem
      */
     productPrice?: string;
     /**
      * Product quantity. For example, 2.
-     * @type {number}
-     * @memberof LineItem
      */
     productQuantity?: number;
     /**
      * Product variant. For example, 'Red'.
-     * @type {string}
-     * @memberof LineItem
      */
     productVariant?: string;
     /**
      * Product variant ID. For example, '1414-34832'.
-     * @type {string}
-     * @memberof LineItem
      */
     productVariantId?: string;
 }

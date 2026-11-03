@@ -245,7 +245,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnum?>(CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnum? catalogTypeValue = CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "images":
                             images = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
@@ -263,34 +268,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!appLinks.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts.", nameof(appLinks));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts: app_links.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts: catalog_type.");
 
             if (!images.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts.", nameof(images));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts: images.");
 
             if (!total.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts.", nameof(total));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts: total.");
 
             if (!videos.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts.", nameof(videos));
+                throw new JsonException("Property is required for class CatalogsCreativeAssetsProductGroupProductCounts: videos.");
 
             if (appLinks.IsSet && appLinks.Value == null)
-                throw new ArgumentNullException(nameof(appLinks), "Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts: app_links.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts: catalog_type.");
 
             if (images.IsSet && images.Value == null)
-                throw new ArgumentNullException(nameof(images), "Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts: images.");
 
             if (total.IsSet && total.Value == null)
-                throw new ArgumentNullException(nameof(total), "Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts: total.");
 
             if (videos.IsSet && videos.Value == null)
-                throw new ArgumentNullException(nameof(videos), "Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts.");
+                throw new JsonException("Property is not nullable for class CatalogsCreativeAssetsProductGroupProductCounts: videos.");
 
             return new CatalogsCreativeAssetsProductGroupProductCounts(appLinks.Value!.Value!, catalogType.Value!.Value!, images.Value!.Value!, total.Value!.Value!, videos.Value!.Value!);
         }
@@ -301,7 +306,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -316,7 +320,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsCreativeAssetsProductGroupProductCounts"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsCreativeAssetsProductGroupProductCounts catalogsCreativeAssetsProductGroupProductCounts, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteNumber("app_links", catalogsCreativeAssetsProductGroupProductCounts.AppLinks);

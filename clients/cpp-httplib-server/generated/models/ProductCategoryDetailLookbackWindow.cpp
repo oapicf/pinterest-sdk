@@ -6,20 +6,3 @@
 */
 #include "ProductCategoryDetailLookbackWindow.h"
 
-namespace models {
-
-ProductCategoryDetailLookbackWindow::ProductCategoryDetailLookbackWindow()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

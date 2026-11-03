@@ -21,164 +21,110 @@ import { mapValues } from '../runtime';
 export interface CampaignDeliveryEstimatesDerivedMetrics {
     /**
      * Estimated cost per click.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpc?: number;
     /**
      * Lower estimate of the cost per click.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpcLower?: number;
     /**
      * Upper estimate of the cost per click.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpcUpper?: number;
     /**
      * Estimated cost per thousand impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpm?: number;
     /**
      * Lower estimate of cost per thousand impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpmLower?: number;
     /**
      * Upper estimate of cost per thousand impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     cpmUpper?: number;
     /**
      * Estimated lifetime frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeFrequency?: number;
     /**
      * Lower estimate of lifetime frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeFrequencyLower?: number;
     /**
      * Upper estimate of lifetime frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeFrequencyUpper?: number;
     /**
      * Estimated lifetime impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeImpression?: number;
     /**
      * Lower estimate of lifetime impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeImpressionLower?: number;
     /**
      * Upper estimate of lifetime impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeImpressionUpper?: number;
     /**
      * Estimated lifetime reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeReach?: number;
     /**
      * Lower estimate of lifetime reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeReachLower?: number;
     /**
      * Upper estimate of lifetime reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     lifetimeReachUpper?: number;
     /**
      * Estimated weekly clicks.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyClick?: number;
     /**
      * Lower estimate of weekly clicks.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyClickLower?: number;
     /**
      * Upper estimate of weekly clicks.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyClickUpper?: number;
     /**
      * Estimated weekly frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyFrequency?: number;
     /**
      * Lower estimate of weekly frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyFrequencyLower?: number;
     /**
      * Upper estimate of weekly frequency.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyFrequencyUpper?: number;
     /**
      * Estimated weekly impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyImpression?: number;
     /**
      * Lower estimate of weekly impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyImpressionLower?: number;
     /**
      * Upper estimate of weekly impressions.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyImpressionUpper?: number;
     /**
      * Estimated weekly reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyReach?: number;
     /**
      * Lower estimate of weekly reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyReachLower?: number;
     /**
      * Upper estimate of weekly reach.
-     * @type {number}
-     * @memberof CampaignDeliveryEstimatesDerivedMetrics
      */
     weeklyReachUpper?: number;
 }

@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class ConversionProductReportBreakdownType
-{
-public:
-
-    ConversionProductReportBreakdownType();
-    virtual ~ConversionProductReportBreakdownType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(ConversionProductReportBreakdownType,
-        )
-
-private:
+enum class ConversionProductReportBreakdownType {
+    
+    PRODUCT_BRAND,
+    
+    PRODUCT_CATEGORY,
+    
+    PRODUCT_BRAND_AND_CATEGORY,
+    
+    PRODUCT_SKU,
+    
+    PRODUCT_SKU_GROUP
+    
 };
 
+inline void to_json(nlohmann::json& j, const ConversionProductReportBreakdownType& value)
+{
+    switch (value)
+    {
+        
+        case ConversionProductReportBreakdownType::PRODUCT_BRAND: j = "PRODUCT_BRAND"; break;
+        
+        case ConversionProductReportBreakdownType::PRODUCT_CATEGORY: j = "PRODUCT_CATEGORY"; break;
+        
+        case ConversionProductReportBreakdownType::PRODUCT_BRAND_AND_CATEGORY: j = "PRODUCT_BRAND_AND_CATEGORY"; break;
+        
+        case ConversionProductReportBreakdownType::PRODUCT_SKU: j = "PRODUCT_SKU"; break;
+        
+        case ConversionProductReportBreakdownType::PRODUCT_SKU_GROUP: j = "PRODUCT_SKU_GROUP"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportBreakdownType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, ConversionProductReportBreakdownType& value)
+{
+    
+    if (j == "PRODUCT_BRAND")
+    {
+        value = ConversionProductReportBreakdownType::PRODUCT_BRAND;
+        return;
+    }
+    
+    if (j == "PRODUCT_CATEGORY")
+    {
+        value = ConversionProductReportBreakdownType::PRODUCT_CATEGORY;
+        return;
+    }
+    
+    if (j == "PRODUCT_BRAND_AND_CATEGORY")
+    {
+        value = ConversionProductReportBreakdownType::PRODUCT_BRAND_AND_CATEGORY;
+        return;
+    }
+    
+    if (j == "PRODUCT_SKU")
+    {
+        value = ConversionProductReportBreakdownType::PRODUCT_SKU;
+        return;
+    }
+    
+    if (j == "PRODUCT_SKU_GROUP")
+    {
+        value = ConversionProductReportBreakdownType::PRODUCT_SKU_GROUP;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for ConversionProductReportBreakdownType", &j);
+}
 
 } // namespace models
 

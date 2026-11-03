@@ -29,8 +29,6 @@ import {
 export interface HotelIdFilter {
     /**
      * 
-     * @type {CatalogsProductGroupMultipleStringCriteria}
-     * @memberof HotelIdFilter
      */
     hOTELID: CatalogsProductGroupMultipleStringCriteria;
 }

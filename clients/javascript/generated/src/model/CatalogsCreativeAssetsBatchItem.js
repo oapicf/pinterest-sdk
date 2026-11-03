@@ -21,7 +21,7 @@ import CatalogsUpsertCreativeAssetsItem from './CatalogsUpsertCreativeAssetsItem
 /**
  * The CatalogsCreativeAssetsBatchItem model module.
  * @module model/CatalogsCreativeAssetsBatchItem
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsCreativeAssetsBatchItem {
     /**

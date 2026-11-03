@@ -88,7 +88,7 @@ public class CatalogFeedsApiHandler {
         CatalogsFeedCreateRequestSchema catalogsFeedCreateRequestSchema = body != null ? DatabindCodec.mapper().convertValue(body.get(), new TypeReference<CatalogsFeedCreateRequestSchema>(){}) : null;
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
-        logger.debug("Parameter catalogsFeedCreateRequestSchema is {}", catalogsFeedCreateRequestSchema);
+        logger.debug("Parameter catalogsFeedCreateRequestSchema is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.feedsCreate(catalogsFeedCreateRequestSchema, adAccountId)
@@ -215,7 +215,7 @@ public class CatalogFeedsApiHandler {
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
         logger.debug("Parameter feedId is {}", feedId);
-        logger.debug("Parameter catalogsFeedUpdateRequestSchema is {}", catalogsFeedUpdateRequestSchema);
+        logger.debug("Parameter catalogsFeedUpdateRequestSchema is (body omitted)");
         logger.debug("Parameter adAccountId is {}", adAccountId);
 
         api.feedsUpdate(feedId, catalogsFeedUpdateRequestSchema, adAccountId)

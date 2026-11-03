@@ -26,13 +26,9 @@ public class QuizPinData  {
   
   @ApiModelProperty(value = "")
 
-  @Valid
-
   private List<@Valid QuizPinQuestion> questions = new ArrayList<>();
 
   @ApiModelProperty(value = "")
-
-  @Valid
 
   private List<@Valid QuizPinResult> results = new ArrayList<>();
 

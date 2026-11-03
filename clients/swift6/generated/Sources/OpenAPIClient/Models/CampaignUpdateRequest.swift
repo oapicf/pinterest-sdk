@@ -9,9 +9,9 @@ import Foundation
 
 public struct CampaignUpdateRequest: Sendable, Codable, Hashable {
 
-    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
+    public static let adAccountIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
+    public static let orderLineIdRule = StringRule(minLength: nil, maxLength: nil, pattern: "^\\d+$")
     public var bidOptions: CampaignBidOptionsUpdate?
     public var intendedPromotionType: IntendedPromotionType?
     /** Specifies whether the campaign is optimized for Lifetime Value (LTV). Only available for eligible advertisers. */

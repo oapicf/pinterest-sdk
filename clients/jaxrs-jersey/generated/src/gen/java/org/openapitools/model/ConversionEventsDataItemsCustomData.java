@@ -47,7 +47,7 @@ import javax.validation.Valid;
   ConversionEventsDataItemsCustomData.JSON_PROPERTY_SEARCH_STRING,
   ConversionEventsDataItemsCustomData.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ConversionEventsDataItemsCustomData   {
   public static final String JSON_PROPERTY_CONTENT_BRAND = "content_brand";
   @JsonProperty(JSON_PROPERTY_CONTENT_BRAND)
@@ -216,7 +216,7 @@ public class ConversionEventsDataItemsCustomData   {
    **/
   @JsonProperty(value = "contents")
   @ApiModelProperty(value = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
-  @Valid 
+  
   public List<@Valid ConversionEventsDataItemsCustomDataContentsItems> getContents() {
     return contents;
   }

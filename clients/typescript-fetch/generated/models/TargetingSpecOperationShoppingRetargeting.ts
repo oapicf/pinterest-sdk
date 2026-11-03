@@ -29,20 +29,14 @@ import {
 export interface TargetingSpecOperationShoppingRetargeting {
     /**
      * 
-     * @type {TargetingSpecOperationShoppingRetargetingFieldEnum}
-     * @memberof TargetingSpecOperationShoppingRetargeting
      */
     field: TargetingSpecOperationShoppingRetargetingFieldEnum;
     /**
      * 
-     * @type {TargetingSpecOperationShoppingRetargetingOperationEnum}
-     * @memberof TargetingSpecOperationShoppingRetargeting
      */
     operation: TargetingSpecOperationShoppingRetargetingOperationEnum;
     /**
      * 
-     * @type {Array<TargetingSpecShoppingRetargeting>}
-     * @memberof TargetingSpecOperationShoppingRetargeting
      */
     values: Array<TargetingSpecShoppingRetargeting>;
 }
@@ -52,7 +46,7 @@ export interface TargetingSpecOperationShoppingRetargeting {
  * @export
  */
 export const TargetingSpecOperationShoppingRetargetingFieldEnum = {
-    ShoppingRetargeting: 'SHOPPING_RETARGETING'
+    ShoppingRetargeting: 'SHOPPING_RETARGETING',
 } as const;
 export type TargetingSpecOperationShoppingRetargetingFieldEnum = typeof TargetingSpecOperationShoppingRetargetingFieldEnum[keyof typeof TargetingSpecOperationShoppingRetargetingFieldEnum];
 
@@ -60,7 +54,7 @@ export type TargetingSpecOperationShoppingRetargetingFieldEnum = typeof Targetin
  * @export
  */
 export const TargetingSpecOperationShoppingRetargetingOperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
 } as const;
 export type TargetingSpecOperationShoppingRetargetingOperationEnum = typeof TargetingSpecOperationShoppingRetargetingOperationEnum[keyof typeof TargetingSpecOperationShoppingRetargetingOperationEnum];
 

@@ -75,8 +75,7 @@ class IntegrationLogsInvalidLogResponse(BaseModel):
         _items = []
         if self.rejected_logs:
             for _item_rejected_logs in self.rejected_logs:
-                if _item_rejected_logs:
-                    _items.append(_item_rejected_logs.to_dict())
+                _items.append(_item_rejected_logs.to_dict() if _item_rejected_logs is not None else None)
             _dict['rejected_logs'] = _items
         return _dict
 

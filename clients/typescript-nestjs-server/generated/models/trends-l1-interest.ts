@@ -27,7 +27,7 @@ export const TrendsL1Interest = {
     Travel: 'travel',
     Vehicles: 'vehicles',
     Wedding: 'wedding',
-    WomensFashion: 'womens_fashion'
+    WomensFashion: 'womens_fashion',
 } as const;
 export type TrendsL1Interest = typeof TrendsL1Interest[keyof typeof TrendsL1Interest];
 

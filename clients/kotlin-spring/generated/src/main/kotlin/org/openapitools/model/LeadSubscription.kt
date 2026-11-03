@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -32,20 +29,14 @@ data class LeadSubscription(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "The Ad Account ID that this lead form belongs to.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("ad_account_id")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null,
 
     @Schema(description = "API version.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("api_version")
     @get:JsonProperty("api_version") val apiVersion: kotlin.String? = null,
 
     @Schema(description = "Subscription creation time. Unix timestamp in milliseconds.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("created_time")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null,
 
@@ -59,8 +50,6 @@ data class LeadSubscription(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "Subscription ID.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("id")
     @get:JsonProperty("id") val id: kotlin.String? = null,
 
@@ -71,14 +60,10 @@ data class LeadSubscription(
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(description = "User account used to subscribe lead data.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("user_account_id")
     @get:JsonProperty("user_account_id") val userAccountId: kotlin.String? = null,
 
     @Schema(description = "Standard HTTPS webhook URL.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("webhook_url")
     @get:JsonProperty("webhook_url") val webhookUrl: kotlin.String? = null
 ) {

@@ -17,7 +17,7 @@ import PromotionArrayElement from './PromotionArrayElement';
 /**
  * The PromotionsResponse model module.
  * @module model/PromotionsResponse
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PromotionsResponse {
     /**

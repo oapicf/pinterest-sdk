@@ -2,7 +2,7 @@
 
 from typing import ClassVar, Dict, List, Tuple  # noqa: F401
 
-from pydantic import Field, StrictStr, field_validator
+from pydantic import Field, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from openapi_server.models.media import Media
@@ -20,8 +20,8 @@ class BaseMediaApi:
         BaseMediaApi.subclasses = BaseMediaApi.subclasses + (cls,)
     async def media_list(
         self,
-        bookmark: Annotated[Optional[StrictStr], Field(description="Cursor used to fetch the next page of items")],
-        page_size: Annotated[Optional[Annotated[int, Field(le=250, strict=True, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
+        bookmark: Annotated[Optional[str], Field(description="Cursor used to fetch the next page of items")],
+        page_size: Annotated[Optional[Annotated[int, Field(le=250, ge=1)]], Field(description="Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.")],
     ) -> MediaList200Response:
         """List media uploads filtered by given parameters.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation."""
         ...
@@ -37,7 +37,7 @@ class BaseMediaApi:
 
     async def media_get(
         self,
-        media_id: Annotated[str, Field(strict=True, description="Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")],
+        media_id: Annotated[str, Field(description="Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")],
     ) -> Media:
         """Get details for a registered media upload, including its current status.  **[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation."""
         ...

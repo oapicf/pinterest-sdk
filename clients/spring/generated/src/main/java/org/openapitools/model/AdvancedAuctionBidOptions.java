@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Arrays;
@@ -26,16 +25,13 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionBidOptions", description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-30T10:18:23.383461959Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionBidOptions {
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<AppTypeMultipliers> appTypeMultipliers = JsonNullable.<AppTypeMultipliers>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<Long> bidInMicroCurrency = JsonNullable.<Long>undefined();
 
-  @JsonInclude(JsonInclude.Include.NON_ABSENT)
   private JsonNullable<PlacementMultipliers> placementMultipliers = JsonNullable.<PlacementMultipliers>undefined();
 
   public AdvancedAuctionBidOptions appTypeMultipliers(AppTypeMultipliers appTypeMultipliers) {
@@ -48,7 +44,7 @@ public class AdvancedAuctionBidOptions {
    * @return appTypeMultipliers
    */
   @Valid 
-  @Schema(name = "app_type_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "app_type_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("app_type_multipliers")
   public JsonNullable<AppTypeMultipliers> getAppTypeMultipliers() {
     return appTypeMultipliers;
@@ -68,7 +64,7 @@ public class AdvancedAuctionBidOptions {
    * @return bidInMicroCurrency
    */
   
-  @Schema(name = "bid_in_micro_currency", description = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "bid_in_micro_currency", description = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("bid_in_micro_currency")
   public JsonNullable<Long> getBidInMicroCurrency() {
     return bidInMicroCurrency;
@@ -88,7 +84,7 @@ public class AdvancedAuctionBidOptions {
    * @return placementMultipliers
    */
   @Valid 
-  @Schema(name = "placement_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "placement_multipliers", requiredMode = Schema.RequiredMode.NOT_REQUIRED, nullable = true)
   @JsonProperty("placement_multipliers")
   public JsonNullable<PlacementMultipliers> getPlacementMultipliers() {
     return placementMultipliers;

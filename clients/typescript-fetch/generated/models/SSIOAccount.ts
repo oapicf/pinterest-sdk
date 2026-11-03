@@ -36,38 +36,26 @@ import {
 export interface SSIOAccount {
     /**
      * An array of Salesforce account information that includes address, io terms, etc.
-     * @type {Array<SSIOAccountItem>}
-     * @memberof SSIOAccount
      */
     billtoInfos?: Array<SSIOAccountItem>;
     /**
      * Advertiser eligible to update order lines
-     * @type {boolean}
-     * @memberof SSIOAccount
      */
     canEdit?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof SSIOAccount
      */
     currency?: string;
     /**
      * Advertiser eligible to create order lines
-     * @type {boolean}
-     * @memberof SSIOAccount
      */
     eligible?: boolean;
     /**
      * Error indicator from Salesforce which could be "No Error"
-     * @type {string}
-     * @memberof SSIOAccount
      */
     error?: string;
     /**
      * 
-     * @type {Array<SSIOAccountPMPName>}
-     * @memberof SSIOAccount
      */
     pmpNames?: Array<SSIOAccountPMPName>;
 }

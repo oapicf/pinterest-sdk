@@ -162,10 +162,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (attributes.IsSet && attributes.Value == null)
-                throw new ArgumentNullException(nameof(attributes), "Property is not nullable for class ItemUpsertBatchRecord.");
+                throw new JsonException("Property is not nullable for class ItemUpsertBatchRecord: attributes.");
 
             if (itemId.IsSet && itemId.Value == null)
-                throw new ArgumentNullException(nameof(itemId), "Property is not nullable for class ItemUpsertBatchRecord.");
+                throw new JsonException("Property is not nullable for class ItemUpsertBatchRecord: item_id.");
 
             return new ItemUpsertBatchRecord(attributes, itemId);
         }
@@ -176,7 +176,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemUpsertBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ItemUpsertBatchRecord itemUpsertBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -191,14 +190,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="itemUpsertBatchRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ItemUpsertBatchRecord itemUpsertBatchRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             if (itemUpsertBatchRecord.AttributesOption.IsSet && itemUpsertBatchRecord.Attributes == null)
-                throw new ArgumentNullException(nameof(itemUpsertBatchRecord.Attributes), "Property is required for class ItemUpsertBatchRecord.");
+                throw new JsonException("Cannot write null property ItemUpsertBatchRecord.Attributes to non-nullable JSON property 'attributes'.");
 
             if (itemUpsertBatchRecord.ItemIdOption.IsSet && itemUpsertBatchRecord.ItemId == null)
-                throw new ArgumentNullException(nameof(itemUpsertBatchRecord.ItemId), "Property is required for class ItemUpsertBatchRecord.");
+                throw new JsonException("Cannot write null property ItemUpsertBatchRecord.ItemId to non-nullable JSON property 'item_id'.");
 
             if (itemUpsertBatchRecord.AttributesOption.IsSet)
             {

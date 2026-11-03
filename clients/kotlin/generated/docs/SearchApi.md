@@ -42,12 +42,12 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **term** | **kotlin.String**| Search term to look up pins. | |
 | **countryCode** | **kotlin.String**| Two letter country code (ISO 3166-1 alpha-2) | |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **locale** | **kotlin.String**| Search locale. | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **limit** | **kotlin.Int**| Max search result size | [optional] [default to 10] |
 
 ### Return type
@@ -103,11 +103,11 @@ try {
 ```
 
 ### Parameters
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **query** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. | [optional] [default to 25] |
 
 ### Return type
@@ -170,10 +170,10 @@ try {
 ```
 
 ### Parameters
-| **query** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | |
-| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **query** | **kotlin.String**| Search query. Can contain pin description keywords or comma-separated pin IDs. | |
+| **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 
 ### Return type

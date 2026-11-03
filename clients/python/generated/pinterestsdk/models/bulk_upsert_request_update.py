@@ -89,57 +89,49 @@ class BulkUpsertRequestUpdate(BaseModel):
         _items = []
         if self.ad_groups:
             for _item_ad_groups in self.ad_groups:
-                if _item_ad_groups:
-                    _items.append(_item_ad_groups.to_dict())
+                _items.append(_item_ad_groups.to_dict() if _item_ad_groups is not None else None)
             _dict['ad_groups'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ads (list)
         _items = []
         if self.ads:
             for _item_ads in self.ads:
-                if _item_ads:
-                    _items.append(_item_ads.to_dict())
+                _items.append(_item_ads.to_dict() if _item_ads is not None else None)
             _dict['ads'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in campaigns (list)
         _items = []
         if self.campaigns:
             for _item_campaigns in self.campaigns:
-                if _item_campaigns:
-                    _items.append(_item_campaigns.to_dict())
+                _items.append(_item_campaigns.to_dict() if _item_campaigns is not None else None)
             _dict['campaigns'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in catalog_product_groups (list)
         _items = []
         if self.catalog_product_groups:
             for _item_catalog_product_groups in self.catalog_product_groups:
-                if _item_catalog_product_groups:
-                    _items.append(_item_catalog_product_groups.to_dict())
+                _items.append(_item_catalog_product_groups.to_dict() if _item_catalog_product_groups is not None else None)
             _dict['catalog_product_groups'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in keywords (list)
         _items = []
         if self.keywords:
             for _item_keywords in self.keywords:
-                if _item_keywords:
-                    _items.append(_item_keywords.to_dict())
+                _items.append(_item_keywords.to_dict() if _item_keywords is not None else None)
             _dict['keywords'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in labels (list)
         _items = []
         if self.labels:
             for _item_labels in self.labels:
-                if _item_labels:
-                    _items.append(_item_labels.to_dict())
+                _items.append(_item_labels.to_dict() if _item_labels is not None else None)
             _dict['labels'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in product_groups (list)
         _items = []
         if self.product_groups:
             for _item_product_groups in self.product_groups:
-                if _item_product_groups:
-                    _items.append(_item_product_groups.to_dict())
+                _items.append(_item_product_groups.to_dict() if _item_product_groups is not None else None)
             _dict['product_groups'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in schedules (list)
         _items = []
         if self.schedules:
             for _item_schedules in self.schedules:
-                if _item_schedules:
-                    _items.append(_item_schedules.to_dict())
+                _items.append(_item_schedules.to_dict() if _item_schedules is not None else None)
             _dict['schedules'] = _items
         return _dict
 

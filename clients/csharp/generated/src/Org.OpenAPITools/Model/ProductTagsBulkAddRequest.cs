@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!productTags.IsSet)
-                throw new ArgumentException("Property is required for class ProductTagsBulkAddRequest.", nameof(productTags));
+                throw new JsonException("Property is required for class ProductTagsBulkAddRequest: product_tags.");
 
             if (productTags.IsSet && productTags.Value == null)
-                throw new ArgumentNullException(nameof(productTags), "Property is not nullable for class ProductTagsBulkAddRequest.");
+                throw new JsonException("Property is not nullable for class ProductTagsBulkAddRequest: product_tags.");
 
             return new ProductTagsBulkAddRequest(productTags.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsBulkAddRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ProductTagsBulkAddRequest productTagsBulkAddRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="productTagsBulkAddRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ProductTagsBulkAddRequest productTagsBulkAddRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (productTagsBulkAddRequest.ProductTags == null)
-                throw new ArgumentNullException(nameof(productTagsBulkAddRequest.ProductTags), "Property is required for class ProductTagsBulkAddRequest.");
-
             writer.WritePropertyName("product_tags");
             JsonSerializer.Serialize(writer, productTagsBulkAddRequest.ProductTags, jsonSerializerOptions);
         }

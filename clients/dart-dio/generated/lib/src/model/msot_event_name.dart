@@ -9,18 +9,15 @@ import 'package:built_value/serializer.dart';
 
 part 'msot_event_name.g.dart';
 
+/// Type of user conversion event.
 class MsotEventName extends EnumClass {
 
-  /// Type of user conversion event.
   @BuiltValueEnumConst(wireName: r'add_to_cart')
   static const MsotEventName addToCart = _$addToCart;
-  /// Type of user conversion event.
   @BuiltValueEnumConst(wireName: r'checkout')
   static const MsotEventName checkout = _$checkout;
-  /// Type of user conversion event.
   @BuiltValueEnumConst(wireName: r'lead')
   static const MsotEventName lead = _$lead;
-  /// Type of user conversion event.
   @BuiltValueEnumConst(wireName: r'signup')
   static const MsotEventName signup = _$signup;
 

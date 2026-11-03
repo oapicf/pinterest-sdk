@@ -134,10 +134,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!productTags.IsSet)
-                throw new ArgumentException("Property is required for class IneligibleProductTagsErrorDetails.", nameof(productTags));
+                throw new JsonException("Property is required for class IneligibleProductTagsErrorDetails: product_tags.");
 
             if (productTags.IsSet && productTags.Value == null)
-                throw new ArgumentNullException(nameof(productTags), "Property is not nullable for class IneligibleProductTagsErrorDetails.");
+                throw new JsonException("Property is not nullable for class IneligibleProductTagsErrorDetails: product_tags.");
 
             return new IneligibleProductTagsErrorDetails(productTags.Value!);
         }
@@ -148,7 +148,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ineligibleProductTagsErrorDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IneligibleProductTagsErrorDetails ineligibleProductTagsErrorDetails, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -163,12 +162,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="ineligibleProductTagsErrorDetails"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IneligibleProductTagsErrorDetails ineligibleProductTagsErrorDetails, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (ineligibleProductTagsErrorDetails.ProductTags == null)
-                throw new ArgumentNullException(nameof(ineligibleProductTagsErrorDetails.ProductTags), "Property is required for class IneligibleProductTagsErrorDetails.");
-
             writer.WritePropertyName("product_tags");
             JsonSerializer.Serialize(writer, ineligibleProductTagsErrorDetails.ProductTags, jsonSerializerOptions);
         }

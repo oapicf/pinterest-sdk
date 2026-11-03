@@ -22,7 +22,7 @@ data class PriceFilter(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("PRICE")
+    @param:JsonProperty("PRICE", required = true)
     @get:JsonProperty("PRICE", required = true) val PRICE: PriceFilterPrice
 ) {
 

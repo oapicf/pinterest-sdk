@@ -12,24 +12,54 @@
 
 namespace models {
 
-
-class UpdateMaskBidOptionField
-{
-public:
-
-    UpdateMaskBidOptionField();
-    virtual ~UpdateMaskBidOptionField() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(UpdateMaskBidOptionField,
-        )
-
-private:
+enum class UpdateMaskBidOptionField {
+    
+    BID,
+    
+    APP_TYPE_BID_MULTIPLIER_SET,
+    
+    PLACEMENT_BID_MULTIPLIER_SET
+    
 };
 
+inline void to_json(nlohmann::json& j, const UpdateMaskBidOptionField& value)
+{
+    switch (value)
+    {
+        
+        case UpdateMaskBidOptionField::BID: j = "BID"; break;
+        
+        case UpdateMaskBidOptionField::APP_TYPE_BID_MULTIPLIER_SET: j = "APP_TYPE_BID_MULTIPLIER_SET"; break;
+        
+        case UpdateMaskBidOptionField::PLACEMENT_BID_MULTIPLIER_SET: j = "PLACEMENT_BID_MULTIPLIER_SET"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for UpdateMaskBidOptionField", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, UpdateMaskBidOptionField& value)
+{
+    
+    if (j == "BID")
+    {
+        value = UpdateMaskBidOptionField::BID;
+        return;
+    }
+    
+    if (j == "APP_TYPE_BID_MULTIPLIER_SET")
+    {
+        value = UpdateMaskBidOptionField::APP_TYPE_BID_MULTIPLIER_SET;
+        return;
+    }
+    
+    if (j == "PLACEMENT_BID_MULTIPLIER_SET")
+    {
+        value = UpdateMaskBidOptionField::PLACEMENT_BID_MULTIPLIER_SET;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for UpdateMaskBidOptionField", &j);
+}
 
 } // namespace models
 

@@ -464,19 +464,19 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!id.IsSet)
-                throw new ArgumentException("Property is required for class IntegrationRecord.", nameof(id));
+                throw new JsonException("Property is required for class IntegrationRecord: id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class IntegrationRecord.");
+                throw new JsonException("Property is not nullable for class IntegrationRecord: id.");
 
             if (connectedUserId.IsSet && connectedUserId.Value == null)
-                throw new ArgumentNullException(nameof(connectedUserId), "Property is not nullable for class IntegrationRecord.");
+                throw new JsonException("Property is not nullable for class IntegrationRecord: connected_user_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class IntegrationRecord.");
+                throw new JsonException("Property is not nullable for class IntegrationRecord: created_time.");
 
             if (updatedTime.IsSet && updatedTime.Value == null)
-                throw new ArgumentNullException(nameof(updatedTime), "Property is not nullable for class IntegrationRecord.");
+                throw new JsonException("Property is not nullable for class IntegrationRecord: updated_time.");
 
             return new IntegrationRecord(id.Value!, additionalId1, connectedAdvertiserId, connectedLbaId, connectedMerchantId, connectedTagId, connectedUserId, createdTime, externalBusinessId, partnerAccessToken, partnerAccessTokenExpiry, partnerMetadata, partnerPrimaryEmail, partnerRefreshToken, partnerRefreshTokenExpiry, scopes, updatedTime);
         }
@@ -487,7 +487,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, IntegrationRecord integrationRecord, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -502,14 +501,16 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="integrationRecord"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, IntegrationRecord integrationRecord, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (integrationRecord.Id == null)
-                throw new ArgumentNullException(nameof(integrationRecord.Id), "Property is required for class IntegrationRecord.");
-
             if (integrationRecord.ConnectedUserIdOption.IsSet && integrationRecord.ConnectedUserId == null)
-                throw new ArgumentNullException(nameof(integrationRecord.ConnectedUserId), "Property is required for class IntegrationRecord.");
+                throw new JsonException("Cannot write null property IntegrationRecord.ConnectedUserId to non-nullable JSON property 'connected_user_id'.");
+
+            if (integrationRecord.CreatedTimeOption.IsSet && integrationRecord.CreatedTime == null)
+                throw new JsonException("Cannot write null property IntegrationRecord.CreatedTime to non-nullable JSON property 'created_time'.");
+
+            if (integrationRecord.UpdatedTimeOption.IsSet && integrationRecord.UpdatedTime == null)
+                throw new JsonException("Cannot write null property IntegrationRecord.UpdatedTime to non-nullable JSON property 'updated_time'.");
 
             writer.WriteString("id", integrationRecord.Id);
 

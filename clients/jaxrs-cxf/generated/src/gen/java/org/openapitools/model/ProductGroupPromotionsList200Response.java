@@ -22,8 +22,6 @@ public class ProductGroupPromotionsList200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid ProductGroupPromotion> items = new ArrayList<>();
  /**
    * Get bookmark

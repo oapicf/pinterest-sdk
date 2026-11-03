@@ -12,24 +12,44 @@
 
 namespace models {
 
-
-class MMMReportGranularity
-{
-public:
-
-    MMMReportGranularity();
-    virtual ~MMMReportGranularity() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(MMMReportGranularity,
-        )
-
-private:
+enum class MMMReportGranularity {
+    
+    DAY,
+    
+    WEEK
+    
 };
 
+inline void to_json(nlohmann::json& j, const MMMReportGranularity& value)
+{
+    switch (value)
+    {
+        
+        case MMMReportGranularity::DAY: j = "DAY"; break;
+        
+        case MMMReportGranularity::WEEK: j = "WEEK"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportGranularity", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, MMMReportGranularity& value)
+{
+    
+    if (j == "DAY")
+    {
+        value = MMMReportGranularity::DAY;
+        return;
+    }
+    
+    if (j == "WEEK")
+    {
+        value = MMMReportGranularity::WEEK;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for MMMReportGranularity", &j);
+}
 
 } // namespace models
 

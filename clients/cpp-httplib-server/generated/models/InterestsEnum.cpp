@@ -6,20 +6,3 @@
 */
 #include "InterestsEnum.h"
 
-namespace models {
-
-InterestsEnum::InterestsEnum()
-{
-}
-// =========================================
-// ===== Getters/Setters =====
-// =========================================
-
-
-
-
-
-
-
-} // namespace models
-

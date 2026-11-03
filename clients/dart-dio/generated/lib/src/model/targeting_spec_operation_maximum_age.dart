@@ -140,6 +140,7 @@ class _$TargetingSpecOperationMaximumAgeSerializer implements PrimitiveSerialize
   }
 }
 
+
 class TargetingSpecOperationMaximumAgeFieldEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'MAXIMUM_AGE')

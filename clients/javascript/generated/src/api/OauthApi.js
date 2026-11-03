@@ -22,7 +22,7 @@ import TokenTypeHint from '../model/TokenTypeHint';
 /**
 * Oauth service.
 * @module api/OauthApi
-* @version 2.0.1-pre.0
+* @version 2.1.1-pre.0
 */
 export default class OauthApi {
 

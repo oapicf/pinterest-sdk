@@ -421,28 +421,28 @@ namespace Org.OpenAPITools.Model
             }
 
             if (adAccountId.IsSet && adAccountId.Value == null)
-                throw new ArgumentNullException(nameof(adAccountId), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: ad_account_id.");
 
             if (audienceType.IsSet && audienceType.Value == null)
-                throw new ArgumentNullException(nameof(audienceType), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: audience_type.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: id.");
 
             if (isNca.IsSet && isNca.Value == null)
-                throw new ArgumentNullException(nameof(isNca), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: is_nca.");
 
             if (name.IsSet && name.Value == null)
-                throw new ArgumentNullException(nameof(name), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: name.");
 
             if (rule.IsSet && rule.Value == null)
-                throw new ArgumentNullException(nameof(rule), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: rule.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: status.");
 
             if (type.IsSet && type.Value == null)
-                throw new ArgumentNullException(nameof(type), "Property is not nullable for class Audience.");
+                throw new JsonException("Property is not nullable for class Audience: type.");
 
             return new Audience(adAccountId, audienceType, createdByCompanyName, createdTimestamp, description, id, isNca, name, rule, size, status, type, updatedTimestamp);
         }
@@ -453,7 +453,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, Audience audience, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -468,23 +467,31 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="audience"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, Audience audience, JsonSerializerOptions jsonSerializerOptions)
         {
             if (audience.AdAccountIdOption.IsSet && audience.AdAccountId == null)
-                throw new ArgumentNullException(nameof(audience.AdAccountId), "Property is required for class Audience.");
+                throw new JsonException("Cannot write null property Audience.AdAccountId to non-nullable JSON property 'ad_account_id'.");
+
+            if (audience.AudienceTypeOption.IsSet && audience.AudienceType == null)
+                throw new JsonException("Cannot write null property Audience.AudienceType to non-nullable JSON property 'audience_type'.");
 
             if (audience.IdOption.IsSet && audience.Id == null)
-                throw new ArgumentNullException(nameof(audience.Id), "Property is required for class Audience.");
+                throw new JsonException("Cannot write null property Audience.Id to non-nullable JSON property 'id'.");
+
+            if (audience.IsNcaOption.IsSet && audience.IsNca == null)
+                throw new JsonException("Cannot write null property Audience.IsNca to non-nullable JSON property 'is_nca'.");
 
             if (audience.NameOption.IsSet && audience.Name == null)
-                throw new ArgumentNullException(nameof(audience.Name), "Property is required for class Audience.");
+                throw new JsonException("Cannot write null property Audience.Name to non-nullable JSON property 'name'.");
 
             if (audience.RuleOption.IsSet && audience.Rule == null)
-                throw new ArgumentNullException(nameof(audience.Rule), "Property is required for class Audience.");
+                throw new JsonException("Cannot write null property Audience.Rule to non-nullable JSON property 'rule'.");
+
+            if (audience.StatusOption.IsSet && audience.Status == null)
+                throw new JsonException("Cannot write null property Audience.Status to non-nullable JSON property 'status'.");
 
             if (audience.TypeOption.IsSet && audience.Type == null)
-                throw new ArgumentNullException(nameof(audience.Type), "Property is required for class Audience.");
+                throw new JsonException("Cannot write null property Audience.Type to non-nullable JSON property 'type'.");
 
             if (audience.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", audience.AdAccountId);

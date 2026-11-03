@@ -10,7 +10,7 @@ import Foundation
 /** Request object for updating a feed. */
 public struct CatalogsFeedsUpdateRequest: Sendable, Codable, Hashable {
 
-    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^(http|https|ftp|sftp):\/\//")
+    public static let locationRule = StringRule(minLength: nil, maxLength: nil, pattern: "^(http|https|ftp|sftp)://")
     public var credentials: CatalogsFeedCredentials?
     public var defaultAvailability: ProductAvailabilityType?
     public var defaultCurrency: NullableCurrency?

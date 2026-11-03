@@ -164,10 +164,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (code.IsSet && code.Value == null)
-                throw new ArgumentNullException(nameof(code), "Property is not nullable for class AdvancedAuctionOperationError.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionOperationError: code.");
 
             if (message.IsSet && message.Value == null)
-                throw new ArgumentNullException(nameof(message), "Property is not nullable for class AdvancedAuctionOperationError.");
+                throw new JsonException("Property is not nullable for class AdvancedAuctionOperationError: message.");
 
             return new AdvancedAuctionOperationError(code, message);
         }
@@ -178,7 +178,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionOperationError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionOperationError advancedAuctionOperationError, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -193,11 +192,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="advancedAuctionOperationError"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, AdvancedAuctionOperationError advancedAuctionOperationError, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (advancedAuctionOperationError.CodeOption.IsSet && advancedAuctionOperationError.Code == null)
+                throw new JsonException("Cannot write null property AdvancedAuctionOperationError.Code to non-nullable JSON property 'code'.");
+
             if (advancedAuctionOperationError.MessageOption.IsSet && advancedAuctionOperationError.Message == null)
-                throw new ArgumentNullException(nameof(advancedAuctionOperationError.Message), "Property is required for class AdvancedAuctionOperationError.");
+                throw new JsonException("Cannot write null property AdvancedAuctionOperationError.Message to non-nullable JSON property 'message'.");
 
             if (advancedAuctionOperationError.CodeOption.IsSet)
                 writer.WriteNumber("code", advancedAuctionOperationError.CodeOption.Value!.Value);

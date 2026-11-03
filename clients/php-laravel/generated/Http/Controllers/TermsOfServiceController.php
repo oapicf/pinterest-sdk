@@ -51,22 +51,22 @@ class TermsOfServiceController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'adAccountId' => $adAccountId,
-                ],
                 $request->all(),
+                [
+                    'ad_account_id' => $adAccountId,
+                ],
             ),
             [
-                'adAccountId' => [
+                'ad_account_id' => [
                     'required',
                     'max:18',
                     'regex:/^\\d+$/',
                     'string',
                 ],
-                'includeHtml' => [
+                'include_html' => [
                     'boolean',
                 ],
-                'tosType' => [
+                'tos_type' => [
                     'string',
                 ],
             ],
@@ -77,9 +77,9 @@ class TermsOfServiceController extends Controller
         }
 
 
-        $includeHtml = $request->boolean('includeHtml');
+        $includeHtml = $request->boolean('include_html');
 
-        $tosType = $request->string('tosType')->value();
+        $tosType = $request->string('tos_type')->value();
 
 
         $apiResult = $this->api->termsOfServiceGet($adAccountId, $includeHtml, $tosType);

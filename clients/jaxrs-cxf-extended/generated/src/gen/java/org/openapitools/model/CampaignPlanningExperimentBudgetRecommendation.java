@@ -35,7 +35,6 @@ public class CampaignPlanningExperimentBudgetRecommendation  {
   * Point estimations for this experiment version.
   */
   @ApiModelProperty(value = "Point estimations for this experiment version.")
-  @Valid
   private List<@Valid CampaignPlanningBudgetRecommendationPoint> pointEstimations = new ArrayList<>();
 
  /**

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface S3FilePart {
     /**
      * Part number for upload.
-     * @type {number}
-     * @memberof S3FilePart
      */
     partNumber: number;
     /**
      * Pre-signed URL.
-     * @type {string}
-     * @memberof S3FilePart
      */
     presignedUrl: string;
 }

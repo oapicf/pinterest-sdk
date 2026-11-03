@@ -235,7 +235,12 @@ namespace Org.OpenAPITools.Model
                         case "catalog_type":
                             string? catalogTypeRawValue = utf8JsonReader.GetString();
                             if (catalogTypeRawValue != null)
-                                catalogType = new Option<CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
+                            {
+                                CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnum? catalogTypeValue = CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue);
+                                if (catalogTypeValue == null)
+                                    throw new JsonException();
+                                catalogType = new Option<CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnum?>(catalogTypeValue);
+                            }
                             break;
                         case "country":
                             country = new Option<Country?>(JsonSerializer.Deserialize<Country?>(ref utf8JsonReader, jsonSerializerOptions));
@@ -253,34 +258,34 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!catalogId.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.", nameof(catalogId));
+                throw new JsonException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest: catalog_id.");
 
             if (!catalogType.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.", nameof(catalogType));
+                throw new JsonException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (!country.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.", nameof(country));
+                throw new JsonException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest: country.");
 
             if (!filters.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.", nameof(filters));
+                throw new JsonException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest: filters.");
 
             if (!locale.IsSet)
-                throw new ArgumentException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.", nameof(locale));
+                throw new JsonException("Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest: locale.");
 
             if (catalogId.IsSet && catalogId.Value == null)
-                throw new ArgumentNullException(nameof(catalogId), "Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest: catalog_id.");
 
             if (catalogType.IsSet && catalogType.Value == null)
-                throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest: catalog_type.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest: country.");
 
             if (filters.IsSet && filters.Value == null)
-                throw new ArgumentNullException(nameof(filters), "Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest: filters.");
 
             if (locale.IsSet && locale.Value == null)
-                throw new ArgumentNullException(nameof(locale), "Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
+                throw new JsonException("Property is not nullable for class CatalogsRetailListProductsByCatalogBasedFilterRequest: locale.");
 
             return new CatalogsRetailListProductsByCatalogBasedFilterRequest(catalogId.Value!, catalogType.Value!.Value!, country.Value!.Value!, filters.Value!, locale.Value!.Value!);
         }
@@ -291,7 +296,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -306,15 +310,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="catalogsRetailListProductsByCatalogBasedFilterRequest"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailListProductsByCatalogBasedFilterRequest catalogsRetailListProductsByCatalogBasedFilterRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailListProductsByCatalogBasedFilterRequest.CatalogId == null)
-                throw new ArgumentNullException(nameof(catalogsRetailListProductsByCatalogBasedFilterRequest.CatalogId), "Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
-
-            if (catalogsRetailListProductsByCatalogBasedFilterRequest.Filters == null)
-                throw new ArgumentNullException(nameof(catalogsRetailListProductsByCatalogBasedFilterRequest.Filters), "Property is required for class CatalogsRetailListProductsByCatalogBasedFilterRequest.");
-
             writer.WriteString("catalog_id", catalogsRetailListProductsByCatalogBasedFilterRequest.CatalogId);
 
             var catalogTypeRawValue = CatalogsRetailListProductsByCatalogBasedFilterRequest.CatalogTypeEnumToJsonValue(catalogsRetailListProductsByCatalogBasedFilterRequest.CatalogType);

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Discount status based on the current time and start and end time of discount
-* Values: OTHER,ACTIVE,PAUSED,SCHEDULED,EXPIRED
-*/
+ * Discount status based on the current time and start and end time of discount
+ * Values: OTHER,ACTIVE,PAUSED,SCHEDULED,EXPIRED
+ */
 enum class DiscountStatus(@get:JsonValue val value: kotlin.String) {
 
     OTHER("OTHER"),
@@ -31,9 +31,8 @@ enum class DiscountStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): DiscountStatus {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DiscountStatus'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DiscountStatus'")
         }
     }
 }
-

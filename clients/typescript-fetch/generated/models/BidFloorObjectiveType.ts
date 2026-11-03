@@ -25,7 +25,7 @@ export const BidFloorObjectiveType = {
     WebConversion: 'WEB_CONVERSION',
     CatalogSales: 'CATALOG_SALES',
     VideoCompletion: 'VIDEO_COMPLETION',
-    Sales: 'SALES'
+    Sales: 'SALES',
 } as const;
 export type BidFloorObjectiveType = typeof BidFloorObjectiveType[keyof typeof BidFloorObjectiveType];
 

@@ -9,15 +9,13 @@ import 'package:built_value/serializer.dart';
 
 part 'budget_duration_type.g.dart';
 
+/// Budget duration type for delivery estimates.
 class BudgetDurationType extends EnumClass {
 
-  /// Budget duration type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'FIXED_DAILY')
   static const BudgetDurationType FIXED_DAILY = _$FIXED_DAILY;
-  /// Budget duration type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'FLEXIBLE_DAILY')
   static const BudgetDurationType FLEXIBLE_DAILY = _$FLEXIBLE_DAILY;
-  /// Budget duration type for delivery estimates.
   @BuiltValueEnumConst(wireName: r'LIFETIME')
   static const BudgetDurationType LIFETIME = _$LIFETIME;
 

@@ -12,24 +12,84 @@
 
 namespace models {
 
-
-class AudienceStatus
-{
-public:
-
-    AudienceStatus();
-    virtual ~AudienceStatus() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(AudienceStatus,
-        )
-
-private:
+enum class AudienceStatus {
+    
+    INITIALIZING,
+    
+    READY,
+    
+    TOO_SMALL,
+    
+    ELIGIBLE,
+    
+    PERSONAS_INELIGIBLE_SIZE,
+    
+    PERSONAS_INITIALIZING
+    
 };
 
+inline void to_json(nlohmann::json& j, const AudienceStatus& value)
+{
+    switch (value)
+    {
+        
+        case AudienceStatus::INITIALIZING: j = "INITIALIZING"; break;
+        
+        case AudienceStatus::READY: j = "READY"; break;
+        
+        case AudienceStatus::TOO_SMALL: j = "TOO_SMALL"; break;
+        
+        case AudienceStatus::ELIGIBLE: j = "ELIGIBLE"; break;
+        
+        case AudienceStatus::PERSONAS_INELIGIBLE_SIZE: j = "PERSONAS_INELIGIBLE_SIZE"; break;
+        
+        case AudienceStatus::PERSONAS_INITIALIZING: j = "PERSONAS_INITIALIZING"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for AudienceStatus", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, AudienceStatus& value)
+{
+    
+    if (j == "INITIALIZING")
+    {
+        value = AudienceStatus::INITIALIZING;
+        return;
+    }
+    
+    if (j == "READY")
+    {
+        value = AudienceStatus::READY;
+        return;
+    }
+    
+    if (j == "TOO_SMALL")
+    {
+        value = AudienceStatus::TOO_SMALL;
+        return;
+    }
+    
+    if (j == "ELIGIBLE")
+    {
+        value = AudienceStatus::ELIGIBLE;
+        return;
+    }
+    
+    if (j == "PERSONAS_INELIGIBLE_SIZE")
+    {
+        value = AudienceStatus::PERSONAS_INELIGIBLE_SIZE;
+        return;
+    }
+    
+    if (j == "PERSONAS_INITIALIZING")
+    {
+        value = AudienceStatus::PERSONAS_INITIALIZING;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for AudienceStatus", &j);
+}
 
 } // namespace models
 

@@ -16,9 +16,9 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
-* Ad group billable event type. For update, only draft ad groups may update billable event.
-* Values: CLICKTHROUGH,IMPRESSION,VIDEO_V_50_MRC
-*/
+ * Ad group billable event type. For update, only draft ad groups may update billable event.
+ * Values: CLICKTHROUGH,IMPRESSION,VIDEO_V_50_MRC
+ */
 enum class ActionType(@get:JsonValue val value: kotlin.String) {
 
     CLICKTHROUGH("CLICKTHROUGH"),
@@ -29,9 +29,8 @@ enum class ActionType(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): ActionType {
-                return values().firstOrNull{it -> it.value == value}
-                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ActionType'")
+            return values().firstOrNull{ it.value == value }
+                ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ActionType'")
         }
     }
 }
-

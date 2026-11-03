@@ -145,3 +145,4 @@ class _$AssetGroupUpdateErrorSerializer implements PrimitiveSerializer<AssetGrou
   }
 }
 
+

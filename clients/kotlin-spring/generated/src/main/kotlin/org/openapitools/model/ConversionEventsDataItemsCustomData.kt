@@ -1,10 +1,7 @@
 package org.openapitools.model
 
 import java.util.Objects
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ConversionEventsDataItemsCustomDataContentsItems
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -33,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * @param orderId The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
  * @param predictedLtv Predicted lifetime value of user associated with the event. Accepted as a string in the request; it will be parsed into a double.
  * @param searchString The search string related to the user conversion event.
- * @param &#x60;value&#x60; Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+ * @param `value` Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
  */
 data class ConversionEventsDataItemsCustomData(
 
@@ -46,8 +43,6 @@ data class ConversionEventsDataItemsCustomData(
     @get:JsonProperty("content_category") val contentCategory: kotlin.String? = null,
 
     @Schema(description = "List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("content_ids")
     @get:JsonProperty("content_ids") val contentIds: kotlin.collections.List<kotlin.String>? = null,
 
@@ -57,8 +52,6 @@ data class ConversionEventsDataItemsCustomData(
 
     @field:Valid
     @Schema(description = "A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("contents")
     @get:JsonProperty("contents") val contents: kotlin.collections.List<ConversionEventsDataItemsCustomDataContentsItems>? = null,
 
@@ -79,8 +72,6 @@ data class ConversionEventsDataItemsCustomData(
     @get:JsonProperty("np") val np: kotlin.String? = null,
 
     @Schema(description = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check [here](https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs) (Install the Pinterest tag section).")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("num_items")
     @get:JsonProperty("num_items") val numItems: kotlin.Long? = null,
 

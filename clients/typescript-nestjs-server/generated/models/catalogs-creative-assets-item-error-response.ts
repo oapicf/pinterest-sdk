@@ -21,11 +21,11 @@ export interface CatalogsCreativeAssetsItemErrorResponse {
 }
 export namespace CatalogsCreativeAssetsItemErrorResponse {
   export const CatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
   } as const;
   export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
   export const ItemResponseKindEnum = {
-    CreativeAssetsItemError: 'creative_assets_item_error'
+    CreativeAssetsItemError: 'creative_assets_item_error',
   } as const;
   export type ItemResponseKindEnum = typeof ItemResponseKindEnum[keyof typeof ItemResponseKindEnum];
 }

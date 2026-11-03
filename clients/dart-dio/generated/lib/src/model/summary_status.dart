@@ -9,30 +9,23 @@ import 'package:built_value/serializer.dart';
 
 part 'summary_status.g.dart';
 
+/// Summary status for campaign
 class SummaryStatus extends EnumClass {
 
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'RUNNING')
   static const SummaryStatus RUNNING = _$RUNNING;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'PAUSED')
   static const SummaryStatus PAUSED = _$PAUSED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'NOT_STARTED')
   static const SummaryStatus NOT_STARTED = _$NOT_STARTED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'COMPLETED')
   static const SummaryStatus COMPLETED = _$COMPLETED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'ADVERTISER_DISABLED')
   static const SummaryStatus ADVERTISER_DISABLED = _$ADVERTISER_DISABLED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'ARCHIVED')
   static const SummaryStatus ARCHIVED = _$ARCHIVED;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'DRAFT')
   static const SummaryStatus DRAFT = _$DRAFT;
-  /// Summary status for campaign
   @BuiltValueEnumConst(wireName: r'DELETED_DRAFT')
   static const SummaryStatus DELETED_DRAFT = _$DELETED_DRAFT;
 

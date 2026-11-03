@@ -165,13 +165,13 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!webhookUrl.IsSet)
-                throw new ArgumentException("Property is required for class LeadSubscriptionCreate.", nameof(webhookUrl));
+                throw new JsonException("Property is required for class LeadSubscriptionCreate: webhook_url.");
 
             if (webhookUrl.IsSet && webhookUrl.Value == null)
-                throw new ArgumentNullException(nameof(webhookUrl), "Property is not nullable for class LeadSubscriptionCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionCreate: webhook_url.");
 
             if (leadFormId.IsSet && leadFormId.Value == null)
-                throw new ArgumentNullException(nameof(leadFormId), "Property is not nullable for class LeadSubscriptionCreate.");
+                throw new JsonException("Property is not nullable for class LeadSubscriptionCreate: lead_form_id.");
 
             return new LeadSubscriptionCreate(webhookUrl.Value!, leadFormId);
         }
@@ -182,7 +182,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LeadSubscriptionCreate leadSubscriptionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -197,14 +196,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="leadSubscriptionCreate"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadSubscriptionCreate leadSubscriptionCreate, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadSubscriptionCreate.WebhookUrl == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionCreate.WebhookUrl), "Property is required for class LeadSubscriptionCreate.");
-
             if (leadSubscriptionCreate.LeadFormIdOption.IsSet && leadSubscriptionCreate.LeadFormId == null)
-                throw new ArgumentNullException(nameof(leadSubscriptionCreate.LeadFormId), "Property is required for class LeadSubscriptionCreate.");
+                throw new JsonException("Cannot write null property LeadSubscriptionCreate.LeadFormId to non-nullable JSON property 'lead_form_id'.");
 
             writer.WriteString("webhook_url", leadSubscriptionCreate.WebhookUrl);
 

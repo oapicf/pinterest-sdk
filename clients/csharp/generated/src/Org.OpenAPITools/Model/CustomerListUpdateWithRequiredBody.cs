@@ -177,16 +177,16 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!operationType.IsSet)
-                throw new ArgumentException("Property is required for class CustomerListUpdateWithRequiredBody.", nameof(operationType));
+                throw new JsonException("Property is required for class CustomerListUpdateWithRequiredBody: operation_type.");
 
             if (operationType.IsSet && operationType.Value == null)
-                throw new ArgumentNullException(nameof(operationType), "Property is not nullable for class CustomerListUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerListUpdateWithRequiredBody: operation_type.");
 
             if (records.IsSet && records.Value == null)
-                throw new ArgumentNullException(nameof(records), "Property is not nullable for class CustomerListUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerListUpdateWithRequiredBody: records.");
 
             if (recordsV2.IsSet && recordsV2.Value == null)
-                throw new ArgumentNullException(nameof(recordsV2), "Property is not nullable for class CustomerListUpdateWithRequiredBody.");
+                throw new JsonException("Property is not nullable for class CustomerListUpdateWithRequiredBody: records_v2.");
 
             return new CustomerListUpdateWithRequiredBody(operationType.Value!.Value!, records, recordsV2);
         }
@@ -197,7 +197,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -212,14 +211,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="customerListUpdateWithRequiredBody"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CustomerListUpdateWithRequiredBody customerListUpdateWithRequiredBody, JsonSerializerOptions jsonSerializerOptions)
         {
             if (customerListUpdateWithRequiredBody.RecordsOption.IsSet && customerListUpdateWithRequiredBody.Records == null)
-                throw new ArgumentNullException(nameof(customerListUpdateWithRequiredBody.Records), "Property is required for class CustomerListUpdateWithRequiredBody.");
+                throw new JsonException("Cannot write null property CustomerListUpdateWithRequiredBody.Records to non-nullable JSON property 'records'.");
 
             if (customerListUpdateWithRequiredBody.RecordsV2Option.IsSet && customerListUpdateWithRequiredBody.RecordsV2 == null)
-                throw new ArgumentNullException(nameof(customerListUpdateWithRequiredBody.RecordsV2), "Property is required for class CustomerListUpdateWithRequiredBody.");
+                throw new JsonException("Cannot write null property CustomerListUpdateWithRequiredBody.RecordsV2 to non-nullable JSON property 'records_v2'.");
 
             var operationTypeRawValue = UserListOperationTypeValueConverter.ToJsonValue(customerListUpdateWithRequiredBody.OperationType);
             writer.WriteString("operation_type", operationTypeRawValue);

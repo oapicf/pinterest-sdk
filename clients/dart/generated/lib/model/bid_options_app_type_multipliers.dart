@@ -141,12 +141,24 @@ class BidOptionsAppTypeMultipliers {
       }());
 
       return BidOptionsAppTypeMultipliers(
-        androidMobile: num.parse('${json[r'android_mobile']}'),
-        androidTablet: num.parse('${json[r'android_tablet']}'),
-        ipad: num.parse('${json[r'ipad']}'),
-        iphone: num.parse('${json[r'iphone']}'),
-        web: num.parse('${json[r'web']}'),
-        webMobile: num.parse('${json[r'web_mobile']}'),
+        androidMobile: json[r'android_mobile'] == null
+            ? null
+            : num.parse('${json[r'android_mobile']}'),
+        androidTablet: json[r'android_tablet'] == null
+            ? null
+            : num.parse('${json[r'android_tablet']}'),
+        ipad: json[r'ipad'] == null
+            ? null
+            : num.parse('${json[r'ipad']}'),
+        iphone: json[r'iphone'] == null
+            ? null
+            : num.parse('${json[r'iphone']}'),
+        web: json[r'web'] == null
+            ? null
+            : num.parse('${json[r'web']}'),
+        webMobile: json[r'web_mobile'] == null
+            ? null
+            : num.parse('${json[r'web_mobile']}'),
       );
     }
     return null;

@@ -20,7 +20,7 @@ import PinterestLibError from './PinterestLibError';
 /**
  * The CatalogsLocalStoresCreate200ResponseInnerData model module.
  * @module model/CatalogsLocalStoresCreate200ResponseInnerData
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CatalogsLocalStoresCreate200ResponseInnerData {
     /**

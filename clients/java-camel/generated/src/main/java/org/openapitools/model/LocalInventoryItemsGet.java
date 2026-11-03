@@ -23,10 +23,9 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LocalInventoryItemsGet", description = "Model for getting local inventory items")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-08-30T09:53:34.136978074Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsGet {
 
-  @Valid
   private List<@Valid LocalInventoryItemResponse> items = new ArrayList<>();
 
   public LocalInventoryItemsGet() {
@@ -57,7 +56,7 @@ public class LocalInventoryItemsGet {
    * Array of local inventory items
    * @return items
    */
-  @Valid 
+  
   @Schema(name = "items", accessMode = Schema.AccessMode.READ_ONLY, description = "Array of local inventory items", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("items")
   public List<@Valid LocalInventoryItemResponse> getItems() {

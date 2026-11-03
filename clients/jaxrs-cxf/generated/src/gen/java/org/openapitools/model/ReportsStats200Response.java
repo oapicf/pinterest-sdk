@@ -22,8 +22,6 @@ public class ReportsStats200Response  {
 
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid CatalogsReportStats> items = new ArrayList<>();
  /**
    * Get bookmark

@@ -1820,3 +1820,4 @@ class _$ItemAttributesSerializer implements PrimitiveSerializer<ItemAttributes> 
   }
 }
 
+

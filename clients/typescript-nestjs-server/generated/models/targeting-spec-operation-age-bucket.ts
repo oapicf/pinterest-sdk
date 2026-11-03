@@ -8,11 +8,11 @@ export interface TargetingSpecOperationAgeBucket {
 }
 export namespace TargetingSpecOperationAgeBucket {
   export const FieldEnum = {
-    AgeBucket: 'AGE_BUCKET'
+    AgeBucket: 'AGE_BUCKET',
   } as const;
   export type FieldEnum = typeof FieldEnum[keyof typeof FieldEnum];
   export const OperationEnum = {
-    Set: 'SET'
+    Set: 'SET',
   } as const;
   export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }

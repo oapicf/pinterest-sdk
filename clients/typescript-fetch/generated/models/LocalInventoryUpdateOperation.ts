@@ -29,26 +29,18 @@ import {
 export interface LocalInventoryUpdateOperation {
     /**
      * 
-     * @type {RetailLocalInventoryItemAttributesOptional}
-     * @memberof LocalInventoryUpdateOperation
      */
     attributes: RetailLocalInventoryItemAttributesOptional;
     /**
      * Catalog item id in the merchant namespace
-     * @type {string}
-     * @memberof LocalInventoryUpdateOperation
      */
     itemId: string;
     /**
      * 
-     * @type {LocalInventoryUpdateOperationOperationEnum}
-     * @memberof LocalInventoryUpdateOperation
      */
     operation: LocalInventoryUpdateOperationOperationEnum;
     /**
      * Store code for the local inventory item
-     * @type {string}
-     * @memberof LocalInventoryUpdateOperation
      */
     storeCode: string;
 }
@@ -58,7 +50,7 @@ export interface LocalInventoryUpdateOperation {
  * @export
  */
 export const LocalInventoryUpdateOperationOperationEnum = {
-    Update: 'UPDATE'
+    Update: 'UPDATE',
 } as const;
 export type LocalInventoryUpdateOperationOperationEnum = typeof LocalInventoryUpdateOperationOperationEnum[keyof typeof LocalInventoryUpdateOperationOperationEnum];
 

@@ -66,7 +66,7 @@ function Invoke-CustomerSegmentCreate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerSegment_create."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$CustomerSegmentCreate) {
             throw "Error! The required parameter `CustomerSegmentCreate` missing when calling customerSegment_create."
@@ -176,7 +176,7 @@ function Invoke-CustomerSegmentList {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerSegment_list."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if ($Bookmark) {
             $LocalVarQueryParameters['bookmark'] = $Bookmark
@@ -279,7 +279,7 @@ function Invoke-CustomerSegmentUpdate {
         if (!$AdAccountId) {
             throw "Error! The required parameter `AdAccountId` missing when calling customerSegment_update."
         }
-        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Web.HTTPUtility]::UrlEncode($AdAccountId))
+        $LocalVarUri = $LocalVarUri.replace('{ad_account_id}', [System.Uri]::EscapeDataString([string]$AdAccountId))
 
         if (!$CustomerSegmentUpdateRequestUpdateWithRequiredBody) {
             throw "Error! The required parameter `CustomerSegmentUpdateRequestUpdateWithRequiredBody` missing when calling customerSegment_update."

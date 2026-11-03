@@ -9,21 +9,17 @@ import 'package:built_value/serializer.dart';
 
 part 'top_pins_sort_by.g.dart';
 
+/// Sort metric for top pins analytics.
 class TopPinsSortBy extends EnumClass {
 
-  /// Sort metric for top pins analytics.
   @BuiltValueEnumConst(wireName: r'ENGAGEMENT')
   static const TopPinsSortBy ENGAGEMENT = _$ENGAGEMENT;
-  /// Sort metric for top pins analytics.
   @BuiltValueEnumConst(wireName: r'SAVE')
   static const TopPinsSortBy SAVE = _$SAVE;
-  /// Sort metric for top pins analytics.
   @BuiltValueEnumConst(wireName: r'IMPRESSION')
   static const TopPinsSortBy IMPRESSION = _$IMPRESSION;
-  /// Sort metric for top pins analytics.
   @BuiltValueEnumConst(wireName: r'OUTBOUND_CLICK')
   static const TopPinsSortBy OUTBOUND_CLICK = _$OUTBOUND_CLICK;
-  /// Sort metric for top pins analytics.
   @BuiltValueEnumConst(wireName: r'PIN_CLICK')
   static const TopPinsSortBy PIN_CLICK = _$PIN_CLICK;
 

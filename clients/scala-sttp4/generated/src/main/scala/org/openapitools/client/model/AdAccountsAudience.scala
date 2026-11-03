@@ -11,8 +11,6 @@
  */
 package org.openapitools.client.model
 
-import org.openapitools.client.model.AudienceStatus._
-import org.openapitools.client.model.AudienceType._
 
 case class AdAccountsAudience(
   /* Ad account ID. */

@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Response containing a list of product tags for a pin.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="Response containing a list of product tags for a pin.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsResponse   {
   
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();
@@ -26,7 +26,6 @@ public class ProductTagsResponse   {
   @ApiModelProperty(required = true, value = "List of product tags on the pin.")
   @JsonProperty("product_tags")
   @NotNull
-  @Valid
   public List<@Valid ProductTagItem> getProductTags() {
     return productTags;
   }

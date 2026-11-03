@@ -17,7 +17,7 @@ import ImageSize from './ImageSize';
 /**
  * The PinMediaWithImage model module.
  * @module model/PinMediaWithImage
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class PinMediaWithImage {
     /**

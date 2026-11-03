@@ -173,10 +173,10 @@ namespace Org.OpenAPITools.Model
             }
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class InviteAssetsSummaryItem.");
+                throw new JsonException("Property is not nullable for class InviteAssetsSummaryItem: id.");
 
             if (permissions.IsSet && permissions.Value == null)
-                throw new ArgumentNullException(nameof(permissions), "Property is not nullable for class InviteAssetsSummaryItem.");
+                throw new JsonException("Property is not nullable for class InviteAssetsSummaryItem: permissions.");
 
             return new InviteAssetsSummaryItem(id, permissions);
         }
@@ -187,7 +187,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteAssetsSummaryItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteAssetsSummaryItem inviteAssetsSummaryItem, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -202,14 +201,13 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteAssetsSummaryItem"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteAssetsSummaryItem inviteAssetsSummaryItem, JsonSerializerOptions jsonSerializerOptions)
         {
             if (inviteAssetsSummaryItem.IdOption.IsSet && inviteAssetsSummaryItem.Id == null)
-                throw new ArgumentNullException(nameof(inviteAssetsSummaryItem.Id), "Property is required for class InviteAssetsSummaryItem.");
+                throw new JsonException("Cannot write null property InviteAssetsSummaryItem.Id to non-nullable JSON property 'id'.");
 
             if (inviteAssetsSummaryItem.PermissionsOption.IsSet && inviteAssetsSummaryItem.Permissions == null)
-                throw new ArgumentNullException(nameof(inviteAssetsSummaryItem.Permissions), "Property is required for class InviteAssetsSummaryItem.");
+                throw new JsonException("Cannot write null property InviteAssetsSummaryItem.Permissions to non-nullable JSON property 'permissions'.");
 
             if (inviteAssetsSummaryItem.IdOption.IsSet)
                 writer.WriteString("id", inviteAssetsSummaryItem.Id);

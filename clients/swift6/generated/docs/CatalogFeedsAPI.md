@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **feedProcessingResultsList**
 ```swift
-    open class func feedProcessingResultsList(feedId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: FeedProcessingResultsList200Response?, _ error: Error?) -> Void)
+    open class func feedProcessingResultsList(feedId: String, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> FeedProcessingResultsList200Response
 ```
 
 List feed processing results
@@ -34,15 +34,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List feed processing results
-CatalogFeedsAPI.feedProcessingResultsList(feedId: feedId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedProcessingResultsList(feedId: feedId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -72,7 +68,7 @@ Name | Type | Description  | Notes
 
 # **feedsCreate**
 ```swift
-    open class func feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsFeed?, _ error: Error?) -> Void)
+    open class func feedsCreate(catalogsFeedCreateRequestSchema: CatalogsFeedCreateRequestSchema, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsFeed
 ```
 
 Create feed
@@ -88,15 +84,11 @@ let catalogsFeedCreateRequestSchema = CatalogsFeedCreateRequestSchema(catalogId:
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Create feed
-CatalogFeedsAPI.feedsCreate(catalogsFeedCreateRequestSchema: catalogsFeedCreateRequestSchema, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsCreate(catalogsFeedCreateRequestSchema: catalogsFeedCreateRequestSchema, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -124,7 +116,7 @@ Name | Type | Description  | Notes
 
 # **feedsDelete**
 ```swift
-    open class func feedsDelete(feedId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsFeed?, _ error: Error?) -> Void)
+    open class func feedsDelete(feedId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsFeed?
 ```
 
 Delete feed
@@ -140,15 +132,11 @@ let feedId = "feedId_example" // String | Unique identifier of a feed.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Delete feed
-CatalogFeedsAPI.feedsDelete(feedId: feedId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsDelete(feedId: feedId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -176,7 +164,7 @@ Name | Type | Description  | Notes
 
 # **feedsGet**
 ```swift
-    open class func feedsGet(feedId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsFeed?, _ error: Error?) -> Void)
+    open class func feedsGet(feedId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsFeed
 ```
 
 Get feed
@@ -192,15 +180,11 @@ let feedId = "feedId_example" // String | Unique identifier of a feed.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get feed
-CatalogFeedsAPI.feedsGet(feedId: feedId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsGet(feedId: feedId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -228,7 +212,7 @@ Name | Type | Description  | Notes
 
 # **feedsIngest**
 ```swift
-    open class func feedsIngest(feedId: String, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsFeedIngestion?, _ error: Error?) -> Void)
+    open class func feedsIngest(feedId: String, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsFeedIngestion
 ```
 
 Ingest feed items
@@ -244,15 +228,11 @@ let feedId = "feedId_example" // String | Unique identifier of a feed.
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Ingest feed items
-CatalogFeedsAPI.feedsIngest(feedId: feedId, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsIngest(feedId: feedId, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -280,7 +260,7 @@ Name | Type | Description  | Notes
 
 # **feedsList**
 ```swift
-    open class func feedsList(catalogId: String? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: FeedsList200Response?, _ error: Error?) -> Void)
+    open class func feedsList(catalogId: String? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> FeedsList200Response
 ```
 
 List feeds
@@ -298,15 +278,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List feeds
-CatalogFeedsAPI.feedsList(catalogId: catalogId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsList(catalogId: catalogId, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -336,7 +312,7 @@ Name | Type | Description  | Notes
 
 # **feedsUpdate**
 ```swift
-    open class func feedsUpdate(feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: String? = nil, completion: @escaping (_ data: CatalogsFeed?, _ error: Error?) -> Void)
+    open class func feedsUpdate(feedId: String, catalogsFeedUpdateRequestSchema: CatalogsFeedUpdateRequestSchema, adAccountId: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> CatalogsFeed
 ```
 
 Update feed
@@ -353,15 +329,11 @@ let catalogsFeedUpdateRequestSchema = CatalogsFeedUpdateRequestSchema(catalogTyp
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Update feed
-CatalogFeedsAPI.feedsUpdate(feedId: feedId, catalogsFeedUpdateRequestSchema: catalogsFeedUpdateRequestSchema, adAccountId: adAccountId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.feedsUpdate(feedId: feedId, catalogsFeedUpdateRequestSchema: catalogsFeedUpdateRequestSchema, adAccountId: adAccountId)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 
@@ -390,7 +362,7 @@ Name | Type | Description  | Notes
 
 # **itemsIssuesList**
 ```swift
-    open class func itemsIssuesList(processingResultId: String, itemNumbers: [Int]? = nil, itemValidationIssue: CatalogsItemValidationIssue? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, completion: @escaping (_ data: ItemsIssuesList200Response?, _ error: Error?) -> Void)
+    open class func itemsIssuesList(processingResultId: String, itemNumbers: [Int]? = nil, itemValidationIssue: CatalogsItemValidationIssue? = nil, adAccountId: String? = nil, bookmark: String? = nil, pageSize: Int? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ItemsIssuesList200Response
 ```
 
 List item issues
@@ -410,15 +382,11 @@ let bookmark = "bookmark_example" // String | Cursor used to fetch the next page
 let pageSize = 987 // Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional) (default to 25)
 
 // List item issues
-CatalogFeedsAPI.itemsIssuesList(processingResultId: processingResultId, itemNumbers: itemNumbers, itemValidationIssue: itemValidationIssue, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
+do {
+    let response = try await CatalogFeedsAPI.itemsIssuesList(processingResultId: processingResultId, itemNumbers: itemNumbers, itemValidationIssue: itemValidationIssue, adAccountId: adAccountId, bookmark: bookmark, pageSize: pageSize)
+    dump(response)
+} catch {
+    print(error)
 }
 ```
 

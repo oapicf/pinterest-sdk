@@ -29,7 +29,7 @@ export const BusinessAccessRole = {
     ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER',
     ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER',
     BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER',
-    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER'
+    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER',
 } as const;
 export type BusinessAccessRole = typeof BusinessAccessRole[keyof typeof BusinessAccessRole];
 

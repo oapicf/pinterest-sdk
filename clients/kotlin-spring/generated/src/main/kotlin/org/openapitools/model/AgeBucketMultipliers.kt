@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.TargetingSpecAgeBucket
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
@@ -27,8 +24,6 @@ data class AgeBucketMultipliers(
 
     @field:Valid
     @Schema(description = "Age bucket identifier.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("AGE_BUCKET")
     @get:JsonProperty("AGE_BUCKET") val AGE_BUCKET: TargetingSpecAgeBucket? = null
 ) : kotlin.collections.HashMap<String, kotlin.Double>() {

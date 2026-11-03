@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-08-30T09:54:34.006998108Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-03T06:15:42.944881082Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInvitesBody   {
   
   private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();
@@ -25,8 +25,7 @@ public class AuthRespondInvitesBody   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("invites")
   @NotNull
- @Size(min=1,max=100)  @Valid
-  public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
+ @Size(min=1,max=100)  public List<@Valid AuthRespondInvitesBodyItem> getInvites() {
     return invites;
   }
   public void setInvites(List<@Valid AuthRespondInvitesBodyItem> invites) {

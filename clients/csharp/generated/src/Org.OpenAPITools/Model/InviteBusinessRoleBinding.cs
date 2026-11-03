@@ -258,22 +258,22 @@ namespace Org.OpenAPITools.Model
             }
 
             if (createdByBusinessId.IsSet && createdByBusinessId.Value == null)
-                throw new ArgumentNullException(nameof(createdByBusinessId), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: created_by_business_id.");
 
             if (createdByUserId.IsSet && createdByUserId.Value == null)
-                throw new ArgumentNullException(nameof(createdByUserId), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: created_by_user_id.");
 
             if (id.IsSet && id.Value == null)
-                throw new ArgumentNullException(nameof(id), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: id.");
 
             if (inviteData.IsSet && inviteData.Value == null)
-                throw new ArgumentNullException(nameof(inviteData), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: invite_data.");
 
             if (isReceivedInvite.IsSet && isReceivedInvite.Value == null)
-                throw new ArgumentNullException(nameof(isReceivedInvite), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: is_received_invite.");
 
             if (user.IsSet && user.Value == null)
-                throw new ArgumentNullException(nameof(user), "Property is not nullable for class InviteBusinessRoleBinding.");
+                throw new JsonException("Property is not nullable for class InviteBusinessRoleBinding: user.");
 
             return new InviteBusinessRoleBinding(createdByBusinessId, createdByUserId, id, inviteData, isReceivedInvite, user);
         }
@@ -284,7 +284,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteBusinessRoleBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, InviteBusinessRoleBinding inviteBusinessRoleBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -299,23 +298,25 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="inviteBusinessRoleBinding"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, InviteBusinessRoleBinding inviteBusinessRoleBinding, JsonSerializerOptions jsonSerializerOptions)
         {
             if (inviteBusinessRoleBinding.CreatedByBusinessIdOption.IsSet && inviteBusinessRoleBinding.CreatedByBusinessId == null)
-                throw new ArgumentNullException(nameof(inviteBusinessRoleBinding.CreatedByBusinessId), "Property is required for class InviteBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.CreatedByBusinessId to non-nullable JSON property 'created_by_business_id'.");
 
             if (inviteBusinessRoleBinding.CreatedByUserIdOption.IsSet && inviteBusinessRoleBinding.CreatedByUserId == null)
-                throw new ArgumentNullException(nameof(inviteBusinessRoleBinding.CreatedByUserId), "Property is required for class InviteBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.CreatedByUserId to non-nullable JSON property 'created_by_user_id'.");
 
             if (inviteBusinessRoleBinding.IdOption.IsSet && inviteBusinessRoleBinding.Id == null)
-                throw new ArgumentNullException(nameof(inviteBusinessRoleBinding.Id), "Property is required for class InviteBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.Id to non-nullable JSON property 'id'.");
 
             if (inviteBusinessRoleBinding.InviteDataOption.IsSet && inviteBusinessRoleBinding.InviteData == null)
-                throw new ArgumentNullException(nameof(inviteBusinessRoleBinding.InviteData), "Property is required for class InviteBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.InviteData to non-nullable JSON property 'invite_data'.");
+
+            if (inviteBusinessRoleBinding.IsReceivedInviteOption.IsSet && inviteBusinessRoleBinding.IsReceivedInvite == null)
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.IsReceivedInvite to non-nullable JSON property 'is_received_invite'.");
 
             if (inviteBusinessRoleBinding.UserOption.IsSet && inviteBusinessRoleBinding.User == null)
-                throw new ArgumentNullException(nameof(inviteBusinessRoleBinding.User), "Property is required for class InviteBusinessRoleBinding.");
+                throw new JsonException("Cannot write null property InviteBusinessRoleBinding.User to non-nullable JSON property 'user'.");
 
             if (inviteBusinessRoleBinding.CreatedByBusinessIdOption.IsSet)
                 writer.WriteString("created_by_business_id", inviteBusinessRoleBinding.CreatedByBusinessId);

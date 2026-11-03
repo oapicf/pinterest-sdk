@@ -20,7 +20,7 @@ import ScheduleType from './ScheduleType';
 /**
  * The ScheduleUpdateRequest model module.
  * @module model/ScheduleUpdateRequest
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class ScheduleUpdateRequest {
     /**

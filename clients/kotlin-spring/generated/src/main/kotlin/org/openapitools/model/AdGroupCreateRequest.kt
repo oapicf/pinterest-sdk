@@ -2,11 +2,8 @@ package org.openapitools.model
 
 import java.util.Objects
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
-import com.fasterxml.jackson.annotation.Nulls
 import org.openapitools.model.ActionType
 import org.openapitools.model.BidStrategyType
 import org.openapitools.model.BudgetType
@@ -55,43 +52,35 @@ data class AdGroupCreateRequest(
 
     @field:Valid
     @Schema(required = true, description = "")
-    @param:JsonProperty("billable_event")
+    @param:JsonProperty("billable_event", required = true)
     @get:JsonProperty("billable_event", required = true) val billableEvent: ActionType,
 
     @get:Pattern(regexp="^[C]?\\d+$")
     @Schema(example = "626736533506", required = true, description = "Campaign ID of the ad group.")
-    @param:JsonProperty("campaign_id")
+    @param:JsonProperty("campaign_id", required = true)
     @get:JsonProperty("campaign_id", required = true) val campaignId: kotlin.String,
 
     @Schema(example = "Ad Group For Pin: 687195905986", required = true, description = "Ad group name.")
-    @param:JsonProperty("name")
+    @param:JsonProperty("name", required = true)
     @get:JsonProperty("name", required = true) val name: kotlin.String,
 
     @Schema(description = "Enable auto-targeting for ad group. Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/performance-plus-targeting\" target=\"_blank\">\"Pinterest Performance+ targeting\"</a>.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("auto_targeting_enabled")
     @get:JsonProperty("auto_targeting_enabled") val autoTargetingEnabled: kotlin.Boolean? = null,
 
     @get:DecimalMin(value="0")
     @get:DecimalMax(value="10")
     @Schema(description = "<a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank>Open beta</a> Bid multiplier for ad group. This value is a double between 0.1 and 10.0. Enter 0 to remove the bid multiplier. - Make sure the `bid_strategy` type for your ad group is set to `AUTOMATIC_BID`. - Not currently supported for <a href=\"/docs/api-features/pinterest-performance-plus-setup/\" target=\"blank\">Pinterest Performance+ campaigns</a>.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("bid_multiplier")
     @get:JsonProperty("bid_multiplier") val bidMultiplier: java.math.BigDecimal? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("budget_type")
     @get:JsonProperty("budget_type") val budgetType: BudgetType? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("pacing_delivery_type")
     @get:JsonProperty("pacing_delivery_type") val pacingDeliveryType: PacingDeliveryType? = null,
 
@@ -117,8 +106,6 @@ data class AdGroupCreateRequest(
     @get:JsonProperty("is_creative_optimization") val isCreativeOptimization: kotlin.Boolean? = null,
 
     @Schema(example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("lifetime_frequency_cap")
     @get:JsonProperty("lifetime_frequency_cap") val lifetimeFrequencyCap: kotlin.Int? = null,
 
@@ -129,8 +116,6 @@ data class AdGroupCreateRequest(
 
     @field:Valid
     @Schema(description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("placement_group")
     @get:JsonProperty("placement_group") val placementGroup: PlacementGroupType? = null,
 
@@ -144,8 +129,6 @@ data class AdGroupCreateRequest(
     @get:JsonProperty("promotion_id") val promotionId: kotlin.String? = "0",
 
     @Schema(example = "[\"7834020347906\",\"7834020347907\"]", description = "Promotion IDs list. To clear this field, set to an empty array [].")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("promotion_ids")
     @get:JsonProperty("promotion_ids") val promotionIds: kotlin.collections.List<kotlin.String>? = null,
 
@@ -155,15 +138,11 @@ data class AdGroupCreateRequest(
 
     @field:Valid
     @Schema(description = "Ad group/entity status.")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("status")
     @get:JsonProperty("status") val status: EntityStatus? = null,
 
     @field:Valid
     @Schema(description = "")
-    @field:JsonInclude(JsonInclude.Include.NON_NULL)
-    @field:JsonSetter(nulls = Nulls.SKIP)
     @param:JsonProperty("targeting_spec")
     @get:JsonProperty("targeting_spec") val targetingSpec: TargetingSpec? = null,
 
@@ -187,12 +166,12 @@ data class AdGroupCreateRequest(
         NONE("NONE"),
         ITEM("ITEM"),
         AD_GROUP("AD_GROUP");
-
+    
         companion object {
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PromotionApplicationLevel {
-                return values().firstOrNull{it -> it.value == value}
+                return values().firstOrNull{ it.value == value }
                     ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PromotionApplicationLevel'")
             }
         }

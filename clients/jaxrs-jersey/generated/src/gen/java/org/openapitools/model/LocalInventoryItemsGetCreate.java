@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   LocalInventoryItemsGetCreate.JSON_PROPERTY_ITEM_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-08-30T09:54:14.357431345Z[Etc/UTC]", comments = "Generator version: 7.24.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalInventoryItemsGetCreate   {
   public static final String JSON_PROPERTY_ITEM_FILTERS = "item_filters";
   @JsonProperty(JSON_PROPERTY_ITEM_FILTERS)
@@ -58,7 +58,7 @@ public class LocalInventoryItemsGetCreate   {
    **/
   @JsonProperty(value = "item_filters")
   @ApiModelProperty(required = true, value = "Array of local inventory item identifiers. Each item requires an item_id and store_code pair. Up to 1000 items.")
-  @NotNull @Valid  @Size(min=1,max=1000)
+  @NotNull  @Size(min=1,max=1000)
   public List<@Valid ItemIdStoreCodePair> getItemFilters() {
     return itemFilters;
   }

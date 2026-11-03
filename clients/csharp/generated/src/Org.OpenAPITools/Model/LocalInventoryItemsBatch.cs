@@ -210,31 +210,31 @@ namespace Org.OpenAPITools.Model
             }
 
             if (!batchId.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsBatch.", nameof(batchId));
+                throw new JsonException("Property is required for class LocalInventoryItemsBatch: batch_id.");
 
             if (!createdTime.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsBatch.", nameof(createdTime));
+                throw new JsonException("Property is required for class LocalInventoryItemsBatch: created_time.");
 
             if (!operationResults.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsBatch.", nameof(operationResults));
+                throw new JsonException("Property is required for class LocalInventoryItemsBatch: operation_results.");
 
             if (!status.IsSet)
-                throw new ArgumentException("Property is required for class LocalInventoryItemsBatch.", nameof(status));
+                throw new JsonException("Property is required for class LocalInventoryItemsBatch: status.");
 
             if (batchId.IsSet && batchId.Value == null)
-                throw new ArgumentNullException(nameof(batchId), "Property is not nullable for class LocalInventoryItemsBatch.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatch: batch_id.");
 
             if (createdTime.IsSet && createdTime.Value == null)
-                throw new ArgumentNullException(nameof(createdTime), "Property is not nullable for class LocalInventoryItemsBatch.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatch: created_time.");
 
             if (operationResults.IsSet && operationResults.Value == null)
-                throw new ArgumentNullException(nameof(operationResults), "Property is not nullable for class LocalInventoryItemsBatch.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatch: operation_results.");
 
             if (status.IsSet && status.Value == null)
-                throw new ArgumentNullException(nameof(status), "Property is not nullable for class LocalInventoryItemsBatch.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatch: status.");
 
             if (completedTime.IsSet && completedTime.Value == null)
-                throw new ArgumentNullException(nameof(completedTime), "Property is not nullable for class LocalInventoryItemsBatch.");
+                throw new JsonException("Property is not nullable for class LocalInventoryItemsBatch: completed_time.");
 
             return new LocalInventoryItemsBatch(batchId.Value!, createdTime.Value!.Value!, operationResults.Value!, status.Value!.Value!, completedTime);
         }
@@ -245,7 +245,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, LocalInventoryItemsBatch localInventoryItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -260,14 +259,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="localInventoryItemsBatch"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LocalInventoryItemsBatch localInventoryItemsBatch, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (localInventoryItemsBatch.BatchId == null)
-                throw new ArgumentNullException(nameof(localInventoryItemsBatch.BatchId), "Property is required for class LocalInventoryItemsBatch.");
-
-            if (localInventoryItemsBatch.OperationResults == null)
-                throw new ArgumentNullException(nameof(localInventoryItemsBatch.OperationResults), "Property is required for class LocalInventoryItemsBatch.");
+            if (localInventoryItemsBatch.CompletedTimeOption.IsSet && localInventoryItemsBatch.CompletedTime == null)
+                throw new JsonException("Cannot write null property LocalInventoryItemsBatch.CompletedTime to non-nullable JSON property 'completed_time'.");
 
             writer.WriteString("batch_id", localInventoryItemsBatch.BatchId);
 

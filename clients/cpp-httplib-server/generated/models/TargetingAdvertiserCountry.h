@@ -12,24 +12,404 @@
 
 namespace models {
 
-
-class TargetingAdvertiserCountry
-{
-public:
-
-    TargetingAdvertiserCountry();
-    virtual ~TargetingAdvertiserCountry() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(TargetingAdvertiserCountry,
-        )
-
-private:
+enum class TargetingAdvertiserCountry {
+    
+    US,
+    
+    GB,
+    
+    CA,
+    
+    IE,
+    
+    AU,
+    
+    NZ,
+    
+    FR,
+    
+    SE,
+    
+    IL,
+    
+    DE,
+    
+    AT,
+    
+    IT,
+    
+    ES,
+    
+    NL,
+    
+    BE,
+    
+    PT,
+    
+    CH,
+    
+    HK,
+    
+    JP,
+    
+    KR,
+    
+    SG,
+    
+    FALSE,
+    
+    DK,
+    
+    FI,
+    
+    CY,
+    
+    LU,
+    
+    MT,
+    
+    PL,
+    
+    RO,
+    
+    HU,
+    
+    CZ,
+    
+    GR,
+    
+    SK,
+    
+    BR,
+    
+    MX,
+    
+    AR,
+    
+    CL,
+    
+    CO
+    
 };
 
+inline void to_json(nlohmann::json& j, const TargetingAdvertiserCountry& value)
+{
+    switch (value)
+    {
+        
+        case TargetingAdvertiserCountry::US: j = "US"; break;
+        
+        case TargetingAdvertiserCountry::GB: j = "GB"; break;
+        
+        case TargetingAdvertiserCountry::CA: j = "CA"; break;
+        
+        case TargetingAdvertiserCountry::IE: j = "IE"; break;
+        
+        case TargetingAdvertiserCountry::AU: j = "AU"; break;
+        
+        case TargetingAdvertiserCountry::NZ: j = "NZ"; break;
+        
+        case TargetingAdvertiserCountry::FR: j = "FR"; break;
+        
+        case TargetingAdvertiserCountry::SE: j = "SE"; break;
+        
+        case TargetingAdvertiserCountry::IL: j = "IL"; break;
+        
+        case TargetingAdvertiserCountry::DE: j = "DE"; break;
+        
+        case TargetingAdvertiserCountry::AT: j = "AT"; break;
+        
+        case TargetingAdvertiserCountry::IT: j = "IT"; break;
+        
+        case TargetingAdvertiserCountry::ES: j = "ES"; break;
+        
+        case TargetingAdvertiserCountry::NL: j = "NL"; break;
+        
+        case TargetingAdvertiserCountry::BE: j = "BE"; break;
+        
+        case TargetingAdvertiserCountry::PT: j = "PT"; break;
+        
+        case TargetingAdvertiserCountry::CH: j = "CH"; break;
+        
+        case TargetingAdvertiserCountry::HK: j = "HK"; break;
+        
+        case TargetingAdvertiserCountry::JP: j = "JP"; break;
+        
+        case TargetingAdvertiserCountry::KR: j = "KR"; break;
+        
+        case TargetingAdvertiserCountry::SG: j = "SG"; break;
+        
+        case TargetingAdvertiserCountry::FALSE: j = "false"; break;
+        
+        case TargetingAdvertiserCountry::DK: j = "DK"; break;
+        
+        case TargetingAdvertiserCountry::FI: j = "FI"; break;
+        
+        case TargetingAdvertiserCountry::CY: j = "CY"; break;
+        
+        case TargetingAdvertiserCountry::LU: j = "LU"; break;
+        
+        case TargetingAdvertiserCountry::MT: j = "MT"; break;
+        
+        case TargetingAdvertiserCountry::PL: j = "PL"; break;
+        
+        case TargetingAdvertiserCountry::RO: j = "RO"; break;
+        
+        case TargetingAdvertiserCountry::HU: j = "HU"; break;
+        
+        case TargetingAdvertiserCountry::CZ: j = "CZ"; break;
+        
+        case TargetingAdvertiserCountry::GR: j = "GR"; break;
+        
+        case TargetingAdvertiserCountry::SK: j = "SK"; break;
+        
+        case TargetingAdvertiserCountry::BR: j = "BR"; break;
+        
+        case TargetingAdvertiserCountry::MX: j = "MX"; break;
+        
+        case TargetingAdvertiserCountry::AR: j = "AR"; break;
+        
+        case TargetingAdvertiserCountry::CL: j = "CL"; break;
+        
+        case TargetingAdvertiserCountry::CO: j = "CO"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for TargetingAdvertiserCountry", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, TargetingAdvertiserCountry& value)
+{
+    
+    if (j == "US")
+    {
+        value = TargetingAdvertiserCountry::US;
+        return;
+    }
+    
+    if (j == "GB")
+    {
+        value = TargetingAdvertiserCountry::GB;
+        return;
+    }
+    
+    if (j == "CA")
+    {
+        value = TargetingAdvertiserCountry::CA;
+        return;
+    }
+    
+    if (j == "IE")
+    {
+        value = TargetingAdvertiserCountry::IE;
+        return;
+    }
+    
+    if (j == "AU")
+    {
+        value = TargetingAdvertiserCountry::AU;
+        return;
+    }
+    
+    if (j == "NZ")
+    {
+        value = TargetingAdvertiserCountry::NZ;
+        return;
+    }
+    
+    if (j == "FR")
+    {
+        value = TargetingAdvertiserCountry::FR;
+        return;
+    }
+    
+    if (j == "SE")
+    {
+        value = TargetingAdvertiserCountry::SE;
+        return;
+    }
+    
+    if (j == "IL")
+    {
+        value = TargetingAdvertiserCountry::IL;
+        return;
+    }
+    
+    if (j == "DE")
+    {
+        value = TargetingAdvertiserCountry::DE;
+        return;
+    }
+    
+    if (j == "AT")
+    {
+        value = TargetingAdvertiserCountry::AT;
+        return;
+    }
+    
+    if (j == "IT")
+    {
+        value = TargetingAdvertiserCountry::IT;
+        return;
+    }
+    
+    if (j == "ES")
+    {
+        value = TargetingAdvertiserCountry::ES;
+        return;
+    }
+    
+    if (j == "NL")
+    {
+        value = TargetingAdvertiserCountry::NL;
+        return;
+    }
+    
+    if (j == "BE")
+    {
+        value = TargetingAdvertiserCountry::BE;
+        return;
+    }
+    
+    if (j == "PT")
+    {
+        value = TargetingAdvertiserCountry::PT;
+        return;
+    }
+    
+    if (j == "CH")
+    {
+        value = TargetingAdvertiserCountry::CH;
+        return;
+    }
+    
+    if (j == "HK")
+    {
+        value = TargetingAdvertiserCountry::HK;
+        return;
+    }
+    
+    if (j == "JP")
+    {
+        value = TargetingAdvertiserCountry::JP;
+        return;
+    }
+    
+    if (j == "KR")
+    {
+        value = TargetingAdvertiserCountry::KR;
+        return;
+    }
+    
+    if (j == "SG")
+    {
+        value = TargetingAdvertiserCountry::SG;
+        return;
+    }
+    
+    if (j == "false")
+    {
+        value = TargetingAdvertiserCountry::FALSE;
+        return;
+    }
+    
+    if (j == "DK")
+    {
+        value = TargetingAdvertiserCountry::DK;
+        return;
+    }
+    
+    if (j == "FI")
+    {
+        value = TargetingAdvertiserCountry::FI;
+        return;
+    }
+    
+    if (j == "CY")
+    {
+        value = TargetingAdvertiserCountry::CY;
+        return;
+    }
+    
+    if (j == "LU")
+    {
+        value = TargetingAdvertiserCountry::LU;
+        return;
+    }
+    
+    if (j == "MT")
+    {
+        value = TargetingAdvertiserCountry::MT;
+        return;
+    }
+    
+    if (j == "PL")
+    {
+        value = TargetingAdvertiserCountry::PL;
+        return;
+    }
+    
+    if (j == "RO")
+    {
+        value = TargetingAdvertiserCountry::RO;
+        return;
+    }
+    
+    if (j == "HU")
+    {
+        value = TargetingAdvertiserCountry::HU;
+        return;
+    }
+    
+    if (j == "CZ")
+    {
+        value = TargetingAdvertiserCountry::CZ;
+        return;
+    }
+    
+    if (j == "GR")
+    {
+        value = TargetingAdvertiserCountry::GR;
+        return;
+    }
+    
+    if (j == "SK")
+    {
+        value = TargetingAdvertiserCountry::SK;
+        return;
+    }
+    
+    if (j == "BR")
+    {
+        value = TargetingAdvertiserCountry::BR;
+        return;
+    }
+    
+    if (j == "MX")
+    {
+        value = TargetingAdvertiserCountry::MX;
+        return;
+    }
+    
+    if (j == "AR")
+    {
+        value = TargetingAdvertiserCountry::AR;
+        return;
+    }
+    
+    if (j == "CL")
+    {
+        value = TargetingAdvertiserCountry::CL;
+        return;
+    }
+    
+    if (j == "CO")
+    {
+        value = TargetingAdvertiserCountry::CO;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for TargetingAdvertiserCountry", &j);
+}
 
 } // namespace models
 

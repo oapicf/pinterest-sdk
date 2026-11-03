@@ -21,8 +21,6 @@ public class CreateAssetInvitesRequest  {
   
   @ApiModelProperty(required = true, value = "")
 
-  @Valid
-
   private List<@Valid CreateAssetInvitesRequestItem> invites = new ArrayList<>();
  /**
    * Get invites

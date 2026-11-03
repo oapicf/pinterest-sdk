@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ConversionDeletionRequestUserEmailTargets {
     /**
      * Array of plain text user emails.
-     * @type {Array<string>}
-     * @memberof ConversionDeletionRequestUserEmailTargets
      */
     userEmails: Array<string>;
 }

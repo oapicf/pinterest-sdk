@@ -17,7 +17,7 @@ import CustomerListStatus from './CustomerListStatus';
 /**
  * The CustomerList model module.
  * @module model/CustomerList
- * @version 2.0.1-pre.0
+ * @version 2.1.1-pre.0
  */
 class CustomerList {
     /**

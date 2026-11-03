@@ -51,10 +51,10 @@ class MediaController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
             ],
@@ -115,13 +115,13 @@ class MediaController extends Controller
     {
         $validator = Validator::make(
             array_merge(
-                [
-                    'mediaId' => $mediaId,
-                ],
                 $request->all(),
+                [
+                    'media_id' => $mediaId,
+                ],
             ),
             [
-                'mediaId' => [
+                'media_id' => [
                     'required',
                     'regex:/^\\d+$/',
                     'string',
@@ -179,16 +179,16 @@ class MediaController extends Controller
     {
         $validator = Validator::make(
             array_merge(
+                $request->all(),
                 [
                     
                 ],
-                $request->all(),
             ),
             [
                 'bookmark' => [
                     'string',
                 ],
-                'pageSize' => [
+                'page_size' => [
                     'gte:1',
                     'lte:250',
                     'integer',
@@ -202,7 +202,7 @@ class MediaController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $pageSize = $request->integer('pageSize');
+        $pageSize = $request->integer('page_size');
 
 
         $apiResult = $this->api->mediaList($bookmark, $pageSize);

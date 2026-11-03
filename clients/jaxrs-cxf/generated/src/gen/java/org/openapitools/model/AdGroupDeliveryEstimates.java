@@ -36,16 +36,12 @@ public class AdGroupDeliveryEstimates  {
   */
   @ApiModelProperty(value = "Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.")
 
-  @Valid
-
   private List<AdGroupAudienceSizingCreativeTypes> creativeTypes = new ArrayList<>();
 
  /**
   * Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
   */
   @ApiModelProperty(value = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
-
-  @Valid
 
   private List<@Valid AdGroupDeliveryEstimatesKeywordsItems> keywords;
 

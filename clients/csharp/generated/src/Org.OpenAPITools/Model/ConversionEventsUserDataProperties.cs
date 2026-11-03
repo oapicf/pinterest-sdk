@@ -470,46 +470,46 @@ namespace Org.OpenAPITools.Model
             }
 
             if (clientIpAddress.IsSet && clientIpAddress.Value == null)
-                throw new ArgumentNullException(nameof(clientIpAddress), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: client_ip_address.");
 
             if (clientUserAgent.IsSet && clientUserAgent.Value == null)
-                throw new ArgumentNullException(nameof(clientUserAgent), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: client_user_agent.");
 
             if (country.IsSet && country.Value == null)
-                throw new ArgumentNullException(nameof(country), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: country.");
 
             if (ct.IsSet && ct.Value == null)
-                throw new ArgumentNullException(nameof(ct), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: ct.");
 
             if (db.IsSet && db.Value == null)
-                throw new ArgumentNullException(nameof(db), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: db.");
 
             if (em.IsSet && em.Value == null)
-                throw new ArgumentNullException(nameof(em), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: em.");
 
             if (externalId.IsSet && externalId.Value == null)
-                throw new ArgumentNullException(nameof(externalId), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: external_id.");
 
             if (fn.IsSet && fn.Value == null)
-                throw new ArgumentNullException(nameof(fn), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: fn.");
 
             if (ge.IsSet && ge.Value == null)
-                throw new ArgumentNullException(nameof(ge), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: ge.");
 
             if (hashedMaids.IsSet && hashedMaids.Value == null)
-                throw new ArgumentNullException(nameof(hashedMaids), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: hashed_maids.");
 
             if (ln.IsSet && ln.Value == null)
-                throw new ArgumentNullException(nameof(ln), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: ln.");
 
             if (ph.IsSet && ph.Value == null)
-                throw new ArgumentNullException(nameof(ph), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: ph.");
 
             if (st.IsSet && st.Value == null)
-                throw new ArgumentNullException(nameof(st), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: st.");
 
             if (zp.IsSet && zp.Value == null)
-                throw new ArgumentNullException(nameof(zp), "Property is not nullable for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Property is not nullable for class ConversionEventsUserDataProperties: zp.");
 
             return new ConversionEventsUserDataProperties(clickId, clientIpAddress, clientUserAgent, country, ct, db, em, externalId, fn, ge, hashedMaids, ln, partnerId, ph, st, zp);
         }
@@ -520,7 +520,6 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsUserDataProperties"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, ConversionEventsUserDataProperties conversionEventsUserDataProperties, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
@@ -535,50 +534,49 @@ namespace Org.OpenAPITools.Model
         /// <param name="writer"></param>
         /// <param name="conversionEventsUserDataProperties"></param>
         /// <param name="jsonSerializerOptions"></param>
-        /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, ConversionEventsUserDataProperties conversionEventsUserDataProperties, JsonSerializerOptions jsonSerializerOptions)
         {
             if (conversionEventsUserDataProperties.ClientIpAddressOption.IsSet && conversionEventsUserDataProperties.ClientIpAddress == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.ClientIpAddress), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.ClientIpAddress to non-nullable JSON property 'client_ip_address'.");
 
             if (conversionEventsUserDataProperties.ClientUserAgentOption.IsSet && conversionEventsUserDataProperties.ClientUserAgent == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.ClientUserAgent), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.ClientUserAgent to non-nullable JSON property 'client_user_agent'.");
 
             if (conversionEventsUserDataProperties.CountryOption.IsSet && conversionEventsUserDataProperties.Country == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Country), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Country to non-nullable JSON property 'country'.");
 
             if (conversionEventsUserDataProperties.CtOption.IsSet && conversionEventsUserDataProperties.Ct == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Ct), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Ct to non-nullable JSON property 'ct'.");
 
             if (conversionEventsUserDataProperties.DbOption.IsSet && conversionEventsUserDataProperties.Db == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Db), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Db to non-nullable JSON property 'db'.");
 
             if (conversionEventsUserDataProperties.EmOption.IsSet && conversionEventsUserDataProperties.Em == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Em), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Em to non-nullable JSON property 'em'.");
 
             if (conversionEventsUserDataProperties.ExternalIdOption.IsSet && conversionEventsUserDataProperties.ExternalId == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.ExternalId), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.ExternalId to non-nullable JSON property 'external_id'.");
 
             if (conversionEventsUserDataProperties.FnOption.IsSet && conversionEventsUserDataProperties.Fn == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Fn), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Fn to non-nullable JSON property 'fn'.");
 
             if (conversionEventsUserDataProperties.GeOption.IsSet && conversionEventsUserDataProperties.Ge == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Ge), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Ge to non-nullable JSON property 'ge'.");
 
             if (conversionEventsUserDataProperties.HashedMaidsOption.IsSet && conversionEventsUserDataProperties.HashedMaids == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.HashedMaids), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.HashedMaids to non-nullable JSON property 'hashed_maids'.");
 
             if (conversionEventsUserDataProperties.LnOption.IsSet && conversionEventsUserDataProperties.Ln == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Ln), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Ln to non-nullable JSON property 'ln'.");
 
             if (conversionEventsUserDataProperties.PhOption.IsSet && conversionEventsUserDataProperties.Ph == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Ph), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Ph to non-nullable JSON property 'ph'.");
 
             if (conversionEventsUserDataProperties.StOption.IsSet && conversionEventsUserDataProperties.St == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.St), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.St to non-nullable JSON property 'st'.");
 
             if (conversionEventsUserDataProperties.ZpOption.IsSet && conversionEventsUserDataProperties.Zp == null)
-                throw new ArgumentNullException(nameof(conversionEventsUserDataProperties.Zp), "Property is required for class ConversionEventsUserDataProperties.");
+                throw new JsonException("Cannot write null property ConversionEventsUserDataProperties.Zp to non-nullable JSON property 'zp'.");
 
             if (conversionEventsUserDataProperties.ClickIdOption.IsSet)
                 if (conversionEventsUserDataProperties.ClickIdOption.Value != null)

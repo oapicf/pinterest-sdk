@@ -598,15 +598,14 @@ class _$AdGroupUpdateRequestSerializer implements PrimitiveSerializer<AdGroupUpd
   }
 }
 
+
+/// Specify if the promotion is applied at ad group or item level
 class AdGroupUpdateRequestPromotionApplicationLevelEnum extends EnumClass {
 
-  /// Specify if the promotion is applied at ad group or item level
   @BuiltValueEnumConst(wireName: r'NONE')
   static const AdGroupUpdateRequestPromotionApplicationLevelEnum NONE = _$adGroupUpdateRequestPromotionApplicationLevelEnum_NONE;
-  /// Specify if the promotion is applied at ad group or item level
   @BuiltValueEnumConst(wireName: r'ITEM')
   static const AdGroupUpdateRequestPromotionApplicationLevelEnum ITEM = _$adGroupUpdateRequestPromotionApplicationLevelEnum_ITEM;
-  /// Specify if the promotion is applied at ad group or item level
   @BuiltValueEnumConst(wireName: r'AD_GROUP')
   static const AdGroupUpdateRequestPromotionApplicationLevelEnum AD_GROUP = _$adGroupUpdateRequestPromotionApplicationLevelEnum_AD_GROUP;
 

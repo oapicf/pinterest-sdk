@@ -158,3 +158,4 @@ class _$CatalogsFeedIngestionSerializer implements PrimitiveSerializer<CatalogsF
   }
 }
 
+

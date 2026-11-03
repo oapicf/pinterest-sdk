@@ -12,24 +12,74 @@
 
 namespace models {
 
-
-class CollectionsHeaderType
-{
-public:
-
-    CollectionsHeaderType();
-    virtual ~CollectionsHeaderType() = default;
-
-    // Getters and setters
-
-
-    // JSON serialization using NLOHMANN INTRUSIVE macro (must be inside class to access private members)
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(CollectionsHeaderType,
-        )
-
-private:
+enum class CollectionsHeaderType {
+    
+    SHOP_THIS_COLLECTION,
+    
+    EXPLORE_THIS_COLLECTION,
+    
+    NO_HEADER,
+    
+    ON_SALE,
+    
+    GET_DEAL
+    
 };
 
+inline void to_json(nlohmann::json& j, const CollectionsHeaderType& value)
+{
+    switch (value)
+    {
+        
+        case CollectionsHeaderType::SHOP_THIS_COLLECTION: j = "SHOP_THIS_COLLECTION"; break;
+        
+        case CollectionsHeaderType::EXPLORE_THIS_COLLECTION: j = "EXPLORE_THIS_COLLECTION"; break;
+        
+        case CollectionsHeaderType::NO_HEADER: j = "NO_HEADER"; break;
+        
+        case CollectionsHeaderType::ON_SALE: j = "ON_SALE"; break;
+        
+        case CollectionsHeaderType::GET_DEAL: j = "GET_DEAL"; break;
+        
+        default: throw nlohmann::json::type_error::create(302, "Invalid value for CollectionsHeaderType", &j);
+    }
+}
+
+inline void from_json(const nlohmann::json& j, CollectionsHeaderType& value)
+{
+    
+    if (j == "SHOP_THIS_COLLECTION")
+    {
+        value = CollectionsHeaderType::SHOP_THIS_COLLECTION;
+        return;
+    }
+    
+    if (j == "EXPLORE_THIS_COLLECTION")
+    {
+        value = CollectionsHeaderType::EXPLORE_THIS_COLLECTION;
+        return;
+    }
+    
+    if (j == "NO_HEADER")
+    {
+        value = CollectionsHeaderType::NO_HEADER;
+        return;
+    }
+    
+    if (j == "ON_SALE")
+    {
+        value = CollectionsHeaderType::ON_SALE;
+        return;
+    }
+    
+    if (j == "GET_DEAL")
+    {
+        value = CollectionsHeaderType::GET_DEAL;
+        return;
+    }
+    
+    throw nlohmann::json::type_error::create(302, "Invalid value for CollectionsHeaderType", &j);
+}
 
 } // namespace models
 

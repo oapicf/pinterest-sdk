@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface AmazonConnectResponse {
     /**
      * Amazon connect response message
-     * @type {string}
-     * @memberof AmazonConnectResponse
      */
     message?: string;
 }

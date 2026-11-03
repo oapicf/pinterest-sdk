@@ -36,20 +36,14 @@ import {
 export interface CatalogsCreativeAssetsProduct {
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductCatalogTypeEnum}
-     * @memberof CatalogsCreativeAssetsProduct
      */
     catalogType: CatalogsCreativeAssetsProductCatalogTypeEnum;
     /**
      * 
-     * @type {CatalogsCreativeAssetsProductMetadata}
-     * @memberof CatalogsCreativeAssetsProduct
      */
     metadata: CatalogsCreativeAssetsProductMetadata;
     /**
      * 
-     * @type {Pin}
-     * @memberof CatalogsCreativeAssetsProduct
      */
     pin: Pin;
 }
@@ -59,7 +53,7 @@ export interface CatalogsCreativeAssetsProduct {
  * @export
  */
 export const CatalogsCreativeAssetsProductCatalogTypeEnum = {
-    CreativeAssets: 'CREATIVE_ASSETS'
+    CreativeAssets: 'CREATIVE_ASSETS',
 } as const;
 export type CatalogsCreativeAssetsProductCatalogTypeEnum = typeof CatalogsCreativeAssetsProductCatalogTypeEnum[keyof typeof CatalogsCreativeAssetsProductCatalogTypeEnum];
 

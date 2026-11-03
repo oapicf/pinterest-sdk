@@ -51,7 +51,7 @@ export const AdDisapprovalReasons = {
     IllegalRecreationalDrug: 'ILLEGAL_RECREATIONAL_DRUG',
     LowQualityLandingPage: 'LOW_QUALITY_LANDING_PAGE',
     RestrictedHealthcare: 'RESTRICTED_HEALTHCARE',
-    InconsistentLangFr: 'INCONSISTENT_LANG_FR'
+    InconsistentLangFr: 'INCONSISTENT_LANG_FR',
 } as const;
 export type AdDisapprovalReasons = typeof AdDisapprovalReasons[keyof typeof AdDisapprovalReasons];
 
